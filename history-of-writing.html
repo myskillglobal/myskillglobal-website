@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Surajit Roy" name="author"/>
+<meta content="© Surajit Roy" name="copyright"/>
+<meta content="index,follow" name="robots"/>
+<title>The Story of Writing — Stone to Pen</title>
+<meta content="A visual journey through 5,000 years of writing — from Sumerian cuneiform and stone inscriptions to palm-leaf manuscripts, quills, fountain pens, the ballpoint pen and the digital age." name="description"/>
+<meta content="history of writing, writing systems, cuneiform, hieroglyphics, palm leaf manuscripts, quill pen, fountain pen, ballpoint pen, history of the pen" name="keywords"/>
+<meta content="The Story of Writing — Stone to Pen" property="og:title"/>
+<meta content="A visual journey through 5,000 years of writing, from stone chisels to the digital screen." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<!-- Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&amp;family=Cinzel:wght@400;600;900&amp;family=Josefin+Sans:wght@200;300;400;600&amp;display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --stone: #8B7355;
+  --parchment: #F5E6C8;
+  --ink: #1A0F00;
+  --gold: #C9A84C;
+  --rust: #8B3A1F;
+  --sage: #4A6741;
+  --indigo: #2C3E7A;
+  --coal: #1E1610;
+  --cream: #FAF0DC;
+  --clay: #B5651D;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+  font-family:'Cormorant Garamond', serif;
+  background: var(--coal);
+  color: var(--cream);
+  overflow-x: hidden;
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,168,76,0.12) 0%, transparent 60%),
+    linear-gradient(170deg, #0D0800 0%, #1E1610 35%, #160C04 65%, #0A0500 100%);
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  text-align:center; padding:40px 20px;
+  position:relative; overflow:hidden;
+}
+
+/* Floating ancient symbols */
+.float-symbols {
+  position:absolute; inset:0; pointer-events:none; overflow:hidden;
+}
+.sym {
+  position:absolute;
+  font-size:clamp(20px,3vw,40px);
+  opacity:0.06;
+  animation:floatSym linear infinite;
+  color: var(--gold);
+}
+@keyframes floatSym {
+  from { transform:translateY(110vh) rotate(0deg); opacity:0.04; }
+  to   { transform:translateY(-10vh) rotate(360deg); opacity:0.0; }
+}
+
+.hero-pre {
+  font-family:'Josefin Sans'; font-size:11px; letter-spacing:8px;
+  color: var(--gold); text-transform:uppercase; margin-bottom:20px;
+  animation: fadeUp 1s ease both;
+}
+.hero-title {
+  font-family:'Cinzel'; font-size:clamp(38px,8vw,110px);
+  font-weight:900; line-height:0.9;
+  background: linear-gradient(135deg, #FAF0DC 0%, #C9A84C 45%, #8B7355 80%);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  background-clip:text; animation:fadeUp 1s 0.2s ease both;
+}
+.hero-rule {
+  width:120px; height:2px; margin:24px auto;
+  background:linear-gradient(90deg, transparent, var(--gold), transparent);
+  animation:fadeUp 1s 0.3s ease both;
+}
+.hero-sub {
+  font-size:clamp(17px,3vw,24px); font-style:italic; font-weight:300;
+  color:rgba(250,240,220,0.7); max-width:650px; line-height:1.7;
+  animation:fadeUp 1s 0.4s ease both;
+}
+.hero-chips {
+  display:flex; gap:10px; flex-wrap:wrap;
+  justify-content:center; margin-top:30px;
+  animation:fadeUp 1s 0.6s ease both;
+}
+.chip {
+  padding:7px 18px; border-radius:100px;
+  font-family:'Josefin Sans'; font-size:11px; letter-spacing:2px;
+  border:1px solid rgba(201,168,76,0.4); color:rgba(201,168,76,0.85);
+  background:rgba(201,168,76,0.07);
+}
+
+.scroll-cue {
+  position:absolute; bottom:28px;
+  font-family:'Josefin Sans'; font-size:10px; letter-spacing:4px;
+  color:rgba(255,255,255,0.25); text-transform:uppercase;
+  display:flex; flex-direction:column; align-items:center; gap:8px;
+  animation:bob 2.5s ease-in-out infinite;
+}
+.scroll-cue::after { content:'↓'; font-size:18px; }
+@keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(8px)} }
+@keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+
+/* ── NAV ── */
+nav {
+  position:sticky; top:0; z-index:200;
+  background:rgba(14,9,2,0.94); backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(201,168,76,0.15);
+  padding:12px 16px;
+  display:flex; align-items:center; justify-content:center;
+  gap:clamp(6px,3vw,28px); flex-wrap:wrap;
+}
+nav a {
+  font-family:'Josefin Sans'; font-size:11px; letter-spacing:2.5px;
+  text-transform:uppercase; color:rgba(250,240,220,0.5);
+  text-decoration:none; transition:color 0.3s; white-space:nowrap;
+}
+nav a:hover { color:var(--gold); }
+
+/* ── CHAPTER WRAPPER ── */
+.chapter {
+  max-width:100%; padding:80px clamp(20px,8vw,120px);
+}
+.chapter-inner { max-width:1080px; margin:0 auto; }
+
+.ch-label {
+  font-family:'Josefin Sans'; font-size:10px; letter-spacing:5px;
+  text-transform:uppercase; margin-bottom:10px;
+  display:flex; align-items:center; gap:12px;
+}
+.ch-label::after { content:''; flex:1; height:1px; opacity:0.25; background:currentColor; max-width:60px; }
+.ch-title {
+  font-family:'Cinzel'; font-size:clamp(28px,5vw,52px);
+  font-weight:600; line-height:1.1; margin-bottom:20px;
+}
+.ch-body {
+  font-size:clamp(16px,2vw,19px); line-height:1.85;
+  color:rgba(250,240,220,0.78); font-weight:300;
+}
+
+/* ── STONE SECTION ── */
+#stone {
+  background:
+    radial-gradient(ellipse 60% 50% at 10% 50%, rgba(139,115,85,0.15) 0%, transparent 70%),
+    linear-gradient(180deg, #0A0500 0%, #140C03 100%);
+}
+.stone-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:60px;
+  align-items:center; margin-top:50px;
+}
+@media(max-width:680px){.stone-grid{grid-template-columns:1fr; gap:36px;}}
+
+.stone-art {
+  aspect-ratio:1; max-width:360px;
+  background:
+    radial-gradient(ellipse at 50% 50%, #5C4A2A 0%, #3D2F1A 40%, #2A1F0E 100%);
+  border-radius:20px 60px 30px 50px / 50px 30px 60px 20px;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  padding:40px; text-align:center;
+  box-shadow: inset 0 0 60px rgba(0,0,0,0.5), 0 0 40px rgba(139,115,85,0.2);
+  position:relative; overflow:hidden;
+}
+.stone-art::before {
+  content:'';
+  position:absolute; inset:0;
+  background:repeating-linear-gradient(
+    45deg, transparent, transparent 8px,
+    rgba(255,255,255,0.015) 8px, rgba(255,255,255,0.015) 9px
+  );
+}
+.stone-glyphs { font-size:48px; line-height:1.4; letter-spacing:6px; z-index:1; }
+.stone-caption {
+  font-family:'Josefin Sans'; font-size:10px; letter-spacing:3px;
+  color:rgba(201,168,76,0.6); margin-top:16px; z-index:1;
+}
+.stone-date {
+  font-family:'Cinzel'; font-size:60px; font-weight:900;
+  background:linear-gradient(135deg, var(--stone), var(--gold));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  background-clip:text; line-height:1; z-index:1;
+}
+
+.fact-chips { display:flex; flex-wrap:wrap; gap:10px; margin-top:24px; }
+.fact-chip {
+  padding:8px 16px; border-radius:8px;
+  font-family:'Josefin Sans'; font-size:11px; letter-spacing:1px;
+  background:rgba(139,115,85,0.15); border:1px solid rgba(139,115,85,0.3);
+  color:rgba(250,240,220,0.7);
+}
+
+/* ── PALM LEAF SECTION ── */
+#palm {
+  background:linear-gradient(160deg, #050E04 0%, #091208 50%, #040900 100%);
+}
+.palm-visual {
+  margin-top:50px; position:relative;
+  display:flex; flex-direction:column; gap:0;
+}
+.leaf-stack {
+  display:flex; flex-direction:column; gap:-4px;
+  position:relative; width:100%; max-width:700px; margin:0 auto 50px;
+}
+.leaf {
+  height:48px; border-radius:2px 100px 100px 2px;
+  display:flex; align-items:center; padding:0 24px 0 50px;
+  position:relative; font-size:14px; font-style:italic;
+  color:rgba(250,240,220,0.8); margin-bottom:-8px;
+  transform:rotate(var(--r)); transition:transform 0.3s;
+}
+.leaf:hover { transform:rotate(0deg) translateX(10px); z-index:10; }
+.leaf::before {
+  content:attr(data-n);
+  position:absolute; left:18px;
+  font-family:'Cinzel'; font-size:11px; color:rgba(0,0,0,0.5);
+}
+.leaf-hole {
+  position:absolute; left:34px; width:8px; height:8px;
+  border-radius:50%; background:rgba(0,0,0,0.4);
+  border:1px solid rgba(0,0,0,0.6);
+}
+.l1 { background:linear-gradient(90deg,#5C7A2A,#7A9E35); --r:-1.5deg; }
+.l2 { background:linear-gradient(90deg,#4E6B24,#6B8A2E); --r:0.8deg; }
+.l3 { background:linear-gradient(90deg,#5C7A2A,#7A9E35); --r:-0.5deg; }
+.l4 { background:linear-gradient(90deg,#4E6B24,#6B8A2E); --r:1.2deg; }
+.l5 { background:linear-gradient(90deg,#5C7A2A,#7A9E35); --r:-0.9deg; }
+
+.palm-content { display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-top:30px; }
+@media(max-width:680px){.palm-content{grid-template-columns:1fr;}}
+.palm-box {
+  background:rgba(74,103,65,0.1); border:1px solid rgba(74,103,65,0.25);
+  border-radius:14px; padding:28px;
+}
+.palm-box h3 { font-family:'Cinzel'; font-size:17px; margin-bottom:12px; color:var(--gold); }
+.palm-box p { font-size:15px; line-height:1.8; color:rgba(250,240,220,0.72); }
+
+/* ── INK PEN SECTION ── */
+#ink {
+  background:
+    radial-gradient(ellipse 70% 50% at 80% 30%, rgba(44,62,122,0.15) 0%, transparent 65%),
+    linear-gradient(180deg, #040812 0%, #08090F 100%);
+}
+.ink-flow {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:24px;
+  margin-top:50px;
+}
+@media(max-width:680px){.ink-flow{grid-template-columns:1fr;}}
+.ink-card {
+  background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07);
+  border-radius:16px; padding:30px; position:relative; overflow:hidden;
+  transition:transform 0.3s, box-shadow 0.3s;
+}
+.ink-card:hover { transform:translateY(-6px); box-shadow:0 24px 50px rgba(0,0,0,0.4); }
+.ink-card::after {
+  content:''; position:absolute;
+  top:0; left:0; right:0; height:3px;
+}
+.ik1::after { background:linear-gradient(90deg,var(--indigo),#6B8FD4); }
+.ik2::after { background:linear-gradient(90deg,var(--rust),#D4855A); }
+.ik3::after { background:linear-gradient(90deg,var(--sage),#85C47A); }
+
+.ink-icon { font-size:40px; margin-bottom:16px; }
+.ink-card h3 { font-family:'Cinzel'; font-size:18px; margin-bottom:10px; }
+.ink-card p { font-size:14px; line-height:1.75; color:rgba(250,240,220,0.65); }
+.ink-era {
+  display:inline-block; margin-top:14px; padding:4px 12px;
+  border-radius:100px; font-family:'Josefin Sans'; font-size:10px; letter-spacing:2px;
+  border:1px solid rgba(255,255,255,0.15); color:rgba(255,255,255,0.45);
+}
+
+/* ── QUILL SCROLL VISUAL ── */
+.quill-scene {
+  margin-top:50px;
+  background:linear-gradient(135deg, rgba(201,168,76,0.08), rgba(44,62,122,0.08));
+  border:1px solid rgba(201,168,76,0.15); border-radius:20px;
+  padding:40px; display:grid; grid-template-columns:auto 1fr; gap:40px;
+  align-items:center;
+}
+@media(max-width:580px){.quill-scene{grid-template-columns:1fr;}}
+.quill-art {
+  font-size:100px; text-align:center;
+  filter:drop-shadow(0 0 20px rgba(201,168,76,0.3));
+  animation:quillWiggle 3s ease-in-out infinite;
+}
+@keyframes quillWiggle {
+  0%,100%{transform:rotate(-5deg);}
+  50%{transform:rotate(5deg);}
+}
+.quill-text h3 { font-family:'Cinzel'; font-size:24px; margin-bottom:14px; color:var(--gold); }
+.quill-text p { font-size:16px; line-height:1.8; color:rgba(250,240,220,0.75); }
+
+/* ── PEN EVOLUTION ── */
+#pens {
+  background:linear-gradient(160deg,#050408 0%, #0A060E 50%, #040408 100%);
+}
+.pen-timeline {
+  margin-top:56px; position:relative;
+  display:flex; flex-direction:column; gap:0;
+}
+.pen-timeline::before {
+  content:''; position:absolute;
+  left:50px; top:0; bottom:0; width:2px;
+  background:linear-gradient(180deg,
+    var(--rust) 0%, var(--clay) 20%,
+    var(--gold) 40%, var(--sage) 60%,
+    var(--indigo) 80%, #9B59B6 100%
+  );
+}
+@media(max-width:500px){
+  .pen-timeline::before{left:22px;}
+}
+
+.pen-item {
+  display:flex; gap:28px; margin-bottom:44px;
+  opacity:0; transform:translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.pen-item.visible { opacity:1; transform:translateY(0); }
+
+.pen-dot {
+  width:50px; height:50px; border-radius:50%;
+  flex-shrink:0; display:flex; align-items:center; justify-content:center;
+  font-size:22px; position:relative; z-index:1;
+}
+@media(max-width:500px){.pen-dot{width:36px;height:36px;font-size:16px;}}
+
+.pen-body { flex:1; padding-top:4px; }
+.pen-era {
+  font-family:'Josefin Sans'; font-size:10px; letter-spacing:3px;
+  text-transform:uppercase; margin-bottom:6px;
+}
+.pen-body h3 { font-family:'Cinzel'; font-size:clamp(17px,3vw,22px); margin-bottom:8px; }
+.pen-body p { font-size:clamp(14px,1.8vw,16px); line-height:1.8; color:rgba(250,240,220,0.7); }
+.pen-fun {
+  margin-top:10px; padding:10px 14px;
+  background:rgba(255,255,255,0.04); border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0; font-size:13px; font-style:italic;
+  color:rgba(250,240,220,0.55);
+}
+
+.pd1 .pen-dot { background:rgba(139,58,31,0.25); border:2px solid var(--rust); }
+.pd2 .pen-dot { background:rgba(181,101,29,0.25); border:2px solid var(--clay); }
+.pd3 .pen-dot { background:rgba(201,168,76,0.2);  border:2px solid var(--gold); }
+.pd4 .pen-dot { background:rgba(74,103,65,0.25);  border:2px solid var(--sage); }
+.pd5 .pen-dot { background:rgba(44,62,122,0.25);  border:2px solid var(--indigo); }
+.pd6 .pen-dot { background:rgba(155,89,182,0.25); border:2px solid #9B59B6; }
+
+.pd1 .pen-era { color:var(--rust); }
+.pd2 .pen-era { color:var(--clay); }
+.pd3 .pen-era { color:var(--gold); }
+.pd4 .pen-era { color:var(--sage); }
+.pd5 .pen-era { color:#6B8FD4; }
+.pd6 .pen-era { color:#C39BD3; }
+
+/* ── WRITING MATERIALS GRID ── */
+#materials {
+  background:linear-gradient(180deg,#060306 0%,#0C070A 100%);
+}
+.mat-grid {
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px; margin-top:50px;
+}
+.mat-card {
+  background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07);
+  border-radius:14px; padding:26px 20px; text-align:center;
+  transition:all 0.3s; cursor:default;
+  position:relative; overflow:hidden;
+}
+.mat-card:hover {
+  background:rgba(255,255,255,0.07); transform:scale(1.04);
+}
+.mat-card::before {
+  content:''; position:absolute;
+  bottom:0; left:0; right:0; height:2px;
+}
+.m1::before{background:linear-gradient(90deg,var(--stone),var(--gold));}
+.m2::before{background:linear-gradient(90deg,var(--sage),#B8E0B0);}
+.m3::before{background:linear-gradient(90deg,var(--clay),#E8A870);}
+.m4::before{background:linear-gradient(90deg,var(--indigo),#8CA8E8);}
+.m5::before{background:linear-gradient(90deg,var(--rust),#E89070);}
+.m6::before{background:linear-gradient(90deg,#888,#CCC);}
+.m7::before{background:linear-gradient(90deg,#2C5F8A,#70B0E0);}
+.m8::before{background:linear-gradient(90deg,#7B3FB5,#C090E8);}
+
+.mat-emoji { font-size:42px; display:block; margin-bottom:14px; }
+.mat-card h3 { font-family:'Cinzel'; font-size:15px; margin-bottom:6px; color:var(--gold); }
+.mat-card p { font-size:12px; line-height:1.6; color:rgba(250,240,220,0.55); }
+.mat-period {
+  display:inline-block; margin-top:10px;
+  font-family:'Josefin Sans'; font-size:9px; letter-spacing:2px;
+  color:rgba(255,255,255,0.3); text-transform:uppercase;
+}
+
+/* ── QUOTE ── */
+.quote-section {
+  background:linear-gradient(135deg, #2A1800 0%, #1A1000 40%, #200D00 100%);
+  padding:80px clamp(20px,8vw,120px); text-align:center;
+}
+.quote-section blockquote {
+  font-family:'Cormorant Garamond'; font-size:clamp(22px,4vw,44px);
+  font-style:italic; font-weight:300; line-height:1.5; max-width:800px; margin:0 auto;
+  color:var(--cream);
+}
+.quote-section blockquote::before {
+  content:'\201C'; font-size:80px; line-height:0;
+  vertical-align:-0.35em; color:var(--gold); opacity:0.5;
+}
+.q-attr {
+  margin-top:20px; font-family:'Josefin Sans'; font-size:11px;
+  letter-spacing:3px; color:rgba(201,168,76,0.5); text-transform:uppercase;
+}
+
+/* ── DIGITAL ERA ── */
+#digital {
+  background:linear-gradient(160deg,#020408 0%,#050A12 50%,#030610 100%);
+}
+.digital-compare {
+  display:grid; grid-template-columns:1fr auto 1fr; gap:30px;
+  align-items:center; margin-top:50px;
+}
+@media(max-width:680px){
+  .digital-compare{grid-template-columns:1fr; gap:20px;}
+  .vs-badge{display:none;}
+}
+.dc-box {
+  background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08);
+  border-radius:16px; padding:30px;
+}
+.dc-box h3 { font-family:'Cinzel'; font-size:20px; margin-bottom:16px; }
+.dc-box ul { list-style:none; padding:0; }
+.dc-box ul li {
+  padding:9px 0; border-bottom:1px solid rgba(255,255,255,0.05);
+  font-size:14px; color:rgba(250,240,220,0.7); line-height:1.6;
+  display:flex; align-items:flex-start; gap:8px;
+}
+.dc-box ul li span { flex-shrink:0; }
+.dc-old { border-color:rgba(201,168,76,0.2); }
+.dc-new { border-color:rgba(44,62,122,0.35); }
+.dc-old h3 { color:var(--gold); }
+.dc-new h3 { color:#6B8FD4; }
+.vs-badge {
+  width:60px; height:60px; border-radius:50%;
+  background:var(--coal); border:2px solid rgba(255,255,255,0.1);
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Cinzel'; font-size:16px; font-weight:900;
+  color:rgba(255,255,255,0.3); flex-shrink:0;
+}
+
+/* ── FOOTER ── */
+footer {
+  background:#020100; padding:56px 20px;
+  text-align:center; border-top:1px solid rgba(201,168,76,0.1);
+}
+.foot-title { font-family:'Cinzel'; font-size:clamp(28px,5vw,48px); color:var(--gold); letter-spacing:3px; }
+.foot-sub {
+  margin-top:16px; font-size:15px; font-style:italic;
+  color:rgba(250,240,220,0.35); line-height:1.9; max-width:600px; margin-inline:auto;
+  margin-top:16px;
+}
+.foot-line { width:80px; height:1px; background:var(--gold); opacity:0.3; margin:24px auto; }
+.foot-era {
+  display:flex; justify-content:center; gap:10px; flex-wrap:wrap;
+  font-family:'Josefin Sans'; font-size:10px; letter-spacing:2px;
+  color:rgba(250,240,220,0.2); text-transform:uppercase;
+}
+.foot-era span::after { content:'·'; margin-left:10px; }
+.foot-era span:last-child::after { content:''; }
+</style>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1034022057999423"></script><link href="https://myskillgame.netlify.app/11-7-26 website/history-of-writing.html" rel="canonical"/></head>
+<body>
+<!-- FLOATING SYMBOLS -->
+<div aria-hidden="true" class="float-symbols">
+<span class="sym" style="left:5%;animation-duration:25s;animation-delay:0s;font-size:30px;">𓂀</span>
+<span class="sym" style="left:15%;animation-duration:30s;animation-delay:4s;font-size:24px;">𓆣</span>
+<span class="sym" style="left:28%;animation-duration:22s;animation-delay:8s;font-size:36px;">ॐ</span>
+<span class="sym" style="left:42%;animation-duration:28s;animation-delay:2s;font-size:28px;">𓏏</span>
+<span class="sym" style="left:57%;animation-duration:32s;animation-delay:6s;font-size:20px;">✦</span>
+<span class="sym" style="left:68%;animation-duration:24s;animation-delay:12s;font-size:32px;">𓃭</span>
+<span class="sym" style="left:80%;animation-duration:26s;animation-delay:3s;font-size:26px;">卐</span>
+<span class="sym" style="left:90%;animation-duration:29s;animation-delay:9s;font-size:22px;">✒</span>
+</div>
+<!-- HERO -->
+<section class="hero">
+<div class="hero-pre">A Journey Through Human Civilization</div>
+<h1 class="hero-title">The Story<br/>of Writing</h1>
+<div class="hero-rule"></div>
+<p class="hero-sub">From the first chisel struck against stone, to the quiet scratch of a ballpoint pen — writing is the greatest invention humanity ever made.</p>
+<div class="hero-chips">
+<span class="chip">Stone Inscriptions</span>
+<span class="chip">Palm Leaf Manuscripts</span>
+<span class="chip">Quill &amp; Ink</span>
+<span class="chip">Ballpoint Pen</span>
+<span class="chip">Digital Age</span>
+</div>
+<div class="scroll-cue">Scroll to Begin</div>
+</section>
+<!-- NAV -->
+<nav>
+<a href="#stone">Stone</a>
+<a href="#palm">Palm Leaf</a>
+<a href="#ink">Ink &amp; Quill</a>
+<a href="#pens">Pens</a>
+<a href="#materials">Materials</a>
+<a href="#digital">Digital</a>
+</nav>
+<!-- STONE INSCRIPTIONS -->
+<div class="chapter" id="stone" style="background:radial-gradient(ellipse 60% 50% at 10% 50%,rgba(139,115,85,0.15) 0%,transparent 70%),linear-gradient(180deg,#0A0500 0%,#140C03 100%);">
+<div class="chapter-inner">
+<div class="ch-label" style="color:var(--stone)">Chapter I</div>
+<h2 class="ch-title">Stone Inscriptions<br/><span style="font-size:0.55em;color:rgba(250,240,220,0.5);">The First Words of Humanity</span></h2>
+<p class="ch-body" style="max-width:720px;">Before paper, before ink — humanity wrote on the hardest canvas imaginable. <strong>Stone inscriptions</strong> are the oldest surviving records of human thought, preserved across tens of thousands of years. They tell us of gods, kings, laws, and love.</p>
+<div class="stone-grid">
+<div>
+<p class="ch-body">
+        The earliest known writing systems — <strong>Sumerian Cuneiform</strong> (~3200 BCE) and <strong>Egyptian Hieroglyphics</strong> (~3100 BCE) — were carved or pressed into clay and stone. In India, the <strong>Indus Valley Script</strong> (~2600 BCE) appeared on stone seals, while <strong>Brahmi script</strong> was later carved into rock edicts by Emperor Ashoka (~250 BCE).<br/><br/>
+        Stone was chosen for its permanence. Royal proclamations, sacred texts, and laws were carved deep into granite, limestone, and basalt — intended to last forever. The tools were simple: <strong>copper or iron chisels</strong>, wooden mallets, and immense patience. A single inscription might take weeks to complete.
+      </p>
+<div class="fact-chips" style="margin-top:28px;">
+<div class="fact-chip">🗿 Rosetta Stone — 196 BCE</div>
+<div class="fact-chip">⚖️ Code of Hammurabi — 1754 BCE</div>
+<div class="fact-chip">🏛️ Ashoka's Rock Edicts — 250 BCE</div>
+<div class="fact-chip">𓂀 Egyptian Obelisks — 2500 BCE</div>
+</div>
+<div style="margin-top:28px; padding:20px; background:rgba(139,115,85,0.1); border:1px solid rgba(139,115,85,0.2); border-radius:12px;">
+<h3 style="font-family:'Cinzel';font-size:16px;color:var(--gold);margin-bottom:10px;">India's Stone Legacy</h3>
+<p style="font-size:15px;line-height:1.8;color:rgba(250,240,220,0.7);">The <strong>Indus Valley Civilization</strong> used stamp seals carved from steatite stone. Later, Emperor Ashoka's famous Dhamma inscriptions were carved across 33 known sites throughout India, Nepal, Pakistan, and Afghanistan — some surviving perfectly to this day after 2,300 years.</p>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:20px;">
+<div class="stone-art">
+<div class="stone-glyphs">𓂀𓆣𓏏<br/>𓃭𓁹𓇌<br/>𓂋𓏤𓎡</div>
+<div class="stone-caption">ANCIENT HIEROGLYPHICS</div>
+<div style="width:80%;height:1px;background:rgba(255,255,255,0.1);margin:16px 0;"></div>
+<div class="stone-date">3200<br/>BCE</div>
+<div class="stone-caption">EARLIEST KNOWN WRITING</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- PALM LEAF -->
+<div class="chapter" id="palm" style="background:linear-gradient(160deg,#050E04 0%,#091208 50%,#040900 100%);">
+<div class="chapter-inner">
+<div class="ch-label" style="color:var(--sage)">Chapter II</div>
+<h2 class="ch-title">Palm Leaf Manuscripts<br/><span style="font-size:0.55em;color:rgba(250,240,220,0.5);">The Scrolls of the East</span></h2>
+<p class="ch-body" style="max-width:720px;">For over two thousand years across South and Southeast Asia, the <strong>palm leaf</strong> served as paper, book, and library. Ancient scholars inscribed entire scriptures, astronomical charts, and epic poems onto dried palm leaves — creating manuscripts that have survived for centuries.</p>
+<div class="leaf-stack" style="margin-top:40px;">
+<div class="leaf l1" data-n="1" style="--r:-1.5deg;"><div class="leaf-hole"></div>Talipot Palm Manuscripts · Sanskrit texts preserved</div>
+<div class="leaf l2" data-n="2" style="--r:0.8deg;"><div class="leaf-hole"></div>Rigveda · Mahabharata · Ramayana · Buddhist Pali Canon inscribed</div>
+<div class="leaf l3" data-n="3" style="--r:-0.5deg;"><div class="leaf-hole"></div>Ayurvedic medicine · Astronomy · Mathematics · Law preserved</div>
+<div class="leaf l4" data-n="4" style="--r:1.2deg;"><div class="leaf-hole"></div>Odisha · Bengal · Kerala · Tamil Nadu · Sri Lanka · Thailand</div>
+<div class="leaf l5" data-n="5" style="--r:-0.9deg;"><div class="leaf-hole"></div>Some manuscripts survived 1,000+ years · Still being digitized today</div>
+</div>
+<p style="text-align:center;font-family:'Josefin Sans';font-size:10px;letter-spacing:3px;color:rgba(255,255,255,0.25);margin-bottom:40px;text-transform:uppercase;">↑ Hover each leaf to read · Tap to expand</p>
+<div class="palm-content">
+<div class="palm-box">
+<h3>📜 The Making Process</h3>
+<p>Palm leaves from the <em>Talipot</em> or <em>Palmyra</em> palm were first boiled and dried. A sharp iron or reed <strong>stylus</strong> was used to scratch letters into the surface. The leaf was then rubbed with black ink or lamp soot — the ink seeped into the scratches, making the text visible. Leaves were threaded together through holes and bound between wooden boards.</p>
+</div>
+<div class="palm-box">
+<h3>🌿 Bengali Palm Leaf Manuscripts</h3>
+<p>Bengal had a rich tradition of palm leaf manuscripts known as <strong>"Talpatra Puthi"</strong> (palm-leaf scripture). Ancient Buddhist texts, Hindu scriptures, and early Bengali literature were preserved this way. The <strong>Charyapada</strong> — the oldest known Bengali poetry, dated ~10th–12th century CE — survived through such manuscripts. Libraries in Kolkata and Dhaka still hold thousands of these rare treasures.</p>
+</div>
+<div class="palm-box">
+<h3>🔬 Preservation Science</h3>
+<p>Palm leaves were preserved by being stored in wooden boxes, periodically treated with turmeric or neem oil to prevent insect damage. In coastal regions, manuscripts were kept in dry rooms with aromatic wood. Despite this care, many were lost to moisture, fire, and time. Today, institutions like the <strong>Bhandarkar Oriental Research Institute</strong> are digitising thousands of surviving manuscripts.</p>
+</div>
+<div class="palm-box">
+<h3>📚 What Was Written</h3>
+<p>Palm leaf manuscripts covered an extraordinary range of subjects: the <strong>Vedas</strong>, the <strong>Upanishads</strong>, Buddhist and Jain scriptures, Ayurvedic treatises, mathematical texts (including early work on zero and algebra), grammar texts by Panini, astronomical tables, poetry, and royal genealogies. They were the complete knowledge base of ancient South Asia.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- INK & QUILL -->
+<div class="chapter" id="ink" style="background:radial-gradient(ellipse 70% 50% at 80% 30%,rgba(44,62,122,0.15) 0%,transparent 65%),linear-gradient(180deg,#040812 0%,#08090F 100%);">
+<div class="chapter-inner">
+<div class="ch-label" style="color:var(--indigo)">Chapter III</div>
+<h2 class="ch-title" style="color:var(--cream);">Ink &amp; the Quill Pen<br/><span style="font-size:0.55em;color:rgba(250,240,220,0.5);">When Writing Became an Art</span></h2>
+<p class="ch-body" style="max-width:720px;">The invention of <strong>ink</strong> transformed writing from stone-carving into fluid, expressive art. Combined with reed, quill, and eventually steel pen — ink gave the human hand its most powerful tool for centuries.</p>
+<div class="quill-scene">
+<div class="quill-art">🪶</div>
+<div class="quill-text">
+<h3>The Quill — King of Pens</h3>
+<p>From roughly <strong>600 CE to 1850 CE</strong>, the quill pen — made from large feathers of geese, swans, or turkeys — dominated writing across Europe and the Islamic world. A skilled quill-cutter could create a pen of extraordinary delicacy. The quill's hollow shaft acted as an ink reservoir; the split nib created flexible, expressive line variation.<br/><br/>The <strong>Quran</strong>, the <strong>Magna Carta</strong>, the works of Shakespeare, Newton's <em>Principia</em>, the US Declaration of Independence — all were written with quill pens dipped in iron gall ink. The quill was the instrument of civilization for over a millennium.</p>
+</div>
+</div>
+<div class="ink-flow">
+<div class="ink-card ik1">
+<div class="ink-icon">🖋️</div>
+<h3>Reed Pen</h3>
+<p>The oldest form of pen, used in Mesopotamia and Egypt from around <strong>3000 BCE</strong>. Cut from river reeds, these simple instruments wrote on papyrus and clay tablets. Egyptian scribes, Greek scholars, and Islamic calligraphers all mastered the reed pen. It remains in use in Islamic calligraphy today.</p>
+<span class="ink-era">3000 BCE – Present</span>
+</div>
+<div class="ink-card ik2">
+<div class="ink-icon">🪶</div>
+<h3>Quill Pen</h3>
+<p>Crafted from bird feathers, the quill pen revolutionised European writing. The <strong>right wing feather</strong> was preferred — it curved naturally away from a right-handed writer's face. Cutting and hardening the quill was a specialist skill. Libraries employed dedicated quill-makers. The quill era produced the greatest calligraphy in human history.</p>
+<span class="ink-era">600 CE – 1850 CE</span>
+</div>
+<div class="ink-card ik3">
+<div class="ink-icon">🖊️</div>
+<h3>Steel Nib Pen</h3>
+<p>Birmingham, England became the steel nib capital of the world in the 1820s–1840s. Machine-produced steel nibs replaced quills almost overnight — they were cheaper, more durable, and consistent. Steel nib pens remained the standard writing instrument in schools, offices, and homes for nearly a century, until the fountain pen and later the ballpoint pen arrived.</p>
+<span class="ink-era">1820s – 1940s</span>
+</div>
+</div>
+<div style="margin-top:40px; background:rgba(201,168,76,0.06); border:1px solid rgba(201,168,76,0.15); border-radius:16px; padding:32px; display:grid; grid-template-columns:1fr 1fr; gap:40px;">
+<div>
+<h3 style="font-family:'Cinzel';font-size:18px;color:var(--gold);margin-bottom:14px;">Types of Historical Ink</h3>
+<ul style="list-style:none;padding:0;">
+<li style="padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.06);font-size:14px;color:rgba(250,240,220,0.7);">🖤 <strong>Carbon Ink</strong> — Lamp soot in gum water · China, India · 2500 BCE</li>
+<li style="padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.06);font-size:14px;color:rgba(250,240,220,0.7);">🟤 <strong>Iron Gall Ink</strong> — Oak tree galls + iron sulfate · Medieval Europe</li>
+<li style="padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.06);font-size:14px;color:rgba(250,240,220,0.7);">🔵 <strong>Lapis Lazuli Blue</strong> — Ground gemstone · Royal manuscripts</li>
+<li style="padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.06);font-size:14px;color:rgba(250,240,220,0.7);">🔴 <strong>Vermilion (Cinnabar)</strong> — Mercury sulfide · Chinese calligraphy</li>
+<li style="padding:9px 0;font-size:14px;color:rgba(250,240,220,0.7);">🟡 <strong>Turmeric Yellow</strong> — Traditional South Asian manuscripts</li>
+</ul>
+</div>
+<div>
+<h3 style="font-family:'Cinzel';font-size:18px;color:var(--gold);margin-bottom:14px;">Indian Ink Tradition</h3>
+<p style="font-size:15px;line-height:1.8;color:rgba(250,240,220,0.72);">India developed sophisticated ink-making traditions dating back thousands of years. <strong>Masi</strong>, the traditional Indian ink, was made from burnt bones, tar, and pitch. Bengali calligraphers used <strong>kali</strong> (black ink) made from lampblack and gum. The tradition of writing with a sharpened bamboo reed — the <strong>nib of Bengal</strong> — produced the flowing Bengali script we know today.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- PEN EVOLUTION -->
+<div class="chapter" id="pens" style="background:linear-gradient(160deg,#050408 0%,#0A060E 50%,#040408 100%);">
+<div class="chapter-inner">
+<div class="ch-label" style="color:#9B59B6">Chapter IV</div>
+<h2 class="ch-title">The Evolution of the Pen<br/><span style="font-size:0.55em;color:rgba(250,240,220,0.5);">From Fountain to Ballpoint</span></h2>
+<p class="ch-body" style="max-width:720px;">The pen's transformation over the last two centuries is a story of brilliant engineering — each innovation solving the limitations of the last. Here, step by step, is how writing became easier, cheaper, and available to all.</p>
+<div class="pen-timeline">
+<div class="pen-item pd1">
+<div class="pen-dot">✒️</div>
+<div class="pen-body">
+<div class="pen-era">1827 — The Turning Point</div>
+<h3>The First Fountain Pen</h3>
+<p>Romanian inventor <strong>Petrache Poenaru</strong> patented the first fountain pen in Paris in 1827 — a pen with an internal ink reservoir that fed the nib by capillary action and gravity. No more dipping! The pen could write continuously without interruption. Early fountain pens used <strong>eyedroppers</strong> to fill their barrels with ink.</p>
+<div class="pen-fun">"A pen that carries its own inkwell" — the dream of every frustrated 19th-century writer, finally realised.</div>
+</div>
+</div>
+<div class="pen-item pd2">
+<div class="pen-dot">🖋️</div>
+<div class="pen-body">
+<div class="pen-era">1880s–1940s — The Golden Age</div>
+<h3>Fountain Pen Perfected</h3>
+<p>Companies like <strong>Waterman (1884)</strong>, <strong>Parker (1888)</strong>, and <strong>Sheaffer (1912)</strong> refined the fountain pen into a precision instrument. The lever-fill mechanism allowed easy re-inking. By the 1920s, the fountain pen was the prestige writing instrument of the educated world — a symbol of sophistication. In India, the <strong>Conway Stewart</strong> and <strong>Wyvern</strong> pens were popular in colonial-era schools and offices.</p>
+<div class="pen-fun">The fountain pen became a status symbol. A Parker pen in one's breast pocket announced success to the world.</div>
+</div>
+</div>
+<div class="pen-item pd3">
+<div class="pen-dot">⚗️</div>
+<div class="pen-body">
+<div class="pen-era">1938 — Revolutionary Invention</div>
+<h3>László Bíró Invents the Ballpoint</h3>
+<p>Hungarian journalist <strong>László Bíró</strong> noticed that newspaper ink dried quickly without smearing. He spent years engineering a pen that could use thick, quick-drying ink — fed to a tiny rotating ball at the tip by gravity and capillary action. In 1938 he patented the <strong>ballpoint pen</strong>. The RAF ordered 30,000 for WWII airmen — fountain pens leaked at altitude, but ballpoints worked perfectly at 30,000 feet.</p>
+<div class="pen-fun">Bíró never became rich from his invention. He sold the rights early. The word "biro" became a common noun in British English and many other languages.</div>
+</div>
+</div>
+<div class="pen-item pd4">
+<div class="pen-dot">🖊️</div>
+<div class="pen-body">
+<div class="pen-era">1945–1960s — Democratisation of Writing</div>
+<h3>The Ballpoint Goes Mass Market</h3>
+<p><strong>Marcel Bich</strong> (France) bought Bíró's patents and created <strong>BIC</strong> — producing ballpoint pens cheaply enough for anyone to afford. The <strong>BIC Cristal</strong> (1950), with its transparent barrel and simple design, became one of the best-selling products in human history. Over <strong>100 billion BIC Cristals</strong> have been sold. In India, <strong>Camlin</strong> and <strong>Reynolds</strong> pens became household names in every school across the country.</p>
+<div class="pen-fun">For the first time in history, a quality writing instrument cost less than a cup of tea. Writing was no longer a luxury.</div>
+</div>
+</div>
+<div class="pen-item pd5">
+<div class="pen-dot">🔵</div>
+<div class="pen-body">
+<div class="pen-era">1960s–Present — The Gel &amp; Rollerball Revolution</div>
+<h3>Gel Pens &amp; Rollerball Pens</h3>
+<p><strong>Ohto (Japan, 1963)</strong> introduced the rollerball pen — using water-based ink like a fountain pen but with a ballpoint tip. Then <strong>Sakura (Japan, 1984)</strong> launched the gel pen: thicker gel ink delivering smoother, more vivid colour. The <strong>Pilot G-2</strong> became the world's best-selling gel pen. Indian students embraced gel pens for their vibrant colours and smooth writing in competitive exams.</p>
+<div class="pen-fun">The humble exam hall became a battleground of pen preferences — gel vs. ballpoint was a genuine debate among Indian students in the 1990s–2000s.</div>
+</div>
+</div>
+<div class="pen-item pd6">
+<div class="pen-dot">✨</div>
+<div class="pen-body">
+<div class="pen-era">Present — The Dot Pen Era</div>
+<h3>The Dot Pen (Ballpoint) Today</h3>
+<p>The modern <strong>dot pen</strong> (as ballpoint pens are commonly known in India and Bangladesh) remains the world's most widely used writing instrument — an estimated <strong>15 million ballpoint pens are sold every day globally</strong>. In India, <strong>Reynolds 045</strong>, <strong>Cello Gripper</strong>, and <strong>Linc Glycer</strong> are trusted companions in every classroom, exam hall, and office. The basic design has changed remarkably little since Bíró's 1938 patent — a testament to how perfectly it was conceived.</p>
+<div class="pen-fun">The dot pen is democratic genius — cheap enough for a daily-wage worker's child, reliable enough for a High Court judge's signature.</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- WRITING MATERIALS -->
+<div class="chapter" id="materials" style="background:linear-gradient(180deg,#060306 0%,#0C070A 100%);">
+<div class="chapter-inner">
+<div class="ch-label" style="color:var(--clay)">Chapter V</div>
+<h2 class="ch-title">Surfaces of Writing<br/><span style="font-size:0.55em;color:rgba(250,240,220,0.5);">Every Surface That Carried Human Thought</span></h2>
+<p class="ch-body" style="max-width:720px;">Before paper became universal, humans wrote on an astonishing variety of surfaces — each with its own texture, durability, and cultural significance. Here is the complete canvas of human writing.</p>
+<div class="mat-grid">
+<div class="mat-card m1">
+<span class="mat-emoji">🪨</span>
+<h3>Stone &amp; Rock</h3>
+<p>Granite, limestone, basalt. Chiselled with metal tools. Permanent, public, monumental.</p>
+<span class="mat-period">3200 BCE – present</span>
+</div>
+<div class="mat-card m2">
+<span class="mat-emoji">🌿</span>
+<h3>Palm Leaf</h3>
+<p>Dried talipot/palmyra leaves. Scratched with iron stylus. Used across South &amp; SE Asia.</p>
+<span class="mat-period">500 BCE – 1800 CE</span>
+</div>
+<div class="mat-card m3">
+<span class="mat-emoji">📜</span>
+<h3>Papyrus</h3>
+<p>Woven reed pith from the Nile. Ancient Egypt's paper. Fragile but remarkably preserved.</p>
+<span class="mat-period">3000 BCE – 800 CE</span>
+</div>
+<div class="mat-card m4">
+<span class="mat-emoji">🐑</span>
+<h3>Parchment &amp; Vellum</h3>
+<p>Stretched and dried animal skin. Incredibly durable. Used for the Bible, Torah, royal charters.</p>
+<span class="mat-period">200 BCE – 1500 CE</span>
+</div>
+<div class="mat-card m5">
+<span class="mat-emoji">🫙</span>
+<h3>Clay Tablets</h3>
+<p>Soft clay pressed with a wedge stylus — Cuneiform. Baked hard for permanent records.</p>
+<span class="mat-period">3200–300 BCE</span>
+</div>
+<div class="mat-card m6">
+<span class="mat-emoji">🪵</span>
+<h3>Wooden Boards</h3>
+<p>Wax-coated wood tablets, reusable like a chalkboard. School exercises in ancient Rome &amp; Greece.</p>
+<span class="mat-period">1000 BCE – 500 CE</span>
+</div>
+<div class="mat-card m7">
+<span class="mat-emoji">📄</span>
+<h3>Paper</h3>
+<p>Invented in China ~105 CE. Reached Europe via the Islamic world by ~1100 CE. Changed everything.</p>
+<span class="mat-period">105 CE – present</span>
+</div>
+<div class="mat-card m8">
+<span class="mat-emoji">🖥️</span>
+<h3>Digital Screen</h3>
+<p>Pixels and light replace ink and paper. Infinite, instant, global — but without the permanence of stone.</p>
+<span class="mat-period">1970s – present</span>
+</div>
+</div>
+</div>
+</div>
+<!-- QUOTE -->
+<div class="quote-section">
+<blockquote>
+    Writing is the painting of the voice; the closer it resembles its subject, the better it is.
+  </blockquote>
+<div class="q-attr">— Voltaire, French Philosopher</div>
+<div style="margin-top:50px; max-width:700px; margin-inline:auto; font-size:clamp(17px,2.5vw,22px); font-style:italic; color:rgba(250,240,220,0.6); line-height:1.7;">
+    "Writing is the memory of civilization — from the chisel-marks in stone to the stroke of a ballpoint pen, every thought of humankind lives on here."
+  </div>
+</div>
+<!-- DIGITAL ERA -->
+<div class="chapter" id="digital" style="background:linear-gradient(160deg,#020408 0%,#050A12 50%,#030610 100%);">
+<div class="chapter-inner">
+<div class="ch-label" style="color:#6B8FD4">Chapter VI</div>
+<h2 class="ch-title">The Digital Age<br/><span style="font-size:0.55em;color:rgba(250,240,220,0.5);">Where Stone Meets Silicon</span></h2>
+<p class="ch-body" style="max-width:720px;">The journey from stone chisel to smartphone keyboard spans 5,000 years — yet the purpose remains identical: to preserve human thought and communicate across time and distance.</p>
+<div class="digital-compare">
+<div class="dc-box dc-old">
+<h3>⚒️ Ancient World</h3>
+<ul>
+<li><span>🪨</span>Writing surface: Stone, clay, leaf, skin</li>
+<li><span>✒️</span>Tool: Chisel, stylus, reed, quill pen</li>
+<li><span>🖤</span>Ink: Soot, iron gall, natural pigments</li>
+<li><span>📚</span>Storage: Temples, libraries, monasteries</li>
+<li><span>⏳</span>Speed: Days to write a single page</li>
+<li><span>👥</span>Audience: Scribes, scholars, royalty</li>
+<li><span>🌍</span>Reach: One region, one generation</li>
+</ul>
+</div>
+<div class="vs-badge">VS</div>
+<div class="dc-box dc-new">
+<h3>💻 Digital World</h3>
+<ul>
+<li><span>📱</span>Writing surface: Glass touchscreen, keyboard</li>
+<li><span>⌨️</span>Tool: Fingers, stylus, voice, AI</li>
+<li><span>💡</span>Ink: Electrons, pixels, light</li>
+<li><span>☁️</span>Storage: Cloud servers, blockchain</li>
+<li><span>⚡</span>Speed: Thousands of words per minute</li>
+<li><span>🌏</span>Audience: Every literate human on Earth</li>
+<li><span>∞</span>Reach: Instant, global, permanent</li>
+</ul>
+</div>
+</div>
+<div style="margin-top:50px; text-align:center;">
+<p style="font-family:'Cinzel';font-size:22px;color:var(--gold);margin-bottom:20px;">The Circle Completes</p>
+<p class="ch-body" style="max-width:700px;margin:0 auto;">Yet even in the digital age, the ballpoint pen — the humble <strong>dot pen</strong> — sells 15 million units every single day. Children still learn to write on paper. Students still carry pens to exams. The hand-written word retains a power, a warmth, and a human presence that no screen can fully replace.<br/><br/>From the first human hand pressing a reed into wet clay 5,000 years ago — to the child in a classroom in Nadia, Bengal, gripping a Reynolds pen today — writing is the same act of reaching across time to say: <em style="color:var(--gold);">I was here. I thought this. Remember me.</em></p>
+</div>
+</div>
+</div>
+<!-- FOOTER -->
+<footer>
+<div class="foot-title">The Story of Writing</div>
+<div class="foot-line"></div>
+<p class="foot-sub">
+    From the first chisel on stone to the last click of a ballpoint pen —<br/>
+    five thousand years of humanity's greatest achievement.<br/>
+<em>From palm leaf to tablet — the story of writing never truly ends.</em>
+</p>
+<div style="height:16px;"></div>
+<div class="foot-era">
+<span>Stone Inscriptions</span>
+<span>Palm Leaf Manuscripts</span>
+<span>Reed &amp; Quill</span>
+<span>Iron Gall Ink</span>
+<span>Fountain Pen</span>
+<span>Ballpoint Pen</span>
+<span>Digital Age</span>
+</div>
+</footer>
+<footer class="site-footer">
+   © 2026 MySkillGame • Educational Games &amp; Awareness Projects
+</footer>
+<script>
+// Intersection Observer for pen timeline
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('visible');
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.pen-item').forEach((el, i) => {
+  el.style.transitionDelay = (i * 0.12) + 's';
+  io.observe(el);
+});
+</script><script src="security.js"></script>
+
+<footer class="footer">
+<div style="margin-bottom:18px;">
+<a href="about.html">About</a> |
+<a href="privacy.html">Privacy Policy</a> |
+<a href="terms.html">Terms &amp; Conditions</a> |
+<a href="contact.html">Contact</a> |
+<a href="disclaimer.html">Disclaimer</a>
+</div>
+<div class="footer-name">MYSKILLGAME</div>
+<div class="footer-copy">© 2026 MySkillGame • Developed by Surajit Roy</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="theme-color" content="#1653A6"/>
+<title>Learn Russian — Russian for English Speakers | MySkillGame</title>
+<meta name="description" content="Learn Russian step by step in English: Cyrillic alphabet, numbers, useful words, everyday phrases, reading practice, a quiz and a completion certificate.">
+<style>
+  :root{
+    --ru-blue:#1653A6;
+    --ru-blue-dark:#0D3B78;
+    --ru-red:#C8102E;
+    --ru-gold:#D4A017;
+    --cream:#FFF8ED;
+    --ink:#2E2A24;
+    --white:#ffffff;
+    --shadow:0 10px 30px rgba(0,0,0,0.12);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; font-family:'Poppins',Arial,sans-serif; background:var(--cream); color:var(--ink);
+    padding-bottom:24px;
+  }
+  .ru{font-family:'Noto Sans','Poppins',Arial,sans-serif;}
+  .wrap{max-width:760px; margin:0 auto; padding:0 16px;}
+  header{
+    background:linear-gradient(135deg, var(--ru-blue), var(--ru-blue-dark));
+    color:#fff; padding:30px 16px 38px; text-align:center; position:relative; overflow:hidden;
+  }
+  header h1{margin:0; font-size:1.7rem; text-shadow:0 2px 8px rgba(0,0,0,0.2);}
+  header .ru-title{font-size:1.25rem; margin-top:4px; opacity:0.95;}
+  header p{font-size:0.85rem; opacity:0.9; max-width:520px; margin:12px auto 0; position:relative; z-index:2;}
+  .sun{position:absolute; top:-40px; right:-40px; width:130px; height:130px; border-radius:50%; background:var(--ru-red); opacity:0.28;}
+  .petals{position:absolute; inset:0; overflow:hidden; pointer-events:none;}
+  .petal{
+    position:absolute; top:-14px; border-radius:50% 0 50% 50%;
+    animation:petal-fall linear infinite;
+  }
+  @keyframes petal-fall{
+    0%{ transform:translateY(-10px) rotate(0deg); opacity:0.9; }
+    100%{ transform:translateY(180px) rotate(200deg); opacity:0; }
+  }
+
+  .tabs-outer{max-width:760px; margin:14px auto 0; padding:0 16px; overflow-x:auto; white-space:nowrap;}
+  .tab-btn{
+    display:inline-block; padding:9px 14px; margin-right:8px; border-radius:20px;
+    background:var(--white); border:1px solid #ddd; font-size:0.82rem; font-weight:600;
+    color:var(--ink); cursor:pointer;
+  }
+  .tab-btn.active{background:var(--ru-blue); color:#fff; border-color:var(--ru-blue);}
+  .tab-btn.done::after{content:' ✓'; color:var(--ru-gold);}
+  .tab-btn.active.done::after{color:#fff;}
+
+  .section{display:none; padding:18px 0 6px;}
+  .section.active{display:block; animation:sec-in .35s ease;}
+  @keyframes sec-in{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);}}
+  .section-title{font-size:1.2rem; font-weight:800; color:var(--ru-blue-dark); display:flex; align-items:center; gap:8px;}
+  .section-title::before{content:'✦'; color:var(--ru-gold);}
+  .section-sub{font-size:0.85rem; color:#7a6a55; margin-bottom:16px;}
+
+  .card-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); gap:10px;}
+  .vcard{
+    background:linear-gradient(160deg,#ffffff,#eef4fb);
+    border-radius:14px; padding:14px 8px; text-align:center; box-shadow:var(--shadow);
+    border:1px solid #dde8f5; cursor:pointer; transition:transform .15s, box-shadow .15s;
+  }
+  .vcard:active{transform:scale(0.95); box-shadow:0 4px 12px rgba(0,0,0,0.1);}
+  .vcard .ruword{font-size:1.6rem; font-weight:800; color:var(--ru-blue-dark); margin-bottom:4px;}
+  .vcard .rom{font-size:0.7rem; color:#a08a76; text-transform:uppercase; letter-spacing:0.5px;}
+  .vcard .eng{font-size:0.72rem; color:var(--ink); margin-top:4px; font-weight:600;}
+  .vcard .zoom-hint{font-size:0.68rem; margin-top:5px; color:#b6cbe6;}
+
+  .phrase-list{display:flex; flex-direction:column; gap:9px;}
+  .phrase{
+    background:linear-gradient(120deg,#ffffff,#f7fafd);
+    border-radius:12px; padding:12px 14px; box-shadow:var(--shadow);
+    border:1px solid #dde8f5; border-left:4px solid var(--ru-red);
+    display:flex; justify-content:space-between; align-items:center; gap:8px;
+    cursor:pointer; transition:transform .15s;
+  }
+  .phrase:active{transform:scale(0.98);}
+  .phrase .left{flex:1;}
+  .phrase .eng{font-size:0.8rem; color:#7a6a55;}
+  .phrase .ruword{font-size:1.05rem; font-weight:700; color:var(--ru-blue-dark);}
+  .phrase .rom{font-size:0.68rem; color:#a08a76;}
+  .phrase .zoom-hint{font-size:0.85rem; color:#b6cbe6; flex:none;}
+
+  .enlarge-modal{
+    display:none; position:fixed; inset:0; background:rgba(5,15,30,0.72);
+    z-index:999; align-items:center; justify-content:center; padding:24px;
+  }
+  .enlarge-box{
+    background:var(--white); border-radius:20px; padding:32px 24px; text-align:center;
+    max-width:90vw; box-shadow:0 20px 50px rgba(0,0,0,0.3);
+  }
+  .enlarge-box .big{font-size:3.2rem; font-weight:800; color:var(--ru-blue-dark); line-height:1.2; word-break:break-word;}
+  .enlarge-box .small{font-size:0.95rem; color:#7a6a55; margin-top:12px;}
+  .enlarge-box .tap-close{font-size:0.75rem; color:#b6cbe6; margin-top:18px;}
+
+  .result-emoji{font-size:4rem; line-height:1;}
+  .result-score-circle{
+    width:150px; height:150px; border-radius:50%; margin:16px auto;
+    background:linear-gradient(160deg,var(--ru-blue),var(--ru-blue-dark));
+    display:flex; flex-direction:column; align-items:center; justify-content:center; color:#fff;
+    box-shadow:0 10px 26px rgba(22,83,166,0.35); border:4px solid var(--ru-gold);
+  }
+  .result-score-circle .pct{font-size:2.3rem; font-weight:900; line-height:1;}
+  .result-score-circle .frac{font-size:0.8rem; opacity:0.9; margin-top:4px;}
+  .result-label{font-size:1.3rem; font-weight:800; color:var(--ru-blue-dark); margin-top:6px;}
+
+  .reading-box{background:var(--white); border-radius:14px; padding:16px; box-shadow:var(--shadow); border:1px solid #eee;}
+  .reading-box .ru{font-size:1.15rem; line-height:2; color:var(--ru-blue-dark);}
+  .reading-box .translit{font-size:0.8rem; color:#a08a76; margin-top:10px; font-style:italic;}
+  .reading-box .translation{font-size:0.85rem; color:var(--ink); margin-top:10px; border-top:1px dashed #ddd; padding-top:10px;}
+
+  .primary-btn{
+    background:var(--ru-blue); color:#fff; border:none; border-radius:24px; padding:12px 24px;
+    font-size:0.95rem; font-weight:700; cursor:pointer;
+  }
+  .ghost-btn{
+    background:#fff; color:var(--ru-blue-dark); border:1.5px solid var(--ru-blue); border-radius:24px;
+    padding:11px 22px; font-size:0.9rem; font-weight:700; cursor:pointer;
+  }
+  .next-btn{
+    width:100%; background:var(--ru-blue); color:#fff; border:none; border-radius:14px; padding:13px;
+    font-size:0.95rem; font-weight:700; cursor:pointer; margin-top:14px;
+  }
+  .quiz-box{background:var(--white); border-radius:16px; padding:18px; box-shadow:var(--shadow); border:1px solid #eee; text-align:center;}
+  .progress-outer{background:#eee; border-radius:8px; height:8px; overflow:hidden; margin-bottom:10px;}
+  .progress-inner{background:var(--ru-blue); height:100%; width:0%; transition:width .3s;}
+  .quiz-meta{display:flex; justify-content:space-between; font-size:0.75rem; color:#7a6a55; margin-bottom:10px;}
+  .quiz-question-label{font-size:0.85rem; color:#7a6a55; margin-bottom:6px;}
+  .quiz-eng{font-size:1.5rem; font-weight:800; color:var(--ru-blue-dark); margin:10px 0 16px;}
+  .quiz-options{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
+  .qopt{
+    background:#fff; border:1.5px solid #ddd; border-radius:12px; padding:12px 8px; font-size:1.05rem;
+    cursor:pointer; font-weight:700; color:var(--ru-blue-dark);
+  }
+  .qopt.correct{background:#d7f5dd; border-color:#2e9e4f;}
+  .qopt.wrong{background:#fbdada; border-color:var(--ru-red);}
+  .qopt.disabled{pointer-events:none; opacity:0.7;}
+
+  .name-input{
+    width:100%; max-width:320px; padding:12px 14px; border-radius:12px; border:1.5px solid #ddd;
+    font-size:0.95rem; margin:10px 0 16px; text-align:center;
+  }
+  .name-input:focus{outline:none; border-color:var(--ru-blue);}
+
+  /* ===== Certificate (Official MySkillGame template — image background) ===== */
+  .cert-frame{
+    --cn:#241757;
+    position:relative;
+    width:100%;
+    max-width:900px;
+    margin:0 auto;
+    aspect-ratio:1491/1055;
+    background-image:url('data:image/jpeg;base64,__CERT_BG_B64__');
+    background-size:cover;
+    background-position:center;
+    border-radius:8px;
+    box-shadow:var(--shadow);
+    container-type:inline-size;
+  }
+  .cf-field{
+    position:absolute;
+    display:flex; align-items:center; justify-content:center;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    font-family:'Poppins',sans-serif;
+    font-weight:800;
+    color:var(--cn);
+    line-height:1.05;
+  }
+  .cf-name{
+    left:28.8%; width:41.6%; top:29.5%; height:10.2%;
+    align-items:flex-end; justify-content:center; padding-bottom:0.6%;
+    font-family:Georgia,'Times New Roman',serif;
+    font-style:italic; font-weight:800;
+    font-size:2vw; font-size:2.05cqw;
+  }
+  .cf-course{
+    left:18%; width:64%; top:45.2%; height:4.4%;
+    font-family:Georgia,'Times New Roman',serif;
+    font-weight:800; font-style:normal;
+    font-size:1.15vw; font-size:1.18cqw;
+    color:#8a1f2d;
+  }
+  .cf-grade{ left:12.7%; width:9.4%; top:34.15%; height:3.55%; font-size:1.3vw; font-size:1.32cqw; }
+  .cf-lessons{ left:12.7%; width:9.4%; top:43.85%; height:3.55%; font-size:1.15vw; font-size:1.18cqw; }
+  .cf-score{ left:13.05%; width:6.4%; top:53.5%; height:3.5%; justify-content:flex-end; font-size:1.3vw; font-size:1.32cqw; }
+  .cf-achievement{ left:12.7%; width:9.4%; top:63.25%; height:3.4%; font-size:1.1vw; font-size:1.12cqw; }
+  .cf-certid{ left:80.35%; width:12.74%; top:33.25%; height:3.4%; font-size:1.05vw; font-size:1.08cqw; letter-spacing:0.3px; }
+  .cf-date{ left:80.35%; width:12.74%; top:43.9%; height:2.5%; align-items:flex-end; padding-bottom:0.3%; font-size:1.05vw; font-size:1.08cqw; }
+  .cert-idline{
+    text-align:center; font-size:0.85rem; color:var(--ink);
+    margin-top:10px; font-weight:700; letter-spacing:0.3px;
+  }
+  .cert-idline span{color:#7a6a55; font-weight:600; margin:0 4px;}
+  .cert-disclaimer{font-size:0.62rem;color:#9a9a9a;margin-top:10px;line-height:1.5;text-align:center;}
+  .cert-actions{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:20px;}
+
+  footer{text-align:center; font-size:0.75rem; color:#a08a76; margin-top:30px;}
+
+  @media(max-width:380px){
+    .card-grid{gap:6px;}
+    .vcard .ruword{font-size:1.3rem;}
+    .tab-btn{padding:8px 11px;font-size:.78rem;}
+  }
+
+  @media print{
+    header, .tabs-outer, .hint, footer{display:none !important;}
+    .section:not(.active){display:none !important;}
+    body{background:#fff;}
+    #quizActive, #quizNameEntry, #quizFormStep{display:none !important;}
+    .wrap{padding:0; max-width:100%;}
+    .section-title, .section-sub, .cert-actions{display:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+<div class="sun"></div>
+<div class="petals" id="petals"></div>
+<h1>🇷🇺 Learn Russian</h1>
+<div class="ru-title ru">Изучаем русский язык</div>
+<p>A step-by-step Russian course for English speakers: Cyrillic alphabet, numbers, useful words, everyday phrases, reading practice and a final test.</p>
+</header>
+
+<div class="tabs-outer" id="tabsOuter"></div>
+
+<div class="wrap" id="sectionsWrap"></div>
+
+<div class="enlarge-modal" id="enlargeModal" onclick="closeEnlarge()">
+  <div class="enlarge-box">
+    <div class="big ru" id="enlargeMain"></div>
+    <div class="small" id="enlargeSub"></div>
+    <div class="tap-close">Tap anywhere to close</div>
+  </div>
+</div>
+
+<footer>MySkillGame — Free, offline-friendly learning by Surajit Roy &amp; Sampurna Roy</footer>
+
+<script>
+/* ================= DATA ================= */
+/* Russian Cyrillic alphabet split into two parts (parity with other courses) */
+const ALPHA1 = [
+  ['а','a (as in "car")'], ['б','b'], ['в','v'], ['г','g'], ['д','d'], ['е','ye (as in "yes")'],
+  ['ё','yo (as in "yolk")'], ['ж','zh (as in "measure")'], ['з','z'], ['и','ee (as in "see")'],
+  ['й','y (short i)'], ['к','k'], ['л','l'], ['м','m'], ['н','n'], ['о','o (as in "more")'], ['п','p']
+];
+const ALPHA2 = [
+  ['р','r (rolled)'], ['с','s'], ['т','t'], ['у','oo (as in "moon")'], ['ф','f'], ['х','kh (as in "loch")'],
+  ['ц','ts (as in "cats")'], ['ч','ch (as in "chip")'], ['ш','sh'], ['щ','shch'], ['ъ','hard sign (silent)'],
+  ['ы','y (deep, unique sound)'], ['ь','soft sign (silent)'], ['э','e (as in "bed")'], ['ю','yu (as in "universe")'], ['я','ya (as in "yard")']
+];
+const NUMBERS = [
+  ['Zero','ноль','nol'],['One','один','odin'],['Two','два','dva'],['Three','три','tri'],
+  ['Four','четыре','chetyre'],['Five','пять','pyat'],['Six','шесть','shest'],['Seven','семь','sem'],
+  ['Eight','восемь','vosem'],['Nine','девять','devyat'],['Ten','десять','desyat']
+];
+const GREET = [
+  ['Hello','Привет','privet'],
+  ['Good morning','Доброе утро','dobroye utro'],
+  ['Good night','Спокойной ночи','spokoynoy nochi'],
+  ['How are you?','Как дела?','kak dela?'],
+  ['I am fine','Я в порядке','ya v poryadke'],
+  ['Thank you','Спасибо','spasibo'],
+  ['Please','Пожалуйста','pozhaluysta'],
+  ['Sorry','Извините','izvinite'],
+  ['Yes','Да','da'],
+  ['No','Нет','net'],
+  ['Goodbye','До свидания','do svidaniya']
+];
+const INTRO = [
+  ['My name is...','Меня зовут...','menya zovut...'],
+  ['What is your name?','Как вас зовут?','kak vas zovut?'],
+  ['I am from...','Я из...','ya iz...'],
+  ['I am a student','Я студент','ya student'],
+  ['Nice to meet you','Приятно познакомиться','priyatno poznakomitsya'],
+  ['I speak English','Я говорю по-английски','ya govoryu po-angliyski'],
+  ['I am learning Russian','Я учу русский язык','ya uchu russkiy yazyk']
+];
+const FAMILY = [
+  ['Father','отец','otets'],['Mother','мать','mat'],['Brother','брат','brat'],['Sister','сестра','sestra'],
+  ['Grandfather','дедушка','dedushka'],['Grandmother','бабушка','babushka'],['Son','сын','syn'],
+  ['Daughter','дочь','doch'],['Husband','муж','muzh'],['Wife','жена','zhena'],['Friend','друг','drug']
+];
+const FOOD = [
+  ['Rice','рис','ris'],['Fish','рыба','ryba'],['Vegetables','овощи','ovoshchi'],['Water','вода','voda'],
+  ['Milk','молоко','moloko'],['Sweet','сладость','sladost'],['Tea','чай','chay'],['Bread','хлеб','khleb'],
+  ['Egg','яйцо','yaytso'],['Fruit','фрукт','frukt']
+];
+const DAYS = [
+  ['Sunday','воскресенье','voskresenye'],['Monday','понедельник','ponedelnik'],['Tuesday','вторник','vtornik'],
+  ['Wednesday','среда','sreda'],['Thursday','четверг','chetverg'],['Friday','пятница','pyatnitsa'],
+  ['Saturday','суббота','subbota'],['Today','сегодня','segodnya'],['Tomorrow','завтра','zavtra'],['Yesterday','вчера','vchera']
+];
+const DAILY = [
+  ['Where are you going?','Куда ты идёшь?','kuda ty idyosh?'],
+  ['What time is it?','Который час?','kotoryy chas?'],
+  ["I don't understand",'Я не понимаю','ya ne ponimayu'],
+  ['Can you help me?','Вы можете мне помочь?','vy mozhete mne pomoch?'],
+  ['How much is this?','Сколько это стоит?','skolko eto stoit?'],
+  ['I am hungry','Я голоден','ya goloden'],
+  ['I am tired','Я устал','ya ustal'],
+  ['See you later','Увидимся позже','uvidimsya pozzhe']
+];
+
+/* ================= NAV / TABS ================= */
+const LESSONS = [
+  ['alpha1','1','Alphabet 1'],
+  ['alpha2','2','Alphabet 2'],
+  ['numbers','3','Numbers'],
+  ['greet','4','Greetings'],
+  ['intro','5','Introduction'],
+  ['family','6','Family'],
+  ['food','7','Food'],
+  ['days','8','Days'],
+  ['daily','9','Conversation'],
+  ['reading','10','Reading'],
+  ['quiz','11','Final Test']
+];
+const COURSE_DONE_KEY = 'ruapp_course_done_v1';
+function getCourseDone(){
+  try{return JSON.parse(localStorage.getItem(COURSE_DONE_KEY)) || {};}catch(e){return {};}
+}
+let courseDone = getCourseDone();
+function completeLesson(id){
+  courseDone[id] = true;
+  try{localStorage.setItem(COURSE_DONE_KEY, JSON.stringify(courseDone));}catch(e){}
+  renderTabs();
+}
+
+const tabsEl = document.getElementById('tabsOuter');
+const sectionsEl = document.getElementById('sectionsWrap');
+
+function renderTabs(){
+  tabsEl.innerHTML = '';
+  LESSONS.forEach(([id,,label])=>{
+    const btn = document.createElement('span');
+    btn.className = 'tab-btn' + (courseDone[id] ? ' done' : '');
+    btn.id = 'tab-' + id;
+    btn.textContent = label;
+    btn.onclick = ()=>showSection(id, true);
+    tabsEl.appendChild(btn);
+  });
+}
+
+function makeSection(id){
+  const sec = document.createElement('div');
+  sec.className = 'section';
+  sec.id = 'sec-' + id;
+  sectionsEl.appendChild(sec);
+  return sec;
+}
+
+/* Robust DOM-based click handlers — no HTML-attribute string escaping needed */
+function populateVocabGrid(containerId, list, hasEng){
+  const container = document.getElementById(containerId);
+  if(!container) return;
+  list.forEach(item=>{
+    const [a,b,c] = item;
+    const sub = (hasEng? a+' — ':'') + (c||'');
+    const div = document.createElement('div');
+    div.className = 'vcard';
+    div.innerHTML = `<div class="ruword ru">${b}</div><div class="rom">${c||b}</div>${hasEng? `<div class="eng">${a}</div>`:''}<div class="zoom-hint">🔍 tap to enlarge</div>`;
+    div.addEventListener('click', ()=>showEnlarged(b, sub));
+    container.appendChild(div);
+  });
+}
+
+function populatePhraseList(containerId, list){
+  const container = document.getElementById(containerId);
+  if(!container) return;
+  list.forEach(([eng,ruw,rom])=>{
+    const sub = rom + ' — ' + eng;
+    const div = document.createElement('div');
+    div.className = 'phrase';
+    div.innerHTML = `<div class="left"><div class="eng">${eng}</div><div class="ruword ru">${ruw}</div><div class="rom">${rom}</div></div><div class="zoom-hint">🔍</div>`;
+    div.addEventListener('click', ()=>showEnlarged(ruw, sub));
+    container.appendChild(div);
+  });
+}
+
+/* Alphabet Part 1 */
+const secAlpha1 = makeSection('alpha1');
+secAlpha1.innerHTML = `
+  <div class="section-title">Russian Alphabet — Part 1</div>
+  <div class="section-sub ru">Русский алфавит — часть 1</div>
+  <div class="card-grid" id="grid-alpha1"></div>
+  <button class="ghost-btn" style="margin-top:14px;" onclick="completeLesson('alpha1')">✓ Mark Complete</button>
+`;
+populateVocabGrid('grid-alpha1', ALPHA1.map(v=>[v[0],v[0],v[1]]));
+
+/* Alphabet Part 2 */
+const secAlpha2 = makeSection('alpha2');
+secAlpha2.innerHTML = `
+  <div class="section-title">Russian Alphabet — Part 2</div>
+  <div class="section-sub ru">Русский алфавит — часть 2</div>
+  <div class="card-grid" id="grid-alpha2"></div>
+  <button class="ghost-btn" style="margin-top:14px;" onclick="completeLesson('alpha2')">✓ Mark Complete</button>
+`;
+populateVocabGrid('grid-alpha2', ALPHA2.map(v=>[v[0],v[0],v[1]]));
+
+/* Numbers */
+const secNum = makeSection('numbers');
+secNum.innerHTML = `
+  <div class="section-title">Numbers</div>
+  <div class="section-sub ru">Числа — Chisla</div>
+  <div class="card-grid" id="grid-numbers"></div>
+  <button class="ghost-btn" style="margin-top:14px;" onclick="completeLesson('numbers')">✓ Mark Complete</button>
+`;
+populateVocabGrid('grid-numbers', NUMBERS.map(v=>[v[0],v[1],v[2]]), true);
+
+/* Greetings */
+const secGreet = makeSection('greet');
+secGreet.innerHTML = `
+  <div class="section-title">Greetings</div>
+  <div class="section-sub ru">Приветствия — Privetstviya</div>
+  <div class="phrase-list" id="grid-greet"></div>
+  <button class="ghost-btn" style="margin-top:14px;" onclick="completeLesson('greet')">✓ Mark Complete</button>
+`;
+populatePhraseList('grid-greet', GREET);
+
+/* Introduction */
+const secIntro = makeSection('intro');
+secIntro.innerHTML = `
+  <div class="section-title">Introduction</div>
+  <div class="section-sub ru">Знакомство — Znakomstvo</div>
+  <div class="phrase-list" id="grid-intro"></div>
+  <button class="ghost-btn" style="margin-top:14px;" onclick="completeLesson('intro')">✓ Mark Complete</button>
+`;
+populatePhraseList('grid-intro', INTRO);
+
+/* Family */
+const secFamily = makeSection('family');
+secFamily.innerHTML = `
+  <div class="section-title">Family</div>
+  <div class="section-sub ru">Семья — Semya</div>
+  <div class="phrase-list" id="grid-family"></div>
+  <button class="ghost-btn" style="margin-top:14px;" onclick="completeLesson('family')">✓ Mark Complete</button>
+`;
+populatePhraseList('grid-family', FAMILY);
+
+/* Food */
+const secFood = makeSection('food');
+secFood.innerHTML = `
+  <div class="section-title">Food</div>
+  <div class="section-sub ru">Еда — Yeda</div>
+  <div class="phrase-list" id="grid-food"></div>
+  <button class="ghost-btn" style="margin-top:14px;" onclick="completeLesson('food')">✓ Mark Complete</button>
+`;
+populatePhraseList('grid-food', FOOD);
+
+/* Days */
+const secDays = makeSection('days');
+secDays.innerHTML = `
+  <div class="section-title">Days</div>
+  <div class="section-sub ru">Дни — Dni</div>
+  <div class="phrase-list" id="grid-days"></div>
+  <button class="ghost-btn" style="margin-top:14px;" onclick="completeLesson('days')">✓ Mark Complete</button>
+`;
+populatePhraseList('grid-days', DAYS);
+
+/* Daily conversation */
+const secDaily = makeSection('daily');
+secDaily.innerHTML = `
+  <div class="section-title">Everyday Conversation</div>
+  <div class="section-sub ru">Повседневный разговор — Povsednevnyy razgovor</div>
+  <div class="phrase-list" id="grid-daily"></div>
+  <button class="ghost-btn" style="margin-top:14px;" onclick="completeLesson('daily')">✓ Mark Complete</button>
+`;
+populatePhraseList('grid-daily', DAILY);
+
+/* Reading */
+const secReading = makeSection('reading');
+secReading.innerHTML = `
+  <div class="section-title">Reading Practice</div>
+  <div class="section-sub ru">Практика чтения — Praktika chteniya</div>
+  <div class="reading-box">
+    <div class="ru" id="readingText" onclick="showEnlarged('Меня зовут Иван. Я студент. Каждый день я встаю утром, иду в школу и вечером изучаю русский язык. Моя семья меня очень любит.','My name is Ivan. I am a student. Every day I get up in the morning, go to school, and study Russian in the evening. My family loves me very much.')" style="cursor:pointer;">Меня зовут Иван. Я студент. Каждый день я встаю утром, иду в школу и вечером изучаю русский язык. Моя семья меня очень любит.</div>
+    <div class="translit">Menya zovut Ivan. Ya student. Kazhdyy den ya vstayu utrom, idu v shkolu i vecherom izuchayu russkiy yazyk. Moya semya menya ochen lyubit.</div>
+    <div class="translation">My name is Ivan. I am a student. Every day I get up in the morning, go to school, and study Russian in the evening. My family loves me very much.</div>
+  </div>
+  <div style="font-size:0.72rem; color:#b6cbe6; margin-top:8px;">🔍 Tap the Russian text above to see it enlarged</div>
+  <button class="ghost-btn" style="margin-top:14px;" onclick="completeLesson('reading')">✓ Mark Complete</button>
+`;
+
+/* ================= TAP TO ENLARGE ================= */
+function showEnlarged(main, sub){
+  document.getElementById('enlargeMain').textContent = main;
+  document.getElementById('enlargeSub').textContent = sub || '';
+  document.getElementById('enlargeModal').style.display = 'flex';
+}
+function closeEnlarge(){
+  document.getElementById('enlargeModal').style.display = 'none';
+}
+
+/* ================= DECORATIVE PETALS ================= */
+const petalsContainer = document.getElementById('petals');
+for(let i=0;i<12;i++){
+  const p = document.createElement('div');
+  p.className = 'petal';
+  p.style.left = Math.random()*100 + '%';
+  p.style.width = p.style.height = (6 + Math.random()*7) + 'px';
+  p.style.background = Math.random() > 0.5 ? 'var(--ru-gold)' : '#ffffff';
+  p.style.animationDuration = (6 + Math.random()*6) + 's';
+  p.style.animationDelay = (Math.random()*6) + 's';
+  petalsContainer.appendChild(p);
+}
+
+/* ================= QUIZ ================= */
+const QUIZ_BANK = [
+  ['Hello','Привет',['Спасибо','До свидания','Привет','Пожалуйста']],
+  ['Thank you','Спасибо',['Спасибо','Да','Нет','Доброе утро']],
+  ['Water','вода',['рис','вода','молоко','чай']],
+  ['Rice','рис',['рыба','рис','фрукт','яйцо']],
+  ['Father','отец',['мать','брат','отец','сестра']],
+  ['Mother','мать',['мать','дедушка','бабушка','жена']],
+  ['One','один',['два','три','один','четыре']],
+  ['Two','два',['один','два','пять','шесть']],
+  ['Ten','десять',['девять','восемь','десять','семь']],
+  ['Sunday','воскресенье',['понедельник','воскресенье','среда','суббота']],
+  ['Monday','понедельник',['понедельник','вторник','четверг','пятница']],
+  ['Fish','рыба',['рыба','овощи','сладость','хлеб']],
+  ['Yes','Да',['Нет','Да','Извините','До свидания']],
+  ['No','Нет',['Да','Нет','Пожалуйста','Спасибо']],
+  ['My name is...','Меня зовут...',['Как вас зовут?','Меня зовут...','Я студент','Спасибо']],
+  ['Friend','друг',['муж','жена','друг','брат']],
+  ['Tomorrow','завтра',['вчера','сегодня','завтра','неделя']],
+  ['I am hungry','Я голоден',['Я устал','Я голоден','Я не понимаю','Сколько это стоит?']],
+  ['Sweet','сладость',['чай','хлеб','сладость','яйцо']],
+  ['Good morning','Доброе утро',['Спокойной ночи','Доброе утро','До свидания','Извините']]
+];
+const TOTAL_QUESTIONS = QUIZ_BANK.length;
+let quizOrder = [], quizIndex = 0, quizScore = 0, quizLocked = false;
+
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]] = [a[j],a[i]];
+  }
+  return a;
+}
+
+const secQuiz = makeSection('quiz');
+secQuiz.innerHTML = `
+  <div class="section-title">Test Your Knowledge</div>
+  <div class="section-sub ru">Тест (${TOTAL_QUESTIONS} Questions)</div>
+
+  <div id="quizActive" class="quiz-box">
+    <div class="progress-outer"><div class="progress-inner" id="progressBar"></div></div>
+    <div class="quiz-meta">
+      <span id="quizProgressText">Question 1 / ${TOTAL_QUESTIONS}</span>
+      <span id="quizScoreText">Score: 0</span>
+    </div>
+    <div class="quiz-question-label">What is the Russian word for this?</div>
+    <div class="quiz-eng" id="quizEng"></div>
+    <div class="quiz-options" id="quizOptions"></div>
+    <button class="next-btn" id="nextBtn" onclick="handleNext()">Next Question ➜</button>
+  </div>
+
+  <div id="quizNameEntry" class="quiz-box" style="display:none;">
+    <div class="result-emoji" id="resultEmoji">🎉</div>
+    <div class="section-title" style="margin-top:6px; justify-content:center;">Quiz Complete!</div>
+    <div class="result-score-circle">
+      <div class="pct" id="resultPct">0%</div>
+      <div class="frac" id="resultFrac">0 / ${TOTAL_QUESTIONS}</div>
+    </div>
+    <div class="result-label" id="resultLabel">Well Done!</div>
+    <div style="font-size:0.85rem; color:#7a6a55; margin-top:14px;">Enter your name to generate your certificate</div>
+    <input type="text" id="studentNameInput" class="name-input" placeholder="Your full name" maxlength="40"/>
+    <br/>
+    <button class="primary-btn" onclick="generateCertificate()">Generate Certificate 🏅</button>
+  </div>
+
+  <div id="quizFormStep" class="quiz-box" style="display:none;"></div>
+
+  <div id="quizCertificate" style="display:none;">
+    <div class="cert-frame" id="certCard">
+      <div class="cf-field cf-name" id="certName">Student Name</div>
+      <div class="cf-field cf-course" id="certCourse">-</div>
+      <div class="cf-field cf-grade" id="certGrade">-</div>
+      <div class="cf-field cf-lessons" id="certLessons">-</div>
+      <div class="cf-field cf-score" id="certScore">-</div>
+      <div class="cf-field cf-achievement" id="certTier">-</div>
+      <div class="cf-field cf-certid" id="certId">-</div>
+      <div class="cf-field cf-date" id="certDate">-</div>
+    </div>
+
+    <div class="cert-idline">Certificate No: <span id="certIdBottom">-</span> &nbsp;|&nbsp; Issue Date: <span id="certDateBottom">-</span></div>
+
+    <div class="cert-disclaimer no-print">
+      This certificate is issued by My Skill Game in recognition of successful course completion. The course was conducted by Chakdaha Roy Computer Academy. This certificate represents achievement within the My Skill Game learning platform and is not a government-issued or university degree certificate.
+    </div>
+
+    <div class="cert-actions">
+      <button class="primary-btn" onclick="window.print()">🖨️ Print / Save as PDF</button>
+      <button class="ghost-btn" onclick="restartQuiz()">Take Quiz Again</button>
+    </div>
+  </div>
+`;
+
+function startQuiz(){
+  quizOrder = shuffle(QUIZ_BANK);
+  quizIndex = 0; quizScore = 0; quizLocked = false;
+  document.getElementById('quizActive').style.display = 'block';
+  document.getElementById('quizNameEntry').style.display = 'none';
+  document.getElementById('quizFormStep').style.display = 'none';
+  document.getElementById('quizCertificate').style.display = 'none';
+  showQuestion();
+}
+function restartQuiz(){ startQuiz(); }
+
+function showQuestion(){
+  quizLocked = false;
+  const [eng, correct, opts] = quizOrder[quizIndex];
+  document.getElementById('quizEng').textContent = eng;
+  document.getElementById('quizProgressText').textContent = `Question ${quizIndex+1} / ${TOTAL_QUESTIONS}`;
+  document.getElementById('quizScoreText').textContent = `Score: ${quizScore}`;
+  document.getElementById('progressBar').style.width = ((quizIndex)/TOTAL_QUESTIONS*100) + '%';
+  const optsEl = document.getElementById('quizOptions');
+  optsEl.innerHTML = '';
+  shuffle(opts).forEach(opt=>{
+    const b = document.createElement('div');
+    b.className = 'qopt ru';
+    b.textContent = opt;
+    b.onclick = ()=>selectOption(b, opt, correct);
+    optsEl.appendChild(b);
+  });
+  document.getElementById('nextBtn').style.visibility = 'hidden';
+}
+
+function selectOption(el, opt, correct){
+  if(quizLocked) return;
+  quizLocked = true;
+  const all = document.querySelectorAll('.qopt');
+  all.forEach(o=>{
+    o.classList.add('disabled');
+    if(o.textContent === correct) o.classList.add('correct');
+  });
+  if(opt === correct){
+    quizScore++;
+  } else {
+    el.classList.add('wrong');
+  }
+  document.getElementById('quizScoreText').textContent = `Score: ${quizScore}`;
+  document.getElementById('nextBtn').style.visibility = 'visible';
+}
+
+function handleNext(){
+  quizIndex++;
+  if(quizIndex >= TOTAL_QUESTIONS){
+    document.getElementById('progressBar').style.width = '100%';
+    document.getElementById('quizActive').style.display = 'none';
+    document.getElementById('quizNameEntry').style.display = 'block';
+    const finalPct = Math.round((quizScore/TOTAL_QUESTIONS)*100);
+    document.getElementById('resultPct').textContent = finalPct + '%';
+    document.getElementById('resultFrac').textContent = `${quizScore} / ${TOTAL_QUESTIONS}`;
+    let emoji='🥉', label='Course Completed';
+    if(finalPct>=90){emoji='🏆'; label='Excellent!';}
+    else if(finalPct>=75){emoji='🎉'; label='Great Job!';}
+    else if(finalPct>=60){emoji='🥉'; label='Well Done!';}
+    else {emoji='🌱'; label='Keep Practicing!';}
+    document.getElementById('resultEmoji').textContent = emoji;
+    document.getElementById('resultLabel').textContent = label;
+    completeLesson('quiz');
+  } else {
+    showQuestion();
+  }
+}
+
+/* ================= CERTIFICATE ================= */
+const CERT_FORM_CONFIG = {
+  courseName: 'Russian Basics - Level 1 (for English Speakers)'
+};
+let pendingCertData = null;
+
+function generateCertificate(){
+  const nameInput = document.getElementById('studentNameInput');
+  const name = (nameInput.value || 'Student').trim();
+  if(!name){ nameInput.focus(); return; }
+
+  const pct = Math.round((quizScore / TOTAL_QUESTIONS) * 100);
+  let tier = 'Course Completed ✅', grade = 'B (Completed)';
+  if(pct >= 90){ tier='Top Performer 🏆'; grade='A+ (Excellent)'; }
+  else if(pct >= 75){ tier='Great Effort 🎉'; grade='A (Very Good)'; }
+  else if(pct >= 60){ tier='Course Completed ✅'; grade='B (Completed)'; }
+  else { tier='Keep Practicing 🌱'; grade='C (Needs Improvement)'; }
+
+  const lessonsDone = LESSONS.filter(x=>courseDone[x[0]]).length;
+  const certId = 'MSG-RU-' + Date.now().toString(36).toUpperCase().slice(-6) + Math.floor(Math.random()*90+10);
+  const dateStr = new Date().toLocaleDateString('en-GB', {day:'2-digit', month:'short', year:'numeric'});
+
+  pendingCertData = {
+    name, certId, dateStr,
+    scoreNum: pct + '%',
+    lessonsText: `${lessonsDone} / ${LESSONS.length}`,
+    grade, gradeShort: grade, tier
+  };
+  try{ localStorage.setItem('ruapp_cert_id', certId); }catch(e){}
+
+  document.getElementById('quizNameEntry').style.display = 'none';
+  revealCertificateCard();
+}
+
+function revealCertificateCard(){
+  const d = pendingCertData;
+  if(!d) return;
+  document.getElementById('certName').textContent = d.name;
+  document.getElementById('certCourse').textContent = CERT_FORM_CONFIG.courseName;
+  document.getElementById('certScore').textContent = d.scoreNum;
+  document.getElementById('certGrade').textContent = d.gradeShort;
+  document.getElementById('certLessons').textContent = d.lessonsText;
+  document.getElementById('certTier').textContent = d.tier;
+  document.getElementById('certDate').textContent = d.dateStr;
+  document.getElementById('certId').textContent = d.certId;
+  document.getElementById('certIdBottom').textContent = d.certId;
+  document.getElementById('certDateBottom').textContent = d.dateStr;
+
+  document.getElementById('quizFormStep').style.display = 'none';
+  document.getElementById('quizCertificate').style.display = 'block';
+}
+
+/* ================= SECTION SWITCHING ================= */
+function showSection(id, pushHistory){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.getElementById('sec-'+id).classList.add('active');
+  document.querySelectorAll('.tab-btn').forEach(t=>t.classList.remove('active'));
+  const tabBtn = document.getElementById('tab-'+id);
+  if(tabBtn) tabBtn.classList.add('active');
+  if(id === 'quiz'){
+    startQuiz();
+  }
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+/* ================= ANDROID BACK BUTTON (WebView) ================= */
+document.addEventListener('backbutton', function(e){
+  if(window.AndroidInterface && window.AndroidInterface.exitApp){
+    window.AndroidInterface.exitApp();
+  }
+}, false);
+
+/* ================= INIT ================= */
+renderTabs();
+showSection('alpha1', false);
+</script>
+</body>
+</html>

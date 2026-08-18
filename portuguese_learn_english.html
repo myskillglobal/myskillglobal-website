@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>Learn Portuguese — MySkillGame</title>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&amp;family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --pt-green:#1E5631;
+    --pt-green-dark:#123A20;
+    --pt-red:#D8242A;
+    --pt-red-dark:#A31921;
+    --pt-gold:#F4C430;
+    --pt-gold-light:#FCE588;
+    --cream:#FFFAF0;
+    --ink:#1C1C1C;
+    --maroon:#A31921;
+    --white:#ffffff;
+    --shadow: 0 8px 24px rgba(30,86,49,0.18);
+    --shadow-sm: 0 4px 12px rgba(0,0,0,0.09);
+  }
+
+  *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+
+  html, body {
+    font-family:'Inter', 'Baloo 2', sans-serif;
+    background: linear-gradient(160deg,#FFFAF0 0%, #EAF4ED 45%, #FFF8D6 100%);
+    color: var(--ink);
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .pt { font-family:'Baloo 2', sans-serif; letter-spacing:0.3px; }
+
+  /* ===== Floating shapes ===== */
+  .petals { position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden; }
+  .petal {
+    position:absolute; top:-10%;
+    border-radius:30% 70% 70% 30%;
+    opacity:0.5;
+    animation: fall linear infinite;
+  }
+  @keyframes fall {
+    0%  { transform:translateY(0) rotate(0deg);   opacity:0.65; }
+    100%{ transform:translateY(110vh) rotate(360deg); opacity:0.1; }
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    position:relative; z-index:1;
+    background: linear-gradient(135deg, var(--pt-green) 0%, var(--pt-green-dark) 55%, var(--pt-red-dark) 100%);
+    color: var(--white);
+    padding: 32px 16px 68px;
+    text-align: center;
+    border-radius: 0 0 44px 44px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  header .orb {
+    position:absolute; top:-40px; right:-40px;
+    width:150px; height:150px; border-radius:50%;
+    background: radial-gradient(circle at 35% 35%, var(--pt-gold-light), var(--pt-gold) 70%);
+    opacity:0.8;
+  }
+  header .orb2 {
+    position:absolute; bottom:-50px; left:-30px;
+    width:110px; height:110px; border-radius:50%;
+    background: radial-gradient(circle, var(--pt-red) 0%, var(--pt-red-dark) 100%);
+    opacity:0.25;
+  }
+
+  .header-badge {
+    display:inline-block;
+    background: rgba(255,255,255,0.13);
+    border: 1px solid rgba(244,196,48,0.5);
+    color: var(--pt-gold-light);
+    font-size:0.72rem; font-weight:700;
+    letter-spacing:0.12em; text-transform:uppercase;
+    padding:4px 14px; border-radius:999px;
+    margin-bottom:14px;
+  }
+
+  header h1 {
+    font-family:'Inter', sans-serif;
+    font-size:2.1rem; font-weight:900;
+    color: var(--white);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    margin-bottom:6px; line-height:1.15;
+  }
+  header .pt-subtitle {
+    font-family:'Baloo 2', sans-serif;
+    font-size:1.4rem; font-weight:700;
+    color: var(--pt-gold-light);
+    letter-spacing:1px; margin-bottom:12px;
+  }
+  header p {
+    font-size:0.9rem; line-height:1.65;
+    opacity:0.92; max-width:440px; margin:0 auto;
+  }
+
+  /* Lisbon tower silhouette */
+  .tower {
+    position:absolute; bottom:-6px; left:50%; transform:translateX(-50%);
+    width:210px; opacity:0.2;
+  }
+
+  /* ===== WRAP ===== */
+  .wrap {
+    max-width:780px; margin:0 auto;
+    padding:0 14px 60px;
+    position:relative; z-index:1;
+  }
+
+  /* ===== TABS ===== */
+  .tabs {
+    display:flex; flex-wrap:wrap; gap:8px;
+    justify-content:center;
+    margin:-36px 0 22px;
+    position:relative; z-index:2;
+  }
+  .tab-btn {
+    border:none; cursor:pointer;
+    padding:10px 16px;
+    font-family:'Inter', sans-serif;
+    font-weight:700; font-size:0.85rem;
+    border-radius:999px;
+    background: var(--white);
+    color: var(--pt-green-dark);
+    box-shadow: 0 4px 10px rgba(30,86,49,0.15);
+    transition: all 0.2s ease;
+    border:2px solid transparent;
+  }
+  .tab-btn.active {
+    background: var(--pt-green);
+    color: var(--white);
+    border-color: var(--pt-gold);
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 6px 16px rgba(30,86,49,0.3);
+  }
+  .tab-btn:active { transform:scale(0.96); }
+
+  /* ===== SECTION ===== */
+  .section { display:none; animation:fadeIn 0.32s ease; }
+  .section.active { display:block; }
+  @keyframes fadeIn {
+    from { opacity:0; transform:translateY(8px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  /* Section header strip */
+  .sec-header {
+    display:flex; align-items:center; gap:12px;
+    background: var(--white);
+    border-radius:14px; padding:14px 18px;
+    margin-bottom:18px;
+    box-shadow: var(--shadow-sm);
+    border-left: 5px solid var(--pt-green);
+  }
+  .sec-icon { font-size:1.8rem; }
+  .sec-en { font-size:1.05rem; font-weight:900; color:var(--pt-green-dark); }
+  .sec-pt { font-family:'Baloo 2',sans-serif; font-size:0.88rem; font-weight:600; color:var(--maroon); }
+
+  /* ===== CARD GRID ===== */
+  .grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(152px,1fr));
+    gap:14px;
+  }
+
+  .card {
+    background: var(--white);
+    border-radius:16px;
+    box-shadow: var(--shadow-sm);
+    padding:16px 12px 14px;
+    text-align:center; cursor:pointer;
+    position:relative;
+    border:2px solid #E8EDDF;
+    transition:transform 0.2s ease, border-color 0.2s, box-shadow 0.2s;
+    min-height:160px;
+    display:flex; flex-direction:column; justify-content:center; gap:5px;
+  }
+  .card:hover { border-color:var(--pt-gold); box-shadow:0 6px 18px rgba(30,86,49,0.14); }
+  .card:active { transform:scale(0.97); }
+  .card.flipped {
+    background: linear-gradient(135deg, var(--pt-gold-light) 0%, var(--pt-gold) 100%);
+    border-color: var(--pt-red);
+    box-shadow: 0 6px 18px rgba(216,36,42,0.2);
+  }
+
+  .card .ptword {
+    font-family:'Baloo 2',sans-serif;
+    font-size:1.4rem; font-weight:800;
+    color:var(--pt-green-dark); line-height:1.2;
+  }
+  .card .pronun {
+    font-size:0.78rem; color:var(--maroon);
+    font-style:italic; font-weight:500;
+  }
+  .card .en-word {
+    font-size:0.82rem; color:#777;
+    border-top:1px dashed #ccc;
+    padding-top:5px; margin-top:2px;
+  }
+  .card .meaning {
+    display:none;
+    font-size:1rem; font-weight:900;
+    color:var(--pt-green-dark); margin-top:4px;
+  }
+  .card.flipped .meaning { display:block; }
+  .card.flipped .ptword { opacity:0.45; font-size:1.1rem; }
+  .card.flipped .pronun, .card.flipped .en-word { opacity:0.5; }
+
+  /* Gender badge */
+  .gender-badge {
+    position:absolute; top:8px; left:10px;
+    padding:2px 8px; border-radius:999px;
+    font-size:0.62rem; font-weight:800;
+    letter-spacing:0.05em;
+  }
+  .masc { background:#DBEAFE; color:#1D4ED8; }
+  .fem  { background:#FCE7F3; color:#9D174D; }
+  .neu  { background:#F3F4F6; color:#374151; }
+
+  .speaker {
+    position:absolute; top:8px; right:8px;
+    width:30px; height:30px; border-radius:8px;
+    background:var(--pt-gold-light);
+    border:1px solid var(--pt-gold);
+    font-size:0.9rem;
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer; transition:background 0.15s;
+  }
+  .speaker:hover { background:var(--pt-gold); }
+  .speaker:active { transform:scale(0.9); }
+
+  .hint {
+    text-align:center; font-size:0.79rem; color:#8a6a55;
+    margin:14px 0 4px; line-height:1.7;
+  }
+
+  /* Legend strip */
+  .legend {
+    display:flex; gap:12px; justify-content:center; flex-wrap:wrap;
+    margin-bottom:18px;
+    font-size:0.72rem; color:#555;
+  }
+  .legend span { display:flex; align-items:center; gap:4px; }
+  .leg-dot { width:10px; height:10px; border-radius:50%; }
+
+  /* ===== QUIZ ===== */
+  .quiz-box {
+    background:var(--white); border-radius:18px;
+    box-shadow:var(--shadow); padding:26px 18px;
+    text-align:center; border:2px solid #E8EDDF;
+  }
+  .quiz-score {
+    font-weight:900; color:var(--pt-green-dark);
+    font-size:1rem; margin-bottom:16px;
+    padding-bottom:12px; border-bottom:2px solid var(--pt-gold);
+  }
+  .quiz-label { font-size:0.82rem; color:var(--maroon); margin-bottom:10px; }
+  .quiz-pt {
+    font-family:'Baloo 2', sans-serif;
+    font-size:2rem; font-weight:800;
+    color:var(--pt-green-dark); margin-bottom:4px; line-height:1.2;
+  }
+  .quiz-pronun { font-size:0.95rem; color:var(--maroon); font-style:italic; margin-bottom:4px; }
+  .quiz-en-hint { font-size:0.8rem; color:#999; margin-bottom:16px; }
+
+  .quiz-options { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .opt-btn {
+    padding:14px 8px; border-radius:12px;
+    border:2px solid #ddd; background:var(--cream);
+    font-family:'Inter', sans-serif;
+    font-weight:700; font-size:0.9rem;
+    cursor:pointer; color:var(--ink);
+    transition:all 0.15s ease;
+  }
+  .opt-btn:hover { border-color:var(--pt-gold); background:var(--pt-gold-light); }
+  .opt-btn:active { transform:scale(0.96); }
+  .opt-btn.correct { background:#C8E6C9; border-color:#4CAF50; color:#1B5E20; }
+  .opt-btn.wrong   { background:#FFCDD2; border-color:#E53935; color:#B71C1C; }
+
+  .next-btn {
+    margin-top:18px; background:var(--pt-green);
+    color:var(--white); border:none;
+    padding:12px 30px; border-radius:999px;
+    font-weight:700; font-size:0.95rem; cursor:pointer;
+    box-shadow:0 4px 12px rgba(30,86,49,0.35);
+  }
+  .next-btn:active { transform:scale(0.96); }
+
+  /* ===== FOOTER ===== */
+  footer {
+    text-align:center; padding:28px 14px 16px;
+    font-size:0.76rem; color:#a98668;
+    position:relative; z-index:1;
+    border-top:1px solid #E2D8C4; margin-top:20px;
+  }
+  footer a { color:var(--pt-green-dark); text-decoration:none; font-weight:700; }
+
+  @media(max-width:420px){
+    header h1 { font-size:1.7rem; }
+    .card .ptword { font-size:1.25rem; }
+    .quiz-pt { font-size:1.7rem; }
+  }
+</style>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1034022057999423"></script><link href="https://myskillgame.netlify.app/11-7-26 website/portuguese_learn_english.html" rel="canonical"/></head>
+<body>
+<div class="petals" id="petals"></div>
+<header>
+<div class="orb"></div>
+<div class="orb2"></div>
+<div class="header-badge">MySkillGame · Language Series</div>
+<h1>🇵🇹 Learn Portuguese</h1>
+<div class="pt-subtitle">Aprender Português</div>
+<p>Master everyday European Portuguese — greetings, introductions, numbers, family, food, travel, and more. Tap a card to flip and reveal the meaning!</p>
+<svg class="tower" viewbox="0 0 210 70" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#ffffff" height="15" width="210" x="0" y="55"></rect>
+<rect fill="#ffffff" height="50" width="60" x="75" y="10"></rect>
+<rect fill="#ffffff" height="30" width="15" x="65" y="30"></rect>
+<rect fill="#ffffff" height="30" width="15" x="130" y="30"></rect>
+<rect fill="#ffffff" height="14" width="40" x="85" y="0"></rect>
+<rect fill="#F4C430" height="10" width="6" x="90" y="-8"></rect>
+<rect fill="#F4C430" height="10" width="6" x="111" y="-8"></rect>
+<circle cx="105" cy="38" fill="#F4C430" r="8"></circle>
+</svg>
+</header>
+<div class="wrap">
+<div class="tabs" id="tabs"></div>
+<div id="sections"></div>
+<p class="hint">📖 Click a card to reveal the English meaning  |  🔊 Hear the Portuguese pronunciation<br/>
+<span style="font-size:0.72rem; color:#aaa;">🔵 Masculine   🩷 Feminine   ⚪ Neutral / phrase</span></p>
+</div>
+<footer>
+  Created by Surajit Roy  |  <a href="https://myskillgame.netlify.app" target="_blank">MySkillGame</a> — A Better Path to Learning 🇵🇹
+</footer>
+<script>
+/* ================================================================
+   DATA
+   pt: Portuguese word/phrase
+   pr: pronunciation guide
+   en: English (shown on card front)
+   meaning: English answer for quiz
+   g: gender badge — 'm'=masculine, 'f'=feminine, 'n'=neutral
+================================================================ */
+const categories = [
+  {
+    id:"greet", icon:"🙏", name:"Greetings",
+    en_sec:"Greetings & Common Phrases", pt_sec:"Saudações",
+    items:[
+      {pt:"Olá",                   pr:"oh-LAH",                  en:"Hello",                     meaning:"Hello",                  g:"n"},
+      {pt:"Bom dia",               pr:"bom DEE-ah",               en:"Good morning",              meaning:"Good Morning",           g:"n"},
+      {pt:"Boa tarde",             pr:"BOH-ah TAR-d",             en:"Good afternoon",            meaning:"Good Afternoon",         g:"n"},
+      {pt:"Boa noite",             pr:"BOH-ah NOY-t",             en:"Good evening / night",      meaning:"Good Night",             g:"n"},
+      {pt:"Adeus",                 pr:"ah-DAY-oosh",              en:"Goodbye (formal)",          meaning:"Goodbye (formal)",       g:"n"},
+      {pt:"Tchau",                 pr:"chow",                     en:"Bye (informal)",            meaning:"Bye (informal)",         g:"n"},
+      {pt:"Obrigado",              pr:"oh-bree-GAH-doo",          en:"Thank you (said by a man)", meaning:"Thank you (man)",        g:"m"},
+      {pt:"Obrigada",              pr:"oh-bree-GAH-dah",          en:"Thank you (said by a woman)",meaning:"Thank you (woman)",    g:"f"},
+      {pt:"Por favor",             pr:"por fah-VOR",              en:"Please",                    meaning:"Please",                 g:"n"},
+      {pt:"Desculpe",              pr:"desh-KOOL-p",              en:"Sorry / Excuse me",         meaning:"Sorry",                  g:"n"},
+      {pt:"Sim",                   pr:"seem",                     en:"Yes",                       meaning:"Yes",                    g:"n"},
+      {pt:"Não",                   pr:"nowng",                    en:"No",                        meaning:"No",                     g:"n"},
+      {pt:"Como está?",            pr:"KOH-moo esh-TAH",          en:"How are you? (formal)",     meaning:"How are you?",           g:"n"},
+      {pt:"Estou bem",             pr:"esh-TOH beng",             en:"I am fine",                 meaning:"I am fine",              g:"n"},
+    ]
+  },
+  {
+    id:"intro", icon:"🧑", name:"Intro",
+    en_sec:"Introducing Yourself", pt_sec:"Apresentações",
+    items:[
+      {pt:"Chamo-me ___",          pr:"SHAH-moo-m ___",           en:"My name is ___",            meaning:"My name is ___",         g:"n"},
+      {pt:"Como se chama?",        pr:"KOH-moo s SHAH-mah",       en:"What is your name?",        meaning:"What is your name?",     g:"n"},
+      {pt:"Sou da Índia",          pr:"soh dah EEN-dyah",         en:"I am from India",           meaning:"I am from India",        g:"n"},
+      {pt:"De onde é?",            pr:"d OHN-d eh",               en:"Where are you from?",       meaning:"Where are you from?",    g:"n"},
+      {pt:"Muito prazer",          pr:"MWEE-too pra-ZEHR",        en:"Nice to meet you",          meaning:"Nice to meet you",       g:"n"},
+      {pt:"Quantos anos tem?",     pr:"KWAHN-toosh AH-noosh teng",en:"How old are you?",          meaning:"How old are you?",       g:"n"},
+      {pt:"Falo inglês",           pr:"FAH-loo een-GLESH",        en:"I speak English",           meaning:"I speak English",        g:"n"},
+    ]
+  },
+  {
+    id:"num", icon:"🔢", name:"Numbers",
+    en_sec:"Numbers (0–10)", pt_sec:"Números",
+    items:[
+      {pt:"zero",  pr:"ZEH-roo",    en:"Zero  (0)", meaning:"0 — Zero",  g:"n"},
+      {pt:"um",    pr:"oong",       en:"One   (1)", meaning:"1 — One",   g:"m"},
+      {pt:"dois",  pr:"doysh",      en:"Two   (2)", meaning:"2 — Two",   g:"m"},
+      {pt:"três",  pr:"traysh",     en:"Three (3)", meaning:"3 — Three", g:"n"},
+      {pt:"quatro",pr:"KWAH-troo",  en:"Four  (4)", meaning:"4 — Four",  g:"n"},
+      {pt:"cinco", pr:"SEENG-koo",  en:"Five  (5)", meaning:"5 — Five",  g:"n"},
+      {pt:"seis",  pr:"saysh",      en:"Six   (6)", meaning:"6 — Six",   g:"n"},
+      {pt:"sete",  pr:"SET",        en:"Seven (7)", meaning:"7 — Seven", g:"n"},
+      {pt:"oito",  pr:"OY-too",     en:"Eight (8)", meaning:"8 — Eight", g:"n"},
+      {pt:"nove",  pr:"NOV",        en:"Nine  (9)", meaning:"9 — Nine",  g:"n"},
+      {pt:"dez",   pr:"desh",       en:"Ten  (10)", meaning:"10 — Ten",  g:"n"},
+    ]
+  },
+  {
+    id:"family", icon:"👪", name:"Family",
+    en_sec:"Family & People", pt_sec:"Família",
+    items:[
+      {pt:"pai",          pr:"py",            en:"Father / Dad",       meaning:"Father",      g:"m"},
+      {pt:"mãe",          pr:"my-ng",         en:"Mother / Mom",       meaning:"Mother",      g:"f"},
+      {pt:"irmão",        pr:"eer-MOWNG",     en:"Brother",            meaning:"Brother",     g:"m"},
+      {pt:"irmã",         pr:"eer-MANG",      en:"Sister",             meaning:"Sister",      g:"f"},
+      {pt:"família",      pr:"fah-MEE-lyah",  en:"Family",             meaning:"Family",      g:"f"},
+      {pt:"amigo",        pr:"ah-MEE-goo",    en:"Friend (male)",      meaning:"Friend (m)",  g:"m"},
+      {pt:"amiga",        pr:"ah-MEE-gah",    en:"Friend (female)",    meaning:"Friend (f)",  g:"f"},
+      {pt:"filho",        pr:"FEE-lyoo",      en:"Son",                meaning:"Son",         g:"m"},
+      {pt:"filha",        pr:"FEE-lyah",      en:"Daughter",           meaning:"Daughter",    g:"f"},
+      {pt:"avô",          pr:"ah-VOH",        en:"Grandfather",        meaning:"Grandfather", g:"m"},
+      {pt:"avó",          pr:"ah-VOH",        en:"Grandmother",        meaning:"Grandmother", g:"f"},
+    ]
+  },
+  {
+    id:"food", icon:"🍞", name:"Food",
+    en_sec:"Food & Drink", pt_sec:"Comida e Bebida",
+    items:[
+      {pt:"pão",            pr:"powng",           en:"Bread",              meaning:"Bread",        g:"m"},
+      {pt:"água",           pr:"AH-gwah",         en:"Water",              meaning:"Water",        g:"f"},
+      {pt:"leite",          pr:"LAY-t",           en:"Milk",               meaning:"Milk",         g:"m"},
+      {pt:"chá",            pr:"shah",            en:"Tea",                meaning:"Tea",          g:"m"},
+      {pt:"café",           pr:"kah-FEH",         en:"Coffee",             meaning:"Coffee",       g:"m"},
+      {pt:"carne",          pr:"KAR-n",           en:"Meat",               meaning:"Meat",         g:"f"},
+      {pt:"peixe",          pr:"PAY-sh",          en:"Fish",               meaning:"Fish",         g:"m"},
+      {pt:"legumes",        pr:"leh-GOO-mesh",    en:"Vegetables",         meaning:"Vegetables",   g:"m"},
+      {pt:"fruta",          pr:"FROO-tah",        en:"Fruit",              meaning:"Fruit",        g:"f"},
+      {pt:"delicioso",      pr:"deh-lee-SYOH-zoo",en:"Delicious",          meaning:"Delicious",    g:"n"},
+      {pt:"Estou com fome", pr:"esh-TOH kong FOM",en:"I am hungry",        meaning:"I'm hungry",   g:"n"},
+    ]
+  },
+  {
+    id:"days", icon:"📅", name:"Days",
+    en_sec:"Days of the Week", pt_sec:"Dias da Semana",
+    items:[
+      {pt:"segunda-feira", pr:"seh-GOON-dah FAY-rah", en:"Monday",    meaning:"Monday",    g:"f"},
+      {pt:"terça-feira",   pr:"TER-sah FAY-rah",       en:"Tuesday",   meaning:"Tuesday",   g:"f"},
+      {pt:"quarta-feira",  pr:"KWAR-tah FAY-rah",      en:"Wednesday", meaning:"Wednesday", g:"f"},
+      {pt:"quinta-feira",  pr:"KEEN-tah FAY-rah",      en:"Thursday",  meaning:"Thursday",  g:"f"},
+      {pt:"sexta-feira",   pr:"SESH-tah FAY-rah",      en:"Friday",    meaning:"Friday",    g:"f"},
+      {pt:"sábado",        pr:"SAH-bah-doo",            en:"Saturday",  meaning:"Saturday",  g:"m"},
+      {pt:"domingo",       pr:"doo-MEEN-goo",           en:"Sunday",    meaning:"Sunday",    g:"m"},
+    ]
+  },
+  {
+    id:"daily", icon:"💬", name:"Daily Talk",
+    en_sec:"Everyday Useful Sentences", pt_sec:"Frases Úteis",
+    items:[
+      {pt:"O que é isto?",             pr:"oo k eh EESH-too",          en:"What is this?",          meaning:"What is this?",       g:"n"},
+      {pt:"Quanto custa?",             pr:"KWAHN-too KOOSH-tah",       en:"How much does it cost?", meaning:"How much?",           g:"n"},
+      {pt:"Onde é a casa de banho?",   pr:"OHN-d eh ah KAH-zah deh BAH-nyoo", en:"Where is the toilet?", meaning:"Where is the toilet?",g:"n"},
+      {pt:"Não entendo",               pr:"nowng en-TEN-doo",          en:"I don't understand",     meaning:"I don't understand",  g:"n"},
+      {pt:"Entendo",                   pr:"en-TEN-doo",                en:"I understand",           meaning:"I understand",        g:"n"},
+      {pt:"Pode repetir, por favor?",  pr:"pod reh-peh-TEER por fah-VOR",en:"Please say it again", meaning:"Say it again",        g:"n"},
+      {pt:"Fale devagar",              pr:"FAL deh-vah-GAR",           en:"Speak slowly",           meaning:"Speak slowly",        g:"n"},
+      {pt:"Pode me ajudar?",           pr:"pod m ah-zhoo-DAR",         en:"Can you help me?",       meaning:"Help me",             g:"n"},
+    ]
+  },
+  {
+    id:"travel", icon:"✈️", name:"Travel",
+    en_sec:"Travel & Directions", pt_sec:"Viagem e Direções",
+    items:[
+      {pt:"estação",          pr:"esh-tah-SOWNG",     en:"Station",           meaning:"Station",         g:"f"},
+      {pt:"bilhete",          pr:"bee-LYEH-t",        en:"Ticket",            meaning:"Ticket",          g:"m"},
+      {pt:"autocarro",        pr:"ow-toh-KAH-roo",    en:"Bus",               meaning:"Bus",             g:"m"},
+      {pt:"aeroporto",        pr:"ah-eh-roh-POR-too", en:"Airport",           meaning:"Airport",         g:"m"},
+      {pt:"hotel",            pr:"oh-TEL",             en:"Hotel",             meaning:"Hotel",           g:"m"},
+      {pt:"à direita",        pr:"ah dee-RAY-tah",    en:"To the right",      meaning:"Right",           g:"n"},
+      {pt:"à esquerda",       pr:"ah esh-KEHR-dah",   en:"To the left",       meaning:"Left",            g:"n"},
+      {pt:"em frente",        pr:"eng FREN-t",        en:"Straight ahead",    meaning:"Straight ahead",  g:"n"},
+      {pt:"hospital",         pr:"osh-pee-TAL",       en:"Hospital",          meaning:"Hospital",        g:"m"},
+      {pt:"farmácia",         pr:"far-MAH-syah",      en:"Pharmacy",          meaning:"Pharmacy",        g:"f"},
+    ]
+  },
+  {
+    id:"colors", icon:"🎨", name:"Colors",
+    en_sec:"Colors", pt_sec:"Cores",
+    items:[
+      {pt:"vermelho", pr:"ver-MEH-lyoo", en:"Red",    meaning:"Red",    g:"m"},
+      {pt:"azul",     pr:"ah-ZOOL",      en:"Blue",   meaning:"Blue",   g:"n"},
+      {pt:"verde",    pr:"VEHR-d",       en:"Green",  meaning:"Green",  g:"n"},
+      {pt:"amarelo",  pr:"ah-mah-REH-loo",en:"Yellow",meaning:"Yellow", g:"m"},
+      {pt:"branco",   pr:"BRAN-koo",     en:"White",  meaning:"White",  g:"m"},
+      {pt:"preto",    pr:"PREH-too",     en:"Black",  meaning:"Black",  g:"m"},
+      {pt:"laranja",  pr:"lah-RAN-zhah", en:"Orange", meaning:"Orange", g:"f"},
+      {pt:"cor-de-rosa",pr:"kor-d-ROH-zah",en:"Pink", meaning:"Pink",   g:"n"},
+    ]
+  },
+];
+
+/* ================================================================ BUILD ================================================================ */
+const tabsEl     = document.getElementById('tabs');
+const sectionsEl = document.getElementById('sections');
+
+categories.forEach((cat, idx) => {
+  // Tab
+  const btn = document.createElement('button');
+  btn.className = 'tab-btn' + (idx === 0 ? ' active' : '');
+  btn.textContent = cat.icon + ' ' + cat.name;
+  btn.onclick = () => showSection(cat.id, true);
+  tabsEl.appendChild(btn);
+
+  // Section
+  const sec = document.createElement('div');
+  sec.className = 'section' + (idx === 0 ? ' active' : '');
+  sec.id = 'sec-' + cat.id;
+
+  let html = `
+    <div class="sec-header">
+      <div class="sec-icon">${cat.icon}</div>
+      <div>
+        <div class="sec-en">${cat.en_sec}</div>
+        <div class="sec-pt pt">${cat.pt_sec}</div>
+      </div>
+    </div>
+    <div class="grid">`;
+
+  cat.items.forEach(item => {
+    const ptEsc = item.pt.replace(/'/g, "\\'");
+    const gLabel = item.g === 'm' ? 'masc' : item.g === 'f' ? 'fem' : 'neu';
+    const gText  = item.g === 'm' ? 'masc' : item.g === 'f' ? 'fem'  : '';
+    html += `
+      <div class="card" onclick="this.classList.toggle('flipped')">
+        ${gText ? `<span class="gender-badge ${gLabel}">${gText}</span>` : ''}
+        <button class="speaker" onclick="event.stopPropagation(); speak('${ptEsc}')">🔊</button>
+        <div class="ptword pt">${item.pt}</div>
+        <div class="pronun">${item.pr}</div>
+        <div class="en-word">${item.en}</div>
+        <div class="meaning">${item.meaning}</div>
+      </div>`;
+  });
+
+  html += `</div>`;
+  sec.innerHTML = html;
+  sectionsEl.appendChild(sec);
+});
+
+// Quiz tab
+const quizBtn = document.createElement('button');
+quizBtn.className = 'tab-btn';
+quizBtn.textContent = '📝 Quiz';
+quizBtn.onclick = () => showSection('quiz', true);
+tabsEl.appendChild(quizBtn);
+
+const quizSec = document.createElement('div');
+quizSec.className = 'section';
+quizSec.id = 'sec-quiz';
+quizSec.innerHTML = `
+  <div class="sec-header">
+    <div class="sec-icon">📝</div>
+    <div>
+      <div class="sec-en">Quiz</div>
+      <div class="sec-pt pt">Test your Portuguese knowledge</div>
+    </div>
+  </div>
+  <div class="quiz-box">
+    <div class="quiz-score" id="quizScore">Score: 0 / 0</div>
+    <div class="quiz-label">What is the English meaning of this Portuguese word or phrase?</div>
+    <div class="quiz-pt pt" id="quizPt"></div>
+    <div class="quiz-pronun" id="quizPronun"></div>
+    <div class="quiz-en-hint" id="quizEnHint"></div>
+    <div class="quiz-options" id="quizOptions"></div>
+    <button class="next-btn" id="nextBtn" onclick="nextQuestion()">Next Question ➜</button>
+  </div>`;
+sectionsEl.appendChild(quizSec);
+
+/* ================================================================ TAB SWITCH ================================================================ */
+function showSection(id, push) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('sec-' + id).classList.add('active');
+  const allBtns = Array.from(document.querySelectorAll('.tab-btn'));
+  const idx = id === 'quiz' ? allBtns.length - 1 : categories.findIndex(c => c.id === id);
+  allBtns[idx].classList.add('active');
+  if (id === 'quiz' && !quizStarted) startQuiz();
+  if (push) history.pushState({ tab: id }, '', '#' + id);
+  playClick();
+}
+window.addEventListener('popstate', e => {
+  showSection(e.state?.tab || categories[0].id, false);
+});
+history.replaceState({ tab: categories[0].id }, '', '#' + categories[0].id);
+
+/* ================================================================ SPEECH ================================================================ */
+function speak(text) {
+  playClick();
+  if ('speechSynthesis' in window) {
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'pt-PT'; u.rate = 0.88;
+    speechSynthesis.cancel();
+    speechSynthesis.speak(u);
+  }
+}
+
+/* ================================================================ QUIZ ================================================================ */
+let quizStarted = false, score = 0, total = 0;
+let allItems = [];
+categories.forEach(c => c.items.forEach(i => allItems.push(i)));
+
+function startQuiz() {
+  quizStarted = true; score = 0; total = 0; updateScore(); nextQuestion();
+}
+
+function shuffle(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+let currentAnswer = null;
+
+function nextQuestion() {
+  document.getElementById('nextBtn').style.display = 'none';
+  const correct = allItems[Math.floor(Math.random() * allItems.length)];
+  currentAnswer = correct;
+  document.getElementById('quizPt').textContent    = correct.pt;
+  document.getElementById('quizPronun').textContent = correct.pr;
+  document.getElementById('quizEnHint').textContent = '(' + correct.en + ')';
+
+  let opts = [correct];
+  while (opts.length < 4) {
+    const c = allItems[Math.floor(Math.random() * allItems.length)];
+    if (!opts.find(o => o.meaning === c.meaning)) opts.push(c);
+  }
+  opts = shuffle(opts);
+
+  const el = document.getElementById('quizOptions');
+  el.innerHTML = '';
+  opts.forEach(opt => {
+    const b = document.createElement('button');
+    b.className = 'opt-btn';
+    b.textContent = opt.meaning;
+    b.onclick = () => checkAnswer(b, opt);
+    el.appendChild(b);
+  });
+}
+
+function checkAnswer(btn, opt) {
+  document.querySelectorAll('.opt-btn').forEach(b => b.onclick = null);
+  total++;
+  if (opt.meaning === currentAnswer.meaning) {
+    btn.classList.add('correct'); score++; playTone(660);
+  } else {
+    btn.classList.add('wrong'); playTone(220);
+    document.querySelectorAll('.opt-btn').forEach(b => {
+      if (b.textContent === currentAnswer.meaning) b.classList.add('correct');
+    });
+  }
+  updateScore();
+  document.getElementById('nextBtn').style.display = 'inline-block';
+}
+
+function updateScore() {
+  document.getElementById('quizScore').textContent = `Score: ${score} / ${total}`;
+}
+
+/* ================================================================ SOUND ================================================================ */
+let audioCtx;
+function playTone(freq) {
+  try {
+    audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+    const osc = audioCtx.createOscillator(), gain = audioCtx.createGain();
+    osc.type = 'sine'; osc.frequency.value = freq;
+    gain.gain.setValueAtTime(0.001, audioCtx.currentTime);
+    gain.gain.linearRampToValueAtTime(0.15, audioCtx.currentTime + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.35);
+    osc.connect(gain); gain.connect(audioCtx.destination);
+    osc.start(); osc.stop(audioCtx.currentTime + 0.35);
+  } catch (e) {}
+}
+function playClick() { playTone(440); }
+
+/* ================================================================ FLOATING SHAPES ================================================================ */
+const pc = document.getElementById('petals');
+const cols = ['#1E5631','#D8242A','#F4C430','#123A20'];
+for (let i = 0; i < 18; i++) {
+  const p = document.createElement('div');
+  p.className = 'petal';
+  p.style.left   = (Math.random() * 100) + 'vw';
+  const sz = 8 + Math.random() * 10;
+  p.style.width  = sz + 'px';
+  p.style.height = sz + 'px';
+  p.style.animationDuration = (8 + Math.random() * 10) + 's';
+  p.style.animationDelay   = (Math.random() * 10) + 's';
+  p.style.background = cols[Math.floor(Math.random() * cols.length)];
+  pc.appendChild(p);
+}
+
+/* Android back */
+document.addEventListener('backbutton', () => {
+  if (history.state?.tab !== categories[0].id) history.back();
+}, false);
+</script>
+
+<footer class="footer">
+<div style="margin-bottom:18px;">
+<a href="about.html">About</a> |
+<a href="privacy.html">Privacy Policy</a> |
+<a href="terms.html">Terms &amp; Conditions</a> |
+<a href="contact.html">Contact</a> |
+<a href="disclaimer.html">Disclaimer</a>
+</div>
+<div class="footer-name">MYSKILLGAME</div>
+<div class="footer-copy">© 2026 MySkillGame • Developed by Surajit Roy</div>
+</footer>
+</body>
+</html>

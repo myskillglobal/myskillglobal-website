@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>SpeakUp English — Global Spoken English Course</title>
+</head>
+<body>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+html,body{overscroll-behavior:none;touch-action:manipulation;background:var(--se-bg,#fff);}
+body{font-family:var(--se-font, -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif);}
+.se-app{--se-bg:#fff;--se-bg2:#F8F9FC;--se-ink:#1E1B2E;--se-ink2:#5B5670;--se-ink3:#938DA6;--se-line:#E7E4F0;
+  --se-primary:#4F46E5;--se-primary-dk:#3730A3;--se-primary-lt:#EEF2FF;
+  --se-amber:#D97706;--se-amber-lt:#FFF7ED;--se-amber-brd:#FED7AA;
+  --se-green:#059669;--se-green-lt:#ECFDF5;--se-green-brd:#A7F3D0;
+  --se-red:#DC2626;--se-red-lt:#FEF2F2;--se-red-brd:#FECACA;
+  --se-blue:#0369A1;--se-blue-lt:#F0F9FF;--se-blue-brd:#BAE6FD;
+  max-width:420px;margin:0 auto;background:var(--se-bg);min-height:100vh;padding-bottom:env(safe-area-inset-bottom);color:var(--se-ink);}
+.se-topbar{background:linear-gradient(135deg,#4F46E5 0%,#4338CA 100%);padding:16px 16px calc(16px + env(safe-area-inset-top));padding-top:calc(16px + env(safe-area-inset-top));display:flex;align-items:center;gap:12px;}
+.se-topbar .se-mark{width:34px;height:34px;background:rgba(255,255,255,0.18);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.se-topbar h1{color:#fff;font-size:16px;font-weight:600;letter-spacing:0.2px;}
+.se-topbar .se-sub{color:rgba(255,255,255,0.75);font-size:10.5px;margin-top:1px;}
+.se-xp{margin-left:auto;background:rgba(255,255,255,0.18);color:#fff;font-size:11.5px;padding:5px 10px;border-radius:20px;white-space:nowrap;font-weight:600;}
+.se-tabs{display:flex;border-bottom:1px solid var(--se-line);background:var(--se-bg);position:sticky;top:0;z-index:5;overflow-x:auto;}
+.se-tab{flex:1;min-width:64px;padding:10px 4px;text-align:center;font-size:10.5px;color:var(--se-ink3);cursor:pointer;border:none;background:none;border-bottom:2px solid transparent;font-family:inherit;}
+.se-tab .se-tab-ic{display:block;font-size:16px;margin:0 auto 3px;}
+.se-tab.active{color:var(--se-primary);border-bottom-color:var(--se-primary);font-weight:700;}
+.se-tab:active{opacity:0.7;}
+.se-screen{display:none;padding:16px;}
+.se-screen.active{display:block;}
+
+/* Home */
+.se-greet{font-size:19px;font-weight:700;color:var(--se-ink);margin-bottom:3px;}
+.se-sub{font-size:12.5px;color:var(--se-ink2);margin-bottom:18px;}
+.se-progress{background:var(--se-primary-lt);border-radius:14px;padding:16px;margin-bottom:18px;display:flex;align-items:center;gap:14px;}
+.se-streak{width:50px;height:50px;border-radius:50%;background:var(--se-primary);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;}
+.se-streak b{color:#fff;font-size:17px;font-weight:700;line-height:1;}
+.se-streak span{color:rgba(255,255,255,0.8);font-size:8.5px;letter-spacing:0.3px;}
+.se-pinfo{flex:1;min-width:0;}
+.se-pinfo h3{font-size:13.5px;font-weight:700;color:var(--se-primary-dk);}
+.se-pbar{background:rgba(79,70,229,0.18);border-radius:10px;height:6px;margin-top:6px;overflow:hidden;}
+.se-pfill{background:var(--se-primary);height:100%;border-radius:10px;transition:width 0.5s;}
+.se-pnote{font-size:11px;color:var(--se-primary-dk);margin-top:5px;}
+.se-section-title{font-size:12px;font-weight:700;color:var(--se-ink2);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.6px;}
+.se-lessons{display:flex;flex-direction:column;gap:10px;margin-bottom:20px;}
+.se-lesson{border-radius:14px;padding:14px 16px;display:flex;align-items:center;gap:13px;cursor:pointer;border:none;width:100%;text-align:left;font-family:inherit;}
+.se-lesson:active{transform:scale(0.98);}
+.se-licon{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.se-lmeta{flex:1;min-width:0;}
+.se-lmeta h4{font-size:14px;font-weight:700;}
+.se-lmeta p{font-size:11.5px;margin-top:2px;}
+.se-lbadge{font-size:10px;padding:3px 8px;border-radius:10px;font-weight:700;flex-shrink:0;}
+.se-chip-row{display:flex;flex-wrap:wrap;gap:8px;}
+.se-chip{padding:8px 13px;border-radius:20px;font-size:12px;font-weight:600;}
+
+/* Speak */
+.se-hero{background:linear-gradient(135deg,#6366F1 0%,#7C3AED 100%);border-radius:16px;padding:22px;margin-bottom:14px;text-align:center;}
+.se-hlabel{color:rgba(255,255,255,0.7);font-size:11px;font-weight:700;letter-spacing:0.4px;margin-bottom:8px;}
+.se-hsentence{color:#fff;font-size:18px;font-weight:700;line-height:1.4;margin-bottom:14px;}
+.se-hphon{color:rgba(255,255,255,0.62);font-size:12.5px;margin-bottom:14px;}
+.se-play{background:rgba(255,255,255,0.22);border:none;color:#fff;border-radius:50%;width:50px;height:50px;font-size:20px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:transform 0.15s,background 0.15s;}
+.se-play:active{transform:scale(0.92);}
+.se-play.se-speaking{background:rgba(255,255,255,0.42);animation:se-pulse 1s infinite;}
+@keyframes se-pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,255,255,0.35);}50%{box-shadow:0 0 0 8px rgba(255,255,255,0);}}
+.se-status{color:rgba(255,255,255,0.6);font-size:10.5px;margin-top:9px;min-height:13px;}
+.se-meaning{background:var(--se-bg2);border-radius:12px;padding:13px 15px;margin-bottom:13px;}
+.se-mlabel{font-size:10px;font-weight:700;color:var(--se-ink3);letter-spacing:0.4px;margin-bottom:4px;}
+.se-mtext{font-size:13.5px;color:var(--se-ink);font-weight:600;}
+.se-msub{font-size:11.5px;color:var(--se-ink2);margin-top:3px;}
+.se-navrow{display:flex;gap:10px;}
+.se-navbtn{flex:1;padding:12px;border-radius:12px;border:none;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;}
+.se-navbtn:active{opacity:0.8;transform:scale(0.98);}
+.se-prev{background:var(--se-bg2);color:var(--se-ink);}
+.se-next{background:var(--se-primary);color:#fff;}
+.se-counter{text-align:center;font-size:11px;color:var(--se-ink3);margin-bottom:12px;font-weight:600;}
+
+/* Vocabulary */
+.se-vocab-card{border:1px solid var(--se-line);border-radius:14px;padding:15px;margin-bottom:12px;}
+.se-vword{font-size:15px;font-weight:800;color:var(--se-primary-dk);}
+.se-vtype{display:inline-block;margin-left:6px;font-size:10px;color:var(--se-ink3);font-weight:700;text-transform:uppercase;}
+.se-vdef{font-size:12.5px;color:var(--se-ink);margin-top:5px;}
+.se-vex{font-size:12px;color:var(--se-ink2);font-style:italic;margin-top:5px;}
+
+/* Build */
+.se-bprompt{background:var(--se-amber-lt);border-radius:14px;padding:15px;margin-bottom:14px;border:1.5px solid var(--se-amber-brd);}
+.se-blabel{font-size:10.5px;color:var(--se-amber);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.4px;font-weight:700;}
+.se-bq{font-size:15px;color:#78350F;font-weight:700;}
+.se-bank{background:var(--se-bg2);border-radius:14px;padding:14px;margin-bottom:13px;}
+.se-banklabel{font-size:10.5px;color:var(--se-ink2);margin-bottom:10px;font-weight:600;}
+.se-bankwords{display:flex;flex-wrap:wrap;gap:8px;}
+.se-bword{padding:8px 13px;border-radius:20px;font-size:13px;font-weight:700;cursor:pointer;border:2px solid transparent;font-family:inherit;}
+.se-bword.se-used{opacity:0.32;cursor:default;}
+.se-zone{background:var(--se-bg);border:2px dashed var(--se-line);border-radius:14px;min-height:60px;padding:12px;margin-bottom:13px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+.se-aword{padding:6px 11px;border-radius:16px;font-size:12.5px;font-weight:700;cursor:pointer;}
+.se-check{width:100%;padding:13px;border-radius:14px;background:var(--se-green);color:#fff;border:none;font-size:14.5px;font-weight:700;cursor:pointer;font-family:inherit;}
+.se-check:disabled{background:var(--se-line);color:var(--se-ink3);cursor:default;}
+.se-check:active:not(:disabled){opacity:0.85;}
+.se-result{border-radius:12px;padding:13px;margin-top:12px;display:none;}
+.se-result.se-correct{background:var(--se-green-lt);border:1.5px solid var(--se-green-brd);}
+.se-result.se-wrong{background:var(--se-red-lt);border:1.5px solid var(--se-red-brd);}
+.se-rtext{font-size:13.5px;font-weight:700;}
+.se-rtext.se-correct{color:#065F46;}
+.se-rtext.se-wrong{color:#991B1B;}
+
+/* Quiz (practice + exam share styles) */
+.se-quizhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.se-quizhead p{font-size:13px;font-weight:700;color:var(--se-ink);}
+.se-quizscore{font-size:12px;color:var(--se-ink2);font-weight:600;}
+.se-scorebar{background:var(--se-bg2);border-radius:10px;height:8px;margin-bottom:18px;overflow:hidden;}
+.se-scorefill{background:var(--se-green);height:100%;border-radius:10px;transition:width 0.4s;}
+.se-qcard{background:var(--se-bg);border:1px solid var(--se-line);border-radius:16px;padding:18px;margin-bottom:14px;}
+.se-qnum{font-size:10.5px;color:var(--se-ink2);margin-bottom:8px;font-weight:700;}
+.se-qtext{font-size:14.5px;font-weight:700;color:var(--se-ink);line-height:1.5;margin-bottom:16px;}
+.se-opts{display:flex;flex-direction:column;gap:9px;}
+.se-opt{padding:12px 14px;border-radius:12px;border:1.5px solid var(--se-line);background:var(--se-bg);font-size:13px;cursor:pointer;text-align:left;color:var(--se-ink);transition:all 0.15s;font-family:inherit;}
+.se-opt:active{background:var(--se-primary-lt);}
+.se-opt.se-correct{background:var(--se-green-lt);border-color:#4ADE80;color:#065F46;}
+.se-opt.se-wrong{background:var(--se-red-lt);border-color:#FCA5A5;color:#991B1B;}
+
+/* Exam intro / result */
+.se-exam-intro{background:linear-gradient(135deg,#111827 0%,#1F2937 100%);border-radius:16px;padding:22px;margin-bottom:16px;text-align:center;color:#fff;}
+.se-exam-intro h2{font-size:17px;font-weight:800;margin-bottom:6px;}
+.se-exam-intro p{font-size:12px;color:#D1D5DB;line-height:1.5;}
+.se-exam-stats{display:flex;gap:8px;margin:14px 0 0;}
+.se-exam-stat{flex:1;background:rgba(255,255,255,0.08);border-radius:10px;padding:10px 6px;}
+.se-exam-stat b{display:block;font-size:15px;}
+.se-exam-stat span{font-size:9.5px;color:#9CA3AF;}
+.se-field{margin-bottom:14px;}
+.se-field label{display:block;font-size:11.5px;font-weight:700;color:var(--se-ink2);margin-bottom:6px;}
+.se-field input{width:100%;padding:12px 14px;border-radius:12px;border:1.5px solid var(--se-line);font-size:14px;font-family:inherit;background:var(--se-bg);color:var(--se-ink);}
+.se-field input:focus{outline:none;border-color:var(--se-primary);}
+.se-startbtn{width:100%;padding:14px;border-radius:14px;background:var(--se-primary);color:#fff;border:none;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;}
+.se-startbtn:disabled{background:var(--se-line);color:var(--se-ink3);}
+.se-finalcard{border-radius:18px;padding:26px 20px;text-align:center;margin-bottom:16px;}
+.se-finalcard.se-pass{background:linear-gradient(135deg,#059669 0%,#047857 100%);color:#fff;}
+.se-finalcard.se-fail{background:linear-gradient(135deg,#374151 0%,#1F2937 100%);color:#fff;}
+.se-finalicon{font-size:40px;margin-bottom:10px;}
+.se-finalpct{font-size:36px;font-weight:800;line-height:1;}
+.se-finallabel{font-size:12px;opacity:0.85;margin-top:4px;}
+.se-finalmsg{font-size:12.5px;margin-top:12px;opacity:0.9;line-height:1.5;}
+.se-certbtn{display:block;width:100%;padding:14px;border-radius:14px;background:#fff;color:var(--se-green);border:none;font-size:14.5px;font-weight:800;cursor:pointer;margin-top:16px;text-decoration:none;text-align:center;font-family:inherit;}
+.se-retrybtn{display:block;width:100%;padding:13px;border-radius:14px;background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3);font-size:13.5px;font-weight:700;cursor:pointer;margin-top:10px;font-family:inherit;}
+.se-review{border:1px solid var(--se-line);border-radius:12px;padding:12px 14px;margin-bottom:10px;font-size:12px;}
+.se-review .se-rq{font-weight:700;color:var(--se-ink);margin-bottom:4px;}
+.se-review .se-ra{color:var(--se-ink2);}
+.se-review.se-rev-wrong{border-left:3px solid var(--se-red);}
+.se-review.se-rev-right{border-left:3px solid var(--se-green);}
+.se-hint{font-size:11px;color:var(--se-ink3);text-align:center;margin-top:10px;line-height:1.5;}
+</style>
+
+<div class="se-app">
+  <div class="se-topbar">
+    <div class="se-mark">🌍</div>
+    <div>
+      <h1>SpeakUp English</h1>
+      <div class="se-sub">Global Spoken English Course</div>
+    </div>
+    <div class="se-xp">⭐ 120 XP</div>
+  </div>
+  <div class="se-tabs">
+    <button class="se-tab active" onclick="switchTab('home')"><span class="se-tab-ic">🏠</span>Home</button>
+    <button class="se-tab" onclick="switchTab('speak')"><span class="se-tab-ic">🗣️</span>Speak</button>
+    <button class="se-tab" onclick="switchTab('vocab')"><span class="se-tab-ic">📖</span>Vocabulary</button>
+    <button class="se-tab" onclick="switchTab('build')"><span class="se-tab-ic">🧩</span>Build</button>
+    <button class="se-tab" onclick="switchTab('quiz')"><span class="se-tab-ic">✅</span>Practice</button>
+    <button class="se-tab" onclick="switchTab('exam')"><span class="se-tab-ic">🎓</span>Exam</button>
+  </div>
+
+  <!-- HOME -->
+  <div id="home" class="se-screen active">
+    <p class="se-greet">Welcome back! 👋</p>
+    <p class="se-sub">Continue your spoken English journey today</p>
+    <div class="se-progress">
+      <div class="se-streak"><b>7</b><span>STREAK</span></div>
+      <div class="se-pinfo">
+        <h3>Week Progress: 70%</h3>
+        <div class="se-pbar"><div class="se-pfill" style="width:70%"></div></div>
+        <p class="se-pnote">3 more lessons to complete this week!</p>
+      </div>
+    </div>
+    <p class="se-section-title">Today's Lessons</p>
+    <div class="se-lessons">
+      <button class="se-lesson" style="background:var(--se-primary-lt);" onclick="switchTab('speak')">
+        <div class="se-licon" style="background:#C7D2FE;">🗣️</div>
+        <div class="se-lmeta">
+          <h4 style="color:var(--se-primary-dk);">Daily Conversations</h4>
+          <p style="color:#6366F1;">Greetings, travel, shopping, work</p>
+        </div>
+        <span class="se-lbadge" style="background:#C7D2FE;color:var(--se-primary-dk);">10 phrases</span>
+      </button>
+      <button class="se-lesson" style="background:var(--se-blue-lt);" onclick="switchTab('vocab')">
+        <div class="se-licon" style="background:#BAE6FD;">📖</div>
+        <div class="se-lmeta">
+          <h4 style="color:#075985;">Vocabulary &amp; Idioms</h4>
+          <p style="color:#0369A1;">Everyday words used by fluent speakers</p>
+        </div>
+        <span class="se-lbadge" style="background:#BAE6FD;color:#075985;">12 words</span>
+      </button>
+      <button class="se-lesson" style="background:var(--se-amber-lt);" onclick="switchTab('build')">
+        <div class="se-licon" style="background:#FED7AA;">🧩</div>
+        <div class="se-lmeta">
+          <h4 style="color:#92400E;">Sentence Builder</h4>
+          <p style="color:#D97706;">Arrange words into correct sentences</p>
+        </div>
+        <span class="se-lbadge" style="background:#FED7AA;color:#92400E;">8 puzzles</span>
+      </button>
+      <button class="se-lesson" style="background:var(--se-green-lt);" onclick="switchTab('quiz')">
+        <div class="se-licon" style="background:#A7F3D0;">✅</div>
+        <div class="se-lmeta">
+          <h4 style="color:#064E3B;">Grammar Practice</h4>
+          <p style="color:#059669;">Quick warm-up before the exam</p>
+        </div>
+        <span class="se-lbadge" style="background:#A7F3D0;color:#064E3B;">10 Qs</span>
+      </button>
+      <button class="se-lesson" style="background:#EDE9FE;" onclick="switchTab('exam')">
+        <div class="se-licon" style="background:#DDD6FE;">🎓</div>
+        <div class="se-lmeta">
+          <h4 style="color:#4C1D95;">Final Certification Exam</h4>
+          <p style="color:#7C3AED;">Score 45% or higher to earn your certificate</p>
+        </div>
+        <span class="se-lbadge" style="background:#DDD6FE;color:#4C1D95;">50 Qs</span>
+      </button>
+    </div>
+    <p class="se-section-title">Quick Phrases</p>
+    <div class="se-chip-row">
+      <span class="se-chip" style="background:#FEF3C7;color:#78350F;">Good morning ☀️</span>
+      <span class="se-chip" style="background:#EDE9FE;color:#4C1D95;">How are you? 😊</span>
+      <span class="se-chip" style="background:#FCE7F3;color:#831843;">Thank you! 🙏</span>
+      <span class="se-chip" style="background:#DBEAFE;color:#1E3A8A;">Excuse me 🙋</span>
+      <span class="se-chip" style="background:#D1FAE5;color:#064E3B;">I need help 🆘</span>
+      <span class="se-chip" style="background:#FFE4E6;color:#9F1239;">Nice to meet you 🤝</span>
+    </div>
+  </div>
+
+  <!-- SPEAK -->
+  <div id="speak" class="se-screen">
+    <p class="se-counter" id="speak-counter">Sentence 1 of 10</p>
+    <div class="se-hero">
+      <p class="se-hlabel" id="speak-topic">CONVERSATION · DIRECTIONS</p>
+      <p class="se-hsentence" id="speak-sent">Could you please tell me the way to the railway station?</p>
+      <p class="se-hphon" id="speak-ph">/ kʊd juː pliːz tel miː ðə weɪ /</p>
+      <button class="se-play" id="play-btn" onclick="speakSentence()" title="Listen">🔊</button>
+      <p class="se-status" id="tts-status"></p>
+    </div>
+    <div class="se-meaning">
+      <p class="se-mlabel">MEANING</p>
+      <p class="se-mtext" id="speak-mean">A polite way to ask a stranger for directions.</p>
+      <p class="se-msub" id="speak-use">Use when asking for directions politely</p>
+    </div>
+    <p class="se-section-title" style="margin-bottom:8px;">Key Words</p>
+    <div class="se-chip-row" id="chips" style="margin-bottom:16px;"></div>
+    <div class="se-navrow">
+      <button class="se-navbtn se-prev" onclick="changeSentence(-1)">← Previous</button>
+      <button class="se-navbtn se-next" onclick="changeSentence(1)">Next →</button>
+    </div>
+  </div>
+
+  <!-- VOCABULARY -->
+  <div id="vocab" class="se-screen">
+    <p class="se-section-title">Word Bank</p>
+    <div id="vocab-list"></div>
+    <p class="se-hint">New words and idioms are added every week. Learning even 3 new words a day builds strong fluency over a year.</p>
+  </div>
+
+  <!-- BUILD -->
+  <div id="build" class="se-screen">
+    <p class="se-counter" id="build-counter">Puzzle 1 of 8</p>
+    <div class="se-bprompt">
+      <p class="se-blabel">✏️ Sentence Builder</p>
+      <p class="se-bq" id="build-q">Make a sentence: "I want to go to the market"</p>
+    </div>
+    <div class="se-zone" id="answer-zone">
+      <span style="color:var(--se-ink3);font-size:13px;" id="zone-hint">Tap words below to build your sentence</span>
+    </div>
+    <div class="se-bank">
+      <p class="se-banklabel">Word bank — tap to add:</p>
+      <div class="se-bankwords" id="bank-words"></div>
+    </div>
+    <button class="se-check" id="check-btn" onclick="checkAnswer()" disabled>Check Answer ✓</button>
+    <div class="se-result" id="result-box">
+      <p class="se-rtext" id="result-text"></p>
+    </div>
+  </div>
+
+  <!-- PRACTICE QUIZ -->
+  <div id="quiz" class="se-screen">
+    <div class="se-quizhead">
+      <p>Grammar Practice</p>
+      <p class="se-quizscore" id="quiz-score-lbl">Score: 0/10</p>
+    </div>
+    <div class="se-scorebar"><div class="se-scorefill" id="score-fill" style="width:0%"></div></div>
+    <div class="se-qcard">
+      <p class="se-qnum" id="q-num">Question 1 of 10</p>
+      <p class="se-qtext" id="q-text"></p>
+      <div class="se-opts" id="q-options"></div>
+    </div>
+    <button class="se-navbtn se-next" id="next-q-btn" style="display:none;width:100%;" onclick="nextQuestion()">Next Question →</button>
+    <p class="se-hint">This is just practice — it doesn't affect your certificate. Head to the Exam tab when you're ready for the real test.</p>
+  </div>
+
+  <!-- EXAM -->
+  <div id="exam" class="se-screen">
+    <div id="exam-intro">
+      <div class="se-exam-intro">
+        <h2>🎓 Final Certification Exam</h2>
+        <p>50 questions covering grammar, vocabulary, idioms and everyday spoken English. Answer at least 45% correctly to unlock your official certificate.</p>
+        <div class="se-exam-stats">
+          <div class="se-exam-stat"><b>50</b><span>QUESTIONS</span></div>
+          <div class="se-exam-stat"><b>45%</b><span>PASS MARK</span></div>
+          <div class="se-exam-stat"><b>∞</b><span>ATTEMPTS</span></div>
+        </div>
+      </div>
+      <div class="se-field">
+        <label for="exam-name">Your name (this will appear on the certificate)</label>
+        <input type="text" id="exam-name" placeholder="e.g. Sampurna Roy" autocomplete="name">
+      </div>
+      <button class="se-startbtn" id="exam-start-btn" onclick="startExam()">Start Exam</button>
+      <p class="se-hint">Take your time. There is no timer — answer each question carefully.</p>
+    </div>
+
+    <div id="exam-running" style="display:none;">
+      <div class="se-quizhead">
+        <p>Certification Exam</p>
+        <p class="se-quizscore" id="exam-score-lbl">Answered: 0/50</p>
+      </div>
+      <div class="se-scorebar"><div class="se-scorefill" id="exam-fill" style="width:0%"></div></div>
+      <div class="se-qcard">
+        <p class="se-qnum" id="exam-qnum">Question 1 of 50</p>
+        <p class="se-qtext" id="exam-qtext"></p>
+        <div class="se-opts" id="exam-qoptions"></div>
+      </div>
+      <button class="se-navbtn se-next" id="exam-next-btn" style="display:none;width:100%;" onclick="examNext()">Next Question →</button>
+    </div>
+
+    <div id="exam-result" style="display:none;"></div>
+  </div>
+</div>
+
+<script>
+/* ---------------- TTS ----------------
+   Priority 1: Native Android bridge (window.Android.speak) — set up in
+   MainActivity.java via addJavascriptInterface(new AndroidJS(), "Android").
+   This uses Android's own TextToSpeech engine directly and is far more
+   reliable inside a WebView than the browser's window.speechSynthesis,
+   which often silently fails depending on WebView/Chromium version.
+   Priority 2: browser speechSynthesis — only used as a fallback when
+   previewing this HTML in a normal browser (no Android bridge present).
+------------------------------------------------------------------- */
+function hasAndroidBridge(){
+  return (typeof window.Android !== 'undefined') && (typeof window.Android.speak === 'function');
+}
+
+function setStatus(msg){
+  const el = document.getElementById('tts-status');
+  if (el) el.textContent = msg || '';
+}
+
+function speakSentence(){
+  const btn = document.getElementById('play-btn');
+  const text = sentences[sIdx].en;
+
+  if (hasAndroidBridge()) {
+    try {
+      btn.classList.add('se-speaking');
+      setStatus('Speaking…');
+      window.Android.speak(text, 'en');
+      const estMs = Math.max(1200, text.split(' ').length * 420);
+      setTimeout(() => { btn.classList.remove('se-speaking'); setStatus(''); }, estMs);
+    } catch (e) {
+      btn.classList.remove('se-speaking');
+      setStatus('Could not reach the voice engine');
+    }
+    return;
+  }
+
+  if (!('speechSynthesis' in window)) {
+    setStatus('Voice not supported here — open inside the app');
+    return;
+  }
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'en-US';
+  u.rate = 0.9;
+  u.onstart = () => { btn.classList.add('se-speaking'); setStatus('Speaking… (browser preview)'); };
+  u.onend = () => { btn.classList.remove('se-speaking'); setStatus(''); };
+  u.onerror = () => { btn.classList.remove('se-speaking'); setStatus('Playback failed'); };
+  window.speechSynthesis.speak(u);
+}
+
+/* ---------------- Speak tab data ---------------- */
+const sentences = [
+  { topic:"CONVERSATION · DIRECTIONS", en: "Could you please tell me the way to the railway station?", ph: "/ kʊd juː pliːz tel miː ðə weɪ /", mean: "A polite way to ask a stranger for directions.", use: "Use when asking for directions politely", words: [{w:"could",c:"#EDE9FE",t:"#4C1D95"},{w:"please",c:"#FCE7F3",t:"#831843"},{w:"tell",c:"#FEF3C7",t:"#78350F"},{w:"railway",c:"#DBEAFE",t:"#1E3A8A"},{w:"station",c:"#D1FAE5",t:"#064E3B"}] },
+  { topic:"CONVERSATION · RESTAURANT", en: "I would like to order a cup of tea, please.", ph: "/ aɪ wʊd laɪk tuː ɔːrdər /", mean: "A polite phrase used to order food or drink.", use: "Use in a restaurant or cafe", words: [{w:"would",c:"#EDE9FE",t:"#4C1D95"},{w:"like",c:"#FCE7F3",t:"#831843"},{w:"order",c:"#FEF3C7",t:"#78350F"},{w:"cup",c:"#DBEAFE",t:"#1E3A8A"},{w:"please",c:"#D1FAE5",t:"#064E3B"}] },
+  { topic:"CONVERSATION · SHOPPING", en: "Excuse me, how much does this cost?", ph: "/ ɪkˈskjuːz miː haʊ mʌtʃ /", mean: "A common question used when checking the price of an item.", use: "Use when shopping or bargaining", words: [{w:"excuse",c:"#EDE9FE",t:"#4C1D95"},{w:"how",c:"#FCE7F3",t:"#831843"},{w:"much",c:"#FEF3C7",t:"#78350F"},{w:"cost",c:"#DBEAFE",t:"#1E3A8A"},{w:"this",c:"#D1FAE5",t:"#064E3B"}] },
+  { topic:"CONVERSATION · HEALTH", en: "I am not feeling well, I need to see a doctor.", ph: "/ aɪ æm nɒt fiːlɪŋ wel /", mean: "Used to explain that you are unwell and need medical help.", use: "Use at a clinic or hospital", words: [{w:"feeling",c:"#EDE9FE",t:"#4C1D95"},{w:"well",c:"#FCE7F3",t:"#831843"},{w:"doctor",c:"#FEF3C7",t:"#78350F"},{w:"need",c:"#DBEAFE",t:"#1E3A8A"},{w:"see",c:"#D1FAE5",t:"#064E3B"}] },
+  { topic:"CONVERSATION · WORK", en: "Could we schedule a meeting for tomorrow morning?", ph: "/ kʊd wiː ˈskedʒuːl ə ˈmiːtɪŋ /", mean: "A professional way to propose a meeting time.", use: "Use in an office or workplace setting", words: [{w:"schedule",c:"#EDE9FE",t:"#4C1D95"},{w:"meeting",c:"#FCE7F3",t:"#831843"},{w:"tomorrow",c:"#FEF3C7",t:"#78350F"},{w:"morning",c:"#DBEAFE",t:"#1E3A8A"},{w:"could",c:"#D1FAE5",t:"#064E3B"}] },
+  { topic:"CONVERSATION · TRAVEL", en: "What time does the next bus leave for the city centre?", ph: "/ wɒt taɪm dʌz ðə nekst bʌs /", mean: "Used to ask about departure times for public transport.", use: "Use at a bus stop, station, or airport", words: [{w:"next",c:"#EDE9FE",t:"#4C1D95"},{w:"bus",c:"#FCE7F3",t:"#831843"},{w:"leave",c:"#FEF3C7",t:"#78350F"},{w:"centre",c:"#DBEAFE",t:"#1E3A8A"},{w:"time",c:"#D1FAE5",t:"#064E3B"}] },
+  { topic:"CONVERSATION · INTRODUCTIONS", en: "Hi, my name is Alex. It's nice to meet you.", ph: "/ haɪ maɪ neɪm ɪz /", mean: "A simple, friendly way to introduce yourself.", use: "Use when meeting someone for the first time", words: [{w:"name",c:"#EDE9FE",t:"#4C1D95"},{w:"nice",c:"#FCE7F3",t:"#831843"},{w:"meet",c:"#FEF3C7",t:"#78350F"},{w:"hi",c:"#DBEAFE",t:"#1E3A8A"},{w:"you",c:"#D1FAE5",t:"#064E3B"}] },
+  { topic:"CONVERSATION · PHONE CALLS", en: "May I speak to Mr. Roy, please? I'm calling about the order.", ph: "/ meɪ aɪ spiːk tuː /", mean: "A polite opening line for a phone call, followed by the reason for calling.", use: "Use when making a formal phone call", words: [{w:"speak",c:"#EDE9FE",t:"#4C1D95"},{w:"calling",c:"#FCE7F3",t:"#831843"},{w:"about",c:"#FEF3C7",t:"#78350F"},{w:"order",c:"#DBEAFE",t:"#1E3A8A"},{w:"may",c:"#D1FAE5",t:"#064E3B"}] },
+  { topic:"CONVERSATION · APOLOGIES", en: "I'm sorry for the delay. It won't happen again.", ph: "/ aɪm ˈsɒri fɔːr ðə dɪˈleɪ /", mean: "A short, sincere way to apologise for being late or making a mistake.", use: "Use when apologising professionally", words: [{w:"sorry",c:"#EDE9FE",t:"#4C1D95"},{w:"delay",c:"#FCE7F3",t:"#831843"},{w:"happen",c:"#FEF3C7",t:"#78350F"},{w:"again",c:"#DBEAFE",t:"#1E3A8A"},{w:"won't",c:"#D1FAE5",t:"#064E3B"}] },
+  { topic:"CONVERSATION · REQUESTS", en: "Would you mind closing the window? It's a bit cold in here.", ph: "/ wʊd juː maɪnd ˈkləʊzɪŋ /", mean: "A polite way to ask someone to do something for you.", use: "Use for polite requests among colleagues or strangers", words: [{w:"mind",c:"#EDE9FE",t:"#4C1D95"},{w:"closing",c:"#FCE7F3",t:"#831843"},{w:"window",c:"#FEF3C7",t:"#78350F"},{w:"cold",c:"#DBEAFE",t:"#1E3A8A"},{w:"would",c:"#D1FAE5",t:"#064E3B"}] }
+];
+let sIdx = 0;
+
+function renderSpeak() {
+  const s = sentences[sIdx];
+  document.getElementById('speak-topic').textContent = s.topic;
+  document.getElementById('speak-sent').textContent = s.en;
+  document.getElementById('speak-ph').textContent = s.ph;
+  document.getElementById('speak-mean').textContent = s.mean;
+  document.getElementById('speak-use').textContent = s.use;
+  document.getElementById('speak-counter').textContent = 'Sentence ' + (sIdx + 1) + ' of ' + sentences.length;
+  setStatus('');
+  const chips = document.getElementById('chips');
+  chips.innerHTML = '';
+  s.words.forEach(w => {
+    const c = document.createElement('span');
+    c.className = 'se-chip';
+    c.style.cssText = `background:${w.c};color:${w.t};`;
+    c.textContent = w.w;
+    chips.appendChild(c);
+  });
+}
+
+function changeSentence(d) {
+  window.speechSynthesis && window.speechSynthesis.cancel();
+  sIdx = (sIdx + d + sentences.length) % sentences.length;
+  renderSpeak();
+}
+
+/* ---------------- Vocabulary tab data ---------------- */
+const vocabWords = [
+  { w:"Punctual", type:"adjective", def:"Arriving or doing something at the agreed time; not late.", ex:"She is always punctual for meetings." },
+  { w:"Break the ice", type:"idiom", def:"To say or do something that makes people feel more relaxed in a new or awkward situation.", ex:"He told a joke to break the ice at the start of the interview." },
+  { w:"Under the weather", type:"idiom", def:"Feeling slightly unwell or sick.", ex:"I'm feeling a bit under the weather today, so I'll rest." },
+  { w:"Piece of cake", type:"idiom", def:"Something that is very easy to do.", ex:"Don't worry about the test — it was a piece of cake." },
+  { w:"Call it a day", type:"idiom", def:"To stop working on something, usually for the rest of the day.", ex:"We've finished the report, so let's call it a day." },
+  { w:"Put off", type:"phrasal verb", def:"To delay or postpone something to a later time.", ex:"We had to put off the trip because of the rain." },
+  { w:"Look forward to", type:"phrase", def:"To feel excited about something that is going to happen.", ex:"I look forward to seeing you next week." },
+  { w:"Reliable", type:"adjective", def:"Able to be trusted to do what is expected; dependable.", ex:"He is a reliable colleague who always meets deadlines." },
+  { w:"Get along with", type:"phrasal verb", def:"To have a friendly relationship with someone.", ex:"She gets along with everyone in the office." },
+  { w:"On the same page", type:"idiom", def:"To have the same understanding or opinion as someone else.", ex:"Let's make sure we're on the same page before the meeting." },
+  { w:"Diligent", type:"adjective", def:"Showing care and effort in your work or duties.", ex:"He is a diligent student who never misses homework." },
+  { w:"Run out of", type:"phrasal verb", def:"To have no more of something left.", ex:"We ran out of milk, so I need to buy some more." }
+];
+
+function renderVocab() {
+  const list = document.getElementById('vocab-list');
+  list.innerHTML = '';
+  vocabWords.forEach(v => {
+    const card = document.createElement('div');
+    card.className = 'se-vocab-card';
+    card.innerHTML = `<span class="se-vword">${v.w}</span><span class="se-vtype">${v.type}</span>
+      <p class="se-vdef">${v.def}</p>
+      <p class="se-vex">"${v.ex}"</p>`;
+    list.appendChild(card);
+  });
+}
+
+/* ---------------- Build tab ---------------- */
+const puzzles = [
+  { q: "I want to go to the market", words: ["I","want","to","go","to","the","market","today","shop"] },
+  { q: "She is reading a book", words: ["She","is","reading","a","book","writing","plays","run"] },
+  { q: "We will go to school tomorrow", words: ["We","will","go","to","school","tomorrow","yesterday","sleep","eat"] },
+  { q: "He has finished his homework", words: ["He","has","finished","his","homework","doing","never","quick"] },
+  { q: "They are waiting for the bus", words: ["They","are","waiting","for","the","bus","train","sat","slow"] },
+  { q: "Can you help me with this", words: ["Can","you","help","me","with","this","that","alone","hard"] },
+  { q: "The meeting starts at nine", words: ["The","meeting","starts","at","nine","ends","later","soon","today"] },
+  { q: "I have never been to Paris", words: ["I","have","never","been","to","Paris","London","always","once"] }
+];
+let pIdx = 0;
+let selected = [];
+let shuffled = [];
+
+function renderBuild() {
+  const p = puzzles[pIdx];
+  document.getElementById('build-counter').textContent = 'Puzzle ' + (pIdx + 1) + ' of ' + puzzles.length;
+  document.getElementById('build-q').textContent = 'Make a sentence: "' + p.q + '"';
+  selected = [];
+  shuffled = [...p.words].sort(() => Math.random() - 0.5);
+  renderBuildUI();
+}
+
+function renderBuildUI() {
+  const bw = document.getElementById('bank-words');
+  bw.innerHTML = '';
+  shuffled.forEach((w, i) => {
+    const colors = ['#EDE9FE','#FCE7F3','#FEF3C7','#DBEAFE','#D1FAE5','#FEE2E2','#E0F2FE','#FEF9C3','#F3E8FF'];
+    const textColors = ['#4C1D95','#831843','#78350F','#1E3A8A','#064E3B','#7F1D1D','#0C4A6E','#713F12','#581C87'];
+    const ci = i % colors.length;
+    const btn = document.createElement('button');
+    btn.className = 'se-bword';
+    btn.style.cssText = `background:${colors[ci]};color:${textColors[ci]};`;
+    btn.textContent = w;
+    btn.id = 'bw_' + i;
+    btn.onclick = () => addWord(i, w, colors[ci], textColors[ci], btn);
+    bw.appendChild(btn);
+  });
+  const az = document.getElementById('answer-zone');
+  az.innerHTML = '<span style="color:var(--se-ink3);font-size:13px;" id="zone-hint">Tap words below to build your sentence</span>';
+  document.getElementById('check-btn').disabled = true;
+  const rb = document.getElementById('result-box');
+  rb.style.display = 'none';
+}
+
+function addWord(i, w, bg, tc, btn) {
+  if (btn.classList.contains('se-used')) return;
+  btn.classList.add('se-used');
+  selected.push({i, w});
+  const az = document.getElementById('answer-zone');
+  const hint = document.getElementById('zone-hint');
+  if (hint) hint.remove();
+  const span = document.createElement('span');
+  span.className = 'se-aword';
+  span.style.cssText = `background:${bg};color:${tc};`;
+  span.textContent = w;
+  span.onclick = () => removeWord(i, span, btn);
+  az.appendChild(span);
+  document.getElementById('check-btn').disabled = selected.length < 2;
+}
+
+function removeWord(i, span, btn) {
+  selected = selected.filter(s => s.i !== i);
+  span.remove();
+  btn.classList.remove('se-used');
+  if (selected.length === 0) {
+    document.getElementById('answer-zone').innerHTML = '<span style="color:var(--se-ink3);font-size:13px;" id="zone-hint">Tap words below to build your sentence</span>';
+  }
+  document.getElementById('check-btn').disabled = selected.length < 2;
+}
+
+function checkAnswer() {
+  const p = puzzles[pIdx];
+  const ans = selected.map(s => s.w).join(' ');
+  const correct = p.q;
+  const rb = document.getElementById('result-box');
+  const rt = document.getElementById('result-text');
+  rb.style.display = 'block';
+  if (ans === correct) {
+    rb.className = 'se-result se-correct';
+    rt.className = 'se-rtext se-correct';
+    rt.textContent = '✅ Correct! Well done! Moving to next...';
+    setTimeout(() => { pIdx = (pIdx + 1) % puzzles.length; renderBuild(); }, 1800);
+  } else {
+    rb.className = 'se-result se-wrong';
+    rt.className = 'se-rtext se-wrong';
+    rt.textContent = '❌ Not quite. Correct: "' + correct + '"';
+  }
+}
+
+/* ---------------- Practice quiz (10 questions) ---------------- */
+const questions = [
+  { q: "Which sentence is correct?", opts: ["She go to school.", "She goes to school.", "She going to school.", "She gone to school."], ans: 1 },
+  { q: "Fill in the blank: I ___ a student.", opts: ["am", "is", "are", "be"], ans: 0 },
+  { q: "What is the past tense of 'eat'?", opts: ["eated", "eating", "ate", "eaten"], ans: 2 },
+  { q: "Choose the correct article: ___ elephant is big.", opts: ["A", "An", "The", "No article"], ans: 1 },
+  { q: "Which word means 'happy'?", opts: ["Sad", "Angry", "Joyful", "Tired"], ans: 2 },
+  { q: "Choose the correct preposition: The book is ___ the table.", opts: ["in", "on", "at", "by"], ans: 1 },
+  { q: "What is the plural of 'child'?", opts: ["childs", "childes", "children", "child's"], ans: 2 },
+  { q: "Choose the correct sentence.", opts: ["He don't like coffee.", "He doesn't like coffee.", "He not like coffee.", "He no like coffee."], ans: 1 },
+  { q: "What does 'break the ice' mean?", opts: ["to start a conversation", "to end a fight", "to break something", "to feel cold"], ans: 0 },
+  { q: "Choose the correct comparative: This book is ___ than that one.", opts: ["interesting", "more interesting", "most interesting", "interestinger"], ans: 1 }
+];
+let qIdx = 0, score = 0, answered = false;
+
+function renderQuiz() {
+  const q = questions[qIdx];
+  document.getElementById('q-num').textContent = 'Question ' + (qIdx+1) + ' of ' + questions.length;
+  document.getElementById('q-text').textContent = q.q;
+  document.getElementById('quiz-score-lbl').textContent = 'Score: ' + score + '/' + questions.length;
+  document.getElementById('score-fill').style.width = (score / questions.length * 100) + '%';
+  const opts = document.getElementById('q-options');
+  opts.innerHTML = '';
+  q.opts.forEach((o, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'se-opt';
+    btn.textContent = o;
+    btn.onclick = () => selectOpt(i, btn);
+    opts.appendChild(btn);
+  });
+  document.getElementById('next-q-btn').style.display = 'none';
+  answered = false;
+}
+
+function selectOpt(i, btn) {
+  if (answered) return;
+  answered = true;
+  const q = questions[qIdx];
+  const opts = document.getElementById('q-options').children;
+  if (i === q.ans) { score++; btn.classList.add('se-correct'); }
+  else { btn.classList.add('se-wrong'); opts[q.ans].classList.add('se-correct'); }
+  document.getElementById('quiz-score-lbl').textContent = 'Score: ' + score + '/' + questions.length;
+  document.getElementById('score-fill').style.width = (score / questions.length * 100) + '%';
+  if (qIdx < questions.length - 1) {
+    document.getElementById('next-q-btn').style.display = 'block';
+  } else {
+    setTimeout(() => alert('Practice complete! Your score: ' + score + '/' + questions.length + ' 🎉\n\nHead to the Exam tab to earn your certificate.'), 400);
+  }
+}
+
+function nextQuestion() {
+  qIdx++;
+  renderQuiz();
+}
+
+/* ---------------- Final Certification Exam (50 questions) ---------------- */
+const examQuestions = [
+  { q:"She ___ to school every day.", opts:["go","goes","going","gone"], ans:1 },
+  { q:"What is the past tense of \"write\"?", opts:["writed","wrote","written","writting"], ans:1 },
+  { q:"Choose the correct article: ___ university is closed today.", opts:["A","An","The","No article"], ans:0 },
+  { q:"Choose the synonym of \"happy\".", opts:["Sad","Joyful","Angry","Tired"], ans:1 },
+  { q:"Choose the antonym of \"difficult\".", opts:["Hard","Easy","Complex","Tough"], ans:1 },
+  { q:"Fill in the blank: I have been living here ___ 2010.", opts:["since","for","from","at"], ans:0 },
+  { q:"Fill in the blank: I have been living here ___ five years.", opts:["since","for","from","at"], ans:1 },
+  { q:"Choose the correct preposition: The book is ___ the table.", opts:["in","on","at","by"], ans:1 },
+  { q:"Choose the correct sentence.", opts:["He don't like coffee.","He doesn't like coffee.","He not like coffee.","He no like coffee."], ans:1 },
+  { q:"What does \"break the ice\" mean?", opts:["To start a conversation","To end a fight","To break something","To feel cold"], ans:0 },
+  { q:"Choose the correct comparative: This book is ___ than that one.", opts:["interesting","more interesting","most interesting","interestinger"], ans:1 },
+  { q:"Choose the correct superlative: Everest is the ___ mountain in the world.", opts:["high","higher","highest","most high"], ans:2 },
+  { q:"What is the plural of \"child\"?", opts:["childs","childes","children","child's"], ans:2 },
+  { q:"Choose the correct passive voice: The letter ___ by John.", opts:["wrote","write","was written","is write"], ans:2 },
+  { q:"Choose the correct modal: You ___ wear a seatbelt while driving.", opts:["should","must","can","might"], ans:1 },
+  { q:"Fill in the blank: If it rains, I ___ stay home.", opts:["will","would","was","were"], ans:0 },
+  { q:"Choose the correct word: Please ___ the door before leaving.", opts:["close","closed","closing","closes"], ans:0 },
+  { q:"Choose the synonym of \"big\".", opts:["Huge","Small","Short","Thin"], ans:0 },
+  { q:"Choose the correctly spelled word.", opts:["recieve","receive","receve","receeve"], ans:1 },
+  { q:"Choose the correct sentence.", opts:["Where you are going?","Where are you going?","Where you going?","Where going you?"], ans:1 },
+  { q:"What does \"under the weather\" mean?", opts:["Feeling sick","Very cold outside","In a storm","Feeling happy"], ans:0 },
+  { q:"Choose the correct word: She is interested ___ music.", opts:["on","in","at","for"], ans:1 },
+  { q:"Choose the correct tense: By next year, I ___ this course.", opts:["will complete","will have completed","complete","completed"], ans:1 },
+  { q:"Choose the correct question tag: You are coming, ___?", opts:["isn't it","aren't you","don't you","won't you"], ans:1 },
+  { q:"Choose the correct word: There ___ many people at the party.", opts:["was","were","is","be"], ans:1 },
+  { q:"Choose the correct word order.", opts:["I yesterday went to market.","I went to market yesterday.","Yesterday went I to market.","Went I yesterday to market."], ans:1 },
+  { q:"What is the meaning of \"punctual\"?", opts:["Always late","On time","Very fast","Careless"], ans:1 },
+  { q:"Choose the correct preposition: We arrived ___ the airport at 6 AM.", opts:["in","at","on","to"], ans:1 },
+  { q:"Choose the correct word: The weather is ___ today than yesterday.", opts:["bad","worse","worst","badly"], ans:1 },
+  { q:"Fill in the blank: I ___ my homework already.", opts:["finish","finished","have finished","finishing"], ans:2 },
+  { q:"Which phrasal verb means \"to postpone\"?", opts:["put off","put on","put up","put down"], ans:0 },
+  { q:"Choose the correct sentence.", opts:["Neither of them are ready.","Neither of them is ready.","Neither of them be ready.","Neither of them was readying."], ans:1 },
+  { q:"Choose the correct word: She speaks English ___.", opts:["fluent","fluently","fluency","more fluent"], ans:1 },
+  { q:"Choose the correct indefinite pronoun: ___ knows the answer.", opts:["Somebody","Some","Any","All"], ans:0 },
+  { q:"What does \"piece of cake\" mean?", opts:["Very easy","Delicious food","A small amount","A birthday party"], ans:0 },
+  { q:"Choose the correct verb: The news ___ surprising.", opts:["is","are","were","be"], ans:0 },
+  { q:"Choose the correct word: I look forward to ___ you soon.", opts:["see","seeing","saw","seen"], ans:1 },
+  { q:"Choose the correct sentence.", opts:["He is taller than me.","He is more tall than me.","He is tallest than me.","He is as tall than me."], ans:0 },
+  { q:"Choose the correct article: I saw ___ elephant at the zoo.", opts:["a","an","the","no article"], ans:1 },
+  { q:"Choose the correctly spelled word.", opts:["necessary","neccessary","necesary","neccesary"], ans:0 },
+  { q:"What is the opposite of \"arrive\"?", opts:["Depart","Reach","Come","Enter"], ans:0 },
+  { q:"Choose the correctly punctuated sentence.", opts:["Can you help me, please?","Can you help me please.","Help me can you please?","Please can help you me?"], ans:0 },
+  { q:"Choose the correct word: This is the ___ book I have ever read.", opts:["good","better","best","goodest"], ans:2 },
+  { q:"Choose the correct preposition of time: The meeting is ___ 5 PM.", opts:["in","on","at","by"], ans:2 },
+  { q:"Choose the correct word: I ___ to the gym twice a week.", opts:["go","goes","going","went"], ans:0 },
+  { q:"What does \"a piece of advice\" mean?", opts:["A suggestion","A small cake","A warning letter","An argument"], ans:0 },
+  { q:"Choose the correct conditional: If I ___ rich, I would travel the world.", opts:["am","was","were","be"], ans:2 },
+  { q:"Choose the correctly spelled word.", opts:["usefull","useful","usefull","usefuly"], ans:1 },
+  { q:"Choose the correct sentence.", opts:["I am agree with you.","I agree with you.","I am agreeing with you.","I do agree you."], ans:1 },
+  { q:"What does \"call it a day\" mean?", opts:["To stop working","To make a phone call","To plan a day","To celebrate"], ans:0 }
+];
+
+let examIdx = 0, examScore = 0, examAnswered = false, examName = '';
+let examLog = [];
+
+function startExam(){
+  const nameInput = document.getElementById('exam-name');
+  const name = nameInput.value.trim();
+  if (!name) { nameInput.focus(); nameInput.style.borderColor = 'var(--se-red)'; return; }
+  examName = name;
+  examIdx = 0; examScore = 0; examLog = [];
+  document.getElementById('exam-intro').style.display = 'none';
+  document.getElementById('exam-result').style.display = 'none';
+  document.getElementById('exam-running').style.display = 'block';
+  renderExamQuestion();
+}
+
+function renderExamQuestion(){
+  const q = examQuestions[examIdx];
+  document.getElementById('exam-qnum').textContent = 'Question ' + (examIdx+1) + ' of ' + examQuestions.length;
+  document.getElementById('exam-qtext').textContent = q.q;
+  document.getElementById('exam-score-lbl').textContent = 'Answered: ' + examIdx + '/' + examQuestions.length;
+  document.getElementById('exam-fill').style.width = (examIdx / examQuestions.length * 100) + '%';
+  const opts = document.getElementById('exam-qoptions');
+  opts.innerHTML = '';
+  q.opts.forEach((o, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'se-opt';
+    btn.textContent = o;
+    btn.onclick = () => examSelectOpt(i, btn);
+    opts.appendChild(btn);
+  });
+  document.getElementById('exam-next-btn').style.display = 'none';
+  document.getElementById('exam-next-btn').textContent = (examIdx === examQuestions.length - 1) ? 'See My Result →' : 'Next Question →';
+  examAnswered = false;
+}
+
+function examSelectOpt(i, btn){
+  if (examAnswered) return;
+  examAnswered = true;
+  const q = examQuestions[examIdx];
+  const opts = document.getElementById('exam-qoptions').children;
+  const correct = (i === q.ans);
+  if (correct) { examScore++; btn.classList.add('se-correct'); }
+  else { btn.classList.add('se-wrong'); opts[q.ans].classList.add('se-correct'); }
+  examLog.push({ q: q.q, chosen: q.opts[i], correctAns: q.opts[q.ans], correct: correct });
+  document.getElementById('exam-score-lbl').textContent = 'Answered: ' + (examIdx+1) + '/' + examQuestions.length;
+  document.getElementById('exam-fill').style.width = ((examIdx+1) / examQuestions.length * 100) + '%';
+  document.getElementById('exam-next-btn').style.display = 'block';
+}
+
+function examNext(){
+  if (examIdx < examQuestions.length - 1) {
+    examIdx++;
+    renderExamQuestion();
+  } else {
+    finishExam();
+  }
+}
+
+const PASS_PCT = 45;
+
+function finishExam(){
+  document.getElementById('exam-running').style.display = 'none';
+  const total = examQuestions.length;
+  const pct = Math.round((examScore / total) * 100);
+  const pass = pct >= PASS_PCT;
+  const dateStr = new Date().toLocaleDateString('en-GB', {day:'2-digit', month:'short', year:'numeric'});
+  const certId = 'MSG-ADV-' + Date.now().toString().slice(-8);
+
+  if (pass) {
+    localStorage.setItem('msg_advance_test_result', JSON.stringify({
+      name: examName,
+      language: 'English',
+      score: examScore,
+      total: total,
+      pct: pct,
+      date: dateStr,
+      certId: certId
+    }));
+  }
+
+  const box = document.getElementById('exam-result');
+  box.style.display = 'block';
+  box.innerHTML = `
+    <div class="se-finalcard ${pass ? 'se-pass' : 'se-fail'}">
+      <div class="se-finalicon">${pass ? '🏆' : '📘'}</div>
+      <div class="se-finalpct">${pct}%</div>
+      <div class="se-finallabel">${examScore} out of ${total} correct</div>
+      <div class="se-finalmsg">${pass
+        ? 'Congratulations, ' + examName + '! You have passed the Final Certification Exam. Your certificate is ready.'
+        : 'You need at least ' + PASS_PCT + '% to earn the certificate. Review the answers below, then try again — you can retake the exam anytime.'}</div>
+      ${pass ? '<a class="se-certbtn" href="certificate.html">View My Certificate 🎓</a>' : ''}
+      <button class="se-retrybtn" onclick="resetExam()">${pass ? 'Retake Exam' : 'Try Again'}</button>
+    </div>
+  `;
+
+  const reviewTitle = document.createElement('p');
+  reviewTitle.className = 'se-section-title';
+  reviewTitle.textContent = 'Answer Review';
+  box.appendChild(reviewTitle);
+
+  examLog.forEach((item, idx) => {
+    const div = document.createElement('div');
+    div.className = 'se-review ' + (item.correct ? 'se-rev-right' : 'se-rev-wrong');
+    div.innerHTML = `<div class="se-rq">${idx+1}. ${item.q}</div>
+      <div class="se-ra">${item.correct ? '✅ Your answer: ' + item.chosen : '❌ Your answer: ' + item.chosen + ' — Correct answer: ' + item.correctAns}</div>`;
+    box.appendChild(div);
+  });
+}
+
+function resetExam(){
+  document.getElementById('exam-result').style.display = 'none';
+  document.getElementById('exam-result').innerHTML = '';
+  document.getElementById('exam-intro').style.display = 'block';
+  document.getElementById('exam-name').value = examName;
+}
+
+/* ---------------- Tabs ---------------- */
+function switchTab(id) {
+  window.speechSynthesis && window.speechSynthesis.cancel();
+  document.querySelectorAll('.se-screen').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.se-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const tabs = ['home','speak','vocab','build','quiz','exam'];
+  document.querySelectorAll('.se-tab')[tabs.indexOf(id)].classList.add('active');
+  if (id === 'speak') renderSpeak();
+  if (id === 'vocab') renderVocab();
+  if (id === 'build') renderBuild();
+  if (id === 'quiz') { qIdx = 0; score = 0; renderQuiz(); }
+}
+
+renderSpeak();
+renderVocab();
+renderBuild();
+renderQuiz();
+
+document.addEventListener('backbutton', function(e){ e.preventDefault(); }, false);
+</script>
+</body>
+</html>

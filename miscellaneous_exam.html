@@ -1,0 +1,1771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="theme-color" content="#0A0F1E"/>
+<title>Miscellaneous Exam — Advanced Level | My Skill : Safety</title>
+<meta name="description" content="Take a 50-question advanced-level Family Travel Safety test. Score 45% or higher to unlock your certificate."/>
+<style>
+  :root{
+    --navy:#0A0F1E; --navy2:#111A33; --deep:#080b14; --white:#fff;
+    --accent:#2b7cff; --accent2:#47c9ff;
+    --gold:#c9a84c; --gold-light:#e8c97a;
+    --border:rgba(255,255,255,.09);
+    --cream:#FFF8ED; --ink:#1e293b; --muted:#64748b;
+    --shadow:0 10px 30px rgba(0,0,0,0.25);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; font-family:'Poppins',Arial,sans-serif; background:var(--cream); color:var(--ink);
+    padding-bottom:24px;
+  }
+  .wrap{max-width:760px; margin:0 auto; padding:0 16px;}
+  header{
+    background:linear-gradient(135deg, var(--navy), var(--navy2));
+    color:#fff; padding:26px 16px 32px; text-align:center; position:relative; overflow:hidden;
+  }
+  header h1{margin:0; font-size:1.5rem;}
+  header .sub{font-size:0.85rem; opacity:0.85; max-width:520px; margin:10px auto 0;}
+  header .backlink{display:inline-block; margin-bottom:12px; font-size:0.8rem; color:var(--gold-light); text-decoration:none;}
+  .badge{display:inline-block; margin-top:12px; padding:6px 16px; border-radius:20px; font-size:0.75rem; font-weight:700; background:linear-gradient(90deg,var(--gold),var(--gold-light)); color:#1a1300;}
+
+  .section{padding:20px 0;}
+  .card{
+    background:#fff; border-radius:16px; padding:20px; box-shadow:var(--shadow); border:1px solid #eee; margin-bottom:16px;
+  }
+
+  .lang-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:10px;}
+  .lang-card{
+    background:linear-gradient(160deg,#fff,#f4f7ff); border:1px solid #dde3f5; border-radius:14px;
+    padding:16px 10px; text-align:center; cursor:pointer; transition:transform .15s;
+  }
+  .lang-card:active{transform:scale(0.96);}
+  .lang-card.disabled{opacity:0.5; cursor:not-allowed;}
+  .lang-card .lname{font-weight:700; color:var(--navy2); font-size:0.95rem;}
+  .lang-card .lstatus{font-size:0.68rem; margin-top:4px; color:var(--muted);}
+  .lang-card.ready .lstatus{color:#0d9488; font-weight:600;}
+
+  .quiz-meta{display:flex; justify-content:space-between; font-size:0.78rem; color:var(--muted); margin-bottom:10px;}
+  .progress-outer{background:#eee; border-radius:8px; height:8px; overflow:hidden; margin-bottom:14px;}
+  .progress-inner{background:linear-gradient(90deg,var(--accent),var(--accent2)); height:100%; width:0%; transition:width .3s;}
+  .quiz-question-label{font-size:0.82rem; color:var(--muted); margin-bottom:6px;}
+  .quiz-eng{font-size:1.25rem; font-weight:800; color:var(--navy2); margin:8px 0 18px; line-height:1.4;}
+  .quiz-options{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
+  .qopt{
+    background:#fff; border:1.5px solid #ddd; border-radius:12px; padding:13px 8px; font-size:0.95rem;
+    cursor:pointer; font-weight:700; color:var(--navy2); text-align:center;
+  }
+  .qopt.correct{background:#d7f5dd; border-color:#2e9e4f;}
+  .qopt.wrong{background:#fbdada; border-color:#c0392b;}
+  .qopt.disabled{pointer-events:none; opacity:0.75;}
+  .next-btn{
+    width:100%; background:linear-gradient(90deg,var(--accent),var(--accent2)); color:#fff; border:none;
+    border-radius:14px; padding:13px; font-size:0.95rem; font-weight:700; cursor:pointer; margin-top:16px;
+  }
+  .next-btn:disabled{opacity:0.4; cursor:default;}
+
+  .result-emoji{font-size:3.6rem; text-align:center; line-height:1;}
+  .result-score-circle{
+    width:150px; height:150px; border-radius:50%; margin:16px auto;
+    background:linear-gradient(160deg,var(--navy2),var(--navy)); border:4px solid var(--gold);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; color:#fff;
+    box-shadow:var(--shadow);
+  }
+  .result-score-circle .pct{font-size:2.2rem; font-weight:900; line-height:1;}
+  .result-score-circle .frac{font-size:0.78rem; opacity:0.9; margin-top:4px;}
+  .result-label{font-size:1.2rem; font-weight:800; color:var(--navy2); text-align:center; margin-top:8px;}
+  .result-sub{font-size:0.85rem; color:var(--muted); text-align:center; margin-top:6px;}
+
+  .name-input{
+    width:100%; max-width:320px; display:block; margin:14px auto 0; padding:12px 14px; border-radius:12px;
+    border:1.5px solid #ddd; font-size:0.95rem; text-align:center;
+  }
+  .name-input:focus{outline:none; border-color:var(--accent);}
+
+  .primary-btn{
+    display:block; width:100%; max-width:320px; margin:16px auto 0;
+    background:linear-gradient(90deg,var(--gold),var(--gold-light)); color:#1a1300; border:none;
+    border-radius:24px; padding:13px 24px; font-size:0.95rem; font-weight:800; cursor:pointer;
+  }
+  .ghost-btn{
+    display:block; width:100%; max-width:320px; margin:10px auto 0;
+    background:#fff; color:var(--navy2); border:1.5px solid var(--navy2); border-radius:24px;
+    padding:12px 22px; font-size:0.9rem; font-weight:700; cursor:pointer; text-align:center; text-decoration:none;
+  }
+  .fail-box{text-align:center;}
+  .fail-box .icon{font-size:3rem;}
+
+  footer{text-align:center; font-size:0.75rem; color:var(--muted); margin-top:30px;}
+  a{color:inherit;}
+</style>
+</head>
+<body>
+
+<header>
+<div class="wrap">
+<a class="backlink" href="index.html">← Back to My Skill : Safety</a>
+<h1>🧳 Miscellaneous Exam — Advanced Level</h1>
+<p class="sub">50 questions per topic. Score 45% or higher to unlock your PDF certificate.</p>
+<div class="badge">🎯 Pass mark: 45%</div>
+</div>
+</header>
+
+<div class="wrap">
+
+  <!-- STEP 1: TOPIC PICKER -->
+  <div class="section" id="screen-picker">
+    <div class="card">
+      <h3 style="margin-top:0;">Choose a topic</h3>
+      <div class="lang-grid" id="langGrid"></div>
+    </div>
+  </div>
+
+  <!-- STEP 2: QUIZ -->
+  <div class="section" id="screen-quiz" style="display:none;">
+    <div class="card" id="quizActive">
+      <div class="progress-outer"><div class="progress-inner" id="progressBar"></div></div>
+      <div class="quiz-meta">
+        <span id="quizProgressText">Question 1 / 50</span>
+        <span id="quizScoreText">Score: 0</span>
+      </div>
+      <div class="quiz-question-label">Choose the correct answer</div>
+      <div class="quiz-eng" id="quizEng"></div>
+      <div class="quiz-options" id="quizOptions"></div>
+      <button class="next-btn" id="nextBtn" disabled onclick="handleNext()">Next Question ➜</button>
+    </div>
+  </div>
+
+  <!-- STEP 3a: RESULT — PASSED -->
+  <div class="section" id="screen-pass" style="display:none;">
+    <div class="card" style="text-align:center;">
+      <div class="result-emoji" id="passEmoji">🎉</div>
+      <div class="result-score-circle">
+        <div class="pct" id="passPct">0%</div>
+        <div class="frac" id="passFrac">0 / 50</div>
+      </div>
+      <div class="result-label" id="passLabel">Well Done!</div>
+      <div class="result-sub">You've passed the 45% mark — enter your name to generate your certificate.</div>
+      <input type="text" id="studentNameInput" class="name-input" placeholder="Your full name" maxlength="40"/>
+      <button class="primary-btn" onclick="goToCertificate()">Generate Certificate 🏅</button>
+      <button class="ghost-btn" onclick="restartToPicker()">Try Another Topic</button>
+    </div>
+  </div>
+
+  <!-- STEP 3b: RESULT — FAILED -->
+  <div class="section" id="screen-fail" style="display:none;">
+    <div class="card fail-box">
+      <div class="icon">📚</div>
+      <div class="result-score-circle" style="background:linear-gradient(160deg,#94a3b8,#64748b); border-color:#cbd5e1;">
+        <div class="pct" id="failPct">0%</div>
+        <div class="frac" id="failFrac">0 / 50</div>
+      </div>
+      <div class="result-label">Not quite there yet</div>
+      <div class="result-sub">You need at least 45% to unlock the certificate. Review the lessons and try again — you've got this!</div>
+      <button class="primary-btn" onclick="retakeSameLanguage()">Retake This Test</button>
+      <button class="ghost-btn" onclick="restartToPicker()">Choose Another Topic</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>MySkillGame — My Skill : Safety · Advanced Level Test</footer>
+
+<script>
+/* ================= TOPICS ================= */
+/* Fill QUESTION_BANK[code] with 50 items to switch a card from
+   "Coming soon" to "ready" automatically — no other code needs to change. */
+const LANGUAGES = [
+  ['family_travel','Family Travel'],
+  ['jute_revival','Jute Revival'],
+  ['locust_facts','Locust Facts'],
+  ['mobile_smart_guide','Mobile Smart Guide'],
+  ['green_gold_farming','Green Gold Farming'],
+  ['exam_result_not_destiny','Exam Result not Destiny'],
+  ['wastewise_eco_water','Wastewise and Eco-water'],
+  ['farm_safety','Farm Safety'],
+  ['topic9','Topic 9'],
+  ['topic10','Topic 10'],
+  ['topic11','Topic 11'],
+  ['topic12','Topic 12'],
+  ['topic13','Topic 13'],
+  ['topic14','Topic 14'],
+  ['topic15','Topic 15'],
+];
+farm_safety : [
+
+  ['What is the main purpose of farm safety?',
+   'To prevent accidents and protect people animals and equipment',
+   ['To increase accidents','To prevent accidents and protect people animals and equipment','To reduce farm production','To avoid using safety equipment']],
+
+  ['Why should farm workers wear suitable footwear?',
+   'To protect their feet from injuries',
+   ['To increase walking speed','To protect their feet from injuries','To improve crop growth','To reduce water use']],
+
+  ['What type of footwear is useful on a wet or muddy farm?',
+   'Strong waterproof boots',
+   ['Open sandals','Strong waterproof boots','Bare feet','Cloth slippers']],
+
+  ['Why should farm workers wear gloves when handling rough materials?',
+   'To protect their hands from cuts and injuries',
+   ['To make their hands dirty','To protect their hands from cuts and injuries','To increase the weight of materials','To reduce crop production']],
+
+  ['Why should protective clothing be worn when using farm chemicals?',
+   'To reduce exposure to harmful substances',
+   ['To increase chemical exposure','To reduce exposure to harmful substances','To make chemicals stronger','To improve soil colour']],
+
+  ['What should be used to protect the eyes from chemical splashes?',
+   'Safety goggles',
+   ['Sunglasses only','Safety goggles','A cloth cap','Earphones']],
+
+  ['What should be used to protect the nose and mouth when required during chemical handling?',
+   'A suitable protective mask or respirator',
+   ['A scarf only in every situation','A suitable protective mask or respirator','A school tie','A woollen cap']],
+
+  ['Why should pesticide labels be read before use?',
+   'To understand safe use instructions and warnings',
+   ['To change the product colour','To understand safe use instructions and warnings','To increase the dose automatically','To avoid wearing PPE']],
+
+  ['What should a farmer do before mixing a pesticide?',
+   'Read the label and wear the required protective equipment',
+   ['Mix it with bare hands','Read the label and wear the required protective equipment','Taste the chemical','Remove all safety equipment']],
+
+  ['Why should pesticides never be stored in food containers?',
+   'They may be mistaken for food or drink',
+   ['They improve food quality','They may be mistaken for food or drink','They become harmless','They increase crop yield']],
+
+  ['Where should pesticides normally be stored?',
+   'In a secure labelled place away from food and children',
+   ['In the kitchen','In a secure labelled place away from food and children','Near drinking water','In an open field']],
+
+  ['Why should children be kept away from farm chemicals?',
+   'Chemicals can cause serious poisoning and injury',
+   ['Children can improve chemicals','Chemicals can cause serious poisoning and injury','Children can safely mix pesticides','Chemicals are harmless to children']],
+
+  ['What should be done with empty pesticide containers?',
+   'Dispose of them according to approved safety instructions',
+   ['Reuse them for drinking water','Dispose of them according to approved safety instructions','Use them for cooking oil','Give them to children']],
+
+  ['Why should pesticides not be sprayed against strong wind?',
+   'The spray can drift toward the worker or other people',
+   ['It always improves spraying','The spray can drift toward the worker or other people','It makes the tractor faster','It prevents all crop growth']],
+
+  ['What should a worker do if pesticide gets into the eyes?',
+   'Immediately rinse the eyes with clean water and seek appropriate medical help',
+   ['Ignore it','Immediately rinse the eyes with clean water and seek appropriate medical help','Rub the eyes with chemicals','Continue spraying']],
+
+  ['What should a worker do after handling pesticides?',
+   'Wash hands and exposed skin thoroughly',
+   ['Eat without washing','Wash hands and exposed skin thoroughly','Touch food immediately','Sleep in pesticide clothing']],
+
+  ['Why should workers avoid eating or smoking while handling pesticides?',
+   'Chemicals can enter the body through contaminated hands',
+   ['It increases crop growth','Chemicals can enter the body through contaminated hands','It makes pesticides weaker','It improves spraying']],
+
+  ['What is important before operating a tractor?',
+   'Check the tractor and safety equipment',
+   ['Remove the brakes','Check the tractor and safety equipment','Increase the speed immediately','Ignore warning signs']],
+
+  ['Why should tractors and farm machines be maintained regularly?',
+   'To reduce mechanical failures and accidents',
+   ['To increase breakdowns','To reduce mechanical failures and accidents','To increase fuel leakage','To damage equipment']],
+
+  ['Why should a tractor operator wear a seat belt when provided?',
+   'It can reduce injury during an accident or rollover',
+   ['It increases fuel use only','It can reduce injury during an accident or rollover','It makes the tractor slower','It removes the need for brakes']],
+
+  ['What should never be done near moving farm machinery?',
+   'Put hands or loose clothing near moving parts',
+   ['Keep a safe distance','Put hands or loose clothing near moving parts','Follow the safety instructions','Switch off the machine before maintenance']],
+
+  ['What should be done before repairing a machine?',
+   'Switch it off and isolate the power source',
+   ['Keep it running','Switch it off and isolate the power source','Increase the engine speed','Remove all warning signs']],
+
+  ['Why can loose clothing be dangerous around machinery?',
+   'It can become caught in moving parts',
+   ['It improves machine safety','It can become caught in moving parts','It reduces machine noise','It prevents accidents automatically']],
+
+  ['Why should machine guards remain in place?',
+   'They help protect workers from moving parts',
+   ['They increase the danger','They help protect workers from moving parts','They reduce crop quality','They increase fuel consumption']],
+
+  ['What should be done if a machine has a damaged safety guard?',
+   'Stop using it until it is repaired safely',
+   ['Continue using it at high speed','Stop using it until it is repaired safely','Remove all remaining guards','Give it to a child']],
+
+  ['Why should farm workers be trained before operating machinery?',
+   'Training helps them understand safe operation',
+   ['Training increases accidents','Training helps them understand safe operation','Training removes all safety rules','Training reduces machine maintenance']],
+
+  ['What is a major danger when working near electrical equipment?',
+   'Electric shock',
+   ['Better crop growth','Electric shock','Improved irrigation','Lower soil temperature']],
+
+  ['Why should electrical equipment be kept away from water?',
+   'Water can increase the risk of electric shock',
+   ['Water improves electrical safety','Water can increase the risk of electric shock','Water increases battery life','Water repairs damaged wires']],
+
+  ['What should be done with a damaged electrical cable?',
+   'Stop using it and have it repaired or replaced safely',
+   ['Touch exposed wires','Stop using it and have it repaired or replaced safely','Cover it with wet cloth','Give it to a child']],
+
+  ['Why should farm workers avoid using electrical equipment with wet hands?',
+   'Wet hands can increase the risk of electric shock',
+   ['Wet hands make electricity safer','Wet hands can increase the risk of electric shock','Wet hands increase crop yield','Wet hands repair cables']],
+
+  ['What is one major risk of working in extreme heat?',
+   'Heat exhaustion or heat stroke',
+   ['Frostbite only','Heat exhaustion or heat stroke','Electric shock only','Machine failure only']],
+
+  ['How can workers reduce the risk of heat related illness?',
+   'Drink water regularly and take suitable rest breaks',
+   ['Avoid all water','Drink water regularly and take suitable rest breaks','Work continuously without breaks','Wear heavy clothing in extreme heat']],
+
+  ['Why is shade useful during very hot farm work?',
+   'It helps the body cool down',
+   ['It increases body temperature','It helps the body cool down','It increases pesticide strength','It prevents all injuries']],
+
+  ['Why should workers be careful during thunderstorms?',
+   'Lightning can cause serious injury or death',
+   ['Thunderstorms improve safety','Lightning can cause serious injury or death','Rain removes all hazards','Lightning makes machinery safer']],
+
+  ['What should workers do when lightning is nearby?',
+   'Move to a safe enclosed shelter',
+   ['Stand under an isolated tree','Move to a safe enclosed shelter','Stay beside metal machinery','Continue working in an open field']],
+
+  ['Why should farm workers be careful around livestock?',
+   'Animals can kick bite charge or crush people',
+   ['Animals are always harmless','Animals can kick bite charge or crush people','Animals cannot move','Animals cannot cause injuries']],
+
+  ['How should workers approach an unfamiliar animal?',
+   'Calmly and carefully while following safe handling practices',
+   ['Running toward it','Calmly and carefully while following safe handling practices','Shouting loudly','Trying to frighten it']],
+
+  ['Why should children not play near livestock?',
+   'Animals may react unpredictably and cause injuries',
+   ['Animals always protect children','Animals may react unpredictably and cause injuries','It improves animal health','It increases farm production']],
+
+  ['Why should farm chemicals never be mixed without proper instructions?',
+   'Some mixtures can create dangerous reactions or toxic exposure',
+   ['All mixtures are harmless','Some mixtures can create dangerous reactions or toxic exposure','Mixing always improves safety','It reduces all chemical risks']],
+
+  ['What should a worker do after a chemical spill?',
+   'Follow the emergency instructions and keep people away from the area',
+   ['Touch the spill with bare hands','Follow the emergency instructions and keep people away from the area','Wash it into a pond','Let children clean it']],
+
+  ['Why should emergency contact numbers be available on a farm?',
+   'They help workers get assistance quickly during an emergency',
+   ['They increase accidents','They help workers get assistance quickly during an emergency','They replace all safety training','They prevent every accident']],
+
+  ['What should a farm first aid kit contain?',
+   'Basic supplies for treating minor injuries',
+   ['Pesticides','Basic supplies for treating minor injuries','Fuel','Animal feed only']],
+
+  ['Why should farm workers know the location of the first aid kit?',
+   'It allows quick access during an injury',
+   ['It increases crop production','It allows quick access during an injury','It replaces medical treatment','It reduces water use']],
+
+  ['What should be done when a serious farm accident occurs?',
+   'Get emergency medical assistance immediately',
+   ['Ignore the injury','Get emergency medical assistance immediately','Continue working','Hide the accident']],
+
+  ['Why is safe drinking water important for farm workers?',
+   'It helps prevent dehydration and illness',
+   ['It increases pesticide toxicity','It helps prevent dehydration and illness','It replaces protective clothing','It increases machine speed']],
+
+  ['Why should workers keep farm pathways clear?',
+   'To reduce slips trips and falls',
+   ['To increase accidents','To reduce slips trips and falls','To block emergency access','To increase mud']],
+
+  ['What can cause slips and falls on a farm?',
+   'Wet surfaces clutter and uneven ground',
+   ['Only clean floors','Wet surfaces clutter and uneven ground','Only sunlight','Only farm animals']],
+
+  ['Why should workers use safe lifting techniques?',
+   'To reduce back and muscle injuries',
+   ['To increase back injuries','To reduce back and muscle injuries','To make loads heavier','To avoid all farm work']],
+
+  ['What should a worker do when a load is too heavy to lift safely?',
+   'Use suitable equipment or ask for assistance',
+   ['Lift it alone anyway','Use suitable equipment or ask for assistance','Throw it at another person','Drag it across unsafe ground']],
+
+  ['Why is good housekeeping important on a farm?',
+   'It reduces hazards and makes work areas safer',
+   ['It increases clutter','It reduces hazards and makes work areas safer','It increases accidents','It prevents all farming']],
+
+  ['What is one of the most important principles of farm safety?',
+   'Identify hazards before starting work',
+   ['Ignore hazards','Identify hazards before starting work','Work as fast as possible','Avoid safety training']],
+
+  ['Why should farm workers report unsafe conditions?',
+   'Early reporting can help prevent accidents',
+   ['It increases accidents','Early reporting can help prevent accidents','It makes hazards worse','It removes the need for repairs']],
+
+  ['What is the best overall approach to farm safety?',
+   'Plan the work use proper equipment follow safety rules and stay alert',
+   ['Ignore hazards and work quickly','Plan the work use proper equipment follow safety rules and stay alert','Avoid all protective equipment','Let untrained people operate machines']]
+
+]
+/* ================= QUESTION BANK =================
+   Each topic: 50 [question, correctAnswer, [4 options incl. correct]] items.
+   Topics not yet filled in show as "Coming soon" on the picker. */
+const QUESTION_BANK = {
+  family_travel: [
+    ['What should every family pack first when preparing for a trip?', 'A first aid kit', ['A first aid kit', 'Extra shoes', 'A board game', 'A camera tripod']],
+    ['Before a road trip, what should you check on the family vehicle?', 'Tyres, brakes and fuel/battery', ['Tyres, brakes and fuel/battery', 'Music playlist', 'Car colour', 'Number of seats']],
+    ['What is the most important safety habit for every passenger in a moving car?', 'Wearing a seatbelt', ['Wearing a seatbelt', 'Keeping windows open', 'Eating snacks', 'Playing music loudly']],
+    ['What should young children wear in a car for safety?', 'A properly fitted child car seat', ['A properly fitted child car seat', 'Loose clothing', 'A backpack', 'Sunglasses']],
+    ['What is the national emergency helpline number in India?', '112', ['112', '911', '000', '999']],
+    ['Which number is commonly used for ambulance service in India?', '108 or 102', ['108 or 102', '100', '101', '1090']],
+    ['Before travelling, what should a family share with a relative who is staying back?', 'The full itinerary and contact details', ['The full itinerary and contact details', 'The luggage weight', 'The car colour', 'The hotel menu']],
+    ['What is the safest way to carry important documents while travelling?', 'In a secure pouch, with photocopies kept separately', ['In a secure pouch, with photocopies kept separately', 'Loose in a shopping bag', 'Left at home unattended', 'Given to a stranger for safekeeping']],
+    ['If a family gets separated in a crowded place, what should be agreed in advance?', 'A fixed meeting point', ['A fixed meeting point', 'A random search pattern', 'Splitting up further', 'Ignoring the situation']],
+    ['What should young children be taught before visiting a crowded place?', 'How to find a police officer or security guard for help', ['How to find a police officer or security guard for help', 'To hide from everyone', 'To follow any stranger who offers help', 'To wait alone near the exit gate']],
+    ['What is a simple way to help a young child if they get lost?', 'Write the parent\u2019s phone number on the child\u2019s wrist or clothing tag', ['Write the parent\u2019s phone number on the child\u2019s wrist or clothing tag', 'Send the child to explore alone', 'Give the child cash only', 'Tell the child to stay silent to everyone']],
+    ['What should a family carry for basic wound care during travel?', 'Antiseptic, bandages and adhesive tape', ['Antiseptic, bandages and adhesive tape', 'Only sunscreen', 'Only a torch', 'Only a map']],
+    ['Which medicines are useful to pack for family travel?', 'Regular prescriptions, fever, motion sickness and allergy medicine', ['Regular prescriptions, fever, motion sickness and allergy medicine', 'Only vitamins', 'Only cough drops', 'None, as hospitals are always nearby']],
+    ['What should you do with prescription medicines before a long trip?', 'Pack enough for the whole trip plus a few extra days', ['Pack enough for the whole trip plus a few extra days', 'Leave them at home', 'Share them among all family members', 'Buy them only after arrival']],
+    ['What is the safest drinking water choice while travelling in an unfamiliar area?', 'Sealed bottled or properly boiled/filtered water', ['Sealed bottled or properly boiled/filtered water', 'Water directly from a river', 'Water from an open roadside tap', 'Any water that looks clear']],
+    ['Why should street food be chosen carefully during family travel?', 'To avoid food poisoning and stomach infections', ['To avoid food poisoning and stomach infections', 'Because it is always expensive', 'Because it takes too long to prepare', 'Because children dislike it']],
+    ['What is a key sun-safety habit for children during outdoor travel?', 'Using sunscreen, hats and staying hydrated', ['Using sunscreen, hats and staying hydrated', 'Avoiding water completely', 'Wearing dark, heavy clothing', 'Skipping meals']],
+    ['What are early signs of heatstroke to watch for during travel?', 'High body temperature, dizziness and confusion', ['High body temperature, dizziness and confusion', 'Mild hunger', 'Feeling sleepy after lunch', 'Wanting to play']],
+    ['What is the first step if someone shows signs of heatstroke?', 'Move them to shade, cool them down and give water if conscious', ['Move them to shade, cool them down and give water if conscious', 'Make them run to burn energy', 'Give them a hot drink', 'Ignore it until symptoms worsen']],
+    ['What should families check about their accommodation on arrival?', 'Location of fire exits and emergency numbers', ['Location of fire exits and emergency numbers', 'Colour of the curtains', 'Number of pillows', 'Wi-Fi password only']],
+    ['What is an important safety step around hotel swimming pools with children?', 'Constant adult supervision, even in shallow water', ['Constant adult supervision, even in shallow water', 'Letting children swim alone if they can float', 'Leaving toddlers unattended briefly', 'Removing all safety signs']],
+    ['What should you do before letting children swim in a river, lake or sea?', 'Check for currents, depth and lifeguard presence', ['Check for currents, depth and lifeguard presence', 'Just let them jump in anywhere', 'Only check the water colour', 'Assume all water bodies are equally safe']],
+    ['What is a basic boat travel safety rule for families?', 'Everyone should wear a life jacket', ['Everyone should wear a life jacket', 'Only the boat driver needs a life jacket', 'Life jackets are optional in calm water', 'Children can share one life jacket']],
+    ['What should families do when travelling through a forest or wildlife area?', 'Stay on marked paths and avoid feeding wild animals', ['Stay on marked paths and avoid feeding wild animals', 'Wander off the path to explore', 'Offer food to any animal encountered', 'Approach animals closely for photos']],
+    ['What is the recommended first response to a minor animal bite during travel?', 'Wash the wound with soap and water and seek medical care', ['Wash the wound with soap and water and seek medical care', 'Ignore it if there is no blood', 'Apply mud to the wound', 'Wait several days before treatment']],
+    ['What should you do immediately after a suspected snake bite?', 'Keep the person calm, immobilise the limb and get medical help fast', ['Keep the person calm, immobilise the limb and get medical help fast', 'Cut the wound and suck out the venom', 'Apply ice directly on the bite', 'Let the person walk normally to the hospital']],
+    ['What is an effective way to protect a family from mosquito-borne illness while travelling?', 'Using repellents, nets and covering exposed skin at dusk', ['Using repellents, nets and covering exposed skin at dusk', 'Sleeping with windows wide open at night', 'Avoiding all forms of protection', 'Using scented perfume only']],
+    ['Why is it useful to research local emergency services before visiting a new place?', 'To know the fastest way to reach help if needed', ['To know the fastest way to reach help if needed', 'To plan restaurant visits only', 'To choose souvenir shops', 'It is not necessary at all']],
+    ['What travel document is essential to carry when crossing state or country borders?', 'Valid government-issued ID or passport', ['Valid government-issued ID or passport', 'A grocery list', 'A movie ticket', 'A restaurant receipt']],
+    ['Why is travel insurance useful for family trips?', 'It helps cover medical emergencies and unexpected losses', ['It helps cover medical emergencies and unexpected losses', 'It guarantees good weather', 'It replaces the need for a first aid kit', 'It is only useful for pets']],
+    ['What should you do with valuables like cash and jewellery while travelling?', 'Keep them secured and avoid displaying them openly', ['Keep them secured and avoid displaying them openly', 'Carry everything in an open bag', 'Show them off to attract attention', 'Leave them unattended in public']],
+    ['What is a safe habit when using ATMs while travelling?', 'Cover the keypad and stay alert to surroundings', ['Cover the keypad and stay alert to surroundings', 'Share the PIN with a stranger for help', 'Use ATMs in dark, isolated alleys at night', 'Leave the card in the machine']],
+    ['What should a family do before a long drive at night?', 'Ensure the driver is well rested and headlights work properly', ['Ensure the driver is well rested and headlights work properly', 'Let a tired driver continue without breaks', 'Turn off headlights to save fuel', 'Avoid checking the vehicle beforehand']],
+    ['What is recommended during long car journeys to prevent driver fatigue?', 'Taking regular breaks every couple of hours', ['Taking regular breaks every couple of hours', 'Driving non-stop for as long as possible', 'Skipping meals to save time', 'Avoiding all rest stops']],
+    ['What should be done if a child feels motion sickness during travel?', 'Let them sit facing forward, look at a fixed point and get fresh air', ['Let them sit facing forward, look at a fixed point and get fresh air', 'Let them read a book continuously', 'Keep windows closed with strong odours inside', 'Ignore the symptoms completely']],
+    ['What should families do if severe weather (storm, flood warning) is forecast during travel?', 'Postpone or adjust plans and follow local advisories', ['Postpone or adjust plans and follow local advisories', 'Continue as planned regardless of warnings', 'Travel faster to beat the storm', 'Ignore official weather updates']],
+    ['What is an important step when packing for a family camping trip?', 'Checking the tent, torches and extra batteries beforehand', ['Checking the tent, torches and extra batteries beforehand', 'Skipping any equipment checks', 'Packing only snacks', 'Leaving the first aid kit at home']],
+    ['Why should families avoid pitching tents too close to a riverbank?', 'Risk of sudden flooding or rising water levels', ['Risk of sudden flooding or rising water levels', 'It is against local custom only', 'Rivers are always too noisy', 'There is no real reason']],
+    ['What is a key fire safety habit while camping?', 'Fully extinguishing the campfire before sleeping or leaving', ['Fully extinguishing the campfire before sleeping or leaving', 'Leaving the fire burning overnight', 'Building fires inside the tent', 'Using large flames for warmth']],
+    ['What should be done if a family member has a known food allergy while travelling?', 'Carry their medication and clearly communicate the allergy when ordering food', ['Carry their medication and clearly communicate the allergy when ordering food', 'Assume all food is automatically safe', 'Let them try unfamiliar foods without asking', 'Skip carrying any allergy medicine']],
+    ['What is the correct first step for a minor burn during travel?', 'Cool the area under running water for several minutes', ['Cool the area under running water for several minutes', 'Apply ice directly on the burn', 'Apply butter or oil to the burn', 'Cover it immediately without cooling']],
+    ['What should a family do if someone starts choking while eating?', 'Perform back blows or abdominal thrusts and call for help', ['Perform back blows or abdominal thrusts and call for help', 'Give them more food to swallow it down', 'Wait quietly for it to pass', 'Lay them flat and do nothing']],
+    ['Why is it useful for at least one family member to know basic CPR before travelling?', 'It can help in a cardiac or breathing emergency', ['It can help in a cardiac or breathing emergency', 'It is only needed by doctors', 'It has no real practical use', 'It is required only for pilots']],
+    ['What is a smart habit for staying connected while travelling in remote areas?', 'Sharing live location with a trusted contact when possible', ['Sharing live location with a trusted contact when possible', 'Turning off all communication devices', 'Avoiding contact with anyone during the trip', 'Relying only on strangers for directions']],
+    ['What should be done with a phone or power bank before a long journey?', 'Fully charge it and carry a backup charging cable', ['Fully charge it and carry a backup charging cable', 'Leave it uncharged to save battery health', 'Leave the charger at home', 'It is not necessary to charge it']],
+    ['What should families do before letting children explore a new place alone (if age-appropriate)?', 'Set clear boundaries, a meeting time and check-in method', ['Set clear boundaries, a meeting time and check-in method', 'Give no instructions at all', 'Let them go without any plan', 'Tell them to follow any new friend they meet']],
+    ['What is an important safety rule for children around unfamiliar pets or stray animals while travelling?', 'Do not approach or touch them without adult permission', ['Do not approach or touch them without adult permission', 'Always pet and feed every animal seen', 'Chase animals to see how they react', 'Pick up any animal that looks friendly']],
+    ['What should be checked in a rented vehicle before a family trip?', 'Seatbelts, tyre condition and that all lights work', ['Seatbelts, tyre condition and that all lights work', 'Only the exterior colour', 'Only the fuel type', 'Only the number of cup holders']],
+    ['What is the safest approach when crossing roads with young children while travelling?', 'Hold hands and use marked pedestrian crossings', ['Hold hands and use marked pedestrian crossings', 'Let children cross ahead alone', 'Cross wherever seems fastest', 'Run across busy traffic quickly']],
+    ['What is a good habit to build family travel safety awareness before every trip?', 'A short family safety briefing covering key numbers and plans', ['A short family safety briefing covering key numbers and plans', 'Skipping any discussion and hoping for the best', 'Relying only on luck', 'Assuming children already know everything']],
+    ['What should families always confirm before departing for a multi-day trip?', 'That travel bookings, tickets and check-in times are confirmed', ['That travel bookings, tickets and check-in times are confirmed', 'That everyone has packed extra toys only', 'Nothing, as plans always work out', 'That the weather will definitely be sunny']],
+  ],
+  jute_revival: [
+    ['What is jute often called?', 'The Golden Fibre', ['The Golden Fibre', 'The Silver Crop', 'The Green Metal', 'The White Fibre']],
+    ['Where is jute primarily grown according to the lesson?', 'West Bengal, Assam, and Bangladesh', ['West Bengal, Assam, and Bangladesh', 'Punjab, Gujarat, and Rajasthan', 'Kerala, Goa, and Tamil Nadu', 'Delhi, Haryana, and Punjab']],
+    ['Which country is described as the world\u2019s largest producer of jute?', 'India', ['India', 'Japan', 'Germany', 'Brazil']],
+    ['What percentage of global jute production does India account for according to the lesson?', 'Over 60%', ['Over 60%', 'About 10%', 'About 25%', 'About 40%']],
+    ['How long does jute generally take to grow according to the lesson?', '4\u20136 months', ['4\u20136 months', '1\u20132 years', '2\u20133 months', '5\u20136 years']],
+    ['What type of irrigation does jute generally need according to the lesson?', 'Very little irrigation', ['Very little irrigation', 'Daily heavy irrigation', 'Only underground irrigation', 'No rainfall at all']],
+    ['What is an important environmental property of jute?', 'It is fully biodegradable', ['It is fully biodegradable', 'It is made from petroleum', 'It never decomposes', 'It produces plastic waste']],
+    ['Why is jute described as a carbon-negative crop in the lesson?', 'It absorbs more CO\u2082 than it emits', ['It absorbs more CO\u2082 than it emits', 'It produces more plastic than crops', 'It requires large amounts of fuel', 'It releases only methane']],
+    ['How many tonnes of CO\u2082 does a single hectare of jute absorb according to the lesson?', '15 tonnes', ['15 tonnes', '5 tonnes', '50 tonnes', '100 tonnes']],
+    ['How many tonnes of oxygen does a single hectare of jute release according to the lesson?', '11 tonnes', ['11 tonnes', '2 tonnes', '25 tonnes', '40 tonnes']],
+    ['What has contributed to the decline of the jute industry since the 1980s?', 'Cheap plastics, outdated mills, and poor market linkages', ['Cheap plastics, outdated mills, and poor market linkages', 'Too many modern factories', 'Excessive global demand', 'Lack of rainfall everywhere']],
+    ['What is one major problem faced by jute farmers?', 'Low farmgate prices', ['Low farmgate prices', 'Too many export orders', 'Very high machinery wages', 'Excessive foreign investment']],
+    ['What replaced many jute bags in markets?', 'Cheap plastic', ['Cheap plastic', 'Cotton cloth', 'Paper books', 'Wooden boxes']],
+    ['What problem is caused by erratic government procurement?', 'Unpredictable demand signals', ['Unpredictable demand signals', 'Too much rainfall', 'Higher oxygen levels', 'Faster fibre growth']],
+    ['At what stage are jute stalks harvested according to the lesson?', 'Flowering stage', ['Flowering stage', 'Seed storage stage', 'After five years', 'Immediately after planting']],
+    ['What is retting in jute processing?', 'Submerging bundles in slow water to loosen the fibres', ['Submerging bundles in slow water to loosen the fibres', 'Burning the stalks', 'Freezing the fibres', 'Painting the plants']],
+    ['How long does traditional retting take according to the lesson?', '15\u201330 days', ['15\u201330 days', '1\u20132 hours', '3\u20134 months', '2 years']],
+    ['What happens after jute fibres are stripped from the stalks?', 'They are washed and sun-dried', ['They are washed and sun-dried', 'They are buried underground', 'They are burned immediately', 'They are frozen']],
+    ['How long are jute fibres sun-dried according to the lesson?', '2\u20133 days', ['2\u20133 days', '10\u201315 days', '1 month', '6 months']],
+    ['What can dried jute fibres be spun into?', 'Yarn', ['Yarn', 'Plastic pellets', 'Metal wire', 'Glass sheets']],
+    ['Which product can be made by weaving jute yarn?', 'Hessian cloth', ['Hessian cloth', 'Steel plates', 'Glass bottles', 'Plastic pipes']],
+    ['What can modern value-added processing create from jute?', 'Premium, export-ready products', ['Premium, export-ready products', 'Only raw plants', 'Only fuel', 'Only plastic materials']],
+    ['What does bio-retting use to replace traditional water-retting?', 'Enzymes', ['Enzymes', 'Petroleum', 'Plastic beads', 'Metal powder']],
+    ['What is one suggested jute product for school students?', 'School bag', ['School bag', 'Plastic bottle', 'Steel suitcase', 'Glass box']],
+    ['What type of jute product can replace plastic stationery cases?', 'Jute-board pencil box', ['Jute-board pencil box', 'Metal bucket', 'Glass container', 'Plastic folder']],
+    ['What reusable jute product is suggested for school lunch programmes?', 'Mid-Day Meal Mat', ['Mid-Day Meal Mat', 'Plastic tray', 'Metal plate cover', 'Glass mat']],
+    ['Which jute product can be used for borrowing library books?', 'Library Carry Bag', ['Library Carry Bag', 'Plastic suitcase', 'Steel box', 'Paper envelope only']],
+    ['Which jute product can replace single-use plastic shopping bags?', 'Jute shopping bag', ['Jute shopping bag', 'Plastic wrapper', 'Foam box', 'Glass packet']],
+    ['Which home product can be made from jute-cotton upholstery fabric?', 'Sofa cover', ['Sofa cover', 'Television screen', 'Cooking gas cylinder', 'Metal door']],
+    ['What jute product can be used as a foldable storage solution?', 'Storage organiser', ['Storage organiser', 'Steel bridge', 'Glass shelf', 'Plastic pipe']],
+    ['Which jute product is suggested for hospitals to collect and transport linen?', 'Reusable laundry bags', ['Reusable laundry bags', 'Plastic bottles', 'Metal drums', 'Glass boxes']],
+    ['What jute-based product is suggested for railway parcel packaging?', 'Eco-friendly jute sacking', ['Eco-friendly jute sacking', 'Plastic film only', 'Glass wrapping', 'Metal sheets']],
+    ['Which jute product is suggested for government office files?', 'Jute-board file cover', ['Jute-board file cover', 'Plastic folder only', 'Glass folder', 'Metal envelope']],
+    ['Which traditional art form is mentioned as a possible fusion with jute?', 'Kantha', ['Kantha', 'Kathak', 'Bharatanatyam', 'Madhubani only']],
+    ['Which agricultural jute product can help control soil erosion?', 'Erosion control mat', ['Erosion control mat', 'Plastic toy', 'Metal sheet', 'Glass cover']],
+    ['What type of jute bag can help store seeds while allowing breathability?', 'Seed storage bag', ['Seed storage bag', 'Plastic bottle', 'Metal box', 'Glass jar only']],
+    ['Which modern jute product can protect a laptop?', 'Padded jute-felt laptop sleeve', ['Padded jute-felt laptop sleeve', 'Steel cover', 'Glass sheet', 'Plastic bucket']],
+    ['What can jute fibre be used for in offices, studios, and classrooms?', 'Acoustic panels', ['Acoustic panels', 'Fuel tanks', 'Water pipes', 'Metal doors']],
+    ['How many times can a jute bag be reused according to the comparison table?', '200+ times', ['200+ times', '1\u20133 times', '10 times', '20 times']],
+    ['How long does a jute bag take to decompose according to the comparison table?', '1\u20132 years', ['1\u20132 years', '500\u20131000 years', '50 years', '100 years']],
+    ['What is plastic primarily made from according to the comparison table?', 'Petroleum', ['Petroleum', 'Jute fibre', 'Cotton', 'Bamboo']],
+    ['What is the carbon characteristic of jute in the comparison table?', 'Carbon negative', ['Carbon negative', 'Very high CO\u2082 emitter', 'Non-renewable', 'Petroleum-based']],
+    ['What is one major environmental problem associated with plastic in the lesson?', 'It breaks into toxic microplastics', ['It breaks into toxic microplastics', 'It improves soil quality', 'It produces oxygen', 'It decomposes within weeks']],
+    ['What is the first step in the proposed Jute Revival Roadmap?', 'Modernise mills', ['Modernise mills', 'Close all farms', 'Stop exports', 'Replace jute with plastic']],
+    ['What is proposed to give jute farmers better and more stable returns?', 'Fair Minimum Support Price', ['Fair Minimum Support Price', 'Higher plastic prices', 'Import restrictions on food', 'Free airline tickets']],
+    ['What is the proposed purpose of jute design institutes?', 'To create fashionable and globally marketable products', ['To create fashionable and globally marketable products', 'To reduce jute cultivation', 'To manufacture plastic bags', 'To stop exports']],
+    ['What role can rural women\u2019s Self-Help Groups play in jute revival?', 'Manufacture diversified jute products', ['Manufacture diversified jute products', 'Replace all farmers', 'Stop handicraft production', 'Import plastic products']],
+    ['Which platform is suggested for SHGs to supply jute products directly to government departments?', 'Government e-Marketplace (GeM)', ['Government e-Marketplace (GeM)', 'A railway ticket counter', 'A weather website', 'A television channel']],
+    ['Which type of market can create direct-to-consumer channels for SHG jute products without middlemen?', 'Rural Haat and Jute Mela networks', ['Rural Haat and Jute Mela networks', 'Only airports', 'Only banks', 'Only petrol pumps']],
+    ['What is the main message of the Jute Revival initiative?', 'Jute can support environmental protection, employment, exports, and rural development', ['Jute can support environmental protection, employment, exports, and rural development', 'Jute has no future', 'Plastic should replace all natural fibres', 'Jute should only be used as raw plants']],
+  ],
+  locust_facts: [
+    ['What is the title of the locust lesson?', 'The Sky That Eats', ['The Sky That Eats', 'The Flying Farmer', 'The Green Storm', 'The Desert Bird']],
+    ['What is the main scientific field associated with the lesson?', 'Entomology', ['Entomology', 'Astronomy', 'Geology', 'Oceanography']],
+    ['How many locusts can occur per square kilometre in a dense swarm?', '40\u201380 million', ['40\u201380 million', '1\u20135 million', '10\u201320 thousand', '100\u2013200 thousand']],
+    ['How much food can a locust swarm consume in a single day according to the lesson?', 'The food of about 35,000 people', ['The food of about 35,000 people', 'The food of 500 people', 'The food of 2,000 people', 'The food of 100,000 people']],
+    ['What is the maximum area one swarm can cover according to the lesson?', '460 square kilometres', ['460 square kilometres', '46 square kilometres', '4,600 square kilometres', '60 square kilometres']],
+    ['How far can locusts travel in one day according to the statistics?', '150 km', ['150 km', '15 km', '500 km', '1,500 km']],
+    ['How much food does an individual locust eat daily according to the lesson?', 'About 2 grams', ['About 2 grams', 'About 20 grams', 'About 200 grams', 'About 0.2 grams']],
+    ['How many countries have historically been affected by locusts according to the lesson?', '60+ countries', ['60+ countries', '10 countries', '20 countries', '30 countries']],
+    ['Are locusts a separate species from common grasshoppers?', 'No, they are the same insects', ['No, they are the same insects', 'Yes, always', 'Only in Africa', 'Only during winter']],
+    ['What are the two phases of locust behaviour?', 'Solitary and gregarious', ['Solitary and gregarious', 'Aquatic and terrestrial', 'Day and night', 'Young and old']],
+    ['What can crowded conditions trigger in locusts?', 'A transformation into the gregarious phase', ['A transformation into the gregarious phase', 'Permanent hibernation', 'Loss of appetite', 'Migration underground']],
+    ['Which neurotransmitter is associated with triggering the swarm transformation?', 'Serotonin', ['Serotonin', 'Insulin', 'Adrenaline', 'Melatonin']],
+    ['What happens to serotonin when locusts physically contact others?', 'It surges in the nervous system', ['It surges in the nervous system', 'It disappears completely', 'It turns into oxygen', 'It stops being produced']],
+    ['How fast can locust swarms often travel with wind currents?', '15\u201320 km/h', ['15\u201320 km/h', '1\u20132 km/h', '50\u201360 km/h', '100 km/h']],
+    ['What helps locust swarms migrate efficiently?', 'Wind currents', ['Wind currents', 'Ocean currents', 'Underground tunnels', 'Railways']],
+    ['Which rainfall-related zone do locusts follow during migration?', 'The Inter-Tropical Convergence Zone', ['The Inter-Tropical Convergence Zone', 'The Arctic Circle', 'The Equator only', 'The Antarctic Zone']],
+    ['What type of vegetation do locusts mainly consume?', 'Green vegetation', ['Green vegetation', 'Only dry wood', 'Only fruits', 'Only roots']],
+    ['Which of these can locusts eat?', 'Grasses, leaves, bark, flowers, seeds and crops', ['Grasses, leaves, bark, flowers, seeds and crops', 'Only rice', 'Only wheat', 'Only tree bark']],
+    ['What can a swarm do to a field within minutes?', 'Strip plants down to bare stalks', ['Strip plants down to bare stalks', 'Increase crop production', 'Water the field', 'Fertilize every plant immediately']],
+    ['How many eggs can a female locust lay per pod according to the lesson?', '80\u2013160 eggs', ['80\u2013160 eggs', '5\u201310 eggs', '20\u201330 eggs', '500\u2013600 eggs']],
+    ['How many times can a female lay eggs during her short life according to the lesson?', 'Up to 3 times', ['Up to 3 times', 'Once only', '10 times', '20 times']],
+    ['How much can a locust population multiply in three months under ideal conditions?', '20-fold', ['20-fold', '2-fold', '5-fold', '100-fold']],
+    ['What colour are solitary-phase locusts generally?', 'Green or brown', ['Green or brown', 'Bright red', 'Blue and white', 'Purple and black']],
+    ['What colour do gregarious-phase locusts become?', 'Vivid yellow and black', ['Vivid yellow and black', 'Blue and green', 'White and red', 'Purple and orange']],
+    ['What major agricultural problem do locusts cause?', 'They destroy crops', ['They destroy crops', 'They increase rainfall', 'They improve harvests', 'They pollinate every crop']],
+    ['Which crops are mentioned as being vulnerable to locusts?', 'Rice, wheat, maize, sorghum, millet and pulses', ['Rice, wheat, maize, sorghum, millet and pulses', 'Only tea and coffee', 'Only cotton', 'Only sugarcane']],
+    ['What happened during the 2019\u20132021 East Africa outbreak?', 'Food supplies for over 25 million people were threatened', ['Food supplies for over 25 million people were threatened', 'Only 100 people were affected', 'No crops were damaged', 'Only forests were affected']],
+    ['Why can locust outbreaks create famine risk?', 'They can destroy food crops and pasture', ['They can destroy food crops and pasture', 'They increase food production', 'They stop rainfall', 'They reduce soil temperature']],
+    ['Why are locust swarms considered a cross-border crisis?', 'Swarms do not respect national borders', ['Swarms do not respect national borders', 'Locusts cannot fly', 'Every country has identical crops', 'They travel only by road']],
+    ['Which historic locust swarm occurred in 1874 in North America?', 'The Rocky Mountain Locust Swarm', ['The Rocky Mountain Locust Swarm', 'The Great Indian Locust Plague', 'The Rajasthan Swarm', 'The African Desert Outbreak']],
+    ['How large was the 1874 Rocky Mountain Locust swarm area according to the lesson?', '510,000 square miles', ['510,000 square miles', '51,000 square miles', '5,100 square miles', '1 million square miles']],
+    ['Approximately how many insects were estimated in the 1874 Rocky Mountain Locust swarm?', '12.5 trillion', ['12.5 trillion', '12.5 billion', '125 million', '1.25 million']],
+    ['In which year did the Great Locust Plague of Palestine occur?', '1915', ['1915', '1874', '1945', '1993']],
+    ['Which regions were affected by the Great Locust Plague of Palestine?', 'Palestine, Syria and Lebanon', ['Palestine, Syria and Lebanon', 'India, Nepal and Bhutan', 'China, Japan and Korea', 'Egypt, Sudan and Kenya']],
+    ['When did the major African Desert Locust outbreak described in the lesson occur?', '1986\u201389', ['1986\u201389', '1970\u201373', '1999\u20132001', '2005\u201307']],
+    ['How much land was threatened during the 1986\u201389 African outbreak?', 'Over 2.5 billion hectares', ['Over 2.5 billion hectares', '25 million hectares', '250 million hectares', '500 million hectares']],
+    ['When did the 21st century\u2019s worst locust outbreak described in the lesson occur?', '2019\u201321', ['2019\u201321', '2000\u201302', '2010\u201312', '2022\u201324']],
+    ['Which South Asian country declared a national emergency during the 2020 crisis?', 'Pakistan', ['Pakistan', 'Nepal', 'Bangladesh', 'Sri Lanka']],
+    ['Which Indian states were among those affected by the 2020 locust invasion?', 'Rajasthan, Madhya Pradesh, Uttar Pradesh and Gujarat', ['Rajasthan, Madhya Pradesh, Uttar Pradesh and Gujarat', 'Kerala, Goa, Assam and Sikkim', 'Punjab, Kerala and Tamil Nadu only', 'West Bengal and Odisha only']],
+    ['What technology did India use for the first time in locust control during the 2020 crisis according to the lesson?', 'Drones', ['Drones', 'Submarines', 'Satellites only', 'Robots underground']],
+    ['What is one way climate change can contribute to locust outbreaks?', 'Warmer oceans can contribute to more intense cyclones', ['Warmer oceans can contribute to more intense cyclones', 'It permanently freezes breeding grounds', 'It removes all rainfall', 'It prevents vegetation growth everywhere']],
+    ['How can cyclone-driven rainfall help locust breeding?', 'It can create temporary vegetation and moist soil', ['It can create temporary vegetation and moist soil', 'It destroys every breeding area', 'It makes deserts permanently dry', 'It removes all plants']],
+    ['What can happen when abundant food and moist soil are available?', 'Locust populations can multiply rapidly', ['Locust populations can multiply rapidly', 'Locusts stop reproducing', 'Locusts become aquatic', 'Locusts disappear immediately']],
+    ['What technology can predict locust breeding hotspots weeks in advance?', 'Satellite AI monitoring', ['Satellite AI monitoring', 'Traditional clocks', 'Radio music', 'Paper maps only']],
+    ['What can autonomous drone fleets do during locust control?', 'Apply biopesticides with pinpoint accuracy', ['Apply biopesticides with pinpoint accuracy', 'Harvest all crops', 'Create rainfall', 'Transport livestock']],
+    ['What is Metarhizium acridum also known as?', 'Green Muscle', ['Green Muscle', 'Blue Shield', 'Golden Fungus', 'Desert Power']],
+    ['What is eLocust3m used for?', 'Reporting locust sightings in real time', ['Reporting locust sightings in real time', 'Selling agricultural land', 'Measuring ocean depth', 'Predicting earthquakes']],
+    ['Which animals are important predators of locusts?', 'Birds, snakes, lizards, frogs and spiders', ['Birds, snakes, lizards, frogs and spiders', 'Only elephants', 'Only cattle', 'Only fish']],
+    ['In how many countries are locusts consumed according to the lesson?', 'Over 30 countries', ['Over 30 countries', '3 countries', '10 countries', '100 countries']],
+    ['What percentage of protein can locusts contain by dry weight according to the lesson?', '60\u201375%', ['60\u201375%', '5\u201310%', '20\u201330%', '90\u2013100%']],
+  ],
+mobile_smart_guide : [
+
+  ['What is the IMEI number used for?',
+   'Uniquely identifies your phone globally',
+   ['Controls screen brightness','Uniquely identifies your phone globally','Manages app permissions','Sets network speed']],
+
+  ['What does dialing *#06# show on a mobile phone?',
+   'IMEI number',
+   ['Battery health','IMEI number','Network speed','RAM usage']],
+
+  ['What does SAR value measure?',
+   'RF radiation absorbed by the body',
+   ['Screen refresh rate','Battery capacity','RF radiation absorbed by the body','SIM activation rate']],
+
+  ['Which Indian portal can be used to check a phone’s IMEI status?',
+   'CEIR',
+   ['TRAI','CEIR','Google Play','BIS India']],
+
+  ['Why can buying the latest flagship phone immediately be less economical?',
+   'Phone prices and technology change quickly',
+   ['It has no warranty','Phone prices and technology change quickly','It cannot use 5G','Its camera is always poor']],
+
+  ['How can you check whether a used phone may have been stolen?',
+   'Check its IMEI through CEIR',
+   ['Check its colour','Check its IMEI through CEIR','Count the installed apps','Check the charger']],
+
+  ['What should you suspect if the IMEI on the phone does not match the box?',
+   'Possible fraud or tampering',
+   ['Normal phone behaviour','Possible fraud or tampering','Low battery','A software update']],
+
+  ['Why should a used phone be factory reset before use?',
+   'To remove previous owner data and accounts',
+   ['To increase screen brightness','To remove previous owner data and accounts','To increase network speed','To improve camera quality']],
+
+  ['What can a battery health check help you understand?',
+   'Whether the battery may need replacement',
+   ['Whether the camera is genuine','Whether the battery may need replacement','Whether the IMEI is valid','Whether Wi-Fi is safe']],
+
+  ['A used phone is offered at an extremely low price. What should you do?',
+   'Treat it as a possible warning sign',
+   ['Buy immediately','Treat it as a possible warning sign','Ignore the IMEI','Give the seller your OTP']],
+
+  ['Which is a strong security approach for a smartphone?',
+   'Strong password or PIN supported by biometrics',
+   ['No lock','Simple pattern','Strong password or PIN supported by biometrics','Only a four-digit PIN']],
+
+  ['What is mobile insurance mainly useful for?',
+   'Covering theft or accidental damage',
+   ['Increasing internet speed','Covering theft or accidental damage','Increasing battery capacity','Reducing screen brightness']],
+
+  ['What does two-factor authentication provide?',
+   'An additional identity verification step',
+   ['Two SIM cards','An additional identity verification step','Two phone numbers','Two batteries']],
+
+  ['You receive an SMS asking you to click a bank link because your account is blocked. What should you do?',
+   'Ignore the link and contact the bank through an official channel',
+   ['Click immediately','Forward it','Ignore the link and contact the bank through an official channel','Reply with your PIN']],
+
+  ['What can Find My Device help you do?',
+   'Locate, lock or erase a lost phone',
+   ['Increase storage','Locate, lock or erase a lost phone','Improve camera quality','Increase Wi-Fi speed']],
+
+  ['Before selling a phone, what should you do?',
+   'Sign out of accounts and then factory reset',
+   ['Delete only photos','Sign out of accounts and then factory reset','Change wallpaper','Remove the charger']],
+
+  ['What problem can occur if an iPhone is sold without signing out of iCloud?',
+   'Activation Lock',
+   ['Lower speaker volume','Activation Lock','Slow Wi-Fi','Battery charging failure']],
+
+  ['What information can remain after simply deleting an app?',
+   'Cached files, credentials or other stored data',
+   ['Only the icon','Cached files, credentials or other stored data','Nothing under any circumstances','Only battery settings']],
+
+  ['What is the safest general order before selling a phone?',
+   'Sign out, remove SIM or SD card, factory reset, then sell',
+   ['Sell first, reset later','Sign out, remove SIM or SD card, factory reset, then sell','Factory reset, sign in, then sell','Remove charger, then sell']],
+
+  ['What SAR limit does the guide state for India?',
+   '1.6 W/kg',
+   ['0.8 W/kg','1.6 W/kg','2.5 W/kg','3.2 W/kg']],
+
+  ['Which habit can reduce RF exposure from a phone?',
+   'Using a wired earphone',
+   ['Holding the phone closer to your head','Using a wired earphone','Keeping the phone under your pillow','Using maximum signal power']],
+
+  ['What may happen when a phone has a very weak signal?',
+   'It may increase transmission power',
+   ['It always uses less transmitter power','It may increase transmission power','It switches off permanently','It removes the SIM']],
+
+  ['Why should you avoid poor-quality or counterfeit chargers?',
+   'They can create a serious fire or safety risk',
+   ['They make the screen smaller','They can create a serious fire or safety risk','They increase storage','They disable Bluetooth']],
+
+  ['What should you do first when your phone is stolen?',
+   'Use Find My Device to lock or erase it',
+   ['Buy another phone immediately','Use Find My Device to lock or erase it','Post its photo online','Delete your social media account']],
+
+  ['How can a stolen phone’s IMEI be blocked in India?',
+   'Through CEIR after filing an FIR',
+   ['Through a gaming app','Through CEIR after filing an FIR','Through Instagram','Through a Wi-Fi router']],
+
+  ['You find someone else’s phone on the road. What should you do?',
+   'Hand it to the nearest police station',
+   ['Keep it','Try to unlock it','Hand it to the nearest police station','Sell it']],
+
+  ['Which accounts should be secured after a phone is stolen?',
+   'Email, banking, social media and UPI accounts',
+   ['Only Instagram','Email, banking, social media and UPI accounts','Only the weather app','Only the camera']],
+
+  ['Which information should you record before your phone is lost?',
+   'IMEI, model, purchase receipt and insurer details',
+   ['Only wallpaper','IMEI, model, purchase receipt and insurer details','Only app names','Only screen size']],
+
+  ['What is a major risk of installing apps from unknown sources?',
+   'Malware, spyware or ransomware',
+   ['Only slower animations','Malware, spyware or ransomware','Better battery life','Lower screen brightness']],
+
+  ['A flashlight app requests SMS, contacts and microphone permissions. What should you do?',
+   'Deny suspicious permissions or uninstall it',
+   ['Allow everything','Deny suspicious permissions or uninstall it','Give it banking access','Share your OTP']],
+
+  ['You receive an APK through WhatsApp promising a cash prize. What should you do?',
+   'Delete it immediately',
+   ['Install it','Forward it','Delete it immediately','Give it storage permission']],
+
+  ['Which Android setting helps prevent installation of apps from unknown sources?',
+   'Install unknown apps / Unknown sources',
+   ['NFC','Install unknown apps / Unknown sources','Bluetooth','Hotspot']],
+
+  ['What can a banking trojan hidden inside an unofficial APK do?',
+   'Steal OTPs and UPI credentials',
+   ['Improve battery life','Steal OTPs and UPI credentials','Increase storage','Repair the screen']],
+
+  ['Why can public Wi-Fi be risky?',
+   'Unencrypted traffic may be intercepted',
+   ['It always has no internet','Unencrypted traffic may be intercepted','It permanently damages phones','It removes apps']],
+
+  ['What is a Man-in-the-Middle attack?',
+   'Secret interception of communication between a device and the internet',
+   ['Physical theft of a phone','Secret interception of communication between a device and the internet','A battery problem','A camera failure']],
+
+  ['What tool can encrypt internet traffic when using public Wi-Fi?',
+   'VPN',
+   ['Airplane mode','VPN','Calculator','Camera']],
+
+  ['Which activity is particularly risky on public Wi-Fi without adequate protection?',
+   'Online banking or UPI transactions',
+   ['Checking the weather','Online banking or UPI transactions','Reading a public article','Watching a normal video']],
+
+  ['What is an Evil Twin Wi-Fi network?',
+   'A fake hotspot designed to resemble a legitimate network',
+   ['A faster official network','A fake hotspot designed to resemble a legitimate network','A Bluetooth device','A phone virus']],
+
+  ['Why can short-form reels be difficult to stop watching?',
+   'Recommendation algorithms provide repeated stimulating content',
+   ['They always require payment','Recommendation algorithms provide repeated stimulating content','They automatically delete themselves','They work only offline']],
+
+  ['What amount of daily short-form video use does the guide associate with heavy users?',
+   '2–4 hours or more',
+   ['Less than 5 minutes','2–4 hours or more','Exactly 10 minutes','Only 30 minutes']],
+
+  ['What is doomscrolling?',
+   'Compulsively consuming negative or distressing online content',
+   ['Watching only educational videos','Compulsively consuming negative or distressing online content','Deleting social media','Using a phone without Wi-Fi']],
+
+  ['Which is a healthy boundary for reels and social media?',
+   'A daily app timer and keeping the phone away at bedtime',
+   ['Unlimited use','A daily app timer and keeping the phone away at bedtime','Checking immediately after waking','Using it throughout the night']],
+
+  ['What ability can excessive short-form content interfere with?',
+   'Deep focus and sustained concentration',
+   ['Cooking','Deep focus and sustained concentration','Walking','Hearing']],
+
+  ['Why can using social media every time you feel bored become a problem?',
+   'It can create a dependency loop',
+   ['It increases boredom tolerance','It can create a dependency loop','It improves concentration','It prevents phone use']],
+
+  ['What is the purpose of grayscale mode?',
+   'Make the screen less visually stimulating',
+   ['Improve camera resolution','Make the screen less visually stimulating','Increase storage','Improve mobile signal']],
+
+  ['What should be the first step when trying to reduce reels usage?',
+   'Check your actual screen-time report',
+   ['Buy another phone','Check your actual screen-time report','Delete every account immediately','Stop using the internet forever']],
+
+  ['Which is a warning sign of excessive phone use?',
+   'Feeling restless or uncomfortable when the phone is unavailable',
+   ['Using the phone only when necessary','Feeling restless or uncomfortable when the phone is unavailable','Reading a book','Playing outdoor sports']],
+
+  ['Which behaviour can indicate phone addiction?',
+   'Compulsive phone checking without a real reason',
+   ['Compulsive phone checking without a real reason','Using the phone for an important call','Turning off notifications','Leaving the phone outside the bedroom']],
+
+  ['Which habit can help reduce phone use before sleeping?',
+   'Keep the phone away at least one hour before bed',
+   ['Use the phone until falling asleep','Keep the phone away at least one hour before bed','Increase notifications','Watch reels in bed']],
+
+  ['What can temporarily switching to a basic keypad phone help with?',
+   'Reduce social media and gaming habits',
+   ['Increase social media use','Reduce social media and gaming habits','Improve 5G speed','Increase camera quality']]
+],
+green_gold_farming : [
+
+  ['Which four activities are highlighted in the Green Gold Farming guide?',
+   'Mushroom, Strawberry, Dragon Fruit and Ornamental Fish',
+   ['Mushroom, Strawberry, Dragon Fruit and Ornamental Fish','Rice, Wheat, Maize and Cotton','Tea, Coffee, Rubber and Cocoa','Potato, Onion, Tomato and Garlic']],
+
+  ['What is one major advantage of these four farming activities?',
+   'They can be started on relatively small areas of land',
+   ['They require thousands of acres','They can be started on relatively small areas of land','They require ocean water','They can only be done in cities']],
+
+  ['Which crop is described as suitable for growing in a small room or shed?',
+   'Mushroom',
+   ['Strawberry','Mushroom','Dragon Fruit','Ornamental Fish']],
+
+  ['How many harvests can Oyster Mushroom produce from one substrate bag according to the guide?',
+   '3–4 harvests',
+   ['1 harvest','3–4 harvests','8–10 harvests','20 harvests']],
+
+  ['Which material can be used as mushroom substrate?',
+   'Rice straw',
+   ['Plastic waste','Rice straw','Metal sheets','Glass fibre']],
+
+  ['Which mushrooms are mentioned as medicinal varieties?',
+   'Shiitake and Reishi',
+   ['Oyster and Button','Shiitake and Reishi','Milky and Button only','Guppy and Betta']],
+
+  ['What is one advantage of Strawberry farming?',
+   'It is a high-value cold-season crop',
+   ['It requires desert conditions','It is a high-value cold-season crop','It needs no water at all','It grows only underwater']],
+
+  ['Which cultivation method can extend the strawberry growing season?',
+   'Poly-tunnel cultivation',
+   ['Flood irrigation','Poly-tunnel cultivation','Deep-sea farming','Open storage']],
+
+  ['What type of soil is recommended for strawberries?',
+   'Well-drained sandy loam',
+   ['Heavy clay only','Well-drained sandy loam','Waterlogged soil','Pure gravel']],
+
+  ['What is the optimal temperature range mentioned for strawberry cultivation?',
+   '15–26°C',
+   ['5–10°C','15–26°C','30–40°C','45–50°C']],
+
+  ['Which irrigation method can give strawberries better yield than flood irrigation?',
+   'Drip irrigation with fertigation',
+   ['Flood irrigation only','Drip irrigation with fertigation','No irrigation','Ocean irrigation']],
+
+  ['When are strawberries generally harvested for distant markets according to the guide?',
+   'At about 70–80% red',
+   ['When completely green','At about 70–80% red','Only after they dry','When they become black']],
+
+  ['Why are strawberries pre-cooled after harvest?',
+   'To retain quality',
+   ['To increase plant height','To retain quality','To make them grow again','To remove all seeds']],
+
+  ['What type of crop is Dragon Fruit?',
+   'A drought-tolerant cactus crop',
+   ['A water-loving aquatic crop','A drought-tolerant cactus crop','A cereal crop','A root vegetable']],
+
+  ['How much less water does Dragon Fruit require according to the guide?',
+   'About 90% less water than conventional fruits',
+   ['About 10% less water','About 30% less water','About 90% less water than conventional fruits','It requires more water than conventional fruits']],
+
+  ['How long can a Dragon Fruit plant remain productive according to the guide?',
+   '20+ years',
+   ['2 years','5 years','10 years','20+ years']],
+
+  ['What support structure is recommended for Dragon Fruit plants?',
+   'A concrete pillar',
+   ['A wooden boat','A concrete pillar','A glass tank','A fishing net']],
+
+  ['What temperature range is suitable for Dragon Fruit cultivation?',
+   '20–38°C',
+   ['0–5°C','10–15°C','20–38°C','45–50°C']],
+
+['How often is drip irrigation suggested for established Dragon Fruit plants?',
+ 'About twice per week',
+ ['Every hour','About twice per week','Once every six months','Only once during the plants lifetime']],
+  ['When can Dragon Fruit plants produce their first fruit according to the guide?',
+   '18–24 months after planting',
+   ['1 month','18–24 months after planting','5 years','10 years']],
+
+  ['What can early-morning hand pollination improve in Dragon Fruit?',
+   'Fruit set',
+   ['Leaf colour only','Fruit set','Root length only','Soil temperature']],
+
+  ['Which Dragon Fruit variety has red skin and red flesh?',
+   'Hylocereus costaricensis',
+   ['Hylocereus undatus','Hylocereus costaricensis','Selenicereus megalanthus','Musa acuminata']],
+
+  ['Which Dragon Fruit variety is described as having yellow skin and white flesh?',
+   'Selenicereus megalanthus',
+   ['Hylocereus undatus','Hylocereus costaricensis','Selenicereus megalanthus','Reishi']],
+
+  ['What is one possible value-added Dragon Fruit product?',
+   'Frozen pulp',
+   ['Frozen pulp','Steel wire','Cotton cloth','Paper bags']],
+
+  ['What is the approximate annual global ornamental fish trade value mentioned in the guide?',
+   '$350 million+',
+   ['$35 million','$350 million+','$3.5 million','$3.5 billion']],
+
+  ['How many ornamental fish species are being bred commercially worldwide according to the guide?',
+   '150+ species',
+   ['15 species','50 species','150+ species','1,500 species']],
+
+  ['Which ornamental fish is suggested as suitable for beginners?',
+   'Guppy',
+   ['Arowana','Guppy','Koi only','Discus only']],
+
+  ['Which fish is known as the Siamese Fighter?',
+   'Betta',
+   ['Guppy','Betta','Koi','Goldfish']],
+
+  ['How many tanks are suggested for starting a basic ornamental fish unit?',
+   '5–10 tanks',
+   ['1 tank only','5–10 tanks','50–100 tanks','500 tanks']],
+
+  ['What equipment is important for ornamental fish tanks?',
+   'Air pumps and sponge filters',
+   ['Only heaters','Air pumps and sponge filters','Only sunlight','Only plastic buckets']],
+
+  ['What type of brood stock should a beginner purchase?',
+   'Healthy parent fish from trusted breeders',
+   ['Random fish from roadside sellers','Healthy parent fish from trusted breeders','Only wild fish','Dead fish']],
+
+  ['What food can be used to condition ornamental fish breeding pairs?',
+   'High-protein live food',
+   ['Only grass','High-protein live food','Sand','Dry leaves']],
+
+  ['Why are parents removed after spawning?',
+   'To protect the fry',
+   ['To increase water temperature','To protect the fry','To reduce tank size','To stop feeding']],
+
+  ['How often should 20–30% water changes be made during the grow-out phase?',
+   'Regularly',
+   ['Never','Regularly','Only once a year','Only before export']],
+
+  ['Which location advantage is especially useful for a serious ornamental fish business?',
+   'Easy access to an international airport',
+   ['Distance from all roads','Easy access to an international airport','No access to water','A location without electricity']],
+
+  ['What is the income range given for a Level 1 Home Producer?',
+   '$35–100 per month',
+   ['$35–100 per month','$450–1,800 per month','$6,000–60,000 per year','$100,000 per month']],
+
+  ['What is the main idea of Level 2 Cooperative or Group Farming?',
+   'Members pool resources and share facilities',
+   ['Everyone works completely alone','Members pool resources and share facilities','Only export fish','Avoid all training']],
+
+  ['How many members are suggested for a cooperative or group farmer level?',
+   '10–15 members',
+   ['2–3 members','10–15 members','50–100 members','500 members']],
+
+  ['What is one example of a Level 3 commercial farming activity?',
+   'A mushroom spawn production unit',
+   ['A home kitchen only','A mushroom spawn production unit','A fishing boat','A retail clothing shop']],
+
+  ['What is the approximate annual income range mentioned for a Level 4 Export Entrepreneur?',
+   '$6,000–60,000+ per year',
+   ['$600–1,000 per year','$6,000–60,000+ per year','$100–500 per year','$1 million per month']],
+
+  ['Which Indian scheme is mentioned for micro food-processing enterprises?',
+   'PMFME',
+   ['PMFME','CAP','Pronaf','BAAC']],
+
+  ['What type of support does MIDH provide according to the guide?',
+   'Support for planting material, poly-houses and drip irrigation',
+   ['Only fish exports','Support for planting material, poly-houses and drip irrigation','Only international flights','Only bank accounts']],
+
+  ['Which organisation is mentioned in the United States for value-added farm products?',
+   'USDA Value-Added Producer Grants',
+   ['PMFME','USDA Value-Added Producer Grants','Pronaf','BAAC']],
+
+  ['Where can farmers often receive practical mushroom, horticulture and fish-farming training?',
+   'Agricultural extension offices',
+   ['Airports only','Agricultural extension offices','Shopping malls','Banks only']],
+
+  ['Which country is listed as a major buyer of dried and medicinal mushrooms?',
+   'Japan',
+   ['Japan','Brazil','Kenya','Canada']],
+
+  ['Which market is highlighted for fresh and frozen Dragon Fruit?',
+   'UAE',
+   ['UAE','Norway','Canada','South Africa']],
+
+  ['Which country accounts for 35% of ornamental fish exports in the guide?',
+   'USA',
+   ['USA','Japan','Singapore','Germany']],
+
+  ['Which certificate is generally required for fresh-produce exports?',
+   'Phytosanitary Certificate',
+   ['Driving licence','Phytosanitary Certificate','School certificate','Tourist visa']],
+
+  ['What is one important document for packaged food exports?',
+   'Food safety licence',
+   ['Food safety licence','Library card','Driving licence','Student ID only']],
+
+  ['What should a new farmer do first in the 12-month Green Gold roadmap?',
+   'Research and choose the crop',
+   ['Start exporting immediately','Research and choose the crop','Buy an aeroplane','Open ten factories']],
+
+  ['Why should farmers use certified planting material, spawn or brood stock?',
+   'Quality strongly affects production success',
+   ['It always costs nothing','Quality strongly affects production success','It removes the need for training','It guarantees international buyers']],
+
+  ['What is the recommended first approach to selling during the early production stage?',
+   'Sell locally first',
+   ['Export everything immediately','Sell locally first','Destroy unsold products','Stop production']],
+
+  ['What is the main purpose of value addition and branding?',
+   'To create higher-value products and improve marketability',
+   ['To reduce product quality','To create higher-value products and improve marketability','To stop packaging','To eliminate customers']],
+
+  ['What is the main message of the Green Gold Farming guide?',
+   'Small-scale farming can become a sustainable livelihood and export opportunity',
+   ['Only large farms can earn income','Small-scale farming can become a sustainable livelihood and export opportunity','Farming has no business potential','Exports are impossible for small farmers']]
+],
+exam_result_not_destiny : [
+
+  ['What is the main message of the guide?',
+   'An exam result is a starting point, not a final verdict',
+   ['An exam result is a starting point, not a final verdict','Marks decide the whole life','Only toppers can succeed','Failure means the end of life']],
+
+  ['What can an examination measure?',
+   'Certain knowledge and skills at a specific moment',
+   ['A persons complete future','Certain knowledge and skills at a specific moment','A persons character','A persons kindness']],
+
+  ['Why should an exam score not be confused with a persons worth?',
+   'An exam measures only specific skills under specific conditions',
+   ['An exam measures everything about a person','An exam measures only specific skills under specific conditions','Exams have no value at all','Marks are always wrong']],
+
+  ['What are success and failure described as?',
+   'Ordinary parts of life',
+   ['Rare events','Ordinary parts of life','Signs of intelligence only','Reasons to stop learning']],
+
+  ['Why can a student who has only experienced success struggle with failure?',
+   'They may not have practised recovering from setbacks',
+   ['They never studied','They may not have practised recovering from setbacks','They always dislike school','They have too many hobbies']],
+
+  ['What is resilience?',
+   'The ability to recover and continue after difficulty',
+   ['The ability to avoid every problem','The ability to recover and continue after difficulty','The ability to get perfect marks','The ability to compete with everyone']],
+
+  ['Which career path can be developed through ITI and polytechnic education?',
+   'Vocational careers',
+   ['Only medical careers','Vocational careers','Only literary careers','Only sports careers']],
+
+  ['What does skill based training focus on?',
+   'Practical and specialised skills',
+   ['Only examination marks','Practical and specialised skills','Only memorisation','Only school attendance']],
+
+  ['Which activity is an example of entrepreneurship?',
+   'Building a business from an idea',
+   ['Avoiding all responsibility','Building a business from an idea','Only preparing for exams','Only memorising textbooks']],
+
+  ['Which areas are included in Arts, Music and Sports?',
+   'Creative and performance based fields',
+   ['Only mathematics','Creative and performance based fields','Only engineering','Only agriculture']],
+
+  ['What is important for Technology and Innovation?',
+   'Curiosity and continuous learning',
+   ['Only certificates','Curiosity and continuous learning','Avoiding new ideas','Only examination marks']],
+
+  ['What opportunity is mentioned under Agriculture and Rural Enterprise?',
+   'Modern farming and rural supply chains',
+   ['Only office work','Modern farming and rural supply chains','Only sports training','Only music production']],
+
+  ['Which quality can shape a persons future more than one examination result?',
+   'Character and perseverance',
+   ['Only marks','Character and perseverance','Only school rank','Only examination timing']],
+
+  ['What can exams measure about knowledge?',
+   'Knowledge of a subject on a given day',
+   ['A persons lifelong wisdom','Knowledge of a subject on a given day','A persons kindness','A persons leadership potential']],
+
+  ['Which quality can exams not properly measure?',
+   'Character and integrity',
+   ['Memory and recall','Character and integrity','Written communication','Time management']],
+
+  ['Which ability can exams measure in a structured setting?',
+   'Time management',
+   ['Kindness','Creativity','Time management','Loyalty']],
+
+  ['Which quality is not normally measured by a written examination?',
+   'Empathy',
+   ['Written communication','Ability to follow instructions','Empathy','Memory and recall']],
+
+  ['What does the guide say about an examination and life?',
+   'An examination lasts a few hours while life lasts for decades',
+   ['Both last the same amount of time','An examination lasts a few hours while life lasts for decades','Life lasts only a few hours','Exams are longer than life']],
+
+  ['What does sport teach students about failure?',
+   'Failure can provide feedback for the next attempt',
+   ['Failure should always end participation','Failure can provide feedback for the next attempt','Winning is the only important thing','Training is unnecessary']],
+
+  ['What is required to reach a World Cup or win an Olympic medal?',
+   'Years of planning, training and discipline',
+   ['One lucky day','Years of planning, training and discipline','Only natural talent','Only high marks']],
+
+  ['What is the message behind repeated athletic training?',
+   'Success comes from many small efforts over time',
+   ['Success happens instantly','Success comes from many small efforts over time','Failure should be avoided','Talent is everything']],
+
+  ['What should students learn from athletes who lose matches?',
+   'They can return and try again',
+   ['They should stop competing','They can return and try again','They should blame others','They should avoid practice']],
+
+  ['What is recommended for students after receiving a result?',
+   'They should avoid comparing themselves with others',
+   ['They should compare themselves with everyone','They should avoid comparing themselves with others','They should stop learning','They should hide the result']],
+
+  ['What should students do when academic pressure feels too heavy?',
+   'Speak openly about the pressure',
+   ['Keep everything secret','Speak openly about the pressure','Stop studying forever','Avoid all adults']],
+
+  ['What should students focus on instead of comparing their results?',
+   'Their own progress',
+   ['Other peoples marks','Their own progress','Social media rankings','Family expectations only']],
+
+  ['What should parents provide for their children after an exam result?',
+   'Support and unconditional love',
+   ['Only criticism','Support and unconditional love','More pressure','Comparison with other students']],
+
+  ['What should parents do before judging a child after a poor result?',
+   'Listen first',
+   ['Punish first','Listen first','Compare first','Ignore the child']],
+
+  ['What should parents value more than examination outcomes?',
+   'Effort',
+   ['Only rank','Effort','Only marks','Only competition']],
+
+  ['What is one important role of teachers?',
+   'Help students see beyond the examination paper',
+   ['Give only marks','Help students see beyond the examination paper','Compare students constantly','Predict every students future']],
+
+  ['What should teachers celebrate according to the guide?',
+   'Effort as well as learning',
+   ['Only final marks','Effort as well as learning','Only class rank','Only perfect answers']],
+
+  ['What can a teacher give a struggling student?',
+   'The belief that failure can be a teacher',
+   ['More fear','The belief that failure can be a teacher','A guaranteed result','A shortcut to success']],
+
+  ['Who must ultimately sit and face an examination?',
+   'The student',
+   ['The parent','The teacher','The student','The trainer']],
+
+  ['Why can facing challenges independently build confidence?',
+   'Students discover what they are capable of',
+   ['It removes all challenges','Students discover what they are capable of','It guarantees perfect marks','It avoids responsibility']],
+
+  ['What is the central idea of the Parents Promise?',
+   'A result should never define the worth of a child',
+   ['Marks define every child','A result should never define the worth of a child','Parents should compare children','Only high marks deserve support']],
+
+  ['Why may capable students in India fail to get their desired opportunity?',
+   'There are limited seats compared with the number of applicants',
+   ['They have no talent','There are limited seats compared with the number of applicants','They never study','They cannot learn']],
+
+  ['What does a limited number of seats say about a students worth?',
+   'Nothing about the students personal worth',
+   ['It proves low intelligence','Nothing about the students personal worth','It proves lack of talent','It decides the students entire future']],
+
+  ['What is the main lesson of the film Dangal mentioned in the guide?',
+   'Champions are built through discipline and persistence',
+   ['Success comes without practice','Champions are built through discipline and persistence','Marks are more important than effort','Failure should be avoided']],
+
+  ['What is the main lesson of the Bengali sports film Koni?',
+   'Self belief and courage can overcome a difficult beginning',
+   ['Only money creates success','Self belief and courage can overcome a difficult beginning','Swimming requires no practice','Rejection always ends a career']],
+
+  ['What is the main lesson of the film Iqbal?',
+   'Limitations do not define potential',
+   ['Disability ends every opportunity','Limitations do not define potential','Only famous players can succeed','Sports are more important than education']],
+
+  ['What lesson is highlighted by Chak De India?',
+   'Teamwork and resilience can create a comeback',
+   ['One failure defines a person','Teamwork and resilience can create a comeback','Individual success is everything','Past mistakes cannot be changed']],
+
+  ['What is the main lesson of Taare Zameen Par?',
+   'Every child learns differently',
+   ['Every child learns in exactly the same way','Every child learns differently','Marks measure all creativity','Only fast learners can succeed']],
+
+  ['What did Thomas Edison demonstrate through his failures?',
+   'Failure can provide knowledge about what does not work',
+   ['Failure should always be hidden','Failure can provide knowledge about what does not work','Experiments are unnecessary','Success requires no effort']],
+
+  ['What happened after A P J Abdul Kalam failed the fighter pilot selection test?',
+   'He moved toward a different and highly successful career',
+   ['He stopped learning','He moved toward a different and highly successful career','He left science','He stopped working']],
+
+  ['What qualities are highlighted in the story of Ratan Tata?',
+   'Vision, patience and humility',
+   ['Only academic marks','Vision, patience and humility','Only examination rank','Only competition']],
+
+  ['What is highlighted about Dhirubhai Ambani in the guide?',
+   'He built a major business without attending college',
+   ['He became successful only through examination marks','He built a major business without attending college','He avoided business','He became a professional athlete']],
+
+  ['What is the lesson from Malala Yousafzai story?',
+   'Commitment to learning can continue despite serious obstacles',
+   ['Education is unnecessary','Commitment to learning can continue despite serious obstacles','Obstacles always end education','Only exams matter']],
+
+  ['What happened to Albert Einstein after his first entrance examination difficulty?',
+   'He went on to become a major physicist',
+   ['He stopped studying','He went on to become a major physicist','He left science permanently','He avoided education']],
+
+  ['How many hours of sleep are recommended before an examination?',
+   '7 to 8 hours',
+   ['3 to 4 hours','5 hours','7 to 8 hours','12 to 14 hours']],
+
+  ['Why are timed practice tests recommended?',
+   'They help students rehearse under examination conditions',
+   ['They replace all studying','They help students rehearse under examination conditions','They guarantee full marks','They remove the need for sleep']],
+
+  ['What should students do after an examination instead of repeatedly discussing every answer?',
+   'Step away from the discussion and rest',
+   ['Discuss every answer continuously','Step away from the discussion and rest','Immediately compare marks','Avoid all food']],
+
+  ['What should students do when preparing for another attempt?',
+   'Review mistakes and build a realistic plan',
+   ['Punish themselves','Review mistakes and build a realistic plan','Stop studying','Compare themselves with others']],
+
+  ['What is the final message of the guide?',
+   'Never allow one examination result to decide how you see yourself',
+   ['One result defines your entire life','Never allow one examination result to decide how you see yourself','Only high marks create happiness','Failure should end your goals']]
+],
+wastewise_eco_water : [
+
+  ['What is the main purpose of WasteWise?',
+   'To sort waste correctly and protect the planet',
+   ['To sort waste correctly and protect the planet','To produce more plastic waste','To mix all waste together','To increase landfill waste']],
+
+  ['What type of waste belongs in the Green Bin?',
+   'Organic waste',
+   ['Electronic waste','Organic waste','Medical waste','Metal waste']],
+
+  ['What type of waste belongs in the Blue Bin?',
+   'Recyclable waste',
+   ['Organic waste','Recyclable waste','Medical waste','Electronic waste']],
+
+  ['What type of waste belongs in the Red Bin?',
+   'Medical and hazardous waste',
+   ['Organic waste','Recyclable waste','Medical and hazardous waste','Garden waste']],
+
+  ['What type of waste belongs in the Gray Bin?',
+   'Electronic waste',
+   ['Food waste','Paper waste','Electronic waste','Garden waste']],
+
+  ['What should be done with recyclable waste before recycling?',
+   'It should be kept dry and clean',
+   ['It should be mixed with food','It should be kept dry and clean','It should be buried','It should be burned']],
+
+  ['Why should recyclable containers be rinsed before recycling?',
+   'To keep recyclable material clean',
+   ['To make them heavier','To keep recyclable material clean','To make them poisonous','To increase landfill waste']],
+
+  ['What happens when organic kitchen and garden waste is composted?',
+   'It can naturally become fertilizer',
+   ['It becomes electronic waste','It can naturally become fertilizer','It becomes medical waste','It becomes plastic']],
+
+  ['Why is correct waste sorting important?',
+   'It helps recycling and reduces contamination',
+   ['It increases pollution','It helps recycling and reduces contamination','It increases landfill waste','It wastes resources']],
+
+  ['What can happen if one wrongly sorted item contaminates a recycling batch?',
+   'The recycling batch can become contaminated',
+   ['The batch becomes drinking water','The recycling batch can become contaminated','The waste disappears','The plastic becomes food']],
+
+  ['Why should medical waste be handled carefully?',
+   'It can create serious health risks when improperly disposed',
+   ['It improves soil automatically','It can create serious health risks when improperly disposed','It becomes clean water','It increases recycling quality']],
+
+  ['Where should electronic waste be taken?',
+   'To authorized e waste collection centers',
+   ['Into a river','Into the food waste bin','To authorized e waste collection centers','Into an open field']],
+
+  ['Why is electronic waste valuable as a resource?',
+   'It can contain useful metals such as gold silver and copper',
+   ['It contains only soil','It can contain useful metals such as gold silver and copper','It contains only water','It contains only food']],
+
+  ['What is one environmental benefit of composting household organic waste?',
+   'It can reduce the amount of waste sent to landfills',
+   ['It increases plastic pollution','It can reduce the amount of waste sent to landfills','It increases electronic waste','It increases water pollution']],
+
+  ['What can one AA battery potentially contaminate according to the WasteWise tip?',
+   'About 1000 litres of groundwater',
+   ['About 10 litres of groundwater','About 100 litres of groundwater','About 1000 litres of groundwater','About 10000 litres of groundwater']],
+
+  ['Why should used batteries be recycled properly?',
+   'They can contain substances that may contaminate the environment',
+   ['They produce drinking water','They can contain substances that may contaminate the environment','They improve soil quality','They become compost']],
+
+  ['How much energy can recycling 1 ton of plastic save according to the WasteWise tip?',
+   '5774 kWh',
+   ['577 kWh','5774 kWh','57740 kWh','57 kWh']],
+
+  ['How much oil can recycling 1 ton of plastic save according to the WasteWise tip?',
+   '16.3 barrels of oil',
+   ['1.63 barrels of oil','6.3 barrels of oil','16.3 barrels of oil','163 barrels of oil']],
+
+  ['Which waste is biodegradable?',
+   'Food and garden waste',
+   ['Food and garden waste','Old mobile phones','Batteries','Medical syringes']],
+
+  ['What is a good habit for reducing household waste?',
+   'Reduce reuse and recycle materials whenever possible',
+   ['Throw everything away','Reduce reuse and recycle materials whenever possible','Burn all waste','Mix hazardous waste with food']],
+
+  ['What is the main problem with sending useful recyclable materials to landfills?',
+   'Valuable materials and resources are wasted',
+   ['It creates more clean water','Valuable materials and resources are wasted','It improves recycling','It increases soil fertility automatically']],
+
+  ['What is the best general approach to household waste?',
+   'Separate waste at the source',
+   ['Mix all waste together','Separate waste at the source','Throw waste into drains','Burn every type of waste']],
+
+  ['Which bin is represented by the green colour in WasteWise?',
+   'Organic Waste',
+   ['Electronic Waste','Organic Waste','Medical Waste','Recyclable Waste']],
+
+  ['Which bin is represented by the blue colour in WasteWise?',
+   'Recyclable Waste',
+   ['Organic Waste','Recyclable Waste','Medical Waste','Electronic Waste']],
+
+  ['Which bin is represented by the gray colour in WasteWise?',
+   'Electronic Waste',
+   ['Organic Waste','Recyclable Waste','Medical Waste','Electronic Waste']],
+
+  ['Why is rainwater often lost in concrete cities?',
+   'Concrete surfaces prevent rainwater from soaking into the ground',
+   ['Concrete creates more groundwater','Concrete surfaces prevent rainwater from soaking into the ground','Rainwater becomes plastic','Rainwater cannot fall in cities']],
+
+  ['Where does rainwater often go when it cannot soak into concrete surfaces?',
+   'It runs into drains and may flow toward rivers and the sea',
+   ['It becomes groundwater immediately','It runs into drains and may flow toward rivers and the sea','It becomes drinking water automatically','It disappears into the soil']],
+
+  ['What is rooftop rainwater harvesting?',
+   'Collecting rainwater from rooftops for useful purposes',
+   ['Throwing rainwater into drains','Collecting rainwater from rooftops for useful purposes','Heating rainwater','Mixing rainwater with waste']],
+
+  ['Where can harvested rooftop rainwater be stored?',
+   'In storage tanks',
+   ['In open garbage bins','In storage tanks','In plastic waste piles','In sewage drains']],
+
+  ['What are some uses of harvested rooftop rainwater?',
+   'Gardening washing and toilets',
+   ['Only drinking without treatment','Gardening washing and toilets','Only cooking without treatment','Only industrial chemicals']],
+
+  ['How much dependency on municipal water supply can rooftop harvesting reduce according to the guide?',
+   'Up to 40 percent',
+   ['Up to 5 percent','Up to 10 percent','Up to 40 percent','Up to 90 percent']],
+
+  ['What is the purpose of an absorption pit?',
+   'To allow rainwater to slowly enter the soil',
+   ['To burn waste','To store plastic','To allow rainwater to slowly enter the soil','To increase surface flooding']],
+
+  ['How do absorption pits help groundwater?',
+   'They allow water to seep into the soil and recharge groundwater',
+   ['They remove all groundwater','They allow water to seep into the soil and recharge groundwater','They turn groundwater into plastic','They prevent all rain from reaching soil']],
+
+  ['Where are absorption pits and rainwater ponds especially useful?',
+   'Rural and semi urban areas',
+   ['Only deserts','Rural and semi urban areas','Only airports','Only factories']],
+
+  ['How can rainwater ponds help during heavy rainfall?',
+   'They can help reduce flooding',
+   ['They increase flooding','They can help reduce flooding','They stop all rainfall','They create electronic waste']],
+
+  ['Why is groundwater recharge important?',
+   'It helps restore underground water resources',
+   ['It removes all water from the soil','It helps restore underground water resources','It increases plastic waste','It prevents rainfall']],
+
+  ['What problem can overflowing drains create?',
+   'Stagnant water and mosquito breeding',
+   ['Cleaner air','Stagnant water and mosquito breeding','More groundwater recharge automatically','More recycling']],
+
+  ['Why can stagnant water be dangerous?',
+   'It can provide breeding places for mosquitoes',
+   ['It produces clean drinking water','It can provide breeding places for mosquitoes','It removes pollution','It prevents diseases']],
+
+  ['What is a soak pit?',
+   'A structure that allows excess water to seep into the soil',
+   ['A garbage storage box','A structure that allows excess water to seep into the soil','A plastic recycling machine','A drinking water bottle']],
+
+  ['What materials can be used inside a soak pit to filter water?',
+   'Gravel and sand',
+   ['Plastic and rubber','Gravel and sand','Paper and cloth only','Metal and glass']],
+
+  ['What does the gravel layer help remove from water in a soak pit?',
+   'Larger debris',
+   ['All groundwater','Larger debris','All dissolved salts','All oxygen']],
+
+  ['What does the sand layer help remove?',
+   'Fine particles',
+   ['Large buildings','Fine particles','Plastic bottles only','Rain clouds']],
+
+  ['What is one benefit of a safety chamber or soak pit near a drain?',
+   'It can help keep drains dry and recharge groundwater',
+   ['It increases mosquito breeding','It can help keep drains dry and recharge groundwater','It blocks all rainwater','It creates more garbage']],
+
+  ['What is a simple way to reduce dependence on municipal water?',
+   'Use harvested rainwater for suitable non drinking purposes',
+   ['Waste rainwater','Use harvested rainwater for suitable non drinking purposes','Leave taps running','Pollute local ponds']],
+
+  ['Why should rainwater be managed locally when possible?',
+   'It can support groundwater recharge and reduce flooding',
+   ['It always increases flooding','It can support groundwater recharge and reduce flooding','It creates more plastic waste','It prevents all water use']],
+
+  ['What is one major environmental goal shared by WasteWise and Eco Water?',
+   'Conserve natural resources and reduce environmental pollution',
+   ['Increase waste and water pollution','Conserve natural resources and reduce environmental pollution','Waste more water','Increase landfill waste']],
+
+  ['How can proper waste segregation and water conservation work together?',
+   'Both reduce resource waste and protect the environment',
+   ['Both increase pollution','Both reduce resource waste and protect the environment','Both increase landfill use','Both waste natural resources']],
+
+  ['What can rooftop rainwater harvesting help reduce?',
+   'Dependence on municipal water supply',
+   ['Dependence on all natural resources','Dependence on municipal water supply','The need for recycling','The need for groundwater']],
+
+  ['What is a low cost way to help recharge groundwater in suitable areas?',
+   'Absorption pits and rainwater ponds',
+   ['Burning waste','Absorption pits and rainwater ponds','Dumping plastic in drains','Using more concrete']],
+
+  ['What is the overall message of WasteWise and Eco Water?',
+   'Small daily actions can protect waste resources and water resources',
+   ['Natural resources are unlimited','Small daily actions can protect waste resources and water resources','Waste should always be mixed','Rainwater should always be discarded']]
+],
+farm_safety : [
+
+  ['What is the main purpose of farm safety?',
+   'To prevent accidents and protect people animals and equipment',
+   ['To increase accidents','To prevent accidents and protect people animals and equipment','To reduce farm production','To avoid using safety equipment']],
+
+  ['Why should farm workers wear suitable footwear?',
+   'To protect their feet from injuries',
+   ['To increase walking speed','To protect their feet from injuries','To improve crop growth','To reduce water use']],
+
+  ['What type of footwear is useful on a wet or muddy farm?',
+   'Strong waterproof boots',
+   ['Open sandals','Strong waterproof boots','Bare feet','Cloth slippers']],
+
+  ['Why should farm workers wear gloves when handling rough materials?',
+   'To protect their hands from cuts and injuries',
+   ['To make their hands dirty','To protect their hands from cuts and injuries','To increase the weight of materials','To reduce crop production']],
+
+  ['Why should protective clothing be worn when using farm chemicals?',
+   'To reduce exposure to harmful substances',
+   ['To increase chemical exposure','To reduce exposure to harmful substances','To make chemicals stronger','To improve soil colour']],
+
+  ['What should be used to protect the eyes from chemical splashes?',
+   'Safety goggles',
+   ['Sunglasses only','Safety goggles','A cloth cap','Earphones']],
+
+  ['What should be used to protect the nose and mouth when required during chemical handling?',
+   'A suitable protective mask or respirator',
+   ['A scarf only in every situation','A suitable protective mask or respirator','A school tie','A woollen cap']],
+
+  ['Why should pesticide labels be read before use?',
+   'To understand safe use instructions and warnings',
+   ['To change the product colour','To understand safe use instructions and warnings','To increase the dose automatically','To avoid wearing PPE']],
+
+  ['What should a farmer do before mixing a pesticide?',
+   'Read the label and wear the required protective equipment',
+   ['Mix it with bare hands','Read the label and wear the required protective equipment','Taste the chemical','Remove all safety equipment']],
+
+  ['Why should pesticides never be stored in food containers?',
+   'They may be mistaken for food or drink',
+   ['They improve food quality','They may be mistaken for food or drink','They become harmless','They increase crop yield']],
+
+  ['Where should pesticides normally be stored?',
+   'In a secure labelled place away from food and children',
+   ['In the kitchen','In a secure labelled place away from food and children','Near drinking water','In an open field']],
+
+  ['Why should children be kept away from farm chemicals?',
+   'Chemicals can cause serious poisoning and injury',
+   ['Children can improve chemicals','Chemicals can cause serious poisoning and injury','Children can safely mix pesticides','Chemicals are harmless to children']],
+
+  ['What should be done with empty pesticide containers?',
+   'Dispose of them according to approved safety instructions',
+   ['Reuse them for drinking water','Dispose of them according to approved safety instructions','Use them for cooking oil','Give them to children']],
+
+  ['Why should pesticides not be sprayed against strong wind?',
+   'The spray can drift toward the worker or other people',
+   ['It always improves spraying','The spray can drift toward the worker or other people','It makes the tractor faster','It prevents all crop growth']],
+
+  ['What should a worker do if pesticide gets into the eyes?',
+   'Immediately rinse the eyes with clean water and seek appropriate medical help',
+   ['Ignore it','Immediately rinse the eyes with clean water and seek appropriate medical help','Rub the eyes with chemicals','Continue spraying']],
+
+  ['What should a worker do after handling pesticides?',
+   'Wash hands and exposed skin thoroughly',
+   ['Eat without washing','Wash hands and exposed skin thoroughly','Touch food immediately','Sleep in pesticide clothing']],
+
+  ['Why should workers avoid eating or smoking while handling pesticides?',
+   'Chemicals can enter the body through contaminated hands',
+   ['It increases crop growth','Chemicals can enter the body through contaminated hands','It makes pesticides weaker','It improves spraying']],
+
+  ['What is important before operating a tractor?',
+   'Check the tractor and safety equipment',
+   ['Remove the brakes','Check the tractor and safety equipment','Increase the speed immediately','Ignore warning signs']],
+
+  ['Why should tractors and farm machines be maintained regularly?',
+   'To reduce mechanical failures and accidents',
+   ['To increase breakdowns','To reduce mechanical failures and accidents','To increase fuel leakage','To damage equipment']],
+
+  ['Why should a tractor operator wear a seat belt when provided?',
+   'It can reduce injury during an accident or rollover',
+   ['It increases fuel use only','It can reduce injury during an accident or rollover','It makes the tractor slower','It removes the need for brakes']],
+
+  ['What should never be done near moving farm machinery?',
+   'Put hands or loose clothing near moving parts',
+   ['Keep a safe distance','Put hands or loose clothing near moving parts','Follow the safety instructions','Switch off the machine before maintenance']],
+
+  ['What should be done before repairing a machine?',
+   'Switch it off and isolate the power source',
+   ['Keep it running','Switch it off and isolate the power source','Increase the engine speed','Remove all warning signs']],
+
+  ['Why can loose clothing be dangerous around machinery?',
+   'It can become caught in moving parts',
+   ['It improves machine safety','It can become caught in moving parts','It reduces machine noise','It prevents accidents automatically']],
+
+  ['Why should machine guards remain in place?',
+   'They help protect workers from moving parts',
+   ['They increase the danger','They help protect workers from moving parts','They reduce crop quality','They increase fuel consumption']],
+
+  ['What should be done if a machine has a damaged safety guard?',
+   'Stop using it until it is repaired safely',
+   ['Continue using it at high speed','Stop using it until it is repaired safely','Remove all remaining guards','Give it to a child']],
+
+  ['Why should farm workers be trained before operating machinery?',
+   'Training helps them understand safe operation',
+   ['Training increases accidents','Training helps them understand safe operation','Training removes all safety rules','Training reduces machine maintenance']],
+
+  ['What is a major danger when working near electrical equipment?',
+   'Electric shock',
+   ['Better crop growth','Electric shock','Improved irrigation','Lower soil temperature']],
+
+  ['Why should electrical equipment be kept away from water?',
+   'Water can increase the risk of electric shock',
+   ['Water improves electrical safety','Water can increase the risk of electric shock','Water increases battery life','Water repairs damaged wires']],
+
+  ['What should be done with a damaged electrical cable?',
+   'Stop using it and have it repaired or replaced safely',
+   ['Touch exposed wires','Stop using it and have it repaired or replaced safely','Cover it with wet cloth','Give it to a child']],
+
+  ['Why should farm workers avoid using electrical equipment with wet hands?',
+   'Wet hands can increase the risk of electric shock',
+   ['Wet hands make electricity safer','Wet hands can increase the risk of electric shock','Wet hands increase crop yield','Wet hands repair cables']],
+
+  ['What is one major risk of working in extreme heat?',
+   'Heat exhaustion or heat stroke',
+   ['Frostbite only','Heat exhaustion or heat stroke','Electric shock only','Machine failure only']],
+
+  ['How can workers reduce the risk of heat related illness?',
+   'Drink water regularly and take suitable rest breaks',
+   ['Avoid all water','Drink water regularly and take suitable rest breaks','Work continuously without breaks','Wear heavy clothing in extreme heat']],
+
+  ['Why is shade useful during very hot farm work?',
+   'It helps the body cool down',
+   ['It increases body temperature','It helps the body cool down','It increases pesticide strength','It prevents all injuries']],
+
+  ['Why should workers be careful during thunderstorms?',
+   'Lightning can cause serious injury or death',
+   ['Thunderstorms improve safety','Lightning can cause serious injury or death','Rain removes all hazards','Lightning makes machinery safer']],
+
+  ['What should workers do when lightning is nearby?',
+   'Move to a safe enclosed shelter',
+   ['Stand under an isolated tree','Move to a safe enclosed shelter','Stay beside metal machinery','Continue working in an open field']],
+
+  ['Why should farm workers be careful around livestock?',
+   'Animals can kick bite charge or crush people',
+   ['Animals are always harmless','Animals can kick bite charge or crush people','Animals cannot move','Animals cannot cause injuries']],
+
+  ['How should workers approach an unfamiliar animal?',
+   'Calmly and carefully while following safe handling practices',
+   ['Running toward it','Calmly and carefully while following safe handling practices','Shouting loudly','Trying to frighten it']],
+
+  ['Why should children not play near livestock?',
+   'Animals may react unpredictably and cause injuries',
+   ['Animals always protect children','Animals may react unpredictably and cause injuries','It improves animal health','It increases farm production']],
+
+  ['Why should farm chemicals never be mixed without proper instructions?',
+   'Some mixtures can create dangerous reactions or toxic exposure',
+   ['All mixtures are harmless','Some mixtures can create dangerous reactions or toxic exposure','Mixing always improves safety','It reduces all chemical risks']],
+
+  ['What should a worker do after a chemical spill?',
+   'Follow the emergency instructions and keep people away from the area',
+   ['Touch the spill with bare hands','Follow the emergency instructions and keep people away from the area','Wash it into a pond','Let children clean it']],
+
+  ['Why should emergency contact numbers be available on a farm?',
+   'They help workers get assistance quickly during an emergency',
+   ['They increase accidents','They help workers get assistance quickly during an emergency','They replace all safety training','They prevent every accident']],
+
+  ['What should a farm first aid kit contain?',
+   'Basic supplies for treating minor injuries',
+   ['Pesticides','Basic supplies for treating minor injuries','Fuel','Animal feed only']],
+
+  ['Why should farm workers know the location of the first aid kit?',
+   'It allows quick access during an injury',
+   ['It increases crop production','It allows quick access during an injury','It replaces medical treatment','It reduces water use']],
+
+  ['What should be done when a serious farm accident occurs?',
+   'Get emergency medical assistance immediately',
+   ['Ignore the injury','Get emergency medical assistance immediately','Continue working','Hide the accident']],
+
+  ['Why is safe drinking water important for farm workers?',
+   'It helps prevent dehydration and illness',
+   ['It increases pesticide toxicity','It helps prevent dehydration and illness','It replaces protective clothing','It increases machine speed']],
+
+  ['Why should workers keep farm pathways clear?',
+   'To reduce slips trips and falls',
+   ['To increase accidents','To reduce slips trips and falls','To block emergency access','To increase mud']],
+
+  ['What can cause slips and falls on a farm?',
+   'Wet surfaces clutter and uneven ground',
+   ['Only clean floors','Wet surfaces clutter and uneven ground','Only sunlight','Only farm animals']],
+
+  ['Why should workers use safe lifting techniques?',
+   'To reduce back and muscle injuries',
+   ['To increase back injuries','To reduce back and muscle injuries','To make loads heavier','To avoid all farm work']],
+
+  ['What should a worker do when a load is too heavy to lift safely?',
+   'Use suitable equipment or ask for assistance',
+   ['Lift it alone anyway','Use suitable equipment or ask for assistance','Throw it at another person','Drag it across unsafe ground']],
+
+  ['Why is good housekeeping important on a farm?',
+   'It reduces hazards and makes work areas safer',
+   ['It increases clutter','It reduces hazards and makes work areas safer','It increases accidents','It prevents all farming']],
+
+  ['What is one of the most important principles of farm safety?',
+   'Identify hazards before starting work',
+   ['Ignore hazards','Identify hazards before starting work','Work as fast as possible','Avoid safety training']],
+
+  ['Why should farm workers report unsafe conditions?',
+   'Early reporting can help prevent accidents',
+   ['It increases accidents','Early reporting can help prevent accidents','It makes hazards worse','It removes the need for repairs']],
+
+  ['What is the best overall approach to farm safety?',
+   'Plan the work use proper equipment follow safety rules and stay alert',
+   ['Ignore hazards and work quickly','Plan the work use proper equipment follow safety rules and stay alert','Avoid all protective equipment','Let untrained people operate machines']]
+
+],
+};
+const TOTAL_QUESTIONS = 50;
+const PASS_PCT = 45;
+
+/* ================= STATE ================= */
+let currentLang = null, currentLangLabel = '';
+let quizOrder = [], quizIndex = 0, quizScore = 0, quizLocked = false, selectedOpt = null;
+
+/* ================= TOPIC PICKER ================= */
+const langGrid = document.getElementById('langGrid');
+function renderLangGrid(){
+  langGrid.innerHTML = '';
+  LANGUAGES.forEach(([code,label])=>{
+    const ready = Array.isArray(QUESTION_BANK[code]) && QUESTION_BANK[code].length >= TOTAL_QUESTIONS;
+    const div = document.createElement('div');
+    div.className = 'lang-card' + (ready ? ' ready' : ' disabled');
+    div.innerHTML = `<div class="lname">${label}</div><div class="lstatus">${ready ? '✓ 50 questions ready' : 'Coming soon'}</div>`;
+    if(ready){
+      div.addEventListener('click', ()=> startTest(code, label));
+    }
+    langGrid.appendChild(div);
+  });
+}
+renderLangGrid();
+
+/* ================= QUIZ FLOW ================= */
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]] = [a[j],a[i]];
+  }
+  return a;
+}
+
+function showScreen(id){
+  ['screen-picker','screen-quiz','screen-pass','screen-fail'].forEach(s=>{
+    document.getElementById(s).style.display = (s===id) ? 'block' : 'none';
+  });
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function startTest(code, label){
+  currentLang = code;
+  currentLangLabel = label;
+  const bank = QUESTION_BANK[code] || [];
+  quizOrder = shuffle(bank).slice(0, TOTAL_QUESTIONS);
+  quizIndex = 0; quizScore = 0; quizLocked = false;
+  showScreen('screen-quiz');
+  showQuestion();
+}
+
+function retakeSameLanguage(){
+  startTest(currentLang, currentLangLabel);
+}
+function restartToPicker(){
+  currentLang = null;
+  showScreen('screen-picker');
+}
+
+function showQuestion(){
+  quizLocked = false;
+  selectedOpt = null;
+  const [eng, correct, opts] = quizOrder[quizIndex];
+  document.getElementById('quizEng').textContent = eng;
+  document.getElementById('quizProgressText').textContent = `Question ${quizIndex+1} / ${TOTAL_QUESTIONS}`;
+  document.getElementById('quizScoreText').textContent = `Score: ${quizScore}`;
+  document.getElementById('progressBar').style.width = ((quizIndex)/TOTAL_QUESTIONS*100) + '%';
+  const optsEl = document.getElementById('quizOptions');
+  optsEl.innerHTML = '';
+  shuffle(opts).forEach(opt=>{
+    const b = document.createElement('div');
+    b.className = 'qopt';
+    b.textContent = opt;
+    b.addEventListener('click', ()=>selectOption(b, opt, correct));
+    optsEl.appendChild(b);
+  });
+  const nextBtn = document.getElementById('nextBtn');
+  nextBtn.disabled = true;
+}
+
+function selectOption(el, opt, correct){
+  if(quizLocked) return;
+  quizLocked = true;
+  const all = document.querySelectorAll('.qopt');
+  all.forEach(o=>{
+    o.classList.add('disabled');
+    if(o.textContent === correct) o.classList.add('correct');
+  });
+  if(opt === correct){
+    quizScore++;
+  } else {
+    el.classList.add('wrong');
+  }
+  document.getElementById('quizScoreText').textContent = `Score: ${quizScore}`;
+  document.getElementById('nextBtn').disabled = false;
+}
+
+function handleNext(){
+  quizIndex++;
+  if(quizIndex >= TOTAL_QUESTIONS){
+    document.getElementById('progressBar').style.width = '100%';
+    finishQuiz();
+  } else {
+    showQuestion();
+  }
+}
+
+function finishQuiz(){
+  const pct = Math.round((quizScore/TOTAL_QUESTIONS)*100);
+  const passed = pct >= PASS_PCT;
+
+  if(passed){
+    document.getElementById('passPct').textContent = pct + '%';
+    document.getElementById('passFrac').textContent = `${quizScore} / ${TOTAL_QUESTIONS}`;
+    let emoji='🥉', label='Well Done!';
+    if(pct>=90){emoji='🏆'; label='Excellent!';}
+    else if(pct>=75){emoji='🎉'; label='Great Job!';}
+    else if(pct>=60){emoji='🥈'; label='Very Good!';}
+    else {emoji='🥉'; label='Passed!';}
+    document.getElementById('passEmoji').textContent = emoji;
+    document.getElementById('passLabel').textContent = label;
+    document.getElementById('studentNameInput').value = '';
+    showScreen('screen-pass');
+  } else {
+    document.getElementById('failPct').textContent = pct + '%';
+    document.getElementById('failFrac').textContent = `${quizScore} / ${TOTAL_QUESTIONS}`;
+    showScreen('screen-fail');
+  }
+}
+
+function goToCertificate(){
+  const nameInput = document.getElementById('studentNameInput');
+  const name = (nameInput.value || '').trim();
+  if(!name){ nameInput.focus(); return; }
+
+  const pct = Math.round((quizScore/TOTAL_QUESTIONS)*100);
+  const result = {
+    name,
+    language: currentLangLabel,
+    langCode: currentLang,
+    score: quizScore,
+    total: TOTAL_QUESTIONS,
+    pct,
+    passed: pct >= PASS_PCT,
+    date: new Date().toLocaleDateString('en-GB', {day:'2-digit', month:'short', year:'numeric'}),
+    certId: 'MSG-FT-' + currentLang.toUpperCase().slice(0,3) + '-' + Date.now().toString(36).toUpperCase().slice(-6),
+  };
+  try{ localStorage.setItem('msg_advance_test_result', JSON.stringify(result)); }catch(e){}
+  window.location.href = 'certificate.html';
+}
+</script>
+</body>
+</html>

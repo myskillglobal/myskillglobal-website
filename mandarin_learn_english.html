@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>Learn Mandarin Chinese — MySkillGame</title>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&amp;family=Noto+Serif+SC:wght@400;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --red:       #C0392B;
+    --red-dark:  #8B1A10;
+    --red-deep:  #6B1109;
+    --gold:      #D4A017;
+    --gold-lt:   #F5D87A;
+    --gold-pale: #FDF3D0;
+    --ink:       #1A1008;
+    --paper:     #FDF6E3;
+    --mist:      #F2EAD8;
+    --jade:      #2E7D6B;
+    --shadow-red: 0 8px 28px rgba(192,57,43,0.18);
+    --shadow-sm:  0 4px 12px rgba(0,0,0,0.10);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    font-family: 'Inter', 'Noto Sans SC', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* ===== Lantern ambient animation ===== */
+  .lanterns {
+    position: fixed; inset: 0;
+    pointer-events: none; z-index: 0; overflow: hidden;
+  }
+  .lantern {
+    position: absolute;
+    width: 12px; height: 18px;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    opacity: 0;
+    animation: sway linear infinite;
+  }
+  @keyframes sway {
+    0%   { transform: translateY(0)   rotate(-6deg); opacity: 0; }
+    10%  { opacity: 0.55; }
+    50%  { transform: translateY(6px) rotate(6deg);  opacity: 0.55; }
+    90%  { opacity: 0.55; }
+    100% { transform: translateY(0)   rotate(-6deg); opacity: 0; }
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    position: relative; z-index: 1;
+    background: linear-gradient(150deg, var(--red-deep) 0%, var(--red) 55%, var(--red-dark) 100%);
+    color: #fff;
+    padding: 36px 20px 72px;
+    text-align: center;
+    border-radius: 0 0 0 0;
+    box-shadow: var(--shadow-red);
+    overflow: hidden;
+  }
+
+  /* Red seal watermark top-right */
+  header::before {
+    content: '中';
+    position: absolute; top: 14px; right: 18px;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 5.5rem; font-weight: 900;
+    color: rgba(255,255,255,0.07);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  /* Gold brush-stroke divider at bottom of header */
+  header::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 32px;
+    background: var(--paper);
+    clip-path: ellipse(55% 100% at 50% 100%);
+  }
+
+  .header-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(212,160,23,0.5);
+    color: var(--gold-lt);
+    font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 4px 14px; border-radius: 999px;
+    margin-bottom: 14px;
+  }
+
+  header h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 2.2rem; font-weight: 700;
+    line-height: 1.15;
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    margin-bottom: 6px;
+  }
+
+  header .zh-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.5rem; font-weight: 600;
+    color: var(--gold-lt);
+    letter-spacing: 0.15em;
+    margin-bottom: 14px;
+  }
+
+  header p {
+    font-size: 0.9rem; line-height: 1.65;
+    opacity: 0.9; max-width: 440px; margin: 0 auto;
+  }
+
+  /* ===== WRAP ===== */
+  .wrap {
+    max-width: 780px; margin: 0 auto;
+    padding: 0 14px 60px;
+    position: relative; z-index: 1;
+  }
+
+  /* ===== TABS ===== */
+  .tabs {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    justify-content: center;
+    padding: 20px 0 18px;
+    position: sticky; top: 0; z-index: 10;
+    background: linear-gradient(to bottom, var(--paper) 85%, transparent);
+  }
+
+  .tab-btn {
+    border: none; cursor: pointer;
+    padding: 8px 16px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600; font-size: 0.85rem;
+    border-radius: 6px;
+    background: var(--mist);
+    color: var(--red-dark);
+    border: 1.5px solid transparent;
+    transition: all 0.18s ease;
+    box-shadow: var(--shadow-sm);
+  }
+  .tab-btn.active {
+    background: var(--red);
+    color: #fff;
+    border-color: var(--gold);
+    box-shadow: 0 4px 14px rgba(192,57,43,0.35);
+  }
+  .tab-btn:active { transform: scale(0.95); }
+
+  /* ===== SECTION ===== */
+  .section { display: none; animation: fadeUp 0.3s ease; }
+  .section.active { display: block; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-header {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 20px; padding: 16px 0 12px;
+    border-bottom: 2px solid var(--gold);
+  }
+  .section-header .zh-sec {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 2rem; font-weight: 700;
+    color: var(--red);
+    line-height: 1;
+  }
+  .section-header .en-sec {
+    font-size: 1.1rem; font-weight: 700;
+    color: var(--ink);
+  }
+  .section-header .en-sec small {
+    display: block; font-weight: 400;
+    font-size: 0.78rem; color: #888;
+    margin-top: 2px;
+  }
+
+  /* ===== CARD GRID ===== */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(158px, 1fr));
+    gap: 14px;
+  }
+
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: var(--shadow-sm);
+    padding: 18px 12px 14px;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    border: 1.5px solid #E8DCC8;
+    transition: transform 0.2s ease, border-color 0.2s, box-shadow 0.2s;
+    min-height: 165px;
+    display: flex; flex-direction: column;
+    justify-content: center; gap: 5px;
+  }
+  .card:hover { border-color: var(--gold); box-shadow: 0 6px 20px rgba(192,57,43,0.13); }
+  .card:active { transform: scale(0.97); }
+
+  .card.flipped {
+    background: linear-gradient(135deg, #FFF5D6 0%, var(--gold-pale) 100%);
+    border-color: var(--red);
+    box-shadow: 0 6px 20px rgba(192,57,43,0.2);
+  }
+
+  .card .zh {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 2.2rem; font-weight: 700;
+    color: var(--red-dark);
+    line-height: 1.1;
+  }
+  .card .pinyin {
+    font-size: 0.78rem; font-weight: 600;
+    color: var(--jade);
+    letter-spacing: 0.03em;
+  }
+  .card .en-word {
+    font-size: 0.82rem; color: #777;
+    font-style: italic;
+    border-top: 1px dashed #ddd;
+    padding-top: 5px; margin-top: 2px;
+  }
+  .card .meaning {
+    display: none;
+    font-size: 1rem; font-weight: 800;
+    color: var(--red-dark);
+    margin-top: 4px;
+  }
+  .card.flipped .meaning { display: block; }
+  .card.flipped .zh { opacity: 0.45; font-size: 1.6rem; }
+  .card.flipped .pinyin, .card.flipped .en-word { opacity: 0.5; }
+
+  /* Tone number badge */
+  .tone-badge {
+    position: absolute; top: 8px; left: 10px;
+    width: 22px; height: 22px; border-radius: 50%;
+    font-size: 0.68rem; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.18);
+  }
+  .tone-1 { background: #2980B9; }
+  .tone-2 { background: #27AE60; }
+  .tone-3 { background: #8E44AD; }
+  .tone-4 { background: var(--red); }
+  .tone-5 { background: #7F8C8D; }
+
+  .speaker {
+    position: absolute; top: 8px; right: 8px;
+    width: 30px; height: 30px;
+    border-radius: 6px;
+    background: var(--mist);
+    border: 1px solid #ddd;
+    font-size: 0.9rem;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .speaker:hover { background: var(--gold-pale); }
+  .speaker:active { transform: scale(0.9); }
+
+  .hint {
+    text-align: center; font-size: 0.78rem; color: #9a8060;
+    margin: 10px 0 6px; padding: 0 8px;
+    line-height: 1.7;
+  }
+
+  /* Tone legend */
+  .tone-legend {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    justify-content: center;
+    margin-bottom: 20px;
+    padding: 10px 12px;
+    background: #fff; border-radius: 8px;
+    border: 1.5px solid #E8DCC8;
+    box-shadow: var(--shadow-sm);
+  }
+  .tone-item {
+    display: flex; align-items: center; gap: 5px;
+    font-size: 0.72rem; color: #555;
+  }
+  .tone-dot {
+    width: 14px; height: 14px; border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ===== QUIZ ===== */
+  .quiz-box {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: var(--shadow-red);
+    padding: 28px 18px;
+    text-align: center;
+    border: 1.5px solid #E8DCC8;
+  }
+  .quiz-score {
+    font-weight: 800; color: var(--red-dark);
+    font-size: 1rem; margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1.5px solid var(--gold);
+  }
+  .quiz-label {
+    font-size: 0.8rem; color: #888; margin-bottom: 10px;
+  }
+  .quiz-zh {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 3rem; font-weight: 700;
+    color: var(--red-dark); line-height: 1.1;
+    margin-bottom: 4px;
+  }
+  .quiz-pinyin {
+    font-size: 1rem; color: var(--jade);
+    font-weight: 600; margin-bottom: 2px;
+  }
+  .quiz-en-hint {
+    font-size: 0.8rem; color: #999;
+    font-style: italic; margin-bottom: 18px;
+  }
+  .quiz-options {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+  }
+  .opt-btn {
+    padding: 14px 8px;
+    border-radius: 8px;
+    border: 1.5px solid #ddd;
+    background: var(--paper);
+    font-family: 'Inter', sans-serif;
+    font-weight: 700; font-size: 0.9rem;
+    cursor: pointer; color: var(--ink);
+    transition: all 0.15s ease;
+  }
+  .opt-btn:hover { border-color: var(--gold); background: var(--gold-pale); }
+  .opt-btn:active { transform: scale(0.96); }
+  .opt-btn.correct { background: #D5F5E3; border-color: #27AE60; color: #1A5C33; }
+  .opt-btn.wrong   { background: #FADBD8; border-color: #E74C3C; color: #7B241C; }
+
+  .next-btn {
+    margin-top: 18px;
+    background: var(--red);
+    color: #fff; border: none;
+    padding: 12px 30px; border-radius: 8px;
+    font-weight: 700; font-size: 0.95rem;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(192,57,43,0.35);
+    letter-spacing: 0.03em;
+  }
+  .next-btn:active { transform: scale(0.97); }
+
+  /* ===== FOOTER ===== */
+  footer {
+    text-align: center; padding: 28px 14px 16px;
+    font-size: 0.76rem; color: #a08060;
+    position: relative; z-index: 1;
+    border-top: 1px solid #EAD9B8;
+    margin-top: 20px;
+  }
+  footer a { color: var(--red-dark); text-decoration: none; font-weight: 700; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 420px) {
+    header h1 { font-size: 1.7rem; }
+    .card .zh { font-size: 1.9rem; }
+    .quiz-zh { font-size: 2.4rem; }
+  }
+</style>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1034022057999423"></script><link href="https://myskillgame.netlify.app/11-7-26 website/mandarin_learn_english.html" rel="canonical"/></head>
+<body>
+<div class="lanterns" id="lanterns"></div>
+<header>
+<div class="header-badge">MySkillGame · Language Series</div>
+<h1>Learn Mandarin Chinese</h1>
+<div class="zh-title">学习普通话</div>
+<p>Master everyday Mandarin — greetings, numbers, family, food, time, and more. Tap any card to flip and reveal the meaning, and press 🔊 to hear the pronunciation.</p>
+</header>
+<div class="wrap">
+<div class="tabs" id="tabs"></div>
+<div id="sections"></div>
+<p class="hint">🟦 1st tone (flat)  🟩 2nd tone (rising)  🟪 3rd tone (dip)  🟥 4th tone (falling)  ⬜ neutral</p>
+</div>
+<footer>
+  Created by Surajit Roy  |  <a href="https://myskillgame.netlify.app" target="_blank">MySkillGame</a> — A Better Path to Learning 🏮
+</footer>
+<script>
+/* ============================================================
+   DATA  —  zh: characters  |  py: pinyin with tones  |  en: English  |  meaning: answer label  |  tone: 1-5
+   ============================================================ */
+const categories = [
+  {
+    id:"greet", icon:"🙏", name:"Greetings",
+    zh_sec:"你好", en_sec:"Greetings", sub:"Common phrases to say hello",
+    items:[
+      {zh:"你好",    py:"nǐ hǎo",         en:"Hello",                        meaning:"Hello",             tone:3},
+      {zh:"您好",    py:"nín hǎo",         en:"Hello (polite)",               meaning:"Hello (polite)",    tone:2},
+      {zh:"早上好",  py:"zǎo shang hǎo",   en:"Good morning",                 meaning:"Good Morning",      tone:3},
+      {zh:"晚上好",  py:"wǎn shang hǎo",   en:"Good evening",                 meaning:"Good Evening",      tone:3},
+      {zh:"再见",    py:"zài jiàn",         en:"Goodbye",                      meaning:"Goodbye",           tone:4},
+      {zh:"谢谢",    py:"xiè xiè",          en:"Thank you",                    meaning:"Thank You",         tone:4},
+      {zh:"不客气",  py:"bù kè qì",         en:"You're welcome",               meaning:"You're welcome",    tone:4},
+      {zh:"对不起",  py:"duì bu qǐ",        en:"Sorry / Excuse me",            meaning:"Sorry",             tone:4},
+      {zh:"没关系",  py:"méi guān xì",      en:"It's okay / No problem",       meaning:"No Problem",        tone:2},
+      {zh:"是",      py:"shì",              en:"Yes / It is",                  meaning:"Yes",               tone:4},
+      {zh:"不是",    py:"bú shì",           en:"No / It is not",               meaning:"No",                tone:4},
+    ]
+  },
+  {
+    id:"intro", icon:"🧑", name:"Intro",
+    zh_sec:"介绍", en_sec:"Introduction", sub:"Tell people who you are",
+    items:[
+      {zh:"我叫___",        py:"wǒ jiào ___",          en:"My name is ___",          meaning:"My name is ___",       tone:3},
+      {zh:"你叫什么名字？",  py:"nǐ jiào shénme míngzi?", en:"What is your name?",     meaning:"What is your name?",   tone:3},
+      {zh:"我来自印度",      py:"wǒ lái zì Yìndù",       en:"I am from India",         meaning:"I am from India",      tone:3},
+      {zh:"你从哪里来？",    py:"nǐ cóng nǎlǐ lái?",     en:"Where are you from?",     meaning:"Where are you from?",  tone:3},
+      {zh:"很高兴认识你",    py:"hěn gāoxìng rènshi nǐ", en:"Nice to meet you",        meaning:"Nice to meet you",     tone:3},
+      {zh:"你多大了？",      py:"nǐ duō dà le?",          en:"How old are you?",        meaning:"How old are you?",     tone:4},
+      {zh:"我会说英语",      py:"wǒ huì shuō Yīngyǔ",    en:"I can speak English",     meaning:"I speak English",      tone:3},
+    ]
+  },
+  {
+    id:"num", icon:"🔢", name:"Numbers",
+    zh_sec:"数字", en_sec:"Numbers", sub:"0 to 10 in Mandarin",
+    items:[
+      {zh:"零", py:"líng", en:"Zero (0)",  meaning:"0 — Zero",  tone:2},
+      {zh:"一", py:"yī",   en:"One (1)",   meaning:"1 — One",   tone:1},
+      {zh:"二", py:"èr",   en:"Two (2)",   meaning:"2 — Two",   tone:4},
+      {zh:"三", py:"sān",  en:"Three (3)", meaning:"3 — Three", tone:1},
+      {zh:"四", py:"sì",   en:"Four (4)",  meaning:"4 — Four",  tone:4},
+      {zh:"五", py:"wǔ",   en:"Five (5)",  meaning:"5 — Five",  tone:3},
+      {zh:"六", py:"liù",  en:"Six (6)",   meaning:"6 — Six",   tone:4},
+      {zh:"七", py:"qī",   en:"Seven (7)", meaning:"7 — Seven", tone:1},
+      {zh:"八", py:"bā",   en:"Eight (8)", meaning:"8 — Eight", tone:1},
+      {zh:"九", py:"jiǔ",  en:"Nine (9)",  meaning:"9 — Nine",  tone:3},
+      {zh:"十", py:"shí",  en:"Ten (10)",  meaning:"10 — Ten",  tone:2},
+    ]
+  },
+  {
+    id:"family", icon:"👪", name:"Family",
+    zh_sec:"家人", en_sec:"Family", sub:"Family members in Chinese",
+    items:[
+      {zh:"爸爸", py:"bàba",    en:"Father / Dad",      meaning:"Father",     tone:4},
+      {zh:"妈妈", py:"māma",    en:"Mother / Mom",      meaning:"Mother",     tone:1},
+      {zh:"哥哥", py:"gēge",    en:"Older brother",     meaning:"Elder Brother", tone:1},
+      {zh:"弟弟", py:"dìdi",    en:"Younger brother",   meaning:"Younger Brother", tone:4},
+      {zh:"姐姐", py:"jiějie",  en:"Older sister",      meaning:"Elder Sister", tone:3},
+      {zh:"妹妹", py:"mèimei",  en:"Younger sister",    meaning:"Younger Sister", tone:4},
+      {zh:"家人", py:"jiārén",  en:"Family",            meaning:"Family",     tone:1},
+      {zh:"朋友", py:"péngyǒu", en:"Friend",            meaning:"Friend",     tone:2},
+      {zh:"儿子", py:"érzi",    en:"Son",               meaning:"Son",        tone:2},
+      {zh:"女儿", py:"nǚ'ér",   en:"Daughter",          meaning:"Daughter",   tone:3},
+    ]
+  },
+  {
+    id:"food", icon:"🍜", name:"Food",
+    zh_sec:"食物", en_sec:"Food & Drink", sub:"Eat, drink, and enjoy",
+    items:[
+      {zh:"饭",   py:"fàn",      en:"Rice / Meal",     meaning:"Rice / Meal",  tone:4},
+      {zh:"水",   py:"shuǐ",     en:"Water",            meaning:"Water",        tone:3},
+      {zh:"牛奶", py:"niúnǎi",   en:"Milk",             meaning:"Milk",         tone:2},
+      {zh:"面条", py:"miàntiáo", en:"Noodles",          meaning:"Noodles",      tone:4},
+      {zh:"茶",   py:"chá",      en:"Tea",              meaning:"Tea",          tone:2},
+      {zh:"肉",   py:"ròu",      en:"Meat",             meaning:"Meat",         tone:4},
+      {zh:"蔬菜", py:"shūcài",   en:"Vegetables",       meaning:"Vegetables",   tone:1},
+      {zh:"好吃", py:"hǎochī",   en:"Delicious",        meaning:"Delicious",    tone:3},
+      {zh:"饿了", py:"è le",     en:"I'm hungry",       meaning:"Hungry",       tone:4},
+      {zh:"饱了", py:"bǎo le",   en:"I'm full",         meaning:"Full / Satisfied", tone:3},
+    ]
+  },
+  {
+    id:"time", icon:"⏰", name:"Time",
+    zh_sec:"时间", en_sec:"Time & Days", sub:"Days, time, and schedules",
+    items:[
+      {zh:"今天",  py:"jīntiān",  en:"Today",      meaning:"Today",     tone:1},
+      {zh:"明天",  py:"míngtiān", en:"Tomorrow",   meaning:"Tomorrow",  tone:2},
+      {zh:"昨天",  py:"zuótiān",  en:"Yesterday",  meaning:"Yesterday", tone:2},
+      {zh:"星期一", py:"xīngqī yī", en:"Monday",   meaning:"Monday",    tone:1},
+      {zh:"星期三", py:"xīngqī sān", en:"Wednesday", meaning:"Wednesday", tone:1},
+      {zh:"星期五", py:"xīngqī wǔ", en:"Friday",   meaning:"Friday",    tone:1},
+      {zh:"星期天", py:"xīngqītiān", en:"Sunday",  meaning:"Sunday",    tone:1},
+      {zh:"现在",  py:"xiànzài",  en:"Now / Right now", meaning:"Now",  tone:4},
+      {zh:"早上",  py:"zǎoshang", en:"Morning",    meaning:"Morning",   tone:3},
+      {zh:"晚上",  py:"wǎnshang", en:"Evening / Night", meaning:"Evening", tone:3},
+    ]
+  },
+  {
+    id:"daily", icon:"💬", name:"Daily Talk",
+    zh_sec:"常用语", en_sec:"Everyday Sentences", sub:"Practical phrases for real life",
+    items:[
+      {zh:"这是什么？",  py:"zhè shì shénme?",   en:"What is this?",          meaning:"What is this?",        tone:4},
+      {zh:"多少钱？",    py:"duōshǎo qián?",      en:"How much does it cost?", meaning:"How much?",            tone:1},
+      {zh:"厕所在哪里？",py:"cèsuǒ zài nǎlǐ?",  en:"Where is the toilet?",   meaning:"Where is the toilet?", tone:4},
+      {zh:"我不明白",    py:"wǒ bù míngbái",      en:"I don't understand",     meaning:"I don't understand",   tone:2},
+      {zh:"我明白了",    py:"wǒ míngbái le",      en:"I understand",           meaning:"I understand",         tone:2},
+      {zh:"请再说一遍",  py:"qǐng zài shuō yībiàn",en:"Please say that again", meaning:"Say it again",         tone:3},
+      {zh:"请慢点说",    py:"qǐng màn diǎn shuō", en:"Please speak slowly",    meaning:"Speak slowly",         tone:4},
+      {zh:"帮帮我",      py:"bāng bāng wǒ",       en:"Please help me",         meaning:"Help me",              tone:1},
+    ]
+  },
+  {
+    id:"colors", icon:"🎨", name:"Colors",
+    zh_sec:"颜色", en_sec:"Colors", sub:"Describe the world in color",
+    items:[
+      {zh:"红色", py:"hóng sè", en:"Red",    meaning:"Red",    tone:2},
+      {zh:"蓝色", py:"lán sè",  en:"Blue",   meaning:"Blue",   tone:2},
+      {zh:"绿色", py:"lǜ sè",   en:"Green",  meaning:"Green",  tone:4},
+      {zh:"黄色", py:"huáng sè",en:"Yellow", meaning:"Yellow", tone:2},
+      {zh:"白色", py:"bái sè",  en:"White",  meaning:"White",  tone:2},
+      {zh:"黑色", py:"hēi sè",  en:"Black",  meaning:"Black",  tone:1},
+      {zh:"橙色", py:"chéng sè",en:"Orange", meaning:"Orange", tone:2},
+      {zh:"粉色", py:"fěn sè",  en:"Pink",   meaning:"Pink",   tone:3},
+    ]
+  },
+];
+
+/* ============================================================ BUILD ============================================================ */
+const tabsEl     = document.getElementById('tabs');
+const sectionsEl = document.getElementById('sections');
+
+const toneColors = { 1:'#2980B9', 2:'#27AE60', 3:'#8E44AD', 4:'#C0392B', 5:'#7F8C8D' };
+
+categories.forEach((cat, idx) => {
+  // Tab
+  const btn = document.createElement('button');
+  btn.className = 'tab-btn' + (idx === 0 ? ' active' : '');
+  btn.textContent = cat.icon + ' ' + cat.name;
+  btn.onclick = () => showSection(cat.id, true);
+  tabsEl.appendChild(btn);
+
+  // Section
+  const sec = document.createElement('div');
+  sec.className = 'section' + (idx === 0 ? ' active' : '');
+  sec.id = 'sec-' + cat.id;
+
+  let html = `
+    <div class="section-header">
+      <div class="zh-sec">${cat.zh_sec}</div>
+      <div class="en-sec">${cat.en_sec}<small>${cat.sub}</small></div>
+    </div>
+    <div class="grid">`;
+
+  cat.items.forEach(item => {
+    const t = item.tone || 5;
+    const color = toneColors[t];
+    const zhEsc = item.zh.replace(/'/g, "\\'");
+    html += `
+      <div class="card" onclick="this.classList.toggle('flipped')">
+        <span class="tone-badge tone-${t}">${t}</span>
+        <button class="speaker" onclick="event.stopPropagation(); speak('${zhEsc}')">🔊</button>
+        <div class="zh">${item.zh}</div>
+        <div class="pinyin">${item.py}</div>
+        <div class="en-word">${item.en}</div>
+        <div class="meaning">${item.meaning}</div>
+      </div>`;
+  });
+
+  html += `</div>`;
+  sec.innerHTML = html;
+  sectionsEl.appendChild(sec);
+});
+
+// Quiz tab
+const quizBtn = document.createElement('button');
+quizBtn.className = 'tab-btn';
+quizBtn.textContent = '📝 Quiz';
+quizBtn.onclick = () => showSection('quiz', true);
+tabsEl.appendChild(quizBtn);
+
+const quizSec = document.createElement('div');
+quizSec.className = 'section';
+quizSec.id = 'sec-quiz';
+quizSec.innerHTML = `
+  <div class="section-header">
+    <div class="zh-sec">测验</div>
+    <div class="en-sec">Quiz<small>Test your Mandarin knowledge</small></div>
+  </div>
+  <div class="quiz-box">
+    <div class="quiz-score" id="quizScore">Score: 0 / 0</div>
+    <div class="quiz-label">What is the English meaning of this character / phrase?</div>
+    <div class="quiz-zh" id="quizZh"></div>
+    <div class="quiz-pinyin" id="quizPinyin"></div>
+    <div class="quiz-en-hint" id="quizEnHint"></div>
+    <div class="quiz-options" id="quizOptions"></div>
+    <button class="next-btn" id="nextBtn" onclick="nextQuestion()">Next Question ➜</button>
+  </div>`;
+sectionsEl.appendChild(quizSec);
+
+/* ============================================================ TAB SWITCH ============================================================ */
+function showSection(id, push) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('sec-' + id).classList.add('active');
+  const allBtns = Array.from(document.querySelectorAll('.tab-btn'));
+  const idx = id === 'quiz' ? allBtns.length - 1 : categories.findIndex(c => c.id === id);
+  allBtns[idx].classList.add('active');
+  if (id === 'quiz' && !quizStarted) startQuiz();
+  if (push) history.pushState({ tab: id }, '', '#' + id);
+  playClick();
+}
+window.addEventListener('popstate', e => {
+  showSection(e.state?.tab || categories[0].id, false);
+});
+history.replaceState({ tab: categories[0].id }, '', '#' + categories[0].id);
+
+/* ============================================================ SPEECH ============================================================ */
+function speak(text) {
+  playClick();
+  if ('speechSynthesis' in window) {
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'zh-CN'; u.rate = 0.85;
+    speechSynthesis.cancel();
+    speechSynthesis.speak(u);
+  }
+}
+
+/* ============================================================ QUIZ ============================================================ */
+let quizStarted = false, score = 0, total = 0;
+let allItems = [];
+categories.forEach(c => c.items.forEach(i => allItems.push(i)));
+
+function startQuiz() {
+  quizStarted = true; score = 0; total = 0; updateScore(); nextQuestion();
+}
+
+function shuffle(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+let currentAnswer = null;
+
+function nextQuestion() {
+  document.getElementById('nextBtn').style.display = 'none';
+  const correct = allItems[Math.floor(Math.random() * allItems.length)];
+  currentAnswer = correct;
+  document.getElementById('quizZh').textContent = correct.zh;
+  document.getElementById('quizPinyin').textContent = correct.py;
+  document.getElementById('quizEnHint').textContent = '(' + correct.en + ')';
+
+  let opts = [correct];
+  while (opts.length < 4) {
+    const c = allItems[Math.floor(Math.random() * allItems.length)];
+    if (!opts.find(o => o.meaning === c.meaning)) opts.push(c);
+  }
+  opts = shuffle(opts);
+
+  const el = document.getElementById('quizOptions');
+  el.innerHTML = '';
+  opts.forEach(opt => {
+    const b = document.createElement('button');
+    b.className = 'opt-btn';
+    b.textContent = opt.meaning;
+    b.onclick = () => checkAnswer(b, opt);
+    el.appendChild(b);
+  });
+}
+
+function checkAnswer(btn, opt) {
+  document.querySelectorAll('.opt-btn').forEach(b => b.onclick = null);
+  total++;
+  if (opt.meaning === currentAnswer.meaning) {
+    btn.classList.add('correct'); score++; playTone(660);
+  } else {
+    btn.classList.add('wrong'); playTone(220);
+    document.querySelectorAll('.opt-btn').forEach(b => {
+      if (b.textContent === currentAnswer.meaning) b.classList.add('correct');
+    });
+  }
+  updateScore();
+  document.getElementById('nextBtn').style.display = 'inline-block';
+}
+
+function updateScore() {
+  document.getElementById('quizScore').textContent = `Score: ${score} / ${total}`;
+}
+
+/* ============================================================ SOUND ============================================================ */
+let audioCtx;
+function playTone(freq) {
+  try {
+    audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+    const osc = audioCtx.createOscillator(), gain = audioCtx.createGain();
+    osc.type = 'sine'; osc.frequency.value = freq;
+    gain.gain.setValueAtTime(0.001, audioCtx.currentTime);
+    gain.gain.linearRampToValueAtTime(0.15, audioCtx.currentTime + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.35);
+    osc.connect(gain); gain.connect(audioCtx.destination);
+    osc.start(); osc.stop(audioCtx.currentTime + 0.35);
+  } catch (e) {}
+}
+function playClick() { playTone(520); }
+
+/* ============================================================ LANTERNS ============================================================ */
+const lc = document.getElementById('lanterns');
+const lColors = ['#C0392B','#D4A017','#8B1A10','#F5D87A'];
+for (let i = 0; i < 14; i++) {
+  const l = document.createElement('div');
+  l.className = 'lantern';
+  l.style.left   = (Math.random() * 100) + 'vw';
+  l.style.top    = (Math.random() * 90)  + 'vh';
+  l.style.width  = (10 + Math.random() * 8) + 'px';
+  l.style.height = (14 + Math.random() * 10) + 'px';
+  l.style.background = lColors[Math.floor(Math.random() * lColors.length)];
+  l.style.animationDuration = (6 + Math.random() * 8) + 's';
+  l.style.animationDelay   = (Math.random() * 8) + 's';
+  lc.appendChild(l);
+}
+
+/* Android back */
+document.addEventListener('backbutton', () => {
+  if (history.state?.tab !== categories[0].id) history.back();
+}, false);
+</script>
+
+<footer class="footer">
+<div style="margin-bottom:18px;">
+<a href="about.html">About</a> |
+<a href="privacy.html">Privacy Policy</a> |
+<a href="terms.html">Terms &amp; Conditions</a> |
+<a href="contact.html">Contact</a> |
+<a href="disclaimer.html">Disclaimer</a>
+</div>
+<div class="footer-name">MYSKILLGAME</div>
+<div class="footer-copy">© 2026 MySkillGame • Developed by Surajit Roy</div>
+</footer>
+</body>
+</html>

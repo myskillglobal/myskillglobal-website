@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Smart Writer Pro ✨</title>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&amp;family=Poppins:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+:root{
+  --bg:#eef5f8;--card:#fff;--text:#1e293b;--muted:#64748b;
+  --border:#e2e8f0;--shadow:0 8px 32px rgba(0,0,0,0.1);
+}
+body.dark{
+  --bg:#0f172a;--card:#1e293b;--text:#f1f5f9;--muted:#94a3b8;
+  --border:#334155;--shadow:0 8px 32px rgba(0,0,0,0.4);
+}
+body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;transition:background 0.3s,color 0.3s;}
+
+/* HEADER */
+.app-header{
+  background:linear-gradient(135deg,#0f2c4c,#0e6ba8,#0d9488);
+  padding:16px 16px 0;position:sticky;top:0;z-index:100;
+  box-shadow:0 4px 20px rgba(14,107,168,0.4);
+}
+.header-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.app-logo{display:flex;align-items:center;gap:8px;}
+.app-logo .logo-icon{font-size:28px;animation:bounce 2s infinite;}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.app-logo h1{font-family:'Playfair Display',serif;font-size:18px;color:white;font-weight:900;letter-spacing:-0.5px;}
+.dark-toggle{background:rgba(255,255,255,0.2);border:none;color:white;width:36px;height:36px;border-radius:50%;font-size:16px;cursor:pointer;transition:background 0.2s;}
+.dark-toggle:active{background:rgba(255,255,255,0.4);}
+
+/* Tab bar */
+.tab-bar{display:flex;gap:4px;overflow-x:auto;padding-bottom:0;scrollbar-width:none;}
+.tab-bar::-webkit-scrollbar{display:none;}
+.tab-btn{
+  flex-shrink:0;padding:10px 14px;border:none;background:transparent;
+  color:rgba(255,255,255,0.7);font-size:12px;font-weight:700;
+  cursor:pointer;border-radius:12px 12px 0 0;transition:all 0.2s;
+  font-family:'Poppins',sans-serif;white-space:nowrap;
+}
+.tab-btn.active{background:var(--bg);color:#0e6ba8;box-shadow:0 -4px 12px rgba(0,0,0,0.1);}
+.tab-btn:not(.active):hover{background:rgba(255,255,255,0.15);color:white;}
+
+/* SCREENS */
+.screen{display:none;padding:16px;min-height:calc(100vh - 100px);}
+.screen.active{display:block;animation:fadeIn 0.3s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* CARD */
+.card{background:var(--card);border-radius:18px;padding:18px;margin-bottom:14px;box-shadow:var(--shadow);border:1px solid var(--border);}
+.card-title{font-size:14px;font-weight:800;color:var(--text);display:flex;align-items:center;gap:8px;margin-bottom:14px;}
+.card-title .ct-icon{font-size:20px;}
+
+/* FORM */
+.form-group{margin-bottom:12px;}
+.form-label{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px;display:block;}
+.form-input,.form-select,.form-textarea{
+  width:100%;padding:13px 14px;border:2px solid var(--border);border-radius:12px;
+  background:var(--bg);color:var(--text);font-size:16px;
+  font-family:'Poppins',sans-serif;outline:none;
+  transition:border-color 0.2s;-webkit-appearance:none;
+  box-sizing:border-box;
+}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:#0e6ba8;}
+.form-textarea{min-height:80px;resize:vertical;}
+
+/* BUTTONS */
+.btn-row{display:flex;gap:8px;flex-wrap:wrap;}
+.btn{
+  flex:1;padding:13px 10px;border:none;border-radius:12px;
+  font-size:13px;font-weight:800;cursor:pointer;
+  font-family:'Poppins',sans-serif;transition:transform 0.15s,box-shadow 0.15s;
+  display:flex;align-items:center;justify-content:center;gap:6px;
+  min-width:80px;
+}
+.letter-preview {
+  background: #ffffff !important;}
+.btn:active{transform:scale(0.96);}
+.btn-primary{background:linear-gradient(135deg,#0e6ba8,#0d9488);color:white;box-shadow:0 4px 16px rgba(14,107,168,0.4);}
+.btn-green  {background:linear-gradient(135deg,#22c55e,#16a34a);color:white;box-shadow:0 4px 16px rgba(34,197,94,0.35);}
+.btn-orange {background:linear-gradient(135deg,#f97316,#ea580c);color:white;box-shadow:0 4px 16px rgba(249,115,22,0.35);}
+.btn-pink   {background:linear-gradient(135deg,#ec4899,#be185d);color:white;box-shadow:0 4px 16px rgba(236,72,153,0.35);}
+.btn-outline{background:transparent;color:var(--text);border:2px solid var(--border);}
+
+/* LETTER PREVIEW */
+.letter-preview{
+  background:white;border:1px solid #e2e8f0;border-radius:12px;
+  padding:28px 24px;font-family:Georgia,serif;color:#1e293b;
+  font-size:15px;line-height:1.8;box-shadow:0 2px 12px rgba(0,0,0,0.06);
+}
+.letter-preview .lp-header{text-align:center;border-bottom:2px solid #0e6ba8;padding-bottom:12px;margin-bottom:16px;}
+.letter-preview .lp-header h2{font-family:'Playfair Display',serif;font-size:18px;color:#0e6ba8;margin-bottom:2px;}
+.letter-preview .lp-header p{font-size:11px;color:#64748b;}
+.letter-preview .lp-date{text-align:right;margin-bottom:12px;font-size:12px;color:#64748b;}
+.letter-preview .lp-subject{font-weight:700;margin-bottom:10px;}
+.letter-preview .lp-body{text-align:justify;}
+.letter-preview .lp-sign{margin-top:20px;}
+
+/* NOTICE PREVIEW (official format) */
+.notice-preview{
+  background:white;border:1px solid #e2e8f0;border-radius:12px;
+  padding:28px 24px;font-family:Georgia,serif;color:#1e293b;
+  font-size:15px;line-height:1.75;box-shadow:0 2px 12px rgba(0,0,0,0.06);
+}
+.notice-preview .np-letterhead{text-align:center;border-bottom:3px double #0e6ba8;padding-bottom:12px;margin-bottom:14px;}
+.notice-preview .np-letterhead h2{font-family:'Playfair Display',serif;font-size:19px;color:#0e6ba8;margin-bottom:2px;}
+.notice-preview .np-letterhead p{font-size:11px;color:#64748b;letter-spacing:0.5px;}
+.notice-preview .np-heading{
+  text-align:center;font-family:'Poppins',sans-serif;font-weight:800;font-size:16px;
+  letter-spacing:3px;border:2px solid #1e293b;display:inline-block;padding:5px 22px;
+  margin:6px auto 16px;
+}
+.notice-preview .np-heading-wrap{text-align:center;}
+.notice-preview .np-refdate{display:flex;justify-content:space-between;font-size:12px;color:#334155;margin-bottom:14px;flex-wrap:wrap;gap:6px;}
+.notice-preview .np-subject{font-weight:700;margin-bottom:12px;border-bottom:1px dashed #cbd5e1;padding-bottom:8px;}
+.notice-preview .np-body{text-align:justify;}
+.notice-preview .np-sign{margin-top:26px;text-align:right;}
+
+/* Confetti */
+#confetti-layer{position:fixed;inset:0;pointer-events:none;z-index:9999;overflow:hidden;}
+.dot{position:absolute;top:-16px;border-radius:3px;animation:fall linear forwards;will-change:transform;}
+@keyframes fall{to{transform:translateY(110vh) rotate(600deg);opacity:0}}
+
+/* Toast */
+.toast{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);
+  background:#1e293b;color:white;padding:10px 20px;border-radius:20px;
+  font-size:13px;font-weight:700;z-index:9998;transition:transform 0.3s;
+  box-shadow:0 4px 20px rgba(0,0,0,0.3);white-space:nowrap;
+}
+.toast.show{transform:translateX(-50%) translateY(0);}
+
+/* Share overlay */
+.share-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:9990;
+  display:flex;align-items:flex-end;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity 0.25s;
+}
+.share-overlay.show{opacity:1;pointer-events:all;}
+.share-sheet{
+  background:var(--card);border-radius:24px 24px 0 0;
+  padding:20px 20px calc(20px + env(safe-area-inset-bottom));
+  width:100%;max-width:430px;
+  transform:translateY(100%);transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+}
+.share-overlay.show .share-sheet{transform:translateY(0);}
+.share-handle{width:40px;height:4px;background:var(--border);border-radius:2px;margin:0 auto 16px;}
+.share-title{font-size:14px;font-weight:800;color:var(--text);margin-bottom:14px;text-align:center;}
+.share-options{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.share-opt{
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  padding:14px 8px;border-radius:14px;border:none;
+  background:var(--bg);cursor:pointer;font-family:'Poppins',sans-serif;
+  transition:transform 0.15s;
+}
+.share-opt:active{transform:scale(0.93);}
+.share-opt .so-icon{font-size:28px;}
+.share-opt .so-label{font-size:11px;font-weight:700;color:var(--muted);}
+.share-cancel{
+  width:100%;margin-top:12px;padding:13px;border:none;border-radius:12px;
+  background:var(--border);color:var(--text);font-size:14px;font-weight:700;
+  cursor:pointer;font-family:'Poppins',sans-serif;
+}
+#letterPreview, #noticePreview {
+    background-color: white !important;
+    color: #1e293b !important; /* Dark mode-eo jate JPG shada ashe */
+}
+@media print {
+    /* 1. Puron UI element gulo ke ekebare remove kora */
+    .app-header, .tab-bar, .dark-toggle, .btn-row, .form-group, .card-title, .status-info, .no-print {
+        display: none !important;
+    }
+
+    /* 2. Page and Body Setup */
+    body { background: white !important; margin: 0 !important; }
+    .screen { display: none !important; }
+    .screen.active { display: block !important; }
+
+    /* 3. Screen logic: Shudhu active screen-er preview dekhabe */
+    .screen {
+        display: none !important;
+    }
+    
+    .screen.active {
+        display: block !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* 4. Preview Cards Style Fix */
+    #letterPreview, #noticePreview {
+        display: block !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+    /* 5. Force Color Printing */
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+}
+</style>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1034022057999423"></script><link href="https://myskillgame.netlify.app/11-7-26 website/smart_writer.html" rel="canonical"/></head>
+<body>
+<div id="confetti-layer"></div>
+<div class="toast" id="toast">✅ Done!</div>
+<!-- Share Sheet -->
+<div class="share-overlay" id="shareOverlay" onclick="closeShare(event)">
+<div class="share-sheet">
+<div class="share-handle"></div>
+<div class="share-title" id="shareTitle">Share or Save</div>
+<div class="share-options" id="shareOptions"></div>
+<button class="share-cancel" onclick="hideShareSheet()">Cancel</button>
+</div>
+</div>
+<!-- HEADER -->
+<div class="app-header">
+<div class="header-top">
+<div class="app-logo">
+<span class="logo-icon">✍️</span>
+<h1>Smart Writer Pro</h1>
+</div>
+<button class="dark-toggle" id="darkBtn" onclick="toggleDark()">🌙</button>
+</div>
+<div class="tab-bar">
+<button class="tab-btn active" id="letterBtn" onclick="showTab('letters','letterBtn')">✉️ Letters</button>
+<button class="tab-btn" id="noticeBtn" onclick="showTab('notices','noticeBtn')">📋 Notices &amp; Formats</button>
+</div>
+</div>
+<!-- ✉️ LETTERS -->
+<div class="screen active" id="letters">
+<div class="card">
+<div class="card-title"><span class="ct-icon">📋</span>Choose Letter Type</div>
+<div class="form-group">
+<select class="form-select" id="letterType" onchange="buildLetterForm()">
+<optgroup label="🏫 School &amp; College">
+<option value="school_leave">Leave Application</option>
+<option value="sick_leave">Sick Leave (Student)</option>
+<option value="fee_exemption">Fee Exemption Request</option>
+<option value="tc_request">Transfer Certificate (TC) Request</option>
+<option value="permission">Permission Letter</option>
+</optgroup>
+<optgroup label="🏢 Office &amp; Job">
+<option value="casual_leave">Casual Leave Application</option>
+<option value="medical_leave">Medical Leave Application</option>
+<option value="tour_travel">Tour / Travel Application</option>
+<option value="job_application">Job Application</option>
+<option value="resignation">Resignation Letter</option>
+</optgroup>
+<optgroup label="🏦 Bank">
+<option value="atm_block">ATM / Card Block Request</option>
+<option value="chequebook_request">Cheque Book Request</option>
+<option value="address_update">Address / Mobile Number Update</option>
+<option value="account_closure">Account Closure Request</option>
+</optgroup>
+<optgroup label="🚔 Police">
+<option value="police_gd_mobile">Mobile Phone Lost (GD)</option>
+<option value="police_gd_documents">Important Documents Lost (GD)</option>
+</optgroup>
+<optgroup label="📢 Complaints">
+<option value="complaint_general">General Complaint</option>
+<option value="complaint_civic">Civic Complaint (Road/Water/Electricity)</option>
+<option value="complaint_consumer">Consumer Complaint</option>
+<option value="complaint_neighbour">Neighbour Nuisance Complaint</option>
+</optgroup>
+<optgroup label="💌 Personal">
+<option value="thankyou">Thank You Letter</option>
+<option value="recommendation">Recommendation Letter</option>
+<option value="informal_friend">Informal Letter to Friend</option>
+<option value="informal_relative">Informal Letter to Relative</option>
+</optgroup>
+</select>
+</div>
+<div id="letterFields"></div>
+</div>
+<div class="card">
+<div class="card-title"><span class="ct-icon">👁️</span>Preview</div>
+<div class="letter-preview" id="letterPreview"></div>
+<br/>
+<div class="btn-row">
+<button class="btn btn-primary" id="printBtn">🖨️ PDF Preview</button>
+<button class="btn btn-secondary" id="jpgBtn">🖼️ Save as JPG</button>
+</div>
+</div>
+</div>
+<!-- 📋 NOTICES & FORMATS -->
+<div class="screen" id="notices">
+<div class="card">
+<div class="card-title"><span class="ct-icon">📋</span>Choose Notice / Format Type</div>
+<div class="form-group">
+<select class="form-select" id="noticeType" onchange="buildNoticeForm()">
+<option value="holiday">Holiday Notice</option>
+<option value="examination">Examination Notice</option>
+<option value="fee_due">Fee Payment Due Notice</option>
+<option value="meeting">Meeting Notice</option>
+<option value="tender">Tender Notice</option>
+<option value="circular">General Circular</option>
+</select>
+</div>
+<div id="noticeFields"></div>
+</div>
+<div class="card">
+<div class="card-title"><span class="ct-icon">👁️</span>Preview</div>
+<div class="notice-preview" id="noticePreview"></div>
+<br/>
+<div class="btn-row">
+<button class="btn btn-primary" id="noticePrintBtn">🖨️ PDF Preview</button>
+<button class="btn btn-secondary" id="noticeJpgBtn">🖼️ Save as JPG</button>
+</div>
+</div>
+</div>
+<script>
+/* ═══════════════════════════════
+   TAB + DARK MODE
+═══════════════════════════════ */
+function showTab(id, btnId) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.getElementById(btnId).classList.add('active');
+}
+function toggleDark() {
+  document.body.classList.toggle('dark');
+  document.getElementById('darkBtn').textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+}
+
+/* ═══════════════════════════════
+   TOAST
+═══════════════════════════════ */
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+/* ═══════════════════════════════
+   CONFETTI
+═══════════════════════════════ */
+function spawnConfetti(n) {
+  const layer = document.getElementById('confetti-layer');
+  const colors = ['#6366f1','#ec4899','#fbbf24','#22c55e','#f97316','#a855f7','#06b6d4'];
+  for (let i = 0; i < n; i++) {
+    const d = document.createElement('div'); d.className = 'dot';
+    const sz = 6 + Math.random() * 8;
+    d.style.cssText = `left:${Math.random()*100}%;width:${sz}px;height:${sz}px;background:${colors[i%colors.length]};animation-duration:${0.9+Math.random()*0.8}s;animation-delay:${Math.random()*0.5}s;border-radius:${Math.random()>.5?'50%':'3px'};`;
+    layer.appendChild(d);
+    d.addEventListener('animationend', () => d.remove());
+  }
+}
+
+/* ═══════════════════════════════
+   UNIVERSAL SHARE SYSTEM
+   — Web Share API → WhatsApp/Apps
+   — Fallback: download link
+═══════════════════════════════ */
+
+// Pending file blob for share sheet
+let _pendingBlob = null;
+let _pendingFilename = '';
+
+async function showShareSheet(blob, filename, title) {
+  _pendingBlob = blob;
+  _pendingFilename = filename;
+  const isPDF = filename.endsWith('.pdf');
+  document.getElementById('shareTitle').textContent = `Share "${filename}"`;
+
+  const options = [
+    {
+      icon: '📲',
+      label: 'WhatsApp',
+      fn: async () => {
+        await doNativeShare(blob, filename);
+        hideShareSheet();
+      }
+    },
+    {
+      icon: '📤',
+      label: 'Share / Apps',
+      fn: async () => {
+        await doNativeShare(blob, filename);
+        hideShareSheet();
+      }
+    },
+    {
+      icon: '⬇️',
+      label: 'Download',
+      fn: () => {
+        downloadBlob(blob, filename);
+        hideShareSheet();
+        showToast('⬇️ Saved!');
+      }
+    }
+  ];
+
+  const container = document.getElementById('shareOptions');
+  container.innerHTML = '';
+  options.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.className = 'share-opt';
+    btn.innerHTML = `<span class="so-icon">${opt.icon}</span><span class="so-label">${opt.label}</span>`;
+    btn.onclick = opt.fn;
+    container.appendChild(btn);
+  });
+
+  document.getElementById('shareOverlay').classList.add('show');
+}
+
+async function doNativeShare(blob, filename) {
+  const file = new File([blob], filename, { type: blob.type });
+  if (navigator.canShare && navigator.canShare({ files: [file] })) {
+    try {
+      await navigator.share({ files: [file], title: filename });
+      spawnConfetti(30);
+    } catch (e) {
+      if (e.name !== 'AbortError') {
+        downloadBlob(blob, filename);
+        showToast('⬇️ Saved!');
+      }
+    }
+  } else {
+    // Fallback: download
+    downloadBlob(blob, filename);
+    showToast('⬇️ Saved! (Share not supported on this browser)');
+  }
+}
+
+function downloadBlob(blob, filename) {
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 5000);
+}
+
+function hideShareSheet() {
+  document.getElementById('shareOverlay').classList.remove('show');
+}
+function closeShare(e) {
+  if (e.target === document.getElementById('shareOverlay')) hideShareSheet();
+}
+/* 1. Common PDF Preview Function */
+function previewPDF() {
+    try {
+        // Java interface check korbe
+        if (window.Android && typeof window.Android.print === "function") {
+            window.Android.print();
+        } else {
+            window.print();
+        }
+    } catch (e) {
+        window.print();
+    }
+}
+/* 2. Updated Common JPG Save Function */
+function saveJPG(elementId, fileName) {
+    // 1. Element khunje ber kora
+    const element = document.getElementById(elementId);
+    
+    if (!element) {
+        alert("Error: Preview section ('" + elementId + "') not found!");
+        return;
+    }
+
+    // 2. Element jodi khali thake tobe render kora
+    if (element.innerHTML.trim() === "") {
+        if (elementId === 'letterPreview') renderLetter();
+        else if (elementId === 'noticePreview') renderNotice();
+    }
+
+    // 3. Button khunje ber kora (event theke ba generic bhabe)
+    let btn = null;
+    if (typeof event !== 'undefined' && event.target) {
+        btn = event.target;
+    }
+
+    const originalText = btn ? btn.innerText : "Save JPG";
+    if (btn) {
+        btn.innerText = "⏳ Processing...";
+        btn.disabled = true;
+    }
+
+    // 4. Image Generation
+    html2canvas(element, {
+        scale: 3, 
+        backgroundColor: "#ffffff",
+        useCORS: true,
+        logging: false
+    }).then(canvas => {
+        const imgData = canvas.toDataURL("image/jpeg", 0.95);
+        const link = document.createElement('a');
+        link.download = `${fileName}_${Date.now()}.jpg`;
+        link.href = imgData;
+        link.click();
+        
+        if (btn) {
+            btn.innerText = originalText;
+            btn.disabled = false;
+        }
+        showToast("✅ JPG Saved!");
+    }).catch(err => {
+        console.error("JPG Error:", err);
+        if (btn) {
+            btn.innerText = originalText;
+            btn.disabled = false;
+        }
+        alert("Error: Image toiri kora jacche na.");
+    });
+}
+// ── Generate JPG blob from element ──
+async function elementToJPGBlob(el) {
+  const canvas = await html2canvas(el, { scale: 2, backgroundColor: '#ffffff', useCORS: true, allowTaint: true });
+  return new Promise(resolve => canvas.toBlob(resolve, 'image/jpeg', 0.95));
+}
+
+// ── Generate PDF blob from element ──
+async function elementToPDFBlob(el) {
+  const canvas = await html2canvas(el, { scale: 2, backgroundColor: '#ffffff', useCORS: true, allowTaint: true });
+  const { jsPDF } = window.jspdf;
+  const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+  const pageW = pdf.internal.pageSize.getWidth();
+  const pageH = pdf.internal.pageSize.getHeight();
+  const imgW  = pageW - 20;
+  const imgH  = (canvas.height / canvas.width) * imgW;
+  const y     = Math.max(10, (pageH - imgH) / 2);
+  pdf.addImage(canvas.toDataURL('image/jpeg', 0.95), 'JPEG', 10, y, imgW, imgH);
+  return new Blob([pdf.output('arraybuffer')], { type: 'application/pdf' });
+}
+/* Letter ebong Notice-er jonno logic */
+function handlePrint(type) {
+    let elementId = '';
+    if(type === 'letter') elementId = 'letterPreview';
+    else if(type === 'notice') elementId = 'noticePreview';
+
+    if(elementId) {
+        previewPDF();
+    }
+}
+
+// JPG Save korar somoy element check kora
+function handleJPG(type) {
+    let elementId = '';
+    let fileName = '';
+
+    if(type === 'letter') { elementId = 'letterPreview'; fileName = 'Letter'; }
+    else if(type === 'notice') { elementId = 'noticePreview'; fileName = 'Notice'; }
+
+    if(elementId) {
+        saveJPG(elementId, fileName);
+    }
+}
+/* ═══════════════════════════════
+   SHARE FUNCTIONS PER SECTION
+═══════════════════════════════ */
+async function shareLetter(format) {
+  showToast('⏳ Preparing...');
+  try {
+    const el = document.getElementById('letterPreview');
+    const blob = format === 'pdf' ? await elementToPDFBlob(el) : await elementToJPGBlob(el);
+    const name = format === 'pdf' ? 'Letter.pdf' : 'Letter.jpg';
+    await showShareSheet(blob, name, 'Share Letter');
+  } catch(e) { showToast('❌ Error: ' + e.message); }
+}
+document.getElementById("printBtn").onclick = () => {
+  try {
+    // Android WebView support-er jonno
+    if (window.Android && typeof window.Android.print === "function") {
+      window.Android.print();
+    } else {
+      // General Browser-er jonno PDF Preview
+      setTimeout(() => {
+        window.print();
+      }, 200);
+    }
+  } catch (e) {
+    window.print();
+  }
+};
+document.getElementById("jpgBtn").onclick = function() {
+    const previewElement = document.getElementById('letterPreview');
+    
+    // UI-te loading bojhate button disable kora
+    const btn = this;
+    btn.innerText = "⏳ Processing...";
+    btn.disabled = true;
+
+    html2canvas(previewElement, {
+        scale: 2, // Bhalo quality-r jonno scale 2
+        backgroundColor: "#ffffff",
+        useCORS: true
+    }).then(canvas => {
+        const imgData = canvas.toDataURL("image/jpeg", 0.9);
+        const link = document.createElement('a');
+        link.download = `Police_GD_${Date.now()}.jpg`;
+        link.href = imgData;
+        link.click();
+        
+        // Button abar normal kora
+        btn.innerText = "🖼️ Save as JPG";
+        btn.disabled = false;
+        
+        alert("✅ JPG Saved to Gallery/Downloads!");
+    }).catch(err => {
+        alert("Error generating JPG: " + err);
+        btn.innerText = "🖼️ Save as JPG";
+        btn.disabled = false;
+    });
+};
+
+document.getElementById("noticePrintBtn").onclick = () => {
+  try {
+    if (window.Android && typeof window.Android.print === "function") {
+      window.Android.print();
+    } else {
+      setTimeout(() => {
+        window.print();
+      }, 200);
+    }
+  } catch (e) {
+    window.print();
+  }
+};
+document.getElementById("noticeJpgBtn").onclick = function() {
+    const previewElement = document.getElementById('noticePreview');
+    const btn = this;
+    btn.innerText = "⏳ Processing...";
+    btn.disabled = true;
+
+    html2canvas(previewElement, {
+        scale: 2,
+        backgroundColor: "#ffffff",
+        useCORS: true
+    }).then(canvas => {
+        const imgData = canvas.toDataURL("image/jpeg", 0.9);
+        const link = document.createElement('a');
+        link.download = `Notice_${Date.now()}.jpg`;
+        link.href = imgData;
+        link.click();
+
+        btn.innerText = "🖼️ Save as JPG";
+        btn.disabled = false;
+
+        alert("✅ JPG Saved to Gallery/Downloads!");
+    }).catch(err => {
+        alert("Error generating JPG: " + err);
+        btn.innerText = "🖼️ Save as JPG";
+        btn.disabled = false;
+    });
+};
+
+/* ═══════════════════════════════
+   ✉️ LETTERS
+═══════════════════════════════ */
+const LETTER_FIELDS = {
+  /* ── School & College ── */
+  school_leave:[
+    {id:'to',label:'To (Headmaster/Principal name)',ph:'The Headmaster'},
+    {id:'school',label:'School Name',ph:'XYZ High School'},
+    {id:'from',label:'Your Name',ph:'Your name'},
+    {id:'class',label:'Class & Section',ph:'Class VIII, Section A'},
+    {id:'roll',label:'Roll Number',ph:'12'},
+    {id:'reason',label:'Reason for Leave',ph:'fever and cold'},
+    {id:'days',label:'Number of Days',ph:'3'},
+    {id:'date',label:'Date',ph:new Date().toLocaleDateString('en-IN')},
+  ],
+  sick_leave:[
+    {id:'to',label:'To',ph:'The Class Teacher'},
+    {id:'school',label:'School',ph:'School Name'},
+    {id:'from',label:'Your Name',ph:'Your name'},
+    {id:'class',label:'Class',ph:'Class V'},
+    {id:'illness',label:'Illness',ph:'high fever / stomach ache'},
+    {id:'days',label:'Days',ph:'2'},
+    {id:'date',label:'Date',ph:new Date().toLocaleDateString('en-IN')},
+  ],
+  fee_exemption:[
+    {id:'to',label:'To',ph:'The Principal'},
+    {id:'school',label:'School',ph:'School Name'},
+    {id:'from',label:'Student Name',ph:'Your name'},
+    {id:'class',label:'Class',ph:'Class IX'},
+    {id:'guardian',label:'Guardian Name',ph:'Father/Mother name'},
+    {id:'income',label:'Annual Income',ph:'₹1,20,000 per year'},
+    {id:'reason',label:'Reason',ph:'financial hardship'},
+    {id:'date',label:'Date',ph:new Date().toLocaleDateString('en-IN')},
+  ],
+  tc_request:[
+    {id:'to',label:'To',ph:'The Headmaster'},
+    {id:'school',label:'School',ph:'School Name'},
+    {id:'from',label:'Student Name',ph:'Your name'},
+    {id:'class',label:'Current Class',ph:'Class X'},
+    {id:'reason',label:'Reason',ph:'shifting to another city'},
+    {id:'newsch',label:'New School',ph:'New school name (if known)'},
+    {id:'date',label:'Date',ph:new Date().toLocaleDateString('en-IN')},
+  ],
+  permission:[
+    {id:'to',label:'To',ph:'The Principal'},
+    {id:'school',label:'School',ph:'School Name'},
+    {id:'from',label:'Your Name',ph:'Your name'},
+    {id:'event',label:'Event/Activity',ph:'inter-school debate / sports day'},
+    {id:'date_ev',label:'Event Date',ph:'15/05/2025'},
+    {id:'reason',label:'Why needed',ph:'I have been selected to represent the school...'},
+    {id:'date',label:'Application Date',ph:new Date().toLocaleDateString('en-IN')},
+  ],
+
+  /* ── Office & Job ── */
+  casual_leave:[
+    {id:'to',label:'To (Manager/HR name)',ph:'The Manager'},
+    {id:'company',label:'Company Name',ph:'ABC Pvt. Ltd.'},
+    {id:'from',label:'Your Name',ph:'Your name'},
+    {id:'dept',label:'Department',ph:'Accounts / IT / HR'},
+    {id:'reason',label:'Reason for Leave',ph:'personal work'},
+    {id:'from_dt',label:'From Date',ph:'01/05/2025'},
+    {id:'to_dt',label:'To Date',ph:'03/05/2025'},
+    {id:'date',label:'Application Date',ph:new Date().toLocaleDateString('en-IN')},
+  ],
+  medical_leave:[
+    {id:'to',label:'To (Manager/HR name)',ph:'The HR Manager'},
+    {id:'company',label:'Company Name',ph:'ABC Pvt. Ltd.'},
+    {id:'from',label:'Your Name',ph:'Your name'},
+    {id:'dept',label:'Department',ph:'Accounts / IT / HR'},
+    {id:'illness',label:'Medical Reason',ph:'viral fever / minor surgery'},
+    {id:'from_dt',label:'From Date',ph:'01/05/2025'},
+    {id:'to_dt',label:'To Date',ph:'05/05/2025'},
+    {id:'date',label:'Application Date',ph:new Date().toLocaleDateString('en-IN')},
+  ],
+  tour_travel:[
+    {id:'to',label:'To (Manager name)',ph:'The Manager'},
+    {id:'company',label:'Company Name',ph:'ABC Pvt. Ltd.'},
+    {id:'from',label:'Your Name',ph:'Your name'},
+    {id:'dept',label:'Department',ph:'Sales / Marketing'},
+    {id:'purpose',label:'Purpose of Travel',ph:'client meeting / site visit'},
+    {id:'destination',label:'Destination',ph:'Mumbai'},
+    {id:'from_dt',label:'From Date',ph:'01/05/2025'},
+    {id:'to_dt',label:'To Date',ph:'04/05/2025'},
+    {id:'date',label:'Application Date',ph:new Date().toLocaleDateString('en-IN')},
+  ],
+  job_application:[
+    {id:'to',label:'To (Hiring Manager)',ph:'The Hiring Manager'},
+    {id:'company',label:'Company Name',ph:'ABC Pvt. Ltd.'},
+    {id:'from',label:'Your Name',ph:'Your name'},
+    {id:'position',label:'Position Applied For',ph:'Junior Accountant'},
+    {id:'qualification',label:'Qualification & Experience',ph:'B.Com with 2 years experience'},
+    {id:'contact',label:'Contact Number / Email',ph:'you@email.com, 98xxxxxxxx'},
+    {id:'msg',label:'Additional Note',ph:'Briefly mention why you are a good fit...',type:'textarea'},
+    {id:'date',label:'Date',ph:new Date().toLocaleDateString('en-IN')},
+  ],
+  resignation:[
+    {id:'to',label:'To (Manager/HR name)',ph:'The HR Manager'},
+    {id:'company',label:'Company Name',ph:'ABC Pvt. Ltd.'},
+    {id:'from',label:'Your Name',ph:'Your name'},
+    {id:'position',label:'Your Designation',ph:'Junior Accountant'},
+    {id:'last_dt',label:'Last Working Date',ph:'31/05/2025'},
+    {id:'reason',label:'Reason (optional)',ph:'personal reasons / higher studies'},
+    {id:'date',label:'Date',ph:new Date().toLocaleDateString('en-IN')},
+  ],
+
+  /* ── Bank ── */
+  atm_block:[
+    {id:'to',label:'To (Branch Manager)',ph:'The Branch Manager'},
+    {id:'bank',label:'Bank Name & Branch',ph:'State Bank of India, Main Branch'},
+    {id:'from',label:'Your Name',ph:'Your name'},
+    {id:'acc',label:'Account Number',ph:'XXXXXXXXXXXX'},
+    {id:'card',label:'Card Number (last 4 digits)',ph:'XXXX'},
+    {id:'reason',label:'Reason',ph:'card lost / stolen'},
+    {id:'date',label:'Date',ph:new Date().toLocaleDateString('en-IN')},
+  ],
+  chequebook_request:[
+    {id:'to',label:'To (Branch Manager)',ph:'The Branch Manager'},
+    {id:'bank',label:'Bank Name & Branch',ph:'State Bank of India, Main Branch'},
+    {id:'from',label:'Your Name',ph:'Your name'},
+    {id:'acc',label:'Account Number',ph:'XXXXXXXXXXXX'},
+    {id:'leaves',label:'Number of Leaves Required',ph:'25 leaves'},
+    {id:'date',label:'Date',ph:new Date().toLocaleDateString('en-IN')},
+  ],
+  address_update:[
+    {id:'to',label:'To (Branch Manager)',ph:'The Branch Manager'},
+    {id:'bank',label:'Bank Name & Branch',ph:'State Bank of India, Main Branch'},
+    {id:'from',label:'Your Name',ph:'Your name'},
+    {id:'acc',label:'Account Number',ph:'XXXXXXXXXXXX'},
+    {id:'newaddr',label:'New Address / Mobile Number',ph:'New address or mobile number'},
+    {id:'date',label:'Date',ph:new Date().toLocaleDateString('en-IN')},
+  ],
+  account_closure:[
+    {id:'to',label:'To (Branch Manager)',ph:'The Branch Manager'},
+    {id:'bank',label:'Bank Name & Branch',ph:'State Bank of India, Main Branch'},
+    {id:'from',label:'Your Name',ph:'Your name'},
+    {id:'acc',label:'Account Number',ph:'XXXXXXXXXXXX'},
+    {id:'reason',label:'Reason for Closure',ph:'shifting to another city'},
+    {id:'date',label:'Date',ph:new Date().toLocaleDateString('en-IN')},
+  ],
+
+  /* ── Police ── */
+  police_gd_mobile:[
+    {id:'to',label:'Police Station Name',ph:'The Officer-in-Charge, [Station Name]'},
+    {id:'from',label:'Your Name',ph:'Your full name'},
+    {id:'guardian',label:'S/O or D/O',ph:'Father/Husband name'},
+    {id:'address',label:'Your Address',ph:'Full address'},
+    {id:'phone_model',label:'Phone Model',ph:'e.g. Samsung Galaxy M14'},
+    {id:'lost_loc',label:'Where/When Lost',ph:'e.g. near Market at 10 AM on 12/05/2025'},
+    {id:'imei',label:'IMEI Number (if known)',ph:'15-digit IMEI number'},
+    {id:'date',label:'Date',ph:new Date().toLocaleDateString('en-IN')},
+  ],
+  police_gd_documents:[
+    {id:'to',label:'Police Station Name',ph:'The Officer-in-Charge, [Station Name]'},
+    {id:'from',label:'Your Name',ph:'Your full name'},
+    {id:'guardian',label:'S/O or D/O',ph:'Father/Husband name'},
+    {id:'address',label:'Your Address',ph:'Full address'},
+    {id:'documents',label:'Documents Lost',ph:'e.g. Aadhaar Card, PAN Card, Driving Licence'},
+    {id:'lost_loc',label:'Where/When Lost',ph:'e.g. near Bus Stand at 5 PM on 12/05/2025'},
+    {id:'date',label:'Date',ph:new Date().toLocaleDateString('en-IN')},
+  ],
+
+  /* ── Complaints ── */
+  complaint_general:[
+    {id:'to',label:'To',ph:'The Concerned Authority'},
+    {id:'subject',label:'Subject',ph:'Complaint regarding...'},
+    {id:'from',label:'Your Name',ph:'Your name'},
+    {id:'details',label:'Complaint Details',ph:'Describe the issue clearly...',type:'textarea'},
+    {id:'action',label:'Action Requested',ph:'Please take strict action...'},
+    {id:'date',label:'Date',ph:new Date().toLocaleDateString('en-IN')},
+  ],
+  complaint_civic:[
+    {id:'to',label:'To',ph:'The Municipal Commissioner / Ward Officer'},
+    {id:'from',label:'Your Name',ph:'Your name'},
+    {id:'address',label:'Your Address / Ward No.',ph:'Ward 12, XYZ Colony'},
+    {id:'issue',label:'Civic Issue',ph:'broken road / water supply / streetlight'},
+    {id:'details',label:'Details',ph:'Describe the problem and how long it has persisted...',type:'textarea'},
+    {id:'date',label:'Date',ph:new Date().toLocaleDateString('en-IN')},
+  ],
+  complaint_consumer:[
+    {id:'to',label:'To',ph:'The Customer Care Manager / Consumer Forum'},
+    {id:'from',label:'Your Name',ph:'Your name'},
+    {id:'product',label:'Product/Service',ph:'e.g. washing machine, online order'},
+    {id:'order_no',label:'Order/Invoice Number',ph:'Order ID or Invoice number'},
+    {id:'details',label:'Complaint Details',ph:'Describe the defect or issue...',type:'textarea'},
+    {id:'action',label:'Action Requested',ph:'refund / replacement / repair'},
+    {id:'date',label:'Date',ph:new Date().toLocaleDateString('en-IN')},
+  ],
+  complaint_neighbour:[
+    {id:'to',label:'To',ph:'The Society Secretary / Local Authority'},
+    {id:'from',label:'Your Name',ph:'Your name'},
+    {id:'address',label:'Your Address',ph:'Flat/House number, Society name'},
+    {id:'issue',label:'Nuisance Details',ph:'loud noise / parking dispute / harassment'},
+    {id:'details',label:'Details',ph:'Describe the incidents with dates if possible...',type:'textarea'},
+    {id:'date',label:'Date',ph:new Date().toLocaleDateString('en-IN')},
+  ],
+
+  /* ── Personal ── */
+  thankyou:[
+    {id:'to',label:'To',ph:'Dear Teacher / Friend'},
+    {id:'from',label:'Your Name',ph:'Your name'},
+    {id:'reason',label:'Reason for Thanks',ph:'helping me in exams / guiding me'},
+    {id:'msg',label:'Personal Message',ph:'Your kind words meant a lot to me...',type:'textarea'},
+    {id:'date',label:'Date',ph:new Date().toLocaleDateString('en-IN')},
+  ],
+  recommendation:[
+    {id:'to',label:'To',ph:'Admission Officer / Principal'},
+    {id:'for',label:'Student/Person Name',ph:'Name of the person'},
+    {id:'from',label:'Your Name (Recommender)',ph:'Teacher / Senior name'},
+    {id:'quality',label:'Key Qualities',ph:'hardworking, disciplined, honest'},
+    {id:'msg',label:'Recommendation Note',ph:'It gives me great pleasure...',type:'textarea'},
+    {id:'date',label:'Date',ph:new Date().toLocaleDateString('en-IN')},
+  ],
+  informal_friend:[
+    {id:'from',label:'Your Name',ph:'Your name'},
+    {id:'to',label:'Friend Name',ph:"Friend's name"},
+    {id:'place',label:'Your Town',ph:'Kolkata / Delhi'},
+    {id:'msg',label:'What to share',ph:'I am writing to tell you about my summer vacation...',type:'textarea'},
+    {id:'date',label:'Date',ph:new Date().toLocaleDateString('en-IN')},
+  ],
+  informal_relative:[
+    {id:'from',label:'Your Name',ph:'Your name'},
+    {id:'to',label:'Relative Name',ph:'Dida / Kaka / Dada'},
+    {id:'relation',label:'Relation',ph:'Grandmother / Uncle / Grandfather'},
+    {id:'place',label:'Your Town',ph:'Kolkata'},
+    {id:'msg',label:'Message',ph:'I hope you are keeping well. I am writing to share...',type:'textarea'},
+    {id:'date',label:'Date',ph:new Date().toLocaleDateString('en-IN')},
+  ],
+};
+
+function buildLetterForm() {
+  const type = document.getElementById('letterType').value;
+  const fields = LETTER_FIELDS[type] || [];
+  let html = '';
+  fields.forEach(f => {
+    html += `<div class="form-group">
+      <label class="form-label">${f.label}</label>
+      ${f.type==='textarea'
+        ?`<textarea class="form-textarea" id="lf_${f.id}" placeholder="${f.ph}" rows="3" oninput="renderLetter()"></textarea>`
+        :`<input class="form-input" id="lf_${f.id}" placeholder="${f.ph}" oninput="renderLetter()">`
+      }
+    </div>`;
+  });
+  document.getElementById('letterFields').innerHTML = html;
+  renderLetter();
+}
+
+function gv(id) { const el=document.getElementById(id); return el?el.value.trim():''; }
+
+function renderLetter() {
+  const type = document.getElementById('letterType').value;
+  let html = '';
+  const date = gv('lf_date') || new Date().toLocaleDateString('en-IN');
+  const schoolHeader = `<div class="lp-header"><h2>${gv('lf_school')||'School Name'}</h2><p>Application · ${date}</p></div>`;
+  const companyHeader = `<div class="lp-header"><h2>${gv('lf_company')||'Company Name'}</h2><p>Application · ${date}</p></div>`;
+  const bankHeader = `<div class="lp-header"><h2>${gv('lf_bank')||'Bank Name & Branch'}</h2><p>Application · ${date}</p></div>`;
+
+  /* ── School & College ── */
+  if(type==='school_leave'){
+    html=`${schoolHeader}<div class="lp-date">Date: ${date}</div>
+    <p>To,<br><b>${gv('lf_to')||'The Headmaster'}</b><br>${gv('lf_school')||'School Name'}</p><br>
+    <p class="lp-subject">Subject: Application for leave of <b>${gv('lf_days')||'__'} day(s)</b></p><br>
+    <div class="lp-body"><p>Respected Sir/Madam,</p><br>
+    <p>I am <b>${gv('lf_from')||'________'}</b>, a student of <b>${gv('lf_class')||'________'}</b>, Roll No. <b>${gv('lf_roll')||'___'}</b>. I am writing to inform you that I am suffering from <b>${gv('lf_reason')||'________'}</b> and am unable to attend school for <b>${gv('lf_days')||'__'} day(s)</b>.</p><br>
+    <p>I kindly request you to grant me leave for the said period. I will complete all missed work upon my return.</p><br>
+    <p>Thanking you,</p></div>
+    <div class="lp-sign"><br>Yours obediently,<br><br><b>${gv('lf_from')||'________'}</b><br>${gv('lf_class')||'________'}</div>`;
+  } else if(type==='sick_leave'){
+    html=`<div class="lp-header"><h2>${gv('lf_school')||'School Name'}</h2><p>Sick Leave · ${date}</p></div>
+    <div class="lp-date">Date: ${date}</div><p>To,<br><b>${gv('lf_to')||'The Class Teacher'}</b></p><br>
+    <p class="lp-subject">Subject: Sick Leave Application</p><br>
+    <div class="lp-body"><p>Respected Teacher,</p><br>
+    <p>This is to inform you that I, <b>${gv('lf_from')||'________'}</b> of <b>${gv('lf_class')||'________'}</b>, am suffering from <b>${gv('lf_illness')||'________'}</b>. I am therefore unable to attend school for <b>${gv('lf_days')||'__'} day(s)</b>.</p><br>
+    <p>Please grant me leave accordingly. A medical certificate is enclosed herewith.</p><br>
+    <p>Thanking you,</p></div>
+    <div class="lp-sign"><br>Yours obediently,<br><br><b>${gv('lf_from')||'________'}</b></div>`;
+  } else if(type==='fee_exemption'){
+    html=`<div class="lp-header"><h2>${gv('lf_school')||'School Name'}</h2><p>Fee Exemption · ${date}</p></div>
+    <div class="lp-date">Date: ${date}</div><p>To,<br><b>${gv('lf_to')||'The Principal'}</b><br>${gv('lf_school')||'School Name'}</p><br>
+    <p class="lp-subject">Subject: Request for Fee Exemption</p><br>
+    <div class="lp-body"><p>Respected Sir/Madam,</p><br>
+    <p>I am <b>${gv('lf_from')||'________'}</b>, a student of <b>${gv('lf_class')||'________'}</b>. My guardian, <b>${gv('lf_guardian')||'________'}</b>, earns approximately <b>${gv('lf_income')||'________'}</b> per year. Due to <b>${gv('lf_reason')||'financial difficulties'}</b>, it is very difficult for us to pay the full school fees.</p><br>
+    <p>I therefore humbly request you to kindly consider granting me a fee exemption or concession so that I may continue my studies without interruption.</p><br>
+    <p>I am a sincere and regular student and I assure you I will not let you down.</p><br>
+    <p>Thanking you,</p></div>
+    <div class="lp-sign"><br>Yours obediently,<br><br><b>${gv('lf_from')||'________'}</b><br>${gv('lf_class')||'________'}</div>`;
+  } else if(type==='tc_request'){
+    html=`<div class="lp-header"><h2>${gv('lf_school')||'School Name'}</h2><p>Transfer Certificate Request · ${date}</p></div>
+    <div class="lp-date">Date: ${date}</div><p>To,<br><b>${gv('lf_to')||'The Headmaster'}</b><br>${gv('lf_school')||'School Name'}</p><br>
+    <p class="lp-subject">Subject: Request for Issuance of Transfer Certificate</p><br>
+    <div class="lp-body"><p>Respected Sir/Madam,</p><br>
+    <p>I am <b>${gv('lf_from')||'________'}</b>, a student of <b>${gv('lf_class')||'________'}</b> in your esteemed institution. I am writing to request my Transfer Certificate as <b>${gv('lf_reason')||'________'}</b>.</p><br>
+    <p>${gv('lf_newsch') ? `I intend to seek admission at <b>${gv('lf_newsch')}</b>.` : 'I would be grateful if the certificate could be issued at the earliest.'}</p><br>
+    <p>I kindly request you to process this application and issue the Transfer Certificate along with any other required documents.</p><br>
+    <p>Thanking you,</p></div>
+    <div class="lp-sign"><br>Yours obediently,<br><br><b>${gv('lf_from')||'________'}</b><br>${gv('lf_class')||'________'}</div>`;
+  } else if(type==='permission'){
+    html=`<div class="lp-header"><h2>${gv('lf_school')||'School Name'}</h2><p>Permission Letter · ${date}</p></div>
+    <div class="lp-date">Date: ${date}</div><p>To,<br><b>${gv('lf_to')||'The Principal'}</b><br>${gv('lf_school')||'School Name'}</p><br>
+    <p class="lp-subject">Subject: Permission to Participate in <b>${gv('lf_event')||'________'}</b></p><br>
+    <div class="lp-body"><p>Respected Sir/Madam,</p><br>
+    <p>I, <b>${gv('lf_from')||'________'}</b>, wish to inform you that I have been selected to participate in <b>${gv('lf_event')||'________'}</b> on <b>${gv('lf_date_ev')||'________'}</b>.</p><br>
+    <p>${gv('lf_reason')||'I request your kind permission to attend this event.'}</p><br>
+    <p>I assure you that my studies will not be affected and I will make up for the missed classes.</p><br>
+    <p>Thanking you,</p></div>
+    <div class="lp-sign"><br>Yours obediently,<br><br><b>${gv('lf_from')||'________'}</b></div>`;
+
+  /* ── Office & Job ── */
+  } else if(type==='casual_leave'){
+    html=`${companyHeader}<div class="lp-date">Date: ${date}</div>
+    <p>To,<br><b>${gv('lf_to')||'The Manager'}</b><br>${gv('lf_company')||'Company Name'}</p><br>
+    <p class="lp-subject">Subject: Casual Leave Application</p><br>
+    <div class="lp-body"><p>Dear Sir/Madam,</p><br>
+    <p>I, <b>${gv('lf_from')||'________'}</b> from the <b>${gv('lf_dept')||'________'}</b> department, would like to inform you that due to <b>${gv('lf_reason')||'________'}</b>, I am unable to attend office from <b>${gv('lf_from_dt')||'___'}</b> to <b>${gv('lf_to_dt')||'___'}</b>.</p><br>
+    <p>I request you to kindly grant me leave for the above-mentioned period. I assure you that all pending work will be managed accordingly.</p><br>
+    <p>Thanking you,</p></div>
+    <div class="lp-sign"><br>Yours sincerely,<br><br><b>${gv('lf_from')||'________'}</b><br>${gv('lf_dept')||'________'} Department</div>`;
+  } else if(type==='medical_leave'){
+    html=`${companyHeader}<div class="lp-date">Date: ${date}</div>
+    <p>To,<br><b>${gv('lf_to')||'The HR Manager'}</b><br>${gv('lf_company')||'Company Name'}</p><br>
+    <p class="lp-subject">Subject: Medical Leave Application</p><br>
+    <div class="lp-body"><p>Dear Sir/Madam,</p><br>
+    <p>I, <b>${gv('lf_from')||'________'}</b> from the <b>${gv('lf_dept')||'________'}</b> department, am suffering from <b>${gv('lf_illness')||'________'}</b> and am unable to attend office from <b>${gv('lf_from_dt')||'___'}</b> to <b>${gv('lf_to_dt')||'___'}</b>.</p><br>
+    <p>Kindly grant me medical leave for the above period. A medical certificate is enclosed herewith.</p><br>
+    <p>Thanking you,</p></div>
+    <div class="lp-sign"><br>Yours sincerely,<br><br><b>${gv('lf_from')||'________'}</b><br>${gv('lf_dept')||'________'} Department</div>`;
+  } else if(type==='tour_travel'){
+    html=`${companyHeader}<div class="lp-date">Date: ${date}</div>
+    <p>To,<br><b>${gv('lf_to')||'The Manager'}</b><br>${gv('lf_company')||'Company Name'}</p><br>
+    <p class="lp-subject">Subject: Application for Official Tour/Travel</p><br>
+    <div class="lp-body"><p>Dear Sir/Madam,</p><br>
+    <p>I, <b>${gv('lf_from')||'________'}</b> from the <b>${gv('lf_dept')||'________'}</b> department, request permission to travel to <b>${gv('lf_destination')||'________'}</b> for <b>${gv('lf_purpose')||'________'}</b>, from <b>${gv('lf_from_dt')||'___'}</b> to <b>${gv('lf_to_dt')||'___'}</b>.</p><br>
+    <p>I kindly request you to approve this tour and sanction the necessary travel expenses as per company policy.</p><br>
+    <p>Thanking you,</p></div>
+    <div class="lp-sign"><br>Yours sincerely,<br><br><b>${gv('lf_from')||'________'}</b><br>${gv('lf_dept')||'________'} Department</div>`;
+  } else if(type==='job_application'){
+    html=`${companyHeader}<div class="lp-date">Date: ${date}</div>
+    <p>To,<br><b>${gv('lf_to')||'The Hiring Manager'}</b><br>${gv('lf_company')||'Company Name'}</p><br>
+    <p class="lp-subject">Subject: Application for the Post of ${gv('lf_position')||'________'}</p><br>
+    <div class="lp-body"><p>Dear Sir/Madam,</p><br>
+    <p>I am writing to apply for the position of <b>${gv('lf_position')||'________'}</b> at your esteemed organization. I hold <b>${gv('lf_qualification')||'________'}</b>, which I believe makes me a suitable candidate for this role.</p><br>
+    <p>${gv('lf_msg')||'I am confident that my skills and dedication would be an asset to your team.'}</p><br>
+    <p>I have attached my resume for your kind consideration. I can be reached at <b>${gv('lf_contact')||'________'}</b> for further discussion.</p><br>
+    <p>Thanking you,</p></div>
+    <div class="lp-sign"><br>Yours sincerely,<br><br><b>${gv('lf_from')||'________'}</b></div>`;
+  } else if(type==='resignation'){
+    html=`${companyHeader}<div class="lp-date">Date: ${date}</div>
+    <p>To,<br><b>${gv('lf_to')||'The HR Manager'}</b><br>${gv('lf_company')||'Company Name'}</p><br>
+    <p class="lp-subject">Subject: Resignation from the Post of ${gv('lf_position')||'________'}</p><br>
+    <div class="lp-body"><p>Dear Sir/Madam,</p><br>
+    <p>I, <b>${gv('lf_from')||'________'}</b>, am writing to formally tender my resignation from the position of <b>${gv('lf_position')||'________'}</b>, effective from <b>${gv('lf_last_dt')||'________'}</b>.</p><br>
+    <p>${gv('lf_reason') ? `This decision is due to ${gv('lf_reason')}.` : 'This has been a difficult decision, and I appreciate the opportunities I have had during my time here.'}</p><br>
+    <p>I am committed to ensuring a smooth transition and am happy to assist in training my replacement during the notice period.</p><br>
+    <p>Thanking you,</p></div>
+    <div class="lp-sign"><br>Yours sincerely,<br><br><b>${gv('lf_from')||'________'}</b></div>`;
+
+  /* ── Bank ── */
+  } else if(type==='atm_block'){
+    html=`${bankHeader}<div class="lp-date">Date: ${date}</div>
+    <p>To,<br><b>${gv('lf_to')||'The Branch Manager'}</b><br>${gv('lf_bank')||'Bank Name & Branch'}</p><br>
+    <p class="lp-subject">Subject: Request to Block ATM/Debit Card</p><br>
+    <div class="lp-body"><p>Dear Sir/Madam,</p><br>
+    <p>I, <b>${gv('lf_from')||'________'}</b>, holder of account number <b>${gv('lf_acc')||'________'}</b>, would like to inform you that my ATM/Debit card ending in <b>${gv('lf_card')||'____'}</b> has been <b>${gv('lf_reason')||'lost/stolen'}</b>.</p><br>
+    <p>I request you to immediately block the said card to prevent any unauthorized transactions and issue a new card at the earliest.</p><br>
+    <p>Thanking you,</p></div>
+    <div class="lp-sign"><br>Yours faithfully,<br><br><b>${gv('lf_from')||'________'}</b><br>A/c No: ${gv('lf_acc')||'________'}</div>`;
+  } else if(type==='chequebook_request'){
+    html=`${bankHeader}<div class="lp-date">Date: ${date}</div>
+    <p>To,<br><b>${gv('lf_to')||'The Branch Manager'}</b><br>${gv('lf_bank')||'Bank Name & Branch'}</p><br>
+    <p class="lp-subject">Subject: Request for New Cheque Book</p><br>
+    <div class="lp-body"><p>Dear Sir/Madam,</p><br>
+    <p>I, <b>${gv('lf_from')||'________'}</b>, holder of account number <b>${gv('lf_acc')||'________'}</b>, kindly request you to issue a new cheque book of <b>${gv('lf_leaves')||'25 leaves'}</b> for my account.</p><br>
+    <p>Kindly process this request at the earliest and inform me once it is ready for collection/dispatch.</p><br>
+    <p>Thanking you,</p></div>
+    <div class="lp-sign"><br>Yours faithfully,<br><br><b>${gv('lf_from')||'________'}</b><br>A/c No: ${gv('lf_acc')||'________'}</div>`;
+  } else if(type==='address_update'){
+    html=`${bankHeader}<div class="lp-date">Date: ${date}</div>
+    <p>To,<br><b>${gv('lf_to')||'The Branch Manager'}</b><br>${gv('lf_bank')||'Bank Name & Branch'}</p><br>
+    <p class="lp-subject">Subject: Request to Update Address / Mobile Number</p><br>
+    <div class="lp-body"><p>Dear Sir/Madam,</p><br>
+    <p>I, <b>${gv('lf_from')||'________'}</b>, holder of account number <b>${gv('lf_acc')||'________'}</b>, request you to kindly update my registered address/mobile number in your bank records to the following:</p><br>
+    <p><b>${gv('lf_newaddr')||'________'}</b></p><br>
+    <p>I have attached the required supporting documents for verification. Kindly update the same at the earliest.</p><br>
+    <p>Thanking you,</p></div>
+    <div class="lp-sign"><br>Yours faithfully,<br><br><b>${gv('lf_from')||'________'}</b><br>A/c No: ${gv('lf_acc')||'________'}</div>`;
+  } else if(type==='account_closure'){
+    html=`${bankHeader}<div class="lp-date">Date: ${date}</div>
+    <p>To,<br><b>${gv('lf_to')||'The Branch Manager'}</b><br>${gv('lf_bank')||'Bank Name & Branch'}</p><br>
+    <p class="lp-subject">Subject: Request for Account Closure</p><br>
+    <div class="lp-body"><p>Dear Sir/Madam,</p><br>
+    <p>I, <b>${gv('lf_from')||'________'}</b>, holder of account number <b>${gv('lf_acc')||'________'}</b>, wish to close my account due to <b>${gv('lf_reason')||'________'}</b>.</p><br>
+    <p>I kindly request you to process the closure at the earliest and settle the remaining balance, if any, via cheque/transfer to my alternate account.</p><br>
+    <p>I have enclosed the unused cheque leaves and my debit card along with this application.</p><br>
+    <p>Thanking you,</p></div>
+    <div class="lp-sign"><br>Yours faithfully,<br><br><b>${gv('lf_from')||'________'}</b><br>A/c No: ${gv('lf_acc')||'________'}</div>`;
+
+  /* ── Police ── */
+  } else if(type==='police_gd_mobile'){
+    html=`<div class="lp-header"><h2>General Diary (GD) Application</h2><p>${date}</p></div>
+    <div class="lp-date">Date: ${date}</div>
+    <p>To,<br><b>${gv('lf_to')||'The Officer-in-Charge'}</b></p><br>
+    <p class="lp-subject">Subject: Information regarding the loss of mobile phone</p><br>
+    <div class="lp-body">
+      <p>Respected Sir/Madam,</p><br>
+      <p>I, <b>${gv('lf_from')||'________'}</b>, son/daughter of <b>${gv('lf_guardian')||'________'}</b>, residing at <b>${gv('lf_address')||'________'}</b>, would like to inform you that I have lost my mobile phone (<b>${gv('lf_phone_model')||'________'}</b>) on/near <b>${gv('lf_lost_loc')||'________'}</b>.</p><br>
+      <p>The IMEI number of the phone is: <b>${gv('lf_imei')||'________'}</b>.</p><br>
+      <p>Despite my best efforts, I could not find it. I am lodging this General Diary to prevent any misuse of the lost phone and for future reference/insurance/duplicate SIM purposes.</p><br>
+      <p>I, therefore, request you to kindly record this matter in your General Diary and provide me with an acknowledged copy.</p><br>
+      <p>Thanking you,</p>
+    </div>
+    <div class="lp-sign"><br>Yours faithfully,<br><br><b>${gv('lf_from')||'________'}</b></div>`;
+  } else if(type==='police_gd_documents'){
+    html=`<div class="lp-header"><h2>General Diary (GD) Application</h2><p>${date}</p></div>
+    <div class="lp-date">Date: ${date}</div>
+    <p>To,<br><b>${gv('lf_to')||'The Officer-in-Charge'}</b></p><br>
+    <p class="lp-subject">Subject: Information regarding the loss of important documents</p><br>
+    <div class="lp-body">
+      <p>Respected Sir/Madam,</p><br>
+      <p>I, <b>${gv('lf_from')||'________'}</b>, son/daughter of <b>${gv('lf_guardian')||'________'}</b>, residing at <b>${gv('lf_address')||'________'}</b>, would like to inform you that I have lost the following important document(s): <b>${gv('lf_documents')||'________'}</b>, on/near <b>${gv('lf_lost_loc')||'________'}</b>.</p><br>
+      <p>Despite my best efforts, I could not find them. I am lodging this General Diary to prevent any misuse of the lost documents and to apply for duplicates.</p><br>
+      <p>I, therefore, request you to kindly record this matter in your General Diary and provide me with an acknowledged copy.</p><br>
+      <p>Thanking you,</p>
+    </div>
+    <div class="lp-sign"><br>Yours faithfully,<br><br><b>${gv('lf_from')||'________'}</b></div>`;
+
+  /* ── Complaints ── */
+  } else if(type==='complaint_general'){
+    html=`<div class="lp-header"><h2>Complaint Letter</h2><p>${date}</p></div>
+    <div class="lp-date">Date: ${date}</div><p>To,<br><b>${gv('lf_to')||'The Authority'}</b></p><br>
+    <p class="lp-subject">Subject: ${gv('lf_subject')||'Complaint Regarding an Issue'}</p><br>
+    <div class="lp-body"><p>Respected Sir/Madam,</p><br>
+    <p>I, <b>${gv('lf_from')||'________'}</b>, am writing to bring to your kind attention the following matter:</p><br>
+    <p>${gv('lf_details')||'[Please describe the complaint here]'}</p><br>
+    <p>${gv('lf_action')||'I kindly request you to look into this matter and take necessary action.'}</p><br>
+    <p>Thanking you,</p></div>
+    <div class="lp-sign"><br>Yours faithfully,<br><br><b>${gv('lf_from')||'________'}</b></div>`;
+  } else if(type==='complaint_civic'){
+    html=`<div class="lp-header"><h2>Civic Complaint</h2><p>${date}</p></div>
+    <div class="lp-date">Date: ${date}</div><p>To,<br><b>${gv('lf_to')||'The Municipal Commissioner'}</b></p><br>
+    <p class="lp-subject">Subject: Complaint regarding ${gv('lf_issue')||'a civic issue'} in the area</p><br>
+    <div class="lp-body"><p>Respected Sir/Madam,</p><br>
+    <p>I, <b>${gv('lf_from')||'________'}</b>, residing at <b>${gv('lf_address')||'________'}</b>, would like to bring to your notice the following issue: <b>${gv('lf_issue')||'________'}</b>.</p><br>
+    <p>${gv('lf_details')||'[Please describe the issue and how long it has persisted here]'}</p><br>
+    <p>I request you to kindly look into this matter at the earliest and take necessary action to resolve it, as it is causing great inconvenience to the residents of the area.</p><br>
+    <p>Thanking you,</p></div>
+    <div class="lp-sign"><br>Yours faithfully,<br><br><b>${gv('lf_from')||'________'}</b></div>`;
+  } else if(type==='complaint_consumer'){
+    html=`<div class="lp-header"><h2>Consumer Complaint</h2><p>${date}</p></div>
+    <div class="lp-date">Date: ${date}</div><p>To,<br><b>${gv('lf_to')||'The Customer Care Manager'}</b></p><br>
+    <p class="lp-subject">Subject: Complaint regarding ${gv('lf_product')||'a product/service'} — Order/Invoice: ${gv('lf_order_no')||'________'}</p><br>
+    <div class="lp-body"><p>Respected Sir/Madam,</p><br>
+    <p>I, <b>${gv('lf_from')||'________'}</b>, purchased <b>${gv('lf_product')||'________'}</b> bearing Order/Invoice number <b>${gv('lf_order_no')||'________'}</b>. I regret to inform you of the following issue:</p><br>
+    <p>${gv('lf_details')||'[Please describe the defect or issue here]'}</p><br>
+    <p>I kindly request you to arrange for <b>${gv('lf_action')||'a refund/replacement/repair'}</b> at the earliest.</p><br>
+    <p>Thanking you,</p></div>
+    <div class="lp-sign"><br>Yours faithfully,<br><br><b>${gv('lf_from')||'________'}</b></div>`;
+  } else if(type==='complaint_neighbour'){
+    html=`<div class="lp-header"><h2>Complaint Letter</h2><p>${date}</p></div>
+    <div class="lp-date">Date: ${date}</div><p>To,<br><b>${gv('lf_to')||'The Society Secretary'}</b></p><br>
+    <p class="lp-subject">Subject: Complaint regarding neighbour nuisance</p><br>
+    <div class="lp-body"><p>Respected Sir/Madam,</p><br>
+    <p>I, <b>${gv('lf_from')||'________'}</b>, residing at <b>${gv('lf_address')||'________'}</b>, would like to bring to your notice the following issue caused by my neighbour: <b>${gv('lf_issue')||'________'}</b>.</p><br>
+    <p>${gv('lf_details')||'[Please describe the incidents here]'}</p><br>
+    <p>I request you to kindly look into this matter and take appropriate action to resolve the issue amicably.</p><br>
+    <p>Thanking you,</p></div>
+    <div class="lp-sign"><br>Yours faithfully,<br><br><b>${gv('lf_from')||'________'}</b></div>`;
+
+  /* ── Personal ── */
+  } else if(type==='thankyou'){
+    html=`<div class="lp-header"><h2>Thank You Letter 🙏</h2><p>${date}</p></div>
+    <div class="lp-date">Date: ${date}</div><p><b>${gv('lf_to')||'Dear Friend'}</b>,</p><br>
+    <div class="lp-body"><p>I am writing this letter to express my heartfelt gratitude to you for <b>${gv('lf_reason')||'your kind support'}</b>.</p><br>
+    <p>${gv('lf_msg')||'Your gesture has meant a great deal to me and I will always remember your kindness.'}</p><br>
+    <p>Once again, thank you from the bottom of my heart. I hope to repay your kindness someday.</p></div>
+    <div class="lp-sign"><br>Yours affectionately,<br><br><b>${gv('lf_from')||'________'}</b></div>`;
+  } else if(type==='recommendation'){
+    html=`<div class="lp-header"><h2>Letter of Recommendation 🌟</h2><p>${date}</p></div>
+    <div class="lp-date">Date: ${date}</div><p>To,<br><b>${gv('lf_to')||'The Admission Officer'}</b></p><br>
+    <p class="lp-subject">Subject: Recommendation for ${gv('lf_for')||'________'}</p><br>
+    <div class="lp-body"><p>Dear Sir/Madam,</p><br>
+    <p>I, <b>${gv('lf_from')||'________'}</b>, take great pleasure in recommending <b>${gv('lf_for')||'________'}</b> for your esteemed institution/position.</p><br>
+    <p>I have known ${gv('lf_for')||'this person'} for several years and find them to be <b>${gv('lf_quality')||'hardworking and dedicated'}</b>.</p><br>
+    <p>${gv('lf_msg')||'I am confident that they will prove to be a valuable addition to your institution.'}</p><br>
+    <p>Please feel free to contact me for any further information.</p></div>
+    <div class="lp-sign"><br>Yours sincerely,<br><br><b>${gv('lf_from')||'________'}</b></div>`;
+  } else if(type==='informal_friend'){
+    html=`<div class="lp-header"><h2>Letter to a Friend 💌</h2><p>${date}</p></div>
+    <div class="lp-date">${gv('lf_place')||'My Town'},<br>Date: ${date}</div><br>
+    <p>My dear <b>${gv('lf_to')||'Friend'}</b>,</p><br>
+    <div class="lp-body"><p>Hope you are doing well and in the best of health. I have been meaning to write to you for a long time.</p><br>
+    <p>${gv('lf_msg')||'I am writing to share some news with you...'}</p><br>
+    <p>Do write back soon. I miss our time together and look forward to meeting you very soon.</p></div>
+    <div class="lp-sign"><br>Your loving friend,<br><br><b>${gv('lf_from')||'________'}</b></div>`;
+  } else if(type==='informal_relative'){
+    html=`<div class="lp-header"><h2>Letter to ${gv('lf_relation')||'Relative'} 💐</h2><p>${date}</p></div>
+    <div class="lp-date">${gv('lf_place')||'My Town'},<br>Date: ${date}</div><br>
+    <p>My dear <b>${gv('lf_relation')||'Relative'}</b> ${gv('lf_to')||''},</p><br>
+    <div class="lp-body"><p>Pranam / With warmest regards. I hope you are keeping well and in good health. I am fine here by the grace of God.</p><br>
+    <p>${gv('lf_msg')||'I am writing this letter to share some news with you...'}</p><br>
+    <p>Please convey my regards to all at home. Write back when you find time.</p></div>
+    <div class="lp-sign"><br>Your loving,<br><br><b>${gv('lf_from')||'________'}</b></div>`;
+  }
+  document.getElementById('letterPreview').innerHTML = html;
+}
+
+
+/* ═══════════════════════════════
+   🎉 GREETING CARDS
+═══════════════════════════════ */
+
+
+/* ═══════════════════════════════
+   📋 NOTICES & FORMATS
+═══════════════════════════════ */
+const NOTICE_FIELDS = {
+  holiday:[
+    {id:'inst_type',label:'Institution Type',type:'select',options:['School','College','Office'],ph:''},
+    {id:'inst_name',label:'Institution Name',ph:'XYZ High School / ABC Pvt. Ltd.'},
+    {id:'ref_no',label:'Reference Number',ph:'REF/2025/001'},
+    {id:'holiday_name',label:'Occasion / Reason',ph:'Independence Day / Winter Break'},
+    {id:'from_dt',label:'Holiday From',ph:'15/08/2025'},
+    {id:'to_dt',label:'Holiday To',ph:'15/08/2025'},
+    {id:'resume_dt',label:'Reopens On',ph:'16/08/2025'},
+    {id:'signatory',label:'Signatory Name & Designation',ph:'Principal / HR Manager'},
+    {id:'date',label:'Notice Date',ph:new Date().toLocaleDateString('en-IN')},
+  ],
+  examination:[
+    {id:'inst_name',label:'Institution Name',ph:'XYZ High School'},
+    {id:'ref_no',label:'Reference Number',ph:'REF/2025/EX01'},
+    {id:'exam_name',label:'Examination Name',ph:'Half-Yearly Examination'},
+    {id:'classes',label:'Classes/Batches Applicable',ph:'Class VI to X'},
+    {id:'from_dt',label:'Exam Starts On',ph:'01/09/2025'},
+    {id:'to_dt',label:'Exam Ends On',ph:'10/09/2025'},
+    {id:'details',label:'Additional Instructions',ph:'Students must carry admit cards and arrive 30 minutes early...',type:'textarea'},
+    {id:'signatory',label:'Signatory Name & Designation',ph:'Principal / Controller of Examinations'},
+    {id:'date',label:'Notice Date',ph:new Date().toLocaleDateString('en-IN')},
+  ],
+  fee_due:[
+    {id:'inst_name',label:'Institution Name',ph:'XYZ High School'},
+    {id:'ref_no',label:'Reference Number',ph:'REF/2025/FEE01'},
+    {id:'term',label:'Fee Term / Period',ph:'Second Term (July–December 2025)'},
+    {id:'due_dt',label:'Due Date',ph:'10/09/2025'},
+    {id:'late_fee',label:'Late Fee Details',ph:'₹50 per day after due date'},
+    {id:'details',label:'Additional Instructions',ph:'Fees can be paid online via the school portal or at the accounts office...',type:'textarea'},
+    {id:'signatory',label:'Signatory Name & Designation',ph:'Accounts Officer / Principal'},
+    {id:'date',label:'Notice Date',ph:new Date().toLocaleDateString('en-IN')},
+  ],
+  meeting:[
+    {id:'inst_name',label:'Institution/Organization Name',ph:'ABC Pvt. Ltd. / XYZ Society'},
+    {id:'ref_no',label:'Reference Number',ph:'REF/2025/MTG01'},
+    {id:'meeting_title',label:'Meeting Subject',ph:'Annual General Meeting / Staff Meeting'},
+    {id:'meeting_dt',label:'Meeting Date',ph:'20/08/2025'},
+    {id:'meeting_time',label:'Meeting Time',ph:'11:00 AM'},
+    {id:'venue',label:'Venue',ph:'Conference Hall, 2nd Floor'},
+    {id:'agenda',label:'Agenda Points',ph:'1. Budget review\\n2. New project discussion\\n3. Any other business',type:'textarea'},
+    {id:'signatory',label:'Signatory Name & Designation',ph:'Secretary / Manager'},
+    {id:'date',label:'Notice Date',ph:new Date().toLocaleDateString('en-IN')},
+  ],
+  tender:[
+    {id:'inst_name',label:'Organization Name',ph:'ABC Pvt. Ltd. / Municipal Corporation'},
+    {id:'ref_no',label:'Tender Reference Number',ph:'TENDER/2025/001'},
+    {id:'work_desc',label:'Work / Supply Description',ph:'Supply and installation of office furniture'},
+    {id:'emd',label:'EMD Amount',ph:'₹25,000'},
+    {id:'submit_dt',label:'Last Date of Submission',ph:'30/08/2025'},
+    {id:'open_dt',label:'Tender Opening Date',ph:'02/09/2025'},
+    {id:'details',label:'Terms & Conditions',ph:'Interested and eligible bidders may collect tender documents from the office during working hours...',type:'textarea'},
+    {id:'signatory',label:'Signatory Name & Designation',ph:'Purchase Officer / Executive Engineer'},
+    {id:'date',label:'Notice Date',ph:new Date().toLocaleDateString('en-IN')},
+  ],
+  circular:[
+    {id:'inst_name',label:'Institution/Organization Name',ph:'XYZ High School / ABC Pvt. Ltd.'},
+    {id:'ref_no',label:'Circular Number',ph:'CIRCULAR/2025/01'},
+    {id:'subject',label:'Subject',ph:'Change in office timings / New dress code policy'},
+    {id:'addressed_to',label:'Addressed To',ph:'All Staff / All Students and Parents'},
+    {id:'details',label:'Circular Body',ph:'This is to inform all concerned that...',type:'textarea'},
+    {id:'signatory',label:'Signatory Name & Designation',ph:'Principal / General Manager'},
+    {id:'date',label:'Notice Date',ph:new Date().toLocaleDateString('en-IN')},
+  ],
+};
+
+function gvn(id){
+  const el = document.getElementById('nf_' + id);
+  return el ? el.value.trim() : '';
+}
+
+function buildNoticeForm() {
+  const type = document.getElementById('noticeType').value;
+  const fields = NOTICE_FIELDS[type] || [];
+  const container = document.getElementById('noticeFields');
+  container.innerHTML = fields.map(f => {
+    const fid = 'nf_' + f.id;
+    if(f.type === 'select'){
+      const opts = f.options.map(o=>`<option value="${o}">${o}</option>`).join('');
+      return `<div class="form-group"><label class="form-label">${f.label}</label>
+      <select class="form-select" id="${fid}" onchange="renderNotice()">${opts}</select></div>`;
+    }
+    if(f.type === 'textarea'){
+      return `<div class="form-group"><label class="form-label">${f.label}</label>
+      <textarea class="form-textarea" id="${fid}" placeholder="${f.ph}" oninput="renderNotice()"></textarea></div>`;
+    }
+    return `<div class="form-group"><label class="form-label">${f.label}</label>
+    <input class="form-input" id="${fid}" placeholder="${f.ph}" oninput="renderNotice()"/></div>`;
+  }).join('');
+  renderNotice();
+}
+
+function renderNotice() {
+  const type = document.getElementById('noticeType').value;
+  const date = gvn('date') || new Date().toLocaleDateString('en-IN');
+  const refNo = gvn('ref_no') || '________';
+  const instName = gvn('inst_name') || 'Institution / Organization Name';
+  const signatory = gvn('signatory') || 'Authorized Signatory';
+  const letterhead = `<div class="np-letterhead"><h2>${instName}</h2><p>OFFICIAL NOTICE</p></div>`;
+  const heading = `<div class="np-heading-wrap"><span class="np-heading">NOTICE</span></div>`;
+  const refdate = `<div class="np-refdate"><span>Ref No: ${refNo}</span><span>Date: ${date}</span></div>`;
+  const signBlock = `<div class="np-sign">_______________________<br><b>${signatory}</b></div>`;
+  let subject = '', body = '';
+
+  if(type==='holiday'){
+    const instType = gvn('inst_type') || 'School';
+    subject = `Holiday Notice — ${gvn('holiday_name')||'________'}`;
+    body = `<p>This is to notify all concerned that this ${instType.toLowerCase()} will remain closed for <b>${gvn('holiday_name')||'________'}</b> from <b>${gvn('from_dt')||'________'}</b> to <b>${gvn('to_dt')||'________'}</b>.</p><br>
+    <p>Regular functioning will resume on <b>${gvn('resume_dt')||'________'}</b>. All concerned are requested to take note accordingly.</p>`;
+  } else if(type==='examination'){
+    subject = `Notice for ${gvn('exam_name')||'Examination'}`;
+    body = `<p>This is to inform <b>${gvn('classes')||'all students'}</b> that the <b>${gvn('exam_name')||'________'}</b> will be conducted from <b>${gvn('from_dt')||'________'}</b> to <b>${gvn('to_dt')||'________'}</b>.</p><br>
+    <p>${gvn('details')||'Students are advised to prepare accordingly and follow the examination guidelines.'}</p>`;
+  } else if(type==='fee_due'){
+    subject = `Fee Payment Due Notice — ${gvn('term')||'________'}`;
+    body = `<p>All students/parents are informed that the fees for <b>${gvn('term')||'________'}</b> are due on or before <b>${gvn('due_dt')||'________'}</b>.</p><br>
+    <p>${gvn('late_fee') ? `A late fee will be applicable as follows: <b>${gvn('late_fee')}</b>.` : ''}</p><br>
+    <p>${gvn('details')||'Kindly clear the dues within the stipulated time to avoid inconvenience.'}</p>`;
+  } else if(type==='meeting'){
+    subject = `Notice of Meeting — ${gvn('meeting_title')||'________'}`;
+    body = `<p>A meeting regarding <b>${gvn('meeting_title')||'________'}</b> is scheduled as follows:</p><br>
+    <p><b>Date:</b> ${gvn('meeting_dt')||'________'}<br><b>Time:</b> ${gvn('meeting_time')||'________'}<br><b>Venue:</b> ${gvn('venue')||'________'}</p><br>
+    <p><b>Agenda:</b><br>${(gvn('agenda')||'________').replace(/\n/g,'<br>')}</p><br>
+    <p>All concerned members are requested to attend without fail.</p>`;
+  } else if(type==='tender'){
+    subject = `Tender Notice — ${gvn('work_desc')||'________'}`;
+    body = `<p>Sealed tenders are invited for <b>${gvn('work_desc')||'________'}</b> from eligible and interested parties.</p><br>
+    <p><b>EMD Amount:</b> ${gvn('emd')||'________'}<br><b>Last Date of Submission:</b> ${gvn('submit_dt')||'________'}<br><b>Tender Opening Date:</b> ${gvn('open_dt')||'________'}</p><br>
+    <p>${gvn('details')||'Interested bidders may collect the tender documents from the office during working hours.'}</p>`;
+  } else if(type==='circular'){
+    subject = gvn('subject') || 'General Circular';
+    body = `<p>This is to notify <b>${gvn('addressed_to')||'all concerned'}</b> as follows:</p><br>
+    <p>${(gvn('details')||'[Circular details here]').replace(/\n/g,'<br>')}</p>`;
+  }
+
+  const html = `${letterhead}${heading}${refdate}
+  <div class="np-subject">Subject: ${subject}</div>
+  <div class="np-body">${body}</div>
+  ${signBlock}`;
+  document.getElementById('noticePreview').innerHTML = html;
+}
+
+/* ═══════════════════════════════
+   INIT
+═══════════════════════════════ */
+buildLetterForm();
+buildNoticeForm();
+</script>
+<footer style="text-align:center;padding:20px;margin-top:40px;border-top:1px solid #ccc">
+<a href="about.html">About</a> |
+<a href="privacy.html">Privacy</a> |
+<a href="terms.html">Terms</a> |
+<a href="contact.html">Contact</a> |
+<a href="disclaimer.html">Disclaimer</a>
+</footer>
+
+<footer class="footer">
+<div style="margin-bottom:18px;">
+<a href="about.html">About</a> |
+<a href="privacy.html">Privacy Policy</a> |
+<a href="terms.html">Terms &amp; Conditions</a> |
+<a href="contact.html">Contact</a> |
+<a href="disclaimer.html">Disclaimer</a>
+</div>
+<div class="footer-name">MYSKILLGAME</div>
+<div class="footer-copy">© 2026 MySkillGame • Developed by Surajit Roy</div>
+</footer>
+</body>
+</html>
