@@ -6,6 +6,29 @@
 <meta name="mobile-web-app-capable" content="yes"/>
 <meta name="theme-color" content="#C2185B"/>
 <title>Learn Gujarati — Gujarati for English Speakers | MySkillGame</title>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyDfxtOP-YCrCXtQxZrrFNC1uXucvbW0K78",
+    authDomain: "my-skill-global.firebaseapp.com",
+    projectId: "my-skill-global",
+    storageBucket: "my-skill-global.firebasestorage.app",
+    messagingSenderId: "978471914749",
+    appId: "1:978471914749:web:595750b5d90738933f4294",
+    measurementId: "G-8D9BPY8HJ0"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
 <meta name="description" content="Learn Gujarati step by step in English: alphabet, numbers, useful words, everyday phrases, reading practice, a quiz and a completion certificate.">
 <style>
   :root{
@@ -162,6 +185,9 @@
     border-radius:8px;
     box-shadow:var(--shadow);
     container-type:inline-size;
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
+    color-adjust:exact;
   }
   .cf-field{
     position:absolute;
@@ -211,10 +237,11 @@
   @media print{
     header, .tabs-outer, .hint, footer{display:none !important;}
     .section:not(.active){display:none !important;}
-    body{background:#fff;}
+    body{background:#fff; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
     #quizActive, #quizNameEntry, #quizFormStep{display:none !important;}
     .wrap{padding:0; max-width:100%;}
-    .section-title, .section-sub, .cert-actions{display:none !important;}
+    .section-title, .section-sub, .cert-actions, .no-print{display:none !important;}
+    .cert-frame{-webkit-print-color-adjust:exact; print-color-adjust:exact; color-adjust:exact; -webkit-filter:none; filter:none;}
   }
 </style>
 </head>
@@ -241,6 +268,60 @@
 </div>
 
 <footer>MySkillGame — Free, offline-friendly learning by Surajit Roy &amp; Sampurna Roy</footer>
+
+<!-- ================= FIREBASE ANALYTICS ================= -->
+<script type="module">
+  import { initializeApp }
+    from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
+  import { getAnalytics, logEvent }
+    from "https://www.gstatic.com/firebasejs/12.17.1/firebase-analytics.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBAjO6MkyzId0ycEpZ4rWFFMWN3GhK24Mw",
+    authDomain: "myskillgame-tracking.firebaseapp.com",
+    projectId: "myskillgame-tracking",
+    storageBucket: "myskillgame-tracking.firebasestorage.app",
+    messagingSenderId: "577084328477",
+    appId: "1:577084328477:web:14ca933fa26af235a154f4",
+    measurementId: "G-KSES51LTSL"
+  };
+
+  const firebaseApp = initializeApp(firebaseConfig);
+  const firebaseAnalytics = getAnalytics(firebaseApp);
+
+  // Make a small helper available to the main course script.
+  window.trackFirebase = function(eventName, params = {}) {
+    try {
+      logEvent(firebaseAnalytics, eventName, params);
+    } catch (e) {
+      console.warn("Firebase Analytics:", e);
+    }
+  };
+
+  window.trackFirebase("course_page_opened", {
+    course: "Gujarati Basics - Level 1"
+  });
+</script>
+
+<!-- ================= RIGHT-CLICK PROTECTION ================= -->
+<script>
+(function () {
+  document.addEventListener("contextmenu", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    return false;
+  }, true);
+
+  // Also protect dynamically created elements.
+  document.addEventListener("mousedown", function (e) {
+    if (e.button === 2) {
+      e.preventDefault();
+      e.stopPropagation();
+      return false;
+    }
+  }, true);
+})();
+</script>
 
 <script>
 /* ================= DATA ================= */
@@ -601,13 +682,18 @@ secQuiz.innerHTML = `
     </div>
 
     <div class="cert-actions">
-      <button class="primary-btn" onclick="window.print()">🖨️ Print / Save as PDF</button>
+      <button class="primary-btn" onclick="if(window.trackFirebase){window.trackFirebase('certificate_printed',{course:'Gujarati Basics - Level 1'});} window.print()">🖨️ Print / Save as PDF</button>
       <button class="ghost-btn" onclick="restartQuiz()">Take Quiz Again</button>
     </div>
   </div>
 `;
 
 function startQuiz(){
+  if (window.trackFirebase) {
+    window.trackFirebase("quiz_started", {
+      course: "Gujarati Basics - Level 1"
+    });
+  }
   quizOrder = shuffle(QUIZ_BANK);
   quizIndex = 0; quizScore = 0; quizLocked = false;
   document.getElementById('quizActive').style.display = 'block';
@@ -657,6 +743,13 @@ function selectOption(el, opt, correct){
 function handleNext(){
   quizIndex++;
   if(quizIndex >= TOTAL_QUESTIONS){
+    if (window.trackFirebase) {
+      window.trackFirebase("quiz_completed", {
+        score: quizScore,
+        total_questions: TOTAL_QUESTIONS,
+        percentage: Math.round((quizScore / TOTAL_QUESTIONS) * 100)
+      });
+    }
     document.getElementById('progressBar').style.width = '100%';
     document.getElementById('quizActive').style.display = 'none';
     document.getElementById('quizNameEntry').style.display = 'block';
@@ -726,6 +819,11 @@ function revealCertificateCard(){
 
   document.getElementById('quizFormStep').style.display = 'none';
   document.getElementById('quizCertificate').style.display = 'block';
+  if (window.trackFirebase) {
+    window.trackFirebase("certificate_generated", {
+      course: "Gujarati Basics - Level 1"
+    });
+  }
 }
 
 /* ================= SECTION SWITCHING ================= */

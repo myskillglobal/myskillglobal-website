@@ -6,6 +6,29 @@
 <meta name="mobile-web-app-capable" content="yes"/>
 <meta name="theme-color" content="#A63A2C"/>
 <title>Learn Santali — Ol Chiki Script for English Speakers | MySkillGame</title>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyDfxtOP-YCrCXtQxZrrFNC1uXucvbW0K78",
+    authDomain: "my-skill-global.firebaseapp.com",
+    projectId: "my-skill-global",
+    storageBucket: "my-skill-global.firebasestorage.app",
+    messagingSenderId: "978471914749",
+    appId: "1:978471914749:web:595750b5d90738933f4294",
+    measurementId: "G-8D9BPY8HJ0"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
 <meta name="description" content="Learn Santali (Ol Chiki script) step by step in English: alphabet, numbers, useful words, sample phrases, reading practice, a quiz and a completion certificate.">
 <style>
   :root{
@@ -19,7 +42,10 @@
   }
   *{box-sizing:border-box;}
   body{
-    margin:0; font-family:'Poppins',Arial,sans-serif; background:var(--cream); color:var(--ink);
+    margin:0; font-family:'Poppins',Arial,sans-serif; background:var(--cream); color:var(--ink); -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
     padding-bottom:24px;
   }
   .sn{font-family:'Noto Sans Ol Chiki','Poppins',Arial,sans-serif;}
@@ -746,6 +772,29 @@ document.addEventListener('backbutton', function(e){
 /* ================= INIT ================= */
 renderTabs();
 showSection('vowels', false);
+ // Disable Right Click
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+  });
+
+  // Disable Inspect Element & View Source Shortcuts
+  document.addEventListener('keydown', function(e) {
+    if (
+      e.key === 'F12' || 
+      (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) || 
+      (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 's' || e.key === 'S'))
+    ) {
+      e.preventDefault();
+    }
+  });
+
+  // Disable Text Selection & Dragging
+  document.addEventListener('selectstart', function(e) {
+    e.preventDefault();
+  });
+  document.addEventListener('dragstart', function(e) {
+    e.preventDefault();
+  });
 </script>
 </body>
 </html>
