@@ -58,13 +58,19 @@
   img{ pointer-events:none; -webkit-user-drag:none; }
 
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    max-width: 100%;
+  }
   body {
     background: var(--deep);
     color: var(--text);
     font-family: 'Lato', sans-serif;
     font-weight: 300;
     overflow-x: hidden;
+    max-width: 100%;
+    width: 100%;
   }
 /* =========================================================
    PUBLIC LEADERBOARD
@@ -441,7 +447,7 @@
   .footer-links a { color: var(--muted); text-decoration: none; margin: 0 4px; }
   .footer-links a:hover { color: var(--gold); }
   .footer-grid {
-    display: grid; grid-template-columns: repeat(3, auto); gap: 6px 40px;
+    display: flex; flex-wrap: wrap; gap: 6px 40px;
     justify-content: center; margin-bottom: 22px; font-family: 'Cinzel', serif;
     font-size: 0.62rem; letter-spacing: 1.5px;
   }
@@ -466,6 +472,11 @@
     .hero-subtitle { letter-spacing: 2px; font-size: .55rem; }
     .founder-grid { grid-template-columns: 1fr; }
     .app-card { flex-direction: column; }
+    .section { padding: 60px 18px; }
+    .portal-grid { grid-template-columns: 1fr; }
+    .apps-grid { grid-template-columns: 1fr; }
+    .footer { padding: 32px 18px; }
+    .footer-grid { gap: 6px 20px; }
   }
 </style>
 </head>
@@ -563,9 +574,20 @@
 <h3>EXAM &amp; CERTIFICATE</h3>
 <p>Practice, preparation and certification tools to track progress and mark milestones.</p>
 <div class="portal-links">
-<a class="portal-link" href="exam.html">Explore →</a>
+<a class="portal-link" href="exam-index.html">Explore →</a>
 </div>
 </div>
+
+<div class="portal-card reveal">
+<span class="portal-icon">💰</span>
+<h3>AkashVoice &amp; Smart Physical Coin Concept</h3>
+<p>Listen More. Connect More. Live More. Designed for Students, Families, Senior Citizens and Rural Communities. Introduce the Smart Coin ecosystem. Enable offline micro-payments for all citizens.</p>
+<div class="portal-links">
+<a class="portal-link" href="https://akashvoice.netlify.app/">Explore →</a>
+</div>
+</div>
+
+
 
 <div class="portal-card reveal">
   <span class="portal-icon">📚</span>
