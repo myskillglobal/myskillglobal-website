@@ -1,2 +1,1 @@
-# Google AdSense
-google.com, pub-1034020579994243, DIRECT, f08c47fec0942fa0
+google.com, pub-1034022057999423, DIRECT, f08c47fec0942fa0
