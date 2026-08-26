@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<meta content="Surajit Roy" name="author"/>
+<meta content="© Surajit Roy" name="copyright"/>
+<meta content="index,follow" name="robots"/>
+<title>Parent &amp; Child Success Guide</title>
+<meta content="Practical parenting, communication and child development guidance from MySkillGame." name="description"/>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+<style>
+/* All variables prefixed --pcs- to avoid WebView/host conflicts */
+:root {
+  --pcs-gold:       #c9a84c;
+  --pcs-gold-light: #f0d78a;
+  --pcs-gold-dim:   #9a7830;
+  --pcs-bg:         #0c0a04;
+  --pcs-surface:    rgba(201,168,76,0.07);
+  --pcs-border:     rgba(201,168,76,0.18);
+  --pcs-text:       #f5ede0;
+  --pcs-muted:      #c0a870;
+  --pcs-accent:     #e8c97a;
+  --pcs-green:      #4ade80;
+  --pcs-blue:       #60a5fa;
+  --pcs-orange:     #fb923c;
+  --pcs-red:        #f87171;
+  --pcs-purple:     #c084fc;
+}
+.site-footer{
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+    font-size:14px;
+    color:#E8C97A; /* Yellow/Gold */
+    border-top:1px solid rgba(201,168,76,0.3);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--pcs-bg);
+  color: var(--pcs-text);
+  font-family: 'Segoe UI', Tahoma, Geneva, sans-serif;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;user-select:none;
+}
+
+#pcs-shell{
+  width:100%;
+  max-width:1400px;
+  margin:0 auto;
+}
+/* HEADER */
+.pcs-hdr {
+  background: rgba(12,10,4,0.97);
+  border-bottom: 1px solid var(--pcs-border);
+  padding: 12px 14px 0;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+.pcs-hdr-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.pcs-logo {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  border-radius: 50%;
+  background: #7a5c10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+.pcs-hdr-title  { font-size: 16px; font-weight: 700; color: #f5ede0; line-height: 1.2; }
+.pcs-hdr-sub    { font-size: 10px; color: var(--pcs-gold-dim); text-transform: uppercase; letter-spacing: 0.07em; }
+
+/* TABS */
+.pcs-tabs {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.pcs-tabs::-webkit-scrollbar { display: none; }
+.pcs-tab {
+  flex: 0 0 auto;
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--pcs-border);
+  background: var(--pcs-surface);
+  color: #8a7040;
+  font-size: 11px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+  font-family: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+.pcs-tab.pcs-act {
+  background: rgba(201,168,76,0.18);
+  border-color: rgba(201,168,76,0.5);
+  color: var(--pcs-accent);
+}
+
+/* CONTENT */
+.pcs-content { padding: 14px 14px 70px; }
+.pcs-pg { display: none; }
+.pcs-pg.pcs-act { display: block; }
+
+.pcs-pg-title { font-size: 19px; font-weight: 700; color: #f5ede0; margin-bottom: 4px; }
+.pcs-pg-sub   { font-size: 13px; color: var(--pcs-gold-dim); margin-bottom: 16px; }
+
+/* HERO BANNER */
+.pcs-hero {
+  background: rgba(201,168,76,0.08);
+  border: 1px solid rgba(201,168,76,0.25);
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 14px;
+}
+.pcs-hero-icon  { font-size: 38px; margin-bottom: 8px; }
+.pcs-hero-title { font-size: 16px; font-weight: 700; color: var(--pcs-accent); margin-bottom: 7px; }
+.pcs-hero-body  { font-size: 13px; color: var(--pcs-muted); line-height: 1.75; }
+
+/* SECTION TITLE */
+.pcs-sec {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--pcs-accent);
+  margin: 18px 0 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.pcs-sec::after { content: ''; flex: 1; height: 1px; background: rgba(201,168,76,0.18); }
+
+/* DESC CARD */
+.pcs-card {
+  background: var(--pcs-surface);
+  border: 1px solid var(--pcs-border);
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 10px;
+}
+.pcs-card-head { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; }
+.pcs-card-icon {
+  width: 38px; height: 38px; min-width: 38px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+}
+.pcs-card-name { font-size: 14px; font-weight: 700; color: #f0e0c0; margin-bottom: 2px; }
+.pcs-card-tag  { font-size: 11px; color: var(--pcs-gold-dim); }
+.pcs-card-body { font-size: 16px; color: #c0b090; line-height: 1.9; }
+.pcs-card-body p { margin-bottom: 8px; }
+.pcs-card-body p:last-child { margin-bottom: 0; }
+
+/* HIGHLIGHT / WARN BOX */
+.pcs-hi {
+  background: rgba(74,222,128,0.07);
+  border: 1px solid rgba(74,222,128,0.2);
+  border-radius: 12px;
+  padding: 13px;
+  margin-bottom: 10px;
+}
+.pcs-hi-icon  { font-size: 20px; margin-bottom: 5px; }
+.pcs-hi-title { font-size: 13px; font-weight: 700; color: #4ade80; margin-bottom: 4px; }
+.pcs-hi-body  { font-size: 12.5px; color: #a0c8a0; line-height: 1.65; }
+
+.pcs-warn {
+  background: rgba(251,146,60,0.07);
+  border: 1px solid rgba(251,146,60,0.2);
+  border-radius: 12px;
+  padding: 13px;
+  margin-bottom: 10px;
+}
+.pcs-warn-title { font-size: 13px; font-weight: 700; color: #fb923c; margin-bottom: 4px; }
+.pcs-warn-body  { font-size: 12.5px; color: #c0a070; line-height: 1.65; }
+
+/* TIP LIST */
+.pcs-tips { margin-top: 4px; }
+.pcs-tip  {
+  display: flex; gap: 10px; padding: 9px 0;
+  border-bottom: 1px solid rgba(201,168,76,0.1);
+  font-size: 13px; color: #c0b090; line-height: 1.6;
+  align-items: flex-start;
+}
+.pcs-tip:last-child { border-bottom: none; }
+.pcs-dot {
+  width: 7px; height: 7px; min-width: 7px;
+  border-radius: 50%;
+  background: var(--pcs-gold);
+  margin-top: 6px;
+}
+
+/* TWO COL GRID */
+.pcs-2col { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px; margin-bottom: 12px; }
+.pcs-mini {
+  background: var(--pcs-surface);
+  border: 1px solid var(--pcs-border);
+  border-radius: 12px;
+  padding: 12px;
+}
+.pcs-mini-icon  { font-size: 22px; margin-bottom: 5px; }
+.pcs-mini-title { font-size: 13px; font-weight: 700; color: #f0e0c0; margin-bottom: 3px; }
+.pcs-mini-body  { font-size: 12px; color: #a0907a; line-height: 1.6; }
+
+/* ─── QUIZ ─── */
+.pcs-quiz-wrap {
+  background: rgba(201,168,76,0.05);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+.pcs-quiz-hdr { padding: 13px 15px; border-bottom: 1px solid rgba(201,168,76,0.15); }
+.pcs-quiz-score { display: flex; justify-content: space-between; align-items: center; margin-bottom: 9px; }
+.pcs-score-val { font-size: 20px; font-weight: 700; color: var(--pcs-accent); }
+.pcs-q-num { font-size: 12px; color: var(--pcs-muted); }
+.pcs-prog { background: rgba(255,255,255,0.08); border-radius: 6px; height: 5px; overflow: hidden; }
+.pcs-prog-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #7a5c10, #c9a84c);
+  border-radius: 6px;
+  transition: width 0.5s;
+}
+.pcs-quiz-body { padding: 13px 15px; }
+
+/* CAT PILLS */
+.pcs-pill { display: inline-block; font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 20px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; }
+.pcs-cat-mental    { background: rgba(251,146,60,0.15); color:#fb923c; border:1px solid rgba(251,146,60,0.3); }
+.pcs-cat-digital   { background: rgba(96,165,250,0.12); color:#60a5fa; border:1px solid rgba(96,165,250,0.3); }
+.pcs-cat-safety    { background: rgba(248,113,113,0.12); color:#f87171; border:1px solid rgba(248,113,113,0.3); }
+.pcs-cat-health    { background: rgba(74,222,128,0.10); color:#4ade80; border:1px solid rgba(74,222,128,0.25); }
+.pcs-cat-law       { background: rgba(192,132,252,0.12); color:#c084fc; border:1px solid rgba(192,132,252,0.3); }
+.pcs-cat-values    { background: rgba(201,168,76,0.12); color:var(--pcs-accent); border:1px solid rgba(201,168,76,0.3); }
+.pcs-cat-environment{ background: rgba(74,222,128,0.10); color:#4ade80; border:1px solid rgba(74,222,128,0.25); }
+.pcs-cat-ethics    { background: rgba(192,132,252,0.12); color:#c084fc; border:1px solid rgba(192,132,252,0.3); }
+
+.pcs-q-text { font-size: 15px; color: #f0e0c0; line-height: 1.65; margin-bottom: 13px; min-height: 56px; }
+
+/* OPTIONS */
+.pcs-opts { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
+.pcs-opt {
+  background: rgba(80,60,120,0.50);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 10px;
+  padding: 12px 13px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #e0d0c0;
+  line-height: 1.4;
+  text-align: left;
+  transition: all 0.15s;
+  width: 100%;
+  font-family: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+.pcs-opt:hover:not(.pcs-locked)  { background: rgba(201,168,76,0.20); border-color: rgba(201,168,76,0.4); }
+.pcs-opt:active:not(.pcs-locked) { transform: scale(0.98); }
+.pcs-opt.pcs-correct { background: rgba(22,80,50,0.9) !important; border-color: #4ade80 !important; color: #fff; }
+.pcs-opt.pcs-wrong   { background: rgba(100,20,20,0.9) !important; border-color: #f87171 !important; color: #fff; }
+.pcs-opt.pcs-faded   { opacity: 0.15; pointer-events: none; }
+.pcs-opt.pcs-locked  { cursor: default; }
+
+/* SOUL BOX */
+.pcs-soul {
+  background: rgba(10,20,40,0.9);
+  border: 1.5px solid var(--pcs-gold);
+  border-radius: 12px;
+  padding: 12px 40px 12px 12px;
+  margin-bottom: 10px;
+  position: relative;
+  font-size: 13px;
+  color: #fff8dc;
+  line-height: 1.65;
+}
+.pcs-soul::before {
+  content: '💛 Insight';
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--pcs-gold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.pcs-soul-speak {
+  position: absolute; top: 10px; right: 10px;
+  background: var(--pcs-gold); color: #1a1000;
+  border: none; border-radius: 50%;
+  width: 28px; height: 28px;
+  font-size: 13px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+}
+.pcs-soul-speak.pcs-speaking { background: #fb923c; animation: pcsSpkPulse 0.8s infinite; }
+@keyframes pcsSpkPulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.1)} }
+
+/* QUIZ BUTTONS */
+.pcs-q-btns { display: flex; gap: 8px; align-items: center; }
+.pcs-next-btn {
+  flex: 1;
+  background: linear-gradient(135deg,#7a5c10,#c9a84c);
+  color: #fff; border: none;
+  padding: 11px; border-radius: 22px;
+  font-size: 14px; font-weight: 700; cursor: pointer;
+  font-family: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+.pcs-back-q-btn {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #aaa; padding: 11px 14px; border-radius: 22px;
+  font-size: 13px; cursor: pointer; font-family: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* LIFELINES */
+.pcs-lifelines { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+.pcs-life {
+  background: rgba(22,60,35,0.8);
+  border: 1px solid rgba(74,222,128,0.25);
+  color: #7deba0; padding: 6px 12px; border-radius: 20px;
+  font-size: 11px; font-weight: 700; cursor: pointer;
+  font-family: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+.pcs-life.pcs-used { background: rgba(40,40,40,0.5); border-color: rgba(255,255,255,0.1); color: #555; pointer-events: none; opacity: 0.5; }
+.pcs-note{
+  margin:18px 14px 10px;
+  padding:12px 14px;
+  border-radius:14px;
+  text-align:center;
+  font-size:12px;
+  line-height:1.6;
+  color:#dbeafe;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+}
+/* SCORE POP */
+.pcs-pop {
+  position: fixed; top: 45%; left: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 36px; font-weight: 700;
+  pointer-events: none; z-index: 200;
+  animation: pcsPop 0.9s ease forwards;
+}
+.pcs-pop.pcs-pos { color: #4ade80; }
+.pcs-pop.pcs-neg { color: #f87171; }
+@keyframes pcsPop {
+  0%  { opacity:1; transform:translate(-50%,-60%); }
+  60% { opacity:1; transform:translate(-50%,-80%); }
+  100%{ opacity:0; transform:translate(-50%,-100%); }
+}
+
+/* GAME OVER */
+.pcs-gameover { padding: 24px 16px; text-align: center; }
+.pcs-go-emoji  { font-size: 50px; margin-bottom: 10px; }
+.pcs-go-title  { font-size: 18px; font-weight: 700; color: var(--pcs-accent); margin-bottom: 6px; }
+.pcs-go-score  { font-size: 48px; font-weight: 700; color: #fb923c; margin: 4px 0; }
+.pcs-go-grade  { font-size: 14px; color: #ffcb8e; margin-bottom: 20px; line-height: 1.5; }
+.pcs-go-btns   { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.pcs-retry-btn {
+  background: linear-gradient(135deg,#7a5c10,#c9a84c);
+  color: #fff; border: none; padding: 12px 28px; border-radius: 24px;
+  font-size: 14px; font-weight: 700; cursor: pointer; font-family: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* CERT */
+.pcs-cert-section { margin-top: 16px; }
+#pcsCertCanvas { display: block; max-width: 100%; margin: 0 auto 14px; border-radius: 10px; border: 2px solid rgba(201,168,76,0.4); }
+.pcs-cert-actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.pcs-cert-dl  { background: linear-gradient(135deg,#008c88,#00cfc8); color:#fff; border:none; padding:10px 22px; border-radius:20px; font-size:14px; font-weight:700; cursor:pointer; font-family:inherit; -webkit-tap-highlight-color:transparent; }
+.pcs-cert-back{ background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.2); color:#aac0e0; padding:10px 18px; border-radius:20px; font-size:14px; font-weight:600; cursor:pointer; font-family:inherit; -webkit-tap-highlight-color:transparent; }
+/* DESKTOP FIT */
+.pcs-content{
+  width:100%;
+  padding:20px 24px 80px;
+}
+
+.pcs-card,
+.pcs-hero,
+.pcs-hi,
+.pcs-warn,
+.pcs-quiz-wrap{
+  width:100%;
+}
+
+.pcs-2col{
+  grid-template-columns:repeat(2,minmax(320px,1fr));
+  gap:14px;
+}
+
+@media(min-width:1200px){
+
+  .pcs-content{
+    padding:24px 40px 90px;
+  }
+
+  .pcs-card-body{
+    font-size:17px;
+  }
+
+  .pcs-hero-body{
+    font-size:14px;
+  }
+
+  .pcs-pg-title{
+    font-size:28px;
+  }
+
+  .pcs-pg-sub{
+    font-size:15px;
+  }
+}
+</style>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1034022057999423"></script><link href="https://myskillgame.netlify.app/11-7-26 website/parent_role_in_child_success.html" rel="canonical"/></head>
+<body>
+<div id="pcs-shell">
+<!-- HEADER -->
+<div class="pcs-hdr">
+<div class="pcs-hdr-top">
+<div class="pcs-logo">👨‍👩‍👧</div>
+<div>
+<div class="pcs-hdr-title">Parent &amp; Child Success</div>
+<div class="pcs-hdr-sub">A Complete Parent's Guide</div>
+</div>
+</div>
+<div class="pcs-tabs" id="pcsTabs">
+<div class="pcs-tab pcs-act" onclick="pcsShow('role',this)">Role of Parents</div>
+<div class="pcs-tab" onclick="pcsShow('mental',this)">Mental Health</div>
+<div class="pcs-tab" onclick="pcsShow('digital',this)">Digital Safety</div>
+<div class="pcs-tab" onclick="pcsShow('values',this)">Values</div>
+<div class="pcs-tab" onclick="pcsShow('law',this)">Legal &amp; Safety</div>
+<div class="pcs-tab" onclick="pcsShow('mother',this)">Mother as Teacher</div>
+<div class="pcs-tab" onclick="pcsShow('integrity',this)">Integrity &amp; Success</div>
+<div class="pcs-tab" onclick="pcsShow('legacy',this)">True Legacy</div>
+<div class="pcs-tab" onclick="pcsShow('quiz',this)">Quiz</div>
+</div>
+</div>
+<div class="pcs-content">
+<!-- ══════════ PAGE: ROLE ══════════ -->
+<div class="pcs-pg pcs-act" id="pcs-role">
+<div class="pcs-pg-title">Role of Parents</div>
+<div class="pcs-pg-sub">In shaping a child's success and character</div>
+<div class="pcs-hero">
+<div class="pcs-hero-icon">🌱</div>
+<div class="pcs-hero-title">Parents are the first and most enduring teachers</div>
+<div class="pcs-hero-body">Research consistently shows that parental involvement is the single most powerful predictor of a child's academic achievement, emotional stability, and lifelong wellbeing. Children do not grow in a vacuum — they grow in the light of what they witness, feel, and experience at home every single day.</div>
+</div>
+<div class="pcs-sec">Emotional Foundation</div>
+<div class="pcs-card">
+<div class="pcs-card-head">
+<div class="pcs-card-icon" style="background:rgba(251,146,60,0.12)">💖</div>
+<div><div class="pcs-card-name">Unconditional Love &amp; Secure Attachment</div><div class="pcs-card-tag">The bedrock of development</div></div>
+</div>
+<div class="pcs-card-body">
+<p>A child who feels deeply loved — not for their grades, not for their behaviour, but simply for existing — develops what psychologists call a "secure attachment." This invisible safety net allows the child to explore the world boldly, recover from failures quickly, and trust others meaningfully.</p>
+<p>Parents who say "I love you no matter what," who offer hugs after a bad day, who listen without immediately offering solutions — these parents are quietly building the most important psychological infrastructure in their child's life. Secure children grow into confident, empathetic, and resilient adults.</p>
+<p>Conversely, children who feel loved only conditionally — only when they perform, only when they behave — often grow up with deep insecurity, people-pleasing tendencies, and fear of failure. The love itself must be unconditional. The boundaries and expectations can be firm.</p>
+</div>
+</div>
+<div class="pcs-card">
+<div class="pcs-card-head">
+<div class="pcs-card-icon" style="background:rgba(96,165,250,0.10)">👂</div>
+<div><div class="pcs-card-name">Active Listening &amp; Open Communication</div><div class="pcs-card-tag">Trust is built in small conversations</div></div>
+</div>
+<div class="pcs-card-body">
+<p>The parent who listens without judgment is the parent the child will turn to in a crisis. Active listening means putting down the phone, making eye contact, nodding, and truly absorbing what the child is saying — even if it seems trivial.</p>
+<p>Parents who respond with curiosity ("That sounds hard — how did that make you feel?") rather than solutions ("Just find other friends") raise children who can identify and articulate their emotions — a skill that prevents anxiety, depression, and impulsive behaviour throughout life.</p>
+<p>Create daily moments of connection: dinner without screens, a brief bedtime check-in, a short walk together. These rituals communicate to the child: "You matter to me. You are worth my full attention."</p>
+</div>
+</div>
+<div class="pcs-sec">Academic Role</div>
+<div class="pcs-card">
+<div class="pcs-card-head">
+<div class="pcs-card-icon" style="background:rgba(74,222,128,0.10)">📚</div>
+<div><div class="pcs-card-name">Creating a Culture of Learning at Home</div><div class="pcs-card-tag">Not pressure — curiosity</div></div>
+</div>
+<div class="pcs-card-body">
+<p>Academic success rarely comes from pressure alone. It comes from a home where learning is celebrated, curiosity is rewarded, and mistakes are treated as information rather than failure. Parents who read books, discuss current events, ask questions like "What do you think about that?" — these parents raise children who associate learning with pleasure, not fear.</p>
+<p>Praise effort, not outcome. "I'm so proud of how hard you worked on that project" builds resilience. "You're so smart" ironically can make children avoid difficult tasks for fear of appearing not-smart. The message should always be: your effort determines your growth.</p>
+</div>
+</div>
+<div class="pcs-card">
+<div class="pcs-card-head">
+<div class="pcs-card-icon" style="background:rgba(192,132,252,0.10)">🤝</div>
+<div><div class="pcs-card-name">Engaging with School &amp; Teachers</div><div class="pcs-card-tag">Partnership, not handover</div></div>
+</div>
+<div class="pcs-card-body">
+<p>When parents attend parent-teacher meetings, respond to school communications, and show interest in school life, children receive a powerful message: education matters to my family. Studies show that parental engagement with school directly improves attendance, homework completion, and test scores — regardless of the parents' own educational level.</p>
+<p>This does not mean doing homework for your child or fighting their battles. It means knowing who their teachers are, understanding what they are learning, and communicating warmly with school when issues arise.</p>
+</div>
+</div>
+<div class="pcs-sec">Character &amp; Life Skills</div>
+<div class="pcs-2col">
+<div class="pcs-mini"><div class="pcs-mini-icon">🧭</div><div class="pcs-mini-title">Role Modelling</div><div class="pcs-mini-body">Children copy what they see, not what they are told. Parents who demonstrate honesty, kindness, and self-regulation raise children who embody those same qualities.</div></div>
+<div class="pcs-mini"><div class="pcs-mini-icon">⚖️</div><div class="pcs-mini-title">Boundaries with Warmth</div><div class="pcs-mini-body">Authoritative parenting — high warmth, high structure — consistently produces the most well-adjusted children across cultures and backgrounds.</div></div>
+<div class="pcs-mini"><div class="pcs-mini-icon">🔄</div><div class="pcs-mini-title">Resilience Training</div><div class="pcs-mini-body">Allow age-appropriate struggle. A child who is never allowed to fail cannot learn to recover. Protect them from harm, not from disappointment.</div></div>
+<div class="pcs-mini"><div class="pcs-mini-icon">🌍</div><div class="pcs-mini-title">Social Awareness</div><div class="pcs-mini-body">Expose children to diverse perspectives, different families, and community involvement. Empathy grows from exposure, not isolation.</div></div>
+</div>
+<div class="pcs-sec">What Research Tells Us</div>
+<div class="pcs-hi"><div class="pcs-hi-icon">📊</div><div class="pcs-hi-title">Harvard Study on Human Development</div><div class="pcs-hi-body">The longest-running study on adult happiness (75+ years, Harvard) found that the quality of childhood relationships — especially with parents — was the single strongest predictor of flourishing in adulthood, far outweighing wealth, status, or academic achievement.</div></div>
+<div class="pcs-hi"><div class="pcs-hi-icon">🧠</div><div class="pcs-hi-title">Neuroscience of Parental Connection</div><div class="pcs-hi-body">A child's brain develops 90% of its structure by age 5. During this window, responsive parenting literally shapes neural pathways for emotional regulation, language, and social cognition. Parents play a major role in shaping a child's emotional and cognitive development.</div></div>
+<div class="pcs-warn"><div class="pcs-warn-title">⚠️ Harmful Patterns to Avoid</div><div class="pcs-warn-body">Constant comparison with other children erodes self-worth. Excessive pressure creates anxiety and academic burnout. Overprotection prevents the development of coping skills. Emotional unavailability — even from well-intentioned, busy parents — creates a form of invisible neglect that children carry into adulthood.</div></div>
+</div>
+<!-- ══════════ PAGE: MENTAL ══════════ -->
+<div class="pcs-pg" id="pcs-mental">
+<div class="pcs-pg-title">Child Mental Health</div>
+<div class="pcs-pg-sub">Recognising, responding, and seeking help</div>
+<div class="pcs-hero">
+<div class="pcs-hero-icon">🧠</div>
+<div class="pcs-hero-title">Mental health is health — full stop</div>
+<div class="pcs-hero-body">A child's mind is as vulnerable to illness as their body. The great difference is that mental suffering is invisible, often misread as misbehaviour, laziness, or ingratitude. Parents who understand this are the ones who can save their children at the moments that matter most.</div>
+</div>
+<div class="pcs-sec">Warning Signs Every Parent Must Know</div>
+<div class="pcs-card">
+<div class="pcs-card-head">
+<div class="pcs-card-icon" style="background:rgba(248,113,113,0.12)">🚨</div>
+<div><div class="pcs-card-name">When to Seek Immediate Help</div><div class="pcs-card-tag">Do not wait — act now</div></div>
+</div>
+<div class="pcs-card-body">
+<p><strong style="color:#fb923c">Statements like "What's the point of living" or "Everyone would be better off without me"</strong> must NEVER be dismissed as drama. These are potential expressions of serious emotional distress and require urgent attention from a child psychiatrist or mental health professional — not tomorrow, not next week, today.</p>
+<p>Self-harm — cutting, burning, scratching — is not attention-seeking. It is a child communicating deep emotional pain through the only language they have found. Punishment makes it worse. Calm presence, professional help, and sustained compassion make it better.</p>
+<p>Any significant, sustained change in behaviour — appetite, sleep, social engagement, academic performance — lasting more than two weeks warrants a conversation with a professional. The earlier the intervention, the better the outcome.</p>
+</div>
+</div>
+<div class="pcs-sec">How Parents Can Help</div>
+<div class="pcs-tips">
+<div class="pcs-tip"><div class="pcs-dot"></div><div>Be present without being invasive. Sit nearby. Offer to talk. Do not demand they open up immediately.</div></div>
+<div class="pcs-tip"><div class="pcs-dot"></div><div>Validate feelings before offering solutions. "That sounds really hard" opens doors that "you need to toughen up" slams shut.</div></div>
+<div class="pcs-tip"><div class="pcs-dot"></div><div>Never use mental health struggles as discipline material. "Stop acting crazy" or "You're being so dramatic" causes lasting shame.</div></div>
+<div class="pcs-tip"><div class="pcs-dot"></div><div>Seek help without shame. Consulting a child psychiatrist is no different from consulting a cardiologist. Mental illness is a real health condition and deserves proper care and treatment.</div></div>
+<div class="pcs-tip"><div class="pcs-dot"></div><div>Protect your own mental health. A parent's anxiety, depression, or unresolved trauma directly shapes the child's emotional development. You cannot pour from an empty vessel.</div></div>
+<div class="pcs-tip"><div class="pcs-dot"></div><div>Model emotional regulation. Show the child that you feel anger, sadness, or fear — and that you manage it constructively. This is the most powerful lesson in emotional intelligence they will ever receive.</div></div>
+</div>
+<div class="pcs-hi" style="margin-top:14px"><div class="pcs-hi-icon">📞</div><div class="pcs-hi-title">Childline: 1098 (Free, 24×7, India)</div><div class="pcs-hi-body">Any child or parent in India facing crisis can call 1098 at any time, day or night, free of charge. This number exists so that no child suffers alone.</div></div>
+</div>
+<!-- ══════════ PAGE: DIGITAL ══════════ -->
+<div class="pcs-pg" id="pcs-digital">
+<div class="pcs-pg-title">Digital Safety</div>
+<div class="pcs-pg-sub">Raising safe, savvy children in the online world</div>
+<div class="pcs-hero">
+<div class="pcs-hero-icon">📱</div>
+<div class="pcs-hero-title">The internet is your child's neighbourhood now</div>
+<div class="pcs-hero-body">Just as you would want to know who your child plays with on the street and which routes they take home, you need to understand where they go online, who they interact with, and what content shapes their worldview. Digital parenting is not about control — it is about guidance.</div>
+</div>
+<div class="pcs-sec">Core Risks to Understand</div>
+<div class="pcs-card">
+<div class="pcs-card-head">
+<div class="pcs-card-icon" style="background:rgba(248,113,113,0.12)">🎭</div>
+<div><div class="pcs-card-name">Online Grooming &amp; Digital Risks</div><div class="pcs-card-tag">The slow, invisible danger</div></div>
+</div>
+<div class="pcs-card-body">
+<p>Online groomers do not arrive as obvious threats. They arrive as kind, understanding, endlessly available "friends" who say all the right things. Over weeks or months, they build a child's trust, create emotional dependency, request secrecy, and gradually introduce inappropriate content or meetings.</p>
+<p>Children who feel unheard at home are the most vulnerable. Parents who maintain strong emotional connection provide the best protection against grooming, because the child is more likely to mention an uncomfortable online interaction when they trust their parent to respond calmly rather than with punishment.</p>
+<p>Teach your child: a person who asks you to keep secrets from your parents, who wants to meet in person, or who asks for photos — regardless of how kind they seem — is not a safe person.</p>
+</div>
+</div>
+<div class="pcs-card">
+<div class="pcs-card-head">
+<div class="pcs-card-icon" style="background:rgba(96,165,250,0.10)">💬</div>
+<div><div class="pcs-card-name">Cyberbullying</div><div class="pcs-card-tag">Wounds that don't show</div></div>
+</div>
+<div class="pcs-card-body">
+<p>Cyberbullying follows a child home, into their bedroom, at night. Unlike traditional bullying, there is no respite. Cruel posts, exclusion from group chats, fake profiles, and screenshot-sharing can devastate a child's social world and mental health rapidly.</p>
+<p>If your child is a victim: take screenshots as evidence, report the posts on the platform, and most critically — do not blame the child. Stand beside them. Report to Cyber Crime helpline 1930 if needed. A child who tells a parent about cyberbullying is an extraordinarily brave child — respond with gratitude, not interrogation.</p>
+</div>
+</div>
+<div class="pcs-sec">Healthy Digital Habits</div>
+<div class="pcs-tips">
+<div class="pcs-tip"><div class="pcs-dot"></div><div>Set screen time boundaries collaboratively — rules agreed upon by the child are followed far more willingly than rules imposed.</div></div>
+<div class="pcs-tip"><div class="pcs-dot"></div><div>Keep devices in common areas during evening hours. Screens in bedrooms after lights-out disrupt sleep and enable unsupervised access.</div></div>
+<div class="pcs-tip"><div class="pcs-dot"></div><div>Enable parental controls not as surveillance, but as safety rails — and be transparent with your child that they are there.</div></div>
+<div class="pcs-tip"><div class="pcs-dot"></div><div>Never share OTP, banking details, or personal photographs with anyone online — teach this as firmly as road safety rules.</div></div>
+<div class="pcs-tip"><div class="pcs-dot"></div><div>The question is not "Are you on your phone?" but "What are you watching? Who are you talking to? Show me something interesting." Curiosity, not suspicion.</div></div>
+</div>
+<div class="pcs-hi" style="margin-top:14px"><div class="pcs-hi-icon">🚔</div><div class="pcs-hi-title">Cyber Crime Helpline: 1930</div><div class="pcs-hi-body">India's national cybercrime helpline operates 24×7. Complaints can also be filed at cybercrime.gov.in. Banks can be called immediately to freeze accounts within minutes of a fraud — every minute matters.</div></div>
+</div>
+<!-- ══════════ PAGE: VALUES ══════════ -->
+<div class="pcs-pg" id="pcs-values">
+<div class="pcs-pg-title">Values &amp; Character</div>
+<div class="pcs-pg-sub">The invisible inheritance every parent gives</div>
+<div class="pcs-hero">
+<div class="pcs-hero-icon">🌟</div>
+<div class="pcs-hero-title">What children inherit is not wealth — it is character</div>
+<div class="pcs-hero-body">Degrees can be purchased, jobs can be found, money can be earned — but integrity, compassion, resilience, and responsibility are formed in childhood or not at all. The home is the original school of character, and parents are its only teachers.</div>
+</div>
+<div class="pcs-sec">The Comparison Trap</div>
+<div class="pcs-card">
+<div class="pcs-card-head">
+<div class="pcs-card-icon" style="background:rgba(248,113,113,0.10)">⚠️</div>
+<div><div class="pcs-card-name">Why Comparison Destroys Children</div><div class="pcs-card-tag">The most common parenting mistake</div></div>
+</div>
+<div class="pcs-card-body">
+<p>"Look at Rohan — he scored 95 and you got 72." These words, spoken by millions of parents with genuinely good intentions, inflict a wound that can last decades. Chronic comparison communicates to a child: "You are not enough as you are."</p>
+<p>Children raised on comparison do not develop healthy ambition — they develop anxiety, perfectionism, and a terror of failure. They stop taking creative risks. They begin performing life for external validation rather than living it from internal motivation.</p>
+<p>Every child has a unique developmental trajectory, a unique set of strengths, and a unique contribution to offer the world. The parent's job is to find and nourish those — not to measure them against a neighbour's child.</p>
+</div>
+</div>
+<div class="pcs-sec">Teaching Resilience</div>
+<div class="pcs-tips">
+<div class="pcs-tip"><div class="pcs-dot"></div><div>Allow your child to experience the natural consequences of small failures. Rescue them from danger, not from difficulty.</div></div>
+<div class="pcs-tip"><div class="pcs-dot"></div><div>When they fail, ask "What did you learn?" not "How could you do this?" Frame failure as information.</div></div>
+<div class="pcs-tip"><div class="pcs-dot"></div><div>Share your own mistakes honestly. "I got that wrong, and here is what I would do differently" is among the most powerful things a parent can model.</div></div>
+<div class="pcs-tip"><div class="pcs-dot"></div><div>The child who is never allowed to hear "no" cannot develop patience, gratitude, or self-discipline. Say no warmly and explain why. It is a gift.</div></div>
+<div class="pcs-tip"><div class="pcs-dot"></div><div>Include children in housework from an early age — boys and girls equally. It builds responsibility, self-sufficiency, and respect for those who do the work of care.</div></div>
+</div>
+<div class="pcs-sec">Honesty &amp; Trust</div>
+<div class="pcs-card">
+<div class="pcs-card-head">
+<div class="pcs-card-icon" style="background:rgba(201,168,76,0.12)">🔑</div>
+<div><div class="pcs-card-name">Why Children Lie — and What It Means</div><div class="pcs-card-tag">Fear is always underneath</div></div>
+</div>
+<div class="pcs-card-body">
+<p>Children most often lie because they fear punishment or disappointment more than they fear lying itself. If a child is consistently punished harshly for telling the truth, they will learn to hide it. The solution is not more punishment — it is making truth-telling safe.</p>
+<p>When a child tells you a difficult truth, the first response matters enormously. If the first response is gratitude ("Thank you for being honest with me — that was brave"), the child learns that honesty is rewarded. If the first response is rage, they learn to conceal. Create a home where telling the truth, even about mistakes, is always the safer and more respected choice.</p>
+</div>
+</div>
+</div>
+<!-- ══════════ PAGE: LAW ══════════ -->
+<div class="pcs-pg" id="pcs-law">
+<div class="pcs-pg-title">Legal Rights &amp; Safety</div>
+<div class="pcs-pg-sub">Every parent must know these laws and numbers</div>
+<div class="pcs-hero">
+<div class="pcs-hero-icon">⚖️</div>
+<div class="pcs-hero-title">Awareness is protection</div>
+<div class="pcs-hero-body">The law is on the side of children. But laws protect only those who know they exist. Every parent in India should be familiar with the rights and protections granted to their children — and the responsibilities this places on adults.</div>
+</div>
+<div class="pcs-sec">Essential Laws</div>
+<div class="pcs-card">
+<div class="pcs-card-head">
+<div class="pcs-card-icon" style="background:rgba(192,132,252,0.12)">📜</div>
+<div><div class="pcs-card-name">POCSO Act 2012</div><div class="pcs-card-tag">Protection of Children from Sexual Offences</div></div>
+</div>
+<div class="pcs-card-body">
+<p>The POCSO Act provides comprehensive protection to all children under 18 from sexual abuse, harassment, and exploitation. It covers both contact and non-contact offences, including online abuse. Penalties are severe. Reporting is mandatory for anyone who knows of an offence.</p>
+<p>If a child discloses abuse, believe them first. Do not question their credibility or warn them about "family reputation." Report immediately to police (100) or Childline (1098). The law will protect your child — but only if you use it.</p>
+</div>
+</div>
+<div class="pcs-card">
+<div class="pcs-card-head">
+<div class="pcs-card-icon" style="background:rgba(74,222,128,0.10)">🏫</div>
+<div><div class="pcs-card-name">RTE Act 2009</div><div class="pcs-card-tag">Right to Education</div></div>
+</div>
+<div class="pcs-card-body">
+<p>The Right to Education Act guarantees free and compulsory education for all children aged 6–14 and explicitly prohibits physical and mental punishment in schools. If a teacher is punishing your child through beating, humiliation, or sustained verbal abuse, this is not discipline — it is illegal.</p>
+<p>Document the incidents. Report formally to the school principal, then to the District Education Officer if unresolved. The law is explicitly on your child's side.</p>
+</div>
+</div>
+<div class="pcs-card">
+<div class="pcs-card-head">
+<div class="pcs-card-icon" style="background:rgba(248,113,113,0.12)">🛵</div>
+<div><div class="pcs-card-name">Motor Vehicles Act — Minors &amp; Driving</div><div class="pcs-card-tag">A law with life-or-death stakes</div></div>
+</div>
+<div class="pcs-card-body">
+<p>In India, no person under 18 may legally drive any motorised vehicle. If a parent provides a motorcycle, scooter, or car to a minor, the parent is legally liable — and may face criminal prosecution in the event of an accident.</p>
+<p>Beyond legality: the adolescent brain's prefrontal cortex — responsible for impulse control and risk assessment — is not fully developed until the mid-twenties. Giving a bike to an underage child can create serious safety risks and legal problems and parents should avoid giving in to social pressure in such situations.</p>
+</div>
+</div>
+<div class="pcs-card">
+<div class="pcs-card-head">
+<div class="pcs-card-icon" style="background:rgba(201,168,76,0.12)">💍</div>
+<div><div class="pcs-card-name">Child Marriage Prohibition Act</div><div class="pcs-card-tag">18 for girls, 21 for boys</div></div>
+</div>
+<div class="pcs-card-body">
+<p>Child marriage — defined as marriage before 18 for girls and 21 for boys — is a criminal offence under Indian law. It ends education, increases health risks, and destroys economic independence.</p>
+<p>Financial hardship does not make child marriage acceptable. If you know of a child marriage being arranged, report to Childline 1098. The call may change a child's entire life trajectory.</p>
+</div>
+</div>
+<div class="pcs-sec">Emergency Numbers</div>
+<div class="pcs-2col">
+<div class="pcs-mini"><div class="pcs-mini-icon">📞</div><div class="pcs-mini-title">Childline: 1098</div><div class="pcs-mini-body">Free, 24×7. For any child in danger, distress, or need of protection anywhere in India.</div></div>
+<div class="pcs-mini"><div class="pcs-mini-icon">🚔</div><div class="pcs-mini-title">Cyber Crime: 1930</div><div class="pcs-mini-body">National helpline for cyber fraud, online blackmail, and digital crimes against children.</div></div>
+<div class="pcs-mini"><div class="pcs-mini-icon">👮</div><div class="pcs-mini-title">Police: 100</div><div class="pcs-mini-body">For immediate physical danger, abuse, or emergencies requiring law enforcement.</div></div>
+<div class="pcs-mini"><div class="pcs-mini-icon">🌐</div><div class="pcs-mini-title">cybercrime.gov.in</div><div class="pcs-mini-body">File online cybercrime complaints — fraud, digital abuse, identity theft.</div></div>
+</div>
+</div>
+<!-- ══════════ PAGE: MOTHER AS FIRST TEACHER ══════════ -->
+<div class="pcs-pg" id="pcs-mother">
+<div class="pcs-pg-title">Mother — The First Teacher</div>
+<div class="pcs-pg-sub">A nation's future is shaped in a mother's arms</div>
+<div class="pcs-hero">
+<div class="pcs-hero-icon">🤱</div>
+<div class="pcs-hero-title">The first classroom has no walls</div>
+<div class="pcs-hero-body">Before a child enters any school, before they meet any teacher, before they read a single word — they learn from their mother. Her voice, her habits, her values, her way of looking at the world: all of this becomes the child's first education. No curriculum in the world can replace it.</div>
+</div>
+<div class="pcs-sec">What a Child Absorbs from Their Mother</div>
+<div class="pcs-2col">
+<div class="pcs-mini"><div class="pcs-mini-icon">🗣️</div><div class="pcs-mini-title">Language &amp; Expression</div><div class="pcs-mini-body">A child's mother tongue, vocabulary, sentence structure, and ability to express emotions all come from listening to their mother in the first 1,000 days of life.</div></div>
+<div class="pcs-mini"><div class="pcs-mini-icon">💗</div><div class="pcs-mini-title">Emotional Intelligence</div><div class="pcs-mini-body">How a mother responds to a crying baby, manages her own stress, and shows affection — all of this shapes the child's emotional brain before any formal learning begins.</div></div>
+<div class="pcs-mini"><div class="pcs-mini-icon">🧭</div><div class="pcs-mini-title">Values &amp; Ethics</div><div class="pcs-mini-body">Honesty, kindness, patience, and respect are not taught through lectures — they are absorbed through daily observation. A child copies what their mother does, not what she says.</div></div>
+<div class="pcs-mini"><div class="pcs-mini-icon">📚</div><div class="pcs-mini-title">Love of Learning</div><div class="pcs-mini-body">If a mother reads, asks questions, and shows curiosity — the child grows up believing that learning is pleasurable. If she dismisses knowledge, the child learns to do the same.</div></div>
+</div>
+<div class="pcs-hi"><div class="pcs-hi-icon">📱</div><div class="pcs-hi-title">The Reels Trap — A Warning for Every Mother</div><div class="pcs-hi-body">When a mother spends hours scrolling through reels, short videos, or social media feeds, her child watches. The child sees that a screen is more interesting than people, that passive entertainment is the default way to spend time, and that real life is less engaging than a device. Within months, the child demands the same screen. Within years, it becomes an addiction. A mother who is present — curious, engaged, active — raises a child who is the same. Children often imitate the screen habits they observe at home. This is not a judgment. It is a pattern documented in millions of households worldwide.</div></div>
+<div class="pcs-warn"><div class="pcs-warn-title">⚠️ What Happens When a Mother is Not Educationally Aware</div><div class="pcs-warn-body">An educationally unaware mother may unknowingly pass on superstitions as facts, dismiss her child's curiosity as disruptive, prioritise marriage over education for daughters, normalise unhealthy food and hygiene habits, and fail to recognise early signs of learning difficulties or mental health issues. None of this comes from bad intent — it comes from a lack of access to good information. This is why educating mothers is not just about individual families. It is about the future of entire communities.</div></div>
+<div class="pcs-sec">How to Grow as a Mother</div>
+<div class="pcs-card">
+<div class="pcs-card-head">
+<div class="pcs-card-icon" style="background:rgba(201,168,76,0.12)">📖</div>
+<div><div class="pcs-card-name">Read Something Every Day</div><div class="pcs-card-tag">Even 10 minutes changes your mind</div></div>
+</div>
+<div class="pcs-card-body">
+<p>Reading does not require a library or expensive books. A news article, a health awareness leaflet, an educational page — anything that adds real information to your day. When your child sees you reading, they want to read too. Your habit becomes their habit.</p>
+</div>
+</div>
+<div class="pcs-card">
+<div class="pcs-card-head">
+<div class="pcs-card-icon" style="background:rgba(74,222,128,0.10)">💬</div>
+<div><div class="pcs-card-name">Talk With Your Child — Not At Them</div><div class="pcs-card-tag">Conversation builds minds</div></div>
+</div>
+<div class="pcs-card-body">
+<p>Ask your child what they noticed today. Ask them what they think about something. Ask them what questions they have. This kind of conversation — where the child's thoughts are genuinely valued — builds confidence, critical thinking, and emotional connection in ways no textbook can replicate.</p>
+</div>
+</div>
+<div class="pcs-card">
+<div class="pcs-card-head">
+<div class="pcs-card-icon" style="background:rgba(96,165,250,0.12)">📵</div>
+<div><div class="pcs-card-name">Create Screen-Free Hours Together</div><div class="pcs-card-tag">Presence is the greatest gift</div></div>
+</div>
+<div class="pcs-card-body">
+<p>Designate certain hours — especially evenings and mealtimes — where no phones are present. These hours become the space for real connection: stories, questions, laughter, cooking together, naming plants in the garden. These ordinary moments are what children remember for the rest of their lives. Not the toys. Not the gadgets. The presence.</p>
+</div>
+</div>
+<div class="pcs-hi" style="margin-top:14px"><div class="pcs-hi-icon">🌍</div><div class="pcs-hi-title">One Educated Mother Changes Generations</div><div class="pcs-hi-body">Studies across 140 countries consistently show that a mother's education level is the single strongest predictor of her children's health, educational achievement, and economic outcomes — stronger than the father's income, the quality of schools, or government investment. Educating a mother does not just change one life. It changes every life that comes after her.</div></div>
+</div>
+<!-- ══════════ PAGE: INTEGRITY & SUCCESS ══════════ -->
+<div class="pcs-pg" id="pcs-integrity">
+<div class="pcs-pg-title">Integrity &amp; Real Success</div>
+<div class="pcs-pg-sub">What a shortcut takes from your child — forever</div>
+<div class="pcs-hero">
+<div class="pcs-hero-icon">📝</div>
+<div class="pcs-hero-title">Passing the exam is not the same as learning</div>
+<div class="pcs-hero-body">Across schools and colleges, cheating in examinations has become quietly normalised. Notes hidden in pockets. Phones under desks. Copying from neighbours. Whispered answers. Many parents look away — or even help. The result appears harmless: the child passes. But something invisible and irreversible has happened. The child has learned that outcomes matter more than the process. That getting away with something is the same as achieving it.</div>
+</div>
+<div class="pcs-sec">What Happens When a Child Cheats Their Way Through School</div>
+<div class="pcs-2col">
+<div class="pcs-mini"><div class="pcs-mini-icon">🧠</div><div class="pcs-mini-title">No Real Knowledge</div><div class="pcs-mini-body">The mark is there. The knowledge is not. When real life asks for that skill — in a job, in a crisis, in a decision — the child has nothing. The certificate was a promise the child never kept to themselves.</div></div>
+<div class="pcs-mini"><div class="pcs-mini-icon">🪞</div><div class="pcs-mini-title">Broken Self-Trust</div><div class="pcs-mini-body">Deep down, a child who consistently cheats knows they didn't earn it. This creates a fragile self-image that crumbles under real pressure. A child who repeatedly cheats may grow into an adult who constantly fears being exposed.</div></div>
+<div class="pcs-mini"><div class="pcs-mini-icon">💼</div><div class="pcs-mini-title">Failure in Real Tests</div><div class="pcs-mini-body">Government job exams, competitive entrance tests, bank interviews, civil service examinations — none of these allow cheating. The student who depended on shortcuts their whole life is suddenly completely defenceless.</div></div>
+<div class="pcs-mini"><div class="pcs-mini-icon">⚖️</div><div class="pcs-mini-title">Ethical Erosion</div><div class="pcs-mini-body">A habit of dishonesty in examinations quietly teaches the child that rules are for others, that personal convenience justifies deception, and that integrity is optional. This mindset follows them into every relationship and career.</div></div>
+</div>
+<div class="pcs-warn"><div class="pcs-warn-title">⚠️ The Moment of Real Reckoning</div><div class="pcs-warn-body">A student who passed school and college through shortcuts eventually faces a moment where their actual ability is tested: a job interview where they cannot answer basic questions from their own degree. A civil service exam where there is no one to copy from. A workplace task that requires skills they were supposed to have learned years ago. In that moment — which always comes — the years of shortcuts produce not success, but a profound and painful failure. The shortcut that once seemed harmless may later prevent them from achieving the future they hoped for.</div></div>
+<div class="pcs-sec">What Parents Can Do</div>
+<div class="pcs-card">
+<div class="pcs-card-head">
+<div class="pcs-card-icon" style="background:rgba(201,168,76,0.12)">🏆</div>
+<div><div class="pcs-card-name">Celebrate Effort, Not Just Results</div><div class="pcs-card-tag">The process is the real prize</div></div>
+</div>
+<div class="pcs-card-body">
+<p>When a child scores 55% through genuine hard work, celebrate that more loudly than a neighbour's child who scored 90% through coaching and parental pressure. Your child needs to understand that the effort — the struggle, the persistence, the honest attempt — is what builds a person. Marks are a byproduct, not the goal.</p>
+</div>
+</div>
+<div class="pcs-card">
+<div class="pcs-card-head">
+<div class="pcs-card-icon" style="background:rgba(74,222,128,0.10)">🤝</div>
+<div><div class="pcs-card-name">Never Encourage or Enable Cheating</div><div class="pcs-card-tag">Even once sets a pattern</div></div>
+</div>
+<div class="pcs-card-body">
+<p>Some parents help children cheat "just this once" out of love and fear. But one act of permitted dishonesty tells the child: my parents believe I cannot succeed honestly. It is more damaging than a failed exam. Let your child fail honestly. Then help them understand why and try again. That process — fail, reflect, improve — is the actual education.</p>
+</div>
+</div>
+<div class="pcs-card">
+<div class="pcs-card-head">
+<div class="pcs-card-icon" style="background:rgba(192,132,252,0.12)">💡</div>
+<div><div class="pcs-card-name">Teach That Real Life Has No Answer Sheet</div><div class="pcs-card-tag">Wisdom over marks</div></div>
+</div>
+<div class="pcs-card-body">
+<p>Talk to your child regularly about real-world situations where knowledge, problem-solving, and integrity matter far more than a certificate. A doctor who memorised without understanding can harm patients. An engineer who copied without learning can build unsafe structures. An accountant who cheated their way through college can destroy a business. Real skills save lives — and build futures.</p>
+</div>
+</div>
+<div class="pcs-hi" style="margin-top:14px"><div class="pcs-hi-icon">✨</div><div class="pcs-hi-title">The Child Who Struggles Honestly Will Rise</div><div class="pcs-hi-body">A child who faces difficulty, works through it honestly, fails sometimes, learns from it, and keeps going — this child is building something no shortcut can buy: real competence, genuine confidence, and an unshakeable sense of personal integrity. These qualities will serve them in every examination life ever presents. And life's examinations never end.</div></div>
+</div>
+<!-- ══════════ PAGE: TRUE LEGACY ══════════ -->
+<div class="pcs-pg" id="pcs-legacy">
+<div class="pcs-pg-title">True Legacy</div>
+<div class="pcs-pg-sub">What you leave behind that truly matters</div>
+<div class="pcs-hero">
+<div class="pcs-hero-icon">🌳</div>
+<div class="pcs-hero-title">Property divides families. Education unites generations.</div>
+<div class="pcs-hero-body">Across every culture in the world, the same tragedy repeats: siblings who grew up in the same home, ate at the same table, and loved each other as children — are now not speaking. The cause is almost always the same. Land. Money. Inheritance. A few square feet of earth has severed bonds that took decades to build. And yet the property, in most cases, provides neither happiness nor real security to those who fought for it.</div>
+</div>
+<div class="pcs-sec">The Property Trap</div>
+<div class="pcs-2col">
+<div class="pcs-mini"><div class="pcs-mini-icon">⚖️</div><div class="pcs-mini-title">Courts &amp; Lost Years</div><div class="pcs-mini-body">Family property disputes often last 10–20 years in court. The legal fees frequently exceed the value of the disputed property. The real cost is the years of bitterness, broken relationships, and mental suffering.</div></div>
+<div class="pcs-mini"><div class="pcs-mini-icon">💔</div><div class="pcs-mini-title">Broken Bonds</div><div class="pcs-mini-body">Brothers who no longer speak. Sisters who turn their children against each other. Parents who spend their final years watching their family destroy itself over money they worked their whole lives to build.</div></div>
+<div class="pcs-mini"><div class="pcs-mini-icon">😔</div><div class="pcs-mini-title">Children Who Don't Earn</div><div class="pcs-mini-body">A child who inherits wealth without effort rarely understands its value. They spend what they did not earn, take for granted what cost everything, and often end up worse than if they had started with nothing.</div></div>
+<div class="pcs-mini"><div class="pcs-mini-icon">🏠</div><div class="pcs-mini-title">False Security</div><div class="pcs-mini-body">Property can be taken by courts, devalued by markets, destroyed by disasters, or stolen by fraud. The only asset that cannot be taken from a person is what they know, what they can do, and who they are.</div></div>
+</div>
+<div class="pcs-warn"><div class="pcs-warn-title">⚠️ What Happens When a Child Does Not Earn Their Own Way</div><div class="pcs-warn-body">A child who receives everything without earning anything learns that money appears without effort. They do not understand the sacrifice behind a rupee. They spend carelessly, make poor financial decisions, and often resent rather than respect the parents who gave them everything. Worse — when the wealth runs out, as it often does, they have no skills to rebuild. The greatest disservice a parent can do to a child is to remove all struggle from their path.</div></div>
+<div class="pcs-sec">The Education Inheritance</div>
+<div class="pcs-card">
+<div class="pcs-card-head">
+<div class="pcs-card-icon" style="background:rgba(74,222,128,0.10)">📚</div>
+<div><div class="pcs-card-name">Knowledge Cannot Be Divided or Stolen</div><div class="pcs-card-tag">The asset no court can touch</div></div>
+</div>
+<div class="pcs-card-body">
+<p>When a parent invests in their child's education — real education, not just examination performance — they give something that no sibling dispute, no court order, no economic downturn can ever take away. A child who knows how to think, how to learn, how to solve problems and how to work with integrity will always find a way forward. No matter what life takes from them materially, they carry their capability everywhere they go.</p>
+</div>
+</div>
+<div class="pcs-card">
+<div class="pcs-card-head">
+<div class="pcs-card-icon" style="background:rgba(201,168,76,0.12)">💰</div>
+<div><div class="pcs-card-name">Let Them Earn It</div><div class="pcs-card-tag">The money they earn will mean the world</div></div>
+</div>
+<div class="pcs-card-body">
+<p>A child who earns their first rupee through their own effort understands something that a child given a thousand rupees never will: what work feels like, what value means, and why money deserves respect. Even small responsibilities — a household task with a small reward, managing a tiny budget, contributing to a family decision — build financial wisdom that no inheritance can teach.</p>
+</div>
+</div>
+<div class="pcs-card">
+<div class="pcs-card-head">
+<div class="pcs-card-icon" style="background:rgba(192,132,252,0.12)">🤲</div>
+<div><div class="pcs-card-name">Values Are the Greatest Inheritance</div><div class="pcs-card-tag">What survives every generation</div></div>
+</div>
+<div class="pcs-card-body">
+<p>The families that stay together across generations — that remain kind to each other through difficulty, that support rather than compete — are not held together by shared property. They are held together by shared values: respect, humility, gratitude, and love that was taught by parents who understood that character is built, not bought. This is what to leave your children. Not land. Not gold. Not a bank balance. Leave them the ability to be good, to work hard, to tell the truth, and to care for others.</p>
+</div>
+</div>
+<div class="pcs-hi" style="margin-top:14px"><div class="pcs-hi-icon">💛</div><div class="pcs-hi-title">What the Wisest Parents Have Always Known</div><div class="pcs-hi-body">"I may not always be here. One day my child will stand alone, face their own storms, make their own choices. What I give them now — in values, in knowledge, in the habit of honest effort — is the only provision that will still be with them in that moment. Everything else I leave behind will eventually be spent, divided, or lost. But what I build inside them will last as long as they live — and will live on in their children after them."</div></div>
+</div>
+<!-- ══════════ PAGE: QUIZ ══════════ -->
+<div class="pcs-pg" id="pcs-quiz">
+<div id="pcs-quiz-main">
+<div class="pcs-pg-title">Parent Awareness Challenge</div>
+<div class="pcs-pg-sub">55 questions · Test your knowledge</div>
+<div class="pcs-quiz-wrap">
+<div class="pcs-quiz-hdr">
+<div class="pcs-quiz-score">
+<div class="pcs-score-val" id="pcsScoreVal">0 <span style="font-size:13px;font-weight:400;color:var(--pcs-muted)">pts</span></div>
+<div class="pcs-q-num" id="pcsQNum">Q 1 / 40</div>
+</div>
+<div class="pcs-prog"><div class="pcs-prog-fill" id="pcsProgFill" style="width:0%"></div></div>
+</div>
+<div class="pcs-quiz-body">
+<div class="pcs-pill pcs-cat-values" id="pcsCatPill">Values</div>
+<div class="pcs-q-text" id="pcsQText">Loading...</div>
+<div class="pcs-opts" id="pcsOpts"></div>
+<div class="pcs-soul" id="pcsSoulBox" style="display:none">
+<button class="pcs-soul-speak" id="pcsSoulBtn" onclick="pcsSpeakSoul()">🔊</button>
+<span id="pcsSoulTxt"></span>
+</div>
+<div class="pcs-q-btns">
+<button class="pcs-back-q-btn" id="pcsBackQBtn" onclick="pcsBackQ()" style="display:none">← Back</button>
+<button class="pcs-next-btn" id="pcsNextBtn" onclick="pcsNextQ()" style="display:none">Next →</button>
+</div>
+<div class="pcs-lifelines">
+<div class="pcs-life" id="pcsSkipBtn" onclick="pcsSkip()">⏭ Skip (1)</div>
+<div class="pcs-life" id="pcsFfBtn" onclick="pcs5050()">50:50</div>
+<div class="pcs-life" id="pcsPollBtn" onclick="pcsPoll()">📊 Poll</div>
+</div>
+</div>
+</div>
+</div>
+<div id="pcs-gameover" style="display:none">
+<div class="pcs-gameover">
+<div class="pcs-go-emoji">🏆</div>
+<div class="pcs-go-title">All questions completed!</div>
+<div class="pcs-go-score" id="pcsGoScore"></div>
+<div class="pcs-go-grade" id="pcsGoGrade"></div>
+<div class="pcs-go-btns">
+<button class="pcs-retry-btn" onclick="pcsRetry()">🔄 Try Again</button>
+<button class="pcs-retry-btn" onclick="pcsShowCert()" style="background:linear-gradient(135deg,#7a5c10,#c9a84c)">🏅 Certificate</button>
+</div>
+<div class="pcs-cert-section" id="pcsCertSection" style="display:none;margin-top:16px">
+<canvas height="560" id="pcsCertCanvas" style="display:block;max-width:100%;margin:0 auto 14px;border-radius:10px;border:2px solid rgba(201,168,76,0.4)" width="800"></canvas>
+<div class="pcs-cert-actions">
+<button class="pcs-cert-dl" onclick="pcsDownloadCert()">⬇️ Download</button>
+<button class="pcs-cert-back" onclick="pcsHideCert()">← Back</button>
+</div>
+</div>
+</div>
+</div>
+<div class="pcs-note">
+For educational awareness only. In emergencies, please contact professional services or official helplines.
+</div>
+</div>
+</div><!-- /pcs-content -->
+<footer class="site-footer">
+   © 2026 MySkillGame • Educational Games &amp; Awareness Projects
+</footer>
+</div><!-- /pcs-shell -->
+<script>
+// ── Tab navigation ──
+function pcsShow(id, btn) {
+
+  [
+    'role',
+    'mental',
+    'digital',
+    'values',
+    'law',
+    'mother',
+    'integrity',
+    'legacy',
+    'quiz'
+  ].forEach(p => {
+
+    document
+      .getElementById('pcs-' + p)
+      .classList.toggle('pcs-act', p === id);
+
+  });
+
+  document
+    .querySelectorAll('.pcs-tab')
+    .forEach(t => t.classList.remove('pcs-act'));
+
+  if(btn) btn.classList.add('pcs-act');
+}
+// ── Question bank ──
+const PCS_BANK = [
+  {q:"Your child has suddenly become withdrawn, isn't talking to anyone, and eating less. As a parent, what should you do first?",o:["Force them to explain what happened","Ignore it — it will pass on its own","Sit calmly beside them and say 'I'm always here if you want to share anything'","Scold them so they snap out of it"],a:2,cat:"mental",soul:"A withdrawn child needs your presence, not judgment. Create a calm, safe space for them to open up."},
+  {q:"Your child says 'What's the point of living' or 'I'm a burden to everyone'. What should you do?",o:["Get angry and say 'Stop saying such nonsense'","Stay quiet — they're probably just being dramatic","Take these words very seriously and urgently consult a child psychiatrist","Send them out to play with friends"],a:2,cat:"mental",soul:"Words like 'what's the point of living' must NEVER be ignored. This can be a sign of suicidal tendency. Seek professional help immediately."},
+  {q:"Your child is hurting themselves (cutting or burning their skin). What should your first reaction be?",o:["Shout 'What have you done!'","Punish them so they don't do it again","Stay calm, hold them close, listen without judgment and urgently get mental health help","Hide it from everyone — it's shameful"],a:2,cat:"mental",soul:"Self-harm means your child is suffering unbearably inside. It is not a matter for punishment — it needs urgent treatment."},
+  {q:"Before exams your child is very anxious, can't sleep, has headaches. What is the most helpful step?",o:["Tell them to study even more","Say 'You can't be this weak'","Reduce pressure, focus on sleep routine, food, light exercise and LISTEN to them","Compare them with friends' children"],a:2,cat:"mental",soul:"Exam anxiety can cause real physical symptoms. Give empathy, not comparison."},
+  {q:"Your child is afraid to go to school and makes excuses like stomach ache. What might be behind this?",o:["Simply laziness","Possibly bullying at school, fear of a teacher, or social anxiety — needs serious attention","Only a stomach illness","Mobile phone addiction"],a:1,cat:"mental",soul:"School refusal often hides bullying or mental anxiety. Talk to the class teacher and a counsellor if needed."},
+  {q:"You suspect your child has mental health issues but fear 'what will society say' and won't see a specialist. Is this right?",o:["Yes — society matters","No — mental health treatment is like treating any illness. Your child's life comes first","Maybe check a bit later","Only waiting without professional help"],a:1,cat:"mental",soul:"Hiding mental health issues can harm your child. Timely treatment saves lives."},
+  {q:"Does a parent's mental health affect a child's mental health?",o:["No — they are separate","Yes — a parent's anxiety, depression or anger directly influences a child's mental development","Only through genetics","Only for very young children"],a:1,cat:"mental",soul:"To keep your child healthy, first keep yourself healthy. A parent's mental wellbeing is the foundation of the family."},
+  {q:"There are frequent fights and shouting between spouses at home. Your child is watching. What is the impact?",o:["No impact — small children don't understand","It seriously damages a child's mental development — can create fear, anxiety and aggressive behaviour","Only big fights cause harm","Show them TV and they'll forget"],a:1,cat:"mental",soul:"Children absorb family conflict. Respectful behaviour in front of them is the best lesson."},
+  {q:"Your child tells you classmates keep mocking them at school. What do you do?",o:["Say 'You mock them back too'","Ignore it — they'll grow out of it","Support your child and speak with school authorities","Fight with the bullies' parents"],a:2,cat:"mental",soul:"Bullying leaves deep wounds in a child's self-esteem and mental health. Work calmly with the school to resolve it."},
+  {q:"Your child says 'You only care about marks — you don't understand me.' How do you interpret this?",o:["Dramatic — ignore it","The child is ungrateful","This is an important signal — the child wants attention and empathy, not just academic achievement","True but nothing can be done"],a:2,cat:"mental",soul:"Give equal importance to your child's emotional needs alongside academic pressure."},
+  {q:"Your 10-year-old is using mobile alone in a locked room for hours. What do you do?",o:["Nothing — let them be in their own room","Confiscate all devices","Create family rules for screen use, enable Parental Controls, and have an open conversation","Scold and leave it"],a:2,cat:"digital",soul:"Closed-door screen time can create serious risks. Set rules through mutual trust — not force."},
+  {q:"Your child has made a new 'friend' online they've never met in person. How risky is this?",o:["Completely risk-free","Very risky — unknown online friends could be traffickers, predators or scammers","Only a risk for adults","Fine if they seem nice"],a:1,cat:"digital",soul:"Online 'groomers' first befriend children, then slowly trap them. Stay aware of your child's online contacts."},
+  {q:"Is it right to secretly check your child's phone without telling them?",o:["Yes — parents have every right","No — secret checking destroys trust. Direct conversation and mutually agreed rules are the right approach","Yes, always","Only when suspicious"],a:1,cat:"digital",soul:"Privacy violations make children hide more. Trust-based open relationships protect better in the long run."},
+  {q:"Someone uses your child's photo to create fake videos and blackmail them. What should you do?",o:["Stay silent out of shame","Pay money to avoid trouble","Support your child without blame and report to Cyber Crime helpline 1930","Scold your child harshly"],a:2,cat:"digital",soul:"Paying will increase blackmail. Stay calm, support your child, and report to 1930 immediately."},
+  {q:"Your child gave family bank details to an online game for a 'free gift'. What do you do?",o:["Nothing — it's a small matter","Slap the child","Immediately call the bank to block the card, change passwords and calmly explain to the child","Wait to see if a problem occurs"],a:2,cat:"digital",soul:"This is a serious financial fraud risk. Take immediate action without delay."},
+  {q:"You receive a lottery win message without buying any ticket. What should you do?",o:["Send bank details to claim prize","Click links to check","Ignore, delete and warn family members","Forward it to others"],a:2,cat:"digital",soul:"Fake lottery messages are scams. Never share bank details or click unknown links."},
+  {q:"Someone calls claiming to be from your bank and asks for your OTP. What should you do?",o:["Share OTP as they are from the bank","Verify and then share","Never share OTP or click suspicious links","Post online for help"],a:2,cat:"digital",soul:"Banks never ask for OTP over phone — sharing it can lead to instant financial loss."},
+  {q:"Your child is being cyberbullied on social media. What do you do?",o:["Say 'Don't use mobile'","Tell the child to stay quiet","Take screenshots, report the posts and stand by your child — report to Cyber Crime 1930 if needed","Do nothing out of embarrassment"],a:2,cat:"digital",soul:"Cyberbullying causes real harm. Preserve evidence and take legal action if needed."},
+  {q:"What is the best way to teach a child the value of things?",o:["Give everything easily","Make them earn or wait for it","Deny everything","Compare with others"],a:1,cat:"values",soul:"Effort and waiting build true appreciation for things."},
+  {q:"What happens if parents fulfil every demand of a child instantly?",o:["Child becomes disciplined","Child becomes more responsible","Child may become impatient and demanding","No effect"],a:2,cat:"values",soul:"If every wish is fulfilled, children don't learn to hear 'no.' Even small setbacks can then feel very difficult."},
+  {q:"Your child got low marks in an exam. What should your reaction be?",o:["Scold them saying 'You've failed'","Compare with other children's marks","Help them understand what went wrong and praise their effort","Stop their studies"],a:2,cat:"values",soul:"Low marks don't mean the child has failed. With the right support and methods they will progress."},
+  {q:"How much quality time should you spend with your child daily?",o:["Once on holidays is enough","At least 15-30 minutes of focused one-on-one time daily — without screens or work","Only at mealtimes","When the child asks"],a:1,cat:"values",soul:"Small daily moments of attention are what build trust and a sense of security with your child."},
+  {q:"Is it right to involve your child in housework?",o:["No — studying is enough","Yes — it builds responsibility, empathy and life skills from a young age","Only for girls","Not if they're very young"],a:1,cat:"values",soul:"Involving children of all genders in housework builds responsible and empathetic citizens."},
+  {q:"Your child's neighbour has expensive toys. Your child keeps asking for the same. What do you do?",o:["Buy immediately so child is not left out","Explain that comparison is harmful and discuss what your family values and can afford","Feel embarrassed and buy","Tell the child to stop being greedy"],a:1,cat:"values",soul:"Teaching children that their worth is not tied to possessions builds lifelong confidence and contentment."},
+  {q:"Your child tells friends everything but doesn't talk to you. What is the most likely reason?",o:["The child is disloyal","The child doesn't like us","Probably fear of judgment or punishment at home — a safe space to talk needs to be created","Friends are smarter"],a:2,cat:"values",soul:"When a child trusts parents enough to share their troubles, they are truly safe."},
+  {q:"Your child is increasingly lying. As a parent what should you consider first?",o:["Simply a character problem","They probably can't tell the truth out of fear — is the home environment safe for honesty?","All children lie — it's normal","Punishment will fix it"],a:1,cat:"values",soul:"Children often lie out of fear of punishment. Create an environment where telling the truth isn't punished."},
+  {q:"Is it necessary to teach small children about Good Touch and Bad Touch? From what age?",o:["No — tell them when they're older","Yes — it should be taught from age 3-4 in age-appropriate language","Only girls need to be taught","School will teach it — not at home"],a:1,cat:"safety",soul:"The earlier the better. Start teaching body safety in simple language from age 3-4."},
+  {q:"Which number should be called when a child is in trouble or needs help?",o:["15","1098 (Childline) — 24×7 free across India","512","999"],a:1,cat:"safety",soul:"1098 — Childline. Any child or parent in India can call any time in any emergency."},
+  {q:"If your child does not return from school on time, what should you do first?",o:["Wait silently thinking they will come","Immediately call your child, school and check with known contacts","Ignore and assume they are playing","Post on social media first"],a:1,cat:"safety",soul:"Act quickly but calmly — early contact with school and known people can prevent serious danger."},
+  {q:"In a crowded fair, what should parents do to prevent stampede risk?",o:["Push forward quickly to get ahead","Hold the child's hand firmly and move slowly with the crowd","Leave the child to move independently","Shout loudly and rush"],a:1,cat:"safety",soul:"Stay calm, hold your child, and move slowly — rushing and pushing increase stampede danger."},
+  {q:"What number to contact if you become a victim of cyber fraud?",o:["Walk to the local police station","1930 — National Cyber Crime Helpline (24×7)","Only go to a lawyer","Do nothing"],a:1,cat:"safety",soul:"1930 is India's National Cyber Crime Helpline. You can also file a complaint online at cybercrime.gov.in."},
+  {q:"Family is arranging marriage for a 16-17 year old girl. What do you as a parent need to know?",o:["Family decision is final","Marriage before 18 is illegal in India. Child marriage destroys a child's education, health and future","Fine if it's a good family","No alternative when facing financial problems"],a:1,cat:"law",soul:"Child marriage is a serious legal violation. Report to Childline 1098 or police (100)."},
+  {q:"What is the POCSO Act and why should parents be aware of it?",o:["Only lawyers need to know","POCSO Act 2012 protects children from sexual offences — every parent should know it","Only taught in schools","Only applicable to girls"],a:1,cat:"law",soul:"Under POCSO, any offence against a child under 18 is taken very seriously. Awareness helps parents protect children and take timely action."},
+  {q:"How dangerous is it to give a bike to a child under 18?",o:["No problem, everyone does it","Okay if used nearby","Very dangerous and illegal","Fine if it's expensive"],a:2,cat:"law",soul:"Driving under 18 is illegal. It increases accident risks, legal trouble, and danger to life."},
+  {q:"What risk do parents face if they allow a minor to drive a bike?",o:["No risk","Only the child will face problems","Parents can also face legal consequences","Only vehicle damage"],a:2,cat:"law",soul:"Parents can be held legally responsible for allowing minors to drive."},
+  {q:"If a teacher is giving severe punishment to your child at school, what should you do?",o:["It is the teacher's right — do nothing","Tell your child to tolerate it","Verify the situation and formally report to school authorities — punishment is illegal under RTE Act 2009","Fight with the teacher"],a:2,cat:"law",soul:"Under the RTE Act 2009, physical and mental punishment in schools is illegal. Stay calm, verify facts, and take proper action."},
+  {q:"Your child is eating very little and is abnormally worried about their weight. What do you do?",o:["Force them to eat","Say 'You're getting fat, eat less'","Consult a doctor — this may be a sign of an Eating Disorder","Ignore it"],a:2,cat:"health",soul:"Eating Disorder is a serious mental and physical illness. Early treatment is very effective."},
+  {q:"If a child has diarrhoea and shows signs of dehydration, what should you do first?",o:["Stop giving fluids","Give ORS solution and plenty of fluids","Ignore and wait for it to stop","Give only solid food"],a:1,cat:"health",soul:"During diarrhoea, dehydration is a major risk. Giving ORS and fluids helps replace lost water and salts."},
+  {q:"What are the common symptoms of dengue?",o:["High fever, severe headache, pain behind the eyes, joint and muscle pain","Only mild cold and cough","Only stomach ache without fever","No symptoms at all"],a:0,cat:"health",soul:"Dengue often starts with high fever, headache, eye pain, and body aches. In severe cases, vomiting, rash, or bleeding may occur — early detection is very important."},
+  {q:"Your child's eyes are red, behaviour is strange and you found an unknown substance in their pocket. You suspect drug use. What do you do?",o:["Beat them","Ignore it","Talk calmly and consult a doctor or de-addiction specialist","Tell friends' parents first"],a:2,cat:"health",soul:"Addiction is a health condition that needs support and treatment. Anger or punishment doesn't help — treatment does."},
+  {q:"If parents travel with a child without wearing a helmet or seatbelt, what will the child likely learn?",o:["Safety rules are important and must always be followed","Safety rules can be ignored","Only adults need to follow safety rules","It does not matter at all"],a:1,cat:"values",soul:"Children learn by observing adults. Following safety rules sets a strong example for lifelong responsible behaviour."},
+
+  // ── MOTHER AS FIRST TEACHER ──
+  {q:"A mother spends most of her free time scrolling reels on her phone. Her 3-year-old child watches her daily. What is the most likely outcome?",o:["No effect — the child is too young to understand","The child will likely develop the same screen-dependent habit and expect a phone very early","The child will learn from watching","Only affects children over age 5"],a:1,cat:"values",soul:"Children copy what they see, not what they are told. A parent's daily habits become a child's earliest education."},
+  {q:"A child's brain develops 90% of its structure by what age?",o:["Age 10","Age 15","Age 5","Age 8"],a:2,cat:"mental",soul:"90% of brain structure forms by age 5. This window — shaped largely by parents — determines emotional regulation, language, and social development for life."},
+  {q:"Research across 140 countries shows that the single strongest predictor of a child's health and educational outcomes is:",o:["Father's income","Quality of the school","Mother's level of education and awareness","Government investment in education"],a:2,cat:"values",soul:"An educated, aware mother changes not just one child's life — she changes every generation that follows."},
+  {q:"A mother wants to build her child's love of learning. The most effective thing she can do is:",o:["Buy expensive educational toys","Send the child to an elite school","Read and show curiosity herself, in front of her child daily","Hire private tutors from age 3"],a:2,cat:"values",soul:"Children learn to love learning by watching adults they love do it. Habits modelled at home outlast any tutoring."},
+  {q:"What does 'mother as first teacher' mean in practical daily life?",o:["Mothers should homeschool their children","The habits, language, values and responses a mother shows daily become the child's earliest and deepest education","Mothers must have a formal teaching qualification","Mothers should teach school subjects at home"],a:1,cat:"values",soul:"The first classroom has no walls. Every conversation, habit, and daily interaction is a lesson."},
+
+  // ── INTEGRITY & SUCCESS ──
+  {q:"A student who cheated throughout school and college appears for a competitive government exam. What is the most likely outcome?",o:["They will pass easily as they have practice","They will fail as they never built real knowledge","They will find someone to help them cheat again","The certificate will be enough"],a:1,cat:"values",soul:"Life's real examinations — job interviews, competitive tests, professional challenges — cannot be cheated. Shortcuts in school create a crisis in real life."},
+  {q:"A parent discovers their child is cheating in an exam. They say nothing to avoid disturbing the child's confidence. What is the deeper harm?",o:["No harm — the child's confidence is protected","The parent has told the child: I don't believe you can succeed honestly — which is far more damaging than a failed exam","Only the school is responsible","This is the right approach"],a:1,cat:"values",soul:"Permitting dishonesty — even once — teaches children that integrity is optional and that adults believe they cannot succeed on their own merit."},
+  {q:"Which of these qualities, built through honest struggle in school, will most determine success in adult life?",o:["High marks regardless of how they were obtained","The ability to think, problem-solve and work with integrity under real pressure","Awards and certificates","Being liked by teachers"],a:1,cat:"values",soul:"Real competence, genuine confidence, and integrity are built through honest struggle — not through shortcuts or certificates."},
+  {q:"A child scores 55% through genuine hard work. A neighbour's child scores 90% through heavy coaching and pressure. As a parent, what is the wiser response?",o:["Feel ashamed of your child's score","Celebrate your child's honest effort and help them identify areas to improve","Force your child to match the neighbour's marks","Stop caring about education"],a:1,cat:"values",soul:"Effort and honest learning build a person. Marks are a byproduct. Celebrating honest effort builds lifelong self-belief."},
+  {q:"Why does cheating in school exams ultimately lead to failure in life?",o:["It doesn't — cheating is a practical skill","Because the habit of avoiding effort means real skills are never built, and real tests of life cannot be cheated","Only if caught","Just bad luck"],a:1,cat:"values",soul:"Every shortcut skipped a lesson. When life presents its real tests — and it always does — there is no answer sheet to copy from."},
+
+  // ── TRUE LEGACY ──
+  {q:"Why do family property disputes cause so much permanent damage?",o:["Because property values keep changing","Because they destroy relationships built over decades, often for less than the legal costs involved","Because courts are inefficient","Only in joint families"],a:1,cat:"values",soul:"A few square feet of land frequently costs families something worth infinitely more: the bonds of love and trust built over a lifetime."},
+  {q:"What is the most valuable inheritance a parent can leave a child?",o:["Land and property","A large bank balance","The ability to think, work honestly, and live with good values","Gold jewellery"],a:2,cat:"values",soul:"Everything material can be divided, lost, or spent. Knowledge, integrity, and values last a lifetime and are passed to the next generation."},
+  {q:"A child who earns money through their own effort for the first time understands something that an inherited fortune cannot teach. What is it?",o:["How to spend money faster","The real value of money, the dignity of work, and why effort deserves respect","That rich people are better","How to invest in property"],a:1,cat:"values",soul:"The first rupee earned teaches more about life than a lifetime of unearned wealth. Let children earn — even in small ways."},
+  {q:"What holds families together across generations more than shared property?",o:["Regular family meetings","Shared property agreements","Shared values — respect, humility, gratitude, and love taught from childhood","Living in the same house"],a:2,cat:"values",soul:"Property divides. Shared values unite. Families that stay close through generations were built on character, not assets."},
+  {q:"A parent is deciding whether to spend their savings on property for their child or invest in quality education. From the perspective of real, lasting value — which is wiser?",o:["Property — it is permanent and visible","Education — because a skilled, knowledgeable person can always rebuild, regardless of what life takes from them materially","Both are equal","Neither matters"],a:1,cat:"values",soul:"No court order, economic crash, or life event can take away what a person knows and can do. Education is the one inheritance that cannot be stolen."},
+];
+
+// ── Engine ──
+const PCS_SHUFFLED = [...PCS_BANK].sort(() => Math.random() - 0.5);
+let pcsCur = 0, pcsPts = 0, pcsAnswered = false;
+let pcsSkips = 1, pcsFF = false, pcsPollUsed = false;
+let pcsHistory = [], pcsSoul = '';
+
+const CAT_NAMES = {mental:'Mental Health', digital:'Digital Safety', safety:'Safety', health:'Health', law:'Legal', values:'Values', environment:'Environment', ethics:'Ethics'};
+
+function pcsLoadQ() {
+  if (pcsCur >= PCS_SHUFFLED.length) { pcsFinish(); return; }
+  pcsAnswered = false;
+  const d = PCS_SHUFFLED[pcsCur];
+  document.getElementById('pcsScoreVal').innerHTML = pcsPts + ' <span style="font-size:13px;font-weight:400;color:var(--pcs-muted)">pts</span>';
+  document.getElementById('pcsQNum').textContent = 'Q ' + (pcsCur + 1) + ' / ' + PCS_SHUFFLED.length;
+  document.getElementById('pcsProgFill').style.width = Math.round((pcsCur / PCS_SHUFFLED.length) * 100) + '%';
+  const pill = document.getElementById('pcsCatPill');
+  pill.textContent = CAT_NAMES[d.cat] || d.cat;
+  pill.className = 'pcs-pill pcs-cat-' + d.cat;
+  document.getElementById('pcsQText').textContent = d.q;
+  const optsEl = document.getElementById('pcsOpts');
+  optsEl.innerHTML = '';
+  d.o.forEach((o, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'pcs-opt';
+    btn.textContent = o;
+    btn.onclick = () => pcsCheck(i);
+    optsEl.appendChild(btn);
+  });
+  document.getElementById('pcsSoulBox').style.display = 'none';
+  document.getElementById('pcsNextBtn').style.display = 'none';
+  document.getElementById('pcsBackQBtn').style.display = pcsHistory.length > 0 ? 'block' : 'none';
+  document.getElementById('pcsSoulBtn').classList.remove('pcs-speaking');
+}
+
+function pcsCheck(idx) {
+  if (pcsAnswered) return;
+  pcsAnswered = true;
+  const d = PCS_SHUFFLED[pcsCur];
+  const opts = document.querySelectorAll('.pcs-opt');
+  opts.forEach(o => { o.classList.add('pcs-locked'); o.onclick = null; });
+  pcsHistory.push({ cur: pcsCur, pts: pcsPts });
+  pcsSoul = d.soul;
+  if (idx === d.a) {
+    opts[idx].classList.add('pcs-correct');
+    pcsPts += 10;
+    pcsPop('+10', 'pcs-pos');
+  } else {
+    opts[idx].classList.add('pcs-wrong');
+    opts[d.a].classList.add('pcs-correct');
+    pcsPts = Math.max(0, pcsPts - 2);
+    pcsPop('-2', 'pcs-neg');
+  }
+  document.getElementById('pcsScoreVal').innerHTML = pcsPts + ' <span style="font-size:13px;font-weight:400;color:var(--pcs-muted)">pts</span>';
+  setTimeout(() => {
+    document.getElementById('pcsSoulTxt').textContent = d.soul;
+    document.getElementById('pcsSoulBox').style.display = 'block';
+    document.getElementById('pcsNextBtn').style.display = 'block';
+  }, 300);
+}
+
+function pcsPop(val, cls) {
+  const d = document.createElement('div');
+  d.className = 'pcs-pop ' + cls;
+  d.textContent = val;
+  document.body.appendChild(d);
+  setTimeout(() => d.remove(), 950);
+}
+
+function pcsNextQ()  { pcsCur++; pcsLoadQ(); }
+function pcsBackQ()  { if (!pcsHistory.length) return; const p = pcsHistory.pop(); pcsPts = p.pts; pcsCur = p.cur; pcsLoadQ(); }
+function pcsSpeakSoul() {
+  if (!pcsSoul || !window.speechSynthesis) return;
+  const btn = document.getElementById('pcsSoulBtn');
+  btn.classList.add('pcs-speaking');
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(pcsSoul);
+  u.lang = 'en-IN'; u.rate = 0.93;
+  u.onend = () => btn.classList.remove('pcs-speaking');
+  speechSynthesis.speak(u);
+}
+function pcsSkip() {
+  if (pcsSkips <= 0 || pcsAnswered) return;
+  pcsSkips--;
+  document.getElementById('pcsSkipBtn').textContent = '⏭ Skip (0)';
+  document.getElementById('pcsSkipBtn').classList.add('pcs-used');
+  pcsHistory.push({ cur: pcsCur, pts: pcsPts });
+  pcsCur++; pcsLoadQ();
+}
+function pcs5050() {
+  if (pcsFF || pcsAnswered) return;
+  pcsFF = true;
+  document.getElementById('pcsFfBtn').classList.add('pcs-used');
+  const d = PCS_SHUFFLED[pcsCur];
+  const wrong = [0,1,2,3].filter(i => i !== d.a).sort(() => Math.random() - 0.5);
+  const opts = document.querySelectorAll('.pcs-opt');
+  opts[wrong[0]].classList.add('pcs-faded');
+  opts[wrong[1]].classList.add('pcs-faded');
+}
+function pcsPoll() {
+  if (pcsPollUsed) return;
+  pcsPollUsed = true;
+  document.getElementById('pcsPollBtn').classList.add('pcs-used');
+  const d = PCS_SHUFFLED[pcsCur];
+  alert('📊 Audience Poll:\nMost participants chose Option ' + String.fromCharCode(65 + d.a) + '.');
+}
+
+function pcsFinish() {
+  document.getElementById('pcs-quiz-main').style.display = 'none';
+  document.getElementById('pcs-gameover').style.display = 'block';
+  const max = PCS_SHUFFLED.length * 10;
+  const pct = max > 0 ? Math.round((pcsPts / max) * 100) : 0;
+  const grades = [
+    { t: 90, g: '🏆 Exceptional! You are an extraordinarily aware parent.' },
+    { t: 70, g: '💛 Very good! You have strong parenting awareness.' },
+    { t: 50, g: '💪 Good start. Keep learning and growing.' },
+    { t: 0,  g: '📖 Every parent can grow. Keep exploring this guide.' }
+  ];
+  const grade = grades.find(g => pct >= g.t) || grades[grades.length - 1];
+  document.getElementById('pcsGoScore').textContent = pcsPts + ' pts';
+  document.getElementById('pcsGoGrade').textContent = grade.g;
+}
+
+function pcsRetry() {
+  pcsCur = 0; pcsPts = 0; pcsAnswered = false;
+  pcsSkips = 1; pcsFF = false; pcsPollUsed = false; pcsHistory = [];
+  document.getElementById('pcs-quiz-main').style.display = 'block';
+  document.getElementById('pcs-gameover').style.display = 'none';
+  document.getElementById('pcsCertSection').style.display = 'none';
+  document.getElementById('pcsSkipBtn').textContent = '⏭ Skip (1)';
+  document.getElementById('pcsSkipBtn').classList.remove('pcs-used');
+  document.getElementById('pcsFfBtn').classList.remove('pcs-used');
+  document.getElementById('pcsPollBtn').classList.remove('pcs-used');
+  pcsLoadQ();
+}
+
+// ── Certificate ──
+function pcsShowCert() {
+  document.getElementById('pcsCertSection').style.display = 'block';
+  pcsDrawCert();
+}
+function pcsHideCert() {
+  document.getElementById('pcsCertSection').style.display = 'none';
+}
+function pcsDrawCert() {
+  const canvas = document.getElementById('pcsCertCanvas');
+  const ctx = canvas.getContext('2d');
+  const W = 800, H = 560;
+  canvas.width = W; canvas.height = H;
+  const bg = ctx.createLinearGradient(0,0,W,H);
+  bg.addColorStop(0,'#0d1f3c'); bg.addColorStop(1,'#1a0a00');
+  ctx.fillStyle = bg; ctx.fillRect(0,0,W,H);
+  ctx.strokeStyle = '#c9a84c'; ctx.lineWidth = 4; ctx.strokeRect(16,16,W-32,H-32);
+  ctx.strokeStyle = 'rgba(201,168,76,0.3)'; ctx.lineWidth = 1.5; ctx.strokeRect(26,26,W-52,H-52);
+  function corner(x,y,rx,ry){ctx.save();ctx.strokeStyle='#c9a84c';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(x,y+ry*0.5);ctx.lineTo(x,y);ctx.lineTo(x+rx*0.5,y);ctx.stroke();ctx.restore();}
+  corner(26,26,30,30);corner(W-26,26,-30,30);corner(26,H-26,30,-30);corner(W-26,H-26,-30,-30);
+  ctx.textAlign = 'center';
+  ctx.font = 'bold 27px Trebuchet MS, Arial'; ctx.fillStyle = '#c9a84c';
+  ctx.shadowColor = 'rgba(201,168,76,0.6)'; ctx.shadowBlur = 14;
+  ctx.fillText('Parent Awareness Certificate', W/2, 100);
+  ctx.shadowBlur = 0;
+  ctx.strokeStyle = 'rgba(201,168,76,0.4)'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(80,115); ctx.lineTo(W-80,115); ctx.stroke();
+  ctx.font = '15px Trebuchet MS'; ctx.fillStyle = '#c8d8ff';
+  ctx.fillText('This certificate is proudly awarded to', W/2, 152);
+  ctx.font = 'bold 30px Georgia, serif'; ctx.fillStyle = '#fff';
+  ctx.shadowColor = 'rgba(255,255,255,0.3)'; ctx.shadowBlur = 8;
+  ctx.fillText('Aware & Responsible Parent', W/2, 206);
+  ctx.shadowBlur = 0;
+  ctx.strokeStyle = 'rgba(201,168,76,0.6)'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(180,222); ctx.lineTo(W-180,222); ctx.stroke();
+  ctx.font = '14px Trebuchet MS'; ctx.fillStyle = '#ffcb8e';
+  ctx.fillText('has successfully completed', W/2, 255);
+  ctx.font = 'bold 18px Trebuchet MS'; ctx.fillStyle = '#c9a84c';
+  ctx.fillText('Parent & Child Success — Awareness Quiz', W/2, 285);
+  ctx.fillStyle = 'rgba(201,168,76,0.08)';
+  ctx.strokeStyle = 'rgba(201,168,76,0.35)'; ctx.lineWidth = 1;
+  pcsRoundRect(ctx, W/2-130, 305, 260, 58, 10); ctx.fill(); ctx.stroke();
+  ctx.font = '13px Trebuchet MS'; ctx.fillStyle = '#aac0e0'; ctx.fillText('Total Score:', W/2, 330);
+  ctx.font = 'bold 25px Trebuchet MS'; ctx.fillStyle = '#c9a84c'; ctx.fillText(pcsPts + ' pts', W/2, 354);
+  const max = PCS_SHUFFLED.length * 10;
+  const pct = max > 0 ? Math.round((pcsPts/max)*100) : 0;
+  const gs=[{t:90,g:'🏆 Exceptional Awareness'},{t:70,g:'💛 Strong Awareness'},{t:50,g:'💪 Growing Awareness'},{t:0,g:'📖 Keep Learning'}];
+  const gr = gs.find(g=>pct>=g.t)||gs[gs.length-1];
+  ctx.font = '15px Trebuchet MS'; ctx.fillStyle = '#7deba0'; ctx.fillText(gr.g, W/2, 395);
+  const today = new Date();
+  ctx.font = '12px Trebuchet MS'; ctx.fillStyle = '#aac0e0';
+  ctx.fillText('Date: ' + today.toLocaleDateString('en-IN',{year:'numeric',month:'long',day:'numeric'}), W/2, 425);
+  ctx.fillStyle = 'rgba(255,123,47,0.12)'; ctx.fillRect(0,H-76,W,76);
+  ctx.strokeStyle = 'rgba(255,123,47,0.25)'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(0,H-76); ctx.lineTo(W,H-76); ctx.stroke();
+  ctx.font = '34px serif'; ctx.fillStyle = 'rgba(201,168,76,0.85)';
+  ctx.shadowColor='rgba(201,168,76,0.5)'; ctx.shadowBlur=10;
+  ctx.fillText('🏅', W/2, H-28); ctx.shadowBlur=0;
+  ctx.font = '11px Trebuchet MS'; ctx.fillStyle = 'rgba(200,216,255,0.55)';
+  ctx.fillText('Issued by Parent Awareness Initiative', W/2, H-10);
+}
+function pcsRoundRect(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);ctx.quadraticCurveTo(x+w,y,x+w,y+r);ctx.lineTo(x+w,y+h-r);ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);ctx.lineTo(x+r,y+h);ctx.quadraticCurveTo(x,y+h,x,y+h-r);ctx.lineTo(x,y+r);ctx.quadraticCurveTo(x,y,x+r,y);ctx.closePath();}
+function pcsDownloadCert(){const c=document.getElementById('pcsCertCanvas');const a=document.createElement('a');a.download='parent_awareness_certificate.png';a.href=c.toDataURL('image/png');a.click();}
+
+// ── Init ──
+pcsLoadQ();
+history.pushState(null, null, location.href);
+
+window.addEventListener('popstate', function () {
+
+  // যদি quiz/result page এ থাকে তাহলে প্রথম tab এ ফেরত যাবে
+  pcsShow('role', document.querySelectorAll('.pcs-tab')[0]);
+
+  // scroll top
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+
+  // আবার history push করবে যাতে app বন্ধ না হয়
+  history.pushState(null, null, location.href);
+
+});
+</script>
+<script src="security.js"></script>
+
+<footer class="footer">
+<div style="margin-bottom:18px;">
+<a href="about.html">About</a> |
+<a href="privacy.html">Privacy Policy</a> |
+<a href="terms.html">Terms &amp; Conditions</a> |
+<a href="contact.html">Contact</a> |
+<a href="disclaimer.html">Disclaimer</a>
+</div>
+<div class="footer-name">MYSKILLGAME</div>
+<div class="footer-copy">© 2026 MySkillGame • Developed by Surajit Roy</div>
+</footer>
+</body>
+</html>

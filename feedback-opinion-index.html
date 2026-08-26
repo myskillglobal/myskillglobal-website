@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>We Would Like to Hear Your Opinion | MySkill Global</title>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyDfxtOP-YCrCXtQxZrrFNC1uXucvbW0K78",
+    authDomain: "my-skill-global.firebaseapp.com",
+    projectId: "my-skill-global",
+    storageBucket: "my-skill-global.firebasestorage.app",
+    messagingSenderId: "978471914749",
+    appId: "1:978471914749:web:595750b5d90738933f4294",
+    measurementId: "G-8D9BPY8HJ0"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#050608;
+    --bg-panel:#0c0e12;
+    --bg-panel-2:#111319;
+    --navy:#0a1428;
+    --navy-2:#0d1b33;
+    --gold:#d4af37;
+    --gold-light:#f3d98b;
+    --gold-dim:#8a7332;
+    --ink:#eae6da;
+    --ink-dim:#a9a89c;
+    --line:rgba(212,175,55,0.22);
+    --shadow:0 20px 50px rgba(0,0,0,0.55);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at top, #10121a 0%, #050608 55%),
+      var(--bg);
+    color:var(--ink);
+    font-family:'Hind Siliguri','Cormorant Garamond',serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{font-family:'Playfair Display',serif;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+
+  /* ===== Header ===== */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(5,6,8,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .header-inner{
+    max-width:1180px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:10px 20px;
+  }
+  .brand{display:flex; align-items:center; gap:12px;}
+  .brand img{width:48px; height:48px; border-radius:50%;}
+  .brand-text{display:flex; flex-direction:column; line-height:1.15;}
+  .brand-text .name{font-family:'Playfair Display',serif; font-weight:800; font-size:1.05rem; color:var(--gold-light); letter-spacing:.3px;}
+  .brand-text .tag{font-size:.68rem; letter-spacing:2px; color:var(--ink-dim); text-transform:uppercase;}
+  .header-links{display:flex; gap:22px; font-size:.9rem;}
+  .header-links a{color:var(--ink-dim); border-bottom:1px solid transparent; padding-bottom:3px; transition:.25s;}
+  .header-links a:hover{color:var(--gold-light); border-color:var(--gold-dim);}
+  @media (max-width:640px){ .header-links{display:none;} }
+
+  /* ===== Hero ===== */
+  .hero{
+    position:relative;
+    padding:76px 20px 60px;
+    text-align:center;
+    overflow:hidden;
+    border-bottom:1px solid var(--line);
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(212,175,55,0.10), transparent 55%),
+      repeating-linear-gradient(120deg, rgba(212,175,55,0.025) 0px, rgba(212,175,55,0.025) 1px, transparent 1px, transparent 60px);
+    pointer-events:none;
+  }
+  .hero-logo{
+    width:112px; height:112px; margin:0 auto 22px; border-radius:50%;
+    box-shadow:0 0 0 2px var(--gold), 0 0 40px rgba(212,175,55,0.35);
+    position:relative; z-index:1;
+  }
+  .kicker{
+    display:inline-block; font-size:.72rem; letter-spacing:3.5px; color:var(--gold);
+    text-transform:uppercase; margin-bottom:18px; position:relative; z-index:1;
+  }
+  .kicker::before,.kicker::after{content:"—"; margin:0 10px; color:var(--gold-dim);}
+  h1.hero-title{
+    font-size:clamp(2rem, 5vw, 3.4rem);
+    font-weight:800;
+    letter-spacing:.5px;
+    margin:0 0 14px;
+    background:linear-gradient(180deg,#fdf3d0 0%, var(--gold) 55%, var(--gold-dim) 100%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    position:relative; z-index:1;
+  }
+  .hero-sub{
+    font-family:'Cormorant Garamond', serif; font-style:italic;
+    font-size:clamp(1.15rem,2vw,1.5rem); color:var(--ink);
+    margin:0 0 22px; position:relative; z-index:1;
+  }
+  .hero-desc{
+    max-width:680px; margin:0 auto 34px; color:var(--ink-dim);
+    font-size:1.02rem; position:relative; z-index:1;
+  }
+  .hero-desc strong{color:var(--ink);}
+  .hero-btns{display:flex; gap:16px; justify-content:center; flex-wrap:wrap; position:relative; z-index:1;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:14px 28px; border-radius:999px; font-family:'Hind Siliguri',sans-serif;
+    font-weight:600; font-size:.98rem; cursor:pointer; border:1px solid transparent;
+    transition:.25s ease;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg, var(--gold-light), var(--gold));
+    color:#1a1204; box-shadow:0 8px 24px rgba(212,175,55,0.28);
+  }
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 12px 30px rgba(212,175,55,0.4);}
+  .btn-outline{
+    background:transparent; border-color:var(--gold-dim); color:var(--gold-light);
+  }
+  .btn-outline:hover{border-color:var(--gold); background:rgba(212,175,55,0.08); transform:translateY(-2px);}
+
+  /* ===== Section shells ===== */
+  section{padding:64px 20px;}
+  .section-inner{max-width:1180px; margin:0 auto;}
+  .section-head{text-align:center; max-width:700px; margin:0 auto 44px;}
+  .section-head .eyebrow{font-size:.7rem; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:10px; display:block;}
+  .section-head h2{font-size:clamp(1.6rem,3vw,2.3rem); margin:0 0 12px; color:var(--gold-light);}
+  .section-head p{color:var(--ink-dim); margin:0; font-size:1rem;}
+
+  /* ===== Opinion Centre chips ===== */
+  .opinion-grid{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+    gap:16px; margin-top:10px;
+  }
+  .opinion-chip{
+    background:linear-gradient(160deg, var(--navy-2), var(--bg-panel));
+    border:1px solid var(--line); border-radius:16px;
+    padding:22px 18px; text-align:center; cursor:pointer;
+    transition:.25s ease;
+  }
+  .opinion-chip:hover{
+    border-color:var(--gold); transform:translateY(-4px);
+    box-shadow:var(--shadow);
+    background:linear-gradient(160deg, #16223f, var(--bg-panel-2));
+  }
+  .opinion-chip .icon{font-size:1.9rem; margin-bottom:10px; display:block;}
+  .opinion-chip .label{font-weight:600; color:var(--ink); font-size:.98rem;}
+
+  /* ===== Category cards ===== */
+  .cat-grid{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+    gap:20px;
+  }
+  .cat-card{
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:24px 22px;
+    display:flex; flex-direction:column; gap:12px;
+    transition:.25s ease; position:relative; overflow:hidden;
+  }
+  .cat-card::before{
+    content:""; position:absolute; top:0; left:0; right:0; height:3px;
+    background:linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity:0; transition:.3s;
+  }
+  .cat-card:hover{border-color:var(--gold); transform:translateY(-4px); box-shadow:var(--shadow);}
+  .cat-card:hover::before{opacity:1;}
+  .cat-top{display:flex; align-items:center; gap:12px;}
+  .cat-emoji{font-size:1.6rem; width:46px; height:46px; display:flex; align-items:center; justify-content:center;
+    background:var(--navy); border-radius:12px; border:1px solid var(--line); flex-shrink:0;}
+  .cat-title{font-family:'Playfair Display',serif; font-weight:700; color:var(--gold-light); font-size:1.08rem;}
+  .cat-q{color:var(--ink-dim); font-size:.92rem; margin:0;}
+  .cat-actions{display:flex; gap:10px; margin-top:auto; flex-wrap:wrap;}
+  .cat-actions a{
+    font-size:.82rem; padding:7px 14px; border-radius:999px; border:1px solid var(--gold-dim);
+    color:var(--ink); transition:.2s;
+  }
+  .cat-actions a:hover{background:var(--gold); color:#1a1204; border-color:var(--gold);}
+  .cat-actions .rate-btn{border-style:dashed;}
+
+  /* ===== Feedback Form ===== */
+  .form-wrap{
+    max-width:760px; margin:0 auto;
+    background:linear-gradient(165deg, var(--navy-2), var(--bg-panel));
+    border:1px solid var(--line); border-radius:22px; padding:40px clamp(20px,4vw,48px);
+    box-shadow:var(--shadow);
+  }
+  .form-row{margin-bottom:20px; display:flex; flex-direction:column; gap:8px;}
+  .form-row label{font-size:.88rem; color:var(--gold-light); font-weight:600; letter-spacing:.3px;}
+  .form-row input, .form-row select, .form-row textarea{
+    background:#05070a; border:1px solid var(--line); border-radius:10px;
+    padding:12px 14px; color:var(--ink); font-family:'Hind Siliguri',sans-serif; font-size:.96rem;
+    resize:vertical;
+  }
+  .form-row input:focus, .form-row select:focus, .form-row textarea:focus{
+    outline:none; border-color:var(--gold);
+  }
+  .form-two{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+  @media (max-width:560px){ .form-two{grid-template-columns:1fr;} }
+  .mood-row{display:flex; gap:10px; flex-wrap:wrap;}
+  .mood-opt{
+    border:1px solid var(--line); border-radius:999px; padding:9px 16px; cursor:pointer;
+    font-size:.85rem; color:var(--ink-dim); transition:.2s; user-select:none;
+  }
+  .mood-opt.active{background:var(--gold); color:#1a1204; border-color:var(--gold); font-weight:600;}
+  .form-submit{
+    width:100%; margin-top:8px; border:none;
+    background:linear-gradient(135deg, var(--gold-light), var(--gold));
+    color:#1a1204; padding:15px; border-radius:12px; font-weight:700; font-size:1rem;
+    cursor:pointer; transition:.25s;
+  }
+  .form-submit:hover{transform:translateY(-2px); box-shadow:0 10px 26px rgba(212,175,55,0.35);}
+  .form-note{font-size:.78rem; color:var(--ink-dim); text-align:center; margin-top:14px;}
+  .thanks{
+    display:none; text-align:center; padding:30px 10px;
+  }
+  .thanks .tick{font-size:2.6rem; margin-bottom:12px;}
+  .thanks h3{color:var(--gold-light); margin:0 0 8px;}
+  .thanks p{color:var(--ink-dim); margin:0;}
+
+  /* ===== Footer ===== */
+  footer{
+    border-top:1px solid var(--line); padding:36px 20px; text-align:center;
+    color:var(--ink-dim); font-size:.85rem;
+  }
+  footer .fname{color:var(--gold-light); font-family:'Playfair Display',serif; font-weight:700;}
+
+  .divider{
+    max-width:1180px; margin:0 auto; height:1px;
+    background:linear-gradient(90deg, transparent, var(--line), transparent);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <img src="images/logo.png" alt="MySkill Global">
+      <div class="brand-text">
+        <span class="name">MySkill Global</span>
+        <span class="tag">Learn · Play · Explore · Grow</span>
+      </div>
+    </div>
+    <nav class="header-links">
+      <a href="language-index.html">Learning Hub</a>
+      <a href="index.html">Home</a>
+      <a href="#opinion-form">Share Opinion</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <img class="hero-logo" src="images/logo.png" alt="MySkill Global logo">
+  <span class="kicker">Your Voice · Our Growth</span>
+  <h1 class="hero-title">WE WOULD LIKE TO<br>HEAR YOUR OPINION</h1>
+  <p class="hero-sub">Your Opinion Matters</p>
+  <p class="hero-desc">
+    Your voice can help us improve. We are continuously developing new
+    <strong>learning resources, educational guides, quizzes and practical knowledge tools.</strong>
+    Tell us what you think, what you found useful, and what you would like to see next.
+  </p>
+  <div class="hero-btns">
+    <a href="#opinion-form" class="btn btn-primary">💬 Share Your Opinion →</a>
+    <a href="language-index.html" class="btn btn-outline">📚 Explore Learning Topics →</a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== OPINION CENTRE ===== -->
+<section id="opinion-centre">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="eyebrow">Opinion Centre</span>
+      <h2>What would you like to tell us?</h2>
+      <p>Pick what fits best — it will guide your message below.</p>
+    </div>
+    <div class="opinion-grid">
+      <div class="opinion-chip" data-mood="I liked this content">
+        <span class="icon">👍</span><span class="label">I liked this content</span>
+      </div>
+      <div class="opinion-chip" data-mood="I have a suggestion">
+        <span class="icon">💡</span><span class="label">I have a suggestion</span>
+      </div>
+      <div class="opinion-chip" data-mood="I want more topics">
+        <span class="icon">📚</span><span class="label">I want more topics</span>
+      </div>
+      <div class="opinion-chip" data-mood="I found a mistake">
+        <span class="icon">🐞</span><span class="label">I found a mistake</span>
+      </div>
+      <div class="opinion-chip" data-mood="I have a question">
+        <span class="icon">❓</span><span class="label">I have a question</span>
+      </div>
+      <div class="opinion-chip" data-mood="I want to share my experience">
+        <span class="icon">🌟</span><span class="label">I want to share my experience</span></div>
+
+<a href="https://akashvoice.netlify.app/"
+   class="opinion-chip"
+   data-mood="AkashVoice : Screen-Free Entertainment"
+   target="_blank"
+   rel="noopener noreferrer">
+
+  <span class="icon">🌟</span>
+  <span class="label">AkashVoice : Screen-Free Entertainment</span>
+
+</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== CATEGORY OPINIONS ===== -->
+<section id="categories">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="eyebrow">By Topic</span>
+      <h2>Tell Us About a Specific Guide</h2>
+      <p>Choose a topic to open it, or rate it straight from here.</p>
+    </div>
+    <div class="cat-grid" id="catGrid">
+      <!-- injected by JS -->
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== FEEDBACK FORM ===== -->
+<section id="opinion-form">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="eyebrow">Share Your Opinion</span>
+      <h2>Your feedback helps us grow, improve and create better learning experiences.</h2>
+    </div>
+
+    <div class="form-wrap">
+      <form id="feedbackForm">
+        <div class="form-row">
+          <label>What's this about?</label>
+          <div class="mood-row" id="moodRow">
+            <span class="mood-opt" data-val="I liked this content">👍 Liked it</span>
+            <span class="mood-opt" data-val="I have a suggestion">💡 Suggestion</span>
+            <span class="mood-opt" data-val="I want more topics">📚 More topics</span>
+            <span class="mood-opt" data-val="I found a mistake">🐞 Found a mistake</span>
+            <span class="mood-opt" data-val="I have a question">❓ Question</span>
+            <span class="mood-opt" data-val="I want to share my experience">🌟 Experience</span>
+          </div>
+        </div>
+
+        <div class="form-two">
+          <div class="form-row">
+            <label for="fname">Your Name</label>
+            <input type="text" id="fname" placeholder="e.g. Ananya Roy">
+          </div>
+          <div class="form-row">
+            <label for="femail">Email (optional)</label>
+            <input type="email" id="femail" placeholder="you@example.com">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label for="ftopic">Which topic is this about?</label>
+          <select id="ftopic">
+            <option value="">General / Not sure</option>
+            <option>Affordable Market</option>
+            <option>Agri Farming Guide International</option>
+            <option>Bengal Heritage Youth Employment Guide</option>
+            <option>Botanical Farm Guide</option>
+            <option>Eco Water Game</option>
+            <option>Exam Result Not Destiny</option>
+            <option>Family Travel Safety with Emergency</option>
+            <option>Fish Scale Industry Guide</option>
+            <option>Health Tales</option>
+            <option>Jute Revival</option>
+            <option>Locust Facts</option>
+            <option>Mobile Smart Guide</option>
+            <option>Parent Role in Child Success</option>
+            <option>Science and the Unknown</option>
+            <option>Substance Harm Recovery</option>
+            <option>Walk Your Path</option>
+            <option>Waste to Wealth Guide</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label for="fmsg">Your Message</label>
+          <textarea id="fmsg" rows="5" placeholder="Share your thoughts, suggestions or the topics you'd like to see next..."></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">Send My Opinion</button>
+        <p class="form-note">This opens your email app with your message ready to send — nothing is stored or shared elsewhere.</p>
+      </form>
+
+      <div class="thanks" id="thanksMsg">
+        <div class="tick">🌟</div>
+        <h3>Thank You for Your Opinion!</h3>
+        <p>Your voice genuinely helps shape what we build next for learners across West Bengal and beyond.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="brand" style="justify-content:center; margin-bottom:10px;">
+    <img src="logo.png" alt="MySkill Global" style="width:34px;height:34px;border-radius:50%;">
+    <span class="fname">MySkill Global</span>
+  </div>
+  <p>Created &amp; Developed by <strong style="color:var(--gold-light);">Surajit Roy</strong> · Learn · Play · Explore · Grow</p>
+</footer>
+
+<script>
+  const categories = [
+    { emoji:"💰", title:"Affordable Market", q:"What is your opinion about the Affordable Market guide?", href:"affordable-market-en.html" },
+    { emoji:"🌾", title:"Agriculture & Farming", q:"How useful did you find the farming guides?", href:"agri-farming-guide-international.html" },
+    { emoji:"🌿", title:"Botanical & Farm", q:"What is your opinion about the Botanical Farm Guide?", href:"botanical-farm-guide.html" },
+    { emoji:"🌱", title:"Environment", q:"How useful did you find the eco and water content?", href:"eco_water_game_tabs.html" },
+    { emoji:"🎓", title:"Education & Results", q:"What is your opinion about Exam Result Not Destiny?", href:"exam_result_not_destiny.html" },
+    { emoji:"👨‍👩‍👧", title:"Family & Safety", q:"How useful did you find the Family Travel Safety Guide?", href:"family_travel_safety_with_emergency.html" },
+    { emoji:"🐟", title:"Fishery & Rural Life", q:"What do you think about the Fish Scale Industry Guide?", href:"fish_scale_industry_guide.html" },
+    { emoji:"🩺", title:"Health & Wellness", q:"What is your opinion about Health Tales?", href:"health-tales.html" },
+    { emoji:"🧵", title:"Jute & Rural Industry", q:"Would you like to see more content like Jute Revival?", href:"jute_revival.html" },
+    { emoji:"🦗", title:"Nature & Science", q:"What do you think about the Locust Facts and nature content?", href:"locust_facts.html" },
+    { emoji:"📱", title:"Technology", q:"What is your opinion about the Mobile Smart Guide?", href:"mobile_smart_guide.html" },
+    { emoji:"👨‍👩‍👦", title:"Parenting & Child Success", q:"What do you think about Parent Role in Child Success?", href:"parent_role_in_child_success.html" },
+    { emoji:"🔬", title:"Science & The Unknown", q:"What is your opinion about Science and the Unknown?", href:"science-and-the-unknown.html" },
+    { emoji:"🛡️", title:"Substance Harm Recovery", q:"What do you think about the Substance Harm Recovery guide?", href:"substance_harm_recovery_en.html" },
+    { emoji:"🚶", title:"Life & Personal Growth", q:"Would you like to see more topics like Walk Your Path?", href:"walk_your_path_v2.html" },
+    { emoji:"♻️", title:"Waste Management", q:"What do you think about the Waste to Wealth Guide?", href:"waste-to-wealth-guide.html" },
+    { emoji:"🏛️", title:"Heritage & Culture", q:"What more would you like to see about heritage and culture?", href:"bengal_heritage_youth_employment_guide.html" },
+
+  ];
+
+  const catGrid = document.getElementById('catGrid');
+  categories.forEach(c => {
+    const card = document.createElement('div');
+    card.className = 'cat-card';
+    card.innerHTML = `
+      <div class="cat-top">
+        <div class="cat-emoji">${c.emoji}</div>
+        <div class="cat-title">${c.title}</div>
+      </div>
+      <p class="cat-q">${c.q}</p>
+      <div class="cat-actions">
+        <a href="${c.href}">Open Guide →</a>
+        <a href="#opinion-form" class="rate-btn" data-topic="${c.title}">Rate this →</a>
+      </div>
+    `;
+    catGrid.appendChild(card);
+  });
+
+  const ftopic = document.getElementById('ftopic');
+  const moodRow = document.getElementById('moodRow');
+
+  function setMood(val){
+    [...moodRow.children].forEach(el => el.classList.toggle('active', el.dataset.val === val));
+  }
+
+  document.querySelectorAll('.opinion-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      setMood(chip.dataset.mood);
+      document.getElementById('opinion-form').scrollIntoView({behavior:'smooth'});
+    });
+  });
+
+  document.querySelectorAll('.rate-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const topicText = btn.dataset.topic;
+      [...ftopic.options].forEach(o => { if (o.text.trim() === topicText || o.value === topicText) ftopic.value = o.value; });
+      document.getElementById('opinion-form').scrollIntoView({behavior:'smooth'});
+    });
+  });
+
+  moodRow.addEventListener('click', (e) => {
+    if (e.target.classList.contains('mood-opt')) setMood(e.target.dataset.val);
+  });
+
+  document.getElementById('feedbackForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('fname').value.trim() || "Anonymous";
+    const email = document.getElementById('femail').value.trim();
+    const topic = ftopic.value || "General";
+    const mood = moodRow.querySelector('.active') ? moodRow.querySelector('.active').dataset.val : "General feedback";
+    const msg = document.getElementById('fmsg').value.trim();
+
+    const subject = encodeURIComponent(`MySkill Global Opinion: ${mood} — ${topic}`);
+    const body = encodeURIComponent(
+      `Name: ${name}\nTopic: ${topic}\nType: ${mood}\n\nMessage:\n${msg}\n\n(Sent from the MySkill Global Opinion page)`
+    );
+    window.location.href = `mailto:?subject=${subject}&body=${body}`;
+
+    this.style.display = 'none';
+    document.getElementById('thanksMsg').style.display = 'block';
+  });
+</script>
+
+</body>
+</html>

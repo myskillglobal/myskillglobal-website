@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Walk Your Own Path | Solitude, Strength &amp; Rabindranath Tagore's Philosophy</title>
+<meta content="Surajit Roy" name="author"/>
+<meta content="© Surajit Roy" name="copyright"/>
+<meta content="index,follow" name="robots"/>
+<meta content="A philosophical meditation on solitude, inner strength, and the human journey — drawing on Tagore, Vivekananda, Marcus Aurelius, Thoreau, Jung, Camus, and Hawking." name="description"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&amp;family=Lato:wght@300;400;700&amp;display=swap" rel="stylesheet"/>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EC8BPWZDWC');</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{--night:#07071A;--deep:#0D0D2B;--violet:#1E1A4A;--gold:#F0C040;--gold-soft:#D4A830;--pearl:#F5F0E8;--pearl-dim:#C8C2B4;--rose:#C87070;--sage:#7EB89A;--sky:#6EC6E6;--indigo:#7080C8;--amber:#E8943A;--lilac:#B080D0;}
+html{scroll-behavior:smooth;}
+body{background:var(--night);color:var(--pearl);font-family:'Lato',sans-serif;font-weight:300;line-height:1.8;overflow-x:hidden;}
+#stars-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;user-select:none;}
+#progressBar{position:fixed;top:0;left:0;width:0%;height:2px;z-index:9999;background:linear-gradient(to right,var(--gold),var(--sky));}
+
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 24px;z-index:1;}
+.hero-eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:28px;opacity:0;animation:fadeUp 1s .4s forwards;}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,7vw,6rem);font-weight:300;line-height:1.12;color:var(--pearl);margin-bottom:24px;opacity:0;animation:fadeUp 1s .7s forwards;}
+.hero-title em{font-style:italic;color:var(--gold);}
+.hero-subtitle{max-width:560px;font-size:1.05rem;color:var(--pearl-dim);line-height:1.9;margin-bottom:20px;opacity:0;animation:fadeUp 1s 1s forwards;}
+.hero-opening{max-width:640px;font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,2vw,1.18rem);font-style:italic;font-weight:300;color:rgba(245,240,232,.78);line-height:1.95;margin-bottom:52px;padding:24px 32px;border-left:2px solid var(--gold-soft);background:rgba(240,192,64,.04);border-radius:0 4px 4px 0;opacity:0;animation:fadeUp 1s 1.2s forwards;}
+.scroll-hint{opacity:0;animation:fadeUp 1s 1.5s forwards;display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--pearl-dim);font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;}
+.scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollPulse 2s 2s infinite;}
+.listen-btn{display:inline-flex;align-items:center;gap:10px;padding:12px 24px;margin-bottom:32px;border-radius:999px;text-decoration:none;color:var(--pearl);border:1px solid rgba(240,192,64,.25);background:rgba(240,192,64,.08);transition:.3s;}
+.listen-btn:hover{transform:translateY(-2px);background:rgba(240,192,64,.15);}
+
+.tagore-banner{position:relative;z-index:1;padding:48px 24px;text-align:center;border-top:1px solid rgba(240,192,64,.12);border-bottom:1px solid rgba(240,192,64,.12);background:linear-gradient(180deg,transparent 0%,rgba(30,26,74,.4) 50%,transparent 100%);}
+.tagore-label{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:20px;}
+.tagore-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3.5vw,2.6rem);font-style:italic;font-weight:300;max-width:780px;margin:0 auto 16px;color:var(--pearl);line-height:1.5;}
+.tagore-sub{font-size:.85rem;color:var(--pearl-dim);letter-spacing:.08em;}
+
+.section{position:relative;z-index:1;padding:60px 24px;max-width:960px;margin:0 auto;}
+.section-header{display:flex;align-items:center;gap:16px;margin-bottom:36px;}
+.section-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.section-label{font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;}
+.section-line{flex:1;height:1px;background:linear-gradient(to right,currentColor,transparent);opacity:.25;}
+
+.truth-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:24px;}
+.truth-card{background:linear-gradient(135deg,rgba(30,26,74,.6),rgba(13,13,43,.8));border:1px solid rgba(255,255,255,.07);border-radius:4px;padding:36px 30px;position:relative;overflow:hidden;transition:transform .3s,border-color .3s;}
+.truth-card:hover{transform:translateY(-4px);border-color:rgba(240,192,64,.2);}
+.truth-card .card-accent{position:absolute;top:0;left:0;width:3px;height:100%;}
+.truth-card .card-icon{font-size:1.8rem;margin-bottom:16px;display:block;}
+.truth-card h3{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:400;color:var(--pearl);margin-bottom:12px;}
+.truth-card p{font-size:.9rem;color:var(--pearl-dim);line-height:1.85;}
+
+.quote-stack{display:flex;flex-direction:column;gap:40px;}
+.quote-block{display:grid;grid-template-columns:3px 1fr;gap:28px;align-items:start;opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s;}
+.quote-block.visible{opacity:1;transform:none;}
+.quote-bar{height:100%;min-height:60px;border-radius:2px;}
+.quote-text{font-family:'Cormorant Garamond',serif;font-size:clamp(1.15rem,2vw,1.45rem);font-style:italic;font-weight:300;color:var(--pearl);line-height:1.7;margin-bottom:8px;}
+.quote-label{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--pearl-dim);opacity:.7;}
+
+.tagore-pair{display:grid;grid-template-columns:1fr 1fr;gap:2px;border-radius:4px;overflow:hidden;}
+@media(max-width:640px){.tagore-pair{grid-template-columns:1fr;}}
+.tagore-panel{padding:48px 36px;}
+.tagore-panel .panel-song{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:20px;font-weight:700;}
+.tagore-panel .panel-quote{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;line-height:1.7;margin-bottom:20px;color:var(--pearl);}
+.tagore-panel .panel-meaning{font-size:.87rem;color:var(--pearl-dim);line-height:1.85;}
+.panel-gold{background:linear-gradient(135deg,rgba(30,26,74,.9),rgba(20,18,58,.95));border-left:3px solid var(--gold);}
+.panel-rose{background:linear-gradient(135deg,rgba(45,20,30,.7),rgba(20,14,32,.9));border-left:3px solid var(--rose);}
+
+.voices-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:20px;}
+.voice-card{padding:30px 24px;border-radius:4px;border:1px solid rgba(255,255,255,.07);background:linear-gradient(160deg,rgba(21,21,53,.7),rgba(10,10,26,.85));position:relative;overflow:hidden;opacity:0;transform:translateY(24px);transition:opacity .6s,transform .6s,border-color .3s;}
+.voice-card.visible{opacity:1;transform:none;}
+.voice-card:hover{border-color:rgba(255,255,255,.18);}
+.voice-card .vc-stripe{position:absolute;top:0;left:0;width:3px;height:100%;}
+.voice-card .vc-era{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:6px;font-weight:700;}
+.voice-card .vc-name{font-family:'Cormorant Garamond',serif;font-size:1.12rem;font-weight:600;color:var(--pearl);margin-bottom:14px;}
+.voice-card .vc-quote{font-family:'Cormorant Garamond',serif;font-size:.98rem;font-style:italic;line-height:1.75;color:var(--pearl-dim);margin-bottom:12px;}
+.voice-card .vc-theme{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;opacity:.45;}
+.voices-tagline{margin-top:40px;text-align:center;font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-style:italic;color:var(--pearl-dim);line-height:1.9;}
+.voices-tagline span{color:var(--pearl);}
+
+.meditation-block{background:linear-gradient(135deg,rgba(21,21,53,.7),rgba(10,10,26,.9));border:1px solid rgba(126,184,154,.2);border-radius:4px;padding:40px 40px;text-align:center;position:relative;overflow:hidden;}
+.meditation-block::after{content:"\221E";position:absolute;bottom:-20px;right:20px;font-size:8rem;color:rgba(126,184,154,.04);font-family:serif;line-height:1;}
+.meditation-block p{font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2vw,1.4rem);font-weight:300;line-height:2;color:var(--pearl);max-width:700px;margin:0 auto;}
+.meditation-block p strong{color:var(--sage);font-weight:600;font-style:italic;}
+
+.memento-card{background:linear-gradient(135deg,rgba(15,10,30,.95),rgba(8,8,20,.98));border:1px solid rgba(176,128,208,.25);border-radius:4px;padding:40px 40px;text-align:center;position:relative;overflow:hidden;}
+.memento-card::before{content:"";position:absolute;top:24px;left:50%;transform:translateX(-50%);font-size:2rem;opacity:.4;}
+.memento-eyebrow{font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--lilac);font-weight:700;margin-bottom:16px;margin-top:12px;}
+.memento-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;color:var(--pearl);margin-bottom:28px;line-height:1.2;}
+.memento-body{font-family:'Cormorant Garamond',serif;font-size:clamp(1.05rem,2vw,1.3rem);font-style:italic;color:var(--pearl-dim);line-height:2.1;max-width:560px;margin:0 auto;}
+.memento-body span{color:var(--lilac);}
+
+.life-card{background:linear-gradient(135deg,rgba(25,12,18,.85),rgba(12,8,20,.9));border:1px solid rgba(200,112,112,.2);border-radius:4px;padding:48px 40px;}
+.life-card h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--rose);margin-bottom:20px;}
+.life-card p{font-size:.92rem;color:var(--pearl-dim);line-height:1.95;margin-bottom:14px;}
+.hw-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.15rem;color:var(--pearl);border-left:2px solid var(--sky);padding-left:20px;margin:24px 0;}
+.hw-attr{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sky);opacity:.8;}
+
+/* === NEW: Why Were We Sent Here === */
+.why-section{position:relative;z-index:1;padding:60px 24px;max-width:960px;margin:0 auto;}
+.why-block{background:linear-gradient(160deg,rgba(15,12,38,.95),rgba(8,8,24,.98));border:1px solid rgba(110,198,230,.18);border-radius:4px;padding:40px 44px;position:relative;overflow:hidden;}
+.why-block::before{content:"?";position:absolute;right:32px;bottom:-10px;font-family:'Cormorant Garamond',serif;font-size:14rem;color:rgba(110,198,230,.03);line-height:1;pointer-events:none;}
+.why-eyebrow{font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--sky);font-weight:700;margin-bottom:20px;}
+.why-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:300;color:var(--pearl);margin-bottom:36px;line-height:1.25;}
+.why-questions{display:flex;flex-direction:column;gap:10px;margin-bottom:36px;padding-left:20px;border-left:2px solid rgba(110,198,230,.2);}
+.why-questions p{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:var(--pearl-dim);line-height:1.8;}
+.why-deep{font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2vw,1.35rem);color:var(--pearl);line-height:2;margin-bottom:28px;}
+.why-deep strong{color:var(--sky);}
+.why-closing{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-style:italic;color:var(--pearl-dim);line-height:1.95;border-top:1px solid rgba(110,198,230,.1);padding-top:28px;}
+.why-closing em{color:var(--pearl);font-style:normal;}
+
+/* === NEW: Upanishad Banner === */
+.upanishad-banner{position:relative;z-index:1;padding:44px 24px;text-align:center;background:linear-gradient(180deg,transparent 0%,rgba(20,14,40,.6) 50%,transparent 100%);border-top:1px solid rgba(176,128,208,.1);border-bottom:1px solid rgba(176,128,208,.1);}
+.upanishad-script{font-family:'Cormorant Garamond',serif;font-size:clamp(1.3rem,3vw,2rem);font-weight:300;color:var(--lilac);margin-bottom:12px;letter-spacing:.04em;}
+.upanishad-translation{font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,2vw,1.3rem);font-style:italic;color:var(--pearl-dim);margin-bottom:16px;line-height:1.7;max-width:600px;margin-left:auto;margin-right:auto;}
+.upanishad-source{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--lilac);opacity:.6;}
+
+/* === NEW: Sagan cosmic pull === */
+.sagan-block{background:linear-gradient(135deg,rgba(8,12,30,.98),rgba(4,6,20,1));border:1px solid rgba(110,198,230,.15);border-radius:4px;padding:40px 40px;text-align:center;position:relative;overflow:hidden;}
+.sagan-block::after{content:"✦";position:absolute;top:20px;right:28px;font-size:5rem;color:rgba(110,198,230,.04);line-height:1;}
+.sagan-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,2.8vw,2.1rem);font-style:italic;font-weight:300;color:var(--pearl);line-height:1.6;max-width:680px;margin:0 auto 20px;}
+.sagan-attr{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--sky);opacity:.7;}
+.sagan-reflection{margin-top:28px;font-size:.92rem;color:var(--pearl-dim);line-height:1.9;max-width:560px;margin-left:auto;margin-right:auto;font-style:italic;font-family:'Cormorant Garamond',serif;}
+
+/* === NEW: Final Testament === */
+.testament-block{background:linear-gradient(160deg,rgba(12,8,28,.98),rgba(6,6,18,1));border:1px solid rgba(240,192,64,.1);border-radius:4px;padding:44px 40px;text-align:center;position:relative;overflow:hidden;}
+.testament-block::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,var(--gold-soft),transparent);opacity:.3;}
+.testament-eyebrow{font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:32px;}
+.testament-text{font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2vw,1.4rem);font-weight:300;color:var(--pearl-dim);line-height:2.4;max-width:600px;margin:0 auto;}
+.testament-text em{color:var(--pearl);font-style:normal;display:block;margin-bottom:4px;}
+.testament-text strong{color:var(--gold);font-weight:400;font-style:italic;}
+
+/* === NEW: Frankl card === */
+.frankl-card{background:linear-gradient(135deg,rgba(20,18,50,.85),rgba(10,10,28,.9));border:1px solid rgba(232,148,58,.2);border-radius:4px;padding:40px 36px;display:grid;grid-template-columns:3px 1fr;gap:24px;align-items:start;}
+.frankl-bar{background:var(--amber);border-radius:2px;min-height:80px;}
+.frankl-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-style:italic;font-weight:300;color:var(--pearl);line-height:1.7;margin-bottom:12px;}
+.frankl-attr{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);opacity:.8;margin-bottom:16px;}
+.frankl-context{font-size:.88rem;color:var(--pearl-dim);line-height:1.9;}
+
+/* === NEW: Krishnamurti card === */
+.krishna-card{background:linear-gradient(135deg,rgba(18,28,20,.85),rgba(10,18,12,.9));border:1px solid rgba(126,184,154,.2);border-radius:4px;padding:40px 36px;display:grid;grid-template-columns:3px 1fr;gap:24px;align-items:start;}
+.krishna-bar{background:var(--sage);border-radius:2px;min-height:80px;}
+
+/* === NEW: Audio Player === */
+.audio-section{position:relative;z-index:1;padding:40px 24px;max-width:720px;margin:0 auto;}
+.audio-card{background:linear-gradient(160deg,rgba(10,8,24,.98),rgba(6,6,18,1));border:1px solid rgba(240,192,64,.15);border-radius:4px;padding:36px 32px;text-align:center;position:relative;overflow:hidden;}
+.audio-card::before{content:"♪";position:absolute;right:24px;bottom:10px;font-size:6rem;color:rgba(240,192,64,.04);line-height:1;}
+.audio-prelude{font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:var(--pearl-dim);margin-bottom:28px;line-height:1.9;}
+.audio-prelude span{color:var(--pearl);}
+.audio-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--pearl);margin-bottom:6px;}
+.audio-byline{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:28px;opacity:.8;}
+audio{width:100%;max-width:440px;margin:0 auto 20px;display:block;filter:invert(0);accent-color:var(--gold);}
+audio::-webkit-media-controls-panel{background:rgba(30,26,74,.8);}
+.audio-note{font-size:.78rem;color:var(--pearl-dim);opacity:.6;line-height:1.7;font-style:italic;}
+
+.closing{position:relative;z-index:1;text-align:center;padding:60px 24px 80px;background:linear-gradient(180deg,transparent 0%,rgba(7,7,26,.8) 100%);}
+.closing-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3.5vw,2.8rem);font-weight:300;font-style:italic;max-width:760px;margin:0 auto 32px;color:var(--pearl);line-height:1.55;}
+.closing-quote span{color:var(--gold);}
+.closing-attr{font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--pearl-dim);opacity:.65;}
+.closing-small{margin:18px 0;font-size:.85rem;color:var(--pearl-dim);opacity:.7;line-height:1.8;}
+footer{position:relative;z-index:1;text-align:center;padding:32px 24px;border-top:1px solid rgba(255,255,255,.06);font-size:.78rem;color:var(--pearl-dim);opacity:.5;letter-spacing:.06em;}
+.ornament{text-align:center;position:relative;z-index:1;padding:8px 0;color:rgba(240,192,64,.3);font-size:1.2rem;letter-spacing:.5em;}
+.hero-whisper{
+  margin-bottom:28px;
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  color:rgba(245,240,232,.55);
+  font-size:1rem;
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@keyframes scrollPulse{0%,100%{opacity:.4;}50%{opacity:1;}}
+@media(max-width:600px){.section,.why-section{padding:40px 18px;}.meditation-block,.memento-card,.life-card,.tagore-panel,.why-block,.sagan-block,.testament-block,.frankl-card,.krishna-card,.audio-card{padding:24px 16px;}.hero-opening{padding:16px 18px;}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}}
+</style>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1034022057999423"></script><link href="https://myskillgame.netlify.app/11-7-26 website/walk_your_path_v2.html" rel="canonical"/></head>
+<body>
+<canvas id="stars-canvas"></canvas>
+<div id="progressBar"></div>
+<section class="hero">
+<p class="hero-eyebrow">A Meditation on Human Existence</p>
+<h1 class="hero-title">Walk Your<br/><em>Own Path</em></h1>
+<p class="hero-subtitle">You did not choose the day you arrived. You did not choose your name, your language, or your family. And yet here you are, asked to live fully, love honestly, and walk forward with courage.</p>
+<blockquote class="hero-opening">
+    "We did not arrive in this world by our own will. We did not choose the name we carry.
+    One day, parents, friends, and beloved ones will all — by the law of time — grow distant.
+    Yet life does not stop. For the greatest strength a person has is the light within their own heart.
+    And that light is what gives them the courage to walk on — alone if they must."
+  </blockquote>
+<p class="hero-whisper">
+Every journey begins with a single step inward.
+</p>
+<div class="scroll-hint"><div class="scroll-line"></div><span>Scroll to explore</span></div>
+</section>
+<div class="tagore-banner">
+<p class="tagore-label">Rabindranath Tagore  ·  Ekla Cholo Re, 1905</p>
+<p class="tagore-quote">"If no one responds to your call, then walk alone."</p>
+<p class="tagore-sub">The greatest Bengali poet's invitation to every soul who dares to move forward</p>
+</div>
+<div class="ornament">· · ·</div>
+<!-- UPANISHAD BANNER — placed early as an ancient Indian root -->
+<div class="upanishad-banner">
+<p class="upanishad-script">"আমাদের অসত্য থেকে সত্যে নিয়ে যাও, অন্ধকার থেকে আলোতে নিয়ে যাও।"</p>
+<p class="upanishad-translation">"Lead me from the unreal to the real.<br/>Lead me from darkness into light."</p>
+<p class="upanishad-source">Brihadaranyaka Upanishad  ·  Ancient India</p>
+</div>
+<div class="ornament">· · ·</div>
+<section class="section">
+<div class="section-header" style="color:var(--gold);">
+<div class="section-dot" style="background:var(--gold);"></div>
+<span class="section-label" style="color:var(--gold);">The Unchangeable Truths</span>
+<div class="section-line" style="color:var(--gold);"></div>
+</div>
+<div class="truth-grid">
+<div class="truth-card"><div class="card-accent" style="background:var(--gold);"></div><span class="card-icon">🌅</span><h3>You Did Not Choose Your Arrival</h3><p>No one selects the moment of their birth, the family they are born into, the language they first hear, or the land beneath their feet. Life begins as a gift we never asked for — and perhaps that is its first wonder.</p></div>
+<div class="truth-card"><div class="card-accent" style="background:var(--sky);"></div><span class="card-icon">🌿</span><h3>You Were Given a Name, Not an Identity</h3><p>Your family gave you a name. Society gave you a role. But your identity — the quiet voice inside that knows right from wrong, that feels wonder at the night sky — that is yours alone to cultivate.</p></div>
+<div class="truth-card"><div class="card-accent" style="background:var(--rose);"></div><span class="card-icon">🍂</span><h3>The Final Hour Is Not Yours to Choose</h3><p>Neither the day, the place, nor the manner of our departure is known to us. This uncertainty can be the deepest reason to be present — fully and completely — in the life we have now.</p></div>
+</div>
+</section>
+<section class="section">
+<div class="section-header" style="color:var(--indigo);">
+<div class="section-dot" style="background:var(--indigo);"></div>
+<span class="section-label" style="color:var(--indigo);">Two Songs, One Truth</span>
+<div class="section-line" style="color:var(--indigo);"></div>
+</div>
+<div class="tagore-pair">
+<div class="tagore-panel panel-gold">
+<p class="panel-song" style="color:var(--gold);">Ekla Cholo Re — The Warrior's Call</p>
+<p class="panel-quote">"If they are afraid and hide their faces in the dark, then open your heart, kindle your own flame, and walk alone."</p>
+<p class="panel-meaning">This is the voice of courage — a call to keep moving when the world goes silent around you. Walk not because you are abandoned, but because your path belongs to you alone.</p>
+</div>
+<div class="tagore-panel panel-rose">
+<p class="panel-song" style="color:var(--rose);">Bhora Thak Smritisudhai — The Sage's Acceptance</p>
+<p class="panel-quote">"The path you must walk is yours alone — shadows in your eyes, but a thread of light in your soul."</p>
+<p class="panel-meaning">This is the voice of wisdom — a serene acceptance that the deepest journey is walked alone, yet lit from within by memory, love, and meaning.</p>
+</div>
+</div>
+<div style="margin-top:28px;padding:28px 32px;background:rgba(30,26,74,.4);border:1px solid rgba(255,255,255,.06);border-radius:4px;">
+<p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:var(--pearl-dim);line-height:1.9;text-align:center;">Both songs arrive at the same truth: <span style="color:var(--pearl);">solitude is not a punishment. It is the most honest shape of a human life.</span></p>
+</div>
+</section>
+<section class="section">
+<div class="section-header" style="color:var(--sage);">
+<div class="section-dot" style="background:var(--sage);"></div>
+<span class="section-label" style="color:var(--sage);">Thoughts to Walk With</span>
+<div class="section-line" style="color:var(--sage);"></div>
+</div>
+<div class="quote-stack" id="quoteStack">
+<div class="quote-block"><div class="quote-bar" style="background:var(--gold);"></div><div><p class="quote-text">"No one is born into your life at birth, and no one will follow you in death. In between, companions come and go — and that is precisely what makes them precious."</p><span class="quote-label">On the gift of impermanence</span></div></div>
+<div class="quote-block"><div class="quote-bar" style="background:var(--sky);"></div><div><p class="quote-text">"To learn to walk alone is not to abandon others — it is to discover a faithful companion inside yourself."</p><span class="quote-label">On self-reliance</span></div></div>
+<div class="quote-block"><div class="quote-bar" style="background:var(--rose);"></div><div><p class="quote-text">"The most important decisions in life must be made alone, because their weight and their responsibility belong, finally, only to you."</p><span class="quote-label">On responsibility</span></div></div>
+<div class="quote-block"><div class="quote-bar" style="background:var(--sage);"></div><div><p class="quote-text">"Those who can look at the sky alone are never truly lonely. The universe itself is their companion."</p><span class="quote-label">On inner abundance</span></div></div>
+<div class="quote-block"><div class="quote-bar" style="background:var(--indigo);"></div><div><p class="quote-text">"When the noise of the crowd fades, the voice of your own heart becomes the clearest sound in the world."</p><span class="quote-label">On stillness</span></div></div>
+<div class="quote-block"><div class="quote-bar" style="background:var(--amber);"></div><div><p class="quote-text">"The day you find the courage to walk alone is the day your freedom truly begins."</p><span class="quote-label">On freedom</span></div></div>
+</div>
+</section>
+<!-- === NEW: WHY WERE WE SENT HERE === -->
+<section class="why-section">
+<div class="section-header" style="color:var(--sky);">
+<div class="section-dot" style="background:var(--sky);"></div>
+<span class="section-label" style="color:var(--sky);">The Question No One Can Escape</span>
+<div class="section-line" style="color:var(--sky);"></div>
+</div>
+<div class="why-block">
+<p class="why-eyebrow">Why Were We Sent Here?</p>
+<h2 class="why-title">Every Life Hides a Deeper Question</h2>
+<div class="why-questions">
+<p>What career should I choose?</p>
+<p>Where should I live?</p>
+<p>Who should I love?</p>
+</div>
+<p class="why-deep">Yet beneath all these questions lies a deeper one:<br/><strong>Why am I here at all?</strong></p>
+<p class="why-closing">Every philosophy, every religion, and every civilization has tried to answer it.<br/><br/>Perhaps the answer is not something we <em>find</em>.<br/>Perhaps it is something we <em>create</em> — through the choices we make, the love we give, and the courage we keep.</p>
+</div>
+</section>
+<div class="ornament">· · ·</div>
+<section class="section">
+<div class="section-header" style="color:var(--amber);">
+<div class="section-dot" style="background:var(--amber);"></div>
+<span class="section-label" style="color:var(--amber);">Voices Across Time</span>
+<div class="section-line" style="color:var(--amber);"></div>
+</div>
+<div class="voices-grid" id="voicesGrid">
+<div class="voice-card"><div class="vc-stripe" style="background:var(--gold);"></div><p class="vc-era" style="color:var(--gold);">Bengal, India · 1861–1941</p><p class="vc-name">Rabindranath Tagore</p><p class="vc-quote">"If no one responds to your call, then walk alone."</p><p class="vc-theme">Walk Alone · Inner Courage</p></div>
+<div class="voice-card"><div class="vc-stripe" style="background:var(--amber);"></div><p class="vc-era" style="color:var(--amber);">Bengal, India · 1863–1902</p><p class="vc-name">Swami Vivekananda</p><p class="vc-quote">"Strength is life, weakness is death. Every human being carries a seed of the divine — the work of life is to let it bloom."</p><p class="vc-theme">Inner Strength · The Divine Within</p></div>
+<div class="voice-card"><div class="vc-stripe" style="background:var(--sage);"></div><p class="vc-era" style="color:var(--sage);">Rome · 121–180 AD</p><p class="vc-name">Marcus Aurelius</p><p class="vc-quote">"Look well into yourself — there is a source of strength which will always spring up if you always look."</p><p class="vc-theme">Look Within · Stoic Wisdom</p></div>
+<div class="voice-card"><div class="vc-stripe" style="background:var(--sky);"></div><p class="vc-era" style="color:var(--sky);">Massachusetts, USA · 1817–1862</p><p class="vc-name">Henry David Thoreau</p><p class="vc-quote">"I never found the companion that was so companionable as solitude."</p><p class="vc-theme">Solitude · Self-Reliance</p></div>
+<div class="voice-card"><div class="vc-stripe" style="background:var(--lilac);"></div><p class="vc-era" style="color:var(--lilac);">Switzerland · 1875–1961</p><p class="vc-name">Carl Jung</p><p class="vc-quote">"Who looks outside, dreams; who looks inside, awakes."</p><p class="vc-theme">The Inner World · Self-Awareness</p></div>
+<div class="voice-card"><div class="vc-stripe" style="background:var(--indigo);"></div><p class="vc-era" style="color:var(--indigo);">Germany · 1844–1900</p><p class="vc-name">Friedrich Nietzsche</p><p class="vc-quote">"No price is too high to pay for the privilege of owning yourself."</p><p class="vc-theme">Authenticity · Self-Ownership</p></div>
+<div class="voice-card"><div class="vc-stripe" style="background:var(--rose);"></div><p class="vc-era" style="color:var(--rose);">Algeria / France · 1913–1960</p><p class="vc-name">Albert Camus</p><p class="vc-quote">"In the depth of winter, I finally learned that within me there lay an invincible summer."</p><p class="vc-theme">Resilience · Finding Light</p></div>
+<div class="voice-card"><div class="vc-stripe" style="background:var(--sky);"></div><p class="vc-era" style="color:var(--sky);">England · 1942–2018</p><p class="vc-name">Stephen Hawking</p><p class="vc-quote">"However difficult life may seem, there is always something you can do and succeed at."</p><p class="vc-theme">Triumph Over Limitation</p></div>
+<!-- NEW: Viktor Frankl -->
+<div class="voice-card"><div class="vc-stripe" style="background:var(--amber);"></div><p class="vc-era" style="color:var(--amber);">Vienna / USA · 1905–1997</p><p class="vc-name">Viktor Frankl</p><p class="vc-quote">"Those who have a why to live can bear almost any how."</p><p class="vc-theme">Meaning · Will to Survive</p></div>
+<!-- NEW: J. Krishnamurti -->
+<div class="voice-card"><div class="vc-stripe" style="background:var(--sage);"></div><p class="vc-era" style="color:var(--sage);">India / World · 1895–1986</p><p class="vc-name">J. Krishnamurti</p><p class="vc-quote">"The ability to observe without evaluating is the highest form of intelligence."</p><p class="vc-theme">Awareness · True Seeing</p></div>
+<!-- NEW: Carl Sagan -->
+<div class="voice-card"><div class="vc-stripe" style="background:var(--sky);"></div><p class="vc-era" style="color:var(--sky);">USA · 1934–1996</p><p class="vc-name">Carl Sagan</p><p class="vc-quote">"We are a way for the cosmos to know itself."</p><p class="vc-theme">Cosmic Wonder · Human Purpose</p></div>
+</div>
+<p class="voices-tagline">Different centuries. Different civilizations. Different languages.<br/><span>Yet all arrived at the same truth: the deepest journey of life is ultimately an inward one.</span></p>
+</section>
+<section class="section">
+<div class="section-header" style="color:var(--rose);">
+<div class="section-dot" style="background:var(--rose);"></div>
+<span class="section-label" style="color:var(--rose);">A Complete Reflection</span>
+<div class="section-line" style="color:var(--rose);"></div>
+</div>
+<div class="meditation-block">
+<p>We did not arrive in this world by our own will — <strong>we were sent here.</strong> We did not choose the name we carry, the tongue we first spoke, or the faces we first loved.<br/><br/>And yet — we are asked to live. To decide. To act. To love.<br/><br/>Sooner or later, those who raised us will leave. Those we walk beside will find their own roads. That is not tragedy. <strong>That is the shape of time.</strong><br/><br/>So the greatest skill life asks of us is this: to stand on our own — not out of coldness, but out of inner strength — so that when we choose to love someone, it is a free and conscious gift, not a desperate need.<br/><br/><strong>The one who can stand alone is the one who can truly love.</strong><br/><br/>And though all companions eventually depart, three things remain: your conscience, your actions, and the quiet light of what you meant to one another. <strong>These are your truest companions — and they will never leave.</strong></p>
+</div>
+</section>
+<!-- === NEW: CARL SAGAN COSMIC SECTION === -->
+<section class="section">
+<div class="section-header" style="color:var(--sky);">
+<div class="section-dot" style="background:var(--sky);"></div>
+<span class="section-label" style="color:var(--sky);">You Are the Universe, Awakened</span>
+<div class="section-line" style="color:var(--sky);"></div>
+</div>
+<div class="sagan-block">
+<p class="sagan-quote">"We are a way for the cosmos to know itself."</p>
+<p class="sagan-attr">— Carl Sagan, Cosmos, 1980</p>
+<p class="sagan-reflection">The stars above you are not strangers. The atoms in your body were forged in the hearts of dying stars, billions of years before this moment. When you look up at the sky and feel wonder — the universe is looking at itself through your eyes. You are not small. You are the cosmos, made conscious, walking its own path.</p>
+</div>
+</section>
+<section class="section">
+<div class="section-header" style="color:var(--lilac);">
+<div class="section-dot" style="background:var(--lilac);"></div>
+<span class="section-label" style="color:var(--lilac);">Ancient Wisdom</span>
+<div class="section-line" style="color:var(--lilac);"></div>
+</div>
+<div class="memento-card">
+<div style="font-size:2.2rem;margin-bottom:8px;">🕯️</div>
+<p class="memento-eyebrow">Memento Mori — Latin Philosophy</p>
+<h2 class="memento-title">Remember That You Will Die</h2>
+<p class="memento-body">Not as a reason for <span>fear</span> —<br/>but as a reason to live <span>fully</span>,<br/>love <span>deeply</span>,<br/>and waste less of the extraordinary time you have.<br/><br/>The Stoics of ancient Rome kept this thought close, not to become sad, but to become more <span>awake</span> — more grateful for each ordinary day.</p>
+</div>
+</section>
+<section class="section">
+<div class="section-header" style="color:var(--rose);">
+<div class="section-dot" style="background:var(--rose);"></div>
+<span class="section-label" style="color:var(--rose);">When the Path Feels Impossible</span>
+<div class="section-line" style="color:var(--rose);"></div>
+</div>
+<div class="life-card">
+<h3>A Difficult Chapter Is Not the End of the Story</h3>
+<p>The body you have is a rare and remarkable gift. There may be days — even long seasons — of pain, loss, grief, and despair. Such times are real, and they deserve to be taken seriously.</p>
+<p>Yet history is filled with human beings who endured suffering that seemed insurmountable, and who later discovered a depth of strength they never knew they possessed.</p>
+<p>Stephen Hawking was diagnosed with a devastating illness at age 21. Doctors gave him little time. He went on to spend decades exploring the universe, becoming one of the greatest scientific minds of the modern era — not despite his limitations, but through his extraordinary inner resolve.</p>
+<div class="hw-quote">"However difficult life may seem, there is always something you can do and succeed at."</div>
+<p class="hw-attr">— Stephen Hawking, physicist &amp; author of A Brief History of Time</p>
+<p style="margin-top:20px;">If you are struggling today, you do not have to carry it alone. Reaching out — to a trusted person, a counsellor, or a helpline — is not weakness. It is one of the most courageous things a human being can do.</p>
+</div>
+</section>
+<!-- === NEW: VIKTOR FRANKL & KRISHNAMURTI === -->
+<section class="section">
+<div class="section-header" style="color:var(--amber);">
+<div class="section-dot" style="background:var(--amber);"></div>
+<span class="section-label" style="color:var(--amber);">The Will to Meaning</span>
+<div class="section-line" style="color:var(--amber);"></div>
+</div>
+<div style="display:flex;flex-direction:column;gap:20px;">
+<div class="frankl-card">
+<div class="frankl-bar"></div>
+<div>
+<p class="frankl-quote">"Those who have a why to live can bear almost any how."</p>
+<p class="frankl-attr">— Viktor Frankl  ·  Vienna, 1905–1997</p>
+<p class="frankl-context">Viktor Frankl survived the Nazi concentration camps — Auschwitz, Dachau — losing nearly everything and everyone he loved. From that darkness, he did not conclude that life is meaningless. He concluded the opposite: that even in the most extreme suffering, a human being can choose their attitude, can seek meaning, and can find a reason to go on. His work became the foundation of logotherapy — the belief that the search for meaning is the deepest human drive.</p>
+</div>
+</div>
+<div class="krishna-card">
+<div class="krishna-bar"></div>
+<div>
+<p class="frankl-quote" style="color:var(--pearl);">"The ability to observe without evaluating is the highest form of intelligence."</p>
+<p class="frankl-attr" style="color:var(--sage);">— J. Krishnamurti  ·  India / World, 1895–1986</p>
+<p class="frankl-context">Jiddu Krishnamurti spent a lifetime asking human beings to look at themselves honestly — without the filter of judgment, tradition, or expectation. He believed that true transformation begins not with following a teacher or a system, but with the simple, radical act of seeing clearly what is actually there inside you. To observe without immediately labeling, condemning, or approving — that is where real intelligence lives.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="section">
+<div class="section-header" style="color:var(--sky);">
+<div class="section-dot" style="background:var(--sky);"></div>
+<span class="section-label" style="color:var(--sky);">What Remains When All Else Fades</span>
+<div class="section-line" style="color:var(--sky);"></div>
+</div>
+<div class="truth-grid">
+<div class="truth-card"><div class="card-accent" style="background:var(--gold);"></div><span class="card-icon">🧭</span><h3>Your Conscience</h3><p>Of all the guides you will ever have, none is more faithful than the quiet inner voice that knows — even when no one is watching — what is right and what is not.</p></div>
+<div class="truth-card"><div class="card-accent" style="background:var(--sage);"></div><span class="card-icon">🌾</span><h3>Your Actions</h3><p>Long after words are forgotten, what you actually did — how you treated others, what you built, what kindness you offered — becomes the true story of your life.</p></div>
+<div class="truth-card"><div class="card-accent" style="background:var(--sky);"></div><span class="card-icon">✨</span><h3>Your Memories</h3><p>Every loved face, every meaningful moment, every season of your life — these do not vanish. They become the invisible light that walks beside you, even in the quietest hours.</p></div>
+<div class="truth-card"><div class="card-accent" style="background:var(--rose);"></div><span class="card-icon">💧</span><h3>Your Courage</h3><p>The willingness to keep moving — even when no one applauds, even when the road is unclear — is perhaps the most distinctly human thing there is.</p></div>
+<div class="truth-card"><div class="card-accent" style="background:var(--indigo);"></div><span class="card-icon">🤲</span><h3>Your Inner Relationship</h3><p>The longest relationship you will ever have is with yourself. Tend to it with the same patience, honesty, and compassion you would offer your dearest friend.</p></div>
+<div class="truth-card"><div class="card-accent" style="background:var(--gold-soft);"></div><span class="card-icon">🌙</span><h3>Your Story</h3><p>Even the smallest, quietest life — lived with integrity and awareness — is a complete and meaningful story. You need not be remembered by millions to have mattered deeply.</p></div>
+</div>
+</section>
+<!-- === NEW: FINAL TESTAMENT === -->
+<section class="section">
+<div class="section-header" style="color:var(--gold);">
+<div class="section-dot" style="background:var(--gold);"></div>
+<span class="section-label" style="color:var(--gold);">A Final Testament</span>
+<div class="section-line" style="color:var(--gold);"></div>
+</div>
+<div class="testament-block">
+<p class="testament-eyebrow">Before the Closing Word</p>
+<p class="testament-text">
+<em>One day,</em>
+<em>your name may be forgotten,</em>
+<em>your possessions will belong to others,</em>
+<em>and your place in the world will be taken by someone new.</em>
+<br/>
+<em>Yet none of these things define your life.</em>
+<br/>
+<strong>What matters is how deeply you loved,</strong>
+<strong>how honestly you lived,</strong>
+<strong>and how courageously you walked your path.</strong>
+</p>
+</div>
+</section>
+<div class="tagore-banner" style="padding:24px 24px;">
+<p class="tagore-quote" style="font-size:1.4rem;">
+    "If no one responds to your call,
+    then walk alone."
+  </p>
+</div>
+<!-- === NEW: AUDIO SECTION === -->
+<div class="audio-section" id="audioTribute">
+<div class="audio-card">
+<p class="audio-prelude">And if words are not enough,<br/><span>perhaps a song can say the rest.</span></p>
+<p class="audio-title">Ekla Cholo Re</p>
+<p class="audio-byline">A Personal Tribute  ·  Performed by Surajit Roy</p>
+<audio controls="" preload="none">
+<source src="audio/ekla-cholo-re.mp3" type="audio/mpeg"/>
+      Your browser does not support the audio element.
+    </audio>
+<p class="audio-note">A humble rendition of Rabindranath Tagore's timeless call to walk alone — recorded for this page as a personal offering to all who walk their own path.</p>
+</div>
+</div>
+<div class="closing">
+<p class="closing-quote">"To walk alone is not to be empty.<br/>It is to carry <span>everything that truly matters</span><br/>inside your own heart."</p>
+<p class="closing-attr">— A philosophy for those who dare to walk their own path</p>
+</div>
+<footer>
+<p>
+    Walk Your Own Path · A Reflection on Solitude,
+    Strength, Meaning, and the Human Journey
+  </p>
+<p style="margin-top:10px;opacity:.6;">
+    Created by Surajit Roy · MySkillGame
+  </p>
+</footer>
+<script>
+const canvas=document.getElementById('stars-canvas'),ctx=canvas.getContext('2d');let stars=[];
+function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
+function createStars(){stars=[];const n=Math.floor(canvas.width*canvas.height/4200);for(let i=0;i<n;i++)stars.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*1.2+.2,a:Math.random(),da:(Math.random()-.5)*.003,speed:Math.random()*.05+.01,color:['#F5F0E8','#F0C040','#6EC6E6','#C87070','#7EB89A','#B080D0','#E8943A'][Math.floor(Math.random()*7)]});}
+function draw(){
+  if(document.hidden){requestAnimationFrame(draw);return;}
+  ctx.clearRect(0,0,canvas.width,canvas.height);stars.forEach(s=>{ctx.save();ctx.globalAlpha=Math.max(.05,Math.abs(s.a));ctx.fillStyle=s.color;if(s.r>1){ctx.shadowBlur=4;ctx.shadowColor=s.color;}ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fill();ctx.restore();s.a+=s.da;s.y+=s.speed;if(s.y>canvas.height)s.y=0;if(Math.abs(s.a)>1)s.da*=-1;});requestAnimationFrame(draw);}
+resize();createStars();draw();
+window.addEventListener('resize',()=>{const oldWidth=canvas.width;resize();if(Math.abs(canvas.width-oldWidth)>50){createStars();}});
+window.addEventListener('scroll',()=>{
+  const winScroll=document.documentElement.scrollTop;
+  const height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+  document.getElementById('progressBar').style.width=(winScroll/height)*100+'%';
+});
+const obs=new IntersectionObserver((entries)=>{entries.forEach((entry,i)=>{if(entry.isIntersecting){const d=entry.target.classList.contains('voice-card')?i*70:i*110;setTimeout(()=>entry.target.classList.add('visible'),d);obs.unobserve(entry.target);}});},{threshold:.1});
+document.querySelectorAll('.quote-block,.voice-card').forEach(el=>obs.observe(el));
+history.pushState({page:'main'},'');
+window.addEventListener('popstate',()=>window.history.go(-1));
+</script><script src="security.js"></script>
+
+<footer class="footer">
+<div style="margin-bottom:18px;">
+<a href="about.html">About</a> |
+<a href="privacy.html">Privacy Policy</a> |
+<a href="terms.html">Terms &amp; Conditions</a> |
+<a href="contact.html">Contact</a> |
+<a href="disclaimer.html">Disclaimer</a>
+</div>
+<div class="footer-name">MYSKILLGAME</div>
+<div class="footer-copy">© 2026 MySkillGame • Developed by Surajit Roy</div>
+</footer>
+</body>
+</html>

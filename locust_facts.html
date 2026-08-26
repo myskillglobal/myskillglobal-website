@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Locusts — The Sky That Eats</title>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+<meta content="fDyEKiSXue5cIsS7SGLU15BpPCVqkLNuuoRmGpaHEL8" name="google-site-verification"/>
+<meta content="Surajit Roy" name="author">
+<meta content="© Surajit Roy" name="copyright"/>
+<meta content="index,follow" name="robots"/>
+<link href="style.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&amp;family=DM+Sans:wght@400;500;600&amp;family=DM+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --black: #0a0a0a;
+    --off-white: #f7f5ef;
+    --cream: #ede8da;
+    --amber: #b45309;
+    --amber-dark: #78350f;
+    --amber-light: #fef3c7;
+    --amber-mid: #d97706;
+    --red: #c8302a;
+    --red-light: #fef2f2;
+    --teal: #0d7a6b;
+    --teal-light: #d1f5ee;
+    --purple: #5b3fa6;
+    --purple-light: #ede9fc;
+    --green: #2d6a23;
+    --green-light: #e3f5dc;
+    --blue: #1a5fa8;
+    --blue-light: #dbeafe;
+    --gray: #6b7280;
+    --gray-light: #f3f4f6;
+    --border: #e2ddd0;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--off-white);
+    color: var(--black);
+    line-height: 1.7;
+-webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: #110900;
+    color: white;
+    padding: 80px 24px 100px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 50% 80%, rgba(180,83,9,0.28) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber-mid);
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(48px, 10vw, 96px);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin-bottom: 28px;
+  }
+  .hero h1 span { color: var(--amber-mid); display: block; }
+  .hero-sub {
+    font-size: 18px;
+    color: #a09080;
+    max-width: 560px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(180,83,9,0.18);
+    border: 1px solid rgba(180,83,9,0.45);
+    color: #45420C;
+    font-size: 14px;
+    padding: 8px 20px;
+    border-radius: 100px;
+  }
+  .hero-badge::before { content: '⚡'; font-size: 16px; }
+.hero-banner{
+    width:100%;
+    overflow:hidden;
+    background:#110900;
+}
+
+.hero-banner img{
+    width:100%;
+    display:block;
+    height:auto;
+}
+.hero-image{
+    position:relative;
+    width:100%;
+    overflow:hidden;
+}
+img{
+    pointer-events:none;
+    -webkit-user-drag:none;
+}
+.hero-image img{
+    width:100%;
+    height:700px;
+    object-fit:cover;
+    display:block;
+}
+
+.hero-overlay{
+    position:absolute;
+    inset:0;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+    padding:20px;
+
+    background:linear-gradient(
+        rgba(0,0,0,0.25),
+        rgba(0,0,0,0.55)
+    );
+}
+
+.hero-overlay .hero-eyebrow{
+    color:#f59e0b;
+    letter-spacing:4px;
+    font-size:12px;
+    margin-bottom:20px;
+}
+
+.hero-overlay h1{
+    color:white;
+    font-size:clamp(3rem,8vw,7rem);
+    font-weight:800;
+    text-transform:uppercase;
+    margin:0;
+    text-shadow:0 0 25px rgba(0,0,0,.8);
+}
+
+.hero-tagline{
+    margin-top:20px;
+    color:#f5f5f5;
+    font-size:1.2rem;
+    letter-spacing:2px;
+}
+  /* ── SECTION ── */
+  .section {
+    padding: 72px 24px;
+    max-width: 1060px;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 10px;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(28px, 5vw, 44px);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 40px;
+    letter-spacing: -0.02em;
+  }
+  .divider {
+    height: 1px;
+    background: var(--border);
+    max-width: 1060px;
+    margin: 0 auto;
+  }
+
+  /* ── STATS ── */
+  .stats-band {
+    background: #110900;
+    padding: 60px 24px;
+  }
+  .stats-inner { max-width: 1060px; margin: 0 auto; }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 2px;
+    background: #1e0f00;
+    border: 1px solid #1e0f00;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .stat-card { background: #140a00; padding: 28px 20px; text-align: center; }
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--amber-mid);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-label { font-size: 12px; color: #7a6a55; line-height: 1.4; }
+
+  /* ── BIO CARDS ── */
+  .bio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 640px) { .bio-grid { grid-template-columns: 1fr; } }
+  .bio-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .bio-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .bio-card.amber::before { background: var(--amber-mid); }
+  .bio-card.red::before { background: var(--red); }
+  .bio-card.teal::before { background: var(--teal); }
+  .bio-card.purple::before { background: var(--purple); }
+  .bio-card.green::before { background: var(--green); }
+  .bio-card.blue::before { background: var(--blue); }
+  .bio-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 52px;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 8px;
+    opacity: 0.08;
+    position: absolute;
+    top: 12px; right: 16px;
+  }
+  .bio-icon { font-size: 28px; margin-bottom: 12px; }
+  .bio-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+  .bio-card p { font-size: 13px; color: var(--gray); line-height: 1.6; }
+
+  /* ── DAMAGE BAND ── */
+  .damage-band {
+    background: #1a0800;
+    padding: 72px 24px;
+    color: white;
+  }
+  .damage-inner { max-width: 1060px; margin: 0 auto; }
+  .damage-inner .section-title { color: white; }
+  .damage-inner .section-label { color: rgba(255,255,255,0.35); }
+  .damage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 36px;
+  }
+  .damage-item {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .damage-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--amber-mid);
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+  .damage-item h4 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .damage-item p { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+
+  /* ── HISTORY ── */
+  .history-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .history-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px 28px;
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+  @media (max-width: 600px) { .history-card { grid-template-columns: 1fr; } }
+  .history-year {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--amber-mid);
+    line-height: 1.1;
+  }
+  .history-region {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-top: 4px;
+  }
+  .history-card h4 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+  .history-card p { font-size: 13px; color: var(--gray); line-height: 1.6; }
+  .history-tag {
+    display: inline-block;
+    font-size: 11px;
+    padding: 2px 10px;
+    border-radius: 100px;
+    margin-top: 8px;
+    background: var(--amber-light);
+    color: var(--amber-dark);
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* ── BUSINESSES ── */
+  .biz-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .biz-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px 22px;
+  }
+  .biz-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .biz-icon-wrap {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .biz-card h3 { font-size: 15px; font-weight: 600; }
+  .biz-items { display: flex; flex-direction: column; gap: 6px; }
+  .biz-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--gray);
+  }
+  .biz-item::before {
+    content: '';
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--amber-mid);
+    flex-shrink: 0;
+  }
+
+  /* ── ECONOMY ── */
+  .economy-band {
+    background: var(--cream);
+    padding: 72px 24px;
+  }
+  .economy-inner { max-width: 1060px; margin: 0 auto; }
+  .economy-bars { display: flex; flex-direction: column; gap: 14px; margin-top: 36px; }
+  .ebar {
+    display: grid;
+    grid-template-columns: 200px 1fr 80px;
+    align-items: center;
+    gap: 16px;
+  }
+  @media (max-width: 600px) { .ebar { grid-template-columns: 130px 1fr 60px; gap: 8px; } }
+  .ebar-label { font-size: 13px; font-weight: 500; text-align: right; }
+  .ebar-track {
+    height: 28px;
+    background: white;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .ebar-fill { height: 100%; border-radius: 6px; transition: width 1.2s ease; }
+  .ebar-val { font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500; color: var(--gray); }
+  .economy-total {
+    margin-top: 32px;
+    background: #110900;
+    color: white;
+    border-radius: 14px;
+    padding: 28px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .economy-total p { font-size: 15px; color: #8a7a65; max-width: 420px; }
+  .economy-total-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--amber-mid);
+    line-height: 1;
+  }
+  .economy-total-sub { font-size: 12px; color: #555; margin-top: 2px; }
+
+  /* ── DEBATE ── */
+  .debate-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 640px) { .debate-grid { grid-template-columns: 1fr; } }
+  .debate-side { border-radius: 14px; padding: 28px; }
+  .debate-side.pros { background: var(--green-light); border: 1px solid #b7e2a0; }
+  .debate-side.cons { background: var(--amber-light); border: 1px solid #fcd34d; }
+  .debate-side h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px; font-weight: 700; margin-bottom: 18px;
+  }
+  .debate-side.pros h3 { color: var(--green); }
+  .debate-side.cons h3 { color: var(--amber-dark); }
+  .debate-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 14px; }
+  .debate-bullet {
+    width: 20px; height: 20px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700; flex-shrink: 0; margin-top: 2px;
+  }
+  .pros .debate-bullet { background: var(--green); color: white; }
+  .cons .debate-bullet { background: var(--amber); color: white; }
+  .debate-item p { font-size: 13px; line-height: 1.5; }
+
+  /* ── BENEFITS BAND ── */
+  .benefits-band {
+    background: #050f0a;
+    padding: 72px 24px;
+    color: white;
+  }
+  .benefits-inner { max-width: 1060px; margin: 0 auto; }
+  .benefits-inner .section-title { color: white; }
+  .benefits-inner .section-label { color: rgba(255,255,255,0.35); }
+  .benefits-inner .section-title span { color: #6ee7b7; }
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 16px;
+    margin-top: 36px;
+  }
+  .benefit-card {
+    background: rgba(110,231,183,0.07);
+    border: 1px solid rgba(110,231,183,0.18);
+    border-radius: 14px;
+    padding: 24px;
+  }
+  .benefit-card-icon { font-size: 32px; margin-bottom: 14px; }
+  .benefit-card h4 { font-size: 15px; font-weight: 600; margin-bottom: 8px; color: #a7f3d0; }
+  .benefit-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+  .benefit-note {
+    margin-top: 28px;
+    background: rgba(251,191,36,0.08);
+    border: 1px solid rgba(251,191,36,0.2);
+    border-radius: 10px;
+    padding: 16px 20px;
+    font-size: 13px;
+    color: #fde68a;
+    line-height: 1.6;
+  }
+  .benefit-note strong { color: #fbbf24; }
+
+  /* ── FUN FACTS ── */
+  .funfacts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin-top: 36px;
+  }
+  .fact-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    position: relative;
+  }
+  .fact-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 64px; font-weight: 800;
+    position: absolute; top: -10px; right: 16px;
+    opacity: 0.05; line-height: 1;
+  }
+  .fact-emoji { font-size: 28px; margin-bottom: 12px; }
+  .fact-card h4 { font-size: 15px; font-weight: 600; margin-bottom: 8px; }
+  .fact-card p { font-size: 13px; color: var(--gray); line-height: 1.6; }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: #110900;
+    color: rgba(255,255,255,0.35);
+    text-align: center;
+    padding: 40px 24px;
+    font-size: 13px;
+  }
+  .footer strong { color: rgba(255,255,255,0.65); }
+  .quote-block {
+    background: var(--cream);
+    border-left: 3px solid var(--amber-mid);
+    padding: 20px 28px;
+    margin: 40px 0 0;
+    border-radius: 0 10px 10px 0;
+    font-size: 15px;
+    font-style: italic;
+    color: #4a3a20;
+  }
+.site-footer{
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+    font-size:14px;
+    color:#777;
+    border-top:1px solid #ddd;
+}
+  /* ── WHO EATS LOCUSTS ── */
+  .eaters-band { background: #0a0f06; padding: 72px 24px; color: white; }
+  .eaters-inner { max-width: 1060px; margin: 0 auto; }
+  .eaters-inner .section-title { color: white; }
+  .eaters-inner .section-label { color: rgba(255,255,255,0.35); }
+  .eaters-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; margin-top: 36px; }
+  .eater-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09); border-radius: 14px; padding: 22px 12px; text-align: center; }
+  .eater-emoji { font-size: 36px; margin-bottom: 10px; }
+  .eater-card h4 { font-size: 14px; font-weight: 600; color: #d1fae5; margin-bottom: 6px; }
+  .eater-card p { font-size: 11px; color: rgba(255,255,255,0.42); line-height: 1.4; }
+  .eaters-tagline { margin-top: 28px; text-align: center; font-size: 15px; color: rgba(255,255,255,0.5); font-style: italic; }
+  .eaters-tagline strong { color: #6ee7b7; font-style: normal; }
+
+  /* ── SOUTH ASIA ── */
+  .southasia-card { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 24px 28px; display: grid; grid-template-columns: 130px 1fr; gap: 24px; align-items: start; margin-bottom: 20px; }
+  @media (max-width: 600px) { .southasia-card { grid-template-columns: 1fr; } }
+  .sa-year { font-family: 'Syne', sans-serif; font-size: 26px; font-weight: 800; color: var(--amber-mid); line-height: 1.1; }
+  .sa-region { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); margin-top: 4px; }
+  .southasia-card h4 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+  .southasia-card p { font-size: 13px; color: var(--gray); line-height: 1.6; }
+  .sa-tag { display: inline-block; font-size: 11px; padding: 2px 10px; border-radius: 100px; margin-top: 8px; background: #fef3c7; color: var(--amber-dark); font-family: 'DM Mono', monospace; }
+
+  /* ── CLIMATE CHANGE ── */
+  .climate-band { background: #05090f; padding: 72px 24px; color: white; }
+  .climate-inner { max-width: 1060px; margin: 0 auto; }
+  .climate-inner .section-title { color: white; }
+  .climate-inner .section-label { color: rgba(255,255,255,0.35); }
+  .climate-inner .section-title span { color: #93c5fd; }
+  .climate-chain { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 36px; }
+  .climate-step { background: rgba(147,197,253,0.06); border: 1px solid rgba(147,197,253,0.15); border-radius: 14px; padding: 22px 18px; text-align: center; }
+  .climate-step-num { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.15em; color: rgba(147,197,253,0.5); margin-bottom: 10px; }
+  .climate-step-icon { font-size: 30px; margin-bottom: 10px; }
+  .climate-step h4 { font-size: 14px; font-weight: 600; color: #bfdbfe; margin-bottom: 6px; }
+  .climate-step p { font-size: 12px; color: rgba(255,255,255,0.42); line-height: 1.5; }
+  .climate-projection { margin-top: 28px; background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); border-radius: 10px; padding: 16px 20px; font-size: 13px; color: #fca5a5; line-height: 1.6; }
+  .climate-projection strong { color: #f87171; }
+
+  /* ── FUTURE TECH ── */
+  .tech-band { background: #04050f; padding: 72px 24px; color: white; }
+  .tech-inner { max-width: 1060px; margin: 0 auto; }
+  .tech-inner .section-title { color: white; }
+  .tech-inner .section-label { color: rgba(255,255,255,0.35); }
+  .tech-inner .section-title span { color: #a78bfa; }
+  .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; margin-top: 36px; }
+  .tech-card { background: rgba(167,139,250,0.07); border: 1px solid rgba(167,139,250,0.18); border-radius: 14px; padding: 24px; }
+  .tech-card-icon { font-size: 32px; margin-bottom: 14px; }
+  .tech-card h4 { font-size: 15px; font-weight: 600; margin-bottom: 8px; color: #c4b5fd; }
+  .tech-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+  /* ── FOOD INDUSTRY ── */
+  .food-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 36px; }
+  .food-card { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 24px 20px; text-align: center; position: relative; overflow: hidden; }
+  .food-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--amber-mid); }
+  .food-card-icon { font-size: 36px; margin-bottom: 12px; }
+  .food-stat { font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800; color: var(--amber-mid); line-height: 1; margin-bottom: 6px; }
+  .food-card h4 { font-size: 15px; font-weight: 600; margin-bottom: 8px; }
+  .food-card p { font-size: 13px; color: var(--gray); line-height: 1.6; }
+
+  /* ── SCROLL ANIMATION ── */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+</style>
+</meta><script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1034022057999423"></script><link href="https://myskillgame.netlify.app/11-7-26 website/locust_facts.html" rel="canonical"/></head>
+<body>
+<!-- HERO -->
+<section class="hero-image">
+<img alt="The Sky That Eats" src="images/locust-hero.png"/>
+<div class="hero-overlay">
+<p class="hero-eyebrow">
+            ENTOMOLOGY · AGRICULTURE · ECOLOGY
+        </p>
+<h1>
+            THE SKY THAT EATS
+        </h1>
+<p class="hero-tagline">
+            When Insects Become a Natural Disaster.
+        </p>
+</div>
+</section>
+<p class="hero-sub">Locust swarms can reach densities of 40–80 million insects per km², consuming the food of 35,000 people in a single day, and stripping a landscape bare within hours.</p>
+<div class="hero-badge">One swarm can cover 460 sq km of sky</div>
+<!-- STATS BAND -->
+<div class="stats-band">
+<div class="stats-inner">
+<div class="stats-grid reveal">
+<div class="stat-card">
+<div class="stat-num">40–80M</div>
+<div class="stat-label">locusts per km² (FAO figure)</div>
+</div>
+<div class="stat-card">
+<div class="stat-num">35K</div>
+<div class="stat-label">people's daily food consumed per swarm per day</div>
+</div>
+<div class="stat-card">
+<div class="stat-num">460km²</div>
+<div class="stat-label">maximum swarm coverage area</div>
+</div>
+<div class="stat-card">
+<div class="stat-num">150km</div>
+<div class="stat-label">distance travelled in one day</div>
+</div>
+<div class="stat-card">
+<div class="stat-num">2g</div>
+<div class="stat-label">food eaten daily per locust — its own body weight</div>
+</div>
+<div class="stat-card">
+<div class="stat-num">60+</div>
+<div class="stat-label">countries affected historically</div>
+</div>
+</div>
+</div>
+</div>
+<!-- BIOLOGY -->
+<div class="divider"></div>
+<section class="section reveal">
+<p class="section-label">Biology</p>
+<h2 class="section-title">How the locust works</h2>
+<div class="bio-grid">
+<div class="bio-card amber">
+<div class="bio-num">01</div>
+<div class="bio-icon">🔄</div>
+<h3>Two phases: solitary and gregarious</h3>
+<p>Locusts are not a separate species — they are the same insects as common grasshoppers. Under crowded conditions, a chemical trigger causes a dramatic physical and behavioural transformation into the swarming "gregarious" phase.</p>
+</div>
+<div class="bio-card red">
+<div class="bio-num">02</div>
+<div class="bio-icon">🧪</div>
+<h3>Serotonin triggers the swarm</h3>
+<p>Physical contact with other locusts causes a surge of serotonin in the nervous system. This single neurochemical change transforms a solitary creature into a social, migratory, and ravenous swarming insect.</p>
+</div>
+<div class="bio-card teal">
+<div class="bio-num">03</div>
+<div class="bio-icon">🌬️</div>
+<h3>Wind-powered migration</h3>
+<p>Locust swarms ride wind currents with remarkable efficiency, often travelling at 15–20 km/h. They follow the Inter-Tropical Convergence Zone — the belt of rainfall that creates fresh vegetation ahead of them.</p>
+</div>
+<div class="bio-card purple">
+<div class="bio-num">04</div>
+<div class="bio-icon">🥗</div>
+<h3>They eat almost everything green</h3>
+<p>Locusts consume grasses, leaves, bark, flowers, seeds, and crops indiscriminately. A swarm in flight will eat mid-air. On the ground, they can strip every plant in a field down to bare stalks in minutes.</p>
+</div>
+<div class="bio-card green">
+<div class="bio-num">05</div>
+<div class="bio-icon">🥚</div>
+<h3>Explosive reproduction</h3>
+<p>A female lays 80–160 eggs per pod, up to 3 times in her short life. In ideal conditions — warm soil, good rainfall — a locust population can multiply 20-fold in just three months.</p>
+</div>
+<div class="bio-card blue">
+<div class="bio-num">06</div>
+<div class="bio-icon">🎨</div>
+<h3>Colour signals danger level</h3>
+<p>Solitary-phase locusts are green or brown — camouflaged. Gregarious-phase locusts turn vivid yellow and black, signalling toxicity from plant compounds they accumulate. The brighter the colour, the more dangerous the swarm.</p>
+</div>
+</div>
+</section>
+<!-- DAMAGE BAND -->
+<div class="damage-band">
+<div class="damage-inner">
+<p class="section-label">Agricultural threat</p>
+<h2 class="section-title" style="color:white;">Why farmers fear the swarm</h2>
+<div class="damage-grid reveal">
+<div class="damage-item">
+<div class="damage-dot"></div>
+<div>
+<h4>Crops destroyed instantly</h4>
+<p>Rice, wheat, maize, sorghum, millet, pulses — all consumed with equal efficiency. Months of farmwork can be erased in hours.</p>
+</div>
+</div>
+<div class="damage-item">
+<div class="damage-dot"></div>
+<div>
+<h4>Food security collapses</h4>
+<p>The 2019–2021 East Africa outbreak threatened food supplies for over 25 million people across Kenya, Ethiopia, and Somalia.</p>
+</div>
+</div>
+<div class="damage-item">
+<div class="damage-dot"></div>
+<div>
+<h4>Famine risk</h4>
+<p>Historic swarms triggered genuine famines — the 1874 Rocky Mountain Locust devastation across the US midwest left pioneer farming communities destitute.</p>
+</div>
+</div>
+<div class="damage-item">
+<div class="damage-dot"></div>
+<div>
+<h4>Pasture and livestock</h4>
+<p>Not just crops — locusts strip pastureland bare, leaving livestock without grazing and compounding economic losses for rural communities.</p>
+</div>
+</div>
+<div class="damage-item">
+<div class="damage-dot"></div>
+<div>
+<h4>Cross-border crisis</h4>
+<p>Swarms don't respect national borders. A single event can simultaneously impact a dozen countries, stretching international aid and agricultural response systems.</p>
+</div>
+</div>
+<div class="damage-item">
+<div class="damage-dot"></div>
+<div>
+<h4>Government budget pressure</h4>
+<p>Emergency pesticide campaigns, aerial spraying operations, and farmer compensation programmes can cost governments hundreds of millions of dollars per outbreak.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- HISTORY -->
+<div class="divider"></div>
+<section class="section reveal">
+<p class="section-label">History</p>
+<h2 class="section-title">Famous locust outbreaks</h2>
+<div class="history-grid">
+<div class="history-card">
+<div>
+<div class="history-year">1874</div>
+<div class="history-region">North America</div>
+</div>
+<div>
+<h4>The Rocky Mountain Locust Swarm</h4>
+<p>The largest locust swarm ever recorded blanketed 510,000 square miles across the US midwest — larger than California. An estimated 12.5 trillion insects consumed wheat, corn, and homestead crops from Canada to Texas, causing the equivalent of billions in damages. The species was extinct by 1902.</p>
+<span class="history-tag">Species now extinct</span>
+</div>
+</div>
+<div class="history-card">
+<div>
+<div class="history-year">1915</div>
+<div class="history-region">Middle East</div>
+</div>
+<div>
+<h4>The Great Locust Plague of Palestine</h4>
+<p>A catastrophic swarm devastated crops across Palestine, Syria, and Lebanon during World War I, contributing to a famine that killed approximately 200,000 people — compounding the already severe wartime food shortages in the region.</p>
+<span class="history-tag">Famine event</span>
+</div>
+</div>
+<div class="history-card">
+<div>
+<div class="history-year">1986–89</div>
+<div class="history-region">Africa &amp; Middle East</div>
+</div>
+<div>
+<h4>The African Desert Locust Outbreak</h4>
+<p>One of the worst 20th-century outbreaks swept through West Africa, North Africa, and the Middle East. Over 2.5 billion hectares were threatened. A multinational aerial spraying campaign costing over $300 million eventually brought it under control.</p>
+<span class="history-tag">$300M control cost</span>
+</div>
+</div>
+<div class="history-card">
+<div>
+<div class="history-year">2019–21</div>
+<div class="history-region">East Africa &amp; Asia</div>
+</div>
+<div>
+<h4>The 21st Century's Worst Outbreak</h4>
+<p>Climate-driven cyclones created ideal breeding conditions across the Arabian Peninsula and Horn of Africa. Swarms spread into Pakistan, India, Iran, and across 23 African nations. The UN's FAO called it the worst outbreak in 70 years for some countries. Over 25 million people faced food insecurity.</p>
+<span class="history-tag">25M+ people affected</span>
+</div>
+</div>
+</div>
+</section>
+<!-- BUSINESSES AFFECTED -->
+<div class="divider"></div>
+<section class="section reveal">
+<p class="section-label">Economics</p>
+<h2 class="section-title">Industries built around the locust</h2>
+<div class="biz-grid">
+<div class="biz-card">
+<div class="biz-header">
+<div class="biz-icon-wrap" style="background:#fef3c7;">🧪</div>
+<h3>Pesticide industry</h3>
+</div>
+<div class="biz-items">
+<div class="biz-item">Organophosphate locust sprays</div>
+<div class="biz-item">Biopesticides (Green Muscle fungus)</div>
+<div class="biz-item">Crop protection chemicals</div>
+<div class="biz-item">Ultra-low volume (ULV) formulations</div>
+</div>
+</div>
+<div class="biz-card">
+<div class="biz-header">
+<div class="biz-icon-wrap" style="background:#dbeafe;">🚁</div>
+<h3>Aerial spraying services</h3>
+</div>
+<div class="biz-items">
+<div class="biz-item">Agricultural aircraft &amp; helicopters</div>
+<div class="biz-item">Drone spraying operations</div>
+<div class="biz-item">Power ground sprayers</div>
+<div class="biz-item">Logistics &amp; fuel supply chains</div>
+</div>
+</div>
+<div class="biz-card">
+<div class="biz-header">
+<div class="biz-icon-wrap" style="background:#ede9fc;">🛰️</div>
+<h3>Monitoring &amp; early warning</h3>
+</div>
+<div class="biz-items">
+<div class="biz-item">Satellite remote sensing systems</div>
+<div class="biz-item">FAO Desert Locust Information Service</div>
+<div class="biz-item">Field survey networks</div>
+<div class="biz-item">AI-powered prediction models</div>
+</div>
+</div>
+<div class="biz-card">
+<div class="biz-header">
+<div class="biz-icon-wrap" style="background:#d1f5ee;">🔬</div>
+<h3>Research &amp; entomology</h3>
+</div>
+<div class="biz-items">
+<div class="biz-item">Locust biology &amp; behaviour labs</div>
+<div class="biz-item">Agricultural entomology institutes</div>
+<div class="biz-item">Pest management consultants</div>
+<div class="biz-item">University research programmes</div>
+</div>
+</div>
+<div class="biz-card">
+<div class="biz-header">
+<div class="biz-icon-wrap" style="background:#e3f5dc;">🌾</div>
+<h3>Agricultural advisory</h3>
+</div>
+<div class="biz-items">
+<div class="biz-item">Crop insurance providers</div>
+<div class="biz-item">Pest management training programmes</div>
+<div class="biz-item">Farmer alert &amp; response networks</div>
+<div class="biz-item">Government extension services</div>
+</div>
+</div>
+<div class="biz-card">
+<div class="biz-header">
+<div class="biz-icon-wrap" style="background:#fef2f2;">🌍</div>
+<h3>International response</h3>
+</div>
+<div class="biz-items">
+<div class="biz-item">UN FAO emergency response funds</div>
+<div class="biz-item">Border surveillance programmes</div>
+<div class="biz-item">Multilateral donor coordination</div>
+<div class="biz-item">Regional locust control organisations</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ECONOMY BARS -->
+<div class="economy-band">
+<div class="economy-inner">
+<p class="section-label">Market size</p>
+<h2 class="section-title reveal">The locust control economy</h2>
+<div class="economy-bars reveal" id="ebars">
+<div class="ebar">
+<div class="ebar-label">Crop pesticides</div>
+<div class="ebar-track"><div class="ebar-fill" data-w="90%" style="width:0%; background:#d97706;"></div></div>
+<div class="ebar-val">$3.8B</div>
+</div>
+<div class="ebar">
+<div class="ebar-label">Aerial spray ops</div>
+<div class="ebar-track"><div class="ebar-fill" data-w="68%" style="width:0%; background:#b45309;"></div></div>
+<div class="ebar-val">$2.9B</div>
+</div>
+<div class="ebar">
+<div class="ebar-label">Crop loss insurance</div>
+<div class="ebar-track"><div class="ebar-fill" data-w="52%" style="width:0%; background:#5b3fa6;"></div></div>
+<div class="ebar-val">$2.2B</div>
+</div>
+<div class="ebar">
+<div class="ebar-label">Early warning systems</div>
+<div class="ebar-track"><div class="ebar-fill" data-w="30%" style="width:0%; background:#0d7a6b;"></div></div>
+<div class="ebar-val">$1.3B</div>
+</div>
+<div class="ebar">
+<div class="ebar-label">Research &amp; biocontrol</div>
+<div class="ebar-track"><div class="ebar-fill" data-w="18%" style="width:0%; background:#2d6a23;"></div></div>
+<div class="ebar-val">$0.8B</div>
+</div>
+</div>
+<div class="economy-total reveal">
+<div>
+<div class="economy-total-num">$11B+</div>
+<div class="economy-total-sub">estimated combined annual market</div>
+</div>
+<p>Beyond direct control costs, locusts cause an estimated $1.5–3 billion in crop losses annually during non-outbreak years — rising to $8–12 billion during major events. The economics of the locust problem are enormous.</p>
+</div>
+</div>
+</div>
+<!-- EXTINCTION DEBATE -->
+<div class="divider"></div>
+<section class="section reveal">
+<p class="section-label">Ecology</p>
+<h2 class="section-title">What if locusts vanished?</h2>
+<div class="debate-grid">
+<div class="debate-side pros">
+<h3>If they disappeared ✓</h3>
+<div class="debate-item">
+<div class="debate-bullet">+</div>
+<p>Catastrophic crop failures and the famines they trigger would be eliminated, directly protecting food security for hundreds of millions of people.</p>
+</div>
+<div class="debate-item">
+<div class="debate-bullet">+</div>
+<p>Billions of dollars in emergency pesticide, aerial spraying, and agricultural aid spending would be saved every outbreak cycle.</p>
+</div>
+<div class="debate-item">
+<div class="debate-bullet">+</div>
+<p>Reduced pesticide spraying over vast areas would lower chemical exposure for ecosystems, wildlife, and farming communities.</p>
+</div>
+<div class="debate-item">
+<div class="debate-bullet">+</div>
+<p>Smallholder farmers in Africa, South Asia, and the Middle East — the most vulnerable — would gain greater economic stability and food security.</p>
+</div>
+<div class="debate-item">
+<div class="debate-bullet">+</div>
+<p>Global cereal and food commodity markets would see reduced price volatility from supply shocks caused by locust events.</p>
+</div>
+</div>
+<div class="debate-side cons">
+<h3>What we might lose ✗</h3>
+<div class="debate-item">
+<div class="debate-bullet">−</div>
+<p>Locusts are a critical food source for hundreds of bird species, lizards, frogs, snakes, spiders, and small mammals — especially in arid and semi-arid ecosystems.</p>
+</div>
+<div class="debate-item">
+<div class="debate-bullet">−</div>
+<p>Dead locusts decompose into the soil, returning nitrogen and organic matter that enrich depleted land in some of the world's driest environments.</p>
+</div>
+<div class="debate-item">
+<div class="debate-bullet">−</div>
+<p>In many cultures across Africa, the Middle East, and Asia, locusts are a traditional high-protein food source. Their disappearance would remove a free nutritional resource for poor communities.</p>
+</div>
+<div class="debate-item">
+<div class="debate-bullet">−</div>
+<p>Grazing by locust swarms can — in limited contexts — clear dense vegetation and trigger ecological regeneration cycles in grassland systems.</p>
+</div>
+<div class="debate-item">
+<div class="debate-bullet">−</div>
+<p>As with any extinction, removing a species creates ecological vacuums that are often filled unpredictably, sometimes by more harmful replacements.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- BENEFITS / ECOLOGICAL ROLE -->
+<div class="benefits-band">
+<div class="benefits-inner">
+<p class="section-label">The other side</p>
+<h2 class="section-title">Locusts in <span>nature's chain</span></h2>
+<div class="benefits-grid reveal">
+<div class="benefit-card">
+<div class="benefit-card-icon">🦅</div>
+<h4>Feast for predators</h4>
+<p>Swarms attract extraordinary concentrations of birds — bee-eaters, storks, kites, and raptors follow them across continents, gorging on easy prey. A single outbreak can sustain wildlife populations for months.</p>
+</div>
+<div class="benefit-card">
+<div class="benefit-card-icon">🌱</div>
+<h4>Soil enrichment</h4>
+<p>Dead and decaying locusts deposit high-nitrogen biomass directly into soils. In some arid regions, post-swarm years show measurable increases in soil fertility and subsequent plant growth.</p>
+</div>
+<div class="benefit-card">
+<div class="benefit-card-icon">🍽️</div>
+<h4>Human food source</h4>
+<p>Locusts are consumed in over 30 countries. They are 60–75% protein by dry weight, rich in iron and zinc. In East Africa, roasted locusts are harvested and sold during swarms — a silver lining for some communities.</p>
+</div>
+<div class="benefit-card">
+<div class="benefit-card-icon">🔬</div>
+<h4>Scientific model organism</h4>
+<p>Locusts' phase transformation — one of the most dramatic behavioural shifts in the animal kingdom — has driven major discoveries in neuroscience, crowd behaviour, and even urban traffic modelling.</p>
+</div>
+</div>
+<div class="benefit-note reveal">
+<strong>🌿 The bigger picture:</strong> The UN Food and Agriculture Organization officially classifies locusts as a <em>traditional food and feed</em>. They are among the most nutritionally dense insects on Earth — and as the world looks toward sustainable protein sources, locust farming is being seriously explored as a food industry.
+    </div>
+</div>
+</div>
+<!-- FUN FACTS -->
+<div class="divider"></div>
+<section class="section">
+<p class="section-label">Did you know?</p>
+<h2 class="section-title reveal">Surprising facts</h2>
+<div class="funfacts-grid reveal">
+<div class="fact-card">
+<div class="fact-num">01</div>
+<div class="fact-emoji">📖</div>
+<h4>They appear in the Bible, Quran, and ancient texts</h4>
+<p>Locusts are one of the Ten Plagues of Egypt in the Bible and are mentioned in the Quran. They appear in ancient Mesopotamian, Chinese, and Indian texts as symbols of divine punishment — and in some traditions, as permitted food.</p>
+</div>
+<div class="fact-card">
+<div class="fact-num">02</div>
+<div class="fact-emoji">🏙️</div>
+<h4>They inspired crowd behaviour science</h4>
+<p>The self-organised movement of locust swarms — millions of individuals moving as one without a leader — directly inspired mathematical models now used for traffic engineering, crowd management, and autonomous vehicle navigation.</p>
+</div>
+<div class="fact-card">
+<div class="fact-num">03</div>
+<div class="fact-emoji">🧲</div>
+<h4>They are cannibals — which is what drives the swarm</h4>
+<p>Locusts will eat each other when food is scarce. The marching behaviour of hopper bands is partly driven by each locust trying to eat the one in front — and avoid being eaten by the one behind. The swarm is, at its core, a stampede.</p>
+</div>
+<div class="fact-card">
+<div class="fact-num">04</div>
+<div class="fact-emoji">💀</div>
+<h4>One species went extinct — entirely by accident</h4>
+<p>The Rocky Mountain Locust, once the most abundant insect in North America, was extinct by 1902 — likely wiped out when settlers ploughed up the river valleys where the insect laid its eggs. The world's largest known swarm is now gone forever.</p>
+</div>
+<div class="fact-card">
+<div class="fact-num">05</div>
+<div class="fact-emoji">🌡️</div>
+<h4>Climate change is making outbreaks worse</h4>
+<p>Warmer Indian Ocean temperatures fuel more cyclones over the Arabian Peninsula, creating ideal breeding conditions. Scientists project that locust outbreak frequency and severity will increase significantly by 2050 as global temperatures rise.</p>
+</div>
+<div class="fact-card">
+<div class="fact-num">06</div>
+<div class="fact-emoji">🍗</div>
+<h4>They taste like shrimp</h4>
+<p>Locusts and shrimp are both arthropods and share surprisingly similar flavour profiles when cooked. Across East Africa and the Middle East, they are fried, roasted, or dried and ground into flour. Chefs in Europe are now adding them to gourmet menus.</p>
+</div>
+<div class="fact-card">
+<div class="fact-num">07</div>
+<div class="fact-emoji">🛰️</div>
+<h4>Swarms are tracked by satellite</h4>
+<p>The FAO's Desert Locust Information Service monitors swarm formation using satellite vegetation data, weather models, and ground reports from 30 countries — issuing global alerts when new swarms form in remote breeding zones.</p>
+</div>
+<div class="fact-card">
+<div class="fact-num">08</div>
+<div class="fact-emoji">⚗️</div>
+<h4>Serotonin makes them swarm</h4>
+<p>Scientists discovered in 2009 that injecting a single grasshopper with serotonin triggers full gregarious transformation — colour change, appetite increase, and social behaviour. It is the same neurotransmitter linked to human mood, appetite, and social behaviour.</p>
+</div>
+</div>
+<div class="quote-block">
+    "No creature is entirely without purpose in nature — every species, even the locust, is a thread in the fabric of life." 🌿🦗
+  </div>
+</section>
+<!-- WHO EATS LOCUSTS -->
+<div class="eaters-band">
+<div class="eaters-inner">
+<p class="section-label">Food chain</p>
+<h2 class="section-title">Who eats locusts?</h2>
+<div class="eaters-grid reveal">
+<div class="eater-card">
+<div class="eater-emoji">🦅</div>
+<h4>Birds</h4>
+<p>Bee-eaters, storks, kites, and raptors follow swarms across continents</p>
+</div>
+<div class="eater-card">
+<div class="eater-emoji">🐍</div>
+<h4>Snakes</h4>
+<p>Ground-dwelling species gorge when hopper bands march through grassland</p>
+</div>
+<div class="eater-card">
+<div class="eater-emoji">🦎</div>
+<h4>Lizards</h4>
+<p>Monitor lizards and agamas feed heavily during locust events in Africa and Asia</p>
+</div>
+<div class="eater-card">
+<div class="eater-emoji">🐸</div>
+<h4>Frogs</h4>
+<p>Amphibians near wetlands benefit enormously from locust population booms</p>
+</div>
+<div class="eater-card">
+<div class="eater-emoji">🕷️</div>
+<h4>Spiders</h4>
+<p>Large orb-weavers and wolf spiders take locusts as an opportunistic food source</p>
+</div>
+<div class="eater-card">
+<div class="eater-emoji">🦊</div>
+<h4>Foxes</h4>
+<p>Desert foxes in Africa and Arabia rely on locusts as a seasonal protein supplement</p>
+</div>
+<div class="eater-card">
+<div class="eater-emoji">🐒</div>
+<h4>Primates</h4>
+<p>Baboons and monkeys actively seek out locust swarms as a high-energy food bonanza</p>
+</div>
+<div class="eater-card">
+<div class="eater-emoji">👨</div>
+<h4>Humans</h4>
+<p>Eaten across 30+ countries — roasted, fried, or dried; 70% protein by dry weight</p>
+</div>
+</div>
+<p class="eaters-tagline">Every locust swarm triggers a <strong>cascade of ecological abundance</strong> for the predators that follow it.</p>
+</div>
+</div>
+<!-- SOUTH ASIA -->
+<div class="divider"></div>
+<section class="section reveal">
+<p class="section-label">Regional history</p>
+<h2 class="section-title">Locusts in South Asia</h2>
+<div>
+<div class="southasia-card">
+<div>
+<div class="sa-year">1926–31</div>
+<div class="sa-region">India</div>
+</div>
+<div>
+<h4>The Great Indian Locust Plague</h4>
+<p>One of the most severe locust outbreaks in Indian recorded history swept across Punjab, Sindh, Rajasthan, and the United Provinces over five consecutive years. Vast swarms devastated wheat and cotton harvests, triggering acute food shortages across large parts of British India. The colonial administration launched one of the first organised aerial spray campaigns in the subcontinent in response.</p>
+<span class="sa-tag">5-year consecutive outbreak</span>
+</div>
+</div>
+<div class="southasia-card">
+<div>
+<div class="sa-year">1993</div>
+<div class="sa-region">Rajasthan, India</div>
+</div>
+<div>
+<h4>The Rajasthan Desert Locust Swarm</h4>
+<p>Desert locusts invaded Rajasthan in large numbers from breeding grounds in Pakistan and Iran, destroying crops in Barmer, Jaisalmer, Jodhpur, and Bikaner districts. Thousands of hectares of pearl millet, mustard, and clusterbean crops were affected. Indian authorities deployed aerial and ground spraying across border districts to contain the outbreak before it spread eastward.</p>
+<span class="sa-tag">Border districts severely hit</span>
+</div>
+</div>
+<div class="southasia-card">
+<div>
+<div class="sa-year">2020</div>
+<div class="sa-region">India &amp; Pakistan</div>
+</div>
+<div>
+<h4>The 21st Century's South Asian Crisis</h4>
+<p>The largest locust invasion of India in nearly 30 years struck in the summer of 2020, coinciding with the COVID-19 lockdown. Swarms from Pakistan entered Rajasthan, Madhya Pradesh, Uttar Pradesh, and Gujarat — at one point threatening Delhi's outskirts. Pakistan simultaneously declared a national emergency as locust swarms devastated crops in Sindh and Punjab. India deployed over 200 spray teams and used drones for the first time in locust control. Estimated crop losses ran into thousands of crores of rupees.</p>
+<span class="sa-tag">National emergency in Pakistan · Drone control debut in India</span>
+</div>
+</div>
+</div>
+</section>
+<!-- CLIMATE CHANGE -->
+<div class="climate-band">
+<div class="climate-inner">
+<p class="section-label">Climate science</p>
+<h2 class="section-title">Climate change &amp; <span>locust outbreaks</span></h2>
+<div class="climate-chain reveal">
+<div class="climate-step">
+<div class="climate-step-num">STEP 01</div>
+<div class="climate-step-icon">🌊</div>
+<h4>Warmer Indian Ocean</h4>
+<p>Rising sea surface temperatures generate more frequent and intense tropical cyclones over the Arabian Sea.</p>
+</div>
+<div class="climate-step">
+<div class="climate-step-num">STEP 02</div>
+<div class="climate-step-icon">🌧️</div>
+<h4>Cyclone-driven rainfall</h4>
+<p>Cyclones dump unusual amounts of rain on the Arabian Peninsula's desert interior — areas that are normally bone dry.</p>
+</div>
+<div class="climate-step">
+<div class="climate-step-num">STEP 03</div>
+<div class="climate-step-icon">🌿</div>
+<h4>Desert greening</h4>
+<p>Heavy rains turn barren sand into temporary vegetation — perfect breeding habitat for locusts, which require moist soil for egg-laying.</p>
+</div>
+<div class="climate-step">
+<div class="climate-step-num">STEP 04</div>
+<div class="climate-step-icon">💥</div>
+<h4>Population explosion</h4>
+<p>With abundant food and moist soil, locust populations multiply 20-fold within months before winds carry them toward Africa and South Asia.</p>
+</div>
+<div class="climate-step">
+<div class="climate-step-num">STEP 05</div>
+<div class="climate-step-icon">🌍</div>
+<h4>Regional crisis</h4>
+<p>Swarms reach farmland in East Africa, South Asia, and the Middle East — threatening food security for hundreds of millions of people.</p>
+</div>
+</div>
+<div class="climate-projection reveal">
+<strong>⚠ What scientists project by 2050:</strong> Climate models suggest that warmer Indian Ocean temperatures will produce more intense Arabian Sea cyclones, potentially doubling the frequency of conditions that trigger major locust breeding events. The 2019–2021 East Africa crisis — the worst in 70 years — may become a once-per-decade event rather than once-per-generation.
+    </div>
+</div>
+</div>
+<!-- FUTURE TECHNOLOGY -->
+<div class="tech-band">
+<div class="tech-inner">
+<p class="section-label">Frontier solutions</p>
+<h2 class="section-title">Fighting the swarm — <span>future technology</span></h2>
+<div class="tech-grid reveal">
+<div class="tech-card">
+<div class="tech-card-icon">🛰️</div>
+<h4>Satellite AI monitoring</h4>
+<p>Machine learning systems analyse satellite vegetation indices and soil moisture data to predict breeding hotspots weeks before swarms form — giving governments critical early warning time.</p>
+</div>
+<div class="tech-card">
+<div class="tech-card-icon">🚁</div>
+<h4>Drone swarm spraying</h4>
+<p>Autonomous drone fleets can cover remote terrain inaccessible to vehicles or aircraft, applying biopesticides with pinpoint accuracy and minimal collateral damage to surrounding ecosystems.</p>
+</div>
+<div class="tech-card">
+<div class="tech-card-icon">🤖</div>
+<h4>AI outbreak prediction</h4>
+<p>The FAO's Desert Locust Information Service now integrates AI models trained on 70+ years of outbreak data, weather patterns, and vegetation maps to forecast swarm trajectories up to 10 days in advance.</p>
+</div>
+<div class="tech-card">
+<div class="tech-card-icon">🧬</div>
+<h4>Biological control</h4>
+<p>The biopesticide Metarhizium acridum (Green Muscle) — a naturally occurring fungus — kills locusts without harming birds, mammals, or beneficial insects. It is now deployed across Africa and Central Asia.</p>
+</div>
+<div class="tech-card">
+<div class="tech-card-icon">📱</div>
+<h4>Farmer alert apps</h4>
+<p>Mobile platforms like FAO's eLocust3m allow field workers and farmers to report sightings in real time via GPS-tagged photos, feeding data directly into global outbreak maps accessible to response teams worldwide.</p>
+</div>
+<div class="tech-card">
+<div class="tech-card-icon">🌐</div>
+<h4>Cross-border rapid response</h4>
+<p>Regional organisations like CLCPRO (Africa) and SWAC are developing joint rapid-response protocols — shared airfleets, pesticide stockpiles, and coordinated command systems — to eliminate the days lost to diplomatic delays.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- HUMAN FOOD INDUSTRY -->
+<div class="divider"></div>
+<section class="section reveal">
+<p class="section-label">Future food</p>
+<h2 class="section-title">Could locusts become food?</h2>
+<div class="food-grid">
+<div class="food-card">
+<div class="food-card-icon">💪</div>
+<div class="food-stat">70%</div>
+<h4>Protein by dry weight</h4>
+<p>Locusts are among the most protein-dense foods on Earth — comparable to beef but requiring a fraction of the land, water, and feed to produce.</p>
+</div>
+<div class="food-card">
+<div class="food-card-icon">🌍</div>
+<div class="food-stat">30+</div>
+<h4>Countries already eat them</h4>
+<p>From roasted locusts in East Africa to fried locusts in Thailand, Mexico, and the Middle East — this is not a new idea. It is a traditional food source being rediscovered.</p>
+</div>
+<div class="food-card">
+<div class="food-card-icon">♻️</div>
+<div class="food-stat">12×</div>
+<h4>More efficient than beef</h4>
+<p>Producing 1 kg of locust protein requires 12 times less feed than beef, generates far less greenhouse gas, and uses minimal water — making it one of the most sustainable protein sources on Earth.</p>
+</div>
+<div class="food-card">
+<div class="food-card-icon">🏭</div>
+<div class="food-stat">$1.4B</div>
+<h4>Insect food market by 2030</h4>
+<p>The global edible insect market is projected to reach $1.4 billion by 2030. Companies in the Netherlands, UK, and Kenya are already farming locusts commercially for food and animal feed.</p>
+</div>
+<div class="food-card">
+<div class="food-card-icon">⚠️</div>
+<div class="food-stat">!</div>
+<h4>One major problem</h4>
+<p>Wild locusts during outbreaks are contaminated with pesticides from aerial spraying campaigns — making outbreak-harvested locusts unsafe to eat. Commercial farming separates the food source from the pest problem.</p>
+</div>
+</div>
+</section>
+<!-- FOOTER -->
+
+<footer class="site-footer">
+    © 2026 Surajit Roy. All Rights Reserved.
+</footer>
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 60);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => obs.observe(el));
+
+  const barObs = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (en.isIntersecting) {
+        en.target.querySelectorAll('.ebar-fill').forEach((bar, i) => {
+          setTimeout(() => { bar.style.width = bar.dataset.w; }, i * 130);
+        });
+        barObs.unobserve(en.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  const ebars = document.getElementById('ebars');
+  if (ebars) barObs.observe(ebars);
+</script>
+<script src="security.js"></script>
+
+<footer class="footer">
+<div style="margin-bottom:18px;">
+<a href="about.html">About</a> |
+<a href="privacy.html">Privacy Policy</a> |
+<a href="terms.html">Terms &amp; Conditions</a> |
+<a href="contact.html">Contact</a> |
+<a href="disclaimer.html">Disclaimer</a>
+</div>
+<div class="footer-name">MYSKILLGAME</div>
+<div class="footer-copy">© 2026 MySkillGame • Developed by Surajit Roy</div>
+</footer>
+</body>
+</html>

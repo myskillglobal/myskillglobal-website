@@ -173,8 +173,41 @@
       </div>
       <div class="result-label" id="passLabel">Well Done!</div>
       <div class="result-sub">You've passed the 45% mark — enter your name to generate your certificate.</div>
-      <input type="text" id="studentNameInput" class="name-input" placeholder="Your full name" maxlength="40"/>
-      <button class="primary-btn" onclick="goToCertificate()">Generate Certificate 🏅</button>
+      <input
+  type="text"
+  id="studentNameInput"
+  class="name-input"
+  placeholder="Your full name"
+  maxlength="40"
+/>
+
+<input
+  type="text"
+  id="schoolNameInput"
+  class="name-input"
+  placeholder="School / Institution name"
+  maxlength="80"
+/>
+
+<input
+  type="text"
+  id="districtInput"
+  class="name-input"
+  placeholder="District"
+  maxlength="50"
+/>
+
+<input
+  type="text"
+  id="countryInput"
+  class="name-input"
+  placeholder="Country"
+  maxlength="50"
+/>
+
+<button class="primary-btn" onclick="goToCertificate()">
+  Generate Certificate 🏅
+</button>
       <button class="ghost-btn" onclick="restartToPicker()">Try Another Topic</button>
     </div>
   </div>
@@ -1764,6 +1797,9 @@ function finishQuiz(){
     document.getElementById('passEmoji').textContent = emoji;
     document.getElementById('passLabel').textContent = label;
     document.getElementById('studentNameInput').value = '';
+document.getElementById('schoolNameInput').value = '';
+document.getElementById('districtInput').value = '';
+document.getElementById('countryInput').value = '';
     showScreen('screen-pass');
   } else {
     document.getElementById('failPct').textContent = pct + '%';
@@ -1772,25 +1808,259 @@ function finishQuiz(){
   }
 }
 
-function goToCertificate(){
-  const nameInput = document.getElementById('studentNameInput');
-  const name = (nameInput.value || '').trim();
-  if(!name){ nameInput.focus(); return; }
+/* ================= GOOGLE SHEET ================= */
 
-  const pct = Math.round((quizScore/TOTAL_QUESTIONS)*100);
+const GOOGLE_SHEET_URL =
+  "https://script.google.com/macros/s/AKfycbw6RCPloCBvzyM_quGnBgekRwAVZUVCjcATSetNwoNuhknnJah_5DJaGPtwEkqh7aY/exec";
+
+
+/* ================= STUDENT ID ================= */
+
+function getStudentId() {
+
+  let studentId =
+    localStorage.getItem('msg_student_id');
+
+  if (!studentId) {
+
+    const randomPart =
+      Math.random()
+        .toString(36)
+        .substring(2, 10)
+        .toUpperCase();
+
+    studentId =
+      'MSG-STU-' + randomPart;
+
+    localStorage.setItem(
+      'msg_student_id',
+      studentId
+    );
+  }
+
+  return studentId;
+}
+
+
+/* ================= SEND RESULT TO GOOGLE SHEET ================= */
+
+async function saveResultToGoogleSheet(data) {
+
+  try {
+
+    await fetch(GOOGLE_SHEET_URL, {
+
+      method: 'POST',
+
+      mode: 'no-cors',
+
+      headers: {
+        'Content-Type': 'text/plain;charset=utf-8'
+      },
+
+      body: JSON.stringify(data)
+
+    });
+
+    return true;
+
+  } catch (error) {
+
+    console.error(
+      'Google Sheet save error:',
+      error
+    );
+
+    return false;
+  }
+}
+
+
+/* ================= CERTIFICATE ================= */
+
+async function goToCertificate() {
+
+  const name =
+    (document.getElementById('studentNameInput').value || '')
+      .trim();
+
+  const school =
+    (document.getElementById('schoolNameInput').value || '')
+      .trim();
+
+  const district =
+    (document.getElementById('districtInput').value || '')
+      .trim();
+
+  const country =
+    (document.getElementById('countryInput').value || '')
+      .trim();
+
+
+  // Required fields
+  if (!name) {
+
+    document
+      .getElementById('studentNameInput')
+      .focus();
+
+    return;
+  }
+
+  if (!school) {
+
+    document
+      .getElementById('schoolNameInput')
+      .focus();
+
+    return;
+  }
+
+  if (!district) {
+
+    document
+      .getElementById('districtInput')
+      .focus();
+
+    return;
+  }
+
+  if (!country) {
+
+    document
+      .getElementById('countryInput')
+      .focus();
+
+    return;
+  }
+
+
+  const pct =
+    Math.round(
+      (quizScore / TOTAL_QUESTIONS) * 100
+    );
+
+
+  // স্থায়ী Student ID
+  const studentId =
+    getStudentId();
+
+
+  // প্রতিটি Attempt-এর জন্য নতুন Certificate No
+  const certId =
+    'MSG-FT-' +
+    currentLang
+      .toUpperCase()
+      .slice(0, 3) +
+    '-' +
+    Date.now()
+      .toString(36)
+      .toUpperCase()
+      .slice(-6);
+
+
+  /*
+   * Certificate-এর জন্য result
+   */
+
   const result = {
-    name,
+
+    studentId: studentId,
+
+    certId: certId,
+
+    name: name,
+
+    school: school,
+
+    district: district,
+
+    country: country,
+
+    examName: currentLangLabel,
+
     language: currentLangLabel,
+
     langCode: currentLang,
+
     score: quizScore,
+
     total: TOTAL_QUESTIONS,
-    pct,
+
+    pct: pct,
+
     passed: pct >= PASS_PCT,
-    date: new Date().toLocaleDateString('en-GB', {day:'2-digit', month:'short', year:'numeric'}),
-    certId: 'MSG-FT-' + currentLang.toUpperCase().slice(0,3) + '-' + Date.now().toString(36).toUpperCase().slice(-6),
+
+    date:
+      new Date().toLocaleDateString(
+        'en-GB',
+        {
+          day: '2-digit',
+          month: 'short',
+          year: 'numeric'
+        }
+      )
+
   };
-  try{ localStorage.setItem('msg_advance_test_result', JSON.stringify(result)); }catch(e){}
-  window.location.href = 'certificate.html';
+
+
+  /*
+   * আগে Certificate-এর localStorage save
+   */
+
+  try {
+
+    localStorage.setItem(
+      'msg_advance_test_result',
+      JSON.stringify(result)
+    );
+
+  } catch (e) {
+
+    console.error(
+      'Could not save certificate result',
+      e
+    );
+
+  }
+
+
+  /*
+   * Google Sheet-এ Result পাঠানো
+   */
+
+  await saveResultToGoogleSheet({
+
+    studentId: studentId,
+
+    certificateNo: certId,
+
+    certId: certId,
+
+    name: name,
+
+    school: school,
+
+    district: district,
+
+    country: country,
+
+    examName: currentLangLabel,
+
+    score: quizScore,
+
+    totalMarks: TOTAL_QUESTIONS
+
+  });
+
+
+  /*
+   * Certificate page
+   */
+
+  window.location.href =
+    'certificate.html';
+
 }
   // Disable Right Click
   document.addEventListener('contextmenu', function(e) {

@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Surajit Roy" name="author"/>
+<meta content="© Surajit Roy" name="copyright"/>
+<meta content="index,follow" name="robots"/>
+<title>Botanical Wealth – Medicinal, Floriculture, Hydroponics &amp; More | MySkillGame</title>
+<meta content="Practical parenting, communication and child development guidance from MySkillGame." name="description"/>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&amp;family=Quicksand:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#fffbf4;
+  --bg2:#fff8ec;
+  --paper:#ffffff;
+  --herb:#2e7d32;
+  --herb2:#43a047;
+  --herb3:#c8e6c9;
+  --rose:#c62828;
+  --rose2:#ef9a9a;
+  --rose3:#fce4e4;
+  --amber:#e65100;
+  --amber2:#ffcc80;
+  --amber3:#fff3e0;
+  --indigo:#283593;
+  --indigo2:#9fa8da;
+  --indigo3:#e8eaf6;
+  --teal:#00695c;
+  --teal2:#80cbc4;
+  --teal3:#e0f2f1;
+  --grape:#6a1b9a;
+  --grape2:#ce93d8;
+  --grape3:#f3e5f5;
+  --gold:#f57f17;
+  --gold2:#ffe082;
+  --gold3:#fffde7;
+  --brown:#4e342e;
+  --brown2:#bcaaa4;
+  --brown3:#efebe9;
+  --text:#1a2710;
+  --text2:#3c4a35;
+  --text3:#7a8c72;
+  --border:#ddd8cc;
+  --shadow:rgba(20,30,10,0.09);
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Quicksand',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  padding-bottom:60px;user-select:none;
+}
+
+/* ── HERO ── */
+.hero{
+  position:relative;overflow:hidden;
+  padding:0 0 0 0;
+  background:var(--herb);
+}
+.hero-banner{
+  background:linear-gradient(135deg,#1b5e20 0%,#2e7d32 40%,#388e3c 70%,#1b5e20 100%);
+  padding:38px 18px 30px;
+  text-align:center;
+  position:relative;
+}
+.hero-banner::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.hero-emojis{font-size:40px;display:flex;justify-content:center;gap:10px;margin-bottom:14px;position:relative;flex-wrap:wrap}
+.hero-emojis span{display:inline-block;animation:wobble 2.5s ease-in-out infinite}
+.hero-emojis span:nth-child(2){animation-delay:.3s}
+.hero-emojis span:nth-child(3){animation-delay:.6s}
+.hero-emojis span:nth-child(4){animation-delay:.9s}
+.hero-emojis span:nth-child(5){animation-delay:1.2s}
+.hero-emojis span:nth-child(6){animation-delay:1.5s}
+@keyframes wobble{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-7px) rotate(4deg)}}
+.hero h1{
+  font-family:'Abril Fatface',serif;
+  font-size:clamp(24px,6vw,44px);
+  color:#fff;
+  line-height:1.15;
+  position:relative;
+  text-shadow:0 2px 12px rgba(0,0,0,0.25);
+}
+.hero h1 em{color:var(--gold2);font-style:normal}
+.hero-sub{font-size:13px;color:rgba(255,255,255,0.8);margin-top:8px;position:relative;font-weight:600;letter-spacing:0.3px}
+.hero-ribbon{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:7px;margin-top:16px;position:relative;
+}
+.rb{
+  background:rgba(255,255,255,0.15);
+  border:1.5px solid rgba(255,255,255,0.35);
+  border-radius:20px;padding:4px 12px;
+  font-size:11px;color:#fff;font-weight:700;
+  backdrop-filter:blur(4px);
+}
+.myskill-tag{
+  background:rgba(245,127,23,0.18);
+  border:1.5px solid rgba(245,127,23,0.5);
+  border-radius:10px;padding:10px 16px;
+  font-size:11.5px;color:var(--gold2);
+  max-width:640px;margin:16px auto 0;
+  position:relative;line-height:1.6;font-weight:600;
+}
+
+/* ── CATEGORY SELECTOR (pill tabs) ── */
+.cat-strip{
+  background:#fff;
+  border-bottom:2px solid var(--border);
+  padding:10px 12px 0;
+  overflow-x:auto;scrollbar-width:none;
+  position:sticky;top:0;z-index:50;
+  box-shadow:0 3px 14px var(--shadow);
+}
+.cat-strip::-webkit-scrollbar{display:none}
+.cat-inner{display:flex;gap:6px;min-width:max-content;padding-bottom:10px}
+.cat-btn{
+  display:flex;align-items:center;gap:6px;
+  padding:8px 15px;border-radius:25px;
+  border:2px solid var(--border);background:var(--bg2);
+  font-size:12px;font-weight:700;cursor:pointer;
+  color:var(--text3);transition:all 0.22s;
+  font-family:'Quicksand',sans-serif;white-space:nowrap;
+}
+.cat-btn i{font-size:16px}
+.cat-btn.active,
+.cat-btn:hover{color:#fff;border-color:transparent}
+
+/* per-category active colour */
+.cat-btn[data-cat="medicinal"].active,.cat-btn[data-cat="medicinal"]:hover{background:var(--herb)}
+.cat-btn[data-cat="flori"].active,.cat-btn[data-cat="flori"]:hover{background:var(--rose)}
+.cat-btn[data-cat="hydro"].active,.cat-btn[data-cat="hydro"]:hover{background:var(--indigo)}
+.cat-btn[data-cat="snail"].active,.cat-btn[data-cat="snail"]:hover{background:var(--teal)}
+.cat-btn[data-cat="vermi"].active,.cat-btn[data-cat="vermi"]:hover{background:var(--brown)}
+.cat-btn[data-cat="value"].active,.cat-btn[data-cat="value"]:hover{background:var(--amber)}
+.cat-btn[data-cat="schemes"].active,.cat-btn[data-cat="schemes"]:hover{background:var(--grape)}
+.cat-btn[data-cat="export"].active,.cat-btn[data-cat="export"]:hover{background:var(--indigo)}
+.cat-btn[data-cat="myskill"].active,.cat-btn[data-cat="myskill"]:hover{background:var(--herb)}
+
+/* ── LAYOUT ── */
+.content{max-width:800px;margin:0 auto;padding:20px 14px}
+.section{display:none;animation:fadeUp 0.3s ease}
+.section.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── SECTION HEADER ── */
+.sec-head{
+  font-family:'Abril Fatface',serif;
+  font-size:19px;
+  margin:22px 0 14px;
+  display:flex;align-items:center;gap:10px;
+  letter-spacing:0.2px;
+}
+.sec-head i{font-size:21px}
+.sec-head-line{flex:1;height:2px;border-radius:4px;opacity:.35}
+.herb-head{color:var(--herb)} .herb-line{background:var(--herb)}
+.rose-head{color:var(--rose)} .rose-line{background:var(--rose)}
+.amber-head{color:var(--amber)} .amber-line{background:var(--amber)}
+.indigo-head{color:var(--indigo)} .indigo-line{background:var(--indigo)}
+.teal-head{color:var(--teal)} .teal-line{background:var(--teal)}
+.brown-head{color:var(--brown)} .brown-line{background:var(--brown)}
+.grape-head{color:var(--grape)} .grape-line{background:var(--grape)}
+
+/* ── ALERT ── */
+.alert{
+  border-radius:12px;padding:12px 16px;margin-bottom:16px;
+  font-size:13px;line-height:1.65;display:flex;gap:10px;align-items:flex-start;
+  font-weight:500;border-left:4px solid;
+}
+.alert i{font-size:20px;min-width:20px;margin-top:1px;flex-shrink:0}
+.al-herb{background:var(--herb3);border-color:var(--herb2);color:var(--herb)}
+.al-rose{background:var(--rose3);border-color:var(--rose2);color:var(--rose)}
+.al-amber{background:var(--amber3);border-color:var(--amber2);color:var(--amber)}
+.al-indigo{background:var(--indigo3);border-color:var(--indigo2);color:var(--indigo)}
+.al-teal{background:var(--teal3);border-color:var(--teal2);color:var(--teal)}
+.al-brown{background:var(--brown3);border-color:var(--brown2);color:var(--brown)}
+.al-grape{background:var(--grape3);border-color:var(--grape2);color:var(--grape)}
+.al-gold{background:var(--gold3);border-color:var(--gold2);color:var(--gold)}
+
+/* ── STATS ── */
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:16px}
+.stat-card{
+  background:var(--paper);border:2px solid var(--border);border-radius:14px;
+  padding:14px 12px;text-align:center;
+  box-shadow:0 2px 8px var(--shadow);transition:transform .2s;
+}
+.stat-card:hover{transform:translateY(-2px)}
+.stat-num{font-family:'Abril Fatface',serif;font-size:24px;line-height:1}
+.stat-label{font-size:10.5px;color:var(--text3);margin-top:5px;line-height:1.4;font-weight:600}
+.sn-herb{color:var(--herb)} .sn-rose{color:var(--rose)} .sn-amber{color:var(--amber)}
+.sn-indigo{color:var(--indigo)} .sn-teal{color:var(--teal)} .sn-grape{color:var(--grape)}
+
+/* ── PLANT CARDS ── */
+.plant-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:12px;margin-bottom:16px}
+.plant-card{
+  background:var(--paper);border:2px solid var(--border);border-radius:16px;
+  padding:16px 12px;text-align:center;
+  box-shadow:0 2px 8px var(--shadow);transition:all .2s;cursor:default;
+}
+.plant-card:hover{transform:translateY(-3px);box-shadow:0 8px 20px var(--shadow)}
+.plant-icon{font-size:32px;display:block;margin-bottom:8px;
+  animation:gentlePulse 3s ease-in-out infinite}
+@keyframes gentlePulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+.plant-name{font-size:13px;font-weight:700;color:var(--text);line-height:1.3}
+.plant-sci{font-size:10.5px;color:var(--text3);font-style:italic;margin-top:2px}
+.plant-price{font-size:11px;font-weight:700;margin-top:5px;padding:2px 8px;border-radius:10px;display:inline-block}
+.pp-herb{background:var(--herb3);color:var(--herb)}
+.pp-rose{background:var(--rose3);color:var(--rose)}
+.pp-amber{background:var(--amber3);color:var(--amber)}
+.pp-teal{background:var(--teal3);color:var(--teal)}
+.pp-grape{background:var(--grape3);color:var(--grape)}
+
+/* ── CARDS ── */
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-bottom:16px}
+.card{
+  background:var(--paper);border:2px solid var(--border);border-radius:16px;
+  padding:16px 18px;box-shadow:0 2px 8px var(--shadow);
+  transition:transform .2s,box-shadow .2s;
+}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 22px var(--shadow)}
+
+.c-herb{background:linear-gradient(135deg,#e8f5e9,#c8e6c9);border-color:rgba(46,125,50,.25)}
+.c-rose{background:linear-gradient(135deg,#fce4e4,#f8bbd0);border-color:rgba(198,40,40,.2)}
+.c-amber{background:linear-gradient(135deg,#fff3e0,#ffe0b2);border-color:rgba(230,81,0,.2)}
+.c-indigo{background:linear-gradient(135deg,#e8eaf6,#c5cae9);border-color:rgba(40,53,147,.2)}
+.c-teal{background:linear-gradient(135deg,#e0f2f1,#b2dfdb);border-color:rgba(0,105,92,.2)}
+.c-brown{background:linear-gradient(135deg,#efebe9,#d7ccc8);border-color:rgba(78,52,46,.2)}
+.c-grape{background:linear-gradient(135deg,#f3e5f5,#e1bee7);border-color:rgba(106,27,154,.2)}
+.c-gold{background:linear-gradient(135deg,#fffde7,#fff9c4);border-color:rgba(245,127,23,.25)}
+.c-paper{background:var(--paper);border-color:var(--border)}
+
+.card-title{font-size:14px;font-weight:700;margin-bottom:9px;display:flex;align-items:center;gap:8px;color:var(--text)}
+.card-title i{font-size:18px}
+.badge{display:inline-block;font-size:10.5px;padding:3px 10px;border-radius:20px;margin-bottom:9px;font-weight:700}
+.b-herb{background:var(--herb3);color:var(--herb);border:1px solid rgba(46,125,50,.4)}
+.b-rose{background:var(--rose3);color:var(--rose);border:1px solid rgba(198,40,40,.35)}
+.b-amber{background:var(--amber3);color:var(--amber);border:1px solid rgba(230,81,0,.35)}
+.b-indigo{background:var(--indigo3);color:var(--indigo);border:1px solid rgba(40,53,147,.35)}
+.b-teal{background:var(--teal3);color:var(--teal);border:1px solid rgba(0,105,92,.35)}
+.b-brown{background:var(--brown3);color:var(--brown);border:1px solid rgba(78,52,46,.35)}
+.b-grape{background:var(--grape3);color:var(--grape);border:1px solid rgba(106,27,154,.35)}
+.b-gold{background:var(--gold3);color:var(--gold);border:1px solid rgba(245,127,23,.4)}
+
+.tip{font-size:12.5px;color:var(--text2);line-height:1.7;padding:4px 0;border-bottom:1px solid var(--border);display:flex;gap:8px}
+.tip:last-child{border-bottom:none;padding-bottom:0}
+.tip::before{content:"✦";font-size:11px;line-height:2;min-width:12px;font-weight:900;flex-shrink:0}
+.tip-herb::before{color:var(--herb)}
+.tip-rose::before{color:var(--rose)}
+.tip-amber::before{color:var(--amber)}
+.tip-indigo::before{color:var(--indigo)}
+.tip-teal::before{color:var(--teal)}
+.tip-brown::before{color:var(--brown)}
+.tip-grape::before{color:var(--grape)}
+.tip-gold::before{color:var(--gold)}
+
+/* ── PROCESS STEPS ── */
+.steps{counter-reset:step;margin-bottom:16px}
+.step{
+  display:flex;gap:14px;align-items:flex-start;
+  padding:13px 15px;background:var(--paper);
+  border:2px solid var(--border);border-radius:14px;margin-bottom:10px;
+  box-shadow:0 2px 6px var(--shadow);
+}
+.step::before{
+  content:counter(step);counter-increment:step;
+  min-width:30px;height:30px;border-radius:50%;
+  color:#fff;font-weight:700;font-size:13px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Abril Fatface',serif;flex-shrink:0;margin-top:2px;
+}
+.step-herb::before{background:linear-gradient(135deg,var(--herb),var(--herb2))}
+.step-rose::before{background:linear-gradient(135deg,var(--rose),#e53935)}
+.step-amber::before{background:linear-gradient(135deg,var(--amber),#fb8c00)}
+.step-indigo::before{background:linear-gradient(135deg,var(--indigo),#3949ab)}
+.step-teal::before{background:linear-gradient(135deg,var(--teal),#00897b)}
+.step-brown::before{background:linear-gradient(135deg,var(--brown),#6d4c41)}
+.step-grape::before{background:linear-gradient(135deg,var(--grape),#8e24aa)}
+.step-title{font-size:13.5px;font-weight:700;color:var(--text);margin-bottom:4px}
+.step-desc{font-size:12px;color:var(--text2);line-height:1.65}
+
+/* ── FLOWER CARDS ── */
+.flower-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:10px;margin-bottom:14px}
+.flower-card{
+  background:var(--paper);border:2px solid var(--border);border-radius:14px;
+  padding:14px 10px;text-align:center;box-shadow:0 2px 6px var(--shadow);
+  transition:all .2s;
+}
+.flower-card:hover{transform:translateY(-3px);border-color:var(--rose2)}
+.flower-icon{font-size:30px;margin-bottom:6px;display:block}
+.flower-name{font-size:12px;font-weight:700;color:var(--text)}
+.flower-price{font-size:11px;color:var(--rose);font-weight:700;margin-top:3px}
+.flower-use{font-size:10.5px;color:var(--text3);margin-top:2px}
+
+/* ── VALUE PRODUCT ── */
+.value-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-bottom:14px}
+.value-card{
+  background:var(--paper);border:2px solid var(--border);border-radius:14px;
+  padding:14px 10px;text-align:center;box-shadow:0 2px 6px var(--shadow);
+  transition:all .2s;
+}
+.value-card:hover{transform:translateY(-3px);border-color:var(--amber2)}
+.value-icon{font-size:28px;margin-bottom:6px;display:block}
+.value-name{font-size:12px;font-weight:700;color:var(--text)}
+.value-margin{font-size:11px;font-weight:700;color:var(--amber);margin-top:3px}
+
+/* ── INCOME TABLE ── */
+.inc-table{width:100%;border-collapse:collapse;margin-bottom:16px;font-size:12.5px}
+.inc-table th{
+  padding:10px 12px;text-align:left;font-weight:700;
+  border:1.5px solid var(--border);font-size:11.5px;letter-spacing:.3px;color:#fff;
+}
+.inc-table td{
+  padding:9px 12px;border:1.5px solid var(--border);
+  color:var(--text2);background:var(--paper);vertical-align:top;line-height:1.6;
+}
+.inc-table tr:nth-child(even) td{background:var(--bg2)}
+.inc-table tr:hover td{background:#f0f8f1}
+
+/* ── MARKET BAR ── */
+.market-item{margin-bottom:12px}
+.market-label{display:flex;justify-content:space-between;margin-bottom:4px}
+.market-name{font-size:13px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:6px}
+.market-flag{font-size:16px}
+.market-pct{font-size:12px;font-weight:700}
+.market-bg{background:var(--border);border-radius:10px;height:9px;overflow:hidden}
+.market-fill{height:100%;border-radius:10px;transition:width .9s ease}
+
+/* ── STORY ── */
+.story{
+  background:linear-gradient(135deg,#f1f8e9,#e8f5e9);
+  border:2px solid rgba(46,125,50,.2);border-radius:16px;
+  padding:16px 18px;margin-bottom:14px;
+  box-shadow:0 2px 8px var(--shadow);
+}
+.story-header{display:flex;align-items:center;gap:12px;margin-bottom:9px}
+.story-avatar{
+  width:44px;height:44px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:21px;flex-shrink:0;
+}
+.story-name{font-size:14px;font-weight:700;color:var(--text)}
+.story-loc{font-size:11.5px;color:var(--teal)}
+.story-income{
+  display:inline-block;background:var(--herb3);
+  border:1px solid rgba(46,125,50,.3);border-radius:20px;
+  padding:2px 10px;font-size:11px;font-weight:700;color:var(--herb);margin-bottom:7px;
+}
+.story-text{font-size:12.5px;color:var(--text2);line-height:1.7}
+
+/* ── CHECKLIST ── */
+.chk-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);cursor:pointer;user-select:none}
+.chk-item:last-child{border-bottom:none}
+.chk-box{width:19px;height:19px;min-width:19px;border:2px solid var(--border);border-radius:5px;display:flex;align-items:center;justify-content:center;transition:all .15s;background:var(--paper)}
+.chk-box.done{background:var(--herb);border-color:var(--herb)}
+.chk-box.done i{color:#fff;font-size:12px}
+.chk-text{font-size:12.5px;color:var(--text2);line-height:1.6}
+.chk-text.done{text-decoration:line-through;color:var(--text3)}
+
+/* ── PROGRESS ── */
+.prog-wrap{margin-bottom:18px}
+.prog-label{font-size:11.5px;color:var(--text3);margin-bottom:5px;display:flex;justify-content:space-between;font-weight:600}
+.prog-bg{background:var(--border);border-radius:20px;height:8px;overflow:hidden}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--herb2),var(--teal));border-radius:20px;transition:width .3s}
+
+/* ── FOOTER ── */
+.myskill-footer{
+  background:linear-gradient(135deg,#e8f5e9,#e0f2f1);
+  border:2px solid rgba(46,125,50,.25);border-radius:18px;
+  padding:22px 20px;margin-top:22px;text-align:center;
+  box-shadow:0 4px 16px var(--shadow);
+}
+.myskill-footer h3{font-family:'Abril Fatface',serif;font-size:22px;color:var(--herb);margin-bottom:8px}
+.myskill-footer h3 em{color:var(--amber);font-style:normal}
+.myskill-footer p{font-size:12.5px;color:var(--text2);line-height:1.7;max-width:580px;margin:0 auto 14px}
+.ms-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;margin-bottom:14px}
+.ms-pill{background:rgba(46,125,50,.1);border:1px solid rgba(46,125,50,.3);border-radius:20px;padding:4px 12px;font-size:11.5px;color:var(--herb);font-weight:700}
+.tagline{font-size:11px;color:var(--amber);font-style:italic;border-top:1px solid var(--border);padding-top:12px;font-weight:600}
+
+/* ── HYDROPONIC DIAGRAM ── */
+.hydro-compare{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.hydro-col{background:var(--paper);border:2px solid var(--border);border-radius:14px;padding:14px;box-shadow:0 2px 6px var(--shadow)}
+.hydro-col-title{font-size:13px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+
+/* ── RESPONSIVE ── */
+@media(max-width:520px){
+  .cards-grid{grid-template-columns:1fr}
+  .plant-grid{grid-template-columns:repeat(2,1fr)}
+  .flower-grid{grid-template-columns:repeat(2,1fr)}
+  .value-grid{grid-template-columns:repeat(2,1fr)}
+  .stat-row{grid-template-columns:repeat(2,1fr)}
+  .hydro-compare{grid-template-columns:1fr}
+  .hero h1{font-size:22px}
+  .hero-emojis{font-size:30px;gap:8px}
+}
+</style>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1034022057999423"></script><link href="https://myskillgame.netlify.app/11-7-26 website/botanical-farm-guide.html" rel="canonical"/></head>
+<body>
+<!-- ══ HERO ══ -->
+<div class="hero">
+<div class="hero-banner">
+<div class="hero-emojis">
+<span>🌿</span><span>🌺</span><span>💧</span><span>🐌</span><span>🪱</span><span>🍯</span>
+</div>
+<h1>Botanical <em>Wealth</em> Guide</h1>
+<p class="hero-sub">Medicinal Plants · Floriculture · Hydroponics · Snail Farming · Vermicompost · Value-Added Products</p>
+<div class="hero-ribbon">
+<span class="rb">🌿 Medicinal Plants</span>
+<span class="rb">🌺 Floriculture</span>
+<span class="rb">💧 Hydroponics</span>
+<span class="rb">🐌 Snail Farming</span>
+<span class="rb">🪱 Vermicompost</span>
+<span class="rb">🍯 Value-Added Products</span>
+</div>
+<div class="myskill-tag">
+      🎓 <strong>Created for MySkillGame</strong> – Promoting Vocational Education, Entrepreneurship, Financial Literacy, Environmental Awareness and Sustainable Livelihood Opportunities.
+    </div>
+</div>
+</div>
+<!-- ══ CATEGORY TABS ══ -->
+<div class="cat-strip">
+<div class="cat-inner">
+<button class="cat-btn active" data-cat="medicinal" onclick="switchCat('medicinal',this)"><i class="ti ti-leaf"></i>Medicinal Plants</button>
+<button class="cat-btn" data-cat="flori" onclick="switchCat('flori',this)"><i class="ti ti-rosette"></i>Floriculture</button>
+<button class="cat-btn" data-cat="hydro" onclick="switchCat('hydro',this)"><i class="ti ti-droplet"></i>Hydroponics</button>
+<button class="cat-btn" data-cat="snail" onclick="switchCat('snail',this)"><i class="ti ti-snail"></i>Snail Farming</button>
+<button class="cat-btn" data-cat="vermi" onclick="switchCat('vermi',this)"><i class="ti ti-worm"></i>Vermicompost</button>
+<button class="cat-btn" data-cat="value" onclick="switchCat('value',this)"><i class="ti ti-bottle"></i>Value Products</button>
+<button class="cat-btn" data-cat="schemes" onclick="switchCat('schemes',this)"><i class="ti ti-clipboard-list"></i>Gov. Schemes</button>
+<button class="cat-btn" data-cat="export" onclick="switchCat('export',this)"><i class="ti ti-world"></i>Export</button>
+<button class="cat-btn" data-cat="myskill" onclick="switchCat('myskill',this)"><i class="ti ti-school"></i>MySkillGame</button>
+</div>
+</div>
+<div class="content">
+<!-- ══ MEDICINAL PLANTS ══ -->
+<div class="section active" id="cat-medicinal">
+<div class="alert al-herb"><i class="ti ti-sparkles"></i><span>India is the world's largest producer and exporter of medicinal herbs. The global herbal market is projected to reach <strong>$600 billion by 2030</strong> — and your backyard could be part of it.</span></div>
+<div class="stat-row">
+<div class="stat-card"><div class="stat-num sn-herb">₹8,000Cr</div><div class="stat-label">India's annual medicinal plant export</div></div>
+<div class="stat-card"><div class="stat-num sn-herb">45%</div><div class="stat-label">CAGR of Ashwagandha global demand</div></div>
+<div class="stat-card"><div class="stat-num sn-herb">7,500+</div><div class="stat-label">Medicinal plant species in India</div></div>
+<div class="stat-card"><div class="stat-num sn-herb">0.1 acre</div><div class="stat-label">Minimum needed to start profitably</div></div>
+</div>
+<div class="sec-head herb-head"><i class="ti ti-leaf"></i>Key Medicinal Plants to Grow <span class="sec-head-line herb-line"></span></div>
+<div class="plant-grid">
+<div class="plant-card">
+<span class="plant-icon">🌿</span>
+<div class="plant-name">Tulsi (Holy Basil)</div>
+<div class="plant-sci">Ocimum sanctum</div>
+<div class="plant-price pp-herb">₹20–60/kg dried</div>
+</div>
+<div class="plant-card">
+<span class="plant-icon">🌱</span>
+<div class="plant-name">Ashwagandha</div>
+<div class="plant-sci">Withania somnifera</div>
+<div class="plant-price pp-herb">₹80–250/kg root</div>
+</div>
+<div class="plant-card">
+<span class="plant-icon">🪴</span>
+<div class="plant-name">Aloe Vera</div>
+<div class="plant-sci">Aloe barbadensis</div>
+<div class="plant-price pp-herb">₹50–300/litre gel</div>
+</div>
+<div class="plant-card">
+<span class="plant-icon">🌾</span>
+<div class="plant-name">Lemongrass</div>
+<div class="plant-sci">Cymbopogon citratus</div>
+<div class="plant-price pp-amber">₹800–2,500/kg oil</div>
+</div>
+<div class="plant-card">
+<span class="plant-icon">🌿</span>
+<div class="plant-name">Citronella</div>
+<div class="plant-sci">Cymbopogon nardus</div>
+<div class="plant-price pp-amber">₹700–1,800/kg oil</div>
+</div>
+<div class="plant-card">
+<span class="plant-icon">🌺</span>
+<div class="plant-name">Shatavari</div>
+<div class="plant-sci">Asparagus racemosus</div>
+<div class="plant-price pp-herb">₹100–400/kg root</div>
+</div>
+<div class="plant-card">
+<span class="plant-icon">🌿</span>
+<div class="plant-name">Brahmi</div>
+<div class="plant-sci">Bacopa monnieri</div>
+<div class="plant-price pp-herb">₹40–120/kg dried</div>
+</div>
+<div class="plant-card">
+<span class="plant-icon">🌱</span>
+<div class="plant-name">Stevia</div>
+<div class="plant-sci">Stevia rebaudiana</div>
+<div class="plant-price pp-teal">₹150–600/kg leaf</div>
+</div>
+<div class="plant-card">
+<span class="plant-icon">💛</span>
+<div class="plant-name">Turmeric (Medicinal)</div>
+<div class="plant-sci">Curcuma longa</div>
+<div class="plant-price pp-amber">₹200–1,200/kg extract</div>
+</div>
+<div class="plant-card">
+<span class="plant-icon">🌿</span>
+<div class="plant-name">Peppermint</div>
+<div class="plant-sci">Mentha × piperita</div>
+<div class="plant-price pp-teal">₹600–1,500/kg oil</div>
+</div>
+</div>
+<div class="sec-head herb-head"><i class="ti ti-settings-2"></i>How to Start — Step by Step <span class="sec-head-line herb-line"></span></div>
+<div class="steps">
+<div class="step step-herb"><div><div class="step-title">Choose 2–3 High-Demand Crops</div><div class="step-desc">Start with Tulsi + Lemongrass + Aloe Vera as your starter trio. These need minimal care, have strong local and export markets, and grow well in all of West Bengal including Bankura district.</div></div></div>
+<div class="step step-herb"><div><div class="step-title">Land Preparation &amp; Sourcing Material</div><div class="step-desc">Prepare raised beds with organic compost at 5–8 t/acre. Source certified planting material from CSIR-NBRI Lucknow, CIMAP (Central Institute of Medicinal &amp; Aromatic Plants), or your nearest KVK. Avoid uncertified roadside vendors for medicinal plants.</div></div></div>
+<div class="step step-herb"><div><div class="step-title">Cultivation &amp; Gap Filling</div><div class="step-desc">Plant in monsoon (July–August) for best establishment. Tulsi: 30×30 cm spacing; Lemongrass: 60×60 cm; Aloe Vera: 45×45 cm. Weed control is critical in first 2 months. No heavy chemical fertilisers — organic preferred for market premium.</div></div></div>
+<div class="step step-herb"><div><div class="step-title">Harvest &amp; Drying</div><div class="step-desc">Tulsi: harvest aerial parts every 60–75 days. Lemongrass: cut 15 cm above ground every 3 months. Aloe: harvest outer leaves after 6–8 months. Dry shade-dried at below 45°C to retain active compounds. Moisture below 10% for export.</div></div></div>
+<div class="step step-herb"><div><div class="step-title">Essential Oil Extraction (Advanced)</div><div class="step-desc">Steam distillation unit for Lemongrass/Citronella oil: small unit ₹50,000–1,50,000. 100 kg fresh Lemongrass yields 0.6–0.8 kg essential oil worth ₹800–2,500/kg. Get oil tested at CIMAP or private lab before selling.</div></div></div>
+<div class="step step-herb"><div><div class="step-title">Sell &amp; Register</div><div class="step-desc">Sell dried herbs to local ayurvedic medicine manufacturers, traders in Kolkata's Burrabazar herb market, or bulk buyers via eNAM. For export: register with APEDA + AYUSH Ministry for herbal export certification. AGMARK certification raises your market value significantly.</div></div></div>
+</div>
+<div class="sec-head herb-head"><i class="ti ti-package"></i>Products &amp; Value Chain <span class="sec-head-line herb-line"></span></div>
+<div class="cards-grid">
+<div class="card c-herb">
+<div class="card-title"><i class="ti ti-flask"></i>Essential Oils (Highest Value)</div>
+<span class="badge b-herb">₹700–25,000/kg</span>
+<div class="tip tip-herb">Lemongrass oil: ₹800–2,500/kg — Japan, USA, Germany are top buyers</div>
+<div class="tip tip-herb">Citronella oil: ₹700–1,800/kg — natural mosquito repellent, strong EU demand</div>
+<div class="tip tip-herb">Peppermint oil: ₹1,500–6,000/kg — food, pharma, cosmetic industries</div>
+<div class="tip tip-herb">Rose geranium oil: ₹8,000–25,000/kg — luxury perfumery ingredient</div>
+</div>
+<div class="card c-teal">
+<div class="card-title"><i class="ti ti-leaf"></i>Dried Herbs &amp; Powders</div>
+<span class="badge b-teal">Steady Income</span>
+<div class="tip tip-teal">Ashwagandha root powder: ₹150–800/kg — nutraceutical market growing 40% annually</div>
+<div class="tip tip-teal">Tulsi dried leaves: ₹40–200/kg — herbal tea ingredient, exported to Europe</div>
+<div class="tip tip-teal">Aloe vera gel/powder: ₹300–1,200/kg — cosmetics, food industry demand</div>
+<div class="tip tip-teal">Stevia leaf powder: ₹200–1,000/kg — natural sweetener, replacing sugar globally</div>
+</div>
+<div class="card c-amber">
+<div class="card-title"><i class="ti ti-brand-mastercard"></i>Processed Products</div>
+<span class="badge b-amber">Best Margins</span>
+<div class="tip tip-amber">Tulsi herbal tea bags — branded packaging, sell ₹200–800/100 bags</div>
+<div class="tip tip-amber">Aloe vera juice (bottled) — FSSAI licensed, retail ₹80–200/litre</div>
+<div class="tip tip-amber">Ashwagandha capsules — pharma collaboration or own brand, ₹400–2,000/bottle</div>
+<div class="tip tip-amber">Herbal face pack / cosmetic kit — cottage industry, Instagram and Amazon sales</div>
+</div>
+</div>
+</div>
+<!-- ══ FLORICULTURE ══ -->
+<div class="section" id="cat-flori">
+<div class="alert al-rose"><i class="ti ti-rosette"></i><span>India's floriculture market is ₹15,000 crore+ and growing at 25% annually. Flower farming is one of the most <strong>recession-proof</strong> businesses — demand from weddings, festivals and exports never stops.</span></div>
+<div class="stat-row">
+<div class="stat-card"><div class="stat-num sn-rose">₹15,000Cr</div><div class="stat-label">India's domestic floriculture market</div></div>
+<div class="stat-card"><div class="stat-num sn-rose">$800M</div><div class="stat-label">India's floriculture export target 2025</div></div>
+<div class="stat-card"><div class="stat-num sn-rose">365 days</div><div class="stat-label">Demand never stops — festivals year-round</div></div>
+<div class="stat-card"><div class="stat-num sn-rose">₹3–8L</div><div class="stat-label">Annual income per 0.5 acre poly-house</div></div>
+</div>
+<div class="sec-head rose-head"><i class="ti ti-rosette"></i>Flowers to Grow — By Demand <span class="sec-head-line rose-line"></span></div>
+<div class="flower-grid">
+<div class="flower-card"><span class="flower-icon">🌼</span><div class="flower-name">Marigold (গাঁদা)</div><div class="flower-price">₹15–60/kg</div><div class="flower-use">Pujas · Garlands · Dye</div></div>
+<div class="flower-card"><span class="flower-icon">🤍</span><div class="flower-name">Tuberose (রজনীগন্ধা)</div><div class="flower-price">₹40–120/kg</div><div class="flower-use">Weddings · Export</div></div>
+<div class="flower-card"><span class="flower-icon">🌸</span><div class="flower-name">Gerbera (জারবেরা)</div><div class="flower-price">₹2–8/stem</div><div class="flower-use">Bouquets · Hotels</div></div>
+<div class="flower-card"><span class="flower-icon">🌹</span><div class="flower-name">Rose (গোলাপ)</div><div class="flower-price">₹3–15/stem</div><div class="flower-use">All Occasions · Export</div></div>
+<div class="flower-card"><span class="flower-icon">🌻</span><div class="flower-name">Chrysanthemum</div><div class="flower-price">₹30–100/kg</div><div class="flower-use">Puja · Decoration</div></div>
+<div class="flower-card"><span class="flower-icon">💐</span><div class="flower-name">Gladiolus</div><div class="flower-price">₹2–6/stem</div><div class="flower-use">Decoration · Florist</div></div>
+<div class="flower-card"><span class="flower-icon">🌺</span><div class="flower-name">Anthurium</div><div class="flower-price">₹15–60/stem</div><div class="flower-use">Hotels · Export</div></div>
+<div class="flower-card"><span class="flower-icon">💜</span><div class="flower-name">Orchid (Hybrid)</div><div class="flower-price">₹30–200/stem</div><div class="flower-use">Luxury · Export</div></div>
+</div>
+<div class="sec-head rose-head"><i class="ti ti-calendar-event"></i>Annual Market Opportunities <span class="sec-head-line rose-line"></span></div>
+<div class="cards-grid">
+<div class="card c-rose">
+<div class="card-title"><i class="ti ti-star"></i>Festival &amp; Religious Demand</div>
+<span class="badge b-rose">Year-Round Sales</span>
+<div class="tip tip-rose">Durga Puja (Oct) — Bengal's biggest demand; marigold, tuberose spike 300–500% in price</div>
+<div class="tip tip-rose">Kali Puja, Jagaddhatri Puja — back-to-back festival demand in Bengal</div>
+<div class="tip tip-rose">Saraswati Puja (Feb) — yellow marigold demand especially high in WB</div>
+<div class="tip tip-rose">Eid, Christmas, Diwali — continuous demand throughout the year across India</div>
+<div class="tip tip-rose">Temple supply contracts — steady daily income from local temples and pandals</div>
+</div>
+<div class="card c-amber">
+<div class="card-title"><i class="ti ti-heart"></i>Wedding &amp; Event Market</div>
+<span class="badge b-amber">High Value Orders</span>
+<div class="tip tip-amber">Wedding season (Nov–Feb) — bulk orders from decorators worth ₹10,000–5,00,000 per event</div>
+<div class="tip tip-amber">Corporate events, hotel decoration — monthly supply contracts possible</div>
+<div class="tip tip-amber">Dried flower craft products — export to EU and USA via Etsy, Amazon Handmade</div>
+<div class="tip tip-amber">Floral essential oils (rose, jasmine) — cosmetic grade, high-value export</div>
+</div>
+</div>
+<div class="sec-head rose-head"><i class="ti ti-settings-2"></i>Cultivation Tips — Marigold &amp; Tuberose <span class="sec-head-line rose-line"></span></div>
+<div class="steps">
+<div class="step step-rose"><div><div class="step-title">Marigold — Easiest Start</div><div class="step-desc">Sow seeds in nursery trays in June–July. Transplant 45×45 cm at 25–30 days. First harvest in 70–80 days. Harvest before full bloom for longevity. Yield: 8–12 tonnes/acre. Sell to garland makers, flower mandis, wholesalers. Cultivate African Marigold (Tagetes erecta) for highest yield.</div></div></div>
+<div class="step step-rose"><div><div class="step-title">Tuberose — Premium Income</div><div class="step-desc">Plant bulbs March–April at 30×15 cm spacing. Single petal varieties (Shringar, Calcutta Double) for local market; Double petal for garland export. First flowering in 90–100 days. Bulb sets multiply — once established, minimal replanting needed. Yield: 8–10 tonnes spikes/acre.</div></div></div>
+<div class="step step-rose"><div><div class="step-title">Gerbera — Poly-house Value</div><div class="step-desc">Grow in poly-house for export-grade quality. Plant tissue-cultured plugs at 30×30 cm. Drip irrigate with fertigation. First harvest in 70–80 days; productive for 3–4 years. Yield: 60–80 stems/plant/year. Cold-chain pack in corrugated boxes for hotel and florist supply at ₹4–8/stem.</div></div></div>
+</div>
+</div>
+<!-- ══ HYDROPONICS ══ -->
+<div class="section" id="cat-hydro">
+<div class="alert al-indigo"><i class="ti ti-droplet"></i><span>Hydroponics — growing crops in nutrient-rich water without soil — is India's fastest-growing urban farming technology. <strong>No land? No problem.</strong> Grow premium vegetables and herbs in flats, rooftops and balconies.</span></div>
+<div class="stat-row">
+<div class="stat-card"><div class="stat-num sn-indigo">90%</div><div class="stat-label">Less water than soil farming</div></div>
+<div class="stat-card"><div class="stat-num sn-indigo">3–5×</div><div class="stat-label">Faster growth than soil-grown plants</div></div>
+<div class="stat-card"><div class="stat-num sn-indigo">₹30,000</div><div class="stat-label">Basic hobby setup cost (10 sq ft)</div></div>
+<div class="stat-card"><div class="stat-num sn-indigo">Zero</div><div class="stat-label">Soil needed — ideal for urban spaces</div></div>
+</div>
+<div class="sec-head indigo-head"><i class="ti ti-plant-2"></i>Best Crops for Hydroponics <span class="sec-head-line indigo-line"></span></div>
+<div class="plant-grid">
+<div class="plant-card"><span class="plant-icon">🥬</span><div class="plant-name">Lettuce</div><div class="plant-sci">25–35 days to harvest</div><div class="plant-price pp-teal">₹80–200/kg</div></div>
+<div class="plant-card"><span class="plant-icon">🌿</span><div class="plant-name">Basil &amp; Herbs</div><div class="plant-sci">20–30 days</div><div class="plant-price pp-herb">₹150–600/kg</div></div>
+<div class="plant-card"><span class="plant-icon">🍅</span><div class="plant-name">Cherry Tomato</div><div class="plant-sci">60–75 days</div><div class="plant-price pp-rose">₹120–350/kg</div></div>
+<div class="plant-card"><span class="plant-icon">🫑</span><div class="plant-name">Capsicum / Bell Pepper</div><div class="plant-sci">70–80 days</div><div class="plant-price pp-amber">₹100–400/kg</div></div>
+<div class="plant-card"><span class="plant-icon">🥒</span><div class="plant-name">Cucumber</div><div class="plant-sci">45–55 days</div><div class="plant-price pp-herb">₹60–150/kg</div></div>
+<div class="plant-card"><span class="plant-icon">🌱</span><div class="plant-name">Spinach / Palak</div><div class="plant-sci">20–25 days</div><div class="plant-price pp-teal">₹60–180/kg</div></div>
+<div class="plant-card"><span class="plant-icon">🌿</span><div class="plant-name">Coriander / Mint</div><div class="plant-sci">15–20 days</div><div class="plant-price pp-herb">₹80–300/kg</div></div>
+<div class="plant-card"><span class="plant-icon">🍓</span><div class="plant-name">Strawberry</div><div class="plant-sci">90+ days</div><div class="plant-price pp-rose">₹150–400/kg</div></div>
+</div>
+<div class="sec-head indigo-head"><i class="ti ti-list"></i>Hydroponic Systems Compared <span class="sec-head-line indigo-line"></span></div>
+<div class="hydro-compare">
+<div class="hydro-col">
+<div class="hydro-col-title" style="color:var(--herb)">🟢 Beginner Systems</div>
+<div class="tip tip-herb"><strong>NFT (Nutrient Film Technique)</strong> — thin film of nutrient solution flows over roots; ideal for leafy greens</div>
+<div class="tip tip-herb"><strong>Kratky Method</strong> — passive, no pump needed; roots sit in nutrient water with air gap; cheapest to set up</div>
+<div class="tip tip-herb"><strong>Deep Water Culture (DWC)</strong> — roots submerged in aerated nutrient solution; fast growth for lettuce</div>
+<div class="tip tip-herb">Setup cost: ₹500–5,000 per plant site; start with 20–30 plants</div>
+</div>
+<div class="hydro-col">
+<div class="hydro-col-title" style="color:var(--indigo)">🔵 Advanced Systems</div>
+<div class="tip tip-indigo"><strong>Vertical Tower Gardens</strong> — stack many plants vertically; perfect for urban rooftops</div>
+<div class="tip tip-indigo"><strong>Aeroponics</strong> — roots misted with nutrient solution; fastest growth, highest yield</div>
+<div class="tip tip-indigo"><strong>Dutch Bucket System</strong> — for larger fruiting crops (tomato, capsicum, cucumber)</div>
+<div class="tip tip-indigo">Setup cost: ₹15,000–3,00,000; suitable for commercial production</div>
+</div>
+</div>
+<div class="cards-grid">
+<div class="card c-indigo">
+<div class="card-title"><i class="ti ti-building"></i>Commercial Opportunity</div>
+<span class="badge b-indigo">Urban Farming</span>
+<div class="tip tip-indigo">Hotel and restaurant supply — premium hydroponic lettuce fetches ₹200–400/kg vs ₹40/kg field-grown</div>
+<div class="tip tip-indigo">Supermarket tie-up — branded "pesticide-free" hydroponic vegetables sell at 2–4× premium</div>
+<div class="tip tip-indigo">Rooftop hydroponic farm of 1,000 sq ft can generate ₹40,000–80,000/month in Kolkata</div>
+<div class="tip tip-indigo">NABARD provides hydroponics as a fundable activity under agri-business loans</div>
+</div>
+<div class="card c-teal">
+<div class="card-title"><i class="ti ti-coin"></i>Income Estimates</div>
+<span class="badge b-teal">Scale-Able</span>
+<div class="tip tip-teal">Home setup (100 plants): ₹8,000–15,000/month additional income</div>
+<div class="tip tip-teal">Small commercial (500 plants, rooftop): ₹25,000–60,000/month</div>
+<div class="tip tip-teal">Large unit (2,000+ plants, poly-house): ₹1,00,000–2,50,000/month</div>
+<div class="tip tip-teal">Microgreens (10-day crop): ₹200–1,500/tray — fastest cash-generating hydroponic crop</div>
+</div>
+</div>
+</div>
+<!-- ══ SNAIL FARMING ══ -->
+<div class="section" id="cat-snail">
+<div class="alert al-teal"><i class="ti ti-snail"></i><span>Snail farming (Heliculture) is a fast-emerging niche with <strong>massive export potential</strong>. Snail slime (mucin) is now a premium cosmetic ingredient worldwide. France, Italy, Belgium are top buyers of live snails and processed products.</span></div>
+<div class="stat-row">
+<div class="stat-card"><div class="stat-num sn-teal">$2B+</div><div class="stat-label">Global snail cosmetic ingredient market (2024)</div></div>
+<div class="stat-card"><div class="stat-num sn-teal">₹500–800</div><div class="stat-label">Per kg live snail export price</div></div>
+<div class="stat-card"><div class="stat-num sn-teal">10 sq ft</div><div class="stat-label">Minimum space needed to start</div></div>
+<div class="stat-card"><div class="stat-num sn-teal">3–5 yrs</div><div class="stat-label">Productive lifespan of a snail</div></div>
+</div>
+<div class="sec-head teal-head"><i class="ti ti-list"></i>Why Snail Farming? <span class="sec-head-line teal-line"></span></div>
+<div class="cards-grid">
+<div class="card c-teal">
+<div class="card-title"><i class="ti ti-sparkles"></i>Cosmetic Industry (Highest Value)</div>
+<span class="badge b-teal">₹10,000–80,000/kg</span>
+<div class="tip tip-teal">Snail slime (Helix Aspersa Muller secretion filtrate) used in premium anti-aging creams</div>
+<div class="tip tip-teal">Korean beauty (K-Beauty) trend popularised snail cream globally — demand exploding</div>
+<div class="tip tip-teal">L'Occitane, Tony Moly, COSRX all use snail secretion — major ingredient companies sourcing</div>
+<div class="tip tip-teal">100g of purified snail mucin can sell for ₹5,000–80,000 depending on purity and grade</div>
+<div class="tip tip-teal">India has almost zero competition in snail cosmetic ingredient production — first-mover advantage</div>
+</div>
+<div class="card c-green">
+<div class="card-title"><i class="ti ti-drumstick"></i>Food &amp; Feed Uses</div>
+<span class="badge b-green">Multiple Markets</span>
+<div class="tip tip-herb">Escargot (edible snail) — European delicacy; France, Belgium, Italy import 300,000 tonnes/year</div>
+<div class="tip tip-herb">Snail meat is high protein (16%), low fat, rich in omega-3 and iron — health food market</div>
+<div class="tip tip-herb">Snail shell powder (calcium carbonate) — poultry feed supplement, sold at ₹20–50/kg</div>
+<div class="tip tip-herb">Snail egg protein — emerging luxury food ingredient in European fine dining</div>
+<div class="tip tip-herb">India's own market for snail as protein food is small but growing in tribal and coastal areas</div>
+</div>
+</div>
+<div class="sec-head teal-head"><i class="ti ti-settings-2"></i>How to Start Snail Farming <span class="sec-head-line teal-line"></span></div>
+<div class="steps">
+<div class="step step-teal"><div><div class="step-title">Choose Your Species</div><div class="step-desc">For export/cosmetics: Helix Aspersa Muller (Garden snail) or Achatina fulica (Giant African Snail). A. fulica is easiest to rear in Indian climate — grows to 200–500g, fast breeder. Source from established breeders or collect ethically from local habitats where abundant.</div></div></div>
+<div class="step step-teal"><div><div class="step-title">Set Up Enclosure</div><div class="step-desc">Use wooden boxes, mesh cages or small greenhouse-type enclosures (called snaileries). Ground level or raised bed: 1 sq m can support 50–80 adult snails. Shade net essential — snails are nocturnal and avoid direct sunlight. Maintain 75–80% humidity.</div></div></div>
+<div class="step step-teal"><div><div class="step-title">Feeding &amp; Care</div><div class="step-desc">Feed: leafy greens, pawpaw leaves, banana, cooked cornmeal, carrots, squash. Add calcium source (crushed eggshell, limestone powder) for shell development. Feed 5% of body weight daily. Clean enclosure weekly — hygiene is critical to prevent disease outbreaks.</div></div></div>
+<div class="step step-teal"><div><div class="step-title">Breeding &amp; Harvest</div><div class="step-desc">Snails are hermaphrodites — all snails can breed. One pair produces 200–400 eggs per year. Eggs hatch in 2–3 weeks. Snails reach market size (100–250g) in 8–12 months. Harvest by hand. For cosmetic mucin: stimulate secretion by gentle agitation or mild irritant — no harm to snail.</div></div></div>
+<div class="step step-teal"><div><div class="step-title">Market &amp; Export</div><div class="step-desc">For local sale: connect with exotic food restaurants in Kolkata/Metro cities. For export: find buyers on Alibaba.com (search "snail suppliers Europe"). Register with APEDA. Snail mucin for cosmetics requires laboratory purification — partner with biotech companies or CSIR labs for processing.</div></div></div>
+</div>
+</div>
+<!-- ══ VERMICOMPOST ══ -->
+<div class="section" id="cat-vermi">
+<div class="alert al-brown"><i class="ti ti-worm"></i><span>Vermicompost is liquid gold for soil. With organic farming growing globally and Indian government pushing natural farming, <strong>demand for vermicompost has never been higher</strong>. And all you need is kitchen waste and earthworms.</span></div>
+<div class="stat-row">
+<div class="stat-card"><div class="stat-num sn-amber">₹6,000Cr</div><div class="stat-label">India's vermicompost market size (2024)</div></div>
+<div class="stat-card"><div class="stat-num sn-amber">₹4–12/kg</div><div class="stat-label">Selling price of vermicompost</div></div>
+<div class="stat-card"><div class="stat-num sn-amber">Zero</div><div class="stat-label">Raw material cost — all agricultural waste</div></div>
+<div class="stat-card"><div class="stat-num sn-amber">45–60</div><div class="stat-label">Days per production cycle</div></div>
+</div>
+<div class="sec-head brown-head"><i class="ti ti-worm"></i>Why Vermicompost is a Business Opportunity <span class="sec-head-line brown-line"></span></div>
+<div class="cards-grid">
+<div class="card c-brown">
+<div class="card-title"><i class="ti ti-trending-up"></i>Market Demand</div>
+<span class="badge b-brown">Growing Fast</span>
+<div class="tip tip-brown">India's National Natural Farming Mission pushing chemical-free farming — massive institutional demand</div>
+<div class="tip tip-brown">Organic farmers pay ₹8–15/kg for quality vermicompost — 3–4× higher than chemical fertiliser price</div>
+<div class="tip tip-brown">State governments including West Bengal buying vermicompost for public parks and urban farming</div>
+<div class="tip tip-brown">Export potential: EU organic ingredient buyers sourcing vermicompost tea and worm castings</div>
+</div>
+<div class="card c-herb">
+<div class="card-title"><i class="ti ti-recycle"></i>Waste to Wealth Connection</div>
+<span class="badge b-herb">Circular Economy</span>
+<div class="tip tip-herb">Input: agricultural waste, cow dung, kitchen waste, leaf litter, fish processing waste — all free or near-free</div>
+<div class="tip tip-herb">Fish scale and fish processing waste from nearby markets can be added to vermi beds</div>
+<div class="tip tip-herb">Municipality contracts for biosolid waste management — B2B circular economy service possible</div>
+<div class="tip tip-herb">Carbon credits potential — vermicompost sequesters carbon, qualifying for future offset schemes</div>
+</div>
+</div>
+<div class="sec-head brown-head"><i class="ti ti-settings-2"></i>Setting Up a Vermicompost Unit <span class="sec-head-line brown-line"></span></div>
+<div class="steps">
+<div class="step step-brown"><div><div class="step-title">Choose Location &amp; Bed Type</div><div class="step-desc">Shaded outdoor area or shed. Make beds in brick tanks, HDPE tubs, or on cemented floor (1.5 m × 1 m × 0.6 m). Raised beds prevent flooding. Shade net above — worms die above 35°C and in direct sunlight. Investment: ₹3,000–25,000 for basic setup.</div></div></div>
+<div class="step step-brown"><div><div class="step-title">Source Earthworms</div><div class="step-desc">Eisenia fetida (Red wiggler) is best for vermicomposting. Purchase 1–2 kg of worms per bed from KVK, ICAR centres, or private sellers (₹200–400/kg). These reproduce every 60–90 days — one-time investment. Never use field earthworms — they do not compost efficiently.</div></div></div>
+<div class="step step-brown"><div><div class="step-title">Prepare &amp; Add Feed Material</div><div class="step-desc">Mix cow dung + agricultural waste + kitchen waste in 2:1:1 ratio. Pre-compost for 15–20 days (hot composting) before adding worms — raw material is too hot for worms. Maintain 60–70% moisture — squeeze test: a handful should hold shape but not drip. Add material in thin layers every 10–15 days.</div></div></div>
+<div class="step step-brown"><div><div class="step-title">Harvest &amp; Pack</div><div class="step-desc">After 45–60 days, surface becomes dark, crumbly and earthy-smelling — ready to harvest. Stop feeding 15 days before harvest so worms migrate down. Screen through 6mm mesh. Pack in jute bags or HDPE bags (25 kg). Vermicompost: ₹4–12/kg. Worm castings liquid (leachate): dilute 1:10 — spray on crops as liquid fertiliser.</div></div></div>
+<div class="step step-brown"><div><div class="step-title">Scale &amp; Sell</div><div class="step-desc">10 beds (15 sq m): produce 1–2 tonnes/month — income ₹5,000–20,000/month. Sell to farmers directly, Krishak Bazaar, organic stores, eNAM portal. SHG of 10 women can manage 30–50 beds with ₹50,000 investment. State Horticulture Dept and NABARD provide 50–75% subsidy on vermicompost units.</div></div></div>
+</div>
+<div class="cards-grid">
+<div class="card c-gold">
+<div class="card-title"><i class="ti ti-package"></i>Products You Can Sell</div>
+<span class="badge b-gold">Multiple Revenue Streams</span>
+<div class="tip tip-gold">Vermicompost (solid) — ₹4–12/kg in bulk; ₹30–80/kg branded retail pack</div>
+<div class="tip tip-gold">Vermi-wash / leachate liquid — diluted spray, ₹50–200/litre for organic farmers</div>
+<div class="tip tip-gold">Live worms (breeding stock) — ₹200–400/kg; high demand from new farmers</div>
+<div class="tip tip-gold">Worm castings (pure) — ₹20–60/kg for premium organic nurseries and gardens</div>
+<div class="tip tip-gold">Ready-to-use potting mix (compost + coir + sand) — ₹50–150 per 5 kg bag</div>
+</div>
+</div>
+</div>
+<!-- ══ VALUE-ADDED PRODUCTS ══ -->
+<div class="section" id="cat-value">
+<div class="alert al-amber"><i class="ti ti-bottle"></i><span>Value addition turns ₹10 worth of fruit into ₹100 worth of product. Pickle, Jam, Jelly, Squash and Dehydrated fruits are <strong>cottage industry goldmines</strong> requiring minimal investment and no special technical degree.</span></div>
+<div class="stat-row">
+<div class="stat-card"><div class="stat-num sn-amber">₹25,000Cr</div><div class="stat-label">India's packaged food market growth by 2027</div></div>
+<div class="stat-card"><div class="stat-num sn-amber">5–10×</div><div class="stat-label">Value multiplier from raw to processed</div></div>
+<div class="stat-card"><div class="stat-num sn-amber">₹5,000</div><div class="stat-label">Minimum to start a home processing unit</div></div>
+<div class="stat-card"><div class="stat-num sn-amber">12 months</div><div class="stat-label">Shelf life of properly preserved products</div></div>
+</div>
+<div class="sec-head amber-head"><i class="ti ti-bottle"></i>Products You Can Make &amp; Sell <span class="sec-head-line amber-line"></span></div>
+<div class="value-grid">
+<div class="value-card"><span class="value-icon">🫙</span><div class="value-name">Pickle (Achar)</div><div class="value-margin">₹150–500/kg</div></div>
+<div class="value-card"><span class="value-icon">🍯</span><div class="value-name">Jam</div><div class="value-margin">₹200–600/kg</div></div>
+<div class="value-card"><span class="value-icon">🍬</span><div class="value-name">Jelly</div><div class="value-margin">₹250–800/kg</div></div>
+<div class="value-card"><span class="value-icon">🧃</span><div class="value-name">Squash / Syrup</div><div class="value-margin">₹100–350/litre</div></div>
+<div class="value-card"><span class="value-icon">🍂</span><div class="value-name">Dehydrated Fruits</div><div class="value-margin">₹500–3,000/kg</div></div>
+<div class="value-card"><span class="value-icon">🫙</span><div class="value-name">Chutney</div><div class="value-margin">₹150–400/kg</div></div>
+<div class="value-card"><span class="value-icon">🍹</span><div class="value-name">Herbal Tea Blend</div><div class="value-margin">₹300–1,500/kg</div></div>
+<div class="value-card"><span class="value-icon">🌶️</span><div class="value-name">Spice Powder Blend</div><div class="value-margin">₹200–800/kg</div></div>
+<div class="value-card"><span class="value-icon">🍃</span><div class="value-name">Dried Herb Sachets</div><div class="value-margin">₹200–600/kg</div></div>
+<div class="value-card"><span class="value-icon">🧴</span><div class="value-name">Essential Oil-Infused Products</div><div class="value-margin">Premium</div></div>
+</div>
+<div class="sec-head amber-head"><i class="ti ti-settings-2"></i>How to Start a Home Processing Unit <span class="sec-head-line amber-line"></span></div>
+<div class="steps">
+<div class="step step-amber"><div><div class="step-title">Legal Setup (First &amp; Most Important)</div><div class="step-desc">Get FSSAI Basic Registration (₹100/year for home-based micro unit). This is mandatory for any food product sale. For turnover above ₹12 lakh/year: FSSAI State License (₹2,000–5,000). GST registration optional below ₹20 lakh turnover. Udyam MSME registration: free, gives access to government schemes and loans.</div></div></div>
+<div class="step step-amber"><div><div class="step-title">Equipment for Beginners (₹10,000–30,000)</div><div class="step-desc">Stainless steel vessels (20–50 litre), weighing scale, refractometer (for jam/jelly sugar measurement), sealing machine (₹2,000–8,000), glass/PET bottles/jars, labelling printer. Start with 1–2 products only — master quality before diversifying.</div></div></div>
+<div class="step step-amber"><div><div class="step-title">Recipe Standardisation &amp; Quality</div><div class="step-desc">Use FSSAI-approved recipes and preservative levels. Key rule: Jam must have minimum 68% TSS (total soluble solids measured by refractometer). Pickle oil-to-vegetable ratio and salt % determine shelf life. Get first batch tested at NABL lab before commercial launch. Consistency is what creates repeat customers.</div></div></div>
+<div class="step step-amber"><div><div class="step-title">Packaging &amp; Branding</div><div class="step-desc">Attractive packaging is 60% of your retail success. Use food-grade glass jars. Create a brand name, logo (free on Canva). Labels must include: product name, ingredients, net weight, manufacturing date, best before date, FSSAI license number, and your address. Minimum label requirements by law.</div></div></div>
+<div class="step step-amber"><div><div class="step-title">Sell Online &amp; Offline</div><div class="step-desc">Local: grocery stores, farmer's markets, school canteens, gift shops. Online: Amazon Easy Store, Meesho, WhatsApp Business, Instagram Shop. Niche opportunity: "homemade", "no preservatives", "Bengali traditional" positioning commands 2–3× premium. Gift hamper sets for Durga Puja, Diwali — seasonal business with high margins.</div></div></div>
+</div>
+<div class="sec-head amber-head"><i class="ti ti-fruit"></i>Best Fruit-Product Combinations <span class="sec-head-line amber-line"></span></div>
+<table class="inc-table">
+<thead>
+<tr style="background:linear-gradient(90deg,var(--amber),var(--gold))"><th>Raw Material</th><th>Best Product</th><th>Cost/kg raw</th><th>Selling Price</th><th>Margin</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>🍓 Strawberry</strong></td><td>Jam / Dried Strawberry</td><td>₹40–80</td><td>₹300–2,000/kg</td><td>Very High</td></tr>
+<tr><td><strong>🥭 Mango</strong></td><td>Pickle / Squash / Amchur</td><td>₹20–60</td><td>₹150–600/kg</td><td>High</td></tr>
+<tr><td><strong>🍈 Guava</strong></td><td>Jam / Jelly</td><td>₹15–40</td><td>₹200–500/kg</td><td>Very High</td></tr>
+<tr><td><strong>🍋 Lemon / Lime</strong></td><td>Pickle / Squash</td><td>₹20–50</td><td>₹150–400/kg</td><td>High</td></tr>
+<tr><td><strong>🧅 Onion / Garlic</strong></td><td>Pickle / Chutney</td><td>₹20–60</td><td>₹200–500/kg</td><td>Good</td></tr>
+<tr><td><strong>🌿 Tulsi / Hibiscus</strong></td><td>Herbal Tea / Syrup</td><td>₹5–30</td><td>₹500–2,000/kg</td><td>Excellent</td></tr>
+<tr><td><strong>🐉 Dragon Fruit</strong></td><td>Jam / Dried / Juice</td><td>₹80–150</td><td>₹400–2,500/kg</td><td>High</td></tr>
+</tbody>
+</table>
+</div>
+<!-- ══ SCHEMES ══ -->
+<div class="section" id="cat-schemes">
+<div class="alert al-grape"><i class="ti ti-shield-check"></i><span>All six sectors covered in this guide are directly supported by Central and State government schemes offering subsidies, training, cold-chain support and market linkage.</span></div>
+<div class="sec-head grape-head"><i class="ti ti-clipboard-list"></i>Central Government Schemes <span class="sec-head-line grape-line"></span></div>
+<table class="inc-table">
+<thead>
+<tr style="background:linear-gradient(90deg,var(--grape),#8e24aa)"><th>Scheme</th><th>Benefit</th><th>For Whom</th><th>Apply At</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>PMFME (Micro Food Enterprises)</strong></td><td>35% grant up to ₹10 lakh on food processing unit upgradation — jam, pickle, squash, dehydration</td><td>Individual micro food enterprises</td><td>mofpi.gov.in</td></tr>
+<tr><td><strong>MIDH (Integrated Horticulture Dev.)</strong></td><td>40–50% subsidy on floriculture, medicinal plant cultivation, poly-house, cold storage</td><td>Farmers, FPOs</td><td>midh.gov.in</td></tr>
+<tr><td><strong>NMPP (Medicinal Plants Mission)</strong></td><td>Support for medicinal plant cultivation, processing and market linkage — AYUSH linked</td><td>Farmers in notified clusters</td><td>nmpb.nic.in</td></tr>
+<tr><td><strong>PMEGP</strong></td><td>25–35% margin money; loan up to ₹25 lakh for vermicompost units, food processing, snail farming</td><td>Individuals, SHGs, cooperatives</td><td>kviconline.gov.in</td></tr>
+<tr><td><strong>DAY-NRLM (Aajeevika)</strong></td><td>₹1.5–3 lakh revolving fund + training for SHG women in any of these livelihood activities</td><td>Women SHG members</td><td>aajeevika.gov.in</td></tr>
+<tr><td><strong>Startup India Seed Fund</strong></td><td>Up to ₹20 lakh seed funding for agri-tech startups including hydroponics, snail farming, innovative value-addition</td><td>Registered startups</td><td>startupindia.gov.in</td></tr>
+<tr><td><strong>NABARD FPO Scheme</strong></td><td>₹18 lakh equity grant for Fisher/Farmer Producer Organisations; covers medicinal plant, floriculture clusters</td><td>Groups of 300+ farmers</td><td>nabard.org</td></tr>
+</tbody>
+</table>
+<div class="sec-head grape-head"><i class="ti ti-map-pin"></i>West Bengal State Schemes <span class="sec-head-line grape-line"></span></div>
+<div class="cards-grid">
+<div class="card c-grape">
+<div class="card-title"><i class="ti ti-plant-2"></i>WB Horticulture &amp; Agriculture</div>
+<span class="badge b-grape">State Support</span>
+<div class="tip tip-grape">WBHDC Floriculture Mission — free planting material and poly-house subsidy for marigold, tuberose, gerbera</div>
+<div class="tip tip-grape">Bangla Sahayata Kendra — one-stop shop for all state scheme applications; available in Bishnupur block</div>
+<div class="tip tip-grape">Matir Smristi Scheme — soil health and organic farming support; subsidy on vermicompost unit setup</div>
+<div class="tip tip-grape">West Bengal Minority Development Finance Corporation — additional loans for minority women in these sectors</div>
+</div>
+<div class="card c-indigo">
+<div class="card-title"><i class="ti ti-school"></i>Training Available Near Bishnupur</div>
+<span class="badge b-indigo">Free Training</span>
+<div class="tip tip-indigo">KVK Bishnupur — medicinal plants, floriculture, vermicompost, food processing; free for farmers</div>
+<div class="tip tip-indigo">NIFTEM Kolkata — food processing technology for value-added products; certificate programmes</div>
+<div class="tip tip-indigo">CIMAP Lucknow — online courses in medicinal aromatic plant cultivation and distillation</div>
+<div class="tip tip-indigo">Skill India Digital — Floriculture Technician Level 3 course; government-recognised certificate</div>
+</div>
+</div>
+</div>
+<!-- ══ EXPORT ══ -->
+<div class="section" id="cat-export">
+<div class="alert al-indigo"><i class="ti ti-world"></i><span>Every product in this guide has an international market. From medicinal herb extracts to vermicompost, from snail slime to artisan pickles — global buyers are actively sourcing from India.</span></div>
+<div class="sec-head indigo-head"><i class="ti ti-chart-bar"></i>Export Markets by Product Category <span class="sec-head-line indigo-line"></span></div>
+<div class="cards-grid">
+<div class="card c-herb">
+<div class="card-title"><i class="ti ti-leaf"></i>🌿 Medicinal Herbs &amp; Essential Oils</div>
+<div class="market-item"><div class="market-label"><span class="market-name"><span class="market-flag">🇩🇪</span>Germany</span><span class="market-pct" style="color:var(--herb)">Herb extracts ₹500–8,000/kg</span></div><div class="market-bg"><div class="market-fill" style="width:88%;background:linear-gradient(90deg,var(--herb2),var(--teal))"></div></div></div>
+<div class="market-item"><div class="market-label"><span class="market-name"><span class="market-flag">🇺🇸</span>USA</span><span class="market-pct" style="color:var(--herb)">Ashwagandha supplements</span></div><div class="market-bg"><div class="market-fill" style="width:75%;background:linear-gradient(90deg,var(--herb2),var(--teal))"></div></div></div>
+<div class="market-item"><div class="market-label"><span class="market-name"><span class="market-flag">🇯🇵</span>Japan</span><span class="market-pct" style="color:var(--herb)">Essential oils, dried herbs</span></div><div class="market-bg"><div class="market-fill" style="width:60%;background:linear-gradient(90deg,var(--herb2),var(--teal))"></div></div></div>
+<div class="market-item"><div class="market-label"><span class="market-name"><span class="market-flag">🇦🇪</span>UAE</span><span class="market-pct" style="color:var(--herb)">Tulsi, herbal teas</span></div><div class="market-bg"><div class="market-fill" style="width:50%;background:linear-gradient(90deg,var(--herb2),var(--teal))"></div></div></div>
+</div>
+<div class="card c-rose">
+<div class="card-title"><i class="ti ti-rosette"></i>🌺 Floriculture</div>
+<div class="market-item"><div class="market-label"><span class="market-name"><span class="market-flag">🇳🇱</span>Netherlands (hub)</span><span class="market-pct" style="color:var(--rose)">Cut flowers, Rose</span></div><div class="market-bg"><div class="market-fill" style="width:85%;background:linear-gradient(90deg,var(--rose),#e53935)"></div></div></div>
+<div class="market-item"><div class="market-label"><span class="market-name"><span class="market-flag">🇦🇪</span>UAE / Gulf</span><span class="market-pct" style="color:var(--rose)">Bulk flowers, garlands</span></div><div class="market-bg"><div class="market-fill" style="width:70%;background:linear-gradient(90deg,var(--rose),#e53935)"></div></div></div>
+<div class="market-item"><div class="market-label"><span class="market-name"><span class="market-flag">🇯🇵</span>Japan</span><span class="market-pct" style="color:var(--rose)">Orchids, dried flowers</span></div><div class="market-bg"><div class="market-fill" style="width:55%;background:linear-gradient(90deg,var(--rose),#e53935)"></div></div></div>
+</div>
+<div class="card c-teal">
+<div class="card-title"><i class="ti ti-snail"></i>🐌 Snail Products</div>
+<div class="market-item"><div class="market-label"><span class="market-name"><span class="market-flag">🇫🇷</span>France</span><span class="market-pct" style="color:var(--teal)">Live snails, escargot</span></div><div class="market-bg"><div class="market-fill" style="width:90%;background:linear-gradient(90deg,var(--teal),#00897b)"></div></div></div>
+<div class="market-item"><div class="market-label"><span class="market-name"><span class="market-flag">🇰🇷</span>South Korea</span><span class="market-pct" style="color:var(--teal)">Snail slime (K-Beauty)</span></div><div class="market-bg"><div class="market-fill" style="width:75%;background:linear-gradient(90deg,var(--teal),#00897b)"></div></div></div>
+<div class="market-item"><div class="market-label"><span class="market-name"><span class="market-flag">🇮🇹</span>Italy / Belgium</span><span class="market-pct" style="color:var(--teal)">Edible snails</span></div><div class="market-bg"><div class="market-fill" style="width:60%;background:linear-gradient(90deg,var(--teal),#00897b)"></div></div></div>
+</div>
+<div class="card c-amber">
+<div class="card-title"><i class="ti ti-bottle"></i>🍯 Value-Added Products</div>
+<div class="market-item"><div class="market-label"><span class="market-name"><span class="market-flag">🇬🇧</span>UK (Indian diaspora)</span><span class="market-pct" style="color:var(--amber)">Pickles, chutneys</span></div><div class="market-bg"><div class="market-fill" style="width:80%;background:linear-gradient(90deg,var(--amber),var(--gold))"></div></div></div>
+<div class="market-item"><div class="market-label"><span class="market-name"><span class="market-flag">🇺🇸</span>USA (organic stores)</span><span class="market-pct" style="color:var(--amber)">Herbal teas, dried herbs</span></div><div class="market-bg"><div class="market-fill" style="width:65%;background:linear-gradient(90deg,var(--amber),var(--gold))"></div></div></div>
+<div class="market-item"><div class="market-label"><span class="market-name"><span class="market-flag">🇦🇺</span>Australia</span><span class="market-pct" style="color:var(--amber)">Jams, dehydrated fruits</span></div><div class="market-bg"><div class="market-fill" style="width:50%;background:linear-gradient(90deg,var(--amber),var(--gold))"></div></div></div>
+</div>
+</div>
+<div class="sec-head indigo-head"><i class="ti ti-certificate"></i>Export Checklist — All Products <span class="sec-head-line indigo-line"></span></div>
+<div class="prog-wrap">
+<div class="prog-label"><span id="prog-label-text">0 of 10 completed</span><span id="prog-pct">0%</span></div>
+<div class="prog-bg"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div>
+</div>
+<div class="card c-paper" id="export-checklist"></div>
+</div>
+<!-- ══ MYSKILLGAME ══ -->
+<div class="section" id="cat-myskill">
+<div class="myskill-footer">
+<h3>🎓 About <em>MySkillGame</em></h3>
+<p>MySkillGame empowers individuals with vocational skills, entrepreneurship knowledge, and livelihood opportunities. From fish scales to floriculture, snail farming to hydroponics — we believe practical knowledge is the most powerful form of freedom.</p>
+<div class="ms-pills">
+<span class="ms-pill">📚 Vocational Education</span>
+<span class="ms-pill">💼 Self Employment</span>
+<span class="ms-pill">💡 Startup Ideas</span>
+<span class="ms-pill">👩 Women Empowerment</span>
+<span class="ms-pill">🤝 SHG Opportunities</span>
+<span class="ms-pill">🌱 Environmental Awareness</span>
+<span class="ms-pill">♻️ Circular Economy</span>
+<span class="ms-pill">💰 Financial Literacy</span>
+</div>
+<div class="tagline">"Created for MySkillGame – Promoting Vocational Education, Entrepreneurship, Financial Literacy, Environmental Awareness and Sustainable Livelihood Opportunities."</div>
+</div>
+<div class="sec-head herb-head"><i class="ti ti-link"></i>Key Resources &amp; Contacts <span class="sec-head-line herb-line"></span></div>
+<div class="cards-grid">
+<div class="card c-herb">
+<div class="card-title"><i class="ti ti-building"></i>Government Portals</div>
+<div class="tip tip-herb">APEDA: apeda.gov.in — export registration for all agri products</div>
+<div class="tip tip-herb">NMPB (Medicinal Plants): nmpb.nic.in — medicinal plant mission schemes</div>
+<div class="tip tip-herb">MIDH: midh.gov.in — horticulture subsidies and floriculture support</div>
+<div class="tip tip-herb">PMFME: mofpi.gov.in — food processing micro enterprise grants</div>
+<div class="tip tip-herb">eNAM: enam.gov.in — sell produce online directly to buyers</div>
+<div class="tip tip-herb">KVK Bishnupur: +91-3244-252120 — free training, demo units, technical advice</div>
+</div>
+<div class="card c-amber">
+<div class="card-title"><i class="ti ti-devices"></i>Research &amp; Training Institutes</div>
+<div class="tip tip-amber">CIMAP Lucknow (cimap.res.in) — essential oil crops, medicinal plant training</div>
+<div class="tip tip-amber">NIFTEM Kolkata — food processing technology courses (niftem.ac.in)</div>
+<div class="tip tip-amber">ICAR-IIHR Bengaluru — floriculture variety information, hybrid seeds</div>
+<div class="tip tip-amber">Skill India Digital (skillindiadigital.gov.in) — free courses: floriculture, aquaculture, food processing</div>
+<div class="tip tip-amber">WBHDC, Kolkata — West Bengal horticulture schemes and planting material</div>
+</div>
+<div class="card c-teal">
+<div class="card-title"><i class="ti ti-heart"></i>Start Today from Bishnupur</div>
+<span class="badge b-teal">Your First Step</span>
+<div class="tip tip-teal">Visit KVK Bishnupur — get free soil test, crop recommendation, and training schedule</div>
+<div class="tip tip-teal">Visit Bangla Sahayata Kendra (Bishnupur Block) — apply for any WB scheme in one place</div>
+<div class="tip tip-teal">Form or join an SHG — access to ₹1.5–3 lakh NRLM revolving fund + collective strength</div>
+<div class="tip tip-teal">Start the smallest possible version: 10 mushroom bags, OR 1 flower bed, OR 1 vermi bed</div>
+<div class="tip tip-teal">Document everything: costs, yields, income — this is your business proof for bank loans</div>
+</div>
+</div>
+<div class="alert al-gold" style="margin-top:8px">
+<i class="ti ti-rocket"></i>
+<span><strong>The most important message:</strong> Every single one of these businesses started with someone who had no experience, little money, and big doubt. The only difference between them and you is that they took the first step. <strong>🌿 Your botanical wealth journey starts with one seed, one worm, one jar of jam. Start today.</strong></span>
+</div>
+</div>
+<footer class="site-footer">
+   © 2026 MySkillGame • Educational Games &amp; Awareness Projects
+</footer>
+</div><!-- /content -->
+<script>
+function switchCat(name, btn){
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('cat-' + name).classList.add('active');
+  btn.classList.add('active');
+  btn.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
+}
+
+// Export Checklist
+const exportChecks = [
+  "Udyam MSME registration completed (free online)",
+  "FSSAI Basic Registration obtained (₹100/year)",
+  "IEC code from DGFT applied (dgft.gov.in — free)",
+  "APEDA registration completed for agri/food products",
+  "Product sample sent to NABL-accredited laboratory",
+  "AGMARK or organic certification applied where relevant",
+  "Alibaba / TradeIndia profile created with product photos & lab reports",
+  "First 10–50 kg trial shipment packed and labelled correctly",
+  "At least 2 international buyer inquiries received",
+  "First export trial order confirmed and dispatched"
+];
+
+let states = exportChecks.map(() => false);
+
+function renderChecklist(){
+  const c = document.getElementById('export-checklist');
+  if(!c) return;
+  const done = states.filter(Boolean).length;
+  const pct = Math.round(done / exportChecks.length * 100);
+  document.getElementById('prog-fill').style.width = pct + '%';
+  document.getElementById('prog-label-text').textContent = `${done} of ${exportChecks.length} completed`;
+  document.getElementById('prog-pct').textContent = pct + '%';
+  c.innerHTML = exportChecks.map((t,i) => `
+    <div class="chk-item" onclick="toggleChk(${i})">
+      <div class="chk-box ${states[i]?'done':''}">
+        ${states[i]?'<i class="ti ti-check"></i>':''}
+      </div>
+      <span class="chk-text ${states[i]?'done':''}">${t}</span>
+    </div>
+  `).join('');
+}
+
+function toggleChk(i){
+  states[i] = !states[i];
+  renderChecklist();
+}
+
+renderChecklist();
+
+// Animate market bars when export tab opens
+document.querySelector('[data-cat="export"]').addEventListener('click', () => {
+  setTimeout(() => {
+    document.querySelectorAll('.market-fill').forEach(bar => {
+      const w = bar.style.width;
+      bar.style.width = '0%';
+      setTimeout(() => bar.style.width = w, 80);
+    });
+  }, 100);
+});
+</script><script src="security.js"></script>
+
+<footer class="footer">
+<div style="margin-bottom:18px;">
+<a href="about.html">About</a> |
+<a href="privacy.html">Privacy Policy</a> |
+<a href="terms.html">Terms &amp; Conditions</a> |
+<a href="contact.html">Contact</a> |
+<a href="disclaimer.html">Disclaimer</a>
+</div>
+<div class="footer-name">MYSKILLGAME</div>
+<div class="footer-copy">© 2026 MySkillGame • Developed by Surajit Roy</div>
+</footer>
+</body>
+</html>

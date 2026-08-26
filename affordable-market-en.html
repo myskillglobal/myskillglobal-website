@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Affordable Market — For Families with Limited Income</title>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-EC8BPWZDWC');
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,800&amp;family=Source+Sans+3:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --rice: #F6F1E4;
+    --rice-deep: #EDE4CE;
+    --ink: #2A2520;
+    --sabzi: #33503B;
+    --sabzi-deep: #223A29;
+    --turmeric: #D9A02A;
+    --turmeric-deep: #B87F16;
+    --brick: #8C3B2A;
+    --line: rgba(42,37,32,0.16);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--rice);
+    color:var(--ink);
+    font-family:'Source Sans 3',sans-serif;
+    line-height:1.75;
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3,.display{
+    font-family:'Fraunces',serif;
+    font-weight:700;
+    letter-spacing:0.01em;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+
+  a{color:inherit;}
+
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+
+  .grain{
+    position:fixed; inset:0; pointer-events:none; z-index:1; opacity:0.035; mix-blend-mode:multiply;
+    background-image:radial-gradient(circle at 1px 1px, #000 1px, transparent 0);
+    background-size:3px 3px;
+  }
+
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(246,241,228,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  header .wrap{display:flex; align-items:center; justify-content:space-between; padding:16px 24px;}
+  .brand{
+    font-family:'Fraunces',serif; font-weight:800; font-size:1.15rem;
+    color:var(--sabzi-deep); display:flex; align-items:center; gap:8px;
+  }
+  .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--turmeric);display:inline-block;}
+  nav{display:none; gap:28px; font-size:0.92rem; font-weight:500;}
+  nav a{text-decoration:none; opacity:0.75; transition:opacity 0.2s;}
+  nav a:hover{opacity:1;}
+  @media(min-width:760px){ nav{display:flex;} }
+
+  .hero{
+    position:relative; padding:88px 0 64px;
+    background:
+      radial-gradient(circle at 85% 12%, rgba(217,160,42,0.16), transparent 55%),
+      linear-gradient(180deg, var(--rice) 0%, var(--rice-deep) 100%);
+    border-bottom:1px solid var(--line); overflow:hidden;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:10px;
+    font-size:0.82rem; font-weight:600; letter-spacing:0.04em;
+    color:var(--brick); background:rgba(140,59,42,0.08);
+    padding:6px 14px; border-radius:999px; margin-bottom:22px;
+  }
+  .hero h1{font-size:clamp(2.1rem, 5.4vw, 3.4rem); color:var(--sabzi-deep); line-height:1.22; max-width:16ch;}
+  .hero h1 .accent{color:var(--turmeric-deep);}
+  .hero p.lede{margin-top:22px; max-width:48ch; font-size:1.08rem; color:rgba(42,37,32,0.82);}
+  .hero-slogan{
+    margin-top:30px; font-family:'Fraunces',serif; font-weight:600;
+    font-size:1.15rem; color:var(--sabzi-deep);
+    border-left:3px solid var(--turmeric); padding-left:16px;
+  }
+
+  .scale-wrap{margin-top:56px; display:flex; justify-content:center;}
+  .scale{position:relative; width:min(560px, 92vw); padding-top:34px;}
+  .scale-beam{
+    position:relative; height:6px; background:var(--sabzi-deep); border-radius:4px;
+    transform:rotate(-4deg); transform-origin:center;
+    animation:tip 4.5s ease-in-out infinite;
+  }
+  .scale-post{
+    position:absolute; left:50%; top:-30px; width:6px; height:36px;
+    background:var(--sabzi-deep); transform:translateX(-50%); border-radius:3px;
+  }
+  .scale-post::after{
+    content:''; position:absolute; left:50%; top:-8px; width:16px; height:16px;
+    background:var(--turmeric); border-radius:50%; transform:translateX(-50%);
+  }
+  @keyframes tip{0%,100%{transform:rotate(-4deg);} 50%{transform:rotate(4deg);}}
+  .pan{position:absolute; top:6px; width:180px; text-align:center; animation:tip 4.5s ease-in-out infinite;}
+  .pan.left{left:6%; transform-origin:top center; animation-name:tipL;}
+  .pan.right{right:6%; transform-origin:top center; animation-name:tipR;}
+  @keyframes tipL{0%,100%{transform:translateY(-6px);} 50%{transform:translateY(10px);}}
+  @keyframes tipR{0%,100%{transform:translateY(10px);} 50%{transform:translateY(-6px);}}
+  .pan-plate{height:8px; border-radius:50%; background:var(--sabzi); box-shadow:0 10px 18px -8px rgba(0,0,0,0.35);}
+  .pan-tag{
+    margin-top:14px; background:var(--ink); color:var(--rice);
+    border-radius:8px; padding:12px 10px; font-size:0.86rem; font-weight:600;
+  }
+  .pan-tag .big{display:block; font-family:'Fraunces',serif; font-size:1.3rem; font-weight:700; margin-bottom:2px;}
+  .pan.left .pan-tag{background:var(--brick);}
+  .pan.right .pan-tag{background:var(--sabzi-deep);}
+  .scale-caption{text-align:center; margin-top:52px; font-size:0.88rem; color:rgba(42,37,32,0.6);}
+  .scale-quote{
+    text-align:center; margin-top:14px; font-size:1rem; font-style:italic;
+    color:var(--brick); max-width:40ch; margin-left:auto; margin-right:auto;
+  }
+
+  section{padding:64px 0;}
+  .section-head{max-width:42ch; margin-bottom:36px;}
+  .kicker{
+    font-size:0.8rem; font-weight:700; letter-spacing:0.08em; color:var(--turmeric-deep);
+    text-transform:uppercase; margin-bottom:10px; display:block;
+  }
+  .section-head h2{font-size:clamp(1.5rem,3vw,2rem); color:var(--sabzi-deep);}
+
+  .concept{background:var(--rice-deep); border-bottom:1px solid var(--line);}
+  .concept-body{max-width:64ch; font-size:1.02rem; color:rgba(42,37,32,0.88);}
+  .concept-body p{margin-bottom:18px;}
+  .principle{margin-top:30px; background:var(--ink); color:var(--rice); padding:26px 28px; border-radius:14px; position:relative;}
+  .principle::before{
+    content:'PRINCIPLE'; position:absolute; top:-11px; left:24px; background:var(--turmeric);
+    color:var(--ink); font-size:0.68rem; font-weight:700; padding:3px 12px; border-radius:999px; letter-spacing:0.05em;
+  }
+  .principle p{font-family:'Fraunces',serif; font-size:1.15rem; font-weight:600; line-height:1.6;}
+
+  .goods-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:8px;}
+  @media(min-width:640px){ .goods-grid{grid-template-columns:repeat(3,1fr);} }
+  .crate{
+    background:var(--rice); border:1px solid var(--line); border-radius:12px;
+    padding:22px 16px; text-align:center; transition:transform 0.25s, box-shadow 0.25s;
+  }
+  .crate:hover{transform:translateY(-4px); box-shadow:0 14px 26px -14px rgba(42,37,32,0.35);}
+  .crate .ic{font-size:1.9rem; display:block; margin-bottom:10px;}
+  .crate .lb{font-weight:600; font-size:0.95rem;}
+
+  .objective{
+    background:linear-gradient(135deg, var(--sabzi-deep), var(--sabzi));
+    color:var(--rice); border-radius:20px; padding:40px 32px; margin-top:8px;
+  }
+  .objective h3{font-size:1.3rem; margin-bottom:14px; color:var(--rice);}
+  .objective p{color:rgba(246,241,228,0.9); max-width:58ch; font-size:1.02rem;}
+
+  .how-grid{display:grid; gap:18px; margin-top:8px;}
+  @media(min-width:760px){ .how-grid{grid-template-columns:repeat(3,1fr);} }
+  .how-card{border:1px solid var(--line); border-radius:14px; padding:24px 20px; background:var(--rice);}
+  .how-card .tag{
+    display:inline-block; font-size:0.78rem; font-weight:700; color:var(--brick);
+    background:rgba(140,59,42,0.08); padding:4px 10px; border-radius:999px; margin-bottom:12px;
+  }
+  .how-card h4{font-family:'Fraunces',serif; font-size:1.08rem; margin-bottom:8px; color:var(--sabzi-deep);}
+  .how-card p{font-size:0.94rem; color:rgba(42,37,32,0.78);}
+
+  .slogans{background:var(--rice-deep); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .slogan-strip{display:flex; flex-direction:column; gap:14px; margin-top:8px;}
+  .slogan-card{
+    background:var(--rice); border:1px dashed rgba(140,59,42,0.35); border-radius:12px;
+    padding:20px 24px; font-family:'Fraunces',serif; font-size:1.1rem; font-weight:600;
+    color:var(--ink); position:relative;
+  }
+  .slogan-card::before{content:'“'; color:var(--turmeric-deep); font-size:1.6rem; margin-right:4px;}
+
+  footer{padding:44px 0 56px; text-align:center;}
+  footer .sign{font-size:0.88rem; color:rgba(42,37,32,0.6);}
+  footer .sign strong{color:var(--sabzi-deep);}
+
+  .fade-up{opacity:0; transform:translateY(16px); transition:opacity 0.7s ease, transform 0.7s ease;}
+  .fade-up.in{opacity:1; transform:translateY(0);}
+</style>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1034022057999423"></script><link href="https://myskillgame.netlify.app/11-7-26 website/affordable-market-en.html" rel="canonical"/></head>
+<body>
+<div class="grain"></div>
+<header>
+<div class="wrap">
+<div class="brand"><span class="dot"></span> The Affordable Market</div>
+<nav>
+<a href="#idea">The Idea</a>
+<a href="#goods">Goods</a>
+<a href="#objective">Objective</a>
+<a href="#how">How It Works</a>
+<a href="#membership">Membership</a>
+<a href="#slogan">Slogans</a>
+</nav>
+</div>
+</header>
+<section class="hero">
+<div class="wrap">
+<span class="eyebrow">🛒 No subsidy — a direct, low-margin market</span>
+<h1>An <span class="accent">Affordable Market</span> for families with limited income</h1>
+<p class="lede">Sourced directly from producers, cutting out unnecessary middlemen, and sold at a low margin — so every family can buy good-quality daily essentials with dignity.</p>
+<p class="hero-slogan">"Sell for less profit, put a smile on people's faces."</p>
+<div class="scale-wrap">
+<div class="scale">
+<div class="scale-beam">
+<div class="scale-post"></div>
+<div class="pan left">
+<div class="pan-plate"></div>
+<div class="pan-tag"><span class="big">₹1,200</span>per kg of fish</div>
+</div>
+<div class="pan right">
+<div class="pan-plate"></div>
+<div class="pan-tag"><span class="big">₹200</span>per kg of fish</div>
+</div>
+</div>
+</div>
+</div>
+<p class="scale-caption">The same market sells fish at two very different prices — but not everyone's means are the same. Closing that gap is the goal.</p>
+<p class="scale-quote">"Price doesn't just set the market — it decides what a person can and cannot buy."</p>
+</div>
+</section>
+<section class="concept" id="idea">
+<div class="wrap">
+<div class="section-head fade-up">
+<span class="kicker">Why This Is Needed</span>
+<h2>The reason behind this market</h2>
+</div>
+<div class="concept-body fade-up">
+<p>At the market, it's easy to feel quietly helpless. From the outside you may look clean and presentable, but your pocket is nearly empty. All around, fish, fruit, meat, toys and daily essentials are laid out in plain sight — yet not everyone can afford to buy them.</p>
+<p>The hardest moment comes when a young child asks for something. A child doesn't understand a household's income and expenses. All they have is a simple wish — "Baba, buy me that fish," or "Ma, I want that." And many parents have to quietly say, "Not today." That pain isn't only about money — it's about dignity too.</p>
+<p>That is why an "Affordable Market" is needed — a place where families with limited income can buy good-quality fish, vegetables, lentils, rice, and other daily essentials at a lower price. This is not charity or a subsidy. It's an opportunity to shop at an affordable price while keeping one's dignity intact — made possible by sourcing directly from producers and cutting out unnecessary middlemen.</p>
+<div class="principle">
+<p>"Need is nothing to be ashamed of. Building a dignified, affordable market for everyone — that should be our goal."</p>
+</div>
+</div>
+</div>
+</section>
+<section id="goods">
+<div class="wrap">
+<div class="section-head fade-up">
+<span class="kicker">Available Here</span>
+<h2>A list of daily essentials</h2>
+</div>
+<div class="goods-grid fade-up">
+<div class="crate"><span class="ic">🥬</span><span class="lb">Fresh vegetables</span></div>
+<div class="crate"><span class="ic">🐟</span><span class="lb">Low-cost fish</span></div>
+<div class="crate"><span class="ic">🌾</span><span class="lb">Rice, lentils, flour</span></div>
+<div class="crate"><span class="ic">🛢️</span><span class="lb">Cooking oil &amp; spices</span></div>
+<div class="crate"><span class="ic">🥚</span><span class="lb">Eggs</span></div>
+<div class="crate"><span class="ic">🧺</span><span class="lb">Everyday grocery items</span></div>
+</div>
+</div>
+</section>
+<section id="objective">
+<div class="wrap">
+<div class="objective fade-up">
+<span class="kicker" style="color:#F0C25A;">Objective</span>
+<h3>The right to shop with dignity</h3>
+<p>The core goal of this initiative is simple: let people with limited income buy good-quality daily essentials at a low price, with dignity intact. This is not charity or a handout — it is a fair, direct system of selling.</p>
+</div>
+</div>
+</section>
+<section id="how">
+<div class="wrap">
+<div class="section-head fade-up">
+<span class="kicker">How It Will Run</span>
+<h2>Not a subsidy — a fair supply chain</h2>
+</div>
+<div class="how-grid fade-up">
+<div class="how-card">
+<span class="tag">Sourcing</span>
+<h4>Directly from producers</h4>
+<p>Goods will be sourced directly from farmers, fishermen, and genuine producers, avoiding unnecessary hand-changes along the way.</p>
+</div>
+<div class="how-card">
+<span class="tag">Selling</span>
+<h4>Low margin, full transparency</h4>
+<p>Without any government subsidy, goods will be sold at a fair, low profit margin so prices stay within everyone's reach.</p>
+</div>
+<div class="how-card">
+<span class="tag">Standard</span>
+<h4>Savings without compromising quality</h4>
+<p>Even at a lower price, there will be no compromise on the quality of goods — that is the market's core promise.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="membership">
+<div class="wrap">
+<div class="section-head fade-up">
+<span class="kicker">Membership</span>
+<h2>Priority reaching the people it was built for</h2>
+</div>
+<div class="concept-body fade-up" style="margin-bottom:28px;">
+<p>This market is built for ordinary villagers, daily-wage workers, farm laborers, rickshaw pullers, and lower-middle-income families — so no digital system is made mandatory. Simple methods are easier for people to adopt. The system is designed so that elderly people, those without formal schooling, or anyone less familiar with technology can use the market without any difficulty.</p>
+</div>
+<div class="section-head fade-up" style="margin-bottom:14px;">
+<h3 style="font-family:'Fraunces',serif; font-size:1.15rem; color:var(--sabzi-deep);">Membership</h3>
+</div>
+<div class="how-grid fade-up">
+<div class="how-card">
+<span class="tag">📖 Registry</span>
+<h4>A simple paper registration ledger</h4>
+<p>No app, no digital form — members will simply be registered by name in a plain paper ledger.</p>
+</div>
+<div class="how-card">
+<span class="tag">🪪 Card</span>
+<h4>A laminated member card, with photo</h4>
+<p>Every member will receive a simple, laminated card showing their photo and the number of people in their household.</p>
+</div>
+<div class="how-card">
+<span class="tag">🛒 Limit</span>
+<h4>A fixed weekly or monthly amount</h4>
+<p>Each week or month, members can buy a fixed quantity of goods based on the size of their household.</p>
+</div>
+</div>
+<div class="section-head fade-up" style="margin:34px 0 14px;">
+<h3 style="font-family:'Fraunces',serif; font-size:1.15rem; color:var(--sabzi-deep);">Selecting Members</h3>
+</div>
+<div class="how-grid fade-up">
+<div class="how-card">
+<span class="tag">🏛️ Referral</span>
+<h4>Recommended by panchayat, ward committee, or cooperative</h4>
+<p>Members will be selected based on recommendations from the local panchayat, ward committee, or cooperative society.</p>
+</div>
+<div class="how-card">
+<span class="tag">🔍 Verification</span>
+<h4>Verified locally</h4>
+<p>Membership will be granted based on local knowledge and verification — no complicated paperwork required.</p>
+</div>
+<div class="how-card">
+<span class="tag">📅 Review</span>
+<h4>Member list reviewed once a year</h4>
+<p>The membership list will be reviewed once a year and updated as needed.</p>
+</div>
+</div>
+<div class="section-head fade-up" style="margin:34px 0 14px;">
+<h3 style="font-family:'Fraunces',serif; font-size:1.15rem; color:var(--sabzi-deep);">Shopping</h3>
+</div>
+<div class="how-grid fade-up">
+<div class="how-card">
+<span class="tag">🪪 Show</span>
+<h4>Show the card, take the goods</h4>
+<p>Members simply show their card at the market to purchase their allotted amount of goods.</p>
+</div>
+<div class="how-card">
+<span class="tag">✍️ Record</span>
+<h4>Date and quantity noted in the ledger</h4>
+<p>Whatever is purchased is recorded in the ledger with the date — a simple, transparent record.</p>
+</div>
+<div class="how-card">
+<span class="tag">🚫 No app</span>
+<h4>No mobile app or QR code needed</h4>
+<p>Instead of modern technology, priority is given to a simple system everyone can understand.</p>
+</div>
+</div>
+<div class="principle fade-up" style="margin-top:28px;">
+<p style="font-size:1.02rem;">"All of this market's operations will run on a simple, transparent system. Members will carry a basic identity card. Purchases will be recorded in a registration ledger. Rather than modern technology, priority will always go to a simple system that everyone can understand."</p>
+</div>
+</div>
+</section>
+<section class="slogans" id="slogan">
+<div class="wrap">
+<div class="section-head fade-up">
+<span class="kicker">Slogans</span>
+<h2>The market's message, in three lines</h2>
+</div>
+<div class="slogan-strip fade-up">
+<div class="slogan-card">Sell for less profit, put a smile on people's faces.</div>
+<div class="slogan-card">An affordable market, for people with limited income.</div>
+<div class="slogan-card">Straight from the producer — to your home, at a lower price. 🌱</div>
+</div>
+</div>
+</section>
+<footer>
+<div class="wrap">
+<p class="sign">A community initiative concept — <strong>The Affordable Market</strong> | Not a subsidy, but a proposal for fair supply</p>
+</div>
+</footer>
+<script>
+  const els = document.querySelectorAll('.fade-up');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); } });
+  }, {threshold:0.15});
+  els.forEach(el=>io.observe(el));
+</script>
+
+<footer class="footer">
+<div style="margin-bottom:18px;">
+<a href="about.html">About</a> |
+<a href="privacy.html">Privacy Policy</a> |
+<a href="terms.html">Terms &amp; Conditions</a> |
+<a href="contact.html">Contact</a> |
+<a href="disclaimer.html">Disclaimer</a>
+</div>
+<div class="footer-name">MYSKILLGAME</div>
+<div class="footer-copy">© 2026 MySkillGame • Developed by Surajit Roy</div>
+</footer>
+</body>
+</html>

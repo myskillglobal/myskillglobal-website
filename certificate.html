@@ -6,6 +6,29 @@
 <meta name="mobile-web-app-capable" content="yes"/>
 <meta name="theme-color" content="#0A0F1E"/>
 <title>Your Certificate | My Skill : Language</title>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyDfxtOP-YCrCXtQxZrrFNC1uXucvbW0K78",
+    authDomain: "my-skill-global.firebaseapp.com",
+    projectId: "my-skill-global",
+    storageBucket: "my-skill-global.firebasestorage.app",
+    messagingSenderId: "978471914749",
+    appId: "1:978471914749:web:595750b5d90738933f4294",
+    measurementId: "G-8D9BPY8HJ0"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
 <meta name="description" content="Download your Advanced Level language certificate."/>
 <style>
   :root{
@@ -143,7 +166,7 @@
 
 <header>
 <div class="wrap">
-<a class="backlink" href="language_test.html">← Back to Language Test</a>
+<a class="backlink" href="exam-index.html">← Back to Exam Page</a>
 <h1>🏅 Your Certificate</h1>
 </div>
 </header>

@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Surajit Roy" name="author"/>
+<meta content="© Surajit Roy" name="copyright"/>
+<meta content="index,follow" name="robots"/>
+<title>Family Travel &amp; Emergency Safety Guide</title>
+<meta content="Practical parenting, communication and child development guidance from MySkillGame." name="description"/>
+<!-- Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+<link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);min-height:100vh;padding-bottom:40px}
+
+.hero{text-align:center;padding:24px 16px 14px;background:linear-gradient(135deg,#667eea,#764ba2)}
+.hero h1{font-size:20px;color:#fff;font-weight:700}
+.hero p{font-size:12px;color:rgba(255,255,255,0.8);margin-top:4px}
+.hero-icons{display:flex;justify-content:center;gap:10px;margin-top:10px;font-size:24px}
+body{
+   user-select:none;
+}
+
+.tab-row{display:flex;overflow-x:auto;background:#0f3460;scrollbar-width:none}
+.tab-row::-webkit-scrollbar{display:none}
+.tab-btn{flex:0 0 auto;padding:10px 13px;border:none;background:transparent;font-size:11px;font-weight:600;cursor:pointer;color:rgba(255,255,255,0.5);border-bottom:3px solid transparent;transition:all 0.2s;white-space:nowrap;text-align:center}
+.tab-btn i{display:block;font-size:19px;margin-bottom:3px}
+.tab-btn.active{color:#fff;border-bottom-color:#f6c90e}
+
+.content{max-width:720px;margin:0 auto;padding:14px 12px}
+.section{display:none}
+.section.active{display:block}
+
+.alert-box{border-radius:12px;padding:11px 13px;margin-bottom:12px;font-size:12.5px;line-height:1.6;display:flex;gap:9px;align-items:flex-start}
+.alert-box i{font-size:19px;min-width:19px;margin-top:1px}
+.alert-red{background:rgba(255,65,108,0.12);border:1px solid rgba(255,65,108,0.35);color:#ff6b6b}
+.alert-amber{background:rgba(247,151,30,0.12);border:1px solid rgba(247,151,30,0.35);color:#ffd93d}
+.alert-green{background:rgba(82,183,136,0.12);border:1px solid rgba(82,183,136,0.35);color:#95d5b2}
+.alert-blue{background:rgba(0,150,199,0.12);border:1px solid rgba(0,150,199,0.35);color:#90e0ef}
+
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:12px;margin-bottom:12px}
+.card{border-radius:14px;padding:13px 15px;border:1px solid rgba(255,255,255,0.08)}
+.c-mountain{background:linear-gradient(135deg,#1b4332,#2d6a4f)}
+.c-mountain2{background:linear-gradient(135deg,rgba(27,67,50,.7),#081c15)}
+.c-sea{background:linear-gradient(135deg,#023e8a,#0077b6)}
+.c-sea2{background:linear-gradient(135deg,rgba(2,62,138,.7),#03045e)}
+.c-jungle{background:linear-gradient(135deg,#3a5a40,#588157)}
+.c-jungle2{background:linear-gradient(135deg,rgba(58,90,64,.7),#1b2f1f)}
+.c-hotel{background:linear-gradient(135deg,#6a0572,#9b2226)}
+.c-hotel2{background:linear-gradient(135deg,rgba(106,5,114,.7),#370617)}
+.c-pack{background:linear-gradient(135deg,#7b2d00,#d4522a)}
+.c-pack2{background:linear-gradient(135deg,rgba(123,45,0,.7),#3b0f00)}
+.c-general{background:linear-gradient(135deg,#1d3557,#457b9d)}
+.c-general2{background:linear-gradient(135deg,rgba(29,53,87,.7),#050d18)}
+.c-emerg{background:linear-gradient(135deg,#7f1d1d,#c0392b)}
+.c-emerg2{background:linear-gradient(135deg,rgba(127,29,29,.7),#300a0a)}
+.c-insure{background:linear-gradient(135deg,#1e3a5f,#2980b9)}
+.c-insure2{background:linear-gradient(135deg,rgba(30,58,95,.7),#0a1628)}
+.c-finance{background:linear-gradient(135deg,#1a472a,#27ae60)}
+.c-finance2{background:linear-gradient(135deg,rgba(26,71,42,.7),#071a0e)}
+.c-digital{background:linear-gradient(135deg,#4a235a,#8e44ad)}
+.c-digital2{background:linear-gradient(135deg,rgba(74,35,90,.7),#17002b)}
+
+.card-title{font-size:13.5px;font-weight:700;color:#fff;margin-bottom:9px;display:flex;align-items:center;gap:7px}
+.card-title i{font-size:17px}
+.badge{display:inline-block;font-size:10px;padding:2px 9px;border-radius:20px;margin-bottom:7px;font-weight:700;letter-spacing:.3px}
+.badge-red{background:rgba(255,65,108,.2);color:#ff6b6b;border:1px solid rgba(255,65,108,.4)}
+.badge-amber{background:rgba(247,151,30,.2);color:#ffd93d;border:1px solid rgba(247,151,30,.4)}
+.badge-green{background:rgba(82,183,136,.2);color:#95d5b2;border:1px solid rgba(82,183,136,.4)}
+.badge-blue{background:rgba(0,150,199,.2);color:#90e0ef;border:1px solid rgba(0,150,199,.4)}
+.badge-purple{background:rgba(155,47,174,.2);color:#ce93d8;border:1px solid rgba(155,47,174,.4)}
+.badge-orange{background:rgba(212,82,42,.2);color:#ffb347;border:1px solid rgba(212,82,42,.4)}
+.badge-teal{background:rgba(0,150,136,.2);color:#80cbc4;border:1px solid rgba(0,150,136,.4)}
+
+.tip{font-size:12px;color:rgba(255,255,255,.78);line-height:1.65;padding:4px 0;border-bottom:1px solid rgba(255,255,255,.07);display:flex;gap:6px}
+.tip:last-child{border-bottom:none;padding-bottom:0}
+.tip::before{content:"›";color:rgba(255,255,255,.35);font-size:15px;line-height:1.35;min-width:10px}
+
+/* PACKING */
+.pack-category{margin-bottom:14px}
+.pack-cat-title{font-size:12.5px;font-weight:700;color:#ffd93d;margin-bottom:7px;display:flex;align-items:center;gap:6px;text-transform:uppercase;letter-spacing:.4px}
+.pack-cat-title i{font-size:15px}
+.pack-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:7px}
+.pack-item{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:7px 9px;font-size:11.5px;color:rgba(255,255,255,.82);cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:5px;user-select:none}
+.pack-item:hover{background:rgba(255,255,255,.1)}
+.pack-item.checked{background:rgba(82,183,136,.2);border-color:rgba(82,183,136,.5);color:#95d5b2}
+.pack-item i.ci{font-size:13px;min-width:13px}
+
+/* PROGRESS */
+.prog-label{font-size:11px;color:rgba(255,255,255,.45);margin-bottom:4px}
+.prog-bar{background:rgba(255,255,255,.1);border-radius:20px;height:6px;margin-bottom:14px;overflow:hidden}
+.prog-fill{height:100%;background:linear-gradient(90deg,#52b788,#95d5b2);border-radius:20px;transition:width .3s}
+
+/* CHECKLIST */
+.check-item{display:flex;align-items:flex-start;gap:9px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.07);cursor:pointer;user-select:none}
+.check-item:last-child{border-bottom:none}
+.chk-box{width:17px;height:17px;min-width:17px;border:1.5px solid rgba(255,255,255,.28);border-radius:5px;display:flex;align-items:center;justify-content:center;transition:all .15s;margin-top:1px}
+.chk-box.done{background:#52b788;border-color:#52b788}
+.chk-box.done i{color:#fff;font-size:11px}
+.check-text{font-size:12px;color:rgba(255,255,255,.78);line-height:1.55}
+.check-text.done{text-decoration:line-through;color:rgba(255,255,255,.3)}
+
+.section-head{font-size:14px;font-weight:700;color:#f6c90e;margin:16px 0 9px;display:flex;align-items:center;gap:7px}
+.section-head i{font-size:18px}
+.site-footer{
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+    font-size:14px;
+    color:#E8C97A; /* Yellow/Gold */
+    border-top:1px solid rgba(201,168,76,0.3);
+}
+/* EMERGENCY section special elements */
+.info-banner{background:linear-gradient(135deg,rgba(192,57,43,.18),rgba(127,29,29,.18));border:1px solid rgba(192,57,43,.4);border-radius:13px;padding:14px 16px;margin-bottom:12px;text-align:center}
+.info-banner h2{font-size:15px;color:#ff6b6b;font-weight:700;margin-bottom:4px}
+.info-banner p{font-size:12px;color:rgba(255,255,255,.7);line-height:1.55}
+
+.checklist-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:13px;padding:13px 15px;margin-bottom:12px}
+.cl-head{font-size:12.5px;font-weight:700;color:#ffd93d;margin-bottom:10px;display:flex;align-items:center;gap:6px;text-transform:uppercase;letter-spacing:.3px}
+.cl-head i{font-size:16px}
+
+/* INSURANCE cards */
+.ins-card{border-radius:14px;padding:13px 15px;border:1px solid rgba(255,255,255,.1);margin-bottom:10px}
+.ins-highlight{background:rgba(255,255,255,.05);border-radius:9px;padding:8px 10px;margin-top:9px;font-size:11.5px;color:rgba(255,255,255,.65);line-height:1.55;border-left:3px solid}
+.ins-highlight.hl-amber{border-color:#f7971e}
+.ins-highlight.hl-blue{border-color:#2980b9}
+.ins-highlight.hl-green{border-color:#27ae60}
+.ins-highlight.hl-purple{border-color:#8e44ad}
+
+/* objective box */
+.obj-box{background:linear-gradient(135deg,rgba(102,126,234,.15),rgba(118,75,162,.15));border:1px solid rgba(102,126,234,.35);border-radius:13px;padding:14px 16px;margin-bottom:12px}
+.obj-box h3{font-size:13px;font-weight:700;color:#a78bfa;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.obj-box p{font-size:12px;color:rgba(255,255,255,.72);line-height:1.6}
+
+@media(max-width:480px){
+  .cards-grid{grid-template-columns:1fr}
+  .pack-grid{grid-template-columns:repeat(2,1fr)}
+  .hero h1{font-size:17px}
+  .tab-btn{padding:9px 10px;font-size:10.5px}
+}
+</style>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1034022057999423"></script><link href="https://myskillgame.netlify.app/11-7-26 website/family_travel_safety_with_emergency.html" rel="canonical"/></head>
+<body>
+<div class="hero">
+<div class="hero-icons">🏔️ 🌊 🌿 🏨 🎒 🛡️ 🚨 📋</div>
+<h1>Family Travel &amp; Emergency Safety</h1>
+<p>Mountains · Sea · Jungle · Hotel · Packing · Essentials · Emergency Preparedness</p>
+</div>
+<div class="tab-row" role="tablist">
+<button class="tab-btn active" onclick="switchTab('mountain',this)"><i class="ti ti-mountain"></i>Mountain</button>
+<button class="tab-btn" onclick="switchTab('sea',this)"><i class="ti ti-wave-sine"></i>Sea</button>
+<button class="tab-btn" onclick="switchTab('jungle',this)"><i class="ti ti-trees"></i>Jungle</button>
+<button class="tab-btn" onclick="switchTab('hotel',this)"><i class="ti ti-building"></i>Hotel</button>
+<button class="tab-btn" onclick="switchTab('packing',this)"><i class="ti ti-backpack"></i>Packing</button>
+<button class="tab-btn" onclick="switchTab('general',this)"><i class="ti ti-shield"></i>Essentials</button>
+<button class="tab-btn" onclick="switchTab('emergency',this)"><i class="ti ti-alert-square"></i>Emergency</button>
+<button class="tab-btn" onclick="switchTab('insurance',this)"><i class="ti ti-license"></i>Insurance</button>
+</div>
+<div class="content">
+<!-- MOUNTAIN -->
+<div class="section active" id="tab-mountain">
+<div class="alert-box alert-red"><i class="ti ti-alert-triangle"></i><span>Check weather forecast before every trek. Never hike alone with children in unfamiliar terrain.</span></div>
+<div class="cards-grid">
+<div class="card c-mountain">
+<div class="card-title"><i class="ti ti-route"></i>Trekking Safety</div>
+<span class="badge badge-red">High Risk Zone</span>
+<div class="tip">Hire a certified local guide — they know safe trails and emergency exits</div>
+<div class="tip">Start early morning; descend before 2 pm to avoid afternoon storms</div>
+<div class="tip">Never cross unmarked paths — stick to official trekking routes only</div>
+<div class="tip">Carry a physical trail map; mobile signals are unreliable in mountains</div>
+<div class="tip">Watch for altitude sickness: headache, nausea, dizziness — descend immediately</div>
+<div class="tip">Children under 8 should not attempt treks above 3000m altitude</div>
+</div>
+<div class="card c-mountain2">
+<div class="card-title"><i class="ti ti-backpack"></i>Mandatory Gear</div>
+<span class="badge badge-amber">Carry Always</span>
+<div class="tip">First aid kit: bandages, antiseptic, ORS sachets, pain relievers</div>
+<div class="tip">Warm layered clothing — temperatures drop sharply at altitude</div>
+<div class="tip">Waterproof jacket and non-slip trekking shoes with ankle support</div>
+<div class="tip">Minimum 2–3 litres of water per person; water purification tablets</div>
+<div class="tip">Fully charged power bank, torch, whistle for emergency signalling</div>
+<div class="tip">High-energy snacks: nuts, energy bars, dried fruit</div>
+</div>
+<div class="card c-mountain">
+<div class="card-title"><i class="ti ti-baby-carriage"></i>Children on Mountains</div>
+<span class="badge badge-blue">Kids Safety</span>
+<div class="tip">Use a child harness on steep paths; keep children in front on narrow ridges</div>
+<div class="tip">Apply SPF 50+ sunscreen every 2 hours — UV is much stronger at altitude</div>
+<div class="tip">Take breaks every 30 minutes; watch for fatigue or unusual complaints</div>
+<div class="tip">Teach: never throw stones, stay on path, stay together always</div>
+<div class="tip">Keep a bright-coloured jacket on children so they are visible at distance</div>
+</div>
+</div>
+</div>
+<!-- SEA -->
+<div class="section" id="tab-sea">
+<div class="alert-box alert-red"><i class="ti ti-alert-triangle"></i><span>Check tide times and red flag warnings before entering the sea. Never swim during red or double red flags.</span></div>
+<div class="cards-grid">
+<div class="card c-sea">
+<div class="card-title"><i class="ti ti-swimwear"></i>Swimming Safety</div>
+<span class="badge badge-red">Life-Saving Rules</span>
+<div class="tip">Swim only in designated areas with lifeguard supervision</div>
+<div class="tip">Rip current caught? Swim parallel to shore — never fight against it</div>
+<div class="tip">Avoid sea bathing after heavy rain — dangerous currents and contamination</div>
+<div class="tip">Never swim after sunset — visibility drops, rescue becomes impossible</div>
+<div class="tip">No alcohol before or during swimming — deadly combination</div>
+<div class="tip">Wear reef shoes in rocky or coral areas — cuts get infected rapidly</div>
+</div>
+<div class="card c-sea2">
+<div class="card-title"><i class="ti ti-baby-carriage"></i>Children at Sea</div>
+<span class="badge badge-blue">Kids Safety</span>
+<div class="tip">Children must wear properly fitted life jackets — not just arm bands</div>
+<div class="tip">Keep children within arm's reach in water at all times</div>
+<div class="tip">Never leave children unattended on the beach even briefly</div>
+<div class="tip">Teach: if lost, go to lifeguard post — don't wander looking for parents</div>
+<div class="tip">Reapply waterproof sunscreen every 80 minutes; water reflects UV dangerously</div>
+</div>
+<div class="card c-sea">
+<div class="card-title"><i class="ti ti-boat"></i>Boat &amp; Water Sports</div>
+<span class="badge badge-amber">Before You Board</span>
+<div class="tip">Verify the boat operator has a valid licence and appropriate insurance</div>
+<div class="tip">Check life jacket condition — worn or missing ones are red flags</div>
+<div class="tip">Inform someone ashore of your route and expected return time</div>
+<div class="tip">Do not overload boats — weight limits exist for safety</div>
+<div class="tip">Avoid boat trips when storm or rough sea warnings are issued</div>
+</div>
+</div>
+</div>
+<!-- JUNGLE -->
+<div class="section" id="tab-jungle">
+<div class="alert-box alert-red"><i class="ti ti-alert-triangle"></i><span>Always go with a certified jungle guide. Never feed, touch, or approach wild animals — even if they seem calm.</span></div>
+<div class="cards-grid">
+<div class="card c-jungle">
+<div class="card-title"><i class="ti ti-binoculars"></i>Safari Rules</div>
+<span class="badge badge-red">Non-Negotiable</span>
+<div class="tip">Book only through registered eco-tourism operators with certified guides</div>
+<div class="tip">Never leave the designated safari vehicle — even for a short photo</div>
+<div class="tip">Wear dull, earthy colours — bright colours disturb animals and attract insects</div>
+<div class="tip">Maintain complete silence near animals — sudden noise can cause charges</div>
+<div class="tip">Do not litter — food waste attracts dangerous wildlife close to humans</div>
+<div class="tip">Follow park entry/exit times strictly — no exceptions</div>
+</div>
+<div class="card c-jungle2">
+<div class="card-title"><i class="ti ti-bug"></i>Health &amp; Insects</div>
+<span class="badge badge-amber">Before &amp; During</span>
+<div class="tip">Take antimalarial medication as prescribed before jungle trips</div>
+<div class="tip">Apply DEET-based insect repellent to all exposed skin every 4 hours</div>
+<div class="tip">Wear full sleeves, long trousers, and closed shoes — no sandals in jungle</div>
+<div class="tip">Check for ticks after every trek: behind knees, armpits, hairline, waist</div>
+<div class="tip">Never drink stream water directly — boil or use purification tablets</div>
+<div class="tip">Carry antihistamine and adrenaline pen if family has allergies</div>
+</div>
+<div class="card c-jungle">
+<div class="card-title"><i class="ti ti-baby-carriage"></i>Children in Jungle</div>
+<span class="badge badge-blue">Kids Safety</span>
+<div class="tip">Children under 5 often not permitted in core forest zones — check rules</div>
+<div class="tip">Apply child-safe picaridin insect repellent every 3 hours</div>
+<div class="tip">Teach: if you see a snake — freeze, do not run, call adult slowly</div>
+<div class="tip">Keep children seated inside safari vehicle at all times</div>
+<div class="tip">Carry ORS sachets — jungle humidity causes dehydration very quickly</div>
+</div>
+</div>
+</div>
+<!-- HOTEL -->
+<div class="section" id="tab-hotel">
+<div class="alert-box alert-amber"><i class="ti ti-camera-off"></i><span>Hidden camera check is mandatory in every hotel room — especially bathrooms and dressing areas. Do this first.</span></div>
+<div class="cards-grid">
+<div class="card c-hotel">
+<div class="card-title"><i class="ti ti-camera-off"></i>Detecting Hidden Cameras</div>
+<span class="badge badge-red">Do This First</span>
+<div class="tip">Turn off lights and scan with phone camera in the dark — lens reflects as bright dots</div>
+<div class="tip">Check smoke detectors, alarm clocks, air purifiers, picture frames, mirrors</div>
+<div class="tip">Two-way mirror test: press fingernail — no gap means real mirror; gap means one-way glass</div>
+<div class="tip">Inspect bathroom: towel holders, ventilation grills, shelves thoroughly</div>
+<div class="tip">Report any suspicious device to hotel management AND local police</div>
+</div>
+<div class="card c-hotel2">
+<div class="card-title"><i class="ti ti-building"></i>Booking &amp; Check-In</div>
+<span class="badge badge-purple">Smart Choices</span>
+<div class="tip">Book only through official hotel websites or reputable platforms</div>
+<div class="tip">Request rooms on floors 3–6: safe from break-ins, accessible for fire escape</div>
+<div class="tip">Avoid rooms next to stairwells — easier unauthorised access points</div>
+<div class="tip">Use door chain/deadbolt every night — never rely only on key card lock</div>
+<div class="tip">Memorise the hotel's emergency exit route on your first day</div>
+</div>
+<div class="card c-hotel">
+<div class="card-title"><i class="ti ti-wifi"></i>Digital Security</div>
+<span class="badge badge-amber">Protect Yourself</span>
+<div class="tip">Never use hotel WiFi for banking or payments — use mobile data</div>
+<div class="tip">Use a VPN app on hotel WiFi — even on paid networks</div>
+<div class="tip">Never plug phones into hotel USB ports — use your own wall adaptor</div>
+<div class="tip">Change hotel safe code to your own combination if allowed</div>
+</div>
+</div>
+</div>
+<!-- PACKING -->
+<div class="section" id="tab-packing">
+<div class="alert-box alert-amber"><i class="ti ti-info-circle"></i><span>Tap each item to mark it as packed. Right clothing and medicines make or break a family trip.</span></div>
+<div class="prog-label" id="prog-label">0 of 0 items packed</div>
+<div class="prog-bar"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div>
+<div id="packing-lists"></div>
+</div>
+<!-- ESSENTIALS -->
+<div class="section" id="tab-general">
+<div class="cards-grid">
+<div class="card c-general">
+<div class="card-title"><i class="ti ti-wallet"></i>Money &amp; Valuables</div>
+<span class="badge badge-amber">Financial Safety</span>
+<div class="tip">Carry cash in two places — wallet and a hidden money belt under clothing</div>
+<div class="tip">Keep copies of all cards and documents on a secure cloud account</div>
+<div class="tip">Use a cross-body bag with slash-proof strap in crowded tourist areas</div>
+<div class="tip">Inform your bank before travel to avoid card blocks for unusual transactions</div>
+<div class="tip">Keep emergency cash ₹2000–5000 separately from your main wallet</div>
+<div class="tip">Never display expensive jewellery, cameras, or gadgets publicly</div>
+</div>
+<div class="card c-general2">
+<div class="card-title"><i class="ti ti-droplet"></i>Food &amp; Water Safety</div>
+<span class="badge badge-blue">Eat &amp; Drink Smart</span>
+<div class="tip">Drink only sealed bottled water or boiled water — never tap water</div>
+<div class="tip">Avoid ice in drinks at local stalls — may be from unfiltered water</div>
+<div class="tip">Eat at busy, well-reviewed restaurants — high turnover means fresh food</div>
+<div class="tip">Avoid raw salads and unpeeled fruit from street vendors in hot climates</div>
+<div class="tip">Carry ORS sachets — traveller's diarrhoea is very common</div>
+</div>
+<div class="card c-general">
+<div class="card-title"><i class="ti ti-baby-carriage"></i>Child Safety</div>
+<span class="badge badge-blue">For Parents</span>
+<div class="tip">Write your mobile number on child's wrist in permanent marker every morning</div>
+<div class="tip">Take a daily photo of your child wearing their current outfit</div>
+<div class="tip">Teach a family code word — strangers must say it to claim they know parents</div>
+<div class="tip">Use a GPS tracker wristband for children under 10 in crowded places</div>
+<div class="tip">Agree on a fixed meeting point at every new location</div>
+<div class="tip">Children must know their full name, parent's name, and one phone number</div>
+</div>
+</div>
+<div class="section-head"><i class="ti ti-checklist"></i>Pre-Travel Checklist</div>
+<div class="card c-general2" id="checklist-container"></div>
+</div>
+<!-- ===== EMERGENCY PREPAREDNESS ===== -->
+<div class="section" id="tab-emergency">
+<div class="info-banner">
+<h2>🚨 Family Emergency Preparedness</h2>
+<p>Most families are unprepared for sudden accidents, illness, or emergencies during travel. This section helps you prepare your family — especially trusted members at home — before you leave.</p>
+</div>
+<div class="obj-box">
+<h3><i class="ti ti-target"></i>Educational Objective</h3>
+<p>To encourage families to maintain essential emergency, travel, financial, and contact information in an organised manner — so family members can respond effectively during unexpected situations. This covers financial literacy, family responsibility, emergency preparedness, and responsible citizenship.</p>
+</div>
+<div class="section-head"><i class="ti ti-plane-departure"></i>Before You Travel — Share With Family</div>
+<div class="checklist-card">
+<div class="cl-head"><i class="ti ti-map-pin"></i>Travel Information to Leave Behind</div>
+<div id="travel-info-cl"></div>
+</div>
+<div class="section-head"><i class="ti ti-phone-call"></i>Emergency Contacts — Save &amp; Share</div>
+<div class="cards-grid">
+<div class="card c-emerg">
+<div class="card-title"><i class="ti ti-phone-call"></i>Critical Numbers to Save</div>
+<span class="badge badge-red">Save Before Travel</span>
+<div class="tip">National Emergency: 112 (Police, Fire, Ambulance — all-in-one)</div>
+<div class="tip">Ambulance: 108 (free emergency ambulance service across India)</div>
+<div class="tip">Tourist Police Helpline: 1363 (dedicated tourist assistance)</div>
+<div class="tip">Women's Helpline: 1091 (24×7 emergency support)</div>
+<div class="tip">Child Helpline: 1098 (any child in danger or lost)</div>
+<div class="tip">Nearest hospital at destination — look up before travel, not during emergency</div>
+</div>
+<div class="card c-emerg2">
+<div class="card-title"><i class="ti ti-user-heart"></i>Personal Emergency Contacts</div>
+<span class="badge badge-amber">Keep Updated</span>
+<div class="tip">At least two trusted family members with full contact details</div>
+<div class="tip">Family doctor's name and mobile number</div>
+<div class="tip">Blood group of every family member travelling — carry on a card</div>
+<div class="tip">Any critical allergies or medical conditions written clearly</div>
+<div class="tip">Your travel insurance helpline number (24×7 emergency line)</div>
+<div class="tip">Local contact at destination — hotel manager, tour guide, friend</div>
+</div>
+</div>
+<div class="section-head"><i class="ti ti-currency-rupee"></i>Financial Information Awareness</div>
+<div class="alert-box alert-green"><i class="ti ti-info-circle"></i><span>This is for family awareness only — not investment advice. The goal is ensuring your family can access essential information in an emergency, not financial planning.</span></div>
+<div class="cards-grid">
+<div class="card c-finance">
+<div class="card-title"><i class="ti ti-building-bank"></i>Bank &amp; Investment Awareness</div>
+<span class="badge badge-green">Family Must Know</span>
+<div class="tip">At least one trusted family member should know which banks you hold accounts in</div>
+<div class="tip">Share the location of passbooks, FD certificates, and PPF account details</div>
+<div class="tip">Inform family about existing LIC/insurance policies — policy numbers and due dates</div>
+<div class="tip">Pension or EPF account details should be known to spouse or adult children</div>
+<div class="tip">Mutual funds, shares, or demat account — inform your broker's contact number</div>
+<div class="tip">Keep a sealed envelope with basic financial summary — update annually</div>
+</div>
+<div class="card c-finance2">
+<div class="card-title"><i class="ti ti-files"></i>Important Documents Location</div>
+<span class="badge badge-teal">Tell Your Family</span>
+<div class="tip">Where are original Aadhaar, PAN cards stored — tell at least one person</div>
+<div class="tip">Property documents, land deeds — physical location and any legal contacts</div>
+<div class="tip">Will and nomination details — who is nominated in every financial instrument</div>
+<div class="tip">Locker key location and the bank branch where locker is held</div>
+<div class="tip">Vehicle documents: RC book, insurance, pollution certificate location</div>
+<div class="tip">Take photos of all critical documents and store in a private cloud folder</div>
+</div>
+<div class="card c-finance">
+<div class="card-title"><i class="ti ti-device-mobile"></i>Digital Assets Awareness</div>
+<span class="badge badge-purple">Secure &amp; Share</span>
+<div class="tip">Write down your primary email ID and recovery phone number — keep in a sealed envelope</div>
+<div class="tip">A trusted person should know how to access your cloud storage if needed</div>
+<div class="tip">Online banking — don't share passwords, but ensure nominee knows the bank and account</div>
+<div class="tip">Use a password manager app and inform family that it exists</div>
+<div class="tip">Social media account recovery: enable trusted contact feature where available</div>
+<div class="tip">Keep an "In Case of Emergency" note in your phone's notes app — unlocked</div>
+</div>
+<div class="card c-finance2">
+<div class="card-title"><i class="ti ti-pig-money"></i>Emergency Fund Awareness</div>
+<span class="badge badge-green">Financial Literacy</span>
+<div class="tip">Every family should maintain 3–6 months of expenses as an emergency fund</div>
+<div class="tip">Emergency fund should be in a liquid account — savings account or liquid fund</div>
+<div class="tip">Family members should know which account holds the emergency fund</div>
+<div class="tip">Do not invest the emergency fund in illiquid instruments like FDs with lock-in</div>
+<div class="tip">Review and top up the emergency fund once every year</div>
+<div class="tip">Travel always with a small emergency cash buffer separate from holiday money</div>
+</div>
+</div>
+<div class="section-head"><i class="ti ti-checklist"></i>Family Emergency Readiness Checklist</div>
+<div class="checklist-card">
+<div class="cl-head"><i class="ti ti-shield-check"></i>Complete Before Every Major Trip</div>
+<div id="emerg-checklist"></div>
+</div>
+</div>
+<!-- ===== INSURANCE ===== -->
+<div class="section" id="tab-insurance">
+<div class="info-banner" style="background:linear-gradient(135deg,rgba(30,58,95,.2),rgba(41,128,185,.2));border-color:rgba(41,128,185,.4)">
+<h2 style="color:#90e0ef">🛡️ Insurance Awareness Guide</h2>
+<p>Insurance is not an expense — it is financial protection for your family. This section helps you understand the types of insurance every family should be aware of. This is for awareness only, not specific product recommendations.</p>
+</div>
+<div class="obj-box" style="background:linear-gradient(135deg,rgba(30,58,95,.2),rgba(41,128,185,.1));border-color:rgba(41,128,185,.3)">
+<h3 style="color:#90e0ef"><i class="ti ti-alert-circle"></i>Why Insurance Awareness Matters</h3>
+<p>Many families only discover they are uninsured or under-insured at the worst possible moment — during a medical emergency, accident, or after the death of an earning member. Awareness and preparation beforehand protects your family's financial future.</p>
+</div>
+<div class="section-head" style="color:#90e0ef"><i class="ti ti-heart-rate-monitor"></i>Types of Insurance — What Your Family Should Know</div>
+<div class="ins-card c-insure">
+<div class="card-title"><i class="ti ti-heart"></i>Life Insurance</div>
+<span class="badge badge-blue">Most Essential</span>
+<div class="tip">Provides financial support to your family if the earning member passes away unexpectedly</div>
+<div class="tip">Term insurance gives the highest coverage at the lowest premium — most recommended form</div>
+<div class="tip">Cover should ideally be 10–15 times your annual income</div>
+<div class="tip">Check if your existing LIC or ULIP policy has an active nomination — update if needed</div>
+<div class="tip">Inform your spouse / adult children: policy number, insurer name, premium due date</div>
+<div class="tip">Keep policy documents in a known, accessible location — not locked away where family can't find them</div>
+<div class="ins-highlight hl-amber">⚠️ Without proper nomination and family awareness, even a valid policy may go unclaimed. Thousands of crores in insurance remain unclaimed in India each year because families are unaware.</div>
+</div>
+<div class="ins-card c-insure2">
+<div class="card-title"><i class="ti ti-stethoscope"></i>Health Insurance</div>
+<span class="badge badge-green">Every Family Needs This</span>
+<div class="tip">Medical bills are the leading cause of financial distress in Indian families — health insurance prevents this</div>
+<div class="tip">A family floater plan covers all family members under one policy — cost-effective</div>
+<div class="tip">Check if your employer provides group health insurance — know the coverage limit</div>
+<div class="tip">Pre-existing diseases often have a waiting period of 2–4 years — declare them honestly</div>
+<div class="tip">Keep the insurance card, policy number, and TPA helpline number always accessible</div>
+<div class="tip">During travel, inform your family where the health insurance documents are kept</div>
+<div class="ins-highlight hl-blue">ℹ️ Always carry a physical or digital copy of your health insurance card during travel. Hospitals in remote areas may require immediate proof before beginning treatment.</div>
+</div>
+<div class="ins-card c-insure">
+<div class="card-title"><i class="ti ti-ambulance"></i>Personal Accident Insurance</div>
+<span class="badge badge-amber">Critical for Travellers</span>
+<div class="tip">Covers disability, accidental death, and hospitalisation due to accidents</div>
+<div class="tip">Especially important during adventure activities — trekking, water sports, jungle safaris</div>
+<div class="tip">Very affordable — often available as a rider or add-on to existing policies</div>
+<div class="tip">Check if your current health insurance includes accident coverage or if it's separate</div>
+<div class="tip">Many credit cards offer complimentary personal accident insurance — check your card benefits</div>
+<div class="ins-highlight hl-green">✓ If you regularly travel or do adventure activities, ensure your family knows about this policy and its claim process — as injured persons may not be able to initiate claims themselves.</div>
+</div>
+<div class="ins-card c-insure2">
+<div class="card-title"><i class="ti ti-plane"></i>Travel Insurance</div>
+<span class="badge badge-purple">Before Every Trip</span>
+<div class="tip">Covers trip cancellation, medical emergencies abroad, lost baggage, and flight delays</div>
+<div class="tip">For domestic travel, it covers medical evacuation and accidental hospitalisation</div>
+<div class="tip">For international travel, travel insurance is often mandatory for visa applications</div>
+<div class="tip">Very low cost relative to the protection it provides — always worth buying</div>
+<div class="tip">Share the policy number and 24×7 helpline with a trusted family member before departure</div>
+<div class="ins-highlight hl-purple">ℹ️ During a medical emergency in a remote mountain, sea, or jungle area, travel insurance with medical evacuation cover can fund a helicopter rescue — a cost that can run into lakhs without insurance.</div>
+</div>
+<div class="section-head" style="color:#90e0ef"><i class="ti ti-checklist"></i>Insurance Readiness Checklist</div>
+<div class="checklist-card" style="border-color:rgba(41,128,185,.3)">
+<div class="cl-head" style="color:#90e0ef"><i class="ti ti-shield"></i>Check These Before Your Trip</div>
+<div id="insurance-checklist"></div>
+</div>
+</div>
+<footer class="site-footer">
+   © 2026 MySkillGame • Educational Games &amp; Awareness Projects
+</footer>
+</div><!-- end content -->
+<script>
+/* ---- DATA ---- */
+const packingData=[
+  {cat:"👕 Clothing & Footwear",icon:"ti-shirt",items:[
+    "Light cotton T-shirts (3–4 per person)","Full sleeve shirts (jungle & cold)","Waterproof / windproof jacket","Warm fleece or sweater (mountains)","Comfortable trekking trousers","Shorts or light trousers (beach)","Non-slip trekking shoes","Waterproof sandals / flip-flops","Reef shoes (sea & rocky beaches)","Extra moisture-wicking socks","Wide-brim sun hat","Warm woollen cap (mountains)","Rain poncho or compact umbrella","Swimwear & quick-dry towels"
+  ].map(n=>({n,d:false}))},
+  {cat:"🍱 Dry Food & Snacks",icon:"ti-bowl",items:[
+    "Roasted chana / nuts mix","Energy / protein bars","Dry fruits: raisins, dates, apricots","Instant oats / muesli sachets","Puffed rice (muri) or poha","Biscuits / glucose crackers","Instant noodles / Maggi","Dark chocolate bars","Peanut butter sachets","Namkeen / lightly salted snacks"
+  ].map(n=>({n,d:false}))},
+  {cat:"💊 Essential Medicines",icon:"ti-pill",items:[
+    "Paracetamol / Crocin (fever, pain)","ORS sachets (dehydration)","Antacid tablets (acidity, gas)","Imodium / loperamide (diarrhoea)","Antihistamine — Cetirizine / Avil","Motion sickness tablets (Avomine)","Antiseptic cream (Betadine / Savlon)","Bandages, gauze, surgical tape","Antifungal powder (humid climates)","Altitude sickness pills (if mountains)","Personal prescription medicines","Children's liquid paracetamol"
+  ].map(n=>({n,d:false}))},
+  {cat:"🦟 Insect & Sun Protection",icon:"ti-bug-off",items:[
+    "Mosquito coils (pack of 10)","Electric mosquito repellent plug-in","DEET insect repellent spray","Child-safe picaridin repellent","Mosquito net (compact, foldable)","SPF 50+ sunscreen","After-sun aloe vera gel","Lip balm with SPF"
+  ].map(n=>({n,d:false}))},
+  {cat:"🎒 Gear & Safety",icon:"ti-tools",items:[
+    "Power bank (20,000 mAh min)","Universal travel adaptor","Torch / headlamp with batteries","Whistle (emergency signalling)","Water purification tablets","Reusable water bottles (2L each)","Trekking poles (collapsible)","Dry bag / waterproof pouches","Multi-tool knife / Swiss Army","Rope (5m) — multi-purpose"
+  ].map(n=>({n,d:false}))},
+  {cat:"📄 Documents & Finance",icon:"ti-id",items:[
+    "Aadhaar card / ID (all members)","Passport (if international)","Printed hotel bookings","Printed train / flight tickets","Travel insurance policy copy","Emergency contact list (printed)","Cash in small denominations","Debit + credit cards"
+  ].map(n=>({n,d:false}))}
+];
+
+const preTravel=[
+  "Hotel / accommodation name, address, phone shared with family at home",
+  "Train / flight / bus booking reference numbers shared with trusted person",
+  "Tour operator name and local guide contact shared",
+  "Expected day-by-day itinerary shared with family",
+  "Vehicle registration number if travelling by personal car",
+  "All family member blood groups noted on a card and shared",
+  "Critical medical conditions / allergies of each member written and shared"
+];
+
+const emergChecklist=[
+  "Family knows at least one bank account number of the earning member",
+  "Location of Aadhaar, PAN, and passport originals communicated to family",
+  "Insurance policy numbers and insurer helpline numbers shared with spouse",
+  "Nominee details verified and up-to-date in all financial instruments",
+  "Emergency fund account — family knows which bank and account",
+  "Family doctor contact number saved by all adults in family",
+  "Will or basic wishes document prepared and location communicated",
+  "Cloud folder with scanned documents shared with trusted family member",
+  "\"In Case of Emergency\" note created in phone (unlocked)",
+  "Medical information card carried: blood group, allergies, conditions"
+];
+
+const insuranceChecklist=[
+  "Health insurance card (physical/digital) carried for all members",
+  "Travel insurance purchased and policy number noted",
+  "Insurance helpline number (24×7) saved in mobile",
+  "Life insurance policy number shared with spouse before departure",
+  "Verified that all nominees are correctly named and updated",
+  "Group health insurance from employer — coverage limit known",
+  "Personal accident coverage confirmed for adventure activities",
+  "Credit card travel/accident insurance benefits checked"
+];
+
+const preTravel_states=preTravel.map(()=>false);
+const emerg_states=emergChecklist.map(()=>false);
+const ins_states=insuranceChecklist.map(()=>false);
+const preTravelChecklist=[
+  "Travel insurance with medical evacuation coverage",
+  "Copies of passports stored on cloud & printed",
+  "Emergency contacts: local police, embassy, nearest hospital",
+  "All family medicines packed and labelled",
+  "Children's vaccination records carried",
+  "Bank informed of travel dates to avoid card blocks",
+  "Hotel booking confirmation printed and saved offline",
+  "Local SIM or international roaming activated",
+  "Power bank fully charged before departure",
+  "Family meeting point agreed upon for each destination"
+];
+const preTravel_main_states=preTravelChecklist.map(()=>false);
+
+function mkChecklist(items,states,id,toggleFn){
+  const el=document.getElementById(id);
+  el.innerHTML=items.map((t,i)=>`
+    <div class="check-item" onclick="${toggleFn}(${i})">
+      <div class="chk-box ${states[i]?'done':''}">
+        ${states[i]?'<i class="ti ti-check"></i>':''}
+      </div>
+      <span class="check-text ${states[i]?'done':''}">${t}</span>
+    </div>
+  `).join('');
+}
+
+window.toggleCheck=i=>{preTravel_main_states[i]=!preTravel_main_states[i];mkChecklist(preTravelChecklist,preTravel_main_states,'checklist-container','toggleCheck')};
+window.toggleTravel=i=>{preTravel_states[i]=!preTravel_states[i];mkChecklist(preTravel,preTravel_states,'travel-info-cl','toggleTravel')};
+window.toggleEmerg=i=>{emerg_states[i]=!emerg_states[i];mkChecklist(emergChecklist,emerg_states,'emerg-checklist','toggleEmerg')};
+window.toggleIns=i=>{ins_states[i]=!ins_states[i];mkChecklist(insuranceChecklist,ins_states,'insurance-checklist','toggleIns')};
+
+function updateProgress(){
+  const all=document.querySelectorAll('.pack-item').length;
+  const done=document.querySelectorAll('.pack-item.checked').length;
+  const pct=all?Math.round(done/all*100):0;
+  document.getElementById('prog-fill').style.width=pct+'%';
+  document.getElementById('prog-label').textContent=`${done} of ${all} items packed`;
+}
+
+function renderPacking(){
+  document.getElementById('packing-lists').innerHTML=packingData.map((cat,ci)=>`
+    <div class="pack-category">
+      <div class="pack-cat-title"><i class="ti ${cat.icon}"></i>${cat.cat}</div>
+      <div class="pack-grid">
+        ${cat.items.map((item,ii)=>`
+          <div class="pack-item ${item.d?'checked':''}" onclick="togglePack(${ci},${ii})">
+            <i class="ti ${item.d?'ti-circle-check':'ti-circle'} ci"></i>${item.n}
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
+  updateProgress();
+}
+window.togglePack=(ci,ii)=>{packingData[ci].items[ii].d=!packingData[ci].items[ii].d;renderPacking()};
+
+function switchTab(name,btn){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  btn.classList.add('active');
+}
+
+renderPacking();
+mkChecklist(preTravelChecklist,preTravel_main_states,'checklist-container','toggleCheck');
+mkChecklist(preTravel,preTravel_states,'travel-info-cl','toggleTravel');
+mkChecklist(emergChecklist,emerg_states,'emerg-checklist','toggleEmerg');
+mkChecklist(insuranceChecklist,ins_states,'insurance-checklist','toggleIns');
+</script><script src="security.js"></script>
+
+<footer class="footer">
+<div style="margin-bottom:18px;">
+<a href="about.html">About</a> |
+<a href="privacy.html">Privacy Policy</a> |
+<a href="terms.html">Terms &amp; Conditions</a> |
+<a href="contact.html">Contact</a> |
+<a href="disclaimer.html">Disclaimer</a>
+</div>
+<div class="footer-name">MYSKILLGAME</div>
+<div class="footer-copy">© 2026 MySkillGame • Developed by Surajit Roy</div>
+</footer>
+</body>
+</html>

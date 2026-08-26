@@ -1,0 +1,3893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#0A0F1E">
+<title>My Skill : Story & Novel Assessment</title>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyDfxtOP-YCrCXtQxZrrFNC1uXucvbW0K78",
+    authDomain: "my-skill-global.firebaseapp.com",
+    projectId: "my-skill-global",
+    storageBucket: "my-skill-global.firebasestorage.app",
+    messagingSenderId: "978471914749",
+    appId: "1:978471914749:web:595750b5d90738933f4294",
+    measurementId: "G-8D9BPY8HJ0"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+<meta name="description" content="Read each episode, take the episode assessment, and earn a certificate after finishing the full story or novel.">
+<style>
+  :root{
+    --navy:#0A0F1E;
+    --navy2:#111A33;
+    --gold:#c9a84c;
+    --gold-light:#e8c97a;
+    --cream:#FFF8ED;
+    --ink:#1e293b;
+    --muted:#64748b;
+    --white:#fff;
+    --border:#e7eaf0;
+    --accent:#2b7cff;
+    --accent2:#47c9ff;
+    --shadow:0 12px 35px rgba(10,15,30,.12);
+  }
+
+  *{box-sizing:border-box}
+
+  body{
+    margin:0;
+    font-family:Arial,"Noto Sans Bengali",sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    padding-bottom:24px;
+  }
+
+  header{
+    background:linear-gradient(135deg,var(--navy),var(--navy2));
+    color:#fff;
+    text-align:center;
+    padding:40px 16px 46px;
+  }
+
+  .badge{
+    display:inline-block;
+    padding:7px 16px;
+    border-radius:30px;
+    background:linear-gradient(90deg,var(--gold),var(--gold-light));
+    color:#1a1300;
+    font-size:.75rem;
+    font-weight:800;
+    margin-bottom:14px;
+  }
+
+  header h1{
+    margin:0;
+    font-size:clamp(1.5rem,5vw,2.2rem);
+    line-height:1.25;
+  }
+
+  header .subtitle{
+    max-width:560px;
+    margin:12px auto 0;
+    line-height:1.65;
+    color:rgba(255,255,255,.84);
+    font-size:.92rem;
+  }
+
+  .wrap{
+    width:min(760px,calc(100% - 30px));
+    margin:auto;
+  }
+
+  .section{
+    padding:22px 0 6px;
+  }
+
+  .card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:22px;
+    box-shadow:var(--shadow);
+    margin-bottom:16px;
+  }
+
+  .back-link{
+    display:inline-block;
+    margin-bottom:14px;
+    font-size:.82rem;
+    color:var(--navy2);
+    font-weight:800;
+    text-decoration:none;
+    cursor:pointer;
+    background:none;
+    border:none;
+    padding:0;
+  }
+
+  /* ---- Book grid ---- */
+  .book-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:16px;
+  }
+
+  .book-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:20px;
+    box-shadow:var(--shadow);
+    cursor:pointer;
+    transition:transform .15s ease;
+  }
+
+  .book-card:active{transform:scale(.97)}
+
+  .book-card.locked{opacity:.55; cursor:not-allowed}
+
+  .book-icon{font-size:2.2rem; margin-bottom:8px}
+
+  .book-tag{
+    font-size:.66rem;
+    font-weight:800;
+    color:var(--gold);
+    text-transform:uppercase;
+    letter-spacing:.6px;
+  }
+
+  .book-card h3{margin:6px 0 4px; color:var(--navy2); font-size:1.05rem}
+
+  .book-status{font-size:.78rem; color:var(--muted)}
+  .book-status.ready{color:#0d9488; font-weight:700}
+  .book-status.progress{color:var(--accent); font-weight:700}
+  .book-status.complete{color:var(--gold); font-weight:800}
+
+  /* ---- Episode grid ---- */
+  .episode-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:14px;
+  }
+
+  .episode-card{
+    background:#fff;
+    border:1.5px solid var(--border);
+    border-radius:14px;
+    padding:16px;
+    cursor:pointer;
+    transition:transform .15s ease;
+  }
+
+  .episode-card:active{transform:scale(.97)}
+
+  .episode-card.done{border-color:#0d9488; background:#f0fdfa}
+
+  .episode-num{font-size:.68rem; font-weight:800; color:var(--gold); text-transform:uppercase}
+  .episode-card h4{margin:5px 0 4px; color:var(--navy2); font-size:.98rem}
+  .episode-score{font-size:.78rem; color:var(--muted)}
+  .episode-score.done{color:#0d9488; font-weight:700}
+
+  .empty-note{
+    text-align:center;
+    color:var(--muted);
+    font-size:.88rem;
+    padding:20px 10px;
+    line-height:1.6;
+  }
+
+  /* ---- Quiz ---- */
+  .progress-outer{background:#eee; border-radius:8px; height:8px; overflow:hidden; margin-bottom:14px}
+  .progress-inner{background:linear-gradient(90deg,var(--accent),var(--accent2)); height:100%; width:0%; transition:width .3s}
+
+  .quiz-meta{display:flex; justify-content:space-between; font-size:.78rem; color:var(--muted); margin-bottom:10px}
+
+  .quiz-question-label{font-size:.8rem; color:var(--muted); margin-bottom:6px}
+  .quiz-question{font-size:1.15rem; font-weight:800; color:var(--navy2); margin:6px 0 18px; line-height:1.45}
+
+  .quiz-options{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+
+  .qopt{
+    background:#fff;
+    border:1.5px solid #ddd;
+    border-radius:12px;
+    padding:13px 8px;
+    font-size:.92rem;
+    cursor:pointer;
+    font-weight:700;
+    color:var(--navy2);
+    text-align:center;
+  }
+
+  .qopt.correct{background:#d7f5dd; border-color:#2e9e4f}
+  .qopt.wrong{background:#fbdada; border-color:#c0392b}
+  .qopt.disabled{pointer-events:none; opacity:.75}
+
+  .next-btn{
+    width:100%;
+    background:linear-gradient(90deg,var(--accent),var(--accent2));
+    color:#fff;
+    border:none;
+    border-radius:14px;
+    padding:13px;
+    font-size:.95rem;
+    font-weight:700;
+    cursor:pointer;
+    margin-top:16px;
+  }
+
+  .next-btn:disabled{opacity:.4; cursor:default}
+
+  /* ---- Episode result / final result ---- */
+  .result-emoji{font-size:3rem; text-align:center; line-height:1}
+
+  .result-score-circle{
+    width:140px; height:140px; border-radius:50%; margin:16px auto;
+    background:linear-gradient(160deg,var(--navy2),var(--navy));
+    border:4px solid var(--gold);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    color:#fff; box-shadow:var(--shadow);
+  }
+
+  .result-score-circle.fail{
+    background:linear-gradient(160deg,#94a3b8,#64748b);
+    border-color:#cbd5e1;
+  }
+
+  .result-score-circle .pct{font-size:2rem; font-weight:900; line-height:1}
+  .result-score-circle .frac{font-size:.76rem; opacity:.9; margin-top:4px}
+
+  .result-label{font-size:1.1rem; font-weight:800; color:var(--navy2); text-align:center; margin-top:8px}
+  .result-sub{font-size:.85rem; color:var(--muted); text-align:center; margin-top:6px; line-height:1.55}
+
+  .name-input{
+    width:100%; max-width:320px; display:block; margin:12px auto 0;
+    padding:12px 14px; border-radius:12px; border:1.5px solid #ddd;
+    font-size:.95rem; text-align:center;
+  }
+
+  .name-input:focus{outline:none; border-color:var(--accent)}
+
+  .primary-btn{
+    display:block; width:100%; max-width:320px; margin:16px auto 0;
+    background:linear-gradient(90deg,var(--gold),var(--gold-light)); color:#1a1300;
+    border:none; border-radius:24px; padding:13px 24px; font-size:.95rem;
+    font-weight:800; cursor:pointer;
+  }
+
+  .primary-btn:disabled{opacity:.5; cursor:default}
+
+  .ghost-btn{
+    display:block; width:100%; max-width:320px; margin:10px auto 0;
+    background:#fff; color:var(--navy2); border:1.5px solid var(--navy2);
+    border-radius:24px; padding:12px 22px; font-size:.9rem; font-weight:700;
+    cursor:pointer; text-align:center; text-decoration:none;
+  }
+
+  footer{
+    text-align:center;
+    color:var(--muted);
+    font-size:.75rem;
+    margin-top:30px;
+    line-height:1.6;
+  }
+
+  @media(max-width:600px){
+    header{padding:34px 14px 40px}
+    .card{padding:18px}
+    .quiz-options{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="badge">📚 MY SKILL : LITERATURE</div>
+    <h1>Story & Novel Assessment</h1>
+    <p class="subtitle">Read every episode, take the episode-wise quiz, and unlock a certificate after finishing the whole book.</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- SCREEN 1: BOOK PICKER -->
+  <div class="section" id="screen-books">
+    <div class="card">
+      <h3 style="margin-top:0;color:var(--navy2);">Choose a Story or Novel</h3>
+      <div class="book-grid" id="bookGrid"></div>
+    </div>
+  </div>
+
+  <!-- SCREEN 2: EPISODE PICKER -->
+  <div class="section" id="screen-episodes" style="display:none;">
+    <button class="back-link" onclick="goBack()">← Back to books</button>
+    <div class="card">
+      <h3 style="margin-top:0;color:var(--navy2);" id="episodeBookTitle">Episodes</h3>
+      <div class="episode-grid" id="episodeGrid"></div>
+      <div class="empty-note" id="episodeEmptyNote" style="display:none;">
+        No episodes have been added for this book yet. Questions will appear here once they're set up.
+      </div>
+    </div>
+  </div>
+
+  <!-- SCREEN 3: QUIZ -->
+  <div class="section" id="screen-quiz" style="display:none;">
+    <div class="card">
+      <div class="progress-outer"><div class="progress-inner" id="progressBar"></div></div>
+      <div class="quiz-meta">
+        <span id="quizProgressText">Question 1 / 1</span>
+        <span id="quizScoreText">Score: 0</span>
+      </div>
+      <div class="quiz-question-label">Choose the correct answer</div>
+      <div class="quiz-question" id="quizQuestion"></div>
+      <div class="quiz-options" id="quizOptions"></div>
+      <button class="next-btn" id="nextBtn" disabled onclick="handleNext()">Next Question ➜</button>
+    </div>
+  </div>
+
+  <!-- SCREEN 4: EPISODE RESULT (interstitial, not the final book result) -->
+  <div class="section" id="screen-episode-result" style="display:none;">
+    <div class="card" style="text-align:center;">
+      <div class="result-emoji" id="episodeEmoji">✅</div>
+      <div class="result-score-circle">
+        <div class="pct" id="episodePct">0%</div>
+        <div class="frac" id="episodeFrac">0 / 0</div>
+      </div>
+      <div class="result-label">Episode complete</div>
+      <div class="result-sub" id="episodeResultSub">Your score for this episode has been saved.</div>
+      <button class="primary-btn" id="episodeContinueBtn" onclick="continueAfterEpisode()">Continue</button>
+      <button class="ghost-btn" onclick="showEpisodes()">Back to Episode List</button>
+    </div>
+  </div>
+
+  <!-- SCREEN 5a: FINAL RESULT — PASSED -->
+  <div class="section" id="screen-pass" style="display:none;">
+    <div class="card" style="text-align:center;">
+      <div class="result-emoji">🎉</div>
+      <div class="result-score-circle">
+        <div class="pct" id="passPct">0%</div>
+        <div class="frac" id="passFrac">0 / 0</div>
+      </div>
+      <div class="result-label">Well Done!</div>
+      <div class="result-sub">You've passed the 20% mark for <span id="passBookName"></span> — enter your details to generate your certificate.</div>
+      <input type="text" id="studentNameInput" class="name-input" placeholder="Your full name" maxlength="40">
+      <input type="text" id="schoolNameInput" class="name-input" placeholder="School / Institution name" maxlength="80">
+      <input type="text" id="districtInput" class="name-input" placeholder="District" maxlength="50">
+      <input type="text" id="countryInput" class="name-input" placeholder="Country" maxlength="50">
+      <button class="primary-btn" onclick="goToCertificate()">Generate Certificate 🏅</button>
+      <button class="ghost-btn" onclick="showBooks()">Back to Books</button>
+    </div>
+  </div>
+
+  <!-- SCREEN 5b: FINAL RESULT — FAILED -->
+  <div class="section" id="screen-fail" style="display:none;">
+    <div class="card" style="text-align:center;">
+      <div class="result-emoji">📚</div>
+      <div class="result-score-circle fail">
+        <div class="pct" id="failPct">0%</div>
+        <div class="frac" id="failFrac">0 / 0</div>
+      </div>
+      <div class="result-label">Not quite there yet</div>
+      <div class="result-sub">You need at least 20% overall to unlock the certificate for <span id="failBookName"></span>. Re-read the episodes and retake the assessment — you've got this!</div>
+      <button class="primary-btn" onclick="retakeBook()">Retake This Book</button>
+      <button class="ghost-btn" onclick="showBooks()">Choose Another Book</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>MySkillGame — My Skill : Literature · Story & Novel Assessment</footer>
+
+<script>
+/* =========================================================================
+   BOOKS
+   Add/remove titles here. Each book only needs a code, name, icon and type.
+   ========================================================================= */
+const BOOKS = [
+  { code:'small_story',   icon:'📖', name:'The Small Story',    type:'Story' },
+  { code:'nabajagaran',   icon:'📘', name:'Nabajagaran',        type:'Novel' },
+  { code:'rabi_station',  icon:'📕', name:'Rabi Station Novel', type:'Novel' },
+  { code:'atmasamman',    icon:'📗', name:'Atmasamman',         type:'Story / Novel' },
+  { code:'debt_of_roots', icon:'📙', name:'Debt of Roots',      type:'Novel' },
+];
+
+const PASS_PCT = 20;
+
+/* =========================================================================
+   EPISODE BANK — EMPTY TEMPLATE
+   -------------------------------------------------------------------------
+   Fill each book's array with one object per episode to make it live.
+   A book with an empty array shows as "Coming soon" and is locked.
+
+   FORMAT FOR ONE EPISODE:
+
+   {
+     title: 'Episode 1',
+     questions: [
+       // [ questionText, correctAnswerText, [option1, option2, option3, option4] ]
+       ['Question text goes here?', 'Correct option text',
+        ['Correct option text','Wrong option A','Wrong option B','Wrong option C']],
+
+       ['Second question?', 'Correct option text',
+        ['Wrong option A','Correct option text','Wrong option B','Wrong option C']],
+     ]
+   }
+
+   Notes:
+   - correctAnswerText must exactly match one of the 4 strings in the options array.
+   - Options are shuffled on screen automatically; their order in the array
+     does not matter.
+   - Any number of episodes and any number of questions per episode is fine.
+   ========================================================================= */
+const EPISODE_BANK = {
+  small_story: [
+    {
+      title: 'theres-a-debt-and-a-way',
+      questions: [
+        {
+          question: "What was Arindam Sen's attitude toward displaying his wealth?",
+          options: [
+            "He loved showing his wealth",
+            "He lived simply and quietly",
+            "He spent all his money on luxury cars",
+            "He often organized expensive parties"
+          ],
+          answer: 1
+        },
+        {
+          question: "What did Arindam believe was the greatest partner an investor could have?",
+          options: [
+            "Luck",
+            "Fast trading",
+            "Time",
+            "Friends"
+          ],
+          answer: 2
+        },
+        {
+          question: "What happened to Arindam's forgotten investment portfolio after many years?",
+          options: [
+            "It became worthless",
+            "It was donated immediately",
+            "It quietly grew to a huge fortune",
+            "It was lost in a bank"
+          ],
+          answer: 2
+        },
+        {
+          question: "What did Arnav and Ananya build after receiving their father's fortune?",
+          options: [
+            "Luxury hotels",
+            "The Sen Foundation",
+            "A trading company",
+            "A private bank"
+          ],
+          answer: 1
+        },
+        {
+          question: "According to Ananya, which three investments never lose value?",
+          options: [
+            "Money, property and gold",
+            "Business, land and shares",
+            "Knowledge, integrity and patience",
+            "Cars, houses and jewellery"
+          ],
+          answer: 2
+}
+]
+        },
+{
+      title: 'kingdom-justice-story',
+      questions: [
+{
+  question: "What was unusual about the kingdom's prices?",
+  options: [
+    "Food was expensive and land was cheap",
+    "Food was nearly free but land was extremely expensive",
+    "Everything was equally expensive",
+    "Gold was cheaper than food"
+  ],
+  answer: 1
+},
+{
+  question: "Why did Milan decide to stay in the kingdom?",
+  options: [
+    "He wanted to become a soldier",
+    "He wanted to study with the sage",
+    "He believed cheap food would help him become rich",
+    "He wanted to become the king"
+  ],
+  answer: 2
+},
+{
+  question: "Why was Milan arrested by the soldiers?",
+  options: [
+    "He stole from a merchant",
+    "He was the fattest man in the kingdom",
+    "He damaged the city wall",
+    "He refused to pay taxes"
+  ],
+  answer: 1
+},
+{
+  question: "What did the sage claim about the ancient prophecy?",
+  options: [
+    "The king would become immortal",
+    "The kingdom would become wealthy",
+    "The person executed at that moment would be reborn as the next ruler",
+    "Milan would become a famous merchant"
+  ],
+  answer: 2
+},
+{
+  question: "What lesson did Milan learn from his experience?",
+  options: [
+    "Easy opportunities are always safe",
+    "Greed can blind people to danger",
+    "Wealth is more important than wisdom",
+    "Justice is unnecessary in society"
+  ],
+  answer: 1
+}
+]
+},
+{
+title: 'One_Key_One_Moment_One_Lifetime_of_Regret',
+  questions: [
+{
+  question: "Who was Mr. Amal Das to the students of Riverside High School?",
+  options: [
+    "Only their principal",
+    "A mentor, guide, and father figure",
+    "A school bus driver",
+    "A sports coach"
+  ],
+  answer: 1
+},
+{
+  question: "What rule had Mr. Amal always followed regarding his scooter?",
+  options: [
+    "He never rode it to school",
+    "He never lent his vehicle",
+    "He only lent it to teachers",
+    "He never drove it in the rain"
+  ],
+  answer: 1
+},
+{
+  question: "What happened when Arjun and the other students were returning on the scooter?",
+  options: [
+    "The scooter ran out of fuel",
+    "They lost their way",
+    "An elderly man stepped onto the road and the scooter crashed",
+    "The police stopped them"
+  ],
+  answer: 2
+},
+{
+  question: "Why did Mr. Amal later accept responsibility for the incident?",
+  options: [
+    "He owned the scooter and made the final decision",
+    "The students forced him to lend it",
+    "He was riding the scooter",
+    "The school ordered him to accept it"
+  ],
+  answer: 0
+},
+{
+  question: "What lesson did Arjun share with students years later?",
+  options: [
+    "Good intentions are always enough",
+    "Fast decisions are usually the best",
+    "Responsibility is measured by the consequences of our choices",
+    "Rules should always be ignored"
+  ],
+  answer: 2
+}
+]
+},
+{
+  title: 'one-mobile-three-lives',
+  questions: [
+{
+  question: "Why did Rahul want to buy an expensive smartphone?",
+  options: [
+    "His parents asked him to buy one",
+    "He wanted to keep up with his friends",
+    "He needed it for his school exams",
+    "He wanted to sell it later"
+  ],
+  answer: 1
+},
+{
+  question: "How did Rahul buy the expensive smartphone?",
+  options: [
+    "With his savings",
+    "His father bought it for him",
+    "On installments",
+    "As a gift from a friend"
+  ],
+  answer: 2
+},
+{
+  question: "Why could Arun not easily pay Rahul's phone installments?",
+  options: [
+    "He had lost his job",
+    "There were many household expenses",
+    "He did not like smartphones",
+    "He had already bought another phone"
+  ],
+  answer: 1
+},
+{
+  question: "What happened when Rahul left the house in anger and despair?",
+  options: [
+    "He went to a friend's house",
+    "He went to a dangerous hillside spot",
+    "He went to the market",
+    "He returned home immediately"
+  ],
+  answer: 1
+},
+{
+  question: "What is the central message of the story?",
+  options: [
+    "Expensive phones are always harmful",
+    "Children should never use smartphones",
+    "A human life is more valuable than any phone or material possession",
+    "Parents should buy everything their children want"
+  ],
+  answer: 2
+}
+]
+},
+{
+  title: 'The_Boy_Who_Learned_Before_He_Grew',
+  questions: [
+{
+  question: "What did seven-year-old Kenji do before his alarm clock rang?",
+  options: [
+    "He waited for his mother to wake him",
+    "He woke up, folded his blanket, and prepared himself",
+    "He went back to sleep",
+    "He immediately left for school"
+  ],
+  answer: 1
+},
+{
+  question: "What did Kenji carefully check before leaving for school?",
+  options: [
+    "His school checklist",
+    "His bicycle",
+    "His television",
+    "His toys"
+  ],
+  answer: 0
+},
+{
+  question: "What did the students do before eating lunch at Sakura Elementary School?",
+  options: [
+    "They went home",
+    "They waited for the teacher to serve them",
+    "They washed their hands, wore aprons and masks, and served one another",
+    "They bought food from a shop"
+  ],
+  answer: 2
+},
+{
+  question: "What did Kenji do when he found the brown leather wallet?",
+  options: [
+    "He kept the cash",
+    "He gave it to his friend",
+    "He left it beside the bench",
+    "He took it to the nearest police box"
+  ],
+  answer: 3
+},
+{
+  question: "According to Kenji, what can build trust?",
+  options: [
+    "Money",
+    "Knowledge alone",
+    "Character",
+    "Success"
+  ],
+  answer: 2
+}
+]
+},
+{
+  title: 'The_Computer_That_Arrived_at_the_Perfect_Time',
+  questions: [
+{
+  question: "Why did Arnab want a computer?",
+  options: [
+    "To play games and learn coding",
+    "To sell it for profit",
+    "To give it to his teacher",
+    "To start a computer shop"
+  ],
+  answer: 0
+},
+{
+  question: "Why did Mr. Sen advise Meena not to buy the computer immediately?",
+  options: [
+    "The computer was too small",
+    "Technology changes quickly and borrowing would create debt",
+    "Arnab did not like computers",
+    "The school banned computers"
+  ],
+  answer: 1
+},
+{
+  question: "How much money had Meena saved after six years?",
+  options: [
+    "5,000",
+    "30,000",
+    "60,000",
+    "Nearly 90,000"
+  ],
+  answer: 3
+},
+{
+  question: "When did a personal computer become essential for Arnab?",
+  options: [
+    "When he was in Class Five",
+    "When he entered Class Eleven and chose Computer Science",
+    "When he finished university",
+    "When he started his company"
+  ],
+  answer: 1
+},
+{
+  question: "What did Arnab say was his family's smartest investment?",
+  options: [
+    "The computer",
+    "The savings box",
+    "His mother's patience",
+    "The computer classes"
+  ],
+  answer: 2
+}
+]
+},
+{
+  title: 'The_Fire_That_Ate_the_Forest',
+  questions: [
+{
+  question: "How much money did Meena have in her savings box when Arnab first asked for a computer?",
+  options: [
+    "2,000",
+    "5,000",
+    "10,000",
+    "15,000"
+  ],
+  answer: 1
+},
+{
+  question: "What advice did Mr. Sen give Meena?",
+  options: [
+    "Take a loan immediately",
+    "Buy a cheaper computer",
+    "Keep saving and wait for the right time",
+    "Ask Arnab to stop studying"
+  ],
+  answer: 2
+},
+{
+  question: "How did Arnab use his time while waiting for a computer?",
+  options: [
+    "He stopped learning computers",
+    "He borrowed books, practiced typing, and attended free computer classes",
+    "He played games all day",
+    "He asked his friends for money"
+  ],
+  answer: 1
+},
+{
+  question: "How much money had Meena saved after six years?",
+  options: [
+    "30,000",
+    "50,000",
+    "Nearly 90,000",
+    "1,50,000"
+  ],
+  answer: 2
+},
+{
+  question: "What did Arnab say was his family's smartest investment?",
+  options: [
+    "The computer",
+    "His mother's patience",
+    "The savings box",
+    "His school education"
+  ],
+  answer: 1
+}
+]
+},
+{
+  title: 'The_Glass_That_Saved_a_Life',
+  questions: [
+{
+  question: "What did Meena decide to do instead of taking a loan to buy the computer?",
+  options: [
+    "Sell her house",
+    "Save money patiently",
+    "Borrow money from friends",
+    "Stop Arnab's education"
+  ],
+  answer: 1
+},
+{
+  question: "What did Arnab learn while waiting to get his own computer?",
+  options: [
+    "Only computer games",
+    "Typing, coding, and programming basics",
+    "Driving",
+    "Business management"
+  ],
+  answer: 1
+},
+{
+  question: "Why did Meena refuse to borrow money for the computer?",
+  options: [
+    "She disliked computers",
+    "She did not want debt to become a burden",
+    "The computer was unavailable",
+    "Arnab did not need it"
+  ],
+  answer: 1
+},
+{
+  question: "What happened when Arnab finally needed a computer for his studies?",
+  options: [
+    "He dropped the course",
+    "His mother had enough savings to buy one",
+    "He borrowed one permanently",
+    "His friend bought one for him"
+  ],
+  answer: 1
+},
+{
+  question: "What is the main lesson of the story?",
+  options: [
+    "Borrowing is always the best solution",
+    "Patience and disciplined saving can turn waiting into an advantage",
+    "Technology is unnecessary",
+    "Children should never ask for computers"
+  ],
+  answer: 1
+}
+]
+},
+{
+  title: 'The_Invisible_Blade',
+  questions: [
+{
+  question: "What was the main reason Meena chose to save money instead of taking a loan?",
+  options: [
+    "She did not trust the bank",
+    "She wanted to avoid debt",
+    "She disliked computers",
+    "She had no income"
+  ],
+  answer: 1
+},
+{
+  question: "What did Arnab do while waiting to get his own computer?",
+  options: [
+    "He stopped studying",
+    "He practiced typing and learned programming",
+    "He played games all day",
+    "He sold his books"
+  ],
+  answer: 1
+},
+{
+  question: "What did Meena's savings eventually allow her to do?",
+  options: [
+    "Buy a computer without taking a loan",
+    "Buy a new house",
+    "Start a business",
+    "Travel abroad"
+  ],
+  answer: 0
+},
+{
+  question: "What did Arnab understand about his mother's decision?",
+  options: [
+    "She had wasted his time",
+    "Her patience had helped him",
+    "She did not care about his education",
+    "She wanted him to quit school"
+  ],
+  answer: 1
+},
+{
+  question: "What is the central message of the story?",
+  options: [
+    "Always buy the newest technology",
+    "Borrow money whenever necessary",
+    "Patience, saving, and preparation can create better opportunities",
+    "Technology is more important than education"
+  ],
+  answer: 2
+}
+]
+},
+{
+  title: 'The_Milk_That_Poisoned_Trust',
+  questions: [
+{
+  question: "What was Meena's main reason for saving money instead of borrowing?",
+  options: [
+    "She wanted to avoid debt",
+    "She did not like computers",
+    "She wanted to buy a car",
+    "She had no bank account"
+  ],
+  answer: 0
+},
+{
+  question: "What did Arnab do while waiting for his own computer?",
+  options: [
+    "He stopped studying",
+    "He practiced typing and learned programming",
+    "He played games all day",
+    "He started working"
+  ],
+  answer: 1
+},
+{
+  question: "What did Arnab's mother finally use her savings for?",
+  options: [
+    "A new house",
+    "A family trip",
+    "A computer for Arnab",
+    "A new business"
+  ],
+  answer: 2
+},
+{
+  question: "What did Arnab realize about his mother's patience?",
+  options: [
+    "It had delayed his education",
+    "It had helped him prepare for the future",
+    "It had made computers unnecessary",
+    "It had stopped him from learning"
+  ],
+  answer: 1
+},
+{
+  question: "What is the main lesson of the story?",
+  options: [
+    "Borrowing money is always better",
+    "Patience, saving, and preparation can lead to better opportunities",
+    "Technology is more important than education",
+    "Children should never ask for expensive things"
+  ],
+  answer: 1
+}
+]
+},
+{
+  title: 'The_Road_That_Changed_His_Destiny',
+  questions: [
+{
+  question: "What was Meena's main goal when she started saving money?",
+  options: [
+    "To buy a new house",
+    "To buy a computer for Arnab without taking a loan",
+    "To start a business",
+    "To pay for a family vacation"
+  ],
+  answer: 1
+},
+{
+  question: "What did Arnab learn while waiting for a computer?",
+  options: [
+    "Cooking and drawing",
+    "Typing and programming",
+    "Driving and repairing",
+    "Trading and investing"
+  ],
+  answer: 1
+},
+{
+  question: "Why did Meena refuse to take a loan for the computer?",
+  options: [
+    "She wanted to avoid debt",
+    "The bank was closed",
+    "The computer was unavailable",
+    "Arnab did not need a computer"
+  ],
+  answer: 0
+},
+{
+  question: "What happened to the money Meena saved over the years?",
+  options: [
+    "She lost it",
+    "She spent it on a vacation",
+    "It grew into enough savings to buy the computer",
+    "She gave it to a friend"
+  ],
+  answer: 2
+},
+{
+  question: "What is the most important lesson of the story?",
+  options: [
+    "Patience and preparation can turn waiting into an advantage",
+    "Everyone should buy the latest technology",
+    "Borrowing money is the fastest solution",
+    "Money is more important than education"
+  ],
+  answer: 0
+}
+]
+},
+{
+  title: 'the-bracelet-of-truth',
+  questions: [
+{
+  question: "What was the biggest challenge faced by the main character?",
+  options: [
+    "Lack of confidence",
+    "Fear of failure",
+    "Lack of money",
+    "Lack of education"
+  ],
+  answer: 2
+},
+{
+  question: "What helped the main character overcome the difficult situation?",
+  options: [
+    "Luck",
+    "Patience and determination",
+    "Borrowing money",
+    "Ignoring the problem"
+  ],
+  answer: 1
+},
+{
+  question: "What important quality did the main character develop?",
+  options: [
+    "Patience",
+    "Anger",
+    "Pride",
+    "Carelessness"
+  ],
+  answer: 0
+},
+{
+  question: "What did the main character learn from the experience?",
+  options: [
+    "Success comes quickly",
+    "Money solves every problem",
+    "Wise decisions and patience can lead to success",
+    "Taking risks is always necessary"
+  ],
+  answer: 2
+},
+{
+  question: "What is the central message of the story?",
+  options: [
+    "Never ask anyone for help",
+    "Material possessions are most important",
+    "Patience, wisdom, and determination are valuable in life",
+    "Success depends only on luck"
+  ],
+  answer: 2
+}
+]
+},
+{
+  title: 'the-invisible-message',
+  questions: [
+{
+  question: "What was the main problem faced by the central character?",
+  options: [
+    "He had no friends",
+    "He faced a difficult financial situation",
+    "He disliked studying",
+    "He wanted to leave his school"
+  ],
+  answer: 1
+},
+{
+  question: "What quality helped the character deal with the difficult situation?",
+  options: [
+    "Patience and determination",
+    "Anger and pride",
+    "Fear and hesitation",
+    "Carelessness and haste"
+  ],
+  answer: 0
+},
+{
+  question: "What important lesson did the character learn?",
+  options: [
+    "Money can solve every problem",
+    "Quick decisions are always best",
+    "Wise choices and patience are important",
+    "Success depends only on luck"
+  ],
+  answer: 2
+},
+{
+  question: "How did the character's experience change his way of thinking?",
+  options: [
+    "He became more careless",
+    "He understood the value of patience",
+    "He stopped trusting others",
+    "He decided to avoid all challenges"
+  ],
+  answer: 1
+},
+{
+  question: "What is the central message of the story?",
+  options: [
+    "Material wealth is the key to happiness",
+    "Taking risks always brings success",
+    "Patience, wisdom, and determination can lead to success",
+    "People should never change their plans"
+  ],
+  answer: 2
+}
+]
+},
+{
+  title: 'the-old-man-who-stole-a-home',
+  questions: [
+{
+  question: "What was the main challenge faced by the protagonist?",
+  options: [
+    "He was unable to make a wise decision",
+    "He had difficulty understanding the situation",
+    "He faced a serious financial problem",
+    "He wanted to leave his family"
+  ],
+  answer: 2
+},
+{
+  question: "What quality helped the protagonist handle the difficult situation?",
+  options: [
+    "Patience",
+    "Anger",
+    "Pride",
+    "Carelessness"
+  ],
+  answer: 0
+},
+{
+  question: "What did the protagonist learn from his experience?",
+  options: [
+    "Success comes without effort",
+    "Quick decisions are always better",
+    "Wise decisions can make a major difference",
+    "Money is the only measure of success"
+  ],
+  answer: 2
+},
+{
+  question: "How did the difficult experience affect the protagonist?",
+  options: [
+    "It made him more responsible",
+    "It made him careless",
+    "It made him give up",
+    "It made him distrust everyone"
+  ],
+  answer: 0
+},
+{
+  question: "What is the central message of the story?",
+  options: [
+    "Luck is more important than hard work",
+    "Material possessions bring happiness",
+    "Patience, wisdom, and responsibility are valuable in life",
+    "Difficult situations should always be avoided"
+  ],
+  answer: 2
+}
+]
+},
+{
+  title: 'theres-a-debt-and-a-way',
+  questions: [
+{
+  question: "What was the main challenge faced by the protagonist?",
+  options: [
+    "He had to make an important decision",
+    "He wanted to leave his school",
+    "He had no friends",
+    "He disliked learning"
+  ],
+  answer: 0
+},
+{
+  question: "What helped the protagonist overcome the challenge?",
+  options: [
+    "Luck",
+    "Patience and careful thinking",
+    "Anger",
+    "Ignoring the problem"
+  ],
+  answer: 1
+},
+{
+  question: "What important quality did the protagonist develop?",
+  options: [
+    "Pride",
+    "Patience",
+    "Carelessness",
+    "Fear"
+  ],
+  answer: 1
+},
+{
+  question: "What did the protagonist learn from the experience?",
+  options: [
+    "Quick decisions are always best",
+    "Money can solve every problem",
+    "Wise decisions and patience are important",
+    "Challenges should always be avoided"
+  ],
+  answer: 2
+},
+{
+  question: "What is the central message of the story?",
+  options: [
+    "Success depends only on luck",
+    "Material wealth is most important",
+    "Patience, wisdom, and determination can lead to success",
+    "People should never take risks"
+  ],
+  answer: 2
+}
+]
+},
+{
+  title: 'the-sky-that-gave-a-warning',
+  questions: [
+{
+  question: "Why did Samir's financial problems become worse?",
+  options: [
+    "His family left him",
+    "His business suffered a major loss while loan instalments and interest kept growing",
+    "He stopped working completely",
+    "He lost all his personal belongings"
+  ],
+  answer: 1
+},
+{
+  question: "What did Mita tell Samir when he said everything was over?",
+  options: [
+    "We should leave the city",
+    "We should borrow more money",
+    "The money is gone, but we are still here",
+    "You must solve everything alone"
+  ],
+  answer: 2
+},
+{
+  question: "What did Mita do to help Samir deal with the debt?",
+  options: [
+    "Sold everything immediately",
+    "Took him to a lawyer and a financial advisor",
+    "Asked him to ignore the creditors",
+    "Borrowed money from relatives"
+  ],
+  answer: 1
+},
+{
+  question: "What did the family do to reduce their financial burden?",
+  options: [
+    "They took another large loan",
+    "They closed part of the business and cut unnecessary expenses",
+    "They stopped speaking to the creditors",
+    "They moved to another country"
+  ],
+  answer: 1
+},
+{
+  question: "What is the central lesson of the story?",
+  options: [
+    "Debt means the end of life",
+    "Money is more important than family",
+    "Debt is a problem to solve, not the end of a life",
+    "People should never start a business"
+  ],
+  answer: 2
+}
+]
+},
+{
+  title: 'When_the_Pond_Disappeared',
+  questions: [
+{
+  question: "What was the main reason Samir's business began to struggle?",
+  options: [
+    "He stopped working",
+    "His business suffered a major loss",
+    "He moved to another city",
+    "His family stopped supporting him"
+  ],
+  answer: 1
+},
+{
+  question: "Who encouraged Samir when he felt that everything was over?",
+  options: [
+    "His friend",
+    "His lawyer",
+    "His wife Mita",
+    "His business partner"
+  ],
+  answer: 2
+},
+{
+  question: "What was the first important step Samir took to deal with his debt?",
+  options: [
+    "He took another loan",
+    "He sought professional financial advice",
+    "He closed all his bank accounts",
+    "He left the city"
+  ],
+  answer: 1
+},
+{
+  question: "What did Samir's family do to reduce their expenses?",
+  options: [
+    "They bought a new house",
+    "They increased their spending",
+    "They cut unnecessary expenses",
+    "They borrowed from everyone"
+  ],
+  answer: 2
+},
+{
+  question: "What did Samir eventually understand about his debt?",
+  options: [
+    "It could never be solved",
+    "It was a problem that could be managed step by step",
+    "He should ignore it",
+    "He should borrow more money"
+  ],
+  answer: 1
+},
+{
+  question: "What did Samir realize after receiving help from the financial advisor?",
+  options: [
+    "His situation could be managed step by step",
+    "He should take another loan",
+    "He should close every business",
+    "He should ignore the debt"
+  ],
+  answer: 0
+},
+{
+  question: "What role did Mita play during Samir's financial crisis?",
+  options: [
+    "She blamed him for everything",
+    "She encouraged and supported him",
+    "She left the family",
+    "She borrowed money secretly"
+  ],
+  answer: 1
+},
+{
+  question: "Why did Samir and Mita reduce unnecessary expenses?",
+  options: [
+    "To save for a vacation",
+    "To reduce their financial burden",
+    "To buy a bigger house",
+    "To start another business"
+  ],
+  answer: 1
+},
+{
+  question: "What helped Samir regain hope during the crisis?",
+  options: [
+    "Winning a lottery",
+    "His family's support and a practical plan",
+    "Receiving a large gift",
+    "Ignoring his creditors"
+  ],
+  answer: 1
+},
+{
+  question: "What is the main lesson of Samir's story?",
+  options: [
+    "Financial problems should be hidden",
+    "Debt can be overcome with courage, support, and a proper plan",
+    "Borrowing more money solves debt",
+    "Business failure means life is over"
+   ],
+          answer: 1
+        }
+      ]
+    }
+  ],
+
+  nabajagaran: [
+{
+title: 'a_new_beginning',
+  questions: [
+{
+  question: "Why did people call the abandoned factory the 'cursed factory'?",
+  options: [
+    "It was always surrounded by wild animals",
+    "People believed they could hear machines and see strange lights there at night",
+    "The factory was painted black",
+    "The government had officially declared it cursed"
+  ],
+  answer: 1
+},
+{
+  question: "What happened a few months after the factory was shut down?",
+  options: [
+    "A fire destroyed the factory",
+    "A toxic gas leak escaped from an old chemical tank",
+    "The factory was sold to foreigners",
+    "The river flooded the factory"
+  ],
+  answer: 1
+},
+{
+  question: "Who was the man who arrived at the factory and said, 'It hasn't died... no one ever really tried to save it'?",
+  options: [
+    "The bank's chief officer",
+    "An old fisherman",
+    "Arindam Sen",
+    "A government official"
+  ],
+  answer: 2
+},
+{
+  question: "Why did Arindam Sen want to restore the factory?",
+  options: [
+    "He wanted to become famous",
+    "He wanted to restore the lost trust of thousands of people",
+    "He wanted to sell the factory quickly",
+    "He wanted to destroy the old machinery"
+  ],
+  answer: 1
+},
+{
+  question: "What did Arindam discover about the locked warehouse?",
+  options: [
+    "It contained old office furniture",
+    "It was completely empty",
+    "It was being used to hide smuggled goods and new machinery",
+    "It was being used as a workers' dormitory"
+  ],
+  answer: 2
+},
+{
+  question: "What did Arindam discover about the Black River?",
+  options: [
+    "It was naturally black in colour",
+    "The factory had been releasing poisonous black water into it",
+    "It contained valuable gold",
+    "It was used to transport factory workers"
+  ],
+  answer: 1
+}
+]
+},
+{
+  title: 'a-new-beginning',
+  questions: [
+    {
+      question: "Why did local people call the factory the 'cursed factory'?",
+      options: [
+        "Because it was built on a hill",
+        "Because strange sounds and lights were reported there at night",
+        "Because it was owned by the government",
+        "Because it had been painted black"
+      ],
+      answer: 1
+    },
+    {
+      question: "What dangerous incident happened a few months after the factory shut down?",
+      options: [
+        "A major fire broke out",
+        "A toxic gas leak escaped from an old chemical tank",
+        "The factory was flooded",
+        "The main chimney collapsed"
+      ],
+      answer: 1
+    },
+    {
+      question: "What did Arindam Sen say when he first looked at the ruined factory?",
+      options: [
+        "It should be demolished",
+        "It is too expensive to repair",
+        "It hasn't died; no one ever really tried to save it",
+        "It should be sold immediately"
+      ],
+      answer: 2
+    },
+    {
+      question: "Why did Arindam Sen want to restore the factory?",
+      options: [
+        "To become famous",
+        "To restore the lost trust of thousands of people",
+        "To sell its old machines",
+        "To build a new shopping centre"
+      ],
+      answer: 1
+    },
+    {
+      question: "What did Arindam discover inside the mysterious warehouse?",
+      options: [
+        "Old furniture",
+        "Boxes of books",
+        "New machinery and goods being prepared for smuggling",
+        "Empty chemical tanks"
+      ],
+      answer: 2
+    },
+    {
+      question: "Why was the river called the 'Black River'?",
+      options: [
+        "Its water had become unnaturally dark and polluted",
+        "It flowed through a dark forest",
+        "It was naturally black",
+        "It contained black stones"
+      ],
+      answer: 0
+    }
+  ]
+},
+{
+  title: 'a-new-beginning',
+  questions: [
+    {
+      question: "Why did local people call the place the 'cursed factory'?",
+      options: [
+        "It was built in the mountains",
+        "People heard strange sounds and saw lights there at night",
+        "It was owned by a foreign company",
+        "It had been closed by the government"
+      ],
+      answer: 1
+    },
+    {
+      question: "What serious incident happened a few months after the factory shut down?",
+      options: [
+        "A fire destroyed the factory",
+        "A toxic gas leak escaped from an old chemical tank",
+        "The factory was flooded",
+        "The main chimney collapsed"
+      ],
+      answer: 1
+    },
+    {
+      question: "Who was the man who came to inspect the abandoned factory?",
+      options: [
+        "Milan Sen",
+        "Arindam Sen",
+        "The bank's chief officer",
+        "An old factory worker"
+      ],
+      answer: 1
+    },
+    {
+      question: "What did Arindam Sen say he really wanted to restore?",
+      options: [
+        "The old machinery",
+        "The factory building",
+        "The lost faith and trust of thousands of people",
+        "The railway line"
+      ],
+      answer: 2
+    },
+    {
+      question: "What made Arindam suspicious about the warehouse?",
+      options: [
+        "It had no windows",
+        "It had a brand-new lock despite the factory being closed for years",
+        "It was painted a different colour",
+        "It was surrounded by guards"
+      ],
+      answer: 1
+    },
+    {
+      question: "What did Arindam discover when he secretly watched the warehouse at night?",
+      options: [
+        "Workers repairing old machines",
+        "People secretly loading new machinery and goods onto a truck",
+        "Government officials inspecting the building",
+        "Villagers storing fishing equipment"
+      ],
+      answer: 1
+    }
+  ]
+},
+{
+  title: 'the-dawn-of-nabajagaran',
+  questions: [
+    {
+      question: "Who brought the confidential internal audit file to Arindam Sen?",
+      options: [
+        "Emily Carter",
+        "The factory manager",
+        "A bank officer",
+        "A government inspector"
+      ],
+      answer: 0
+    },
+    {
+      question: "What serious wrongdoing was revealed in the audit report?",
+      options: [
+        "Only minor accounting mistakes",
+        "Fake tenders, fraudulent billing, smuggling, and misuse of workers' funds",
+        "Only late payment of salaries",
+        "Only damage to factory machinery"
+      ],
+      answer: 1
+    },
+    {
+      question: "What was one of the most shocking discoveries in the audit report?",
+      options: [
+        "The factory had no electricity",
+        "Children were working with hazardous chemicals and heavy machinery",
+        "The factory had been sold twice",
+        "Workers had stolen factory equipment"
+      ],
+      answer: 1
+    },
+    {
+      question: "What principle did Arindam announce for hiring workers?",
+      options: [
+        "Family connections would come first",
+        "Political recommendations would be accepted",
+        "Hiring would be based on skill, character, and honesty",
+        "Only former employees could be hired"
+      ],
+      answer: 2
+    },
+    {
+      question: "Why did Arindam select the candidate who openly admitted his past mistake?",
+      options: [
+        "He had the highest salary expectation",
+        "He showed moral honesty and the courage to admit his mistake",
+        "He had the strongest political connections",
+        "He had worked at Nabajagaran before"
+      ],
+      answer: 1
+    },
+    {
+      question: "Why did Arindam stop production on the first day?",
+      options: [
+        "The machines were not available",
+        "He wanted everyone to complete safety training first",
+        "The workers refused to work",
+        "The factory had no electricity"
+      ],
+      answer: 1
+    }
+  ]
+},
+{
+  title: 'the-complaint-register',
+  questions: [
+    {
+      question: "Why did Arindam stop all fifty fridges from leaving the factory?",
+      options: [
+        "The fridges were too expensive",
+        "The quality tests found problems with the door seal and cooling time",
+        "There were not enough trucks",
+        "The workers had not finished assembling them"
+      ],
+      answer: 1
+    },
+    {
+      question: "What did Arindam learn when he visited the shopping mall as an ordinary customer?",
+      options: [
+        "Customers only cared about low prices",
+        "Customers were mainly interested in the size of the factory",
+        "Customers were worried about after-sales service and spare parts",
+        "Customers disliked homegrown products"
+      ],
+      answer: 2
+    },
+    {
+      question: "What did Daniel discover when he examined Arindam's fridge at the service centre?",
+      options: [
+        "The compressor was damaged",
+        "A screw on the back earthing line had come loose",
+        "The cooling system had failed",
+        "The fridge had no warranty"
+      ],
+      answer: 1
+    },
+    {
+      question: "What reward did Daniel receive for his honesty and proper service?",
+      options: [
+        "A new car",
+        "A promotion and a house",
+        "A certificate of appreciation and a one-month advance bonus",
+        "A foreign training opportunity"
+      ],
+      answer: 2
+    },
+    {
+      question: "What problem did Suchitra discover during her visit to the rural area?",
+      options: [
+        "The fridges were too expensive",
+        "The user manual was difficult for ordinary customers to understand",
+        "The villagers did not like Nabajagaran products",
+        "The dealers had stopped selling fridges"
+      ],
+      answer: 1
+    },
+    {
+      question: "What did Arindam call the biggest consultant or advisor of the company?",
+      options: [
+        "The company's senior managers",
+        "The government",
+        "The ordinary customer who buys the service with their hard-earned money",
+        "The company's engineers"
+      ],
+      answer: 2
+    }
+  ]
+},
+{
+  title: 'ramus-arrival',
+  questions: [
+    {
+      question: "Why did Arindam Sen select Ramu Das as a security guard?",
+      options: [
+        "He had the highest qualifications",
+        "He showed honesty, humility, and a strong sense of duty",
+        "He had powerful connections",
+        "He demanded the lowest salary"
+      ],
+      answer: 1
+    },
+    {
+      question: "What did Ramu say about the rules when someone influential tried to enter the factory?",
+      options: [
+        "Important people should get special treatment",
+        "Rules can be changed when necessary",
+        "The rules are the same for everyone",
+        "Only senior officers need to follow the rules"
+      ],
+      answer: 2
+    },
+    {
+      question: "What did Ramu do when the influential businessman arrived without official clearance?",
+      options: [
+        "He opened the gate immediately",
+        "He asked for proper identification and refused entry",
+        "He called Arindam's personal phone",
+        "He allowed the businessman to enter secretly"
+      ],
+      answer: 1
+    },
+    {
+      question: "What strange thing did Ramu dream about before the missing factory part was found?",
+      options: [
+        "A fire in the factory",
+        "Everyone searching for a box hidden behind a high shelf",
+        "A businessman entering the factory",
+        "A storm damaging the factory"
+      ],
+      answer: 1
+    },
+    {
+      question: "What happened after Ramu dreamed about the factory truck?",
+      options: [
+        "The truck was cancelled",
+        "The driver ignored him",
+        "The brakes were checked and a dangerous worn oil pipe was discovered",
+        "The truck was sold"
+      ],
+      answer: 2
+    },
+    {
+      question: "Why did Arindam decide not to immediately reward Ramu for his good deeds?",
+      options: [
+        "He did not believe Ramu was honest",
+        "He wanted to see whether Ramu's honesty remained genuine even without praise or reward",
+        "He wanted Ramu to resign",
+        "He wanted to test his technical skills"
+      ],
+      answer: 1
+    }
+  ]
+},
+{
+  title: 'the-road-to-conquering',
+  questions: [
+{
+  question: "Why did Arindam Sen create a special 'Customer Complaints' register?",
+  options: [
+    "To record employee attendance",
+    "To understand customer problems and improve the company",
+    "To calculate factory profits",
+    "To track production numbers"
+  ],
+  answer: 1
+},
+{
+  question: "What important promise did Arindam Sen refuse to make to the overseas buyer?",
+  options: [
+    "A promise about product price",
+    "A promise about advertising",
+    "A delivery promise the company could not realistically keep",
+    "A promise about hiring workers"
+  ],
+  answer: 2
+},
+{
+  question: "Why did the European company choose Nabajagaran Electronics?",
+  options: [
+    "Its products were the cheapest",
+    "Its factory was the largest",
+    "It trusted the company's reputation and integrity",
+    "It had the most employees"
+  ],
+  answer: 2
+},
+{
+  question: "What caused the fire during the trial run of the new production line?",
+  options: [
+    "An ordinary electrical short circuit",
+    "A worker's mistake",
+    "A main-phase wire had been deliberately cut and reversed",
+    "A machine overheated naturally"
+  ],
+  answer: 2
+},
+{
+  question: "What did Arindam Sen do after the factory sabotage?",
+  options: [
+    "He left the factory",
+    "He personally worked with the engineers on the repairs",
+    "He stopped the overseas order",
+    "He blamed the workers"
+  ],
+  answer: 1
+},
+{
+  question: "Why was Ethan's letter especially meaningful to Arindam Sen?",
+  options: [
+    "Ethan offered to invest in the company",
+    "Ethan praised the company's expensive products",
+    "The refrigerator helped Ethan's father's fruit business and inspired Ethan",
+    "Ethan asked for a free refrigerator"
+  ],
+  answer: 2
+}
+]
+},
+{
+  title: 'the_reward_of_honesty',
+  questions: [
+    {
+      question: "Why did Arindam create a special 'Customer Complaints' register?",
+      options: [
+        "To record employee attendance",
+        "To understand customer problems and improve the company",
+        "To calculate factory profits",
+        "To record production numbers"
+      ],
+      answer: 1
+    },
+    {
+      question: "What did Arindam refuse to promise to the overseas buyer?",
+      options: [
+        "A lower product price",
+        "Free products",
+        "A delivery date the company could not realistically guarantee",
+        "A larger factory"
+      ],
+      answer: 2
+    },
+    {
+      question: "Why did the European company choose Nabajagaran Electronics?",
+      options: [
+        "Because its products were the cheapest",
+        "Because of its reputation and integrity",
+        "Because it had the largest factory",
+        "Because it offered free products"
+      ],
+      answer: 1
+    },
+    {
+      question: "What happened during the trial run of the new production line?",
+      options: [
+        "The machines stopped because of a natural fault",
+        "The factory ran out of electricity",
+        "A deliberate electrical sabotage caused a fire",
+        "The workers went on strike"
+      ],
+      answer: 2
+    },
+    {
+      question: "What did Arindam do after the fire?",
+      options: [
+        "He abandoned the project",
+        "He personally worked with the engineers to repair the system",
+        "He cancelled the overseas order",
+        "He blamed the workers"
+      ],
+      answer: 1
+    },
+    {
+      question: "What did the investigation reveal about the electrical fault?",
+      options: [
+        "It was caused by heavy rain",
+        "It was caused by an old machine",
+        "A main-phase wire had been deliberately cut and reversed",
+        "It was caused by a power shortage"
+      ],
+      answer: 2
+    },
+    {
+      question: "Why was Ethan's letter important to Arindam?",
+      options: [
+        "Ethan wanted to buy the company",
+        "Ethan's father's business had benefited from the refrigerator",
+        "Ethan offered Arindam a job",
+        "Ethan wanted a free refrigerator"
+      ],
+      answer: 1
+    },
+    {
+      question: "What did Arindam understand from Ethan's letter?",
+      options: [
+        "Business success depends only on profit",
+        "A product can change a person's life and inspire future generations",
+        "Foreign customers are always better",
+        "Technology is more important than people"
+      ],
+      answer: 1
+    }
+  ]
+},
+],
+
+rabi_station: [
+  {
+    title: 'a_new_beginning',
+    questions: [
+      {
+        question: "Why did Arindam Sen become interested in Robi at the railway station?",
+        options: [
+          "Robi was selling tea at the station",
+          "Robi carried a very heavy load with remarkable strength and confidence",
+          "Robi was arguing with a passenger",
+          "Robi was working as a railway employee"
+        ],
+        answer: 1
+      },
+      {
+        question: "How much did the gentleman initially offer Robi for carrying the luggage?",
+        options: [
+          "Five rupees",
+          "Ten rupees",
+          "Twenty rupees",
+          "Fifty rupees"
+        ],
+        answer: 1
+      },
+      {
+        question: "What did Robi do when he saw someone running away with a passenger's bag?",
+        options: [
+          "He called the police",
+          "He ignored the incident",
+          "He chased and caught the young man",
+          "He asked Arindam Sen for help"
+        ],
+        answer: 2
+      },
+      {
+        question: "Why did Robi say he could not rest after catching the thief?",
+        options: [
+          "He wanted to catch another thief",
+          "He had to catch his train",
+          "There would be no food cooking at home if he stopped working",
+          "He was afraid of the police"
+        ],
+        answer: 2
+      },
+      {
+        question: "Who told Arindam Sen that Robi's father had died?",
+        options: [
+          "A police officer",
+          "A middle-aged man at the station",
+          "The stationmaster",
+          "Robi himself"
+        ],
+        answer: 1
+      },
+      {
+        question: "Why did Arindam Sen decide not to board his train?",
+        options: [
+          "His train was cancelled",
+          "He had lost his ticket",
+          "He wanted to learn more about Robi and his difficult life",
+          "He wanted to help load luggage"
+        ],
+        answer: 2
+      }
+    ]
+  },
+  {
+    title: 'witness_to_the_truth',
+    questions: [
+      {
+        question: "What did the young boy reveal at the police station?",
+        options: [
+          "He had stolen the bracelet",
+          "He had found the bracelet on the ground",
+          "Robi had given him the bracelet",
+          "The businessman had lost his wallet"
+        ],
+        answer: 1
+      },
+      {
+        question: "Why did the boy become afraid to return the bracelet?",
+        options: [
+          "He was afraid of the police",
+          "He wanted to keep the bracelet",
+          "He became scared when everyone called Robi a thief",
+          "He did not know where the businessman lived"
+        ],
+        answer: 2
+      },
+      {
+        question: "What was the purpose of Arindam Sen's strange test for Robi?",
+        options: [
+          "To test Robi's ability to carry luggage",
+          "To test Robi's physical strength and natural ability",
+          "To teach Robi how to work at the station",
+          "To prepare Robi for a police examination"
+        ],
+        answer: 1
+      },
+      {
+        question: "Why was Robi's mother taken to the hospital?",
+        options: [
+          "She had been injured in an accident",
+          "She had fallen from a roof",
+          "She had lost consciousness because of severe weakness and poor nutrition",
+          "She had become ill because of the weather"
+        ],
+        answer: 2
+      },
+      {
+        question: "What did Arindam Sen discover about Robi's father, Ajit?",
+        options: [
+          "Ajit had been a railway employee",
+          "Ajit had been his student and had great athletic potential",
+          "Ajit had been a police officer",
+          "Ajit had worked with the station contractor"
+        ],
+        answer: 1
+      },
+      {
+        question: "Why did Robi lose his job at the railway station?",
+        options: [
+          "He refused to carry luggage",
+          "He was late for work every day",
+          "He refused to sign a contract banning him from other work or training",
+          "He failed to obey the stationmaster"
+        ],
+        answer: 2
+      }
+    ]
+  },
+  {
+    title: 'a_new_path',
+    questions: [
+      {
+        question: "Why did Robi refuse the money Arindam Sen initially gave him?",
+        options: [
+          "He did not need any money",
+          "He thought it was charity",
+          "He had already been paid by the station",
+          "He wanted to save the money for his mother"
+        ],
+        answer: 1
+      },
+      {
+        question: "What work did Arindam Sen give Robi at the club?",
+        options: [
+          "Cooking food for the athletes",
+          "Teaching other athletes",
+          "Cleaning the gym and arranging the weights",
+          "Working as the club secretary"
+        ],
+        answer: 2
+      },
+      {
+        question: "Why did Arindam Sen stop Ishita from asking Robi to lift a heavy barbell?",
+        options: [
+          "Robi had injured his arm",
+          "Robi was still a beginner and needed proper training",
+          "The barbell was broken",
+          "The club rules did not allow competitions"
+        ],
+        answer: 1
+      },
+      {
+        question: "What happened to Robi during training on an empty stomach?",
+        options: [
+          "He injured his leg",
+          "He became angry and left the field",
+          "He became weak and collapsed to his knees",
+          "He refused to continue training"
+        ],
+        answer: 2
+      },
+      {
+        question: "What did Robi achieve at the district junior weightlifting competition?",
+        options: [
+          "He finished third",
+          "He finished second",
+          "He won the gold medal",
+          "He was disqualified"
+        ],
+        answer: 2
+      },
+      {
+        question: "What opportunity did the state selector offer Robi after the competition?",
+        options: [
+          "A job at the railway station",
+          "A place at the state-level training camp",
+          "A scholarship to study abroad",
+          "A position as a club assistant"
+        ],
+        answer: 1
+      }
+    ]
+  },
+{
+    title: 'the_new_door',
+    questions: [
+      {
+        question: "What important opportunity did Robi receive after becoming the district champion?",
+        options: [
+          "A job at the railway station",
+          "Selection for the state training camp",
+          "A scholarship to study abroad",
+          "A position at the sports club"
+        ],
+        answer: 1
+      },
+      {
+        question: "Why did Robi initially worry about joining the state training camp?",
+        options: [
+          "He was afraid of the competition",
+          "He did not have enough money for the required equipment",
+          "He did not want to leave his mother",
+          "He did not know how to train"
+        ],
+        answer: 1
+      },
+      {
+        question: "What suspicious condition did Arindam Sen notice in the proposed contract?",
+        options: [
+          "Robi had to leave his coach",
+          "Robi could not compete for three years",
+          "Robi might have to participate in exhibition or private competitions",
+          "Robi had to pay the organization every month"
+        ],
+        answer: 2
+      },
+      {
+        question: "Why did Arindam Sen tell Robi not to use the expensive shoes sent by an unknown well-wisher?",
+        options: [
+          "They were the wrong size",
+          "They were damaged",
+          "The sender had not identified himself",
+          "Robi already had better shoes"
+        ],
+        answer: 2
+      },
+      {
+        question: "What did Bikram Singha offer Robi during the state training camp?",
+        options: [
+          "A new house",
+          "A check for fifty thousand rupees",
+          "A new job",
+          "A gold medal"
+        ],
+        answer: 1
+      },
+      {
+        question: "What did Robi achieve at the state weightlifting competition?",
+        options: [
+          "He finished second",
+          "He was disqualified",
+          "He became the state champion",
+          "He withdrew from the competition"
+        ],
+        answer: 2
+      }
+    ]
+  },
+ {
+    title: 'the_national_jersey',
+    questions: [
+      {
+        question: "What advice did Arindam Sen give Robi before he left for the national camp?",
+        options: [
+          "Never compete without him",
+          "His greatest coach would now be his own conscience",
+          "Always accept help from sponsors",
+          "Focus only on winning medals"
+        ],
+        answer: 1
+      },
+      {
+        question: "What happened to Robi after he drank the sherbet at the national selection trial?",
+        options: [
+          "He became extremely tired but recovered immediately",
+          "His hand trembled and he felt dizzy and weak",
+          "He injured his shoulder",
+          "He lost his shoes"
+        ],
+        answer: 1
+      },
+      {
+        question: "What did the security camera reveal about the incident?",
+        options: [
+          "Robi had secretly taken a medicine",
+          "A masked man had entered the room and poured a liquid into a bottle",
+          "Bikram had entered Robi's room openly",
+          "A coach had replaced Robi's drink"
+        ],
+        answer: 1
+      },
+      {
+        question: "Who was identified as the man seen in the hotel CCTV footage?",
+        options: [
+          "Bikram Singha",
+          "Arindam Sen",
+          "Raghu",
+          "The national coach"
+        ],
+        answer: 2
+      },
+      {
+        question: "What did the police discover from Raghu's deleted messages?",
+        options: [
+          "A plan to help Robi win",
+          "A message connected to the plan to stop Robi from competing at full strength",
+          "A request for training equipment",
+          "A message from Arindam Sen"
+        ],
+        answer: 1
+      },
+      {
+        question: "What did Robi achieve at the Olympic final?",
+        options: [
+          "He won the silver medal",
+          "He finished fourth",
+          "He won the gold medal for India",
+          "He withdrew before the final lift"
+        ],
+        answer: 2
+      }
+    ]
+  }
+],
+  atmasamman: [
+  {
+    title: 'the_price_of_a_helmet',
+    questions: [
+      {
+        question: "Why did Meghla ask Arindam to wear his helmet every day?",
+        options: [
+          "She wanted him to buy a new helmet",
+          "She was worried that he might have an accident",
+          "She did not like his motorcycle",
+          "She wanted to keep the helmet safe"
+        ],
+        answer: 1
+      },
+      {
+        question: "What happened to Arindam on his way to the office?",
+        options: [
+          "His motorcycle broke down",
+          "He lost his helmet",
+          "A cyclist suddenly swerved in front of him and he fell",
+          "He was stopped by the traffic police"
+        ],
+        answer: 2
+      },
+      {
+        question: "Why did the traffic policeman say Arindam might have survived?",
+        options: [
+          "If he had driven more slowly",
+          "If he had taken another road",
+          "If he had been wearing his helmet",
+          "If someone had followed him"
+        ],
+        answer: 2
+      },
+      {
+        question: "Why was Meghla forced to leave Arindam's house?",
+        options: [
+          "She wanted to return to her father's house",
+          "Arindam's family said she had no claim on the house",
+          "She had found another job",
+          "Her mother-in-law asked her to travel"
+        ],
+        answer: 1
+      },
+      {
+        question: "How was Meghla treated when she returned to her father's house?",
+        options: [
+          "She was welcomed warmly and given a private room",
+          "She was treated as an honored guest",
+          "She was made to feel like a burden and given an old storeroom",
+          "She was immediately sent to school"
+        ],
+        answer: 2
+      },
+      {
+        question: "What gave Meghla hope for rebuilding her life?",
+        options: [
+          "Arindam's motorcycle",
+          "Her husband's property",
+          "Her educational certificates and her decision to find a job",
+          "Her sister-in-law's support"
+        ],
+        answer: 2
+      }
+    ]
+  },
+{
+    title: 'the_unspoken_rule',
+    questions: [
+      {
+        question: "Why did Meghla refuse the first company's job offer?",
+        options: [
+          "The salary was too low",
+          "The office was too far away",
+          "The official expected her to compromise her self-respect",
+          "She did not like the working hours"
+        ],
+        answer: 2
+      },
+      {
+        question: "Who was Binoy Sen according to Meghla's father's diary?",
+        options: [
+          "A former employer of Meghla",
+          "Her father's childhood friend and an honest man",
+          "A railway officer",
+          "A family lawyer"
+        ],
+        answer: 1
+      },
+      {
+        question: "What did Binoy Sen tell Meghla after reviewing her certificates?",
+        options: [
+          "She needed more qualifications",
+          "She should find another company",
+          "She was qualified and would join his company as a trainee",
+          "She had to pass another written examination"
+        ],
+        answer: 2
+      },
+      {
+        question: "Why did Binoy Sen pretend to be an office caretaker during the interview process?",
+        options: [
+          "He wanted to hide his identity from the employees",
+          "He wanted to test the candidates' honesty and mindset",
+          "He had just joined the company",
+          "He was looking for a new caretaker"
+        ],
+        answer: 1
+      },
+      {
+        question: "What warning did Ananya give Meghla about Rajat Dutta?",
+        options: [
+          "He was planning to leave the company",
+          "He did not have enough experience",
+          "She should avoid him outside work because he was not what he seemed",
+          "He was secretly looking for another job"
+        ],
+        answer: 2
+      },
+      {
+        question: "How was Rajat Dutta secretly receiving bribes?",
+        options: [
+          "Through expensive office equipment",
+          "Through unusually expensive sweets from Madhumoy Sweets Emporium",
+          "Through railway tickets",
+          "Through direct bank transfers from employees"
+        ],
+        answer: 1
+      }
+    ]
+  },
+{
+    title: 'the_first_clue_in_the_mystery',
+    questions: [
+      {
+        question: "Why did Meghla become suspicious of the 'Madhumoy Sweets Emporium'?",
+        options: [
+          "The shop was always closed",
+          "A single piece of sondesh was being used as a five-thousand-rupee payment",
+          "The sweets were being sold at a very low price",
+          "Ananya owned the sweet shop"
+        ],
+        answer: 1
+      },
+      {
+        question: "What did Sanjay tell the elderly farmer to buy if he wanted his file processed urgently?",
+        options: [
+          "A box of expensive fruits",
+          "A gold watch",
+          "Gulab-khas sondesh from Madhumoy Sweets Emporium",
+          "A new office file"
+        ],
+        answer: 2
+      },
+      {
+        question: "What did Meghla decide after witnessing the incident involving the elderly farmer?",
+        options: [
+          "She would resign immediately",
+          "She would accuse Rajat without evidence",
+          "She would bring the truth to light only after finding proof",
+          "She would stop helping office visitors"
+        ],
+        answer: 2
+      },
+      {
+        question: "How did Meghla discover that the report submitted at the office had been altered?",
+        options: [
+          "Ananya confessed to changing it",
+          "She compared it with the correct file saved on her computer",
+          "Rajat Dutta admitted changing it",
+          "Sanjay gave her a copy of the original report"
+        ],
+        answer: 1
+      },
+      {
+        question: "Why did Meghla refuse the envelope offered by Rajat Dutta?",
+        options: [
+          "She thought the envelope was empty",
+          "She did not like Rajat Dutta",
+          "She believed accepting a personal gift would violate company rules",
+          "She wanted a larger reward"
+        ],
+        answer: 2
+      },
+      {
+        question: "What dream did Meghla have, which Rajat Dutta planned to use against her?",
+        options: [
+          "Opening a sweet shop",
+          "Buying a motorcycle",
+          "Building a little house of her own",
+          "Becoming a company owner"
+        ],
+        answer: 2
+      }
+    ]
+  },
+{
+    title: 'the_revenge_begins',
+    questions: [
+      {
+        question: "What did Rajat Dutta offer to do in exchange for Meghla becoming personally close to him?",
+        options: [
+          "Give her a new motorcycle",
+          "Help with her future, promotion, and home loan",
+          "Send her to another branch",
+          "Give her extra holidays"
+        ],
+        answer: 1
+      },
+      {
+        question: "What new duty was Meghla given after she rejected Rajat Dutta's proposal?",
+        options: [
+          "Managing the accounts department",
+          "Preparing important client reports",
+          "Organizing old records and files in the storeroom",
+          "Working as a receptionist"
+        ],
+        answer: 2
+      },
+      {
+        question: "What did Meghla begin recording in her notebook?",
+        options: [
+          "Her monthly expenses",
+          "The names of all office employees",
+          "The date, time, and details of important incidents",
+          "Her daily work targets"
+        ],
+        answer: 2
+      },
+      {
+        question: "What did Kamala Devi reveal when an important tender file went missing?",
+        options: [
+          "She had found the file at home",
+          "She had seen Sanjay take the file",
+          "Rajat Dutta had taken the file",
+          "Meghla had hidden the file"
+        ],
+        answer: 1
+      },
+      {
+        question: "What was found inside a file that had been placed on Meghla's desk?",
+        options: [
+          "A gold bracelet",
+          "A confidential letter",
+          "Five-hundred-rupee notes",
+          "A bank cheque"
+        ],
+        answer: 2
+      },
+      {
+        question: "Why did Kamala Devi decide to support Meghla?",
+        options: [
+          "Meghla had given her money",
+          "She wanted a promotion",
+          "Her own daughter had suffered a similar injustice fifteen years earlier",
+          "She was related to Meghla"
+        ],
+        answer: 2
+      }
+    ]
+  },
+{
+    title: 'the_hidden_witness',
+    questions: [
+      {
+        question: "Why was Kamala Devi moved to work on another floor?",
+        options: [
+          "She had requested a transfer",
+          "The manager had scolded her for speaking the truth",
+          "She had made a mistake in the accounts",
+          "She wanted to work with Meghla"
+        ],
+        answer: 1
+      },
+      {
+        question: "What did Meghla overhear Rajat Dutta and Sanjay discussing in the record room?",
+        options: [
+          "A plan to promote Meghla",
+          "A plan to get Meghla fired by proving her guilty",
+          "A plan to repair the CCTV camera",
+          "A plan to reward Kamala Devi"
+        ],
+        answer: 1
+      },
+      {
+        question: "Why did Meghla refuse to meet Rajat Dutta alone in the guest room?",
+        options: [
+          "She was feeling sick",
+          "She had already left the office",
+          "She wanted to follow office rules and protect her self-respect",
+          "She did not have the required papers"
+        ],
+        answer: 2
+      },
+      {
+        question: "What suspicious bills did Meghla find in the annual audit file?",
+        options: [
+          "Bills from a railway company",
+          "Bills from Madhumoy Sweet Shop worth several lakhs of rupees",
+          "Bills for office furniture",
+          "Bills for Meghla's personal expenses"
+        ],
+        answer: 1
+      },
+      {
+        question: "What did Rajat Dutta do to the audit file after discovering that Meghla had noticed the suspicious bills?",
+        options: [
+          "He destroyed the entire file",
+          "He gave the file to the auditor",
+          "He secretly removed some pages and replaced them with new ones",
+          "He asked Meghla to rewrite the file"
+        ],
+        answer: 2
+      },
+      {
+        question: "Why could Kamala Devi not immediately report what she had seen?",
+        options: [
+          "She did not remember what happened",
+          "She was afraid that no one would believe her and that she might lose her job",
+          "She was not at the office that night",
+          "She had already left the company"
+        ],
+        answer: 1
+      }
+    ]
+  },
+{
+    title: 'the_audit_team',
+    questions: [
+      {
+        question: "Who was the leader of the external audit team?",
+        options: [
+          "Rajat Dutta",
+          "Sanjay",
+          "Amitabha Chakraborty",
+          "Binoy Sen"
+        ],
+        answer: 2
+      },
+      {
+        question: "What did the auditor notice about one of the bills in the audit file?",
+        options: [
+          "The amount was too small",
+          "The paper color and print date did not match",
+          "The bill had no company name",
+          "The bill was completely missing"
+        ],
+        answer: 1
+      },
+      {
+        question: "What did Kamala Devi tell Amitabha Chakraborty about Meghla?",
+        options: [
+          "Meghla often made mistakes",
+          "Meghla was dishonest",
+          "Meghla was one of the most honest people in the office",
+          "Meghla wanted to leave the company"
+        ],
+        answer: 2
+      },
+      {
+        question: "What did Kamala Devi give Meghla before being transferred?",
+        options: [
+          "A confidential file",
+          "A small pendrive",
+          "A company cheque",
+          "An old photograph"
+        ],
+        answer: 1
+      },
+      {
+        question: "What did Meghla discover when she opened the pendrive?",
+        options: [
+          "Personal photographs of employees",
+          "Only office emails",
+          "Scanned bills showing that original amounts had been deliberately increased",
+          "A list of new employees"
+        ],
+        answer: 2
+      },
+      {
+        question: "What happened to Kamala Devi at the end of Chapter 30?",
+        options: [
+          "She returned to the office",
+          "She joined the distant warehouse",
+          "Her phone was switched off and no one could find her",
+          "She resigned from the company"
+        ],
+        answer: 2
+      }
+    ]
+  },
+ {
+    title: 'the_missing_kamala_devi',
+    questions: [
+      {
+        question: "Why did Meghla become worried about Kamala Devi?",
+        options: [
+          "Kamala Devi had resigned from the company",
+          "Kamala Devi's phone was switched off and she had not joined her new workplace",
+          "Kamala Devi had gone on vacation",
+          "Kamala Devi had lost her office documents"
+        ],
+        answer: 1
+      },
+      {
+        question: "What did Kamala Devi's elderly mother reveal about her disappearance?",
+        options: [
+          "Kamala had left for another city",
+          "Two men came claiming they were from the office and took her away",
+          "Kamala had gone to the police station",
+          "She had gone to meet Meghla"
+        ],
+        answer: 1
+      },
+      {
+        question: "What message did Kamala Devi leave for Meghla?",
+        options: [
+          "Contact the police immediately",
+          "Leave the company at once",
+          "Check the sweet shop's accounts because the truth was hidden there",
+          "Meet Rajat Dutta privately"
+        ],
+        answer: 2
+      },
+      {
+        question: "What did 'C.C.B.' most likely refer to in Kamala Devi's note?",
+        options: [
+          "Central Company Branch",
+          "City Co-operative Bank",
+          "Company Complaint Board",
+          "Central Credit Bureau"
+        ],
+        answer: 1
+      },
+      {
+        question: "What did Meghla find inside Locker Number 17?",
+        options: [
+          "Only cash and jewelry",
+          "A letter, tender documents, transaction details, and a password",
+          "Arindam's personal belongings",
+          "Rajat Dutta's passport"
+        ],
+        answer: 1
+      },
+      {
+        question: "What did the secret video show Rajat Dutta saying?",
+        options: [
+          "He would resign from the company",
+          "He would help Meghla get a promotion",
+          "A contractor should hand over a code at the counter and the matter would be taken care of",
+          "He would report Kamala Devi to the police"
+        ],
+        answer: 2
+      }
+    ]
+  },
+{
+    title: 'the_investigation_takes_a_turn',
+    questions: [
+      {
+        question: "Why was Meghla's departmental inquiry suspended?",
+        options: [
+          "Meghla resigned from the company",
+          "The investigation committee decided to verify the new information first",
+          "Rajat Dutta withdrew his complaint",
+          "The police closed the investigation"
+        ],
+        answer: 1
+      },
+      {
+        question: "What did Rajat Dutta tell Haripada Mallick to do with the old records and receipts?",
+        options: [
+          "Send them to the auditor",
+          "Keep them safely in the shop",
+          "Get rid of them",
+          "Give them to Meghla"
+        ],
+        answer: 2
+      },
+      {
+        question: "What did Amitabh Chakraborty notice about the receipt from Madhumoy Sweets?",
+        options: [
+          "It had no price written on it",
+          "It carried the code GK-412",
+          "It had Rajat Dutta's signature",
+          "It was dated three years earlier"
+        ],
+        answer: 1
+      },
+      {
+        question: "Why did Meghla decide not to go alone to the old railway warehouse?",
+        options: [
+          "She did not know the location",
+          "She suspected the message could be a trap",
+          "She was too tired to go",
+          "She wanted to wait for Rajat Dutta"
+        ],
+        answer: 1
+      },
+      {
+        question: "What connected the phone found at the railway warehouse with the suspicious bank account?",
+        options: [
+          "Both belonged to Kamala Devi",
+          "Both ended in the same four digits, 4582",
+          "Both were registered to the sweet shop",
+          "Both contained the same password"
+        ],
+        answer: 1
+      },
+      {
+        question: "Why was Meghla suspended from her job?",
+        options: [
+          "She refused to follow Rajat Dutta's instructions",
+          "She was accused of leaking confidential company documents",
+          "She failed the audit examination",
+          "She was accused of stealing money from the office"
+        ],
+        answer: 1
+      }
+    ]
+  },
+{
+    title: 'the_real_investigation',
+    questions: [
+      {
+        question: "Why did Ananya come to Meghla's house after Meghla was suspended?",
+        options: [
+          "To ask Meghla for money",
+          "To apologize and explain why she had lied",
+          "To offer Meghla a new job",
+          "To return Meghla's certificates"
+        ],
+        answer: 1
+      },
+      {
+        question: "What evidence did Ananya give Meghla against Rajat Dutta?",
+        options: [
+          "A written confession",
+          "A bank statement",
+          "A voice recording of Rajat instructing her to give false testimony",
+          "A photograph of Rajat"
+        ],
+        answer: 2
+      },
+      {
+        question: "What did the bank transaction summary reveal?",
+        options: [
+          "Large sums were deposited into the sweet shop's account after major tenders were approved",
+          "Meghla had received money from the company",
+          "The sweet shop had closed its bank account",
+          "Rajat Dutta had paid all employees"
+        ],
+        answer: 0
+      },
+      {
+        question: "What did Haripada reveal about the special codes written on sweet shop receipts?",
+        options: [
+          "They were product codes",
+          "They identified specific people connected with the payments",
+          "They were discount codes",
+          "They were delivery numbers"
+        ],
+        answer: 1
+      },
+      {
+        question: "What important evidence was found in Haripada's hidden red ledger?",
+        options: [
+          "Records of his personal expenses",
+          "Details of coded deposits, amounts, transfers, and the initials 'R.D.'",
+          "A list of sweet recipes",
+          "Meghla's employment records"
+        ],
+        answer: 1
+      },
+      {
+        question: "What was found inside the old blue file belonging to Binoy Sen?",
+        options: [
+          "A new employment contract",
+          "A sealed envelope containing a letter and a DVD from Ajit Mukhopadhyay",
+          "A bank cheque",
+          "A list of company employees"
+        ],
+        answer: 1
+      }
+    ]
+  },
+ {
+    title: 'the_triumph_of_truth',
+    questions: [
+      {
+        question: "What did Ajit reveal in his letter to Binoy Sen?",
+        options: [
+          "He wanted to leave the company for personal reasons",
+          "Tender prices had been changed after approval and he had collected copies of important documents",
+          "He had received a promotion from Rajat Dutta",
+          "He had lost several company files"
+        ],
+        answer: 1
+      },
+      {
+        question: "What clue in the old CCTV footage connected Rajat Dutta to the tender files?",
+        options: [
+          "His face was clearly visible",
+          "His identity card was visible",
+          "The watch on his wrist matched a unique watch given to him by Binoy Sen",
+          "His voice could be heard clearly"
+        ],
+        answer: 2
+      },
+      {
+        question: "What evidence did Amitabha Chakraborty present against Rajat Dutta?",
+        options: [
+          "Only the CCTV footage",
+          "Only Haripada's statement",
+          "The voice recording, Haripada's statement, bank records, tender comparisons, and forensic evidence",
+          "Only the red ledger"
+        ],
+        answer: 2
+      },
+      {
+        question: "What did Haripada Mallick admit during the investigation?",
+        options: [
+          "He had created the entire scheme himself",
+          "He had received money but the whole scheme was not his",
+          "He had never received any money",
+          "He had framed Meghla"
+        ],
+        answer: 1
+      },
+      {
+        question: "What new position was Meghla offered after the truth was revealed?",
+        options: [
+          "Managing Director",
+          "Human Resources Director",
+          "Ethics and Compliance Manager",
+          "Financial Controller"
+        ],
+        answer: 2
+      },
+      {
+        question: "What message was written on the plaque beside Meghla's new house?",
+        options: [
+          "Truth always wins in the end",
+          "A helmet saves a life. Honesty saves honor.",
+          "Justice is stronger than power",
+          "Never give up on your dreams"
+        ],
+        answer: 1
+      }
+    ]
+  }
+],
+  debt_of_roots: [
+{
+    title: 'the_light_of_waiting',
+    questions: [
+      {
+        question: "Why did Anantababu look toward the dirt road every morning?",
+        options: [
+          "He was waiting for the postman",
+          "He was hoping that his son would return",
+          "He was waiting for his students",
+          "He wanted to watch the village market"
+        ],
+        answer: 1
+      },
+      {
+        question: "What did Anantababu sacrifice to support Arun's education?",
+        options: [
+          "His school and house",
+          "His own needs, including new clothes and other comforts",
+          "His teaching career",
+          "His village garden"
+        ],
+        answer: 1
+      },
+      {
+        question: "What lesson did Arun teach Anantababu by sharing his food with an old beggar?",
+        options: [
+          "Education is more important than food",
+          "Money is the greatest form of wealth",
+          "A person who thinks of others even when hungry is never truly poor",
+          "Poor people should always depend on others"
+        ],
+        answer: 2
+      },
+      {
+        question: "What did Mira Devi give up to help build Arun's future?",
+        options: [
+          "Her favorite books",
+          "Her gold bangles",
+          "Her house",
+          "Her wedding sari"
+        ],
+        answer: 1
+      },
+      {
+        question: "Why did Arun gradually reduce his calls to his parents after moving to the city?",
+        options: [
+          "He became angry with his parents",
+          "His parents stopped answering his calls",
+          "His studies and changing city life made him increasingly busy",
+          "He decided to return to the village"
+        ],
+        answer: 2
+      }
+    ]
+  },
+{
+    title: 'the_light_of_waiting',
+    questions: [
+      {
+        question: "What did Anantababu write in Arun's diary before he left for the city?",
+        options: [
+          "Success is the only goal in life",
+          "Knowledge will make you great, but humility will give you a place in people's hearts",
+          "Money can solve every problem",
+          "Never return to the village"
+        ],
+        answer: 1
+      },
+      {
+        question: "What did Haren Kaku advise Arun before he left the village?",
+        options: [
+          "Study less and enjoy city life",
+          "Earn plenty of money but never lose people's blessings",
+          "Forget the village and focus only on success",
+          "Return home after one month"
+        ],
+        answer: 1
+      },
+      {
+        question: "What did Arun write on the last page of his notebook before leaving?",
+        options: [
+          "I will become the richest person",
+          "My parents' dream is my dream",
+          "I will never return to the village",
+          "My studies are my only dream"
+        ],
+        answer: 1
+      },
+      {
+        question: "What did Arun's first letter from the city say about his life?",
+        options: [
+          "He disliked studying in the city",
+          "He was enjoying an easy and comfortable life",
+          "The pressure of studies was heavy, but he remembered his parents and home",
+          "He had already decided to return home"
+        ],
+        answer: 2
+      },
+      {
+        question: "What did Anantababu believe about the decreasing number of calls from Arun?",
+        options: [
+          "Arun had forgotten his parents completely",
+          "Arun must be under heavy pressure from his studies",
+          "Arun had lost his phone",
+          "Arun was planning to leave college"
+        ],
+        answer: 1
+      }
+    ]
+  },
+{
+    title: 'the_bond_of_success',
+    questions: [
+      {
+        question: "Why did Arun decide to sign the appointment letter despite his father's letter?",
+        options: [
+          "He wanted to leave his parents forever",
+          "He believed the opportunity might never come again",
+          "His classmates forced him to sign it",
+          "Richard had already promised him a promotion"
+        ],
+        answer: 1
+      },
+      {
+        question: "What did Richard admire most about Arun?",
+        options: [
+          "His wealth",
+          "His patience",
+          "His leadership position",
+          "His public speaking skills"
+        ],
+        answer: 1
+      },
+      {
+        question: "Why could Arun not return home for Durga Puja?",
+        options: [
+          "He was ill",
+          "He had no money for travel",
+          "A crucial phase of his project made it impossible to take leave",
+          "His parents asked him not to come"
+        ],
+        answer: 2
+      },
+      {
+        question: "What advice did Richard give Arun when he learned about his father's illness?",
+        options: [
+          "Finish the presentation first",
+          "Send another employee instead",
+          "No project is bigger than a father, so he should go home",
+          "Wait until the project was completed"
+        ],
+        answer: 2
+      },
+      {
+        question: "What did Arun finally promise his parents after returning home?",
+        options: [
+          "He would give up his career completely",
+          "He would never leave the village again",
+          "He would make time for them and not allow distance to destroy their relationship",
+          "He would stop working abroad immediately"
+        ],
+        answer: 2
+      }
+    ]
+  },
+ {
+    title: 'crossroads_of_decision',
+    questions: [
+      {
+        question: "What permanent opportunity was offered to Arun by the institute?",
+        options: [
+          "A temporary teaching position",
+          "A permanent position with a high salary and a chance to lead the research division",
+          "A scholarship for further studies",
+          "A position at his father's old school"
+        ],
+        answer: 1
+      },
+      {
+        question: "What did Anantababu tell Arun about the decision?",
+        options: [
+          "He must return home immediately",
+          "He should reject the opportunity",
+          "The decision was Arun's, but he should remember the people connected to his life",
+          "He should choose money over family"
+        ],
+        answer: 2
+      },
+      {
+        question: "What did the photograph sent by Mira Devi show?",
+        options: [
+          "Arun's old school",
+          "Anantababu sitting beside an empty chair waiting for Arun",
+          "The village mango tree",
+          "Arun receiving an award"
+        ],
+        answer: 1
+      },
+      {
+        question: "What did Arun write on his leave application?",
+        options: [
+          "He was resigning permanently",
+          "He needed to return home",
+          "He wanted a promotion",
+          "He was changing his research field"
+        ],
+        answer: 1
+      },
+      {
+        question: "What did Arun finally decide before returning home?",
+        options: [
+          "To forget his career completely",
+          "To go home first before making his final career decision",
+          "To stay abroad permanently",
+          "To send his parents to the city"
+        ],
+        answer: 1
+      }
+    ]
+  },
+{
+    title: 'the_return_home',
+    questions: [
+      {
+        question: "Why did Arun decide to return home before making his final career decision?",
+        options: [
+          "He had lost his job",
+          "He wanted to see his parents and understand what truly mattered in life",
+          "His friends asked him to return",
+          "His university had closed"
+        ],
+        answer: 1
+      },
+      {
+        question: "What did Arun find when he finally entered his old room?",
+        options: [
+          "A completely empty room",
+          "His old books, toys, and memories carefully preserved by his parents",
+          "A new study table",
+          "His father's school records"
+        ],
+        answer: 1
+      },
+      {
+        question: "What did Anantababu say when Arun apologized for staying away so long?",
+        options: [
+          "You have failed us",
+          "Success is more important than family",
+          "A parent does not keep accounts of a child's mistakes",
+          "You should never leave home again"
+        ],
+        answer: 2
+      },
+      {
+        question: "What did Arun realize while sitting beside his father?",
+        options: [
+          "His career had no value",
+          "He had achieved success but had neglected the people who had supported him",
+          "He no longer wanted to study",
+          "His parents were angry with him"
+        ],
+        answer: 1
+      },
+      {
+        question: "What did Arun decide about his future after returning home?",
+        options: [
+          "He would give up his career completely",
+          "He would continue his career but make sure his parents and roots remained part of his life",
+          "He would move his parents to another country immediately",
+          "He would return to school as a student"
+        ],
+        answer: 1
+      }
+    ]
+  },
+{
+    title: 'the_meaning_of_home',
+    questions: [
+      {
+        question: "What did Arun understand about his father's years of sacrifice?",
+        options: [
+          "His father had only supported his education financially",
+          "His father's sacrifices were made out of love and a desire to see him become a good person",
+          "His father wanted Arun to become famous",
+          "His father expected Arun to repay every expense"
+        ],
+        answer: 1
+      },
+      {
+        question: "What did Arun decide to do with his career?",
+        options: [
+          "Give up his career completely",
+          "Continue his career while remaining connected to his parents and village",
+          "Move permanently to another country",
+          "Return to the village and stop working"
+        ],
+        answer: 1
+      },
+      {
+        question: "What did Arun promise his mother?",
+        options: [
+          "He would never travel again",
+          "He would call and visit more often and never let distance weaken their relationship",
+          "He would leave his job immediately",
+          "He would build a large house in the city"
+        ],
+        answer: 1
+      },
+      {
+        question: "What did Anantababu say about success?",
+        options: [
+          "Success means earning the most money",
+          "Success is meaningful only when it does not make a person forget love and humanity",
+          "Success requires leaving one's family behind",
+          "Success depends only on education"
+        ],
+        answer: 1
+      },
+      {
+        question: "What was the greatest lesson Arun learned from his return home?",
+        options: [
+          "Money is more important than relationships",
+          "A person's roots, family, gratitude, and humanity should never be forgotten",
+          "Village life is better than city life in every way",
+          "Career success has no importance"
+        ],
+        answer: 1
+      }
+    ]
+  },
+{
+    title: 'the_question_of_conscience',
+    questions: [
+      {
+        question: "What reminder did Arun set on his phone every night?",
+        options: [
+          "Finish research",
+          "Call home",
+          "Read a book",
+          "Attend a meeting"
+        ],
+        answer: 1
+      },
+      {
+        question: "What did Arun learn from the elderly scientist at the international conference?",
+        options: [
+          "Awards are the greatest measure of success",
+          "Personal achievement is more important than helping others",
+          "The greatest success is seeing one's work help people through others",
+          "Research is more important than teaching"
+        ],
+        answer: 2
+      },
+      {
+        question: "What did Arun write in response to the question, 'Whom did I help today?'",
+        options: [
+          "I gave money to several people",
+          "I gave students my time and listened to them carefully",
+          "I helped my colleagues finish their research",
+          "I taught only the best students"
+        ],
+        answer: 1
+      },
+      {
+        question: "What principle did Arun establish for handling donations to The Roots Initiative?",
+        options: [
+          "Only money should be recorded",
+          "Donors should remain completely anonymous",
+          "Every contribution should be openly accounted for",
+          "Only Arun should manage the accounts"
+        ],
+        answer: 2
+      },
+      {
+        question: "What did the old farmer ask Rahul to write as his name when he donated books?",
+        options: [
+          "The village farmer",
+          "A well-wisher",
+          "A proud donor",
+          "His son's name"
+        ],
+        answer: 1
+      }
+    ]
+  },
+{
+    title: 'guardian_of_trust',
+    questions: [
+      {
+        question: "What did Arun's father advise him to do when he realized he had made a mistake?",
+        options: [
+          "Hide the mistake from everyone",
+          "Never feel too ashamed to return",
+          "Leave his work immediately",
+          "Avoid making any decisions"
+        ],
+        answer: 1
+      },
+      {
+        question: "What was the 'Ledger of Responsibility' created for?",
+        options: [
+          "Recording financial donations",
+          "Writing down who was responsible for each task",
+          "Keeping Arun's personal achievements",
+          "Recording students' examination results"
+        ],
+        answer: 1
+      },
+      {
+        question: "What title did Arun ask the members of The Roots Initiative to use instead of 'Leader'?",
+        options: [
+          "Teacher",
+          "Manager",
+          "Collaborator",
+          "Volunteer"
+        ],
+        answer: 2
+      },
+      {
+        question: "According to Arun, who was the real leader of The Roots Initiative?",
+        options: [
+          "Arun",
+          "Rahul",
+          "The village elders",
+          "Good work itself"
+        ],
+        answer: 3
+      },
+      {
+        question: "What did Arun promise his mother about his next visit?",
+        options: [
+          "He would return permanently",
+          "He would decide the date of his next visit immediately",
+          "He would bring all his friends",
+          "He would stop working in the city"
+        ],
+        answer: 1
+      }
+    ]
+  },
+{
+    title: 'the_final_lesson',
+    questions: [
+      {
+        question: "What did Arun understand about the meaning of true success?",
+        options: [
+          "It means becoming famous",
+          "It means earning more money than others",
+          "It means achieving success without losing humanity and gratitude",
+          "It means living far away from one's roots"
+        ],
+        answer: 2
+      },
+      {
+        question: "Why did Arun continue supporting children in the village?",
+        options: [
+          "To gain public recognition",
+          "Because he wanted to give others the opportunities he had received",
+          "Because his company required it",
+          "To become a political leader"
+        ],
+        answer: 1
+      },
+      {
+        question: "What did Arun never want his success to make him forget?",
+        options: [
+          "His university friends",
+          "His expensive lifestyle",
+          "His parents, roots, and values",
+          "His professional position"
+        ],
+        answer: 2
+      },
+      {
+        question: "What remained the strongest bond between Arun and his parents?",
+        options: [
+          "Money",
+          "Their shared love, gratitude, and understanding",
+          "Their village property",
+          "Arun's professional success"
+        ],
+        answer: 1
+      },
+      {
+        question: "What is the central message of 'The Light of Waiting'?",
+        options: [
+          "Success requires leaving one's family behind",
+          "Parents should never allow their children to leave home",
+          "True greatness comes from success combined with love, gratitude, and humanity",
+          "City life always destroys family relationships"
+        ],
+        answer: 2
+      }
+    ]
+  },
+{
+    title: 'the_light_of_waiting',
+    questions: [
+      {
+        question: "What did Arun promise himself about his relationship with his parents?",
+        options: [
+          "He would visit them only during festivals",
+          "He would never allow his career to completely separate him from them",
+          "He would ask them to move away",
+          "He would stop working in the city"
+        ],
+        answer: 1
+      },
+      {
+        question: "What did Arun believe was more important than personal achievement?",
+        options: [
+          "Fame and recognition",
+          "Helping others and remaining a good human being",
+          "Owning expensive possessions",
+          "Becoming more powerful"
+        ],
+        answer: 1
+      },
+      {
+        question: "What did Arun's parents value most in their son's success?",
+        options: [
+          "His salary",
+          "His fame",
+          "The fact that he remained humble and caring",
+          "His position at work"
+        ],
+        answer: 2
+      },
+      {
+        question: "What did Arun's journey teach him about his childhood home?",
+        options: [
+          "It was only a place where he grew up",
+          "It represented his roots, memories, love, and values",
+          "It prevented him from becoming successful",
+          "It was less important than his career"
+        ],
+        answer: 1
+      },
+      {
+        question: "What does the 'light' in the story mainly symbolize?",
+        options: [
+          "Arun's professional success",
+          "The light in the village school",
+          "The enduring hope, love, and values of his parents",
+          "The lights of the city"
+        ],
+        answer: 2
+      }
+    ]
+  }
+]
+};
+
+/* =========================================================================
+   STATE
+   ========================================================================= */
+let currentBookCode = null;
+let currentEpisodeIndex = null;
+let quizQuestions = [];
+let quizIndex = 0;
+let quizScore = 0;
+let selectedOption = null;
+
+let screenStack = ['screen-books'];
+
+function progressKey(bookCode){ return 'msg_story_progress_' + bookCode; }
+
+function loadProgress(bookCode){
+  try{
+    return JSON.parse(localStorage.getItem(progressKey(bookCode))) || {};
+  }catch(e){ return {}; }
+}
+
+function saveProgress(bookCode, progress){
+  try{
+    localStorage.setItem(progressKey(bookCode), JSON.stringify(progress));
+  }catch(e){ console.error('Could not save progress', e); }
+}
+
+/* =========================================================================
+   SCREEN NAVIGATION (with back-button support)
+   ========================================================================= */
+function showScreen(id, pushHistory){
+  ['screen-books','screen-episodes','screen-quiz','screen-episode-result','screen-pass','screen-fail']
+    .forEach(s => document.getElementById(s).style.display = (s === id ? 'block' : 'none'));
+  window.scrollTo(0,0);
+  if (pushHistory !== false){
+    screenStack.push(id);
+    history.pushState({ screen:id, stackLen:screenStack.length }, '');
+  }
+}
+
+window.addEventListener('popstate', function(){
+  if (screenStack.length > 1){
+    screenStack.pop();
+    const prev = screenStack[screenStack.length - 1];
+    showScreen(prev, false);
+  } else {
+    showScreen('screen-books', false);
+  }
+});
+
+/* =========================================================================
+   SCREEN 1: BOOKS
+   ========================================================================= */
+function renderBookGrid(){
+  const grid = document.getElementById('bookGrid');
+  grid.innerHTML = '';
+
+  BOOKS.forEach(book => {
+    const episodes = EPISODE_BANK[book.code] || [];
+    const ready = episodes.length > 0;
+    const progress = loadProgress(book.code);
+    const doneCount = Object.keys(progress).length;
+
+    let statusText = 'Coming soon';
+    let statusClass = '';
+    if (ready){
+      if (doneCount === 0){
+        statusText = episodes.length + ' episode' + (episodes.length > 1 ? 's' : '');
+        statusClass = 'ready';
+      } else if (doneCount < episodes.length){
+        statusText = doneCount + ' / ' + episodes.length + ' episodes done';
+        statusClass = 'progress';
+      } else {
+        statusText = 'All episodes done';
+        statusClass = 'complete';
+      }
+    }
+
+    const card = document.createElement('div');
+    card.className = 'book-card' + (ready ? '' : ' locked');
+    card.innerHTML =
+      '<div class="book-icon">' + book.icon + '</div>' +
+      '<div class="book-tag">' + book.type + '</div>' +
+      '<h3>' + book.name + '</h3>' +
+      '<div class="book-status ' + statusClass + '">' + statusText + '</div>';
+
+    if (ready){
+      card.onclick = function(){ openBook(book.code); };
+    }
+    grid.appendChild(card);
+  });
+}
+
+function showBooks(){
+  screenStack = ['screen-books'];
+  history.replaceState({ screen:'screen-books', stackLen:1 }, '');
+  renderBookGrid();
+  showScreen('screen-books', false);
+}
+
+function openBook(code){
+  currentBookCode = code;
+  renderEpisodeGrid();
+  showScreen('screen-episodes');
+}
+
+/* =========================================================================
+   SCREEN 2: EPISODES
+   ========================================================================= */
+function renderEpisodeGrid(){
+  const book = BOOKS.find(b => b.code === currentBookCode);
+  document.getElementById('episodeBookTitle').textContent = book.name + ' — Episodes';
+
+  const episodes = EPISODE_BANK[currentBookCode] || [];
+  const progress = loadProgress(currentBookCode);
+  const grid = document.getElementById('episodeGrid');
+  const emptyNote = document.getElementById('episodeEmptyNote');
+  grid.innerHTML = '';
+
+  if (episodes.length === 0){
+    emptyNote.style.display = 'block';
+    return;
+  }
+  emptyNote.style.display = 'none';
+
+  episodes.forEach((ep, idx) => {
+    const done = progress[idx];
+    const card = document.createElement('div');
+    card.className = 'episode-card' + (done ? ' done' : '');
+    card.innerHTML =
+      '<div class="episode-num">Episode ' + (idx + 1) + '</div>' +
+      '<h4>' + formatTitle(ep.title) + '</h4>' +
+      '<div class="episode-score' + (done ? ' done' : '') + '">' +
+      (done ? ('Score: ' + done.score + ' / ' + done.total) : (ep.questions.length + ' questions')) +
+      '</div>';
+    card.onclick = function(){ startEpisode(idx); };
+    grid.appendChild(card);
+  });
+}
+
+function showEpisodes(){
+  renderEpisodeGrid();
+  showScreen('screen-episodes');
+}
+
+function goBack(){
+  history.back();
+}
+
+/* =========================================================================
+   SCREEN 3: QUIZ
+   ========================================================================= */
+function formatTitle(t){
+  return t
+    .replace(/[_-]+/g, ' ')
+    .trim()
+    .split(' ')
+    .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(' ');
+}
+
+function shuffle(arr){
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function startEpisode(idx){
+  currentEpisodeIndex = idx;
+  const episode = EPISODE_BANK[currentBookCode][idx];
+  quizQuestions = episode.questions;
+  quizIndex = 0;
+  quizScore = 0;
+  selectedOption = null;
+  renderQuizQuestion();
+  showScreen('screen-quiz');
+}
+
+function renderQuizQuestion(){
+  const q = quizQuestions[quizIndex];
+  document.getElementById('quizProgressText').textContent = 'Question ' + (quizIndex + 1) + ' / ' + quizQuestions.length;
+  document.getElementById('quizScoreText').textContent = 'Score: ' + quizScore;
+  document.getElementById('progressBar').style.width = Math.round((quizIndex / quizQuestions.length) * 100) + '%';
+  document.getElementById('quizQuestion').textContent = q.question;
+
+  const optionsWrap = document.getElementById('quizOptions');
+  optionsWrap.innerHTML = '';
+  selectedOption = null;
+  document.getElementById('nextBtn').disabled = true;
+
+  const correctText = q.options[q.answer];
+  const options = shuffle(q.options);
+  options.forEach(optText => {
+    const btn = document.createElement('div');
+    btn.className = 'qopt';
+    btn.textContent = optText;
+    btn.onclick = function(){ handleOptionClick(btn, optText, correctText); };
+    optionsWrap.appendChild(btn);
+  });
+}
+
+function handleOptionClick(btn, chosenText, correctText){
+  if (selectedOption !== null) return;
+  selectedOption = chosenText;
+
+  const allOpts = document.querySelectorAll('#quizOptions .qopt');
+  allOpts.forEach(o => {
+    o.classList.add('disabled');
+    if (o.textContent === correctText) o.classList.add('correct');
+    else if (o.textContent === chosenText) o.classList.add('wrong');
+  });
+
+  if (chosenText === correctText) quizScore++;
+  document.getElementById('quizScoreText').textContent = 'Score: ' + quizScore;
+  document.getElementById('nextBtn').disabled = false;
+}
+
+function handleNext(){
+  quizIndex++;
+  if (quizIndex < quizQuestions.length){
+    renderQuizQuestion();
+  } else {
+    finishEpisode();
+  }
+}
+
+/* =========================================================================
+   SCREEN 4: EPISODE RESULT + progress save
+   ========================================================================= */
+function finishEpisode(){
+  const progress = loadProgress(currentBookCode);
+  progress[currentEpisodeIndex] = { score: quizScore, total: quizQuestions.length };
+  saveProgress(currentBookCode, progress);
+
+  const pct = Math.round((quizScore / quizQuestions.length) * 100);
+  document.getElementById('episodePct').textContent = pct + '%';
+  document.getElementById('episodeFrac').textContent = quizScore + ' / ' + quizQuestions.length;
+
+  const episodes = EPISODE_BANK[currentBookCode];
+  const allDone = episodes.every((ep, idx) => progress[idx]);
+
+  const sub = document.getElementById('episodeResultSub');
+  const continueBtn = document.getElementById('episodeContinueBtn');
+  if (allDone){
+    sub.textContent = 'That was the last episode. See your final result for the whole book.';
+    continueBtn.textContent = 'See Final Result 🏁';
+  } else {
+    sub.textContent = 'Your score for this episode has been saved. Keep going with the next episode.';
+    continueBtn.textContent = 'Back to Episode List';
+  }
+
+  showScreen('screen-episode-result');
+}
+
+function continueAfterEpisode(){
+  const episodes = EPISODE_BANK[currentBookCode];
+  const progress = loadProgress(currentBookCode);
+  const allDone = episodes.every((ep, idx) => progress[idx]);
+
+  if (allDone){
+    computeFinalResult();
+  } else {
+    showEpisodes();
+  }
+}
+
+/* =========================================================================
+   SCREEN 5: FINAL RESULT (whole book)
+   ========================================================================= */
+function computeFinalResult(){
+  const book = BOOKS.find(b => b.code === currentBookCode);
+  const progress = loadProgress(currentBookCode);
+  let totalScore = 0, totalQuestions = 0;
+  Object.values(progress).forEach(p => { totalScore += p.score; totalQuestions += p.total; });
+
+  const pct = totalQuestions > 0 ? Math.round((totalScore / totalQuestions) * 100) : 0;
+  const passed = pct >= PASS_PCT;
+
+  if (passed){
+    document.getElementById('passPct').textContent = pct + '%';
+    document.getElementById('passFrac').textContent = totalScore + ' / ' + totalQuestions;
+    document.getElementById('passBookName').textContent = book.name;
+    showScreen('screen-pass');
+  } else {
+    document.getElementById('failPct').textContent = pct + '%';
+    document.getElementById('failFrac').textContent = totalScore + ' / ' + totalQuestions;
+    document.getElementById('failBookName').textContent = book.name;
+    showScreen('screen-fail');
+  }
+}
+
+function retakeBook(){
+  saveProgress(currentBookCode, {});
+  renderEpisodeGrid();
+  showScreen('screen-episodes');
+}
+
+/* =========================================================================
+   STUDENT ID (persistent per device, same pattern as other MySkillGame exams)
+   ========================================================================= */
+function getStudentId(){
+  let studentId = localStorage.getItem('msg_student_id');
+  if (!studentId){
+    const randomPart = Math.random().toString(36).substring(2, 10).toUpperCase();
+    studentId = 'MSG-STU-' + randomPart;
+    localStorage.setItem('msg_student_id', studentId);
+  }
+  return studentId;
+}
+
+/* =========================================================================
+   CERTIFICATE
+   -------------------------------------------------------------------------
+   Saves the result to localStorage under 'msg_story_cert_result' and hands
+   off to certificate.html, matching the pattern used elsewhere on
+   MySkillGame. Plug a Google Sheet webhook into GOOGLE_SHEET_URL below if
+   this exam should log results the same way the other exams do.
+   ========================================================================= */
+const GOOGLE_SHEET_URL = ''; // TODO: paste the Apps Script web app URL here if needed
+
+async function saveResultToGoogleSheet(data){
+  if (!GOOGLE_SHEET_URL) return false;
+  try{
+    await fetch(GOOGLE_SHEET_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(data)
+    });
+    return true;
+  }catch(e){
+    console.error('Google Sheet save error:', e);
+    return false;
+  }
+}
+
+async function goToCertificate(){
+  const name = (document.getElementById('studentNameInput').value || '').trim();
+  const school = (document.getElementById('schoolNameInput').value || '').trim();
+  const district = (document.getElementById('districtInput').value || '').trim();
+  const country = (document.getElementById('countryInput').value || '').trim();
+
+  if (!name){ document.getElementById('studentNameInput').focus(); return; }
+  if (!school){ document.getElementById('schoolNameInput').focus(); return; }
+  if (!district){ document.getElementById('districtInput').focus(); return; }
+  if (!country){ document.getElementById('countryInput').focus(); return; }
+
+  const book = BOOKS.find(b => b.code === currentBookCode);
+  const progress = loadProgress(currentBookCode);
+  let totalScore = 0, totalQuestions = 0;
+  Object.values(progress).forEach(p => { totalScore += p.score; totalQuestions += p.total; });
+  const pct = Math.round((totalScore / totalQuestions) * 100);
+
+  const studentId = getStudentId();
+  const certId = 'MSG-SN-' + currentBookCode.toUpperCase().slice(0, 3) + '-' +
+                 Date.now().toString(36).toUpperCase().slice(-6);
+
+  const result = {
+    studentId, certId, name, school, district, country,
+    bookCode: currentBookCode,
+    bookName: book.name,
+    score: totalScore,
+    total: totalQuestions,
+    pct: pct,
+    passed: pct >= PASS_PCT,
+    date: new Date().toLocaleDateString('en-GB', { day:'2-digit', month:'short', year:'numeric' })
+  };
+
+  try{
+    localStorage.setItem('msg_story_cert_result', JSON.stringify(result));
+  }catch(e){
+    console.error('Could not save certificate result', e);
+  }
+
+  await saveResultToGoogleSheet({
+    studentId, certificateNo: certId, certId, name, school, district, country,
+    examName: book.name, score: totalScore, totalMarks: totalQuestions
+  });
+
+  window.location.href = 'certificate.html';
+}
+
+/* =========================================================================
+   INIT
+   ========================================================================= */
+renderBookGrid();
+history.replaceState({ screen:'screen-books', stackLen:1 }, '');
+</script>
+</body>
+</html>

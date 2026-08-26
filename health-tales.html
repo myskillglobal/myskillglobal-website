@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Surajit Roy" name="author"/>
+<meta content="© Surajit Roy" name="copyright"/>
+<meta content="index,follow" name="robots"/>
+<title>Health Tales — Stories That Protect Life</title>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+<meta content="fDyEKiSXue5cIsS7SGLU15BpPCVqkLNuuoRmGpaHEL8" name="google-site-verification"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&amp;family=Source+Serif+4:ital,wght@0,400;0,600;1,400&amp;display=swap" rel="stylesheet"/>
+<style>
+  /*
+    ─────────────────────────────────────────────────────────
+    HEALTH TALES — colour & extension guide
+    This page is built to grow. Each story gets its own
+    accent colour (--story1, --story2, ...) reused across:
+      .story-num.cN / .tts-btn.cN / .dialogue.cN /
+      .lesson-box.cN / .quiz-group-title.cN
+    Suggested next colours when adding Story II, III...
+      --story2: #2f7a8c;  (waterborne illness / hygiene — teal-blue)
+      --story3: #6d4fa0;  (mental health / stress — soft violet)
+      --story4: #1f8a5c;  (nutrition / lifestyle — health green)
+    Just add the var, duplicate a story-section block, and
+    add one quiz-group + one nav link. Everything else (TTS,
+    quiz scoring, nav highlight) is generic and just works.
+    ─────────────────────────────────────────────────────────
+  */
+  :root {
+    --bg:        #f6fbf8;
+    --card:      #ffffff;
+    --ink:       #12241f;
+    --muted:     rgba(18,36,31,.58);
+    --primary:   #1f8a5c;
+    --primary-d: #146b46;
+    --soft:      #eaf6ef;
+    --quizbg:    #0d2620;
+    --story1:    #d9622b;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    user-select: none;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 78vh;
+    background: linear-gradient(160deg, #eaf6ef 0%, #f6fbf8 55%, #ffffff 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 1.5rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 12% 20%, rgba(31,138,92,.10) 0%, transparent 45%),
+      radial-gradient(circle at 88% 75%, rgba(217,98,43,.08) 0%, transparent 45%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    background: var(--soft);
+    color: var(--primary-d);
+    padding: .45rem 1rem;
+    border-radius: 99px;
+    font-size: .75rem;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: 1.6rem;
+  }
+  .hero-badge svg { width: 14px; height: 14px; }
+  .hero h1 {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2.2rem, 5.5vw, 4rem);
+    line-height: 1.12;
+    max-width: 760px;
+    color: var(--ink);
+  }
+  .hero h1 span { color: var(--primary); }
+  .hero-sub {
+    margin-top: 1.3rem;
+    color: var(--muted);
+    font-size: 1.05rem;
+    max-width: 540px;
+    font-weight: 400;
+  }
+  .story-pills {
+    display: flex;
+    gap: .75rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 2.4rem;
+  }
+  .pill {
+    padding: .5rem 1.2rem;
+    border-radius: 99px;
+    font-size: .82rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform .2s, opacity .2s;
+    background: var(--story1);
+    color: #fff;
+  }
+  .pill:hover { transform: translateY(-2px); opacity: .9; }
+  .pill-more {
+    padding: .5rem 1.2rem;
+    border-radius: 99px;
+    font-size: .82rem;
+    font-weight: 600;
+    border: 1.5px dashed rgba(18,36,31,.25);
+    color: var(--muted);
+  }
+
+  /* ── NAV ── */
+  .story-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(246,251,248,.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(18,36,31,.08);
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    overflow-x: auto;
+  }
+  .story-nav a {
+    padding: .8rem 1.4rem;
+    font-size: .8rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: rgba(18,36,31,.5);
+    border-bottom: 3px solid transparent;
+    white-space: nowrap;
+    transition: color .2s, border-color .2s;
+  }
+  .story-nav a:hover { color: var(--ink); }
+  .story-nav a.s1 { border-color: var(--story1); color: var(--story1); }
+
+  /* ── STORY SECTION ── */
+  .story-section {
+    padding: 5rem 1.5rem 3rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .story-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.4rem;
+    margin-bottom: 2rem;
+  }
+  .story-num {
+    flex-shrink: 0;
+    width: 52px; height: 52px;
+    border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #fff;
+  }
+  .story-num.c1 { background: var(--story1); }
+
+  .story-meta { flex: 1; }
+  .story-tag {
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    margin-bottom: .4rem;
+  }
+  .story-meta h2 {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    line-height: 1.2;
+  }
+
+  /* TTS bar */
+  .tts-bar {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    background: var(--card);
+    border: 1px solid rgba(18,36,31,.08);
+    border-radius: 12px;
+    padding: .65rem 1rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 1px 3px rgba(18,36,31,.04);
+  }
+  .tts-btn {
+    display: flex; align-items: center; justify-content: center;
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: transform .15s;
+  }
+  .tts-btn:hover { transform: scale(1.08); }
+  .tts-btn svg { width: 18px; height: 18px; fill: #fff; }
+  .tts-btn.c1 { background: var(--story1); }
+
+  .tts-info { flex: 1; }
+  .tts-label {
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
+    margin-bottom: .15rem;
+  }
+  .tts-title { font-size: .88rem; font-weight: 400; color: var(--ink); }
+
+  .speed-sel {
+    font-size: .75rem;
+    padding: .3rem .5rem;
+    border: 1px solid rgba(18,36,31,.15);
+    border-radius: 6px;
+    background: white;
+    cursor: pointer;
+    color: var(--ink);
+  }
+
+  /* Story body */
+  .story-body {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.14rem;
+    line-height: 1.85;
+    color: var(--ink);
+  }
+  .story-body p { margin-bottom: 1.1rem; }
+  .story-body .dialogue {
+    border-left: 3px solid;
+    padding: .5rem 1rem .5rem 1.2rem;
+    margin: 1rem 0 1.1rem;
+    font-style: italic;
+    border-radius: 0 8px 8px 0;
+    background: rgba(18,36,31,.03);
+  }
+  .story-body .dialogue.c1 { border-color: var(--story1); }
+  .story-body .poster-line {
+    border-left: 3px solid var(--primary);
+    padding: .5rem 1rem .5rem 1.2rem;
+    margin: 1rem 0 1.1rem;
+    font-weight: 600;
+    font-style: italic;
+    border-radius: 0 8px 8px 0;
+    background: var(--soft);
+    color: var(--primary-d);
+  }
+
+  .lesson-box {
+    margin-top: 2.4rem;
+    border-radius: 14px;
+    padding: 1.7rem 1.9rem;
+    color: #fff;
+  }
+  .lesson-box.c1 { background: var(--story1); }
+  .lesson-box .lesson-kicker {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    opacity: .85;
+    margin-bottom: .7rem;
+  }
+  .lesson-box .lesson-kicker svg { width: 16px; height: 16px; }
+  .lesson-box p {
+    font-size: 1.02rem;
+    font-style: italic;
+    font-family: 'Source Serif 4', serif;
+    line-height: 1.65;
+    margin-bottom: .6rem;
+  }
+  .lesson-box p:last-child { margin-bottom: 0; }
+
+  /* divider */
+  .story-divider {
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(18,36,31,.12), transparent);
+    margin: 3.5rem auto;
+    max-width: 800px;
+  }
+
+  /* coming-soon card */
+  .coming-soon {
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    padding: 0 1.5rem;
+  }
+  .coming-soon-card {
+    border: 1.5px dashed rgba(18,36,31,.2);
+    border-radius: 14px;
+    padding: 1.6rem 1.8rem;
+    text-align: center;
+    color: var(--muted);
+    font-size: .92rem;
+  }
+  .coming-soon-card strong { color: var(--ink); }
+
+  /* ── QUIZ ── */
+  .quiz-section {
+    background: var(--quizbg);
+    padding: 5rem 1.5rem;
+  }
+  .quiz-inner { max-width: 800px; margin: 0 auto; }
+  .quiz-header { text-align: center; margin-bottom: 3rem; }
+  .quiz-header .kicker {
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--story1);
+    margin-bottom: .8rem;
+  }
+  .quiz-header h2 {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.7rem, 4vw, 2.6rem);
+    color: #fff;
+    line-height: 1.2;
+  }
+  .quiz-header p {
+    color: rgba(255,255,255,.55);
+    margin-top: .8rem;
+    font-size: .95rem;
+    font-weight: 300;
+  }
+
+  .quiz-group { margin-bottom: 2.8rem; }
+  .quiz-group-title {
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    padding: .4rem .9rem;
+    border-radius: 6px;
+    display: inline-block;
+    margin-bottom: 1.4rem;
+  }
+  .quiz-group-title.c1 { background: var(--story1); color: #fff; }
+  .quiz-group-title.cq { background: var(--primary); color: #fff; }
+
+  .question {
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 12px;
+    padding: 1.3rem 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .q-text {
+    color: rgba(255,255,255,.92);
+    font-size: .95rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+  }
+  .q-num {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-right: .5rem;
+    opacity: .45;
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: .55rem;
+  }
+  .option {
+    display: flex;
+    align-items: center;
+    gap: .65rem;
+    padding: .55rem .85rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,.12);
+    cursor: pointer;
+    transition: background .15s, border-color .15s;
+    background: transparent;
+    text-align: left;
+    color: rgba(255,255,255,.75);
+    font-size: .88rem;
+    font-family: 'Outfit', sans-serif;
+  }
+  .option:hover { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.25); }
+  .option.correct { background: rgba(31,138,92,.3); border-color: var(--primary); color: #bfe9d3; }
+  .option.wrong   { background: rgba(217,98,43,.25); border-color: var(--story1); color: #f6cdb2; }
+  .option .opt-label {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,.25);
+    display: flex; align-items: center; justify-content: center;
+    font-size: .72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .feedback {
+    margin-top: .65rem;
+    padding: .55rem .85rem;
+    border-radius: 7px;
+    font-size: .82rem;
+    display: none;
+  }
+  .feedback.show { display: block; }
+  .feedback.correct { background: rgba(31,138,92,.2); color: #bfe9d3; }
+  .feedback.wrong   { background: rgba(217,98,43,.2); color: #f6cdb2; }
+
+  .open-question {
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 12px;
+    padding: 1.3rem 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .open-question .q-text { margin-bottom: .75rem; }
+  .open-question textarea {
+    width: 100%;
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 8px;
+    padding: .7rem .9rem;
+    color: rgba(255,255,255,.85);
+    font-family: 'Outfit', sans-serif;
+    font-size: .87rem;
+    line-height: 1.6;
+    resize: vertical;
+    min-height: 70px;
+  }
+  .open-question textarea:focus { outline: none; border-color: var(--story1); }
+  .open-question textarea::placeholder { color: rgba(255,255,255,.3); }
+
+  .quiz-footer { text-align: center; margin-top: 2.5rem; }
+  .score-display {
+    display: inline-block;
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 14px;
+    padding: 1.2rem 2.5rem;
+    margin-bottom: 1.2rem;
+  }
+  .score-display .score-val {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 2.6rem;
+    color: var(--story1);
+  }
+  .score-display .score-label {
+    font-size: .78rem;
+    font-weight: 300;
+    color: rgba(255,255,255,.45);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    display: block;
+  }
+  .check-btn {
+    display: inline-block;
+    padding: .75rem 2rem;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: .9rem;
+    font-weight: 700;
+    letter-spacing: .03em;
+    cursor: pointer;
+    transition: transform .15s, opacity .15s;
+  }
+  .check-btn:hover { transform: translateY(-2px); opacity: .92; }
+
+  .site-footer {
+    background: #0a1f1a;
+    color: rgba(255,255,255,.3);
+    text-align: center;
+    padding: 2rem 1.5rem;
+    font-size: .78rem;
+    letter-spacing: .04em;
+  }
+
+  @media (max-width: 600px) {
+    .story-header { flex-direction: column; gap: .75rem; }
+    .story-num { width: 40px; height: 40px; font-size: 1rem; }
+    .tts-bar { flex-wrap: wrap; }
+  }
+</style>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1034022057999423"></script><link href="https://myskillgame.netlify.app/11-7-26 website/health-tales.html" rel="canonical"/></head>
+<body>
+<!-- HERO -->
+<section class="hero">
+<span class="hero-badge">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M12 2L4 6v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6l-8-4z"></path></svg>
+    MySkillGame Platform  ·  Health &amp; Safety Awareness
+  </span>
+<h1>Health Tales — Stories That <span>Protect Life</span></h1>
+<p class="hero-sub">Real-life situations, told simply — so the habits that quietly harm us can be noticed before it's too late.</p>
+<div class="story-pills">
+<a class="pill" href="#story1">The Price of Not Knowing</a>
+<span class="pill-more">+ more stories coming soon</span>
+</div>
+</section>
+<!-- NAV -->
+<nav class="story-nav" id="stickyNav">
+<a href="#story1" id="nav1">Story I</a>
+<a href="#quiz" id="navQ">Quiz</a>
+</nav>
+<!-- ═══════════════ STORY 1 ═══════════════ -->
+<section class="story-section" id="story1">
+<div class="story-header">
+<div class="story-num c1">I</div>
+<div class="story-meta">
+<div class="story-tag" style="color:var(--story1);">Ignorance · Health · Recovery</div>
+<h2>The Price of Not Knowing</h2>
+</div>
+</div>
+<div class="tts-bar">
+<button aria-label="Play story" class="tts-btn c1" id="tts1btn" onclick="toggleTTS(1)">
+<svg id="tts1icon" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+</button>
+<div class="tts-info">
+<span class="tts-label">🔊 Listen to this story</span>
+<span class="tts-title">English voice narration</span>
+</div>
+<select class="speed-sel" id="speed1" onchange="setSpeed(1)">
+<option value="0.85">Slow</option>
+<option selected="" value="1">Normal</option>
+<option value="1.3">Fast</option>
+</select>
+</div>
+<div class="story-body" id="storyText1">
+<p>In a small village by the river, Rina ran her household the way her mother had taught her — and the way every household around her did too. Whatever could not be eaten by the goats or composted in the yard, she gathered into a small pile behind the house and burned. Plastic wrappers, old polythene bags, the occasional broken bucket, used water bottles — all of it went into the same fire.</p>
+<p class="dialogue c1">"It's the easiest way," she would tell her daughter Mou. "Burn it, and it's gone. It even keeps the mosquitoes away."</p>
+<p>Mou, who had just finished her science class at school, frowned at the thick black smoke curling up from the yard most evenings.</p>
+<p class="dialogue c1">"Ma, our teacher said burning plastic isn't like burning leaves. It lets out something different — something you can't see, but it's still going into the air. Into us."</p>
+<p class="dialogue c1">"Smoke is smoke, Mou. Your grandmother breathed worse and lived to eighty."</p>
+<p>Rina laughed it off. There was another habit in the house, one nobody thought twice about. The mineral water bottles that came home from weddings or long bus journeys were never thrown away. They were rinsed once, refilled from the tube-well, and used for months — sometimes left out in the sun on the windowsill, sometimes reused so many times the plastic had turned cloudy and brittle.</p>
+<p class="dialogue c1">"Why buy a new bottle," Rina's husband Sukumar would say, "when this one still holds water perfectly well?"</p>
+<p>For years, life went on this way. The fire burned every evening. The same few bottles were filled and refilled, week after week, year after year. Nobody fell sick. Nobody saw any reason to change.</p>
+<p>Then, slowly, something did change — so slowly that Rina barely noticed at first. A dry cough that wouldn't go away. A tiredness that sleep didn't fix. A faint ache in her chest some evenings, gone by morning.</p>
+<p class="dialogue c1">"It's just the weather," she told Mou, when her daughter asked her to see a doctor. "It will pass."</p>
+<p>It did not pass. Months went by, and the cough grew sharper. She began losing weight without trying to. Finally, when she found herself too breathless to climb the stairs of her own home, Sukumar insisted, and Mou would not let the matter rest until her mother agreed.</p>
+<p>At the district hospital, after a long day of tests, Dr. Sen sat them down.</p>
+<p class="dialogue c1">"Rina, there is a growth in your lung. It is cancer."</p>
+<p>The word emptied the room of all other sound. Rina's hands went cold in her lap.</p>
+<p class="dialogue c1">"How, doctor? I have never smoked a single cigarette in my life."</p>
+<p>Dr. Sen spoke gently, but plainly.</p>
+<p class="dialogue c1">"Cancer rarely comes from one single thing, Rina — I want you to understand that clearly, so you don't carry guilt that isn't fully yours to carry. But there are real, known risks that we see again and again in patients like you. Burning plastic releases toxic compounds into the air — dioxins, fine particles — that settle into the lungs over years of breathing them in, evening after evening, in a closed yard. And reusing the same plastic bottles for months, especially ones left in the heat and sun, can let unwanted chemicals leach into the water you drink every single day. Neither one of these, on its own, guarantees illness. But added together, over fifteen, twenty years — they ask far more of the body than it can always bear."</p>
+<p class="dialogue c1">"Is there anything we can do now?" Sukumar's voice shook.</p>
+<p class="dialogue c1">"Yes," said Dr. Sen. "You came in time. The growth was caught before it had spread far. With surgery, followed by chemotherapy, there is a real chance of full recovery. But it will not be an easy road."</p>
+<p>It was not an easy road. There were weeks of treatment that left Rina exhausted, weeks when her hair fell away and her appetite disappeared, weeks when Mou sat by her bed doing homework just so her mother wouldn't be alone. There were costs the family struggled to meet, until a local health NGO stepped in to help cover part of the treatment. There were nights Rina wondered if she would see Mou finish school.</p>
+<p>But slowly, the months turned. The scans began to show improvement. The cough that had once seemed permanent grew fainter, then disappeared. A year after her diagnosis, Dr. Sen looked at her latest reports and smiled for the first time since they had met.</p>
+<p class="dialogue c1">"You're free of it, Rina. Properly, fully free."</p>
+<p>Rina went home that day and did something she had never done before. She walked to the back of the house, looked at the blackened patch of ground where she had burned her family's waste for twenty years, and did not light it again. The next morning, she and Sukumar dug a small pit for compostable waste, and set aside the plastic separately to be collected by the municipal van that came through the village twice a month — something she had never once bothered to wait for before.</p>
+<p>The old water bottles went into the recycling bin. In their place, Mou brought home two steel bottles from the school's health camp, bought at half price as part of an awareness drive.</p>
+<p class="dialogue c1">"These don't leach anything, Ma. And you can use them for years."</p>
+<p>Word spread through the village, the way news of illness always does — but this time, it carried a different message with it. Neighbours who had once burned their plastic without a second thought began asking Rina what she did instead. Mothers who had reused the same bottle for a year started buying steel ones for their children's school bags. Rina, who had once dismissed her daughter's warning with a laugh, now stood in the village courtyard during the NGO's monthly health meetings and told her own story to anyone who would listen.</p>
+<p class="dialogue c1">"I am not telling you this to frighten you," she would say. "I am telling you this because I didn't know, and not knowing nearly cost me everything. You still have the chance to know better than I did."</p>
+<p>One afternoon, Mou returned home from school carrying a small poster she had made herself. She hung it beside the village community board. It read:</p>
+<p class="poster-line">"Don't burn plastic. Protect the air your children breathe."</p>
+<p>Below it, another line said:</p>
+<p class="poster-line">"A steel bottle costs a little today. Good health is priceless tomorrow."</p>
+<p>Within a few months, the village looked different. The evening sky was clearer without the black plastic smoke. Children carried reusable bottles to school. The waste collection van, once ignored, now stopped at almost every house.</p>
+<p>Dr. Sen visited the village a year later and smiled as he watched the changes.</p>
+<p class="dialogue c1">"Sometimes," he said, "the best medicine isn't found in a hospital. It's found in knowledge shared before illness begins."</p>
+</div>
+<div class="lesson-box c1">
+<div class="lesson-kicker">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M12 2L4 6v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6l-8-4z"></path></svg>
+      The Lesson
+    </div>
+<p>Burning plastic releases harmful pollutants into the air, and repeatedly reusing damaged or single-use plastic bottles — especially when exposed to heat — may increase exposure to unwanted chemicals. While these factors alone do not necessarily cause cancer, reducing such exposures is widely recommended as part of a healthier environment and lifestyle.</p>
+<p>Knowledge is preventive medicine. Small daily habits may seem harmless, but over many years they can shape our health. Choosing cleaner ways to manage waste, using safe reusable containers, and seeking timely medical advice are simple decisions that help protect ourselves, our families, and future generations.</p>
+</div>
+</section>
+<hr class="story-divider"/>
+<!-- More stories will be added here as new <section class="story-section" id="storyN"> blocks -->
+<div class="coming-soon">
+<div class="coming-soon-card">
+<strong>More Health Tales are on the way.</strong><br/>
+    New stories will appear here soon — each one a small, true-to-life lesson in staying safe and well.
+  </div>
+</div>
+<!-- ═══════════════ QUIZ ═══════════════ -->
+<section class="quiz-section" id="quiz">
+<div class="quiz-inner">
+<div class="quiz-header">
+<p class="kicker">Test Your Understanding</p>
+<h2>Questions on the Story</h2>
+<p>Read carefully, think deeply — then choose your answers below.</p>
+</div>
+<!-- Story 1 Questions -->
+<div class="quiz-group">
+<div class="quiz-group-title c1">Story I — The Price of Not Knowing</div>
+<div class="question" data-correct="b">
+<div class="q-text"><span class="q-num">1.</span> Why did Dr. Sen say Rina shouldn't carry guilt over how she got cancer?</div>
+<div class="options">
+<button class="option" data-opt="a" onclick="answer(this,'b')"><span class="opt-label">A</span> Because cancer is always entirely random and has no causes</button>
+<button class="option" data-opt="b" onclick="answer(this,'b')"><span class="opt-label">B</span> Because cancer rarely comes from one single cause — it builds from many risks over time</button>
+<button class="option" data-opt="c" onclick="answer(this,'b')"><span class="opt-label">C</span> Because her family had a hereditary condition</button>
+<button class="option" data-opt="d" onclick="answer(this,'b')"><span class="opt-label">D</span> Because the hospital had made an error in diagnosis</button>
+</div>
+<div class="feedback" id="fb-0">✅ Correct! Dr. Sen was careful to explain that no single habit guarantees illness — it's the accumulation of risk, over many years, that matters.</div>
+</div>
+<div class="question" data-correct="c">
+<div class="q-text"><span class="q-num">2.</span> What two everyday habits in Rina's home were named as long-term health risks?</div>
+<div class="options">
+<button class="option" data-opt="a" onclick="answer(this,'c')"><span class="opt-label">A</span> Cooking on firewood and skipping meals</button>
+<button class="option" data-opt="b" onclick="answer(this,'c')"><span class="opt-label">B</span> Drinking tube-well water and walking barefoot</button>
+<button class="option" data-opt="c" onclick="answer(this,'c')"><span class="opt-label">C</span> Burning plastic waste and reusing single-use bottles for months</button>
+<button class="option" data-opt="d" onclick="answer(this,'c')"><span class="opt-label">D</span> Sleeping without a mosquito net and using firecrackers</button>
+</div>
+<div class="feedback" id="fb-1">✅ Correct! Burning household plastic and refilling the same disposable bottles, especially after they'd been left in the heat, were the two habits Dr. Sen pointed to.</div>
+</div>
+<div class="question" data-correct="a">
+<div class="q-text"><span class="q-num">3.</span> What changed in the village after Rina recovered and began sharing her story?</div>
+<div class="options">
+<button class="option" data-opt="a" onclick="answer(this,'a')"><span class="opt-label">A</span> Neighbours stopped burning plastic and switched to steel bottles</button>
+<button class="option" data-opt="b" onclick="answer(this,'a')"><span class="opt-label">B</span> The village built a new hospital</button>
+<button class="option" data-opt="c" onclick="answer(this,'a')"><span class="opt-label">C</span> Everyone stopped drinking tube-well water</button>
+<button class="option" data-opt="d" onclick="answer(this,'a')"><span class="opt-label">D</span> The municipal waste van stopped coming altogether</button>
+</div>
+<div class="feedback" id="fb-2">✅ Correct! Word of Rina's experience, plus Mou's poster, led neighbours to change how they handled plastic waste and drinking water — and the waste van finally got used.</div>
+</div>
+</div>
+<!-- Open Questions -->
+<div class="quiz-group">
+<div class="quiz-group-title cq">Think Deeper — Open Questions</div>
+<div class="open-question">
+<div class="q-text"><span class="q-num">4.</span> Dr. Sen says "the best medicine isn't found in a hospital — it's found in knowledge shared before illness begins." Do you agree? What's one piece of health knowledge you think isn't shared widely enough in your own community?</div>
+<textarea placeholder="Write your thoughts here…" rows="3"></textarea>
+</div>
+<div class="open-question">
+<div class="q-text"><span class="q-num">5.</span> Mou made a poster with two short lines to warn her village. If you were making your own awareness poster about a health habit you've noticed around you, what would your two lines say?</div>
+<textarea placeholder="Write your poster lines here…" rows="2"></textarea>
+</div>
+</div>
+<div class="quiz-footer">
+<div class="score-display">
+<span class="score-val" id="scoreVal">—</span>
+<span class="score-label">Score (multiple choice)</span>
+</div>
+<br/>
+<button class="check-btn" onclick="showScore()">Check My Score</button>
+</div>
+</div>
+</section>
+<footer class="site-footer">
+  MySkillGame Educational Platform  ·  Health &amp; Safety Awareness Stories<br/>
+  Health Tales  ·  Stories retold in English  ·  For educational use<br/>
+<b>Curated &amp; Presented by Surajit Roy</b>
+</footer>
+<footer class="site-footer">
+  © 2026 MySkillGame by Surajit Roy. All Rights Reserved.
+</footer>
+<script>
+  // ── Android back button ──
+  history.pushState({ page: 1 }, '', '');
+  window.addEventListener('popstate', function(e) {
+    if (document.referrer) { window.location = document.referrer; }
+    else { history.pushState({ page: 1 }, '', ''); }
+  });
+
+  // ── TTS ──
+  let activeStory = null;
+
+  function getStoryText(n) {
+    const el = document.getElementById('storyText' + n);
+    return el ? (el.innerText || el.textContent) : '';
+  }
+
+  function toggleTTS(n) {
+    const icon = document.getElementById('tts' + n + 'icon');
+    const playPath  = 'M8 5v14l11-7z';
+    const pausePath = 'M6 19h4V5H6v14zm8-14v14h4V5h-4z';
+
+    if (activeStory && activeStory !== n) {
+      window.speechSynthesis.cancel();
+      const otherIcon = document.getElementById('tts' + activeStory + 'icon');
+      if (otherIcon) otherIcon.setAttribute('d', playPath);
+      activeStory = null;
+    }
+
+    if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
+      window.speechSynthesis.pause();
+      icon.setAttribute('d', playPath);
+    } else if (window.speechSynthesis.paused) {
+      window.speechSynthesis.resume();
+      icon.setAttribute('d', pausePath);
+      activeStory = n;
+    } else {
+      const utter = new SpeechSynthesisUtterance(getStoryText(n));
+      utter.rate = parseFloat(document.getElementById('speed' + n).value);
+      utter.lang = 'en-IN';
+      utter.onend = () => { icon.setAttribute('d', playPath); activeStory = null; };
+      utter.onerror = () => { icon.setAttribute('d', playPath); activeStory = null; };
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.speak(utter);
+      icon.setAttribute('d', pausePath);
+      activeStory = n;
+    }
+  }
+
+  function setSpeed(n) {
+    if (activeStory === n && window.speechSynthesis.speaking) {
+      window.speechSynthesis.cancel();
+      document.getElementById('tts' + n + 'icon').setAttribute('d', 'M8 5v14l11-7z');
+      activeStory = null;
+    }
+  }
+
+  // ── QUIZ ──
+  let answered = {};
+  let score = 0;
+
+  function answer(btn, correct) {
+    const q = btn.closest('.question');
+    const qIndex = [...document.querySelectorAll('.question')].indexOf(q);
+    if (answered[qIndex]) return;
+    answered[qIndex] = true;
+
+    const chosen = btn.getAttribute('data-opt');
+    const fb = document.getElementById('fb-' + qIndex);
+
+    q.querySelectorAll('.option').forEach(o => {
+      o.style.pointerEvents = 'none';
+      if (o.getAttribute('data-opt') === correct) o.classList.add('correct');
+    });
+
+    if (chosen === correct) {
+      score++;
+      btn.classList.add('correct');
+      if (fb) { fb.classList.add('show', 'correct'); }
+    } else {
+      btn.classList.add('wrong');
+      if (fb) {
+        fb.textContent = '❌ Not quite. The correct answer is highlighted above.';
+        fb.classList.add('show', 'wrong');
+      }
+    }
+  }
+
+  function showScore() {
+    const total = document.querySelectorAll('.question').length;
+    document.getElementById('scoreVal').textContent = score + ' / ' + total;
+  }
+
+  // ── NAV highlight ──
+  const sections = ['story1','quiz'];
+  const navLinks = {
+    story1: document.getElementById('nav1'),
+    quiz:   document.getElementById('navQ')
+  };
+  const clsMap = { story1:'s1', quiz:'s1' };
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        Object.values(navLinks).forEach(l => l.classList.remove('s1'));
+        const id = e.target.id;
+        if (navLinks[id]) navLinks[id].classList.add(clsMap[id] || 's1');
+      }
+    });
+  }, { threshold: 0.25 });
+
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) io.observe(el);
+  });
+</script>
+<script src="security.js"></script>
+
+<footer class="footer">
+<div style="margin-bottom:18px;">
+<a href="about.html">About</a> |
+<a href="privacy.html">Privacy Policy</a> |
+<a href="terms.html">Terms &amp; Conditions</a> |
+<a href="contact.html">Contact</a> |
+<a href="disclaimer.html">Disclaimer</a>
+</div>
+<div class="footer-name">MYSKILLGAME</div>
+<div class="footer-copy">© 2026 MySkillGame • Developed by Surajit Roy</div>
+</footer>
+</body>
+</html>

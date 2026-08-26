@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>How Smoking, Alcohol &amp; Drugs Harm the Body | MySkillGame</title>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-EC8BPWZDWC');
+</script>
+<style>
+  :root{
+    --bg:#0b1220;
+    --bg-2:#101a2e;
+    --card:#141f38;
+    --card-2:#0f1830;
+    --text:#eaf0fb;
+    --muted:#9fb0cf;
+    --danger:#ff5d5d;
+    --danger-2:#ff8a5b;
+    --warn:#e8a23d;
+    --purple:#b98af0;
+    --teal:#3ac6c6;
+    --healthy:#3ddc97;
+    --healthy-2:#1fb37a;
+    --accent:#5db8ff;
+    --gold:#e8c468;
+    --border:rgba(255,255,255,0.08);
+    --shadow:0 10px 30px rgba(0,0,0,0.35);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(ellipse 900px 500px at 10% -10%, rgba(255,93,93,0.07), transparent 60%),
+      radial-gradient(ellipse 900px 600px at 90% 10%, rgba(58,198,198,0.07), transparent 60%),
+      var(--bg);
+    color:var(--text);
+    font-family:"Segoe UI",system-ui,-apple-system,sans-serif;
+    line-height:1.7;
+    padding-bottom:env(safe-area-inset-bottom);
+    padding-top:env(safe-area-inset-top);
+  }
+  .wrap{max-width:900px;margin:0 auto;padding:0 18px 60px;}
+
+  header.hero{
+    position:relative;
+    padding:50px 18px 34px;
+    text-align:center;
+    overflow:hidden;
+    background:linear-gradient(180deg, rgba(255,93,93,0.10), transparent 70%);
+  }
+  header.hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(255,93,93,0.12), transparent 40%),
+      radial-gradient(circle at 80% 10%, rgba(58,198,198,0.10), transparent 40%);
+    pointer-events:none;
+  }
+  .kicker{
+    display:inline-flex; align-items:center; gap:8px;
+    background:rgba(255,93,93,0.12);
+    border:1px solid rgba(255,93,93,0.35);
+    color:var(--danger-2);
+    font-size:13px; font-weight:700; letter-spacing:0.5px;
+    padding:6px 14px; border-radius:999px;
+    margin-bottom:18px;
+  }
+  h1.title{
+    font-size:clamp(26px,5.6vw,40px);
+    margin:0 0 14px;
+    font-weight:800;
+    letter-spacing:0.2px;
+  }
+  h1.title .a{color:var(--danger);}
+  h1.title .b{color:var(--purple);}
+  h1.title .c{color:var(--teal);}
+  .subtitle{
+    color:var(--muted);
+    font-size:clamp(15px,2.4vw,17px);
+    max-width:660px;
+    margin:0 auto;
+  }
+
+  /* sticky nav */
+  nav.jump{
+    position:sticky; top:0; z-index:20;
+    display:flex; gap:8px; justify-content:center; flex-wrap:wrap;
+    padding:12px 14px;
+    background:rgba(11,18,32,0.85);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border);
+  }
+  nav.jump a{
+    text-decoration:none;
+    color:var(--muted);
+    font-size:13px; font-weight:700;
+    padding:7px 13px; border-radius:999px;
+    border:1px solid var(--border);
+    background:rgba(255,255,255,0.02);
+    white-space:nowrap;
+  }
+  nav.jump a.smoke{color:var(--danger-2); border-color:rgba(255,138,91,0.3);}
+  nav.jump a.alco{color:var(--purple); border-color:rgba(185,138,240,0.3);}
+  nav.jump a.drug{color:var(--teal); border-color:rgba(58,198,198,0.3);}
+
+  section{
+    background:linear-gradient(180deg, var(--card), var(--card-2));
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:28px 22px;
+    margin:22px 0;
+    box-shadow:var(--shadow);
+    scroll-margin-top:70px;
+  }
+  .topic-banner{
+    text-align:center;
+    padding:28px 18px;
+    border-radius:20px;
+    margin:34px 0 4px;
+    font-size:clamp(22px,4.6vw,30px);
+    font-weight:800;
+  }
+  .topic-banner.smoke{background:linear-gradient(135deg, rgba(255,93,93,0.15), rgba(255,138,91,0.08)); border:1px solid rgba(255,93,93,0.3); color:var(--danger-2);}
+  .topic-banner.alco{background:linear-gradient(135deg, rgba(185,138,240,0.15), rgba(232,162,61,0.08)); border:1px solid rgba(185,138,240,0.3); color:var(--purple);}
+  .topic-banner.drug{background:linear-gradient(135deg, rgba(255,93,93,0.13), rgba(58,198,198,0.1)); border:1px solid rgba(58,198,198,0.3); color:var(--teal);}
+
+  .sec-head{display:flex; align-items:center; gap:12px; margin-bottom:6px;}
+  .sec-icon{
+    width:42px;height:42px;border-radius:12px;
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0; font-size:20px;
+  }
+  .sec-icon.lung{background:rgba(93,184,255,0.14);}
+  .sec-icon.heart{background:rgba(255,93,93,0.14);}
+  .sec-icon.brain{background:rgba(232,196,104,0.14);}
+  .sec-icon.cancer{background:rgba(255,138,91,0.16);}
+  .sec-icon.skin{background:rgba(61,220,151,0.14);}
+  .sec-icon.quit{background:rgba(61,220,151,0.18);}
+  .sec-icon.liver{background:rgba(232,162,61,0.16);}
+  .sec-icon.brainp{background:rgba(185,138,240,0.16);}
+  .sec-icon.stomach{background:rgba(93,184,255,0.14);}
+  .sec-icon.baby{background:rgba(61,220,151,0.14);}
+  .sec-icon.braind{background:rgba(255,93,93,0.14);}
+  .sec-icon.body{background:rgba(232,162,61,0.16);}
+  .sec-icon.family{background:rgba(93,184,255,0.14);}
+  .sec-icon.warn{background:rgba(255,138,91,0.16);}
+  .sec-icon.path{background:rgba(61,220,151,0.16);}
+  .sec-icon.help{background:rgba(58,198,198,0.16);}
+
+  h2.sec-title{font-size:clamp(18px,3.4vw,23px); margin:0; font-weight:800;}
+  .sec-sub{color:var(--muted); font-size:14px; margin:0 0 18px 54px;}
+  p{margin:0 0 14px;}
+  .lead{color:var(--text); opacity:0.92;}
+  ul.points{margin:0 0 6px; padding-left:0; list-style:none;}
+  ul.points li{position:relative; padding:10px 0 10px 30px; border-bottom:1px dashed var(--border); font-size:15px;}
+  ul.points li:last-child{border-bottom:none;}
+  ul.points li::before{content:"●"; position:absolute; left:0; top:10px; color:var(--danger-2); font-size:12px;}
+  .svg-box{
+    background:rgba(255,255,255,0.02);
+    border:1px solid var(--border);
+    border-radius:16px; padding:14px; margin:16px 0;
+    display:flex; justify-content:center;
+  }
+  .svg-box svg{width:100%; height:auto; max-width:560px;}
+  .caption{text-align:center; color:var(--muted); font-size:13px; margin-top:-4px;}
+  .legend{display:flex; gap:18px; justify-content:center; flex-wrap:wrap; font-size:13px; color:var(--muted); margin-top:8px;}
+  .legend span{display:inline-flex; align-items:center; gap:6px;}
+  .dot{width:10px;height:10px;border-radius:50%; display:inline-block;}
+
+  .stat-row{display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:12px; margin:18px 0 6px;}
+  .stat{background:rgba(255,93,93,0.06); border:1px solid rgba(255,93,93,0.2); border-radius:14px; padding:14px 12px; text-align:center;}
+  .stat.purple{background:rgba(185,138,240,0.07); border-color:rgba(185,138,240,0.22);}
+  .stat .num{font-size:20px; font-weight:800; color:var(--danger-2);}
+  .stat.purple .num{color:var(--purple);}
+  .stat .lbl{font-size:12px; color:var(--muted); margin-top:4px;}
+
+  .timeline{position:relative; margin:20px 0 6px; padding-left:26px;}
+  .timeline::before{content:""; position:absolute; left:9px; top:6px; bottom:6px; width:3px; background:linear-gradient(180deg, var(--healthy), var(--healthy-2)); border-radius:3px;}
+  .tl-item{position:relative; padding:0 0 22px 20px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{content:""; position:absolute; left:-26px; top:2px; width:16px; height:16px; border-radius:50%; background:var(--healthy); border:3px solid var(--bg-2); box-shadow:0 0 0 2px var(--healthy);}
+  .tl-time{font-weight:800; color:var(--healthy); font-size:14px;}
+  .tl-text{color:var(--text); font-size:14px; margin-top:2px;}
+
+  .steps{display:flex; flex-direction:column; gap:14px; margin-top:16px;}
+  .step{display:flex; gap:14px; align-items:flex-start; background:rgba(61,220,151,0.05); border:1px solid rgba(61,220,151,0.2); border-radius:14px; padding:14px 16px;}
+  .step .num-badge{flex-shrink:0; width:32px;height:32px;border-radius:50%; background:var(--healthy); color:#06231a; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:14px;}
+  .step .step-title{font-weight:700; color:var(--healthy); margin-bottom:3px; font-size:15px;}
+  .step .step-text{font-size:14px; color:var(--text); opacity:0.9;}
+
+  .help-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; margin-top:16px;}
+  .help-card{background:rgba(58,198,198,0.07); border:1px solid rgba(58,198,198,0.3); border-radius:14px; padding:16px;}
+  .help-card .h-name{font-weight:800; color:var(--teal); font-size:15px; margin-bottom:4px;}
+  .help-card .h-num{font-size:21px; font-weight:800; color:var(--text); letter-spacing:0.5px;}
+  .help-card .h-desc{font-size:13px; color:var(--muted); margin-top:4px;}
+
+  .closing{text-align:center; background:linear-gradient(135deg, rgba(61,220,151,0.10), rgba(58,198,198,0.08)); border:1px solid rgba(61,220,151,0.3);}
+  .closing h2{margin-top:0;}
+  footer{text-align:center; color:var(--muted); font-size:12.5px; padding:24px 18px 40px;}
+  footer .brand{color:var(--gold); font-weight:700;}
+
+  @media (max-width:480px){
+    .sec-sub{margin-left:0; margin-top:2px;}
+    .sec-head{flex-wrap:wrap;}
+  }
+</style>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1034022057999423"></script><link href="https://myskillgame.netlify.app/11-7-26 website/substance_harm_recovery_en.html" rel="canonical"/></head>
+<body>
+<header class="hero">
+<span class="kicker">🩺 HEALTH AWARENESS</span>
+<h1 class="title">How <span class="a">Smoking</span>, <span class="b">Alcohol</span> &amp; <span class="c">Drugs</span> Harm the Body</h1>
+<p class="subtitle">Three substances, one shared story: they hijack the brain, damage vital organs, and ripple out into families and communities. Here's what actually happens inside the body — and how recovery is possible.</p>
+</header>
+<nav class="jump">
+<a class="smoke" href="#smoking">🚭 Smoking</a>
+<a class="alco" href="#alcohol">🍷 Alcohol</a>
+<a class="drug" href="#drugs">🆘 Drugs</a>
+<a href="#help">📞 Help</a>
+</nav>
+<div class="wrap">
+<!-- ============ SMOKING ============ -->
+<div id="smoking"></div>
+<div class="topic-banner smoke">🚭 Smoking</div>
+<section>
+<div class="sec-head">
+<div class="sec-icon lung">🫁</div>
+<h2 class="sec-title">Lungs — the first organ hit</h2>
+</div>
+<p class="sec-sub">Where the smoke lands first</p>
+<p class="lead">Cigarette smoke contains over 7,000 chemicals, at least 70 of which are known to cause cancer. Tar builds up inside the lungs' tiny air sacs, the <b>alveoli</b>. A healthy lung is pink and elastic; years of smoking turn it dark, stiff, and scarred with holes.</p>
+<div class="svg-box">
+<svg viewbox="0 0 560 260" xmlns="http://www.w3.org/2000/svg">
+<g>
+<text fill="#3ddc97" font-size="14" font-weight="700" text-anchor="middle" x="140" y="24">Healthy lung</text>
+<path d="M140 40 C90 40 60 90 65 140 C68 175 90 210 120 220 C130 224 138 210 140 190 
+                   C142 210 150 224 160 220 C190 210 212 175 215 140 C220 90 190 40 140 40 Z" fill="#1fb37a" opacity="0.25" stroke="#3ddc97" stroke-width="2"></path>
+<path d="M140 55 L140 195" stroke="#3ddc97" stroke-linecap="round" stroke-width="3"></path>
+<path d="M140 80 C120 90 100 95 85 110" fill="none" opacity="0.7" stroke="#3ddc97" stroke-width="2"></path>
+<path d="M140 80 C160 90 180 95 195 110" fill="none" opacity="0.7" stroke="#3ddc97" stroke-width="2"></path>
+<circle cx="100" cy="130" fill="#3ddc97" r="3"></circle>
+<circle cx="180" cy="130" fill="#3ddc97" r="3"></circle>
+</g>
+<g>
+<text fill="#ff8a5b" font-size="14" font-weight="700" text-anchor="middle" x="420" y="24">Smoker's lung</text>
+<path d="M420 40 C370 40 340 90 345 140 C348 175 370 210 400 220 C410 224 418 210 420 190 
+                   C422 210 430 224 440 220 C470 210 492 175 495 140 C500 90 470 40 420 40 Z" fill="#3a2b28" stroke="#ff8a5b" stroke-width="2"></path>
+<ellipse cx="390" cy="90" fill="#1a1210" opacity="0.85" rx="14" ry="10"></ellipse>
+<ellipse cx="440" cy="105" fill="#1a1210" opacity="0.85" rx="18" ry="12"></ellipse>
+<ellipse cx="405" cy="145" fill="#1a1210" opacity="0.85" rx="16" ry="11"></ellipse>
+<ellipse cx="450" cy="165" fill="#1a1210" opacity="0.85" rx="13" ry="9"></ellipse>
+<path d="M420 55 L420 195" opacity="0.6" stroke="#ff8a5b" stroke-linecap="round" stroke-width="3"></path>
+<circle cx="380" cy="120" fill="#ff5d5d" r="3"></circle>
+<circle cx="460" cy="130" fill="#ff5d5d" r="3"></circle>
+</g>
+</svg>
+</div>
+<div class="legend">
+<span><span class="dot" style="background:#3ddc97"></span> Healthy pink tissue</span>
+<span><span class="dot" style="background:#ff8a5b"></span> Tar buildup, dark patches</span>
+<span><span class="dot" style="background:#ff5d5d"></span> Damaged alveoli</span>
+</div>
+<ul class="points" style="margin-top:18px;">
+<li>Tiny hair-like cilia that filter out smoke, dust, and germs get burned away and stop working.</li>
+<li>Alveoli break down, cutting oxygen intake — a condition called Chronic Obstructive Pulmonary Disease (COPD).</li>
+<li>Long-term smoking raises lung cancer risk 15–30 times compared to a non-smoker.</li>
+</ul>
+</section>
+<section>
+<div class="sec-head">
+<div class="sec-icon heart">❤️</div>
+<h2 class="sec-title">Heart &amp; blood vessels</h2>
+</div>
+<p class="sec-sub">How nicotine attacks circulation</p>
+<p class="lead">Nicotine narrows blood vessels while carbon monoxide reduces the blood's oxygen-carrying capacity. The heart has to work harder, blood pressure rises, and fatty plaque builds up on artery walls, narrowing the pathway for blood.</p>
+<div class="svg-box">
+<svg viewbox="0 0 560 200" xmlns="http://www.w3.org/2000/svg">
+<text fill="#5db8ff" font-size="14" font-weight="700" text-anchor="middle" x="140" y="24">Normal artery</text>
+<rect fill="none" height="40" rx="20" stroke="#5db8ff" stroke-width="3" width="200" x="40" y="70"></rect>
+<rect fill="#5db8ff" height="28" opacity="0.25" rx="14" width="188" x="46" y="76"></rect>
+<text fill="#9fb0cf" font-size="12" text-anchor="middle" x="140" y="140">Blood flows freely</text>
+<text fill="#ff5d5d" font-size="14" font-weight="700" text-anchor="middle" x="420" y="24">Smoker's artery</text>
+<rect fill="none" height="40" rx="20" stroke="#ff5d5d" stroke-width="3" width="200" x="320" y="70"></rect>
+<path d="M330 76 C360 70 340 104 370 104 C400 104 380 74 415 76 C450 78 430 106 465 104 C490 103 480 78 510 78" fill="#ff8a5b" opacity="0.55"></path>
+<text fill="#9fb0cf" font-size="12" text-anchor="middle" x="420" y="140">Plaque narrows the pathway</text>
+</svg>
+</div>
+<div class="stat-row">
+<div class="stat"><div class="num">2–4×</div><div class="lbl">higher heart attack risk</div></div>
+<div class="stat"><div class="num">↑ BP</div><div class="lbl">after every cigarette</div></div>
+<div class="stat"><div class="num">2–4×</div><div class="lbl">higher stroke risk</div></div>
+</div>
+</section>
+<section>
+<div class="sec-head">
+<div class="sec-icon brain">🧠</div>
+<h2 class="sec-title">Brain &amp; the nicotine trap</h2>
+</div>
+<p class="sec-sub">Why quitting feels so hard</p>
+<p class="lead">Nicotine reaches the brain in about 10 seconds and triggers a release of dopamine, the "feel-good" chemical. The brain remembers that temporary lift and craves it again — this is the cycle of addiction.</p>
+<ul class="points">
+<li>With repeated use, the brain produces less dopamine on its own — so life without nicotine starts to feel "not normal."</li>
+<li>Teen brains are still developing, so addiction can take hold faster and deeper.</li>
+<li>Reduced blood flow to the brain affects memory and focus, and raises stroke risk.</li>
+</ul>
+</section>
+<section>
+<div class="sec-head">
+<div class="sec-icon cancer">⚠️</div>
+<h2 class="sec-title">Cancer risk — far beyond the lungs</h2>
+</div>
+<p class="sec-sub">Smoke chemicals travel through the bloodstream to nearly every organ</p>
+<div class="svg-box">
+<svg viewbox="0 0 260 380" xmlns="http://www.w3.org/2000/svg">
+<circle cx="130" cy="40" fill="none" opacity="0.5" r="26" stroke="#eaf0fb" stroke-width="2"></circle>
+<path d="M130 66 L130 230 M130 100 L70 180 M130 100 L190 180 M130 230 L90 340 M130 230 L170 340" fill="none" opacity="0.35" stroke="#eaf0fb" stroke-linecap="round" stroke-width="10"></path>
+<circle cx="130" cy="55" fill="#ff5d5d" r="7"></circle><text fill="#ff8a5b" font-size="11" x="145" y="58">Mouth &amp; throat</text>
+<circle cx="130" cy="90" fill="#ff5d5d" r="7"></circle><text fill="#ff8a5b" font-size="11" x="145" y="93">Esophagus</text>
+<circle cx="115" cy="130" fill="#ff5d5d" r="7"></circle><text fill="#ff8a5b" font-size="11" x="20" y="133">Lungs</text>
+<circle cx="130" cy="170" fill="#ff5d5d" r="7"></circle><text fill="#ff8a5b" font-size="11" x="145" y="173">Pancreas</text>
+<circle cx="130" cy="205" fill="#ff5d5d" r="7"></circle><text fill="#ff8a5b" font-size="11" x="145" y="208">Kidneys</text>
+<circle cx="130" cy="235" fill="#ff5d5d" r="7"></circle><text fill="#ff8a5b" font-size="11" x="145" y="238">Bladder</text>
+<circle cx="130" cy="15" fill="#ff5d5d" r="4"></circle><text fill="#ff8a5b" font-size="11" x="145" y="18">Larynx</text>
+</svg>
+</div>
+<p class="caption">Red dots mark organs with proven links to smoking-related cancer</p>
+<ul class="points">
+<li>Mouth, throat, larynx, and esophageal cancers begin directly in tissue exposed to smoke.</li>
+<li>Chemicals absorbed into the blood pass through the kidneys and bladder on their way out, damaging those organs too.</li>
+<li>Pancreatic cancer risk is also significantly higher among smokers.</li>
+</ul>
+</section>
+<section>
+<div class="sec-head">
+<div class="sec-icon skin">🦷</div>
+<h2 class="sec-title">Skin, teeth &amp; eyes</h2>
+</div>
+<p class="sec-sub">The changes you can actually see</p>
+<ul class="points">
+<li><b>Skin:</b> Narrowed blood vessels reduce oxygen and nutrients reaching the skin, causing premature wrinkling and aging.</li>
+<li><b>Teeth &amp; gums:</b> Nicotine and tar stain teeth yellow-brown and increase the risk of gum disease and tooth loss.</li>
+<li><b>Eyes:</b> Higher risk of cataracts and age-related macular degeneration.</li>
+<li><b>Wound healing:</b> Reduced blood flow means injuries and surgical wounds take longer to heal.</li>
+</ul>
+</section>
+<section>
+<div class="sec-head">
+<div class="sec-icon quit">🌱</div>
+<h2 class="sec-title">The good news: the body starts healing fast</h2>
+</div>
+<p class="sec-sub">What happens after you quit smoking</p>
+<div class="timeline">
+<div class="tl-item"><div class="tl-time">20 minutes</div><div class="tl-text">Heart rate and blood pressure begin to normalize.</div></div>
+<div class="tl-item"><div class="tl-time">12 hours</div><div class="tl-text">Carbon monoxide levels in the blood return to normal, improving oxygen delivery.</div></div>
+<div class="tl-item"><div class="tl-time">2 weeks – 3 months</div><div class="tl-text">Circulation improves and lung function starts to increase.</div></div>
+<div class="tl-item"><div class="tl-time">1 year</div><div class="tl-text">Heart attack risk drops to roughly half that of a smoker.</div></div>
+<div class="tl-item"><div class="tl-time">5–10 years</div><div class="tl-text">Stroke and mouth/throat cancer risk approach that of a non-smoker; lung cancer death risk roughly halves.</div></div>
+<div class="tl-item"><div class="tl-time">15 years</div><div class="tl-text">Heart disease risk becomes similar to that of someone who never smoked.</div></div>
+</div>
+</section>
+<!-- ============ ALCOHOL ============ -->
+<div id="alcohol"></div>
+<div class="topic-banner alco">🍷 Alcohol</div>
+<section>
+<div class="sec-head">
+<div class="sec-icon liver">🫘</div>
+<h2 class="sec-title">Liver — the most affected organ</h2>
+</div>
+<p class="sec-sub">The body's alcohol-processing center</p>
+<p class="lead">The liver breaks down roughly 90% of the alcohol entering the body. Repeated heavy drinking causes fat to build up in liver cells, then inflammation, and eventually permanent scarring — cirrhosis — which cannot be reversed.</p>
+<div class="svg-box">
+<svg viewbox="0 0 560 220" xmlns="http://www.w3.org/2000/svg">
+<text fill="#3ddc97" font-size="14" font-weight="700" text-anchor="middle" x="140" y="24">Healthy liver</text>
+<path d="M60 60 C80 40 130 35 160 45 C200 55 225 60 225 95 C225 130 205 160 165 170 
+                 C120 180 75 165 62 130 C52 105 50 80 60 60 Z" fill="#1fb37a" opacity="0.25" stroke="#3ddc97" stroke-width="2"></path>
+<text fill="#9fb0cf" font-size="12" text-anchor="middle" x="140" y="200">Smooth, even-colored tissue</text>
+<text fill="#ff8a5b" font-size="14" font-weight="700" text-anchor="middle" x="420" y="24">Damaged liver (fatty → cirrhosis)</text>
+<path d="M340 60 C360 40 410 35 440 45 C480 55 505 60 505 95 C505 130 485 160 445 170 
+                 C400 180 355 165 342 130 C332 105 330 80 340 60 Z" fill="#4a3a24" stroke="#e8a23d" stroke-width="2"></path>
+<ellipse cx="375" cy="80" fill="#7a5a1f" opacity="0.85" rx="12" ry="9"></ellipse>
+<ellipse cx="420" cy="70" fill="#7a5a1f" opacity="0.85" rx="15" ry="10"></ellipse>
+<ellipse cx="460" cy="95" fill="#3a1f1f" opacity="0.8" rx="13" ry="9"></ellipse>
+<ellipse cx="400" cy="120" fill="#3a1f1f" opacity="0.8" rx="14" ry="10"></ellipse>
+<text fill="#9fb0cf" font-size="12" text-anchor="middle" x="420" y="200">Fat deposits, scarring, uneven tissue</text>
+</svg>
+</div>
+<div class="legend">
+<span><span class="dot" style="background:#3ddc97"></span> Healthy cells</span>
+<span><span class="dot" style="background:#e8a23d"></span> Fat buildup (fatty liver)</span>
+<span><span class="dot" style="background:#ff5d5d"></span> Permanent scarring (cirrhosis)</span>
+</div>
+<ul class="points" style="margin-top:18px;">
+<li>Fatty liver usually develops silently, with few noticeable symptoms early on.</li>
+<li>Chronic inflammation (alcoholic hepatitis) leaves the liver permanently stiff and scarred.</li>
+<li>At the cirrhosis stage, the risk of liver failure and liver cancer rises sharply.</li>
+</ul>
+</section>
+<section>
+<div class="sec-head">
+<div class="sec-icon brainp">🧠</div>
+<h2 class="sec-title">Brain &amp; nervous system</h2>
+</div>
+<p class="sec-sub">Impact on judgment, balance, and memory</p>
+<p class="lead">Alcohol slows down communication between brain cells — which is why slurred speech, poor balance, and impaired decision-making follow drinking.</p>
+<div class="svg-box">
+<svg viewbox="0 0 500 190" xmlns="http://www.w3.org/2000/svg">
+<text fill="#5db8ff" font-size="13" font-weight="700" text-anchor="middle" x="130" y="24">Normal signal flow</text>
+<line stroke="#5db8ff" stroke-width="3" x1="40" x2="220" y1="70" y2="70"></line>
+<circle cx="40" cy="70" fill="#5db8ff" r="7"></circle>
+<circle cx="100" cy="70" fill="#5db8ff" r="7"></circle>
+<circle cx="160" cy="70" fill="#5db8ff" r="7"></circle>
+<circle cx="220" cy="70" fill="#5db8ff" r="7"></circle>
+<text fill="#9fb0cf" font-size="11" text-anchor="middle" x="130" y="100">Fast, clear signals</text>
+<text fill="#b98af0" font-size="13" font-weight="700" text-anchor="middle" x="380" y="24">Under alcohol's effect</text>
+<path d="M290 70 Q320 85 350 65 Q380 90 410 68 Q440 92 470 70" fill="none" stroke="#b98af0" stroke-width="3"></path>
+<circle cx="290" cy="70" fill="#b98af0" r="7"></circle>
+<circle cx="470" cy="70" fill="#b98af0" r="7"></circle>
+<text fill="#9fb0cf" font-size="11" text-anchor="middle" x="380" y="100">Slow, delayed, confused signals</text>
+</svg>
+</div>
+<ul class="points">
+<li>The prefrontal cortex — which governs decisions and self-control — is affected first, raising the chance of risky behavior.</li>
+<li>Long-term heavy drinking can shrink brain tissue and impair memory and learning.</li>
+<li>Repeated drinking gradually makes the brain dependent on alcohol, leading toward addiction.</li>
+</ul>
+</section>
+<section>
+<div class="sec-head">
+<div class="sec-icon heart">❤️</div>
+<h2 class="sec-title">Heart &amp; blood pressure</h2>
+</div>
+<p class="sec-sub">The strain of regular heavy drinking</p>
+<p class="lead">While alcohol dilates blood vessels briefly, long-term heavy use raises blood pressure and can weaken the heart muscle itself — a condition called alcoholic cardiomyopathy.</p>
+<div class="stat-row">
+<div class="stat purple"><div class="num">↑ BP</div><div class="lbl">with regular heavy drinking</div></div>
+<div class="stat purple"><div class="num">Irregular rhythm</div><div class="lbl">"Holiday heart" syndrome</div></div>
+<div class="stat purple"><div class="num">Weakened muscle</div><div class="lbl">heart struggles to pump</div></div>
+</div>
+</section>
+<section>
+<div class="sec-head">
+<div class="sec-icon stomach">⚠️</div>
+<h2 class="sec-title">Digestive system &amp; cancer risk</h2>
+</div>
+<p class="sec-sub">Organs alcohol damages directly</p>
+<div class="svg-box">
+<svg viewbox="0 0 260 380" xmlns="http://www.w3.org/2000/svg">
+<circle cx="130" cy="40" fill="none" opacity="0.5" r="26" stroke="#eaf0fb" stroke-width="2"></circle>
+<path d="M130 66 L130 230 M130 100 L70 180 M130 100 L190 180 M130 230 L90 340 M130 230 L170 340" fill="none" opacity="0.35" stroke="#eaf0fb" stroke-linecap="round" stroke-width="10"></path>
+<circle cx="130" cy="55" fill="#b98af0" r="7"></circle><text fill="#c9a6f2" font-size="11" x="145" y="58">Mouth &amp; throat</text>
+<circle cx="130" cy="90" fill="#b98af0" r="7"></circle><text fill="#c9a6f2" font-size="11" x="145" y="93">Esophagus</text>
+<circle cx="130" cy="150" fill="#e8a23d" r="7"></circle><text fill="#f0c583" font-size="11" x="145" y="153">Liver</text>
+<circle cx="130" cy="190" fill="#b98af0" r="7"></circle><text fill="#c9a6f2" font-size="11" x="145" y="193">Pancreas</text>
+<circle cx="115" cy="240" fill="#b98af0" r="7"></circle><text fill="#c9a6f2" font-size="11" x="20" y="243">Bowel/colon</text>
+<circle cx="90" cy="130" fill="#ff5d5d" r="6"></circle><text fill="#ff8a5b" font-size="11" x="10" y="133">Breast (in women)</text>
+</svg>
+</div>
+<p class="caption">Colored dots mark organs with proven links to alcohol-related cancer</p>
+<ul class="points">
+<li>Alcohol directly irritates the stomach lining, contributing to gastritis and ulcers.</li>
+<li>Proven links exist between alcohol use and cancers of the mouth, throat, esophagus, liver, bowel, and breast (in women).</li>
+<li>Chronic pancreatitis — long-term inflammation of the pancreas — causes severe pain and digestive problems.</li>
+<li>Alcohol interferes with nutrient and vitamin absorption, which can lead to weakness and malnutrition.</li>
+</ul>
+</section>
+<section>
+<div class="sec-head">
+<div class="sec-icon baby">🤰</div>
+<h2 class="sec-title">Drinking during pregnancy</h2>
+</div>
+<p class="sec-sub">There is no known safe amount</p>
+<p class="lead">Alcohol in a mother's blood passes directly to the baby through the placenta. Because a baby's liver isn't mature enough to break it down, the risk of harm is far greater.</p>
+<ul class="points">
+<li>Can cause permanent changes to the baby's face, brain, and organ development (Fetal Alcohol Syndrome).</li>
+<li>Raises the risk of learning difficulties, behavioral problems, and low birth weight after birth.</li>
+<li>Doctors advise complete abstinence from alcohol at every stage of pregnancy.</li>
+</ul>
+</section>
+<section>
+<div class="sec-head">
+<div class="sec-icon quit">🌱</div>
+<h2 class="sec-title">The good news: healing begins once you stop</h2>
+</div>
+<p class="sec-sub">What happens after you stop drinking</p>
+<div class="timeline">
+<div class="tl-item"><div class="tl-time">1–3 days</div><div class="tl-text">Blood pressure begins to drop; sleep patterns start to normalize.</div></div>
+<div class="tl-item"><div class="tl-time">1 week</div><div class="tl-text">Some fat stored in the liver starts to reduce; dehydration eases.</div></div>
+<div class="tl-item"><div class="tl-time">2–4 weeks</div><div class="tl-text">Skin looks brighter, digestion improves, sleep becomes deeper.</div></div>
+<div class="tl-item"><div class="tl-time">1–3 months</div><div class="tl-text">Liver enzyme levels move closer to normal; blood pressure stabilizes.</div></div>
+<div class="tl-item"><div class="tl-time">1 year</div><div class="tl-text">If cirrhosis hasn't set in, the liver can recover substantially from fatty liver stage; cancer risk starts to decline.</div></div>
+</div>
+</section>
+<!-- ============ DRUGS ============ -->
+<div id="drugs"></div>
+<div class="topic-banner drug">🆘 Drugs</div>
+<section>
+<div class="sec-head">
+<div class="sec-icon braind">🧠</div>
+<h2 class="sec-title">Addiction is a brain disease</h2>
+</div>
+<p class="sec-sub">Not simply a "lack of willpower"</p>
+<p class="lead">Drugs hijack the brain's reward system. The first use brings an intense high or relief, but repeated use makes the brain need more to feel the same effect — this is <b>tolerance</b>. At the same time, the brain stops functioning normally without the drug, so stopping causes severe discomfort — this is <b>withdrawal</b>.</p>
+<div class="svg-box">
+<svg viewbox="0 0 480 220" xmlns="http://www.w3.org/2000/svg">
+<circle cx="240" cy="110" fill="none" r="85" stroke="#ff8a5b" stroke-dasharray="4 4" stroke-width="2"></circle>
+<text fill="#e8c468" font-size="13" font-weight="700" text-anchor="middle" x="240" y="35">1. Use</text>
+<circle cx="240" cy="50" fill="#e8c468" r="10"></circle>
+<text fill="#5db8ff" font-size="13" font-weight="700" text-anchor="middle" x="380" y="120">2. Intense high / relief</text>
+<circle cx="330" cy="110" fill="#5db8ff" r="10"></circle>
+<text fill="#ff8a5b" font-size="13" font-weight="700" text-anchor="middle" x="300" y="205">3. Effect fades (tolerance)</text>
+<circle cx="280" cy="170" fill="#ff8a5b" r="10"></circle>
+<text fill="#ff5d5d" font-size="13" font-weight="700" text-anchor="middle" x="150" y="205">4. Withdrawal distress</text>
+<circle cx="200" cy="170" fill="#ff5d5d" r="10"></circle>
+<text fill="#ff5d5d" font-size="13" font-weight="700" text-anchor="middle" x="70" y="120">5. Intense craving</text>
+<circle cx="150" cy="110" fill="#ff5d5d" r="10"></circle>
+<path d="M240 60 Q290 75 330 100" fill="none" marker-end="url(#a1)" stroke="#9fb0cf" stroke-width="2"></path>
+<path d="M330 120 Q310 150 288 160" fill="none" marker-end="url(#a1)" stroke="#9fb0cf" stroke-width="2"></path>
+<path d="M270 175 Q235 182 208 172" fill="none" marker-end="url(#a1)" stroke="#9fb0cf" stroke-width="2"></path>
+<path d="M192 162 Q170 140 155 120" fill="none" marker-end="url(#a1)" stroke="#9fb0cf" stroke-width="2"></path>
+<path d="M155 100 Q190 70 228 58" fill="none" marker-end="url(#a1)" stroke="#9fb0cf" stroke-width="2"></path>
+<defs>
+<marker id="a1" markerheight="8" markerwidth="8" orient="auto" refx="4" refy="4">
+<path d="M0 0 L8 4 L0 8 Z" fill="#9fb0cf"></path>
+</marker>
+</defs>
+</svg>
+</div>
+<p class="caption">This cycle is what keeps addiction going — breaking it usually requires professional help</p>
+</section>
+<section>
+<div class="sec-head">
+<div class="sec-icon body">⚠️</div>
+<h2 class="sec-title">Effects on the body</h2>
+</div>
+<p class="sec-sub">Varies by substance, but the damage is systemic</p>
+<p class="lead">Different drugs affect the body differently, but long-term use tends to cause several common effects:</p>
+<ul class="points">
+<li><b>Heart:</b> Irregular heartbeat, sudden swings in blood pressure, and higher risk of heart attack and stroke.</li>
+<li><b>Lungs:</b> Slowed or stopped breathing — especially during an overdose — which can be fatal.</li>
+<li><b>Liver &amp; kidneys:</b> These organs, responsible for filtering toxins, come under extreme strain.</li>
+<li><b>Immunity:</b> The body's ability to fight infection drops, and wounds heal more slowly.</li>
+<li><b>Mental health:</b> Anxiety, depression, sleep problems, and in some cases hallucinations or psychosis.</li>
+<li><b>Infection risk:</b> Sharing needles for injected drugs sharply raises the risk of HIV and hepatitis.</li>
+</ul>
+<div class="stat-row">
+<div class="stat"><div class="num">Overdose</div><div class="lbl">leading cause of death by respiratory failure</div></div>
+<div class="stat"><div class="num">Tolerance ↑</div><div class="lbl">same dose, less effect</div></div>
+<div class="stat"><div class="num">Dependence ↑</div><div class="lbl">lasting changes in body &amp; mind</div></div>
+</div>
+</section>
+<section>
+<div class="sec-head">
+<div class="sec-icon family">👨‍👩‍👧</div>
+<h2 class="sec-title">Impact on family &amp; social life</h2>
+</div>
+<p class="sec-sub">The harm doesn't stay contained to one person</p>
+<ul class="points">
+<li>Neglect of studies, work, and responsibilities grows, and trust in relationships breaks down.</li>
+<li>Spending on drugs can create financial crisis, debt, and sometimes involvement in criminal activity.</li>
+<li>Family members experience anxiety, shame, and emotional exhaustion, affecting the whole household's wellbeing.</li>
+</ul>
+</section>
+<section>
+<div class="sec-head">
+<div class="sec-icon warn">🔍</div>
+<h2 class="sec-title">Warning signs of addiction</h2>
+</div>
+<p class="sec-sub">Recognizing them early makes help easier to get</p>
+<ul class="points">
+<li>Sudden changes in sleep, appetite, or weight.</li>
+<li>Losing interest in usual responsibilities, friends, or hobbies.</li>
+<li>Increasing need for money, or items going missing at home or work.</li>
+<li>Sudden mood swings and growing secrecy.</li>
+<li>Repeated failed attempts to quit.</li>
+</ul>
+</section>
+<section>
+<div class="sec-head">
+<div class="sec-icon path">🌱</div>
+<h2 class="sec-title">The path to recovery — full recovery is possible</h2>
+</div>
+<p class="sec-sub">With the right support, lasting freedom from addiction is achievable</p>
+<div class="steps">
+<div class="step">
+<div class="num-badge">1</div>
+<div><div class="step-title">Acknowledge it &amp; ask for help</div>
+<div class="step-text">Recognizing there's a problem is the first and most important step. There's no shame in it — addiction is a treatable condition.</div></div>
+</div>
+<div class="step">
+<div class="num-badge">2</div>
+<div><div class="step-title">Medically supervised detox</div>
+<div class="step-text">Withdrawal should be managed by qualified medical professionals rather than attempted alone, since it can be dangerous in some cases.</div></div>
+</div>
+<div class="step">
+<div class="num-badge">3</div>
+<div><div class="step-title">Counseling &amp; therapy</div>
+<div class="step-text">Regular counseling — individual and, where useful, family-inclusive — helps address the underlying causes and triggers.</div></div>
+</div>
+<div class="step">
+<div class="num-badge">4</div>
+<div><div class="step-title">Rehabilitation centers &amp; support groups</div>
+<div class="step-text">Sharing experiences with others on the same path, through a rehabilitation center or support group, builds confidence and accountability.</div></div>
+</div>
+<div class="step">
+<div class="num-badge">5</div>
+<div><div class="step-title">Family support</div>
+<div class="step-text">Standing by someone with patience and empathy, rather than blame, greatly improves the chances of lasting recovery.</div></div>
+</div>
+<div class="step">
+<div class="num-badge">6</div>
+<div><div class="step-title">Relapse prevention &amp; a new routine</div>
+<div class="step-text">New routines, healthy hobbies, sport, or work, and avoiding old triggers all support long-term recovery. An occasional relapse isn't failure — it's a common part of treatment, and reaching out for help again is the right response.</div></div>
+</div>
+</div>
+</section>
+<!-- ============ HELP ============ -->
+<div id="help"></div>
+<section>
+<div class="sec-head">
+<div class="sec-icon help">📞</div>
+<h2 class="sec-title">Where to get help (India)</h2>
+</div>
+<p class="sec-sub">Free, confidential, 24x7 services</p>
+<div class="help-grid">
+<div class="help-card">
+<div class="h-name">National Drug De-Addiction Helpline</div>
+<div class="h-num">1800-11-0031</div>
+<div class="h-desc">Ministry of Social Justice &amp; Empowerment, Government of India — toll-free</div>
+</div>
+<div class="help-card">
+<div class="h-name">MANAS National Helpline</div>
+<div class="h-num">1933</div>
+<div class="h-desc">National toll-free helpline for drug-related guidance and support</div>
+</div>
+</div>
+<p class="caption" style="margin-top:14px;">You can also reach out to the psychiatry department of your nearest government hospital, or a District De-Addiction Centre (DDAC). For alcohol and tobacco-specific counseling, government hospital de-addiction clinics also accept walk-ins.</p>
+</section>
+<section class="closing">
+<h2 class="sec-title" style="margin-bottom:10px;">The body is remarkably good at healing — and it's never too late to start</h2>
+<p class="lead">Whether it's a cigarette, a drink, or a drug — every substance discussed here follows the same pattern: it hijacks something the body or brain needs to feel normal, then slowly damages the organs and relationships around it. But recovery is real, medically supported, and possible at any stage. The first step is simply reaching out.</p>
+</section>
+</div>
+<footer>
+  Health awareness educational content · <span class="brand">MySkillGame</span> — a free, offline, privacy-first learning platform
+</footer>
+
+<footer class="footer">
+<div style="margin-bottom:18px;">
+<a href="about.html">About</a> |
+<a href="privacy.html">Privacy Policy</a> |
+<a href="terms.html">Terms &amp; Conditions</a> |
+<a href="contact.html">Contact</a> |
+<a href="disclaimer.html">Disclaimer</a>
+</div>
+<div class="footer-name">MYSKILLGAME</div>
+<div class="footer-copy">© 2026 MySkillGame • Developed by Surajit Roy</div>
+</footer>
+</body>
+</html>

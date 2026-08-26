@@ -1,0 +1,497 @@
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Eco Water & Environment</title>
+<body>
+<!-- ✅ এখানে দিন (body এর শুরুতেই) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+</head>
+<style>
+html,body{width:100%;overflow-x:hidden;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif}
+.ew{background:#eef7f2;min-height:100vh;width:100%;max-width:500px;margin:0 auto;overflow:hidden;}
+.eh{background:linear-gradient(135deg,#009688,#4caf50);color:#fff;text-align:center;padding:14px 10px}
+.eh h1{font-size:1.3rem;font-weight:700}
+.eh p{font-size:.78rem;margin-top:3px;opacity:.9}
+.tabs{display:flex;overflow-x:auto;background:#fff;border-bottom:2px solid #009688;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;padding:10px 14px;font-size:.8rem;font-weight:700;color:#666;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;transition:all .2s}
+.tab.active{color:#009688;border-bottom-color:#009688;background:#e0f7fa}
+.tp{display:none;padding:12px}
+.tp.active{display:block}
+.img-box{width:100%;aspect-ratio:4/3;max-height:320px;  border-radius:12px;overflow:hidden;position:relative; background:#c8e6c9;margin-bottom:10px;}
+.img-box canvas{width:100%;height:100%;display:block}
+.img-box img{width:100%;height:100%;object-fit:cover;display:block}
+.img-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;gap:8px}
+.img-nav button{border:none;background:#009688;color:#fff;padding:8px 16px;border-radius:10px;font-size:.85rem;cursor:pointer}
+.img-nav button:active{transform:scale(.96)}
+.img-dot-row{display:flex;justify-content:center;gap:6px;margin-bottom:10px}
+.img-dot{width:8px;height:8px;border-radius:50%;background:#b2dfdb;cursor:pointer}
+.img-dot.on{background:#009688}
+.info-card{background:#fff;border-radius:12px;padding:14px;border:0.5px solid #b2dfdb;margin-bottom:10px}
+.info-title{font-size:1rem;font-weight:700;color:#00796b;margin-bottom:6px}
+.info-text{font-size:.88rem;line-height:1.6;color:#333}
+.fact-row{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+.fact{background:#e0f7fa;color:#006064;font-size:.75rem;padding:4px 10px;border-radius:20px;font-weight:600}
+.voice-btn{border:none;background:#4caf50;color:#fff;padding:8px 16px;border-radius:10px;font-size:.85rem;cursor:pointer;display:flex;align-items:center;gap:6px;margin-bottom:12px}
+.voice-btn.spk{background:#e53935;animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.7}}
+
+.game-wrap{background:#fff;border-radius:14px;padding:14px;border:0.5px solid #b2dfdb}
+.score-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.score-lbl{font-size:.82rem;color:#666}
+.score-val{font-size:1.1rem;font-weight:700;color:#009688}
+.q-img{width:100%;aspect-ratio:4/3;border-radius:10px;overflow:hidden;background:#e8f5e9;margin-bottom:10px}
+.q-img canvas{width:100%;height:100%;display:block}
+.q-text{font-size:.95rem;font-weight:700;color:#00796b;margin-bottom:12px;line-height:1.5}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.opt{border:2px solid #b2dfdb;background:#f1f8e9;color:#1b5e20;padding:10px 8px;border-radius:10px;font-size:.82rem;cursor:pointer;text-align:center;font-weight:600;transition:all .2s;line-height:1.3}
+.opt:active{transform:scale(.97)}
+.opt.correct{background:#a5d6a7;border-color:#2e7d32;color:#1b5e20}
+.opt.wrong{background:#ef9a9a;border-color:#c62828;color:#7f0000}
+.opt.disabled{opacity:.6;cursor:default}
+.fb{font-size:.88rem;padding:10px 12px;border-radius:10px;margin-bottom:10px;font-weight:600;text-align:center}
+.fb.ok{background:#c8e6c9;color:#1b5e20}
+.fb.bad{background:#ffcdd2;color:#b71c1c}
+.next-btn{width:100%;border:none;background:#009688;color:#fff;padding:12px;border-radius:12px;font-size:.95rem;font-weight:700;cursor:pointer}
+.next-btn:active{transform:scale(.98)}
+.result-wrap{text-align:center;padding:20px 10px}
+.result-emoji{font-size:3rem;margin-bottom:8px}
+.result-score{font-size:2rem;font-weight:700;color:#009688}
+.result-msg{font-size:.9rem;color:#555;margin:8px 0 16px}
+.restart-btn{border:none;background:#4caf50;color:#fff;padding:12px 28px;border-radius:12px;font-size:1rem;font-weight:700;cursor:pointer}
+.prog-bar{height:6px;background:#b2dfdb;border-radius:4px;margin-bottom:12px}
+.prog-fill{height:100%;background:#009688;border-radius:4px;transition:width .4s}
+@media(max-width:520px){
+ .eh h1{font-size:1.1rem;}
+  .info-title{font-size:.92rem;}
+  .info-text{font-size:.82rem;}
+  .opt{font-size:.74rem;padding:9px 6px;}
+  .img-nav button{padding:8px 10px;font-size:.76rem;}}
+</style>
+<div class="ew">
+<div class="eh">
+  <h1>&#127757; EcoSmart Learning Game</h1>
+  <p>Learn, Explore &amp; Play — Protect Our Planet</p>
+</div>
+
+<div class="tabs" id="tabBar">
+  <div class="tab active" onclick="openTab(0)">&#128167; Soak Pit</div>
+  <div class="tab" onclick="openTab(1)">&#9928; Rainwater</div>
+  <div class="tab" onclick="openTab(2)">&#127807; Soil &amp; Plastic</div>
+  <div class="tab" onclick="openTab(3)">&#128293; Burning</div>
+  <div class="tab" onclick="openTab(4)">&#127918; Quiz Game</div>
+</div>
+
+<div id="tp0" class="tp active">
+  <div id="imgBox0" class="img-box"><canvas id="c0"></canvas></div>
+  <div class="img-dot-row" id="dots0"></div>
+  <div class="img-nav">
+    <button onclick="prevImg(0)">&#9664; Prev</button>
+    <button class="voice-btn" id="vb0" onclick="speak(0)" style="margin:0;padding:8px 14px">&#128266; Listen</button>
+    <button onclick="nextImg(0)">Next &#9654;</button>
+  </div>
+  <div class="info-card">
+    <div class="info-title" id="t0">Drain Overflow Problem</div>
+    <div class="info-text" id="d0"></div>
+    <div class="fact-row" id="f0"></div>
+  </div>
+</div>
+
+<div id="tp1" class="tp">
+  <div id="imgBox1" class="img-box"><canvas id="c1"></canvas></div>
+  <div class="img-dot-row" id="dots1"></div>
+  <div class="img-nav">
+    <button onclick="prevImg(1)">&#9664; Prev</button>
+    <button class="voice-btn" id="vb1" onclick="speak(1)" style="margin:0;padding:8px 14px">&#128266; Listen</button>
+    <button onclick="nextImg(1)">Next &#9654;</button>
+  </div>
+  <div class="info-card">
+    <div class="info-title" id="t1">Rainwater Harvesting</div>
+    <div class="info-text" id="d1"></div>
+    <div class="fact-row" id="f1"></div>
+  </div>
+</div>
+
+<div id="tp2" class="tp">
+  <div id="imgBox2" class="img-box"><canvas id="c2"></canvas></div>
+  <div class="img-dot-row" id="dots2"></div>
+  <div class="img-nav">
+    <button onclick="prevImg(2)">&#9664; Prev</button>
+    <button class="voice-btn" id="vb2" onclick="speak(2)" style="margin:0;padding:8px 14px">&#128266; Listen</button>
+    <button onclick="nextImg(2)">Next &#9654;</button>
+  </div>
+  <div class="info-card">
+    <div class="info-title" id="t2">Plastic Pollution & Soil</div>
+    <div class="info-text" id="d2"></div>
+    <div class="fact-row" id="f2"></div>
+  </div>
+</div>
+
+<div id="tp3" class="tp">
+  <div id="imgBox3" class="img-box"><canvas id="c3"></canvas></div>
+  <div class="img-dot-row" id="dots3"></div>
+  <div class="img-nav">
+    <button onclick="prevImg(3)">&#9664; Prev</button>
+    <button class="voice-btn" id="vb3" onclick="speak(3)" style="margin:0;padding:8px 14px">&#128266; Listen</button>
+    <button onclick="nextImg(3)">Next &#9654;</button>
+  </div>
+  <div class="info-card">
+    <div class="info-title" id="t3">Plastic Burning Hazard</div>
+    <div class="info-text" id="d3"></div>
+    <div class="fact-row" id="f3"></div>
+  </div>
+</div>
+
+<div id="tp4" class="tp">
+  <div class="game-wrap" id="gameArea"></div>
+</div>
+
+</div>
+
+<script>
+const tabs=[
+  {
+    imgs:["env/soak_pit_1.png","env/soak_pit_2.png","env/soak_pit_3.png"],
+    fallback:[drawSoak1,drawSoak2,drawSoak3],
+    slides:[
+      {title:"Drain Overflow Problem",desc:"Many drains overflow all year round, creating stagnant water. Mosquitoes breed in this standing water, causing diseases like malaria and dengue. The root cause is that rainwater has nowhere to go in concrete cities.",facts:["Mosquito breeding","Waterlogging","Stagnant water"]},
+      {title:"Safety Chamber Solution",desc:"A safety chamber (soak pit) built below a drain allows excess water to slowly seep deep into the soil. The drain stays dry, mosquito breeding is prevented, and the underground water table is naturally recharged.",facts:["Dry drains","No mosquitoes","Groundwater recharge"]},
+      {title:"How a Soak Pit Works",desc:"The soak pit is filled with gravel and sand which filter the water before it enters the soil. Water passes through layers — stones remove debris, sand removes fine particles — and clean water reaches the ground safely.",facts:["Gravel filter","Sand layer","Clean water"]}
+    ]
+  },
+  {
+    imgs:["env/rainwater_1.png","env/rainwater_2.png","env/rainwater_3.png"],
+    fallback:[drawRain1,drawRain2,drawRain3],
+    slides:[
+      {title:"Rainwater Lost to Rivers",desc:"In cities, most surfaces are covered in concrete. Rainwater cannot soak into the ground — it runs into drains and flows directly into rivers and the sea, wasting a precious resource that could recharge groundwater.",facts:["Concrete cities","Wasted water","River overflow"]},
+      {title:"Rooftop Water Collection",desc:"Rainwater from rooftops can be collected through pipes into storage tanks. This harvested water can be used for gardening, washing, and toilets — reducing dependency on municipal water supply by up to 40%.",facts:["Rooftop pipes","Storage tanks","40% saving"]},
+      {title:"Absorption Pits & Ponds",desc:"Absorption pits and rainwater ponds allow water to slowly enter the soil, recharging groundwater. In rural and semi-urban areas, these are low-cost solutions that prevent flooding and provide water during dry seasons.",facts:["Absorb rainwater","Prevent floods","Dry season water"]}
+    ]
+  },
+  {
+    imgs:["env/soil_water_5.png","env/soil_water_4.png","env/soil_water_3.png"],
+    fallback:[drawSoil1,drawSoil2,drawSoil3],
+    slides:[
+      {title:"Plastic Destroys Soil",desc:"Plastic waste scattered everywhere breaks into microplastics that block soil pores. This reduces the soil's ability to hold water by up to 50%, harms earthworms and soil organisms, and prevents plant roots from absorbing nutrients.",facts:["Microplastics","50% less water retention","Kills soil life"]},
+      {title:"Plastic Clogs Drains & Ponds",desc:"Plastic in drains causes severe blockages leading to urban flooding. In ponds and rivers, plastic chokes aquatic life. Fish and birds mistake plastic for food, causing injury and death. Our water bodies are being destroyed silently.",facts:["Drain blockage","Harms fish","River pollution"]},
+      {title:"Solutions to Plastic Pollution",desc:"Reduce single-use plastic. Segregate waste at home. Participate in clean-up drives. Plant trees near water bodies. Compost organic waste. Support cloth and jute bags. Every small action protects our soil and water from plastic harm.",facts:["Reduce plastic","Segregate waste","Plant trees"]}
+    ]
+  },
+  {
+    imgs:["env/plastic.png","env/clean_water_1.png","env/groundwater_1.png"],
+    fallback:[drawBurn1,drawBurn2,drawBurn3],
+    slides:[
+      {title:"Burning Plastic is Dangerous",desc:"Burning plastic releases toxic gases including dioxins, furans, and heavy metals. These chemicals cause cancer, lung disease, and hormonal disruption. One burning plastic bag releases the same toxins as 20 cigarettes. Never burn plastic!",facts:["Toxic gases","Causes cancer","20x cigarettes"]},
+      {title:"Air & Water Contamination",desc:"Smoke from plastic burning settles on soil and water, contaminating both. Rainwater washes these toxins into ponds and rivers. Communities near burning sites have higher rates of respiratory and skin diseases. Children are most vulnerable.",facts:["Contaminates water","Respiratory disease","Children at risk"]},
+      {title:"What You Can Do",desc:"Refuse single-use plastic. Use cloth or jute bags. Compost food waste. Report illegal burning to local authorities. Plant one tree every month. Join community clean-up programs. Teach children about proper waste disposal. Be the change!",facts:["Use cloth bags","Report burning","Plant trees"]}
+    ]
+  }
+];
+
+const curImg=[0,0,0,0];
+let gIdx=0,gScore=0,gAnswered=false;
+
+const qs=[
+  {tab:0,img:0,q:"What is the main benefit of a soak pit under a drain?",opts:["Keeps drain dry & prevents mosquitoes","Makes water flow faster","Increases water pressure","Cleans tap water"],ans:0,exp:"A soak pit allows excess water to enter the soil, keeping drains dry and eliminating mosquito breeding grounds."},
+  {tab:1,img:1,q:"Why does rainwater not soak into the ground in cities?",opts:["Too much rain","Concrete covers the ground","Drains are too big","Soil is too hard"],ans:1,exp:"In cities, concrete and paved surfaces prevent rainwater from naturally soaking into the soil, causing it to run off into rivers."},
+  {tab:2,img:0,q:"How does plastic waste affect soil?",opts:["Makes soil fertile","Adds nutrients","Blocks pores and reduces water retention","Helps roots grow"],ans:2,exp:"Microplastics from plastic waste block soil pores, reducing water retention by up to 50% and harming soil organisms."},
+  {tab:3,img:0,q:"Burning one plastic bag releases toxins equal to how many cigarettes?",opts:["1 cigarette","5 cigarettes","20 cigarettes","2 cigarettes"],ans:2,exp:"Burning one plastic bag releases dioxins and furans equivalent to the toxins from 20 cigarettes — extremely harmful to health."},
+  {tab:0,img:2,q:"Which layers inside a soak pit filter the water?",opts:["Soil and clay","Gravel and sand","Cement and brick","Iron and copper"],ans:1,exp:"Gravel removes large debris and sand filters fine particles, together providing natural water filtration inside a soak pit."},
+  {tab:1,img:2,q:"What can rooftop-harvested rainwater be used for?",opts:["Only drinking","Gardening, washing and toilets","Cooking only","Swimming pools only"],ans:1,exp:"Harvested rainwater is great for gardening, washing, and toilet flushing — reducing municipal water use by up to 40%."},
+  {tab:2,img:1,q:"What happens when plastic blocks a city drain?",opts:["Water flows better","Urban flooding occurs","Mosquitoes disappear","Soil gets fertilised"],ans:1,exp:"Plastic blocking drains causes water to back up, leading to urban flooding that damages property and spreads disease."},
+  {tab:3,img:1,q:"Where do toxins from plastic burning end up?",opts:["In outer space","In soil and water via rain","Only in the air briefly","They disappear quickly"],ans:1,exp:"Smoke particles settle on soil and water. Rainwater then washes these toxins into ponds, rivers, and groundwater."},
+  {tab:1,img:0,q:"What type of area benefits most from absorption pits?",opts:["Deserts only","Ocean coastlines","Rural and semi-urban areas","Mountain tops"],ans:2,exp:"Absorption pits are low-cost, effective groundwater recharge solutions particularly suited to rural and semi-urban areas."},
+  {tab:3,img:2,q:"What is the best alternative to plastic bags?",opts:["Paper plates","Cloth or jute bags","Plastic bottles","Metal containers"],ans:1,exp:"Cloth and jute bags are reusable, biodegradable alternatives to plastic bags that do not pollute soil or water."}
+];
+
+function drawSoak1(ctx,W,H){
+  ctx.fillStyle="#e3f2fd";ctx.fillRect(0,0,W,H);
+  ctx.fillStyle="#90caf9";
+  for(let i=0;i<5;i++){ctx.beginPath();ctx.ellipse(30+i*65,38,28,13,0,0,Math.PI*2);ctx.fill();}
+  ctx.strokeStyle="#1565c0";ctx.lineWidth=2.5;
+  for(let r=0;r<8;r++){const rx=80+r*30,ry=60+Math.random()*40;ctx.beginPath();ctx.moveTo(rx,ry);ctx.lineTo(rx-2,ry+14);ctx.stroke();}
+  ctx.fillStyle="#546e7a";ctx.fillRect(W*.1,H*.45,W*.8,H*.08);
+  ctx.fillStyle="#455a64";ctx.fillRect(W*.18,H*.53,W*.64,H*.28);
+  ctx.fillStyle="#b0bec5";
+  for(let r=0;r<3;r++)for(let c=0;c<5;c++){ctx.beginPath();ctx.arc(W*.22+c*W*.12,H*.56+r*H*.07,W*.025,0,Math.PI*2);ctx.fill();}
+  ctx.fillStyle="#ef5350";ctx.fillRect(W*.3,H*.35,W*.4,H*.1);
+  ctx.fillStyle="#fff";ctx.font=`bold ${W*.038}px Arial`;ctx.textAlign="center";ctx.fillText("OVERFLOW",W/2,H*.43);
+  ctx.fillStyle="#1565c0";ctx.font=`bold ${W*.045}px Arial`;ctx.fillText("Drain Overflow Problem",W/2,H*.95);
+}
+function drawSoak2(ctx,W,H){
+  ctx.fillStyle="#e8f5e9";ctx.fillRect(0,0,W,H);
+  ctx.fillStyle="#8d6e63";ctx.fillRect(W*.15,H*.3,W*.7,H*.05);
+  ctx.fillStyle="#6d4c41";ctx.fillRect(W*.22,H*.35,W*.56,H*.45);
+  const ly=[{c:"#9e9e9e",l:"Gravel",y:.36},{c:"#bdbdbd",l:"Small stones",y:.46},{c:"#f9a825",l:"Sand",y:.56},{c:"#795548",l:"Fine sand",y:.66}];
+  ly.forEach((l,i)=>{ctx.fillStyle=l.c;ctx.fillRect(W*.23,H*l.y,W*.54,H*.09);ctx.fillStyle="#212121";ctx.font=`${W*.034}px Arial`;ctx.textAlign="left";ctx.fillText(l.l,W*.26,H*(l.y+.065));});
+  ctx.strokeStyle="#29b6f6";ctx.lineWidth=2.5;ctx.beginPath();ctx.moveTo(W*.5,H*.1);ctx.lineTo(W*.5,H*.3);ctx.stroke();
+  ctx.strokeStyle="#4caf50";ctx.lineWidth=2.5;ctx.beginPath();ctx.moveTo(W*.5,H*.8);ctx.lineTo(W*.5,H*.92);ctx.stroke();
+  ctx.fillStyle="#2e7d32";ctx.font=`bold ${W*.04}px Arial`;ctx.textAlign="center";ctx.fillText("Safety Chamber — Soak Pit",W/2,H*.97);
+}
+function drawSoak3(ctx,W,H){
+  ctx.fillStyle="#fff9c4";ctx.fillRect(0,0,W,H);
+  ctx.fillStyle="#a5d6a7";ctx.fillRect(0,H*.65,W,H*.35);
+  ctx.fillStyle="#8d6e63";ctx.fillRect(W*.2,H*.3,W*.6,H*.05);
+  ctx.fillStyle="#795548";ctx.fillRect(W*.28,H*.35,W*.44,H*.3);
+  ctx.fillStyle="#9e9e9e";for(let r=0;r<3;r++)for(let c=0;c<4;c++){ctx.beginPath();ctx.arc(W*.31+c*W*.1,H*.38+r*H*.08,W*.03,0,Math.PI*2);ctx.fill();}
+  ctx.strokeStyle="#1e88e5";ctx.lineWidth=2;
+  for(let d=0;d<3;d++){ctx.beginPath();ctx.moveTo(W*.35+d*W*.1,H*.12);ctx.lineTo(W*.35+d*W*.1,H*.3);ctx.stroke();}
+  ctx.strokeStyle="#43a047";ctx.lineWidth=2;
+  for(let d=0;d<3;d++){ctx.beginPath();ctx.moveTo(W*.38+d*W*.09,H*.65);ctx.lineTo(W*.38+d*W*.09,H*.8);ctx.stroke();}
+  ctx.fillStyle="#1a237e";ctx.font=`bold ${W*.045}px Arial`;ctx.textAlign="center";ctx.fillText("Filtered Water → Ground",W/2,H*.95);
+}
+function drawRain1(ctx,W,H){
+  ctx.fillStyle="#e3f2fd";ctx.fillRect(0,0,W,H);
+  ctx.fillStyle="#90caf9";for(let i=0;i<4;i++){ctx.beginPath();ctx.ellipse(40+i*90,40,35,16,0,0,Math.PI*2);ctx.fill();}
+  ctx.strokeStyle="#1565c0";ctx.lineWidth=1.8;
+  for(let r=0;r<16;r++){const x=20+r*22,y=65;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x-3,y+13);ctx.stroke();}
+  ctx.fillStyle="#bdbdbd";ctx.fillRect(W*.05,H*.5,W*.9,H*.03);
+  ctx.strokeStyle="#ef9a9a";ctx.lineWidth=8;ctx.strokeRect(W*.1,H*.53,W*.8,H*.25);
+  ctx.fillStyle="#ef9a9a";ctx.fillRect(W*.1,H*.53,W*.8,H*.25);
+  ctx.fillStyle="#1565c0";ctx.font=`bold ${W*.042}px Arial`;ctx.textAlign="center";ctx.fillText("Rain runs into rivers — wasted!",W/2,H*.95);
+}
+function drawRain2(ctx,W,H){
+  ctx.fillStyle="#e8f5e9";ctx.fillRect(0,0,W,H);
+  ctx.fillStyle="#ef9a9a";ctx.beginPath();ctx.moveTo(W*.08,H*.44);ctx.lineTo(W*.5,H*.28);ctx.lineTo(W*.92,H*.44);ctx.closePath();ctx.fill();
+  ctx.fillStyle="#e57373";for(let t=0;t<8;t++)ctx.fillRect(W*.1+t*W*.1,H*.36,W*.08,H*.08);
+  ctx.fillStyle="#bdbdbd";ctx.fillRect(W*.08,H*.44,W*.84,H*.04);
+  ctx.strokeStyle="#1565c0";ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(W*.15,H*.48);ctx.lineTo(W*.15,H*.62);ctx.lineTo(W*.28,H*.62);ctx.stroke();
+  ctx.fillStyle="#1565c0";ctx.strokeStyle="#0d47a1";ctx.lineWidth=2;ctx.beginPath();ctx.rect(W*.24,H*.56,W*.25,H*.26);ctx.fill();ctx.stroke();
+  ctx.fillStyle="#bbdefb";ctx.fillRect(W*.26,H*.68,W*.21,H*.12);
+  ctx.fillStyle="#fff";ctx.font=`bold ${W*.036}px Arial`;ctx.textAlign="center";ctx.fillText("Tank",W*.36,H*.76);
+  ctx.fillStyle="#1a237e";ctx.font=`bold ${W*.042}px Arial`;ctx.fillText("Rooftop Rainwater Harvesting",W/2,H*.96);
+}
+function drawRain3(ctx,W,H){
+  ctx.fillStyle="#e0f7fa";ctx.fillRect(0,0,W,H);
+  ctx.fillStyle="#a5d6a7";ctx.fillRect(0,H*.6,W,H*.4);
+  const g=ctx.createRadialGradient(W/2,H*.48,8,W/2,H*.48,W*.38);
+  g.addColorStop(0,"#29b6f6");g.addColorStop(1,"#0277bd");
+  ctx.fillStyle=g;ctx.beginPath();ctx.ellipse(W/2,H*.48,W*.38,H*.19,0,0,Math.PI*2);ctx.fill();
+  ctx.strokeStyle="#4fc3f7";ctx.lineWidth=1.5;
+  for(let w=0;w<3;w++){ctx.beginPath();ctx.ellipse(W/2,H*.43+w*H*.03,W*.18,7,0,0,Math.PI*2);ctx.stroke();}
+  ctx.strokeStyle="#1e88e5";ctx.lineWidth=2.5;
+  for(let r=0;r<4;r++){ctx.beginPath();ctx.moveTo(W*.3+r*W*.12,H*.1);ctx.lineTo(W*.3+r*W*.12,H*.29);ctx.stroke();}
+  ctx.fillStyle="#1a237e";ctx.font=`bold ${W*.042}px Arial`;ctx.textAlign="center";ctx.fillText("Absorption Pond — Groundwater Recharge",W/2,H*.96);
+}
+function drawSoil1(ctx,W,H){
+  ctx.fillStyle="#fff9c4";ctx.fillRect(0,0,W,H);
+  ctx.fillStyle="#a5d6a7";ctx.fillRect(0,H*.45,W,H*.1);
+  ctx.fillStyle="#8d6e63";ctx.fillRect(0,H*.55,W,H*.12);
+  ctx.fillStyle="#795548";ctx.fillRect(0,H*.67,W,H*.33);
+  const pcs=[[W*.15,H*.35],[W*.35,H*.2],[W*.55,H*.4],[W*.72,H*.25],[W*.88,H*.38],[W*.1,H*.55],[W*.45,H*.6],[W*.8,H*.52]];
+  pcs.forEach(([px,py])=>{ctx.fillStyle="#e0e0e0";ctx.fillRect(px-12,py-6,24,12);ctx.strokeStyle="#9e9e9e";ctx.lineWidth=1;ctx.strokeRect(px-12,py-6,24,12);});
+  ctx.fillStyle="#d32f2f";ctx.font=`bold ${W*.038}px Arial`;ctx.textAlign="center";ctx.fillText("Plastic blocks soil pores!",W/2,H*.96);
+}
+function drawSoil2(ctx,W,H){
+  ctx.fillStyle="#e3f2fd";ctx.fillRect(0,0,W,H);
+  ctx.fillStyle="#a5d6a7";ctx.fillRect(0,H*.7,W,H*.3);
+  ctx.strokeStyle="#1565c0";ctx.lineWidth=3;
+  ctx.beginPath();ctx.moveTo(W*.1,H*.2);ctx.lineTo(W*.1,H*.7);ctx.lineTo(W*.9,H*.7);ctx.lineTo(W*.9,H*.2);ctx.stroke();
+  ctx.fillStyle="#29b6f6";ctx.fillRect(W*.12,H*.5,W*.76,H*.19);
+  const pcs=[[W*.2,H*.53],[W*.4,H*.56],[W*.6,H*.52],[W*.75,H*.55],[W*.3,H*.62],[W*.55,H*.64],[W*.7,H*.6]];
+  pcs.forEach(([px,py])=>{ctx.fillStyle="#e0e0e0";ctx.fillRect(px-10,py-5,20,10);ctx.strokeStyle="#bdbdbd";ctx.lineWidth=1;ctx.strokeRect(px-10,py-5,20,10);});
+  ctx.fillStyle="#b71c1c";ctx.font=`bold ${W*.038}px Arial`;ctx.textAlign="center";ctx.fillText("Plastic clogs drains — floods!",W/2,H*.96);
+}
+function drawSoil3(ctx,W,H){
+  ctx.fillStyle="#e8f5e9";ctx.fillRect(0,0,W,H);
+  const sol=[{ic:"&#9851;",lbl:"Reduce",x:W*.2,y:H*.3,c:"#4caf50"},{ic:"&#9832;",lbl:"Segregate",x:W*.5,y:H*.3,c:"#1565c0"},{ic:"&#127807;",lbl:"Plant trees",x:W*.8,y:H*.3,c:"#2e7d32"},{ic:"&#128462;",lbl:"Use cloth bags",x:W*.2,y:H*.65,c:"#795548"},{ic:"&#127774;",lbl:"Compost",x:W*.5,y:H*.65,c:"#f9a825"},{ic:"&#128221;",lbl:"Report burning",x:W*.8,y:H*.65,c:"#e53935"}];
+  sol.forEach(s=>{ctx.fillStyle=s.c;ctx.beginPath();ctx.arc(s.x,s.y,W*.1,0,Math.PI*2);ctx.fill();ctx.fillStyle="#fff";ctx.font=`bold ${W*.036}px Arial`;ctx.textAlign="center";ctx.fillText(s.lbl,s.x,s.y+W*.14);});
+  ctx.fillStyle="#2e7d32";ctx.font=`bold ${W*.042}px Arial`;ctx.textAlign="center";ctx.fillText("Solutions to Plastic Pollution",W/2,H*.96);
+}
+function drawBurn1(ctx,W,H){
+  ctx.fillStyle="#fff3e0";ctx.fillRect(0,0,W,H);
+  ctx.fillStyle="#e0e0e0";ctx.fillRect(W*.35,H*.55,W*.3,H*.04);
+  ctx.fillStyle="#757575";ctx.fillRect(W*.38,H*.59,W*.06,H*.18);ctx.fillRect(W*.56,H*.59,W*.06,H*.18);
+  ctx.fillStyle="#9e9e9e";for(let i=0;i<4;i++)ctx.fillRect(W*.36+i*W*.07,H*.56,W*.06,H*.08);
+  ctx.fillStyle="#ff7043";ctx.beginPath();ctx.ellipse(W*.5,H*.5,W*.08,H*.1,0,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle="#ffcc02";ctx.beginPath();ctx.ellipse(W*.5,H*.46,W*.05,H*.08,0,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle="#424242";
+  for(let s=0;s<10;s++){const sx=W*.3+s*W*.04,sy=H*.15+Math.sin(s)*H*.08;ctx.beginPath();ctx.arc(sx,sy,8+s*1.5,0,Math.PI*2);ctx.fill();}
+  ctx.fillStyle="#b71c1c";ctx.font=`bold ${W*.042}px Arial`;ctx.textAlign="center";ctx.fillText("NEVER burn plastic!",W/2,H*.96);
+}
+function drawBurn2(ctx,W,H){
+  ctx.fillStyle="#fce4ec";ctx.fillRect(0,0,W,H);
+  ctx.fillStyle="#ef9a9a";ctx.beginPath();ctx.ellipse(W*.5,H*.4,W*.28,H*.14,0,0,Math.PI*2);ctx.fill();
+  ctx.strokeStyle="#d32f2f";ctx.lineWidth=2;ctx.beginPath();ctx.ellipse(W*.5,H*.4,W*.28,H*.14,0,0,Math.PI*2);ctx.stroke();
+  ctx.fillStyle="#ef5350";ctx.font=`${W*.045}px Arial`;ctx.textAlign="center";ctx.fillText("TOXIC",W/2,H*.43);
+  ctx.strokeStyle="#c62828";ctx.lineWidth=2.5;
+  for(let a=0;a<8;a++){const angle=a*Math.PI/4;ctx.beginPath();ctx.moveTo(W*.5+W*.3*Math.cos(angle),H*.4+H*.16*Math.sin(angle));ctx.lineTo(W*.5+W*.45*Math.cos(angle),H*.4+H*.22*Math.sin(angle));ctx.stroke();}
+  ctx.fillStyle="#1a237e";ctx.font=`bold ${W*.038}px Arial`;ctx.textAlign="center";ctx.fillText("Toxins spread to soil & water",W/2,H*.8);
+  ctx.fillStyle="#b71c1c";ctx.font=`${W*.034}px Arial`;ctx.fillText("Cancer | Lung disease | Children at risk",W/2,H*.88);
+}
+function drawBurn3(ctx,W,H){
+  ctx.fillStyle="#e8f5e9";ctx.fillRect(0,0,W,H);
+  ctx.fillStyle="#a5d6a7";ctx.fillRect(0,H*.65,W,H*.35);
+  const acts=[{c:"#1565c0",l:"Refuse plastic",y:.22},{c:"#2e7d32",l:"Use cloth bags",y:.36},{c:"#f9a825",l:"Compost waste",y:.50},{c:"#e53935",l:"Report burning",y:.64},{c:"#009688",l:"Plant trees",y:.78}];
+  acts.forEach(a=>{ctx.fillStyle=a.c;ctx.fillRect(W*.08,H*a.y,W*.84,H*.1);ctx.fillStyle="#fff";ctx.font=`bold ${W*.04}px Arial`;ctx.textAlign="center";ctx.fillText(a.l,W*.5,H*(a.y+.068));});
+  ctx.fillStyle="#1a237e";ctx.font=`bold ${W*.042}px Arial`;ctx.textAlign="center";ctx.fillText("Actions You Can Take Today",W/2,H*.96);
+}
+
+const fallbacks=[[drawSoak1,drawSoak2,drawSoak3],[drawRain1,drawRain2,drawRain3],[drawSoil1,drawSoil2,drawSoil3],[drawBurn1,drawBurn2,drawBurn3]];
+
+function makeCanvas(tabIdx){
+  const cv=document.getElementById("c"+tabIdx);
+  if(!cv)return;
+  const box=cv.parentElement;
+  const W=box.offsetWidth||360,H=Math.round(W*0.75);
+  cv.width=W;cv.height=H;
+  const ctx=cv.getContext("2d");
+  const imgSrc=tabs[tabIdx].imgs[curImg[tabIdx]];
+  const im=new Image();
+  im.onload=()=>{ctx.drawImage(im,0,0,W,H);};
+  im.onerror=()=>{fallbacks[tabIdx][curImg[tabIdx]](ctx,W,H);};
+  im.src=imgSrc;
+}
+
+function updateInfo(tabIdx){
+  const s=tabs[tabIdx].slides[curImg[tabIdx]];
+  document.getElementById("t"+tabIdx).textContent=s.title;
+  document.getElementById("d"+tabIdx).textContent=s.desc;
+  const fr=document.getElementById("f"+tabIdx);
+  fr.innerHTML=s.facts.map(f=>`<span class="fact">${f}</span>`).join("");
+  const dr=document.getElementById("dots"+tabIdx);
+  dr.innerHTML=tabs[tabIdx].imgs.map((_,i)=>`<div class="img-dot${i===curImg[tabIdx]?" on":""}" onclick="goImg(${tabIdx},${i})"></div>`).join("");
+  makeCanvas(tabIdx);
+  stopVoice();
+}
+
+function nextImg(ti){curImg[ti]=(curImg[ti]+1)%3;updateInfo(ti);}
+function prevImg(ti){curImg[ti]=(curImg[ti]+2)%3;updateInfo(ti);}
+function goImg(ti,i){curImg[ti]=i;updateInfo(ti);}
+
+let spkEl=null,spkTi=-1;
+function stopVoice(){if(window.speechSynthesis)window.speechSynthesis.cancel();if(spkEl){spkEl.classList.remove("spk");spkEl.textContent="&#128266; Listen";}spkTi=-1;}
+function speak(ti){
+
+  if(!window.speechSynthesis)return;
+
+  if(spkTi===ti){
+    stopVoice();
+    return;
+  }
+
+  stopVoice();
+
+  speechSynthesis.cancel();
+
+  const s=tabs[ti].slides[curImg[ti]];
+
+  const u=new SpeechSynthesisUtterance(
+    s.title + ". " + s.desc
+  );
+
+  u.lang="en-US";
+
+  u.rate=0.9;
+
+  u.pitch=1;
+
+  const voices=speechSynthesis.getVoices();
+
+  const mobileVoice=voices.find(v=>
+    v.lang.includes("en") &&
+    (
+      v.name.includes("Google") ||
+      v.name.includes("Samantha")
+    )
+  );
+
+  if(mobileVoice){
+    u.voice=mobileVoice;
+  }
+
+  setTimeout(()=>{
+    speechSynthesis.speak(u);
+  },100);
+
+  u.onend=()=>stopVoice();
+
+  spkEl=document.getElementById("vb"+ti);
+
+  spkTi=ti;
+
+  spkEl.classList.add("spk");
+
+  spkEl.innerHTML="🔇 Stop";
+}
+function openTab(i){
+  document.querySelectorAll(".tab").forEach((t,j)=>t.classList.toggle("active",j===i));
+  document.querySelectorAll(".tp").forEach((t,j)=>t.classList.toggle("active",j===i));
+  stopVoice();
+  if(i<4)setTimeout(()=>updateInfo(i),80);
+  else renderGame();
+}
+
+function renderGame(){
+  const ga=document.getElementById("gameArea");
+  if(gIdx>=qs.length){
+    const pct=Math.round(gScore/qs.length*100);
+    let em="&#127774;",msg="Good effort! Review the lessons and try again.";
+    if(pct>=80){em="&#127881;";msg="Excellent! You are an Eco Champion!";}
+    else if(pct>=60){em="&#129299;";msg="Good work! A bit more learning and you'll ace it!";}
+    ga.innerHTML=`<div class="result-wrap"><div class="result-emoji">${em}</div><div class="result-score">${gScore} / ${qs.length}</div><p class="result-msg">${msg}</p><button class="restart-btn" onclick="restartGame()">Play Again &#8635;</button></div>`;
+    return;
+  }
+  const q=qs[gIdx];
+  const prog=Math.round(gIdx/qs.length*100);
+  ga.innerHTML=`<div class="prog-bar"><div class="prog-fill" style="width:${prog}%"></div></div><div class="score-bar"><span class="score-lbl">Question ${gIdx+1} of ${qs.length}</span><span class="score-val">&#11088; ${gScore}</span></div><div class="q-img"><canvas id="qcv"></canvas></div><div class="q-text">${q.q}</div><div class="opts">${q.opts.map((o,i)=>`<div class="opt" id="opt${i}" onclick="pickAns(${i})">${o}</div>`).join("")}</div><div id="qfb" style="display:none"></div><button class="next-btn" id="qnxt" style="display:none" onclick="nextQ()">Next Question &#9654;</button>`;
+  gAnswered=false;
+  const qcv=document.getElementById("qcv");
+  if(qcv){
+    const box=qcv.parentElement;const W=box.offsetWidth||340,H=Math.round(W*.75);
+    qcv.width=W;qcv.height=H;
+    const ctx=qcv.getContext("2d");
+    const imgSrc=tabs[q.tab].imgs[q.img];
+    const im=new Image();im.onload=()=>ctx.drawImage(im,0,0,W,H);
+    im.onerror=()=>fallbacks[q.tab][q.img](ctx,W,H);
+    im.src=imgSrc;
+  }
+}
+
+function pickAns(i){
+  if(gAnswered)return;
+  gAnswered=true;
+  const q=qs[gIdx];
+  const correct=i===q.ans;
+  if(correct)gScore++;
+  for(let k=0;k<4;k++){
+    const el=document.getElementById("opt"+k);
+    if(!el)continue;
+    el.classList.add("disabled");
+    if(k===q.ans)el.classList.add("correct");
+    else if(k===i&&!correct)el.classList.add("wrong");
+  }
+  const fb=document.getElementById("qfb");
+  fb.className="fb "+(correct?"ok":"bad");
+  fb.textContent=(correct?"Correct! ":"Wrong! ")+q.exp;
+  fb.style.display="block";
+  document.getElementById("qnxt").style.display="block";
+}
+
+function nextQ(){gIdx++;renderGame();}
+function restartGame(){gIdx=0;gScore=0;renderGame();}
+
+setTimeout(()=>{
+  for(let i=0;i<4;i++)updateInfo(i);
+  updateInfo(0);
+},150);
+window.addEventListener("resize",()=>{for(let i=0;i<4;i++)makeCanvas(i);});
+/* MOBILE BACK BUTTON */
+history.pushState({home:true},"",location.href);
+window.addEventListener("popstate",function(){
+  const activeTab=document.querySelector(".tab.active");
+  const idx=[...document.querySelectorAll(".tab")].indexOf(activeTab);
+  if(idx!==0){
+    openTab(0);
+    history.pushState({home:true},"",location.href);
+  }
+});
+</script>

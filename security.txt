@@ -1,0 +1,5 @@
+Contact: mailto:myskillglobal@gmail.com
+Preferred-Languages: en, bn
+Canonical: https://myskillglobal.com/.well-known/security.txt
+Policy: https://myskillglobal.com/security.html
+Expires: 2027-08-26T00:00:00.000Z

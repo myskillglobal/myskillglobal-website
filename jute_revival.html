@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Jute Revival — The Golden Fibre</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root{
+  --gold:#E2A93B;
+  --gold-light:#FFD166;
+  --gold-pale:#FFF7E3;
+
+  --green-deep:#0F3D2E;
+  --green-mid:#1B5E20;
+  --green-light:#43A047;
+
+  --earth:#795548;
+
+  --cream:#F8FAF7;
+
+  --text-dark:#1A1A1A;
+  --text-mid:#444;
+  --text-light:#777;
+
+  --white:#FFFFFF;
+
+  --shadow:0 6px 24px rgba(0,0,0,0.08);
+}
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    font-size: 18px;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(160deg, var(--green-deep) 0%, #0F2A0F 40%, #2A1800 100%);
+    color: var(--white);
+    padding: 52px 24px 44px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C8860A' fill-opacity='0.08'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+    opacity: 0.6;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--green-deep);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 2px;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(30px, 8vw, 52px);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--gold-light);
+    position: relative;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    margin-bottom: 12px;
+  }
+  .hero-sub {
+    font-size: 17px;
+    color: rgba(255,255,255,0.8);
+    font-style: italic;
+    position: relative;
+    max-width: 360px;
+    margin: 0 auto 28px;
+  }
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    position: relative;
+    flex-wrap: wrap;
+  }
+  .stat-box { text-align: center; }
+  .stat-num {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--gold-light);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.65);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+
+  /* 4-PILLAR STRIP */
+  .pillar-strip {
+    background: var(--gold);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    text-align: center;
+  }
+  .pillar {
+    padding: 12px 6px;
+    border-right: 1px solid rgba(0,0,0,0.12);
+    color: var(--green-deep);
+  }
+  .pillar:last-child { border-right: none; }
+  .pillar-icon { font-size: 22px; display: block; }
+  .pillar-label { font-size: 11px; font-weight: 700; letter-spacing: 0.5px; line-height: 1.3; display: block; margin-top: 3px; }
+
+  /* NAV TABS */
+.nav-tabs{
+  display:flex;
+  overflow-x:auto;
+  background:#ffffff;
+  border-bottom:1px solid #E5E7EB;
+  scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;
+  gap:8px;
+  padding:10px 10px;
+}
+  .nav-tabs::-webkit-scrollbar { display: none; }
+  .nav-tab{
+  flex-shrink:0;
+  padding:10px 16px;
+  font-size:13px;
+  font-weight:600;
+  color:#555;
+  background:#F3F4F6;
+  border-radius:999px;
+  cursor:pointer;
+  white-space:nowrap;
+  transition:.25s;
+  border:none;
+}
+  .nav-tab.active{
+  background:linear-gradient(135deg,#2E7D32,#43A047);
+  color:#fff;
+  box-shadow:0 4px 14px rgba(67,160,71,.28);
+}
+
+  /* TAB PAGES */
+  .tab-page { display: none; }
+  .tab-page.active { display: block; }
+
+  /* SECTION CARD */
+  .section-card {
+    margin: 18px 14px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    background: var(--white);
+  }
+  .section-header {
+    padding: 16px 18px 14px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .section-header.open { border-bottom-color: var(--gold-pale); }
+  .sec-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 21px;
+    flex-shrink: 0;
+  }
+  .sec-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-dark);
+    flex: 1;
+    line-height: 1.25;
+  }
+  .chevron {
+    color: var(--gold);
+    font-size: 20px;
+    transition: transform 0.3s;
+    flex-shrink: 0;
+  }
+  .section-header.open .chevron { transform: rotate(180deg); }
+  .section-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1);
+  }
+  .section-body.open { max-height: 4000px; }
+  .section-inner { padding: 18px; }
+
+  p { font-size: 18px; margin-bottom: 14px; color: var(--text-mid); line-height: 1.8; }
+  p:last-child { margin-bottom: 0; }
+
+  .highlight-box {
+    background: var(--gold-pale);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    padding: 13px 15px;
+    margin: 14px 0;
+    font-size: 17px;
+    color: var(--text-dark);
+    font-style: italic;
+    line-height: 1.6;
+  }
+
+  .point-list { list-style: none; margin: 10px 0; }
+  .point-list li {
+    padding: 9px 0 9px 32px;
+    position: relative;
+    font-size: 17px;
+    color: var(--text-mid);
+    border-bottom: 1px solid var(--gold-pale);
+    line-height: 1.6;
+  }
+  .point-list li:last-child { border-bottom: none; }
+  .point-list li::before { content: attr(data-icon); position: absolute; left: 0; top: 9px; font-size: 18px; }
+
+  /* PRODUCT GRID */
+  .prod-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin: 12px 0;
+  }
+  .prod-item {
+    border-radius: 9px;
+    padding: 11px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    border: 1px solid var(--gold-pale);
+    background: #FFFDF5;
+    transition: transform 0.15s;
+    cursor: default;
+  }
+  .prod-item:active { transform: scale(0.97); }
+  .prod-item .p-icon { font-size: 22px; }
+  .prod-item .p-name { font-size: 14px; font-weight: 600; color: var(--text-dark); line-height: 1.3; }
+  .prod-item .p-desc { font-size: 13px; color: var(--text-light); line-height: 1.4; }
+
+  /* SECTOR BADGE */
+  .sector-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--green-deep);
+    color: var(--gold-light);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin: 14px 0 10px;
+  }
+
+  /* STEP GRID */
+  .step-grid { display: flex; flex-direction: column; gap: 11px; margin: 13px 0; }
+  .step-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    background: #F7F9F4;
+    border-radius: 8px;
+    padding: 13px;
+  }
+  .step-num {
+    background: var(--green-mid);
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    font-weight: 700;
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .step-text { font-size: 17px; color: var(--text-mid); line-height: 1.65; }
+  .step-text strong { color: var(--text-dark); display: block; margin-bottom: 2px; font-size: 16px; }
+
+  /* COMPARE TABLE */
+  .compare-table { width: 100%; border-collapse: collapse; margin: 13px 0; font-size: 15px; }
+  .compare-table th {
+    background: var(--green-deep);
+    color: var(--gold-light);
+    padding: 9px 10px;
+    text-align: left;
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+  }
+  .compare-table td { padding: 9px 10px; border-bottom: 1px solid var(--gold-pale); color: var(--text-mid); }
+  .compare-table tr:nth-child(even) td { background: #F9F5EC; }
+  .good { color: var(--green-mid); font-weight: 600; }
+  .bad  { color: #C0392B; font-weight: 600; }
+
+  /* SHG SECTION */
+  .shg-card {
+    background: linear-gradient(135deg, #0F2A0F, #1A3A1A);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 14px 0;
+    border: 1px solid var(--gold);
+  }
+  .shg-card h4 {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold-light);
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .shg-card p { color: rgba(255,255,255,0.85); font-size: 16px; margin-bottom: 10px; }
+  .shg-stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 14px;
+  }
+  .shg-stat {
+    background: rgba(200,134,10,0.15);
+    border: 1px solid rgba(200,134,10,0.35);
+    border-radius: 8px;
+    padding: 10px 6px;
+    text-align: center;
+  }
+  .shg-stat .sn { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--gold-light); font-weight: 900; display: block; }
+  .shg-stat .sl { font-size: 11px; color: rgba(255,255,255,0.65); text-transform: uppercase; letter-spacing: 0.8px; }
+
+  /* AWARENESS BANNER */
+  .awareness-banner {
+    margin: 18px 14px;
+    background: linear-gradient(135deg, var(--green-deep) 0%, #0D1F0D 100%);
+    border-radius: 12px;
+    padding: 22px 18px;
+    text-align: center;
+    border: 2px solid var(--gold);
+    box-shadow: 0 0 32px rgba(200,134,10,0.18);
+  }
+  .awareness-banner h3 { font-family: 'Playfair Display', serif; color: var(--gold-light); font-size: 21px; margin-bottom: 10px; }
+  .awareness-banner p { color: rgba(255,255,255,0.85); font-size: 17px; margin-bottom: 14px; }
+  .pledge-btn {
+    background: var(--gold);
+    color: var(--green-deep);
+    border: none;
+    padding: 13px 28px;
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    border-radius: 6px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 0.15s;
+    display: block;
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+  .pledge-btn:active { transform: scale(0.97); }
+  .pledge-confirm { display: none; color: var(--gold-light); font-size: 16px; margin-top: 12px; }
+
+footer {
+    background: linear-gradient(135deg,#0F5B43,#1A7B5C);
+    color: #F7F3A5;
+    text-align: center;
+    padding: 26px 20px;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+footer strong {
+    color: #FFE96A;
+}
+
+footer p{
+    color:#EDEDED;
+}
+
+footer .sub-text{
+    color:#D7F5E8;
+}
+  /* TOAST */
+  #toast {
+    position: fixed;
+    bottom: 35px;
+    left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: var(--green-deep);
+    color: var(--gold-light);
+    border: 1px solid var(--gold);
+    padding: 10px 22px;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    z-index: 999;
+    transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), opacity 0.35s;
+    opacity: 0;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+  #toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .section-card { animation: fadeUp 0.45s ease both; }
+@media (max-width: 480px){
+  .prod-grid{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">🌿 Green Future Initiative</div>
+  <h1>The Golden Fibre<br>Jute Revival</h1>
+  <p class="hero-sub">Reviving India's heritage crop to build an eco-friendly tomorrow</p>
+  <div class="hero-stats">
+    <div class="stat-box"><span class="stat-num">40M+</span><span class="stat-label">Livelihoods</span></div>
+    <div class="stat-box"><span class="stat-num">100%</span><span class="stat-label">Biodegradable</span></div>
+    <div class="stat-box"><span class="stat-num">5×</span><span class="stat-label">CO₂ Absorber</span></div>
+    <div class="stat-box"><span class="stat-num">₹30K Cr</span><span class="stat-label">Export Potential</span></div>
+  </div>
+</div>
+
+<!-- 4-PILLAR STRIP -->
+<div class="pillar-strip">
+  <div class="pillar"><span class="pillar-icon">🌍</span><span class="pillar-label">Environ&shy;ment</span></div>
+  <div class="pillar"><span class="pillar-icon">🏭</span><span class="pillar-label">Rural Industry</span></div>
+  <div class="pillar"><span class="pillar-icon">👷</span><span class="pillar-label">Employ&shy;ment</span></div>
+  <div class="pillar"><span class="pillar-icon">✈️</span><span class="pillar-label">Export</span></div>
+</div>
+
+<!-- NAV TABS -->
+<div class="nav-tabs" id="navTabs">
+  <div class="nav-tab active" onclick="switchTab(0,this)">Overview</div>
+  <div class="nav-tab" onclick="switchTab(1,this)">Products</div>
+  <div class="nav-tab" onclick="switchTab(2,this)">vs Plastic</div>
+  <div class="nav-tab" onclick="switchTab(3,this)">Revival Plan</div>
+  <div class="nav-tab" onclick="switchTab(4,this)">Women &amp; SHG</div>
+  <div class="nav-tab" onclick="switchTab(5,this)">Benefits</div>
+</div>
+
+<!-- ═══════════════ TAB 0: OVERVIEW ═══════════════ -->
+<div class="tab-page active" id="tab0">
+
+  <div class="section-card">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="sec-icon" style="background:#FFF3D6;">🌾</div>
+      <div class="sec-title">What is Jute &amp; Why Does It Matter?</div>
+      <span class="chevron">⌄</span>
+    </div>
+    <div class="section-body">
+      <div class="section-inner">
+        <p>Jute — often called the <strong>Golden Fibre</strong> — is a natural plant fibre grown primarily in the fertile floodplains of West Bengal, Assam, and Bangladesh. India is the world's largest producer, accounting for over <strong>60% of global production</strong>.</p>
+        <div class="highlight-box">"A single hectare of jute absorbs 15 tonnes of CO₂ and releases 11 tonnes of oxygen — far surpassing an equivalent forest area."</div>
+        <ul class="point-list">
+          <li data-icon="🌱">Grows in 4–6 months with minimal pesticide use</li>
+          <li data-icon="💧">Thrives on natural rainfall — very little irrigation needed</li>
+          <li data-icon="♻️">Fully biodegradable — decomposes naturally within months</li>
+          <li data-icon="🌍">Carbon-negative crop — absorbs more CO₂ than it emits</li>
+          <li data-icon="👨‍🌾">Supports over 40 million farming and mill-worker families</li>
+          <li data-icon="🏛️">Woven into Bengal's economy and culture for centuries</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="sec-icon" style="background:#FFF0F0;">⚠️</div>
+      <div class="sec-title">The Crisis — Why Jute Is Struggling</div>
+      <span class="chevron">⌄</span>
+    </div>
+    <div class="section-body">
+      <div class="section-inner">
+        <p>Despite its enormous potential, the jute industry has been in steady decline since the 1980s. Cheap plastics, outdated mills, and poor market linkages all played a role.</p>
+        <ul class="point-list">
+          <li data-icon="🏭">Old, inefficient machinery — technology not updated for decades</li>
+          <li data-icon="💸">Low farmgate prices — farmers often earn less than cultivation cost</li>
+          <li data-icon="🧴">Cheap plastic replaced jute bags in markets everywhere</li>
+          <li data-icon="📉">Erratic government procurement — unpredictable demand signals</li>
+          <li data-icon="🎓">No design innovation — jute products seen as old-fashioned</li>
+          <li data-icon="🌐">Poor global marketing — India's jute brands virtually unknown abroad</li>
+        </ul>
+        <div class="highlight-box">Over 2 lakh jute workers lost jobs between 1990 and 2020 in West Bengal alone. Scores of Hooghly district mills remain permanently shut.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="sec-icon" style="background:#F0F7F0;">🔄</div>
+      <div class="sec-title">From Jute Plant to Finished Product</div>
+      <span class="chevron">⌄</span>
+    </div>
+    <div class="section-body">
+      <div class="section-inner">
+        <div class="step-grid">
+          <div class="step-item"><div class="step-num">1</div><div class="step-text"><strong>Cultivation (4–5 months)</strong>Seeds sown March–April in moist, loamy soil. Plants grow 3–4 metres tall.</div></div>
+          <div class="step-item"><div class="step-num">2</div><div class="step-text"><strong>Harvesting</strong>Stalks cut at flowering stage — timing is critical for fibre quality.</div></div>
+          <div class="step-item"><div class="step-num">3</div><div class="step-text"><strong>Retting (15–30 days)</strong>Bundles submerged in slow water. Microbes loosen fibres from the woody stem.</div></div>
+          <div class="step-item"><div class="step-num">4</div><div class="step-text"><strong>Stripping &amp; Washing</strong>Fibres stripped by hand, washed clean, sun-dried for 2–3 days.</div></div>
+          <div class="step-item"><div class="step-num">5</div><div class="step-text"><strong>Spinning &amp; Weaving</strong>Dried fibres spun into yarn, then woven into hessian cloth, sacking, carpets, or fine textiles.</div></div>
+          <div class="step-item"><div class="step-num">6</div><div class="step-text"><strong>Value-Added Processing</strong>Dyeing, lamination, or blending with cotton/silk creates premium, export-ready products.</div></div>
+        </div>
+        <div class="highlight-box">Modern bio-retting using enzymes replaces water-retting — cutting pollution while improving fibre quality by up to 30%.</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /tab0 -->
+
+<!-- ═══════════════ TAB 1: PRODUCTS ═══════════════ -->
+<div class="tab-page" id="tab1">
+
+  <!-- School & Education -->
+  <div class="section-card">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="sec-icon" style="background:#FFF8E1;">🎒</div>
+      <div class="sec-title">School &amp; Education</div>
+      <span class="chevron">⌄</span>
+    </div>
+    <div class="section-body">
+      <div class="section-inner">
+        <p>Introducing jute products in government schools simultaneously teaches sustainability, supports rural artisans, and replaces plastic items used daily by millions of children.</p>
+        <div class="prod-grid">
+          <div class="prod-item"><span class="p-icon">🎒</span><span class="p-name">School Bag</span><span class="p-desc">Durable, water-resistant jute bags for daily use</span></div>
+          <div class="prod-item"><span class="p-icon">✏️</span><span class="p-name">Pencil Box</span><span class="p-desc">Rigid jute-board box — replaces plastic stationery cases</span></div>
+          <div class="prod-item"><span class="p-icon">📚</span><span class="p-name">Book Cover</span><span class="p-desc">Printed jute cloth covers for textbooks</span></div>
+          <div class="prod-item"><span class="p-icon">🍱</span><span class="p-name">Mid-Day Meal Mat</span><span class="p-desc">Reusable jute dining mats for school lunch programmes</span></div>
+          <div class="prod-item"><span class="p-icon">📖</span><span class="p-name">Library Carry Bag</span><span class="p-desc">Branded jute bags for borrowing library books</span></div>
+          <div class="prod-item"><span class="p-icon">🖼️</span><span class="p-name">Wall Decoration</span><span class="p-desc">Jute-framed notice boards &amp; classroom art panels</span></div>
+          <div class="prod-item"><span class="p-icon">🪑</span><span class="p-name">Seat Cover</span><span class="p-desc">Jute woven seat covers for school chairs &amp; benches</span></div>
+          <div class="prod-item"><span class="p-icon">🛏️</span><span class="p-name">Hostel Bedding</span><span class="p-desc">Pillow covers, bed sheets &amp; door curtains for school hostels</span></div>
+        </div>
+        <div class="highlight-box">India has 1.5 million government schools. Supplying each with even basic jute stationery would generate thousands of crores in annual orders for rural artisans and mills.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Home & Daily Life -->
+  <div class="section-card">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="sec-icon" style="background:#F0FFF4;">🏠</div>
+      <div class="sec-title">Home &amp; Daily Life</div>
+      <span class="chevron">⌄</span>
+    </div>
+    <div class="section-body">
+      <div class="section-inner">
+        <p>Jute can replace plastic and synthetic materials in virtually every corner of the home — beautifully, affordably, and sustainably.</p>
+        <div class="prod-grid">
+          <div class="prod-item"><span class="p-icon">🛍️</span><span class="p-name">Shopping Bag</span><span class="p-desc">Printed, branded bags replacing single-use plastic</span></div>
+          <div class="prod-item"><span class="p-icon">🍽️</span><span class="p-name">Dining Table Mat</span><span class="p-desc">Woven jute placemats — durable &amp; washable</span></div>
+          <div class="prod-item"><span class="p-icon">🛋️</span><span class="p-name">Sofa Cover</span><span class="p-desc">Blended jute-cotton upholstery fabric</span></div>
+          <div class="prod-item"><span class="p-icon">👕</span><span class="p-name">Laundry Basket</span><span class="p-desc">Sturdy woven jute baskets with handles</span></div>
+          <div class="prod-item"><span class="p-icon">📦</span><span class="p-name">Storage Organiser</span><span class="p-desc">Foldable jute bins for shelves &amp; wardrobes</span></div>
+          <div class="prod-item"><span class="p-icon">🪟</span><span class="p-name">Window Curtain</span><span class="p-desc">Natural-look jute curtains — UV-filtering</span></div>
+          <div class="prod-item"><span class="p-icon">🌸</span><span class="p-name">Flower Pot Cover</span><span class="p-desc">Decorative jute wraps for indoor plants</span></div>
+          <div class="prod-item"><span class="p-icon">🧱</span><span class="p-name">Eco Wallpaper</span><span class="p-desc">Jute-backed wall panels — noise-absorbing &amp; stylish</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hospital & Health -->
+  <div class="section-card">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="sec-icon" style="background:#FFF0F5;">🏥</div>
+      <div class="sec-title">Hospital &amp; Health Sector</div>
+      <span class="chevron">⌄</span>
+    </div>
+    <div class="section-body">
+      <div class="section-inner">
+        <p>Hospitals generate enormous quantities of plastic waste. Biodegradable jute alternatives can cut medical plastic pollution dramatically.</p>
+        <div class="prod-grid">
+          <div class="prod-item"><span class="p-icon">🧺</span><span class="p-name">Reusable Laundry Bags</span><span class="p-desc">Jute bags for hospital linen collection &amp; transport</span></div>
+          <div class="prod-item"><span class="p-icon">🎁</span><span class="p-name">Eco Patient Kits</span><span class="p-desc">Welcome kits in jute pouches for admitted patients</span></div>
+          <div class="prod-item"><span class="p-icon">💊</span><span class="p-name">Medicine Packaging</span><span class="p-desc">Jute-paper blended cartons for tablets &amp; supplements</span></div>
+          <div class="prod-item"><span class="p-icon">🗑️</span><span class="p-name">Biodegradable Waste Bag</span><span class="p-desc">Safe jute-based bags for organic hospital waste disposal</span></div>
+        </div>
+        <div class="highlight-box">Indian hospitals generate over 600 tonnes of plastic waste daily. Replacing even 20% with biodegradable jute alternatives would prevent 44,000 tonnes of plastic pollution annually.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Railway & Transport -->
+  <div class="section-card">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="sec-icon" style="background:#EEF4FF;">🚆</div>
+      <div class="sec-title">Railway &amp; Transport</div>
+      <span class="chevron">⌄</span>
+    </div>
+    <div class="section-body">
+      <div class="section-inner">
+        <p>Indian Railways — the world's largest rail network — is a massive untapped market for jute products, capable of transforming the industry overnight with a single procurement policy.</p>
+        <div class="prod-grid">
+          <div class="prod-item"><span class="p-icon">🖼️</span><span class="p-name">Station Decoration</span><span class="p-desc">Jute panels, murals &amp; woven artwork for railway stations</span></div>
+          <div class="prod-item"><span class="p-icon">💺</span><span class="p-name">Seat Headrest Cover</span><span class="p-desc">Hygienic, washable jute headrests for train carriages</span></div>
+          <div class="prod-item"><span class="p-icon">📦</span><span class="p-name">Parcel Packaging</span><span class="p-desc">Eco-friendly jute sacking for railways parcel service</span></div>
+          <div class="prod-item"><span class="p-icon">🛍️</span><span class="p-name">Airport Souvenir Bag</span><span class="p-desc">Branded jute totes at duty-free and airport shops</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Government Office Use -->
+  <div class="section-card">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="sec-icon" style="background:#F5F0FF;">🏛️</div>
+      <div class="sec-title">Government Office Use</div>
+      <span class="chevron">⌄</span>
+    </div>
+    <div class="section-body">
+      <div class="section-inner">
+        <p>A government circular mandating jute stationery and packaging in all central and state offices would instantly create a captive, year-round market worth thousands of crores.</p>
+        <div class="prod-grid">
+          <div class="prod-item"><span class="p-icon">📁</span><span class="p-name">File Cover</span><span class="p-desc">Stiff jute-board files replacing plastic folders</span></div>
+          <div class="prod-item"><span class="p-icon">📋</span><span class="p-name">Conference Folder</span><span class="p-desc">Elegant jute portfolios for meetings &amp; summits</span></div>
+          <div class="prod-item"><span class="p-icon">🖥️</span><span class="p-name">Office Desk Mat</span><span class="p-desc">Printed jute desk pads — eco alternative to PVC</span></div>
+          <div class="prod-item"><span class="p-icon">🎁</span><span class="p-name">Official Gift Bag</span><span class="p-desc">Branded jute bags for all government events &amp; ceremonies</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tourism & Export -->
+  <div class="section-card">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="sec-icon" style="background:#FFFBF0;">✈️</div>
+      <div class="sec-title">Tourism &amp; Export — Heritage Crafts</div>
+      <span class="chevron">⌄</span>
+    </div>
+    <div class="section-body">
+      <div class="section-inner">
+        <p>Bengal's jute handicrafts, fused with traditional art forms like Kantha and Dokra, have strong global appeal. Eco-conscious tourists and international buyers are actively seeking authentic sustainable products.</p>
+        <div class="prod-grid">
+          <div class="prod-item"><span class="p-icon">🧵</span><span class="p-name">Kantha-Jute Fusion</span><span class="p-desc">Hand-embroidered jute textiles — premium export product</span></div>
+          <div class="prod-item"><span class="p-icon">🧳</span><span class="p-name">Tourist Souvenir Bag</span><span class="p-desc">Bengal heritage-printed jute bags for visitors</span></div>
+          <div class="prod-item"><span class="p-icon">🖼️</span><span class="p-name">Export Wall Art</span><span class="p-desc">Handmade jute paintings &amp; tapestries for global décor market</span></div>
+          <div class="prod-item"><span class="p-icon">💎</span><span class="p-name">Eco Luxury Products</span><span class="p-desc">High-end jute jewellery boxes, wine bags, gift sets</span></div>
+        </div>
+        <div class="highlight-box">Germany, Japan, France, and the USA are the fastest-growing markets for eco-luxury natural-fibre goods. India has a first-mover advantage it has yet to fully exploit.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Agriculture Sector -->
+  <div class="section-card">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="sec-icon" style="background:#F0FFF4;">🌱</div>
+      <div class="sec-title">Agriculture Sector</div>
+      <span class="chevron">⌄</span>
+    </div>
+    <div class="section-body">
+      <div class="section-inner">
+        <p>Jute geotextiles and agricultural products are a rapidly growing market, supported by government watershed and afforestation programmes.</p>
+        <div class="prod-grid">
+          <div class="prod-item"><span class="p-icon">🌿</span><span class="p-name">Biodegradable Nursery Pot</span><span class="p-desc">Plant directly into soil — no transplant shock, zero waste</span></div>
+          <div class="prod-item"><span class="p-icon">🌲</span><span class="p-name">Tree Guard Wrap</span><span class="p-desc">Protects saplings from wind, animals &amp; harsh sun</span></div>
+          <div class="prod-item"><span class="p-icon">🌾</span><span class="p-name">Crop Protection Sheet</span><span class="p-desc">Hessian covers for frost protection &amp; shade farming</span></div>
+          <div class="prod-item"><span class="p-icon">⛰️</span><span class="p-name">Erosion Control Mat</span><span class="p-desc">Jute geotextiles for embankments, slopes &amp; riverbanks</span></div>
+          <div class="prod-item"><span class="p-icon">🌰</span><span class="p-name">Seed Storage Bag</span><span class="p-desc">Breathable jute bags keep seeds viable longer than plastic</span></div>
+          <div class="prod-item"><span class="p-icon">🪴</span><span class="p-name">Mulch Mat</span><span class="p-desc">Weed-suppressing jute mats for organic farms</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modern & Tech -->
+  <div class="section-card">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="sec-icon" style="background:#EEF4FF;">💻</div>
+      <div class="sec-title">Modern &amp; Tech-Based Products</div>
+      <span class="chevron">⌄</span>
+    </div>
+    <div class="section-body">
+      <div class="section-inner">
+        <p>Jute is entering the digital age. Young designers and engineers are finding unexpected, futuristic applications for this ancient fibre — making it relevant to the next generation.</p>
+        <div class="prod-grid">
+          <div class="prod-item"><span class="p-icon">💻</span><span class="p-name">Laptop Sleeve</span><span class="p-desc">Padded jute-felt sleeve — stylish &amp; protective</span></div>
+          <div class="prod-item"><span class="p-icon">📱</span><span class="p-name">Mobile Cover</span><span class="p-desc">Woven jute back cover — biodegradable alternative to plastic cases</span></div>
+          <div class="prod-item"><span class="p-icon">🎧</span><span class="p-name">Headphone Case</span><span class="p-desc">Eco-friendly hard jute case for earphones &amp; headsets</span></div>
+          <div class="prod-item"><span class="p-icon">📦</span><span class="p-name">E-Commerce Packaging</span><span class="p-desc">Biodegradable jute mailer bags replacing bubble-wrap plastic</span></div>
+          <div class="prod-item"><span class="p-icon">🔇</span><span class="p-name">Acoustic Panel</span><span class="p-desc">Jute fibre soundproofing tiles — offices, studios &amp; classrooms</span></div>
+          <div class="prod-item"><span class="p-icon">🔋</span><span class="p-name">Electronics Packaging</span><span class="p-desc">Smart jute packaging for phones, gadgets &amp; appliances</span></div>
+        </div>
+        <div class="highlight-box">Research at IIT Kharagpur has demonstrated that jute-reinforced polymer composites can match fibreglass in tensile strength — at half the carbon cost.</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /tab1 -->
+
+<!-- ═══════════════ TAB 2: VS PLASTIC ═══════════════ -->
+<div class="tab-page" id="tab2">
+
+  <div class="section-card">
+    <div class="section-header open" onclick="toggle(this)">
+      <div class="sec-icon" style="background:#F0FFF4;">⚖️</div>
+      <div class="sec-title">Jute vs Plastic — The Numbers Tell the Story</div>
+      <span class="chevron" style="transform:rotate(180deg);">⌄</span>
+    </div>
+    <div class="section-body open">
+      <div class="section-inner">
+        <p>Plastic pollution is one of the defining crises of our era. India generates <strong>3.5 million tonnes of plastic waste per year</strong> — much of it single-use bags. Jute offers a ready, scalable replacement.</p>
+        <table class="compare-table">
+          <tr><th>Property</th><th>Jute Bag</th><th>Plastic Bag</th></tr>
+          <tr><td>Decomposition time</td><td class="good">1–2 years</td><td class="bad">500–1000 years</td></tr>
+          <tr><td>Made from</td><td class="good">Renewable plant</td><td class="bad">Petroleum (non-renewable)</td></tr>
+          <tr><td>Carbon footprint</td><td class="good">Carbon negative</td><td class="bad">High CO₂ emitter</td></tr>
+          <tr><td>Reusability</td><td class="good">200+ times</td><td class="bad">1–3 times</td></tr>
+          <tr><td>Soil health</td><td class="good">Enriches soil</td><td class="bad">Can damage soil and water quality</td></tr>
+          <tr><td>Cost per use*</td><td class="good">₹0.15 (reused)</td><td class="bad">₹2.00 (single-use)</td></tr>
+          <tr><td>Jobs created</td><td class="good">Millions in India</td><td class="bad">Mostly automated/imported</td></tr>
+          <tr><td>Animal safety</td><td class="good">Completely safe</td><td class="bad">Harms wildlife and marine ecosystems</td></tr>
+          <tr><td>Ocean impact</td><td class="good">Zero microplastics</td><td class="bad">Breaks into toxic microplastics</td></tr>
+          <tr><td>Fire safety</td><td class="good">Low smoke, natural</td><td class="bad">Toxic fumes when burned</td></tr>
+        </table>
+        <p style="font-size:14px; color:var(--text-light);">*Cost per use calculated over the full reuse lifetime of the bag.</p>
+        <div class="highlight-box">If every Indian family replaced just 3 plastic bags per week with jute bags, over 150 billion plastic bags would be eliminated from circulation every single year.</div>
+        <p>Every jute bag used 200 times replaces 200 plastic bags. That is not an incremental improvement — it is a <strong>200× multiplier</strong> on every rupee spent.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="sec-icon" style="background:#FFF0F0;">☠️</div>
+      <div class="sec-title">The True Cost of Plastic</div>
+      <span class="chevron">⌄</span>
+    </div>
+    <div class="section-body">
+      <div class="section-inner">
+        <ul class="point-list">
+          <li data-icon="🐟">8 million tonnes of plastic enter our oceans every year — equivalent to dumping a garbage truck every minute</li>
+          <li data-icon="🐄">Over 1 million animals — cows, dolphins, turtles, seabirds — die from plastic ingestion annually in India alone</li>
+          <li data-icon="🌾">Microplastics have been found in agricultural soil, reducing crop yields by up to 25% in contaminated fields</li>
+          <li data-icon="💧">Plastic leaches toxic chemicals (BPA, phthalates) into groundwater, affecting the health of communities for generations</li>
+          <li data-icon="🧒">Studies suggest microplastics may affect human health and the environment.</li>
+          <li data-icon="💰">Plastic pollution costs India an estimated ₹15,000 crore annually in cleanup, health, and ecological damage</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /tab2 -->
+
+<!-- ═══════════════ TAB 3: REVIVAL PLAN ═══════════════ -->
+<div class="tab-page" id="tab3">
+
+  <div class="section-card">
+    <div class="section-header open" onclick="toggle(this)">
+      <div class="sec-icon" style="background:#FFF8E1;">💡</div>
+      <div class="sec-title">Revival Roadmap — 8 Powerful Steps</div>
+      <span class="chevron" style="transform:rotate(180deg);">⌄</span>
+    </div>
+    <div class="section-body open">
+      <div class="section-inner">
+        <p>Reviving jute requires coordinated action from government, industry, farmers, designers, and consumers. Here is a comprehensive, actionable roadmap.</p>
+        <div class="step-grid">
+          <div class="step-item"><div class="step-num">1</div><div class="step-text"><strong>Modernise Mills</strong>Upgrade machinery with government-subsidised loans. Adopt Japanese and European spinning technology. Automate repetitive tasks while protecting skilled jobs.</div></div>
+          <div class="step-item"><div class="step-num">2</div><div class="step-text"><strong>Fair Minimum Support Price</strong>Guarantee remunerative MSP for jute farmers. Streamline procurement through cooperatives to eliminate exploitative middlemen.</div></div>
+          <div class="step-item"><div class="step-num">3</div><div class="step-text"><strong>Design Revolution</strong>Establish jute design institutes in Kolkata, Murshidabad, and Cooch Behar. Collaborate with NIFT and IIT to create fashionable, globally marketable products.</div></div>
+          <div class="step-item"><div class="step-num">4</div><div class="step-text"><strong>Strict Plastic Ban Enforcement</strong>Rigorously enforce the Jute Packaging Materials Act. Expand mandatory jute packaging beyond food grains to FMCG, pharma, and e-commerce.</div></div>
+          <div class="step-item"><div class="step-num">5</div><div class="step-text"><strong>Export Market Development</strong>Open "Jute India" brand centres in Europe, Japan, and the USA. Certify products with internationally recognised eco-labels for premium markets.</div></div>
+          <div class="step-item"><div class="step-num">6</div><div class="step-text"><strong>R&amp;D Investment</strong>Fund research into jute composites, jute paper, activated carbon, and biomedical uses. Partner with IITs, CSIR, and global universities.</div></div>
+          <div class="step-item"><div class="step-num">7</div><div class="step-text"><strong>Empower Women &amp; SHGs</strong>Train rural women's Self-Help Groups to manufacture diversified jute products. Connect them directly to e-commerce platforms and export buyers.</div></div>
+          <div class="step-item"><div class="step-num">8</div><div class="step-text"><strong>School &amp; Community Awareness</strong>Introduce jute literacy in school curricula. Hold "Jute Melas" at panchayat level. Make jute aspirational for the younger generation.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="sec-icon" style="background:#F0F7F0;">🏛️</div>
+      <div class="sec-title">Policy Actions Needed Now</div>
+      <span class="chevron">⌄</span>
+    </div>
+    <div class="section-body">
+      <div class="section-inner">
+        <ul class="point-list">
+          <li data-icon="📜">Amend the Jute Packaging Materials (Compulsory Use in Packing Commodities) Act to cover more product categories</li>
+          <li data-icon="🏫">Issue a circular mandating jute school bags in all government school uniform schemes</li>
+          <li data-icon="🚆">Require Indian Railways to procure jute products for all stations, trains, and packaging requirements</li>
+          <li data-icon="🏥">Direct all government hospitals to replace plastic laundry and waste bags with certified jute alternatives</li>
+          <li data-icon="🌐">Launch a "Made in Jute" global branding campaign under the Ministry of Commerce</li>
+          <li data-icon="💰">Create a dedicated ₹2,000-crore Jute Diversification Fund in the Union Budget</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /tab3 -->
+
+<!-- ═══════════════ TAB 4: WOMEN & SHG ═══════════════ -->
+<div class="tab-page" id="tab4">
+
+  <div class="section-card">
+    <div class="section-header open" onclick="toggle(this)">
+      <div class="sec-icon" style="background:#FFF0F5;">👩</div>
+      <div class="sec-title">Women &amp; Self-Help Groups — The Heart of Jute Revival</div>
+      <span class="chevron" style="transform:rotate(180deg);">⌄</span>
+    </div>
+    <div class="section-body open">
+      <div class="section-inner">
+        <div class="shg-card">
+          <h4>🌸 Rural Women Can Lead This Revolution</h4>
+          <p>Rural women's Self-Help Groups (SHGs) across West Bengal, Bihar, Assam, and Odisha can manufacture diversified jute products from home and small workshops — creating lakhs of eco-friendly employment opportunities in villages across India.</p>
+          <div class="shg-stat-row">
+            <div class="shg-stat"><span class="sn">12L+</span><span class="sl">Active SHGs in WB</span></div>
+            <div class="shg-stat"><span class="sn">₹25K</span><span class="sl">Monthly income possible</span></div>
+            <div class="shg-stat"><span class="sn">0</span><span class="sl">Capital needed to start</span></div>
+          </div>
+        </div>
+        <p>The model is straightforward: the government or NGO provides initial training, a basic loom or jute-crafting toolkit, and market linkages. SHG members work from home or a shared workspace, produce value-added jute goods, and sell through cooperatives, online platforms, and government procurement channels.</p>
+        <div class="highlight-box">"One SHG of 10 women producing 50 jute bags per day can earn ₹15,000–25,000 per month collectively. Scale this to 1 lakh SHGs and you have created a ₹15,000 crore cottage industry."</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="sec-icon" style="background:#F0FFF4;">📋</div>
+      <div class="sec-title">What SHGs Can Produce</div>
+      <span class="chevron">⌄</span>
+    </div>
+    <div class="section-body">
+      <div class="section-inner">
+        <div class="prod-grid">
+          <div class="prod-item"><span class="p-icon">👜</span><span class="p-name">Handbags &amp; Totes</span><span class="p-desc">Fashion bags with hand-embroidery &amp; block prints</span></div>
+          <div class="prod-item"><span class="p-icon">🎨</span><span class="p-name">Kantha Fusion Art</span><span class="p-desc">Traditional embroidery on jute — premium export craft</span></div>
+          <div class="prod-item"><span class="p-icon">🧸</span><span class="p-name">Jute Toys &amp; Dolls</span><span class="p-desc">Safe, natural toys — zero plastic, 100% handmade</span></div>
+          <div class="prod-item"><span class="p-icon">🌸</span><span class="p-name">Jewellery &amp; Accessories</span><span class="p-desc">Jute-wrapped bangles, earrings &amp; hair accessories</span></div>
+          <div class="prod-item"><span class="p-icon">🏮</span><span class="p-name">Lamp Shades</span><span class="p-desc">Woven jute lamp covers — warm, decorative lighting</span></div>
+          <div class="prod-item"><span class="p-icon">🛏️</span><span class="p-name">Bed &amp; Table Linen</span><span class="p-desc">Jute-cotton blend pillow covers, runners &amp; table cloths</span></div>
+          <div class="prod-item"><span class="p-icon">🎁</span><span class="p-name">Gift Packaging</span><span class="p-desc">Hand-stitched gift bags &amp; wedding favour pouches</span></div>
+          <div class="prod-item"><span class="p-icon">🪴</span><span class="p-name">Garden Products</span><span class="p-desc">Nursery pots, hanging planters &amp; seed-starter kits</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="sec-icon" style="background:#EEF4FF;">🔗</div>
+      <div class="sec-title">How to Connect SHGs to Markets</div>
+      <span class="chevron">⌄</span>
+    </div>
+    <div class="section-body">
+      <div class="section-inner">
+        <div class="step-grid">
+          <div class="step-item"><div class="step-num">1</div><div class="step-text"><strong>Government e-Marketplace (GeM)</strong>Register SHGs on GeM portal to supply jute products directly to government departments — guaranteed bulk orders.</div></div>
+          <div class="step-item"><div class="step-num">2</div><div class="step-text"><strong>Amazon Karigar &amp; Flipkart Samarth</strong>List handmade jute products on dedicated artisan platforms. Zero listing fee, nationwide customer reach.</div></div>
+          <div class="step-item"><div class="step-num">3</div><div class="step-text"><strong>Export through WBIDFC &amp; EPCH</strong>West Bengal Industrial Development Finance Corporation and Export Promotion Council for Handicrafts provide export facilitation for SHG collectives.</div></div>
+          <div class="step-item"><div class="step-num">4</div><div class="step-text"><strong>Rural Haat &amp; Jute Mela Networks</strong>Regular local markets and annual jute festivals create direct-to-consumer channels without middlemen.</div></div>
+          <div class="step-item"><div class="step-num">5</div><div class="step-text"><strong>Corporate CSR Partnerships</strong>Large companies can source SHG jute products for employee gifts, event bags, and sustainability initiatives under their CSR mandates.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /tab4 -->
+
+<!-- ═══════════════ TAB 5: BENEFITS ═══════════════ -->
+<div class="tab-page" id="tab5">
+
+  <div class="section-card">
+    <div class="section-header open" onclick="toggle(this)">
+      <div class="sec-icon" style="background:#F3FFF3;">✨</div>
+      <div class="sec-title">Benefits of Jute Revival — For Every Stakeholder</div>
+      <span class="chevron" style="transform:rotate(180deg);">⌄</span>
+    </div>
+    <div class="section-body open">
+      <div class="section-inner">
+        <ul class="point-list">
+          <li data-icon="🌍"><strong>Environment:</strong> Every tonne of jute replaces 1 tonne of synthetic fibre, preventing ~2 tonnes of CO₂ emissions and hundreds of kilos of plastic waste.</li>
+          <li data-icon="👨‍🌾"><strong>Farmers:</strong> Stable jute prices mean a dignified livelihood for over 4 million farm families in Bengal and Bihar.</li>
+          <li data-icon="👩"><strong>Rural Women:</strong> SHG-led jute crafts can provide income independence to millions of women in villages without requiring them to leave home.</li>
+          <li data-icon="🏭"><strong>Mill Workers:</strong> Modernisation and diversification can create 5–8 million new manufacturing and craft jobs.</li>
+          <li data-icon="🇮🇳"><strong>National Economy:</strong> India earns ₹8,000 crore annually from jute exports today — diversification could triple this to ₹25,000–30,000 crore.</li>
+          <li data-icon="🎒"><strong>Students:</strong> Government school jute products reduce the cost burden on families while giving children eco-friendly, durable materials.</li>
+          <li data-icon="🐄"><strong>Animals &amp; Oceans:</strong> Replacing plastic reduces the 8 million tonnes entering oceans yearly, saving wildlife across ecosystems.</li>
+          <li data-icon="🏘️"><strong>Rural Communities:</strong> Jute revival anchors rural economies, reducing distress migration to overcrowded cities.</li>
+          <li data-icon="🌡️"><strong>Climate Change:</strong> Scaled jute cultivation could sequester millions of tonnes of CO₂ annually — a direct contribution to India's net-zero commitments.</li>
+          <li data-icon="👧"><strong>Future Generations:</strong> Children inherit a cleaner, greener world — not a landscape choked with centuries of plastic waste.</li>
+        </ul>
+        <div class="highlight-box">The jute revival is not just support for a traditional industry. It is the smartest possible investment in environment, employment, exports, and equity — all at once.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="sec-icon" style="background:#FFF8E1;">🌐</div>
+      <div class="sec-title">India's Global Opportunity</div>
+      <span class="chevron">⌄</span>
+    </div>
+    <div class="section-body">
+      <div class="section-inner">
+        <p>The global sustainable packaging market was valued at <strong>$350 billion in 2024</strong> and is growing at 6% annually. The eco-luxury goods market is growing even faster. India, as the world's largest jute producer, is uniquely positioned to capture this opportunity.</p>
+        <ul class="point-list">
+          <li data-icon="🇩🇪">Germany bans single-use plastics — now actively sourcing jute alternatives from India</li>
+          <li data-icon="🇯🇵">Japan's zero-waste culture creates premium demand for biodegradable packaging</li>
+          <li data-icon="🇺🇸">US eco-retail market for natural-fibre products grew 34% in 2023–24</li>
+          <li data-icon="🇬🇧">UK supermarkets — Sainsbury's, M&amp;S, Waitrose — are switching to natural-fibre packaging</li>
+          <li data-icon="🌏">ASEAN nations are fast-growing markets for Indian handicraft exports</li>
+        </ul>
+        <div class="highlight-box">India is sitting on a ₹30,000 crore export opportunity. All that is needed is the will to modernise, design, and market this ancient golden fibre to the world.</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /tab5 -->
+
+<!-- AWARENESS BANNER -->
+<div class="awareness-banner">
+  <h3>🌿 Take the Jute Pledge</h3>
+  <p>Promise to replace at least one plastic bag with a jute bag this week. Small actions, multiplied by millions, change the world.</p>
+  <button class="pledge-btn" id="pledgeBtn" onclick="takePledge()">I Pledge to Go Jute!</button>
+  <div class="pledge-confirm" id="pledgeConfirm">🎉 Thank you! You are part of the change. Share this with 3 friends!</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>Golden Fibre Revival Initiative</strong></p>
+  <p>Jute is not the past — it is the future.<br>Grow it. Use it. Champion it.</p>
+  <p style="margin-top:10px; font-size:12px;">© 2025 · Awareness Educational Programme · West Bengal, India</p>
+</footer>
+
+<!-- TOAST -->
+<div id="toast">🌿 Jute for the win!</div>
+
+<script>
+// ── JS SOUND ENGINE (Web Audio API) ──
+const AC = window.AudioContext || window.webkitAudioContext;
+let ctx = null;
+
+function getCtx() {
+  if (!ctx) { try { ctx = new AC(); } catch(e){} }
+  return ctx;
+}
+
+function playTone(freq, type, dur, vol, delay) {
+  const c = getCtx(); if (!c) return;
+  const o = c.createOscillator();
+  const g = c.createGain();
+  o.connect(g); g.connect(c.destination);
+  o.type = type || 'sine';
+  o.frequency.setValueAtTime(freq, c.currentTime + (delay||0));
+  g.gain.setValueAtTime(0, c.currentTime + (delay||0));
+  g.gain.linearRampToValueAtTime(vol||0.18, c.currentTime + (delay||0) + 0.01);
+  g.gain.exponentialRampToValueAtTime(0.001, c.currentTime + (delay||0) + dur);
+  o.start(c.currentTime + (delay||0));
+  o.stop(c.currentTime + (delay||0) + dur + 0.05);
+}
+
+function sndOpen() {
+  playTone(523, 'sine', 0.18, 0.15);
+  playTone(659, 'sine', 0.18, 0.12, 0.07);
+}
+function sndClose() {
+  playTone(440, 'sine', 0.12, 0.1);
+  playTone(349, 'sine', 0.15, 0.08, 0.06);
+}
+function sndTab() {
+  playTone(698, 'triangle', 0.12, 0.13);
+}
+function sndPledge() {
+  [523,659,784,1047].forEach((f,i) => playTone(f,'sine',0.22,0.15,i*0.08));
+}
+function sndClick() {
+  playTone(600, 'square', 0.06, 0.07);
+}
+
+// ── ACCORDION ──
+function toggle(header) {
+  const body = header.nextElementSibling;
+  const isOpen = body.classList.contains('open');
+  document.querySelectorAll('.section-body.open').forEach(b => b.classList.remove('open'));
+  document.querySelectorAll('.section-header.open').forEach(h => {
+    h.classList.remove('open');
+    h.querySelector('.chevron').style.transform = '';
+  });
+  if (!isOpen) {
+    body.classList.add('open');
+    header.classList.add('open');
+    sndOpen();
+    setTimeout(() => header.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+  } else {
+    sndClose();
+  }
+}
+
+// ── TABS ──
+function switchTab(idx, el) {
+  document.querySelectorAll('.tab-page').forEach((p,i) => {
+    p.classList.toggle('active', i === idx);
+  });
+  document.querySelectorAll('.nav-tab').forEach((t,i) => {
+    t.classList.toggle('active', i === idx);
+  });
+  sndTab();
+  el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  
+  // Close all accordions in new tab; open first one
+  setTimeout(() => {
+    const firstHeader = document.querySelector('#tab' + idx + ' .section-header');
+    if (firstHeader && !firstHeader.classList.contains('open')) {
+      const body = firstHeader.nextElementSibling;
+      if (body && !body.classList.contains('open')) {
+        body.classList.add('open');
+        firstHeader.classList.add('open');
+      }
+    }
+  }, 100);
+}
+
+// ── PLEDGE ──
+function takePledge() {
+  sndPledge();
+  document.getElementById('pledgeConfirm').style.display = 'block';
+  const btn = document.getElementById('pledgeBtn');
+  btn.textContent = '✓ Pledge Taken!';
+  btn.style.background = '#2E6B2E';
+  btn.style.color = '#fff';
+  showToast('🌿 Welcome to the Green Movement!');
+}
+
+// ── TOAST ──
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// ── PRODUCT ITEM SOUND ──
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.prod-item').forEach(item => {
+    item.addEventListener('touchstart', () => sndClick(), { passive: true });
+    item.addEventListener('mousedown', () => sndClick());
+  });
+
+  // Auto-open first section on load
+  const first = document.querySelector('#tab0 .section-header');
+  if (first) {
+    first.classList.add('open');
+    first.nextElementSibling.classList.add('open');
+  }
+
+  // Show welcome toast
+  setTimeout(() => showToast('🌾 Scroll down to explore all sections'), 1200);
+});
+</script>
+</body>
+</html>

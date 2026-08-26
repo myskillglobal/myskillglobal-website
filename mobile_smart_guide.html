@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Mobile Smart Guide</title>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+<style>
+/* ═══════ RESET & BASE ═══════ */
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Segoe UI',system-ui,sans-serif;
+  background:linear-gradient(135deg,#0f172a,#111827,#312e81);
+  min-height:100vh;
+  display:flex;justify-content:center;
+  padding:12px 12px 30px;
+  color:#fff;overflow-x:hidden;position:relative;
+}
+body::before{content:'';position:fixed;width:320px;height:320px;background:#7c3aed;top:-120px;left:-120px;border-radius:50%;filter:blur(120px);opacity:.35;z-index:-1;}
+body::after{content:'';position:fixed;width:280px;height:280px;background:#06b6d4;bottom:-100px;right:-100px;border-radius:50%;filter:blur(120px);opacity:.35;z-index:-1;}
+#app{width:100%;max-width:430px;}
+
+/* ═══════ SCREENS ═══════ */
+.screen{display:none;}
+.screen.active{display:block;animation:fadeUp .3s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
+
+/* ═══════ HEADER ═══════ */
+.header{
+  display:flex;align-items:center;gap:14px;margin-bottom:16px;
+  padding:16px;border-radius:24px;
+  background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);
+  backdrop-filter:blur(12px);
+  box-shadow:0 8px 30px rgba(0,0,0,0.35),inset 0 1px 1px rgba(255,255,255,0.1);
+}
+.header-icon{
+  width:52px;height:52px;border-radius:18px;flex-shrink:0;
+  background:linear-gradient(135deg,#8b5cf6,#6366f1);
+  display:flex;align-items:center;justify-content:center;font-size:28px;
+  box-shadow:0 5px 18px rgba(99,102,241,.45);
+}
+h1{font-size:22px;font-weight:700;color:#fff;line-height:1.3;}
+
+/* ═══════ SCORE BAR ═══════ */
+.score-bar{
+  display:flex;justify-content:space-between;align-items:center;gap:10px;
+  padding:14px 16px;margin-bottom:18px;border-radius:18px;
+  background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);
+  backdrop-filter:blur(10px);font-size:14px;color:#d1d5db;
+}
+.score-bar strong{color:#fff;}
+
+/* ═══════ SECTION DIVIDER ═══════ */
+.section-label{
+  font-size:12px;font-weight:700;letter-spacing:1.5px;
+  color:#64748b;text-transform:uppercase;
+  padding:0 4px;margin:18px 0 10px;
+}
+
+/* ═══════ QUIZ CHAPTER GRID ═══════ */
+.chapter-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:6px;}
+.chapter-btn{
+  position:relative;background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.12);border-radius:22px;
+  padding:16px;text-align:left;cursor:pointer;overflow:hidden;
+  transition:all .35s ease;backdrop-filter:blur(12px);min-height:148px;
+  box-shadow:0 8px 20px rgba(0,0,0,.25),inset 0 1px 1px rgba(255,255,255,.08);
+  width:100%;
+}
+.chapter-btn:active{transform:scale(.97);}
+.chapter-btn::before{content:'';position:absolute;width:120%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.12),transparent);top:0;left:-130%;transition:.7s;}
+.chapter-btn:hover::before{left:120%;}
+.ch-icon{
+  width:46px;height:46px;display:flex;align-items:center;justify-content:center;
+  border-radius:15px;background:linear-gradient(135deg,#8b5cf6,#6366f1);
+  margin-bottom:11px;box-shadow:0 6px 18px rgba(99,102,241,.4);font-size:24px;
+}
+.ch-title{font-size:14px;font-weight:700;line-height:1.45;color:#fff;}
+.ch-sub{font-size:12px;color:#cbd5e1;margin-top:5px;line-height:1.4;}
+.chapter-btn.done{background:rgba(16,185,129,.18);border-color:rgba(16,185,129,.35);}
+.chapter-btn.done .ch-icon{background:linear-gradient(135deg,#10b981,#059669);}
+.chapter-btn.isnew{background:rgba(139,92,246,.18);border-color:rgba(139,92,246,.35);}
+.new-tag{
+  display:inline-block;margin-left:5px;padding:2px 7px;border-radius:999px;
+  font-size:10px;font-weight:700;
+  background:linear-gradient(135deg,#f43f5e,#ec4899);color:#fff;
+  animation:pulse 1.5s infinite;
+}
+@keyframes pulse{0%{transform:scale(1);}50%{transform:scale(1.08);}100%{transform:scale(1);}}
+
+/* ═══════ AWARENESS CARDS (full-width) ═══════ */
+.aware-card{
+  display:flex;align-items:center;gap:16px;
+  background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);
+  border-radius:20px;padding:18px 16px;margin-bottom:12px;
+  cursor:pointer;transition:all .25s;
+  box-shadow:0 6px 20px rgba(0,0,0,.25);
+  backdrop-filter:blur(12px);
+}
+.aware-card:active{transform:scale(.98);}
+.aware-card.warn-c{border-left:4px solid #ef4444;}
+.aware-card.tips-c{border-left:4px solid #10b981;}
+.aware-card.reduce-c{border-left:4px solid #3b82f6;}
+.aware-card.cost-c{border-left:4px solid #f59e0b;}
+.aware-card.reels-c{border-left:4px solid #ec4899;}
+.aware-card .ac-ico{font-size:34px;flex-shrink:0;}
+.aware-card .ac-txt h3{font-size:16px;font-weight:700;color:#fff;margin-bottom:3px;}
+.aware-card .ac-txt p{font-size:13px;color:#94a3b8;line-height:1.4;}
+.aware-card .ac-arr{margin-left:auto;font-size:22px;color:#475569;flex-shrink:0;}
+
+/* ═══════ QUIZ CARD ═══════ */
+.quiz-card{
+  background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);
+  border-radius:28px;padding:22px;backdrop-filter:blur(12px);
+  box-shadow:0 10px 30px rgba(0,0,0,.35),inset 0 1px 1px rgba(255,255,255,.08);
+}
+.quiz-meta{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:#cbd5e1;margin-bottom:18px;}
+.quiz-q{font-size:18px;line-height:1.75;font-weight:700;color:#fff;margin-bottom:18px;}
+.opt-btn{
+  width:100%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);
+  border-radius:18px;padding:14px 16px;text-align:left;font-size:15px;line-height:1.6;
+  color:#fff;cursor:pointer;margin-bottom:12px;transition:all .28s ease;backdrop-filter:blur(8px);
+}
+.opt-btn:hover:not(:disabled){transform:translateY(-2px);background:rgba(255,255,255,.14);}
+.opt-btn.correct{background:rgba(16,185,129,.22);border-color:#10b981;color:#ecfdf5;}
+.opt-btn.wrong{background:rgba(239,68,68,.2);border-color:#ef4444;color:#fff1f2;}
+.explanation{
+  margin-top:18px;background:rgba(255,255,255,.08);border-left:4px solid #8b5cf6;
+  border-radius:18px;padding:14px 16px;font-size:15px;line-height:1.75;color:#e2e8f0;
+}
+.explanation strong{color:#fff;}
+.nav-row{display:flex;gap:10px;margin-top:18px;}
+.btn{flex:1;border:none;border-radius:16px;padding:13px 18px;font-size:15px;font-weight:700;cursor:pointer;transition:.3s;}
+.btn.primary{background:linear-gradient(135deg,#8b5cf6,#6366f1);color:#fff;box-shadow:0 8px 20px rgba(99,102,241,.4);}
+.btn.primary:hover{filter:brightness(1.08);}
+.btn:not(.primary){background:rgba(255,255,255,0.12);color:#fff;}
+.progress{height:10px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden;margin-bottom:18px;}
+.progress-fill{
+  height:100%;background:linear-gradient(90deg,#06b6d4,#8b5cf6,#ec4899);
+  border-radius:999px;transition:width .4s ease;
+  animation:glow 2s infinite alternate;
+}
+@keyframes glow{from{filter:brightness(1);}to{filter:brightness(1.25);}}
+
+/* ═══════ RESULT ═══════ */
+.result-box{
+  background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);
+  border-radius:28px;padding:22px;backdrop-filter:blur(12px);text-align:center;
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
+}
+.result-box h2{font-size:28px;margin:12px 0;color:#fff;}
+.result-box p{font-size:15px;line-height:1.7;color:#d1d5db;margin-bottom:20px;}
+.badge{display:inline-block;padding:8px 18px;border-radius:999px;font-size:13px;font-weight:700;}
+.badge.gold{background:linear-gradient(135deg,#fde047,#f59e0b);color:#111827;}
+.badge.silver{background:linear-gradient(135deg,#e2e8f0,#94a3b8);color:#111827;}
+.badge.bronze{background:linear-gradient(135deg,#fdba74,#ea580c);color:#111827;}
+
+/* ═══════ AWARENESS INNER PAGES ═══════ */
+.aware-page-header{
+  background:rgba(17,24,39,0.95);border-bottom:1px solid rgba(255,255,255,0.1);
+  padding:14px 16px;display:flex;align-items:center;gap:12px;
+  position:sticky;top:0;z-index:100;backdrop-filter:blur(16px);
+  margin:-12px -12px 18px;
+}
+.back-btn-sm{
+  background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);
+  color:#fff;font-size:20px;width:40px;height:40px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;
+}
+.back-btn-sm:active{background:rgba(255,255,255,0.2);}
+.aware-page-header h2{font-size:17px;font-weight:700;color:#fff;}
+
+/* sign items */
+.sign-item{
+  display:flex;gap:14px;align-items:flex-start;
+  background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);
+  border-radius:18px;padding:15px 14px;margin-bottom:13px;
+  box-shadow:0 4px 14px rgba(0,0,0,.2);
+}
+.sign-item .sico{font-size:28px;flex-shrink:0;margin-top:2px;}
+.sign-item h4{font-size:16px;font-weight:700;color:#fff;margin-bottom:4px;}
+.sign-item p{font-size:15px;color:#94a3b8;line-height:1.65;}
+.intro-card{
+  background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);
+  border-radius:18px;padding:16px;margin-bottom:16px;
+}
+.intro-card p{font-size:15px;color:#94a3b8;line-height:1.75;}
+.quote-box{
+  background:linear-gradient(135deg,rgba(16,185,129,.15),rgba(6,182,212,.1));
+  border:1px solid rgba(16,185,129,.3);
+  border-radius:18px;padding:18px 16px;text-align:center;margin:8px 0 16px;
+}
+.quote-box.reels-quote{
+  background:linear-gradient(135deg,rgba(236,72,153,.15),rgba(99,102,241,.1));
+  border:1px solid rgba(236,72,153,.3);
+}
+.quote-box.reels-quote p{color:#f9a8d4;}
+.quote-box .qico{font-size:28px;margin-bottom:8px;}
+.quote-box p{font-size:15px;color:#6ee7b7;font-style:italic;line-height:1.7;font-weight:600;}
+.page-tag{text-align:center;font-size:12px;color:#475569;padding:6px 0;}
+
+/* next button inside awareness pages */
+.aware-next-btn{
+  width:100%;border:none;border-radius:18px;padding:16px;
+  background:linear-gradient(135deg,#8b5cf6,#6366f1);
+  color:#fff;font-size:16px;font-weight:700;cursor:pointer;
+  margin-top:6px;margin-bottom:18px;
+  box-shadow:0 8px 24px rgba(99,102,241,.4);
+  transition:.25s;display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.aware-next-btn:active{filter:brightness(1.1);}
+.aware-next-btn.last-btn{background:linear-gradient(135deg,#10b981,#059669);box-shadow:0 8px 24px rgba(16,185,129,.4);}
+.aware-next-btn.reels-quiz-btn{background:linear-gradient(135deg,#ec4899,#8b5cf6);box-shadow:0 8px 24px rgba(236,72,153,.4);}
+
+/* ═══════ COST PAGE ═══════ */
+.fact-box{background:rgba(6,182,212,.1);border:1px solid rgba(6,182,212,.25);border-radius:18px;padding:16px;margin-bottom:14px;}
+.fact-box .ft{font-size:14px;font-weight:700;color:#7dd3fc;margin-bottom:6px;}
+.fact-box p{font-size:14px;color:#bae6fd;line-height:1.65;}
+.cost-intro-card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:18px;padding:16px;margin-bottom:16px;}
+.cost-intro-card p{font-size:15px;color:#94a3b8;line-height:1.75;}
+.cost-card2{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:18px;padding:16px;margin-bottom:12px;}
+.cost-card2 h4{font-size:14px;font-weight:700;color:#f59e0b;margin-bottom:10px;}
+.calc-row2{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.07);font-size:14px;}
+.calc-row2:last-child{border-bottom:none;}
+.calc-row2 .cl{color:#94a3b8;}
+.calc-row2 .cv{font-weight:700;color:#fff;}
+.cost-table2{width:100%;border-collapse:collapse;font-size:14px;}
+.cost-table2 th{background:rgba(245,158,11,.2);color:#fbbf24;padding:10px 12px;text-align:left;}
+.cost-table2 th:last-child{text-align:right;}
+.cost-table2 td{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.07);color:#94a3b8;}
+.cost-table2 td:last-child{text-align:right;font-weight:700;color:#fff;}
+.cost-table2 tr.hl td{background:rgba(16,185,129,.15);color:#6ee7b7;font-weight:700;font-size:15px;}
+.total-box2{
+  background:linear-gradient(135deg,rgba(245,158,11,.2),rgba(217,119,6,.15));
+  border:2px solid rgba(245,158,11,.5);border-radius:20px;
+  padding:20px;text-align:center;margin-bottom:14px;
+}
+.total-box2 .tl{font-size:13px;color:#fcd34d;margin-bottom:6px;}
+.total-box2 .ta{font-size:34px;font-weight:700;color:#fbbf24;letter-spacing:-1px;}
+.total-box2 .ts{font-size:12px;color:#92400e;margin-top:4px;}
+.warn-box2{background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.25);border-radius:18px;padding:16px;margin-bottom:14px;}
+.warn-box2 .wt{font-size:14px;font-weight:700;color:#fca5a5;margin-bottom:6px;}
+.warn-box2 p{font-size:14px;color:#fecaca;line-height:1.65;}
+
+/* ═══════ EDITABLE CALCULATOR ═══════ */
+.calc-edit-card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:18px;padding:18px 16px;margin-bottom:16px;}
+.calc-edit-card h3{font-size:15px;font-weight:700;color:#fff;margin-bottom:14px;}
+.inp-row{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.07);gap:10px;}
+.inp-row:last-child{border-bottom:none;}
+.inp-row label{font-size:14px;color:#94a3b8;flex:1;line-height:1.4;}
+.inp-row .inp-wrap{display:flex;align-items:center;gap:5px;flex-shrink:0;}
+.inp-wrap .cur{font-size:13px;color:#64748b;}
+.calc-inp{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:10px;color:#fff;font-size:15px;font-weight:700;padding:7px 9px;width:88px;text-align:right;outline:none;}
+.calc-inp:focus{border-color:#8b5cf6;background:rgba(139,92,246,.15);}
+.do-calc-btn{width:100%;border:none;border-radius:16px;padding:14px;background:linear-gradient(135deg,#f59e0b,#d97706);color:#111827;font-size:16px;font-weight:700;cursor:pointer;margin-bottom:18px;box-shadow:0 6px 20px rgba(245,158,11,.35);transition:.25s;}
+.do-calc-btn:active{filter:brightness(1.1);}
+.calc-results{display:none;}
+.calc-results.show{display:block;animation:fadeUp .35s ease;}
+
+/* ═══════ REELS AWARENESS PAGE ═══════ */
+.reels-banner{
+  background:linear-gradient(135deg,rgba(236,72,153,.2),rgba(99,102,241,.15));
+  border:1px solid rgba(236,72,153,.35);
+  border-radius:20px;padding:18px 16px;margin-bottom:16px;text-align:center;
+}
+.reels-banner .rb-ico{font-size:44px;margin-bottom:8px;}
+.reels-banner h3{font-size:18px;font-weight:700;color:#f9a8d4;margin-bottom:6px;}
+.reels-banner p{font-size:13px;color:#fce7f3;line-height:1.6;}
+.reels-tip{
+  display:flex;gap:14px;align-items:flex-start;
+  background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);
+  border-radius:18px;padding:15px 14px;margin-bottom:13px;
+  box-shadow:0 4px 14px rgba(0,0,0,.2);
+  border-left:3px solid rgba(236,72,153,.5);
+}
+.reels-tip .rtco{font-size:26px;flex-shrink:0;margin-top:2px;}
+.reels-tip h4{font-size:15px;font-weight:700;color:#fff;margin-bottom:4px;}
+.reels-tip p{font-size:14px;color:#94a3b8;line-height:1.6;}
+.reels-stat{
+  background:rgba(236,72,153,.12);border:1px solid rgba(236,72,153,.25);
+  border-radius:16px;padding:14px 16px;margin-bottom:10px;display:flex;align-items:center;gap:12px;
+}
+.reels-stat .rs-num{font-size:26px;font-weight:700;color:#f9a8d4;min-width:60px;text-align:center;}
+.reels-stat .rs-txt{font-size:13px;color:#fce7f3;line-height:1.5;}
+
+/* ═══════ SOUND TOGGLE ═══════ */
+.sound-toggle{
+  position:fixed;bottom:20px;right:16px;
+  width:46px;height:46px;border:none;border-radius:50%;
+  background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.2);
+  color:#fff;display:flex;align-items:center;justify-content:center;
+  font-size:22px;cursor:pointer;z-index:999;
+  box-shadow:0 4px 16px rgba(0,0,0,.3);transition:.3s;backdrop-filter:blur(10px);
+}
+
+@media(max-width:480px){
+  body{padding:10px 10px 30px;}
+  .chapter-grid{grid-template-columns:1fr;}
+  h1{font-size:20px;}
+  .quiz-q{font-size:17px;}
+  .opt-btn{font-size:14px;padding:13px;}
+  .quiz-card,.result-box{padding:18px;}
+  .chapter-btn{min-height:auto;}
+}
+</style>
+</head>
+<body>
+<div id="app">
+  <div class="header">
+    <div class="header-icon">&#128241;</div>
+    <h1>Mobile Smart Guide</h1>
+  </div>
+  <div id="main"></div>
+</div>
+<button class="sound-toggle" id="soundToggle" title="Toggle Sound">&#128266;</button>
+
+<script>
+/* ═══════════════════════════════
+   SOUND ENGINE
+═══════════════════════════════ */
+var soundOn=true;
+var AudioCtx=window.AudioContext||window.webkitAudioContext;
+var ctx=null;
+function getCtx(){if(!ctx)ctx=new AudioCtx();if(ctx.state==='suspended')ctx.resume();return ctx;}
+function playCorrect(){if(!soundOn)return;try{var c=getCtx(),notes=[523,659,784,1047];notes.forEach(function(f,i){var o=c.createOscillator(),g=c.createGain();o.connect(g);g.connect(c.destination);o.type='sine';o.frequency.value=f;var t=c.currentTime+i*.1;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.18,t+.03);g.gain.exponentialRampToValueAtTime(.001,t+.25);o.start(t);o.stop(t+.25);});}catch(e){}}
+function playWrong(){if(!soundOn)return;try{var c=getCtx(),notes=[330,277];notes.forEach(function(f,i){var o=c.createOscillator(),g=c.createGain();o.connect(g);g.connect(c.destination);o.type='sawtooth';o.frequency.value=f;var t=c.currentTime+i*.18;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.15,t+.04);g.gain.exponentialRampToValueAtTime(.001,t+.3);o.start(t);o.stop(t+.3);});}catch(e){}}
+function playClick(){if(!soundOn)return;try{var c=getCtx(),o=c.createOscillator(),g=c.createGain();o.connect(g);g.connect(c.destination);o.type='sine';o.frequency.value=880;var t=c.currentTime;g.gain.setValueAtTime(.12,t);g.gain.exponentialRampToValueAtTime(.001,t+.1);o.start(t);o.stop(t+.1);}catch(e){}}
+function playBack(){if(!soundOn)return;try{var c=getCtx(),o=c.createOscillator(),g=c.createGain();o.connect(g);g.connect(c.destination);o.type='sine';o.frequency.value=440;var t=c.currentTime;o.frequency.setValueAtTime(440,t);o.frequency.exponentialRampToValueAtTime(280,t+.1);g.gain.setValueAtTime(.15,t);g.gain.exponentialRampToValueAtTime(.001,t+.14);o.start(t);o.stop(t+.15);}catch(e){}}
+function playFinish(){if(!soundOn)return;try{var c=getCtx(),mel=[523,659,784,659,1047,880,784];mel.forEach(function(f,i){var o=c.createOscillator(),g=c.createGain();o.connect(g);g.connect(c.destination);o.type='sine';o.frequency.value=f;var t=c.currentTime+i*.13;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.15,t+.04);g.gain.exponentialRampToValueAtTime(.001,t+.28);o.start(t);o.stop(t+.28);});}catch(e){}}
+
+/* ═══════════════════════════════
+   QUIZ DATA  (9 chapters now)
+═══════════════════════════════ */
+var chapters=[
+  {id:0,icon:"&#128722;",title:"Buying New",sub:"What to check",isNew:false,qs:[
+    {q:"What is the IMEI number used for?",opts:["Controls screen brightness","Uniquely identifies your phone globally","Manages app permissions","Sets network speed"],ans:1,exp:"IMEI (International Mobile Equipment Identity) is a 15-digit unique ID for every phone. Dial *#06# to see it. Used to block a stolen phone and verify authenticity."},
+    {q:"Dial *#06# on any phone. What does it show?",opts:["Battery health","IMEI number","Network signal strength","RAM usage"],ans:1,exp:"*#06# instantly shows your IMEI. Always note it down and keep a photo. You will need it if your phone is stolen."},
+    {q:"SAR value on a phone refers to?",opts:["Screen refresh rate","Battery storage capacity","Radiation absorbed by the body","SIM activation rate"],ans:2,exp:"SAR (Specific Absorption Rate) measures how much RF radiation your body absorbs. In India, the limit is 1.6 W/kg. Lower SAR = safer. Check before buying."},
+    {q:"Which Indian government portal lets you verify if a phone is legitimate?",opts:["TRAI website","CEIR portal (ceir.gov.in)","BIS India","MeitY portal"],ans:1,exp:"CEIR (Central Equipment Identity Register) at ceir.gov.in lets you check if a device is blacklisted or officially registered in India."},
+    {q:"Why is it smart to avoid buying the very latest flagship phone?",opts:["Old phones have better cameras","Technology changes fast, prices drop, and radiation standards may improve","Flagships have no warranty","They do not support 5G"],ans:1,exp:"Top flagships lose 30-40% value in 6 months, technology changes yearly, and newer standards often improve safety. Mid-range is smarter for most users."}
+  ]},
+  {id:1,icon:"&#9851;",title:"Buying Used",sub:"Avoid scams",isNew:false,qs:[
+    {q:"How do you check if a used phone is stolen?",opts:["Check the phone colour","Search IMEI on CEIR blacklist","Look at the charger","Count the apps"],ans:1,exp:"Go to ceir.gov.in and enter the IMEI. If the phone is blacklisted (reported stolen), you cannot use it legally. Networks will block it."},
+    {q:"When buying a used phone, IMEI on box does not match *#06#. What does this mean?",opts:["Normal for Android phones","IMEI was reset by software update","Possible fraud - device may be tampered","The phone needs a restart"],ans:2,exp:"IMEI printed on the box, back cover, and shown by *#06# should all match. A mismatch means the phone may be cloned, stolen, or tampered. Walk away."},
+    {q:"Why should you factory reset a used phone before using it yourself?",opts:["To improve battery life","To remove previous owner data, accounts and spyware","To update the OS","To increase storage"],ans:1,exp:"A used phone may have the previous owner Google or Apple account, spyware, or personal data. Always factory reset before use."},
+    {q:"Which test helps verify a used phone battery health?",opts:["Dial *#2663#","Check Settings > Battery Health or use AccuBattery app","Turn the phone off and on","Call the seller"],ans:1,exp:"iOS shows battery health in Settings. Android users can use AccuBattery app. Below 80% capacity means the battery may need replacement soon."},
+    {q:"A phone is listed online at 70% below market price. What is most likely?",opts:["Lucky deal from a genuine seller","Phone is stolen, fake, or has serious damage","Seller made a pricing error","Phone is too old to sell"],ans:1,exp:"If a deal seems too good to be true, it almost always is. Stolen phones, water-damaged devices, or IMEI-cloned fakes are common at suspiciously low prices."}
+  ]},
+  {id:2,icon:"&#128737;",title:"Mobile Safety",sub:"Protect your phone",isNew:false,qs:[
+    {q:"Which lock method is most secure for your smartphone?",opts:["Pattern lock","4-digit PIN","Strong alphanumeric password or biometric + PIN","No lock for convenience"],ans:2,exp:"Biometric is convenient, but must be backed by a strong PIN or password. Simple patterns can be seen by observers. Avoid face unlock alone on Android."},
+    {q:"What is Mobile Insurance useful for?",opts:["Upgrading to a new phone","Covering theft, accidental damage, and screen repair costs","Getting cashback on apps","Lowering radiation exposure"],ans:1,exp:"Mobile insurance covers theft, accidental drops, screen damage. For phones over Rs 15000, insurance is worth considering."},
+    {q:"Two-factor authentication (2FA) on your phone means?",opts:["Using two SIM cards","Verifying identity with password + OTP or app code","Logging in from two devices","Double encryption of data"],ans:1,exp:"2FA requires something you know (password) + something you have (OTP or authenticator app). Even if your password is stolen, attackers cannot access your account without the second factor."},
+    {q:"You receive an SMS: Your bank account is blocked. Click here. What do you do?",opts:["Click immediately","Forward to friends","Ignore and call your bank on the official number","Reply STOP"],ans:2,exp:"This is a phishing or smishing attack. Banks never ask for credentials via SMS links. Call the number on the bank official website. Report to cybercrime.gov.in."},
+    {q:"What does enabling Find My Device help you do?",opts:["Speed up your phone","Remotely locate, lock, or erase your lost phone","Block spam calls","Boost Wi-Fi signal"],ans:1,exp:"Google Find My Device and Apple Find My let you see your phone location, lock it, or remotely wipe all data. Enable these before you lose your phone."}
+  ]},
+  {id:3,icon:"&#128241;",title:"Selling Your Phone",sub:"Data and privacy",isNew:false,qs:[
+    {q:"Before selling your phone, what is the MOST important step?",opts:["Remove the SIM card only","Sign out of all accounts, then factory reset","Delete your photos","Remove the memory card"],ans:1,exp:"Sign out of Google, Apple, Samsung accounts first, then factory reset. Also remove SIM and SD card."},
+    {q:"After a factory reset, can deleted data still be recovered?",opts:["No - factory reset permanently erases everything","Yes - with forensic tools, some data can be recovered on older Android devices","Only on iPhones","Only if the phone is rooted"],ans:1,exp:"On older Android phones without full-disk encryption, data recovery tools can sometimes retrieve files. Solution: encrypt the phone before factory reset."},
+    {q:"You sold your phone but forgot to sign out of iCloud. What risk does the buyer face?",opts:["No risk - accounts auto-switch","Activation Lock - the buyer phone is permanently locked to your account","Slower performance","Lost contacts"],ans:1,exp:"Apple Activation Lock ties the iPhone to your Apple ID. If you forget to sign out before selling, the new owner cannot use the phone."},
+    {q:"What data can remain even after you delete apps before selling?",opts:["App icons only","Account credentials, cached files, autofill data, browsing history","Only large video files","Nothing - app deletion is complete"],ans:1,exp:"Deleting an app does not always remove its stored data or saved passwords. A full factory reset is the only reliable way to clear all app data."},
+    {q:"Which is the safest order of steps before selling your phone?",opts:["Delete apps then Remove SIM then Sell","Remove SIM then Factory reset then Sell","Sign out of all accounts then Remove SIM and SD card then Factory reset then Sell","Factory reset then Sign out then Remove SIM then Sell"],ans:2,exp:"Always sign out first, then remove SIM and SD card, then factory reset. Doing it in the wrong order can lock the buyer out or leave your data exposed."}
+  ]},
+  {id:4,icon:"&#9762;",title:"Radiation & Health",sub:"Stay informed",isNew:false,qs:[
+    {q:"SAR limit in India set by the government is?",opts:["2.0 W/kg","1.6 W/kg","0.8 W/kg","3.2 W/kg"],ans:1,exp:"India follows the FCC standard of 1.6 W/kg. The EU uses 2.0 W/kg. All phones sold legally in India must display their SAR value."},
+    {q:"Which habit significantly reduces radiation exposure from your phone?",opts:["Using the phone in both hands","Using a wired earphone instead of holding phone to ear","Keeping the phone face down","Using only speakerphone outdoors"],ans:1,exp:"Distance dramatically reduces RF exposure. A wired headset keeps the phone away from your head. Even 10cm distance reduces exposure by 75%."},
+    {q:"How long should you ideally use one smartphone before replacing it?",opts:["10+ years","1 year maximum","2-3 years is a healthy balance","Keep until it stops working"],ans:2,exp:"2-3 years balances health (older phones may have degraded radiation shielding), technology (security updates stop), and economics (resale value drops sharply after 3 years)."},
+    {q:"Your phone signal is very weak (1 bar). How does this affect radiation?",opts:["Less radiation - signal is weak","More radiation - phone boosts power to reach the tower","Radiation stays constant","Only affects battery"],ans:1,exp:"When signal is poor, your phone amplifies its transmitter to reach the tower - significantly increasing RF output. Use Wi-Fi calling instead when possible."},
+    {q:"Using a phone while charging is risky because?",opts:["Charger emits extra radiation","Phone works harder, may emit more RF, and low-quality chargers can cause fires","Battery chemicals become dangerous","The screen gets permanently damaged"],ans:1,exp:"Using a phone while charging increases RF exposure. A counterfeit or damaged charger is also a serious fire risk. Always use the original or a certified charger."}
+  ]},
+  {id:5,icon:"&#128205;",title:"Lost or Found",sub:"What to do",isNew:false,qs:[
+    {q:"Your phone is stolen. What is the FIRST thing you should do?",opts:["Post on social media","Use Find My Device to remotely lock or erase it","Call the police immediately","Buy a new phone"],ans:1,exp:"First, remotely lock or erase your phone before a thief can access your data. Then file a police FIR and report to your carrier to block the IMEI."},
+    {q:"To block a stolen phone IMEI in India, you contact?",opts:["The manufacturer","CEIR portal (ceir.gov.in) after filing an FIR","Google Play Store","The nearest Wi-Fi provider"],ans:1,exp:"File an FIR with police, then visit ceir.gov.in to block the IMEI. Once blocked, the phone cannot connect to any network in India."},
+    {q:"You find a phone on the road. What is the right thing to do?",opts:["Keep it - finders keepers","Try to unlock it to find the owner","Hand it to the nearest police station","Sell it quickly"],ans:2,exp:"Hand found phones to the police. Attempting to unlock or use someone else phone can be illegal."},
+    {q:"After your phone is stolen, which accounts should you secure IMMEDIATELY?",opts:["Only your bank account","Email, bank, social media, and UPI apps - change all passwords from another device","Only WhatsApp","Only Instagram"],ans:1,exp:"Your email is the master key to all accounts. Change passwords for email, banking, WhatsApp, and social media from another device right away."},
+    {q:"What should you note down BEFORE your phone is lost?",opts:["App download history","IMEI number, device model, purchase receipt, and insurer contact","Only the phone colour","Only the SIM number"],ans:1,exp:"Keep a record of IMEI (*#06#), phone model, purchase invoice, and your insurer claim number. Store these on paper or in email - not only on the phone itself."}
+  ]},
+  {id:6,icon:"&#128683;",title:"Unknown Apps",sub:"Stay safe",isNew:false,qs:[
+    {q:"What is the main risk of installing apps from unknown sources?",opts:["Apps may run slower","Apps may contain malware, spyware, or ransomware that steals your data","Unknown apps use more battery","They do not support dark mode"],ans:1,exp:"Apps outside official stores are not security-checked. They can silently steal contacts, bank credentials, photos, and OTPs, or encrypt your phone and demand ransom."},
+    {q:"A flashlight app asks for contacts, camera, microphone AND SMS access. What should you do?",opts:["Allow all permissions","Allow only camera permission","Deny all suspicious permissions or uninstall the app","Install and review later"],ans:2,exp:"A flashlight needs only camera or torch permission. Requesting SMS or contacts is a red flag - the app is likely harvesting your data."},
+    {q:"You receive a WhatsApp message with an APK file saying Install this to win Rs 5000. What do you do?",opts:["Install it - looks genuine","Forward to friends first","Delete it immediately - it is likely malware","Install in safe mode"],ans:2,exp:"APK files sent via WhatsApp or Telegram are a common way to spread banking trojans in India. They can steal OTPs and UPI credentials."},
+    {q:"Which setting should be TURNED OFF on Android to prevent unknown app installs?",opts:["Developer Mode","Install unknown apps / Unknown sources","NFC","Hotspot"],ans:1,exp:"Settings > Security > Install unknown apps should always be OFF. Only enable it temporarily if you absolutely must sideload a trusted app, then disable again."},
+    {q:"You installed a game from an unofficial website. Next day, your UPI account shows unauthorised transactions. What likely happened?",opts:["Your bank was hacked","The game contained a banking trojan that read your OTPs","Your SIM card failed","You entered the wrong UPI PIN"],ans:1,exp:"Banking trojans hidden in unofficial game APKs can intercept SMS OTPs and silently transfer money. Always install apps only from official stores."}
+  ]},
+  {id:7,icon:"&#128306;",title:"Public Wi-Fi",sub:"Data safety",isNew:false,qs:[
+    {q:"Why is using public Wi-Fi (cafe, airport, mall) risky for your data?",opts:["Public Wi-Fi is always slower","Data on unencrypted public Wi-Fi can be intercepted by anyone on the same network","Public Wi-Fi blocks all apps","It drains your battery faster"],ans:1,exp:"Most public Wi-Fi hotspots are unencrypted. Attackers on the same network can intercept your login credentials, emails, and banking data - called a Man-in-the-Middle attack."},
+    {q:"What is a Man-in-the-Middle attack on public Wi-Fi?",opts:["An attacker physically steals your phone","An attacker secretly intercepts data flowing between your phone and the internet","A virus that spreads via Wi-Fi","A hacker who controls your screen remotely"],ans:1,exp:"In a MITM attack, a hacker positions themselves between your phone and the router, reading your traffic in real time - including passwords, OTPs, and messages."},
+    {q:"What is the safest tool to use if you must connect to public Wi-Fi?",opts:["Airplane mode","VPN (Virtual Private Network)","Incognito or Private browsing mode","Switching to 3G"],ans:1,exp:"A VPN encrypts all your internet traffic, making it unreadable even if intercepted. Incognito mode only hides local browsing history - it does NOT protect against network attacks."},
+    {q:"Which activity is MOST dangerous to do on public Wi-Fi without a VPN?",opts:["Watching YouTube","Online banking or UPI transactions","Reading a news website","Checking the weather"],ans:1,exp:"Banking, UPI, and any login with sensitive credentials are extremely risky on public Wi-Fi. For financial transactions, always use your mobile data (4G or 5G)."},
+    {q:"A coffee shop has two networks: CafeNet and CafeNet_Free. You should?",opts:["Connect to the free one","Ask staff which is the official network before connecting","Connect to both for better speed","Use mobile data instead"],ans:3,exp:"Fake Wi-Fi hotspots with similar names (Evil Twin networks) are set up by attackers. The safest option is your own mobile data. If you must use Wi-Fi, verify with staff and use a VPN."}
+  ]},
+  /* ── NEW CHAPTER 9: Social Media & Reels Addiction ── */
+  {id:8,icon:"&#127909;",title:"Reels Addiction",sub:"Break the scroll loop",isNew:true,qs:[
+    {q:"Why are short video reels (Instagram, YouTube Shorts, TikTok) so addictive?",opts:["They have the best video quality","Algorithms deliver instant dopamine hits tailored to keep you scrolling indefinitely","They are always educational","Short videos load faster than long ones"],ans:1,exp:"Short-form video apps use AI recommendation engines that trigger dopamine — the brain's reward chemical — every few seconds. Each swipe is designed to prevent you from stopping, similar to how slot machines work."},
+    {q:"On average, how much time do heavy social media users spend on reels and short videos daily?",opts:["Less than 30 minutes","Around 15 minutes","2–4 hours or more — often without realising it","Exactly 1 hour"],ans:2,exp:"Studies show heavy users spend 2–4+ hours daily on short-form video, often without awareness. A session that feels like 10 minutes can actually be over an hour due to the 'time distortion' effect of endless scrolling."},
+    {q:"What is the 'doomscrolling' effect?",opts:["Scrolling to find good news","Compulsively consuming negative or distressing content online, unable to stop","A feature that blocks adult content","A way to save videos for later"],ans:1,exp:"Doomscrolling is the habit of endlessly consuming negative news or emotionally charged content. It increases anxiety and stress, yet the brain keeps seeking the next stimulating piece of content."},
+    {q:"Which of these is a healthy boundary to set for reels and social media?",opts:["Check your phone first thing every morning for updates","Keep your phone by your bed for late-night scrolling","Set a 30-minute daily app timer and put your phone in another room at bedtime","Allow unlimited usage on weekends"],ans:2,exp:"Setting a daily app time limit (available on both Android and iPhone) and keeping your phone out of the bedroom at night are two of the most effective evidence-based strategies to reduce compulsive scrolling."},
+    {q:"Excessive reels and social media use most directly harms which skill?",opts:["Physical strength","Deep focus and the ability to concentrate on long tasks","Cooking ability","Geographic knowledge"],ans:1,exp:"Short-form content trains the brain to expect rapid stimulation every few seconds. Over time, this damages your ability to concentrate on tasks that require sustained attention — like studying, reading, or complex problem-solving."},
+    {q:"Your friend says: I only check Instagram when I am bored. What is the risk?",opts:["No risk — boredom-based use is healthy","Boredom is normal and does not need a phone to fix it — using social media as a boredom cure builds a dependency loop","This is the best way to use social media","Boredom checking prevents addiction"],ans:1,exp:"Using your phone to escape boredom creates a harmful loop: boredom → phone → temporary relief → lower boredom tolerance → more phone use. Learning to tolerate boredom is actually a key mental health skill."},
+    {q:"What does the 'gray-scale mode' technique help with?",opts:["Saving battery","Reducing eye strain in bright sunlight","Making the phone screen less visually stimulating so you use it less","Improving camera quality"],ans:2,exp:"Switching your phone display to grayscale (Settings > Accessibility > Colour) removes the vivid colours that make apps visually rewarding. Studies show it reduces daily screen time by reducing the emotional pull of colourful notifications and app icons."},
+    {q:"Which is the BEST first step if you want to cut down on reels and short-video addiction?",opts:["Delete all your social media accounts permanently","Check your screen time report to understand your actual usage, then set realistic limits","Ask friends to take your phone away","Switch to a smartwatch only"],ans:1,exp:"Awareness is always the first step. Check your phone's screen time report (Digital Wellbeing on Android, Screen Time on iPhone). Most people are shocked by the real numbers. Once you see the data, setting app timers and scheduling phone-free hours becomes much easier."}
+  ]}
+];
+
+/* ═══════════════════════════════
+   AWARENESS DATA  (5 pages now)
+═══════════════════════════════ */
+var awarePages=[
+  {
+    id:'signs',
+    headerTitle:'&#9888;&#65039; Warning Signs',
+    cardClass:'warn-c',
+    cardIcon:'&#9888;&#65039;',
+    cardTitle:'Addiction Warning Signs',
+    cardDesc:'10 signs you may be addicted to your phone',
+    intro:'Mobile technology is an essential part of modern life. However, excessive use can slowly turn into addiction — negatively affecting your studies, health, and daily routine. Watch for these signs:',
+    items:[
+      {ico:'&#128241;',title:'Excessive Screen Time',desc:'Spending far more time on your phone than actually needed for any productive purpose.'},
+      {ico:'&#128543;',title:'Restlessness Without Phone',desc:'Feeling anxious, irritable, or uncomfortable whenever your phone is not nearby.'},
+      {ico:'&#127769;',title:'Late-Night Phone Use',desc:'Losing sleep by gaming, watching videos, or scrolling social media late at night.'},
+      {ico:'&#128218;',title:'Declining Focus on Studies',desc:'Your phone interferes with studies, work tasks, and daily responsibilities.'},
+      {ico:'&#128106;',title:'Neglecting Family & Friends',desc:'Prioritizing your phone over real-life relationships and meaningful social time.'},
+      {ico:'&#128564;',title:'Sleep Problems & Fatigue',desc:'Not getting enough rest due to excessive screen exposure before or during sleep hours.'},
+      {ico:'&#128064;',title:'Eye Strain & Headaches',desc:'Experiencing eye pain, blurry vision, or headaches from prolonged screen use.'},
+      {ico:'&#128260;',title:'Compulsive Phone Checking',desc:'Repeatedly checking your phone even when there is no real reason to do so.'},
+      {ico:'&#127939;',title:'Reduced Physical Activity',desc:'Spending less time on sports, exercise, or outdoor activities because of phone use.'},
+      {ico:'&#129504;',title:'Loss of Self-Control',desc:'Deciding to use your phone less but consistently failing to follow through.'}
+    ],
+    quote:'Keep your phone under your control — don\'t let your phone control you.',
+    nextId:'tips',pageNum:'Page 1 of 5'
+  },
+  {
+    id:'tips',
+    headerTitle:'&#128683; Stay Away Tips',
+    cardClass:'tips-c',
+    cardIcon:'&#128683;',
+    cardTitle:'Stay Away from Phone',
+    cardDesc:'8 effective strategies to reduce screen time',
+    intro:'Even though mobile phones are part of everyday life, excessive use is harmful. Building healthy habits and setting boundaries can help you take back control.',
+    items:[
+      {ico:'&#9200;',title:'Set a Fixed Daily Time Limit',desc:'Decide in advance how long you will use your phone each day and genuinely stick to that limit.'},
+      {ico:'&#128218;',title:'Fill Free Time Meaningfully',desc:'Use spare time for reading books, drawing, music, sports, or learning a new skill.'},
+      {ico:'&#128276;',title:'Turn Off Unnecessary Notifications',desc:'Constant alerts increase the urge to check your phone. Disable non-essential notifications.'},
+      {ico:'&#127795;',title:'Spend Time with Loved Ones',desc:'Value real-world relationships. Build a habit of spending focused, phone-free time with family and friends.'},
+      {ico:'&#128716;',title:'No Phone 1 Hour Before Bed',desc:'Put your phone away at least one hour before sleeping. Better sleep improves overall health.'},
+      {ico:'&#127939;',title:'Join Physical Activities',desc:'Regular sports, walking, or exercise naturally reduces dependence on your phone.'},
+      {ico:'&#128241;',title:'Keep Phone Out of Sight',desc:'Avoid keeping your phone constantly in hand. Distance reduces the urge to check it.'},
+      {ico:'&#127919;',title:'Set Small Achievable Goals',desc:'Start by reducing usage slightly, then gradually decrease more over time at a comfortable pace.'}
+    ],
+    quote:'Technology was made to help us — not to take over our lives.',
+    nextId:'reduce',pageNum:'Page 2 of 5'
+  },
+  {
+    id:'reduce',
+    headerTitle:'&#128267; Cut Down Usage',
+    cardClass:'reduce-c',
+    cardIcon:'&#128267;',
+    cardTitle:'Cut Down Mobile Usage',
+    cardDesc:'6 practical habits for less phone time',
+    intro:'You can build the following habits to meaningfully reduce your mobile phone usage over time:',
+    items:[
+      {ico:'&#128267;',title:'Only Use Phone When Needed',desc:'Avoid picking up your phone out of habit. Use it only with clear purpose.'},
+      {ico:'&#128222;',title:'Try a Basic Keypad Phone Temporarily',desc:'Switch to a simple keypad phone for a period. This naturally reduces social media and gaming habits.'},
+      {ico:'&#127760;',title:'Limit Internet Access',desc:'Rather than keeping mobile data on constantly, use the internet only when you have a specific reason.'},
+      {ico:'&#128246;',title:'Control Wi-Fi Usage',desc:'Avoid leaving Wi-Fi always on. Use it during specific designated hours rather than all day long.'},
+      {ico:'&#128276;',title:'Delete Unnecessary Apps & Mute Alerts',desc:'Remove apps you rarely need and silence non-essential alerts to reduce usage urges.'},
+      {ico:'&#127939;',title:'Invest Time in Offline Activities',desc:'Build habits around sports, reading, time with family, and learning new real-world skills.'}
+    ],
+    quote:'Use your phone because you need to — not out of habit.',
+    nextId:'cost',pageNum:'Page 3 of 5'
+  },
+  {
+    id:'cost',
+    headerTitle:'&#128200; Lifetime Cost',
+    cardClass:'cost-c',
+    cardIcon:'&#128200;',
+    cardTitle:'Lifetime Cost Calculator',
+    cardDesc:'How much does mobile really cost you?',
+    isCost:true,
+    nextId:'reels',
+    pageNum:'Page 4 of 5'
+  },
+  {
+    id:'reels',
+    headerTitle:'&#127909; Reels & Social Media',
+    cardClass:'reels-c',
+    cardIcon:'&#127909;',
+    cardTitle:'Reels & Social Media Addiction',
+    cardDesc:'Break the scroll trap — 8 proven strategies',
+    isReels:true,
+    pageNum:'Page 5 of 5'
+  }
+];
+
+/* ═══════════════════════════════
+   STATE
+═══════════════════════════════ */
+var state={
+  screen:'home',
+  chapterDone:[false,false,false,false,false,false,false,false,false],
+  awareDone:{signs:false,tips:false,reduce:false,cost:false,reels:false},
+  score:0,total:0,
+  cur:{ch:0,qi:0,answered:null,correct:null},
+  awarePageId:'signs'
+};
+
+/* ═══════════════════════════════
+   RENDER ROUTER
+═══════════════════════════════ */
+function render(){
+  var el=document.getElementById('main');
+  if(state.screen==='home')el.innerHTML=homeHTML();
+  else if(state.screen==='quiz')el.innerHTML=quizHTML();
+  else if(state.screen==='result')el.innerHTML=resultHTML();
+  else if(state.screen==='aware')el.innerHTML=awareHTML();
+  window.scrollTo(0,0);
+  attachEvents();
+}
+
+/* ═══════════════════════════════
+   HOME
+═══════════════════════════════ */
+function homeHTML(){
+  var done=state.chapterDone.filter(Boolean).length;
+  var awareDoneCount=Object.values(state.awareDone).filter(Boolean).length;
+  var html='<div class="score-bar"><span>Quiz: <strong>'+done+'/9</strong> done</span><span>Score: <strong>'+state.score+'/'+state.total+'</strong></span></div>';
+
+  html+='<div class="section-label">&#128683; Addiction Awareness ('+awareDoneCount+'/5)</div>';
+  for(var j=0;j<awarePages.length;j++){
+    var ap=awarePages[j];
+    var isDone=state.awareDone[ap.id];
+    var extraStyle=isDone?'opacity:.75;':'';
+    var doneTag=isDone?' <span style="font-size:12px;color:#10b981;">&#10003; Read</span>':'';
+    html+='<div class="aware-card '+ap.cardClass+'" data-aware="'+ap.id+'" style="'+extraStyle+'">';
+    html+='<div class="ac-ico">'+ap.cardIcon+'</div>';
+    html+='<div class="ac-txt"><h3>'+ap.cardTitle+doneTag+'</h3><p>'+ap.cardDesc+'</p></div>';
+    html+='<div class="ac-arr">&#8250;</div>';
+    html+='</div>';
+  }
+
+  html+='<div class="section-label" style="margin-top:22px;">&#127358; Mobile Quiz Chapters</div>';
+  html+='<div class="chapter-grid">';
+  for(var i=0;i<chapters.length;i++){
+    var c=chapters[i];
+    var cls='chapter-btn';
+    if(state.chapterDone[c.id])cls+=' done';
+    else if(c.isNew)cls+=' isnew';
+    var sub=state.chapterDone[c.id]?'&#10003; Completed':c.sub;
+    var newTag=(c.isNew&&!state.chapterDone[c.id])?'<span class="new-tag">NEW</span>':'';
+    html+='<button class="'+cls+'" data-ch="'+c.id+'">';
+    html+='<div class="ch-icon">'+c.icon+'</div>';
+    html+='<div class="ch-title">'+c.title+newTag+'</div>';
+    html+='<div class="ch-sub">'+sub+'</div>';
+    html+='</button>';
+  }
+  html+='</div>';
+  if(state.chapterDone.every(Boolean)){
+    html+='<div style="margin-top:14px;"><button class="btn primary" style="width:100%;" id="seeResult">&#127942; See Final Quiz Result</button></div>';
+  }
+  return html;
+}
+
+/* ═══════════════════════════════
+   QUIZ
+═══════════════════════════════ */
+function quizHTML(){
+  var ch=chapters[state.cur.ch];
+  var q=ch.qs[state.cur.qi];
+  var pct=Math.round((state.cur.qi/ch.qs.length)*100);
+  var html='<div class="progress"><div class="progress-fill" style="width:'+pct+'%"></div></div>';
+  html+='<div class="quiz-card">';
+  html+='<div class="quiz-meta"><span>'+ch.icon+' '+ch.title+'</span><span>Q'+(state.cur.qi+1)+' of '+ch.qs.length+'</span></div>';
+  html+='<div class="quiz-q">'+q.q+'</div>';
+  for(var i=0;i<q.opts.length;i++){
+    var cls='opt-btn';
+    if(state.cur.answered!==null){if(i===q.ans)cls+=' correct';else if(i===state.cur.answered)cls+=' wrong';}
+    var dis=state.cur.answered!==null?' disabled':'';
+    html+='<button class="'+cls+'" data-opt="'+i+'"'+dis+'>'+q.opts[i]+'</button>';
+  }
+  if(state.cur.answered!==null){
+    var icon=state.cur.correct?'&#9989;':'&#10060;';
+    var lbl=state.cur.correct?'Correct!':'Not quite.';
+    html+='<div class="explanation"><strong>'+icon+' '+lbl+'</strong> '+q.exp+'</div>';
+    var btnLbl=(state.cur.qi+1<ch.qs.length)?'Next Question &#8594;':'&#10003; Finish Chapter';
+    html+='<div class="nav-row"><button class="btn" id="backHome">&#8592; Chapters</button><button class="btn primary" id="nextQ">'+btnLbl+'</button></div>';
+  }
+  html+='</div>';
+  return html;
+}
+
+/* ═══════════════════════════════
+   RESULT
+═══════════════════════════════ */
+function resultHTML(){
+  var pct=Math.round((state.score/state.total)*100);
+  var bc=pct>=80?'gold':pct>=60?'silver':'bronze';
+  var lbl=pct>=80?'&#127942; Mobile Expert':pct>=60?'&#128077; Smart User':'&#128218; Keep Learning';
+  var msg=pct>=80?'Excellent! You know how to buy, protect, and safely use your phone.'
+    :pct>=60?'Good job! A few areas to review - go back and retry any chapter.'
+    :'No worries - mobile safety is important. Try the chapters again!';
+  var html='<div class="result-box">';
+  html+='<div style="font-size:60px;margin-bottom:8px;">&#127941;</div>';
+  html+='<div class="badge '+bc+'">'+lbl+'</div>';
+  html+='<h2>'+state.score+' / '+state.total+'</h2>';
+  html+='<p>'+msg+'</p>';
+  html+='<button class="btn primary" id="restartBtn" style="width:100%;">&#128257; Play Again</button>';
+  html+='<div style="margin-top:12px;"><button class="btn" id="backHomeBtn" style="width:100%;">&#8592; Back to Chapters</button></div>';
+  html+='</div>';
+  return html;
+}
+
+/* ═══════════════════════════════
+   AWARENESS PAGES
+═══════════════════════════════ */
+function awareHTML(){
+  var ap=getAwarePage(state.awarePageId);
+  if(!ap)return '';
+  if(ap.isCost) return costHTML(ap);
+  if(ap.isReels) return reelsHTML(ap);
+  var html='<div>';
+  html+='<div class="aware-page-header"><div class="back-btn-sm" id="awareBack">&#8592;</div><h2>'+ap.headerTitle+'</h2></div>';
+  html+='<div class="intro-card"><p>'+ap.intro+'</p></div>';
+  for(var i=0;i<ap.items.length;i++){
+    var it=ap.items[i];
+    html+='<div class="sign-item"><div class="sico">'+it.ico+'</div><div><h4>'+it.title+'</h4><p>'+it.desc+'</p></div></div>';
+  }
+  html+='<div class="quote-box"><div class="qico">&#128161;</div><p>"'+ap.quote+'"</p></div>';
+  html+='<div class="page-tag">'+ap.pageNum+'</div>';
+  if(ap.nextId){
+    var nextAp=getAwarePage(ap.nextId);
+    html+='<button class="aware-next-btn" id="awareNext" data-next="'+ap.nextId+'">'+nextAp.cardIcon+' Next: '+nextAp.cardTitle+' &#8594;</button>';
+  } else {
+    html+='<button class="aware-next-btn last-btn" id="awareDoneBtn">&#10003; All Done — Back to Home</button>';
+  }
+  html+='</div>';
+  return html;
+}
+
+/* ═══════════════════════════════
+   REELS AWARENESS PAGE
+═══════════════════════════════ */
+function reelsHTML(ap){
+  var html='<div>';
+  html+='<div class="aware-page-header"><div class="back-btn-sm" id="awareBack">&#8592;</div><h2>'+ap.headerTitle+'</h2></div>';
+
+  html+='<div class="reels-banner">';
+  html+='<div class="rb-ico">&#127909;</div>';
+  html+='<h3>Social Media & Reels Addiction</h3>';
+  html+='<p>Short videos give instant dopamine hits every few seconds. A session that feels like 10 minutes can steal over an hour — silently damaging focus, sleep, and real-world relationships.</p>';
+  html+='</div>';
+
+  /* Key stats */
+  html+='<div class="reels-stat"><div class="rs-num">2–4h</div><div class="rs-txt">Average daily time heavy users spend on short-form video — often without realising it.</div></div>';
+  html+='<div class="reels-stat"><div class="rs-num">90s</div><div class="rs-txt">Average attention span has dropped to under 90 seconds due to constant short-content consumption.</div></div>';
+  html+='<div class="reels-stat"><div class="rs-num">40%</div><div class="rs-txt">Of teenagers report feeling anxious or stressed when they cannot access social media.</div></div>';
+
+  html+='<div class="intro-card" style="margin-top:14px;"><p>Social media platforms are deliberately designed to be addictive. The "infinite scroll" and auto-play features remove natural stopping points. Knowing the tactics used against you is the first step to breaking free.</p></div>';
+
+  var tips=[
+    {ico:'&#9200;',title:'Set a Daily App Timer',desc:'Use built-in screen time tools (Digital Wellbeing on Android / Screen Time on iPhone) to cap social media to 30–60 minutes per day. When the timer fires, honour it.'},
+    {ico:'&#128276;',title:'Disable Reels & Short Video Notifications',desc:'Turn off all notifications from Instagram, YouTube, and TikTok. Notifications are designed to pull you back into the app. Remove the trigger.'},
+    {ico:'&#128241;',title:'Delete Apps From Your Home Screen',desc:'Move social media apps to a hidden folder or delete them temporarily. If it takes extra steps to open an app, you will open it far less often.'},
+    {ico:'&#127928;',title:'Switch Phone to Grayscale Mode',desc:'Go to Settings > Accessibility > Colour and switch to grayscale. The lack of vivid colour removes much of the visual reward that makes scrolling feel good.'},
+    {ico:'&#128716;',title:'No Reels 1 Hour Before Bed',desc:'Short-form video keeps your brain in high-stimulation mode and delays sleep onset. Replace it with reading, light music, or a conversation with family.'},
+    {ico:'&#128218;',title:'Replace Scroll Time With Something Real',desc:'Every time you feel the urge to open reels, replace it with a 5-minute walk, a book chapter, or a real conversation. Build a new reward loop.'},
+    {ico:'&#129504;',title:'Learn to Sit With Boredom',desc:'Boredom is not a problem to fix with your phone. It is the gateway to creativity and deeper thinking. Practice letting yourself be bored for a few minutes.'},
+    {ico:'&#128247;',title:'Audit Your Feed — Unfollow Freely',desc:'Unfollow accounts that trigger negative emotions, comparison, or mindless scrolling. Curate your feed to serve you — not to hook you.'}
+  ];
+
+  for(var i=0;i<tips.length;i++){
+    var t=tips[i];
+    html+='<div class="reels-tip"><div class="rtco">'+t.ico+'</div><div><h4>'+t.title+'</h4><p>'+t.desc+'</p></div></div>';
+  }
+
+  html+='<div class="quote-box reels-quote"><div class="qico">&#127909;</div><p>"Reels give seconds of pleasure. Real life is built in the hours you spend away from the screen."</p></div>';
+  html+='<div class="page-tag">'+ap.pageNum+'</div>';
+
+  /* CTA → quiz */
+  html+='<button class="aware-next-btn reels-quiz-btn" id="reelsQuizBtn">&#127358; Test Your Knowledge — Reels Quiz &#8594;</button>';
+  html+='<button class="aware-next-btn last-btn" id="awareDoneBtn" style="margin-top:0;">&#10003; All Done — Back to Home</button>';
+  html+='</div>';
+  return html;
+}
+
+/* ═══════════════════════════════
+   COST PAGE
+═══════════════════════════════ */
+function costHTML(ap){
+  var html='<div>';
+  html+='<div class="aware-page-header"><div class="back-btn-sm" id="awareBack">&#8592;</div><h2>'+ap.headerTitle+'</h2></div>';
+  html+='<div class="fact-box"><div class="ft">&#128204; Important Fact</div><p>There is no reliable scientific evidence that not replacing your phone every 4 years causes radiation problems. People typically buy new phones due to performance, battery life, security updates, or hardware failure.</p></div>';
+  html+='<div class="calc-edit-card"><h3>&#9997;&#65039; Edit Your Values</h3>';
+  html+='<div class="inp-row"><label>&#128100; Start using phone at age</label><div class="inp-wrap"><input class="calc-inp" id="cStart" type="number" value="18" min="5" max="50"><span style="font-size:13px;color:#64748b;"> yrs</span></div></div>';
+  html+='<div class="inp-row"><label>&#128100; Stop using phone at age</label><div class="inp-wrap"><input class="calc-inp" id="cEnd" type="number" value="65" min="20" max="100"><span style="font-size:13px;color:#64748b;"> yrs</span></div></div>';
+  html+='<div class="inp-row"><label>&#128241; Phone price</label><div class="inp-wrap"><span class="cur">&#8377;</span><input class="calc-inp" id="cPhone" type="number" value="12000" min="500" max="200000"></div></div>';
+  html+='<div class="inp-row"><label>&#128241; Replace every (years)</label><div class="inp-wrap"><input class="calc-inp" id="cRepl" type="number" value="4" min="1" max="10"><span style="font-size:13px;color:#64748b;"> yrs</span></div></div>';
+  html+='<div class="inp-row"><label>&#128246; Monthly recharge</label><div class="inp-wrap"><span class="cur">&#8377;</span><input class="calc-inp" id="cRech" type="number" value="350" min="0" max="5000"></div></div>';
+  html+='<div class="inp-row"><label>&#128295; Annual servicing</label><div class="inp-wrap"><span class="cur">&#8377;</span><input class="calc-inp" id="cServ" type="number" value="4000" min="0" max="20000"></div></div>';
+  html+='<div class="inp-row"><label>&#128247; Annual drops/damage</label><div class="inp-wrap"><span class="cur">&#8377;</span><input class="calc-inp" id="cDmg" type="number" value="2000" min="0" max="20000"></div></div>';
+  html+='</div>';
+  html+='<button class="do-calc-btn" id="doCalc">&#128200; Calculate My Lifetime Cost</button>';
+  html+='<div class="calc-results" id="calcResults"></div>';
+  html+='<div class="page-tag">'+ap.pageNum+'</div>';
+  var nextAp=getAwarePage(ap.nextId);
+  html+='<button class="aware-next-btn" id="awareNext" data-next="'+ap.nextId+'" style="margin-top:8px;">'+nextAp.cardIcon+' Next: '+nextAp.cardTitle+' &#8594;</button>';
+  html+='</div>';
+  return html;
+}
+
+function doCalc(){
+  var s=parseInt(document.getElementById('cStart').value)||18;
+  var e=parseInt(document.getElementById('cEnd').value)||65;
+  var pp=parseInt(document.getElementById('cPhone').value)||12000;
+  var rp=parseInt(document.getElementById('cRepl').value)||4;
+  var rc=parseInt(document.getElementById('cRech').value)||350;
+  var sv=parseInt(document.getElementById('cServ').value)||4000;
+  var dm=parseInt(document.getElementById('cDmg').value)||2000;
+  if(e<=s){alert('End age must be greater than start age.');return;}
+  var yrs=e-s;
+  var phones=Math.ceil(yrs/rp);
+  var phoneCost=phones*pp;
+  var rechCost=rc*12*yrs;
+  var servCost=sv*yrs;
+  var dmgCost=dm*yrs;
+  var sub=phoneCost+rechCost+servCost;
+  var grand=sub+dmgCost;
+  var future=Math.round(grand*1.7);
+  function f(n){return '&#8377;'+n.toLocaleString('en-IN');}
+  var html='';
+  html+='<div class="cost-card2"><h4>&#128241; Phones ('+phones+' phones &times; '+f(pp)+')</h4>';
+  html+='<div class="calc-row2"><span class="cl">Total years</span><span class="cv">'+yrs+' years (Age '+s+'–'+e+')</span></div>';
+  html+='<div class="calc-row2"><span class="cl">Phones needed</span><span class="cv">≈ '+phones+'</span></div>';
+  html+='<div class="calc-row2"><span class="cl">Phone cost</span><span class="cv" style="color:#f87171;">'+f(phoneCost)+'</span></div></div>';
+  html+='<div class="cost-card2"><h4>&#128246; Recharges + Servicing + Damage</h4>';
+  html+='<div class="calc-row2"><span class="cl">Recharge ('+f(rc)+'/mo)</span><span class="cv" style="color:#f87171;">'+f(rechCost)+'</span></div>';
+  html+='<div class="calc-row2"><span class="cl">Servicing ('+f(sv)+'/yr)</span><span class="cv" style="color:#f87171;">'+f(servCost)+'</span></div>';
+  html+='<div class="calc-row2"><span class="cl">Damage ('+f(dm)+'/yr)</span><span class="cv" style="color:#f87171;">'+f(dmgCost)+'</span></div></div>';
+  html+='<div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:18px;overflow:hidden;margin-bottom:14px;">';
+  html+='<table class="cost-table2"><tr><th>Expense</th><th>Total</th></tr>';
+  html+='<tr><td>New Phones</td><td>'+f(phoneCost)+'</td></tr>';
+  html+='<tr><td>Recharges</td><td>'+f(rechCost)+'</td></tr>';
+  html+='<tr><td>Servicing</td><td>'+f(servCost)+'</td></tr>';
+  html+='<tr class="hl"><td>Subtotal</td><td>'+f(sub)+'</td></tr>';
+  html+='<tr><td>Drops & Damage</td><td>'+f(dmgCost)+'</td></tr>';
+  html+='<tr class="hl"><td>Grand Total</td><td>'+f(grand)+'</td></tr>';
+  html+='</table></div>';
+  html+='<div class="total-box2"><div class="tl">Estimated Lifetime Mobile Spend</div>';
+  html+='<div class="ta">'+f(grand)+'</div>';
+  html+='<div class="ts">Age '+s+'–'+e+' &nbsp;·&nbsp; '+yrs+' years &nbsp;·&nbsp; Based on your values</div></div>';
+  html+='<div class="warn-box2"><div class="wt">&#9888;&#65039; Future Inflation Projection</div>';
+  html+='<p>With rising prices, your real lifetime spend could reach approximately <strong>'+f(future)+'</strong> or more.</p></div>';
+  html+='<div class="quote-box"><div class="qico">&#128161;</div><p>"Small, regular expenses add up to enormous sums over time. Use technology wisely."</p></div>';
+  var res=document.getElementById('calcResults');
+  res.innerHTML=html;
+  res.classList.add('show');
+  res.scrollIntoView({behavior:'smooth',block:'start'});
+  playFinish();
+  state.awareDone['cost']=true;
+}
+
+function getAwarePage(id){for(var i=0;i<awarePages.length;i++)if(awarePages[i].id===id)return awarePages[i];return null;}
+
+/* ═══════════════════════════════
+   EVENTS
+═══════════════════════════════ */
+function attachEvents(){
+  var st=document.getElementById('soundToggle');
+  if(st)st.onclick=function(){soundOn=!soundOn;st.innerHTML=soundOn?'&#128266;':'&#128263;';if(soundOn)playClick();};
+
+  var cbs=document.querySelectorAll('.chapter-btn');
+  for(var i=0;i<cbs.length;i++){
+    cbs[i].addEventListener('click',function(){
+      playClick();
+      state.cur={ch:parseInt(this.dataset.ch),qi:0,answered:null,correct:null};
+      state.screen='quiz';render();
+    });
+  }
+
+  var abs=document.querySelectorAll('.aware-card');
+  for(var j=0;j<abs.length;j++){
+    abs[j].addEventListener('click',function(){
+      playClick();
+      state.awarePageId=this.dataset.aware;
+      state.awareDone[state.awarePageId]=true;
+      state.screen='aware';render();
+    });
+  }
+
+  var obs=document.querySelectorAll('.opt-btn');
+  for(var k=0;k<obs.length;k++){
+    obs[k].addEventListener('click',function(){
+      if(state.cur.answered!==null)return;
+      var i=parseInt(this.dataset.opt);
+      var q=chapters[state.cur.ch].qs[state.cur.qi];
+      state.cur.answered=i;state.cur.correct=(i===q.ans);
+      state.total++;
+      if(state.cur.correct){state.score++;playCorrect();}else{playWrong();}
+      render();
+    });
+  }
+
+  var nq=document.getElementById('nextQ');
+  if(nq)nq.addEventListener('click',function(){
+    playClick();
+    var ch=chapters[state.cur.ch];
+    if(state.cur.qi+1<ch.qs.length){
+      state.cur.qi++;state.cur.answered=null;state.cur.correct=null;render();
+    }else{
+      state.chapterDone[state.cur.ch]=true;
+      state.screen='home';playFinish();render();
+    }
+  });
+
+  var bh=document.getElementById('backHome');
+  if(bh)bh.addEventListener('click',function(){playClick();state.screen='home';render();});
+
+  var sr=document.getElementById('seeResult');
+  if(sr)sr.addEventListener('click',function(){playClick();state.screen='result';render();playFinish();});
+
+  var rb=document.getElementById('restartBtn');
+  if(rb)rb.addEventListener('click',function(){
+    playClick();
+    state={screen:'home',chapterDone:[false,false,false,false,false,false,false,false,false],awareDone:{signs:false,tips:false,reduce:false,cost:false,reels:false},score:0,total:0,cur:{ch:0,qi:0,answered:null,correct:null},awarePageId:'signs'};
+    render();
+  });
+  var bhb=document.getElementById('backHomeBtn');
+  if(bhb)bhb.addEventListener('click',function(){playClick();state.screen='home';render();});
+
+  var ab=document.getElementById('awareBack');
+  if(ab)ab.addEventListener('click',function(){playBack();state.screen='home';render();});
+
+  var an=document.getElementById('awareNext');
+  if(an)an.addEventListener('click',function(){
+    playClick();
+    var nextId=this.dataset.next;
+    state.awarePageId=nextId;
+    state.awareDone[nextId]=true;
+    render();
+  });
+
+  var ad=document.getElementById('awareDoneBtn');
+  if(ad)ad.addEventListener('click',function(){playClick();state.awareDone['reels']=true;state.screen='home';render();});
+
+  var dc=document.getElementById('doCalc');
+  if(dc)dc.addEventListener('click',function(){playClick();doCalc();});
+
+  /* Reels quiz button → chapter 8 */
+  var rqb=document.getElementById('reelsQuizBtn');
+  if(rqb)rqb.addEventListener('click',function(){
+    playClick();
+    state.awareDone['reels']=true;
+    state.cur={ch:8,qi:0,answered:null,correct:null};
+    state.screen='quiz';render();
+  });
+}
+
+/* ═══════════════════════════════
+   ANDROID BACK BUTTON
+═══════════════════════════════ */
+document.addEventListener('backbutton',function(e){
+  e.preventDefault();
+  if(state.screen==='home'){
+    if(window.AndroidInterface&&window.AndroidInterface.exitApp)window.AndroidInterface.exitApp();
+    else if(navigator.app&&navigator.app.exitApp)navigator.app.exitApp();
+    else history.go(-1);
+  }else{
+    playBack();state.screen='home';render();
+  }
+},false);
+
+window.addEventListener('load',function(){history.pushState({p:'home'},'','');});
+window.addEventListener('popstate',function(){
+  if(state.screen!=='home'){playBack();state.screen='home';render();history.pushState({p:'home'},'','');}
+});
+
+render();
+</script>
+</body>
+</html>

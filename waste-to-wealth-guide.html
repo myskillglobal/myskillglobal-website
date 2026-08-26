@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Surajit Roy" name="author"/>
+<meta content="© Surajit Roy" name="copyright"/>
+<meta content="index,follow" name="robots"/>
+<title>Waste to Wealth – MySkillGame Employment Guide</title>
+<meta content="Practical parenting, communication and child development guidance from MySkillGame." name="description"/>
+<!-- Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+<link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700;900&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0e1a0f;--bg2:#122014;--bg3:#16281a;--card:#1b3020;--card2:#1f3826;
+  --border:rgba(255,255,255,0.08);
+  --green:#4caf50;--lime:#aeea00;--amber:#ffb300;--orange:#ff6d00;
+  --red:#e53935;--sky:#00bcd4;--pink:#e91e8c;--teal:#00bfa5;
+  --cream:#f5f0e8;--text:#e8f5e9;--text2:#a5c8aa;--text3:#5a8c62;
+  --gold:#ffd54f;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  background:var(--bg);color:var(--text);
+  min-height:100vh;padding-bottom:80px;user-select:none;
+}
+
+/* ══ HERO ══ */
+.hero{
+  background:linear-gradient(160deg,#0a1f0b 0%,#1b3a1e 40%,#0e2e10 100%);
+  padding:40px 16px 30px;text-align:center;position:relative;overflow:hidden;
+  border-bottom:2px solid var(--lime);
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 70% 50% at 20% 0%,rgba(174,234,0,0.12),transparent),
+    radial-gradient(ellipse 50% 40% at 80% 100%,rgba(255,179,0,0.1),transparent);
+  pointer-events:none;
+}
+.hero-emoji-row{
+  display:flex;justify-content:center;gap:10px;margin-bottom:14px;
+  flex-wrap:wrap;
+}
+.he{font-size:32px;animation:bounce 2s ease-in-out infinite;display:inline-block}
+.he:nth-child(1){animation-delay:0s}
+.he:nth-child(2){animation-delay:.15s}
+.he:nth-child(3){animation-delay:.3s}
+.he:nth-child(4){animation-delay:.45s}
+.he:nth-child(5){animation-delay:.6s}
+.he:nth-child(6){animation-delay:.75s}
+.he:nth-child(7){animation-delay:.9s}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+.hero-eyebrow{
+  font-size:11px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--lime);font-weight:700;margin-bottom:10px;position:relative;
+}
+.hero h1{
+  font-family:'Fraunces',serif;font-size:clamp(26px,6vw,46px);
+  color:#fff;font-weight:900;line-height:1.1;position:relative;
+  text-shadow:0 2px 20px rgba(0,0,0,0.5);
+}
+.hero h1 em{color:var(--lime);font-style:normal}
+.hero-sub{
+  font-size:13.5px;color:rgba(255,255,255,0.65);
+  margin:10px auto 0;max-width:560px;line-height:1.7;position:relative;
+}
+.hero-message{
+  background:linear-gradient(135deg,rgba(174,234,0,0.12),rgba(255,179,0,0.1));
+  border:1px solid rgba(174,234,0,0.3);border-radius:12px;
+  padding:14px 18px;margin:18px auto 0;max-width:620px;
+  font-size:13px;color:var(--cream);line-height:1.75;position:relative;
+  text-align:left;
+}
+.hero-message strong{color:var(--lime)}
+.myskill-tag{
+  background:rgba(255,213,79,0.12);border:1px solid rgba(255,213,79,0.3);
+  border-radius:10px;padding:10px 16px;font-size:11.5px;color:var(--gold);
+  max-width:620px;margin:14px auto 0;position:relative;line-height:1.6;
+}
+
+/* ══ MATERIAL SELECTOR ══ */
+.material-nav{
+  display:flex;overflow-x:auto;gap:0;
+  background:linear-gradient(180deg,#0a1a0c,#0e2010);
+  border-bottom:1px solid var(--border);
+  position:sticky;top:0;z-index:50;scrollbar-width:none;
+}
+.material-nav::-webkit-scrollbar{display:none}
+.mat-btn{
+  flex:0 0 auto;padding:11px 13px;border:none;background:transparent;
+  font-size:11px;font-weight:700;cursor:pointer;
+  color:rgba(255,255,255,0.4);border-bottom:3px solid transparent;
+  transition:all 0.2s;white-space:nowrap;text-align:center;
+  font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:0.3px;
+}
+.mat-btn i{display:block;font-size:18px;margin-bottom:3px}
+.mat-btn.active{color:#fff;border-bottom-color:var(--lime)}
+.mat-btn:hover{color:rgba(255,255,255,0.75);background:rgba(255,255,255,0.04)}
+
+/* ══ CONTENT ══ */
+.content{max-width:800px;margin:0 auto;padding:22px 14px}
+.msection{display:none;animation:fadeUp 0.3s ease}
+.msection.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* ══ SECTION HEADS ══ */
+.sec-head{
+  font-family:'Fraunces',serif;font-size:19px;font-weight:700;color:#fff;
+  margin:24px 0 14px;display:flex;align-items:center;gap:10px;
+}
+.sec-head i{font-size:22px;color:var(--lime)}
+.sh-line{flex:1;height:1px;background:linear-gradient(90deg,var(--lime),transparent)}
+
+/* ══ MATERIAL HERO BANNER ══ */
+.mat-hero{
+  border-radius:16px;padding:20px 20px 16px;margin-bottom:18px;
+  position:relative;overflow:hidden;
+}
+.mat-hero-emoji{font-size:48px;float:right;margin:-5px 0 10px 15px;opacity:0.9;
+  animation:floatEmoji 3s ease-in-out infinite}
+@keyframes floatEmoji{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg) translateY(-5px)}}
+.mat-hero h2{font-family:'Fraunces',serif;font-size:22px;font-weight:900;color:#fff;line-height:1.2}
+.mat-hero p{font-size:12.5px;color:rgba(255,255,255,0.7);margin-top:6px;line-height:1.65;clear:both}
+.mat-hero-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.mht{
+  background:rgba(255,255,255,0.12);border-radius:20px;
+  padding:4px 11px;font-size:11px;color:#fff;font-weight:600;
+}
+
+/* colour schemes per material */
+.mh-coir    {background:linear-gradient(135deg,#3e2600,#7c4a00)}
+.mh-banana  {background:linear-gradient(135deg,#1a3300,#3d6b00)}
+.mh-jute    {background:linear-gradient(135deg,#2d2400,#5c4a00)}
+.mh-paper   {background:linear-gradient(135deg,#002244,#004488)}
+.mh-plastic {background:linear-gradient(135deg,#330022,#660044)}
+.mh-sawdust {background:linear-gradient(135deg,#1a0e00,#4a2800)}
+.mh-husk    {background:linear-gradient(135deg,#1a2200,#3d4d00)}
+
+/* ══ CARDS GRID ══ */
+.cg{display:grid;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));gap:14px;margin-bottom:16px}
+.card{
+  border-radius:14px;padding:16px 18px;border:1px solid var(--border);
+  transition:transform 0.2s,box-shadow 0.2s;
+}
+.card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,0,0,0.35)}
+.ct1{background:linear-gradient(135deg,#1e3a00,#2e5500)}
+.ct2{background:linear-gradient(135deg,#3a2000,#5e3500)}
+.ct3{background:linear-gradient(135deg,#001e3a,#003060)}
+.ct4{background:linear-gradient(135deg,#2a001a,#500033)}
+.ct5{background:linear-gradient(135deg,#1a1a00,#3a3a00)}
+.ct6{background:linear-gradient(135deg,#00302e,#005550)}
+.ct7{background:linear-gradient(135deg,#1a0030,#350060)}
+.ct8{background:linear-gradient(135deg,#301000,#5e2400)}
+.ct9{background:linear-gradient(135deg,#003020,#005a3a)}
+
+.card-title{font-size:14px;font-weight:700;color:#fff;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.card-title i{font-size:19px}
+
+/* ══ BADGES ══ */
+.badge{display:inline-block;font-size:10.5px;padding:3px 11px;border-radius:20px;margin-bottom:10px;font-weight:700;letter-spacing:0.3px}
+.bl{background:rgba(174,234,0,0.18);color:var(--lime);border:1px solid rgba(174,234,0,0.4)}
+.ba{background:rgba(255,179,0,0.18);color:var(--amber);border:1px solid rgba(255,179,0,0.4)}
+.bo{background:rgba(255,109,0,0.18);color:#ffab70;border:1px solid rgba(255,109,0,0.4)}
+.bp{background:rgba(233,30,140,0.18);color:#f48fb1;border:1px solid rgba(233,30,140,0.4)}
+.bs{background:rgba(0,188,212,0.18);color:#80deea;border:1px solid rgba(0,188,212,0.4)}
+.bt{background:rgba(0,191,165,0.18);color:#80cbc4;border:1px solid rgba(0,191,165,0.4)}
+.bg2{background:rgba(76,175,80,0.18);color:#a5d6a7;border:1px solid rgba(76,175,80,0.4)}
+.bv{background:rgba(156,39,176,0.18);color:#ce93d8;border:1px solid rgba(156,39,176,0.4)}
+
+/* ══ TIPS ══ */
+.tip{
+  font-size:12.5px;color:var(--text2);line-height:1.7;
+  padding:5px 0;border-bottom:1px solid var(--border);
+  display:flex;gap:8px;
+}
+.tip:last-child{border-bottom:none;padding-bottom:0}
+.tip::before{content:"›";color:var(--lime);font-size:17px;line-height:1.3;min-width:10px;font-weight:700}
+
+/* ══ PRODUCT GRID ══ */
+.pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:10px;margin-bottom:16px}
+.pc{
+  background:var(--card2);border:1px solid var(--border);border-radius:12px;
+  padding:14px 12px;text-align:center;transition:all 0.2s;cursor:default;
+}
+.pc:hover{border-color:var(--lime);box-shadow:0 0 16px rgba(174,234,0,0.15)}
+.pc-icon{font-size:28px;display:block;margin-bottom:6px}
+.pc-name{font-size:12px;font-weight:700;color:#fff;line-height:1.4}
+.pc-val{font-size:11px;color:var(--lime);margin-top:3px;font-weight:600}
+
+/* ══ INCOME LEVELS ══ */
+.income-ladder{margin-bottom:18px}
+.il-item{
+  display:flex;gap:14px;align-items:flex-start;padding:14px;
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  margin-bottom:10px;
+}
+.il-num{
+  min-width:36px;height:36px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Fraunces',serif;font-size:16px;font-weight:900;
+  color:#fff;flex-shrink:0;margin-top:1px;
+}
+.ln1{background:linear-gradient(135deg,#4caf50,#1b5e20)}
+.ln2{background:linear-gradient(135deg,#ffb300,#7c5000)}
+.ln3{background:linear-gradient(135deg,#ff6d00,#5c1a00)}
+.ln4{background:linear-gradient(135deg,#e91e8c,#5c0030)}
+.il-title{font-size:13.5px;font-weight:700;color:#fff;margin-bottom:4px}
+.il-earn{font-size:12px;color:var(--lime);font-weight:700;margin-bottom:4px}
+.il-desc{font-size:12px;color:var(--text2);line-height:1.65}
+
+/* ══ EXPORT MARKET BARS ══ */
+.mkt-item{margin-bottom:14px}
+.mkt-label{display:flex;justify-content:space-between;margin-bottom:5px}
+.mkt-country{font-size:13px;font-weight:600;color:#fff;display:flex;align-items:center;gap:7px}
+.mkt-flag{font-size:18px}
+.mkt-pct{font-size:12px;font-weight:700;color:var(--lime)}
+.mkt-bar-bg{background:rgba(255,255,255,0.08);border-radius:10px;height:8px;overflow:hidden}
+.mkt-bar-fill{height:100%;border-radius:10px;transition:width 0.9s ease}
+.mb-green{background:linear-gradient(90deg,#4caf50,var(--lime))}
+.mb-amber{background:linear-gradient(90deg,var(--amber),#ffe082)}
+.mb-orange{background:linear-gradient(90deg,var(--orange),#ffab70)}
+.mb-sky{background:linear-gradient(90deg,var(--sky),#80deea)}
+.mb-pink{background:linear-gradient(90deg,var(--pink),#f48fb1)}
+
+/* ══ STEPS ══ */
+.steps{counter-reset:st;margin-bottom:16px}
+.step{
+  display:flex;gap:14px;align-items:flex-start;
+  padding:13px 15px;background:var(--card);
+  border:1px solid var(--border);border-radius:12px;margin-bottom:10px;
+}
+.step::before{
+  content:counter(st);counter-increment:st;
+  min-width:30px;height:30px;border-radius:50%;
+  background:linear-gradient(135deg,var(--lime),#2a6000);
+  color:#0e1a0f;font-weight:900;font-size:13px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Fraunces',serif;flex-shrink:0;margin-top:2px;
+}
+.step-t{font-size:13.5px;font-weight:700;color:#fff;margin-bottom:4px}
+.step-d{font-size:12px;color:var(--text2);line-height:1.65}
+
+/* ══ ALERT BOX ══ */
+.ab{border-radius:12px;padding:12px 16px;margin-bottom:16px;font-size:13px;line-height:1.7;display:flex;gap:10px;align-items:flex-start}
+.ab i{font-size:21px;min-width:20px;margin-top:1px}
+.ab-green{background:rgba(174,234,0,0.1);border:1px solid rgba(174,234,0,0.3);color:rgba(200,255,100,0.9)}
+.ab-amber{background:rgba(255,179,0,0.1);border:1px solid rgba(255,179,0,0.3);color:rgba(255,213,100,0.9)}
+.ab-orange{background:rgba(255,109,0,0.1);border:1px solid rgba(255,109,0,0.3);color:rgba(255,175,100,0.9)}
+.ab-sky{background:rgba(0,188,212,0.1);border:1px solid rgba(0,188,212,0.3);color:rgba(100,220,240,0.9)}
+.ab-pink{background:rgba(233,30,140,0.1);border:1px solid rgba(233,30,140,0.3);color:rgba(250,150,200,0.9)}
+.ab-gold{background:rgba(255,213,79,0.1);border:1px solid rgba(255,213,79,0.3);color:var(--gold)}
+
+/* ══ STAT ROW ══ */
+.sr{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:16px}
+.sc{
+  background:var(--card2);border:1px solid var(--border);border-radius:12px;
+  padding:14px 12px;text-align:center;transition:transform 0.2s;
+}
+.sc:hover{transform:translateY(-2px)}
+.sc-num{font-family:'Fraunces',serif;font-size:22px;font-weight:900;color:var(--lime);line-height:1}
+.sc-lbl{font-size:11px;color:var(--text3);margin-top:5px;line-height:1.4}
+
+/* ══ SCHEME TABLE ══ */
+.stbl{width:100%;border-collapse:collapse;margin-bottom:16px;font-size:12.5px}
+.stbl th{background:linear-gradient(90deg,#1e3a00,#002244);color:var(--lime);padding:10px 12px;text-align:left;font-weight:700;border:1px solid var(--border);font-size:11.5px;letter-spacing:0.4px}
+.stbl td{padding:9px 12px;border:1px solid var(--border);color:var(--text2);background:var(--card);vertical-align:top;line-height:1.6}
+.stbl tr:nth-child(even) td{background:var(--card2)}
+.stbl tr:hover td{background:#1e3820}
+
+/* ══ MOTIVATIONAL BOX ══ */
+.motiv{
+  background:linear-gradient(135deg,#1e3820,#2a1a00);
+  border:2px solid rgba(174,234,0,0.25);border-radius:16px;
+  padding:22px 20px;margin-bottom:20px;position:relative;overflow:hidden;
+}
+.motiv::after{
+  content:'"';font-family:'Fraunces',serif;font-size:120px;
+  color:rgba(174,234,0,0.07);position:absolute;right:10px;top:-20px;
+  line-height:1;pointer-events:none;
+}
+.motiv-title{font-family:'Fraunces',serif;font-size:16px;color:var(--lime);font-weight:900;margin-bottom:10px}
+.motiv p{font-size:13px;color:var(--text2);line-height:1.8;margin-bottom:8px}
+.motiv p:last-child{margin-bottom:0}
+.motiv strong{color:#fff}
+
+/* ══ MYSKILLGAME FOOTER ══ */
+.msg-footer{
+  background:linear-gradient(135deg,#0a1f0c,#1a0e00);
+  border:2px solid rgba(174,234,0,0.3);border-radius:16px;
+  padding:22px 20px;margin-top:24px;text-align:center;
+}
+.msg-footer h3{font-family:'Fraunces',serif;font-size:22px;color:#fff;margin-bottom:8px}
+.msg-footer h3 span{color:var(--lime)}
+.msg-footer p{font-size:12.5px;color:var(--text2);line-height:1.7;max-width:580px;margin:0 auto 14px}
+.msg-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;margin-bottom:14px}
+.msp{background:rgba(174,234,0,0.1);border:1px solid rgba(174,234,0,0.28);border-radius:20px;padding:5px 12px;font-size:11.5px;color:rgba(200,255,100,0.9);font-weight:600}
+.msg-footer .tagline{font-size:11px;color:var(--gold);font-style:italic;border-top:1px solid var(--border);padding-top:12px;margin-top:4px}
+
+/* ══ CHECKLIST ══ */
+.chk-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);cursor:pointer;user-select:none}
+.chk-item:last-child{border-bottom:none}
+.chk-box{width:19px;height:19px;min-width:19px;border:1.5px solid rgba(255,255,255,0.25);border-radius:5px;display:flex;align-items:center;justify-content:center;transition:all 0.15s;margin-top:1px}
+.chk-box.done{background:var(--lime);border-color:var(--lime)}
+.chk-box.done i{color:#0e1a0f;font-size:12px}
+.chk-text{font-size:12.5px;color:var(--text2);line-height:1.6}
+.chk-text.done{text-decoration:line-through;color:var(--text3)}
+
+/* ══ PROGRESS ══ */
+.prog-wrap{margin-bottom:16px}
+.prog-label{font-size:11.5px;color:var(--text3);margin-bottom:5px;display:flex;justify-content:space-between}
+.prog-bg{background:rgba(255,255,255,0.08);border-radius:20px;height:7px;overflow:hidden}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--lime),var(--amber));border-radius:20px;transition:width 0.35s}
+
+/* ══ RESPONSIVE ══ */
+@media(max-width:500px){
+  .cg{grid-template-columns:1fr}
+  .pg{grid-template-columns:repeat(2,1fr)}
+  .sr{grid-template-columns:repeat(2,1fr)}
+  .mat-btn{padding:10px 10px;font-size:10.5px}
+  .hero h1{font-size:24px}
+}
+</style>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1034022057999423"></script><link href="https://myskillgame.netlify.app/11-7-26 website/waste_to_wealth_guide.html" rel="canonical"/></head>
+<body>
+<!-- ══ HERO ══ -->
+<div class="hero">
+<div class="hero-emoji-row">
+<span class="he">🥥</span><span class="he">🍌</span><span class="he">🌾</span>
+<span class="he">📰</span><span class="he">♻️</span><span class="he">🪵</span><span class="he">🌿</span>
+</div>
+<div class="hero-eyebrow">MySkillGame · Waste to Wealth Series</div>
+<h1>Turn <em>Waste</em> Into<br/>Your Wealth</h1>
+<p class="hero-sub">7 Common Waste Materials · 50+ Products · Real Jobs · Export Opportunities<br/>For Every Young Person Ready to Work Hard and Build Something Real</p>
+<div class="hero-message">
+<strong>🎯 A Message for Every Young Person:</strong><br/>
+    There is no shortcut to wealth. Long-term success is built through skills, persistence, creativity, and consistent effort. But <strong>skill, sweat, and persistence</strong> — applied to the waste that surrounds you every day — can build a genuine livelihood. The materials in this guide are <strong>free or nearly free</strong>. The market is <strong>global</strong>. The opportunity is <strong>yours</strong>. The only question is: are you willing to learn and work?
+  </div>
+<div class="myskill-tag">
+    🎓 <strong>Created for MySkillGame</strong> – Promoting Vocational Education, Entrepreneurship, Financial Literacy, Environmental Awareness &amp; Sustainable Livelihood Opportunities.
+  </div>
+</div>
+<!-- ══ MATERIAL NAVIGATION ══ -->
+<div class="material-nav" role="tablist">
+<button class="mat-btn active" onclick="switchMat('coir',this)"><i class="ti ti-circle-dot"></i>Coir</button>
+<button class="mat-btn" onclick="switchMat('banana',this)"><i class="ti ti-leaf"></i>Banana</button>
+<button class="mat-btn" onclick="switchMat('jute',this)"><i class="ti ti-plant-2"></i>Jute</button>
+<button class="mat-btn" onclick="switchMat('paper',this)"><i class="ti ti-file-text"></i>Newspaper</button>
+<button class="mat-btn" onclick="switchMat('plastic',this)"><i class="ti ti-recycle"></i>Plastic</button>
+<button class="mat-btn" onclick="switchMat('sawdust',this)"><i class="ti ti-trees"></i>Sawdust</button>
+<button class="mat-btn" onclick="switchMat('husk',this)"><i class="ti ti-grain"></i>Rice Husk</button>
+<button class="mat-btn" onclick="switchMat('export',this)"><i class="ti ti-world"></i>Export</button>
+<button class="mat-btn" onclick="switchMat('learn',this)"><i class="ti ti-school"></i>Learn</button>
+<button class="mat-btn" onclick="switchMat('motiv',this)"><i class="ti ti-rocket"></i>Mindset</button>
+<button class="mat-btn" onclick="switchMat('myskill',this)"><i class="ti ti-star"></i>MySkillGame</button>
+</div>
+<div class="content">
+<!-- ══════════════════════════════════════════════
+     1. COCONUT COIR
+══════════════════════════════════════════════ -->
+<div class="msection active" id="mat-coir">
+<div class="mat-hero mh-coir">
+<span class="mat-hero-emoji" style="float:right">🥥</span>
+<h2>Coconut Coir (Coconut Husk Fibre)</h2>
+<p>The rough outer husk of coconuts — billions discarded every year in India. Coir is one of the world's strongest natural fibres, rot-resistant, biodegradable, and in massive global demand. India supplies 80% of the world's coir — yet most raw husk is wasted at village level.</p>
+<div class="mat-hero-tags">
+<span class="mht">🇮🇳 India is #1 Global Exporter</span>
+<span class="mht">💧 Water-Resistant</span>
+<span class="mht">♻️ 100% Biodegradable</span>
+<span class="mht">🌱 Eco-Friendly</span>
+</div>
+</div>
+<div class="ab ab-green"><i class="ti ti-info-circle"></i><span>India exports ₹3,500+ crore of coir products annually. Kerala, Tamil Nadu, Karnataka, and West Bengal are key producing states. Every coconut you see has value hidden in its husk.</span></div>
+<div class="sr">
+<div class="sc"><div class="sc-num">₹3,500Cr</div><div class="sc-lbl">India's annual coir export value</div></div>
+<div class="sc"><div class="sc-num">7 Lakh</div><div class="sc-lbl">Workers employed in coir industry</div></div>
+<div class="sc"><div class="sc-num">100+</div><div class="sc-lbl">Countries importing Indian coir</div></div>
+<div class="sc"><div class="sc-num">₹15–80/kg</div><div class="sc-lbl">Raw to processed coir price range</div></div>
+</div>
+<div class="sec-head"><i class="ti ti-package"></i>Products You Can Make <span class="sh-line"></span></div>
+<div class="pg">
+<div class="pc"><span class="pc-icon">🪢</span><div class="pc-name">Coir Rope</div><div class="pc-val">₹30–60/kg</div></div>
+<div class="pc"><span class="pc-icon">🪑</span><div class="pc-name">Coir Mattress</div><div class="pc-val">₹200–800 each</div></div>
+<div class="pc"><span class="pc-icon">🚪</span><div class="pc-name">Door Mats</div><div class="pc-val">₹80–250 each</div></div>
+<div class="pc"><span class="pc-icon">🌱</span><div class="pc-name">Coco Peat (Grow Bags)</div><div class="pc-val">₹5–12/kg</div></div>
+<div class="pc"><span class="pc-icon">🌿</span><div class="pc-name">Hanging Baskets</div><div class="pc-val">₹60–300 each</div></div>
+<div class="pc"><span class="pc-icon">🏗️</span><div class="pc-name">Geo-Textiles</div><div class="pc-val">Export Grade</div></div>
+<div class="pc"><span class="pc-icon">🛋️</span><div class="pc-name">Upholstery Fibre</div><div class="pc-val">₹25–55/kg</div></div>
+<div class="pc"><span class="pc-icon">🛡️</span><div class="pc-name">Erosion Control Mat</div><div class="pc-val">High Export Demand</div></div>
+</div>
+<div class="sec-head"><i class="ti ti-coin"></i>Income Opportunities <span class="sh-line"></span></div>
+<div class="income-ladder">
+<div class="il-item"><div class="il-num ln1">1</div><div><div class="il-title">Husk Collector / Sorter</div><div class="il-earn">₹4,000–7,000/month</div><div class="il-desc">Collect husks from coconut vendors, temples, restaurants. Dry and sell to coir units. Zero investment needed — just energy and consistency.</div></div></div>
+<div class="il-item"><div class="il-num ln2">2</div><div><div class="il-title">Door Mat &amp; Rope Maker (SHG)</div><div class="il-earn">₹8,000–18,000/month</div><div class="il-desc">Hand-twist rope and weave mats using basic retting and spinning tools. SHGs can start with ₹15,000–30,000 in equipment with NABARD support.</div></div></div>
+<div class="il-item"><div class="il-num ln3">3</div><div><div class="il-title">Coco Peat Producer</div><div class="il-earn">₹20,000–50,000/month</div><div class="il-desc">Process coir pith (by-product of fibre extraction) into coco peat bricks. Hydroponic and greenhouse farmers in Europe pay premium prices.</div></div></div>
+<div class="il-item"><div class="il-num ln4">4</div><div><div class="il-title">Geo-Textile Export Business</div><div class="il-earn">₹2–15 Lakh/month</div><div class="il-desc">Manufacture coir geo-textiles for road and slope protection. Government procurement + EU/USA export. Register with CCPC (Coir Board).</div></div></div>
+</div>
+<div class="sec-head"><i class="ti ti-certificate"></i>Government Schemes <span class="sh-line"></span></div>
+<table class="stbl">
+<thead><tr><th>Scheme</th><th>Benefit</th></tr></thead>
+<tbody>
+<tr><td><strong>Coir Vikas Yojana</strong></td><td>Up to 40% subsidy on coir processing machinery; managed by Coir Board India</td></tr>
+<tr><td><strong>PMEGP</strong></td><td>25–35% margin money subsidy; loan up to ₹25 lakh for coir product units</td></tr>
+<tr><td><strong>Coir Board Training</strong></td><td>Free 3–6 month skill training in coir spinning, weaving, mat-making at board centres</td></tr>
+<tr><td><strong>NABARD SHG Loan</strong></td><td>Low-interest group loans for women's coir processing collectives</td></tr>
+</tbody>
+</table>
+</div>
+<!-- ══════════════════════════════════════════════
+     2. BANANA FIBRE
+══════════════════════════════════════════════ -->
+<div class="msection" id="mat-banana">
+<div class="mat-hero mh-banana">
+<span class="mat-hero-emoji">🍌</span>
+<h2>Banana Plant Fibre</h2>
+<p>After harvesting bananas, the entire pseudo-stem and leaf sheaths are discarded as waste — thousands of tonnes monthly in every banana-growing district. Banana fibre is stronger than cotton, biodegradable, and now exported globally for luxury textiles, paper, and packaging.</p>
+<div class="mat-hero-tags">
+<span class="mht">💪 Stronger than Cotton</span><span class="mht">🌿 Zero Chemicals Needed</span>
+<span class="mht">🇯🇵 Japan Pays Premium</span><span class="mht">📦 Biodegradable Packaging</span>
+</div>
+</div>
+<div class="ab ab-green"><i class="ti ti-bulb"></i><span>India produces 30 million tonnes of bananas yearly. Each plant discards 60–70 kg of fibre-rich pseudo-stem. This is <strong>free raw material</strong> sitting in every farmer's field.</span></div>
+<div class="pg">
+<div class="pc"><span class="pc-icon">👜</span><div class="pc-name">Eco Bags &amp; Totes</div><div class="pc-val">₹80–400 each</div></div>
+<div class="pc"><span class="pc-icon">🧣</span><div class="pc-name">Banana Yarn / Thread</div><div class="pc-val">₹500–2,000/kg</div></div>
+<div class="pc"><span class="pc-icon">📄</span><div class="pc-name">Handmade Paper</div><div class="pc-val">₹20–80/sheet</div></div>
+<div class="pc"><span class="pc-icon">🎁</span><div class="pc-name">Gift Wrapping / Packaging</div><div class="pc-val">Export Demand</div></div>
+<div class="pc"><span class="pc-icon">🛋️</span><div class="pc-name">Woven Placemats</div><div class="pc-val">₹60–200 each</div></div>
+<div class="pc"><span class="pc-icon">👒</span><div class="pc-name">Hats &amp; Baskets</div><div class="pc-val">₹100–500 each</div></div>
+<div class="pc"><span class="pc-icon">🧴</span><div class="pc-name">Banana Stem Juice</div><div class="pc-val">Health Product</div></div>
+<div class="pc"><span class="pc-icon">🌱</span><div class="pc-name">Fibre Compost / Mulch</div><div class="pc-val">₹5–15/kg</div></div>
+</div>
+<div class="sec-head"><i class="ti ti-coin"></i>Income Opportunities <span class="sh-line"></span></div>
+<div class="income-ladder">
+<div class="il-item"><div class="il-num ln1">1</div><div><div class="il-title">Fibre Extractor</div><div class="il-earn">₹5,000–10,000/month</div><div class="il-desc">Collect banana pseudo-stems from farmers (often free), manually or mechanically extract fibre, dry and sell to weavers and paper makers.</div></div></div>
+<div class="il-item"><div class="il-num ln2">2</div><div><div class="il-title">Banana Paper Maker</div><div class="il-earn">₹12,000–25,000/month</div><div class="il-desc">Convert banana fibre pulp into handmade paper sheets, notebooks, cards. Sell to stationery shops, gift stores, and export to craft markets in Europe.</div></div></div>
+<div class="il-item"><div class="il-num ln3">3</div><div><div class="il-title">Eco-Bag / Textile Weaver</div><div class="il-earn">₹20,000–45,000/month</div><div class="il-desc">Weave banana yarn into bags, placemats, table runners. Japanese and European buyers specifically source banana fibre handicrafts from India.</div></div></div>
+<div class="il-item"><div class="il-num ln4">4</div><div><div class="il-title">Export Unit Owner</div><div class="il-earn">₹1–8 Lakh/month</div><div class="il-desc">Establish a small extraction + weaving unit employing 10–20 workers. Export eco-fashion and stationery products to the EU, Japan, USA.</div></div></div>
+</div>
+</div>
+<!-- ══════════════════════════════════════════════
+     3. JUTE WASTE
+══════════════════════════════════════════════ -->
+<div class="msection" id="mat-jute">
+<div class="mat-hero mh-jute">
+<span class="mat-hero-emoji">🌾</span>
+<h2>Jute Waste</h2>
+<p>West Bengal is the heartland of global jute production — and jute waste (cuttings, batching oil residue, jute dust) is enormous. Jute waste can be re-spun into yarn, composted, converted to particle boards, or used in geotextiles. This is especially relevant for Bishnupur region.</p>
+<div class="mat-hero-tags">
+<span class="mht">🏠 West Bengal Heartland</span><span class="mht">🌍 "Golden Fibre"</span>
+<span class="mht">♻️ Circular Value Chain</span><span class="mht">💼 SHG Friendly</span>
+</div>
+</div>
+<div class="ab ab-amber"><i class="ti ti-map-pin"></i><span>Bishnupur (Bankura, WB) is close to jute-producing regions of Hooghly and Murshidabad. Jute waste is <strong>freely available</strong> at jute mills. You are sitting next to a gold mine.</span></div>
+<div class="sr">
+<div class="sc"><div class="sc-num">₹12,000Cr</div><div class="sc-lbl">India's annual jute export value</div></div>
+<div class="sc"><div class="sc-num">4 Million</div><div class="sc-lbl">Jute farmers in India</div></div>
+<div class="sc"><div class="sc-num">70%</div><div class="sc-lbl">Global jute from WB &amp; Bangladesh</div></div>
+<div class="sc"><div class="sc-num">₹60–120/kg</div><div class="sc-lbl">Jute waste upcycled yarn price</div></div>
+</div>
+<div class="pg">
+<div class="pc"><span class="pc-icon">👜</span><div class="pc-name">Jute Shopping Bags</div><div class="pc-val">₹30–150 each</div></div>
+<div class="pc"><span class="pc-icon">🪑</span><div class="pc-name">Jute Furniture Fabric</div><div class="pc-val">₹80–200/metre</div></div>
+<div class="pc"><span class="pc-icon">🌿</span><div class="pc-name">Jute Geo-Textiles</div><div class="pc-val">Export Grade</div></div>
+<div class="pc"><span class="pc-icon">🖼️</span><div class="pc-name">Wall Hangings / Decor</div><div class="pc-val">₹150–800 each</div></div>
+<div class="pc"><span class="pc-icon">📦</span><div class="pc-name">Jute Packaging</div><div class="pc-val">Bulk Orders</div></div>
+<div class="pc"><span class="pc-icon">🌱</span><div class="pc-name">Jute Compost</div><div class="pc-val">Organic Farming</div></div>
+<div class="pc"><span class="pc-icon">🏗️</span><div class="pc-name">Composite Boards</div><div class="pc-val">Construction Use</div></div>
+<div class="pc"><span class="pc-icon">🎀</span><div class="pc-name">Jute Gifting Products</div><div class="pc-val">₹100–500 each</div></div>
+</div>
+<div class="ab ab-green" style="margin-top:8px"><i class="ti ti-building"></i><span>Key schemes: <strong>NJDC (National Jute Development Corporation)</strong> provides raw material at subsidised rates. <strong>JCI (Jute Corporation of India)</strong> offers MSP-based procurement. West Bengal's <strong>Jute-MSME clusters</strong> in Hooghly provide free training.</span></div>
+</div>
+<!-- ══════════════════════════════════════════════
+     4. OLD NEWSPAPER
+══════════════════════════════════════════════ -->
+<div class="msection" id="mat-paper">
+<div class="mat-hero mh-paper">
+<span class="mat-hero-emoji">📰</span>
+<h2>Old Newspaper &amp; Paper Waste</h2>
+<p>Every home, office, and market generates waste paper daily. Old newspapers, cardboard, and paper packaging can be transformed into eco-products, art materials, furniture components, and insulation materials with minimal equipment.</p>
+<div class="mat-hero-tags">
+<span class="mht">🏠 Available Everywhere</span><span class="mht">💰 Buy at ₹10–15/kg</span>
+<span class="mht">♻️ 100% Recyclable</span><span class="mht">🎨 Craft + Industry</span>
+</div>
+</div>
+<div class="pg">
+<div class="pc"><span class="pc-icon">🛍️</span><div class="pc-name">Paper Carry Bags</div><div class="pc-val">₹3–15 each</div></div>
+<div class="pc"><span class="pc-icon">📦</span><div class="pc-name">Papier-Mâché Products</div><div class="pc-val">₹50–500 each</div></div>
+<div class="pc"><span class="pc-icon">🌸</span><div class="pc-name">Paper Flowers / Decor</div><div class="pc-val">₹20–200/set</div></div>
+<div class="pc"><span class="pc-icon">🥣</span><div class="pc-name">Seedling Pots (Paper)</div><div class="pc-val">Nurseries Love It</div></div>
+<div class="pc"><span class="pc-icon">🧱</span><div class="pc-name">Paper Bricks (Insulation)</div><div class="pc-val">Construction</div></div>
+<div class="pc"><span class="pc-icon">🎁</span><div class="pc-name">Gift Wrapping Paper</div><div class="pc-val">Retail &amp; Events</div></div>
+<div class="pc"><span class="pc-icon">🏺</span><div class="pc-name">Paper Clay Sculptures</div><div class="pc-val">Art Export</div></div>
+<div class="pc"><span class="pc-icon">📋</span><div class="pc-name">Recycled Notebooks</div><div class="pc-val">Schools &amp; Offices</div></div>
+</div>
+<div class="sec-head"><i class="ti ti-coin"></i>Income Opportunities <span class="sh-line"></span></div>
+<div class="income-ladder">
+<div class="il-item"><div class="il-num ln1">1</div><div><div class="il-title">Waste Paper Collector / Kabariwala Partner</div><div class="il-earn">₹5,000–12,000/month</div><div class="il-desc">Build relationships with offices, schools, and housing societies. Collect waste paper, sort by grade, and sell to recycling mills at ₹10–18/kg.</div></div></div>
+<div class="il-item"><div class="il-num ln2">2</div><div><div class="il-title">Paper Bag Maker</div><div class="il-earn">₹10,000–22,000/month</div><div class="il-desc">As plastic bags are banned in India, paper bag demand is exploding. One machine (~₹40,000) produces 300–500 bags per hour. Sell to shops, restaurants, bakeries.</div></div></div>
+<div class="il-item"><div class="il-num ln3">3</div><div><div class="il-title">Papier-Mâché / Craft Products</div><div class="il-earn">₹15,000–35,000/month</div><div class="il-desc">Create decorative items, toys, festival decorations. Kashmir and Bengal papier-mâché products are exported to European craft markets and fetched premium prices.</div></div></div>
+</div>
+</div>
+<!-- ══════════════════════════════════════════════
+     5. PLASTIC WASTE
+══════════════════════════════════════════════ -->
+<div class="msection" id="mat-plastic">
+<div class="mat-hero mh-plastic">
+<span class="mat-hero-emoji">♻️</span>
+<h2>Plastic Waste Recycling</h2>
+<p>India generates 34 lakh tonnes of plastic waste annually — and only 60% is recycled. The remaining waste is a massive business opportunity. With India's Single-Use Plastic ban and Extended Producer Responsibility (EPR) regulations, plastic waste collectors and recyclers are in high demand.</p>
+<div class="mat-hero-tags">
+<span class="mht">⚖️ EPR Policy Creates Demand</span><span class="mht">💰 Guaranteed Buyers</span>
+<span class="mht">🏗️ Construction Use</span><span class="mht">🌍 Global Crisis = Opportunity</span>
+</div>
+</div>
+<div class="ab ab-orange"><i class="ti ti-alert-circle"></i><span>Important: Always work with safe, non-toxic plastics (PET, HDPE, PP). Avoid burning plastics — it is illegal and harmful. Mechanical recycling only.</span></div>
+<div class="pg">
+<div class="pc"><span class="pc-icon">🧵</span><div class="pc-name">Recycled PET Yarn</div><div class="pc-val">₹40–80/kg</div></div>
+<div class="pc"><span class="pc-icon">🧱</span><div class="pc-name">Eco Plastic Bricks</div><div class="pc-val">Construction</div></div>
+<div class="pc"><span class="pc-icon">🪑</span><div class="pc-name">Recycled Furniture</div><div class="pc-val">Growing Market</div></div>
+<div class="pc"><span class="pc-icon">🛣️</span><div class="pc-name">Road Construction Mix</div><div class="pc-val">Govt. Procurement</div></div>
+<div class="pc"><span class="pc-icon">📦</span><div class="pc-name">Recycled Packaging</div><div class="pc-val">EPR Demand</div></div>
+<div class="pc"><span class="pc-icon">🌱</span><div class="pc-name">Plastic Lumber</div><div class="pc-val">Replacing Wood</div></div>
+</div>
+<div class="sec-head"><i class="ti ti-coin"></i>Income Opportunities <span class="sh-line"></span></div>
+<div class="income-ladder">
+<div class="il-item"><div class="il-num ln1">1</div><div><div class="il-title">Waste Plastic Segregator</div><div class="il-earn">₹6,000–14,000/month</div><div class="il-desc">Collect and sort PET bottles, HDPE containers, PP items. Sell to recycling units at ₹15–35/kg. A skilled sorter working 6 hours can collect 100–200 kg daily.</div></div></div>
+<div class="il-item"><div class="il-num ln2">2</div><div><div class="il-title">Plastic Shredder / Pellet Maker</div><div class="il-earn">₹20,000–50,000/month</div><div class="il-desc">Buy a shredder + pelletiser (₹1.5–3 lakh). Convert sorted plastic into pellets sold to manufacturers. Register as an EPR compliance partner with brands.</div></div></div>
+<div class="il-item"><div class="il-num ln3">3</div><div><div class="il-title">Eco-Brick / Tile Maker</div><div class="il-earn">₹25,000–60,000/month</div><div class="il-desc">Convert mixed low-grade plastic into interlocking eco-bricks for construction. Municipal corporations in India are actively buying these under Swachh Bharat.</div></div></div>
+</div>
+</div>
+<!-- ══════════════════════════════════════════════
+     6. SAWDUST / WOOD WASTE
+══════════════════════════════════════════════ -->
+<div class="msection" id="mat-sawdust">
+<div class="mat-hero mh-sawdust">
+<span class="mat-hero-emoji">🪵</span>
+<h2>Sawdust &amp; Wood Waste</h2>
+<p>Every sawmill, furniture workshop, and carpentry unit generates enormous quantities of sawdust, wood shavings, and off-cuts — usually burnt or discarded. This waste is fuel, building material, art medium, and agricultural input all in one.</p>
+<div class="mat-hero-tags">
+<span class="mht">🔥 Biomass Energy</span><span class="mht">🏗️ Construction Uses</span>
+<span class="mht">🌱 Agricultural Use</span><span class="mht">🎨 Craft Potential</span>
+</div>
+</div>
+<div class="pg">
+<div class="pc"><span class="pc-icon">🧱</span><div class="pc-name">Wood Briquettes / Pellets</div><div class="pc-val">₹8–15/kg</div></div>
+<div class="pc"><span class="pc-icon">🏗️</span><div class="pc-name">Particle Board / MDF</div><div class="pc-val">Industrial Use</div></div>
+<div class="pc"><span class="pc-icon">🍄</span><div class="pc-name">Mushroom Growing Medium</div><div class="pc-val">₹80–200/kg</div></div>
+<div class="pc"><span class="pc-icon">🪨</span><div class="pc-name">Wood Cement Blocks</div><div class="pc-val">Construction</div></div>
+<div class="pc"><span class="pc-icon">🌿</span><div class="pc-name">Compost / Soil Amendment</div><div class="pc-val">Organic Farms</div></div>
+<div class="pc"><span class="pc-icon">🎨</span><div class="pc-name">Wood Art / Craft</div><div class="pc-val">Export Handicraft</div></div>
+<div class="pc"><span class="pc-icon">🐔</span><div class="pc-name">Poultry Litter</div><div class="pc-val">Livestock Use</div></div>
+<div class="pc"><span class="pc-icon">🔥</span><div class="pc-name">Biomass Fuel</div><div class="pc-val">Industries Buy</div></div>
+</div>
+<div class="sec-head"><i class="ti ti-star"></i>Star Opportunity: Mushroom Cultivation <span class="sh-line"></span></div>
+<div class="ab ab-green"><i class="ti ti-mushroom"></i><span><strong>Oyster mushrooms grown on sawdust</strong> are one of India's fastest-growing food businesses. A 10×10 ft room with ₹15,000 investment can produce 80–120 kg of mushrooms per month, earning ₹12,000–24,000. Women's SHGs in Odisha and WB are earning ₹15,000–30,000/month from mushroom cultivation units.</span></div>
+<div class="sec-head"><i class="ti ti-coin"></i>Income Opportunities <span class="sh-line"></span></div>
+<div class="income-ladder">
+<div class="il-item"><div class="il-num ln1">1</div><div><div class="il-title">Sawdust Collector / Supplier</div><div class="il-earn">₹4,000–9,000/month</div><div class="il-desc">Collect from carpentry shops, sawmills, furniture factories — usually free. Bag, weigh and sell to mushroom cultivators, briquette makers, farms.</div></div></div>
+<div class="il-item"><div class="il-num ln2">2</div><div><div class="il-title">Mushroom Cultivator</div><div class="il-earn">₹12,000–30,000/month</div><div class="il-desc">Use sawdust as growing substrate for oyster/button mushrooms. Low space requirement (can start in one room). Free training from ICAR/KVK centres.</div></div></div>
+<div class="il-item"><div class="il-num ln3">3</div><div><div class="il-title">Biomass Briquette Maker</div><div class="il-earn">₹18,000–45,000/month</div><div class="il-desc">Compress sawdust into briquettes using a briquette press (₹50,000–1 lakh). Sell to boiler industries, hotels, brick kilns replacing coal.</div></div></div>
+</div>
+</div>
+<!-- ══════════════════════════════════════════════
+     7. RICE HUSK
+══════════════════════════════════════════════ -->
+<div class="msection" id="mat-husk">
+<div class="mat-hero mh-husk">
+<span class="mat-hero-emoji">🌾</span>
+<h2>Rice Husk (Paddy Husk)</h2>
+<p>West Bengal is India's largest rice-producing state. Rice husk — the outer shell removed during milling — accounts for 20% of paddy weight and is massively abundant in this region. It contains silica (used in semiconductors!), has high calorific value, and is an excellent insulation material.</p>
+<div class="mat-hero-tags">
+<span class="mht">🏆 WB is #1 Rice Producer</span><span class="mht">💡 Contains Silicon</span>
+<span class="mht">🔋 Biomass Energy</span><span class="mht">🌱 Soil Improver</span>
+</div>
+</div>
+<div class="ab ab-amber"><i class="ti ti-bulb"></i><span>India generates <strong>24 million tonnes</strong> of rice husk annually. WB alone produces 4+ million tonnes. Rice husk ash (RHA) contains 90%+ silica — valued by cement, silicon, and electronics industries worldwide.</span></div>
+<div class="sr">
+<div class="sc"><div class="sc-num">24 MT</div><div class="sc-lbl">Annual rice husk generation in India</div></div>
+<div class="sc"><div class="sc-num">90%</div><div class="sc-lbl">Silica content in rice husk ash</div></div>
+<div class="sc"><div class="sc-num">₹2–8/kg</div><div class="sc-lbl">Rice husk price (raw)</div></div>
+<div class="sc"><div class="sc-num">₹40–120/kg</div><div class="sc-lbl">Processed husk products price</div></div>
+</div>
+<div class="pg">
+<div class="pc"><span class="pc-icon">🏗️</span><div class="pc-name">Rice Husk Boards</div><div class="pc-val">Building Material</div></div>
+<div class="pc"><span class="pc-icon">🔥</span><div class="pc-name">Biomass Fuel</div><div class="pc-val">₹3–8/kg</div></div>
+<div class="pc"><span class="pc-icon">⚗️</span><div class="pc-name">Rice Husk Ash (RHA)</div><div class="pc-val">₹15–40/kg</div></div>
+<div class="pc"><span class="pc-icon">🧱</span><div class="pc-name">RHA Cement Additive</div><div class="pc-val">Bulk Industrial</div></div>
+<div class="pc"><span class="pc-icon">🌱</span><div class="pc-name">Soil Amendment</div><div class="pc-val">Organic Farming</div></div>
+<div class="pc"><span class="pc-icon">🍄</span><div class="pc-name">Mushroom Substrate</div><div class="pc-val">₹12–25/kg</div></div>
+<div class="pc"><span class="pc-icon">💡</span><div class="pc-name">Silica for Electronics</div><div class="pc-val">High Export Value</div></div>
+<div class="pc"><span class="pc-icon">🐟</span><div class="pc-name">Pond Water Filter</div><div class="pc-val">Aquaculture Use</div></div>
+</div>
+<div class="sec-head"><i class="ti ti-coin"></i>Income Opportunities <span class="sh-line"></span></div>
+<div class="income-ladder">
+<div class="il-item"><div class="il-num ln1">1</div><div><div class="il-title">Rice Mill Husk Aggregator</div><div class="il-earn">₹6,000–12,000/month</div><div class="il-desc">Negotiate with rice mills for husk supply. Bag and resell to brick kilns (fuel), farms (soil improvement), and husk board manufacturers. Logistics is the key skill.</div></div></div>
+<div class="il-item"><div class="il-num ln2">2</div><div><div class="il-title">RHA (Rice Husk Ash) Producer</div><div class="il-earn">₹15,000–35,000/month</div><div class="il-desc">Controlled burning of rice husk in a kiln produces ash with 90% silica. Sell to cement plants, refractory companies, and silica suppliers at ₹15–40/kg.</div></div></div>
+<div class="il-item"><div class="il-num ln3">3</div><div><div class="il-title">Husk Board / Insulation Maker</div><div class="il-earn">₹25,000–60,000/month</div><div class="il-desc">Combine rice husk with binders to make low-cost building boards and ceiling tiles. Strong demand from construction sector. PMEGP funding available.</div></div></div>
+<div class="il-item"><div class="il-num ln4">4</div><div><div class="il-title">Nano-Silica Exporter</div><div class="il-earn">₹2–20 Lakh/month</div><div class="il-desc">Process RHA into nano-silica powder — used in electronics, rubber, and construction industries globally. Export to Japan, Germany, USA. Requires lab-grade processing unit.</div></div></div>
+</div>
+</div>
+<!-- ══════════════════════════════════════════════
+     8. EXPORT GUIDE (ALL MATERIALS)
+══════════════════════════════════════════════ -->
+<div class="msection" id="mat-export">
+<div class="ab ab-sky"><i class="ti ti-world"></i><span>All 7 materials in this guide have established international export markets. India has a natural advantage in raw material availability, low labour costs, and a skilled craft tradition. <strong>The global market is waiting for you.</strong></span></div>
+<div class="sec-head"><i class="ti ti-chart-bar"></i>Top Export Markets by Material <span class="sh-line"></span></div>
+<div class="cg">
+<div class="card ct3">
+<div class="card-title"><i class="ti ti-world"></i>Coir Products</div>
+<span class="badge bs">Top Buyers</span>
+<div class="mkt-item"><div class="mkt-label"><span class="mkt-country"><span class="mkt-flag">🇺🇸</span>USA</span><span class="mkt-pct">32%</span></div><div class="mkt-bar-bg"><div class="mkt-bar-fill mb-green" data-w="90%"></div></div></div>
+<div class="mkt-item"><div class="mkt-label"><span class="mkt-country"><span class="mkt-flag">🇩🇪</span>Germany</span><span class="mkt-pct">18%</span></div><div class="mkt-bar-bg"><div class="mkt-bar-fill mb-amber" data-w="55%"></div></div></div>
+<div class="mkt-item"><div class="mkt-label"><span class="mkt-country"><span class="mkt-flag">🇳🇱</span>Netherlands</span><span class="mkt-pct">12%</span></div><div class="mkt-bar-bg"><div class="mkt-bar-fill mb-sky" data-w="40%"></div></div></div>
+</div>
+<div class="card ct1">
+<div class="card-title"><i class="ti ti-leaf"></i>Banana Fibre &amp; Jute</div>
+<span class="badge bl">Growing Fast</span>
+<div class="mkt-item"><div class="mkt-label"><span class="mkt-country"><span class="mkt-flag">🇯🇵</span>Japan</span><span class="mkt-pct">28%</span></div><div class="mkt-bar-bg"><div class="mkt-bar-fill mb-green" data-w="85%"></div></div></div>
+<div class="mkt-item"><div class="mkt-label"><span class="mkt-country"><span class="mkt-flag">🇫🇷</span>France</span><span class="mkt-pct">15%</span></div><div class="mkt-bar-bg"><div class="mkt-bar-fill mb-amber" data-w="48%"></div></div></div>
+<div class="mkt-item"><div class="mkt-label"><span class="mkt-country"><span class="mkt-flag">🇬🇧</span>UK</span><span class="mkt-pct">13%</span></div><div class="mkt-bar-bg"><div class="mkt-bar-fill mb-sky" data-w="40%"></div></div></div>
+</div>
+<div class="card ct7">
+<div class="card-title"><i class="ti ti-grain"></i>Rice Husk / RHA</div>
+<span class="badge bv">High Value</span>
+<div class="mkt-item"><div class="mkt-label"><span class="mkt-country"><span class="mkt-flag">🇨🇳</span>China</span><span class="mkt-pct">35%</span></div><div class="mkt-bar-bg"><div class="mkt-bar-fill mb-pink" data-w="92%"></div></div></div>
+<div class="mkt-item"><div class="mkt-label"><span class="mkt-country"><span class="mkt-flag">🇰🇷</span>S.Korea</span><span class="mkt-pct">20%</span></div><div class="mkt-bar-bg"><div class="mkt-bar-fill mb-orange" data-w="60%"></div></div></div>
+<div class="mkt-item"><div class="mkt-label"><span class="mkt-country"><span class="mkt-flag">🇩🇪</span>Germany</span><span class="mkt-pct">14%</span></div><div class="mkt-bar-bg"><div class="mkt-bar-fill mb-amber" data-w="44%"></div></div></div>
+</div>
+</div>
+<div class="sec-head"><i class="ti ti-certificate"></i>How to Start Exporting <span class="sh-line"></span></div>
+<div class="steps">
+<div class="step"><div><div class="step-t">Get IEC Code (Free — 2 Days)</div><div class="step-d">Register at dgft.gov.in. IEC (Importer Exporter Code) is mandatory. Apply online with Aadhaar + PAN + bank details. No fees charged since 2021.</div></div></div>
+<div class="step"><div><div class="step-t">Register with MSME (Udyam)</div><div class="step-d">Free registration at udyamregistration.gov.in. Gives you access to export promotion schemes, credit guarantee funds, and government tenders.</div></div></div>
+<div class="step"><div><div class="step-t">Quality Certification</div><div class="step-d">For natural fibre products: GOTS (organic textile) or OEKO-TEX certification opens premium European markets. For food-adjacent products: FSSAI + ISO 22000.</div></div></div>
+<div class="step"><div><div class="step-t">List on B2B Platforms</div><div class="step-d">Create verified seller profiles on Alibaba, IndiaMART Export, and EC21. Upload professional product photos with dimensions, weight, certifications, and MOQ (minimum order quantity).</div></div></div>
+<div class="step"><div><div class="step-t">Contact Buying Agents</div><div class="step-d">FIEO (Federation of Indian Export Organisations) has a buyer-seller match service. APEDA's portal connects you with international food/agri buyers. Both are free to use.</div></div></div>
+<div class="step"><div><div class="step-t">Apply for Export Incentives</div><div class="step-d">RoDTEP scheme: refunds embedded taxes on exports. MEIS/RODTEP gives 2–5% of FOB value as credit. Register at DGFT portal to claim these benefits.</div></div></div>
+</div>
+<div class="sec-head"><i class="ti ti-clipboard-list"></i>Export Readiness Checklist <span class="sh-line"></span></div>
+<div class="prog-wrap">
+<div class="prog-label"><span id="exp-prog-lbl">0 of 10 steps done</span><span id="exp-prog-pct">0%</span></div>
+<div class="prog-bg"><div class="prog-fill" id="exp-prog-fill" style="width:0%"></div></div>
+</div>
+<div class="card ct1" id="exp-checklist"></div>
+</div>
+<!-- ══════════════════════════════════════════════
+     9. LEARNING RESOURCES
+══════════════════════════════════════════════ -->
+<div class="msection" id="mat-learn">
+<div class="ab ab-sky"><i class="ti ti-school"></i><span>Every skill mentioned in this guide can be learned for <strong>free or very low cost</strong>. The internet, government portals, and local training centres are loaded with resources. <strong>Knowledge is the first investment.</strong></span></div>
+<div class="sec-head"><i class="ti ti-device-laptop"></i>Free Online Learning <span class="sh-line"></span></div>
+<div class="cg">
+<div class="card ct3">
+<div class="card-title"><i class="ti ti-brand-youtube"></i>YouTube Channels (Hindi/Bengali)</div>
+<span class="badge bs">Free</span>
+<div class="tip">ICAR Official YouTube — soil, husk, composting, mushroom videos in Hindi</div>
+<div class="tip">KVIC India — coir, jute, paper, village industry training videos</div>
+<div class="tip">Krishi Jagran — agricultural waste conversion, entrepreneurship stories</div>
+<div class="tip">Skill India — vocational training videos for all 7 materials covered here</div>
+<div class="tip">Search "coir making tutorial", "jute bag making" — hundreds of free step-by-step videos</div>
+</div>
+<div class="card ct1">
+<div class="card-title"><i class="ti ti-world-www"></i>Government Portals</div>
+<span class="badge bl">Official &amp; Free</span>
+<div class="tip">skillindia.gov.in — 500+ vocational courses, many with job placement support</div>
+<div class="tip">pmkvyofficial.org — PMKVY free skill certification in 300+ trades including handicrafts</div>
+<div class="tip">diksha.gov.in — NCERT-quality digital learning for entrepreneurs</div>
+<div class="tip">swayam.gov.in — university-level courses free of charge with certificates</div>
+<div class="tip">msme.gov.in — business and entrepreneurship training modules</div>
+</div>
+<div class="card ct5">
+<div class="card-title"><i class="ti ti-building"></i>Training Centres (Free/Subsidised)</div>
+<span class="badge ba">Near You</span>
+<div class="tip">Coir Board India centres — free 3-month coir making and design training</div>
+<div class="tip">KVK (Krishi Vigyan Kendra) — every district has one; free mushroom, composting, waste management training</div>
+<div class="tip">ITI (Industrial Training Institute) — 6–24 month courses in manufacturing, woodworking, plastic processing</div>
+<div class="tip">RSETI (Rural Self Employment Training Institute) — bank-linked, free 14–21 day enterprise training</div>
+<div class="tip">NIMSME Hyderabad — online and residential courses for rural entrepreneurs</div>
+</div>
+<div class="card ct6">
+<div class="card-title"><i class="ti ti-certificate"></i>Certifications to Target</div>
+<span class="badge bt">Career Boost</span>
+<div class="tip">NSQF Level 3–5 certificates (Skill India) — recognised by employers and banks for loans</div>
+<div class="tip">PMKVY certificate — government-recognised, free training + ₹8,000 stipend for many trades</div>
+<div class="tip">ISO awareness certificate (BIS) — adds credibility when approaching bulk buyers</div>
+<div class="tip">FSSAI FoSCoS certificate — essential for any food-related waste product business</div>
+<div class="tip">Udyam MSME registration — not a certificate but opens every government benefit</div>
+</div>
+</div>
+<div class="sec-head"><i class="ti ti-map-pin"></i>Contact Points for West Bengal / Bishnupur Region <span class="sh-line"></span></div>
+<table class="stbl">
+<thead><tr><th>Organisation</th><th>How They Help</th><th>Contact</th></tr></thead>
+<tbody>
+<tr><td><strong>KVK Bankura</strong></td><td>Free training on mushroom, composting, rice husk use</td><td>Visit Bishnupur KVK centre</td></tr>
+<tr><td><strong>WBSIDC</strong></td><td>WB Small Industries Dev. — machinery loans, cluster support</td><td>wbsidc.in</td></tr>
+<tr><td><strong>District Industries Centre, Bankura</strong></td><td>PMEGP applications, EDP training, MSME registration help</td><td>Bankura DIC office</td></tr>
+<tr><td><strong>RSETI Bankura</strong></td><td>Free 14–21 day enterprise skill training with bank linkage</td><td>Nearest SBI Rural branch</td></tr>
+<tr><td><strong>Coir Board Regional Office</strong></td><td>Coir machinery subsidy, design training</td><td>Coir Board Kolkata office</td></tr>
+<tr><td><strong>NABARD Bankura</strong></td><td>SHG loans, FPO formation, technical guidance</td><td>nabard.org</td></tr>
+</tbody>
+</table>
+</div>
+<!-- ══════════════════════════════════════════════
+     10. MINDSET — MOTIVATIONAL
+══════════════════════════════════════════════ -->
+<div class="msection" id="mat-motiv">
+<div class="motiv">
+<div class="motiv-title">🎯 The Shortcut Myth — Read This First</div>
+<p>Every week, thousands of young people quit promising vocational opportunities chasing the idea of "going viral" or "getting rich from reels." Social media shows you the <strong>highlight reel</strong> of success — not the 3 years of failure before it.</p>
+<p>The truth is simple: <strong>the creators making money from reels studied their craft for years, built real skills, and worked 12-hour days</strong>. Their success looks instant — it wasn't.</p>
+<p>Meanwhile, the waste materials in this guide are sitting free in every market, every farm, every sawmill around you. The global market is paying thousands of crores for these processed materials. <strong>The opportunity isn't on your phone — it's outside your door.</strong></p>
+</div>
+<div class="sec-head"><i class="ti ti-flame"></i>The Truth About Building a Future <span class="sh-line"></span></div>
+<div class="cg">
+<div class="card ct2">
+<div class="card-title"><i class="ti ti-clock"></i>What Actually Takes Time</div>
+<span class="badge ba">Honest Reality</span>
+<div class="tip">Learning a craft skill: 3–6 months of consistent daily practice to produce sellable quality</div>
+<div class="tip">Building a customer base: first 6 months is hardest; orders become regular after 1 year</div>
+<div class="tip">Getting a bank loan: 2–4 months with proper documentation; worth every day of waiting</div>
+<div class="tip">First export order: typically 6–12 months after starting; patience is a superpower</div>
+<div class="tip">A stable monthly income of ₹20,000+: realistic within 12–18 months of focused effort</div>
+</div>
+<div class="card ct9">
+<div class="card-title"><i class="ti ti-bolt"></i>What You Can Do Tomorrow</div>
+<span class="badge bl">Start Now</span>
+<div class="tip">Visit your nearest fish market, sawmill, rice mill, or coconut vendor — ask about waste</div>
+<div class="tip">Go to YouTube today and watch 3 videos on any one material from this guide</div>
+<div class="tip">Register free on Udyam portal — 10 minutes, zero cost, opens every government door</div>
+<div class="tip">Find your local KVK centre and ask what free training starts next month</div>
+<div class="tip">Join one SHG or form a group with 5 friends — together you can access larger loans</div>
+</div>
+</div>
+<div class="sec-head"><i class="ti ti-users"></i>Why Your Employment Matters to All of Us <span class="sh-line"></span></div>
+<div class="motiv" style="background:linear-gradient(135deg,#001a1a,#002a2a);border-color:rgba(0,188,212,0.25)">
+<div class="motiv-title" style="color:var(--sky)">🌍 Employed People Build Better Societies</div>
+<p><strong>Crime comes from desperation, not character.</strong> When a young person has a skill, an income, and a sense of purpose — the temptation to take shortcuts through crime disappears. Every person who builds a legitimate livelihood makes their entire neighbourhood safer.</p>
+<p>When you start a waste-processing unit, you don't just earn money. You <strong>employ your neighbours</strong>, reduce pollution in your town, provide resources to local farmers, and send products to the world with "Made in India" on the label.</p>
+<p><strong>Your success is your community's success. Your employment is India's development.</strong> This is not an exaggeration — it is economics.</p>
+</div>
+<div class="sec-head"><i class="ti ti-heart"></i>The 5 Habits of Successful Waste Entrepreneurs <span class="sh-line"></span></div>
+<div class="cg">
+<div class="card ct1">
+<div class="card-title"><i class="ti ti-book"></i>1. Learn Every Day</div>
+<div class="tip">Spend 30 minutes daily watching tutorials, reading about your material, studying competitors</div>
+<div class="tip">Join WhatsApp groups of coir makers, jute weavers, coco peat exporters — knowledge is shared freely</div>
+<div class="tip">"I learn something new every day" separates successful entrepreneurs from those who give up</div>
+</div>
+<div class="card ct6">
+<div class="card-title"><i class="ti ti-eye"></i>2. Obsess About Quality</div>
+<div class="tip">International buyers reject entire consignments for one quality failure — quality is non-negotiable</div>
+<div class="tip">Test every batch before selling. One bad delivery destroys one year of relationship-building</div>
+<div class="tip">Spend ₹500 on lab testing before spending ₹50,000 on packaging — verify first</div>
+</div>
+<div class="card ct8">
+<div class="card-title"><i class="ti ti-handshake"></i>3. Build Relationships</div>
+<div class="tip">Treat raw material suppliers with respect — they will give you better prices and first access</div>
+<div class="tip">Respond to buyer inquiries within 24 hours — in global trade, slow response means lost order</div>
+<div class="tip">Join your local MSME cluster or trade association — network is your biggest asset</div>
+</div>
+</div>
+</div>
+<!-- ══════════════════════════════════════════════
+     11. MYSKILLGAME HUB
+══════════════════════════════════════════════ -->
+<div class="msection" id="mat-myskill">
+<div class="msg-footer">
+<h3>🎓 <span>MySkillGame</span></h3>
+<p>MySkillGame believes that every young person has potential waiting to be unlocked. We connect vocational knowledge with real market opportunities — turning the ordinary waste around you into extraordinary livelihoods.</p>
+<div class="msg-pills">
+<span class="msp">📚 Vocational Education</span>
+<span class="msp">💼 Self Employment</span>
+<span class="msp">💡 Startup Ideas</span>
+<span class="msp">👩 Women Empowerment</span>
+<span class="msp">🤝 SHG Opportunities</span>
+<span class="msp">🌱 Environmental Awareness</span>
+<span class="msp">♻️ Circular Economy</span>
+<span class="msp">💰 Financial Literacy</span>
+</div>
+<div class="tagline">"Created for MySkillGame – Promoting Vocational Education, Entrepreneurship, Financial Literacy, Environmental Awareness and Sustainable Livelihood Opportunities."</div>
+</div>
+<div class="sec-head"><i class="ti ti-chart-bar"></i>All 7 Materials at a Glance <span class="sh-line"></span></div>
+<table class="stbl">
+<thead><tr><th>Material</th><th>Best Products</th><th>Start Investment</th><th>Monthly Income Potential</th><th>Export Markets</th></tr></thead>
+<tbody>
+<tr><td>🥥 Coconut Coir</td><td>Mats, rope, coco peat</td><td>₹5,000–30,000</td><td>₹8,000–2,00,000</td><td>USA, Germany, Netherlands</td></tr>
+<tr><td>🍌 Banana Fibre</td><td>Paper, bags, yarn</td><td>₹3,000–50,000</td><td>₹10,000–1,00,000</td><td>Japan, France, UK</td></tr>
+<tr><td>🌾 Jute Waste</td><td>Bags, geo-textiles, decor</td><td>₹10,000–1,00,000</td><td>₹15,000–3,00,000</td><td>EU, USA, Middle East</td></tr>
+<tr><td>📰 Newspaper</td><td>Paper bags, crafts</td><td>₹5,000–50,000</td><td>₹8,000–35,000</td><td>EU craft markets</td></tr>
+<tr><td>♻️ Plastic Waste</td><td>Pellets, eco-bricks</td><td>₹20,000–3,00,000</td><td>₹20,000–1,50,000</td><td>EPR domestic buyers</td></tr>
+<tr><td>🪵 Sawdust</td><td>Mushrooms, briquettes</td><td>₹15,000–1,00,000</td><td>₹12,000–60,000</td><td>Biomass export</td></tr>
+<tr><td>🌿 Rice Husk</td><td>RHA, boards, fuel</td><td>₹5,000–5,00,000</td><td>₹10,000–5,00,000</td><td>China, S.Korea, Germany</td></tr>
+</tbody>
+</table>
+<div class="sec-head"><i class="ti ti-phone"></i>Key Helplines &amp; Contacts <span class="sh-line"></span></div>
+<div class="cg">
+<div class="card ct3">
+<div class="card-title"><i class="ti ti-phone-call"></i>National Helplines</div>
+<span class="badge bs">Free to Call</span>
+<div class="tip">MSME Helpline: 1800-180-6763 (toll-free) — scheme guidance, loan help</div>
+<div class="tip">Skill India: 088000-55555 — training centre nearest to you</div>
+<div class="tip">NABARD: 022-26539895 — SHG and rural enterprise finance</div>
+<div class="tip">Coir Board: 0484-2351807 — coir training, subsidy, export help</div>
+<div class="tip">KVIC: 022-26714573 — jute, paper, village industry support</div>
+</div>
+<div class="card ct1">
+<div class="card-title"><i class="ti ti-world-www"></i>Key Websites</div>
+<span class="badge bl">Bookmark These</span>
+<div class="tip">udyamregistration.gov.in — free MSME registration</div>
+<div class="tip">pmegp.kvic.org.in — PMEGP loan applications</div>
+<div class="tip">skillindia.gov.in — free skill courses near you</div>
+<div class="tip">dgft.gov.in — free IEC export code registration</div>
+<div class="tip">coirboard.gov.in — coir schemes and training</div>
+<div class="tip">apeda.gov.in — agricultural export promotion</div>
+</div>
+</div>
+<div class="ab ab-gold" style="margin-top:16px">
+<i class="ti ti-rocket"></i>
+<span><strong>Your future starts with one decision:</strong> Choose skill over shortcuts. Choose hard work over hope. Choose to build something real from the waste the world throws away. <strong>The material is free. The market is global. The opportunity is right outside your door.</strong> 🌱💪</span>
+</div>
+</div>
+<footer class="site-footer">
+   © 2026 MySkillGame • Educational Games &amp; Awareness Projects
+</footer></div><!-- /content -->
+<script>
+// ── Tab Switch ──
+function switchMat(name, btn) {
+  document.querySelectorAll('.msection').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.mat-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('mat-' + name).classList.add('active');
+  btn.classList.add('active');
+  btn.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
+  // animate market bars
+  setTimeout(animateBars, 100);
+}
+
+// ── Market Bar Animation ──
+function animateBars() {
+  document.querySelectorAll('.mkt-bar-fill').forEach(bar => {
+    const w = bar.dataset.w || bar.style.width;
+    if (w) { bar.style.width = '0%'; setTimeout(() => bar.style.width = w, 80); }
+  });
+}
+
+// ── Export Checklist ──
+const expItems = [
+  "Udyam MSME registration completed (udyamregistration.gov.in)",
+  "IEC code obtained from DGFT (dgft.gov.in) — free",
+  "Current bank account opened in business name",
+  "Product samples produced and photographed professionally",
+  "NABL lab test report obtained for your product",
+  "Alibaba / IndiaMART export profile created and verified",
+  "FIEO membership applied for buyer-seller introductions",
+  "First product packaging designed with export labelling",
+  "RoDTEP / MEIS export incentive scheme registered",
+  "First trial shipment of 50–100 kg dispatched to a buyer"
+];
+let expStates = expItems.map(() => false);
+
+function renderExpChecklist() {
+  const c = document.getElementById('exp-checklist');
+  if (!c) return;
+  const done = expStates.filter(Boolean).length;
+  const pct = Math.round(done / expItems.length * 100);
+  document.getElementById('exp-prog-fill').style.width = pct + '%';
+  document.getElementById('exp-prog-lbl').textContent = `${done} of ${expItems.length} steps done`;
+  document.getElementById('exp-prog-pct').textContent = pct + '%';
+  c.innerHTML = expItems.map((t, i) => `
+    <div class="chk-item" onclick="toggleExp(${i})">
+      <div class="chk-box ${expStates[i] ? 'done' : ''}">
+        ${expStates[i] ? '<i class="ti ti-check"></i>' : ''}
+      </div>
+      <span class="chk-text ${expStates[i] ? 'done' : ''}">${t}</span>
+    </div>
+  `).join('');
+}
+function toggleExp(i) { expStates[i] = !expStates[i]; renderExpChecklist(); }
+renderExpChecklist();
+
+// ── Initial bar set ──
+document.querySelectorAll('.mkt-bar-fill[data-w]').forEach(bar => {
+  bar.style.width = '0%';
+  setTimeout(() => bar.style.width = bar.dataset.w, 400);
+});
+</script>
+<script src="security.js"></script>
+
+<footer class="footer">
+<div style="margin-bottom:18px;">
+<a href="about.html">About</a> |
+<a href="privacy.html">Privacy Policy</a> |
+<a href="terms.html">Terms &amp; Conditions</a> |
+<a href="contact.html">Contact</a> |
+<a href="disclaimer.html">Disclaimer</a>
+</div>
+<div class="footer-name">MYSKILLGAME</div>
+<div class="footer-copy">© 2026 MySkillGame • Developed by Surajit Roy</div>
+</footer>
+</body>
+</html>
