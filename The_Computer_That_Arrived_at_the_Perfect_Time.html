@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>The Computer That Arrived at the Perfect Time</title>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyDfxtOP-YCrCXtQxZrrFNC1uXucvbW0K78",
+    authDomain: "my-skill-global.firebaseapp.com",
+    projectId: "my-skill-global",
+    storageBucket: "my-skill-global.firebasestorage.app",
+    messagingSenderId: "978471914749",
+    appId: "1:978471914749:web:595750b5d90738933f4294",
+    measurementId: "G-8D9BPY8HJ0"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+<!-- Robots -->
+<meta name="robots" content="index,follow">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet">
+
+<style>
+
+  :root{
+    --ink:#241a12;
+    --dusk:#1c2a3a;
+    --dusk-deep:#121c28;
+    --slate:#33465c;
+    --parchment:#f6efe0;
+    --parchment-2:#efe4cc;
+    --marigold:#e6a13a;
+    --marigold-dim:#c98428;
+    --ember:#c15a2e;
+    --line:rgba(230,161,58,0.35);
+    --shadow:0 18px 40px rgba(18,28,40,0.35);
+    --serif:'Fraunces', Georgia, serif;
+    --sans:'Inter', sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--dusk-deep);
+    color:var(--ink);
+    font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--marigold); color:var(--dusk-deep);}
+
+  a{color:inherit;}
+
+  /* ---------- Skip link / accessibility ---------- */
+  .skip-link{
+    position:absolute; left:-999px; top:0; background:var(--marigold); color:var(--dusk-deep);
+    padding:10px 16px; z-index:999; font-weight:600;
+  }
+  .skip-link:focus{left:8px; top:8px;}
+
+  /* ---------- Top bar ---------- */
+  .topbar{
+    position:sticky; top:0; z-index:60;
+    display:flex; align-items:center; justify-content:space-between;
+    gap:10px;
+    padding:10px 16px;
+    background:linear-gradient(180deg, rgba(18,28,40,0.97), rgba(18,28,40,0.86));
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar .mark{
+    font-family:var(--serif); color:var(--parchment); font-weight:600; letter-spacing:.02em;
+    font-size:15px; display:flex; align-items:center; gap:8px;
+  }
+  .topbar .mark svg{flex:none;}
+  .topbar-actions{display:flex; gap:8px; align-items:center;}
+  .icon-btn{
+    appearance:none; border:1px solid var(--line); background:rgba(255,255,255,0.03);
+    color:var(--parchment); border-radius:999px; width:40px; height:40px;
+    display:flex; align-items:center; justify-content:center; cursor:pointer;
+    transition:background .15s, transform .15s, border-color .15s;
+  }
+  .icon-btn:hover{background:rgba(230,161,58,0.14); border-color:var(--marigold);}
+  .icon-btn:active{transform:scale(.94);}
+  .icon-btn.active{background:var(--marigold); border-color:var(--marigold); color:var(--dusk-deep);}
+  .icon-btn svg{width:18px; height:18px;}
+
+  .progress-rail{height:3px; background:rgba(255,255,255,0.08);}
+  .progress-fill{height:100%; width:0%; background:linear-gradient(90deg, var(--ember), var(--marigold)); transition:width .15s linear;}
+
+  /* ---------- Resume banner ---------- */
+  .resume-banner{
+    display:none; align-items:center; justify-content:space-between; gap:12px;
+    max-width:760px; margin:14px auto 0; padding:12px 16px;
+    background:var(--parchment-2); border:1px solid #d9c79a; border-radius:12px;
+    color:var(--ink); font-size:14px;
+  }
+  .resume-banner.show{display:flex;}
+  .resume-banner button{
+    appearance:none; border:none; background:var(--ember); color:#fff;
+    padding:8px 14px; border-radius:8px; cursor:pointer; font-size:13px; font-weight:600;
+    white-space:nowrap; font-family:var(--sans);
+  }
+  .resume-banner .dismiss{background:transparent; color:var(--slate); padding:8px 10px;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative; min-height:78vh; display:flex; align-items:flex-end;
+    overflow:hidden; color:var(--parchment);
+  }
+  .hero-img{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+    filter:saturate(1.05) contrast(1.02);
+  }
+  .hero-img.fallback{
+    background:
+      radial-gradient(ellipse at 30% 20%, rgba(230,161,58,0.25), transparent 55%),
+      linear-gradient(180deg, #1c2a3a 0%, #223349 45%, #121c28 100%);
+  }
+  .hero::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(18,28,40,0.15) 0%, rgba(18,28,40,0.35) 45%, rgba(18,28,40,0.96) 100%);
+  }
+  .hero-content{position:relative; z-index:2; padding:56px 20px 44px; max-width:820px; margin:0 auto; width:100%;}
+  .hero-eyebrow{
+    text-transform:none; letter-spacing:.04em; color:var(--marigold);
+    font-size:13px; margin:0 0 14px; display:flex; align-items:center; gap:10px;
+  }
+  .hero-eyebrow::before{content:""; width:26px; height:1px; background:var(--marigold); display:inline-block;}
+  .hero h1{
+    font-family:var(--serif); font-weight:600; font-size:clamp(32px, 6vw, 56px);
+    line-height:1.08; margin:0 0 16px; max-width:16ch;
+  }
+  .hero p.dek{
+    font-size:16px; line-height:1.6; color:#e7dcc4; max-width:54ch; margin:0 0 26px;
+  }
+  .hero-cta{display:flex; flex-wrap:wrap; gap:10px;}
+  .btn{
+    appearance:none; cursor:pointer; border-radius:999px; padding:12px 20px;
+    font-size:14px; font-weight:600; border:1px solid transparent;
+    display:inline-flex; align-items:center; gap:8px; transition:transform .15s, background .15s;
+    font-family:var(--sans);
+  }
+  .btn:active{transform:scale(.97);}
+  .btn-primary{background:var(--marigold); color:var(--dusk-deep);}
+  .btn-primary:hover{background:#f0b04f;}
+  .btn-ghost{background:rgba(255,255,255,0.06); color:var(--parchment); border-color:rgba(255,255,255,0.25);}
+  .btn-ghost:hover{background:rgba(255,255,255,0.12);}
+
+  /* ---------- Layout: path + reading column ---------- */
+  .stage{
+    background:var(--parchment);
+    position:relative;
+  }
+  .stage::before{
+    content:""; position:absolute; top:-1px; left:0; right:0; height:34px;
+    background:var(--parchment);
+    clip-path:polygon(0 100%, 100% 100%, 100% 0%, 96% 40%, 92% 6%, 88% 55%, 84% 10%, 80% 60%, 76% 5%, 72% 45%, 68% 12%, 64% 50%, 60% 8%, 56% 42%, 52% 15%, 48% 55%, 44% 6%, 40% 48%, 36% 10%, 32% 52%, 28% 8%, 24% 45%, 20% 15%, 16% 50%, 12% 6%, 8% 40%, 4% 10%, 0 30%);
+  }
+  .layout{
+    max-width:980px; margin:0 auto; padding:40px 18px 100px;
+    display:grid; grid-template-columns:56px 1fr; gap:8px 22px;
+  }
+  @media (min-width:720px){
+    .layout{grid-template-columns:64px 1fr; gap:8px 34px;}
+  }
+
+  .path-col{position:relative;}
+  .path-line{
+    position:absolute; left:50%; top:6px; bottom:6px; width:2px;
+    transform:translateX(-50%);
+    background:repeating-linear-gradient(180deg, var(--marigold-dim) 0 6px, transparent 6px 12px);
+    opacity:.55;
+  }
+  .waypoint{
+    position:relative; z-index:1;
+    width:100%; display:flex; justify-content:center;
+    scroll-margin-top:80px;
+  }
+  .waypoint .dot{
+    width:15px; height:15px; border-radius:50%;
+    background:var(--parchment); border:2px solid var(--marigold-dim);
+    display:flex; align-items:center; justify-content:center;
+    transition:background .25s, border-color .25s, transform .25s;
+  }
+  .waypoint.read .dot{background:var(--marigold-dim); border-color:var(--marigold-dim);}
+  .waypoint.active .dot{background:var(--marigold); border-color:var(--marigold); transform:scale(1.35);
+    box-shadow:0 0 0 5px rgba(230,161,58,0.22);}
+  .waypoint.reading .dot{animation:pulse 1.4s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(230,161,58,0.28);}50%{box-shadow:0 0 0 9px rgba(230,161,58,0.08);}}
+
+  /* chapters */
+  .chapter{
+    padding:26px 0 34px; border-bottom:1px dashed #d9c79a;
+    scroll-margin-top:74px;
+  }
+  .chapter:last-of-type{border-bottom:none;}
+  .chapter-eyebrow{
+    font-size:12px; color:var(--ember); letter-spacing:.03em; margin:0 0 6px;
+    display:flex; align-items:center; gap:8px; text-transform:uppercase;
+  }
+  .chapter h2{
+    font-family:var(--serif); font-size:clamp(21px,3vw,27px); margin:0 0 14px; color:var(--dusk-deep); font-weight:600;
+  }
+  .chapter p{
+    font-size:17px; line-height:1.85; margin:0 0 14px; color:#3a2c1e;
+  }
+  .chapter p.speech-active{
+    background:linear-gradient(90deg, rgba(230,161,58,0.16), transparent);
+    border-left:3px solid var(--marigold); padding-left:12px; margin-left:-15px;
+    border-radius:0 6px 6px 0;
+  }
+  .chapter .quote{
+    font-family:var(--serif); font-style:italic; font-size:19px; color:var(--dusk); margin:18px 0;
+    padding-left:16px; border-left:3px solid var(--marigold);
+  }
+
+  .moral-card{
+    margin-top:10px; background:#4D6D5B; color:var(--parchment); border-radius:16px;
+    padding:30px 26px; box-shadow:var(--shadow);
+  }
+  .moral-card .chapter-eyebrow{color:var(--marigold);}
+  .moral-card h2{color:var(--parchment);}
+  .moral-card p{color:#e3d8bd;}
+  .sign{
+    margin-top:20px; padding-top:18px; border-top:1px solid rgba(230,161,58,0.3);
+    font-family:var(--serif); font-style:italic; font-size:16px; color:var(--marigold);
+  }
+
+  /* ---------- Floating voice player ---------- */
+  .player{
+    position:fixed; left:50%; bottom:16px; transform:translateX(-50%);
+    z-index:80; width:min(560px, calc(100% - 24px));
+    background:var(--dusk-deep); color:var(--parchment);
+    border-radius:16px; box-shadow:var(--shadow); border:1px solid rgba(230,161,58,0.25);
+    padding:12px 14px;
+    display:none;
+  }
+  .player.open{display:block;}
+  .player-row{display:flex; align-items:center; gap:10px;}
+  .player-btn{
+    appearance:none; border:none; border-radius:50%; width:42px; height:42px; flex:none;
+    background:var(--marigold); color:var(--dusk-deep); cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .player-btn.secondary{background:rgba(255,255,255,0.08); color:var(--parchment); width:36px; height:36px;}
+  .player-btn svg{width:18px; height:18px;}
+  .player-info{flex:1; min-width:0;}
+  .player-title{font-size:12.5px; color:#e3d8bd; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .player-sub{font-size:11px; color:#9aa7b6; margin-top:2px;}
+  .player-controls{display:flex; align-items:center; gap:6px;}
+  .player-more{
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    margin-top:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.08);
+    font-size:12px; color:#c9bd9f;
+  }
+  .rate-row{display:flex; align-items:center; gap:8px;}
+  .rate-row input[type=range]{width:100px; accent-color:var(--marigold);}
+  .voice-note{font-size:11px; color:#8b96a3; margin-top:6px; line-height:1.5;}
+
+  /* ---------- Toast ---------- */
+  .toast{
+    position:fixed; left:50%; top:16px; transform:translateX(-50%) translateY(-140%);
+    background:var(--dusk-deep); color:var(--parchment); font-size:13px;
+    padding:10px 16px; border-radius:10px; z-index:100; border:1px solid var(--line);
+    transition:transform .25s ease; box-shadow:var(--shadow);
+  }
+  .toast.show{transform:translateX(-50%) translateY(0);}
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:var(--dusk-deep); color:#9aa7b6; text-align:center; padding:34px 18px 46px;
+    font-size:12.5px;
+  }
+  footer .credit{color:var(--marigold); font-family:var(--serif); font-style:italic; font-size:14px; margin-bottom:6px;}
+
+  @media (max-width:480px){
+    .hero{min-height:66vh;}
+    .layout{grid-template-columns:34px 1fr; gap:4px 12px;}
+    .waypoint .dot{width:11px; height:11px;}
+    .chapter p{font-size:15.5px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .waypoint.reading .dot{animation:none;}
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<a href="#content" class="skip-link">Skip to main content</a>
+
+<div class="toast" id="toast"></div>
+
+<!-- ===== Top bar ===== -->
+<div class="topbar">
+  <div class="mark">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 5h16v11H4z" stroke="#e6a13a" stroke-width="2" stroke-linejoin="round"/><path d="M9 20h6M12 16v4" stroke="#e6a13a" stroke-width="2" stroke-linecap="round"/></svg>
+    Arnab's Savings
+  </div>
+  <div class="topbar-actions">
+    <button class="icon-btn" id="bookmarkBtn" title="Bookmark this spot" aria-label="Bookmark this spot">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1Z"/></svg>
+    </button>
+    <button class="icon-btn" id="playToggleTop" title="Listen to the story" aria-label="Turn on the voice reader">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3v18l15-9L5 3Z"/></svg>
+    </button>
+  </div>
+</div>
+<div class="progress-rail"><div class="progress-fill" id="progressFill"></div></div>
+
+<div class="resume-banner" id="resumeBanner">
+  <span>You previously read up to <strong id="resumeChapterName">this story</strong>.</span>
+  <span style="display:flex; gap:8px;">
+    <button id="resumeGo">Continue</button>
+    <button class="dismiss" id="resumeDismiss">Dismiss</button>
+  </span>
+</div>
+
+<!-- ===== Hero ===== -->
+<header class="hero">
+  <img src="images/the-computer.png" alt="A small savings box beside an old family photo, warm evening light" class="hero-img" id="heroImg"
+       onerror="this.classList.add('fallback'); this.removeAttribute('src');">
+  <div class="hero-content">
+    <p class="hero-eyebrow">A Story of Patience and Sacrifice</p>
+    <h1>The Computer That Arrived at the Perfect Time</h1>
+    <p class="dek">A mother has only ₹5,000 and a son who dreams of a computer. Instead of borrowing, she chooses to wait — and six quiet years later, that patience becomes the smartest gift of his life.</p>
+    <div class="hero-cta">
+      <button class="btn btn-primary" id="startReading">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+        Start Reading
+      </button>
+      <button class="btn btn-ghost" id="startListening">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3v18l15-9L5 3Z"/></svg>
+        Listen
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ===== Stage ===== -->
+<main class="stage" id="content">
+  <div class="layout">
+    <div class="path-col"><div class="path-line"></div></div>
+    <div></div>
+  </div>
+</main>
+
+<!-- ===== Floating player ===== -->
+<div class="player" id="player">
+  <div class="player-row">
+    <button class="player-btn secondary" id="prevBtn" title="Previous section">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20 8 12l10-8M6 4v16"/></svg>
+    </button>
+    <button class="player-btn" id="playPauseBtn" title="Play / Pause">
+      <svg viewBox="0 0 24 24" fill="none" id="playIcon"><path d="M5 3v18l15-9L5 3Z" fill="currentColor"/></svg>
+    </button>
+    <button class="player-btn secondary" id="nextBtn" title="Next section">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4l10 8-10 8M18 4v16"/></svg>
+    </button>
+    <div class="player-info">
+      <div class="player-title" id="playerTitle">Getting ready&hellip;</div>
+      <div class="player-sub" id="playerSub">Voice reader</div>
+    </div>
+    <button class="player-btn secondary" id="closePlayer" title="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+  </div>
+  <div class="player-more">
+    <span id="voiceLabel">Voice: searching&hellip;</span>
+    <span class="rate-row">Speed
+      <input type="range" id="rateSlider" min="0.7" max="1.1" step="0.01" value="0.88">
+      <span id="rateValue">0.88x</span>
+    </span>
+  </div>
+  <div class="voice-note" id="voiceNote"></div>
+</div>
+
+<footer>
+  <div class="credit">&ldquo;Some dreams become more valuable when we wait for the right moment.&rdquo;</div>
+  Made for every parent who is quietly saving, and every child who is learning to wait.
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* =========================================================
+     1. STORY DATA — each chapter becomes a waypoint + section
+     ========================================================= */
+  var chapters = [
+    {
+      id: "ch-request", eyebrow: "The Request",
+      title: "My Friends All Have Computers",
+      paras: [
+        "In a small town surrounded by green fields lived Meena Devi and her only son, Arnab. Life was simple. Every rupee was carefully planned. Every purchase had a purpose. Yet their little home was filled with something money could never buy \u2014 love.",
+        "One evening, Arnab returned from school looking unusually quiet. After dinner, he finally spoke."
+      ],
+      quote: "\u201cMa\u2026 my friends all have computers. They play games. They learn coding. They do their homework online. Can we buy one too?\u201d",
+      paras2: [
+        "Meena smiled gently. She wanted nothing more than to fulfill her son's dream. But inside her small savings box, there were only \u20b95,000. A good computer cost nearly \u20b930,000."
+      ],
+      quote2: "\u201cShould I take a loan?\u201d she quietly wondered."
+    },
+    {
+      id: "ch-teacher", eyebrow: "Advice",
+      title: "A Visit to Mr. Sen",
+      paras: [
+        "The next day she visited Mr. Sen, an experienced computer teacher. After listening carefully, he asked only one question."
+      ],
+      quote: "\u201cHow old is Arnab?\u201d",
+      paras2: [
+        "\u201cHe's in Class Five,\u201d Meena said.",
+        "Mr. Sen nodded thoughtfully. \u201cTell me \u2014 does he need his own computer today, or does he simply want one? A computer is a wonderful learning tool. But technology changes quickly. If you borrow money now, the computer may become outdated long before Arnab truly needs it.\u201d"
+      ],
+      quote2: "\u201cInstead, keep saving. When the right time comes, you'll be able to buy something much better without carrying the burden of debt.\u201d"
+    },
+    {
+      id: "ch-wait", eyebrow: "The Promise",
+      title: "I'm Not Saying No",
+      paras: [
+        "That evening, Meena explained everything to Arnab. For a moment, disappointment filled his face. Then she held his hand."
+      ],
+      quote: "\u201cI'm not saying 'No.' I'm saying \u2014 let's wait for the right time.\u201d",
+      paras2: [
+        "Arnab looked at her quietly. Finally, he smiled."
+      ],
+      quote2: "\u201cI trust you, Ma.\u201d"
+    },
+    {
+      id: "ch-savings", eyebrow: "Six Years",
+      title: "A Little Money Every Month",
+      paras: [
+        "Years passed. Every month, Meena added a little money to her savings. Sometimes \u20b9500. Sometimes \u20b91,000. Whenever extra income came, a small part went into the same envelope.",
+        "Arnab never complained. Instead, he borrowed books from the library. He practiced typing at school. He attended free computer classes whenever he could.",
+        "He learned that expensive tools were useful \u2014 but determination mattered even more."
+      ]
+    },
+    {
+      id: "ch-eleven", eyebrow: "A New Need",
+      title: "Class Eleven, Computer Science",
+      paras: [
+        "Six years later, Arnab entered Class Eleven and chose Computer Science. Now everything had changed \u2014 programming, digital projects, research, online classes. A personal computer was no longer a luxury. It had become an essential learning tool.",
+        "Meena quietly opened her old savings box. Inside was nearly \u20b990,000. Years of patience had transformed small savings into a life-changing opportunity."
+      ]
+    },
+    {
+      id: "ch-purchase", eyebrow: "The Purchase",
+      title: "Some Dreams Become More Valuable",
+      paras: [
+        "Together they visited a computer store. The salesman showed them powerful modern laptops \u2014 fast processors, large memory, bright displays. Everything was far better than the computers sold six years earlier.",
+        "After making the purchase, Arnab looked at his mother."
+      ],
+      quote: "\u201cIf we'd bought one back then, it would already be old \u2014 and we might still be paying the loan.\u201d",
+      paras2: [
+        "Meena smiled."
+      ],
+      quote2: "\u201cSome dreams become more valuable when we wait for the right moment.\u201d"
+    },
+    {
+      id: "ch-success", eyebrow: "The Result",
+      title: "The Smartest Investment",
+      paras: [
+        "Arnab used his new computer wisely. He learned programming, built educational apps, designed websites, and won national coding competitions.",
+        "Eventually, he earned a scholarship to study software engineering. Years later, he founded a technology company that created educational software for children in rural communities.",
+        "During an interview, a journalist asked, \u201cWhat was the smartest investment your family ever made?\u201d Arnab smiled."
+      ],
+      quote: "\u201cIt wasn't the computer. It was my mother's patience.\u201d"
+    },
+    {
+      id: "ch-return", eyebrow: "Full Circle",
+      title: "A Question From a Young Student",
+      paras: [
+        "One afternoon, Arnab returned to his old school as a guest speaker. A young student raised his hand."
+      ],
+      quote: "\u201cSir\u2026 I want a laptop too. My parents can't afford one.\u201d",
+      paras2: [
+        "Arnab smiled warmly. \u201cI understand. When I was your age, I wanted one just as badly.\u201d",
+        "The classroom became silent. He continued:"
+      ],
+      quote2: "\u201cA dream doesn't become impossible simply because it takes time. Use the resources you have today. Learn. Practice. Improve yourself. When the right opportunity comes, you'll be ready.\u201d"
+    }
+  ];
+
+  var moral = {
+    eyebrow: "Moral",
+    title: "The Greatest Gift",
+    paras: [
+      "As the students applauded, Meena watched proudly from the back of the hall. She realized something \u2014 the greatest gift she had given her son was never the computer."
+    ],
+    quote: "\u201cIt was the lesson that patience, planning, and wise decisions often create opportunities that rushing never can.\u201d",
+    paras2: [
+      "Not every dream must be fulfilled immediately. Patience, careful planning, and financial discipline often lead to better opportunities than borrowing or making impulsive decisions.",
+      "The right decision at the right time can shape an entire future."
+    ]
+  };
+
+  /* =========================================================
+     2. BUILD THE PAGE (chapters + waypoints) from the data
+     ========================================================= */
+  var layout = document.querySelector(".layout");
+  var pathCol = document.querySelector(".path-col");
+  var readCol = document.createElement("div");
+  layout.replaceChildren(pathCol, readCol);
+
+  var speechUnits = []; // {text, el, chapterIndex}
+
+  function addParas(container, list, chapterIndex){
+    if(!list) return;
+    list.forEach(function(t){
+      var p = document.createElement("p");
+      p.textContent = t;
+      container.appendChild(p);
+      speechUnits.push({text:t, el:p, chapterIndex:chapterIndex});
+    });
+  }
+  function addQuote(container, text, chapterIndex){
+    if(!text) return;
+    var p = document.createElement("p");
+    p.className = "quote";
+    p.textContent = text.replace(/\u201c|\u201d/g,"");
+    container.appendChild(p);
+    speechUnits.push({text:text.replace(/\u201c|\u201d/g,""), el:p, chapterIndex:chapterIndex});
+  }
+
+  chapters.forEach(function(ch, i){
+    var wp = document.createElement("div");
+    wp.className = "waypoint";
+    wp.id = "wp-" + ch.id;
+    wp.innerHTML = '<span class="dot"></span>';
+    wp.title = ch.title;
+    wp.style.cursor = "pointer";
+    wp.addEventListener("click", function(){
+      document.getElementById(ch.id).scrollIntoView({behavior:"smooth", block:"start"});
+    });
+    pathCol.appendChild(wp);
+
+    var section = document.createElement("section");
+    section.className = "chapter";
+    section.id = ch.id;
+    section.dataset.index = i;
+    var eyebrow = document.createElement("p");
+    eyebrow.className = "chapter-eyebrow";
+    eyebrow.textContent = ch.eyebrow;
+    var h2 = document.createElement("h2");
+    h2.textContent = ch.title;
+    section.appendChild(eyebrow);
+    section.appendChild(h2);
+    addParas(section, ch.paras, i);
+    addQuote(section, ch.quote, i);
+    addParas(section, ch.paras2, i);
+    addQuote(section, ch.quote2, i);
+    readCol.appendChild(section);
+  });
+
+  var wpMoral = document.createElement("div");
+  wpMoral.className = "waypoint";
+  wpMoral.id = "wp-moral";
+  wpMoral.innerHTML = '<span class="dot"></span>';
+  wpMoral.title = moral.title;
+  wpMoral.style.cursor = "pointer";
+  wpMoral.addEventListener("click", function(){
+    document.getElementById("ch-moral").scrollIntoView({behavior:"smooth", block:"start"});
+  });
+  pathCol.appendChild(wpMoral);
+
+  var moralSection = document.createElement("section");
+  moralSection.className = "chapter";
+  moralSection.id = "ch-moral";
+  moralSection.dataset.index = chapters.length;
+  var moralCard = document.createElement("div");
+  moralCard.className = "moral-card";
+  var me = document.createElement("p"); me.className="chapter-eyebrow"; me.textContent = moral.eyebrow;
+  var mh = document.createElement("h2"); mh.textContent = moral.title;
+  moralCard.appendChild(me); moralCard.appendChild(mh);
+  addParas(moralCard, moral.paras, chapters.length);
+  addQuote(moralCard, moral.quote, chapters.length);
+  addParas(moralCard, moral.paras2, chapters.length);
+  var sign = document.createElement("div");
+  sign.className = "sign";
+  sign.textContent = "\u2014 Meena Devi's savings envelope, in a small home surrounded by green fields";
+  moralCard.appendChild(sign);
+  moralSection.appendChild(moralCard);
+  readCol.appendChild(moralSection);
+
+  var allWaypoints = Array.prototype.slice.call(pathCol.querySelectorAll(".waypoint"));
+  var allSections = Array.prototype.slice.call(readCol.querySelectorAll(".chapter"));
+  var chapterNames = chapters.map(function(c){return c.title;}).concat([moral.title]);
+
+  /* =========================================================
+     3. TOAST helper
+     ========================================================= */
+  var toastEl = document.getElementById("toast");
+  var toastTimer;
+  function toast(msg){
+    toastEl.textContent = msg;
+    toastEl.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toastEl.classList.remove("show"); }, 2200);
+  }
+
+  /* =========================================================
+     4. SCROLL PROGRESS + ACTIVE WAYPOINT (IntersectionObserver)
+     ========================================================= */
+  var currentChapterIndex = 0;
+
+  function updateProgressBar(){
+    var doc = document.documentElement;
+    var scrollTop = doc.scrollTop || document.body.scrollTop;
+    var height = doc.scrollHeight - doc.clientHeight;
+    var pct = height > 0 ? (scrollTop / height) * 100 : 0;
+    document.getElementById("progressFill").style.width = pct + "%";
+  }
+  document.addEventListener("scroll", throttle(updateProgressBar, 100), {passive:true});
+  updateProgressBar();
+
+  function throttle(fn, wait){
+    var last = 0, timer=null;
+    return function(){
+      var now = Date.now();
+      if(now - last >= wait){ last = now; fn.apply(null, arguments); }
+      else { clearTimeout(timer); timer = setTimeout(function(){ last = Date.now(); fn.apply(null, arguments); }, wait - (now-last)); }
+    };
+  }
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      var idx = parseInt(entry.target.dataset.index, 10);
+      var wp = allWaypoints[idx];
+      if(!wp) return;
+      if(entry.isIntersecting){
+        currentChapterIndex = idx;
+        allWaypoints.forEach(function(w,i){
+          w.classList.toggle("active", i === idx);
+          if(i < idx) w.classList.add("read");
+        });
+        saveScrollBookmark(idx, false);
+      }
+    });
+  }, {rootMargin: "-40% 0px -50% 0px", threshold: 0});
+  allSections.forEach(function(s){ io.observe(s); });
+
+  /* =========================================================
+     5. BOOKMARK (localStorage) — resume where you left off
+     ========================================================= */
+  var BOOKMARK_KEY = "arnab_story_bookmark_v1";
+  var storageOK = true;
+  try{
+    localStorage.setItem("__t","1"); localStorage.removeItem("__t");
+  } catch(e){ storageOK = false; }
+
+  function saveScrollBookmark(idx, manual){
+    if(!storageOK) return;
+    try{
+      var data = {chapterIndex: idx, chapterName: chapterNames[idx], savedAt: Date.now(), manual: !!manual};
+      localStorage.setItem(BOOKMARK_KEY, JSON.stringify(data));
+      if(manual) toast("Bookmark saved \u2014 you can continue reading from here later.");
+    }catch(e){}
+  }
+  function readBookmark(){
+    if(!storageOK) return null;
+    try{
+      var raw = localStorage.getItem(BOOKMARK_KEY);
+      return raw ? JSON.parse(raw) : null;
+    }catch(e){ return null; }
+  }
+  document.getElementById("bookmarkBtn").addEventListener("click", function(){
+    saveScrollBookmark(currentChapterIndex, true);
+  });
+
+  var savedBM = readBookmark();
+  if(savedBM && typeof savedBM.chapterIndex === "number" && allSections[savedBM.chapterIndex]){
+    var banner = document.getElementById("resumeBanner");
+    document.getElementById("resumeChapterName").textContent = savedBM.chapterName || chapterNames[savedBM.chapterIndex];
+    banner.classList.add("show");
+    document.getElementById("resumeGo").addEventListener("click", function(){
+      allSections[savedBM.chapterIndex].scrollIntoView({behavior:"smooth", block:"start"});
+      banner.classList.remove("show");
+    });
+    document.getElementById("resumeDismiss").addEventListener("click", function(){
+      banner.classList.remove("show");
+    });
+  }
+  if(!storageOK){
+    document.getElementById("bookmarkBtn").title = "Bookmarking isn't available in this preview";
+  }
+
+  document.getElementById("startReading").addEventListener("click", function(){
+    allSections[0].scrollIntoView({behavior:"smooth", block:"start"});
+  });
+
+  /* =========================================================
+     6. VOICE READER (Web Speech API) — Android + desktop safe
+     ========================================================= */
+  var synth = window.speechSynthesis;
+  var speechSupported = !!synth;
+  var voices = [];
+  var chosenVoice = null;
+  var currentUnitIndex = -1;
+  var isPlaying = false;
+  var isPaused = false;
+  var rate = 0.88, pitch = 1.0;
+  var keepAliveTimer = null;
+
+  var player = document.getElementById("player");
+  var playPauseBtn = document.getElementById("playPauseBtn");
+  var playIcon = document.getElementById("playIcon");
+  var playerTitle = document.getElementById("playerTitle");
+  var playerSub = document.getElementById("playerSub");
+  var voiceLabel = document.getElementById("voiceLabel");
+  var voiceNote = document.getElementById("voiceNote");
+  var rateSlider = document.getElementById("rateSlider");
+  var rateValue = document.getElementById("rateValue");
+
+  function pickVoice(list){
+    if(!list || !list.length) return null;
+    var chains = [
+      function(v){ return v.lang === "en-IN"; },
+      function(v){ return /en/i.test(v.lang) && /india|indian/i.test(v.name); },
+      function(v){ return v.lang === "en-GB"; },
+      function(v){ return v.lang === "en-US" && /female|woman/i.test(v.name); },
+      function(v){ return v.lang === "en-US"; },
+      function(v){ return /^en/i.test(v.lang); },
+      function(v){ return v.default; },
+      function(){ return true; }
+    ];
+    for(var i=0;i<chains.length;i++){
+      var found = list.find(chains[i]);
+      if(found) return found;
+    }
+    return null;
+  }
+
+  function refreshVoices(){
+    voices = synth ? synth.getVoices() : [];
+    chosenVoice = pickVoice(voices);
+    if(chosenVoice){
+      voiceLabel.textContent = "Voice: " + chosenVoice.name + " (" + chosenVoice.lang + ")";
+    } else if (voices.length === 0){
+      voiceLabel.textContent = "Loading voices\u2026";
+    } else {
+      voiceLabel.textContent = "Using default voice";
+    }
+  }
+
+  if(speechSupported){
+    refreshVoices();
+    if(typeof synth.onvoiceschanged !== "undefined"){
+      synth.onvoiceschanged = refreshVoices;
+    }
+    var pollCount = 0;
+    var pollVoices = setInterval(function(){
+      pollCount++;
+      if(voices.length === 0 && pollCount < 10){
+        refreshVoices();
+      } else {
+        clearInterval(pollVoices);
+      }
+    }, 500);
+  } else {
+    voiceLabel.textContent = "This browser doesn't support voice reading";
+    voiceNote.textContent = "This browser has no Web Speech API support, so the story can't be read aloud. Try Chrome (Android/Desktop) instead.";
+  }
+
+  rateSlider.addEventListener("input", function(){
+    rate = parseFloat(rateSlider.value);
+    rateValue.textContent = rate.toFixed(2) + "x";
+    if(isPlaying){ speakUnit(currentUnitIndex, true); }
+  });
+
+  function clearHighlights(){
+    speechUnits.forEach(function(u){ u.el.classList.remove("speech-active"); });
+  }
+
+  function setPlayIcon(playingState){
+    if(playingState){
+      playIcon.innerHTML = '<rect x="5" y="4" width="5" height="16" rx="1" fill="currentColor"/><rect x="14" y="4" width="5" height="16" rx="1" fill="currentColor"/>';
+    } else {
+      playIcon.innerHTML = '<path d="M5 3v18l15-9L5 3Z" fill="currentColor"/>';
+    }
+  }
+
+  function startKeepAlive(){
+    stopKeepAlive();
+    keepAliveTimer = setInterval(function(){
+      if(synth && synth.speaking && !synth.paused){
+        synth.pause();
+        synth.resume();
+      }
+    }, 8000);
+  }
+  function stopKeepAlive(){
+    if(keepAliveTimer){ clearInterval(keepAliveTimer); keepAliveTimer = null; }
+  }
+
+  function speakUnit(index, isRestart){
+    if(!speechSupported) return;
+    if(index < 0 || index >= speechUnits.length){
+      stopReading();
+      toast("The story has finished \u2014 thank you for reading.");
+      return;
+    }
+    synth.cancel();
+    clearHighlights();
+    currentUnitIndex = index;
+    var unit = speechUnits[index];
+    unit.el.classList.add("speech-active");
+    if(!isRestart){
+      unit.el.scrollIntoView({behavior:"smooth", block:"center"});
+    }
+
+    var utt = new SpeechSynthesisUtterance(unit.text);
+    if(chosenVoice) utt.voice = chosenVoice;
+    utt.rate = rate;
+    utt.pitch = pitch;
+    utt.lang = chosenVoice ? chosenVoice.lang : "en-US";
+
+    utt.onend = function(){
+      if(isPlaying){ speakUnit(index + 1); }
+    };
+    utt.onerror = function(){
+      if(isPlaying){ speakUnit(index + 1); }
+    };
+
+    isPaused = false;
+    synth.speak(utt);
+    startKeepAlive();
+
+    var chapterIdx = unit.chapterIndex;
+    playerTitle.textContent = chapterNames[chapterIdx] || "Reading";
+    playerSub.textContent = "Section " + (index+1) + " / " + speechUnits.length;
+    saveScrollBookmark(chapterIdx, false);
+  }
+
+  function startReadingFrom(index){
+    if(!speechSupported){
+      toast("This browser can't read the story aloud.");
+      return;
+    }
+    isPlaying = true;
+    isPaused = false;
+    player.classList.add("open");
+    setPlayIcon(true);
+    document.getElementById("playToggleTop").classList.add("active");
+    speakUnit(index);
+  }
+
+  function pauseReading(){
+    if(!speechSupported) return;
+    if(synth.speaking && !synth.paused){
+      synth.pause();
+      isPaused = true;
+      isPlaying = false;
+      setPlayIcon(false);
+      stopKeepAlive();
+    }
+  }
+
+  function resumeReading(){
+    if(!speechSupported) return;
+    if(isPaused){
+      synth.resume();
+      isPlaying = true;
+      isPaused = false;
+      setPlayIcon(true);
+      startKeepAlive();
+    } else if(currentUnitIndex >= 0){
+      isPlaying = true;
+      speakUnit(currentUnitIndex, true);
+    } else {
+      startReadingFrom(nearestUnitForChapter(currentChapterIndex));
+    }
+  }
+
+  function stopReading(){
+    isPlaying = false;
+    isPaused = false;
+    if(speechSupported) synth.cancel();
+    stopKeepAlive();
+    clearHighlights();
+    setPlayIcon(false);
+    document.getElementById("playToggleTop").classList.remove("active");
+  }
+
+  function nearestUnitForChapter(chapterIdx){
+    for(var i=0;i<speechUnits.length;i++){
+      if(speechUnits[i].chapterIndex === chapterIdx) return i;
+    }
+    return 0;
+  }
+
+  document.getElementById("playPauseBtn").addEventListener("click", function(){
+    if(isPlaying){ pauseReading(); }
+    else { resumeReading(); }
+  });
+  document.getElementById("prevBtn").addEventListener("click", function(){
+    var target = Math.max(0, currentUnitIndex - 1);
+    isPlaying = true; setPlayIcon(true);
+    speakUnit(target);
+  });
+  document.getElementById("nextBtn").addEventListener("click", function(){
+    var target = Math.min(speechUnits.length - 1, currentUnitIndex + 1);
+    isPlaying = true; setPlayIcon(true);
+    speakUnit(target);
+  });
+  document.getElementById("closePlayer").addEventListener("click", function(){
+    stopReading();
+    player.classList.remove("open");
+  });
+
+  function openAndStart(){
+    player.classList.add("open");
+    startReadingFrom(nearestUnitForChapter(currentChapterIndex));
+  }
+  document.getElementById("playToggleTop").addEventListener("click", function(){
+    if(isPlaying){ pauseReading(); player.classList.add("open"); }
+    else if(isPaused){ resumeReading(); }
+    else { openAndStart(); }
+  });
+  document.getElementById("startListening").addEventListener("click", openAndStart);
+
+  document.addEventListener("visibilitychange", function(){
+    if(document.hidden && speechSupported && synth.speaking){
+      pauseReading();
+    }
+  });
+  window.addEventListener("beforeunload", function(){
+    if(speechSupported) synth.cancel();
+  });
+
+})();
+</script>
+</body>
+</html>

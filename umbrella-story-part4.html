@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sukumar Chatterjee's Lost Umbrella — Part 4 (Final Part)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600&family=Baloo+2:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink: #1c232d;
+    --indigo: #232c3d;
+    --indigo-deep: #171e29;
+    --rain-grey: #e4e7e6;
+    --paper: #f4f1ea;
+    --brass: #c98a3e;
+    --brass-soft: #e0b374;
+    --line: #cfd3ce;
+    --max-w: 640px;
+  }
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Literata', serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---------- progress bar ---------- */
+  #progress{
+    position: fixed; top:0; left:0; height:3px; width:0%;
+    background: var(--brass);
+    z-index: 60;
+    transition: width .1s linear;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position: relative;
+    min-height: 78vh;
+    display:flex;
+    flex-direction: column;
+    justify-content:flex-end;
+    overflow:hidden;
+    background: var(--indigo-deep);
+  }
+  .hero-img{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit: cover;
+    object-position: center 30%;
+    opacity: .78;
+    filter: saturate(.9) contrast(1.03);
+  }
+  .hero-scrim{
+    position:absolute; inset:0;
+    background:
+      linear-gradient(180deg, rgba(23,30,41,.15) 0%, rgba(23,30,41,.5) 60%, var(--paper) 100%);
+  }
+  .rain{
+    position:absolute; inset:0; pointer-events:none;
+    overflow:hidden;
+  }
+  .drop{
+    position:absolute; top:-10%;
+    width:1px; height:70px;
+    background: linear-gradient(180deg, rgba(224,179,116,0) 0%, rgba(224,179,116,.55) 100%);
+    animation: fall linear infinite;
+  }
+  @keyframes fall{
+    to{ transform: translateY(120vh); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .drop{ animation: none; display:none; }
+    html{ scroll-behavior: auto; }
+  }
+
+  .hero-content{
+    position: relative;
+    padding: 40px 24px 56px;
+    max-width: var(--max-w);
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+  }
+  .kicker{
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 500;
+    font-size: .95rem;
+    letter-spacing: .02em;
+    color: var(--brass-soft);
+    margin: 0 0 10px;
+  }
+  .hero-title{
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.9rem, 6vw, 2.9rem);
+    line-height: 1.25;
+    margin: 0 0 14px;
+    text-shadow: 0 2px 18px rgba(0,0,0,.4);
+  }
+  .hero-sub{
+    font-family: 'Literata', serif;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,.88);
+    margin: 0;
+    text-shadow: 0 1px 10px rgba(0,0,0,.4);
+  }
+
+  /* ---------- control bar ---------- */
+  .controlbar{
+    position: sticky; top:0; z-index: 50;
+    background: rgba(244,241,234,.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+  }
+  .controlbar-inner{
+    max-width: var(--max-w);
+    margin:0 auto;
+    padding: 10px 24px;
+    display:flex;
+    align-items:center;
+    gap: 14px;
+  }
+  .listen-btn{
+    display:flex; align-items:center; gap:8px;
+    background: var(--indigo);
+    color: var(--paper);
+    border:none;
+    padding: 9px 16px;
+    border-radius: 999px;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 500;
+    font-size: .92rem;
+    cursor:pointer;
+    transition: background .15s ease;
+  }
+  .listen-btn:hover{ background: var(--indigo-deep); }
+  .listen-btn:focus-visible, button:focus-visible, a:focus-visible{
+    outline: 2px solid var(--brass); outline-offset: 2px;
+  }
+  .listen-btn .dot{
+    width:7px; height:7px; border-radius:50%;
+    background: var(--brass-soft);
+  }
+  .listen-btn.playing .dot{ background: #7fd68c; }
+  .part-tag{
+    margin-left:auto;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: .82rem;
+    color: #6b7178;
+  }
+  .prev-link{
+    font-family: 'Baloo 2', sans-serif;
+    font-size: .85rem;
+    color: var(--indigo);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 1px;
+    white-space: nowrap;
+  }
+  .prev-link:hover{ color: var(--brass); border-color: var(--brass); }
+
+  /* ---------- story ---------- */
+  main{
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 48px 24px 40px;
+  }
+  .chapter-mark{
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--brass);
+    text-align:center;
+    margin: 0 0 40px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--line);
+  }
+  p{
+    font-size: 1.14rem;
+    line-height: 1.9;
+    margin: 0 0 26px;
+    color: var(--ink);
+  }
+  p.active-line{
+    background: linear-gradient(90deg, rgba(201,138,62,.14), transparent);
+    border-radius: 4px;
+    margin-left: -10px;
+    padding-left: 10px;
+  }
+  p.dialogue{
+    color: var(--indigo);
+    font-weight: 600;
+  }
+  p.emph{
+    text-align:center;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 700;
+    font-size: 1.28rem;
+    color: var(--indigo);
+    margin: 40px 0;
+    line-height: 1.6;
+  }
+  p.sound{
+    text-align:center;
+    color: #6b7178;
+    font-style: normal;
+    letter-spacing: .04em;
+  }
+
+  .end-mark{
+    text-align:center;
+    margin: 56px 0 12px;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--brass);
+  }
+  .end-note{
+    text-align:center;
+    color:#6b7178;
+    font-size: .95rem;
+    margin: 0 0 60px;
+  }
+
+  footer{
+    border-top: 1px solid var(--line);
+    padding: 22px 24px 34px;
+    text-align:center;
+    color:#8a9097;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: .82rem;
+  }
+
+  @media (max-width: 420px){
+    p{ font-size: 1.06rem; line-height: 1.8; }
+    .hero{ min-height: 62vh; }
+    .hero-img{ object-position: center 22%; }
+  }
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<section class="hero">
+  <img class="hero-img" src="images/umbrella.png" alt="An elderly Sukumar Chatterjee standing in the rain holding his old umbrella's handle">
+  <div class="hero-scrim"></div>
+  <div class="rain" id="rain"></div>
+  <div class="hero-content">
+    <p class="kicker">A story told in the umbrella's own words · Final Part</p>
+    <h1 class="hero-title">Sukumar Chatterjee's<br>Lost Umbrella</h1>
+    <p class="hero-sub">Part 4 · You've Come Back Again?</p>
+  </div>
+</section>
+
+<div class="controlbar">
+  <div class="controlbar-inner">
+    <button class="listen-btn" id="listenBtn" aria-pressed="false">
+      <span class="dot"></span>
+      <span id="listenLabel">Listen</span>
+    </button>
+    <a class="prev-link" href="umbrella-story-part3.html">← Part 3</a>
+    <span class="part-tag">Part 4 · Final</span>
+  </div>
+</div>
+
+<main>
+  <p class="chapter-mark">Part 4: You've Come Back Again?</p>
+
+  <div id="story">
+    <p>It was a fiercely rainy afternoon.</p>
+
+    <p>Rainwater had pooled across the pavement in front of the well-known hospital, forming little streams. Passers-by went about however they could — some under umbrellas, some huddled under sheets of polythene, others just running for the hospital gate.</p>
+
+    <p>I lay there in front of a street vendor's stall.</p>
+
+    <p>All around me lay other old things — bags, watches, books, a few toys, and a handful of umbrellas.</p>
+
+    <p>Now and then, the vendor would pick me up to show me off.</p>
+
+    <p class="dialogue">"Sturdy umbrella, this one. Old, but still works a treat."</p>
+
+    <p>I stayed quiet.</p>
+
+    <p>I had grown old, no doubt.</p>
+
+    <p>But in my heart, the memory of one old man hadn't aged one bit.</p>
+
+    <p class="emph">Sukumar Chatterjee.</p>
+
+    <p>How many years had it been!</p>
+
+    <p>I didn't know.</p>
+
+    <p>The last time I'd seen him was at that tea stall. He'd left me standing by the table and walked away.</p>
+
+    <p>And after passing through so many hands, look where I'd ended up today!</p>
+
+    <p>Perhaps this was where my story would end, too.</p>
+
+    <p>Perhaps some stranger would come along and buy me.</p>
+
+    <p>Right at that moment, I saw an elderly man approaching from a distance.</p>
+
+    <p>At first, I didn't recognise him.</p>
+
+    <p>His hair had gone far greyer than before.</p>
+
+    <p>Lines of age on his face.</p>
+
+    <p>Thick spectacles on his eyes.</p>
+
+    <p>His pace no longer as brisk as it once was.</p>
+
+    <p>And yet, that familiar way he walked...</p>
+
+    <p>Somewhere deep inside me, an old bell seemed to ring.</p>
+
+    <p class="emph">Could it be... Sukumar Babu?</p>
+
+    <p>Slowly, he came and stood in front of the vendor's stall.</p>
+
+    <p>He stood hunched a little, trying to keep out of the rain.</p>
+
+    <p>The vendor held me up.</p>
+
+    <p class="dialogue">"Take this umbrella, sir. Very sturdy. You won't get wet at all."</p>
+
+    <p>Sukumar Babu looked me over.</p>
+
+    <p>Then he reached out and took hold of me.</p>
+
+    <p>In that instant, I felt —</p>
+
+    <p class="emph">I had come home again.</p>
+
+    <p>His fingers ran gently over my curved wooden handle.</p>
+
+    <p class="sound">Once... twice...</p>
+
+    <p>Suddenly, his hand went still.</p>
+
+    <p>He brought the handle close to his eyes.</p>
+
+    <p>In the grey, rain-dimmed light, the two carved letters were still perfectly clear —</p>
+
+    <p class="emph">S.K.</p>
+
+    <p>He went completely still.</p>
+
+    <p>For a few seconds, it felt as though every sound in the world had stopped.</p>
+
+    <p>Not understanding what was happening, the vendor said,</p>
+
+    <p class="dialogue">"What happened, sir? You'll take it, won't you?"</p>
+
+    <p>Sukumar Babu gave no answer.</p>
+
+    <p>He just kept staring at the umbrella.</p>
+
+    <p>Then, very softly, he said,</p>
+
+    <p class="dialogue">"This mark here..."</p>
+
+    <p>He ran his finger over the two carved letters on the handle.</p>
+
+    <p class="dialogue">"I carved this myself!"</p>
+
+    <p>The vendor was taken aback.</p>
+
+    <p class="dialogue">"Your umbrella?"</p>
+
+    <p>Sukumar Babu now looked at me the way one looks at a long-lost loved one, found again after so many years.</p>
+
+    <p class="dialogue">"Yes..."</p>
+
+    <p>His voice grew heavy.</p>
+
+    <p class="dialogue">"This is my umbrella."</p>
+
+    <p>The vendor smiled a little and said,</p>
+
+    <p class="dialogue">"All the better, then! You've recognised it. Do take it."</p>
+
+    <p>This time, Sukumar Babu said nothing more.</p>
+
+    <p>He took some money out of his pocket.</p>
+
+    <p>He pressed into the vendor's hand more money than the man had even asked for.</p>
+
+    <p>The vendor said,</p>
+
+    <p class="dialogue">"Sir, you don't need to pay this much."</p>
+
+    <p>Sukumar Babu smiled faintly and said,</p>
+
+    <p class="dialogue">"Keep it."</p>
+
+    <p>Then he held me tightly in his hand.</p>
+
+    <p>After so many years, I was back in the grip of that hand!</p>
+
+    <p>He opened me up.</p>
+
+    <p>My old iron ribs trembled just a little.</p>
+
+    <p>The folds of my cloth unfurled.</p>
+
+    <p>And then, once again, I spread myself wide open.</p>
+
+    <p>Just like before.</p>
+
+    <p>In that same old rhythm.</p>
+
+    <p>Sukumar Babu stood beneath me.</p>
+
+    <p>Rainwater began falling on my black cloth.</p>
+
+    <p class="sound">Pit-a-pat... pouring down...</p>
+
+    <p>But this time, that sound brought me no sorrow at all.</p>
+
+    <p>If anything, it felt as though the rain itself were celebrating our reunion.</p>
+
+    <p>Sukumar Babu slowly began to walk.</p>
+
+    <p>After a little way, he stopped.</p>
+
+    <p>He looked down at my handle.</p>
+
+    <p>Then, with a faint smile, he said,</p>
+
+    <p class="emph">"So you've come back to me after all?"</p>
+
+    <p>I couldn't answer.</p>
+
+    <p>But if I could have, I might have said —</p>
+
+    <p>"I never wanted to leave you, Sukumar Babu. It was people who kept passing me from one hand to another. I only waited — for the day I'd be back in your hands again."</p>
+
+    <p>The rain was falling harder now.</p>
+
+    <p>But that day, it felt as though I had returned to the safest place in the whole world.</p>
+
+    <p>Right over Sukumar Babu's head.</p>
+
+    <p>In the familiar grip of his hand.</p>
+
+    <p>Walking with him, on the way home.</p>
+
+    <p>In the end, I had come back to exactly where my journey had begun, all those years ago.</p>
+
+    <p>That's when I understood —</p>
+
+    <p class="emph">some bonds need no address written on paper.</p>
+
+    <p>However far the world may fling them apart, some bonds always find their way back.</p>
+
+    <p>So many hands I had passed through!</p>
+
+    <p>Some had picked me up, some had bought me, some had received me as a gift, some had carried me off by mistake.</p>
+
+    <p>My colour had faded.</p>
+
+    <p>My iron ribs had grown old.</p>
+
+    <p>My wooden handle bore the marks of age.</p>
+
+    <p>But my true identity had never been lost.</p>
+
+    <p>Those two little letters —</p>
+
+    <p class="emph">S.K.</p>
+
+    <p>And an identity greater still —</p>
+
+    <p class="emph">I am Sukumar Chatterjee's umbrella.</p>
+
+    <p>Walking beside Sukumar Babu in the rain that day, it occurred to me —</p>
+
+    <p>People often think they have lost something they loved.</p>
+
+    <p>But perhaps that very thing is out there too, wandering the roads of the world, searching for its person all along.</p>
+
+    <p>And some lost things...</p>
+
+    <p class="emph">do, one day, truly find their way back.</p>
+
+    <p>Because whatever is bound by a true and honest attachment,</p>
+
+    <p class="emph">no matter how many hands it must pass through across this wide world, always finds its way home to its own person in the end. ☔❤️</p>
+  </div>
+
+  <p class="end-mark">The End ☔❤️</p>
+  <p class="end-note">Sukumar Chatterjee's Lost Umbrella — the story ends here.</p>
+</main>
+
+<footer>Sukumar Chatterjee's Lost Umbrella — Part 4 · The End</footer>
+
+<script>
+  // ---- decorative rain in hero ----
+  (function(){
+    var rain = document.getElementById('rain');
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var count = window.innerWidth < 480 ? 22 : 40;
+    for (var i=0;i<count;i++){
+      var d = document.createElement('div');
+      d.className = 'drop';
+      d.style.left = Math.random()*100 + '%';
+      d.style.animationDuration = (0.7 + Math.random()*0.9) + 's';
+      d.style.animationDelay = (Math.random()*2) + 's';
+      d.style.opacity = 0.3 + Math.random()*0.5;
+      rain.appendChild(d);
+    }
+  })();
+
+  // ---- scroll progress ----
+  (function(){
+    var bar = document.getElementById('progress');
+    window.addEventListener('scroll', function(){
+      var h = document.documentElement;
+      var scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+      bar.style.width = scrolled + '%';
+    });
+  })();
+
+  // ---- voice reading (paragraph by paragraph, with highlight) ----
+  (function(){
+    var btn = document.getElementById('listenBtn');
+    var label = document.getElementById('listenLabel');
+    var paras = Array.prototype.slice.call(document.querySelectorAll('#story p'));
+    var idx = 0;
+    var speaking = false;
+
+    function pickVoice(){
+      var voices = window.speechSynthesis.getVoices();
+      return voices.find(function(v){ return v.lang === 'en-IN'; })
+          || voices.find(function(v){ return v.lang && v.lang.indexOf('en') === 0; })
+          || null;
+    }
+
+    function clearHighlight(){
+      paras.forEach(function(p){ p.classList.remove('active-line'); });
+    }
+
+    function speakNext(){
+      if (idx >= paras.length){
+        stop();
+        return;
+      }
+      clearHighlight();
+      var p = paras[idx];
+      p.classList.add('active-line');
+      p.scrollIntoView({ block: 'center', behavior: 'smooth' });
+
+      var utter = new SpeechSynthesisUtterance(p.textContent);
+      var voice = pickVoice();
+      if (voice) utter.voice = voice;
+      utter.lang = 'en-IN';
+      utter.rate = 0.95;
+      utter.onend = function(){
+        idx++;
+        if (speaking) speakNext();
+      };
+      window.speechSynthesis.speak(utter);
+    }
+
+    function start(){
+      if (!('speechSynthesis' in window)){
+        alert('Voice reading is not supported in this browser.');
+        return;
+      }
+      speaking = true;
+      btn.classList.add('playing');
+      btn.setAttribute('aria-pressed', 'true');
+      label.textContent = 'Stop';
+      speakNext();
+    }
+
+    function stop(){
+      speaking = false;
+      window.speechSynthesis.cancel();
+      btn.classList.remove('playing');
+      btn.setAttribute('aria-pressed', 'false');
+      label.textContent = 'Listen';
+      clearHighlight();
+      idx = 0;
+    }
+
+    btn.addEventListener('click', function(){
+      if (speaking) stop(); else start();
+    });
+
+    window.addEventListener('beforeunload', function(){
+      window.speechSynthesis.cancel();
+    });
+  })();
+</script>
+
+</body>
+</html>

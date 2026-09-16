@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>The Road That Changed His Destiny</title>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyDfxtOP-YCrCXtQxZrrFNC1uXucvbW0K78",
+    authDomain: "my-skill-global.firebaseapp.com",
+    projectId: "my-skill-global",
+    storageBucket: "my-skill-global.firebasestorage.app",
+    messagingSenderId: "978471914749",
+    appId: "1:978471914749:web:595750b5d90738933f4294",
+    measurementId: "G-8D9BPY8HJ0"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+
+<!-- Author -->
+<meta name="author" content="Surajit Roy">
+<meta name="copyright" content="© Surajit Roy">
+
+<!-- Robots -->
+<meta name="robots" content="index,follow">
+
+<!-- Google Search Console Verification -->
+<meta name="google-site-verification"
+      content="fDyEKiSXue5cIsS7SGLU15BpPCVqkLNuuoRmGpaHEL8">
+
+<!-- CSS -->
+<link rel="stylesheet" href="style.css">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@300;400;600;700&family=Inconsolata:wght@300;400;700&display=swap"
+      rel="stylesheet">
+
+<style>
+
+  :root{
+    --ink:#241a12;
+    --dusk:#1c2a3a;
+    --dusk-deep:#121c28;
+    --slate:#33465c;
+    --parchment:#f6efe0;
+    --parchment-2:#efe4cc;
+    --marigold:#e6a13a;
+    --marigold-dim:#c98428;
+    --ember:#c15a2e;
+    --line:rgba(230,161,58,0.35);
+    --shadow:0 18px 40px rgba(18,28,40,0.35);
+    --serif:'Fraunces', Georgia, serif;
+    --sans:'Inter', 'Noto Sans Bengali', sans-serif;
+    --bn:'Noto Sans Bengali','Inter',sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--dusk-deep);
+    color:var(--ink);
+    font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--marigold); color:var(--dusk-deep);}
+
+  a{color:inherit;}
+
+  /* ---------- Skip link / accessibility ---------- */
+  .skip-link{
+    position:absolute; left:-999px; top:0; background:var(--marigold); color:var(--dusk-deep);
+    padding:10px 16px; z-index:999; font-weight:600;
+  }
+  .skip-link:focus{left:8px; top:8px;}
+
+  /* ---------- Top bar ---------- */
+  .topbar{
+    position:sticky; top:0; z-index:60;
+    display:flex; align-items:center; justify-content:space-between;
+    gap:10px;
+    padding:10px 16px;
+    background:linear-gradient(180deg, rgba(18,28,40,0.97), rgba(18,28,40,0.86));
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar .mark{
+    font-family:var(--serif); color:var(--parchment); font-weight:600; letter-spacing:.02em;
+    font-size:15px; display:flex; align-items:center; gap:8px;
+  }
+  .topbar .mark svg{flex:none;}
+  .topbar-actions{display:flex; gap:8px; align-items:center;}
+  .icon-btn{
+    appearance:none; border:1px solid var(--line); background:rgba(255,255,255,0.03);
+    color:var(--parchment); border-radius:999px; width:40px; height:40px;
+    display:flex; align-items:center; justify-content:center; cursor:pointer;
+    transition:background .15s, transform .15s, border-color .15s;
+  }
+  .icon-btn:hover{background:rgba(230,161,58,0.14); border-color:var(--marigold);}
+  .icon-btn:active{transform:scale(.94);}
+  .icon-btn.active{background:var(--marigold); border-color:var(--marigold); color:var(--dusk-deep);}
+  .icon-btn svg{width:18px; height:18px;}
+
+  /* progress rail under topbar */
+  .progress-rail{height:3px; background:rgba(255,255,255,0.08);}
+  .progress-fill{height:100%; width:0%; background:linear-gradient(90deg, var(--ember), var(--marigold)); transition:width .15s linear;}
+
+  /* ---------- Resume banner ---------- */
+  .resume-banner{
+    display:none; align-items:center; justify-content:space-between; gap:12px;
+    max-width:760px; margin:14px auto 0; padding:12px 16px;
+    background:var(--parchment-2); border:1px solid #d9c79a; border-radius:12px;
+    font-family:var(--bn); color:var(--ink); font-size:14px;
+  }
+  .resume-banner.show{display:flex;}
+  .resume-banner button{
+    appearance:none; border:none; background:var(--ember); color:#fff; font-family:var(--bn);
+    padding:8px 14px; border-radius:8px; cursor:pointer; font-size:13px; font-weight:600;
+    white-space:nowrap;
+  }
+  .resume-banner .dismiss{background:transparent; color:var(--slate); padding:8px 10px;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative; min-height:78vh; display:flex; align-items:flex-end;
+    overflow:hidden; color:var(--parchment);
+  }
+  .hero-img{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+    filter:saturate(1.05) contrast(1.02);
+  }
+  .hero-img.fallback{
+    background:
+      radial-gradient(ellipse at 30% 20%, rgba(230,161,58,0.25), transparent 55%),
+      linear-gradient(180deg, #1c2a3a 0%, #223349 45%, #121c28 100%);
+  }
+  .hero::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(18,28,40,0.15) 0%, rgba(18,28,40,0.35) 45%, rgba(18,28,40,0.96) 100%);
+  }
+  .hero-content{position:relative; z-index:2; padding:56px 20px 44px; max-width:820px; margin:0 auto; width:100%;}
+  .hero-eyebrow{
+    font-family:var(--bn); text-transform:none; letter-spacing:.04em; color:var(--marigold);
+    font-size:13px; margin:0 0 14px; display:flex; align-items:center; gap:10px;
+  }
+  .hero-eyebrow::before{content:""; width:26px; height:1px; background:var(--marigold); display:inline-block;}
+  .hero h1{
+    font-family:var(--serif); font-weight:600; font-size:clamp(32px, 6vw, 58px);
+    line-height:1.06; margin:0 0 16px; max-width:14ch;
+  }
+  .hero p.dek{
+    font-family:var(--bn); font-size:16px; line-height:1.6; color:#e7dcc4; max-width:52ch; margin:0 0 26px;
+  }
+  .hero-cta{display:flex; flex-wrap:wrap; gap:10px;}
+  .btn{
+    appearance:none; cursor:pointer; border-radius:999px; padding:12px 20px;
+    font-family:var(--bn); font-size:14px; font-weight:600; border:1px solid transparent;
+    display:inline-flex; align-items:center; gap:8px; transition:transform .15s, background .15s;
+  }
+  .btn:active{transform:scale(.97);}
+  .btn-primary{background:var(--marigold); color:var(--dusk-deep);}
+  .btn-primary:hover{background:#f0b04f;}
+  .btn-ghost{background:rgba(255,255,255,0.06); color:var(--parchment); border-color:rgba(255,255,255,0.25);}
+  .btn-ghost:hover{background:rgba(255,255,255,0.12);}
+
+  /* ---------- Layout: path + reading column ---------- */
+  .stage{
+    background:var(--parchment);
+    position:relative;
+  }
+  .stage::before{
+    content:""; position:absolute; top:-1px; left:0; right:0; height:34px;
+    background:var(--parchment);
+    clip-path:polygon(0 100%, 100% 100%, 100% 0%, 96% 40%, 92% 6%, 88% 55%, 84% 10%, 80% 60%, 76% 5%, 72% 45%, 68% 12%, 64% 50%, 60% 8%, 56% 42%, 52% 15%, 48% 55%, 44% 6%, 40% 48%, 36% 10%, 32% 52%, 28% 8%, 24% 45%, 20% 15%, 16% 50%, 12% 6%, 8% 40%, 4% 10%, 0 30%);
+  }
+  .layout{
+    max-width:980px; margin:0 auto; padding:40px 18px 100px;
+    display:grid; grid-template-columns:56px 1fr; gap:8px 22px;
+  }
+  @media (min-width:720px){
+    .layout{grid-template-columns:64px 1fr; gap:8px 34px;}
+  }
+
+  /* the mountain path / signature element */
+  .path-col{position:relative;}
+  .path-line{
+    position:absolute; left:50%; top:6px; bottom:6px; width:2px;
+    transform:translateX(-50%);
+    background:repeating-linear-gradient(180deg, var(--marigold-dim) 0 6px, transparent 6px 12px);
+    opacity:.55;
+  }
+  .waypoint{
+    position:relative; z-index:1;
+    width:100%; display:flex; justify-content:center;
+    scroll-margin-top:80px;
+  }
+  .waypoint .dot{
+    width:15px; height:15px; border-radius:50%;
+    background:var(--parchment); border:2px solid var(--marigold-dim);
+    display:flex; align-items:center; justify-content:center;
+    transition:background .25s, border-color .25s, transform .25s;
+  }
+  .waypoint.read .dot{background:var(--marigold-dim); border-color:var(--marigold-dim);}
+  .waypoint.active .dot{background:var(--marigold); border-color:var(--marigold); transform:scale(1.35);
+    box-shadow:0 0 0 5px rgba(230,161,58,0.22);}
+  .waypoint.reading .dot{animation:pulse 1.4s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(230,161,58,0.28);}50%{box-shadow:0 0 0 9px rgba(230,161,58,0.08);}}
+
+  /* chapters */
+  .chapter{
+    padding:26px 0 34px; border-bottom:1px dashed #d9c79a;
+    scroll-margin-top:74px;
+  }
+  .chapter:last-of-type{border-bottom:none;}
+  .chapter-eyebrow{
+    font-family:var(--bn); font-size:12px; color:var(--ember); letter-spacing:.03em; margin:0 0 6px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .chapter h2{
+    font-family:var(--serif); font-size:clamp(21px,3vw,27px); margin:0 0 14px; color:var(--dusk-deep); font-weight:600;
+  }
+  .chapter p{
+    font-size:17px; line-height:1.85; margin:0 0 14px; color:#3a2c1e;
+  }
+  .chapter p.speech-active{
+    background:linear-gradient(90deg, rgba(230,161,58,0.16), transparent);
+    border-left:3px solid var(--marigold); padding-left:12px; margin-left:-15px;
+    border-radius:0 6px 6px 0;
+  }
+  .chapter .line{color:#6b5a41; font-style:italic;}
+  .chapter .quote{
+    font-family:var(--serif); font-style:italic; font-size:19px; color:var(--dusk); margin:18px 0;
+    padding-left:16px; border-left:3px solid var(--marigold);
+  }
+
+  .moral-card{
+    margin-top:10px; background:#4D6D5B; color:var(--parchment); border-radius:16px;
+    padding:30px 26px; box-shadow:var(--shadow);
+  }
+  .moral-card .chapter-eyebrow{color:var(--marigold);}
+  .moral-card h2{color:var(--parchment);}
+  .moral-card p{color:#e3d8bd;}
+  .sign{
+    margin-top:20px; padding-top:18px; border-top:1px solid rgba(230,161,58,0.3);
+    font-family:var(--serif); font-style:italic; font-size:16px; color:var(--marigold);
+  }
+
+  /* ---------- Floating voice player ---------- */
+  .player{
+    position:fixed; left:50%; bottom:16px; transform:translateX(-50%);
+    z-index:80; width:min(560px, calc(100% - 24px));
+    background:var(--dusk-deep); color:var(--parchment);
+    border-radius:16px; box-shadow:var(--shadow); border:1px solid rgba(230,161,58,0.25);
+    padding:12px 14px;
+    display:none;
+  }
+  .player.open{display:block;}
+  .player-row{display:flex; align-items:center; gap:10px;}
+  .player-btn{
+    appearance:none; border:none; border-radius:50%; width:42px; height:42px; flex:none;
+    background:var(--marigold); color:var(--dusk-deep); cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .player-btn.secondary{background:rgba(255,255,255,0.08); color:var(--parchment); width:36px; height:36px;}
+  .player-btn svg{width:18px; height:18px;}
+  .player-info{flex:1; min-width:0;}
+  .player-title{font-family:var(--bn); font-size:12.5px; color:#e3d8bd; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .player-sub{font-family:var(--bn); font-size:11px; color:#9aa7b6; margin-top:2px;}
+  .player-controls{display:flex; align-items:center; gap:6px;}
+  .player-more{
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    margin-top:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.08);
+    font-family:var(--bn); font-size:12px; color:#c9bd9f;
+  }
+  .rate-row{display:flex; align-items:center; gap:8px;}
+  .rate-row input[type=range]{width:100px; accent-color:var(--marigold);}
+  .voice-note{font-size:11px; color:#8b96a3; margin-top:6px; font-family:var(--bn); line-height:1.5;}
+
+  /* ---------- Toast ---------- */
+  .toast{
+    position:fixed; left:50%; top:16px; transform:translateX(-50%) translateY(-140%);
+    background:var(--dusk-deep); color:var(--parchment); font-family:var(--bn); font-size:13px;
+    padding:10px 16px; border-radius:10px; z-index:100; border:1px solid var(--line);
+    transition:transform .25s ease; box-shadow:var(--shadow);
+  }
+  .toast.show{transform:translateX(-50%) translateY(0);}
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:var(--dusk-deep); color:#9aa7b6; text-align:center; padding:34px 18px 46px;
+    font-family:var(--bn); font-size:12.5px;
+  }
+  footer .credit{color:var(--marigold); font-family:var(--serif); font-style:italic; font-size:14px; margin-bottom:6px;}
+
+  @media (max-width:480px){
+    .hero{min-height:66vh;}
+    .layout{grid-template-columns:34px 1fr; gap:4px 12px;}
+    .waypoint .dot{width:11px; height:11px;}
+    .chapter p{font-size:15.5px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .waypoint.reading .dot{animation:none;}
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<a href="#content" class="skip-link">go to main contain</a>
+
+<div class="toast" id="toast"></div>
+
+<!-- ===== Top bar ===== -->
+<div class="topbar">
+  <div class="mark">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 20L9 8L13 15L16 10L21 20" stroke="#e6a13a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Arjun&rsquo;s Road
+  </div>
+  <div class="topbar-actions">
+    <button class="icon-btn" id="bookmarkBtn" title="bookmark this part" aria-label="start bookmark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1Z"/></svg>
+    </button>
+    <button class="icon-btn" id="playToggleTop" title="start voice" aria-label="start voice reader">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3v18l15-9L5 3Z"/></svg>
+    </button>
+  </div>
+</div>
+<div class="progress-rail"><div class="progress-fill" id="progressFill"></div></div>
+
+<div class="resume-banner" id="resumeBanner">
+<span>You previously read up to <strong id="resumeChapterName">this story</strong>.</span>
+  <span style="display:flex; gap:8px;">
+    <button id="resumeGo">resume go</button>
+    <button class="dismiss" id="resumeDismiss">resume dismiss</button>
+  </span>
+</div>
+
+<!-- ===== Hero ===== -->
+<header class="hero">
+  <img src="images/the-road.png" alt="A quiet mountain road winding toward a distant temple" class="hero-img" id="heroImg"
+       onerror="this.classList.add('fallback'); this.removeAttribute('src');">
+  <div class="hero-content">
+<p class="hero-eyebrow">An Inspirational Story &middot; A Story of Self-Belief</p>
+    <h1>The Road That Changed His Destiny</h1>
+    <p class="dek">A young graduate loses job after job, walks away from everything he knows, and finds — on a mountain path he never planned to take — the one thing no rejection letter could give him.</p>
+    <div class="hero-cta">
+      <button class="btn btn-primary" id="startReading">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+        start reading
+      </button>
+      <button class="btn btn-ghost" id="startListening">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3v18l15-9L5 3Z"/></svg>
+        listen to voice 
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ===== Stage ===== -->
+<main class="stage" id="content">
+  <div class="layout">
+    <div class="path-col"><div class="path-line"></div></div>
+    <div></div>
+  </div>
+</main>
+
+<!-- ===== Floating player ===== -->
+<div class="player" id="player">
+  <div class="player-row">
+    <button class="player-btn secondary" id="prevBtn" title="previous part">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20 8 12l10-8M6 4v16"/></svg>
+    </button>
+    <button class="player-btn" id="playPauseBtn" title="start / stop">
+      <svg viewBox="0 0 24 24" fill="none" id="playIcon"><path d="M5 3v18l15-9L5 3Z" fill="currentColor"/></svg>
+    </button>
+    <button class="player-btn secondary" id="nextBtn" title="পরের অংশ">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4l10 8-10 8M18 4v16"/></svg>
+    </button>
+    <div class="player-info">
+      <div class="player-title" id="playerTitle">rady&hellip;</div>
+      <div class="player-sub" id="playerSub">Voice reader</div>
+    </div>
+    <button class="player-btn secondary" id="closePlayer" title="stop">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+  </div>
+  <div class="player-more">
+    <span id="voiceLabel">voice search&hellip;</span>
+    <span class="rate-row">speed
+      <input type="range" id="rateSlider" min="0.7" max="1.1" step="0.01" value="0.88">
+      <span id="rateValue">0.88x</span>
+    </span>
+  </div>
+  <div class="voice-note" id="voiceNote"></div>
+</div>
+
+<footer>
+  <div class="credit">&ldquo;Sometimes life closes one road&hellip; only to lead us toward a far greater destination.&rdquo;</div>
+  Made for readers who are still writing their own road.
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* =========================================================
+     1. STORY DATA — each chapter becomes a waypoint + section
+     ========================================================= */
+  var chapters = [
+    {
+      id: "ch-village", eyebrow: "start story",
+      title: "The Weight of Rejection",
+      paras: [
+        "The small village of Devgram woke up before sunrise every day. Farmers walked toward their fields. Shopkeepers opened their shutters. Students hurried to school.",
+        "But every morning, Arjun sat quietly on the veranda of his house, holding another job application in his hands.",
+        "He had graduated with good marks. He had passed written examinations. He had travelled to countless interviews. Yet every result was the same.",
+      ],
+      quote: "\u201cWe regret to inform you...\u201d",
+      paras2: [
+        "Those words had become painfully familiar.",
+        "His parents never complained. But Arjun could see the worry hidden behind their smiles. Every rejection made him question himself.",
+      ],
+      quote2: "\u201cAm I really good for nothing?\u201d"
+    },
+    {
+      id: "ch-maya", eyebrow: "মায়া",
+      title: "Someone Who Believed",
+      paras: [
+        "There was someone else who quietly shared his pain. Her name was Maya. They had grown up together. She believed in him even when he no longer believed in himself.",
+        "One evening, while walking beside the river, Maya said softly,"
+      ],
+      quote: "\u201cI know you'll succeed one day.\u201d",
+      paras2: ["Arjun smiled sadly."],
+      quote2: "\u201cI hope that day comes before it's too late.\u201d"
+    },
+    {
+      id: "ch-farewell", eyebrow: "বিদায়",
+      title: "Beneath the Banyan Tree",
+      paras: [
+        "Months turned into years. Job after job slipped away. Finally, Maya's parents arranged her marriage to a successful businessman. She had no choice.",
+        "The night before her wedding, she met Arjun one last time beneath the old banyan tree."
+      ],
+      quote: "\u201cI'm sorry,\u201d she whispered. \u201cYou don't have to be.\u201d \u201cYou waited.\u201d \u201cI couldn't give you a future.\u201d",
+      paras2: [
+        "Neither of them cried. Some pain is too deep for tears.",
+        "The next morning, Maya left the village forever."
+      ]
+    },
+    {
+      id: "ch-walk", eyebrow: "যাত্রা",
+      title: "Into the Mountains",
+      paras: [
+        "After the wedding, Arjun disappeared. Without telling anyone, he left home carrying only a small backpack. He walked for days. Across rivers. Through forests. Into the mountains.",
+        "He believed there was nothing left for him."
+      ],
+      quote: "\u201cIf life has no purpose... I'll become a wandering monk.\u201d"
+    },
+    {
+      id: "ch-monk", eyebrow: "সাক্ষাৎ",
+      title: "The Old Monk's Question",
+      paras: [
+        "High in the Himalayas, he reached an ancient mountain temple. There he met an old monk named Swami Anand. The monk noticed the sadness in the young man's eyes."
+      ],
+      quote: "\u201cWhat are you running away from?\u201d",
+      paras2: ["Arjun answered honestly."],
+      quote2: "\u201cMy dreams.\u201d"
+    },
+    {
+      id: "ch-answer", eyebrow: "উত্তর",
+      title: "Something You Enjoy Doing",
+      paras: [
+        "For several days, the monk said nothing. He simply allowed Arjun to help around the monastery. One evening, while sharing a simple meal, the monk finally asked,"
+      ],
+      quote: "\u201cWhat can you do well?\u201d",
+      paras2: [
+        "Arjun looked confused. \u201cI've failed at everything.\u201d",
+        "The monk smiled. \u201cNo. Tell me something you enjoy doing.\u201d",
+        "After a long silence, Arjun replied, \u201cI love cooking. My mother taught me. People in my village always praised my food.\u201d",
+        "The monk's eyes brightened."
+      ],
+      quote2: "\u201cThere. That's your answer.\u201d"
+    },
+    {
+      id: "ch-opportunity", eyebrow: "সুযোগ",
+      title: "The Mountain's Hint",
+      paras: [
+        "Arjun frowned. \u201cCooking? How can that change my life?\u201d",
+        "The monk pointed toward the narrow mountain road below. Every day hundreds of pilgrims climbed that difficult path to reach the temple. Many were tired. Hungry. Cold. Yet there was not a single food stall anywhere nearby."
+      ],
+      quote: "\u201cThe mountain has already shown you your opportunity. You only need the courage to see it.\u201d"
+    },
+    {
+      id: "ch-tent", eyebrow: "প্রথম পদক্ষেপ",
+      title: "A Small Canvas Tent",
+      paras: [
+        "Using his small savings, Arjun bought a canvas tent, a stove, a few utensils, wheat flour, potatoes, onions, and spices. On the very first morning, he prepared fresh hot roti and spicy potato curry.",
+        "A tired pilgrim stopped. \u201cHow much?\u201d Arjun smiled. \u201cJust enough to cover the cost.\u201d",
+        "The man tasted the food. His eyes widened. \u201cThis is the best meal I've had on the entire journey.\u201d",
+        "The next customer arrived. Then another. By lunchtime, a long queue stretched outside the tent."
+      ]
+    },
+    {
+      id: "ch-growth", eyebrow: "বিকাশ",
+      title: "From a Tent to a Chain of Cafés",
+      paras: [
+        "Within weeks, pilgrims began recommending his little roadside kitchen to everyone. \u201cIf you're climbing to the temple, you must eat at Arjun's tent.\u201d",
+        "Travel bloggers wrote about it. Local newspapers published stories. His tiny tent became a permanent restaurant. The restaurant became a lodge. The lodge became a chain of mountain cafés.",
+        "Years later, hundreds of local villagers found employment in his growing business."
+      ]
+    },
+    {
+      id: "ch-maya-returns", eyebrow: "প্রত্যাবর্তন",
+      title: "A Familiar Face",
+      paras: [
+        "One autumn afternoon, a luxury car stopped outside the largest restaurant. A familiar face stepped out. It was Maya. Time had changed them both.",
+        "She smiled warmly. \u201cI heard your story. I always knew you were special.\u201d",
+        "Arjun smiled back."
+      ],
+      quote: "\u201cNo. I simply stopped waiting for someone else to give me a future.\u201d"
+    },
+    {
+      id: "ch-lesson", eyebrow: "শিক্ষা",
+      title: "What the Roti Taught Him",
+      paras: [
+        "Months later, a group of unemployed graduates visited him. They all asked the same question: \u201cSir, how did you become successful after so many failures?\u201d",
+        "Arjun walked into the kitchen. He rolled a piece of dough into a perfect circle. Then he placed it on a hot pan. Watching it slowly rise, he said,"
+      ],
+      quote: "\u201cThis roti taught me something. It rises... only after facing fire.\u201d",
+      paras2: [
+        "The room fell silent. He continued: \u201cI spent years chasing a job. I forgot to discover my own ability. Employment is a wonderful path. But it is not the only one. If one door refuses to open, build your own.\u201d"
+      ]
+    }
+  ];
+
+  var moral = {
+    eyebrow: "নীতিকথা \u00b7 Moral",
+    title: "The Sign at the Door",
+    paras: [
+      "At the entrance of his first restaurant, the old canvas tent was carefully preserved inside a glass display. Beside it hung a wooden sign.",
+    ],
+    quote: "\u201cThe day I stopped searching for a job... was the day I started creating opportunities for others.\u201d",
+    paras2: [
+      "Thousands of travellers stopped to read those words. Many left inspired. Because they realized: sometimes life closes one road, only to lead us toward a far greater destination.",
+      "A job is one path to success \u2014 but it is not the only one. Discover your skills, believe in yourself, and create opportunities instead of waiting endlessly for them.",
+      "Failure is not the end of the journey. Sometimes it is the beginning of the life you were truly meant to live."
+    ]
+  };
+
+  /* =========================================================
+     2. BUILD THE PAGE (chapters + waypoints) from the data
+     ========================================================= */
+  var layout = document.querySelector(".layout");
+  var pathCol = document.querySelector(".path-col");
+  var readCol = document.createElement("div");
+  layout.replaceChildren(pathCol, readCol);
+
+  // speech "reading units": every paragraph/quote across the whole story,
+  // tagged with which chapter it belongs to, in reading order.
+  var speechUnits = []; // {text, el, chapterIndex}
+
+  function addParas(container, list, chapterIndex){
+    if(!list) return;
+    list.forEach(function(t){
+      var p = document.createElement("p");
+      p.textContent = t;
+      container.appendChild(p);
+      speechUnits.push({text:t, el:p, chapterIndex:chapterIndex});
+    });
+  }
+  function addQuote(container, text, chapterIndex){
+    if(!text) return;
+    var p = document.createElement("p");
+    p.className = "quote";
+    p.textContent = text.replace(/\u201c|\u201d/g,"");
+    container.appendChild(p);
+    speechUnits.push({text:text.replace(/\u201c|\u201d/g,""), el:p, chapterIndex:chapterIndex});
+  }
+
+  chapters.forEach(function(ch, i){
+    // waypoint dot
+    var wp = document.createElement("div");
+    wp.className = "waypoint";
+    wp.id = "wp-" + ch.id;
+    wp.innerHTML = '<span class="dot"></span>';
+    wp.title = ch.title;
+    wp.style.cursor = "pointer";
+    wp.addEventListener("click", function(){
+      document.getElementById(ch.id).scrollIntoView({behavior:"smooth", block:"start"});
+    });
+    pathCol.appendChild(wp);
+
+    // chapter section
+    var section = document.createElement("section");
+    section.className = "chapter";
+    section.id = ch.id;
+    section.dataset.index = i;
+    var eyebrow = document.createElement("p");
+    eyebrow.className = "chapter-eyebrow";
+    eyebrow.textContent = ch.eyebrow;
+    var h2 = document.createElement("h2");
+    h2.textContent = ch.title;
+    section.appendChild(eyebrow);
+    section.appendChild(h2);
+    addParas(section, ch.paras, i);
+    addQuote(section, ch.quote, i);
+    addParas(section, ch.paras2, i);
+    addQuote(section, ch.quote2, i);
+    readCol.appendChild(section);
+  });
+
+  // moral, as a styled closing card (its own waypoint too)
+  var wpMoral = document.createElement("div");
+  wpMoral.className = "waypoint";
+  wpMoral.id = "wp-moral";
+  wpMoral.innerHTML = '<span class="dot"></span>';
+  wpMoral.title = moral.title;
+  wpMoral.style.cursor = "pointer";
+  wpMoral.addEventListener("click", function(){
+    document.getElementById("ch-moral").scrollIntoView({behavior:"smooth", block:"start"});
+  });
+  pathCol.appendChild(wpMoral);
+
+  var moralSection = document.createElement("section");
+  moralSection.className = "chapter";
+  moralSection.id = "ch-moral";
+  moralSection.dataset.index = chapters.length;
+  var moralCard = document.createElement("div");
+  moralCard.className = "moral-card";
+  var me = document.createElement("p"); me.className="chapter-eyebrow"; me.textContent = moral.eyebrow;
+  var mh = document.createElement("h2"); mh.textContent = moral.title;
+  moralCard.appendChild(me); moralCard.appendChild(mh);
+  addParas(moralCard, moral.paras, chapters.length);
+  addQuote(moralCard, moral.quote, chapters.length);
+  addParas(moralCard, moral.paras2, chapters.length);
+  var sign = document.createElement("div");
+  sign.className = "sign";
+  sign.textContent = "\u2014 Arjun's Kitchen, somewhere on a mountain road";
+  moralCard.appendChild(sign);
+  moralSection.appendChild(moralCard);
+  readCol.appendChild(moralSection);
+
+  var allWaypoints = Array.prototype.slice.call(pathCol.querySelectorAll(".waypoint"));
+  var allSections = Array.prototype.slice.call(readCol.querySelectorAll(".chapter"));
+  var chapterNames = chapters.map(function(c){return c.title;}).concat([moral.title]);
+
+  /* =========================================================
+     3. TOAST helper
+     ========================================================= */
+  var toastEl = document.getElementById("toast");
+  var toastTimer;
+  function toast(msg){
+    toastEl.textContent = msg;
+    toastEl.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toastEl.classList.remove("show"); }, 2200);
+  }
+
+  /* =========================================================
+     4. SCROLL PROGRESS + ACTIVE WAYPOINT (IntersectionObserver)
+     ========================================================= */
+  var currentChapterIndex = 0;
+
+  function updateProgressBar(){
+    var doc = document.documentElement;
+    var scrollTop = doc.scrollTop || document.body.scrollTop;
+    var height = doc.scrollHeight - doc.clientHeight;
+    var pct = height > 0 ? (scrollTop / height) * 100 : 0;
+    document.getElementById("progressFill").style.width = pct + "%";
+  }
+  document.addEventListener("scroll", throttle(updateProgressBar, 100), {passive:true});
+  updateProgressBar();
+
+  function throttle(fn, wait){
+    var last = 0, timer=null;
+    return function(){
+      var now = Date.now();
+      if(now - last >= wait){ last = now; fn.apply(null, arguments); }
+      else { clearTimeout(timer); timer = setTimeout(function(){ last = Date.now(); fn.apply(null, arguments); }, wait - (now-last)); }
+    };
+  }
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      var idx = parseInt(entry.target.dataset.index, 10);
+      var wp = allWaypoints[idx];
+      if(!wp) return;
+      if(entry.isIntersecting){
+        currentChapterIndex = idx;
+        allWaypoints.forEach(function(w,i){
+          w.classList.toggle("active", i === idx);
+          if(i < idx) w.classList.add("read");
+        });
+        saveScrollBookmark(idx, false);
+      }
+    });
+  }, {rootMargin: "-40% 0px -50% 0px", threshold: 0});
+  allSections.forEach(function(s){ io.observe(s); });
+
+  /* =========================================================
+     5. BOOKMARK (localStorage) — resume where you left off
+     ========================================================= */
+  var BOOKMARK_KEY = "arjun_story_bookmark_v1";
+  var storageOK = true;
+  try{
+    localStorage.setItem("__t","1"); localStorage.removeItem("__t");
+  } catch(e){ storageOK = false; }
+
+  function saveScrollBookmark(idx, manual){
+    if(!storageOK) return;
+    try{
+      var data = {chapterIndex: idx, chapterName: chapterNames[idx], savedAt: Date.now(), manual: !!manual};
+      localStorage.setItem(BOOKMARK_KEY, JSON.stringify(data));
+      if(manual) toast("\u09ac\u09c1\u0995\u09ae\u09be\u09b0\u09cd\u0995 \u09b8\u09c7\u09ad \u09b9\u09df\u09c7\u099b\u09c7 \u2014 \u09aa\u09b0\u09c7 \u098f\u0996\u09be\u09a8 \u09a5\u09c7\u0995\u09c7 \u09aa\u09a1\u09bc\u09be \u09b6\u09c1\u09b0\u09c1 \u0995\u09b0\u09a4\u09c7 \u09aa\u09be\u09b0\u09ac\u09c7\u09a8\u0964"); // "Bookmark saved"
+    }catch(e){}
+  }
+  function readBookmark(){
+    if(!storageOK) return null;
+    try{
+      var raw = localStorage.getItem(BOOKMARK_KEY);
+      return raw ? JSON.parse(raw) : null;
+    }catch(e){ return null; }
+  }
+  document.getElementById("bookmarkBtn").addEventListener("click", function(){
+    saveScrollBookmark(currentChapterIndex, true);
+  });
+
+  // resume banner on load
+  var savedBM = readBookmark();
+  if(savedBM && typeof savedBM.chapterIndex === "number" && allSections[savedBM.chapterIndex]){
+    var banner = document.getElementById("resumeBanner");
+    document.getElementById("resumeChapterName").textContent = savedBM.chapterName || chapterNames[savedBM.chapterIndex];
+    banner.classList.add("show");
+    document.getElementById("resumeGo").addEventListener("click", function(){
+      allSections[savedBM.chapterIndex].scrollIntoView({behavior:"smooth", block:"start"});
+      banner.classList.remove("show");
+    });
+    document.getElementById("resumeDismiss").addEventListener("click", function(){
+      banner.classList.remove("show");
+    });
+  }
+  if(!storageOK){
+    // localStorage blocked (e.g. sandboxed preview) — degrade quietly
+    document.getElementById("bookmarkBtn").title = "\u098f\u0987 \u09aa\u09cd\u09b0\u09bf\u09ad\u09bf\u0989\u09a4\u09c7 \u09ac\u09c1\u0995\u09ae\u09be\u09b0\u09cd\u0995 \u09b8\u09c7\u09ad \u09b9\u09ac\u09c7 \u09a8\u09be";
+  }
+
+  document.getElementById("startReading").addEventListener("click", function(){
+    allSections[0].scrollIntoView({behavior:"smooth", block:"start"});
+  });
+
+  /* =========================================================
+     6. VOICE READER (Web Speech API) — Android + desktop safe
+     ========================================================= */
+  var synth = window.speechSynthesis;
+  var speechSupported = !!synth;
+  var voices = [];
+  var chosenVoice = null;
+  var currentUnitIndex = -1;
+  var isPlaying = false;
+  var isPaused = false;
+  var rate = 0.88, pitch = 1.0;
+  var keepAliveTimer = null; // Android/Chrome ~15s auto-stop workaround
+
+  var player = document.getElementById("player");
+  var playPauseBtn = document.getElementById("playPauseBtn");
+  var playIcon = document.getElementById("playIcon");
+  var playerTitle = document.getElementById("playerTitle");
+  var playerSub = document.getElementById("playerSub");
+  var voiceLabel = document.getElementById("voiceLabel");
+  var voiceNote = document.getElementById("voiceNote");
+  var rateSlider = document.getElementById("rateSlider");
+  var rateValue = document.getElementById("rateValue");
+
+  function pickVoice(list){
+    if(!list || !list.length) return null;
+    var chains = [
+      function(v){ return v.lang === "en-IN"; },
+      function(v){ return /en/i.test(v.lang) && /india|indian/i.test(v.name); },
+      function(v){ return v.lang === "en-GB"; },
+      function(v){ return v.lang === "en-US" && /female|woman/i.test(v.name); },
+      function(v){ return v.lang === "en-US"; },
+      function(v){ return /^en/i.test(v.lang); },
+      function(v){ return v.default; },
+      function(){ return true; } // absolute fallback: first available voice
+    ];
+    for(var i=0;i<chains.length;i++){
+      var found = list.find(chains[i]);
+      if(found) return found;
+    }
+    return null;
+  }
+
+  function refreshVoices(){
+    voices = synth ? synth.getVoices() : [];
+    chosenVoice = pickVoice(voices);
+    if(chosenVoice){
+      voiceLabel.textContent = "\u09ad\u09df\u09c7\u09b8: " + chosenVoice.name + " (" + chosenVoice.lang + ")";
+    } else if (voices.length === 0){
+      voiceLabel.textContent = "\u09ad\u09df\u09c7\u09b8 \u09b2\u09cb\u09a1 \u09b9\u099a\u09cd\u099b\u09c7\u2026";
+    } else {
+      voiceLabel.textContent = "\u09a1\u09bf\u09ab\u09b2\u09cd\u099f \u09ad\u09df\u09c7\u09b8 \u09ac\u09cd\u09af\u09ac\u09b9\u09be\u09b0 \u09b9\u099a\u09cd\u099b\u09c7";
+    }
+  }
+
+  if(speechSupported){
+    refreshVoices();
+    // Voices load asynchronously on Chrome/Android — must listen for this event.
+    if(typeof synth.onvoiceschanged !== "undefined"){
+      synth.onvoiceschanged = refreshVoices;
+    }
+    // Some Android WebViews never fire onvoiceschanged reliably; poll briefly as a fallback.
+    var pollCount = 0;
+    var pollVoices = setInterval(function(){
+      pollCount++;
+      if(voices.length === 0 && pollCount < 10){
+        refreshVoices();
+      } else {
+        clearInterval(pollVoices);
+      }
+    }, 500);
+  } else {
+    voiceLabel.textContent = "\u098f\u0987 \u09ac\u09cd\u09b0\u09be\u0989\u099c\u09be\u09b0\u09c7 \u09ad\u09df\u09c7\u09b8 \u09b0\u09bf\u09a1\u09be\u09b0 \u09b8\u09be\u09aa\u09cb\u09b0\u09cd\u099f \u0995\u09b0\u09c7 \u09a8\u09be";
+    voiceNote.textContent = "\u098f\u0987 \u09ac\u09cd\u09b0\u09be\u0989\u099c\u09be\u09b0\u09c7 Web Speech API \u09b8\u09be\u09aa\u09cb\u09b0\u09cd\u099f \u09a8\u09c7\u0987, \u09a4\u09be\u0987 \u09ad\u09df\u09c7\u09b8\u09c7 \u09aa\u09a1\u09bc\u09be \u09af\u09be\u09ac\u09c7 \u09a8\u09be\u0964 Chrome (Android/Desktop) \u09ac\u09cd\u09b0\u09be\u0989\u099c\u09be\u09b0\u09c7 \u099a\u09c7\u09b7\u09cd\u099f\u09be \u0995\u09b0\u09c1\u09a8\u0964";
+  }
+
+  rateSlider.addEventListener("input", function(){
+    rate = parseFloat(rateSlider.value);
+    rateValue.textContent = rate.toFixed(2) + "x";
+    // if currently speaking, restart current unit with new rate
+    if(isPlaying){ speakUnit(currentUnitIndex, true); }
+  });
+
+  function clearHighlights(){
+    speechUnits.forEach(function(u){ u.el.classList.remove("speech-active"); });
+  }
+
+  function setPlayIcon(playingState){
+    if(playingState){
+      playIcon.innerHTML = '<rect x="5" y="4" width="5" height="16" rx="1" fill="currentColor"/><rect x="14" y="4" width="5" height="16" rx="1" fill="currentColor"/>';
+    } else {
+      playIcon.innerHTML = '<path d="M5 3v18l15-9L5 3Z" fill="currentColor"/>';
+    }
+  }
+
+  // Chrome/Android bug: long utterances can silently stop after ~15s.
+  // Workaround: pause/resume the engine periodically while speaking.
+  function startKeepAlive(){
+    stopKeepAlive();
+    keepAliveTimer = setInterval(function(){
+      if(synth && synth.speaking && !synth.paused){
+        synth.pause();
+        synth.resume();
+      }
+    }, 8000);
+  }
+  function stopKeepAlive(){
+    if(keepAliveTimer){ clearInterval(keepAliveTimer); keepAliveTimer = null; }
+  }
+
+  function speakUnit(index, isRestart){
+    if(!speechSupported) return;
+    if(index < 0 || index >= speechUnits.length){
+      stopReading();
+      toast("\u0997\u09b2\u09cd\u09aa \u09aa\u09a1\u09bc\u09be \u09b6\u09c7\u09b7 \u09b9\u09b2\u09cb \u2014 \u09a7\u09a8\u09cd\u09af\u09ac\u09be\u09a6\u0964");
+      return;
+    }
+    synth.cancel(); // clear any queued utterances first (important on Android)
+    clearHighlights();
+    currentUnitIndex = index;
+    var unit = speechUnits[index];
+    unit.el.classList.add("speech-active");
+    if(!isRestart){
+      unit.el.scrollIntoView({behavior:"smooth", block:"center"});
+    }
+
+    var utt = new SpeechSynthesisUtterance(unit.text);
+    if(chosenVoice) utt.voice = chosenVoice;
+    utt.rate = rate;
+    utt.pitch = pitch;
+    utt.lang = chosenVoice ? chosenVoice.lang : "en-US";
+
+    utt.onend = function(){
+      if(isPlaying){ speakUnit(index + 1); }
+    };
+    utt.onerror = function(){
+      if(isPlaying){ speakUnit(index + 1); }
+    };
+
+    isPaused = false;
+    synth.speak(utt);
+    startKeepAlive();
+
+    var chapterIdx = unit.chapterIndex;
+    playerTitle.textContent = chapterNames[chapterIdx] || "Reading";
+    playerSub.textContent = "\u0985\u0982\u09b6 " + (index+1) + " / " + speechUnits.length;
+    saveScrollBookmark(chapterIdx, false);
+  }
+
+  function startReadingFrom(index){
+    if(!speechSupported){
+      toast("\u098f\u0987 \u09ac\u09cd\u09b0\u09be\u0989\u099c\u09be\u09b0\u09c7 \u09ad\u09df\u09c7\u09b8 \u09b0\u09bf\u09a1\u09be\u09b0 \u0995\u09be\u099c \u0995\u09b0\u09ac\u09c7 \u09a8\u09be\u0964");
+      return;
+    }
+    isPlaying = true;
+    isPaused = false;
+    player.classList.add("open");
+    setPlayIcon(true);
+    document.getElementById("playToggleTop").classList.add("active");
+    speakUnit(index);
+  }
+
+  function pauseReading(){
+    if(!speechSupported) return;
+    if(synth.speaking && !synth.paused){
+      synth.pause();
+      isPaused = true;
+      isPlaying = false;
+      setPlayIcon(false);
+      stopKeepAlive();
+    }
+  }
+
+  function resumeReading(){
+    if(!speechSupported) return;
+    if(isPaused){
+      synth.resume();
+      isPlaying = true;
+      isPaused = false;
+      setPlayIcon(true);
+      startKeepAlive();
+    } else if(currentUnitIndex >= 0){
+      isPlaying = true;
+      speakUnit(currentUnitIndex, true);
+    } else {
+      startReadingFrom(nearestUnitForChapter(currentChapterIndex));
+    }
+  }
+
+  function stopReading(){
+    isPlaying = false;
+    isPaused = false;
+    if(speechSupported) synth.cancel();
+    stopKeepAlive();
+    clearHighlights();
+    setPlayIcon(false);
+    document.getElementById("playToggleTop").classList.remove("active");
+  }
+
+  function nearestUnitForChapter(chapterIdx){
+    for(var i=0;i<speechUnits.length;i++){
+      if(speechUnits[i].chapterIndex === chapterIdx) return i;
+    }
+    return 0;
+  }
+
+  document.getElementById("playPauseBtn").addEventListener("click", function(){
+    if(isPlaying){ pauseReading(); }
+    else { resumeReading(); }
+  });
+  document.getElementById("prevBtn").addEventListener("click", function(){
+    var target = Math.max(0, currentUnitIndex - 1);
+    isPlaying = true; setPlayIcon(true);
+    speakUnit(target);
+  });
+  document.getElementById("nextBtn").addEventListener("click", function(){
+    var target = Math.min(speechUnits.length - 1, currentUnitIndex + 1);
+    isPlaying = true; setPlayIcon(true);
+    speakUnit(target);
+  });
+  document.getElementById("closePlayer").addEventListener("click", function(){
+    stopReading();
+    player.classList.remove("open");
+  });
+
+  function openAndStart(){
+    player.classList.add("open");
+    startReadingFrom(nearestUnitForChapter(currentChapterIndex));
+  }
+  document.getElementById("playToggleTop").addEventListener("click", function(){
+    if(isPlaying){ pauseReading(); player.classList.add("open"); }
+    else if(isPaused){ resumeReading(); }
+    else { openAndStart(); }
+  });
+  document.getElementById("startListening").addEventListener("click", openAndStart);
+
+  // stop speech cleanly if the page is hidden/unloaded (avoids orphaned Android audio)
+  document.addEventListener("visibilitychange", function(){
+    if(document.hidden && speechSupported && synth.speaking){
+      pauseReading();
+    }
+  });
+  window.addEventListener("beforeunload", function(){
+    if(speechSupported) synth.cancel();
+  });
+
+})();
+</script>
+</body>
+</html>

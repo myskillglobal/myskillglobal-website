@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sukumar Chatterjee's Lost Umbrella</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600&family=Baloo+2:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink: #1c232d;
+    --indigo: #232c3d;
+    --indigo-deep: #171e29;
+    --paper: #f4f1ea;
+    --brass: #c98a3e;
+    --brass-soft: #e0b374;
+    --line: #cfd3ce;
+    --max-w: 640px;
+  }
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Literata', serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position: relative;
+    min-height: 92vh;
+    display:flex;
+    flex-direction: column;
+    justify-content:flex-end;
+    overflow:hidden;
+    background: var(--indigo-deep);
+  }
+  .hero-img{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit: cover;
+    object-position: center 30%;
+    opacity: .8;
+    filter: saturate(.85) contrast(1.05);
+  }
+  .hero-scrim{
+    position:absolute; inset:0;
+    background:
+      linear-gradient(180deg, rgba(23,30,41,.25) 0%, rgba(23,30,41,.55) 55%, var(--paper) 100%);
+  }
+  .rain{
+    position:absolute; inset:0; pointer-events:none;
+    overflow:hidden;
+  }
+  .drop{
+    position:absolute; top:-10%;
+    width:1px; height:70px;
+    background: linear-gradient(180deg, rgba(224,179,116,0) 0%, rgba(224,179,116,.55) 100%);
+    animation: fall linear infinite;
+  }
+  @keyframes fall{ to{ transform: translateY(120vh); } }
+  @media (prefers-reduced-motion: reduce){
+    .drop{ animation: none; display:none; }
+    html{ scroll-behavior: auto; }
+  }
+
+  .hero-content{
+    position: relative;
+    padding: 40px 24px 60px;
+    max-width: var(--max-w);
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+  }
+  .kicker{
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 500;
+    font-size: .95rem;
+    letter-spacing: .02em;
+    color: var(--brass-soft);
+    margin: 0 0 12px;
+  }
+  .hero-title{
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2rem, 7vw, 3.1rem);
+    line-height: 1.22;
+    margin: 0 0 18px;
+    text-shadow: 0 2px 18px rgba(0,0,0,.4);
+  }
+  .hero-question{
+    font-family: 'Literata', serif;
+    font-style: normal;
+    font-size: 1.18rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,.92);
+    margin: 0 0 30px;
+    text-shadow: 0 1px 10px rgba(0,0,0,.4);
+  }
+  .start-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background: var(--brass);
+    color: var(--indigo-deep);
+    text-decoration:none;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 13px 26px;
+    border-radius: 999px;
+    transition: transform .15s ease, background .15s ease;
+  }
+  .start-btn:hover{ background: var(--brass-soft); transform: translateY(-1px); }
+  .start-btn:focus-visible{ outline: 2px solid #fff; outline-offset: 3px; }
+
+  /* ---------- intro ---------- */
+  main{
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 56px 24px 20px;
+  }
+  .intro p{
+    font-size: 1.12rem;
+    line-height: 1.9;
+    margin: 0 0 24px;
+  }
+  .intro p.pull{
+    text-align:center;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--indigo);
+    line-height: 1.6;
+    margin: 36px 0;
+  }
+
+  /* ---------- chapter path ---------- */
+  .path{
+    padding: 20px 0 8px;
+  }
+  .path-heading{
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--brass);
+    text-align:center;
+    margin: 0 0 8px;
+  }
+  .path-sub{
+    text-align:center;
+    color:#6b7178;
+    font-size: .95rem;
+    margin: 0 0 40px;
+  }
+
+  .chapters{
+    display:flex;
+    flex-direction:column;
+    gap: 0;
+    border-top: 1px solid var(--line);
+  }
+  .chapter{
+    display:block;
+    text-decoration:none;
+    color: inherit;
+    padding: 26px 4px;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+  }
+  .chapter-row{
+    display:flex;
+    align-items:baseline;
+    gap: 16px;
+  }
+  .chapter-num{
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--line);
+    min-width: 34px;
+    transition: color .15s ease;
+  }
+  .chapter:hover .chapter-num{ color: var(--brass); }
+  .chapter-body{ flex: 1; }
+  .chapter-title{
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 700;
+    font-size: 1.12rem;
+    color: var(--indigo);
+    margin: 0 0 6px;
+  }
+  .chapter-teaser{
+    font-size: 1rem;
+    line-height: 1.65;
+    color: #52585f;
+    margin: 0;
+  }
+  .chapter-arrow{
+    font-family: 'Baloo 2', sans-serif;
+    color: var(--line);
+    font-size: 1.1rem;
+    align-self:center;
+    transition: transform .15s ease, color .15s ease;
+  }
+  .chapter:hover .chapter-arrow{ color: var(--brass); transform: translateX(3px); }
+  .chapter.locked .chapter-title{ color: #8a9097; }
+  .chapter.locked .chapter-teaser{ font-style: normal; }
+
+  footer{
+    border-top: 1px solid var(--line);
+    padding: 30px 24px 40px;
+    text-align:center;
+    color:#8a9097;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: .82rem;
+  }
+
+  @media (max-width: 420px){
+    .hero{ min-height: 78vh; }
+    .chapter-num{ font-size: 1.3rem; min-width: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <img class="hero-img" src="images/umbrella.png" alt="An elderly man standing in the rain holding the umbrella's handle, with scenes from the umbrella's journey around him">
+  <div class="hero-scrim"></div>
+  <div class="rain" id="rain"></div>
+  <div class="hero-content">
+    <p class="kicker">A story told in the umbrella's own words</p>
+    <h1 class="hero-title">Sukumar Chatterjee's<br>Lost Umbrella</h1>
+    <p class="hero-question">One umbrella, many owners — but in the end, who did it come back to?</p>
+    <a class="start-btn" href="umbrella-story-part1.html">Start Reading ☔</a>
+  </div>
+</section>
+
+<main>
+  <div class="intro">
+    <p>A plain black umbrella. Eight iron ribs, a curved wooden handle — and two small letters carved into that handle.</p>
+
+    <p>Left behind by mistake at a tea stall in the market by its first owner, the retired Sukumar Chatterjee, it began a solitary journey of its own — from hand to hand, from one town to the next lane.</p>
+
+    <p class="pull">Someone picks it up. Someone buys it. Someone is forced to let it go, out of sheer need.</p>
+
+    <p>Every time, a new hand, a new roof, a new story. And every time, the same question stirs inside it — does Sukumar Babu still remember it? Or has he forgotten everything by now?</p>
+
+    <p>Years go by. The umbrella's colour fades, its ribs grow old — but the two carved letters on the handle never wear away.</p>
+  </div>
+
+  <div class="path">
+    <p class="path-heading">A Journey in Four Parts</p>
+    <p class="path-sub">Read part by part, or jump straight to the end? The choice is yours — though this story was written to be savoured slowly, one part at a time.</p>
+
+    <div class="chapters">
+      <a class="chapter" href="umbrella-story-part1.html">
+        <div class="chapter-row">
+          <span class="chapter-num">1</span>
+          <div class="chapter-body">
+            <p class="chapter-title">Lost</p>
+            <p class="chapter-teaser">An umbrella left behind at a tea stall on a rainy afternoon — and the stranger's hand that picked it up.</p>
+          </div>
+          <span class="chapter-arrow">→</span>
+        </div>
+      </a>
+
+      <a class="chapter" href="umbrella-story-part2.html">
+        <div class="chapter-row">
+          <span class="chapter-num">2</span>
+          <div class="chapter-body">
+            <p class="chapter-title">From One Hand to Another</p>
+            <p class="chapter-teaser">A memory sold for twenty rupees, a college boy, and a sudden gust that flings it away on a stormy evening.</p>
+          </div>
+          <span class="chapter-arrow">→</span>
+        </div>
+      </a>
+
+      <a class="chapter" href="umbrella-story-part3.html">
+        <div class="chapter-row">
+          <span class="chapter-num">3</span>
+          <div class="chapter-body">
+            <p class="chapter-title">Woven Into People's Lives</p>
+            <p class="chapter-teaser">A sick little girl, a doctor, and a father's difficult decision. Then, after passing through hand after hand — suddenly, a familiar face.</p>
+          </div>
+          <span class="chapter-arrow">→</span>
+        </div>
+      </a>
+
+      <a class="chapter locked" href="umbrella-story-part4.html">
+        <div class="chapter-row">
+          <span class="chapter-num">4</span>
+          <div class="chapter-body">
+            <p class="chapter-title">You've Come Back Again?</p>
+            <p class="chapter-teaser">After all these years, did it truly meet Sukumar Babu again? The answer lies hidden in the final part.</p>
+          </div>
+          <span class="chapter-arrow">→</span>
+        </div>
+      </a>
+<a class="prev-link" href="index.html">Home</a>
+
+    </div>
+  </div>
+</main>
+
+<footer>Sukumar Chatterjee's Lost Umbrella · A Four-Part Series</footer>
+
+<script>
+  (function(){
+    var rain = document.getElementById('rain');
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var count = window.innerWidth < 480 ? 24 : 44;
+    for (var i=0;i<count;i++){
+      var d = document.createElement('div');
+      d.className = 'drop';
+      d.style.left = Math.random()*100 + '%';
+      d.style.animationDuration = (0.7 + Math.random()*0.9) + 's';
+      d.style.animationDelay = (Math.random()*2) + 's';
+      d.style.opacity = 0.3 + Math.random()*0.5;
+      rain.appendChild(d);
+    }
+  })();
+</script>
+
+</body>
+</html>

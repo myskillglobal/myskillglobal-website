@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Brahmin on Yama's Throne</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-deep:#080c16;
+    --navy:#0e1526;
+    --navy-panel:#141d33;
+    --navy-line:#243156;
+    --gold:#d3ab55;
+    --gold-bright:#f0cd82;
+    --gold-dim:#8a723f;
+    --ink:#e9e4d6;
+    --ink-muted:#a8a9b8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--navy-deep);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.7;
+    padding-bottom:78px;
+  }
+  h1,h2,h3,.serif{font-family:'Cormorant Garamond',serif;}
+  a{color:inherit;}
+  .wrap{max-width:720px;margin:0 auto;padding:0 22px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    overflow:hidden;
+    background:
+      radial-gradient(circle at 50% 18%, rgba(211,171,85,0.14), transparent 55%),
+      linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 78%);
+    padding:56px 22px 40px;
+    text-align:center;
+    border-bottom:1px solid var(--navy-line);
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+      radial-gradient(circle, rgba(211,171,85,0.35) 1px, transparent 1px);
+    background-size:26px 26px;
+    opacity:0.12;
+    pointer-events:none;
+  }
+  .hero-eyebrow{
+    position:relative;
+    font-size:13px;
+    letter-spacing:0.04em;
+    color:var(--gold);
+    margin-bottom:18px;
+  }
+  .hero-art{
+    position:relative;
+    width:min(92%, 480px);
+    margin:0 auto 22px;
+  }
+  .hero-art svg{width:100%;height:auto;display:block;}
+  .hero-art img{
+    width:100%;
+    height:auto;
+    display:block;
+    border-radius:8px;
+    border:1px solid var(--gold-dim);
+    box-shadow:0 12px 40px rgba(0,0,0,0.55), 0 0 0 1px rgba(211,171,85,0.15);
+  }
+  .hero h1{
+    position:relative;
+    font-size:clamp(30px,7vw,46px);
+    font-weight:600;
+    color:var(--gold-bright);
+    line-height:1.25;
+    margin-bottom:14px;
+    text-shadow:0 0 30px rgba(211,171,85,0.18);
+  }
+  .hero p.tagline{
+    position:relative;
+    font-family:'Cormorant Garamond',serif;
+    font-size:19px;
+    font-style:italic;
+    color:var(--ink-muted);
+    max-width:480px;
+    margin:0 auto 28px;
+  }
+  .hero-cta{
+    position:relative;
+    display:inline-flex;
+    gap:12px;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:12px 22px;
+    border-radius:3px;
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:0.01em;
+    cursor:pointer;
+    border:1px solid transparent;
+    text-decoration:none;
+    transition:transform .15s ease, background .2s ease;
+    font-family:'Inter',sans-serif;
+  }
+  .btn:active{transform:scale(0.97);}
+  .btn-gold{background:var(--gold);color:#181206;}
+  .btn-gold:hover{background:var(--gold-bright);}
+  .btn-outline{border-color:var(--gold-dim);color:var(--gold);background:transparent;}
+  .btn-outline:hover{background:rgba(211,171,85,0.08);}
+
+  /* ---------- TOC ---------- */
+  .toc{padding:44px 22px 8px;}
+  .toc h2{font-size:22px;color:var(--gold-bright);margin-bottom:6px;font-weight:600;}
+  .toc .sub{color:var(--ink-muted);font-size:14px;margin-bottom:22px;}
+  .toc-list{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .toc-item{
+    display:flex;align-items:center;gap:14px;
+    background:var(--navy-panel);
+    border:1px solid var(--navy-line);
+    border-radius:4px;
+    padding:14px 16px;
+    text-decoration:none;
+    color:var(--ink);
+    transition:border-color .2s ease, background .2s ease;
+  }
+  .toc-item:hover{border-color:var(--gold-dim);background:#182140;}
+  .toc-num{font-family:'Cormorant Garamond',serif;color:var(--gold);font-size:14px;min-width:70px;}
+  .toc-title{flex:1;font-size:15px;font-weight:500;}
+  .toc-play{
+    width:30px;height:30px;border-radius:50%;
+    background:rgba(211,171,85,0.12);
+    border:1px solid var(--gold-dim);
+    color:var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    font-size:12px;flex-shrink:0;
+  }
+
+  /* ---------- EPISODE ---------- */
+  .episode{padding:52px 22px 8px;border-top:1px solid var(--navy-line);}
+  .episode-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:26px;}
+  .episode-tag{color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:15px;margin-bottom:6px;display:block;}
+  .episode h2{font-size:25px;color:var(--ink);font-weight:600;line-height:1.35;}
+  .listen-btn{
+    flex-shrink:0;display:flex;align-items:center;gap:7px;
+    background:transparent;border:1px solid var(--gold-dim);color:var(--gold);
+    border-radius:3px;padding:9px 14px;font-size:13px;
+    font-family:'Inter',sans-serif;cursor:pointer;white-space:nowrap;
+  }
+  .listen-btn.playing{background:var(--gold);color:#181206;}
+  .story-text p{
+    font-family:'Cormorant Garamond',serif;
+    font-size:18px;
+    color:var(--ink);
+    margin-bottom:16px;
+    max-width:66ch;
+  }
+  .story-text p.dialogue{
+    padding-left:16px;
+    border-left:2px solid var(--gold-dim);
+    color:var(--gold-bright);
+    font-style:italic;
+  }
+  .story-text p.beat{color:var(--ink-muted);font-size:16px;font-style:italic;}
+
+  /* ---------- CLOSING ---------- */
+  .closing{padding:50px 22px 70px;text-align:center;border-top:1px solid var(--navy-line);}
+  .closing p{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    color:var(--ink-muted);
+    font-size:16px;
+    max-width:460px;margin:0 auto 8px;
+  }
+  .closing .leaf{color:var(--gold);font-size:20px;margin-bottom:16px;}
+
+  /* ---------- PLAYER BAR ---------- */
+  .player-bar{
+    position:fixed;left:0;right:0;bottom:0;
+    background:var(--navy-panel);
+    border-top:1px solid var(--gold-dim);
+    padding:10px 16px;
+    display:none;align-items:center;gap:12px;z-index:50;
+    box-shadow:0 -6px 24px rgba(0,0,0,0.4);
+  }
+  .player-bar.active{display:flex;}
+  .player-bar .p-info{flex:1;min-width:0;}
+  .player-bar .p-title{
+    font-size:13px;color:var(--gold-bright);
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+    font-family:'Cormorant Garamond',serif;
+  }
+  .player-bar .p-status{font-size:11px;color:var(--ink-muted);}
+  .p-controls{display:flex;align-items:center;gap:6px;}
+  .p-btn{
+    width:36px;height:36px;border-radius:50%;
+    background:transparent;border:1px solid var(--navy-line);color:var(--ink);
+    display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;
+  }
+  .p-btn.main{background:var(--gold);color:#181206;border-color:var(--gold);width:40px;height:40px;font-size:15px;}
+  .p-btn:active{transform:scale(0.94);}
+  .p-close{background:transparent;border:none;color:var(--ink-muted);font-size:18px;cursor:pointer;padding:0 4px;}
+
+  @media(min-width:600px){
+    .wrap{padding:0 32px;}
+    .hero{padding:76px 32px 56px;}
+    .toc,.episode,.closing{padding-left:32px;padding-right:32px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="hero-eyebrow">A MODERN SATIRE ON SOCIETY AND POWER</div>
+  <div class="hero-art">
+    <img src="images/yamraj.png" alt="The Brahmin on Yama's Throne — six-chapter illustrated summary" loading="eager">
+  </div>
+  <h1>The Brahmin on Yama's Throne</h1>
+  <p class="tagline">An elephant, a forged letter, and a single day of rule — a tale of how power quietly changes the one who holds it.</p>
+  <div class="hero-cta">
+    <a href="#toc" class="btn btn-gold">Begin Reading</a>
+    <button class="btn btn-outline" id="hero-listen">🔊 Listen to the Full Story</button>
+  </div>
+</header>
+
+<!-- ================= TOC ================= -->
+<section class="toc" id="toc">
+  <div class="wrap">
+    <h2>Table of Contents</h2>
+    <div class="sub">6 chapters · read or listen</div>
+    <ul class="toc-list">
+      <li><a class="toc-item" href="#ep1"><span class="toc-num">Chapter 1</span><span class="toc-title">The Elephant's Chain</span><span class="toc-play">▶</span></a></li>
+      <li><a class="toc-item" href="#ep2"><span class="toc-num">Chapter 2</span><span class="toc-title">A Living Man in the Land of the Dead</span><span class="toc-play">▶</span></a></li>
+      <li><a class="toc-item" href="#ep3"><span class="toc-num">Chapter 3</span><span class="toc-title">One Throne Changes All Judgment</span><span class="toc-play">▶</span></a></li>
+      <li><a class="toc-item" href="#ep4"><span class="toc-num">Chapter 4</span><span class="toc-title">The Brahmin's One-Day Reign</span><span class="toc-play">▶</span></a></li>
+      <li><a class="toc-item" href="#ep5"><span class="toc-num">Chapter 5</span><span class="toc-title">Twelve Years on Earth</span><span class="toc-play">▶</span></a></li>
+      <li><a class="toc-item" href="#ep6"><span class="toc-num">Chapter 6</span><span class="toc-title">Not Revenge, But Release</span><span class="toc-play">▶</span></a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= EPISODE 1 ================= -->
+<section class="episode" id="ep1" data-ep="0">
+  <div class="wrap">
+    <div class="episode-head">
+      <div><span class="episode-tag">Chapter 1</span><h2>The Elephant's Chain</h2></div>
+      <button class="listen-btn" data-listen="0">🔊 Listen</button>
+    </div>
+    <div class="story-text">
+      <p>That day, Yamaraj's court was in session in the land of the dead. Souls arrived one after another, and Yamaraj listened as their lives were weighed and reckoned.</p>
+      <p class="beat">Just then, a Yamadoot brought in an enormous elephant.</p>
+      <p class="dialogue">Yamaraj looked the elephant over and said — "Well now! You were sent into the world with a body so vast, so how did you end up obeying a man? A man no taller than one of your legs, and that little creature made you go wherever he pleased?"</p>
+      <p class="beat">The elephant was quiet for a moment. Then it said —</p>
+      <p class="dialogue">"My lord, my body may be large, but my story begins in childhood."</p>
+      <p class="dialogue">Yamaraj said — "Let me hear it."</p>
+      <p class="dialogue">The elephant said — "When I was young, men set a trap for me. They dug a deep pit in the earth and covered it with leaves. I didn't notice. My foot landed on it, and I fell in."</p>
+      <p class="dialogue">"After that, they took me away. I was tied with rope, bound with chains. Whenever I tried to escape, I was beaten. I was young. I couldn't break the chains."</p>
+      <p class="dialogue">Yamaraj asked — "And the mahout?"</p>
+      <p class="dialogue">The elephant said — "Yes. At first the mahout tortured me. But later he brought me food, gave me water, ran his hand over my head. When I fell ill, he cared for me. I thought — this man loves me."</p>
+      <p class="beat">The elephant paused.</p>
+      <p class="dialogue">"But my lord, alongside that love, he always carried the goad of control. I grew larger. One day I realised — the chain that once bound me as a calf, I could now snap with a single pull."</p>
+      <p class="dialogue">Yamaraj said, astonished — "Then why didn't you break it?"</p>
+      <p class="beat">The elephant lowered its head.</p>
+      <p class="dialogue">"Because by then, the chain was no longer on my leg."</p>
+      <p class="dialogue">Yamaraj said — "Then where was it?"</p>
+      <p class="dialogue">The elephant said slowly — "In my mind."</p>
+      <p class="beat">The court fell silent.</p>
+      <p class="dialogue">The elephant said — "My lord, men had not bound my body — they had bound my belief. And men don't only do this to elephants. They bind each other too, with the fears of childhood, with habit, with greed, with the chains of society."</p>
+      <p class="beat">Yamaraj sighed.</p>
+      <p class="dialogue">The elephant smiled faintly. "Everyone who comes to you here is already dead. Bring a living man here just once. Then you'll understand how dangerous a man can be."</p>
+      <p class="dialogue">At once, Yamaraj ordered the Yamadoot — "Go. Bring me a living man from the earth."</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EPISODE 2 ================= -->
+<section class="episode" id="ep2" data-ep="1">
+  <div class="wrap">
+    <div class="episode-head">
+      <div><span class="episode-tag">Chapter 2</span><h2>A Living Man in the Land of the Dead</h2></div>
+      <button class="listen-btn" data-listen="1">🔊 Listen</button>
+    </div>
+    <div class="story-text">
+      <p>The Yamadoot descended to earth. After a long search, on a hot night, he found a Brahmin asleep on a cot on his rooftop. The Yamadoot lifted the Brahmin, cot and all.</p>
+      <p>Halfway there, the Brahmin woke. He opened his eyes to find himself flying through the sky — a strange, otherworldly figure carrying him and his cot on its shoulder. The Brahmin understood at once: this was a Yamadoot. But he didn't scream.</p>
+      <p class="dialogue">He thought — "If I shout now and fall off this cot, my business will be finished before I even reach the land of the dead."</p>
+      <p>He took out paper and a pen from his pocket, scribbled something quickly, tucked the paper away again, closed his eyes, and lay back down. The Yamadoot noticed nothing at all.</p>
+      <p>At dawn they reached the land of the dead. The Yamadoot set the cot down. The Brahmin rose, drew a letter from his pocket, and said —</p>
+      <p class="dialogue">"Give this to Dharmaraj."</p>
+      <p>Yamaraj opened the letter. It read —</p>
+      <p class="dialogue">"Dear Dharmaraj, the bearer of this letter is my special envoy. Assist him in your administrative affairs and carry out his instructions. — Vishnu"</p>
+      <p>Yamaraj read the letter and froze. Vishnu's own name! He rose hastily from his throne and said —</p>
+      <p class="dialogue">"Please, sir! Do sit upon the throne."</p>
+      <p>The Brahmin walked slowly to the throne and sat down. The elephant watched everything from a distance, and thought to itself —</p>
+      <p class="dialogue">"Men really are something else."</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EPISODE 3 ================= -->
+<section class="episode" id="ep3" data-ep="2">
+  <div class="wrap">
+    <div class="episode-head">
+      <div><span class="episode-tag">Chapter 3</span><h2>One Throne Changes All Judgment</h2></div>
+      <button class="listen-btn" data-listen="2">🔊 Listen</button>
+    </div>
+    <div class="story-text">
+      <p>The Yamadoot brought in a bandit.</p>
+      <p class="dialogue">"My lord, he has robbed countless people and killed several."</p>
+      <p class="dialogue">The Brahmin said — "Send him to heaven."</p>
+      <p class="dialogue">The Yamadoot froze. "To heaven?"</p>
+      <p class="dialogue">"Yes. Next."</p>
+      <p>Then came a man who had sold adulterated milk — "He has made many people ill." "Send him to heaven."</p>
+      <p>Then a false witness — "He has framed many innocent people." "Send him to heaven."</p>
+      <p>A corrupt official — "Heaven." A bribe-taker — "Heaven." A cruel landlord — "Heaven." A merchant who cheated his customers — "Heaven."</p>
+      <p>By the end, the Yamadoot stopped asking questions altogether. He simply brought the files. And the Brahmin kept saying — "Send him to heaven."</p>
+      <p class="beat">Yamaraj stood by, helpless. After all, the letter carried Vishnu's own command.</p>
+      <p>Meanwhile, a queue had formed at heaven's gates. The gods were bewildered. Narada rushed to Vishnu and said —</p>
+      <p class="dialogue">"My lord! I have never seen such a crowd at heaven's gates!"</p>
+      <p class="dialogue">Vishnu said — "Who are they, all these arrivals?"</p>
+      <p class="dialogue">Narada said — "Those who, by rights, ought never to reach heaven at all."</p>
+      <p class="dialogue">Vishnu, astonished — "Coming from where?"</p>
+      <p class="dialogue">"From the land of the dead."</p>
+      <p class="dialogue">Vishnu said — "Then I must go there myself."</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EPISODE 4 ================= -->
+<section class="episode" id="ep4" data-ep="3">
+  <div class="wrap">
+    <div class="episode-head">
+      <div><span class="episode-tag">Chapter 4</span><h2>The Brahmin's One-Day Reign</h2></div>
+      <button class="listen-btn" data-listen="3">🔊 Listen</button>
+    </div>
+    <div class="story-text">
+      <p>Vishnu arrived in the land of the dead to find Yamaraj standing aside while a Brahmin sat upon his throne.</p>
+      <p class="dialogue">Vishnu said — "Dharmaraj, what is going on here?"</p>
+      <p class="dialogue">Yamaraj said — "My lord, I have done nothing. The man you sent is making every decision."</p>
+      <p class="dialogue">Vishnu turned to the Brahmin. "When did I ever send you here?"</p>
+      <p class="dialogue">The Brahmin said — "My lord, could I possibly be here without your will?"</p>
+      <p class="dialogue">Vishnu said — "But I never wrote this letter."</p>
+      <p class="dialogue">The Brahmin said — "Your name is on it. Surely nothing could be done in your name without your consent!"</p>
+      <p class="dialogue">Vishnu smiled faintly. "Why are you sending everyone to heaven?"</p>
+      <p class="dialogue">The Brahmin said — "Because power has come into my hands."</p>
+      <p class="dialogue">"And power means setting everyone free?"</p>
+      <p class="dialogue">"No. But if power comes to me for only a short while, I would rather use it to do someone good than to cause someone pain."</p>
+      <p class="beat">Vishnu fell silent.</p>
+      <p class="dialogue">The Brahmin went on — "Before a man sits in the chair, he says, 'I will serve.' Once he sits in the chair, he says, 'Nothing happens without my permission.' And once the chair is taken from him, he says, 'No one ever gave me a chance.'"</p>
+      <p class="beat">The elephant burst out laughing. Yamaraj hid a smile too.</p>
+      <p class="dialogue">Vishnu said — "You must return to earth."</p>
+      <p class="dialogue">The Brahmin said — "For how long?"</p>
+      <p class="dialogue">Vishnu said — "Two days of heaven."</p>
+      <p class="dialogue">The Brahmin said — "And after that?"</p>
+      <p class="dialogue">Vishnu said — "You will return to earth."</p>
+      <p class="beat">But Vishnu had not yet told him — two days in heaven are twelve years on earth.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EPISODE 5 ================= -->
+<section class="episode" id="ep5" data-ep="4">
+  <div class="wrap">
+    <div class="episode-head">
+      <div><span class="episode-tag">Chapter 5</span><h2>Twelve Years on Earth</h2></div>
+      <button class="listen-btn" data-listen="4">🔊 Listen</button>
+    </div>
+    <div class="story-text">
+      <p>The second day in heaven came to an end. Vishnu made the Brahmin invisible and sent him back to earth. On earth, twelve years had already passed.</p>
+      <p>The Brahmin went to his own house. No one could see him. At first he watched his family weeping for him. But soon, beneath that grief, a different conversation began.</p>
+      <p class="dialogue">His son said — "We need to open Father's cupboard."</p>
+      <p class="dialogue">His daughter-in-law said — "We ought to see how much money is there."</p>
+      <p class="dialogue">His daughter said — "The jewellery will need to be divided too."</p>
+      <p class="beat">The Brahmin stood frozen.</p>
+      <p>Then he watched — the cupboard's lock being broken. Money coming out. Gold jewellery coming out. Old papers scattering across the floor. The man who had saved a lifetime for his family — in his very absence, the division of his estate had already begun.</p>
+      <p>But outside, in front of the neighbours — tears in his son's eyes, weeping on his daughter-in-law's face.</p>
+      <p class="dialogue">His daughter was saying — "We don't know where Father has gone! We only wish he would come back to us, even once."</p>
+      <p class="beat">The Brahmin heard it all. But no one knew that their father was standing right beside them.</p>
+      <p class="dialogue">Then one day his son said — "What's the use of keeping this old house? I've already spoken to a developer."</p>
+      <p class="dialogue">The Brahmin startled. "My house?"</p>
+      <p>The house was torn down. The rooms where his children had grown up were levelled to the ground. A multi-storey building rose in its place. Then the flats were sold. The money was divided. Years passed.</p>
+      <p class="dialogue">One day the Brahmin heard his grandson ask — "Father, what was our grandfather like?"</p>
+      <p class="dialogue">His son fell quiet for a moment, then said — "That's all old business now. What's the use of dwelling on it?"</p>
+      <p class="beat">The Brahmin understood then — the people had forgotten him. Only his property, they had not forgotten.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EPISODE 6 ================= -->
+<section class="episode" id="ep6" data-ep="5">
+  <div class="wrap">
+    <div class="episode-head">
+      <div><span class="episode-tag">Chapter 6</span><h2>Not Revenge, But Release</h2></div>
+      <button class="listen-btn" data-listen="5">🔊 Listen</button>
+    </div>
+    <div class="story-text">
+      <p>The invisible Brahmin now held a strange power. He could shut the doors of the house. He could throw open the cupboard. He could scatter the money to the winds. He could visit his family's dreams at night and fill them with fear. If he wished, he could turn their lives upside down.</p>
+      <p>One night he stood before his son. His son sat at a table, counting money. The Brahmin raised his hand.</p>
+      <p class="dialogue">For a moment he thought — "Let me scatter all this money."</p>
+      <p>Then he lowered his hand.</p>
+      <p class="dialogue">He thought — "If I take my revenge, then what separates me from them?"</p>
+      <p class="dialogue">He looked up at the sky and called out — "Lord Vishnu!"</p>
+      <p>Vishnu appeared before him.</p>
+      <p class="dialogue">"Come back."</p>
+      <p class="dialogue">The Brahmin said — "I am ready."</p>
+      <p>Back in the land of the dead, Vishnu said —</p>
+      <p class="dialogue">"I can give you a new body now. You may be born on earth again."</p>
+      <p class="dialogue">The Brahmin shook his head. "No, my lord."</p>
+      <p class="dialogue">"Why not?"</p>
+      <p class="dialogue">"I went to earth once with a body. Once I was without one, I understood that people can live on perfectly well without me. What would be the use of going back with a body again?"</p>
+      <p class="dialogue">Vishnu said — "Have you forgiven your family?"</p>
+      <p class="dialogue">The Brahmin said — "I don't know if I've forgiven them. But I no longer wish them any harm."</p>
+      <p class="dialogue">Vishnu smiled gently. "Then you have truly changed."</p>
+      <p class="dialogue">The elephant, standing nearby, said — "My lord, do you understand now what I meant?"</p>
+      <p class="dialogue">Yamaraj said — "What did you mean?"</p>
+      <p class="dialogue">The elephant said — "My chain was on the outside. Later, it moved into my mind. And this Brahmin's chain was woven from family, from property, from the wish for revenge. But in the end, he broke every one of his chains."</p>
+      <p class="dialogue">Vishnu said — "The strength of the body is not what matters. The true strength is in conquering one's own greed, one's anger, one's desire for revenge."</p>
+      <p>The Brahmin looked back at the earth one last time. His old house was gone. The photographs were gone. The cupboard was gone. The money was gone. The jewellery was gone. Even his own name had nearly vanished. And yet, this time, there was no sorrow left in his heart.</p>
+      <p class="dialogue">He said — "Everything that was ever mine was only ever temporary. Now I wish for only one thing — the welfare of every living being."</p>
+      <p class="dialogue">Vishnu looked at him and said — "Sarvabhuta-hite ratah — the good of all beings. That is the truth you have finally understood."</p>
+      <p class="dialogue">From a distance, the elephant smiled. "My lord, may I go to heaven now?"</p>
+      <p class="dialogue">Yamaraj said — "You were worthy of heaven long, long ago!"</p>
+      <p class="dialogue">The elephant said — "So you no longer hold any anger toward men?"</p>
+      <p class="dialogue">Yamaraj laughed. "No. Though I shall never again bring a living man here to test him!"</p>
+      <p class="beat">Everyone laughed together. And the Brahmin walked slowly toward the light, at Vishnu's side.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CLOSING ================= -->
+<div class="closing">
+  <div class="leaf">🌿</div>
+  <p>On earth, he lost his house. But in the end, he never let himself lose his own mind. That was his greatest victory.</p>
+</div>
+
+<!-- ================= PLAYER BAR ================= -->
+<div class="player-bar" id="playerBar">
+  <div class="p-info">
+    <div class="p-title" id="pTitle">—</div>
+    <div class="p-status" id="pStatus">Ready</div>
+  </div>
+  <div class="p-controls">
+    <button class="p-btn" id="pPrev" title="Previous chapter">⏮</button>
+    <button class="p-btn main" id="pPlayPause" title="Play/Pause">▶</button>
+    <button class="p-btn" id="pNext" title="Next chapter">⏭</button>
+    <button class="p-close" id="pClose" title="Close">✕</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var episodeTitles = [
+    "Chapter 1 — The Elephant's Chain",
+    "Chapter 2 — A Living Man in the Land of the Dead",
+    "Chapter 3 — One Throne Changes All Judgment",
+    "Chapter 4 — The Brahmin's One-Day Reign",
+    "Chapter 5 — Twelve Years on Earth",
+    "Chapter 6 — Not Revenge, But Release"
+  ];
+
+  var episodeSections = document.querySelectorAll('.episode');
+  var playerBar = document.getElementById('playerBar');
+  var pTitle = document.getElementById('pTitle');
+  var pStatus = document.getElementById('pStatus');
+  var pPlayPause = document.getElementById('pPlayPause');
+  var pPrev = document.getElementById('pPrev');
+  var pNext = document.getElementById('pNext');
+  var pClose = document.getElementById('pClose');
+  var listenBtns = document.querySelectorAll('.listen-btn');
+  var heroListen = document.getElementById('hero-listen');
+
+  var synth = window.speechSynthesis;
+  var enVoice = null;
+  var currentEp = -1;
+  var queue = [];
+  var queueIdx = 0;
+  var isPaused = false;
+  var playingAll = false;
+
+  function pickVoice(){
+    if(!synth) return;
+    var voices = synth.getVoices();
+    enVoice = voices.find(function(v){ return v.lang && v.lang.toLowerCase().indexOf('en') === 0; }) || null;
+  }
+  if(synth){
+    pickVoice();
+    synth.onvoiceschanged = pickVoice;
+  }
+
+  function getParagraphs(epIndex){
+    var section = episodeSections[epIndex];
+    var ps = section.querySelectorAll('.story-text p');
+    var arr = [];
+    ps.forEach(function(p){ arr.push(p.textContent.trim()); });
+    return arr;
+  }
+
+  function setListenBtnState(epIndex, playing){
+    listenBtns.forEach(function(btn){
+      var idx = parseInt(btn.getAttribute('data-listen'), 10);
+      if(idx === epIndex){
+        btn.classList.toggle('playing', playing);
+        btn.textContent = playing ? '⏸ Playing' : '🔊 Listen';
+      } else {
+        btn.classList.remove('playing');
+        btn.textContent = '🔊 Listen';
+      }
+    });
+  }
+
+  function speakNextParagraph(){
+    if(queueIdx >= queue.length){
+      if(playingAll && currentEp < episodeSections.length - 1){
+        startEpisode(currentEp + 1, true);
+      } else {
+        stopPlayback();
+      }
+      return;
+    }
+    var text = queue[queueIdx];
+    var utter = new SpeechSynthesisUtterance(text);
+    if(enVoice) utter.voice = enVoice;
+    utter.lang = 'en-US';
+    utter.rate = 0.97;
+    utter.onend = function(){
+      queueIdx++;
+      speakNextParagraph();
+    };
+    utter.onerror = function(){
+      queueIdx++;
+      speakNextParagraph();
+    };
+    synth.speak(utter);
+  }
+
+  function startEpisode(epIndex, continuing){
+    if(!synth){
+      alert('Your browser does not support voice narration.');
+      return;
+    }
+    synth.cancel();
+    currentEp = epIndex;
+    playingAll = !!continuing || playingAll;
+    queue = getParagraphs(epIndex);
+    queueIdx = 0;
+    isPaused = false;
+
+    playerBar.classList.add('active');
+    pTitle.textContent = episodeTitles[epIndex];
+    pStatus.textContent = 'Playing…';
+    pPlayPause.textContent = '⏸';
+    setListenBtnState(epIndex, true);
+
+    speakNextParagraph();
+  }
+
+  function togglePause(){
+    if(!synth) return;
+    if(isPaused){
+      synth.resume();
+      isPaused = false;
+      pPlayPause.textContent = '⏸';
+      pStatus.textContent = 'Playing…';
+      setListenBtnState(currentEp, true);
+    } else {
+      synth.pause();
+      isPaused = true;
+      pPlayPause.textContent = '▶';
+      pStatus.textContent = 'Paused';
+      setListenBtnState(currentEp, false);
+    }
+  }
+
+  function stopPlayback(){
+    if(synth) synth.cancel();
+    playingAll = false;
+    isPaused = false;
+    setListenBtnState(-1, false);
+    playerBar.classList.remove('active');
+    currentEp = -1;
+  }
+
+  listenBtns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var idx = parseInt(btn.getAttribute('data-listen'), 10);
+      if(currentEp === idx && !isPaused && synth && synth.speaking){
+        togglePause();
+      } else {
+        playingAll = false;
+        startEpisode(idx, false);
+      }
+    });
+  });
+
+  heroListen.addEventListener('click', function(){
+    playingAll = true;
+    startEpisode(0, true);
+    document.getElementById('toc').scrollIntoView({behavior:'smooth'});
+  });
+
+  pPlayPause.addEventListener('click', togglePause);
+  pPrev.addEventListener('click', function(){
+    if(currentEp > 0) startEpisode(currentEp - 1, playingAll);
+  });
+  pNext.addEventListener('click', function(){
+    if(currentEp < episodeSections.length - 1) startEpisode(currentEp + 1, playingAll);
+  });
+  pClose.addEventListener('click', stopPlayback);
+
+})();
+</script>
+
+</body>
+</html>

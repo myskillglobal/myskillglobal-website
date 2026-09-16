@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Girl Who Was Never Lost</title>
+<style>
+  :root{
+    --navy-950:#070c18;
+    --navy-900:#0b1224;
+    --navy-800:#111a33;
+    --navy-700:#182448;
+    --gold-500:#c9a24b;
+    --gold-400:#e0c274;
+    --gold-300:#f0dfa8;
+    --ink-100:#eef1f8;
+    --ink-300:#b9c1d9;
+    --ink-500:#7c87ab;
+    --ember:#b5502f;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(ellipse 900px 500px at 15% -10%, rgba(201,162,75,0.10), transparent 60%),
+      radial-gradient(ellipse 700px 600px at 100% 10%, rgba(24,36,72,0.6), transparent 55%),
+      var(--navy-950);
+    color:var(--ink-100);
+    font-family: "Lora", "Georgia", "Noto Serif", serif;
+    line-height:1.8;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+  }
+  a{color:inherit;}
+
+  .wrap{
+    max-width:640px;
+    margin:0 auto;
+    padding:0 0 120px;
+  }
+
+  /* ---------- HERO IMAGE ---------- */
+  .hero-img-wrap{
+    position:relative;
+    width:100%;
+    aspect-ratio:16/10;
+    overflow:hidden;
+    border-bottom:1px solid rgba(201,162,75,0.3);
+  }
+  .hero-img-wrap img{
+    width:100%; height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .hero-img-wrap::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(7,12,24,0.1) 40%, rgba(7,12,24,0.96) 100%);
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:30px 22px 34px;
+    border-bottom:1px solid rgba(201,162,75,0.22);
+    overflow:hidden;
+    margin-top:-70px;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      repeating-linear-gradient(115deg, rgba(201,162,75,0.05) 0 2px, transparent 2px 26px);
+    pointer-events:none;
+  }
+  .kicker{
+    position:relative;
+    font-family:"Inter","Helvetica Neue",sans-serif;
+    font-size:12.5px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--gold-400);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:18px;
+  }
+  .kicker .line{flex:1;height:1px;background:linear-gradient(90deg, rgba(201,162,75,0.6), transparent);}
+  h1.title{
+    position:relative;
+    font-size:clamp(30px, 8vw, 42px);
+    line-height:1.24;
+    margin:0 0 14px;
+    color:var(--gold-300);
+    font-weight:700;
+    text-wrap:balance;
+  }
+  .tagline{
+    position:relative;
+    color:var(--ink-300);
+    font-size:16.5px;
+    max-width:46ch;
+    margin:0 0 22px;
+    font-style:italic;
+  }
+  .byline{
+    position:relative;
+    color:var(--ink-500);
+    font-family:"Inter","Helvetica Neue",sans-serif;
+    font-size:13px;
+    margin:0 0 20px;
+  }
+  .meta-row{
+    position:relative;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    font-family:"Inter","Helvetica Neue",sans-serif;
+    font-size:13px;
+  }
+  .pill{
+    border:1px solid rgba(201,162,75,0.35);
+    color:var(--gold-400);
+    padding:6px 14px;
+    border-radius:100px;
+    background:rgba(201,162,75,0.06);
+  }
+
+  /* ---------- RESUME BANNER ---------- */
+  .resume-banner{
+    display:none;
+    margin:22px 22px 0;
+    padding:14px 16px;
+    border:1px solid rgba(201,162,75,0.4);
+    border-radius:12px;
+    background:linear-gradient(180deg, rgba(201,162,75,0.12), rgba(17,26,51,0.3));
+    font-family:"Inter","Helvetica Neue",sans-serif;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+  }
+  .resume-banner.show{ display:flex; }
+  .resume-banner .rb-text{ font-size:13.5px; color:var(--ink-100); }
+  .resume-banner .rb-text b{ color:var(--gold-300); }
+  .resume-banner .rb-actions{ display:flex; gap:8px; flex-shrink:0; }
+  .rb-btn{
+    font-family:"Inter","Helvetica Neue",sans-serif;
+    font-size:12.5px;
+    font-weight:600;
+    border-radius:100px;
+    padding:7px 14px;
+    cursor:pointer;
+    border:1px solid rgba(201,162,75,0.4);
+    background:transparent;
+    color:var(--gold-400);
+  }
+  .rb-btn.primary{
+    background:var(--gold-500);
+    color:var(--navy-950);
+    border:none;
+  }
+
+  /* ---------- TOC ---------- */
+  .toc{
+    padding:30px 22px 6px;
+    scroll-margin-top:20px;
+  }
+  .toc h2{
+    font-family:"Inter","Helvetica Neue",sans-serif;
+    font-size:13px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--ink-500);
+    margin:0 0 14px;
+    font-weight:600;
+  }
+  .ep-list{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .ep{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:14px 16px;
+    border:1px solid rgba(201,162,75,0.16);
+    border-radius:10px;
+    background:linear-gradient(180deg, rgba(24,36,72,0.4), rgba(17,26,51,0.25));
+    text-decoration:none;
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .ep.active{
+    border-color:rgba(201,162,75,0.55);
+    background:linear-gradient(180deg, rgba(201,162,75,0.10), rgba(17,26,51,0.3));
+  }
+  .ep-num{
+    font-family:"Inter","Helvetica Neue",sans-serif;
+    font-size:12px;
+    color:var(--navy-950);
+    background:var(--gold-500);
+    width:30px; height:30px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+    font-weight:700;
+  }
+  .ep-info{flex:1; min-width:0;}
+  .ep-title{font-size:15.5px; color:var(--ink-100);}
+  .ep-sub{font-family:"Inter","Helvetica Neue",sans-serif; font-size:12px; color:var(--ink-500); margin-top:2px;}
+
+  /* ---------- STORY ---------- */
+  .story{
+    padding:38px 22px 10px;
+    border-top:1px solid rgba(201,162,75,0.16);
+    margin-top:26px;
+    scroll-margin-top:20px;
+  }
+  .story h2.ep-heading{
+    font-size:21px;
+    color:var(--gold-400);
+    margin:0 0 18px;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .heading-btns{ display:flex; gap:8px; flex-shrink:0; }
+  .listen-btn, .bookmark-btn{
+    flex-shrink:0;
+    font-family:"Inter","Helvetica Neue",sans-serif;
+    font-size:12px;
+    font-weight:600;
+    border:none;
+    padding:7px 13px;
+    border-radius:100px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .listen-btn{
+    color:var(--navy-950);
+    background:var(--gold-500);
+  }
+  .listen-btn:active{background:var(--gold-400);}
+  .bookmark-btn{
+    color:var(--gold-400);
+    background:transparent;
+    border:1px solid rgba(201,162,75,0.4);
+  }
+  .bookmark-btn.saved{
+    color:var(--navy-950);
+    background:var(--gold-300);
+    border-color:transparent;
+  }
+  .story p{
+    margin:0 0 20px;
+    font-size:17px;
+    color:var(--ink-100);
+  }
+  .story p.dialogue{
+    color:var(--gold-300);
+    padding-left:14px;
+    border-left:2px solid rgba(201,162,75,0.4);
+  }
+  .story p.beat{
+    color:var(--ink-300);
+    font-size:14.5px;
+    font-style:italic;
+  }
+  .divider{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin:34px 0;
+    color:var(--gold-500);
+  }
+  .divider .line{flex:1;height:1px;background:rgba(201,162,75,0.25);}
+  .divider .mark{font-size:13px;}
+
+  /* ---------- END OF EPISODE NAV ---------- */
+  .ep-end-nav{
+    margin-top:30px;
+    padding-top:22px;
+    border-top:1px dashed rgba(201,162,75,0.25);
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    justify-content:space-between;
+    align-items:center;
+    font-family:"Inter","Helvetica Neue",sans-serif;
+  }
+  .ep-end-nav a{
+    text-decoration:none;
+    font-size:13px;
+    font-weight:600;
+    padding:9px 16px;
+    border-radius:100px;
+    border:1px solid rgba(201,162,75,0.35);
+    color:var(--gold-400);
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .ep-end-nav a.next{
+    background:var(--gold-500);
+    color:var(--navy-950);
+    border:none;
+  }
+  .the-end{
+    text-align:center;
+    font-family:"Inter","Helvetica Neue",sans-serif;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    font-size:12.5px;
+    color:var(--gold-500);
+    margin-top:30px;
+    padding-top:22px;
+    border-top:1px dashed rgba(201,162,75,0.25);
+  }
+
+  /* ---------- PLAYER BAR ---------- */
+  .player{
+    position:fixed;
+    left:0; right:0; bottom:0;
+    background:rgba(7,12,24,0.92);
+    backdrop-filter:blur(10px);
+    border-top:1px solid rgba(201,162,75,0.3);
+    padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+    display:flex;
+    align-items:center;
+    gap:12px;
+    max-width:640px;
+    margin:0 auto;
+  }
+  .player-btn{
+    border:1px solid rgba(201,162,75,0.5);
+    background:transparent;
+    color:var(--gold-400);
+    width:42px; height:42px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+    flex-shrink:0;
+    font-size:16px;
+    transition:background .15s ease;
+  }
+  .player-btn:active{background:rgba(201,162,75,0.15);}
+  .player-btn.play{
+    background:var(--gold-500);
+    color:var(--navy-950);
+    width:48px; height:48px;
+  }
+  .player-status{
+    flex:1;
+    font-family:"Inter","Helvetica Neue",sans-serif;
+    font-size:12px;
+    color:var(--ink-300);
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .player-status .row1{color:var(--ink-100); font-size:13px; margin-bottom:2px;}
+
+  .credit{
+    text-align:center;
+    font-family:"Inter","Helvetica Neue",sans-serif;
+    font-size:12px;
+    color:var(--ink-500);
+    padding:30px 22px 10px;
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="hero-img-wrap">
+    <img src="images/jemeyati.png" alt="The Girl Who Was Never Lost — cover art">
+  </div>
+
+  <header class="hero">
+    <div class="kicker"><span>Bengali Serial, Translated</span><span class="line"></span><span>6 Parts · Complete</span></div>
+    <h1 class="title">The Girl Who Was Never Lost</h1>
+    <p class="tagline">A child goes missing, finds a new name, and is claimed by love — again and again.</p>
+    <p class="byline">Original story by Surajit Roy · English edition</p>
+    <div class="meta-row">
+      <span class="pill">Parts 1–6 · Complete</span>
+      <span class="pill">Listen in English</span>
+    </div>
+  </header>
+
+  <div class="resume-banner" id="resumeBanner">
+    <div class="rb-text">Continue where you left off — <b id="resumeText">Part 1</b></div>
+    <div class="rb-actions">
+      <button class="rb-btn" id="resumeDismiss">Dismiss</button>
+      <button class="rb-btn primary" id="resumeGo">Continue</button>
+    </div>
+  </div>
+
+  <nav class="toc" id="toc">
+    <h2>Contents</h2>
+    <div class="ep-list">
+      <a href="#ep1" class="ep active">
+        <div class="ep-num">1</div>
+        <div class="ep-info">
+          <div class="ep-title">That Night on the Mountain Road</div>
+          <div class="ep-sub">Part 1</div>
+        </div>
+      </a>
+      <a href="#ep2" class="ep active">
+        <div class="ep-num">2</div>
+        <div class="ep-info">
+          <div class="ep-title">In a New Mother's Arms</div>
+          <div class="ep-sub">Part 2</div>
+        </div>
+      </a>
+      <a href="#ep3" class="ep active">
+        <div class="ep-num">3</div>
+        <div class="ep-info">
+          <div class="ep-title">"Ma Is Leaving Me Behind!"</div>
+          <div class="ep-sub">Part 3</div>
+        </div>
+      </a>
+      <a href="#ep4" class="ep active">
+        <div class="ep-num">4</div>
+        <div class="ep-info">
+          <div class="ep-title">"You Bring It for Me, Ma"</div>
+          <div class="ep-sub">Part 4</div>
+        </div>
+      </a>
+      <a href="#ep5" class="ep active">
+        <div class="ep-num">5</div>
+        <div class="ep-info">
+          <div class="ep-title">Mithi at Tanoy's House</div>
+          <div class="ep-sub">Part 5</div>
+        </div>
+      </a>
+      <a href="#ep6" class="ep active">
+        <div class="ep-num">6</div>
+        <div class="ep-info">
+          <div class="ep-title">The Secret Midnight Return</div>
+          <div class="ep-sub">Part 6 · Final Part</div>
+        </div>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ================= EPISODE 1 ================= -->
+  <article class="story" id="ep1">
+    <h2 class="ep-heading">
+      <span>Part 1 — That Night on the Mountain Road</span>
+      <div class="heading-btns">
+        <button class="listen-btn" data-ep="1">🔊 Listen</button>
+        <button class="bookmark-btn" data-ep="1">🔖 Bookmark</button>
+      </div>
+    </h2>
+
+    <div id="narration-content-1" class="narration-block">
+      <p class="beat">A mountain road.</p>
+      <p>Evening had given way to night. Thick darkness all around. Black clouds hung in the sky, lightning flashing now and then. Rainwater ran down the mountainside, making the road slick.</p>
+      <p>A car moved slowly along the winding mountain road.</p>
+      <p>Inside were Abhik, his wife Megha, and their three-year-old daughter, Tithi.</p>
+      <p>Tithi sat beside her mother. Worn out from the long journey, no one had even noticed when she'd fallen asleep.</p>
+      <p>Abhik drove carefully.</p>
+      <p class="dialogue">— "How much further?" Megha asked.</p>
+      <p>Abhik smiled.</p>
+      <p class="dialogue">— "Not much now. Once we're past this stretch, the hotel."</p>
+      <p>But they didn't know these were about to be the last few minutes of their lives.</p>
+      <p>Suddenly, at the bend ahead, a car lost control and came hurtling toward them.</p>
+      <p>Abhik tried to save the car. He wrenched the wheel. But on the wet road, control slipped away entirely.</p>
+      <p>In one violent jolt, the car struck the slope beside the road and flipped.</p>
+      <p>Everything spun in front of Megha's eyes. Tithi fell against her mother's body.</p>
+      <p class="dialogue">— "Tithi!"</p>
+      <p>Megha somehow pulled her daughter close. The car was still rolling down the slope. At last it struck a large rock and came to a stop.</p>
+      <p class="beat">Silence all around. Then — fire!</p>
+      <p>Flames began spreading from the front of the car.</p>
+      <p>Abhik was badly hurt by now. He could barely move.</p>
+      <p>Megha understood — in a few moments the car would be consumed by fire. She knew her own life might not be saved. But she had to save her daughter.</p>
+      <p>One of the car's windows had shattered in the crash. With her last strength, Megha lifted Tithi. The child was still fast asleep.</p>
+      <p>Megha kissed her daughter's forehead one last time. Wiping her tears, she whispered,</p>
+      <p class="dialogue">— "Baby... live."</p>
+      <p>Then she pushed Tithi out through the broken window. Tithi rolled down into the soft bushes below the road.</p>
+      <p>Megha looked at her daughter one last time. Then — the car was completely swallowed by fire. Abhik and Megha never made it out.</p>
+
+      <div class="divider"><span class="line"></span><span class="mark">🔥</span><span class="line"></span></div>
+
+      <p class="beat">"Tithi is gone too"</p>
+      <p>A little while later, local villagers and the police reached the scene. The fire had spread far by then. Rescuers recovered two bodies from inside the car. But there was no trace of Tithi.</p>
+      <p>The search began along the slope, the ravine, and the surrounding area. But in the darkness of the night and the heavy rain, Tithi could not be found.</p>
+      <p>A police officer said,</p>
+      <p class="dialogue">— "From the state of the car, it looks like the child may have been thrown clear in the crash and fallen into the ravine or the river."</p>
+      <p>The next day, relatives arrived at the scene. Before them lay the burned-out car and the news of Abhik and Megha's deaths.</p>
+      <p>With no trace of Tithi found, everyone finally concluded — Tithi, too, was gone. The family collapsed under the weight of grief.</p>
+      <p class="beat">No one knew — Tithi hadn't fallen into the river. She had landed far below the road, deep in thick bushes. And that was exactly why she had survived the fire.</p>
+
+      <div class="divider"><span class="line"></span><span class="mark">👴👵</span><span class="line"></span></div>
+
+      <p class="beat">Two strangers arrive</p>
+      <p>It was very late at night. Old Haripada and his wife Kamala lived in a nearby village. They had no children of their own.</p>
+      <p>Haripada was walking home along the path below the mountain in the rain. Suddenly he heard a faint sound of crying.</p>
+      <p class="dialogue">— "Did you hear that? A child crying, coming from somewhere."</p>
+      <p>Frightened, Kamala still followed her husband forward. Near the bushes, they found a little girl crying in wet clothes.</p>
+      <p>Kamala ran to her and lifted her into her arms.</p>
+      <p class="dialogue">— "Oh, my child!"</p>
+      <p>The girl had a few small scratches, but she was alive.</p>
+      <p>Haripada looked toward the fire still burning in the distance. It didn't take him long to understand.</p>
+      <p class="dialogue">— "This must be that lost child."</p>
+      <p>Kamala held the child close to her chest.</p>
+      <p class="dialogue">— "We can't leave her."</p>
+      <p>Haripada said,</p>
+      <p class="dialogue">— "But what if the police find out?"</p>
+      <p>They both fell silent. They knew the child's parents were dead. And relatives and police had already concluded the child was dead too.</p>
+      <p>Kamala looked at the little girl's face. Then she said,</p>
+      <p class="dialogue">— "We have no children of our own. Maybe God has sent her to us."</p>
+      <p>Haripada sighed. But they were afraid — if the child's identity ever came out, she might be taken from them again. So they made a hard decision.</p>
+      <p>The very next day they would leave the mountain village for the city. No one must ever know that Tithi was alive. In a new place, under a new identity, they would raise the child.</p>
+      <p>That same night, Kamala held the child close to her chest and whispered —</p>
+      <p class="dialogue">— "From today, you are my daughter."</p>
+      <p>The child stirred slightly in her sleep. Tears rolled down Kamala's cheeks.</p>
+      <p class="beat">On the far side of the mountain, the fire was still burning. In its light, Tithi's old life had ended. But the first chapter of a new life had just begun.</p>
+    </div>
+
+    <div class="ep-end-nav">
+      <a href="#toc">↑ Table of Contents</a>
+      <a href="#ep2" class="next">Part 2 →</a>
+    </div>
+  </article>
+
+  <!-- ================= EPISODE 2 ================= -->
+  <article class="story" id="ep2">
+    <h2 class="ep-heading">
+      <span>Part 2 — In a New Mother's Arms</span>
+      <div class="heading-btns">
+        <button class="listen-btn" data-ep="2">🔊 Listen</button>
+        <button class="bookmark-btn" data-ep="2">🔖 Bookmark</button>
+      </div>
+    </h2>
+
+    <div id="narration-content-2" class="narration-block">
+      <p class="beat">Two years had passed.</p>
+      <p>In that small mountain village, people now knew the little girl as Mithi.</p>
+      <p>She was growing up in the home of old Haripada and his wife Kamala. They had no children of their own, so Mithi had slowly become their entire world.</p>
+      <p>When Mithi first learned to speak, she had said to Kamala—</p>
+      <p class="dialogue">— "Ma!"</p>
+      <p>That one word brought tears to Kamala's eyes. Haripada, too, loved the girl not as a granddaughter, but as his own daughter.</p>
+      <p>Mithi was very bright. Even at five, she loved sitting with books and notebooks. One day the village schoolteacher told Haripada,</p>
+      <p class="dialogue">— "This girl has a real love for learning. Given the chance, she could go far."</p>
+      <p>Hearing this filled Haripada's chest with joy. But hidden behind that joy was a deep fear.</p>
+      <p>Haripada was nearly seventy by then. Kamala's health had broken down too — she grew breathless just from walking.</p>
+      <p>One night, after Mithi had fallen asleep, the two of them sat on the veranda.</p>
+      <p>Kamala sighed.</p>
+      <p class="dialogue">— "How much longer can we keep her?"</p>
+      <p>Haripada stayed silent.</p>
+      <p class="dialogue">— "We're here today. But what if we're not here tomorrow? What will happen to this girl then?"</p>
+      <p>Kamala's eyes filled with tears.</p>
+      <p class="dialogue">— "I can't let her go."</p>
+      <p class="dialogue">— "Neither can I," Haripada said slowly, "but love alone can't carry a life forward. We have to think about her future too."</p>
+      <p>After much thought, they decided to hand Mithi over to someone who could raise her well and see to her education.</p>
+      <p>A few days later, a man Haripada knew brought news — a woman from an extremely wealthy family in the city wanted to take in a girl and raise her as her own.</p>
+      <p>Haripada and Kamala made careful inquiries and went to meet her. She looked at Mithi for a long moment in silence. Then she said,</p>
+      <p class="dialogue">— "I'll raise her as my own daughter. I'll see to her studies. She'll want for nothing."</p>
+      <p>Hearing this eased the weight in Haripada's chest. But how would they explain it to Mithi? A five-year-old child would understand nothing.</p>
+      <p>That night, Kamala sat Mithi close, stroked her hair, and said,</p>
+      <p class="dialogue">— "Baby, you're going to a new home."</p>
+      <p>Mithi asked, surprised,</p>
+      <p class="dialogue">— "Aren't you coming?"</p>
+      <p>Kamala hid her tears and said,</p>
+      <p class="dialogue">— "No, baby... we've grown old. But I've found you a wonderful new mother."</p>
+      <p>Mithi sat quiet for a moment, then asked,</p>
+      <p class="dialogue">— "I'll have another mother?"</p>
+      <p class="dialogue">— "Yes."</p>
+      <p class="dialogue">— "Will she love me?"</p>
+      <p>This time Kamala couldn't hold back her tears.</p>
+      <p class="dialogue">— "She'll love you very much."</p>
+      <p>Haripada, sitting beside her, said,</p>
+      <p class="dialogue">— "You'll always call her Ma. Understand?"</p>
+      <p>Mithi nodded.</p>
+      <p class="dialogue">— "Yes."</p>
+      <p class="dialogue">— "And one more thing," Haripada said, "no matter what happens, you must never leave that mother and come back to us. You'll stay with her, study hard, and grow up."</p>
+      <p>Mithi asked innocently,</p>
+      <p class="dialogue">— "But what about you two?"</p>
+      <p>Haripada turned his face away and wiped his eyes.</p>
+      <p class="dialogue">— "We'll be right here, baby..."</p>
+      <p class="beat">It wasn't true. They knew that once Mithi went off to her new life, there might never be a chance to bring her back to them again.</p>
+      <p>The next morning, Mithi was dressed in new clothes. Kamala combed her hair. Haripada handed her a small cloth bag.</p>
+      <p>Inside were a few clothes, an old book, and a little doll Kamala had given her.</p>
+      <p>As the car pulled out of the yard, Mithi waved through the window and said—</p>
+      <p class="dialogue">— "Ma... I'll come back!"</p>
+      <p>Kamala couldn't hold herself together any longer. She sank to the ground. Haripada held her up.</p>
+      <p>As the car moved farther away, Mithi turned back one last time. In her small heart, one belief remained — she was going to her new mother.</p>
+      <p class="beat">But she didn't know... that the moment she met the woman she would call "Ma" from that day on, the greatest mystery of her life would begin. And tangled up in that mystery were her lost real parents, and the unknown truth of that night on the mountain.</p>
+    </div>
+
+    <div class="ep-end-nav">
+      <a href="#toc">↑ Table of Contents</a>
+      <a href="#ep3" class="next">Part 3 →</a>
+    </div>
+  </article>
+
+  <!-- ================= EPISODE 3 ================= -->
+  <article class="story" id="ep3">
+    <h2 class="ep-heading">
+      <span>Part 3 — "Ma Is Leaving Me Behind!"</span>
+      <div class="heading-btns">
+        <button class="listen-btn" data-ep="3">🔊 Listen</button>
+        <button class="bookmark-btn" data-ep="3">🔖 Bookmark</button>
+      </div>
+    </h2>
+
+    <div id="narration-content-3" class="narration-block">
+      <p class="beat">Tandra stepped out of the restaurant, walked to her car, and suddenly stopped short.</p>
+      <p>There was a little girl sitting inside her car!</p>
+      <p>Tandra's eyes went wide.</p>
+      <p class="dialogue">— "Who is this child?"</p>
+      <p>Haripada and Kamala stood a little way off.</p>
+      <p>Tandra opened the door and pulled the girl out.</p>
+      <p class="dialogue">— "Get out! Who put you in here?"</p>
+      <p>Mithi climbed out of the car, frightened.</p>
+      <p class="dialogue">— "I... I'm your daughter."</p>
+      <p>Tandra said, astonished,</p>
+      <p class="dialogue">— "What?!"</p>
+      <p class="dialogue">— "You're my mother."</p>
+      <p class="dialogue">— "I am not your mother!"</p>
+      <p>Annoyed, Tandra set the girl down on the roadside.</p>
+      <p class="dialogue">— "I don't know you. How did you get here?"</p>
+      <p>Mithi didn't understand any of it. She just stared at Tandra.</p>
+      <p>Trying to manage the situation, Tandra attempted to reason with her.</p>
+      <p class="dialogue">— "Listen, I'm your mother. All right?"</p>
+      <p>Joy lit up Mithi's eyes.</p>
+      <p class="dialogue">— "Really?"</p>
+      <p class="dialogue">— "Yes. If you stay quiet and come with me, I'll buy you chocolate."</p>
+      <p>Mithi smiled.</p>
+      <p class="dialogue">— "Lots of chocolate?"</p>
+      <p class="dialogue">— "Yes."</p>
+      <p class="dialogue">— "Will you take me on the Ferris wheel?"</p>
+      <p>A little irritated, Tandra said,</p>
+      <p class="dialogue">— "Yes, the Ferris wheel too."</p>
+      <p>A few people standing nearby had overheard everything.</p>
+      <p>Tandra set the girl down again and said,</p>
+      <p class="dialogue">— "Now you stand right here. I'm leaving."</p>
+      <p>As she turned to shut the car door and walk away, Mithi suddenly burst into tears—</p>
+      <p class="dialogue">— "Ma! Ma! She's leaving me behind!"</p>
+      <p class="beat">People around them rushed over at once.</p>
+      <p>A woman went up to Mithi and asked,</p>
+      <p class="dialogue">— "What happened, sweetheart?"</p>
+      <p>Crying, Mithi said,</p>
+      <p class="dialogue">— "My mother is leaving me behind!"</p>
+      <p class="dialogue">— "What's your name?"</p>
+      <p class="dialogue">— "Mithi."</p>
+      <p class="dialogue">— "Full name?"</p>
+      <p>Without a moment's hesitation, Mithi said,</p>
+      <p class="dialogue">— "Mithi Mukherjee."</p>
+      <p class="dialogue">— "What's your mother's name?"</p>
+      <p class="dialogue">— "Tandra Mukherjee."</p>
+      <p>Everyone turned to look at Tandra.</p>
+      <p>A gentleman asked,</p>
+      <p class="dialogue">— "Is she your daughter?"</p>
+      <p>Tandra, stunned, said,</p>
+      <p class="dialogue">— "No! I'm not her mother."</p>
+      <p>Someone else said,</p>
+      <p class="dialogue">— "Then how does the girl know your name?"</p>
+      <p>Tandra said,</p>
+      <p class="dialogue">— "I... I'm not even married."</p>
+      <p>A few people smiled at that.</p>
+      <p>A woman joked,</p>
+      <p class="dialogue">— "Not married, and yet she has a daughter?"</p>
+      <p>Another said,</p>
+      <p class="dialogue">— "Well, that's a strange thing to hear!"</p>
+      <p class="beat">The situation grew steadily more heated.</p>
+      <p>Someone asked Mithi,</p>
+      <p class="dialogue">— "Where do you live?"</p>
+      <p>Crying, Mithi said,</p>
+      <p class="dialogue">— "My mother knows."</p>
+      <p class="dialogue">— "You don't know?"</p>
+      <p>Mithi shook her head.</p>
+      <p>Someone said,</p>
+      <p class="dialogue">— "She's only five. What would she know!"</p>
+      <p>A few women stepped closer to Tandra.</p>
+      <p class="dialogue">— "If you're not her mother, why are you about to leave her here?"</p>
+      <p class="dialogue">— "Someone call the police!"</p>
+      <p class="dialogue">— "The child should be handed over to the police."</p>
+      <p class="beat">Seeing how things were escalating, Tandra grew afraid. Other worries began spinning through her mind.</p>
+      <p>There was already enough trouble at home over her marriage. If she had to go to the police station now, if questioning began, it wouldn't take long for the news to reach home.</p>
+      <p>Tandra tried quickly to bring the situation under control. She looked at Mithi and, feigning a bit of irritation, said,</p>
+      <p class="dialogue">— "Oh, no, no! She's my daughter, of course."</p>
+      <p>Everyone was stunned.</p>
+      <p>Tandra went on,</p>
+      <p class="dialogue">— "She's very stubborn, actually. Doesn't want to study. So I was scaring her a little. I told her if she didn't listen, I'd leave her here."</p>
+      <p>A woman said,</p>
+      <p class="dialogue">— "Then why did you keep saying she wasn't your daughter?"</p>
+      <p>Tandra paused, then said,</p>
+      <p class="dialogue">— "I said it out of anger."</p>
+      <p>Mithi was still crying.</p>
+      <p>Tandra went to her, knelt down, and said,</p>
+      <p class="dialogue">— "Come on, baby. Don't cry anymore."</p>
+      <p>Mithi wiped her eyes and gripped Tandra's hand tightly.</p>
+      <p class="dialogue">— "You won't leave me, will you?"</p>
+      <p>Tandra stayed silent for a moment. Then she said,</p>
+      <p class="dialogue">— "No. I won't."</p>
+      <p>A woman put a hand on Mithi's head.</p>
+      <p class="dialogue">— "See that? Only a real mother would care this much."</p>
+      <p>Another said,</p>
+      <p class="dialogue">— "Don't make the child cry anymore."</p>
+      <p>Tandra nodded.</p>
+      <p class="dialogue">— "All right."</p>
+      <p>Then she lifted Mithi into her arms and settled her into the car. Mithi sat by the window and waved. Tandra started the car, and it pulled slowly away from the crowd.</p>
+      <p class="beat">But inside the car, there was no smile on Tandra's face. She kept glancing at Mithi in the rearview mirror. Mithi looked back at her, fearless.</p>
+      <p>Suddenly Mithi said sweetly,</p>
+      <p class="dialogue">— "Ma... are we going home?"</p>
+      <p>Tandra was quiet for a moment, then said,</p>
+      <p class="dialogue">— "Yes."</p>
+      <p class="dialogue">— "Will you buy me chocolate?"</p>
+      <p>Tandra didn't answer this time either. She just pressed a little harder on the accelerator.</p>
+      <p>Because she knew — today she was driving home with a stranger's child. But in front of everyone, that child was now her daughter.</p>
+      <p class="beat">And the strangest thing of all — Mithi trusted Tandra as her mother so completely, as if she had known her for years. For the first time, a question rose in Tandra's mind: "Who is this girl, really?"</p>
+    </div>
+
+    <div class="ep-end-nav">
+      <a href="#toc">↑ Table of Contents</a>
+      <a href="#ep4" class="next">Part 4 →</a>
+    </div>
+  </article>
+
+  <!-- ================= EPISODE 4 ================= -->
+  <article class="story" id="ep4">
+    <h2 class="ep-heading">
+      <span>Part 4 — "You Bring It for Me, Ma"</span>
+      <div class="heading-btns">
+        <button class="listen-btn" data-ep="4">🔊 Listen</button>
+        <button class="bookmark-btn" data-ep="4">🔖 Bookmark</button>
+      </div>
+    </h2>
+
+    <div id="narration-content-4" class="narration-block">
+      <p class="beat">The car moved on through the busy streets of the city.</p>
+      <p>Only one thought filled Tandra's mind — how could she get this girl out of her life?</p>
+      <p>But every time she thought about dropping Mithi off somewhere, Mithi would take her hand in a way that left Tandra unable to steel herself.</p>
+      <p>At one point Tandra stopped the car and said,</p>
+      <p class="dialogue">— "Mithi, get out here."</p>
+      <p>Mithi looked up, surprised.</p>
+      <p class="dialogue">— "Why?"</p>
+      <p class="dialogue">— "You said you wanted phuchka. Get some from that shop. Then you..."</p>
+      <p>Before she could finish, Mithi said sweetly,</p>
+      <p class="dialogue">— "You bring it for me."</p>
+      <p>Tandra froze.</p>
+      <p class="dialogue">— "What?"</p>
+      <p class="dialogue">— "I'll stay in the car. You go get the phuchka."</p>
+      <p>Tandra stared at the girl's face for a moment.</p>
+      <p>Mithi added,</p>
+      <p class="dialogue">— "Don't make it too spicy, Ma."</p>
+      <p class="beat">Something stirred inside Tandra's chest.</p>
+      <p>She got out of the car. A few steps toward the shop, she looked back. Mithi was waving from the window. Tandra looked away.</p>
+      <p>At the phuchka stall she stood there, but instead of ordering, she sank into deep thought. What was she going to do about this child?</p>
+      <p>After a while, she went back to the car.</p>
+      <p>Mithi said happily,</p>
+      <p class="dialogue">— "Give it to me, Ma!"</p>
+      <p>Tandra handed her the packet of phuchka and started driving.</p>
+      <p>Then she suddenly remembered someone — her friend Ishita, a lawyer. Ishita knew a lot about the law. Tandra decided to go to her.</p>
+
+      <div class="divider"><span class="line"></span><span class="mark">⚖️</span><span class="line"></span></div>
+
+      <p class="beat">At the lawyer friend's office</p>
+      <p>Reaching Ishita's chamber, Tandra brought Mithi inside. Ishita looked at Mithi, a little surprised.</p>
+      <p class="dialogue">— "Who is this child?"</p>
+      <p>Annoyed, Tandra said,</p>
+      <p class="dialogue">— "That's exactly what I've come to talk to you about."</p>
+      <p>Ishita studied Mithi for a moment. Then she sat Tandra down separately and said,</p>
+      <p class="dialogue">— "Now tell me the whole truth."</p>
+      <p>Tandra was silent.</p>
+      <p class="dialogue">— "Where did you get her from?"</p>
+      <p>Silence.</p>
+      <p class="dialogue">— "Who gave her to you?"</p>
+      <p>Irritated now, Tandra said,</p>
+      <p class="dialogue">— "There's no need to get into all that right now."</p>
+      <p>Ishita said firmly,</p>
+      <p class="dialogue">— "There is a need."</p>
+      <p>Tandra just looked at her. Ishita continued,</p>
+      <p class="dialogue">— "If you really want to take responsibility for this child, the first thing you need to do is tell the truth. Where you found her, how, from whom — tell me everything."</p>
+      <p>Tandra grew angry.</p>
+      <p class="dialogue">— "I came here for advice, not to be interrogated!"</p>
+      <p>Ishita said calmly,</p>
+      <p class="dialogue">— "I'm not interrogating you. I'm trying to save you from trouble."</p>
+      <p>Then, looking at Mithi, she went on,</p>
+      <p class="dialogue">— "And more importantly — we have to think about what happens to this girl's future. If you want to keep her with you, you first need to understand what the law requires."</p>
+      <p>Tandra's face hardened. Ishita said one last thing,</p>
+      <p class="dialogue">— "Tell me the truth. Then we'll figure out what can be done for her."</p>
+      <p class="beat">That was the one thing that pushed Tandra past her limit.</p>
+      <p>She rose from her chair and said,</p>
+      <p class="dialogue">— "I can take care of my own daughter myself!"</p>
+      <p>Ishita said, surprised,</p>
+      <p class="dialogue">— "Tandra, don't be angry. But this isn't as simple as you think."</p>
+      <p class="dialogue">— "I don't want to hear another word!"</p>
+      <p>Tandra took Mithi's hand and headed for the door.</p>
+      <p>Mithi turned back to look at Ishita. Then, gripping her mother's hand tightly, she said,</p>
+      <p class="dialogue">— "Ma, are we going home?"</p>
+      <p>Without a word, Tandra took her and left.</p>
+      <p>Ishita stood by the door. In her mind, only one question remained — "Where did Tandra really get this child from?"</p>
+      <p class="beat">Meanwhile, inside the car, Mithi sat looking out the window, smiling. She had no idea someone had just been lit up with anger over her. All she knew was — she had a mother now. And she never wanted to lose that mother, no matter what.</p>
+    </div>
+
+    <div class="ep-end-nav">
+      <a href="#toc">↑ Table of Contents</a>
+      <a href="#ep5" class="next">Part 5 →</a>
+    </div>
+  </article>
+
+  <!-- ================= EPISODE 5 ================= -->
+  <article class="story" id="ep5">
+    <h2 class="ep-heading">
+      <span>Part 5 — Mithi at Tanoy's House</span>
+      <div class="heading-btns">
+        <button class="listen-btn" data-ep="5">🔊 Listen</button>
+        <button class="bookmark-btn" data-ep="5">🔖 Bookmark</button>
+      </div>
+    </h2>
+
+    <div id="narration-content-5" class="narration-block">
+      <p class="beat">Leaving Ishita's chamber, Tandra drove for a long while without speaking.</p>
+      <p>Only one thought filled her mind — where could she keep Mithi?</p>
+      <p>At last she thought of Tanoy — Tanoy Mukherjee. Once, the man she had loved.</p>
+      <p>There had been a time when the two of them had wanted to marry. But both families had objected. Neither side was willing to allow a marriage within the same clan. Slowly, the relationship had come apart.</p>
+      <p>Still, Tandra knew Tanoy wasn't a bad man. He lived with his parents and his younger sister.</p>
+      <p>Tandra thought to herself,</p>
+      <p class="dialogue">— "They'll surely be kind to Mithi. And maybe Tanoy won't think badly of me."</p>
+      <p>Sitting in the car, she looked at Mithi.</p>
+      <p class="dialogue">— "Mithi, remember one thing."</p>
+      <p class="dialogue">— "What, Ma?"</p>
+      <p class="dialogue">— "If anyone asks you your father's name, say — Tanoy Mukherjee."</p>
+      <p>Mithi looked at her with innocent eyes.</p>
+      <p class="dialogue">— "Tanoy Mukherjee?"</p>
+      <p class="dialogue">— "Yes."</p>
+      <p class="dialogue">— "Is he my father?"</p>
+      <p>Tandra was quiet for a few seconds, then said,</p>
+      <p class="dialogue">— "Yes... that's what you'll tell everyone."</p>
+      <p>Mithi nodded.</p>
+      <p class="dialogue">— "All right, Ma."</p>
+
+      <div class="divider"><span class="line"></span><span class="mark">🏠</span><span class="line"></span></div>
+
+      <p class="beat">Tanoy's house</p>
+      <p>That afternoon, Tandra arrived at Tanoy's house with Mithi. But by some strange twist of fate, neither of Tanoy's parents were home. Only his younger sister, Mou, was there.</p>
+      <p>Tandra said to her,</p>
+      <p class="dialogue">— "Mou, I have a favor to ask."</p>
+      <p>Mou looked at Mithi.</p>
+      <p class="dialogue">— "Who's this girl?"</p>
+      <p>A little hesitant, Tandra said,</p>
+      <p class="dialogue">— "She's my sister's daughter. She's in real trouble for a few days. I need to be away for a while. Could you keep an eye on her?"</p>
+      <p>Mou looked at the girl's face and felt a pang of tenderness.</p>
+      <p class="dialogue">— "Of course. But for how long?"</p>
+      <p class="dialogue">— "Not long."</p>
+      <p>Tandra pulled Mithi close and said,</p>
+      <p class="dialogue">— "Baby, you'll be good here. Listen to Aunty Mou, okay?"</p>
+      <p>Mithi said,</p>
+      <p class="dialogue">— "When will you come back?"</p>
+      <p class="dialogue">— "Very soon."</p>
+      <p>Mithi gripped Tandra's hand tightly.</p>
+      <p class="dialogue">— "You won't leave me, will you?"</p>
+      <p>Tandra looked away.</p>
+      <p class="dialogue">— "No."</p>
+      <p>Then she kissed Mithi's forehead and hurried out. Getting into the car, she didn't look back once.</p>
+
+      <div class="divider"><span class="line"></span><span class="mark">❤️</span><span class="line"></span></div>
+
+      <p class="beat">A stranger's house became her own</p>
+      <p>At first Mou felt a little uneasy, but within a few hours she and Mithi had become friends. Mithi's sweet words, her laughter, her simple, open manner — they changed the whole mood of the house.</p>
+      <p>That evening, Tanoy's parents came home. They were surprised to see the little girl.</p>
+      <p class="dialogue">— "Who's this?"</p>
+      <p>Mou said, laughing,</p>
+      <p class="dialogue">— "Dada, she's Tandra's sister's daughter. She'll stay with us for a few days."</p>
+      <p>Tanoy's mother lifted Mithi into her lap.</p>
+      <p class="dialogue">— "Oh! What a sweet girl!"</p>
+      <p>A little shy, Mithi said,</p>
+      <p class="dialogue">— "Grandma..."</p>
+      <p>That single word brought tears to the old woman's eyes.</p>
+      <p class="dialogue">— "Say it again?"</p>
+      <p class="dialogue">— "Grandma."</p>
+      <p>She held Mithi close.</p>
+      <p>Tanoy's father laughed and said,</p>
+      <p class="dialogue">— "And who am I, then?"</p>
+      <p>Mithi thought for a moment and said,</p>
+      <p class="dialogue">— "Grandpa!"</p>
+      <p>The old man laughed.</p>
+      <p class="dialogue">— "Well then! From today, I'm your grandpa."</p>
+      <p>That very night, Mithi became everyone's favorite in the house. Someone was feeding her, someone was telling her stories, someone was playing with her.</p>
+      <p>Tanoy's father sat her beside him and asked fondly,</p>
+      <p class="dialogue">— "Sweetheart, what's your name?"</p>
+      <p>Mithi said proudly,</p>
+      <p class="dialogue">— "Mithi Mukherjee."</p>
+      <p class="dialogue">— "Oh! What a lovely name. What's your father's name?"</p>
+      <p>Without a moment's hesitation, Mithi said,</p>
+      <p class="dialogue">— "Tanoy Mukherjee."</p>
+      <p class="beat">A sudden silence fell over the room.</p>
+      <p>Tanoy's mother looked at Mithi. The smile faded from Mou's face.</p>
+      <p>Tanoy's father said slowly,</p>
+      <p class="dialogue">— "What did you say?"</p>
+      <p>Mithi said again,</p>
+      <p class="dialogue">— "My father's name is Tanoy Mukherjee."</p>
+      <p class="dialogue">— "Tanoy Mukherjee?"</p>
+      <p>Mou almost shouted,</p>
+      <p class="dialogue">— "But Tanoy—!"</p>
+      <p>At that exact moment, Tanoy walked into the room.</p>
+      <p class="dialogue">— "What's going on?"</p>
+      <p>Everyone turned to look at him.</p>
+      <p>Tanoy's father said slowly,</p>
+      <p class="dialogue">— "Do you know anything about this?"</p>
+      <p>Tanoy, bewildered, said,</p>
+      <p class="dialogue">— "What?"</p>
+      <p>Mou looked at Mithi and said,</p>
+      <p class="dialogue">— "She says her father's name is Tanoy Mukherjee."</p>
+      <p>Tanoy went rigid. His eyes fixed on Mithi.</p>
+      <p class="dialogue">— "What?"</p>
+      <p>Smiling up at him, Mithi said,</p>
+      <p class="dialogue">— "You're my father?"</p>
+      <p class="beat">No words came to Tanoy. Everyone in the house stared at each other.</p>
+      <p>Because when Tandra had brought Mithi to this house, neither Tanoy nor his parents had been home. So no one knew what identity Tandra had given the child before she left.</p>
+      <p>And now — a five-year-old child was claiming that Tanoy Mukherjee was her father.</p>
+      <p>Tanoy's father suddenly said in a hard voice,</p>
+      <p class="dialogue">— "Tanoy, what exactly is going on between you and Tandra?"</p>
+      <p>Tanoy said nothing. His eyes were fixed only on Mithi.</p>
+      <p>And Mithi, reaching out both arms, said—</p>
+      <p class="dialogue">— "Baba, will you hold me?"</p>
+      <p class="beat">Something struck Tanoy hard in the chest. He knew — after this moment, his life would never be the same again.</p>
+    </div>
+
+    <div class="ep-end-nav">
+      <a href="#toc">↑ Table of Contents</a>
+      <a href="#ep6" class="next">Part 6 →</a>
+    </div>
+  </article>
+
+  <!-- ================= EPISODE 6 ================= -->
+  <article class="story" id="ep6">
+    <h2 class="ep-heading">
+      <span>Part 6 — The Secret Midnight Return</span>
+      <div class="heading-btns">
+        <button class="listen-btn" data-ep="6">🔊 Listen</button>
+        <button class="bookmark-btn" data-ep="6">🔖 Bookmark</button>
+      </div>
+    </h2>
+
+    <div id="narration-content-6" class="narration-block">
+      <p class="beat">That night at Tanoy's house never settled back into normal.</p>
+      <p>Every time Mithi looked at Tanoy, she said the same thing—</p>
+      <p class="dialogue">— "Baba, will you hold me?"</p>
+      <p>Tanoy didn't know what to say. He kept repeating,</p>
+      <p class="dialogue">— "I'm not your father."</p>
+      <p>But five-year-old Mithi refused to believe it.</p>
+      <p class="dialogue">— "Ma said you're my father."</p>
+      <p>Tanoy fell silent. He tried to trace back through everything in his own life. It was true — he'd once had a relationship with Tandra. But they had never married. So where had this child come from?</p>
+      <p>The biggest problem was — Tanoy had no way to prove for certain that Mithi wasn't his daughter.</p>
+      <p>Tanoy's father said angrily,</p>
+      <p class="dialogue">— "Call Tandra here right now."</p>
+      <p>Tanoy told his sister,</p>
+      <p class="dialogue">— "Mou, call Tandra. Tell her to come here right now."</p>
+      <p>Mou called. After a while, Tandra picked up.</p>
+      <p class="dialogue">— "Hello?"</p>
+      <p>Mou said,</p>
+      <p class="dialogue">— "Come to our house right now. There's a huge problem here."</p>
+      <p>Tandra was quiet.</p>
+      <p class="dialogue">— "Mithi's saying Dada's name is Tanoy Mukherjee. Baba and Ma want to know everything."</p>
+      <p>Tandra let out a long breath.</p>
+      <p class="dialogue">— "I can't come right now."</p>
+      <p class="dialogue">— "Why not?"</p>
+      <p class="dialogue">— "Put Tanoy on the phone."</p>
+      <p>Tanoy took the phone.</p>
+      <p class="dialogue">— "Tandra, what is this?"</p>
+      <p>Tandra's voice came through from the other end,</p>
+      <p class="dialogue">— "I'll tell you everything. Just don't ask me to come there right now."</p>
+      <p class="dialogue">— "Who is Mithi?"</p>
+      <p>A moment of silence. Then Tandra, slowly, told him everything — the old couple in the mountain village, raising Mithi, bringing her to the city, the attempt to give her a new identity — all of it.</p>
+      <p>Tanoy listened, speechless. Finally he said,</p>
+      <p class="dialogue">— "You've been playing games with a child's life like this?"</p>
+      <p>Tandra said nothing in reply.</p>
+      <p>Tanoy spoke again,</p>
+      <p class="dialogue">— "What am I supposed to do with her now?"</p>
+      <p class="dialogue">— "I don't know."</p>
+      <p class="dialogue">— "Then why did you send her here?"</p>
+      <p class="beat">Tandra hung up the phone.</p>
+
+      <div class="divider"><span class="line"></span><span class="mark">🚗</span><span class="line"></span></div>
+
+      <p class="beat">Deep in the night</p>
+      <p>The unease in Tanoy's house only grew. Mithi couldn't understand any of it. Now and then she kept saying,</p>
+      <p class="dialogue">— "Did I do something wrong?"</p>
+      <p>Mou's chest tightened. She could see the girl was blameless.</p>
+      <p>Finally, very late into the night, Mou made a decision. Without telling anyone, she put Mithi in the car.</p>
+      <p class="dialogue">— "Aunty, where are we going?"</p>
+      <p class="dialogue">— "To your mother."</p>
+      <p>Mithi said happily,</p>
+      <p class="dialogue">— "Ma will be so happy to see me!"</p>
+      <p>Mou didn't answer. The car moved on through the nearly silent, sleeping city.</p>
+      <p>After a long while, they reached Tandra's building. Mou looked around. Everyone in the house was asleep. Very carefully, she carried Mithi inside.</p>
+      <p>Then she went to the door of Tandra's room and gently laid Mithi down inside.</p>
+      <p>Mithi whispered,</p>
+      <p class="dialogue">— "Is Ma asleep?"</p>
+      <p>Mou said,</p>
+      <p class="dialogue">— "Yes. Go to sleep quietly, all right?"</p>
+      <p class="beat">She stroked Mithi's hair once and slipped away quickly.</p>
+
+      <div class="divider"><span class="line"></span><span class="mark">🛏️</span><span class="line"></span></div>
+
+      <p class="beat">In Tandra's room</p>
+      <p>Tandra was in a deep sleep. Suddenly Mithi lay down beside her.</p>
+      <p>After a while, in her sleep, Tandra felt as if someone had taken hold of her hand. Without opening her eyes, she pulled her hand away. But Mithi curled up close to her again.</p>
+      <p>Half asleep, Tandra murmured,</p>
+      <p class="dialogue">— "Ma..."</p>
+      <p>Then she drifted back to sleep. Mithi smiled softly. Tandra's exhausted body sank into deep sleep too.</p>
+      <p class="beat">But Tandra had made one mistake — she hadn't fully shut the door of her room.</p>
+
+      <div class="divider"><span class="line"></span><span class="mark">🌅</span><span class="line"></span></div>
+
+      <p class="beat">Just before dawn</p>
+      <p>Night was passing into dawn. Tandra, worn out from the stress of the night before, was in a deep sleep.</p>
+      <p>Usually, her mother woke around this time. That morning too, Tandra's mother rose and walked toward her daughter's room.</p>
+      <p>Finding the door slightly open, she assumed her daughter had simply forgotten to shut it the night before. She slowly pushed it open and stepped inside.</p>
+      <p>Then — her eyes suddenly stopped.</p>
+      <p>There, beside Tandra on the bed, a small child lay sleeping!</p>
+      <p>For a few seconds she stood absolutely still. Then, in astonishment, a word escaped her—</p>
+      <p class="dialogue">— "Tandra!"</p>
+      <p>Tandra woke with a start. She opened her eyes and looked at her mother. Then, following her mother's gaze, she looked beside her — Mithi!</p>
+      <p>Tandra's face went pale in an instant.</p>
+      <p>Her mother asked, her voice trembling,</p>
+      <p class="dialogue">— "Who is this girl?"</p>
+      <p>No words came out of Tandra's mouth.</p>
+      <p>Still half asleep, Mithi opened her eyes, looked up at the older woman, and said sweetly—</p>
+      <p class="dialogue">— "Ma... where did you go?"</p>
+      <p class="beat">Tandra's mother stood as if struck by lightning. In that moment, all of Tandra's secrets were on the verge of coming apart.</p>
+
+      <div class="divider"><span class="line"></span><span class="mark">🕊️</span><span class="line"></span></div>
+
+      <p class="beat">The truth comes out</p>
+      <p>Tandra's mother kept asking, again and again. In the end, unable to hide it any longer, Tandra broke down in tears and told her everything — the accident in the mountains, Haripada and Kamala, how she had come to have Mithi, and how, out of fear and shame, she had tried to hide her behind three different false identities.</p>
+      <p>Hearing the news, Tandra's father rushed over. At first he was furious, but looking at Mithi's innocent face, his anger slowly melted away.</p>
+      <p>He said,</p>
+      <p class="dialogue">— "Hiding it like this wasn't right, my child. This is a matter of a child's whole life. It has to be resolved properly, within the law."</p>
+      <p>Head bowed, Tandra said,</p>
+      <p class="dialogue">— "I was afraid of losing her, Baba."</p>
+      <p>Tandra's father rested a hand on his daughter's head.</p>
+      <p class="dialogue">— "Love isn't protected by hiding the truth. It's protected by telling it."</p>
+      <p>The very next day, he made a decision — they would put out the news through newspapers and TV channels: a child had been found, and her real parents were being sought. If no one came forward with a claim within ten days, the announcement said, the child would, through proper legal process, be handed over to her real family.</p>
+      <p>For several days, the story circulated in the newspapers and on television.</p>
+      <p class="beat">But no one came forward.</p>
+      <p>Because the people who had known Mithi were no longer alive — on that stormy mountain night, Abhik and Megha had been lost forever, and relatives had, many years ago, already accepted that the girl, too, was gone.</p>
+      <p>Ten days passed, one by one. Every day, Tandra and Tanoy anxiously opened the newspapers, waited for the phone to ring. But no call came, no one knocked at the door.</p>
+      <p>During this time, Mithi grew closer to Tandra and Tanoy with each passing day. Tanoy's parents, Mou — everyone had begun to think of her as part of their own family.</p>
+      <p>On the evening the ten days ended, Tandra's father called Mithi to him.</p>
+      <p>Gently, he asked,</p>
+      <p class="dialogue">— "Sweetheart, who do you want to live with?"</p>
+      <p>Without a moment's thought, Mithi ran to Tandra and Tanoy and threw her arms around them both.</p>
+      <p class="dialogue">— "I want to stay with my mother and father."</p>
+      <p>Everyone in the room felt their eyes fill with tears.</p>
+      <p class="beat">In that moment, Tandra understood — she had held on to this girl not out of fear, but out of love. And that love was now the greatest truth of her life.</p>
+
+      <div class="divider"><span class="line"></span><span class="mark">💍</span><span class="line"></span></div>
+
+      <p class="beat">After a long struggle</p>
+      <p>Around Mithi, Tandra and Tanoy grew close to each other once again. The bond that had broken apart years ago over their families' objections — today, a little girl's love closed that distance.</p>
+      <p>This time, neither family objected. After a long struggle, Tandra and Tanoy were married — and at that wedding, the happiest person of all was a five-year-old girl who had finally gotten both her mother and father, together.</p>
+      <p>The child everyone had believed lost forever, that stormy night in the mountains, had, in truth, never been lost at all.</p>
+      <p class="beat">From Tithi to Mithi, from Mithi to Mithi Mukherjee — her name changed again and again, but love never once left her. She was, and she is — the girl who was never lost.</p>
+    </div>
+
+    <div class="the-end">— The End —</div>
+
+    <div class="ep-end-nav">
+      <a href="#toc">↑ Table of Contents</a>
+      <a href="#ep1">Read Again from Part 1 ↺</a>
+    </div>
+  </article>
+
+  <div class="credit">The Girl Who Was Never Lost · Part 6/6 · Complete</div>
+</div>
+
+<div class="player">
+  <button class="player-btn" id="prevBtn" title="Previous">⏮</button>
+  <button class="player-btn play" id="playBtn" title="Listen">▶</button>
+  <div class="player-status">
+    <div class="row1" id="statusLine1">Press play to listen</div>
+    <div id="statusLine2">Part 1 — That Night on the Mountain Road</div>
+  </div>
+  <button class="player-btn" id="nextBtn" title="Next">⏭</button>
+</div>
+
+<script>
+(function(){
+  const STORAGE_KEY = 'girl-who-was-never-lost-bookmark';
+
+  const playBtn = document.getElementById('playBtn');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const status1 = document.getElementById('statusLine1');
+  const status2 = document.getElementById('statusLine2');
+  const resumeBanner = document.getElementById('resumeBanner');
+  const resumeText = document.getElementById('resumeText');
+  const resumeGo = document.getElementById('resumeGo');
+  const resumeDismiss = document.getElementById('resumeDismiss');
+
+  const epTitles = {
+    1: 'Part 1 — That Night on the Mountain Road',
+    2: 'Part 2 — In a New Mother\u2019s Arms',
+    3: 'Part 3 — "Ma Is Leaving Me Behind!"',
+    4: 'Part 4 — "You Bring It for Me, Ma"',
+    5: 'Part 5 — Mithi at Tanoy\u2019s House',
+    6: 'Part 6 — The Secret Midnight Return'
+  };
+
+  /* ---------------- BOOKMARKING ---------------- */
+  function saveBookmark(epNum){
+    try{
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ ep: epNum, ts: Date.now() }));
+    }catch(e){}
+  }
+  function readBookmark(){
+    try{
+      const raw = localStorage.getItem(STORAGE_KEY);
+      return raw ? JSON.parse(raw) : null;
+    }catch(e){ return null; }
+  }
+
+  function refreshBookmarkButtons(){
+    const bm = readBookmark();
+    document.querySelectorAll('.bookmark-btn').forEach(function(btn){
+      const ep = btn.getAttribute('data-ep');
+      if (bm && String(bm.ep) === ep){
+        btn.classList.add('saved');
+        btn.textContent = '🔖 Saved';
+      } else {
+        btn.classList.remove('saved');
+        btn.textContent = '🔖 Bookmark';
+      }
+    });
+  }
+
+  document.querySelectorAll('.bookmark-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      const epNum = parseInt(btn.getAttribute('data-ep'), 10);
+      saveBookmark(epNum);
+      refreshBookmarkButtons();
+      resumeBanner.classList.remove('show');
+    });
+  });
+
+  // Auto-track reading position via scroll, lightly debounced.
+  let scrollTimer = null;
+  window.addEventListener('scroll', function(){
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(function(){
+      const articles = Array.from(document.querySelectorAll('article.story'));
+      const viewLine = window.innerHeight * 0.35;
+      let current = null;
+      for (const art of articles){
+        const rect = art.getBoundingClientRect();
+        if (rect.top <= viewLine && rect.bottom > 0){
+          current = art;
+        }
+      }
+      if (current){
+        const epNum = parseInt(current.id.replace('ep',''), 10);
+        try{
+          const raw = localStorage.getItem(STORAGE_KEY);
+          const existing = raw ? JSON.parse(raw) : null;
+          if (!existing || existing.ep !== epNum){
+            localStorage.setItem(STORAGE_KEY, JSON.stringify({ ep: epNum, ts: Date.now(), auto: true }));
+          }
+        }catch(e){}
+      }
+    }, 400);
+  }, { passive: true });
+
+  // On load, offer to resume.
+  (function initResume(){
+    const bm = readBookmark();
+    if (bm && bm.ep && bm.ep >= 1 && bm.ep <= 6){
+      resumeText.textContent = epTitles[bm.ep] || ('Part ' + bm.ep);
+      resumeBanner.classList.add('show');
+    }
+    refreshBookmarkButtons();
+  })();
+
+  resumeGo.addEventListener('click', function(){
+    const bm = readBookmark();
+    if (bm && bm.ep){
+      const target = document.getElementById('ep' + bm.ep);
+      if (target) target.scrollIntoView({ behavior:'smooth', block:'start' });
+    }
+    resumeBanner.classList.remove('show');
+  });
+  resumeDismiss.addEventListener('click', function(){
+    resumeBanner.classList.remove('show');
+  });
+
+  /* ---------------- VOICE READER ---------------- */
+  let currentEp = 1;
+  let paragraphs = Array.from(document.querySelectorAll('#narration-content-1 p'));
+  let idx = 0;
+  let speaking = false;
+  let paused = false;
+  let voice = null;
+
+  function loadEpisode(epNum, autoplay){
+    clearHighlight();
+    window.speechSynthesis.cancel();
+    currentEp = epNum;
+    paragraphs = Array.from(document.querySelectorAll('#narration-content-' + epNum + ' p'));
+    idx = 0;
+    speaking = false;
+    paused = false;
+    playBtn.textContent = '▶';
+    status1.textContent = 'Press play to listen';
+    status2.textContent = epTitles[epNum] || ('Part ' + epNum);
+    if (autoplay){
+      speaking = true;
+      playBtn.textContent = '⏸';
+      speakFrom(0);
+    }
+  }
+
+  function pickVoice(){
+    const voices = window.speechSynthesis.getVoices();
+    voice = voices.find(v => v.lang === 'en-US') ||
+            voices.find(v => v.lang === 'en-GB') ||
+            voices.find(v => v.lang === 'en-IN') ||
+            voices.find(v => v.lang && v.lang.startsWith('en')) ||
+            null;
+  }
+  if ('speechSynthesis' in window){
+    pickVoice();
+    window.speechSynthesis.onvoiceschanged = pickVoice;
+  }
+
+  function clearHighlight(){
+    paragraphs.forEach(p => p.style.background = '');
+  }
+
+  function speakFrom(i){
+    if (!('speechSynthesis' in window)){
+      status1.textContent = 'Voice is not supported in this browser';
+      return;
+    }
+    if (i < 0 || i >= paragraphs.length){
+      speaking = false;
+      playBtn.textContent = '▶';
+      status1.textContent = 'End of part';
+      clearHighlight();
+      return;
+    }
+    idx = i;
+    clearHighlight();
+    const p = paragraphs[idx];
+    p.style.background = 'rgba(201,162,75,0.12)';
+    p.scrollIntoView({behavior:'smooth', block:'center'});
+
+    const utter = new SpeechSynthesisUtterance(p.textContent.replace(/^—\s*/, ''));
+    utter.lang = 'en-US';
+    if (voice) utter.voice = voice;
+    utter.rate = 0.98;
+
+    utter.onend = function(){
+      if (speaking && !paused){
+        speakFrom(idx + 1);
+      }
+    };
+
+    status1.textContent = 'Reading…';
+    status2.textContent = (epTitles[currentEp] || ('Part ' + currentEp)) + ' · ' + (idx + 1) + '/' + paragraphs.length;
+
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(utter);
+  }
+
+  playBtn.addEventListener('click', function(){
+    if (!('speechSynthesis' in window)){
+      status1.textContent = 'Voice is not supported in this browser';
+      return;
+    }
+    if (speaking && !paused){
+      window.speechSynthesis.pause();
+      paused = true;
+      playBtn.textContent = '▶';
+      status1.textContent = 'Paused';
+      return;
+    }
+    if (speaking && paused){
+      window.speechSynthesis.resume();
+      paused = false;
+      playBtn.textContent = '⏸';
+      status1.textContent = 'Reading…';
+      return;
+    }
+    speaking = true;
+    paused = false;
+    playBtn.textContent = '⏸';
+    speakFrom(0);
+  });
+
+  prevBtn.addEventListener('click', function(){
+    if (!speaking) { speaking = true; }
+    paused = false;
+    playBtn.textContent = '⏸';
+    speakFrom(Math.max(0, idx - 1));
+  });
+
+  nextBtn.addEventListener('click', function(){
+    if (!speaking) { speaking = true; }
+    paused = false;
+    playBtn.textContent = '⏸';
+    speakFrom(Math.min(paragraphs.length - 1, idx + 1));
+  });
+
+  document.querySelectorAll('.listen-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      const epNum = parseInt(btn.getAttribute('data-ep'), 10);
+      loadEpisode(epNum, true);
+      document.getElementById('ep' + epNum).scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

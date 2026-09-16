@@ -1,0 +1,2090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Discipline of Love | Surajit Roy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;500;600;700&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#1b120e;
+    --bg-soft:#221712;
+    --panel:#2a1e17;
+    --panel-line:#4a3a2c;
+    --gold:#c9a15c;
+    --gold-soft:#8a713f;
+    --rose:#c07a78;
+    --rose-deep:#9c4f4f;
+    --ink:#f1e6d6;
+    --ink-muted:#b7a790;
+    --ink-faint:#7d6c58;
+    --shadow: 0 18px 40px rgba(0,0,0,.45);
+    --serif: 'Noto Serif Bengali', 'Palatino Linotype', serif;
+    --sans: 'Hind Siliguri', system-ui, sans-serif;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.8;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:.01ms !important; transition-duration:.01ms !important;}
+  }
+
+  a{color:inherit;}
+  ::selection{background:var(--rose-deep); color:#fff;}
+
+  /* ---------- progress bar ---------- */
+  #progress-bar{
+    position:fixed; top:0; left:0; height:3px; width:0%;
+    background:linear-gradient(90deg, var(--gold), var(--rose));
+    z-index:120; transition:width .1s linear;
+  }
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    position:sticky; top:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    gap:.75rem;
+    padding:.7rem 1.1rem;
+    background:rgba(27,18,14,.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--panel-line);
+  }
+  .topbar-title{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:1.05rem;
+    letter-spacing:.02em;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .topbar-title small{
+    display:block;
+    font-family:var(--sans);
+    font-size:.68rem;
+    color:var(--ink-faint);
+    font-weight:400;
+    letter-spacing:.04em;
+  }
+  .topbar-actions{display:flex; align-items:center; gap:.5rem; flex-shrink:0;}
+  .icon-btn{
+    display:inline-flex; align-items:center; gap:.4rem;
+    background:transparent; border:1px solid var(--panel-line);
+    color:var(--ink); border-radius:999px;
+    padding:.45rem .85rem;
+    font-family:var(--sans); font-size:.82rem;
+    cursor:pointer;
+  }
+  .icon-btn:hover{border-color:var(--gold-soft); color:var(--gold);}
+  .icon-btn svg{width:15px; height:15px; flex-shrink:0;}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    min-height:78vh;
+    display:flex; align-items:flex-end;
+    overflow:hidden;
+  }
+  .hero img{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit:cover;
+    object-position:center 20%;
+  }
+  .hero::after{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      linear-gradient(180deg, rgba(20,13,10,.15) 0%, rgba(20,13,10,.35) 45%, var(--bg) 96%),
+      linear-gradient(90deg, rgba(20,13,10,.55) 0%, rgba(20,13,10,.05) 55%);
+  }
+  .hero-content{
+    position:relative; z-index:2;
+    padding:3.4rem 1.4rem 3rem;
+    max-width:760px;
+    margin:0 auto;
+    width:100%;
+  }
+  .hero-kicker{
+    font-family:var(--sans);
+    font-size:.78rem;
+    letter-spacing:.08em;
+    color:var(--rose);
+    margin:0 0 .9rem;
+  }
+  .hero h1{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:clamp(2.4rem, 8vw, 4.2rem);
+    line-height:1.08;
+    margin:0 0 .9rem;
+    color:var(--ink);
+    text-shadow:0 4px 24px rgba(0,0,0,.4);
+  }
+  .hero p.tagline{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:clamp(1.05rem, 3vw, 1.3rem);
+    color:var(--ink-muted);
+    max-width:34ch;
+    margin:0 0 1.6rem;
+  }
+  .hero-meta{
+    display:flex; flex-wrap:wrap; gap:1.4rem;
+    font-size:.88rem; color:var(--ink-muted);
+  }
+  .hero-meta strong{color:var(--gold); font-weight:600;}
+
+  /* ---------- resume banner ---------- */
+  #resume-banner{
+    display:none;
+    max-width:760px; margin:1.5rem auto 0; padding:0 1.4rem;
+  }
+  #resume-banner.show{display:block;}
+  .resume-card{
+    background:var(--panel);
+    border:1px solid var(--panel-line);
+    border-radius:14px;
+    padding:1rem 1.2rem;
+    display:flex; align-items:center; justify-content:space-between;
+    gap:1rem; flex-wrap:wrap;
+    box-shadow:var(--shadow);
+  }
+  .resume-text{font-size:.92rem; color:var(--ink-muted);}
+  .resume-text b{color:var(--ink); font-weight:600;}
+  .resume-actions{display:flex; gap:.6rem; flex-shrink:0;}
+  .btn-primary{
+    background:linear-gradient(135deg, var(--gold), var(--rose-deep));
+    color:#1b120e; border:none; border-radius:999px;
+    padding:.5rem 1.1rem; font-family:var(--sans); font-weight:600;
+    font-size:.85rem; cursor:pointer;
+  }
+  .btn-ghost{
+    background:transparent; color:var(--ink-faint); border:1px solid var(--panel-line);
+    border-radius:999px; padding:.5rem 1rem; font-size:.85rem; cursor:pointer;
+    font-family:var(--sans);
+  }
+
+  /* ---------- table of contents ---------- */
+  #toc{
+    max-width:760px; margin:3.2rem auto 0; padding:0 1.4rem;
+    scroll-margin-top:5rem;
+  }
+  .toc-head{
+    display:flex; align-items:baseline; justify-content:space-between;
+    border-bottom:1px solid var(--panel-line);
+    padding-bottom:.9rem; margin-bottom:1.1rem;
+  }
+  .toc-head h2{
+    font-family:var(--serif); font-size:1.5rem; font-weight:600; margin:0;
+  }
+  .toc-head span{font-size:.78rem; color:var(--ink-faint);}
+  .toc-list{list-style:none; margin:0; padding:0;}
+  .toc-list li{border-bottom:1px solid rgba(74,58,44,.5);}
+  .toc-link{
+    display:flex; align-items:center; gap:1rem;
+    padding:.95rem .2rem;
+    text-decoration:none;
+  }
+  .toc-num{
+    font-family:var(--serif); color:var(--gold-soft);
+    font-size:.85rem; width:1.6rem; flex-shrink:0;
+  }
+  .toc-title{
+    font-family:var(--sans); font-size:.98rem; color:var(--ink);
+    flex:1;
+  }
+  .toc-link:hover .toc-title{color:var(--gold);}
+  .toc-mark{
+    width:9px; height:9px; border-radius:50%;
+    border:1px solid var(--panel-line);
+    flex-shrink:0;
+  }
+  .toc-mark.visited{background:var(--gold); border-color:var(--gold);}
+  .toc-mark.bookmarked{background:var(--rose); border-color:var(--rose);}
+
+  /* ---------- reading content ---------- */
+  main{max-width:760px; margin:0 auto; padding:0 1.4rem 6rem;}
+
+  .part{padding-top:4.2rem; scroll-margin-top:4.6rem;}
+  .part-head{margin-bottom:1.6rem;}
+  .part-eyebrow{
+    display:inline-block;
+    font-family:var(--sans); font-size:.76rem;
+    color:var(--rose); letter-spacing:.06em;
+    margin-bottom:.5rem;
+  }
+  .part-head h2{
+    font-family:var(--serif); font-weight:600;
+    font-size:clamp(1.5rem, 4.4vw, 2rem);
+    margin:0; color:var(--ink);
+    border-bottom:1px solid var(--panel-line);
+    padding-bottom:1.1rem;
+  }
+
+  .part-body{font-size:1.06rem;}
+  .part-body p{margin:0 0 1.15rem; color:var(--ink);}
+  .part-body h3{
+    font-family:var(--serif); font-weight:600; font-size:1.22rem;
+    color:var(--gold); margin:2.2rem 0 1.1rem;
+  }
+  .part-body p.dialogue{
+    color:var(--rose);
+    margin:0 0 1.15rem;
+    padding-left:1rem;
+    border-left:2px solid var(--rose-deep);
+  }
+  .part-body p.pullquote{
+    font-family:var(--serif); font-style:italic; font-size:1.15rem;
+    color:var(--gold); text-align:center;
+    margin:2rem auto; max-width:44ch;
+    line-height:1.65;
+  }
+  .part-body strong{color:var(--ink); font-weight:600;}
+  .divider{
+    display:flex; justify-content:center; margin:2.4rem 0;
+  }
+  .divider span{
+    width:64px; height:1px;
+    background:linear-gradient(90deg, transparent, var(--panel-line), transparent);
+  }
+
+  .part-foot{margin-top:2rem; padding-top:1.4rem; border-top:1px dashed var(--panel-line); display:flex; justify-content:flex-end;}
+  .bookmark-btn{
+    display:inline-flex; align-items:center; gap:.5rem;
+    background:transparent; border:1px solid var(--panel-line);
+    color:var(--ink-muted); border-radius:999px;
+    padding:.5rem 1rem; font-family:var(--sans); font-size:.84rem;
+    cursor:pointer;
+  }
+  .bookmark-btn .bm-icon{width:14px; height:14px; fill:none; stroke:currentColor; stroke-width:1.6;}
+  .bookmark-btn:hover{border-color:var(--rose); color:var(--rose);}
+  .bookmark-btn[aria-pressed="true"]{border-color:var(--rose); color:var(--rose);}
+  .bookmark-btn[aria-pressed="true"] .bm-icon{fill:var(--rose); stroke:var(--rose);}
+
+  /* ---------- ending note ---------- */
+  .colophon{
+    max-width:760px; margin:2rem auto 0; padding:2.6rem 1.4rem 0;
+    border-top:1px solid var(--panel-line);
+    text-align:center;
+  }
+  .colophon p{
+    font-family:var(--serif); font-style:italic; color:var(--ink-muted);
+    font-size:1.05rem; margin:0 0 .6rem;
+  }
+  .colophon .author{font-family:var(--sans); font-style:normal; font-size:.85rem; color:var(--ink-faint);}
+
+  /* ---------- toc drawer ---------- */
+  #drawer-overlay{
+    position:fixed; inset:0; background:rgba(10,7,5,.6);
+    opacity:0; pointer-events:none; transition:opacity .25s ease;
+    z-index:140;
+  }
+  #drawer-overlay.open{opacity:1; pointer-events:auto;}
+  #drawer{
+    position:fixed; top:0; right:0; height:100%;
+    width:min(360px, 88vw);
+    background:var(--bg-soft);
+    border-left:1px solid var(--panel-line);
+    transform:translateX(100%);
+    transition:transform .3s ease;
+    z-index:150;
+    display:flex; flex-direction:column;
+  }
+  #drawer.open{transform:translateX(0);}
+  .drawer-head{
+    padding:1.2rem 1.3rem; border-bottom:1px solid var(--panel-line);
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .drawer-head h3{font-family:var(--serif); font-size:1.15rem; margin:0;}
+  .drawer-close{background:none; border:none; color:var(--ink-muted); font-size:1.4rem; cursor:pointer; line-height:1;}
+  .drawer-body{overflow-y:auto; padding:.6rem 1.1rem 2rem;}
+  .drawer-body .toc-list li{border-bottom:1px solid rgba(74,58,44,.4);}
+  .drawer-body .toc-link{padding:.85rem .2rem;}
+  .drawer-current .toc-title{color:var(--gold); font-weight:600;}
+
+  /* ---------- back to top ---------- */
+  #to-top{
+    position:fixed; bottom:1.3rem; right:1.3rem; z-index:90;
+    width:46px; height:46px; border-radius:50%;
+    background:var(--panel); border:1px solid var(--panel-line);
+    color:var(--gold); display:flex; align-items:center; justify-content:center;
+    cursor:pointer; opacity:0; pointer-events:none; transition:opacity .25s ease;
+    box-shadow:var(--shadow);
+  }
+  #to-top.show{opacity:1; pointer-events:auto;}
+  #to-top svg{width:18px; height:18px;}
+
+  @media (max-width:560px){
+    .hero{min-height:64vh;}
+    .part{padding-top:3rem;}
+    .topbar-title small{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<header class="topbar">
+  <div class="topbar-title">The Discipline of Love<small>Surajit Roy</small></div>
+  <div class="topbar-actions">
+    <button class="icon-btn" id="toc-toggle" aria-haspopup="true" aria-controls="drawer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="14" y2="18"/></svg>
+      Contents
+    </button>
+  </div>
+</header>
+
+<section class="hero">
+  <img src="images/love-discipline.png" alt="The Discipline of Love - a family's story">
+  <div class="hero-content">
+    <p class="hero-kicker">A Serialized Novel · Complete</p>
+    <h1>The Discipline of Love</h1>
+    <p class="tagline">Between too much love and the discipline that's needed lies a path where a family loses its way — and finds it again.</p>
+    <div class="hero-meta">
+      <span>Author — <strong>Surajit Roy</strong></span>
+      <span><strong>8</strong> Chapters</span>
+      <span>Estimated reading time <strong>45</strong> minutes</span>
+    </div>
+  </div>
+</section>
+
+<div id="resume-banner">
+  <div class="resume-card">
+    <p class="resume-text">You had stopped reading at <b id="resume-part-name">a chapter</b>.</p>
+    <div class="resume-actions">
+      <button class="btn-primary" id="resume-go">Continue reading</button>
+      <button class="btn-ghost" id="resume-dismiss">Not now</button>
+    </div>
+  </div>
+</div>
+
+<nav id="toc">
+  <div class="toc-head">
+    <h2>Contents</h2>
+    <span>Click to jump directly to any chapter</span>
+  </div>
+  <ul class="toc-list">
+          <li>
+            <a href="#part-1" class="toc-link" data-slug="part-1">
+              <span class="toc-num">01</span>
+              <span class="toc-title">Chapter 1: Under Mother's Aanchal</span>
+              <span class="toc-mark" data-mark="part-1" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#part-2" class="toc-link" data-slug="part-2">
+              <span class="toc-num">02</span>
+              <span class="toc-title">Chapter 2: In the Shadow of Doting Love</span>
+              <span class="toc-mark" data-mark="part-2" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#part-3" class="toc-link" data-slug="part-3">
+              <span class="toc-num">03</span>
+              <span class="toc-title">Chapter 4: Two People, One Name</span>
+              <span class="toc-mark" data-mark="part-3" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#part-4" class="toc-link" data-slug="part-4">
+              <span class="toc-num">04</span>
+              <span class="toc-title">Chapter 5: Doubt in Baba's Heart</span>
+              <span class="toc-mark" data-mark="part-4" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#part-5" class="toc-link" data-slug="part-5">
+              <span class="toc-num">05</span>
+              <span class="toc-title">Chapter 6: Shadow of Doubt</span>
+              <span class="toc-mark" data-mark="part-5" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#part-6" class="toc-link" data-slug="part-6">
+              <span class="toc-num">06</span>
+              <span class="toc-title">Chapter 7: Down an Unknown Road</span>
+              <span class="toc-mark" data-mark="part-6" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#part-7" class="toc-link" data-slug="part-7">
+              <span class="toc-num">07</span>
+              <span class="toc-title">Chapter 8: A Familiar Face in an Unfamiliar City</span>
+              <span class="toc-mark" data-mark="part-7" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#part-8" class="toc-link" data-slug="part-8">
+              <span class="toc-num">08</span>
+              <span class="toc-title">Final Chapter: Discipline Alongside Love</span>
+              <span class="toc-mark" data-mark="part-8" aria-hidden="true"></span>
+            </a>
+          </li>
+  </ul>
+</nav>
+
+<main>
+      <section class="part" id="part-1" data-slug="part-1" data-title="Chapter 1: Under Mother's Aanchal" aria-labelledby="part-1-h">
+        <div class="part-head">
+          <span class="part-eyebrow">Chapter 01</span>
+          <h2 id="part-1-h">Under Mother's Aanchal</h2>
+        </div>
+        <div class="part-body">
+<p>Subrata Babu's household was not a large one. A small house in a quiet corner of the city — a few flowering plants out front, a tulsi platform to one side of the courtyard, and inside, a whole world filled with the laughter and tears of three people.</p>
+<p>Subrata Babu, his wife <strong>Ananya</strong>, and their six-year-old daughter, <strong>Titli</strong>.</p>
+<p>Titli was the apple of their eye.</p>
+<p>Her mornings began with Ma, and before she left for school, she would surround Baba with a thousand questions.</p>
+<p class="dialogue"><strong>"Baba, will you come to pick me up today?"</strong></p>
+<p>Subrata would smile and say,</p>
+<p class="dialogue"><strong>"Of course I will."</strong></p>
+<p>Those two lines were, for Titli, the whole day's guarantee.</p>
+<p>Her world was a small one — <strong>just Baba and Ma.</strong></p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌧️ Then, Suddenly, Everything Changed</h3>
+<p>One day, Ananya fell ill.</p>
+<p>At first, no one took it too seriously. But the illness kept growing worse. They took her to the doctor, and one test followed another.</p>
+<p>One day, report in hand, Subrata Babu stood frozen in the hospital corridor.</p>
+<p>One word from the doctor's mouth seemed to stop his entire world—</p>
+<p><strong>Cancer.</strong></p>
+<p>That day, he came home and tried his best to seem normal in front of his daughter.</p>
+<p>Titli had come running up to ask,</p>
+<p class="dialogue"><strong>"Baba, when will Ma come home?"</strong></p>
+<p>Subrata had pulled her close and said,</p>
+<p class="dialogue"><strong>"Very soon."</strong></p>
+<p>But that "soon" never came.</p>
+<p>The treatment went on. Ananya grew weaker by the day.</p>
+<p>One day, lying in her hospital bed, she called Titli close.</p>
+<p class="dialogue"><strong>"Come here, my love."</strong></p>
+<p>Titli took her mother's hand and said,</p>
+<p class="dialogue">"When will you come home?"</p>
+<p>Ananya smiled faintly.</p>
+<p class="dialogue"><strong>"You'll listen to Baba, won't you?"</strong></p>
+<p class="dialogue">"Yes."</p>
+<p class="dialogue"><strong>"You'll study hard?"</strong></p>
+<p class="dialogue">"Yes."</p>
+<p>After a moment's silence, Ananya stroked her daughter's head and said,</p>
+<p class="dialogue"><strong>"Never, ever think you're alone."</strong></p>
+<p>Titli hadn't understood what that meant.</p>
+<p>She had only said,</p>
+<p class="dialogue"><strong>"When you come home, you'll sleep beside me, won't you?"</strong></p>
+<p>Ananya's eyes had filled with tears.</p>
+<p>She had drawn her daughter close to her chest.</p>
+<p>A few days later, that chest was empty forever.</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🕯️ The Emptiness Left by Mother</h3>
+<p>After her mother's death, Titli's world seemed to go suddenly silent.</p>
+<p>She would go and sit in her mother's room. She would fall asleep hugging her mother's saree to her chest.</p>
+<p>Sometimes she'd ask Baba—</p>
+<p class="dialogue"><strong>"Baba, will Ma never come back?"</strong></p>
+<p>Subrata Babu had no answer to give.</p>
+<p>He'd only rest a hand on her head and say,</p>
+<p class="dialogue"><strong>"Ma will always bless us, from wherever she is."</strong></p>
+<p>But for a six-year-old, resting her head in her mother's lap mattered a great deal more than the word "blessing" ever could.</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌷 Suchorita Arrives</h3>
+<p>As time went on, Subrata Babu came face to face with a hard reality.</p>
+<p>He had his job, he had a household to run. But leaving little Titli alone every day to go to work simply wasn't possible for him.</p>
+<p>His relatives told him,</p>
+<p class="dialogue">"Even if it's only for Titli's sake, you must marry again."</p>
+<p>For a long time, Subrata refused.</p>
+<p>He had just one fear—</p>
+<p><strong>"Will some new person really love my Titli as her own child?"</strong></p>
+<p>In the end, after much thought, he married <strong>Suchorita</strong>.</p>
+<p>When Suchorita first arrived at this house, Titli watched her from a distance.</p>
+<p>Suchorita did not go up to her and say—</p>
+<p><strong>"Call me Ma."</strong></p>
+<p>Instead, in a quiet voice, she said,</p>
+<p class="dialogue"><strong>"If you like, you can just call me Suchorita."</strong></p>
+<p>Titli said nothing.</p>
+<p>Suchorita understood — the space left empty in this child's heart would take <strong>time</strong> for her to earn.</p>
+<p>So she waited.</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>❤️ That Night</h3>
+<p>One day, Titli came down with fever.</p>
+<p>Subrata was away at work.</p>
+<p>Suchorita stayed by the girl's side the whole day. By night, the fever had climbed higher still.</p>
+<p>Suchorita sat there, laying cold compresses on her forehead, over and over.</p>
+<p>In the small hours before dawn, half-asleep, Titli clutched Suchorita's hand and said—</p>
+<p class="dialogue"><strong>"Ma... you're here, aren't you?"</strong></p>
+<p>Suchorita's hand went still.</p>
+<p>Tears gathered at the corners of her eyes.</p>
+<p>Gently, she placed a hand on the girl's head and said—</p>
+<p class="dialogue"><strong>"Yes, my love, I'm here."</strong></p>
+<p>That very night, an invisible bridge seemed to form between them.</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<p>A few days later, one morning, dressed in her school uniform and standing by the door, Titli said—</p>
+<p class="dialogue"><strong>"Ma, give me my tiffin."</strong></p>
+<p>Suchorita simply looked at her for a moment.</p>
+<p>Then, smiling, she handed over the tiffin box.</p>
+<p>Titli left.</p>
+<p>And Suchorita stood there alone, wiping her eyes.</p>
+<p>In her heart, she said—</p>
+<p><strong>"I didn't give birth to you. But my love for you will never fall short."</strong></p>
+<p>From that day on, Suchorita no longer saw Titli merely as Subrata's daughter.</p>
+<p><strong>Titli had become her own daughter.</strong></p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌱 The Mistake That Began Alongside the Love</h3>
+<p>There was no limit to Suchorita's love.</p>
+<p>The smallest hurt to Titli would leave her heartbroken.</p>
+<p>Whenever Titli made a mistake, she'd think,</p>
+<p><strong>"The poor thing has suffered so much since she was small."</strong></p>
+<p>One day, while playing, Titli broke a flower vase in the house.</p>
+<p>Subrata Babu, back from the office, saw the broken vase and said,</p>
+<p class="dialogue">"Who broke this?"</p>
+<p>Titli stayed quiet.</p>
+<p>Suchorita spoke up at once,</p>
+<p class="dialogue"><strong>"It was an accident. Don't scold her."</strong></p>
+<p>Subrata looked at his daughter and said, calmly,</p>
+<p class="dialogue">"It's not about scolding for a mistake — but she does need to be taught to understand it."</p>
+<p>Suchorita smiled softly and said,</p>
+<p class="dialogue"><strong>"I'll make her understand."</strong></p>
+<p>But Titli, standing there sheltered in the folds of her mother's aanchal, had already understood—</p>
+<p><strong>Whatever mistake she made, Suchorita would shield her.</strong></p>
+<p>Every so often, Subrata would caution her,</p>
+<p class="dialogue">"Love her, of course. But make her understand her mistakes too."</p>
+<p>Suchorita would laugh and say,</p>
+<p class="dialogue"><strong>"I'll handle her."</strong></p>
+<p>She didn't know yet—</p>
+<p><strong>That loving a child isn't just about affection — disciplining her when it's needed is a part of that love too.</strong></p>
+<p>And it was that very absence of discipline that would one day bring a great storm into Titli's life.</p>
+<p>A storm that would change not just Titli, but <strong>Subrata and Suchorita's whole household too.</strong></p>
+<p>And many years later, the shadow of that old mistake would return, wearing the strange face of a misunderstanding.</p>
+<p><strong>To be continued...</strong> 🌿</p>
+        </div>
+        <div class="part-foot">
+          <button class="bookmark-btn" data-slug="part-1" aria-pressed="false">
+            <svg viewBox="0 0 24 24" class="bm-icon" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+            <span class="bm-label">Bookmark this chapter</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="part" id="part-2" data-slug="part-2" data-title="Chapter 2: In the Shadow of Doting Love" aria-labelledby="part-2-h">
+        <div class="part-head">
+          <span class="part-eyebrow">Chapter 02</span>
+          <h2 id="part-2-h">In the Shadow of Doting Love</h2>
+        </div>
+        <div class="part-body">
+<p>The little girl who, after her mother's death, had once clutched <strong>Suchorita's</strong> hand and asked, <strong>"Ma, you're here, aren't you?"</strong> — that same Titli was slowly growing up.</p>
+<p>Suchorita didn't just love her like her own daughter — often, she sheltered her even more fiercely than that.</p>
+<p>One fear always worked away at her mind—</p>
+<p><strong>"Titli must never, ever feel that I am not truly her mother."</strong></p>
+<p>Perhaps it was this very fear that slowly turned Suchorita's love from doting affection into indulgence.</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌱 The First Small Mistake</h3>
+<p>Titli was eight years old then.</p>
+<p>One day, while playing, she broke the doll belonging to Riya, the neighbour's girl.</p>
+<p>Riya went crying to her mother with the complaint.</p>
+<p>A little while later, Riya's mother came over with Titli to see Suchorita.</p>
+<p class="dialogue">"Suchorita, Titli's broken my daughter's doll."</p>
+<p>Suchorita looked at Titli.</p>
+<p class="dialogue">"Is that true?"</p>
+<p>Titli stood there, head bowed.</p>
+<p>After a moment, she said,</p>
+<p class="dialogue">"I didn't break it on purpose."</p>
+<p>Suchorita looked at her daughter's face and softened at once.</p>
+<p class="dialogue"><strong>"Well, if it wasn't on purpose, then what can one do?"</strong></p>
+<p>Riya's mother, a little annoyed, said,</p>
+<p class="dialogue">"A mistake is a mistake regardless. At least let her say 'sorry.'"</p>
+<p>Suchorita looked at Titli and said,</p>
+<p class="dialogue">"Go on, love, say sorry."</p>
+<p>Titli said, reluctantly,</p>
+<p class="dialogue">"Sorry."</p>
+<p>That was the end of the matter, for that day.</p>
+<p>But Titli had learned one thing—</p>
+<p><strong>No matter what mistake she made, Ma would defend her in the end.</strong></p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>📚 A Complaint from School</h3>
+<p>A few years on, Titli was doing well in her studies at school. But a stubborn streak had begun creeping into her nature.</p>
+<p>One day she came back from school and sat sulking, her face dark.</p>
+<p>Suchorita asked,</p>
+<p class="dialogue">"What happened, my love?"</p>
+<p>Titli said,</p>
+<p class="dialogue">"Sir scolded me in front of everyone today."</p>
+<p>Suchorita said, worried,</p>
+<p class="dialogue">"Why?"</p>
+<p class="dialogue">"Apparently I was talking in class."</p>
+<p>Suchorita placed a hand on her daughter's head and said,</p>
+<p class="dialogue">"Were you talking?"</p>
+<p>Titli paused a moment, then said,</p>
+<p class="dialogue">"Maybe, a little."</p>
+<p>Suchorita laughed and said,</p>
+<p class="dialogue"><strong>"Perhaps your sir was a bit too quick to lose his temper."</strong></p>
+<p>Subrata had been listening from nearby.</p>
+<p>He said,</p>
+<p class="dialogue">"Titli, if sir scolded you, there must have been a reason. Look at your own fault first."</p>
+<p>Titli scowled and walked off to her room.</p>
+<p>Suchorita turned to her husband and said,</p>
+<p class="dialogue">"Don't scold her anymore."</p>
+<p>Subrata sighed.</p>
+<p class="dialogue"><strong>"Suchorita, she needs to be taught to admit her mistakes."</strong></p>
+<p>Suchorita said nothing.</p>
+<p>But seeing her daughter so upset, in the end it was she who went to Titli's room and comforted her.</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌸 The Doting Grew Deeper</h3>
+<p>Time passed.</p>
+<p>Titli became a teenager.</p>
+<p>She had confidence, she had wit, she had spirit. But along with all that, a stubbornness had taken root too.</p>
+<p>If anyone opposed her opinion, she wasn't one to accept it easily.</p>
+<p>The smallest tiff with a friend would send Titli into a rage.</p>
+<p>Whenever there was trouble with someone in the neighbourhood, Suchorita would believe her daughter's side first.</p>
+<p class="dialogue"><strong>"You surely didn't do anything wrong."</strong></p>
+<p>Titli knew—</p>
+<p><strong>To her mother, her own word was the final word.</strong></p>
+<p>Slowly, she began pushing the blame for her own mistakes onto others.</p>
+<p>And Suchorita never once realised what her excess of love was building inside her daughter.</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>⚡ One Day, a Bigger Incident</h3>
+<p>One evening, Titli got into a fierce quarrel with a few girls from the neighbourhood.</p>
+<p>The matter itself was trivial, but Titli lost her temper and said a great deal she shouldn't have.</p>
+<p>A neighbour told Suchorita,</p>
+<p class="dialogue">"Please talk some sense into Titli. These days she doesn't speak respectfully to anyone."</p>
+<p>Suchorita first asked her daughter,</p>
+<p class="dialogue">"Did you quarrel with them?"</p>
+<p>Titli said at once,</p>
+<p class="dialogue"><strong>"They insulted me first."</strong></p>
+<p>Suchorita said nothing more.</p>
+<p>She drew Titli close to her.</p>
+<p class="dialogue"><strong>"It's all right, my love. Don't cry."</strong></p>
+<p>Standing at a distance, Subrata had seen it all.</p>
+<p>This time, he was genuinely worried.</p>
+<p>That night, he told his wife,</p>
+<p class="dialogue">"This time you need to make Titli understand — firmly."</p>
+<p>Suchorita said,</p>
+<p class="dialogue">"But I did explain things to her."</p>
+<p>Subrata shook his head and said,</p>
+<p class="dialogue"><strong>"No. You didn't explain anything to her. You comforted her."</strong></p>
+<p>Suchorita was quiet for a while.</p>
+<p>The words struck her deeply.</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌿 The Start of a Change</h3>
+<p>A few days later, Suchorita's mother came to visit their home.</p>
+<p>Age had brought her a great deal of experience.</p>
+<p>For a few days, she quietly observed Titli.</p>
+<p>The girl wasn't a bad sort — she could see that much.</p>
+<p>But Titli had never learned to recognise her own mistakes.</p>
+<p>One day, Titli came home again after quarrelling with someone.</p>
+<p>Suchorita, as ever, was about to pull her daughter close.</p>
+<p>Just then, her mother said,</p>
+<p class="dialogue"><strong>"Wait, Suchorita."</strong></p>
+<p>Suchorita looked up, surprised.</p>
+<p class="dialogue">"What is it?"</p>
+<p>Calmly, she said,</p>
+<p class="dialogue"><strong>"You love her a great deal. But doting alone can never make a person good."</strong></p>
+<p>Suchorita fell silent.</p>
+<p class="dialogue"><strong>"A child who errs must be made to understand the error. Scold her, if that's what it takes. Discipline is not the absence of love."</strong></p>
+<p>Tears sprang to Suchorita's eyes.</p>
+<p>Slowly, she said,</p>
+<p class="dialogue">"But what if she thinks I no longer love her?"</p>
+<p>Suchorita's mother placed a hand on her daughter's head and said—</p>
+<p class="pullquote"><strong>"True love sometimes teaches you to say 'no.'</strong></p>
+<p class="pullquote"><strong>Doting alone might make a child happy,</strong></p>
+<p class="pullquote"><strong>but the right discipline is what teaches her to become a good human being."</strong></p>
+<p>For a long while, Suchorita said nothing.</p>
+<p>That night, once Titli had fallen asleep, she sat beside her daughter.</p>
+<p>Resting a hand on her forehead, she said, in her heart—</p>
+<p><strong>"From now on, I won't just love you — I'll also stop you when you go wrong."</strong></p>
+<p>She had no idea just how hard this decision would prove for her, of all people.</p>
+<p>Because the same mother who had, all this while, melted at Titli's every tear, would now have to look past her darling daughter's tears and <strong>stand firm against her mistakes.</strong></p>
+<p>And the first line of that hard lesson would very soon come true in her own life—</p>
+<p><strong>"Only she who dotes has any right to discipline."</strong></p>
+<p><strong>To be continued...</strong> 🌸</p>
+<p>🌸 The Discipline of Love, Chapter 3: The First Discipline</p>
+<p>After that night at the end of Chapter 2, Suchorita truly changed.</p>
+<p>Her love for Titli didn't lessen one bit, but in one respect, she was no longer the same person.</p>
+<p>If Titli erred, she would no longer stay silent.</p>
+<p>For the first few days, though, nothing much happened.</p>
+<p>Titli, too, couldn't tell how long this new firmness of her mother's would last.</p>
+<p>Then, one day, everything changed — starting from school.</p>
+<p>⚡ A Big Trouble at School</p>
+<p>Titli was seventeen by then.</p>
+<p>She was good at her studies. She knew how to speak up, could state her opinions clearly, and held quite some sway among her friends.</p>
+<p>But when it came to her own dignity, she was extremely touchy.</p>
+<p>That day, during tiffin break, a war of words began with a classmate.</p>
+<p>At first, it was a small matter.</p>
+<p>But after a few exchanges, Titli lost her temper.</p>
+<p>In her anger, she said some things that left the other girl humiliated in front of everyone, and in tears.</p>
+<p>The matter reached the teacher.</p>
+<p>The teacher called Titli in and said, in a stern voice,</p>
+<p class="dialogue">"You're a good student. But if you lose control of your tongue every time you're angry, your intelligence won't count for much."</p>
+<p>Titli stood there with her head down, but in her heart, she still believed she was in the right.</p>
+<p>🏠 Back Home</p>
+<p>The moment she got home, Titli flung her bag onto the sofa.</p>
+<p>Suchorita came out of the kitchen and asked,</p>
+<p class="dialogue">"What's happened?"</p>
+<p>Titli said, irritated,</p>
+<p class="dialogue">"Everyone at school is against me!"</p>
+<p class="dialogue">"Why?"</p>
+<p class="dialogue">"That girl insulted me first. I only gave it back to her."</p>
+<p>Suchorita just looked at her daughter.</p>
+<p>She remembered that night at the end of Chapter 2.</p>
+<p>But this time, there was nothing new for her to work out.</p>
+<p>She simply said,</p>
+<p class="dialogue">"What did you say to her?"</p>
+<p>Titli paused a moment, then said,</p>
+<p class="dialogue">"I said what needed saying."</p>
+<p class="dialogue">"What exactly did you say?"</p>
+<p class="dialogue">"Ma, are you going to interrogate me now?"</p>
+<p>There wasn't a trace of anger in Suchorita's voice.</p>
+<p class="dialogue">"This isn't an interrogation. I just want to know the truth."</p>
+<p>Titli went quiet.</p>
+<p>After a while, slowly, she admitted,</p>
+<p class="dialogue">"Yes, I said some nasty things."</p>
+<p class="dialogue">"Do you know those words hurt her?"</p>
+<p>Titli turned her face away and said,</p>
+<p class="dialogue">"But she started it."</p>
+<p>This time, Suchorita spoke firmly,</p>
+<p class="dialogue">"If someone hurts you, the answer isn't to hurt them right back."</p>
+<p>Titli shot back immediately,</p>
+<p class="dialogue">"Then what was I supposed to do?"</p>
+<p class="dialogue">"Held yourself back."</p>
+<p>Titli didn't like hearing that at all.</p>
+<p>💔 Mother's First Hard Decision</p>
+<p>Suchorita said,</p>
+<p class="dialogue">"Tomorrow, you'll go to school and apologise to her."</p>
+<p>Titli looked utterly stunned.</p>
+<p class="dialogue">"Me? I'm going to apologise?"</p>
+<p class="dialogue">"Yes."</p>
+<p class="dialogue">"But the mistake wasn't only mine!"</p>
+<p class="dialogue">"The school will judge her fault. You will own up to yours."</p>
+<p>Now Titli grew angry.</p>
+<p class="dialogue">"You're always taking sides against me!"</p>
+<p>Suchorita said, calmly,</p>
+<p class="dialogue">"I'm not against you, Titli. I want you to face up to your own mistake."</p>
+<p>Titli said nothing more.</p>
+<p>She went to her room and shut the door.</p>
+<p>🌧️ A Few Silent Days</p>
+<p>For the next few days, Titli hardly spoke to her mother.</p>
+<p>At the dinner table, she said no more than absolutely necessary.</p>
+<p>She'd come back from school and go straight to her room.</p>
+<p>The way it used to be—</p>
+<p>"Ma, what's cooking today?"</p>
+<p>"Ma, where's my dress?"</p>
+<p>"Ma, do you know what happened to me at school today?"</p>
+<p class="dialogue">None of that was heard anymore.</p>
+<p>Suchorita watched her daughter from a distance.</p>
+<p>It made her heart ache.</p>
+<p>But this time, she did not change her decision just to make Titli happy.</p>
+<p>🌱 One Small Change</p>
+<p>Three days later, one evening, Titli herself came and stood before Suchorita.</p>
+<p>Suchorita was folding clothes at the time.</p>
+<p>Titli stood silently for a moment, then said,</p>
+<p class="dialogue">"Ma..."</p>
+<p>Suchorita looked up.</p>
+<p class="dialogue">"What is it?"</p>
+<p>Titli said, in a low voice,</p>
+<p class="dialogue">"I went and spoke to her yesterday."</p>
+<p>Suchorita said nothing.</p>
+<p class="dialogue">"I told her it wasn't right of me to say those things in anger."</p>
+<p>A soft smile touched Suchorita's lips.</p>
+<p class="dialogue">"What did she say?"</p>
+<p class="dialogue">"She said her words weren't fair either."</p>
+<p>Suchorita rested a hand on her daughter's head.</p>
+<p class="dialogue">"Then let the matter end right here."</p>
+<p>Titli looked at her mother.</p>
+<p class="dialogue">"You're not angry with me?"</p>
+<p>Suchorita smiled and said,</p>
+<p class="dialogue">"One can be angry over a mistake. But once you've understood it and made it right, there's no reason to hold onto that anger."</p>
+<p>Titli rested her head on her mother's shoulder.</p>
+<p>Suchorita embraced her.</p>
+<p>But she had no idea — this small episode was far from the last big mistake in Titli's life.</p>
+<p>Waiting ahead was a time when the clash between love, freedom, and stubbornness would grow far harder to manage.</p>
+<p>🎓 A New World at College</p>
+<p>Time moved quickly on.</p>
+<p>Titli joined college.</p>
+<p>A new environment, new friends, new freedom — it was all exciting for her.</p>
+<p>Suchorita loved her daughter just as much as ever, but now she knew—</p>
+<p>Titli had to be taught to make her own decisions for herself.</p>
+<p>It was at college that Titli met a quiet, gentle-natured boy.</p>
+<p>His name — Sabuj.</p>
+<p>Sabuj wasn't one for much talk.</p>
+<p>He paid close attention in class and never got into unnecessary trouble with anyone.</p>
+<p>Whenever Titli ran into any difficulty, he'd quietly help her out.</p>
+<p>At first, theirs was a plain and simple friendship.</p>
+<p>But slowly, a different kind of pull began forming within that friendship.</p>
+<p>Even Titli herself couldn't quite tell—</p>
+<p>Exactly when that friendship was turning into love.</p>
+<p>⚠️ Another Sabuj</p>
+<p>But there was another boy at the college too.</p>
+<p>Everyone called him Kalu.</p>
+<p>His real name — also Sabuj.</p>
+<p>In nature, he was the complete opposite of the first Sabuj.</p>
+<p>Sly, sweet-tongued, and one who took great delight in gossiping about other people's private business.</p>
+<p>Titli never paid him much mind.</p>
+<p>And that was exactly what Kalu couldn't stand.</p>
+<p>One day, in front of a few friends, he joked about Titli, saying,</p>
+<p class="dialogue">"Just watch — one day this girl will be going around with me."</p>
+<p>The friends laughed.</p>
+<p>No one took it seriously.</p>
+<p>But inside Kalu's head, a different plan was already taking shape.</p>
+<p>He had no idea that a few lies of his would one day create a situation where—</p>
+<p>one Sabuj would be Titli's true love, and the other Sabuj would become the very centre of a misunderstanding between two families.</p>
+<p>For now, everything in Titli's life still seemed normal.</p>
+<p>She had no idea—</p>
+<p>that the time for her biggest decision was drawing very near.</p>
+<p>To be continued... 🌿</p>
+        </div>
+        <div class="part-foot">
+          <button class="bookmark-btn" data-slug="part-2" aria-pressed="false">
+            <svg viewBox="0 0 24 24" class="bm-icon" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+            <span class="bm-label">Bookmark this chapter</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="part" id="part-3" data-slug="part-3" data-title="Chapter 4: Two People, One Name" aria-labelledby="part-3-h">
+        <div class="part-head">
+          <span class="part-eyebrow">Chapter 03</span>
+          <h2 id="part-3-h">Two People, One Name</h2>
+        </div>
+        <div class="part-body">
+<p>Titli's college days were now nearly over.</p>
+<p>For four years now, she had been in a relationship with <strong>Sabuj Roy</strong>.</p>
+<p>Sabuj was calm, courteous, and responsible. There was nothing excessive about his love for Titli. In fact, he always urged her to finish her studies and stand on her own two feet first.</p>
+<p>Titli, too, knew that sooner or later, she would have to tell her parents about this relationship.</p>
+<p>But that day had not yet come.</p>
+<p>Subrata Babu had no idea there was a Sabuj in his daughter's life.</p>
+<p>Nor did he know that very soon, <strong>another Sabuj</strong> would enter his own life in such a way that telling truth from lie would become nearly impossible.</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🚲 A Chance Encounter</h3>
+<p>One evening, Subrata Babu was cycling home from the office.</p>
+<p>At a bend in the road, a young man suddenly stepped out to cross and landed right in the path of his cycle.</p>
+<p>Subrata Babu braked hard, but couldn't avoid the collision.</p>
+<p>The young man fell to the ground.</p>
+<p>Subrata quickly got off the cycle and rushed over.</p>
+<p class="dialogue">"Oh no! Are you badly hurt?"</p>
+<p>The young man sat up, rubbed his knee, and said with a smile,</p>
+<p class="dialogue">"No, no, it's nothing much."</p>
+<p>Subrata said, worried,</p>
+<p class="dialogue">"I didn't see you properly. If you need a doctor, I'll take you."</p>
+<p>The young man stood up, dusting off his shirt, and said,</p>
+<p class="dialogue">"Really, it's nothing. Please, don't worry."</p>
+<p>Subrata now looked at the boy more closely.</p>
+<p>There was an oddly calm quality to his face.</p>
+<p>And a courtesy in the way he spoke, too.</p>
+<p>He said,</p>
+<p class="dialogue">"What's your name?"</p>
+<p>The boy smiled and said,</p>
+<p class="dialogue"><strong>"Sabuj Roy."</strong></p>
+<p>Subrata nodded at the name.</p>
+<p class="dialogue">"Where do you live?"</p>
+<p>Sabuj named the locality.</p>
+<p>After a bit of conversation, Subrata felt the boy had a genuinely fine nature.</p>
+<p>Even after being knocked over, he hadn't lost his temper once.</p>
+<p>In fact, quite the opposite — he'd turned around and asked—</p>
+<p class="dialogue">"Your cycle's all right, isn't it?"</p>
+<p>Subrata laughed, taken aback.</p>
+<p class="dialogue">"You're the one who took the fall, and here you are worrying about my cycle?"</p>
+<p>Sabuj laughed too and said,</p>
+<p class="dialogue">"It's a small thing. What's the use of getting worked up over it?"</p>
+<p>The words left a lasting impression on Subrata.</p>
+<p>As they parted, he said,</p>
+<p class="dialogue">"Take care on your way."</p>
+<p>Sabuj nodded and went on his way.</p>
+<p>Subrata stood watching him go for a long while.</p>
+<p>In his heart, he thought—</p>
+<p><strong>"That's really quite a fine young man."</strong></p>
+<p>He had no idea that this stranger would one day become the single most important person in his daughter's life.</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌿 A Father's Fondness</h3>
+<p>Back home, Subrata told Suchorita what had happened.</p>
+<p class="dialogue">"I ran into a young man today."</p>
+<p>Suchorita laughed and said,</p>
+<p class="dialogue">"What happened?"</p>
+<p class="dialogue">"He got knocked down by my cycle. And he didn't get angry, not even a little."</p>
+<p class="dialogue">"Is that so?"</p>
+<p class="dialogue">"Yes. Quite a well-mannered boy. Name's Sabuj Roy."</p>
+<p>Suchorita didn't think much of it.</p>
+<p>Subrata, too, had no idea that within a few days, this same name would come back into their household carrying an entirely different meaning.</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>⚠️ Meanwhile, Someone Else</h3>
+<p>A few days later, one evening, Subrata Babu was returning from the market.</p>
+<p>A young man standing by the roadside called out to him.</p>
+<p class="dialogue">"Subrata Babu!"</p>
+<p>Subrata stopped.</p>
+<p>He recognised the boy.</p>
+<p>A familiar face from the neighbourhood.</p>
+<p>The boy came closer and said,</p>
+<p class="dialogue">"I needed a word with you."</p>
+<p class="dialogue">"Go on."</p>
+<p>He glanced around and said, in a lowered voice,</p>
+<p class="dialogue"><strong>"Titli and I have been together for a long time now."</strong></p>
+<p>Subrata looked at him, astonished.</p>
+<p class="dialogue">"With Titli?"</p>
+<p>The boy nodded.</p>
+<p class="dialogue">"Yes. We love each other."</p>
+<p>Subrata's face turned grave.</p>
+<p class="dialogue">"Does Titli know about all this?"</p>
+<p>The boy answered at once,</p>
+<p class="dialogue"><strong>"Of course she knows. We've been together for almost four years."</strong></p>
+<p>An unease settled into Subrata's mind.</p>
+<p>He was quiet for a moment.</p>
+<p>Then he asked,</p>
+<p class="dialogue">"What's your name?"</p>
+<p>The boy answered,</p>
+<p class="dialogue"><strong>"Sabuj Saha."</strong></p>
+<p>Subrata froze slightly, hearing the name.</p>
+<p><strong>Sabuj.</strong></p>
+<p>Just a few days ago, he had met another young man — <strong>Sabuj Roy</strong>.</p>
+<p>But he had no idea yet that these two young men, sharing the same name, were two entirely different people.</p>
+<p>Sabuj Saha spoke again,</p>
+<p class="dialogue">"I want to marry Titli. She loves me too."</p>
+<p>Subrata grew even more troubled.</p>
+<p>But without saying anything more about his daughter, he only said,</p>
+<p class="dialogue">"Don't say anything about this at your home for now. Let me first make sense of all this myself."</p>
+<p>The boy nodded and left.</p>
+<p>Subrata stood at the roadside for a long while.</p>
+<p>One question kept turning in his mind—</p>
+<p><strong>"Has Titli really been in a relationship with this boy all this while?"</strong></p>
+<p>But he didn't ask his daughter anything right then.</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🚌 That Very Same Day</h3>
+<p>That same evening, Titli was on the bus, heading home from college.</p>
+<p>As the bus reached a turn in the road, her eyes were suddenly caught by something outside.</p>
+<p>She saw—</p>
+<p><strong>her father, standing there, talking to a boy she recognised.</strong></p>
+<p>Titli knew that boy.</p>
+<p>He'd bothered her more than once.</p>
+<p>She didn't even know his real name.</p>
+<p>As the bus moved on, Titli saw her father speaking to him quite seriously.</p>
+<p>Something inside her chest lurched.</p>
+<p>In her mind, she wondered—</p>
+<p><strong>"What is Baba talking to him about?"</strong></p>
+<p>But the bus didn't stop.</p>
+<p>Titli stayed sitting by the window.</p>
+<p>A strange unease had settled over her.</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🏠 After Evening Fell</h3>
+<p>Back home, Titli found Subrata in a perfectly ordinary mood.</p>
+<p>Suddenly, at mealtime, he said,</p>
+<p class="dialogue">"I met a young man recently. A really good sort."</p>
+<p>Titli stayed quiet.</p>
+<p>Subrata went on,</p>
+<p class="dialogue"><strong>"Polite, calm, speaks so nicely too. Name's Sabuj Roy."</strong></p>
+<p>Titli's hand froze.</p>
+<p><strong>Sabuj!</strong></p>
+<p>The scene from the bus came rushing back to her at once.</p>
+<p>The boy her father had been talking to — wasn't he also—</p>
+<p><strong>Sabuj!</strong></p>
+<p>Without understanding a thing, Titli jumped to a conclusion in her mind—</p>
+<p><strong>Baba is praising that very boy.</strong></p>
+<p>Her face darkened, and she said,</p>
+<p class="dialogue"><strong>"You take a liking to just about anybody!"</strong></p>
+<p>Subrata looked at his daughter, astonished.</p>
+<p class="dialogue">"What did you say?"</p>
+<p>Titli said nothing more.</p>
+<p>Suchorita looked at her daughter's face.</p>
+<p class="dialogue">"What's the matter with you?"</p>
+<p>Titli stood up and said,</p>
+<p class="dialogue">"Nothing."</p>
+<p>Then she went off to her room.</p>
+<p>Subrata and Suchorita just looked at each other.</p>
+<p>Neither of them could grasp how <strong>a single name had, in one and the same moment, tied two entirely different people into one thread.</strong></p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌑 The Seed of a Mistake</h3>
+<p>In her room, Titli stood by the window.</p>
+<p>Only one thought filled her mind—</p>
+<p><strong>"Baba was talking to him... and now he's praising him too!"</strong></p>
+<p>Meanwhile, in his own room, Subrata sat thinking—</p>
+<p><strong>"Has Titli really been with Sabuj Saha all this while?"</strong></p>
+<p>And on the other side of the city, <strong>Sabuj Roy</strong> still had no idea that a misunderstanding, centred entirely on his name, had already been born within Titli's family.</p>
+<p>Three people, three separate truths—</p>
+<p><strong>Titli's true love — Sabuj Roy.</strong></p>
+<p><strong>The newly met young man in Subrata's mind — Sabuj Saha.</strong></p>
+<p><strong>And both of them sharing the very same name — Sabuj.</strong></p>
+<p>This one shared name would very soon raise such a storm in their lives that love, trust, and the family bond itself would all be put to the hardest of tests.</p>
+<p><strong>To be continued...</strong> 🌿</p>
+        </div>
+        <div class="part-foot">
+          <button class="bookmark-btn" data-slug="part-3" aria-pressed="false">
+            <svg viewBox="0 0 24 24" class="bm-icon" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+            <span class="bm-label">Bookmark this chapter</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="part" id="part-4" data-slug="part-4" data-title="Chapter 5: Doubt in Baba's Heart" aria-labelledby="part-4-h">
+        <div class="part-head">
+          <span class="part-eyebrow">Chapter 04</span>
+          <h2 id="part-4-h">Doubt in Baba's Heart</h2>
+        </div>
+        <div class="part-body">
+<p>From that evening onward, Subrata Babu's mind found no peace.</p>
+<p>On one side, there was the courteous young man he'd met by the roadside a few days back — <strong>Sabuj Roy</strong>.</p>
+<p>On the other, the boy from today — <strong>Sabuj Saha</strong>.</p>
+<p>Both shared the same name.</p>
+<p>But their conduct was worlds apart.</p>
+<p>Seeing Sabuj Roy, he had thought—</p>
+<p><strong>"There's real goodness in this boy."</strong></p>
+<p>And today, hearing Sabuj Saha claim a relationship with Titli, an altogether different unease had taken hold of him.</p>
+<p>Still, he said nothing to his daughter.</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌧️ A Father's Silence</h3>
+<p>At the dinner table that night, Titli tried her best to seem normal.</p>
+<p>Subrata, too, ate in silence.</p>
+<p>Watching both their faces, Suchorita could tell something had happened.</p>
+<p>She asked,</p>
+<p class="dialogue">"What is it? Why are you both so quiet?"</p>
+<p>Titli answered at once,</p>
+<p class="dialogue">"It's nothing, Ma."</p>
+<p>Subrata said the same,</p>
+<p class="dialogue">"Yes, nothing at all."</p>
+<p>But the worry that flickered across his eyes as he said it did not escape Suchorita.</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🕯️ A Conversation Between Husband and Wife</h3>
+<p>Once Titli had gone off to her room, Suchorita quietly came and sat beside her husband.</p>
+<p class="dialogue">"Now tell me. What's happened?"</p>
+<p>Subrata was quiet for a while before saying,</p>
+<p class="dialogue">"A young man came to meet me today."</p>
+<p class="dialogue">"What young man?"</p>
+<p class="dialogue">"Sabuj Saha."</p>
+<p>Suchorita was a little surprised.</p>
+<p class="dialogue">"Why?"</p>
+<p>Subrata sighed.</p>
+<p class="dialogue"><strong>"He says he's supposedly been with Titli for a long time now."</strong></p>
+<p>Suchorita was silent for a moment.</p>
+<p>Then she said,</p>
+<p class="dialogue">"But Titli's been saying something else altogether."</p>
+<p class="dialogue">"I know."</p>
+<p class="dialogue">"Then what?"</p>
+<p>Subrata looked toward the window and said,</p>
+<p class="dialogue"><strong>"I honestly can't tell what the real truth is."</strong></p>
+<p>Suchorita laid her hand over her husband's.</p>
+<p class="dialogue">"Have you asked Titli?"</p>
+<p class="dialogue">"No."</p>
+<p class="dialogue">"Why not?"</p>
+<p>Subrata said, quietly,</p>
+<p class="dialogue"><strong>"If she really is in love with someone, cross-examining her out of the blue will only make her dig her heels in more."</strong></p>
+<p>Suchorita fell silent.</p>
+<p>Subrata spoke again,</p>
+<p class="dialogue"><strong>"But there's one thing that keeps nagging at me."</strong></p>
+<p class="dialogue">"What?"</p>
+<p class="dialogue">"That boy said they've been together for nearly four years."</p>
+<p>Now Suchorita looked at her husband.</p>
+<p class="dialogue">"Four years?"</p>
+<p class="dialogue">"Yes."</p>
+<p>For a while, the two of them fell silent.</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌿 A Truth Titli Didn't Know</h3>
+<p>In her own room, Titli was thinking of calling the real Sabuj.</p>
+<p>But seeing her father's behaviour had left her feeling restless.</p>
+<p>A few days ago, Baba had spoken to a boy.</p>
+<p>Whether he had seen that same boy again today, Titli had no way of knowing.</p>
+<p>She only knew—</p>
+<p><strong>Baba was troubled about something.</strong></p>
+<p>Titli said to herself,</p>
+<p><strong>"If Baba learns about Sabuj, will he accept our relationship?"</strong></p>
+<p>She had no idea that the Sabuj at the heart of her father's worry was not, in fact, the Sabuj she knew.</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🚲 A Memory from a Few Days Ago</h3>
+<p>Meanwhile, Subrata's mind kept returning again and again to that evening.</p>
+<p>The young man who had fallen after being knocked by his cycle.</p>
+<p><strong>Sabuj Roy.</strong></p>
+<p>The boy hadn't gotten angry.</p>
+<p>Quite the opposite — he'd been the one to reassure him.</p>
+<p>It seemed to Subrata that such calm, even-tempered young men were a rare sight these days.</p>
+<p>He told Suchorita,</p>
+<p class="dialogue"><strong>"You know, that boy I told you about the other day — Sabuj Roy — he's truly a good one."</strong></p>
+<p>Suchorita smiled softly and said,</p>
+<p class="dialogue">"But you've only met him the once."</p>
+<p class="dialogue">"A single meeting can tell you a great deal."</p>
+<p class="dialogue">"Then why so much praise?"</p>
+<p>Subrata laughed and said,</p>
+<p class="dialogue">"A man who can smile instead of getting angry, even after being knocked down — his heart can't be a bad one."</p>
+<p>Suchorita said nothing more.</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🚌 A Different Picture, Through Titli's Eyes</h3>
+<p>The next evening, Titli was returning from college by bus.</p>
+<p>As the bus was passing the market crossing, her eyes were suddenly drawn to the roadside.</p>
+<p>She saw—</p>
+<p><strong>her father, standing there, talking to a young man.</strong></p>
+<p>Titli recognised the boy.</p>
+<p>The very same boy who, a few days ago, had stopped her on the roadside and spoken of his love for her.</p>
+<p>Titli's chest trembled.</p>
+<p><strong>"What is Baba talking to him about?"</strong></p>
+<p>The bus moved on.</p>
+<p>Titli kept watching through the back window for as long as she could.</p>
+<p>But she couldn't make out a word of what her father and the boy were saying.</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌧️ Back Home</h3>
+<p>That evening, when Titli got home, Subrata was sitting there, perfectly at ease.</p>
+<p>Titli took off her shoes and stepped inside.</p>
+<p>Subrata suddenly said,</p>
+<p class="dialogue">"I was thinking of a young man today."</p>
+<p>Titli froze.</p>
+<p class="dialogue">"Who?"</p>
+<p class="dialogue"><strong>"Sabuj."</strong></p>
+<p>Titli's heart gave a jolt.</p>
+<p>Subrata went on,</p>
+<p class="dialogue">"I saw him on the road the other day. Very well-mannered. You barely find such conduct in young men these days."</p>
+<p>Titli stood there in silence.</p>
+<p>The scene from the bus flashed through her mind at once.</p>
+<p><strong>Baba had been talking to that same boy again today.</strong></p>
+<p>And now he was singing his praises!</p>
+<p>Titli said, in a cold voice,</p>
+<p class="dialogue"><strong>"You take a liking to just about anybody."</strong></p>
+<p>Subrata looked at his daughter, astonished.</p>
+<p class="dialogue">"What did you say?"</p>
+<p>Titli turned her face away and said,</p>
+<p class="dialogue">"Nothing."</p>
+<p class="dialogue">"No, you said something."</p>
+<p class="dialogue">"I said, you take a liking to just about anybody."</p>
+<p>Subrata couldn't make sense of what she meant.</p>
+<p>He said,</p>
+<p class="dialogue">"I was only talking about a young man."</p>
+<p>Titli answered at once,</p>
+<p class="dialogue"><strong>"I know."</strong></p>
+<p>Then she went off to her room.</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>💔 Two Rooms, Two Mistakes</h3>
+<p>Titli shut the door and sat down on her bed.</p>
+<p>One thought filled her mind—</p>
+<p><strong>"Why is Baba praising him so much?"</strong></p>
+<p>Meanwhile, Subrata turned to his wife and said,</p>
+<p class="dialogue">"I can't make sense of our daughter's behaviour these days."</p>
+<p>Suchorita said, calmly,</p>
+<p class="dialogue">"Perhaps she's misunderstood something."</p>
+<p class="dialogue">"What?"</p>
+<p>Suchorita said nothing more.</p>
+<p>She could sense that the shared name was causing some sort of tangle somewhere.</p>
+<p>But even she had no idea how deep that tangle ran.</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌙 A Decision, That Night</h3>
+<p>That night, Subrata lay awake for a long while.</p>
+<p>Question after question kept surfacing in his mind.</p>
+<p><strong>Who is this Sabuj that Titli speaks of?</strong></p>
+<p><strong>Is Sabuj Saha really a part of Titli's life?</strong></p>
+<p><strong>And who, exactly, is that calm, well-mannered Sabuj Roy?</strong></p>
+<p>He resolved—</p>
+<p><strong>not to push Titli about it just yet.</strong></p>
+<p>First, he wanted to work out the truth for himself.</p>
+<p>He told Suchorita,</p>
+<p class="dialogue"><strong>"I won't say anything to Titli. Let me understand the whole matter first."</strong></p>
+<p>Suchorita nodded and said,</p>
+<p class="dialogue">"That's for the best."</p>
+<p>But neither of them knew—</p>
+<p>the truth had been right before their eyes all along.</p>
+<p>Only <strong>a single name</strong> had kept that truth hidden.</p>
+<p>And that name—</p>
+<p><strong>Sabuj.</strong></p>
+<p>One, <strong>Sabuj Roy</strong> — whom Subrata had begun to genuinely like as a good young man.</p>
+<p>The other, <strong>Sabuj Saha</strong> — who, with his own lies, had sown the seed of doubt within this family.</p>
+<p>And Titli?</p>
+<p>She still had no idea that the very Sabuj her father was praising was her own <strong>true love</strong>.</p>
+<p><strong>To be continued...</strong> 🌿</p>
+        </div>
+        <div class="part-foot">
+          <button class="bookmark-btn" data-slug="part-4" aria-pressed="false">
+            <svg viewBox="0 0 24 24" class="bm-icon" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+            <span class="bm-label">Bookmark this chapter</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="part" id="part-5" data-slug="part-5" data-title="Chapter 6: Shadow of Doubt" aria-labelledby="part-5-h">
+        <div class="part-head">
+          <span class="part-eyebrow">Chapter 05</span>
+          <h2 id="part-5-h">Shadow of Doubt</h2>
+        </div>
+        <div class="part-body">
+<p>The next morning began just like any other.</p>
+<p>But an invisible weight seemed to have settled over Subrata Babu's mind.</p>
+<p>He kept trying, again and again, to piece together the events of the past few days.</p>
+<p>On one side, that calm, courteous boy — <strong>Sabuj Roy</strong>.</p>
+<p>On the other, the young man who claimed a place in Titli's life — <strong>Sabuj Saha</strong>.</p>
+<p>Their names were identical.</p>
+<p>But as people, they were worlds apart.</p>
+<p>It was this strange coincidence, above all, that troubled Subrata's mind.</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌿 An Unexpected Meeting</h3>
+<p>That day, on his way out of the office, Subrata Babu had stopped at a roadside tea stall.</p>
+<p>Suddenly, a familiar voice from behind—</p>
+<p class="dialogue">"Subrata Babu!"</p>
+<p>He turned around.</p>
+<p><strong>Sabuj Roy.</strong></p>
+<p>A smile broke instantly across Subrata's face.</p>
+<p class="dialogue">"Ah, it's you!"</p>
+<p>Sabuj came closer and said,</p>
+<p class="dialogue">"I'll say it again, about that day — you worried so much, but honestly, nothing happened to me at all."</p>
+<p>Subrata laughed and said,</p>
+<p class="dialogue">"You'd just taken a fall, and there you were comforting me — it left me quite embarrassed, honestly."</p>
+<p>Sabuj laughed and said,</p>
+<p class="dialogue">"An accident's just an accident. What's the use of sulking over it?"</p>
+<p>Subrata looked at the boy for a moment.</p>
+<p>Then he asked,</p>
+<p class="dialogue">"What do you do?"</p>
+<p>Sabuj told him about his job, and mentioned that he'd soon have to move to another state to join it.</p>
+<p>Subrata said,</p>
+<p class="dialogue">"Leaving everyone at home and going far away?"</p>
+<p class="dialogue">"Yes. For work, I'll have to go for a while."</p>
+<p class="dialogue">"Are you married?"</p>
+<p>Sabuj gave a small laugh and shook his head.</p>
+<p class="dialogue">"No."</p>
+<p>For no particular reason, Subrata felt a strange relief at hearing that.</p>
+<p>He said,</p>
+<p class="dialogue">"Do settle your life well."</p>
+<p>Sabuj replied, respectfully,</p>
+<p class="dialogue">"With your blessings, I'll certainly try."</p>
+<p>The words pleased Subrata even more.</p>
+<p>Before leaving, Sabuj said,</p>
+<p class="dialogue">"Well then, Subrata Babu, I'll take your leave."</p>
+<p>Subrata said,</p>
+<p class="dialogue">"Yes, take care of yourself."</p>
+<p>Sabuj walked off.</p>
+<p>Watching him go, Subrata thought to himself—</p>
+<p><strong>"The more I see of that boy, the more I like him."</strong></p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🕯️ Back Home</h3>
+<p>That evening, back home, Subrata told Suchorita,</p>
+<p class="dialogue">"I ran into that boy again today."</p>
+<p>Suchorita asked,</p>
+<p class="dialogue">"Which boy?"</p>
+<p class="dialogue">"Sabuj Roy."</p>
+<p class="dialogue">"Oh, that one!"</p>
+<p>Subrata laughed and said,</p>
+<p class="dialogue"><strong>"There's real good conduct in that boy. You can tell just from talking to him."</strong></p>
+<p>Suchorita looked at her husband's face.</p>
+<p class="dialogue">"Looks like you've grown quite fond of him."</p>
+<p class="dialogue">"Any good boy would win one over."</p>
+<p>No sooner had he said it than Subrata fell silent.</p>
+<p>Because a different question had suddenly stirred in his mind.</p>
+<p><strong>Could this be the very Sabuj who has entered Titli's life?</strong></p>
+<p>But he checked himself at once.</p>
+<p>No.</p>
+<p>This is only speculation.</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌧️ Should He Ask His Daughter?</h3>
+<p>That night, Titli was sitting at her study table.</p>
+<p>Subrata went and stood before her door a few times.</p>
+<p>Once, he almost decided to ask her directly—</p>
+<p><strong>"Who is this Sabuj of yours?"</strong></p>
+<p>But he didn't.</p>
+<p>He still remembered how their conversations had gone in recent days.</p>
+<p>The girl had become very touchy of late.</p>
+<p>A sudden question might well spark another quarrel.</p>
+<p>So he turned back.</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌸 A Discussion with Suchorita</h3>
+<p>Sitting on the bed, Subrata said to Suchorita,</p>
+<p class="dialogue">"I've been thinking about something."</p>
+<p class="dialogue">"What?"</p>
+<p class="dialogue">"Could this Sabuj of Titli's possibly be Sabuj Roy?"</p>
+<p>Suchorita was quiet for a moment.</p>
+<p class="dialogue">"But Titli's said her Sabuj is someone else."</p>
+<p class="dialogue">"I know."</p>
+<p class="dialogue">"Then?"</p>
+<p>Subrata said,</p>
+<p class="dialogue"><strong>"I'm just struck by the coincidence. Both of them named Sabuj."</strong></p>
+<p>Suchorita said, calmly,</p>
+<p class="dialogue">"Sharing a name doesn't make two people the same."</p>
+<p>Subrata sighed.</p>
+<p class="dialogue">"That's exactly the trouble. I can't tell which version is the truth."</p>
+<p>This time, Suchorita spoke firmly,</p>
+<p class="dialogue"><strong>"If Titli has truly loved someone for four years, then sooner or later, that boy will have to be brought before us."</strong></p>
+<p>Subrata fell silent.</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>📱 Titli's Phone Call</h3>
+<p>That very night, Titli called Sabuj Roy.</p>
+<p class="dialogue">"Baba talked about you again today."</p>
+<p>Sabuj said, surprised,</p>
+<p class="dialogue">"About me?"</p>
+<p class="dialogue">"Yes. Baba said you're apparently a really good sort."</p>
+<p>Sabuj was quiet for a moment, then laughed and said,</p>
+<p class="dialogue">"Your father actually likes me?"</p>
+<p>Titli laughed softly and said,</p>
+<p class="dialogue">"You have no idea just how much he likes you."</p>
+<p>Then, quite suddenly, Titli's voice grew heavy.</p>
+<p class="dialogue">"But he still doesn't know about us."</p>
+<p>Sabuj said,</p>
+<p class="dialogue">"Then it's time to tell him."</p>
+<p class="dialogue">"I'm scared."</p>
+<p class="dialogue">"I'm here."</p>
+<p>Titli was quiet for a moment.</p>
+<p>Then she said,</p>
+<p class="dialogue"><strong>"Will you come and meet Baba?"</strong></p>
+<p>Sabuj replied,</p>
+<p class="dialogue">"Of course."</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>⚠️ But Meanwhile...</h3>
+<p>That same night, Sabuj Saha made another move of his own.</p>
+<p>He called Subrata.</p>
+<p class="dialogue">"Subrata Babu, there's something I wanted to say."</p>
+<p class="dialogue">"Go on."</p>
+<p class="dialogue"><strong>"Titli isn't speaking to me. But I truly love her."</strong></p>
+<p>Subrata's face turned grave.</p>
+<p class="dialogue">"I can't offer any decision on your relationship with Titli right now."</p>
+<p class="dialogue">"I understand."</p>
+<p class="dialogue">"But remember one thing — I won't do anything against Titli's own wishes."</p>
+<p>Sabuj Saha paused, then said,</p>
+<p class="dialogue"><strong>"She loves me. She's just denying it now, under family pressure."</strong></p>
+<p>Subrata said nothing.</p>
+<p>After the call ended, the doubt in his mind grew deeper still.</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌑 A Shadow of Doubt</h3>
+<p>The night had grown late.</p>
+<p>Subrata stood by the window.</p>
+<p>Three questions now occupied his mind—</p>
+<p><strong>Who does Titli love?</strong></p>
+<p><strong>Is it Sabuj Roy?</strong></p>
+<p><strong>Or is Sabuj Saha the one telling the truth?</strong></p>
+<p>He found no answer.</p>
+<p>Only one thing was growing steadily clearer—</p>
+<p><strong>In this whole affair, the name "Sabuj" itself had become the biggest mystery of all.</strong></p>
+<p>And the only way to solve that mystery—</p>
+<p><strong>was to one day see, with his own eyes, this Sabuj of Titli's.</strong></p>
+<p>Subrata had no idea that meeting was not far off at all.</p>
+<p>Because the very next day, Titli was about to make a decision that would, for the first time, <strong>bring the real Sabuj Roy face to face with Subrata.</strong></p>
+<p>But would that meeting break the misunderstanding apart?</p>
+<p>Or would this mystery of the shared name bring on an even bigger danger?</p>
+<p><strong>To be continued...</strong> 🌿</p>
+        </div>
+        <div class="part-foot">
+          <button class="bookmark-btn" data-slug="part-5" aria-pressed="false">
+            <svg viewBox="0 0 24 24" class="bm-icon" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+            <span class="bm-label">Bookmark this chapter</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="part" id="part-6" data-slug="part-6" data-title="Chapter 7: Down an Unknown Road" aria-labelledby="part-6-h">
+        <div class="part-head">
+          <span class="part-eyebrow">Chapter 06</span>
+          <h2 id="part-6-h">Down an Unknown Road</h2>
+        </div>
+        <div class="part-body">
+<p>Titli had realised the situation was no longer what it once was.</p>
+<p>A doubt had taken root in her father's mind, but the chance to resolve it had not yet come. Meanwhile, the time for Sabuj Roy to join his new job was also drawing close.</p>
+<p>The two of them now faced a hard decision.</p>
+<p><strong>Should they wait, or step onto a new road for the sake of their own future?</strong></p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌙 A Decision, in the Dead of Night</h3>
+<p>Late that night, Titli sat alone in her room.</p>
+<p>An old photograph of her mother lay on the table.</p>
+<p>Looking at the picture, memories of childhood came flooding back — sitting by her mother's side through her illness, having her hair braided before school, being pulled close to her chest even after her smallest mistakes.</p>
+<p>Suchorita hadn't just been a stepmother.</p>
+<p>To Titli, she had been <strong>Ma</strong>.</p>
+<p>So the very thought of leaving home shook her to her core.</p>
+<p>Just then, a message came in from Sabuj—</p>
+<p><strong>"The decision is yours. I won't pressure you at all."</strong></p>
+<p>Titli sat looking at the message for a long while.</p>
+<p>Then she replied—</p>
+<p><strong>"I'll come with you. But I'll never forget Ma."</strong></p>
+<p>Sabuj wrote back—</p>
+<p><strong>"Your mother will always be your mother. Distance never changes that bond."</strong></p>
+<p>Titli's eyes filled with tears.</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🚪 The Moment of Leaving</h3>
+<p>Before dawn broke, Titli packed a few necessary things into a small bag.</p>
+<p>She looked, one last time, at every room in the house.</p>
+<p>Her whole childhood was woven into this house.</p>
+<p>Her first steps in this courtyard, her first school uniform in this room, and growing up alongside these very people.</p>
+<p>Her hand trembled as she reached for the door.</p>
+<p>But in the end, she stepped outside.</p>
+<p>Sabuj was waiting on the road outside the house.</p>
+<p>Seeing Titli, he came forward.</p>
+<p class="dialogue">"Shall we go?"</p>
+<p>Titli looked back, once.</p>
+<p class="dialogue"><strong>"Yes."</strong></p>
+<p>There was resolve in her voice, but tears in her eyes.</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>💍 The Start of a New Life</h3>
+<p>Within a few days, the two of them were legally married.</p>
+<p>It was a very simple wedding.</p>
+<p>No grand arrangements, no crowd of relatives.</p>
+<p>There was only the decision of two people — <strong>the decision to spend their lives together.</strong></p>
+<p>After the wedding, Sabuj said,</p>
+<p class="dialogue">"You could call your mother right now, if you like."</p>
+<p>Titli was quiet for a while.</p>
+<p class="dialogue">"I miss Ma terribly."</p>
+<p class="dialogue">"Then call her."</p>
+<p>Titli took the phone in her hand.</p>
+<p>Suchorita's number came up on the screen.</p>
+<p>Her finger hovered over the call button.</p>
+<p>Then she put the phone down.</p>
+<p class="dialogue">"Not today."</p>
+<p>Sabuj said nothing more.</p>
+<p>He understood — some relationships simply need time before you can reach them again.</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🚆 On the Way to a New State</h3>
+<p>As the train slowly carried them past the familiar city and onto unknown roads, Titli sat by the window.</p>
+<p>Sabuj said,</p>
+<p class="dialogue">"Feeling scared?"</p>
+<p>Titli smiled softly and said,</p>
+<p class="dialogue">"A little, since it's such a new place."</p>
+<p class="dialogue">"Do you trust me?"</p>
+<p class="dialogue"><strong>"I trust you. But it'll take time to make peace with my own heart."</strong></p>
+<p>Sabuj took her hand.</p>
+<p class="dialogue">"Take your time."</p>
+<p>Titli kept looking outside.</p>
+<p>Slowly, before her eyes, the familiar city faded away.</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🏠 A New Household</h3>
+<p>In a small town in another state, they began their new life.</p>
+<p>Sabuj joined his job.</p>
+<p>Titli, too, began adjusting to her new surroundings in her own way.</p>
+<p>In the beginning, everything felt unfamiliar.</p>
+<p>New roads, new neighbours, a new household.</p>
+<p>But every evening, when Sabuj came home, a smile would light up Titli's face.</p>
+<p>One day, standing in the kitchen, Titli said,</p>
+<p class="dialogue">"You know, I've understood something."</p>
+<p class="dialogue">"What?"</p>
+<p class="dialogue"><strong>"A household isn't built on love alone. You have to take on responsibility too."</strong></p>
+<p>Sabuj laughed and said,</p>
+<p class="dialogue">"You've well and truly grown up by now."</p>
+<p>Titli smiled softly and said,</p>
+<p class="dialogue">"Maybe."</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>⏳ A Few Years Later</h3>
+<p>Time moved on, in its own way.</p>
+<p>Their life in the new city slowly found its footing.</p>
+<p>Titli and Sabuj settled into their own household.</p>
+<p>Amid the busyness of work and the weight of household duties, one corner of Titli's heart always remained empty.</p>
+<p><strong>Suchorita.</strong></p>
+<p>Whenever she saw a child walking hand in hand with its mother, her own mother would come to mind.</p>
+<p>Sometimes, while cooking, she'd remember—</p>
+<p><strong>"How would Ma have cooked this?"</strong></p>
+<p>Sometimes, deep in the night, she'd pick up her phone and search for Suchorita's number.</p>
+<p>But she never found the courage to actually call.</p>
+<p>Wounded pride and guilt — both, together, always stopped her.</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌱 A New Arrival</h3>
+<p>Some time later, a new life came into their household.</p>
+<p>Titli became a mother.</p>
+<p>Holding her little son in her arms for the first time, she sat there, stunned into stillness.</p>
+<p>Looking at his tiny face, her eyes welled up.</p>
+<p>Softly, she said—</p>
+<p class="dialogue"><strong>"So this is the fear that comes with being a mother!"</strong></p>
+<p>Standing beside her, Sabuj smiled gently and said,</p>
+<p class="dialogue">"Fear of what?"</p>
+<p>Titli held the baby even closer to her chest.</p>
+<p class="dialogue"><strong>"I hope I never bring him any sorrow."</strong></p>
+<p>Then, after a moment's silence, she said,</p>
+<p class="dialogue">"I understand now, better than ever, just how much my mother loved me."</p>
+<p>For the first time in years, Titli found herself returning, in her heart, to Suchorita.</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌧️ Meanwhile...</h3>
+<p>Subrata Babu and Suchorita's life hadn't stood still either.</p>
+<p>Work, the household — everything went on as before.</p>
+<p>But the space their daughter had left behind remained empty.</p>
+<p>Every so often, Suchorita would go and stand in Titli's old room.</p>
+<p>She had never changed a thing in it.</p>
+<p>One day, Subrata said,</p>
+<p class="dialogue">"You've kept the room exactly as it was, even after all these years?"</p>
+<p>Suchorita said, softly,</p>
+<p class="dialogue"><strong>"What if our daughter comes back one day?"</strong></p>
+<p>Subrata gave no answer.</p>
+<p>He simply looked out the window and sighed.</p>
+<p>For a long time now, one question had been turning in his own mind too—</p>
+<p><strong>Was the decision made that day truly the right one?</strong></p>
+<p>But he had no way of finding an answer.</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🛣️ Many Years Later</h3>
+<p>In the flow of time, a few more years slipped by.</p>
+<p>One day, Subrata and Suchorita travelled to a city in another state to visit a relative's home.</p>
+<p>Their stay there had been arranged through a family they knew.</p>
+<p>That evening, Subrata got talking with a young man known to that family.</p>
+<p>In the course of conversation, the young man mentioned,</p>
+<p class="dialogue">"I live right here. I came for work, many years back."</p>
+<p>Subrata asked, casually,</p>
+<p class="dialogue">"Family?"</p>
+<p>The young man smiled and said,</p>
+<p class="dialogue"><strong>"I have a household. A wife, and a little son."</strong></p>
+<p>Subrata thought nothing more of it.</p>
+<p>But when the young man said,</p>
+<p class="dialogue"><strong>"Come, let me take you both to my home."</strong></p>
+<p>a strange feeling, without any reason, welled up in Suchorita's mind.</p>
+<p>For some reason, her chest gave a sudden tremor.</p>
+<p>They had no idea—</p>
+<p>that the moment that door ahead opened, they would come face to face with the biggest mistake of many years of their lives.</p>
+<p>And waiting beyond that door was—</p>
+<p><strong>Titli.</strong></p>
+<p><strong>To be continued...</strong> 🌿</p>
+        </div>
+        <div class="part-foot">
+          <button class="bookmark-btn" data-slug="part-6" aria-pressed="false">
+            <svg viewBox="0 0 24 24" class="bm-icon" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+            <span class="bm-label">Bookmark this chapter</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="part" id="part-7" data-slug="part-7" data-title="Chapter 8: A Familiar Face in an Unfamiliar City" aria-labelledby="part-7-h">
+        <div class="part-head">
+          <span class="part-eyebrow">Chapter 07</span>
+          <h2 id="part-7-h">A Familiar Face in an Unfamiliar City</h2>
+        </div>
+        <div class="part-body">
+<p>Many years had passed.</p>
+<p>Titli's life was now in another city. Her days passed in the busyness of household, husband, and son. Many memories of her old life had settled beneath the weight of time, but <strong>Suchorita's face</strong> had never once faded from her mind.</p>
+<p>Sometimes, putting her son to sleep, she'd think—</p>
+<p><strong>"How is Ma doing now?"</strong></p>
+<p>She had thought of calling, but in the end, could never bring herself to.</p>
+<p>Meanwhile, Subrata and Suchorita's life, too, went on at its own pace. There had been no contact with Titli for many years, but their daughter still lingered in their home like a silent presence.</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🚆 In Another City</h3>
+<p>After retiring, Subrata had come to this city with Suchorita for a few days.</p>
+<p>After settling in at a relative's home, they had gone out that afternoon to a market in the city.</p>
+<p>Standing by the roadside, Suchorita suddenly said,</p>
+<p class="dialogue">"It's quite a peaceful place here."</p>
+<p>Subrata laughed and said,</p>
+<p class="dialogue">"Peaceful, indeed. Though we'll have to head back in a few days."</p>
+<p>Suchorita said nothing.</p>
+<p>Her eyes drifted across the road.</p>
+<p>Suddenly, a familiar voice from behind—</p>
+<p class="dialogue"><strong>"Subrata Babu!"</strong></p>
+<p>Subrata turned around.</p>
+<p>For a moment, he could hardly believe his eyes.</p>
+<p class="dialogue"><strong>"Sabuj!"</strong></p>
+<p>Standing before him was <strong>Sabuj Roy</strong>.</p>
+<p>The years had brought some change to his face, but the smile was exactly the same.</p>
+<p>Sabuj stepped forward and said,</p>
+<p class="dialogue">"You, here?"</p>
+<p>Subrata laughed and said,</p>
+<p class="dialogue">"We've come for a few days. And you?"</p>
+<p class="dialogue">"I live right here."</p>
+<p>Suchorita, too, came forward.</p>
+<p class="dialogue">"How long have you been here?"</p>
+<p class="dialogue">"Many years now."</p>
+<p>As they talked, the warmth of an old acquaintance came flooding back.</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>☕ A Bit of Catching Up</h3>
+<p>They sat down at a roadside stall and had some tea.</p>
+<p>Sabuj spoke about his work, and mentioned that he'd settled here permanently now.</p>
+<p>Subrata listened with real interest.</p>
+<p class="dialogue">"How's the household going?"</p>
+<p>A smile lit up Sabuj's face.</p>
+<p class="dialogue">"Quite well. I got married."</p>
+<p>Suchorita said,</p>
+<p class="dialogue">"Wonderful! Any children?"</p>
+<p class="dialogue">"Yes, a son. He's in school."</p>
+<p>Subrata laughed and said,</p>
+<p class="dialogue">"He must be quite grown up by now, then."</p>
+<p>Sabuj laughed too.</p>
+<p>In the midst of talking, he suddenly said,</p>
+<p class="dialogue"><strong>"Come to my home today, both of you. We're meeting after so many years — we can't just say goodbye standing here on the street."</strong></p>
+<p>Suchorita said,</p>
+<p class="dialogue">"Your wife will surely be taken by surprise."</p>
+<p>Sabuj laughed and said,</p>
+<p class="dialogue">"She will be. But she'll be glad to see you, too."</p>
+<p>Subrata agreed.</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🏠 At the End of a Familiar Road</h3>
+<p>Sabuj led them toward his home.</p>
+<p>Along the way, he spoke of his son's school, his work, and various matters of home.</p>
+<p>Suchorita listened attentively.</p>
+<p>Suddenly, she asked,</p>
+<p class="dialogue">"Where is your wife right now?"</p>
+<p class="dialogue">"At home. She's busy today with something for our son's school."</p>
+<p>Subrata smiled softly and said,</p>
+<p class="dialogue">"I'm quite looking forward to seeing your household."</p>
+<p>Sabuj said,</p>
+<p class="dialogue">"You'll see it today, then."</p>
+<p>Arriving at the house, he opened the door.</p>
+<p>A little boy came running from inside.</p>
+<p class="dialogue"><strong>"Baba!"</strong></p>
+<p>Sabuj scooped his son up into his arms.</p>
+<p class="dialogue">"Look here, we have guests."</p>
+<p>The boy looked at Subrata and Suchorita with curious eyes.</p>
+<p>Suchorita smiled and rested a hand on his head.</p>
+<p class="dialogue">"What's your name?"</p>
+<p>The boy told her his name.</p>
+<p>Subrata exchanged a few affectionate words with him.</p>
+<p>Inside the house, Titli had not yet seen them.</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🚪 That Moment</h3>
+<p>Sabuj turned toward the inside of the house and called out—</p>
+<p class="dialogue"><strong>"Titli, come here a moment."</strong></p>
+<p>A voice floated in from the kitchen—</p>
+<p class="dialogue">"Coming."</p>
+<p>Suchorita froze.</p>
+<p>That voice was so very familiar.</p>
+<p>Impossibly familiar.</p>
+<p>But after so many years, matching memory to reality wasn't easy.</p>
+<p>She looked at Subrata.</p>
+<p>Subrata, too, seemed to sense something.</p>
+<p>A few seconds later, Titli emerged from inside.</p>
+<p>A small cloth in her hand.</p>
+<p>Her eyes fell first on Sabuj.</p>
+<p>Then on the guests.</p>
+<p>Titli's feet seemed rooted to the ground.</p>
+<p>The cloth slipped from her hand.</p>
+<p>Her lips trembled.</p>
+<p class="dialogue"><strong>"Baba..."</strong></p>
+<p>Subrata gave no answer.</p>
+<p>He simply stared.</p>
+<p>Then, one word broke from his lips—</p>
+<p class="dialogue"><strong>"Titli!"</strong></p>
+<p>Suchorita could hold herself back no longer.</p>
+<p>She rushed forward and embraced her daughter.</p>
+<p class="dialogue"><strong>"Ma..."</strong></p>
+<p>Titli buried her face in her mother's chest and wept.</p>
+<p>Years' worth of pent-up hurt, sorrow, and waiting seemed to break loose in that single moment.</p>
+<p>Suchorita could only say,</p>
+<p class="dialogue"><strong>"You've been so far away, and we never even knew!"</strong></p>
+<p>Titli couldn't find any answer to give.</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>😶 Sabuj's Silence</h3>
+<p>All this while, Sabuj had stood there, speechless.</p>
+<p>Astonishment filled his eyes.</p>
+<p>Slowly, he looked toward Subrata.</p>
+<p class="dialogue">"You... are Titli's father?"</p>
+<p>Now Subrata turned to look at Sabuj.</p>
+<p>His voice grew heavy.</p>
+<p class="dialogue"><strong>"Yes."</strong></p>
+<p>Sabuj's expression shifted.</p>
+<p>Then he looked at Titli.</p>
+<p>Titli wiped her tears and looked at her husband.</p>
+<p>No one said a word.</p>
+<p>So many years' worth of things had piled up, unsaid.</p>
+<p>Suchorita cupped Titli's face in both hands and simply said,</p>
+<p class="dialogue"><strong>"You're well, aren't you, my love?"</strong></p>
+<p>Titli nodded.</p>
+<p class="dialogue">"Yes."</p>
+<p>Suchorita's eyes welled up again.</p>
+<p class="dialogue">"Then why didn't you send us even a single word, all this time?"</p>
+<p>Titli lowered her eyes.</p>
+<p>She had an answer to that question.</p>
+<p>But she still hadn't found the courage to give it.</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌧️ Old Words Came Flooding Back</h3>
+<p>All this while, Subrata had said nothing.</p>
+<p>He looked around the room.</p>
+<p>In one corner, his grandson's books.</p>
+<p>On the wall, a family photograph.</p>
+<p>In the picture, Titli, Sabuj, and their son.</p>
+<p>Suddenly, his gaze fixed on that photograph.</p>
+<p>He understood—</p>
+<p><strong>the very life from which he had stayed away all these years had, all along, been his daughter's entire world.</strong></p>
+<p>Sabuj slowly came and stood before him.</p>
+<p class="dialogue">"Subrata Babu... I truly didn't know."</p>
+<p>Subrata raised a hand and stopped him.</p>
+<p class="dialogue"><strong>"There's no need for any explanation today."</strong></p>
+<p>Sabuj fell silent.</p>
+<p>Subrata looked at Titli.</p>
+<p>Though he wanted to say a great many things, he only said—</p>
+<p class="dialogue"><strong>"That you're well — that's the only thing that matters today."</strong></p>
+<p>Titli's eyes welled up once more.</p>
+<p>But Suchorita understood—</p>
+<p><strong>today, they had only met again.</strong></p>
+<p>The old wound had not yet healed.</p>
+<p>Many questions still awaited their answers.</p>
+<p>And those answers would come — not today—</p>
+<p><strong>but slowly, gradually, with time.</strong></p>
+<p>That night, after so many years, four people sat together beneath the same roof.</p>
+<p>No one had ever wanted to lose the other.</p>
+<p>But within each of their hearts lay something still unspoken.</p>
+<p>And hidden among those unspoken words was—</p>
+<p><strong>the whole truth of one wrong decision.</strong></p>
+<p><strong>To be continued...</strong> 🌿</p>
+        </div>
+        <div class="part-foot">
+          <button class="bookmark-btn" data-slug="part-7" aria-pressed="false">
+            <svg viewBox="0 0 24 24" class="bm-icon" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+            <span class="bm-label">Bookmark this chapter</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="part" id="part-8" data-slug="part-8" data-title="Final Chapter: Discipline Alongside Love" aria-labelledby="part-8-h">
+        <div class="part-head">
+          <span class="part-eyebrow">Final Chapter</span>
+          <h2 id="part-8-h">Discipline Alongside Love</h2>
+        </div>
+        <div class="part-body">
+<p>For a few moments, the people standing before that door seemed to step clean outside of time.</p>
+<p>Subrata Babu stood gazing at Titli. Tears streamed freely from Suchorita's eyes. Titli's lips trembled. And Sabuj stood there, stunned into silence.</p>
+<p>Years of distance seemed to vanish in a mere handful of moments.</p>
+<p>Titli was the first to move forward.</p>
+<p class="dialogue"><strong>"Baba..."</strong></p>
+<p>Subrata Babu could hold himself together no longer.</p>
+<p>He pulled his daughter into his arms.</p>
+<p>Titli buried her face in her father's chest and began to cry.</p>
+<p class="dialogue"><strong>"Baba, I never wanted to leave you..."</strong></p>
+<p>Subrata Babu rested a hand on his daughter's head.</p>
+<p class="dialogue">"I know, my love. I've come to understand that, in all this time."</p>
+<p>Suchorita, standing nearby, came forward and embraced Titli.</p>
+<p class="dialogue"><strong>"How did you manage all these years, all alone?"</strong></p>
+<p>Titli buried her face in her mother's chest and said,</p>
+<p class="dialogue">"Ma, I missed you terribly."</p>
+<p>Suchorita wiped her tears and said,</p>
+<p class="dialogue"><strong>"I missed you too, every single day."</strong></p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>💔 The Words Left Unsaid for So Long</h3>
+<p>After a while, everyone settled inside the house.</p>
+<p>The little boy looked on with curious eyes at his grandparents.</p>
+<p>Sabuj slowly came and stood before Subrata Babu.</p>
+<p class="dialogue">"Subrata Babu..."</p>
+<p>Subrata looked at him.</p>
+<p>Sabuj said,</p>
+<p class="dialogue"><strong>"I really didn't know you were Titli's father."</strong></p>
+<p>Subrata smiled softly and said,</p>
+<p class="dialogue">"And I didn't know that the very boy I'd come to know as a good sort, all this while, was the man in my own daughter's life."</p>
+<p>Sabuj's gaze dropped.</p>
+<p class="dialogue">"If only, back then, the two of us had known who the other truly was..."</p>
+<p>Subrata didn't let him finish.</p>
+<p class="dialogue"><strong>"Then perhaps we wouldn't have had to lose all these years."</strong></p>
+<p>A silence settled over the room.</p>
+<p>Titli looked at her father and said,</p>
+<p class="dialogue">"Baba, back then, I tried so hard to make you understand."</p>
+<p>Subrata bowed his head.</p>
+<p class="dialogue"><strong>"Yes, my love. You were telling the truth, all along. But I'd already convinced myself my own assumption was the real one."</strong></p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌿 A Shared Blame</h3>
+<p>Suchorita said, in a quiet voice,</p>
+<p class="dialogue">"It wasn't only your father's mistake, Titli."</p>
+<p>Titli looked at her mother.</p>
+<p class="dialogue">"Then?"</p>
+<p class="dialogue"><strong>"You, too, made your decision in a great hurry, back then."</strong></p>
+<p>Titli stayed quiet.</p>
+<p>Suchorita said,</p>
+<p class="dialogue">"If you'd taken a little more time, if you'd talked to us a bit more, perhaps things might have ended quite differently."</p>
+<p>Titli said, slowly,</p>
+<p class="dialogue"><strong>"I know, Ma. Back then, it felt like no one understood me."</strong></p>
+<p>Suchorita took her daughter's hand.</p>
+<p class="dialogue">"Sometimes, wounded pride pushes a person into decisions whose consequences they must carry for a long, long time after."</p>
+<p>Titli gripped her mother's hand tightly.</p>
+<p class="dialogue">"I made a mistake."</p>
+<p>Suchorita nodded and said,</p>
+<p class="dialogue"><strong>"It's only human to err. But recognising that error — that's what truly matters."</strong></p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌸 Suchorita's Own Mistake</h3>
+<p>Suddenly, Subrata Babu turned to look at Suchorita.</p>
+<p class="dialogue">"There's something you ought to say too, isn't there?"</p>
+<p>Suchorita gave a small, soft smile.</p>
+<p class="dialogue">"Yes. I, too, had a great deal to learn."</p>
+<p>She looked at Titli.</p>
+<p class="dialogue"><strong>"When you were little, it was the fear of losing you that so often kept me from calling your mistakes what they were."</strong></p>
+<p>Titli looked at her mother, taken aback.</p>
+<p>Suchorita said,</p>
+<p class="dialogue">"I used to think that if I scolded you even a little, you might come to feel I didn't consider you truly my own."</p>
+<p>Titli held her mother's hand and said,</p>
+<p class="dialogue">"I never once thought that."</p>
+<p>Suchorita smiled softly and said,</p>
+<p class="dialogue"><strong>"But it was that very fear that so often kept me from giving you the discipline you needed."</strong></p>
+<p>She paused a moment.</p>
+<p class="dialogue">"I understood later — loving a child doesn't mean accepting her every action. Stopping her when she errs is a part of that love too."</p>
+<p>Titli's eyes welled up.</p>
+<p class="dialogue"><strong>"I used to be angry with you back then. Now I understand — you only ever wanted what was good for me."</strong></p>
+<p>Suchorita drew her daughter close.</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>👦 A New Bond</h3>
+<p>The little boy now slowly came and stood beside Subrata Babu.</p>
+<p class="dialogue">"Grandpa..."</p>
+<p>Subrata looked up, startled.</p>
+<p>The boy said,</p>
+<p class="dialogue"><strong>"Are you really my grandpa?"</strong></p>
+<p>Subrata's eyes welled up once more.</p>
+<p>He lifted the boy into his lap.</p>
+<p class="dialogue">"Yes, my boy. Late as it is, I've found you today."</p>
+<p>The boy laughed and said,</p>
+<p class="dialogue">"Then will you tell me stories?"</p>
+<p>Subrata burst out laughing.</p>
+<p class="dialogue"><strong>"I'll tell you so many stories."</strong></p>
+<p>Suchorita stood by, watching the scene.</p>
+<p>It felt to her as though, into all those years of emptiness, a single moment of light had suddenly fallen.</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>❤️ An Incomplete Bond Made Whole</h3>
+<p>After dinner, everyone sat together.</p>
+<p>Titli came out of the kitchen to find Subrata Babu chatting with Sabuj.</p>
+<p>Subrata was saying,</p>
+<p class="dialogue">"You've kept her happy, all these years?"</p>
+<p>Sabuj laughed and said,</p>
+<p class="dialogue">"I've tried."</p>
+<p class="dialogue">"Not just tried. Looking at Titli's face today, I can tell — you've succeeded."</p>
+<p>Listening from a distance, Titli smiled softly.</p>
+<p>It seemed to her—</p>
+<p><strong>that the very approval she had once wept for, so many years ago, had come back to her today, all on its own.</strong></p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌅 The Next Morning</h3>
+<p>The next morning, Subrata Babu sat in the courtyard.</p>
+<p>Titli brought him tea and sat down beside him.</p>
+<p>For a while, the two of them said nothing.</p>
+<p>Then Titli said,</p>
+<p class="dialogue">"Baba, do you still love me the way you used to?"</p>
+<p>Subrata looked at his daughter, astonished.</p>
+<p class="dialogue"><strong>"Do you even need to ask that?"</strong></p>
+<p>Titli smiled softly and said,</p>
+<p class="dialogue">"I was away from you for so many years, after all."</p>
+<p>Subrata rested a hand on his daughter's head.</p>
+<p class="dialogue">"Distance never lessens love, my love. It only takes away the chance to show it."</p>
+<p>Tears sprang to Titli's eyes.</p>
+<p class="dialogue">"Then you won't send me far away again, will you?"</p>
+<p>Subrata laughed and said,</p>
+<p class="dialogue"><strong>"From now on, wherever you are — that's exactly where our hearts will be."</strong></p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌺 The Final Lesson</h3>
+<p>Standing a little way off, Suchorita had been listening to this conversation between father and daughter.</p>
+<p>She realised that the greatest lesson of their lives lay in no single mistake.</p>
+<p>Rather, the lesson lay in <strong>the balance of love</strong>.</p>
+<p>Just as too much doting can conceal a child's faults, too much harshness can push her away even from those who love her most.</p>
+<p>A child must be loved.</p>
+<p>When she errs, she must be made to understand.</p>
+<p>When needed, she must be disciplined.</p>
+<p>But alongside all of it must stand <strong>trust, patience, and the freedom to speak openly</strong>.</p>
+<p>Subrata Babu looked at Titli and said, softly,</p>
+<p class="pullquote"><strong>"Doting love keeps a person close, discipline shows them the way.</strong></p>
+<p class="pullquote"><strong>But without trust standing between the two, the way is bound to get lost."</strong></p>
+<p>Suchorita slowly came and stood beside him.</p>
+<p>Titli took one hand from her mother, and one from her father.</p>
+<p>Sabuj stood at a distance, watching the scene.</p>
+<p>The little boy ran up and wrapped his arms around all of them together.</p>
+<p>At the end of so many years of distance, a family had become whole again.</p>
+<p>No one could bring back the past.</p>
+<p>The lost years, too, never returned.</p>
+<p>But the people did.</p>
+<p>And sometimes—</p>
+<p><strong>that is the greatest thing life has to give.</strong></p>
+<h3>🌸 The End 🌸</h3>
+        </div>
+        <div class="part-foot">
+          <button class="bookmark-btn" data-slug="part-8" aria-pressed="false">
+            <svg viewBox="0 0 24 24" class="bm-icon" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+            <span class="bm-label">Bookmark this chapter</span>
+          </button>
+        </div>
+      </section>
+</main>
+
+<div class="colophon">
+  <p>"Doting love keeps people close, discipline shows them the way. But without trust between the two, the way gets lost."</p>
+  <p class="author">— The End · Surajit Roy</p>
+</div>
+
+<div id="drawer-overlay"></div>
+<aside id="drawer" aria-label="Table of Contents">
+  <div class="drawer-head">
+    <h3>Contents</h3>
+    <button class="drawer-close" id="drawer-close" aria-label="Close">&times;</button>
+  </div>
+  <div class="drawer-body">
+    <ul class="toc-list" id="drawer-list">
+          <li>
+            <a href="#part-1" class="toc-link" data-slug="part-1">
+              <span class="toc-num">01</span>
+              <span class="toc-title">Chapter 1: Under Mother's Aanchal</span>
+              <span class="toc-mark" data-mark="part-1" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#part-2" class="toc-link" data-slug="part-2">
+              <span class="toc-num">02</span>
+              <span class="toc-title">Chapter 2: In the Shadow of Doting Love</span>
+              <span class="toc-mark" data-mark="part-2" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#part-3" class="toc-link" data-slug="part-3">
+              <span class="toc-num">03</span>
+              <span class="toc-title">Chapter 4: Two People, One Name</span>
+              <span class="toc-mark" data-mark="part-3" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#part-4" class="toc-link" data-slug="part-4">
+              <span class="toc-num">04</span>
+              <span class="toc-title">Chapter 5: Doubt in Baba's Heart</span>
+              <span class="toc-mark" data-mark="part-4" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#part-5" class="toc-link" data-slug="part-5">
+              <span class="toc-num">05</span>
+              <span class="toc-title">Chapter 6: Shadow of Doubt</span>
+              <span class="toc-mark" data-mark="part-5" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#part-6" class="toc-link" data-slug="part-6">
+              <span class="toc-num">06</span>
+              <span class="toc-title">Chapter 7: Down an Unknown Road</span>
+              <span class="toc-mark" data-mark="part-6" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#part-7" class="toc-link" data-slug="part-7">
+              <span class="toc-num">07</span>
+              <span class="toc-title">Chapter 8: A Familiar Face in an Unfamiliar City</span>
+              <span class="toc-mark" data-mark="part-7" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#part-8" class="toc-link" data-slug="part-8">
+              <span class="toc-num">08</span>
+              <span class="toc-title">Final Chapter: Discipline Alongside Love</span>
+              <span class="toc-mark" data-mark="part-8" aria-hidden="true"></span>
+            </a>
+          </li>
+    </ul>
+  </div>
+</aside>
+
+<button id="to-top" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+</button>
+
+<script>
+(function(){
+  const STORAGE_KEY = "sohagerShasonProgress";
+
+  function loadState(){
+    try{
+      return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {bookmarks:[], visited:[], lastSlug:null, lastY:0};
+    }catch(e){ return {bookmarks:[], visited:[], lastSlug:null, lastY:0}; }
+  }
+  function saveState(state){
+    try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }catch(e){}
+  }
+  let state = loadState();
+
+  const parts = Array.from(document.querySelectorAll(".part"));
+  const partTitles = {};
+  parts.forEach(p => partTitles[p.dataset.slug] = p.dataset.title);
+
+  /* ---------- progress bar ---------- */
+  const progressBar = document.getElementById("progress-bar");
+  function updateProgress(){
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = pct + "%";
+  }
+
+  /* ---------- back to top ---------- */
+  const toTop = document.getElementById("to-top");
+  function updateToTop(){
+    if(window.scrollY > 600){ toTop.classList.add("show"); }
+    else{ toTop.classList.remove("show"); }
+  }
+  toTop.addEventListener("click", () => window.scrollTo({top:0, behavior:"smooth"}));
+
+  /* ---------- save reading position (throttled) ---------- */
+  let saveTimer = null;
+  function schedulePositionSave(){
+    if(saveTimer) return;
+    saveTimer = setTimeout(() => {
+      saveTimer = null;
+      const current = getCurrentPart();
+      if(current){
+        state.lastSlug = current;
+        state.lastY = window.scrollY;
+        if(!state.visited.includes(current)) state.visited.push(current);
+        saveState(state);
+        markVisitedInUI();
+      }
+    }, 700);
+  }
+
+  function getCurrentPart(){
+    let current = null;
+    const offset = 140;
+    for(const p of parts){
+      const rect = p.getBoundingClientRect();
+      if(rect.top - offset <= 0){ current = p.dataset.slug; }
+    }
+    return current || (parts[0] && parts[0].dataset.slug);
+  }
+
+  window.addEventListener("scroll", () => {
+    updateProgress();
+    updateToTop();
+    schedulePositionSave();
+    updateDrawerCurrent();
+  }, {passive:true});
+
+  /* ---------- resume banner ---------- */
+  const resumeBanner = document.getElementById("resume-banner");
+  const resumePartName = document.getElementById("resume-part-name");
+  const resumeGo = document.getElementById("resume-go");
+  const resumeDismiss = document.getElementById("resume-dismiss");
+
+  if(state.lastSlug && partTitles[state.lastSlug] && state.lastY > 300){
+    resumePartName.textContent = partTitles[state.lastSlug];
+    resumeBanner.classList.add("show");
+  }
+  resumeGo.addEventListener("click", () => {
+    resumeBanner.classList.remove("show");
+    window.scrollTo({top: state.lastY, behavior:"smooth"});
+  });
+  resumeDismiss.addEventListener("click", () => {
+    resumeBanner.classList.remove("show");
+  });
+
+  /* ---------- bookmarks ---------- */
+  function markVisitedInUI(){
+    document.querySelectorAll(".toc-mark").forEach(mark => {
+      const slug = mark.dataset.mark;
+      mark.classList.toggle("visited", state.visited.includes(slug));
+      mark.classList.toggle("bookmarked", state.bookmarks.includes(slug));
+    });
+  }
+  function markBookmarkButtons(){
+    document.querySelectorAll(".bookmark-btn").forEach(btn => {
+      const slug = btn.dataset.slug;
+      const on = state.bookmarks.includes(slug);
+      btn.setAttribute("aria-pressed", on ? "true" : "false");
+      btn.querySelector(".bm-label").textContent = on ? "Bookmarked" : "Bookmark this chapter";
+    });
+  }
+  document.querySelectorAll(".bookmark-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const slug = btn.dataset.slug;
+      const idx = state.bookmarks.indexOf(slug);
+      if(idx === -1){ state.bookmarks.push(slug); }
+      else{ state.bookmarks.splice(idx, 1); }
+      saveState(state);
+      markBookmarkButtons();
+      markVisitedInUI();
+    });
+  });
+  markBookmarkButtons();
+  markVisitedInUI();
+
+  /* ---------- TOC drawer ---------- */
+  const tocToggle = document.getElementById("toc-toggle");
+  const drawer = document.getElementById("drawer");
+  const drawerOverlay = document.getElementById("drawer-overlay");
+  const drawerClose = document.getElementById("drawer-close");
+
+  function openDrawer(){
+    drawer.classList.add("open");
+    drawerOverlay.classList.add("open");
+  }
+  function closeDrawer(){
+    drawer.classList.remove("open");
+    drawerOverlay.classList.remove("open");
+  }
+  tocToggle.addEventListener("click", openDrawer);
+  drawerClose.addEventListener("click", closeDrawer);
+  drawerOverlay.addEventListener("click", closeDrawer);
+  document.querySelectorAll("#drawer .toc-link").forEach(link => {
+    link.addEventListener("click", closeDrawer);
+  });
+
+  function updateDrawerCurrent(){
+    const current = getCurrentPart();
+    document.querySelectorAll("#drawer .toc-link").forEach(link => {
+      link.parentElement.classList.toggle("drawer-current", link.dataset.slug === current);
+    });
+  }
+
+  updateProgress();
+  updateToTop();
+  markVisitedInUI();
+  updateDrawerCurrent();
+})();
+</script>
+</body>
+</html>
