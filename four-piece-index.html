@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Four-Piece Treasure Map — All Episodes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-deep:   #081521;
+    --navy-base:   #0e2233;
+    --navy-panel:  #14304a;
+    --navy-line:   #24476a;
+    --gold:        #c9a24b;
+    --gold-bright: #e8c874;
+    --cream:       #ede6d6;
+    --cream-dim:   #b9c2cc;
+    --ember:       #a54b3a;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at 50% -10%, rgba(201,162,75,0.10), transparent 55%),
+      var(--navy-deep);
+    color:var(--cream);
+    font-family:'Inter', sans-serif;
+    line-height:1.8;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
+  }
+  a{ color:var(--gold-bright); }
+  a:focus-visible, button:focus-visible{ outline:2px solid var(--gold-bright); outline-offset:3px; }
+
+  .topnav{
+    max-width:680px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:1rem 1.4rem;
+    font-size:0.85rem;
+  }
+  .topnav a{ text-decoration:none; color:var(--cream-dim); }
+  .topnav a:hover{ color:var(--gold-bright); }
+  .topnav .brand{ color:var(--gold); font-family:'Playfair Display', serif; font-weight:600; }
+
+  .cover{
+    position:relative; width:100%; aspect-ratio:4/5; max-height:78vh; overflow:hidden;
+  }
+  .cover img{ width:100%; height:100%; object-fit:cover; object-position:50% 30%; display:block; filter:saturate(1.03); }
+  .cover::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(8,21,33,0.15) 0%, rgba(8,21,33,0.05) 45%, rgba(8,21,33,0.65) 82%, var(--navy-deep) 100%);
+  }
+  @media (min-width:640px){ .cover{ aspect-ratio:16/9; max-height:72vh; } }
+
+  .hero{
+    position:relative; padding:2.2rem 1.4rem 2.6rem; text-align:center; overflow:hidden;
+    border-bottom:1px solid var(--navy-line);
+  }
+  .hero.with-cover{ margin-top:-4.5rem; }
+  .hero::before{
+    content:""; position:absolute; inset:0;
+    background:
+      repeating-linear-gradient(115deg, rgba(201,162,75,0.05) 0 2px, transparent 2px 70px),
+      linear-gradient(180deg, transparent, var(--navy-deep) 40%);
+    z-index:-1;
+  }
+  .hero .kicker{ font-size:0.8rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--cream-dim); margin:0 0 0.9rem; }
+  .hero h1{
+    font-family:'Playfair Display', serif; font-weight:700;
+    font-size:clamp(1.9rem, 8vw, 3rem); line-height:1.25; margin:0 0 0.7rem;
+    color:var(--gold-bright); text-shadow:0 0 30px rgba(201,162,75,0.18);
+  }
+  .hero .tagline{ font-family:'Playfair Display', serif; font-size:1.05rem; color:var(--cream-dim); margin:0; font-style:italic; }
+
+  .intro{ max-width:680px; margin:0 auto; padding:2.8rem 1.4rem 1rem; }
+  .intro-label{
+    display:flex; align-items:center; gap:0.6rem;
+    font-family:'Playfair Display', serif; font-weight:600; color:var(--gold);
+    font-size:0.95rem; letter-spacing:0.04em; text-transform:uppercase; margin:0 0 1.4rem;
+  }
+  .intro-label::before{ content:""; width:22px; height:1px; background:var(--gold); }
+  .intro p{ margin:0 0 1.2rem; font-size:1.06rem; color:var(--cream); }
+  .intro p.lede{ color:var(--gold-bright); font-family:'Playfair Display', serif; font-style:italic; font-size:1.12rem; line-height:1.7; }
+  .intro p:not(.lede):first-of-type::first-letter{
+    font-family:'Playfair Display', serif; font-size:2.6rem; font-weight:700; color:var(--gold-bright);
+    float:left; line-height:0.8; padding:0.1rem 0.35rem 0 0;
+  }
+  .intro .questions{ color:var(--cream-dim); font-style:italic; }
+  .intro .closing-line{
+    text-align:center; color:var(--gold); font-family:'Playfair Display', serif; font-style:italic;
+    font-size:1.05rem; margin:2rem 0 0.5rem; letter-spacing:0.02em;
+  }
+  .scene-divider{ display:flex; align-items:center; justify-content:center; gap:0.7rem; margin:2.4rem 0; color:var(--gold); }
+  .scene-divider::before, .scene-divider::after{ content:""; height:1px; width:80px; background:linear-gradient(90deg, transparent, var(--navy-line)); }
+  .scene-divider::after{ background:linear-gradient(90deg, var(--navy-line), transparent); }
+  .scene-divider span{ font-size:1.1rem; }
+
+  .ep-heading{
+    max-width:680px; margin:0 auto; padding:2.6rem 1.4rem 0.8rem;
+    display:flex; align-items:center; gap:0.6rem;
+    font-family:'Playfair Display', serif; font-weight:600; color:var(--gold);
+    font-size:1rem; letter-spacing:0.04em; text-transform:uppercase;
+  }
+  .ep-heading::before{ content:""; width:22px; height:1px; background:var(--gold); }
+
+  .ep-list{ max-width:680px; margin:0 auto; padding:0 1.4rem 3rem; display:flex; flex-direction:column; gap:0.7rem; }
+  .ep-item{
+    display:flex; align-items:center; gap:1rem;
+    padding:1rem 1.1rem; border:1px solid var(--navy-line); border-radius:4px;
+    text-decoration:none; color:var(--cream); background:rgba(20,48,74,0.35);
+    transition:border-color 0.15s;
+  }
+  .ep-item:hover{ border-color:var(--gold); }
+  .ep-item.disabled{ opacity:0.45; }
+  .ep-item-no{ font-family:'Playfair Display', serif; color:var(--gold); font-weight:600; min-width:84px; }
+  .ep-item-title{ flex:1; font-size:0.96rem; }
+  .ep-item-arrow{ color:var(--gold-bright); }
+
+  footer{
+    text-align:center; padding:1.6rem 1.4rem 2.6rem; color:var(--cream-dim); font-size:0.8rem;
+    border-top:1px solid var(--navy-line);
+  }
+
+  @media (min-width:640px){ .hero{ padding:5.2rem 1.4rem 3.4rem; } .hero.with-cover{ padding-top:2.2rem; } .intro p{ font-size:1.1rem; } }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <img src="images/cover.jpg" alt="The Four-Piece Treasure Map — Cover">
+</div>
+
+<div class="hero with-cover">
+  <p class="kicker">A Bengali Serial Novel · Complete (13 Episodes)</p>
+  <h1>The Four-Piece Treasure Map</h1>
+  <p class="tagline">A Hundred-Year-Old Truth Behind the Treasure</p>
+</div>
+
+<div class="intro">
+  <p class="intro-label">Introduction</p>
+
+  <p class="lede">An old ancestral house.<br>
+  A mysterious letter.<br>
+  And an incomplete map — every line of which seems to hold a secret a hundred years old.</p>
+
+  <p>When Kanchan's ancestral home catches the eye of the powerful businessman Arindam Chowdhury, strange events begin to unfold, one after another. The house's old walls, its well, its prayer room, and its Shiva lingam — everything in it seems entwined with a mystery no one can yet name.</p>
+
+  <p>Following clues left behind by his great-grandfather, Harinarayan, Kanchan discovers that the map is not complete. Its four missing pieces lie hidden in different corners of the very house he grew up in.</p>
+
+  <p>But with every piece recovered, the mystery only grows deeper.</p>
+
+  <p class="questions">In the darkness of the well, an unknown man waits.<br>
+  Within the pages of an old manuscript lies an unexpected clue.<br>
+  Beneath the Shiva lingam is found a mark whose meaning Kanchan cannot, at first, understand.</p>
+
+  <p>And into this dangerous search steps Supriya, standing beside Kanchan at every turn.</p>
+
+  <p>When the four pieces are finally brought together, they discover something unsettling — the map is not what it first appeared to be. An old mirror reveals to them its hidden, second form.</p>
+
+  <div class="scene-divider"><span>✦</span></div>
+
+  <p>Then — beneath the floor of the prayer room, a passage opens whose existence no one had ever known.</p>
+
+  <p>Deep within a dark underground chamber waits a truth a hundred years old. To reach it, Kanchan and Supriya must face a strange mechanical lock, a forgotten code, and a secret bound not only to their own family, but to the pasts of many others.</p>
+
+  <p class="questions">But what is Arindam Chowdhury's connection to all of this?<br>
+  Why has he pursued this house so relentlessly, for so many years?<br>
+  What was Harinarayan truly hiding?<br>
+  And what waits inside the chest in that underground chamber?</p>
+
+  <p>Will the search for treasure lead only to gold — or will Kanchan come face to face with a truth whose worth no wealth can measure?</p>
+
+  <p><em>The Four-Piece Treasure Map</em> is not simply a story about treasure. It is a thrilling journey through mystery, family history, love, greed, betrayal — and the search for truth.</p>
+
+  <p class="questions">Will the final chapter of a mystery that began a hundred years ago finally be written?<br>
+  Where is the last piece of the map?<br>
+  And what, in the end, is the real treasure?</p>
+
+  <p class="closing-line">The answer lies waiting in the darkness of the underground chamber...</p>
+</div>
+
+<div class="ep-heading">All Episodes</div>
+
+<div class="ep-list">
+<a class="ep-item" href="porbo-1.html">
+  <span class="ep-item-no">Ep. 1</span>
+  <span class="ep-item-title">A Small Accident</span>
+  <span class="ep-item-arrow">→</span>
+</a>
+<a class="ep-item" href="porbo-2.html">
+  <span class="ep-item-no">Ep. 2</span>
+  <span class="ep-item-title">A New Opportunity</span>
+  <span class="ep-item-arrow">→</span>
+</a>
+<a class="ep-item" href="porbo-3.html">
+  <span class="ep-item-no">Ep. 3</span>
+  <span class="ep-item-title">The First Enemy</span>
+  <span class="ep-item-arrow">→</span>
+</a>
+<a class="ep-item" href="porbo-4.html">
+  <span class="ep-item-no">Ep. 4</span>
+  <span class="ep-item-title">The Night of Fire</span>
+  <span class="ep-item-arrow">→</span>
+</a>
+<a class="ep-item" href="porbo-5.html">
+  <span class="ep-item-no">Ep. 5</span>
+  <span class="ep-item-title">After the Fire</span>
+  <span class="ep-item-arrow">→</span>
+</a>
+<a class="ep-item" href="porbo-6.html">
+  <span class="ep-item-no">Ep. 6</span>
+  <span class="ep-item-title">The Old Iron Box</span>
+  <span class="ep-item-arrow">→</span>
+</a>
+<a class="ep-item" href="porbo-7.html">
+  <span class="ep-item-no">Ep. 7</span>
+  <span class="ep-item-title">The Secret Code and the Puzzle of Four Pieces</span>
+  <span class="ep-item-arrow">→</span>
+</a>
+<a class="ep-item" href="porbo-8.html">
+  <span class="ep-item-no">Ep. 8</span>
+  <span class="ep-item-title">The Secret Code and the First Piece</span>
+  <span class="ep-item-arrow">→</span>
+</a>
+<a class="ep-item" href="porbo-9.html">
+  <span class="ep-item-no">Ep. 9</span>
+  <span class="ep-item-title">Attack on the Ancestral House and the Second Piece</span>
+  <span class="ep-item-arrow">→</span>
+</a>
+<a class="ep-item" href="porbo-10.html">
+  <span class="ep-item-no">Ep. 10</span>
+  <span class="ep-item-title">Arindam's Past and the Mirror's Signal</span>
+  <span class="ep-item-arrow">→</span>
+</a>
+<a class="ep-item" href="porbo-11.html">
+  <span class="ep-item-no">Ep. 11</span>
+  <span class="ep-item-title">The Secret Truth of the Underground Chamber and the Mystery of Three Wheels</span>
+  <span class="ep-item-arrow">→</span>
+</a>
+<a class="ep-item" href="porbo-12.html">
+  <span class="ep-item-no">Ep. 12</span>
+  <span class="ep-item-title">The Light Behind the Shadows and Arindam's Remorse</span>
+<span class="ep-item-arrow">→</span>
+</a>
+
+<a class="ep-item" href="porbo-13.html">
+  <span class="ep-item-no">Ep. 13</span>
+ <span class="ep-item-title">A New Dawn and the Eternal Truth (Final Episode)</span>
+  <span class="ep-item-arrow">→</span>
+</a>
+
+<a class="ep-item" href="quiz-index-en.html">
+  <span class="ep-item-no">Assessment Quiz</span>
+  <span class="ep-item-arrow">→</span>
+</a>
+<a class="ep-item" href="index.html">
+  <span class="ep-item-no">MySkill Global</span>
+  <span class="ep-item-arrow">→</span>
+</a>
+
+ </div>
+
+<footer>
+  The Four-Piece Treasure Map · A Serial Novel
+</footer>
+
+</body>
+</html>

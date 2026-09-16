@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Four-Piece Treasure Map — Episode 13 (Final Episode)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-deep:   #081521;
+    --navy-base:   #0e2233;
+    --navy-panel:  #14304a;
+    --navy-line:   #24476a;
+    --gold:        #c9a24b;
+    --gold-bright: #e8c874;
+    --cream:       #ede6d6;
+    --cream-dim:   #b9c2cc;
+    --ember:       #a54b3a;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at 50% -10%, rgba(201,162,75,0.10), transparent 55%),
+      var(--navy-deep);
+    color:var(--cream);
+    font-family:'Inter', sans-serif;
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
+  }
+  a{ color:var(--gold-bright); }
+  a:focus-visible, button:focus-visible{ outline:2px solid var(--gold-bright); outline-offset:3px; }
+
+  .topnav{
+    max-width:640px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:1rem 1.4rem;
+    font-size:0.85rem;
+  }
+  .topnav a{ text-decoration:none; color:var(--cream-dim); }
+  .topnav a:hover{ color:var(--gold-bright); }
+  .topnav .brand{ color:var(--gold); font-family:'Playfair Display', serif; font-weight:600; }
+
+  .cover{
+    position:relative; width:100%; aspect-ratio:4/5; max-height:78vh; overflow:hidden;
+  }
+  .cover img{ width:100%; height:100%; object-fit:cover; object-position:50% 30%; display:block; filter:saturate(1.03); }
+  .cover::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(8,21,33,0.15) 0%, rgba(8,21,33,0.05) 45%, rgba(8,21,33,0.65) 82%, var(--navy-deep) 100%);
+  }
+  @media (min-width:640px){ .cover{ aspect-ratio:16/9; max-height:72vh; } }
+
+  .hero{
+    position:relative; padding:2.2rem 1.4rem 3rem; text-align:center; overflow:hidden;
+    border-bottom:1px solid var(--navy-line);
+  }
+  .hero.with-cover{ margin-top:-4.5rem; }
+  .hero.no-cover{ padding-top:4.2rem; }
+  .hero::before{
+    content:""; position:absolute; inset:0;
+    background:
+      repeating-linear-gradient(115deg, rgba(201,162,75,0.05) 0 2px, transparent 2px 70px),
+      linear-gradient(180deg, transparent, var(--navy-deep) 40%);
+    z-index:-1;
+  }
+  .hero.no-cover::before{
+    background:
+      repeating-linear-gradient(115deg, rgba(201,162,75,0.05) 0 2px, transparent 2px 70px),
+      linear-gradient(180deg, var(--navy-base), var(--navy-deep) 85%);
+  }
+  .hero .kicker{ font-size:0.82rem; letter-spacing:0.06em; color:var(--cream-dim); margin:0 0 0.9rem; }
+  .hero h1{
+    font-family:'Playfair Display', serif; font-weight:700;
+    font-size:clamp(1.7rem, 8vw, 2.6rem); line-height:1.3; margin:0 0 0.6rem;
+    color:var(--gold-bright); text-shadow:0 0 30px rgba(201,162,75,0.18);
+  }
+  .hero .tagline{ font-family:'Playfair Display', serif; font-size:1rem; color:var(--cream-dim); margin:0; font-style:italic; }
+
+  .meta-bar{
+    max-width:640px; margin:0 auto; padding:1.1rem 1.4rem;
+    display:flex; justify-content:space-between; align-items:center;
+    font-size:0.82rem; color:var(--cream-dim); border-bottom:1px solid var(--navy-line);
+  }
+  .meta-bar .ep-no{ color:var(--gold); font-weight:600; }
+
+  main{ max-width:640px; margin:0 auto; padding:2.6rem 1.4rem 1rem; }
+  article p{ margin:0 0 1.25rem; font-size:1.06rem; color:var(--cream); }
+  article p:first-of-type::first-letter{
+    font-family:'Playfair Display', serif; font-size:2.6rem; font-weight:700; color:var(--gold-bright);
+    float:left; line-height:0.8; padding:0.1rem 0.35rem 0 0;
+  }
+  .line{ color:var(--cream-dim); font-style:italic; font-size:0.98rem; }
+  .sfx{ text-align:center; color:var(--gold); font-family:'Playfair Display', serif; font-weight:600; font-size:1.15rem; letter-spacing:0.08em; margin:0.4rem 0 1.4rem; }
+  .dialogue{ color:var(--gold-bright); padding-left:0.9rem; border-left:2px solid var(--navy-line); margin:0 0 0.85rem; }
+  .board{ font-family:'Playfair Display', serif; text-align:center; color:var(--gold-bright); font-size:1.08rem; font-weight:600; margin:1.6rem 0 0.3rem; letter-spacing:0.02em; }
+  .board.sub{ font-family:'Inter', sans-serif; font-weight:400; font-style:italic; font-size:0.92rem; color:var(--cream-dim); margin-top:0; margin-bottom:1.6rem; }
+  .scene-divider{ display:flex; align-items:center; justify-content:center; gap:0.7rem; margin:2.6rem 0; color:var(--gold); }
+  .scene-divider::before, .scene-divider::after{ content:""; height:1px; width:80px; background:linear-gradient(90deg, transparent, var(--navy-line)); }
+  .scene-divider::after{ background:linear-gradient(90deg, var(--navy-line), transparent); }
+  .scene-divider span{ font-size:1.1rem; }
+  .subhead{
+    font-family:'Playfair Display', serif; font-weight:600; color:var(--gold); font-size:1rem;
+    margin:2.2rem 0 1.2rem; display:flex; align-items:center; gap:0.6rem;
+  }
+  .subhead::before{ content:""; width:18px; height:1px; background:var(--gold); }
+  .closing{ margin-top:2.6rem; padding-top:1.8rem; border-top:1px solid var(--navy-line); }
+  .closing p{ color:var(--cream-dim); }
+  .closing .names{ color:var(--gold-bright); font-weight:600; font-family:'Playfair Display', serif; }
+  .continued{ text-align:center; margin:2.4rem 0 1rem; }
+  .continued span{
+    display:inline-block; font-family:'Playfair Display', serif; font-style:italic; color:var(--navy-deep);
+    background:var(--gold); padding:0.5rem 1.6rem; border-radius:2px; font-size:0.95rem; letter-spacing:0.03em;
+  }
+  .ep-nav{
+    max-width:640px; margin:2rem auto 0; padding:1.4rem;
+    display:flex; justify-content:space-between; gap:1rem;
+    border-top:1px solid var(--navy-line);
+  }
+  .ep-nav a{
+    text-decoration:none; color:var(--cream); font-size:0.9rem;
+    padding:0.6rem 1rem; border:1px solid var(--navy-line); border-radius:3px;
+    flex:1; text-align:center;
+  }
+  .ep-nav a:hover{ border-color:var(--gold); color:var(--gold-bright); }
+  .ep-nav a.disabled{ opacity:0.35; pointer-events:none; }
+  footer{
+    text-align:center; padding:1.6rem 1.4rem 2.6rem; color:var(--cream-dim); font-size:0.8rem;
+    border-top:1px solid var(--navy-line);
+  }
+  @media (min-width:640px){ .hero{ padding:5.5rem 1.4rem 3.6rem; } .hero.with-cover{ padding-top:2.2rem; } article p{ font-size:1.1rem; } }
+
+</style>
+</head>
+<body>
+
+<div class="topnav">
+  <a href="four-piece-index.html">← All Episodes</a>
+  <span class="brand">The Four-Piece Treasure Map</span>
+</div>
+
+<div class="hero no-cover">
+  <p class="kicker">A Bengali Serial Novel</p>
+  <h1>The Four-Piece Treasure Map</h1>
+  <p class="tagline">A Hundred-Year-Old Truth Behind the Treasure</p>
+</div>
+
+<div class="meta-bar">
+  <span><span class="ep-no">Episode 13</span> — A New Dawn and the Eternal Truth (Final Episode)</span>
+  <span>Complete</span>
+</div>
+
+<main>
+<article>
+<p>Closing the secret door of the underground chamber behind them, Kanchan, Supriya, and Arindam Chowdhury came out and stood in the open courtyard of the house.</p>
+<p>Dawn had broken. In the eastern sky, the first light of the sun had drawn back the curtain of darkness and fallen across the moss-covered old bricks. The hundred-year-old, weathered house seemed to have woken into new light after a long sleep.</p>
+
+<div class="scene-divider"><span>🌞</span></div>
+<p class="subhead">A New Morning, A New Bond</p>
+
+<p>Standing before the Shiva lingam, Arindam folded his hands.</p>
+<p class="dialogue">— "For all these years I searched for the blessing of wealth. Today I understand — the real blessing was protecting people's rights."</p>
+<p>Kanchan and Supriya stood beside him in silence. After a while, Supriya turned to Kanchan with a soft smile and said—</p>
+<p class="dialogue">— "So what about your pizza shop, then?"</p>
+<p>Kanchan smiled.</p>
+<p class="dialogue">— "That's certainly not going anywhere!"</p>
+<p>Supriya said, a little playfully—</p>
+<p class="dialogue">— "And me? Am I to stay just the pizza shop owner's friend, then?"</p>
+<p>Kanchan was quiet for a moment. Then he smiled softly and said—</p>
+<p class="dialogue">— "Why would you have to stay just a friend?"</p>
+<p>A shy smile bloomed on Supriya's face.</p>
+<p>Arindam, watching the two of them from a little distance, smiled gently. Slowly, he said—</p>
+<p class="dialogue">— "If the two of you truly love each other, I have no objection at all."</p>
+<p>Supriya looked at her father.</p>
+<p class="dialogue">— "Really, Baba?"</p>
+<p>Arindam nodded.</p>
+<p class="dialogue">— "Yes. But remember one thing — let your bond stand on the same trust as the truth we found today."</p>
+<p>Kanchan bowed his head in respect.</p>
+<p class="dialogue">— "I give you my word."</p>
+<p>Supriya smiled softly too, and said—</p>
+<p class="dialogue">— "So do I."</p>
+
+<div class="scene-divider"><span>💍</span></div>
+<p class="subhead">A Few Months Later</p>
+
+<p>In the flow of time, a few months passed. With the help of lawyers and the local administration, Harinarayan's copper-plate grant and the old land documents were verified. The process began to restore the rights of those whose ancestors' land had been unjustly seized. Arindam put his own wealth and influence behind carrying that work forward.</p>
+<p>And Kanchan and Supriya decided — this new chapter of their lives, too, would begin with doing something for others.</p>
+<p>Then came the long-awaited day. In the presence of the villagers, relatives, and those closest to them, Kanchan and Supriya were married. Amid the ringing of bells at the Shiva temple, it felt as though the long-standing distance between the two families had finally come to an end.</p>
+<p>Arindam placed his hand on Kanchan's shoulder and said—</p>
+<p class="dialogue">— "From today, you're not just my daughter's husband. You're my son."</p>
+<p>Kanchan's eyes grew wet. He took Arindam's hand and said—</p>
+<p class="dialogue">— "And you're not just my father-in-law. You're one of my own family."</p>
+<p>Supriya looked at the two of them and smiled.</p>
+
+<div class="scene-divider"><span>🍕</span></div>
+<p class="subhead">A New Path for Bella Pizza</p>
+
+<p>Even after the wedding, Kanchan didn't close Bella Pizza. Instead, Supriya came and stood beside him in it too. Together, the two of them decided — a portion of Bella Pizza's profits would go toward the education, books, clothing, and school supplies of underprivileged children in the village.</p>
+<p>Slowly, their small shop stopped being just a place to eat. It became—</p>
+<p class="board sub">A small shelter where the village's children could learn to dream.</p>
+<p>Arindam, too, folded part of his own business into this initiative.</p>
+
+<div class="scene-divider"><span>📜</span></div>
+<p class="subhead">The True Meaning of Treasure</p>
+
+<p>One evening, Kanchan sat holding that old four-piece map in his hands. Supriya came and stood beside him.</p>
+<p class="dialogue">— "Thinking about something?"</p>
+<p>Kanchan smiled softly and said—</p>
+<p class="dialogue">— "Thinking about how big a mistaken belief we spent all that time chasing."</p>
+<p class="dialogue">— "What mistake?"</p>
+<p class="dialogue">— "That treasure has to mean gold."</p>
+<p>Supriya said—</p>
+<p class="dialogue">— "But in the end?"</p>
+<p>Kanchan looked toward Harinarayan's letter.</p>
+<p class="dialogue">— "In the end, I understood — there's no wealth greater than protecting people's rights."</p>
+<p>Supriya took his hand. Both of them knew — the truth Harinarayan had hidden away a hundred years ago was, today, lighting the path of their own lives.</p>
+
+<div class="scene-divider"><span>🌅</span></div>
+<p class="subhead">The Eternal Truth</p>
+
+<p>In the courtyard of that old ancestral house, the sun rose once again. The golden morning light fell across the Shiva lingam.</p>
+<p>The house that everyone had once thought was nothing more than a crumbling old ruin had become — the guardian of a hundred-year-old, hidden history.</p>
+<p>The four-piece map had led them to the underground chamber. The underground chamber had opened before them the door to the truth. And that truth had changed three lives—</p>
+<p class="board sub">Kanchan found his love. Supriya found her life's companion. And Arindam found the chance to turn back from his own mistake.</p>
+<p>But above everything else remained Harinarayan's immortal words—</p>
+<p class="board">"Wealth is for the wellbeing of people — not people for the servitude of wealth."</p>
+<p>In the light of dawn, the ancient ancestral home stood as the eternal witness to those very words.</p>
+
+<div class="closing">
+  <p>The mystery of the four-piece map has ended. The search for treasure has ended.</p>
+  <p>But the story of love, of trust, and of working for others — that is only just beginning.</p>
+</div>
+<div class="continued"><span>The End ❤️</span></div>
+
+</article>
+</main>
+
+<div class="ep-nav">
+  <a href="porbo-12.html">← Episode 12</a>
+  <a class="disabled">Next episode →</a>
+</div>
+
+<footer>
+  The Four-Piece Treasure Map · Episode 13 · Complete
+</footer>
+
+</body>
+</html>

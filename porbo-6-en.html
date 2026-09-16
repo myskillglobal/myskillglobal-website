@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 6: Time, Like a River's Current — This Life, Once Gone, Never Returns</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ts-ink:#241a13;
+  --ts-parchment:#f2e8d3;
+  --ts-parchment-2:#e9dcc0;
+  --ts-walnut:#241610;
+  --ts-walnut-2:#3a2416;
+  --ts-brass:#a9814c;
+  --ts-brass-light:#d8bb80;
+  --ts-oxblood:#6d2c28;
+  --ts-muted:#71614c;
+  --ts-line:rgba(36,26,19,0.16);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--ts-parchment);
+  color:var(--ts-ink);
+  font-family:"Noto Serif","Georgia",serif;
+  line-height:1.85;
+}
+.topbar{
+  position:sticky; top:0; z-index:20;
+  display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  background:var(--ts-walnut); color:var(--ts-parchment-2);
+  padding:0.85rem 5vw; font-family:"Inter","Segoe UI",sans-serif;
+}
+.topbar a.home-link{color:var(--ts-brass-light); text-decoration:none; font-size:0.92rem; display:flex; align-items:center; gap:0.4rem;}
+.topbar a.home-link:hover{color:var(--ts-parchment);}
+.topbar a.home-link svg{width:16px;height:16px;}
+.voice-controls{display:flex; align-items:center; gap:0.5rem;}
+.voice-btn{
+  display:inline-flex; align-items:center; gap:0.4rem;
+  background:transparent; border:1px solid var(--ts-brass); color:var(--ts-brass-light);
+  font-family:"Inter","Segoe UI",sans-serif; font-size:0.85rem;
+  padding:0.45rem 0.85rem; border-radius:2px; cursor:pointer;
+  transition:background 0.2s ease, color 0.2s ease;
+}
+.voice-btn:hover{background:var(--ts-brass); color:var(--ts-walnut);}
+.voice-btn svg{width:15px;height:15px;}
+.resume-banner{
+  display:none; align-items:center; justify-content:space-between; gap:1rem;
+  background:var(--ts-parchment-2); border-bottom:1px solid var(--ts-line);
+  padding:0.8rem 5vw; font-family:"Inter","Segoe UI",sans-serif; font-size:0.9rem; color:var(--ts-ink);
+}
+.resume-banner.show{display:flex;}
+.resume-banner button{
+  background:var(--ts-oxblood); color:var(--ts-parchment); border:none;
+  padding:0.5rem 1rem; font-family:"Inter","Segoe UI",sans-serif; font-size:0.85rem; border-radius:2px; cursor:pointer; white-space:nowrap;
+}
+.resume-banner .dismiss{background:transparent; color:var(--ts-muted); padding:0.3rem;}
+.hero{
+  position:relative; width:100%; height:min(58vh, 480px); min-height:280px; overflow:hidden;
+}
+.hero img{width:100%; height:100%; object-fit:cover; display:block; filter:saturate(1.05) contrast(1.03);}
+.hero::after{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(36,22,16,0.15) 0%, rgba(36,22,16,0.35) 60%, var(--ts-parchment) 100%);
+}
+.hero-caption{
+  position:absolute; left:6vw; bottom:1.6rem; z-index:2;
+  color:var(--ts-parchment-2); font-family:"Inter","Segoe UI",sans-serif; font-size:0.85rem; letter-spacing:0.02em;
+  text-shadow:0 2px 8px rgba(0,0,0,0.5);
+}
+.story-header{max-width:680px; margin:0 auto; padding:3.5rem 6vw 1rem; text-align:center;}
+.story-header.with-hero{padding-top:2.2rem;}
+.story-header .series-name{font-family:"Inter","Segoe UI",sans-serif; font-size:0.9rem; color:var(--ts-oxblood); letter-spacing:0.01em;}
+.story-header h1{font-size:clamp(1.6rem,3.4vw,2.2rem); margin:0.6rem 0 0; color:var(--ts-ink);}
+.content{max-width:680px; margin:0 auto; padding:1rem 6vw 4rem;}
+.lyric{
+  margin:2.2rem 0 2.6rem; padding:1.4rem 1.6rem; background:var(--ts-parchment-2);
+  border-left:3px solid var(--ts-brass); font-style:italic; color:var(--ts-walnut-2); font-size:1.05rem;
+}
+.lyric p{margin:0.2rem 0;}
+p.para{
+  margin:0 0 1.3rem; font-size:1.12rem; transition:background 0.4s ease;
+  border-radius:2px; padding:0.1rem 0.3rem; margin-left:-0.3rem;
+}
+p.para.reading{background:rgba(169,129,76,0.16);}
+p.heading{font-size:1.28rem; font-weight:600; color:var(--ts-oxblood); margin:2rem 0 1.1rem;}
+strong{color:var(--ts-oxblood); font-weight:600;}
+.part-nav{
+  max-width:680px; margin:0 auto; padding:2rem 6vw 5rem; display:flex; justify-content:space-between; gap:1rem;
+  border-top:1px solid var(--ts-line); font-family:"Inter","Segoe UI",sans-serif;
+}
+.part-nav a{display:flex; flex-direction:column; text-decoration:none; color:var(--ts-ink); max-width:45%;}
+.part-nav a .label{font-size:0.78rem; color:var(--ts-muted);}
+.part-nav a .title{font-size:1rem; font-weight:600; margin-top:0.2rem;}
+.part-nav a:hover .title{color:var(--ts-oxblood);}
+.part-nav a.next{text-align:right; align-items:flex-end; margin-left:auto;}
+.credit{
+  max-width:680px; margin:0 auto; padding:0 6vw 2rem; font-family:"Inter","Segoe UI",sans-serif;
+  font-size:0.85rem; color:var(--ts-muted); border-top:1px solid var(--ts-line); padding-top:1.2rem;
+}
+.credit p{margin:0.15rem 0;}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} p.para{transition:none;} }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="home-link" href="index-time-story-en.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+    Back to Contents
+  </a>
+  <div class="voice-controls">
+    <button class="voice-btn" id="playBtn" onclick="startReading()">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      Read Aloud
+    </button>
+    <button class="voice-btn" id="pauseBtn" onclick="togglePause()" style="display:none;">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+      Pause
+    </button>
+    <button class="voice-btn" id="stopBtn" onclick="stopReading()" style="display:none;">
+      <svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12"/></svg>
+      Stop
+    </button>
+  </div>
+</div>
+
+<div class="resume-banner" id="resumeBanner">
+  <span>You were reading this chapter earlier — pick up where you left off?</span>
+  <span style="display:flex; gap:0.5rem;">
+    <button onclick="resumeScroll()">Continue</button>
+    <button class="dismiss" onclick="dismissBanner()">No thanks</button>
+  </span>
+</div>
+
+<div class="hero">
+  <img src="time1.png" alt="A man sitting by a riverbank at sunset, gazing at the current">
+  <div class="hero-caption">A river never looks back — it simply keeps flowing.</div>
+</div>
+
+<header class="story-header with-hero">
+  <div class="series-name">This Life, Once Gone, Never Returns</div>
+  <h1>Chapter 6: Time, Like a River's Current</h1>
+</header>
+
+<article class="content" id="storyContent">
+
+  <p class="para">After the night of his birthday, something strange had begun to shift in Ayan.</p>
+
+  <p class="para">From the outside, nothing had changed at all.</p>
+
+  <p class="para">Morning comes.</p>
+
+  <p class="para">Office happens.</p>
+
+  <p class="para">Household work goes on.</p>
+
+  <p class="para">He meets people.</p>
+
+  <p class="para">Night falls at the end of the day.</p>
+
+  <p class="para">But Ayan no longer measured time only by the hands of a clock, the way he once had.</p>
+
+  <p class="para">He had begun to feel time instead.</p>
+
+  <p class="para">One day, on his way to office, he stopped at a street corner where he saw a small crowd gathered outside a shop.</p>
+
+  <p class="para">Someone said,</p>
+
+  <p class="para">&mdash; &ldquo;Only two minutes left!&rdquo;</p>
+
+  <p class="para">Nearby, a football match was playing on a large screen.</p>
+
+  <p class="para">One team was ahead by a single goal.</p>
+
+  <p class="para">The last moments of the match.</p>
+
+  <p class="para">The crowd's faces were taut with excitement.</p>
+
+  <p class="para">One minute.</p>
+
+  <p class="para">Then a few more seconds.</p>
+
+  <p class="para">The opposing team was attacking desperately.</p>
+
+  <p class="para">The very team that, until now, had wanted time to move forward, now wanted that time to run out as fast as possible.</p>
+
+  <p class="para">Someone was shouting&mdash;</p>
+
+  <p class="para">&mdash; &ldquo;Referee, blow the whistle!&rdquo;</p>
+
+  <p class="para">Ayan stood and watched the scene.</p>
+
+  <p class="para">It struck him how strange the value of time truly was.</p>
+
+  <p class="para">The same single minute.</p>
+
+  <p class="para">But depending on the situation, the worth of that very minute changes entirely.</p>
+
+  <p class="para">Sometimes one minute feels impossibly long.</p>
+
+  <p class="para">Sometimes an entire hour vanishes in the blink of an eye.</p>
+
+  <p class="para">A few days later, another incident occurred.</p>
+
+  <p class="para">Ayan was crossing the road on his way back from office.</p>
+
+  <p class="para">Suddenly, a motorbike came speeding from the right, passing right beside him.</p>
+
+  <p class="para">Ayan stepped back.</p>
+
+  <p class="para">The bike sped off, a few feet away.</p>
+
+  <p class="para">It all happened in a single instant.</p>
+
+  <p class="para">He stood at the roadside for a while.</p>
+
+  <p class="para">His heart pounding inside his chest.</p>
+
+  <p class="para">Then, slowly, it occurred to him&mdash;</p>
+
+  <p class="para">Just one second.</p>
+
+  <p class="para">What if he had reached the middle of the road one second earlier?</p>
+
+  <p class="para">What if the bike had arrived one second later?</p>
+
+  <p class="para">The slightest shift, either way, and that evening could have turned out very differently.</p>
+
+  <p class="para">Ayan looked up at the sky.</p>
+
+  <p class="para">That day, time no longer meant hours, minutes, or seconds to him.</p>
+
+  <p class="para">Time had become&mdash;</p>
+
+  <p class="para"><strong>a thin line between life and death.</strong></p>
+
+  <p class="para">That evening, back home, Ayan sat on the veranda.</p>
+
+  <p class="para">His daughter was studying.</p>
+
+  <p class="para">Suddenly she said,</p>
+
+  <p class="para">&mdash; &ldquo;Baba, I have to submit my project tomorrow.&rdquo;</p>
+
+  <p class="para">Ayan asked,</p>
+
+  <p class="para">&mdash; &ldquo;Is it done?&rdquo;</p>
+
+  <p class="para">His daughter shook her head and said,</p>
+
+  <p class="para">&mdash; &ldquo;No. I was thinking I'd do it tonight.&rdquo;</p>
+
+  <p class="para">Ayan stayed quiet for a while.</p>
+
+  <p class="para">Then he said, smiling softly&mdash;</p>
+
+  <p class="para">&mdash; <strong>&ldquo;Night will come, of course. But will time stop and wait for you?&rdquo;</strong></p>
+
+  <p class="para">His daughter looked at her father.</p>
+
+  <p class="para">Ayan said nothing more.</p>
+
+  <p class="para">He understood that the lesson of time cannot be taught through a lecture.</p>
+
+  <p class="para">Sometimes a late morning teaches it.</p>
+
+  <p class="para">Sometimes an exam result.</p>
+
+  <p class="para">Sometimes the last few minutes of a match.</p>
+
+  <p class="para">And sometimes, a single second survived in an accident.</p>
+
+  <p class="para">That night, Ayan stood by the window, gazing outside.</p>
+
+  <p class="para">In the distance, light fell across the river.</p>
+
+  <p class="para">The current of the water moved on, unceasing.</p>
+
+  <p class="para">For a moment, it occurred to him&mdash;</p>
+
+  <p class="para">Isn't human life just the same?</p>
+
+  <p class="para">A river never looks back to see which stone lay where.</p>
+
+  <p class="para">It simply keeps flowing.</p>
+
+  <p class="para">And so does time.</p>
+
+  <p class="para">Childhood passes.</p>
+
+  <p class="para">Adolescence passes.</p>
+
+  <p class="para">Youth passes.</p>
+
+  <p class="para">The working years pass.</p>
+
+  <p class="para">One day, retirement arrives too.</p>
+
+  <p class="para">Whether we want it or not&mdash;every chapter of life ends in its own time.</p>
+
+  <p class="para">Some moments we spend in joy.</p>
+
+  <p class="para">Some in sorrow.</p>
+
+  <p class="para">Some in busyness.</p>
+
+  <p class="para">And some we simply lose, for no reason at all.</p>
+
+  <p class="para">But time never keeps a separate account for anyone.</p>
+
+  <p class="para">It simply moves on.</p>
+
+  <p class="para">Ayan opened his notebook.</p>
+
+  <p class="para">Beneath the three resolutions he had written on the night of his birthday, he wrote one more line today&mdash;</p>
+
+  <p class="heading">&ldquo;Time cannot be held onto. But it can be made meaningful.&rdquo;</p>
+
+  <p class="para">He set down his pen and sat staring at those words for a long while.</p>
+
+  <p class="para">It struck him that all this time, he had feared losing time.</p>
+
+  <p class="para">From now on, he would try instead to make use of it.</p>
+
+  <p class="para">Because the current of a river cannot be stopped.</p>
+
+  <p class="para">But a person can, if he chooses, steer his boat in the right direction.</p>
+
+  <p class="para">And perhaps the biggest question in life is just that&mdash;</p>
+
+  <p class="para">Not how fast the current flowed. But in which direction we carried our lives through it.</p>
+
+  <p class="para">Ayan did not know how many more years lay waiting for him ahead.</p>
+
+  <p class="para">But today was his, in his hands.</p>
+
+  <p class="para">And he made up his mind&mdash;</p>
+
+  <p class="para">He would no longer simply let today pass by.</p>
+
+</article>
+
+<nav class="part-nav">
+  <a class="prev" href="porbo-5-en.html">
+    <span class="label">← Previous Chapter</span>
+    <span class="title">5. One More Year</span>
+  </a>
+  <a class="next" href="index-time-story-en.html">
+    <span class="label">Back to Contents →</span>
+    <span class="title">All Chapters</span>
+  </a>
+</nav>
+
+<script>
+const STORAGE_KEY = 'ei-jibon-porbo6-scroll-en';
+const banner = document.getElementById('resumeBanner');
+window.addEventListener('load', () => {
+  const saved = parseInt(localStorage.getItem(STORAGE_KEY) || '0', 10);
+  if (saved > 300 && saved < document.body.scrollHeight - window.innerHeight - 200) {
+    banner.classList.add('show');
+  }
+});
+function resumeScroll() {
+  const saved = parseInt(localStorage.getItem(STORAGE_KEY) || '0', 10);
+  window.scrollTo({ top: saved, behavior: 'smooth' });
+  banner.classList.remove('show');
+}
+function dismissBanner() { banner.classList.remove('show'); }
+let scrollTimer;
+window.addEventListener('scroll', () => {
+  clearTimeout(scrollTimer);
+  scrollTimer = setTimeout(() => { localStorage.setItem(STORAGE_KEY, window.scrollY.toString()); }, 400);
+});
+const paras = Array.from(document.querySelectorAll('#storyContent .para, #storyContent .heading, #storyContent .lyric p'));
+let currentIndex = 0; let speaking = false; let paused = false;
+const playBtn = document.getElementById('playBtn');
+const pauseBtn = document.getElementById('pauseBtn');
+const stopBtn = document.getElementById('stopBtn');
+function clearHighlight() { paras.forEach(p => p.classList.remove('reading')); }
+function speakFrom(index) {
+  if (!('speechSynthesis' in window)) { alert('Voice reading is not supported in your browser.'); return; }
+  if (index >= paras.length) { stopReading(); return; }
+  currentIndex = index; clearHighlight();
+  const el = paras[index];
+  el.classList.add('reading');
+  el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  const utter = new SpeechSynthesisUtterance(el.textContent);
+  utter.lang = 'en-US'; utter.rate = 0.98;
+  utter.onend = () => { if (speaking && !paused) speakFrom(index + 1); };
+  speechSynthesis.speak(utter);
+}
+function startReading() {
+  speechSynthesis.cancel(); speaking = true; paused = false;
+  playBtn.style.display = 'none'; pauseBtn.style.display = 'inline-flex'; stopBtn.style.display = 'inline-flex';
+  speakFrom(0);
+}
+function togglePause() {
+  if (!speaking) return;
+  if (!paused) {
+    speechSynthesis.pause(); paused = true;
+    pauseBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg> Resume';
+  } else {
+    speechSynthesis.resume(); paused = false;
+    pauseBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg> Pause';
+  }
+}
+function stopReading() {
+  speechSynthesis.cancel(); speaking = false; paused = false; clearHighlight();
+  playBtn.style.display = 'inline-flex'; pauseBtn.style.display = 'none'; stopBtn.style.display = 'none';
+}
+window.addEventListener('beforeunload', () => speechSynthesis.cancel());
+</script>
+
+</body>
+</html>

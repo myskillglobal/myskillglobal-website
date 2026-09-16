@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="theme-color" content="#0A0F1E"/>
+<title>My Certificates | MySkillGame</title>
+<meta name="description" content="View and re-download certificates you've earned on this device."/>
+<style>
+  :root{
+    --navy:#0A0F1E; --navy2:#111A33;
+    --gold:#c9a84c; --gold-light:#e8c97a;
+    --cream:#FFF8ED; --ink:#1e293b; --muted:#64748b;
+    --shadow:0 10px 30px rgba(0,0,0,0.25);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; font-family:'Poppins',Arial,sans-serif; background:var(--cream); color:var(--ink);
+    padding-bottom:40px;
+  }
+  .wrap{max-width:900px; margin:0 auto; padding:0 16px;}
+  header{
+    background:linear-gradient(135deg, var(--navy), var(--navy2));
+    color:#fff; padding:22px 16px 28px; text-align:center;
+  }
+  header h1{margin:0; font-size:1.4rem;}
+  header p{margin:8px 0 0; font-size:0.85rem; color:#cbd5e1;}
+  header .backlink{display:inline-block; margin-bottom:10px; font-size:0.8rem; color:var(--gold-light); text-decoration:none;}
+
+  .section{padding:24px 0;}
+
+  .info-banner{
+    background:#fff4e0; border:1px solid #f0c987; color:#8a5a00;
+    font-size:0.82rem; font-weight:600; padding:10px 14px; border-radius:10px;
+    margin-bottom:18px;
+  }
+
+  .empty-box{
+    background:#fff; border-radius:16px; padding:40px 24px; text-align:center;
+    box-shadow:var(--shadow); border:1px solid #eee;
+  }
+  .empty-box .icon{font-size:3rem;}
+  .empty-box h2{color:var(--navy2); margin:12px 0 6px; font-size:1.15rem;}
+  .empty-box p{color:var(--muted); font-size:0.9rem; max-width:420px; margin:0 auto 20px;}
+
+  .cert-card{
+    background:#fff; border-radius:14px; padding:16px 18px; margin-bottom:14px;
+    box-shadow:var(--shadow); border:1px solid #eee;
+    display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between;
+  }
+  .cert-card .cc-info{flex:1 1 220px; min-width:0;}
+  .cert-card .cc-title{font-weight:800; color:var(--navy2); font-size:1rem; margin:0 0 4px;}
+  .cert-card .cc-sub{font-size:0.82rem; color:var(--muted); margin:0 0 2px;}
+  .cert-card .cc-meta{font-size:0.78rem; color:#94a3b8;}
+  .cert-card .cc-score{
+    font-weight:800; color:#8a1f2d; font-size:1.05rem; white-space:nowrap;
+  }
+  .cert-card .cc-actions{display:flex; gap:8px; flex-wrap:wrap;}
+
+  .primary-btn{
+    display:inline-block; background:linear-gradient(90deg,var(--gold),var(--gold-light)); color:#1a1300;
+    border:none; border-radius:20px; padding:10px 18px; font-size:0.85rem; font-weight:800;
+    cursor:pointer; text-decoration:none; white-space:nowrap;
+  }
+  .ghost-btn{
+    background:#fff; color:var(--navy2); border:1.5px solid var(--navy2); border-radius:20px;
+    padding:9px 16px; font-size:0.8rem; font-weight:700; cursor:pointer; text-decoration:none;
+    display:inline-block; white-space:nowrap;
+  }
+
+  .clear-row{text-align:center; margin-top:22px;}
+  .clear-row button{
+    background:none; border:none; color:#b91c1c; font-size:0.78rem; text-decoration:underline; cursor:pointer;
+  }
+
+  footer{text-align:center; font-size:0.75rem; color:var(--muted); margin-top:30px;}
+</style>
+</head>
+<body>
+
+<header>
+<div class="wrap">
+<a class="backlink" href="index.html">← Home</a>
+<h1>🏅 My Certificates</h1>
+<p>Every certificate you've earned on this device — download a fresh copy anytime.</p>
+</div>
+</header>
+
+<div class="wrap">
+  <div class="section">
+    <div class="info-banner">
+      📱 This history is stored on this device/browser only, just like your student ID — the same device you used to take the exam will show your certificates here.
+    </div>
+
+    <div id="emptyState" class="empty-box" style="display:none;">
+      <div class="icon">🗂️</div>
+      <h2>No certificates yet</h2>
+      <p>Once you pass an exam and generate a certificate, it will show up here so you can download it again anytime.</p>
+      <a class="primary-btn" href="exam-index.html">📝 Take an Exam</a>
+    </div>
+
+    <div id="certList"></div>
+
+    <div class="clear-row" id="clearRow" style="display:none;">
+      <button onclick="clearHistory()">Clear this history from my device</button>
+    </div>
+  </div>
+</div>
+
+<footer>MySkillGame — Certificate History</footer>
+
+<script>
+const CERT_HISTORY_KEY = 'myskill_cert_history';
+
+function getCertHistory(){
+  try{
+    const raw = localStorage.getItem(CERT_HISTORY_KEY);
+    return raw ? JSON.parse(raw) : [];
+  }catch(e){
+    console.error('Cert history read error:', e);
+    return [];
+  }
+}
+
+function formatDate(iso){
+  try{
+    return new Date(iso).toLocaleDateString('en-GB', {day:'2-digit', month:'short', year:'numeric'});
+  }catch(e){ return ''; }
+}
+
+function buildCertUrl(record){
+  const params = new URLSearchParams(record.params || {});
+  if(record.savedAt && !params.has('issueDate')) params.set('issueDate', record.savedAt);
+  params.set('duplicate', '1');
+  return 'certificate.html?' + params.toString();
+}
+
+function escapeHtml(str){
+  return String(str == null ? '' : str)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function renderHistory(){
+  const list = getCertHistory();
+  const listEl = document.getElementById('certList');
+  const emptyEl = document.getElementById('emptyState');
+  const clearRow = document.getElementById('clearRow');
+
+  if(!list.length){
+    listEl.innerHTML = '';
+    emptyEl.style.display = 'block';
+    clearRow.style.display = 'none';
+    return;
+  }
+
+  emptyEl.style.display = 'none';
+  clearRow.style.display = 'block';
+
+  listEl.innerHTML = list.map(function(record){
+    const contentLabel = record.content || record.language || '';
+    const typeLabel = record.type ? (' — ' + record.type) : '';
+    return '' +
+      '<div class="cert-card">' +
+        '<div class="cc-info">' +
+          '<div class="cc-title">' + escapeHtml(record.name) + '</div>' +
+          '<div class="cc-sub">' + escapeHtml(record.system || '') + (contentLabel ? (' · ' + escapeHtml(contentLabel) + escapeHtml(typeLabel)) : '') + '</div>' +
+          '<div class="cc-meta">Certificate No: ' + escapeHtml(record.certId || '-') + ' &nbsp;|&nbsp; Earned: ' + escapeHtml(formatDate(record.savedAt)) + '</div>' +
+        '</div>' +
+        '<div class="cc-score">' + escapeHtml(record.percentage != null ? (record.percentage + '%') : '') + '</div>' +
+        '<div class="cc-actions">' +
+          '<a class="primary-btn" href="' + buildCertUrl(record) + '">📥 Download</a>' +
+        '</div>' +
+      '</div>';
+  }).join('');
+}
+
+function clearHistory(){
+  if(!confirm('Remove your certificate history from this device? This will not delete anything from the server — you can still download certificates from the exam pages after retaking an exam.')) return;
+  localStorage.removeItem(CERT_HISTORY_KEY);
+  renderHistory();
+}
+
+renderHistory();
+</script>
+</body>
+</html>

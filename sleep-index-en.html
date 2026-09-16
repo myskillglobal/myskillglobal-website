@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arnab and the Impossible Equations</title>
+<style>
+  :root{
+    --navy-deep:#060b1a;
+    --navy:#0b1330;
+    --navy-light:#131c3f;
+    --navy-card:#0f1836;
+    --gold:#d4af37;
+    --gold-soft:#e8c766;
+    --gold-dim:#8a7228;
+    --text:#e9e6da;
+    --text-dim:#a9a8c0;
+    --border:rgba(212,175,55,0.22);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at top, rgba(212,175,55,0.06), transparent 60%),
+      var(--navy-deep);
+    color:var(--text);
+    font-family:'Georgia','Noto Serif',system-ui,serif;
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--gold-soft); text-decoration:none;}
+
+  /* HERO */
+  .hero{
+    position:relative;
+    min-height:78vh;
+    display:flex;
+    align-items:flex-end;
+    overflow:hidden;
+    border-bottom:1px solid var(--border);
+  }
+  .hero img{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit:cover;
+    object-position:center 30%;
+    filter:brightness(0.55) saturate(1.05);
+  }
+  .hero::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(6,11,26,0.15) 0%, rgba(6,11,26,0.55) 55%, var(--navy-deep) 100%);
+  }
+  .hero-content{
+    position:relative; z-index:2;
+    padding:32px 20px 40px;
+    width:100%;
+    max-width:760px;
+    margin:0 auto;
+    text-align:center;
+  }
+  .eyebrow{
+    display:inline-block;
+    letter-spacing:0.14em;
+    font-size:12px;
+    color:var(--gold-soft);
+    border:1px solid var(--border);
+    padding:5px 14px;
+    border-radius:999px;
+    background:rgba(212,175,55,0.06);
+    margin-bottom:18px;
+    font-family:system-ui,sans-serif;
+  }
+  h1.title{
+    font-size:clamp(26px,6.5vw,44px);
+    margin:0 0 14px;
+    font-weight:800;
+    background:linear-gradient(180deg,#f4e2a4,var(--gold) 70%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    text-shadow:0 2px 24px rgba(212,175,55,0.15);
+  }
+  .subtitle{
+    color:var(--text-dim);
+    font-size:clamp(15px,3.6vw,18px);
+    max-width:520px;
+    margin:0 auto 26px;
+    font-family:system-ui,sans-serif;
+  }
+  .hero-cta{
+    display:inline-flex;
+    gap:12px;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:12px 22px;
+    border-radius:999px;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    border:1px solid var(--border);
+    transition:all .2s ease;
+    font-family:system-ui,sans-serif;
+  }
+  .btn-gold{
+    background:linear-gradient(180deg,var(--gold-soft),var(--gold-dim));
+    color:#1a1300;
+    border:none;
+  }
+  .btn-gold:hover{ filter:brightness(1.08); transform:translateY(-1px);}
+  .btn-ghost{
+    background:rgba(255,255,255,0.03);
+    color:var(--text);
+  }
+  .btn-ghost:hover{ background:rgba(212,175,55,0.08); border-color:var(--gold);}
+
+  /* TOC */
+  .toc-wrap{
+    max-width:760px;
+    margin:-30px auto 0;
+    padding:0 16px 10px;
+    position:relative;
+    z-index:3;
+  }
+  .toc{
+    background:var(--navy-card);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:18px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.4);
+    font-family:system-ui,sans-serif;
+  }
+  .toc h2{
+    margin:2px 6px 14px;
+    font-size:13px;
+    letter-spacing:0.12em;
+    color:var(--gold-soft);
+    text-transform:uppercase;
+  }
+  .toc-list{ display:grid; gap:8px; }
+  .toc-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:11px 12px;
+    border-radius:12px;
+    background:rgba(255,255,255,0.02);
+    border:1px solid transparent;
+    transition:all .18s ease;
+    cursor:pointer;
+  }
+  .toc-item:hover{ border-color:var(--border); background:rgba(212,175,55,0.06); }
+  .toc-num{
+    flex:0 0 auto;
+    width:30px; height:30px;
+    border-radius:50%;
+    border:1px solid var(--gold-dim);
+    color:var(--gold-soft);
+    display:flex; align-items:center; justify-content:center;
+    font-size:13px; font-weight:700;
+  }
+  .toc-name{ font-size:14px; color:var(--text); }
+
+  /* MAIN */
+  main{ max-width:760px; margin:0 auto; padding:36px 18px 100px; }
+
+  section.episode{
+    padding-top:56px;
+    scroll-margin-top:18px;
+  }
+  section.episode:first-of-type{ padding-top:20px; }
+
+  .ep-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:14px;
+    flex-wrap:wrap;
+    border-bottom:1px solid var(--border);
+    padding-bottom:16px;
+    margin-bottom:22px;
+  }
+  .ep-heading{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+  }
+  .ep-tag{
+    font-size:12px;
+    color:var(--gold-dim);
+    letter-spacing:0.08em;
+    font-family:system-ui,sans-serif;
+  }
+  .ep-title{
+    font-size:clamp(19px,4.8vw,25px);
+    font-weight:800;
+    color:var(--gold-soft);
+    margin:0;
+  }
+
+  .voice-controls{
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .voice-btn{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    background:rgba(212,175,55,0.08);
+    border:1px solid var(--border);
+    color:var(--gold-soft);
+    padding:9px 16px;
+    border-radius:999px;
+    font-size:13.5px;
+    font-weight:600;
+    cursor:pointer;
+    transition:all .18s ease;
+    white-space:nowrap;
+    font-family:system-ui,sans-serif;
+  }
+  .voice-btn:hover{ background:rgba(212,175,55,0.16); border-color:var(--gold); }
+  .voice-btn.playing{
+    background:var(--gold);
+    color:#1a1300;
+  }
+  .voice-btn svg{ width:15px; height:15px; flex:0 0 auto; }
+  .voice-btn .lbl-play{ display:inline; }
+  .voice-btn .lbl-pause{ display:none; }
+  .voice-btn.playing .lbl-play{ display:none; }
+  .voice-btn.playing .lbl-pause{ display:inline; }
+
+  .story-text p{
+    margin:0 0 16px;
+    font-size:17px;
+    color:var(--text);
+  }
+  .story-text p.dialogue{
+    color:var(--gold-soft);
+    padding-left:14px;
+    border-left:2px solid var(--gold-dim);
+    font-style:italic;
+  }
+  .story-text .reading{
+    background:linear-gradient(90deg, rgba(212,175,55,0.14), transparent);
+    border-radius:4px;
+    padding:1px 3px;
+    margin:-1px -3px;
+  }
+
+  .ep-nav{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    margin-top:34px;
+    padding-top:20px;
+    border-top:1px dashed var(--border);
+    font-family:system-ui,sans-serif;
+  }
+  .ep-nav a{
+    font-size:14px;
+    color:var(--text-dim);
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .ep-nav a:hover{ color:var(--gold-soft); }
+
+  /* GLOBAL VOICE BAR */
+  .voicebar{
+    position:fixed;
+    left:0; right:0; bottom:0;
+    z-index:50;
+    background:rgba(11,19,48,0.92);
+    backdrop-filter:blur(10px);
+    border-top:1px solid var(--border);
+    padding:10px 14px;
+    display:none;
+    align-items:center;
+    gap:12px;
+    font-family:system-ui,sans-serif;
+  }
+  .voicebar.active{ display:flex; }
+  .voicebar-info{
+    flex:1;
+    min-width:0;
+  }
+  .voicebar-ep{
+    font-size:11px;
+    color:var(--gold-dim);
+    letter-spacing:0.06em;
+  }
+  .voicebar-title{
+    font-size:13.5px;
+    color:var(--text);
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .voicebar-btns{ display:flex; gap:8px; flex:0 0 auto; }
+  .vb-icon{
+    width:38px; height:38px;
+    border-radius:50%;
+    border:1px solid var(--border);
+    background:rgba(212,175,55,0.08);
+    color:var(--gold-soft);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+  }
+  .vb-icon.main{
+    background:var(--gold);
+    color:#1a1300;
+    border:none;
+  }
+  .vb-icon svg{ width:16px; height:16px; }
+
+  footer{
+    text-align:center;
+    padding:34px 16px 110px;
+    color:var(--text-dim);
+    font-size:13px;
+    border-top:1px solid var(--border);
+    font-family:system-ui,sans-serif;
+  }
+  footer .moral{
+    color:var(--gold-soft);
+    font-size:14.5px;
+    max-width:520px;
+    margin:0 auto 14px;
+    font-style:italic;
+  }
+
+  ::selection{ background:rgba(212,175,55,0.35); }
+
+  .lang-switch{
+    position:fixed;
+    top:14px; right:14px;
+    z-index:60;
+    font-family:system-ui,sans-serif;
+    font-size:12px;
+    background:rgba(11,19,48,0.85);
+    border:1px solid var(--border);
+    color:var(--gold-soft);
+    padding:7px 13px;
+    border-radius:999px;
+    backdrop-filter:blur(6px);
+  }
+</style>
+</head>
+<body>
+
+<a class="lang-switch" href="sleep-bengali-index.html">বাংলা পড়ুন</a>
+
+<div class="hero">
+  <img src="images/sleep.jpg" alt="Arnab asleep in class while the teacher writes equations on the board">
+  <div class="hero-content">
+    <span class="eyebrow">A Bengali Story in Translation · 6 Episodes</span>
+    <h1 class="title">Arnab and the Impossible Equations</h1>
+    <p class="subtitle">A math problem, a misunderstanding, and a story about never calling the impossible impossible</p>
+    <div class="hero-cta">
+      <button class="btn btn-gold" onclick="document.getElementById('ep1').scrollIntoView()">
+        Start Reading
+      </button>
+      <button class="btn btn-ghost" id="playAllBtn" onclick="playFromEpisode(1)">
+        🔊 Listen to the Story
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="toc-wrap">
+  <div class="toc">
+    <h2>Episodes</h2>
+    <div class="toc-list" id="tocList"></div>
+  </div>
+</div>
+
+<main id="episodes"></main>
+
+<footer>
+  <p class="moral">"Sometimes the strongest wall against the impossible is the one we build inside our own minds." 🌱🧮</p>
+  <p>Surajit Roy · Arnab and the Impossible Equations</p>
+</footer>
+
+<div class="voicebar" id="voicebar">
+  <div class="voicebar-info">
+    <div class="voicebar-ep" id="vbEp">Episode 1</div>
+    <div class="voicebar-title" id="vbTitle">The Last Class Nap</div>
+  </div>
+  <div class="voicebar-btns">
+    <div class="vb-icon" id="vbPrev" onclick="vbPrevEpisode()" title="Previous episode">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 20L9 12l10-8M5 19V5"/></svg>
+    </div>
+    <div class="vb-icon main" id="vbPlay" onclick="vbTogglePlay()" title="Play/Pause">
+      <svg id="vbPlayIcon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+    </div>
+    <div class="vb-icon" id="vbNext" onclick="vbNextEpisode()" title="Next episode">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4l10 8-10 8M19 5v14"/></svg>
+    </div>
+    <div class="vb-icon" onclick="stopVoice()" title="Stop">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ---------------- STORY DATA ---------------- */
+const episodes = [
+  {
+    title: "The Last Class Nap",
+    paragraphs: [
+      "It was the last day of school before the summer break.",
+      "The ceiling fan spun endlessly in the sweltering afternoon heat. Math class was in session, but every student's mind had already left for the holidays.",
+      "Standing at the board, the teacher wandered off topic and began talking about two especially difficult problems in mathematics.",
+      { d:true, t:"\"Mathematicians have spent years, sometimes their whole lives, trying to solve problems like these,\" he said." },
+      "Then he wrote the two equations on the board.",
+      "In the back row, Arnab had stopped listening entirely. His eyelids grew heavy.",
+      "Within minutes, he had drifted off to sleep. 😴",
+      "The teacher, meanwhile, lingered over the two equations a while longer before the bell for the holidays finally rang.",
+      "Everyone packed up and filed out. His friends noticed Arnab was still asleep, but they slipped away quietly without waking him. Outside, the giggling started.",
+      "A long while later, Arnab stirred awake. He opened his eyes and looked around. No one was there!",
+      { d:true, t:"He stood up and said, \"Where did everyone go?\"" },
+      "Then his eyes landed on the board, and he froze. Two equations.",
+      { d:true, t:"\"Oh! The teacher must have left us homework,\" Arnab thought to himself." },
+      "He quickly copied the two problems into his notebook.",
+      "Not once did it cross his mind that hidden behind those two equations was a mystery about to change the course of his life."
+    ]
+  },
+  {
+    title: "Holiday Homework",
+    paragraphs: [
+      "The summer break began. Friends were out playing, traveling, watching television. Arnab, too, spent the first few days simply enjoying himself.",
+      "Then one day he suddenly opened his notebook and sat down. The two equations stared back at him.",
+      { d:true, t:"\"Let's see about this, then,\" he said." },
+      "The first attempt failed. So did the second. The third attempt didn't work out either.",
+      "Arnab grew frustrated. But he refused to give up.",
+      { d:true, t:"He thought, \"The teacher gave this to us, so there must be an answer.\"" },
+      "He tried again the next day. And the day after that.",
+      "No one had told him that people around the world had spent years failing to solve these very problems. No one had told him these weren't ordinary school homework.",
+      "To Arnab, it seemed simple enough — the teacher had given him a problem, so the problem had to be solved.",
+      "The days went by. Then one night, deep into the dark hours, a new idea suddenly struck him. He sat back down with his notebook.",
+      "One step... two steps... then several more calculations.",
+      "Suddenly he stopped. Staring at the page, his eyes widened. The answer was matching!",
+      "He worked through it again. And again. Then, on the last line, he wrote—",
+      { d:true, t:"\"Solved.\"" },
+      "Arnab sat quietly for a while afterward. He had no idea just how enormous that one small word truly was."
+    ]
+  },
+  {
+    title: "The Answer to the First Equation",
+    paragraphs: [
+      "The break ended. School reopened. Arnab walked straight to his math teacher, his old notebook in hand.",
+      { d:true, t:"\"Sir...\" — \"Yes, what is it?\"" },
+      "Arnab held out his notebook.",
+      { d:true, t:"\"I've solved the problem you gave us, sir.\"" },
+      "The teacher opened the notebook casually at first. But after reading a few lines, his expression changed completely.",
+      "He went back to the first page and read it all over again. Then he worked through several of the steps himself to verify them.",
+      "Arnab stood there in silence. After a long pause, the teacher finally asked,",
+      { d:true, t:"\"Where did you learn this from?\"" },
+      "Arnab shook his head.",
+      { d:true, t:"\"Nowhere, sir. I just kept trying until it worked.\"" },
+      "The teacher said nothing more. He simply kept the notebook with him.",
+      { d:true, t:"Startled, Arnab asked, \"Sir, is it correct?\"" },
+      { d:true, t:"The teacher replied calmly, \"I'm not saying yet. Let me verify it properly first.\"" },
+      "But in the teacher's eyes was a look of astonishment Arnab had never seen there before.",
+      "That evening, alone, the teacher checked every single step of Arnab's notebook. Then he looked at the second equation. That one, too, was already nearly half solved.",
+      { d:true, t:"The teacher murmured slowly to himself, \"What exactly is this boy doing?\"" }
+    ]
+  },
+  {
+    title: "The Teacher's Secret Instructions",
+    paragraphs: [
+      "The next day, the teacher called Arnab aside.",
+      { d:true, t:"\"You are not to discuss these two problems with anyone,\" he said." },
+      { d:true, t:"Arnab was puzzled. \"Why, sir?\"" },
+      { d:true, t:"\"You'll work through this on your own. Don't take the answer from anyone else.\"" },
+      "Arnab nodded. The teacher then went on to warn the rest of the class as well.",
+      { d:true, t:"\"No one is to bother Arnab about the problems he's working on. No one gives him any answers.\"" },
+      "Everyone was baffled. Arnab himself understood none of it. All he knew was that the second equation still remained unsolved.",
+      "A few days later, the teacher handed him a card.",
+      { d:true, t:"Arnab took the card and asked, \"What is this, sir?\" — \"A library card.\" — \"Why?\"" },
+      { d:true, t:"The teacher said, \"For reference. Read different books. Learn how others have approached problems like these. But do your own thinking yourself.\"" },
+      "From that day on, Arnab began reading. Book after book. Formula after formula.",
+      "Sometimes things lined up. Sometimes they didn't. Sometimes he thought he'd found the answer, only to have it proven wrong moments later. But he never stopped."
+    ]
+  },
+  {
+    title: "In Search of the Second Equation",
+    paragraphs: [
+      "The second equation seemed unwilling to let Arnab go. Day after day, he kept at it.",
+      "The pages of his notebook filled up. Some calculations crossed out. Some rewritten from scratch. Some pages grew so tangled that even Arnab couldn't later make sense of what he'd written. Still, he pressed on.",
+      "One day, returning from the library, the first equation suddenly came to mind. Could the method that had helped him with the first problem be applied differently to the second?",
+      "He opened his notebook again and started fresh. The night wore on. At some point, the first light of dawn began to show outside.",
+      "Arnab wrote out the final steps and stopped. He closed his eyes. Worked through it again. Then once more.",
+      { d:true, t:"Suddenly, a smile broke across his face. \"It's done!\"" },
+      "But this time, he didn't rush to tell the teacher right away. He went back and verified the entire solution from the beginning. Then he closed the notebook and set it aside.",
+      "In the morning, he brought it to the teacher. The teacher opened the notebook. He read the first few pages. Then the middle section. Then the final page.",
+      "A long silence followed. Arnab stood there, anxious.",
+      { d:true, t:"At last, the teacher said slowly— \"Come. Now we need to test this in front of a few more people.\"" }
+    ]
+  },
+  {
+    title: "The Door to the Impossible",
+    paragraphs: [
+      "A few weeks later, a major mathematics seminar was organized. Mathematicians and researchers from across the country were in attendance.",
+      "Arnab sat beside his teacher, the old notebook in his hands. The teacher began writing Arnab's solution on the board.",
+      "At first, everyone watched with mild curiosity. Then, gradually, the mood in the hall shifted. One expert leaned forward. Another opened a notebook. Some checked the calculations themselves. Others asked questions.",
+      "Arnab answered one question after another. None of it came from memorized textbook answers — he was explaining his own line of thinking, step by step.",
+      "The examination went on for a long time. Finally, a senior mathematician rose to his feet and said—",
+      { d:true, t:"\"This solution is truly extraordinary.\"" },
+      "The hall broke into applause. 👏",
+      "Arnab still could hardly believe it. He looked toward his teacher.",
+      { d:true, t:"The teacher only smiled gently and said, \"I did tell you — the work had to be finished.\"" },
+      "Long afterward, Arnab went to see his teacher again one day.",
+      { d:true, t:"\"Sir, if you had told me back then that no one had ever solved this problem — what then?\"" },
+      "The teacher was quiet for a moment. Then he said—",
+      { d:true, t:"\"Then perhaps you never would have tried at all.\"" },
+      { d:true, t:"Arnab fell silent. The teacher continued, \"You believed it was your homework. That's why it never occurred to you that it was impossible.\"" },
+      "He placed a hand on Arnab's head.",
+      { d:true, t:"\"Remember — often our biggest obstacle isn't the problem itself, but the assumptions we carry about it before we even begin.\"" },
+      { d:true, t:"Arnab smiled softly. \"So, sir, it was a good thing I fell asleep that day?\"" },
+      { d:true, t:"The teacher laughed and replied, \"Yes. Some mistakes in life turn out to be blessings.\"" },
+      "Arnab looked down at his old, worn notebook. Two equations. One nap. One misunderstanding. And one unburdened mind.",
+      "That day, he understood — the strongest wall against the impossible is often the one we build inside our own minds. 🌱🧮"
+    ]
+  }
+];
+
+/* ---------------- RENDER ---------------- */
+const tocList = document.getElementById('tocList');
+const main = document.getElementById('episodes');
+
+episodes.forEach((ep, i) => {
+  const num = i+1;
+
+  const tocItem = document.createElement('div');
+  tocItem.className = 'toc-item';
+  tocItem.onclick = () => document.getElementById('ep'+num).scrollIntoView();
+  tocItem.innerHTML = `<div class="toc-num">${num}</div><div class="toc-name">${ep.title}</div>`;
+  tocList.appendChild(tocItem);
+
+  const section = document.createElement('section');
+  section.className = 'episode';
+  section.id = 'ep'+num;
+
+  const storyHtml = ep.paragraphs.map((p, pi) => {
+    const isD = typeof p === 'object';
+    const text = isD ? p.t : p;
+    return `<p class="${isD?'dialogue':''}" data-pidx="${pi}"><span class="reading-target">${text}</span></p>`;
+  }).join('');
+
+  const prevLink = num>1 ? `<a href="#ep${num-1}">← Episode ${num-1}</a>` : `<span></span>`;
+  const nextLink = num<episodes.length ? `<a href="#ep${num+1}">Episode ${num+1} →</a>` : `<span></span>`;
+
+  section.innerHTML = `
+    <div class="ep-head">
+      <div class="ep-heading">
+        <span class="ep-tag">Episode ${num}</span>
+        <h2 class="ep-title">${ep.title}</h2>
+      </div>
+      <div class="voice-controls">
+        <button class="voice-btn" data-ep="${i}" onclick="toggleEpisodeVoice(${i}, this)">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="ic-play"><path d="M8 5v14l11-7z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" class="ic-pause" style="display:none"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+          <span class="lbl-play">Listen</span>
+          <span class="lbl-pause">Pause</span>
+        </button>
+      </div>
+    </div>
+    <div class="story-text">${storyHtml}</div>
+    <div class="ep-nav">${prevLink}${nextLink}</div>
+  `;
+  main.appendChild(section);
+});
+
+/* ---------------- VOICE (Web Speech API) ---------------- */
+let currentEpIdx = null;
+let currentUtterQueue = [];
+let currentUtterPos = 0;
+let isPaused = false;
+let englishVoice = null;
+
+function pickVoice(){
+  const voices = speechSynthesis.getVoices();
+  englishVoice = voices.find(v => v.lang && v.lang.toLowerCase().startsWith('en')) || null;
+  return englishVoice;
+}
+if ('speechSynthesis' in window){
+  pickVoice();
+  speechSynthesis.onvoiceschanged = pickVoice;
+}
+
+function getEpisodeButton(idx){
+  return document.querySelector(`.voice-btn[data-ep="${idx}"]`);
+}
+function setBtnPlaying(idx, playing){
+  document.querySelectorAll('.voice-btn').forEach(b=>b.classList.remove('playing'));
+  const btn = getEpisodeButton(idx);
+  if(btn && playing) btn.classList.add('playing');
+}
+
+function clearHighlights(){
+  document.querySelectorAll('.reading').forEach(el=>el.classList.remove('reading'));
+}
+
+function speakEpisode(idx, resumeFromPos){
+  if(!('speechSynthesis' in window)){
+    alert('Sorry, your browser does not support voice narration.');
+    return;
+  }
+  speechSynthesis.cancel();
+  currentEpIdx = idx;
+  const section = document.getElementById('ep'+(idx+1));
+  const spans = section.querySelectorAll('.reading-target');
+  currentUtterQueue = Array.from(spans);
+  currentUtterPos = resumeFromPos || 0;
+  isPaused = false;
+
+  section.scrollIntoView({behavior:'smooth', block:'start'});
+  setBtnPlaying(idx, true);
+  showVoicebar(idx);
+
+  speakNext();
+}
+
+function speakNext(){
+  if(currentUtterPos >= currentUtterQueue.length){
+    clearHighlights();
+    setBtnPlaying(currentEpIdx, false);
+    if(currentEpIdx < episodes.length - 1){
+      speakEpisode(currentEpIdx + 1, 0);
+    } else {
+      hideVoicebar();
+    }
+    return;
+  }
+  clearHighlights();
+  const span = currentUtterQueue[currentUtterPos];
+  span.classList.add('reading');
+  span.scrollIntoView({behavior:'smooth', block:'center'});
+
+  const utter = new SpeechSynthesisUtterance(span.textContent);
+  utter.lang = 'en-US';
+  if(englishVoice) utter.voice = englishVoice;
+  utter.rate = 0.98;
+  utter.pitch = 1;
+
+  utter.onend = () => {
+    if(!isPaused){
+      currentUtterPos++;
+      speakNext();
+    }
+  };
+  utter.onerror = () => {
+    currentUtterPos++;
+    speakNext();
+  };
+
+  speechSynthesis.speak(utter);
+}
+
+function toggleEpisodeVoice(idx, btnEl){
+  const btn = getEpisodeButton(idx);
+  const isThisPlaying = btn.classList.contains('playing');
+  if(isThisPlaying){
+    stopVoice();
+  } else {
+    speakEpisode(idx, 0);
+  }
+}
+
+function playFromEpisode(num){
+  speakEpisode(num-1, 0);
+}
+
+function stopVoice(){
+  if('speechSynthesis' in window) speechSynthesis.cancel();
+  isPaused = false;
+  clearHighlights();
+  document.querySelectorAll('.voice-btn').forEach(b=>b.classList.remove('playing'));
+  hideVoicebar();
+  currentEpIdx = null;
+}
+
+function vbTogglePlay(){
+  if(currentEpIdx === null) return;
+  if(speechSynthesis.speaking && !speechSynthesis.paused){
+    speechSynthesis.pause();
+    isPaused = true;
+    document.getElementById('vbPlayIcon').innerHTML = '<path d="M8 5v14l11-7z"/>';
+  } else if(speechSynthesis.paused){
+    speechSynthesis.resume();
+    isPaused = false;
+    document.getElementById('vbPlayIcon').innerHTML = '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>';
+  }
+}
+
+function vbPrevEpisode(){
+  if(currentEpIdx === null) return;
+  const target = Math.max(0, currentEpIdx - 1);
+  speakEpisode(target, 0);
+}
+function vbNextEpisode(){
+  if(currentEpIdx === null) return;
+  const target = Math.min(episodes.length - 1, currentEpIdx + 1);
+  speakEpisode(target, 0);
+}
+
+function showVoicebar(idx){
+  const bar = document.getElementById('voicebar');
+  bar.classList.add('active');
+  document.getElementById('vbEp').textContent = 'Episode ' + (idx+1);
+  document.getElementById('vbTitle').textContent = episodes[idx].title;
+  document.getElementById('vbPlayIcon').innerHTML = '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>';
+}
+function hideVoicebar(){
+  document.getElementById('voicebar').classList.remove('active');
+}
+</script>
+</body>
+</html>

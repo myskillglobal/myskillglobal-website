@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Episode 2: A New Opportunity — Bella Pizza</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #1b120e;
+    --bg-alt: #241811;
+    --panel: #2a1c14;
+    --crust: #e0a03f;
+    --crust-soft: #c98a34;
+    --tomato: #b04a30;
+    --cream: #f4ead9;
+    --muted: #c3ac93;
+    --line: rgba(224,160,63,0.22);
+    --serif: 'Playfair Display', serif;
+    --body: 'Inter', sans-serif;
+    --latin: 'Cormorant Garamond', serif;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--cream);
+    font-family:var(--body);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* reading progress */
+  #progress{
+    position:fixed; top:0; left:0; height:3px; width:0%;
+    background:linear-gradient(90deg, var(--tomato), var(--crust));
+    z-index:60; transition:width .1s linear;
+  }
+
+  a{color:inherit;}
+
+  .topbar{
+    display:flex; align-items:center; justify-content:space-between;
+    max-width:760px; margin:0 auto; padding:22px 24px 0;
+  }
+  .brand{
+    font-family:var(--latin); font-style:italic; font-weight:600;
+    font-size:1.15rem; letter-spacing:.02em; color:var(--crust);
+  }
+  .brand span{color:var(--muted); font-style:normal; font-size:.85rem; margin-left:6px;}
+  .part-tag{
+    font-family:var(--serif); font-size:.95rem; color:var(--muted);
+    border:1px solid var(--line); padding:5px 14px; border-radius:2px;
+  }
+
+  /* hero */
+  .hero{
+    max-width:760px; margin:26px auto 0; padding:0 24px;
+  }
+  .hero-frame{
+    position:relative; width:100%; aspect-ratio:16/10;
+    border-radius:6px; overflow:hidden;
+    background:
+      radial-gradient(circle at 30% 20%, #3a2417 0%, transparent 55%),
+      linear-gradient(160deg, #2c1c12, #1b120e 70%);
+    box-shadow: 0 18px 40px -18px rgba(0,0,0,.65);
+  }
+  .hero-frame img{
+    width:100%; height:100%; object-fit:cover; display:block;
+  }
+  .hero-frame .fallback{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    flex-direction:column; gap:8px; text-align:center; padding:20px;
+  }
+  .fallback svg{width:64px; height:64px; opacity:.55;}
+  .fallback p{margin:0; color:var(--muted); font-size:.85rem;}
+  .hero-frame::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(0deg, rgba(20,13,9,.92) 0%, rgba(20,13,9,.15) 45%, transparent 70%);
+  }
+  .hero-caption{
+    position:absolute; left:0; right:0; bottom:0; padding:22px 26px 20px; z-index:2;
+  }
+  .hero-eyebrow{
+    font-size:.82rem; color:var(--crust); letter-spacing:.02em;
+  }
+  .hero h1{
+    font-family:var(--serif); font-weight:500;
+    font-size:clamp(1.6rem, 4vw, 2.3rem);
+    margin:6px 0 0; color:var(--cream);
+  }
+
+  /* article */
+  article{
+    max-width:640px; margin:0 auto; padding:46px 24px 10px;
+  }
+  .intro-rule{
+    display:flex; align-items:center; gap:12px; color:var(--muted);
+    font-size:.9rem; margin-bottom:34px;
+  }
+  .intro-rule::before, .intro-rule::after{
+    content:""; flex:1; height:1px; background:var(--line);
+  }
+
+  p{
+    font-size:1.06rem; color:var(--cream); margin:0 0 18px;
+  }
+  p.narration{color:#e7dac6;}
+
+  .line{margin:0 0 4px;}
+  .dialogue{
+    margin:0 0 4px 18px;
+    padding-left:16px;
+    border-left:2px solid var(--tomato);
+    color:#f1e2cc;
+    font-style:normal;
+  }
+  .dialogue + .dialogue{margin-top:0;}
+  p + .dialogue, .dialogue-block{margin-top:2px;}
+
+  .dialogue-block{margin-bottom:22px;}
+
+  section.beat{margin-bottom:8px;}
+
+  .divider{
+    display:flex; align-items:center; gap:14px;
+    margin:44px 0 26px; color:var(--crust);
+  }
+  .divider .glyph{
+    width:34px; height:34px; flex:none;
+    border:1px solid var(--line); border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1rem;
+  }
+  .divider .label{
+    font-family:var(--serif); font-size:1.05rem; color:var(--crust);
+  }
+  .divider .rule{flex:1; height:1px; background:var(--line);}
+
+  .closing{
+    margin:44px 0 6px; text-align:center;
+  }
+  .closing .stamp{
+    display:inline-block; font-family:var(--serif); font-size:1rem;
+    color:var(--bg); background:var(--crust);
+    padding:7px 22px; border-radius:2px; letter-spacing:.03em;
+  }
+  .closing p{
+    color:var(--muted); font-size:.95rem; margin-top:16px;
+  }
+
+  /* nav */
+  nav.chapter-nav{
+    max-width:640px; margin:52px auto 0; padding:26px 24px 60px;
+    border-top:1px solid var(--line);
+  }
+  .nav-row{
+    display:flex; align-items:stretch; gap:10px; margin-top:24px;
+  }
+  .nav-link{
+    flex:1; text-decoration:none; padding:16px 16px;
+    border:1px solid var(--line); border-radius:4px;
+    background:var(--panel); transition:border-color .15s ease, transform .15s ease;
+    display:flex; flex-direction:column; gap:4px;
+  }
+  .nav-link:hover{border-color:var(--crust-soft); transform:translateY(-1px);}
+  .nav-link .cap{font-size:.74rem; color:var(--muted);}
+  .nav-link .ttl{font-family:var(--serif); font-size:1rem; color:var(--cream);}
+  .nav-link.prev{text-align:left;}
+  .nav-link.next{text-align:right; align-items:flex-end;}
+  .nav-link.home{
+    flex:0 0 auto; align-items:center; justify-content:center;
+    text-align:center; padding:16px 20px;
+  }
+  .nav-link.home .ttl{font-size:.92rem;}
+
+  footer.credit{
+    text-align:center; color:var(--muted); font-size:.82rem;
+    padding-bottom:40px;
+  }
+
+  @media (max-width:480px){
+    .nav-row{flex-wrap:wrap;}
+    .nav-link.home{order:3; flex:1 1 100%;}
+  }
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<div class="topbar">
+  <div class="brand">Bella Pizza <span>— A Serial Story</span></div>
+  <div class="part-tag">Episode 2</div>
+</div>
+
+<div class="hero">
+  <div class="hero-frame">
+    <img src="images/part-2.png" alt="Kanchan and Supriya in the kitchen of Bella Pizza"
+         onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='flex';">
+    <div class="fallback" style="display:none;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+        <circle cx="12" cy="12" r="9"></circle>
+        <path d="M8 13c1 1.4 2.4 2 4 2s3-.6 4-2"></path>
+        <circle cx="9" cy="10" r=".6" fill="currentColor"></circle>
+        <circle cx="15" cy="10" r=".6" fill="currentColor"></circle>
+        <circle cx="12" cy="15.5" r=".5" fill="currentColor"></circle>
+      </svg>
+      <p>Add images/part-2.jpg</p>
+    </div>
+    <div class="hero-caption">
+      <div class="hero-eyebrow">Kanchan · Supriya</div>
+      <h1>A New Opportunity</h1>
+    </div>
+  </div>
+</div>
+
+<article>
+  <div class="intro-rule">Episode 2</div>
+
+  <p class="narration">A few days later, Kanchan's injuries had mostly healed.</p>
+  <p class="narration">Walking no longer gave him much trouble. The cut on his elbow had dried and closed.<br>
+  But he hadn't been able to forget that small accident.<br>
+  Especially not the girl — Supriya.</p>
+  <p class="narration">One afternoon, he took the card out of his pocket.</p>
+  <p class="narration" style="text-align:center; font-family:var(--serif); font-size:1.1rem; color:var(--crust); margin:26px 0;">
+    BELLA PIZZA<br>
+    <span style="font-size:.85rem; color:var(--muted); font-family:var(--latin); font-style:italic;">Fresh Pizza, Fresh Smile.</span>
+  </p>
+  <p class="narration">After staring at the card for a while, Kanchan suddenly decided—<br>
+  he'd go and see the place for himself.</p>
+
+  <div class="divider">
+    <span class="glyph">🍕</span>
+    <span class="label">Bella Pizza</span>
+    <span class="rule"></span>
+  </div>
+
+  <p class="narration">Just before evening, Kanchan reached the shop.<br>
+  From the outside, it looked quite nice.<br>
+  But the moment he stepped in, a few things caught his eye.<br>
+  There weren't many people around.<br>
+  A customer or two sat here and there, but most of the tables were empty.</p>
+  <p class="narration">Supriya was standing by the counter.<br>
+  She recognized him the moment she saw him.</p>
+
+  <div class="dialogue-block">
+    <p class="dialogue">— "It's you! How are you now?"</p>
+  </div>
+  <p class="narration">Kanchan smiled.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Much better. Because of you, I was able to get proper treatment that day."</p>
+  </div>
+  <p class="narration">Supriya smiled.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "I only helped a little."</p>
+  </div>
+
+  <p class="narration">Kanchan looked around, then asked—</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "How's business going?"</p>
+  </div>
+  <p class="narration">Supriya paused for a moment.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "So-so."</p>
+  </div>
+
+  <p class="narration">Kanchan didn't say anything more.<br>
+  He ordered a pizza.<br>
+  After a while, it was set before him.<br>
+  He picked up a slice and ate.<br>
+  His expression changed instantly.<br>
+  Supriya noticed.</p>
+
+  <div class="dialogue-block">
+    <p class="dialogue">— "What's wrong?"</p>
+  </div>
+  <p class="narration">Kanchan hesitated a little.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Can I say something?"</p>
+    <p class="dialogue">— "Go ahead."</p>
+    <p class="dialogue">— "Please don't get upset."</p>
+  </div>
+  <p class="narration">Supriya smiled.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "No, go on."</p>
+  </div>
+  <p class="narration">Kanchan said it plainly.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "The quality of the pizza needs to improve."</p>
+  </div>
+  <p class="narration">Supriya was taken aback.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Where's the problem?"</p>
+  </div>
+  <p class="narration">Kanchan looked at the pizza and said—</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "The dough wasn't made properly. The sauce is a bit heavy too. The amount of cheese is fine, but the baking could've been done better."</p>
+  </div>
+  <p class="narration">Supriya listened in silence. Kanchan went on—</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "The shop looks lovely. But if the food quality isn't good, people won't come back a second time."</p>
+  </div>
+  <p class="narration">Now curious, Supriya asked—</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "You know this much about pizza?"</p>
+  </div>
+  <p class="narration">Kanchan smiled faintly.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "A little."</p>
+  </div>
+
+  <div class="divider">
+    <span class="glyph">👨‍🍳</span>
+    <span class="label">Kanchan's Unfinished Dream</span>
+    <span class="rule"></span>
+  </div>
+
+  <p class="narration">Supriya wanted to know—</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "What did you do before?"</p>
+  </div>
+  <p class="narration">Kanchan stayed quiet for a moment.<br>Then he said,</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "I was studying hotel management."</p>
+    <p class="dialogue">— "Studying?"</p>
+    <p class="dialogue">— "Yes. But I couldn't finish the course."</p>
+  </div>
+  <p class="narration">Supriya asked, surprised—</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Why not?"</p>
+  </div>
+  <p class="narration">Kanchan's face dimmed a little.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "After my father passed away, things at home fell apart badly. There wasn't enough money to keep paying for my studies."</p>
+  </div>
+  <p class="narration">Supriya listened without a word. Kanchan continued slowly—</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "My father didn't leave much behind. Just running the household became hard. So I had to leave my studies and start working."</p>
+  </div>
+  <div class="dialogue-block">
+    <p class="dialogue">— "And after that?"</p>
+    <p class="dialogue">— "Sometimes small jobs, sometimes temporary work. But nothing steady ever came of it."</p>
+  </div>
+  <p class="narration">He smiled a little and said—</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "I couldn't finish the course, but I never forgot what I learned there."</p>
+  </div>
+  <p class="narration">Supriya asked—</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Is that where this interest in cooking comes from?"</p>
+  </div>
+  <p class="narration">A little light came into Kanchan's eyes.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "I love making food. Especially learning something new. While I was studying hotel management, I learned a lot — cooking, kitchen management, food service."</p>
+  </div>
+  <p class="narration">He paused a moment, then added—</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "The dream may have come to a stop, but the wish to make good food never did."</p>
+  </div>
+  <p class="narration">Supriya looked at him closely.<br>
+  There was knowledge in this young man.<br>
+  There was confidence.<br>
+  All that was missing was opportunity.</p>
+
+  <div class="divider">
+    <span class="glyph">🍕</span>
+    <span class="label">A Test</span>
+    <span class="rule"></span>
+  </div>
+
+  <p class="narration">Kanchan spoke up suddenly.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "If you'd like, I could make a pizza to show you."</p>
+  </div>
+  <p class="narration">Supriya looked at him, surprised.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "You?"</p>
+    <p class="dialogue">— "Yes."</p>
+    <p class="dialogue">— "Can you really?"</p>
+  </div>
+  <p class="narration">Kanchan smiled softly.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "You could find out."</p>
+  </div>
+  <p class="narration">Supriya thought about it for a moment.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "All right. Show me."</p>
+  </div>
+
+  <p class="narration">Kanchan stepped into the kitchen.<br>
+  First, he looked over the ingredients for the dough.<br>Then he said,</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Let me say one thing first. For truly good pizza, the dough needs time. Ferment it for a few hours, sometimes longer, and both the taste and the texture come out far better."</p>
+  </div>
+  <p class="narration">Supriya listened closely. Kanchan went on—</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "But since orders are coming in right now, let me show you a quick-dough method instead. It's not a substitute for long fermentation, but it can help you get through a busy stretch."</p>
+  </div>
+
+  <p class="narration">Then he set to work quickly on the dough.<br>
+  Mixed the ingredients in exact proportions.<br>
+  Made the sauce.<br>
+  Adjusted the spices just right.<br>
+  Showed her how to spread the cheese.<br>
+  Explained how to arrange the toppings for the best taste and balance.<br>
+  Finally, the pizza went into the oven.<br>
+  A few minutes later, it came out, and the whole shop filled with its aroma.</p>
+
+  <p class="narration">Supriya picked up a slice and ate.<br>Her eyes widened.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "This is so much better than before!"</p>
+  </div>
+  <p class="narration">Kanchan smiled.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "I told you."</p>
+  </div>
+  <p class="narration">Supriya took another bite.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "If we sold this, people would keep coming back."</p>
+  </div>
+  <p class="narration">Kanchan said—</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Good pizza alone won't be enough."</p>
+    <p class="dialogue">— "What else, then?"</p>
+    <p class="dialogue">— "The pricing needs to be right. The packaging needs to be good. The kitchen needs to stay clean. And the way you treat your customers matters too."</p>
+  </div>
+  <p class="narration">Supriya listened carefully, then said—</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "You don't just know how to make pizza — you understand the business too."</p>
+  </div>
+  <p class="narration">Kanchan smiled.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "They teach us that in hotel management as well."</p>
+  </div>
+
+  <div class="divider">
+    <span class="glyph">🤝</span>
+    <span class="label">A New Decision</span>
+    <span class="rule"></span>
+  </div>
+
+  <p class="narration">Before closing the shop that day, Supriya turned to Kanchan and said—</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Could you come here every evening for a while?"</p>
+  </div>
+  <p class="narration">Kanchan looked at her, surprised.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Why?"</p>
+    <p class="dialogue">— "You'll make the pizzas. Work on new recipes. And I'll handle the rest of the shop."</p>
+  </div>
+  <p class="narration">Kanchan stayed quiet for a moment. Then he said—</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "So you're offering me a job?"</p>
+  </div>
+  <p class="narration">Supriya smiled softly.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Not a job. For now, I'm offering you a chance."</p>
+  </div>
+  <p class="narration">Kanchan looked at her without a word. Supriya continued—</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Just because you couldn't finish your studies, I don't want everything you learned to go to waste."</p>
+  </div>
+  <p class="narration">For the first time, a small, relieved smile appeared on Kanchan's face.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "But what if I can really do something good for your shop?"</p>
+  </div>
+  <p class="narration">Supriya smiled.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Then why would I only be thinking about a job?"</p>
+  </div>
+  <p class="narration">Kanchan was surprised.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "What do you mean?"</p>
+  </div>
+  <p class="narration">Supriya said, with a hint of mystery—</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "If you can truly get Bella Pizza on its feet and grow the business, then in the future I won't just see you as an employee."</p>
+  </div>
+  <p class="narration">Kanchan stayed quiet for a moment.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Then what?"</p>
+  </div>
+  <p class="narration">Supriya smiled.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Time will tell."</p>
+  </div>
+
+  <p class="narration">This time, a real smile broke across Kanchan's face.<br>
+  Supriya held out her hand.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "So — shall we get started?"</p>
+  </div>
+  <p class="narration">Kanchan looked at her hand.<br>Then he shook it.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Let's get started."</p>
+  </div>
+
+  <p class="narration">Neither of them knew it yet—<br>
+  that this one small decision would one day change Bella Pizza forever.<br>
+  And their two lives along with it...</p>
+
+  <div class="closing">
+    <span class="stamp">To be continued...</span>
+  </div>
+</article>
+
+<nav class="chapter-nav">
+  <div class="nav-row">
+    <a class="nav-link prev" href="porbo-1.html">
+      <span class="cap">← Previous</span>
+      <span class="ttl">Episode 1</span>
+    </a>
+    <a class="nav-link home" href="four-piece-index.html">
+      <span class="ttl">Contents</span>
+    </a>
+    <a class="nav-link next" href="porbo-3.html">
+      <span class="cap">Next →</span>
+      <span class="ttl">Episode 3</span>
+    </a>
+  </div>
+</nav>
+
+<footer class="credit">Surajit Roy · Bella Pizza</footer>
+
+<script>
+  window.addEventListener('scroll', function(){
+    var h = document.documentElement;
+    var scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    document.getElementById('progress').style.width = (isFinite(scrolled) ? scrolled : 0) + '%';
+  });
+</script>
+
+</body>
+</html>

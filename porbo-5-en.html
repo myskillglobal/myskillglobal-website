@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 5: One More Year — This Life, Once Gone, Never Returns</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ts-ink:#241a13;
+  --ts-parchment:#f2e8d3;
+  --ts-parchment-2:#e9dcc0;
+  --ts-walnut:#241610;
+  --ts-walnut-2:#3a2416;
+  --ts-brass:#a9814c;
+  --ts-brass-light:#d8bb80;
+  --ts-oxblood:#6d2c28;
+  --ts-muted:#71614c;
+  --ts-line:rgba(36,26,19,0.16);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--ts-parchment);
+  color:var(--ts-ink);
+  font-family:"Noto Serif","Georgia",serif;
+  line-height:1.85;
+}
+.topbar{
+  position:sticky; top:0; z-index:20;
+  display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  background:var(--ts-walnut); color:var(--ts-parchment-2);
+  padding:0.85rem 5vw; font-family:"Inter","Segoe UI",sans-serif;
+}
+.topbar a.home-link{color:var(--ts-brass-light); text-decoration:none; font-size:0.92rem; display:flex; align-items:center; gap:0.4rem;}
+.topbar a.home-link:hover{color:var(--ts-parchment);}
+.topbar a.home-link svg{width:16px;height:16px;}
+.voice-controls{display:flex; align-items:center; gap:0.5rem;}
+.voice-btn{
+  display:inline-flex; align-items:center; gap:0.4rem;
+  background:transparent; border:1px solid var(--ts-brass); color:var(--ts-brass-light);
+  font-family:"Inter","Segoe UI",sans-serif; font-size:0.85rem;
+  padding:0.45rem 0.85rem; border-radius:2px; cursor:pointer;
+  transition:background 0.2s ease, color 0.2s ease;
+}
+.voice-btn:hover{background:var(--ts-brass); color:var(--ts-walnut);}
+.voice-btn svg{width:15px;height:15px;}
+.resume-banner{
+  display:none; align-items:center; justify-content:space-between; gap:1rem;
+  background:var(--ts-parchment-2); border-bottom:1px solid var(--ts-line);
+  padding:0.8rem 5vw; font-family:"Inter","Segoe UI",sans-serif; font-size:0.9rem; color:var(--ts-ink);
+}
+.resume-banner.show{display:flex;}
+.resume-banner button{
+  background:var(--ts-oxblood); color:var(--ts-parchment); border:none;
+  padding:0.5rem 1rem; font-family:"Inter","Segoe UI",sans-serif; font-size:0.85rem; border-radius:2px; cursor:pointer; white-space:nowrap;
+}
+.resume-banner .dismiss{background:transparent; color:var(--ts-muted); padding:0.3rem;}
+.hero{
+  position:relative; width:100%; height:min(58vh, 480px); min-height:280px; overflow:hidden;
+}
+.hero img{width:100%; height:100%; object-fit:cover; display:block; filter:saturate(1.05) contrast(1.03);}
+.hero::after{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(36,22,16,0.15) 0%, rgba(36,22,16,0.35) 60%, var(--ts-parchment) 100%);
+}
+.hero-caption{
+  position:absolute; left:6vw; bottom:1.6rem; z-index:2;
+  color:var(--ts-parchment-2); font-family:"Inter","Segoe UI",sans-serif; font-size:0.85rem; letter-spacing:0.02em;
+  text-shadow:0 2px 8px rgba(0,0,0,0.5);
+}
+.story-header{max-width:680px; margin:0 auto; padding:3.5rem 6vw 1rem; text-align:center;}
+.story-header.with-hero{padding-top:2.2rem;}
+.story-header .series-name{font-family:"Inter","Segoe UI",sans-serif; font-size:0.9rem; color:var(--ts-oxblood); letter-spacing:0.01em;}
+.story-header h1{font-size:clamp(1.6rem,3.4vw,2.2rem); margin:0.6rem 0 0; color:var(--ts-ink);}
+.content{max-width:680px; margin:0 auto; padding:1rem 6vw 4rem;}
+.lyric{
+  margin:2.2rem 0 2.6rem; padding:1.4rem 1.6rem; background:var(--ts-parchment-2);
+  border-left:3px solid var(--ts-brass); font-style:italic; color:var(--ts-walnut-2); font-size:1.05rem;
+}
+.lyric p{margin:0.2rem 0;}
+p.para{
+  margin:0 0 1.3rem; font-size:1.12rem; transition:background 0.4s ease;
+  border-radius:2px; padding:0.1rem 0.3rem; margin-left:-0.3rem;
+}
+p.para.reading{background:rgba(169,129,76,0.16);}
+p.heading{font-size:1.28rem; font-weight:600; color:var(--ts-oxblood); margin:2rem 0 1.1rem;}
+strong{color:var(--ts-oxblood); font-weight:600;}
+.part-nav{
+  max-width:680px; margin:0 auto; padding:2rem 6vw 5rem; display:flex; justify-content:space-between; gap:1rem;
+  border-top:1px solid var(--ts-line); font-family:"Inter","Segoe UI",sans-serif;
+}
+.part-nav a{display:flex; flex-direction:column; text-decoration:none; color:var(--ts-ink); max-width:45%;}
+.part-nav a .label{font-size:0.78rem; color:var(--ts-muted);}
+.part-nav a .title{font-size:1rem; font-weight:600; margin-top:0.2rem;}
+.part-nav a:hover .title{color:var(--ts-oxblood);}
+.part-nav a.next{text-align:right; align-items:flex-end; margin-left:auto;}
+.credit{
+  max-width:680px; margin:0 auto; padding:0 6vw 2rem; font-family:"Inter","Segoe UI",sans-serif;
+  font-size:0.85rem; color:var(--ts-muted); border-top:1px solid var(--ts-line); padding-top:1.2rem;
+}
+.credit p{margin:0.15rem 0;}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} p.para{transition:none;} }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="home-link" href="index-time-story-en.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+    Back to Contents
+  </a>
+  <div class="voice-controls">
+    <button class="voice-btn" id="playBtn" onclick="startReading()">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      Read Aloud
+    </button>
+    <button class="voice-btn" id="pauseBtn" onclick="togglePause()" style="display:none;">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+      Pause
+    </button>
+    <button class="voice-btn" id="stopBtn" onclick="stopReading()" style="display:none;">
+      <svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12"/></svg>
+      Stop
+    </button>
+  </div>
+</div>
+
+<div class="resume-banner" id="resumeBanner">
+  <span>You were reading this chapter earlier — pick up where you left off?</span>
+  <span style="display:flex; gap:0.5rem;">
+    <button onclick="resumeScroll()">Continue</button>
+    <button class="dismiss" onclick="dismissBanner()">No thanks</button>
+  </span>
+</div>
+
+<header class="story-header">
+  <div class="series-name">This Life, Once Gone, Never Returns</div>
+  <h1>Chapter 5: One More Year</h1>
+</header>
+
+<article class="content" id="storyContent">
+
+  <p class="para">Ayan's fortieth birthday.</p>
+
+  <p class="para">From the morning, the house was full of celebration.</p>
+
+  <p class="para">His mother had made rice pudding that morning. His wife had brought back some of Ayan's favourite food from the market. His daughter made a little card with her own hands and handed it to her father, saying,</p>
+
+  <p class="para">&mdash; <strong>&ldquo;Happy birthday, Baba!&rdquo;</strong></p>
+
+  <p class="para">Ayan pulled his daughter into a hug.</p>
+
+  <p class="para">Wishes kept arriving on his phone all day.</p>
+
+  <p class="para">Messages from friends.</p>
+
+  <p class="para">Greetings from colleagues.</p>
+
+  <p class="para">One post after another on social media.</p>
+
+  <p class="para">All in all, the day passed happily.</p>
+
+  <p class="para">The cake arrived in the evening.</p>
+
+  <p class="para">The lights in the room were dimmed a little.</p>
+
+  <p class="para">Forty candles sat on top of the cake.</p>
+
+  <p class="para">Everyone said together&mdash;</p>
+
+  <p class="para"><strong>&ldquo;Happy birthday!&rdquo;</strong></p>
+
+  <p class="para">Ayan stared at the candles for a moment.</p>
+
+  <p class="para">Then, one by one, he blew them out.</p>
+
+  <p class="para">Everyone clapped.</p>
+
+  <p class="para">His daughter asked,</p>
+
+  <p class="para">&mdash; <strong>&ldquo;Baba, what happened? Why are you so quiet?&rdquo;</strong></p>
+
+  <p class="para">Ayan smiled and said,</p>
+
+  <p class="para">&mdash; &ldquo;Nothing.&rdquo;</p>
+
+  <p class="para">But was it really nothing?</p>
+
+  <p class="para">That night, once everyone had gone to sleep, Ayan sat alone.</p>
+
+  <p class="para">The last piece of birthday cake lay on the table.</p>
+
+  <p class="para">Beside it, those candles.</p>
+
+  <p class="para">He picked one up.</p>
+
+  <p class="para">Suddenly it occurred to him&mdash;</p>
+
+  <p class="para"><strong>Had another year really been added to his life today?</strong></p>
+
+  <p class="para">Or&mdash;</p>
+
+  <p class="para"><strong>Had another year, instead, been taken away from it?</strong></p>
+
+  <p class="para">The question wouldn't leave his mind.</p>
+
+  <p class="para">He took out a notebook.</p>
+
+  <p class="para">At the top of the page, he wrote&mdash;</p>
+
+  <p class="heading">&ldquo;My Past Year&rdquo;</p>
+
+  <p class="para">Then, below it, a few questions.</p>
+
+  <p class="para"><strong>What have I learned?</strong></p>
+
+  <p class="para">His pen paused for a while.</p>
+
+  <p class="para">A new skill?</p>
+
+  <p class="para">No.</p>
+
+  <p class="para">A new book?</p>
+
+  <p class="para">One or two.</p>
+
+  <p class="para">Did I finish any unfinished work?</p>
+
+  <p class="para">Some.</p>
+
+  <p class="para">Did I give my family time?</p>
+
+  <p class="para">Yes, but I could have given more.</p>
+
+  <p class="para">Time for myself?</p>
+
+  <p class="para">Very little.</p>
+
+  <p class="para">Anything for society?</p>
+
+  <p class="para">Barely anything.</p>
+
+  <p class="para">Ayan stared at the notebook for a long time.</p>
+
+  <p class="para">Then he wrote a second question&mdash;</p>
+
+  <p class="heading">&ldquo;Where did my year go?&rdquo;</p>
+
+  <p class="para">This time, the answer came more easily.</p>
+
+  <p class="para">The busyness of office.</p>
+
+  <p class="para">Unnecessary calls.</p>
+
+  <p class="para">Social media.</p>
+
+  <p class="para">Pointless videos.</p>
+
+  <p class="para">Aimless hours spent after exhaustion.</p>
+
+  <p class="para">Adding it all up, an uncomfortable truth stood before him.</p>
+
+  <p class="para">The year had passed.</p>
+
+  <p class="para">But how much had he actually <strong>used</strong> of it?</p>
+
+  <p class="para">The answer wasn't clear to him.</p>
+
+  <p class="para">Ayan rose from his chair and walked to the window.</p>
+
+  <p class="para">Night outside.</p>
+
+  <p class="para">The streetlights glowing.</p>
+
+  <p class="para">The sound of a television still playing somewhere in the distance.</p>
+
+  <p class="para">Everything, ordinary.</p>
+
+  <p class="para">Only something inside Ayan seemed to have shifted.</p>
+
+  <p class="para">He thought&mdash;</p>
+
+  <p class="para">In childhood, a single day used to mean such a vast stretch of time.</p>
+
+  <p class="para">An hour of class at school never seemed to want to end.</p>
+
+  <p class="para">Two hours on the playground would slip by, and you'd never even notice.</p>
+
+  <p class="para">And now?</p>
+
+  <p class="para">A week goes by.</p>
+
+  <p class="para">A month goes by.</p>
+
+  <p class="para">A year goes by.</p>
+
+  <p class="para">It's as if the pages of the calendar turn themselves.</p>
+
+  <p class="para">Ayan came back to his desk and wrote one more question beneath the notebook&mdash;</p>
+
+  <p class="heading">&ldquo;What answer do I want to give on my next birthday?&rdquo;</p>
+
+  <p class="para">This time, he didn't write very much.</p>
+
+  <p class="para">Just three sentences&mdash;</p>
+
+  <p class="para"><strong>I will learn one new skill.</strong></p>
+
+  <p class="para"><strong>I will build one good habit.</strong></p>
+
+  <p class="para"><strong>I will put a part of my time to use for others.</strong></p>
+
+  <p class="para">Before closing the notebook, Ayan sat still for a while.</p>
+
+  <p class="para">It occurred to him that he had received the biggest gift of his birthday that very day.</p>
+
+  <p class="para">No one had given it to him.</p>
+
+  <p class="para">He had given it to himself&mdash;</p>
+
+  <p class="para"><strong>the courage to take account of his own time.</strong></p>
+
+  <p class="para">The clock had passed midnight by then.</p>
+
+  <p class="para">His fortieth birthday was over.</p>
+
+  <p class="para">The first day of his forty-first year had begun.</p>
+
+  <p class="para">Looking out of the window, Ayan said slowly to himself&mdash;</p>
+
+  <p class="para"><strong>&ldquo;This time, I won't just let the year pass. I'll put it to use.&rdquo;</strong></p>
+
+  <p class="para">The hands of the clock kept moving.</p>
+
+  <p class="para">But for the first time, Ayan heard the sound of them walking.</p>
+
+</article>
+
+<div class="credit">
+  <p>Song lyrics by: Tapan Sinha</p><p>Film: <em>Golpo Holeo Satyi</em> (1966)</p>
+</div>
+
+<nav class="part-nav">
+  <a class="prev" href="porbo-4-en.html">
+    <span class="label">← Previous Chapter</span>
+    <span class="title">4. What I Gained, What I Lost</span>
+  </a>
+  <a class="next" href="porbo-6-en.html">
+    <span class="label">Next Chapter →</span>
+    <span class="title">6. Time, Like a River's Current</span>
+  </a>
+</nav>
+
+<script>
+const STORAGE_KEY = 'ei-jibon-porbo5-scroll-en';
+const banner = document.getElementById('resumeBanner');
+window.addEventListener('load', () => {
+  const saved = parseInt(localStorage.getItem(STORAGE_KEY) || '0', 10);
+  if (saved > 300 && saved < document.body.scrollHeight - window.innerHeight - 200) {
+    banner.classList.add('show');
+  }
+});
+function resumeScroll() {
+  const saved = parseInt(localStorage.getItem(STORAGE_KEY) || '0', 10);
+  window.scrollTo({ top: saved, behavior: 'smooth' });
+  banner.classList.remove('show');
+}
+function dismissBanner() { banner.classList.remove('show'); }
+let scrollTimer;
+window.addEventListener('scroll', () => {
+  clearTimeout(scrollTimer);
+  scrollTimer = setTimeout(() => { localStorage.setItem(STORAGE_KEY, window.scrollY.toString()); }, 400);
+});
+const paras = Array.from(document.querySelectorAll('#storyContent .para, #storyContent .heading, #storyContent .lyric p'));
+let currentIndex = 0; let speaking = false; let paused = false;
+const playBtn = document.getElementById('playBtn');
+const pauseBtn = document.getElementById('pauseBtn');
+const stopBtn = document.getElementById('stopBtn');
+function clearHighlight() { paras.forEach(p => p.classList.remove('reading')); }
+function speakFrom(index) {
+  if (!('speechSynthesis' in window)) { alert('Voice reading is not supported in your browser.'); return; }
+  if (index >= paras.length) { stopReading(); return; }
+  currentIndex = index; clearHighlight();
+  const el = paras[index];
+  el.classList.add('reading');
+  el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  const utter = new SpeechSynthesisUtterance(el.textContent);
+  utter.lang = 'en-US'; utter.rate = 0.98;
+  utter.onend = () => { if (speaking && !paused) speakFrom(index + 1); };
+  speechSynthesis.speak(utter);
+}
+function startReading() {
+  speechSynthesis.cancel(); speaking = true; paused = false;
+  playBtn.style.display = 'none'; pauseBtn.style.display = 'inline-flex'; stopBtn.style.display = 'inline-flex';
+  speakFrom(0);
+}
+function togglePause() {
+  if (!speaking) return;
+  if (!paused) {
+    speechSynthesis.pause(); paused = true;
+    pauseBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg> Resume';
+  } else {
+    speechSynthesis.resume(); paused = false;
+    pauseBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg> Pause';
+  }
+}
+function stopReading() {
+  speechSynthesis.cancel(); speaking = false; paused = false; clearHighlight();
+  playBtn.style.display = 'inline-flex'; pauseBtn.style.display = 'none'; stopBtn.style.display = 'none';
+}
+window.addEventListener('beforeunload', () => speechSynthesis.cancel());
+</script>
+
+</body>
+</html>

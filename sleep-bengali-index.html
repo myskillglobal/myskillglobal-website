@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>অর্ণব ও অসম্ভবের অঙ্ক</title>
+<style>
+  :root{
+    --navy-deep:#060b1a;
+    --navy:#0b1330;
+    --navy-light:#131c3f;
+    --navy-card:#0f1836;
+    --gold:#d4af37;
+    --gold-soft:#e8c766;
+    --gold-dim:#8a7228;
+    --text:#e9e6da;
+    --text-dim:#a9a8c0;
+    --border:rgba(212,175,55,0.22);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at top, rgba(212,175,55,0.06), transparent 60%),
+      var(--navy-deep);
+    color:var(--text);
+    font-family:'Noto Sans Bengali','Hind Siliguri',system-ui,sans-serif;
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--gold-soft); text-decoration:none;}
+
+  /* HERO */
+  .hero{
+    position:relative;
+    min-height:78vh;
+    display:flex;
+    align-items:flex-end;
+    overflow:hidden;
+    border-bottom:1px solid var(--border);
+  }
+  .hero img{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit:cover;
+    object-position:center 30%;
+    filter:brightness(0.55) saturate(1.05);
+  }
+  .hero::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(6,11,26,0.15) 0%, rgba(6,11,26,0.55) 55%, var(--navy-deep) 100%);
+  }
+  .hero-content{
+    position:relative; z-index:2;
+    padding:32px 20px 40px;
+    width:100%;
+    max-width:760px;
+    margin:0 auto;
+    text-align:center;
+  }
+  .eyebrow{
+    display:inline-block;
+    letter-spacing:0.14em;
+    font-size:12px;
+    color:var(--gold-soft);
+    border:1px solid var(--border);
+    padding:5px 14px;
+    border-radius:999px;
+    background:rgba(212,175,55,0.06);
+    margin-bottom:18px;
+  }
+  h1.title{
+    font-size:clamp(28px,7vw,46px);
+    margin:0 0 14px;
+    font-weight:800;
+    background:linear-gradient(180deg,#f4e2a4,var(--gold) 70%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    text-shadow:0 2px 24px rgba(212,175,55,0.15);
+  }
+  .subtitle{
+    color:var(--text-dim);
+    font-size:clamp(15px,3.6vw,18px);
+    max-width:520px;
+    margin:0 auto 26px;
+  }
+  .hero-cta{
+    display:inline-flex;
+    gap:12px;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:12px 22px;
+    border-radius:999px;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    border:1px solid var(--border);
+    transition:all .2s ease;
+  }
+  .btn-gold{
+    background:linear-gradient(180deg,var(--gold-soft),var(--gold-dim));
+    color:#1a1300;
+    border:none;
+  }
+  .btn-gold:hover{ filter:brightness(1.08); transform:translateY(-1px);}
+  .btn-ghost{
+    background:rgba(255,255,255,0.03);
+    color:var(--text);
+  }
+  .btn-ghost:hover{ background:rgba(212,175,55,0.08); border-color:var(--gold);}
+
+  /* TOC */
+  .toc-wrap{
+    max-width:760px;
+    margin:-30px auto 0;
+    padding:0 16px 10px;
+    position:relative;
+    z-index:3;
+  }
+  .toc{
+    background:var(--navy-card);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:18px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.4);
+  }
+  .toc h2{
+    margin:2px 6px 14px;
+    font-size:14px;
+    letter-spacing:0.1em;
+    color:var(--gold-soft);
+    text-transform:uppercase;
+  }
+  .toc-list{ display:grid; gap:8px; }
+  .toc-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:11px 12px;
+    border-radius:12px;
+    background:rgba(255,255,255,0.02);
+    border:1px solid transparent;
+    transition:all .18s ease;
+    cursor:pointer;
+  }
+  .toc-item:hover{ border-color:var(--border); background:rgba(212,175,55,0.06); }
+  .toc-num{
+    flex:0 0 auto;
+    width:30px; height:30px;
+    border-radius:50%;
+    border:1px solid var(--gold-dim);
+    color:var(--gold-soft);
+    display:flex; align-items:center; justify-content:center;
+    font-size:13px; font-weight:700;
+  }
+  .toc-name{ font-size:14.5px; color:var(--text); }
+
+  /* MAIN */
+  main{ max-width:760px; margin:0 auto; padding:36px 18px 100px; }
+
+  section.episode{
+    padding-top:56px;
+    scroll-margin-top:18px;
+  }
+  section.episode:first-of-type{ padding-top:20px; }
+
+  .ep-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:14px;
+    flex-wrap:wrap;
+    border-bottom:1px solid var(--border);
+    padding-bottom:16px;
+    margin-bottom:22px;
+  }
+  .ep-heading{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+  }
+  .ep-tag{
+    font-size:12px;
+    color:var(--gold-dim);
+    letter-spacing:0.08em;
+  }
+  .ep-title{
+    font-size:clamp(19px,4.8vw,25px);
+    font-weight:800;
+    color:var(--gold-soft);
+    margin:0;
+  }
+
+  .voice-controls{
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .voice-btn{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    background:rgba(212,175,55,0.08);
+    border:1px solid var(--border);
+    color:var(--gold-soft);
+    padding:9px 16px;
+    border-radius:999px;
+    font-size:13.5px;
+    font-weight:600;
+    cursor:pointer;
+    transition:all .18s ease;
+    white-space:nowrap;
+  }
+  .voice-btn:hover{ background:rgba(212,175,55,0.16); border-color:var(--gold); }
+  .voice-btn.playing{
+    background:var(--gold);
+    color:#1a1300;
+  }
+  .voice-btn svg{ width:15px; height:15px; flex:0 0 auto; }
+  .voice-btn .lbl-play{ display:inline; }
+  .voice-btn .lbl-pause{ display:none; }
+  .voice-btn.playing .lbl-play{ display:none; }
+  .voice-btn.playing .lbl-pause{ display:inline; }
+
+  .story-text p{
+    margin:0 0 16px;
+    font-size:16.5px;
+    color:var(--text);
+  }
+  .story-text p.dialogue{
+    color:var(--gold-soft);
+    padding-left:14px;
+    border-left:2px solid var(--gold-dim);
+  }
+  .story-text .reading{
+    background:linear-gradient(90deg, rgba(212,175,55,0.14), transparent);
+    border-radius:4px;
+    padding:1px 3px;
+    margin:-1px -3px;
+  }
+
+  .ep-nav{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    margin-top:34px;
+    padding-top:20px;
+    border-top:1px dashed var(--border);
+  }
+  .ep-nav a{
+    font-size:14px;
+    color:var(--text-dim);
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .ep-nav a:hover{ color:var(--gold-soft); }
+
+  /* GLOBAL VOICE BAR */
+  .voicebar{
+    position:fixed;
+    left:0; right:0; bottom:0;
+    z-index:50;
+    background:rgba(11,19,48,0.92);
+    backdrop-filter:blur(10px);
+    border-top:1px solid var(--border);
+    padding:10px 14px;
+    display:none;
+    align-items:center;
+    gap:12px;
+  }
+  .voicebar.active{ display:flex; }
+  .voicebar-info{
+    flex:1;
+    min-width:0;
+  }
+  .voicebar-ep{
+    font-size:11px;
+    color:var(--gold-dim);
+    letter-spacing:0.06em;
+  }
+  .voicebar-title{
+    font-size:13.5px;
+    color:var(--text);
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .voicebar-btns{ display:flex; gap:8px; flex:0 0 auto; }
+  .vb-icon{
+    width:38px; height:38px;
+    border-radius:50%;
+    border:1px solid var(--border);
+    background:rgba(212,175,55,0.08);
+    color:var(--gold-soft);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+  }
+  .vb-icon.main{
+    background:var(--gold);
+    color:#1a1300;
+    border:none;
+  }
+  .vb-icon svg{ width:16px; height:16px; }
+
+  footer{
+    text-align:center;
+    padding:34px 16px 110px;
+    color:var(--text-dim);
+    font-size:13px;
+    border-top:1px solid var(--border);
+  }
+  footer .moral{
+    color:var(--gold-soft);
+    font-size:14.5px;
+    max-width:520px;
+    margin:0 auto 14px;
+  }
+
+  ::selection{ background:rgba(212,175,55,0.35); }
+
+  .voice-note{
+    font-size:12px;
+    color:var(--text-dim);
+    text-align:center;
+    margin-top:8px;
+    display:none;
+  }
+  .voice-note.show{ display:block; }
+</style>
+</head>
+<body>
+
+<a href="sleep-index-en.html" style="position:fixed;top:14px;right:14px;z-index:60;font-family:system-ui,sans-serif;font-size:12px;background:rgba(11,19,48,0.85);border:1px solid var(--border);color:var(--gold-soft);padding:7px 13px;border-radius:999px;backdrop-filter:blur(6px);text-decoration:none;">Read in English</a>
+
+<div class="hero">
+  <img src="images/sleep.jpg" alt="অর্ণব ক্লাসে ঘুমিয়ে, স্যার বোর্ডে অঙ্ক লিখছেন">
+  <div class="hero-content">
+    <span class="eyebrow">বাংলা ধারাবাহিক গল্প · ৬ পর্ব</span>
+    <h1 class="title">অর্ণব ও অসম্ভবের অঙ্ক</h1>
+    <p class="subtitle">একটি অঙ্ক, একটি ভুল বোঝাবুঝি, আর অসম্ভবকে অসম্ভব না ভাবার গল্প</p>
+    <div class="hero-cta">
+      <button class="btn btn-gold" onclick="document.getElementById('ep1').scrollIntoView()">
+        পড়া শুরু করুন
+      </button>
+      <button class="btn btn-ghost" id="playAllBtn" onclick="playFromEpisode(1)">
+        🔊 ভয়েসে শুনুন
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="toc-wrap">
+  <div class="toc">
+    <h2>পর্বসমূহ</h2>
+    <div class="toc-list" id="tocList"></div>
+  </div>
+</div>
+
+<main id="episodes"></main>
+
+<footer>
+  <p class="moral">"অসম্ভবের সবচেয়ে শক্তিশালী দেয়াল অনেক সময় আমাদের নিজের মাথার ভেতরেই তৈরি হয়।" 🌱🧮</p>
+  <p>সুরজিৎ রায় · অর্ণব ও অসম্ভবের অঙ্ক</p>
+</footer>
+
+<div class="voicebar" id="voicebar">
+  <div class="voicebar-info">
+    <div class="voicebar-ep" id="vbEp">পর্ব–১</div>
+    <div class="voicebar-title" id="vbTitle">শেষ ক্লাসের ঘুম</div>
+  </div>
+  <div class="voicebar-btns">
+    <div class="vb-icon" id="vbPrev" onclick="vbPrevEpisode()" title="আগের পর্ব">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 20L9 12l10-8M5 19V5"/></svg>
+    </div>
+    <div class="vb-icon main" id="vbPlay" onclick="vbTogglePlay()" title="থামান/চালান">
+      <svg id="vbPlayIcon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+    </div>
+    <div class="vb-icon" id="vbNext" onclick="vbNextEpisode()" title="পরের পর্ব">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4l10 8-10 8M19 5v14"/></svg>
+    </div>
+    <div class="vb-icon" onclick="stopVoice()" title="বন্ধ করুন">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ---------------- STORY DATA ---------------- */
+const episodes = [
+  {
+    title: "শেষ ক্লাসের ঘুম",
+    paragraphs: [
+      "গরমের ছুটির আগে স্কুলের শেষ দিন।",
+      "দুপুরের প্রচণ্ড গরমে ক্লাসরুমের পাখাটা একটানা ঘুরছে। অঙ্কের ক্লাস চলছে। অথচ ছাত্রছাত্রীদের মন পড়ে আছে ছুটিতে।",
+      "স্যার বোর্ডের সামনে দাঁড়িয়ে নানা বিষয় নিয়ে গল্প করতে করতে গণিতের দুটি কঠিন সমস্যার কথা বলছিলেন।",
+      { d:true, t:"তিনি বললেন, — \"এই ধরনের সমস্যা সমাধান করতে গিয়ে অনেক গণিতবিদ বছরের পর বছর চেষ্টা করেছেন।\"" },
+      "তারপর বোর্ডে দুটি অঙ্ক লিখে দিলেন।",
+      "শেষ বেঞ্চে বসে থাকা অর্ণব তখন আর কিছুই শুনছে না। তার চোখ ভার হয়ে এসেছে।",
+      "কিছুক্ষণের মধ্যেই সে ঘুমিয়ে পড়ল। 😴",
+      "এদিকে স্যার বোর্ডে লেখা অঙ্ক দুটির দিকে তাকিয়ে আরও কিছুক্ষণ আলোচনা করলেন। তারপর ছুটির ঘণ্টা বেজে উঠল।",
+      "সবাই ব্যাগ গুছিয়ে বেরিয়ে গেল। বন্ধুরা দেখল অর্ণব এখনও ঘুমাচ্ছে। তারা তাকে না ডেকে চুপচাপ বেরিয়ে গেল। বাইরে গিয়ে শুরু হলো হাসাহাসি।",
+      "অনেকক্ষণ পর অর্ণবের ঘুম ভাঙল। সে চোখ মেলে চারদিকে তাকাল। কেউ নেই!",
+      { d:true, t:"সে উঠে দাঁড়িয়ে বলল, — \"সবাই কোথায় গেল?\"" },
+      "তারপর বোর্ডের দিকে চোখ পড়তেই সে থমকে গেল। বোর্ডে দুটি অঙ্ক।",
+      { d:true, t:"অর্ণব মনে মনে বলল, \"ওহ! স্যার হোমওয়ার্ক দিয়ে গেছেন!\"" },
+      "সে তাড়াতাড়ি খাতায় অঙ্ক দুটো তুলে নিল।",
+      "একবারও ভাবল না— এই অঙ্ক দুটির পেছনে লুকিয়ে আছে এমন এক রহস্য, যা তার জীবনটাই বদলে দিতে চলেছে।"
+    ]
+  },
+  {
+    title: "ছুটির হোমওয়ার্ক",
+    paragraphs: [
+      "গরমের ছুটি শুরু হলো। বন্ধুরা খেলছে, বেড়াতে যাচ্ছে, টেলিভিশন দেখছে। অর্ণবও প্রথম কয়েক দিন আনন্দ করল।",
+      "তারপর একদিন হঠাৎ খাতা খুলে বসে গেল। সামনে সেই দুটি অঙ্ক।",
+      { d:true, t:"— \"এবার দেখি!\"" },
+      "প্রথম চেষ্টা ব্যর্থ। দ্বিতীয় চেষ্টা ব্যর্থ। তৃতীয়বারও উত্তর মিলল না।",
+      "অর্ণব বিরক্ত হলো। কিন্তু হাল ছাড়ল না।",
+      { d:true, t:"সে ভাবল, \"স্যার যখন দিয়েছেন, নিশ্চয়ই এর একটা উত্তর আছে।\"" },
+      "পরের দিন আবার চেষ্টা করল। তারপরের দিনও।",
+      "কেউ তাকে বলেনি যে পৃথিবীর বহু মানুষ এই সমস্যাগুলোর সমাধান খুঁজে ব্যর্থ হয়েছে। কেউ বলেনি যে এগুলো সাধারণ স্কুলের হোমওয়ার্ক নয়।",
+      "অর্ণবের কাছে ব্যাপারটা খুব সহজ— স্যার অঙ্ক দিয়েছেন। তাই অঙ্ক করতেই হবে।",
+      "দিন যেতে লাগল। একদিন গভীর রাতে হঠাৎ তার মাথায় একটি নতুন ধারণা এল। সে খাতা নিয়ে বসে গেল।",
+      "একটা ধাপ... দুটো ধাপ... তারপর আরও কয়েকটি হিসাব।",
+      "হঠাৎ সে থেমে গেল। খাতার দিকে তাকিয়ে তার চোখ বড় হয়ে গেল। উত্তরটা মিলছে!",
+      "সে আবার হিসাব করল। আবার। তারপর শেষ লাইনে লিখল—",
+      { d:true, t:"\"সমাধান।\"" },
+      "অর্ণব কিছুক্ষণ চুপ করে বসে রইল। সে জানত না— এই ছোট্ট শব্দটির গুরুত্ব কতটা বড়।"
+    ]
+  },
+  {
+    title: "প্রথম অঙ্কের উত্তর",
+    paragraphs: [
+      "ছুটি শেষ হলো। স্কুল খুলল। অর্ণব সোজা অঙ্কের স্যারের কাছে গেল। তার হাতে পুরোনো খাতা।",
+      { d:true, t:"— \"স্যার...\" — \"কী হয়েছে?\"" },
+      "অর্ণব খাতাটা এগিয়ে দিল।",
+      { d:true, t:"— \"আপনার দেওয়া অঙ্কটা হয়ে গেছে।\"" },
+      "স্যার প্রথমে সাধারণভাবেই খাতা খুললেন। কিন্তু কয়েকটি লাইন পড়ার পর তাঁর মুখের ভাব বদলে গেল।",
+      "তিনি আবার প্রথম পৃষ্ঠা থেকে পড়লেন। তারপর কয়েকটি ধাপ নিজে খাতায় লিখে যাচাই করলেন।",
+      "অর্ণব চুপ করে দাঁড়িয়ে আছে। অনেকক্ষণ পর স্যার জিজ্ঞেস করলেন,",
+      { d:true, t:"— \"তুমি এটা কোথা থেকে শিখলে?\"" },
+      "অর্ণব মাথা নাড়ল।",
+      { d:true, t:"— \"কোথাও থেকে না স্যার। করতে করতে করেছি।\"" },
+      "স্যার আর কিছু বললেন না। শুধু খাতাটা নিজের কাছে রেখে দিলেন।",
+      { d:true, t:"অর্ণব অবাক হয়ে বলল, — \"স্যার, ঠিক হয়েছে?\"" },
+      { d:true, t:"স্যার শান্ত গলায় বললেন, — \"এখনও বলছি না। আমাকে যাচাই করতে দাও।\"" },
+      "কিন্তু স্যারের চোখে তখন এমন এক বিস্ময়, যা অর্ণব আগে কখনও দেখেনি।",
+      "সেদিন সন্ধ্যায় স্যার একা বসে অর্ণবের খাতার প্রতিটি ধাপ যাচাই করলেন। তারপর দ্বিতীয় অঙ্কটির দিকে তাকালেন। সেটাও প্রায় অর্ধেক পথ এগিয়ে গেছে।",
+      { d:true, t:"স্যার ধীরে ধীরে বললেন, \"ছেলেটা আসলে কী করে ফেলছে?\"" }
+    ]
+  },
+  {
+    title: "স্যারের গোপন নির্দেশ",
+    paragraphs: [
+      "পরের দিন স্যার অর্ণবকে ডাকলেন।",
+      { d:true, t:"— \"তুমি এই অঙ্ক দুটো নিয়ে কারও সঙ্গে আলোচনা করবে না।\"" },
+      { d:true, t:"অর্ণব অবাক। — \"কেন স্যার?\"" },
+      { d:true, t:"— \"তুমি নিজের মতো করে কাজ করবে। কারও কাছ থেকে উত্তর নেবে না।\"" },
+      "অর্ণব মাথা নাড়ল। তারপর স্যার ক্লাসের অন্য ছাত্রদেরও সতর্ক করে দিলেন।",
+      { d:true, t:"— \"অর্ণব যে সমস্যাগুলো নিয়ে কাজ করছে, সেগুলো নিয়ে কেউ ওকে বিরক্ত করবে না। কেউ উত্তর বলে দেবে না।\"" },
+      "সবাই অবাক হয়ে গেল। কিন্তু অর্ণব নিজে কিছুই বুঝল না। সে শুধু জানে— দ্বিতীয় অঙ্কটা এখনও বাকি।",
+      "কয়েক দিন পর স্যার তাকে একটি কার্ড দিলেন।",
+      { d:true, t:"অর্ণব কার্ডটা হাতে নিয়ে জিজ্ঞেস করল, — \"এটা কী স্যার?\" — \"লাইব্রেরির কার্ড।\" — \"কেন?\"" },
+      { d:true, t:"স্যার বললেন, — \"রেফারেন্সের জন্য। বিভিন্ন বই পড়বে। অন্যরা কীভাবে এই ধরনের সমস্যাকে দেখেছেন, সেটা জানবে। কিন্তু নিজের চিন্তাটা নিজে করবে।\"" },
+      "অর্ণব সেই দিন থেকেই বই পড়তে শুরু করল। একটার পর একটা বই। একটার পর একটা সূত্র।",
+      "কখনও মিলছে। কখনও মিলছে না। কখনও মনে হচ্ছে উত্তর পেয়ে গেছে। পরক্ষণেই ভুল প্রমাণিত হচ্ছে। কিন্তু সে থামল না।"
+    ]
+  },
+  {
+    title: "দ্বিতীয় অঙ্কের সন্ধানে",
+    paragraphs: [
+      "দ্বিতীয় অঙ্কটা অর্ণবকে যেন ছাড়তেই চাইছিল না। দিনের পর দিন সে চেষ্টা করল।",
+      "খাতার পাতা ভরে গেল। কিছু হিসাব কেটে দেওয়া। কিছু আবার নতুন করে লেখা। কিছু পৃষ্ঠা এতটাই জটিল হয়ে গেল যে অর্ণব নিজেই পরে বুঝতে পারত না কী লিখেছিল। তবুও সে চেষ্টা চালিয়ে গেল।",
+      "একদিন লাইব্রেরি থেকে ফিরে হঠাৎ তার প্রথম অঙ্কটির কথা মনে পড়ল। প্রথম সমস্যায় যে পদ্ধতিটি তাকে সাহায্য করেছিল, সেটাকে কি দ্বিতীয় সমস্যায় অন্যভাবে ব্যবহার করা যায়?",
+      "সে আবার খাতা খুলল। নতুন করে শুরু করল। রাত বাড়তে লাগল। একসময় বাইরে ভোরের আলো ফুটতে শুরু করেছে।",
+      "অর্ণব শেষ কয়েকটি ধাপ লিখে থেমে গেল। সে চোখ বন্ধ করল। আবার হিসাব করল। তারপর আবার।",
+      { d:true, t:"হঠাৎ তার মুখে হাসি ফুটে উঠল। — \"হয়ে গেছে!\"" },
+      "কিন্তু এবার সে সঙ্গে সঙ্গে স্যারকে জানাল না। সে পুরো হিসাবটা আবার শুরু থেকে যাচাই করল। তারপর খাতা বন্ধ করে রাখল।",
+      "সকালে স্যারের কাছে নিয়ে গেল। স্যার খাতা খুললেন। প্রথম কয়েকটি পৃষ্ঠা পড়লেন। তারপর মাঝখানের অংশ। তারপর শেষ পৃষ্ঠা।",
+      "কিছুক্ষণ নীরবতা। অর্ণব উৎকণ্ঠায় দাঁড়িয়ে।",
+      { d:true, t:"অবশেষে স্যার ধীরে ধীরে বললেন— \"চলো। এবার আমাদের আরও কিছু মানুষের সামনে এটা পরীক্ষা করতে হবে।\"" }
+    ]
+  },
+  {
+    title: "অসম্ভবের দরজা",
+    paragraphs: [
+      "কয়েক সপ্তাহ পর একটি বড় গণিত সেমিনারের আয়োজন করা হলো। সেখানে দেশের বিভিন্ন প্রান্তের গণিতবিদ ও গবেষকরা উপস্থিত।",
+      "অর্ণব স্যারের পাশে বসে আছে। তার হাতে সেই পুরোনো খাতা। স্যার বোর্ডে অর্ণবের সমাধান লিখতে শুরু করলেন।",
+      "প্রথমে সবাই স্বাভাবিকভাবেই দেখছিল। তারপর ধীরে ধীরে হলঘরের পরিবেশ বদলে গেল। একজন বিশেষজ্ঞ সামনে ঝুঁকে এলেন। আরেকজন নিজের নোটবুক খুললেন। কেউ হিসাব মিলিয়ে দেখছেন। কেউ প্রশ্ন করছেন।",
+      "অর্ণব একের পর এক প্রশ্নের উত্তর দিচ্ছে। কোনো উত্তর সে বই থেকে মুখস্থ করেনি। সে নিজের চিন্তার পথটাই ব্যাখ্যা করছে।",
+      "দীর্ঘ সময় ধরে পরীক্ষা চলল। শেষ পর্যন্ত একজন প্রবীণ গণিতবিদ উঠে দাঁড়িয়ে বললেন—",
+      { d:true, t:"— \"এই সমাধানটি অত্যন্ত অসাধারণ।\"" },
+      "হলজুড়ে করতালি শুরু হলো। 👏",
+      "অর্ণব তখনও যেন বিশ্বাস করতে পারছে না। সে স্যারের দিকে তাকাল।",
+      { d:true, t:"স্যার শুধু মৃদু হেসে বললেন— \"আমি তো বলেছিলাম, কাজটা শেষ করতে হবে।\"" },
+      "অনেক পরে একদিন অর্ণব আবার স্যারের কাছে গেল।",
+      { d:true, t:"— \"স্যার, আপনি সেদিন যদি আমাকে বলতেন এই অঙ্ক কেউ সমাধান করতে পারেনি, তাহলে?\"" },
+      "স্যার কিছুক্ষণ চুপ করে রইলেন। তারপর বললেন—",
+      { d:true, t:"— \"তাহলে হয়তো তুমি চেষ্টা করতেই না।\"" },
+      { d:true, t:"অর্ণব চুপ। স্যার বললেন, — \"তুমি ভেবেছিলে এটা তোমার হোমওয়ার্ক। তাই তুমি ভাবোনি এটা অসম্ভব।\"" },
+      "তিনি অর্ণবের মাথায় হাত রাখলেন।",
+      { d:true, t:"— \"মনে রেখো, অনেক সময় আমাদের সবচেয়ে বড় বাধা সমস্যাটা নয়—সমস্যা সম্পর্কে আমাদের আগাম ধারণা।\"" },
+      { d:true, t:"অর্ণব মৃদু হেসে বলল— \"তাহলে স্যার, সেদিন আমার ঘুমিয়ে পড়াটাই ভালো হয়েছিল?\"" },
+      { d:true, t:"স্যার হেসে উত্তর দিলেন— \"হ্যাঁ। জীবনে কিছু কিছু ভুলও আশীর্বাদ হয়ে আসে।\"" },
+      "অর্ণব নিজের পুরোনো খাতাটার দিকে তাকাল। দুটি অঙ্ক। একটি ঘুম। একটি ভুল বোঝাবুঝি। আর একটি মুক্ত মন।",
+      "সে সেদিন বুঝেছিল—অসম্ভবের সবচেয়ে শক্তিশালী দেয়াল অনেক সময় আমাদের নিজের মাথার ভেতরেই তৈরি হয়। 🌱🧮"
+    ]
+  }
+];
+
+/* ---------------- RENDER ---------------- */
+const tocList = document.getElementById('tocList');
+const main = document.getElementById('episodes');
+
+episodes.forEach((ep, i) => {
+  const num = i+1;
+
+  // TOC item
+  const tocItem = document.createElement('div');
+  tocItem.className = 'toc-item';
+  tocItem.onclick = () => document.getElementById('ep'+num).scrollIntoView();
+  tocItem.innerHTML = `<div class="toc-num">${num}</div><div class="toc-name">${ep.title}</div>`;
+  tocList.appendChild(tocItem);
+
+  // Episode section
+  const section = document.createElement('section');
+  section.className = 'episode';
+  section.id = 'ep'+num;
+
+  const storyHtml = ep.paragraphs.map((p, pi) => {
+    const isD = typeof p === 'object';
+    const text = isD ? p.t : p;
+    return `<p class="${isD?'dialogue':''}" data-pidx="${pi}"><span class="reading-target">${text}</span></p>`;
+  }).join('');
+
+  const prevLink = num>1 ? `<a href="#ep${num-1}">← পর্ব–${num-1}</a>` : `<span></span>`;
+  const nextLink = num<episodes.length ? `<a href="#ep${num+1}">পর্ব–${num+1} →</a>` : `<span></span>`;
+
+  section.innerHTML = `
+    <div class="ep-head">
+      <div class="ep-heading">
+        <span class="ep-tag">পর্ব–${num}</span>
+        <h2 class="ep-title">${ep.title}</h2>
+      </div>
+      <div class="voice-controls">
+        <button class="voice-btn" data-ep="${i}" onclick="toggleEpisodeVoice(${i}, this)">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="ic-play"><path d="M8 5v14l11-7z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" class="ic-pause" style="display:none"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+          <span class="lbl-play">শুনুন</span>
+          <span class="lbl-pause">থামান</span>
+        </button>
+      </div>
+    </div>
+    <div class="story-text">${storyHtml}</div>
+    <div class="ep-nav">${prevLink}${nextLink}</div>
+  `;
+  main.appendChild(section);
+});
+
+/* ---------------- VOICE (Web Speech API) ---------------- */
+let currentEpIdx = null;
+let currentUtterQueue = [];
+let currentUtterPos = 0;
+let isPaused = false;
+let bengaliVoice = null;
+
+function pickVoice(){
+  const voices = speechSynthesis.getVoices();
+  bengaliVoice = voices.find(v => v.lang && v.lang.toLowerCase().startsWith('bn')) || null;
+  return bengaliVoice;
+}
+if ('speechSynthesis' in window){
+  pickVoice();
+  speechSynthesis.onvoiceschanged = pickVoice;
+}
+
+function getEpisodeButton(idx){
+  return document.querySelector(`.voice-btn[data-ep="${idx}"]`);
+}
+function setBtnPlaying(idx, playing){
+  document.querySelectorAll('.voice-btn').forEach(b=>b.classList.remove('playing'));
+  const btn = getEpisodeButton(idx);
+  if(btn && playing) btn.classList.add('playing');
+}
+
+function clearHighlights(){
+  document.querySelectorAll('.reading').forEach(el=>el.classList.remove('reading'));
+}
+
+function speakEpisode(idx, resumeFromPos){
+  if(!('speechSynthesis' in window)){
+    alert('দুঃখিত, আপনার ব্রাউজার ভয়েস ফিচার সমর্থন করে না।');
+    return;
+  }
+  speechSynthesis.cancel();
+  currentEpIdx = idx;
+  const section = document.getElementById('ep'+(idx+1));
+  const spans = section.querySelectorAll('.reading-target');
+  currentUtterQueue = Array.from(spans);
+  currentUtterPos = resumeFromPos || 0;
+  isPaused = false;
+
+  section.scrollIntoView({behavior:'smooth', block:'start'});
+  setBtnPlaying(idx, true);
+  showVoicebar(idx);
+
+  speakNext();
+}
+
+function speakNext(){
+  if(currentUtterPos >= currentUtterQueue.length){
+    // episode finished -> auto-advance
+    clearHighlights();
+    setBtnPlaying(currentEpIdx, false);
+    if(currentEpIdx < episodes.length - 1){
+      speakEpisode(currentEpIdx + 1, 0);
+    } else {
+      hideVoicebar();
+    }
+    return;
+  }
+  clearHighlights();
+  const span = currentUtterQueue[currentUtterPos];
+  span.classList.add('reading');
+  span.scrollIntoView({behavior:'smooth', block:'center'});
+
+  const utter = new SpeechSynthesisUtterance(span.textContent);
+  utter.lang = 'bn-IN';
+  if(bengaliVoice) utter.voice = bengaliVoice;
+  utter.rate = 0.95;
+  utter.pitch = 1;
+
+  utter.onend = () => {
+    if(!isPaused){
+      currentUtterPos++;
+      speakNext();
+    }
+  };
+  utter.onerror = () => {
+    currentUtterPos++;
+    speakNext();
+  };
+
+  speechSynthesis.speak(utter);
+}
+
+function toggleEpisodeVoice(idx, btnEl){
+  const btn = getEpisodeButton(idx);
+  const isThisPlaying = btn.classList.contains('playing');
+  if(isThisPlaying){
+    stopVoice();
+  } else {
+    speakEpisode(idx, 0);
+  }
+}
+
+function playFromEpisode(num){
+  speakEpisode(num-1, 0);
+}
+
+function stopVoice(){
+  if('speechSynthesis' in window) speechSynthesis.cancel();
+  isPaused = false;
+  clearHighlights();
+  document.querySelectorAll('.voice-btn').forEach(b=>b.classList.remove('playing'));
+  hideVoicebar();
+  currentEpIdx = null;
+}
+
+function vbTogglePlay(){
+  if(currentEpIdx === null) return;
+  if(speechSynthesis.speaking && !speechSynthesis.paused){
+    speechSynthesis.pause();
+    isPaused = true;
+    document.getElementById('vbPlayIcon').innerHTML = '<path d="M8 5v14l11-7z"/>';
+  } else if(speechSynthesis.paused){
+    speechSynthesis.resume();
+    isPaused = false;
+    document.getElementById('vbPlayIcon').innerHTML = '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>';
+  }
+}
+
+function vbPrevEpisode(){
+  if(currentEpIdx === null) return;
+  const target = Math.max(0, currentEpIdx - 1);
+  speakEpisode(target, 0);
+}
+function vbNextEpisode(){
+  if(currentEpIdx === null) return;
+  const target = Math.min(episodes.length - 1, currentEpIdx + 1);
+  speakEpisode(target, 0);
+}
+
+function showVoicebar(idx){
+  const bar = document.getElementById('voicebar');
+  bar.classList.add('active');
+  document.getElementById('vbEp').textContent = 'পর্ব–' + (idx+1);
+  document.getElementById('vbTitle').textContent = episodes[idx].title;
+  document.getElementById('vbPlayIcon').innerHTML = '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>';
+}
+function hideVoicebar(){
+  document.getElementById('voicebar').classList.remove('active');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Four-Piece Map — Episode 10</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-deep:   #081521;
+    --navy-base:   #0e2233;
+    --navy-panel:  #14304a;
+    --navy-line:   #24476a;
+    --gold:        #c9a24b;
+    --gold-bright: #e8c874;
+    --cream:       #ede6d6;
+    --cream-dim:   #b9c2cc;
+    --ember:       #a54b3a;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at 50% -10%, rgba(201,162,75,0.10), transparent 55%),
+      var(--navy-deep);
+    color:var(--cream);
+    font-family:'Inter', sans-serif;
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
+  }
+  a{ color:var(--gold-bright); }
+  a:focus-visible, button:focus-visible{ outline:2px solid var(--gold-bright); outline-offset:3px; }
+
+  .topnav{
+    max-width:640px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:1rem 1.4rem;
+    font-size:0.85rem;
+  }
+  .topnav a{ text-decoration:none; color:var(--cream-dim); }
+  .topnav a:hover{ color:var(--gold-bright); }
+  .topnav .brand{ color:var(--gold); font-family:'Playfair Display', serif; font-weight:600; }
+
+  .cover{
+    position:relative; width:100%; aspect-ratio:4/5; max-height:78vh; overflow:hidden;
+  }
+  .cover img{ width:100%; height:100%; object-fit:cover; object-position:50% 30%; display:block; filter:saturate(1.03); }
+  .cover::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(8,21,33,0.15) 0%, rgba(8,21,33,0.05) 45%, rgba(8,21,33,0.65) 82%, var(--navy-deep) 100%);
+  }
+  @media (min-width:640px){ .cover{ aspect-ratio:16/9; max-height:72vh; } }
+
+  .hero{
+    position:relative; padding:2.2rem 1.4rem 3rem; text-align:center; overflow:hidden;
+    border-bottom:1px solid var(--navy-line);
+  }
+  .hero.with-cover{ margin-top:-4.5rem; }
+  .hero.no-cover{ padding-top:4.2rem; }
+  .hero::before{
+    content:""; position:absolute; inset:0;
+    background:
+      repeating-linear-gradient(115deg, rgba(201,162,75,0.05) 0 2px, transparent 2px 70px),
+      linear-gradient(180deg, transparent, var(--navy-deep) 40%);
+    z-index:-1;
+  }
+  .hero.no-cover::before{
+    background:
+      repeating-linear-gradient(115deg, rgba(201,162,75,0.05) 0 2px, transparent 2px 70px),
+      linear-gradient(180deg, var(--navy-base), var(--navy-deep) 85%);
+  }
+  .hero .kicker{ font-size:0.82rem; letter-spacing:0.06em; color:var(--cream-dim); margin:0 0 0.9rem; }
+  .hero h1{
+    font-family:'Playfair Display', serif; font-weight:700;
+    font-size:clamp(1.7rem, 8vw, 2.6rem); line-height:1.3; margin:0 0 0.6rem;
+    color:var(--gold-bright); text-shadow:0 0 30px rgba(201,162,75,0.18);
+  }
+  .hero .tagline{ font-family:'Playfair Display', serif; font-size:1rem; color:var(--cream-dim); margin:0; font-style:italic; }
+
+  .meta-bar{
+    max-width:640px; margin:0 auto; padding:1.1rem 1.4rem;
+    display:flex; justify-content:space-between; align-items:center;
+    font-size:0.82rem; color:var(--cream-dim); border-bottom:1px solid var(--navy-line);
+  }
+  .meta-bar .ep-no{ color:var(--gold); font-weight:600; }
+
+  main{ max-width:640px; margin:0 auto; padding:2.6rem 1.4rem 1rem; }
+  article p{ margin:0 0 1.25rem; font-size:1.06rem; color:var(--cream); }
+  article p:first-of-type::first-letter{
+    font-family:'Playfair Display', serif; font-size:2.6rem; font-weight:700; color:var(--gold-bright);
+    float:left; line-height:0.8; padding:0.1rem 0.35rem 0 0;
+  }
+  .line{ color:var(--cream-dim); font-style:italic; font-size:0.98rem; }
+  .sfx{ text-align:center; color:var(--gold); font-family:'Playfair Display', serif; font-weight:600; font-size:1.15rem; letter-spacing:0.08em; margin:0.4rem 0 1.4rem; }
+  .dialogue{ color:var(--gold-bright); padding-left:0.9rem; border-left:2px solid var(--navy-line); margin:0 0 0.85rem; }
+  .board{ font-family:'Playfair Display', serif; text-align:center; color:var(--gold-bright); font-size:1.08rem; font-weight:600; margin:1.6rem 0 0.3rem; letter-spacing:0.02em; }
+  .board.sub{ font-family:'Inter', sans-serif; font-weight:400; font-style:italic; font-size:0.92rem; color:var(--cream-dim); margin-top:0; margin-bottom:1.6rem; }
+  .scene-divider{ display:flex; align-items:center; justify-content:center; gap:0.7rem; margin:2.6rem 0; color:var(--gold); }
+  .scene-divider::before, .scene-divider::after{ content:""; height:1px; width:80px; background:linear-gradient(90deg, transparent, var(--navy-line)); }
+  .scene-divider::after{ background:linear-gradient(90deg, var(--navy-line), transparent); }
+  .scene-divider span{ font-size:1.1rem; }
+  .subhead{
+    font-family:'Playfair Display', serif; font-weight:600; color:var(--gold); font-size:1rem;
+    margin:2.2rem 0 1.2rem; display:flex; align-items:center; gap:0.6rem;
+  }
+  .subhead::before{ content:""; width:18px; height:1px; background:var(--gold); }
+  .closing{ margin-top:2.6rem; padding-top:1.8rem; border-top:1px solid var(--navy-line); }
+  .closing p{ color:var(--cream-dim); }
+  .closing .names{ color:var(--gold-bright); font-weight:600; font-family:'Playfair Display', serif; }
+  .continued{ text-align:center; margin:2.4rem 0 1rem; }
+  .continued span{
+    display:inline-block; font-family:'Playfair Display', serif; font-style:italic; color:var(--navy-deep);
+    background:var(--gold); padding:0.5rem 1.6rem; border-radius:2px; font-size:0.95rem; letter-spacing:0.03em;
+  }
+  .ep-nav{
+    max-width:640px; margin:2rem auto 0; padding:1.4rem;
+    display:flex; justify-content:space-between; gap:1rem;
+    border-top:1px solid var(--navy-line);
+  }
+  .ep-nav a{
+    text-decoration:none; color:var(--cream); font-size:0.9rem;
+    padding:0.6rem 1rem; border:1px solid var(--navy-line); border-radius:3px;
+    flex:1; text-align:center;
+  }
+  .ep-nav a:hover{ border-color:var(--gold); color:var(--gold-bright); }
+  .ep-nav a.disabled{ opacity:0.35; pointer-events:none; }
+  footer{
+    text-align:center; padding:1.6rem 1.4rem 2.6rem; color:var(--cream-dim); font-size:0.8rem;
+    border-top:1px solid var(--navy-line);
+  }
+  @media (min-width:640px){ .hero{ padding:5.5rem 1.4rem 3.6rem; } .hero.with-cover{ padding-top:2.2rem; } article p{ font-size:1.1rem; } }
+
+</style>
+</head>
+<body>
+
+<div class="topnav">
+  <a href="four-piece-index.html">← All Episodes</a>
+  <span class="brand">The Four-Piece Map</span>
+  <a href="porbo-11.html">Next Episode →</a>
+
+</div>
+
+<div class="hero no-cover">
+  <p class="kicker">A Serialized Novel</p>
+  <h1>The Four-Piece Map</h1>
+  <p class="tagline">A hundred-year-old truth behind a hidden treasure</p>
+</div>
+
+<div class="meta-bar">
+  <span><span class="ep-no">Episode 10</span> — Arindam's Past and the Mirror's Sign</span>
+  <span>Ongoing</span>
+</div>
+
+<main>
+<article>
+<div class="scene-divider"><span>🏛️</span></div>
+<p class="subhead">Arindam's Hidden Past</p>
+
+<p>Many years ago... Arindam Chowdhury hadn't yet become the great businessman he is today. Back in those old days in the village, he had gone with his wife and his little daughter Supriya to the village's ancient Shiva temple, one Shivaratri night. The temple stood very close to the Chowdhury family's ancestral home.</p>
+<p>While pouring water over the Shiva lingam during the prayer, Arindam's eyes suddenly caught on an odd stone on the altar. It was slightly loose compared to the rest. Out of curiosity, he shifted it a little, and a small hidden cavity appeared inside. And there —</p>
+<p class="board sub">A few old gold coins and some precious stones.</p>
+<p>Arindam was stunned. But he told no one. The money he later got by secretly selling that wealth became a part of the first major capital behind his business.</p>
+<p>The business grew. Working hard year after year, Arindam became a man worth crores of rupees. But he could never forget what had happened that Shivaratri night. Instead, an idea slowly began to take shape in his mind—</p>
+<p class="dialogue">— "If something this valuable could be found near the Shiva lingam's altar, might there not be something even greater hidden elsewhere in this old Chowdhury house?"</p>
+<p>Searching for the answer to that question, he had tried many times to buy the ancestral house. Sometimes he offered a hefty sum. Sometimes he sent men to pressure the family into selling. But Kanchan's family never left their homestead. Arindam's suspicion only grew deeper.</p>
+<p>But he didn't know — that the few gold coins he had found were not even a fraction of the full wealth in that ancient mystery. The real wealth lay far deeper. And only Harinarayan Chowdhury had ever known the way to it.</p>
+
+<div class="scene-divider"><span>🗝️</span></div>
+<p class="subhead">Harinarayan's True Secret</p>
+
+<p>In the final days of his life, Harinarayan had chosen not to keep the wealth in one place; instead, he divided the path to it into four pieces of a map. He knew — that no one should be able to reach the treasure directly by finding just one piece. So, with each piece, he attached the sign for the next step of the path.</p>
+<p>Arindam had never found any trace of those map pieces. That was why, despite years of searching, he could never reach the real treasure.</p>
+
+<div class="scene-divider"><span>🧩</span></div>
+<p class="subhead">Three Steps of the Mystery in Kanchan's Hands</p>
+
+<p>Meanwhile, Kanchan had already advanced quite far along that path. He had found the first piece in the hidden part of the old photograph's wooden frame. That piece's sign had led him — to the old well.</p>
+<p>Behind the loose brick of the well, he had found — the second piece. Written on the back of the second piece were the words—</p>
+<p class="board sub">"Where there is no sound, and yet the scripture speaks..."</p>
+<p>Following this sign, Kanchan had reached the old prayer room.</p>
+
+<div class="scene-divider"><span>📜</span></div>
+<p class="subhead">The Third Piece</p>
+
+<p>In one corner of the prayer room lay an old manuscript, untouched for many years. Kanchan began turning its pages with the utmost care. Page after page.</p>
+<p>Suddenly, his eyes caught on one of the last pages. Tucked oddly within its fold was a small piece of paper. Kanchan drew it out. The moment he unfolded it—</p>
+<p class="board">The third piece of the map!</p>
+<p>Kanchan's eyes lit up. He matched the third piece against the first and second. Now the path of the map grew clearer. The three lines came together, pointing toward the house's ancient Shiva shrine.</p>
+<p>But the final piece was still missing. On the back of the third piece was only one small sign—</p>
+<p class="board sub">"Where prayer comes to its end, there stands the last guardian of the path."</p>
+<p>Kanchan stayed silent for a while. Then he said, slowly—</p>
+<p class="dialogue">— "The Shiva lingam..."</p>
+
+<div class="scene-divider"><span>🕉️</span></div>
+<p class="subhead">The Fourth and Final Piece</p>
+
+<p>Kanchan now went and stood before the old Shiva lingam of the ancestral house. The lingam was many years old. As he cleared away the stones and earth caked around the altar, his eyes fell on a thin groove below.</p>
+<p>He pressed it with his finger.</p>
+<p class="sfx">Click!</p>
+<p>A small part of the stone shifted slightly. Inside, a metal box appeared. Kanchan's heart lurched. He drew the box out and opened it. Inside was a paper wrapped in cloth. The moment he unwrapped it—</p>
+<p class="board">The fourth and final piece of the map!</p>
+<p>Kanchan said nothing for a while. All four pieces were now in his hands. Four doors to four mysteries.</p>
+
+<div class="scene-divider"><span>🧩</span></div>
+<p class="subhead">The Four Pieces Together</p>
+
+<p>Kanchan laid the four pieces out on an old table. The first piece. The second piece. The third piece. The fourth piece. Carefully fitted together, they formed one large map.</p>
+<p>But — even so, none of it made any sense. Winding lines here. Dots there. Marks of bricks elsewhere. And a few strange symbols.</p>
+<p>Kanchan said, frustrated—</p>
+<p class="dialogue">— "I've got all four pieces. But even with the whole map put together, I can't make sense of it!"</p>
+<p>Just then, it came back to him — Harinarayan had written, "The path shall reveal itself to the eyes of the rightful heir." But how would those eyes work?</p>
+
+<div class="scene-divider"><span>👩</span></div>
+<p class="subhead">Supriya Arrives</p>
+
+<p>In the end, Kanchan stopped trying alone and told Supriya everything. Supriya came to the ancestral house and saw the four pieces laid out side by side.</p>
+<p>She said, astonished—</p>
+<p class="dialogue">— "You've found all four?"</p>
+<p>Kanchan nodded.</p>
+<p class="dialogue">— "Yes. But I still can't work out the real sign."</p>
+<p>Supriya took the map in her hands. She looked at it from the front once. Then turned it over. Held it up to the light again. Nothing made sense.</p>
+<p>Suddenly, her eyes caught on a corner of the room. There stood an old mirror, covered in dust. Supriya took the map and stood in front of the mirror. A few seconds later — she suddenly fell silent.</p>
+<p class="dialogue">— "Kanchan..."</p>
+<p class="dialogue">— "What happened?"</p>
+<p class="dialogue">— "Come here."</p>
+<p>Kanchan came forward and looked at the mirror. His eyes widened. The lines of the map, reflected in the mirror, seemed to have taken on a whole new shape. The lines that had seemed so scattered until now were coming together to form a clear path.</p>
+<p>Supriya said, excitedly—</p>
+<p class="dialogue">— "It was made to be seen in reverse, all along!"</p>
+<p>Kanchan held his breath and stared at the mirror. Now it was clear to see — a specific room. A few bricks on the floor. And beneath one of them, the mark of a narrow staircase leading down.</p>
+<p>Kanchan's throat went dry.</p>
+<p class="dialogue">— "An underground chamber..."</p>
+<p>Supriya said, slowly—</p>
+<p class="dialogue">— "Your great-grandfather never put the real path directly into the map. You can only make it out in the mirror."</p>
+<p>Kanchan looked at the floor. Then he said—</p>
+<p class="dialogue">— "All these years, this path has been hidden right inside our own house!"</p>
+
+<div class="scene-divider"><span>👁️</span></div>
+<p class="subhead">The Truth Arindam Doesn't Know</p>
+
+<p>At that very moment, across town, Arindam sat in his own room. He knew Supriya had been going to the old house with Kanchan.</p>
+<p>A little while later, one of his men called.</p>
+<p class="dialogue">— "Sir, madam went to that house again today."</p>
+<p>Arindam stayed silent for a moment. Then he said, in a calm voice—</p>
+<p class="dialogue">— "Pull your watch off that house."</p>
+<p class="dialogue">— "But sir..."</p>
+<p class="dialogue">— "I said, pull it off."</p>
+<p>The call ended.</p>
+<p>Arindam didn't know — that the secret of the house he'd waited so many years for had now been unlocked by his own daughter's hands. And a greater truth still — Supriya herself had now become part of the very path to that treasure.</p>
+<p>Arindam had once found a few gold coins near the Shiva lingam. But he had never known — they were only a tiny fragment of an old mystery. The door to the real treasure would only open when the four-piece map, the mirror's sign, and the path to the underground chamber all came together.</p>
+<p>Kanchan carefully gathered up the four pieces. Then, looking at that secret path revealed in the mirror, he said—</p>
+<p class="dialogue">— "Tomorrow, we'll move that brick in the floor."</p>
+<p>Supriya looked at him and smiled faintly—</p>
+<p class="dialogue">— "And then?"</p>
+<p>A glint of mystery flashed in Kanchan's eyes.</p>
+<p class="dialogue">— "Then we'll finally know what Harinarayan Chowdhury really left hidden behind."</p>
+
+<div class="closing">
+  <p>But neither of them knew — that the moment the door to the underground chamber opened, it would bring to light not only the mystery of the treasure, but another truth, lost for many years, as well.</p>
+</div>
+<div class="continued"><span>To be continued...</span></div>
+
+</article>
+</main>
+
+<div class="ep-nav">
+  <a href="porbo-9.html">← Episode 9</a>
+  <a href="porbo-11.html">Next Episode →</a>
+</div>
+
+<footer>
+  The Four-Piece Map · Episode 10
+</footer>
+
+</body>
+</html>

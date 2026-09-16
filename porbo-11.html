@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Four-Piece Treasure Map — Episode 11</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-deep:   #081521;
+    --navy-base:   #0e2233;
+    --navy-panel:  #14304a;
+    --navy-line:   #24476a;
+    --gold:        #c9a24b;
+    --gold-bright: #e8c874;
+    --cream:       #ede6d6;
+    --cream-dim:   #b9c2cc;
+    --ember:       #a54b3a;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at 50% -10%, rgba(201,162,75,0.10), transparent 55%),
+      var(--navy-deep);
+    color:var(--cream);
+    font-family:'Inter', sans-serif;
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
+  }
+  a{ color:var(--gold-bright); }
+  a:focus-visible, button:focus-visible{ outline:2px solid var(--gold-bright); outline-offset:3px; }
+
+  .topnav{
+    max-width:640px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:1rem 1.4rem;
+    font-size:0.85rem;
+  }
+  .topnav a{ text-decoration:none; color:var(--cream-dim); }
+  .topnav a:hover{ color:var(--gold-bright); }
+  .topnav .brand{ color:var(--gold); font-family:'Playfair Display', serif; font-weight:600; }
+
+  /* ---------- illustrated hero ---------- */
+  .art-frame{
+    max-width:760px; margin:0 auto; padding:0 1.4rem;
+  }
+  .art-panel{
+    position:relative; width:100%; aspect-ratio:16/10;
+    border-radius:6px; overflow:hidden; margin-top:1.4rem;
+    border:1px solid var(--navy-line);
+    box-shadow:0 22px 46px -20px rgba(0,0,0,.7);
+  }
+  .art-panel svg{ width:100%; height:100%; display:block; }
+
+  .hero{
+    position:relative; padding:1.6rem 1.4rem 3rem; text-align:center; overflow:hidden;
+    border-bottom:1px solid var(--navy-line);
+  }
+  .hero::before{
+    content:""; position:absolute; inset:0;
+    background:
+      repeating-linear-gradient(115deg, rgba(201,162,75,0.05) 0 2px, transparent 2px 70px),
+      linear-gradient(180deg, transparent, var(--navy-deep) 40%);
+    z-index:-1;
+  }
+  .hero .kicker{ font-size:0.82rem; letter-spacing:0.06em; color:var(--cream-dim); margin:0 0 0.9rem; }
+  .hero h1{
+    font-family:'Playfair Display', serif; font-weight:700;
+    font-size:clamp(1.7rem, 8vw, 2.6rem); line-height:1.3; margin:0 0 0.6rem;
+    color:var(--gold-bright); text-shadow:0 0 30px rgba(201,162,75,0.18);
+  }
+  .hero .tagline{ font-family:'Playfair Display', serif; font-size:1rem; color:var(--cream-dim); margin:0; font-style:italic; }
+
+  .meta-bar{
+    max-width:640px; margin:0 auto; padding:1.1rem 1.4rem;
+    display:flex; justify-content:space-between; align-items:center;
+    font-size:0.82rem; color:var(--cream-dim); border-bottom:1px solid var(--navy-line);
+  }
+  .meta-bar .ep-no{ color:var(--gold); font-weight:600; }
+
+  main{ max-width:640px; margin:0 auto; padding:2.6rem 1.4rem 1rem; }
+  article p{ margin:0 0 1.25rem; font-size:1.06rem; color:var(--cream); }
+  article p:first-of-type::first-letter{
+    font-family:'Playfair Display', serif; font-size:2.6rem; font-weight:700; color:var(--gold-bright);
+    float:left; line-height:0.8; padding:0.1rem 0.35rem 0 0;
+  }
+  .line{ color:var(--cream-dim); font-style:italic; font-size:0.98rem; }
+  .sfx{ text-align:center; color:var(--gold); font-family:'Playfair Display', serif; font-weight:600; font-size:1.15rem; letter-spacing:0.08em; margin:0.4rem 0 1.4rem; }
+  .dialogue{ color:var(--gold-bright); padding-left:0.9rem; border-left:2px solid var(--navy-line); margin:0 0 0.85rem; }
+  .board{ font-family:'Playfair Display', serif; text-align:center; color:var(--gold-bright); font-size:1.08rem; font-weight:600; margin:1.6rem 0 0.3rem; letter-spacing:0.02em; }
+  .board.sub{ font-family:'Inter', sans-serif; font-weight:400; font-style:italic; font-size:0.92rem; color:var(--cream-dim); margin-top:0; margin-bottom:1.6rem; }
+  .scene-divider{ display:flex; align-items:center; justify-content:center; gap:0.7rem; margin:2.6rem 0; color:var(--gold); }
+  .scene-divider::before, .scene-divider::after{ content:""; height:1px; width:80px; background:linear-gradient(90deg, transparent, var(--navy-line)); }
+  .scene-divider::after{ background:linear-gradient(90deg, var(--navy-line), transparent); }
+  .scene-divider span{ font-size:1.1rem; }
+  .subhead{
+    font-family:'Playfair Display', serif; font-weight:600; color:var(--gold); font-size:1rem;
+    margin:2.2rem 0 1.2rem; display:flex; align-items:center; gap:0.6rem;
+  }
+  .subhead::before{ content:""; width:18px; height:1px; background:var(--gold); }
+
+  /* inline mid-story illustration */
+  .inline-art{
+    margin:2.4rem 0; border-radius:6px; overflow:hidden;
+    border:1px solid var(--navy-line);
+    box-shadow:0 18px 40px -20px rgba(0,0,0,.65);
+  }
+  .inline-art svg{ width:100%; height:auto; display:block; }
+  .art-caption{
+    text-align:center; font-size:0.82rem; color:var(--cream-dim); font-style:italic;
+    margin:0.6rem 0 2rem;
+  }
+
+  .closing{ margin-top:2.6rem; padding-top:1.8rem; border-top:1px solid var(--navy-line); }
+  .closing p{ color:var(--cream-dim); }
+  .closing .names{ color:var(--gold-bright); font-weight:600; font-family:'Playfair Display', serif; }
+  .continued{ text-align:center; margin:2.4rem 0 1rem; }
+  .continued span{
+    display:inline-block; font-family:'Playfair Display', serif; font-style:italic; color:var(--navy-deep);
+    background:var(--gold); padding:0.5rem 1.6rem; border-radius:2px; font-size:0.95rem; letter-spacing:0.03em;
+  }
+  .ep-nav{
+    max-width:640px; margin:2rem auto 0; padding:1.4rem;
+    display:flex; justify-content:space-between; gap:1rem;
+    border-top:1px solid var(--navy-line);
+  }
+  .ep-nav a{
+    text-decoration:none; color:var(--cream); font-size:0.9rem;
+    padding:0.6rem 1rem; border:1px solid var(--navy-line); border-radius:3px;
+    flex:1; text-align:center;
+  }
+  .ep-nav a:hover{ border-color:var(--gold); color:var(--gold-bright); }
+  .ep-nav a.disabled{ opacity:0.35; pointer-events:none; }
+  footer{
+    text-align:center; padding:1.6rem 1.4rem 2.6rem; color:var(--cream-dim); font-size:0.8rem;
+    border-top:1px solid var(--navy-line);
+  }
+  @media (min-width:640px){ .hero{ padding:2.6rem 1.4rem 3.6rem; } article p{ font-size:1.1rem; } }
+
+</style>
+</head>
+<body>
+
+<div class="topnav">
+  <a href="index-en.html">← All Episodes</a>
+  <span class="brand">The Four-Piece Treasure Map</span>
+</div>
+
+<div class="art-frame">
+  <div class="art-panel">
+    <svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="skyGlow" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#14304a"/>
+          <stop offset="100%" stop-color="#081521"/>
+        </linearGradient>
+        <linearGradient id="stairShade" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#2a4562"/>
+          <stop offset="100%" stop-color="#081521"/>
+        </linearGradient>
+        <radialGradient id="torchGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#e8c874" stop-opacity="0.85"/>
+          <stop offset="60%" stop-color="#c9a24b" stop-opacity="0.25"/>
+          <stop offset="100%" stop-color="#c9a24b" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+
+      <rect width="800" height="500" fill="url(#skyGlow)"/>
+
+      <!-- stone opening -->
+      <path d="M120 60 L680 60 L620 220 L180 220 Z" fill="#0a1c2c"/>
+      <path d="M120 60 L680 60 L620 220 L180 220 Z" fill="none" stroke="#24476a" stroke-width="2"/>
+
+      <!-- descending staircase, perspective -->
+      <g>
+        <path d="M340 220 L460 220 L500 260 L300 260 Z" fill="#16324a"/>
+        <path d="M300 260 L500 260 L520 300 L280 300 Z" fill="#12283c"/>
+        <path d="M280 300 L520 300 L545 345 L255 345 Z" fill="#0f2233"/>
+        <path d="M255 345 L545 345 L575 400 L225 400 Z" fill="#0c1c2b"/>
+        <path d="M225 400 L575 400 L610 460 L190 460 Z" fill="#081722"/>
+        <path d="M190 460 L610 460 L640 500 L160 500 Z" fill="#050f18"/>
+      </g>
+
+      <!-- side walls -->
+      <path d="M120 60 L180 220 L190 460 L160 500 L0 500 L0 60 Z" fill="url(#stairShade)"/>
+      <path d="M680 60 L620 220 L610 460 L640 500 L800 500 L800 60 Z" fill="url(#stairShade)"/>
+
+      <!-- torch glow at bottom -->
+      <circle cx="400" cy="440" r="130" fill="url(#torchGlow)"/>
+
+      <!-- two small figures descending -->
+      <g fill="#e8c874" opacity="0.92">
+        <ellipse cx="378" cy="330" rx="7" ry="9"/>
+        <rect x="371" y="338" width="14" height="30" rx="4"/>
+        <ellipse cx="406" cy="335" rx="7" ry="9"/>
+        <rect x="399" y="343" width="14" height="30" rx="4"/>
+      </g>
+
+      <!-- carved motif on lintel -->
+      <g stroke="#c9a24b" stroke-width="1.5" opacity="0.7" fill="none">
+        <path d="M150 90 L650 90"/>
+        <circle cx="400" cy="90" r="6"/>
+      </g>
+    </svg>
+  </div>
+</div>
+
+<div class="hero">
+  <p class="kicker">A Bengali Serial Novel</p>
+  <h1>The Secret Truth of the Underground Chamber and the Mystery of Three Wheels</h1>
+  <p class="tagline">A Hundred-Year-Old Truth Behind the Treasure</p>
+</div>
+
+<div class="meta-bar">
+  <span><span class="ep-no">Episode 11</span> — The Underground Chamber</span>
+  <span>Ongoing</span>
+</div>
+
+<main>
+<article>
+<p>With all four pieces of the map joined together and the signal seen in the mirror worked out, Kanchan and Supriya came and stood before four particular bricks in the floor of the prayer room.</p>
+<p>Kanchan looked at the map one last time. Then he moved the first brick.</p>
+<p class="sfx">Thock!</p>
+<p>The second—</p>
+<p class="sfx">Thock!</p>
+<p>The third—</p>
+<p class="sfx">Thock!</p>
+<p>The moment he moved the fourth brick, a deep sound suddenly rose up from beneath the floor—</p>
+<p class="sfx">Grrrrrnnnn... THUD!</p>
+<p>A heavy stone slab on one side of the floor slowly slid away. Below it, a narrow stone staircase appeared, descending into darkness.</p>
+<p>Supriya whispered—</p>
+<p class="dialogue">— "Is this the way to the underground chamber?"</p>
+<p>Kanchan pointed his phone's light downward.</p>
+<p class="dialogue">— "If the map is true... then this is it."</p>
+<p>Supriya gripped Kanchan's hand tightly.</p>
+<p class="dialogue">— "I've come this far — I'm not letting you go alone."</p>
+<p>Kanchan looked at her and smiled faintly.</p>
+<p class="dialogue">— "Let's go."</p>
+<p>The two of them slowly began descending the stairs.</p>
+
+<div class="scene-divider"><span>🕯️</span></div>
+<p class="subhead">A Darkness Many Years Old</p>
+
+<p>The steps were damp and covered in moss. Every footfall echoed through the darkness.</p>
+<p class="sfx">Drip... drip... drip...</p>
+<p>The further down they went, the colder the air became. At last, the staircase ended.</p>
+<p>The moment Kanchan cast his torchlight ahead, the two of them froze. In the middle of the chamber stood a massive wooden chest, a hundred years old. Dust had gathered thick over its surface. But there was no ordinary lock on its front. Instead, there was—</p>
+<p class="board">Three round brass wheels.</p>
+<p>Carved into each wheel were numbers, letters, and a few strange marks.</p>
+<p>Supriya said in astonishment—</p>
+<p class="dialogue">— "This isn't an ordinary chest at all!"</p>
+<p>Kanchan took out the map. Written in one corner of it was—</p>
+<p class="board sub">"In the flow of time, three truths."</p>
+<p>Kanchan said, slowly—</p>
+<p class="dialogue">— "Three truths... three wheels."</p>
+
+<div class="inline-art">
+  <svg viewBox="0 0 800 460" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="chamberBg" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#0e2233"/>
+        <stop offset="100%" stop-color="#050f18"/>
+      </linearGradient>
+      <linearGradient id="woodChest" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#5a3a22"/>
+        <stop offset="100%" stop-color="#331f11"/>
+      </linearGradient>
+      <radialGradient id="lampGlow" cx="50%" cy="30%" r="65%">
+        <stop offset="0%" stop-color="#e8c874" stop-opacity="0.5"/>
+        <stop offset="100%" stop-color="#e8c874" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="brassWheel" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#e8c874"/>
+        <stop offset="100%" stop-color="#a5793a"/>
+      </linearGradient>
+    </defs>
+
+    <rect width="800" height="460" fill="url(#chamberBg)"/>
+    <ellipse cx="400" cy="120" rx="360" ry="160" fill="url(#lampGlow)"/>
+
+    <!-- stone floor -->
+    <rect x="0" y="380" width="800" height="80" fill="#081722"/>
+    <g stroke="#14304a" stroke-width="1" opacity="0.6">
+      <line x1="0" y1="400" x2="800" y2="400"/>
+      <line x1="0" y1="425" x2="800" y2="425"/>
+      <line x1="120" y1="380" x2="90" y2="460"/>
+      <line x1="320" y1="380" x2="300" y2="460"/>
+      <line x1="520" y1="380" x2="510" y2="460"/>
+      <line x1="700" y1="380" x2="710" y2="460"/>
+    </g>
+
+    <!-- chest body -->
+    <rect x="230" y="220" width="340" height="170" rx="10" fill="url(#woodChest)" stroke="#7a5230" stroke-width="3"/>
+    <path d="M230 240 Q400 190 570 240 L570 260 Q400 215 230 260 Z" fill="#43290f"/>
+    <rect x="230" y="220" width="340" height="20" fill="#6b4526"/>
+
+    <!-- iron corner bands -->
+    <g fill="#28211a" opacity="0.85">
+      <rect x="230" y="220" width="16" height="170"/>
+      <rect x="554" y="220" width="16" height="170"/>
+      <rect x="230" y="220" width="340" height="14"/>
+      <rect x="230" y="376" width="340" height="14"/>
+    </g>
+
+    <!-- three brass wheels -->
+    <g>
+      <circle cx="330" cy="300" r="34" fill="url(#brassWheel)" stroke="#5c3e17" stroke-width="3"/>
+      <circle cx="400" cy="300" r="34" fill="url(#brassWheel)" stroke="#5c3e17" stroke-width="3"/>
+      <circle cx="470" cy="300" r="34" fill="url(#brassWheel)" stroke="#5c3e17" stroke-width="3"/>
+      <g font-family="Georgia, serif" font-size="22" fill="#3a2a12" text-anchor="middle" font-weight="700">
+        <text x="330" y="308">7</text>
+        <text x="400" y="308">ग</text>
+        <text x="470" y="308">△</text>
+      </g>
+      <g stroke="#3a2a12" stroke-width="2" opacity="0.5">
+        <circle cx="330" cy="300" r="26" fill="none"/>
+        <circle cx="400" cy="300" r="26" fill="none"/>
+        <circle cx="470" cy="300" r="26" fill="none"/>
+      </g>
+    </g>
+
+    <!-- two figures, torchlit, examining the chest -->
+    <g fill="#e8c874">
+      <ellipse cx="180" cy="230" rx="12" ry="15"/>
+      <path d="M160 250 Q180 240 200 250 L204 340 L156 340 Z"/>
+      <ellipse cx="620" cy="235" rx="11" ry="14"/>
+      <path d="M602 254 Q620 245 638 254 L642 340 L598 340 Z"/>
+    </g>
+  </svg>
+</div>
+<p class="art-caption">The hundred-year-old chest and its three brass wheels, deep in the underground chamber.</p>
+
+<div class="scene-divider"><span>🔢</span></div>
+<p class="subhead">The First Wheel — A Riddle of Numbers</p>
+
+<p>The first wheel had only numbers carved into it. Kanchan sat down and opened the pages of Harinarayan's old ledger. Three numbers there were marked out specially.</p>
+<p>Kanchan glanced once at the numbers. Then he began turning the wheel. First number. Second number. Third number.</p>
+<p class="sfx">Click!</p>
+<p>At once, a metallic sound came from inside the chest. The first lock had opened.</p>
+<p>Supriya's eyes went wide.</p>
+<p class="dialogue">— "One's open!"</p>
+<p>Kanchan said—</p>
+<p class="dialogue">— "But there are still two more."</p>
+
+<div class="scene-divider"><span>🔤</span></div>
+<p class="subhead">The Second Wheel — A Code of Letters</p>
+
+<p>The second wheel had no numbers on it. It carried a few strange characters instead. Kanchan sat quietly for a moment. Suddenly he remembered the verse written on the back of the old picture. The initial letters of that verse lined up with several of the marks on the map.</p>
+<p>Matching the letters one by one, he turned the wheel.</p>
+<p class="sfx">Click!</p>
+<p>The second lock opened too.</p>
+<p>Supriya said, excited—</p>
+<p class="dialogue">— "One more!"</p>
+<p>Kanchan looked at the third wheel. The smile faded from his face.</p>
+
+<div class="scene-divider"><span>⚠️</span></div>
+<p class="subhead">The Third Wheel — A Warning of Death</p>
+
+<p>Carved deep into the stone wall beside the third wheel were the words—</p>
+<p class="board sub">"At the wrong touch, life shall be undone."</p>
+<p>Supriya's face went pale.</p>
+<p class="dialogue">— "Kanchan... stop."</p>
+<p>Kanchan pulled his hand back. Both of them stood in silence for a while, staring at the inscription.</p>
+<p>In the last part of the map were a few dots and a particular mark. Kanchan remembered the old signal found near the Shiva lingam. Then he began working out the map's dots, that signal, and the mark carved on the third wheel — matching the three together.</p>
+<p>Supriya said, her voice anxious—</p>
+<p class="dialogue">— "And if it's wrong?"</p>
+<p>Kanchan said, calmly—</p>
+<p class="dialogue">— "Then the mystery ends right here."</p>
+<p>Slowly, he took hold of the wheel. One notch. Two notches. Three notches. And then—</p>
+<p class="sfx">Grrrrrnnnn...</p>
+<p>The whole underground chamber seemed to shudder. Supriya gripped Kanchan's hand tightly. But no danger came. Instead—</p>
+<p class="sfx">Click!</p>
+<p>The third lock opened too. The chest's heavy lid slowly began to rise.</p>
+
+<div class="scene-divider"><span>📜</span></div>
+<p class="subhead">A Truth Worth More Than Gold</p>
+
+<p>Holding their breath, the two of them stared into the chest. But inside—</p>
+<p>There was no gold. No diamonds. No royal ornaments of any kind.</p>
+<p>There was a wooden box bearing an ancient royal seal. And beside it, a heavy stone casket.</p>
+<p>Kanchan opened the wooden box. Inside was an old letter, gone yellow with age. He lifted it out and began to read. After a while, his eyes stopped on one sentence.</p>
+<p>Supriya said—</p>
+<p class="dialogue">— "What does it say?"</p>
+<p>Kanchan read it out, slowly—</p>
+<p class="board sub">"Whoever holds the gold in hand shall only grow wealthy; but whoever holds the truth in hand shall protect the homes and the futures of many people."</p>
+<p>Supriya fell silent, stunned.</p>
+<p class="dialogue">— "So... the treasure isn't gold at all?"</p>
+<p>Kanchan shook his head.</p>
+<p class="dialogue">— "No."</p>
+
+<div class="scene-divider"><span>📜</span></div>
+<p class="subhead">The Real Treasure</p>
+
+<p>Kanchan now moved toward the stone casket. The seal on it was ancient, but still unbroken. He opened it carefully. Out from inside came—</p>
+<p class="board">An ancient royal copper-plate grant.</p>
+<p>Beneath it, wrapped in cloth, one old land document after another. Kanchan began unfolding them. Each document held important information about the land, homes, and rights of ordinary villagers.</p>
+<p>Supriya said in astonishment—</p>
+<p class="dialogue">— "These are proof of land belonging to so many people!"</p>
+<p>Kanchan checked the documents against the letter. Slowly, everything became clear. Harinarayan had not hidden this treasure for himself. During the oppression of the zamindari era, so that the land and rights of countless villagers could not be seized away, he had secretly preserved these very proofs. Had these documents been lost, many families could have lost their rights forever.</p>
+
+<div class="scene-divider"><span>🤝</span></div>
+<p class="subhead">A Hundred-Year Bond Between Two Families</p>
+
+<p>Kanchan began reading the last part of the letter again. In it, Harinarayan had written down the names of a few trusted people. The moment he read one name, Kanchan's eyes went still.</p>
+<p>Supriya asked—</p>
+<p class="dialogue">— "What happened?"</p>
+<p>Kanchan handed her the letter. Supriya read the name and went silent with shock. It was—</p>
+<p class="board">The name of Arindam Chowdhury's great-grandfather.</p>
+<p>Kanchan said, slowly—</p>
+<p class="dialogue">— "That means... your family has been bound to this truth since all those years ago."</p>
+<p>Supriya stared back in disbelief.</p>
+<p class="dialogue">— "Did Baba know about any of this?"</p>
+<p>Kanchan shook his head.</p>
+<p class="dialogue">— "I don't know. But Harinarayan trusted him — or at least, trusted his great-grandfather."</p>
+<p>The two of them stood in silence for a while. Then Kanchan held the letter to his chest and said—</p>
+<p class="dialogue">— "Supriya... our fight was never about finding gold."</p>
+<p>Supriya looked at him. Kanchan said, quietly—</p>
+<p class="dialogue">— "Our real purpose was to uncover the truth our ancestors had given their lives to protect."</p>
+<p>Tears rose in Supriya's eyes. She said, softly—</p>
+<p class="dialogue">— "So all this time, the treasure everyone imagined... it was really people's own rights, all along."</p>
+<p>Kanchan nodded.</p>
+<p class="dialogue">— "Yes."</p>
+<p>In the stillness of the underground chamber, the two of them stood gazing at the copper plate and the documents.</p>
+
+<div class="closing">
+  <p>They didn't know it yet — that very soon, Arindam Chowdhury himself would come to stand before this truth. And in that same moment, the meaning of a hundred-year bond between two families would change forever.</p>
+</div>
+<div class="continued"><span>To be continued…</span></div>
+
+</article>
+</main>
+
+<div class="ep-nav">
+  <a href="porbo-10-en.html">← Episode 10</a>
+  <a class="disabled">Next episode →</a>
+</div>
+
+<footer>
+  The Four-Piece Treasure Map · Episode 11
+</footer>
+
+</body>
+</html>

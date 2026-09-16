@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Episode 8: The Secret Code and the Second Piece — Bella Pizza</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #17110d;
+    --bg-alt: #201810;
+    --panel: #251b13;
+    --crust: #d3a24a;
+    --crust-soft: #b98a3a;
+    --tomato: #b04a30;
+    --iron: #6f6355;
+    --parchment: #cbb98a;
+    --cream: #f2e7d4;
+    --muted: #b8a488;
+    --line: rgba(211,162,74,0.20);
+    --serif: 'Playfair Display', serif;
+    --body: 'Inter', sans-serif;
+    --latin: 'Cormorant Garamond', serif;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--cream);
+    font-family:var(--body);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  #progress{
+    position:fixed; top:0; left:0; height:3px; width:0%;
+    background:linear-gradient(90deg, var(--iron), var(--crust));
+    z-index:60; transition:width .1s linear;
+  }
+
+  a{color:inherit;}
+
+  .topbar{
+    display:flex; align-items:center; justify-content:space-between;
+    max-width:760px; margin:0 auto; padding:22px 24px 0;
+  }
+  .brand{
+    font-family:var(--latin); font-style:italic; font-weight:600;
+    font-size:1.15rem; letter-spacing:.02em; color:var(--crust);
+  }
+  .brand span{color:var(--muted); font-style:normal; font-size:.85rem; margin-left:6px;}
+  .part-tag{
+    font-family:var(--serif); font-size:.95rem; color:var(--muted);
+    border:1px solid var(--line); padding:5px 14px; border-radius:2px;
+  }
+
+  .hero{
+    max-width:760px; margin:26px auto 0; padding:0 24px;
+  }
+  .hero-frame{
+    position:relative; width:100%; aspect-ratio:16/10;
+    border-radius:6px; overflow:hidden;
+    background:
+      radial-gradient(circle at 30% 20%, #332617 0%, transparent 55%),
+      linear-gradient(160deg, #241c13, #17110d 70%);
+    box-shadow: 0 18px 40px -18px rgba(0,0,0,.65);
+  }
+  .hero-frame img{
+    width:100%; height:100%; object-fit:cover; display:block;
+  }
+  .hero-frame .fallback{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    flex-direction:column; gap:8px; text-align:center; padding:20px;
+  }
+  .fallback svg{width:64px; height:64px; opacity:.55; color:var(--parchment);}
+  .fallback p{margin:0; color:var(--muted); font-size:.85rem;}
+  .hero-frame::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(0deg, rgba(15,11,7,.94) 0%, rgba(15,11,7,.15) 45%, transparent 70%);
+  }
+  .hero-caption{
+    position:absolute; left:0; right:0; bottom:0; padding:22px 26px 20px; z-index:2;
+  }
+  .hero-eyebrow{
+    font-size:.82rem; color:var(--crust); letter-spacing:.02em;
+  }
+  .hero h1{
+    font-family:var(--serif); font-weight:500;
+    font-size:clamp(1.5rem, 4vw, 2.15rem);
+    margin:6px 0 0; color:var(--cream);
+  }
+
+  article{
+    max-width:640px; margin:0 auto; padding:46px 24px 10px;
+  }
+  .intro-rule{
+    display:flex; align-items:center; gap:12px; color:var(--muted);
+    font-size:.9rem; margin-bottom:34px;
+  }
+  .intro-rule::before, .intro-rule::after{
+    content:""; flex:1; height:1px; background:var(--line);
+  }
+
+  p{
+    font-size:1.06rem; color:var(--cream); margin:0 0 18px;
+  }
+  p.narration{color:#e4d7c0;}
+  p.tense{color:#e9d9c2;}
+
+  .dialogue{
+    margin:0 0 4px 18px;
+    padding-left:16px;
+    border-left:2px solid var(--tomato);
+    color:#f1e2cc;
+  }
+  .dialogue-block{margin-bottom:22px;}
+  .dialogue-block.watcher .dialogue{border-left-color:var(--iron); color:#d8cdb8;}
+
+  .divider{
+    display:flex; align-items:center; gap:14px;
+    margin:44px 0 26px; color:var(--crust);
+  }
+  .divider .glyph{
+    width:34px; height:34px; flex:none;
+    border:1px solid var(--line); border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1rem;
+  }
+  .divider .label{
+    font-family:var(--serif); font-size:1.05rem; color:var(--crust);
+  }
+  .divider .rule{flex:1; height:1px; background:var(--line);}
+
+  .relic{
+    margin:26px 0; padding:20px 22px;
+    background:var(--panel); border:1px solid var(--line);
+    border-radius:4px;
+  }
+  .relic .relic-label{
+    font-family:var(--serif); font-size:.85rem; color:var(--parchment);
+    letter-spacing:.02em; margin-bottom:10px; display:block;
+  }
+  .relic p{
+    font-family:var(--serif); font-style:italic; color:var(--parchment);
+    font-size:1.05rem; margin:0 0 10px; line-height:1.65;
+  }
+  .relic p:last-child{margin-bottom:0;}
+
+  .sfx{
+    font-family:var(--serif); font-size:1.15rem; color:var(--crust);
+    letter-spacing:.04em; margin:0 0 18px;
+  }
+
+  .closing{
+    margin:44px 0 6px; text-align:center;
+  }
+  .closing .stamp{
+    display:inline-block; font-family:var(--serif); font-size:1rem;
+    color:var(--bg); background:var(--crust);
+    padding:7px 22px; border-radius:2px; letter-spacing:.03em;
+  }
+
+  nav.chapter-nav{
+    max-width:640px; margin:52px auto 0; padding:26px 24px 60px;
+    border-top:1px solid var(--line);
+  }
+  .nav-row{
+    display:flex; align-items:stretch; gap:10px; margin-top:24px;
+  }
+  .nav-link{
+    flex:1; text-decoration:none; padding:16px 16px;
+    border:1px solid var(--line); border-radius:4px;
+    background:var(--panel); transition:border-color .15s ease, transform .15s ease;
+    display:flex; flex-direction:column; gap:4px;
+  }
+  .nav-link:hover{border-color:var(--crust-soft); transform:translateY(-1px);}
+  .nav-link .cap{font-size:.74rem; color:var(--muted);}
+  .nav-link .ttl{font-family:var(--serif); font-size:1rem; color:var(--cream);}
+  .nav-link.prev{text-align:left;}
+  .nav-link.next{text-align:right; align-items:flex-end;}
+  .nav-link.home{
+    flex:0 0 auto; align-items:center; justify-content:center;
+    text-align:center; padding:16px 20px;
+  }
+  .nav-link.home .ttl{font-size:.92rem;}
+
+  footer.credit{
+    text-align:center; color:var(--muted); font-size:.82rem;
+    padding-bottom:40px;
+  }
+
+  @media (max-width:480px){
+    .nav-row{flex-wrap:wrap;}
+    .nav-link.home{order:3; flex:1 1 100%;}
+  }
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<div class="topbar">
+  <div class="brand">Bella Pizza <span>— A Serial Story</span></div>
+  <div class="part-tag">Episode 8</div>
+</div>
+
+<div class="hero">
+  <div class="hero-frame">
+    <img src="images/part-5.png" alt="An old picture frame and Kanchan beside the well"
+         onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='flex';">
+    <div class="fallback" style="display:none;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+        <circle cx="12" cy="12" r="8.5"></circle>
+        <path d="M8 12h8M12 8v8"></path>
+      </svg>
+      <p>Add images/part-8.jpg</p>
+    </div>
+    <div class="hero-caption">
+      <div class="hero-eyebrow">The Second Piece</div>
+      <h1>The Secret Code and the Second Piece</h1>
+    </div>
+  </div>
+</div>
+
+<article>
+  <div class="intro-rule">Episode 8</div>
+
+  <p class="narration">That night, Kanchan couldn't sleep for a long while.<br>
+  Great-grandfather Harinarayan's old map kept surfacing before his eyes, again and again.<br>
+  In that terrible time of foreign invasion, Harinarayan had devised a mysterious system to protect the family's valuables and important documents — and only a fragment of that system had, so far, come into Kanchan's hands.<br>
+  But the full path of the mystery was still unknown.</p>
+
+  <p class="narration">Because Harinarayan had deliberately divided the map into four pieces.<br>
+  The paper found inside the iron box had been the first piece.<br>
+  Where were the other three?</p>
+
+  <p class="narration">Searching for the answer to this question, Kanchan set out the next morning to search the old rooms of the ancestral house all over again.</p>
+
+  <div class="divider">
+    <span class="glyph">🖼️</span>
+    <span class="label">The Old Picture</span>
+    <span class="rule"></span>
+  </div>
+
+  <p class="narration">A framed picture hung on the wall of one of the old rooms.<br>
+  So much dust and cobweb had gathered over it that the face of the person in the picture had nearly disappeared.<br>
+  Kanchan took the picture down from the wall and began cleaning it.</p>
+
+  <p class="narration">Suddenly, his eyes caught on the wooden part beneath the picture.<br>
+  A few lines were carved into it—</p>
+
+  <div class="relic">
+    <span class="relic-label">Carved into the picture frame</span>
+    <p>"This day too shall pass, in a moment's span,<br>Only the fruit of one's deeds remains for man."</p>
+  </div>
+
+  <p class="narration">Kanchan froze.<br>
+  He had heard these very words from his grandmother as a child.<br>
+  But why were the same words carved into this picture frame, after all these years?</p>
+
+  <p class="narration">He turned the picture over.<br>
+  An unusual notch showed itself in one corner of the frame's back.<br>
+  The moment Kanchan pressed it with a finger—</p>
+  <p class="sfx">Click!</p>
+  <p class="narration">A thin strip of wood sprang open.<br>
+  From inside it came out a small piece of paper, wrapped in cloth.</p>
+
+  <p class="narration">Kanchan's heart lurched.<br>
+  Slowly, he unwrapped the cloth.<br>
+  Inside was—<br>
+  the second piece of the map.</p>
+
+  <div class="divider">
+    <span class="glyph">🧩</span>
+    <span class="label">The Second Piece</span>
+    <span class="rule"></span>
+  </div>
+
+  <p class="narration">Drawn on the paper were a few winding lines, some small dots, and a mark shaped like an incomplete staircase.</p>
+
+  <p class="narration">Kanchan laid the second piece beside the first one he already had.<br>
+  Several lines from the two papers lined up with each other.<br>
+  But the full map still wasn't complete.<br>
+  A larger section was still missing.</p>
+
+  <p class="narration">Kanchan understood—<br>
+  two of the four pieces were now in his hands.</p>
+
+  <p class="narration">Written in very small letters beneath the second piece was—</p>
+  <div class="relic">
+    <span class="relic-label">Beneath the second piece</span>
+    <p>"Where water lies, yet water does not touch..."</p>
+  </div>
+
+  <p class="narration">Kanchan read the line slowly.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Where water lies, yet water does not touch..."</p>
+  </div>
+
+  <p class="narration">Then, suddenly, a flicker of realization lit his eyes.<br>
+  The well!<br>
+  That ancient well in the courtyard of the house.<br>
+  But what place inside a well could hold water and yet leave a clue untouched by it?</p>
+
+  <p class="narration">It occurred to Kanchan—<br>
+  Harinarayan must have hidden the next clue behind some secret notch, a loose brick, or a hollow in the stone.</p>
+
+  <div class="divider">
+    <span class="glyph">👂</span>
+    <span class="label">Who's There?</span>
+    <span class="rule"></span>
+  </div>
+
+  <p class="narration">At that very moment—</p>
+  <p class="sfx">Rustle...</p>
+  <p class="narration">Kanchan stopped short.<br>
+  It sounded as though footsteps had come from outside.<br>
+  Again—</p>
+  <p class="sfx">Rustle... rustle...</p>
+
+  <p class="tense">He quickly tucked the second piece inside his shirt.<br>
+  Then he moved silently toward the door.</p>
+
+  <p class="narration">He opened the door—<br>
+  no one there.<br>
+  Just the old courtyard.<br>
+  A broken wall.<br>
+  And dry branches swaying in the breeze.</p>
+
+  <p class="narration">Kanchan stepped outside and looked around.<br>
+  No one was in sight.<br>
+  But after a few steps, his eyes caught on the ground.<br>
+  Fresh footprints.<br>
+  Someone had been standing here only a little while ago.</p>
+
+  <p class="narration">Kanchan's face turned grave.<br>
+  Was someone following him?<br>
+  Or had someone else already begun learning the secret of this house before he had?</p>
+
+  <div class="divider">
+    <span class="glyph">🕉️</span>
+    <span class="label">By the Well</span>
+    <span class="rule"></span>
+  </div>
+
+  <p class="narration">Kanchan wasted no more time.<br>
+  He went straight to the old well in the courtyard.<br>
+  The well hadn't been used in many years.<br>
+  Looking down into it, there was nothing but deep darkness.</p>
+
+  <p class="narration">Kanchan began examining the old bricks around the well.<br>
+  Touching them one after another, his eyes suddenly caught on one brick.<br>
+  It stood out slightly compared to the others.</p>
+
+  <p class="narration">Kanchan pressed it with his hand.</p>
+  <p class="sfx">Creak...</p>
+  <p class="narration">The brick sank slightly inward.</p>
+
+  <p class="narration">Kanchan's eyes widened.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Is this the spot the clue was pointing to?"</p>
+  </div>
+
+  <p class="narration">He was about to examine it further.<br>
+  Right then, his phone rang.<br>
+  Supriya.</p>
+
+  <p class="narration">Kanchan picked up.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Hello?"</p>
+  </div>
+  <p class="narration">Supriya's voice came through,</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Where are you? Aren't you coming to the shop?"</p>
+  </div>
+  <p class="narration">Kanchan glanced once toward the well.<br>Then he said,</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Yes, I'm coming."</p>
+  </div>
+
+  <p class="narration">Ending the call, he looked once more at the brick.<br>
+  Then he carefully set it back in its place.</p>
+
+  <p class="narration">The second piece was in his hands now.<br>
+  But the third piece was still hidden behind the mystery.</p>
+
+  <p class="narration">Kanchan tucked both pieces of the map safely into his pocket and began heading back toward the house.</p>
+
+  <p class="narration">He had no idea—<br>
+  that someone, standing hidden behind a broken window in the distance, had been watching his every move.<br>
+  For a moment, the man's eyes drifted toward the well.<br>
+  Then toward the path Kanchan was taking away from it.</p>
+
+  <p class="narration">He said, in a very low voice—</p>
+  <div class="dialogue-block watcher">
+    <p class="dialogue">— "He's gotten two pieces now... time to find out where the third one is."</p>
+  </div>
+
+  <p class="narration">Kanchan heard nothing of this.<br>
+  But he was no longer alone in the search for this mystery.</p>
+
+  <p class="narration">Two of the four pieces were now in his hands.<br>
+  And the path to the third piece had opened—<br>
+  toward that old well.</p>
+
+  <div class="closing">
+    <span class="stamp">To be continued...</span>
+  </div>
+</article>
+
+<nav class="chapter-nav">
+  <div class="nav-row">
+    <a class="nav-link prev" href="porbo-7.html">
+      <span class="cap">← Previous</span>
+      <span class="ttl">Episode 7</span>
+    </a>
+    <a class="nav-link home" href="four-piece-index.html">
+      <span class="ttl">Contents</span>
+    </a>
+    <a class="nav-link next" href="porbo-8.html">
+      <span class="cap">Next →</span>
+      <span class="ttl">Episode 9</span>
+    </a>
+  </div>
+</nav>
+
+<footer class="credit">Surajit Roy · Bella Pizza</footer>
+
+<script>
+  window.addEventListener('scroll', function(){
+    var h = document.documentElement;
+    var scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    document.getElementById('progress').style.width = (isFinite(scrolled) ? scrolled : 0) + '%';
+  });
+</script>
+
+</body>
+</html>

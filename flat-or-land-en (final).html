@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flat or Land? A Ledger of Decisions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&family=Public+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EDE8DA;
+    --paper-2:#E4DDC8;
+    --ink:#2A2721;
+    --ink-soft:#5B5548;
+    --line:#C9BFA4;
+    --brick:#A6432E;
+    --brick-deep:#7E3122;
+    --soil:#4C6B45;
+    --soil-deep:#38502F;
+    --brass:#A9862F;
+    --panel:#F6F2E6;
+    --shadow: 0 1px 0 rgba(42,39,33,0.06);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(1200px 600px at 10% -10%, rgba(169,134,47,0.10), transparent 60%),
+      radial-gradient(1000px 700px at 100% 0%, rgba(76,107,69,0.08), transparent 55%),
+      var(--paper);
+    color:var(--ink);
+    font-family:'Public Sans', sans-serif;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  .grain{
+    position:fixed; inset:0; pointer-events:none; z-index:1; opacity:0.05; mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  a{color:var(--brick-deep);}
+
+  .wrap{max-width:760px; margin:0 auto; padding:0 24px; position:relative; z-index:2;}
+
+  /* ===== Home button ===== */
+  .home-btn{
+    position:fixed; top:18px; left:18px; z-index:50;
+    width:44px; height:44px; border-radius:50%;
+    background:var(--panel); border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 2px 8px rgba(42,39,33,0.15);
+    text-decoration:none; color:var(--brick-deep);
+    transition:transform .15s ease, background .15s ease;
+  }
+  .home-btn:hover{ background:#fff; transform:translateY(-1px); }
+  .home-btn svg{ width:20px; height:20px; }
+
+  /* ===== Header / masthead ===== */
+  header.masthead{
+    padding:80px 24px 0;
+    max-width:760px; margin:0 auto; position:relative; z-index:2;
+  }
+  .stamp{
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:'JetBrains Mono', monospace; font-size:11.5px; letter-spacing:.14em;
+    color:var(--ink-soft); text-transform:uppercase; border:1px solid var(--line);
+    padding:6px 12px; border-radius:2px; background:var(--panel);
+  }
+  .stamp .dot{width:6px;height:6px;border-radius:50%; background:var(--brick);}
+  h1.title{
+    font-family:'Source Serif 4', serif;
+    font-weight:400;
+    font-size:clamp(32px, 5.6vw, 54px);
+    line-height:1.18;
+    margin:22px 0 10px;
+    letter-spacing:-0.01em;
+  }
+  h1.title em{
+    font-style:italic;
+  }
+  p.deck{
+    font-size:clamp(16px, 2.4vw, 19px);
+    color:var(--ink-soft);
+    max-width:58ch;
+    margin:0 0 34px;
+  }
+  .rule{
+    height:1px; background:repeating-linear-gradient(90deg, var(--line) 0 6px, transparent 6px 10px);
+    margin:0 0 40px;
+  }
+
+  /* ===== Signature: 20-year aging comparator ===== */
+  .comparator{
+    max-width:760px; margin:0 auto 56px; padding:0 24px; position:relative; z-index:2;
+  }
+  .comp-frame{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:26px 22px 22px;
+    box-shadow: var(--shadow);
+  }
+  .comp-head{
+    display:flex; justify-content:space-between; align-items:baseline; gap:16px; flex-wrap:wrap;
+    margin-bottom:14px;
+  }
+  .comp-head h2{
+    font-family:'Source Serif 4', serif; font-weight:400; font-size:19px; margin:0;
+  }
+  .year-badge{
+    font-family:'JetBrains Mono', monospace; font-size:13px; color:var(--brick-deep);
+    background:rgba(166,67,46,0.08); border:1px solid rgba(166,67,46,0.25);
+    padding:3px 10px; border-radius:999px; white-space:nowrap;
+  }
+  .panels{
+    display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:10px;
+  }
+  @media (max-width:520px){ .panels{grid-template-columns:1fr;} }
+  .panel{
+    border:1px solid var(--line); border-radius:3px; background:#fff;
+    overflow:hidden; position:relative;
+  }
+  .panel .label{
+    display:flex; justify-content:space-between; align-items:center;
+    font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.06em;
+    padding:8px 10px; text-transform:uppercase;
+  }
+  .panel.flat .label{ background:rgba(166,67,46,0.09); color:var(--brick-deep); }
+  .panel.land .label{ background:rgba(76,107,69,0.10); color:var(--soil-deep); }
+  .panel svg{display:block; width:100%; height:auto;}
+  .panel .caption{
+    font-size:13.5px; color:var(--ink-soft); padding:9px 12px 12px; min-height:38px;
+  }
+  .slider-row{
+    margin-top:18px; display:flex; align-items:center; gap:14px;
+  }
+  input[type=range]{
+    -webkit-appearance:none; appearance:none; width:100%; height:4px;
+    background:linear-gradient(90deg, var(--brass), var(--line));
+    border-radius:2px; outline:none;
+  }
+  input[type=range]::-webkit-slider-thumb{
+    -webkit-appearance:none; width:18px; height:18px; border-radius:50%;
+    background:var(--panel); border:2px solid var(--brass); cursor:pointer;
+    box-shadow:0 1px 3px rgba(0,0,0,0.25);
+  }
+  input[type=range]::-moz-range-thumb{
+    width:18px; height:18px; border-radius:50%;
+    background:var(--panel); border:2px solid var(--brass); cursor:pointer;
+  }
+  .slider-hint{
+    font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--ink-soft); white-space:nowrap;
+  }
+  .comp-foot{
+    margin-top:16px; font-size:13.5px; color:var(--ink-soft); border-top:1px dashed var(--line); padding-top:14px;
+  }
+
+  /* ===== Article body ===== */
+  main{max-width:760px; margin:0 auto; padding:0 24px 40px; position:relative; z-index:2;}
+  section.chapter{ margin-bottom:52px; }
+  .chapter-mark{
+    display:flex; align-items:center; gap:12px; margin-bottom:14px;
+  }
+  .glyph{
+    width:38px; height:38px; flex:0 0 auto;
+    border-radius:3px; border:1px solid var(--line); background:var(--panel);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .glyph svg{ width:20px; height:20px; }
+  h2.h{
+    font-family:'Source Serif 4', serif; font-weight:400;
+    font-size:clamp(21px, 3.2vw, 26px);
+    margin:0;
+  }
+  .chapter p{ margin:0 0 16px; font-size:16.5px; }
+  .chapter p.lede{
+    font-size:18px; color:var(--ink);
+  }
+  .pull{
+    font-family:'Source Serif 4', serif; font-style:italic; font-size:20px;
+    color:var(--brick-deep); border-left:3px solid var(--brick); padding-left:16px;
+    margin:22px 0;
+  }
+
+  blockquote.q{
+    margin:24px 0; padding:18px 20px; background:var(--panel);
+    border-inline-start:3px solid var(--brass); border-radius:2px;
+    font-size:17px; color:var(--ink);
+  }
+
+  .tag{
+    display:inline-block; font-family:'JetBrains Mono', monospace; font-size:11px;
+    letter-spacing:.06em; padding:2px 8px; border-radius:999px; margin-inline-end:6px;
+    vertical-align:middle;
+  }
+  .tag.flat{ background:rgba(166,67,46,0.10); color:var(--brick-deep); border:1px solid rgba(166,67,46,0.28); }
+  .tag.land{ background:rgba(76,107,69,0.12); color:var(--soil-deep); border:1px solid rgba(76,107,69,0.28); }
+
+  .table-wrap{ overflow-x:auto; margin:22px 0; border:1px solid var(--line); border-radius:4px; }
+  table{ width:100%; border-collapse:collapse; background:#fff; font-size:14.5px; }
+  th, td{ text-align:left; padding:11px 14px; border-bottom:1px solid var(--line); }
+  th{ font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.05em; text-transform:uppercase; background:var(--panel); color:var(--ink-soft); }
+  tr:last-child td{ border-bottom:none; }
+  td.flatcol{ color:var(--brick-deep); font-weight:600; }
+  td.landcol{ color:var(--soil-deep); font-weight:600; }
+
+  .ledger{
+    background:var(--panel); border:1px solid var(--line); border-radius:4px;
+    padding:22px; margin:22px 0;
+  }
+  .ledger h3{
+    font-family:'Source Serif 4', serif; font-weight:400; font-size:18px; margin:0 0 14px;
+  }
+  .ledger-row{
+    display:flex; justify-content:space-between; align-items:baseline; gap:16px;
+    padding:9px 0; border-bottom:1px dashed var(--line); font-size:15px;
+  }
+  .ledger-row:last-child{ border-bottom:none; }
+  .ledger-row .amt{ font-family:'JetBrains Mono', monospace; font-weight:600; white-space:nowrap; }
+  .ledger-row.total{ padding-top:14px; margin-top:6px; border-top:1px solid var(--ink); border-bottom:none; }
+  .ledger-row.total .amt{ font-size:17px; color:var(--brick-deep); }
+  .ledger-note{ margin-top:14px; font-size:13.5px; color:var(--ink-soft); }
+
+  .amenity-grid{
+    display:grid; grid-template-columns:repeat(2, 1fr); gap:10px; margin:20px 0;
+  }
+  @media (max-width:480px){ .amenity-grid{grid-template-columns:1fr;} }
+  .amenity{
+    display:flex; gap:10px; align-items:flex-start;
+    background:#fff; border:1px solid var(--line); border-radius:3px; padding:12px 13px;
+    font-size:14.5px;
+  }
+  .amenity svg{ width:18px; height:18px; flex:0 0 auto; margin-top:2px; color:var(--brick-deep); }
+
+  .check-grid{ display:grid; grid-template-columns:1fr 1fr; gap:18px; margin:24px 0; }
+  @media (max-width:560px){ .check-grid{grid-template-columns:1fr;} }
+  .check-col{ background:#fff; border:1px solid var(--line); border-radius:4px; padding:18px; }
+  .check-col h4{ margin:0 0 12px; font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:.06em; text-transform:uppercase; }
+  .check-col.good h4{ color:var(--soil-deep); }
+  .check-col.bad h4{ color:var(--brick-deep); }
+  .check-col ul{ margin:0; padding:0; list-style:none; }
+  .check-col li{ display:flex; gap:8px; font-size:14.5px; margin-bottom:9px; }
+  .check-col li svg{ width:16px; height:16px; flex:0 0 auto; margin-top:3px; }
+  .check-col.good li svg{ color:var(--soil-deep); }
+  .check-col.bad li svg{ color:var(--brick-deep); }
+
+  /* ===== Part divider ===== */
+  .part-divider{
+    max-width:760px; margin:64px auto 40px; padding:0 24px; position:relative; z-index:2;
+    text-align:center;
+  }
+  .part-divider .rule2{
+    height:1px; background:repeating-linear-gradient(90deg, var(--line) 0 6px, transparent 6px 10px);
+    margin:0 0 22px;
+  }
+  .part-divider .kicker{
+    font-family:'JetBrains Mono', monospace; font-size:11.5px; letter-spacing:.14em;
+    color:var(--ink-soft); text-transform:uppercase; margin-bottom:12px;
+  }
+  .part-divider h2{
+    font-family:'Source Serif 4', serif; font-weight:400;
+    font-size:clamp(26px, 4.4vw, 38px); margin:0 0 14px;
+  }
+  .part-divider p{
+    color:var(--ink-soft); max-width:56ch; margin:0 auto; font-size:16px;
+  }
+
+  /* ===== Scale (Part Two signature) ===== */
+  .scale-wrap{
+    position:relative;
+    max-width:460px;
+    margin:40px auto 10px;
+    padding-bottom:10px;
+  }
+  .scale-stand{
+    width:6px; height:120px; margin:0 auto;
+    background:linear-gradient(180deg, var(--brass), var(--brick-deep));
+    border-radius:4px; position:relative;
+  }
+  .scale-base{
+    width:100px; height:12px;
+    background:linear-gradient(180deg, var(--brass), var(--brick-deep));
+    border-radius:8px; margin:0 auto;
+    box-shadow:var(--shadow);
+  }
+  .scale-pivot{
+    position:absolute; top:-8px; left:50%; transform:translateX(-50%);
+    width:20px; height:20px; border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #fff, var(--brass) 70%);
+    box-shadow:0 0 0 4px rgba(169,134,47,0.18);
+  }
+  .beam{
+    position:absolute; top:-8px; left:50%;
+    width:320px; height:5px; margin-left:-160px;
+    background:linear-gradient(90deg, var(--brick-deep), var(--brass), var(--brick-deep));
+    border-radius:4px; transform-origin:center center;
+    transform:rotate(0deg);
+    transition:transform .6s cubic-bezier(.34,1.56,.64,1);
+    box-shadow:0 4px 14px rgba(0,0,0,0.18);
+  }
+  .pan{
+    position:absolute; top:0; width:100px;
+    display:flex; flex-direction:column; align-items:center;
+    transition:transform .6s cubic-bezier(.34,1.56,.64,1);
+  }
+  .pan-left{ left:-12px; }
+  .pan-right{ right:-12px; }
+  .string{ width:1.5px; height:40px; background:var(--line); }
+  .dish{
+    width:92px; height:50px; border-radius:0 0 46px 46px;
+    background:var(--panel); border:1.5px solid var(--line);
+    display:flex; align-items:center; justify-content:center; font-size:1.5rem;
+    box-shadow:inset 0 -6px 14px rgba(0,0,0,0.08);
+  }
+  .pan-label{ margin-top:8px; font-size:.76rem; color:var(--ink-soft); text-align:center; }
+  .pan-label b{ display:block; color:var(--ink); font-family:'Source Serif 4', serif; font-size:.92rem; }
+
+  .score-line{ text-align:center; margin-top:24px; font-size:1rem; color:var(--ink-soft); }
+  .score-line .count{ color:var(--brick-deep); font-family:'JetBrains Mono', monospace; font-weight:700; }
+  .progress-track{
+    max-width:400px; margin:14px auto 0; height:8px; border-radius:6px;
+    background:var(--panel); overflow:hidden; border:1px solid var(--line);
+  }
+  .progress-fill{
+    height:100%; width:0%;
+    background:linear-gradient(90deg, var(--soil), var(--brass));
+    transition:width .5s ease;
+  }
+
+  .intro2{
+    max-width:680px; margin:44px auto 10px; padding:0 24px;
+    text-align:center; color:var(--ink-soft); font-size:16px;
+  }
+  .intro2 strong{ color:var(--ink); }
+
+  .list-wrap{
+    max-width:760px; margin:48px auto; padding:0 24px;
+    display:flex; flex-direction:column; gap:16px; position:relative;
+  }
+  .qcard{
+    background:var(--panel); border:1px solid var(--line); border-radius:4px;
+    padding:20px 22px 18px; position:relative; overflow:hidden;
+    transition:border-color .3s ease;
+  }
+  .qcard::before{
+    content:""; position:absolute; left:0; top:0; bottom:0; width:4px;
+    background:var(--brass); opacity:.55;
+  }
+  .qcard.considered{ border-color:rgba(76,107,69,0.5); }
+  .qcard.considered::before{ background:var(--soil); opacity:1; }
+  .qcard.pending{ border-color:rgba(166,67,46,0.4); }
+  .qcard.pending::before{ background:var(--brick); opacity:1; }
+
+  .qhead{ display:flex; align-items:flex-start; gap:14px; }
+  .qnum{
+    font-family:'JetBrains Mono', monospace; font-size:.82rem; color:var(--panel);
+    background:var(--ink); width:34px; height:34px; min-width:34px;
+    border-radius:4px; display:flex; align-items:center; justify-content:center; font-weight:700;
+  }
+  .qicon{ font-size:1.35rem; line-height:1; }
+  .qtitle{ font-size:1.05rem; font-weight:600; color:var(--ink); margin:0 0 6px; }
+  .qbody{ color:var(--ink-soft); font-size:.94rem; margin:0; }
+  .qbody b{ color:var(--brick-deep); }
+
+  .qactions{ display:flex; gap:10px; margin-top:14px; flex-wrap:wrap; }
+  .qbtn{
+    font-family:'Public Sans', sans-serif; font-size:.86rem; font-weight:600;
+    padding:7px 15px; border-radius:999px; border:1.5px solid var(--line);
+    background:#fff; color:var(--ink-soft); cursor:pointer; transition:all .2s ease;
+  }
+  .qbtn:hover{ background:var(--paper-2); }
+  .qbtn.yes.active{ background:var(--soil); border-color:var(--soil); color:#fff; }
+  .qbtn.no.active{ background:var(--brick); border-color:var(--brick); color:#fff; }
+
+  .banner{ max-width:760px; margin:56px auto; padding:0 24px; }
+  .banner-inner{
+    background:var(--panel); border:1px solid var(--line); border-radius:4px;
+    padding:32px 28px; text-align:center;
+  }
+  .banner-inner h2{
+    font-family:'Source Serif 4', serif; font-weight:400; font-size:1.5rem; margin-top:0; color:var(--ink);
+  }
+  .banner-inner p{ color:var(--ink-soft); max-width:600px; margin:0 auto 10px; }
+
+  /* ===== closing ===== */
+  .closing{
+    max-width:760px; margin:0 auto; padding:30px 26px; border-radius:4px;
+    background:linear-gradient(180deg, var(--panel), var(--paper-2));
+    border:1px solid var(--line); position:relative; z-index:2;
+  }
+  .closing .kicker{ font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.12em; color:var(--ink-soft); text-transform:uppercase; margin-bottom:10px; }
+  .closing p.big{ font-family:'Source Serif 4', serif; font-size:22px; line-height:1.6; margin:0 0 16px; }
+  .closing .final-quote{
+    font-size:17px; font-weight:600; color:var(--ink); border-top:1px solid var(--line); padding-top:16px; margin-top:16px;
+  }
+  .closing .strike{ text-decoration:line-through; opacity:.55; }
+  .closing .highlight{
+    display:inline-block; margin-top:14px; font-size:1.1rem; font-weight:700;
+    color:#fff; background:var(--brick-deep); padding:10px 22px; border-radius:4px;
+  }
+
+  footer{
+    max-width:760px; margin:0 auto; padding:20px 24px 60px; position:relative; z-index:2;
+    font-size:12.5px; color:var(--ink-soft); font-family:'JetBrains Mono', monospace;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+  }
+
+  :focus-visible{ outline:2px solid var(--brass); outline-offset:2px; }
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<a class="home-btn" href="index.html" aria-label="Home">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5L12 4l9 7.5"/><path d="M5.5 10v9.5a1 1 0 001 1H9v-6h6v6h2.5a1 1 0 001-1V10"/></svg>
+</a>
+
+<header class="masthead">
+  <span class="stamp">
+    <span class="dot"></span>
+    Property &amp; Decisions — A Practical Guide
+  </span>
+
+  <h1 class="title">
+    Should You Buy a Flat, <em>or Land?</em>
+  </h1>
+
+  <p class="deck">
+    Before you decide, look beyond the brochure — consider the
+    long-term costs, maintenance, debt, flexibility, resale demand,
+    and the value of what you are building for the future.
+  </p>
+
+  <div class="rule"></div>
+</header>
+<!-- ===== Signature interactive: 20-year comparator ===== -->
+<div class="comparator">
+  <div class="comp-frame">
+    <div class="comp-head">
+      <h2>One question — what will remain after 20 years?</h2>
+      <span class="year-badge" id="yearBadge">Year 00</span>
+    </div>
+    <div class="panels">
+      <div class="panel flat">
+        <div class="label"><span>Flat</span><span>Ageing</span></div>
+        <svg id="flatSvg" viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="0" width="300" height="190" fill="#F6F2E6"/>
+          <rect x="30" y="150" width="240" height="4" fill="#C9BFA4"/>
+          <g id="flatBuilding">
+            <rect x="70" y="45" width="160" height="105" fill="#E7D9C6" stroke="#7E3122" stroke-width="1.5"/>
+            <rect x="70" y="45" width="160" height="10" fill="#A6432E"/>
+            <g id="flatWindows" fill="#7EA0C4">
+              <rect x="84" y="62" width="20" height="16"/>
+              <rect x="114" y="62" width="20" height="16"/>
+              <rect x="144" y="62" width="20" height="16"/>
+              <rect x="174" y="62" width="20" height="16"/>
+              <rect x="204" y="62" width="16" height="16"/>
+              <rect x="84" y="90" width="20" height="16"/>
+              <rect x="114" y="90" width="20" height="16"/>
+              <rect x="144" y="90" width="20" height="16"/>
+              <rect x="174" y="90" width="20" height="16"/>
+              <rect x="204" y="90" width="16" height="16"/>
+              <rect x="84" y="118" width="20" height="16"/>
+              <rect x="114" y="118" width="20" height="16"/>
+              <rect x="144" y="118" width="20" height="16"/>
+              <rect x="174" y="118" width="20" height="16"/>
+              <rect x="204" y="118" width="16" height="16"/>
+            </g>
+          </g>
+          <g id="flatCracks" stroke="#5B5548" stroke-width="1" fill="none" opacity="0">
+            <path d="M110 45 L118 70 L108 95 L120 118"/>
+            <path d="M190 50 L182 75 L196 100"/>
+            <path d="M75 130 L95 148"/>
+          </g>
+          <g id="flatStain" opacity="0">
+            <ellipse cx="150" cy="150" rx="70" ry="10" fill="#8C8266" opacity="0.35"/>
+          </g>
+        </svg>
+        <div class="caption" id="flatCaption">Fresh paint, a new lift, a gleaming lobby.</div>
+      </div>
+
+      <div class="panel land">
+        <div class="label"><span>Land</span><span>Constant</span></div>
+        <svg id="landSvg" viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="0" width="300" height="190" fill="#F6F2E6"/>
+          <rect x="20" y="150" width="260" height="30" fill="#4C6B45"/>
+          <rect x="20" y="150" width="260" height="4" fill="#38502F"/>
+          <g stroke="#38502F" stroke-width="2">
+            <line x1="20" y1="150" x2="20" y2="140"/>
+            <line x1="280" y1="150" x2="280" y2="140"/>
+            <line x1="150" y1="150" x2="150" y2="143"/>
+          </g>
+          <text x="150" y="168" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#F6F2E6">5 kathas — area unchanged</text>
+          <g id="landTree" transform="translate(70,150)">
+            <rect x="-3" y="-24" width="6" height="24" fill="#5B4632"/>
+            <circle cx="0" cy="-30" r="14" fill="#5C8A52"/>
+          </g>
+          <g id="newHouse" opacity="0" transform="translate(175,0)">
+            <rect x="0" y="108" width="80" height="42" fill="none" stroke="#38502F" stroke-width="2" stroke-dasharray="4 3"/>
+            <polygon points="-4,108 84,108 40,86" fill="none" stroke="#38502F" stroke-width="2" stroke-dasharray="4 3"/>
+          </g>
+        </svg>
+        <div class="caption" id="landCaption">The boundary stays the same; the plot stays the same.</div>
+      </div>
+    </div>
+
+    <div class="slider-row">
+      <span class="slider-hint">Year 0</span>
+      <input type="range" id="yearSlider" min="0" max="20" value="0" step="1" aria-label="Select a year">
+      <span class="slider-hint">Year 20</span>
+    </div>
+    <div class="comp-foot" id="compFoot">
+      Move the slider — over the same years, the building's paint, walls and lift grow old, but the land's area and location stay the same. Later, a new house can be built there to fit new needs.
+    </div>
+  </div>
+</div>
+
+<main>
+
+  <section class="chapter" id="s1">
+    <div class="chapter-mark">
+      <span class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="#7E3122" stroke-width="1.6"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"/></svg></span>
+      <h2 class="h">Something we've heard since childhood</h2>
+    </div>
+    <p class="lede">However little a person earns, they should have a roof over their head — a home of their own. That much is true. A safe address of one's own really does matter in life.</p>
+    <p>But in city and small-town life, "a home of one's own" now often just means a flat. A gleaming building, a lift, security — a picture of modern living is put in front of us. But the real question is: the flat that looks so beautiful today, what will it look like in 20 years? That's the question we rarely ask.</p>
+  </section>
+
+  <section class="chapter" id="s2">
+    <div class="chapter-mark">
+      <span class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="#7E3122" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="1"/><path d="M4 10h16M10 4v16"/></svg></span>
+      <h2 class="h">A new flat's biggest appeal — its newness <span class="tag flat">Flat</span></h2>
+    </div>
+    <p>When a new flat is first built, it looks stunning — fresh paint, a new lift, modern design. But time doesn't stand still. After 10, 15, 20 years the building ages, and construction-quality issues can surface — damp walls, peeling paint, maintenance problems that creep up slowly.</p>
+    <p>And as a flat owner, you can't simply tear down the whole building and rebuild it as you please — your ceiling is shared with someone else's floor, your wall is part of another flat's wall, and the neighbours above and below have rights too.</p>
+    <p class="pull">The flat may be yours, but you don't have sole control over the whole building.</p>
+  </section>
+
+  <section class="chapter" id="s3">
+    <div class="chapter-mark">
+      <span class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="#7E3122" stroke-width="1.6"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 10h20"/></svg></span>
+      <h2 class="h">A 20-year loan — a big question</h2>
+    </div>
+    <p>Say you buy a flat and take out a 20-year loan. At first it feels like: "I'm paying my instalments, and one day the flat will be fully mine." But by the time that day comes, the flat itself is nearly 20 years old too. In other words, by the time you're debt-free, the property is no longer as new as it once was.</p>
+    <p>The question that follows — how attractive will that property still be in the market, after all those years of payments?</p>
+  </section>
+
+  <section class="chapter" id="s4">
+    <div class="chapter-mark">
+      <span class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="#7E3122" stroke-width="1.6"><path d="M3 17l6-6 4 4 8-8M21 7v6h-6"/></svg></span>
+      <h2 class="h">Demand for an older flat can fall</h2>
+    </div>
+    <p>New generations are usually drawn more to new designs and modern living. What feels modern today can feel dated in 20 years — and by then, newer projects will have come up around it. As demand for the new rises, the pull of the old can fade.</p>
+    <p>So this reasoning alone isn't enough — "whatever price I paid today will surely double in 20 years." There's no guarantee that a property's price simply rises with time. Local development, demand, construction quality, age and market conditions all matter.</p>
+  </section>
+
+  <section class="chapter" id="s5">
+    <div class="chapter-mark">
+      <span class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="#7E3122" stroke-width="1.6"><path d="M4 20V10M10 20V4M16 20v-7M22 20v-3"/></svg></span>
+      <h2 class="h">Supply versus demand</h2>
+    </div>
+    <p>An asset whose supply can be expanded easily doesn't always see unlimited price growth. Building after building can go up in an area — where one housing project stands today, several more can rise right beside it in a few years. In other words, the supply of flats keeps growing.</p>
+    <p>Land is different. The world's total supply of land is not unlimited. Population keeps growing, settlements keep growing, and the need for roads, markets and jobs keeps growing — so scarcity of well-located land is a meaningful factor.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Factor</th><th>Flat</th><th>Land</th></tr></thead>
+        <tbody>
+          <tr><td>Can supply be increased?</td><td class="flatcol">Easily</td><td class="landcol">Limited</td></tr>
+          <tr><td>Condition after 20 years</td><td class="flatcol">Ages, hard to rebuild</td><td class="landcol">Rebuilding is your own call</td></tr>
+          <tr><td>Maintenance cost</td><td class="flatcol">Ongoing</td><td class="landcol">Almost none</td></tr>
+          <tr><td>Freedom to decide alone</td><td class="flatcol">Limited (shared building)</td><td class="landcol">Entirely yours</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="chapter" id="s6">
+    <div class="chapter-mark">
+      <span class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="#38502F" stroke-width="1.6"><path d="M12 2v14M6 12c0 4 2.5 6 6 6s6-2 6-6c0-3-2-5-6-9-4 4-6 6-6 9z"/></svg></span>
+      <h2 class="h">What makes land special? <span class="tag land">Land</span></h2>
+    </div>
+    <p>A house can grow old after 20 years. If you want, you can tear it down and rebuild. But the land stays. Today there might be an old house on it; tomorrow that house can be torn down for a new one — the house ages, but the plot itself does not.</p>
+    <p>This is exactly why land can matter so much for building wealth across generations. That doesn't mean buying land anywhere is a guaranteed win, though — location, road access, legal paperwork, future development and usability all still matter.</p>
+  </section>
+
+  <section class="chapter" id="s7">
+    <div class="chapter-mark">
+      <span class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="#7E3122" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
+      <h2 class="h">The amenities in the brochure aren't always the ones you get</h2>
+    </div>
+    <p>Big-city advertisements talk about swimming pools and clubhouses, but in a small town or mofussil district like Nadia, what most new flats actually offer is a much shorter, much more ordinary list:</p>
+    <div class="amenity-grid">
+      <div class="amenity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6" y="2" width="12" height="20" rx="1"/><path d="M9 6h6M9 10h6M9 14h6"/></svg><span>A lift (not always running)</span></div>
+      <div class="amenity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12h18M12 3v18"/></svg><span>Generator backup — limited power</span></div>
+      <div class="amenity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><span>One security guard / gate</span></div>
+      <div class="amenity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="10" width="18" height="9"/><path d="M3 10l9-6 9 6"/></svg><span>One open or covered parking spot</span></div>
+      <div class="amenity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 6h16v12H4zM4 10h16"/></svg><span>A rooftop water tank, own borewell</span></div>
+      <div class="amenity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20V10l8-6 8 6v10"/></svg><span>Shared access to the roof</span></div>
+    </div>
+    <p>These do make daily life easier, no question. But the question stays the same — how much will you actually use each one, and don't you still pay maintenance on the parts you barely use?</p>
+    <p>In other words, buying a flat isn't just about the instalment — <strong>loan payment + maintenance + other costs = your real monthly outgo</strong>. Many people don't work out this full number properly.</p>
+  </section>
+
+  <section class="chapter" id="s8">
+    <div class="chapter-mark">
+      <span class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="#7E3122" stroke-width="1.6"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></span>
+      <h2 class="h">Asset, or liability?</h2>
+    </div>
+    <p>This is the most important lesson in the whole picture. An asset that puts money into your pocket behaves like a true asset. Something that regularly takes money out of your pocket behaves like a liability, no matter what it's called.</p>
+
+    <div class="ledger">
+      <h3>An illustrative example — a flat in a small town (not real market data)</h3>
+      <div class="ledger-row"><span>Flat price (assumed)</span><span class="amt">3,500,000</span></div>
+      <div class="ledger-row"><span>Monthly loan instalment over 20 years (approx.)</span><span class="amt">28,000</span></div>
+      <div class="ledger-row"><span>Maintenance and other monthly costs</span><span class="amt">1,500</span></div>
+      <div class="ledger-row"><span>Possible monthly rent if let out (same area)</span><span class="amt">9,000 – 11,000</span></div>
+      <div class="ledger-row total"><span>Extra amount going out of pocket each month</span><span class="amt">≈ 18,500 – 20,500</span></div>
+      <p class="ledger-note">The figures above are a hypothetical example to illustrate the arithmetic, not a quote from any real property, bank or listing. In smaller towns, rental rates are often low relative to the property price — so the gap between the instalment and the rent can stay wide. That gap is what can make a flat behave like a liability in cash-flow terms, for as long as the loan runs. Actual numbers vary by city, project and lender, so check current figures for your own case.</p>
+    </div>
+
+    <p>On the other hand, if the rent you'd earn comes close to or exceeds the instalment and other costs, the property's financial position can look far stronger. So it's not enough to simply see "I own a flat" — the real question is what that flat is actually doing for you.</p>
+  </section>
+
+  <section class="chapter" id="s9">
+    <div class="chapter-mark">
+      <span class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="#7E3122" stroke-width="1.6"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg></span>
+      <h2 class="h">A flat to live in and a flat as an investment aren't the same thing</h2>
+    </div>
+    <p>Buying to live in yourself brings real value — security, family, schools, hospitals, commute, community. If you plan to stay there for the next 15–20 years, and the instalment sits comfortably within your means, there's a genuine case for buying.</p>
+    <p>But buying it as an investment is a different calculation entirely — what rent can you realistically expect, what's the instalment, what's the maintenance, what will demand look like down the line, how old will the property be, how much new supply is coming into the area, and how easy will resale be. Assuming "the price will go up" is not enough on its own.</p>
+  </section>
+
+  <section class="chapter" id="s10">
+    <div class="chapter-mark">
+      <span class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="#7E3122" stroke-width="1.6"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="8" r="3"/><path d="M2 21c0-4 3-6 6-6s6 2 6 6M13 21c0-3 2-5 5-5s5 2 5 5"/></svg></span>
+      <h2 class="h">"I'm buying it for my children" — worth thinking through too</h2>
+    </div>
+    <p>Many parents say, "I'm not buying this for myself — I'm buying it for my child's future." It's a lovely thought. But the real question is: will that child even want that same old flat in 20 years? By then, their preferences and needs may have changed completely.</p>
+    <p>An old flat isn't easy to tear down and rebuild either, because it's part of a shared building. If it's land instead, the next generation gets the freedom to build whatever fits their own needs, whenever they need it.</p>
+  </section>
+<section class="chapter" id="s10b">
+  <div class="chapter-mark">
+    <span class="glyph">
+      <svg viewBox="0 0 24 24" fill="none"
+           stroke="#7E3122" stroke-width="1.6">
+        <path d="M3 21h18M5 21V9l7-5 7 5v12"/>
+        <path d="M9 21v-6h6v6"/>
+      </svg>
+    </span>
+    <h2 class="h">Teach Children to Value What They Have</h2>
+  </div>
+
+  <p>
+    There is another side of buying a home for our children that is
+    easy to overlook: <strong>teaching them to value what someone
+    worked hard to build.</strong>
+  </p>
+
+  <p>
+    If a child grows up understanding how many years of work, saving,
+    sacrifice and patience went into building a house or buying a flat,
+    they are more likely to see that home as something worth protecting
+    and caring for.
+  </p>
+
+  <p>
+    Without that understanding, a child may grow up seeing a house,
+    furniture, doors or other possessions simply as things that can be
+    replaced whenever they are damaged.
+  </p>
+
+  <blockquote class="q">
+    If you understand the effort behind something, you learn to respect
+    the thing itself.
+  </blockquote>
+
+  <p>
+    Anger can make a person damage what took years to build.
+    A door can be repaired, but the habit of treating other people's
+    hard work without respect is much harder to repair.
+  </p>
+
+  <p>
+    So giving children a home is only part of the responsibility.
+    <strong>Teaching them gratitude, self-control, responsibility and
+    respect for property is an equally important inheritance.</strong>
+  </p>
+
+  <p class="pull">
+    Don't just leave your children a house. Leave them the values
+    that will help them take care of it.
+  </p>
+</section>
+  <section class="chapter" id="s11">
+    <div class="chapter-mark">
+      <span class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="#7E3122" stroke-width="1.6"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg></span>
+      <h2 class="h">Not about appearances — about financial strength</h2>
+    </div>
+    <p>A colleague bought a flat, a friend bought a new car, someone you know lives in a big housing complex — and suddenly it feels like, "I should have something like that too." But we never see how much debt sits behind it. The shine is visible; the loan behind it isn't.</p>
+    <p class="pull">The goal isn't to look impressive — it's to be financially strong.</p>
+  </section>
+
+  <section class="chapter" id="s12">
+    <div class="chapter-mark">
+      <span class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="#7E3122" stroke-width="1.6"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></span>
+      <h2 class="h">So should you never buy a flat?</h2>
+    </div>
+    <p>No, it isn't that simple. It wouldn't be right to say flats are a bad idea. It's more accurate to say: "Don't buy a flat without understanding why."</p>
+
+    <div class="check-grid">
+      <div class="check-col good">
+        <h4>When a flat can be a good decision</h4>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>You genuinely need a place to live</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Security matters to you</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>You want to live in a good location</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>You can comfortably manage the instalment</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>You plan to stay long-term</li>
+        </ul>
+      </div>
+      <div class="check-col bad">
+        <h4>When it's worth rethinking</h4>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>Buying purely to impress others</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>Taking on more debt than you can handle</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>Buying only because "the price will go up"</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>Not accounting for maintenance costs</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>Not looking at the gap between rent and instalment</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== Part Two: 15 questions ===== -->
+<div class="part-divider">
+  <div class="rule2"></div>
+  <div class="kicker">Part Two</div>
+  <h2>15 questions to ask before you buy a flat</h2>
+  <p>"I want a home of my own" — a good dream. It shouldn't become a lifelong burden. Buying a flat isn't wrong in itself. But before you sign, ask yourself these questions.</p>
+</div>
+
+<div class="scale-wrap">
+  <div style="position:relative; height:120px;">
+    <div class="beam" id="beam">
+      <div class="pan pan-left" id="panLeft">
+        <div class="string"></div>
+        <div class="dish">🏠</div>
+        <div class="pan-label"><b>The dream</b>a considered decision</div>
+      </div>
+      <div class="pan pan-right" id="panRight">
+        <div class="string"></div>
+        <div class="dish">⛓️</div>
+        <div class="pan-label"><b>The debt</b>an unconsidered one</div>
+      </div>
+    </div>
+  </div>
+  <div class="scale-stand"></div>
+  <div class="scale-pivot"></div>
+  <div class="scale-base"></div>
+</div>
+
+<div class="score-line">
+  Answer each question below — you've weighed <span class="count" id="countText">0/15</span> of them carefully
+</div>
+<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+
+<div class="intro2">
+  For a middle-class family, a home of one's own is never just property — it's a <strong>dream, a sense of security</strong>, and one of life's bigger milestones. But if reaching that dream means 20–25 years of instalments, maintenance, and financial strain, it's worth pausing to think it through.
+</div>
+
+<div class="list-wrap" id="listWrap"></div>
+
+<div class="banner">
+  <div class="banner-inner">
+    <h2>The biggest lesson for the middle class</h2>
+    <p>A home of your own genuinely matters. But in the pursuit of it, make sure you don't lose your financial independence along the way.</p>
+    <p>If a flat fits your real needs, your sense of security, and your means — it can be a very good decision.</p>
+  </div>
+</div>
+
+<section class="closing" id="s13">
+  <div class="kicker">Last word</div>
+  <p class="big">A home isn't just bricks and mortar — it means security, family, peace of mind. But buying property calls for arithmetic alongside the emotion.</p>
+  <blockquote class="q">Before you decide, drawn in by a new flat's gleaming lobby, ask — what will it look like in 20 years? Alongside the instalment, ask — what will maintenance cost? Alongside the hope of a rising price, ask — will there still be demand? And most importantly — am I buying an asset, or a liability I'll be paying for, year after year?</blockquote>
+  <p>A flat isn't a bad choice for everyone. But before buying, be clear about this: are you buying somewhere to build a life, or looking at it as an investment? The two call for very different arithmetic.</p>
+  <p class="final-quote">Value financial independence over appearances. Build assets that put money into your pocket in the future — not ones that keep taking it out.</p>
+
+  <p class="line strike" style="margin-top:22px;">"Everyone's buying one, so I have to as well."</p>
+  <p class="line strike">"If I don't buy now, the price will only go up."</p>
+  <p class="line strike">"I need people to see that I live somewhere big."</p>
+  <p class="line">Having a flat isn't, by itself, the achievement.</p>
+  <div class="highlight">Being financially free even after owning a flat — that's the achievement.</div>
+</section>
+
+<footer>
+  <span>Ledger No. — Property Decisions Reading</span>
+  <span>Educational content for general financial-literacy awareness only. Not financial, investment, tax or legal advice. All figures are illustrative, not real market data. Please verify current numbers and consult a qualified financial advisor, chartered accountant or property lawyer before any purchase decision.</span>
+</footer>
+
+<script src="security.js"></script>
+<script>
+(function(){
+  const slider = document.getElementById('yearSlider');
+  const yearBadge = document.getElementById('yearBadge');
+  const flatWindows = document.getElementById('flatWindows');
+  const flatBuilding = document.getElementById('flatBuilding');
+  const flatCracks = document.getElementById('flatCracks');
+  const flatStain = document.getElementById('flatStain');
+  const flatCaption = document.getElementById('flatCaption');
+  const landCaption = document.getElementById('landCaption');
+  const newHouse = document.getElementById('newHouse');
+  const landTree = document.getElementById('landTree');
+
+  const flatCaptions = [
+    [0, "Fresh paint, a new lift, a gleaming lobby."],
+    [6, "The first coat is starting to fade, and the lift has occasional trouble."],
+    [12, "Damp patches on the walls; maintenance costs are rising."],
+    [18, "The design looks dated, and a new project has come up next door."]
+  ];
+  const landCaptions = [
+    [0, "The boundary stays the same; the plot stays the same."],
+    [8, "The neighbourhood is filling in; the tree is growing taller."],
+    [15, "When needs change, a new house can be built right here."]
+  ];
+
+  function pick(list, year){
+    let val = list[0][1];
+    for (const [y, text] of list){ if (year >= y) val = text; }
+    return val;
+  }
+
+  function render(year){
+    yearBadge.textContent = 'Year ' + String(year).padStart(2,'0');
+    const t = year / 20;
+
+    flatBuilding.style.opacity = 1 - t*0.05;
+    flatWindows.setAttribute('fill', t < 0.4 ? '#7EA0C4' : (t < 0.75 ? '#8B93A0' : '#9C9689'));
+    flatCracks.setAttribute('opacity', Math.max(0, (t-0.35)/0.65).toFixed(2));
+    flatStain.setAttribute('opacity', Math.max(0, (t-0.5)/0.5).toFixed(2));
+    flatBuilding.querySelector('rect').setAttribute('fill', t < 0.3 ? '#E7D9C6' : (t < 0.65 ? '#DACBB4' : '#C9BC9F'));
+
+    newHouse.setAttribute('opacity', year >= 15 ? Math.min(1, (year-15)/5).toFixed(2) : 0);
+    const treeScale = 1 + t*0.35;
+    landTree.setAttribute('transform', 'translate(70,150) scale(' + treeScale.toFixed(2) + ') translate(0,' + (-(treeScale-1)*30).toFixed(1) + ')');
+
+    flatCaption.textContent = pick(flatCaptions, year);
+    landCaption.textContent = pick(landCaptions, year);
+  }
+
+  slider.addEventListener('input', (e) => render(parseInt(e.target.value, 10)));
+  render(0);
+})();
+
+(function(){
+  const questions = [
+    {icon:"🤔", t:"Why am I actually buying this flat?", b:"Is it for me to live in? An investment? Or does it just feel, seeing relatives or colleagues, like <b>\"I should have a flat too\"</b>? Taking on a large loan without a clear reason is risky."},
+    {icon:"💰", t:"What will I have left after paying the instalment?", b:"The bank approving a loan amount isn't proof of what you can actually afford. After the instalment, will there be enough left for the household, your child's education, medical costs, savings and emergencies?"},
+    {icon:"🏚️", t:"What condition will this flat be in after 20 years?", b:"Today the building gleams. But after 15–20 years, the walls, paint, lift, plumbing, water supply and common areas will all have aged. Don't judge today's flat only through today's eyes."},
+    {icon:"📜", t:"Am I only buying a flat, or also taking on a long-term debt?", b:"Principal + interest + maintenance + other costs — what will your real total cost be over 20 years? Write that number down before you decide, don't just estimate it."},
+    {icon:"🛠️", t:"What's the maintenance?", b:"Swimming pool, gym, clubhouse, lift, security, common areas — who pays for the upkeep of all this? You do. Even the parts you barely use, you may still be paying for."},
+    {icon:"🏊", t:"Will I really use the amenities I'm paying extra for?", b:"A swimming pool in the brochure makes you think, \"what a lifestyle!\" But will you genuinely use the pool, gym or clubhouse regularly — or is it just an attractive line at the time of buying?"},
+    {icon:"🔑", t:"Will I find a buyer if I try to sell this flat in 20 years?", b:"There's demand for new flats today. But in 20 years there will likely be newer, more modern housing projects on the market. What will resale demand look like once it's no longer new?"},
+    {icon:"🏗️", t:"How much new supply will come into this area in future?", b:"If new buildings keep going up one after another, your older flat will have to compete with newer ones. Think about supply and demand over the next 10–20 years too."},
+    {icon:"📈", t:"Am I assuming \"the price will definitely rise\"?", b:"\"It's 5,000,000 today, it'll be 10,000,000 in 10 years\" — there's no guarantee of that. Price depends on location, construction quality, connectivity, demand and new supply. Don't mistake a guess for a certainty."},
+    {icon:"🏘️", t:"How much rent could I actually get?", b:"If you're buying it as an investment, rental yield is the most important question. As a hypothetical example, on a flat worth 10,000,000, how effective would a monthly rent of 10,000–15,000 be against the instalment and other costs? Check real listings for your own area — rental income alone doesn't make it a good investment."},
+    {icon:"⚖️", t:"Is this flat an asset to me, or a liability?", b:"If money has to go out of your own pocket every month, it's putting pressure on your cash flow. Owning property and owning a good asset aren't the same thing."},
+    {icon:"👨‍👩‍👧", t:"\"I'm buying it for my kids\" — will they really want it in 20 years?", b:"You can't be certain what your child's career, lifestyle or city will look like in 20 years. Pass wealth on to the next generation, but give them the freedom to choose too."},
+    {icon:"🌳", t:"Land versus a flat — do I really understand the difference?", b:"A flat's age is tied to the building's age; land doesn't carry that. That said, land isn't automatic profit either — location, title, road access and legal documents all still need checking."},
+    {icon:"👀", t:"Am I trying to live beyond my actual financial means?", b:"Don't decide based on someone else's flat — you can't see their loan, instalment or credit card debt. Don't push your own future into debt just to impress someone else."},
+    {icon:"🎯", t:"Will this decision make me financially stronger in 20 years, or weaker?", b:"Is the loan paid off? Do you have savings, a retirement fund, an emergency fund? Or do you have a flat but an almost-empty bank balance? That's the real question."},
+  ];
+
+  const wrap = document.getElementById('listWrap');
+  const state = new Array(questions.length).fill(null);
+
+  questions.forEach((q, i) => {
+    const card = document.createElement('div');
+    card.className = 'qcard';
+    card.innerHTML = `
+      <div class="qhead">
+        <div class="qnum">${String(i+1).padStart(2,'0')}</div>
+        <div>
+          <div class="qtitle"><span class="qicon">${q.icon}</span> ${q.t}</div>
+          <p class="qbody">${q.b}</p>
+          <div class="qactions">
+            <button class="qbtn yes" data-i="${i}" data-v="1">Weighed it carefully</button>
+            <button class="qbtn no" data-i="${i}" data-v="0">Haven't yet</button>
+          </div>
+        </div>
+      </div>
+    `;
+    wrap.appendChild(card);
+  });
+
+  wrap.addEventListener('click', (e) => {
+    const btn = e.target.closest('.qbtn');
+    if(!btn) return;
+    const i = +btn.dataset.i;
+    const v = +btn.dataset.v;
+    state[i] = v;
+    const card = btn.closest('.qcard');
+    card.classList.remove('considered','pending');
+    card.classList.add(v === 1 ? 'considered' : 'pending');
+    card.querySelectorAll('.qbtn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    updateScale();
+  });
+
+  function updateScale(){
+    const answered = state.filter(v => v !== null).length;
+    const yes = state.filter(v => v === 1).length;
+    const no = state.filter(v => v === 0).length;
+
+    document.getElementById('countText').textContent = `${yes}/15`;
+    document.getElementById('progressFill').style.width = (answered/questions.length*100) + '%';
+
+    const net = yes - no;
+    const angle = Math.max(-16, Math.min(16, net * 1.4));
+    document.getElementById('beam').style.transform = `rotate(${angle}deg)`;
+    document.getElementById('panLeft').style.transform = `rotate(${-angle}deg) translateY(${angle*1.6}px)`;
+    document.getElementById('panRight').style.transform = `rotate(${-angle}deg) translateY(${-angle*1.6}px)`;
+  }
+})();
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+
+</body>
+</html>

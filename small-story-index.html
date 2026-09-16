@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Small Stories — MySkill Global</title>
+
+<meta name="description"
+content="Discover short stories of mystery, humanity, adventure, responsibility, courage, honesty, nature and life lessons from MySkill Global.">
+
+<style>
+  :root{
+    --night:#121a2e;
+    --night-deep:#0c1122;
+    --card:#1c2740;
+    --card-edge:#34426a;
+    --gold:#e8a33d;
+    --gold-soft:#f2c07a;
+    --teal:#4fa9a0;
+    --paper:#f4efe4;
+    --paper-dim:#b9c0d6;
+  }
+
+  *{
+    box-sizing:border-box;
+  }
+
+  html{
+    scroll-behavior:smooth;
+  }
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(
+        ellipse at 50% -10%,
+        #1a2544 0%,
+        var(--night) 55%,
+        var(--night-deep) 100%
+      );
+    color:var(--paper);
+    font-family:
+      Georgia,
+      "Iowan Old Style",
+      "Palatino Linotype",
+      Palatino,
+      serif;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* Faint stars */
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background-image:
+      radial-gradient(
+        1px 1px at 10% 20%,
+        rgba(244,239,228,.35),
+        transparent
+      ),
+      radial-gradient(
+        1px 1px at 80% 10%,
+        rgba(244,239,228,.25),
+        transparent
+      ),
+      radial-gradient(
+        1px 1px at 60% 35%,
+        rgba(244,239,228,.3),
+        transparent
+      ),
+      radial-gradient(
+        1px 1px at 25% 60%,
+        rgba(244,239,228,.2),
+        transparent
+      ),
+      radial-gradient(
+        1px 1px at 90% 70%,
+        rgba(244,239,228,.25),
+        transparent
+      ),
+      radial-gradient(
+        1px 1px at 40% 85%,
+        rgba(244,239,228,.2),
+        transparent
+      );
+    pointer-events:none;
+    z-index:0;
+  }
+
+  /* =========================
+     HEADER
+  ========================= */
+
+  header{
+    position:relative;
+    text-align:center;
+    padding:72px 24px 48px;
+    z-index:1;
+  }
+
+  .eyebrow{
+    font-family:"Courier New",monospace;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    font-size:12px;
+    color:var(--teal);
+    margin:0 0 18px;
+  }
+
+  h1{
+    font-size:clamp(34px,6vw,58px);
+    margin:0 0 14px;
+    font-weight:400;
+    letter-spacing:.01em;
+    color:var(--paper);
+  }
+
+  h1 em{
+    color:var(--gold-soft);
+    font-style:italic;
+  }
+
+  header p{
+    max-width:560px;
+    margin:0 auto;
+    color:var(--paper-dim);
+    font-size:16px;
+    line-height:1.7;
+    font-family:Georgia,serif;
+  }
+
+  .count{
+    display:inline-block;
+    margin-top:22px;
+    font-family:"Courier New",monospace;
+    font-size:12px;
+    letter-spacing:.12em;
+    color:var(--gold);
+    border:1px solid rgba(232,163,61,.35);
+    border-radius:100px;
+    padding:6px 16px;
+  }
+
+  /* =========================
+     STORY PATH
+  ========================= */
+
+  main{
+    position:relative;
+    max-width:900px;
+    margin:0 auto;
+    padding:20px 24px 100px;
+    z-index:1;
+  }
+
+  main::before{
+    content:"";
+    position:absolute;
+    top:14px;
+    bottom:60px;
+    left:50%;
+    width:1px;
+    background:
+      repeating-linear-gradient(
+        to bottom,
+        rgba(232,163,61,.55) 0 6px,
+        transparent 6px 14px
+      );
+    transform:translateX(-50%);
+  }
+
+  .trail{
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+
+  .stop{
+    position:relative;
+    display:flex;
+    margin:0 0 52px;
+  }
+
+  .stop:nth-child(odd){
+    justify-content:flex-start;
+  }
+
+  .stop:nth-child(even){
+    justify-content:flex-end;
+  }
+
+  /* =========================
+     LANTERN
+  ========================= */
+
+  .lantern{
+    position:absolute;
+    top:38px;
+    left:50%;
+    transform:translateX(-50%);
+    width:11px;
+    height:11px;
+    border-radius:50%;
+    background:var(--gold);
+    box-shadow:
+      0 0 0 4px rgba(232,163,61,.12),
+      0 0 14px 3px rgba(232,163,61,.55);
+    animation:flicker 3.2s ease-in-out infinite;
+    z-index:2;
+  }
+
+  .stop:nth-child(3n) .lantern{
+    animation-delay:.4s;
+    background:var(--teal);
+    box-shadow:
+      0 0 0 4px rgba(79,169,160,.14),
+      0 0 14px 3px rgba(79,169,160,.55);
+  }
+
+  .stop:nth-child(5n) .lantern{
+    animation-delay:1.1s;
+  }
+
+  .stop:nth-child(7n) .lantern{
+    animation-delay:1.7s;
+    background:var(--teal);
+    box-shadow:
+      0 0 0 4px rgba(79,169,160,.14),
+      0 0 14px 3px rgba(79,169,160,.55);
+  }
+
+  @keyframes flicker{
+    0%,100%{opacity:1;}
+    45%{opacity:.65;}
+    55%{opacity:1;}
+    72%{opacity:.8;}
+  }
+
+  /* =========================
+     STORY CARD
+  ========================= */
+
+  a.card{
+    width:calc(50% - 34px);
+    background:
+      linear-gradient(
+        180deg,
+        var(--card),
+        #182238
+      );
+    border:1px solid var(--card-edge);
+    border-radius:12px;
+    padding:16px;
+    text-decoration:none;
+    color:inherit;
+    display:block;
+
+    transition:
+      transform .18s ease,
+      border-color .18s ease,
+      box-shadow .18s ease;
+  }
+
+  a.card:hover,
+  a.card:focus-visible{
+    transform:translateY(-4px);
+    border-color:var(--gold);
+    box-shadow:
+      0 12px 28px -12px rgba(0,0,0,.65);
+    outline:none;
+  }
+
+  a.card:focus-visible{
+    outline:2px solid var(--gold-soft);
+    outline-offset:2px;
+  }
+
+  /* =========================
+     STORY IMAGE
+  ========================= */
+
+  .story-image{
+    width:100%;
+    height:150px;
+    border-radius:8px;
+    overflow:hidden;
+    background:#111a2e;
+    margin-bottom:14px;
+  }
+
+  .story-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    transition:transform .3s ease;
+  }
+
+  a.card:hover .story-image img{
+    transform:scale(1.04);
+  }
+
+  /* =========================
+     TAG
+  ========================= */
+
+  .tag{
+    display:inline-block;
+    font-family:"Courier New",monospace;
+    font-size:10.5px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--night);
+    background:var(--gold-soft);
+    border-radius:4px;
+    padding:3px 8px;
+    margin-bottom:9px;
+  }
+
+  .stop:nth-child(3n) .tag{
+    background:var(--teal);
+    color:var(--night);
+  }
+
+  .title{
+    display:block;
+    font-size:19px;
+    line-height:1.35;
+    color:var(--paper);
+  }
+
+  .no{
+    font-family:"Courier New",monospace;
+    font-size:11px;
+    color:var(--paper-dim);
+    display:block;
+    margin-top:10px;
+  }
+
+  /* =========================
+     MOBILE
+  ========================= */
+
+  @media(max-width:600px){
+
+    header{
+      padding:58px 20px 38px;
+    }
+
+    main{
+      padding:20px 18px 80px;
+    }
+
+    main::before{
+      left:18px;
+    }
+
+    .stop,
+    .stop:nth-child(odd),
+    .stop:nth-child(even){
+      justify-content:flex-start;
+      padding-left:40px;
+    }
+
+    .lantern{
+      left:18px;
+    }
+
+    a.card{
+      width:100%;
+    }
+
+    .story-image{
+      height:175px;
+    }
+
+    .title{
+      font-size:18px;
+    }
+  }
+
+  /* =========================
+     FOOTER
+  ========================= */
+
+  footer{
+    position:relative;
+    text-align:center;
+    padding:36px 24px 44px;
+    color:var(--paper-dim);
+    font-family:"Courier New",monospace;
+    font-size:12px;
+    letter-spacing:.04em;
+    border-top:1px solid rgba(244,239,228,.08);
+    z-index:1;
+  }
+
+  footer a{
+    color:var(--gold-soft);
+    text-decoration:none;
+  }
+
+  footer a:hover{
+    text-decoration:underline;
+  }
+</style>
+</head>
+
+<body>
+
+<header>
+
+  <p class="eyebrow">
+    MySkill Global · Story Trail
+  </p>
+<a class="eyebrow" href="stories-novels-index.html">← Back to My Skill : Story-Novels</a>
+
+  <h1>
+    Small Stories, <em>Big Lessons</em>
+  </h1>
+
+  <p>
+    Stories of mystery, humanity, courage, responsibility, honesty,
+    nature and life. Each story offers a few moments of reading
+    and a lesson worth carrying forward.
+  </p>
+
+  <span class="count">
+    18 STORIES
+  </span>
+
+</header>
+
+
+<main>
+
+<ul class="trail">
+  <!-- 01 -->
+  <li class="stop">
+    <div class="lantern"></div>
+
+    <a class="card" href="pradip-foggy-night.html">
+
+      <div class="story-image">
+        <img
+          src="images/cycle.png"
+          alt="Pradip in the Foggy Night"
+          loading="lazy"
+        >
+      </div>
+
+      <span class="tag">Safety</span>
+
+      <span class="title">
+        Pradip in the Foggy Night
+      </span>
+
+      <span class="no">01</span>
+
+    </a>
+  </li>
+
+  <!-- 02 -->
+  <li class="stop">
+    <div class="lantern"></div>
+
+    <a class="card" href="one-mobile-three-lives.html">
+
+      <div class="story-image">
+        <img
+          src="images/one-mobile.png"
+          alt="One Mobile, Three Lives"
+          loading="lazy"
+        >
+      </div>
+
+      <span class="tag">Safety</span>
+
+      <span class="title">
+        One Mobile, Three Lives
+      </span>
+
+      <span class="no">02</span>
+
+    </a>
+  </li>
+
+
+
+
+  <!-- 03 -->
+  <li class="stop">
+    <div class="lantern"></div>
+
+    <a class="card"
+       href="The_Boy_Who_Learned_Before_He_Grew.html">
+
+      <div class="story-image">
+        <img
+          src="images/the-boy-who-learned.png"
+          alt="The Boy Who Learned Before He Grew"
+          loading="lazy"
+        >
+      </div>
+
+      <span class="tag">Growth</span>
+
+      <span class="title">
+        The Boy Who Learned Before He Grew
+      </span>
+
+      <span class="no">03</span>
+
+    </a>
+  </li>
+
+
+  <!-- 04 -->
+  <li class="stop">
+    <div class="lantern"></div>
+
+    <a class="card"
+       href="The_Computer_That_Arrived_at_the_Perfect_Time.html">
+
+      <div class="story-image">
+        <img
+          src="images/the-computer.png"
+          alt="The Computer That Arrived at the Perfect Time"
+          loading="lazy"
+        >
+      </div>
+
+      <span class="tag">Opportunity</span>
+
+      <span class="title">
+        The Computer That Arrived at the Perfect Time
+      </span>
+
+      <span class="no">04</span>
+
+    </a>
+  </li>
+
+
+  <!-- 05 -->
+  <li class="stop">
+    <div class="lantern"></div>
+
+    <a class="card"
+       href="The_Fire_That_Ate_the_Forest.html">
+
+      <div class="story-image">
+        <img
+          src="images/the-fire.png"
+          alt="The Fire That Ate the Forest"
+          loading="lazy"
+        >
+      </div>
+
+      <span class="tag">Environment</span>
+
+      <span class="title">
+        The Fire That Ate the Forest
+      </span>
+
+      <span class="no">05</span>
+
+    </a>
+  </li>
+
+
+  <!-- 06 -->
+  <li class="stop">
+    <div class="lantern"></div>
+
+    <a class="card"
+       href="The_Glass_That_Saved_a_Life.html">
+
+      <div class="story-image">
+        <img
+          src="images/the-glass-saved.png"
+          alt="The Glass That Saved a Life"
+          loading="lazy"
+        >
+      </div>
+
+      <span class="tag">Safety</span>
+
+      <span class="title">
+        The Glass That Saved a Life
+      </span>
+
+      <span class="no">06</span>
+
+    </a>
+  </li>
+
+
+  <!-- 07 -->
+  <li class="stop">
+    <div class="lantern"></div>
+
+    <a class="card"
+       href="The_Invisible_Blade.html">
+
+      <div class="story-image">
+        <img
+          src="images/the-invisible-blade.png"
+          alt="The Invisible Blade"
+          loading="lazy"
+        >
+      </div>
+
+      <span class="tag">Courage</span>
+
+      <span class="title">
+        The Invisible Blade
+      </span>
+
+      <span class="no">07</span>
+
+    </a>
+  </li>
+
+
+  <!-- 08 -->
+  <li class="stop">
+    <div class="lantern"></div>
+
+    <a class="card"
+       href="The_Milk_That_Poisoned_Trust.html">
+
+      <div class="story-image">
+        <img
+          src="images/the-milk.png"
+          alt="The Milk That Poisoned Trust"
+          loading="lazy"
+        >
+      </div>
+
+      <span class="tag">Trust</span>
+
+      <span class="title">
+        The Milk That Poisoned Trust
+      </span>
+
+      <span class="no">08</span>
+
+    </a>
+  </li>
+
+
+
+
+  <!-- 09 -->
+  <li class="stop">
+    <div class="lantern"></div>
+
+    <a class="card"
+       href="the-invisible-message.html">
+
+      <div class="story-image">
+        <img
+          src="images/invisible-message.png"
+          alt="The Invisible Message"
+          loading="lazy"
+        >
+      </div>
+
+      <span class="tag">Communication</span>
+
+      <span class="title">
+        The Invisible Message
+      </span>
+
+      <span class="no">09</span>
+
+    </a>
+  </li>
+
+
+
+
+  <!-- 10 -->
+  <li class="stop">
+    <div class="lantern"></div>
+
+    <a class="card"
+       href="theres-a-debt-and-a-way.html">
+
+      <div class="story-image">
+        <img
+          src="images/theres-a-debt-and-a-way.png"
+          alt="There's a Debt and a Way"
+          loading="lazy"
+        >
+      </div>
+
+      <span class="tag">Perseverance</span>
+
+      <span class="title">
+        There's a Debt and a Way
+      </span>
+
+      <span class="no">10</span>
+
+    </a>
+  </li>
+
+
+  <!-- 16 -->
+  <li class="stop">
+    <div class="lantern"></div>
+
+    <a class="card"
+       href="the-sky-that-gave-a-warning.html">
+
+      <div class="story-image">
+        <img
+          src="images/the-sky.png"
+          alt="The Sky That Gave a Warning"
+          loading="lazy"
+        >
+      </div>
+
+      <span class="tag">Nature's Warning</span>
+
+      <span class="title">
+        The Sky That Gave a Warning
+      </span>
+
+      <span class="no">16</span>
+
+    </a>
+  </li>
+
+
+  <!-- 17 -->
+  <li class="stop">
+    <div class="lantern"></div>
+
+    <a class="card"
+       href="When_the_Pond_Disappeared.html">
+
+      <div class="story-image">
+        <img
+          src="images/pond-disappear.png"
+          alt="When the Pond Disappeared"
+          loading="lazy"
+        >
+      </div>
+
+      <span class="tag">Environment</span>
+
+      <span class="title">
+        When the Pond Disappeared
+      </span>
+
+      <span class="no">17</span>
+
+    </a>
+  </li>
+
+  <!-- 18 -->
+  <li class="stop">
+    <div class="lantern"></div>
+
+    <a class="card"
+       href="the-ideal-boy.html">
+
+      <div class="story-image">
+        <img
+          src="images/adarsha-chele.png"
+          alt="The Ideal Boy"
+          loading="lazy"
+        >
+      </div>
+      <span class="tag">The Ideal Boy</span>
+      <span class="title">
+        The Ideal Boy
+      </span>
+      <span class="no">18</span>
+    </a>
+  </li>
+
+
+</ul>
+
+</main>
+
+
+<footer>
+  MySkill Global · Small Stories Collection ·
+  Built by <a href="#">Surajit Roy</a>
+</footer>
+
+</body>
+</html>

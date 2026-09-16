@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Apps &amp; Websites | MySkill Global</title>
+
+<meta name="description" content="Explore MySkill Global apps, educational games, driving expense tools, MyBudget and related websites.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://myskillglobal.com/apps.html">
+
+<style>
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  line-height:1.7;
+  background:#0A0F1E;
+  color:#E8E0D0;
+}
+
+.container{
+  width:min(1100px,92%);
+  margin:auto;
+}
+
+.hero{
+  text-align:center;
+  padding:70px 20px 45px;
+}
+
+.hero h1{
+  margin:0 0 12px;
+  color:#E8C97A;
+  font-size:clamp(2rem,5vw,3.4rem);
+}
+
+.hero p{
+  max-width:780px;
+  margin:0 auto;
+  color:#cfd5df;
+  font-size:1.05rem;
+}
+
+.apps-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:24px;
+  padding:20px 0 70px;
+}
+
+.app-card{
+  background:#111827;
+  border:1px solid #3b3a2d;
+  border-radius:20px;
+  padding:24px;
+  display:flex;
+  flex-direction:column;
+  box-shadow:0 8px 25px rgba(0,0,0,.18);
+}
+
+.app-image{
+  width:100%;
+  height:220px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:20px;
+  overflow:hidden;
+  border-radius:15px;
+  background:#fff;
+}
+
+.app-image img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
+.app-card h2{
+  color:#E8C97A;
+  font-size:1.35rem;
+  margin:0 0 10px;
+}
+
+.app-card p{
+  color:#d7dce5;
+  margin:0 0 20px;
+}
+
+.links{
+  margin-top:auto;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.btn{
+  display:inline-block;
+  padding:10px 15px;
+  border-radius:10px;
+  text-decoration:none;
+  border:1px solid #E8C97A;
+  color:#E8C97A;
+  font-weight:600;
+}
+
+.btn.primary{
+  background:#E8C97A;
+  color:#111827;
+}
+
+.btn:hover{
+  opacity:.88;
+}
+
+.note{
+  text-align:center;
+  padding:0 20px 55px;
+  color:#bfc6d1;
+}
+
+footer{
+  border-top:1px solid #2b3140;
+  padding:30px 20px;
+  text-align:center;
+  color:#aeb6c4;
+}
+
+footer a{
+  color:#E8C97A;
+  text-decoration:none;
+  margin:0 8px;
+}
+
+@media(max-width:600px){
+  .hero{padding-top:45px}
+  .app-image{height:190px}
+}
+</style>
+</head>
+
+<body>
+
+<header class="hero">
+  <div class="container">
+    <h1>MySkill Global Apps &amp; Websites</h1>
+    <p>
+      Explore the apps and web projects developed under the MySkill name,
+      including educational games, driving expense tracking, budgeting tools,
+      communication projects and reading resources.
+    </p>
+  </div>
+</header>
+
+
+<main class="container">
+<section class="apps-grid">
+
+
+  <!-- MySkillGame -->
+  <article class="app-card">
+    <div class="app-image">
+      <img
+        src="images/logo1.png"
+        alt="MySkillGame educational learning app"
+        loading="lazy"
+      >
+    </div>
+
+    <h2>MySkillGame</h2>
+
+    <p>
+      A collection of offline educational games for school students and
+      young learners. Topics include safety, science, personal finance,
+      general knowledge and everyday life skills. The app is designed to
+      support learning even when internet access is limited.
+    </p>
+
+    <div class="links">
+      <a
+        class="btn primary"
+        href="https://play.google.com/store/apps/details?id=com.surajit.childgame"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Get the App →
+      </a>
+
+      <a
+        class="btn"
+        href="https://myskillgame.netlify.app/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Web Version
+      </a>
+    </div>
+  </article>
+
+
+  <!-- MySkill Drive & Expense -->
+  <article class="app-card">
+    <div class="app-image">
+      <img
+        src="images/car.png"
+        alt="MySkill Drive and Expense"
+        loading="lazy"
+      >
+    </div>
+
+    <h2>MySkill Drive &amp; Expense</h2>
+
+    <p>
+      A practical tool for drivers to record fuel purchases, EV charging,
+      toll payments and other vehicle running costs. It helps users keep
+      track of everyday driving expenses and understand vehicle costs over
+      time.
+    </p>
+
+    <div class="links">
+      <a
+        class="btn primary"
+        href="https://myskill-drive-expense.netlify.app/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Open Website →
+      </a>
+
+      <a
+        class="btn"
+        href="https://play.google.com/store/apps/details?id=com.surajit.carexpenses"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Car Expenses App
+      </a>
+    </div>
+  </article>
+
+
+  <!-- MyBudget -->
+  <article class="app-card">
+    <div class="app-image">
+      <img
+        src="images/budget.png"
+        alt="MyBudget expense management app"
+        loading="lazy"
+      >
+    </div>
+
+    <h2>MyBudget</h2>
+
+    <p>
+      A personal expense-management project designed to help users record
+      everyday spending and keep a clearer view of their budget.
+    </p>
+
+    <div class="links">
+      <a
+        class="btn primary"
+        href="https://play.google.com/store/apps/details?id=com.surajit.mybudget"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Get the App →
+      </a>
+    </div>
+  </article>
+
+
+  <!-- Akash Voice -->
+  <article class="app-card">
+    <div class="app-image">
+      <img
+        src="images/akash.png"
+        alt="MySkill Global project"
+        loading="lazy"
+      >
+    </div>
+
+    <h2>Akash Voice</h2>
+
+    <p>
+      An independently developed project exploring accessible communication
+      and digital tools, with an interest in simple technology for students,
+      senior citizens and communities.
+    </p>
+
+    <div class="links">
+      <a
+        class="btn primary"
+        href="https://akashvoice.netlify.app/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Open Akash Voice →
+      </a>
+    </div>
+  </article>
+
+
+  <!-- Small Story -->
+  <article class="app-card">
+    <div class="app-image">
+      <img
+        src="images/story.png"
+        alt="MySkill Global stories and reading project"
+        loading="lazy"
+      >
+    </div>
+
+    <h2>More Small Story</h2>
+
+    <p>
+      A reading project featuring stories and reading experiences designed
+      to encourage interest in storytelling, comprehension and meaningful
+      reading.
+    </p>
+
+    <div class="links">
+      <a
+        class="btn primary"
+        href="https://the-small-story.netlify.app/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Read Stories →
+      </a>
+    </div>
+  </article>
+
+</section>
+
+
+<div class="note">
+  <p>
+    MySkill Global projects are independently developed and may be updated,
+    changed or expanded over time. External websites may have their own
+    terms and privacy policies.
+  </p>
+</div>
+
+</main>
+
+
+<footer>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Use</a>
+    <a href="disclaimer.html">Disclaimer</a>
+    <a href="contact.html">Contact Us</a>
+  </div>
+
+  <p>© 2026 MySkill Global. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

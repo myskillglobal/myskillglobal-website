@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>One Mobile, Three Lives — An Awareness Story</title>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyDfxtOP-YCrCXtQxZrrFNC1uXucvbW0K78",
+    authDomain: "my-skill-global.firebaseapp.com",
+    projectId: "my-skill-global",
+    storageBucket: "my-skill-global.firebasestorage.app",
+    messagingSenderId: "978471914749",
+    appId: "1:978471914749:web:595750b5d90738933f4294",
+    measurementId: "G-8D9BPY8HJ0"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+<meta name="description" content="An awareness story about family, technology, and why a life is worth more than any device.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-deep:#080d18;
+    --navy:#0b1220;
+    --navy-panel:#111b30;
+    --navy-panel-2:#141f38;
+    --line:#233252;
+    --gold:#e8b94f;
+    --gold-soft:#f4d99a;
+    --ember:#c9784a;
+    --ink:#f3eee4;
+    --ink-dim:#b9c0d1;
+    --ink-faint:#8590a8;
+    --serif:'Playfair Display', Georgia, 'Times New Roman', serif;
+    --sans:'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:var(--navy);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-weight:400;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  ::selection{ background:var(--gold); color:var(--navy-deep); }
+
+  a{ color:var(--gold); }
+
+  .wrap{
+    max-width:720px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    overflow:hidden;
+    background:var(--navy-deep);
+    border-bottom:1px solid var(--line);
+  }
+  .hero__img{
+    display:block;
+    width:100%;
+    height:auto;
+    max-height:62vh;
+    object-fit:contain;
+    background:var(--navy-deep);
+  }
+  .hero__content{
+    position:relative;
+    padding:36px 24px 44px;
+    text-align:center;
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:var(--sans);
+    font-size:12px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:18px;
+  }
+  .eyebrow::before,
+  .eyebrow::after{
+    content:"";
+    width:22px;
+    height:1px;
+    background:var(--gold);
+    opacity:.6;
+  }
+  h1{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:clamp(2rem, 7vw, 3.1rem);
+    line-height:1.12;
+    margin:0 0 14px;
+    letter-spacing:-0.01em;
+  }
+  .hero__sub{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:500;
+    font-size:1.1rem;
+    color:var(--ink-dim);
+    margin:0 auto 30px;
+    max-width:46ch;
+  }
+
+  /* ---------- Voice control ---------- */
+  .voice-bar{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  .voice-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:var(--gold);
+    color:var(--navy-deep);
+    border:none;
+    font-family:var(--sans);
+    font-weight:600;
+    font-size:14.5px;
+    letter-spacing:.01em;
+    padding:13px 22px;
+    border-radius:999px;
+    cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+    box-shadow:0 8px 24px -8px rgba(232,185,79,.5);
+  }
+  .voice-btn:hover{ transform:translateY(-1px); box-shadow:0 10px 28px -6px rgba(232,185,79,.6); }
+  .voice-btn:active{ transform:translateY(0); }
+  .voice-btn[data-state="playing"]{ background:var(--navy-panel-2); color:var(--gold); border:1px solid var(--gold); }
+  .voice-btn .ico{ display:inline-flex; width:16px; height:16px; }
+  .voice-note{
+    font-size:12.5px;
+    color:var(--ink-faint);
+    max-width:280px;
+    text-align:center;
+  }
+  .voice-note.hidden{ display:none; }
+
+  /* sticky mini player once you scroll past hero */
+  .voice-sticky{
+    position:fixed;
+    left:50%;
+    transform:translate(-50%, 120%);
+    bottom:20px;
+    z-index:40;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:var(--navy-panel-2);
+    border:1px solid var(--line);
+    padding:10px 14px 10px 10px;
+    border-radius:999px;
+    box-shadow:0 14px 34px -12px rgba(0,0,0,.6);
+    transition:transform .35s ease;
+  }
+  .voice-sticky.show{ transform:translate(-50%, 0); }
+  .voice-sticky button{
+    width:36px; height:36px;
+    border-radius:50%;
+    border:none;
+    background:var(--gold);
+    color:var(--navy-deep);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+    flex:0 0 auto;
+  }
+  .voice-sticky span{ font-size:13px; color:var(--ink-dim); white-space:nowrap; }
+
+  /* ---------- Article ---------- */
+  main{ padding:56px 0 20px; }
+
+  .lede{
+    font-family:var(--serif);
+    font-size:1.2rem;
+    line-height:1.65;
+    color:var(--ink);
+  }
+
+  .story p{
+    margin:0 0 22px;
+    font-size:1.02rem;
+    color:var(--ink);
+  }
+  .story p.tts-active{
+    color:var(--gold-soft);
+  }
+
+  .line{
+    display:block;
+    margin:30px 0;
+    padding:6px 0 6px 20px;
+    border-left:2px solid var(--gold);
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:1.12rem;
+    color:var(--gold-soft);
+  }
+  .line small{
+    display:block;
+    font-family:var(--sans);
+    font-style:normal;
+    font-size:11px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    margin-top:6px;
+  }
+
+  .divider{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin:56px 0 30px;
+  }
+  .divider::before,
+  .divider::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:var(--line);
+  }
+  .divider span{
+    font-family:var(--serif);
+    font-style:italic;
+    color:var(--gold);
+    font-size:.95rem;
+    white-space:nowrap;
+  }
+
+  h2{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:1.7rem;
+    line-height:1.3;
+    margin:0 0 20px;
+  }
+  h3{
+    font-family:var(--sans);
+    font-weight:600;
+    font-size:.78rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin:44px 0 16px;
+  }
+
+  .panel{
+    background:var(--navy-panel);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:26px 24px;
+    margin-bottom:20px;
+  }
+
+  ul.points{
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  ul.points li{
+    position:relative;
+    padding-left:22px;
+    margin-bottom:14px;
+    color:var(--ink-dim);
+    font-size:.98rem;
+  }
+  ul.points li:last-child{ margin-bottom:0; }
+  ul.points li::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:.62em;
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:var(--ember);
+  }
+  ul.points li strong{ color:var(--ink); }
+
+  blockquote.reframe{
+    margin:20px 0 0;
+    padding:16px 18px;
+    border-left:2px solid var(--ember);
+    background:rgba(201,120,74,.08);
+    border-radius:0 8px 8px 0;
+    font-size:.94rem;
+    color:var(--ink-dim);
+  }
+  blockquote.reframe .bad{ color:#8e7a6a; text-decoration:line-through; display:block; margin-bottom:6px; }
+  blockquote.reframe .good{ color:var(--gold-soft); font-family:var(--serif); font-style:italic; display:block; }
+
+  .equation{
+    text-align:center;
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:1.05rem;
+    line-height:2;
+    color:var(--ink-dim);
+    margin:26px 0;
+    padding:26px 20px;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .equation strong{
+    display:block;
+    color:var(--gold-soft);
+    font-weight:600;
+    font-style:normal;
+  }
+
+  .closing{
+    margin-top:50px;
+    padding:34px 26px;
+    text-align:center;
+    background:linear-gradient(180deg, var(--navy-panel), var(--navy-panel-2));
+    border:1px solid var(--line);
+    border-radius:16px;
+  }
+  .closing p{
+    font-family:var(--serif);
+    font-size:1.15rem;
+    line-height:1.6;
+    color:var(--ink);
+    margin:0 0 18px;
+  }
+  .closing p:last-child{ margin-bottom:0; }
+  .closing .final{
+    color:var(--gold-soft);
+    font-style:italic;
+  }
+
+  /* ---------- Footer / resources ---------- */
+  footer{
+    margin-top:60px;
+    padding:34px 0 60px;
+    border-top:1px solid var(--line);
+  }
+  .care-box{
+    background:var(--navy-deep);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:22px 22px;
+  }
+  .care-box h4{
+    font-family:var(--sans);
+    font-size:.78rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin:0 0 10px;
+  }
+  .care-box p{
+    font-size:.92rem;
+    color:var(--ink-dim);
+    margin:0 0 14px;
+  }
+  .helplines{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:grid;
+    gap:8px;
+  }
+  .helplines li{
+    font-size:.9rem;
+    color:var(--ink);
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    padding:8px 0;
+    border-bottom:1px dashed var(--line);
+  }
+  .helplines li:last-child{ border-bottom:none; }
+  .helplines .num{ color:var(--gold-soft); font-weight:600; white-space:nowrap; }
+
+  .credit{
+    text-align:center;
+    margin-top:30px;
+    font-size:12px;
+    color:var(--ink-faint);
+  }
+
+  @media (min-width: 640px){
+    .hero__content{ padding:52px 24px 60px; }
+    main{ padding:72px 0 20px; }
+    .panel{ padding:32px 34px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <img class="hero__img" src="images/one-mobile.png" alt="Illustration titled 'One Mobile, Three Lives': a family reaching out to their son on a hillside at night, with a phone lying on the ground and the message that life is bigger than any phone.">
+  <div class="hero__content wrap">
+    <span class="eyebrow">An Awareness Story</span>
+    <h1>One Mobile,<br>Three Lives</h1>
+    <p class="hero__sub">A story about family, pride, and why a life is worth more than any device.</p>
+
+    <div class="voice-bar">
+      <button class="voice-btn" id="playBtn" data-state="idle" aria-pressed="false">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" id="playIcon"><path d="M8 5v14l11-7L8 5z" fill="currentColor"/></svg>
+        <span id="playLabel">Listen to the Story</span>
+      </button>
+    </div>
+    <p class="voice-note" id="voiceNote">Read aloud using your browser's built-in voice.</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <article class="story" id="storyText">
+
+    <p class="lede tts-p">At the edge of a city there lived a small family — the father, Arun; the mother, Madhabi; and their eighteen-year-old son, Rahul. Arun held a modest job. There wasn't much comfort in the household, but the parents never fell short in trying to give their son a good life.</p>
+
+    <p class="tts-p">Rahul dreamed of owning a high-end smartphone. Seeing new phones in his friends' hands, he began to feel that without one of his own, he was falling behind everyone else.</p>
+
+    <p class="tts-p">One day, he bought an expensive phone on installments.</p>
+
+    <p class="tts-p">The first few months, the payments were managed somehow. But then money troubles set in, and Rahul asked his father for help.</p>
+
+    <span class="line tts-p">"Son, right now it isn't possible for me to give this much money. There are so many household expenses."<small>Arun, with a sigh</small></span>
+
+    <span class="line tts-p">"Can't you do even this much for me?"<small>Rahul, in anger</small></span>
+
+    <span class="line tts-p">"If you truly need it, I will try. But we can't stop paying for the household's necessities just for a phone."<small>Arun, trying to explain</small></span>
+
+    <p class="tts-p">The argument grew. Rahul felt that no one wanted to understand him. In a moment of anger, hurt, and despair, he left the house.</p>
+
+    <p class="tts-p">A little while later, word came — Rahul had gone to a dangerous hillside spot, in a state of intense emotional turmoil.</p>
+
+    <p class="tts-p">Arun and Madhabi rushed there. Local people came forward too, and everyone tried to calm him down.</p>
+
+    <span class="line tts-p">"Rahul, come home. We'll sort out the phone problem later."<small>a neighbour</small></span>
+
+    <span class="line tts-p">"Your life is the most important thing."<small>another voice in the crowd</small></span>
+
+    <p class="tts-p">But in that moment, Rahul seemed trapped inside his own anger and despair. Arun tried to reach his son — as a father, he had only one thought: bring my son back safely.</p>
+
+    <p class="tts-p">The situation turned dangerous within moments. While trying to bring Rahul back to safety, Arun met with an accident. Madhabi, rushing into that same danger, found herself in grave peril too.</p>
+
+    <p class="tts-p">In the end, a family lost all three lives.</p>
+
+    <p class="tts-p">And the phone that had started such a great disturbance was left lying there, silent. No one ever used it again.</p>
+
+  </article>
+
+  <div class="divider"><span>The Real Lesson</span></div>
+
+  <section class="panel">
+    <p class="tts-p">This story is not about blaming a phone.</p>
+    <p class="tts-p">Technology is a necessary part of our lives, and owning a good phone is no crime. The trouble begins when something becomes so important to us that we're willing to belittle our own life, our family's love, or our future for its sake.</p>
+    <p class="tts-p" style="margin-bottom:0;">Something else matters just as much: sudden anger, extreme despair, or talk of self-harm should never be brushed off as "drama." If a child says <em>"I don't want to live anymore"</em> or <em>"I will end myself,"</em> the response should never be to scold or to leave them alone. Stay close, stay calm, and reach out quickly — to trusted family, and to the professional support that's needed.</p>
+  </section>
+
+  <h3>A Few Words for Parents</h3>
+  <div class="panel">
+    <ul class="points">
+      <li>It isn't always possible to meet every want of a child — but it's always possible to <strong>listen</strong> to what they say.</li>
+      <li>Not being able to afford something expensive is never a reason to humiliate your child.</li>
+      <li>If a child shows unusual anger, despair, or hints of self-harm, take it seriously — every time.</li>
+      <li>Rules around technology are healthy for a family, but they should come from love and understanding, not control.</li>
+    </ul>
+    <blockquote class="reframe">
+      <span class="bad">"Are you trying to scare me by doing this?"</span>
+      <span class="good">"Tell me what you're feeling. I'm here with you."</span>
+    </blockquote>
+  </div>
+
+  <h3>For Children</h3>
+  <div class="panel">
+    <p class="tts-p" style="margin-bottom:0;">Don't measure your own worth by what's in a friend's hand, or by what someone else is showing off online.</p>
+  </div>
+
+  <div class="equation">
+    A phone can be replaced.<br>
+    A thing can be bought again.<br>
+    Money can be earned again.<br>
+    <strong>But a life, once lost, cannot be brought back.</strong>
+  </div>
+
+  <p class="tts-p">So don't carry the hardest moments of life alone.</p>
+
+  <div class="equation" style="border:none; padding:10px 0 0; margin-top:-10px;">
+    Talk. &nbsp;·&nbsp; Tell someone. &nbsp;·&nbsp; Ask for help. &nbsp;·&nbsp; Take your time.
+  </div>
+
+  <p class="tts-p">Often, the problem that feels like the biggest problem in the world in that moment turns out, a few days later, to be just one small chapter of a much longer life.</p>
+
+  <div class="closing">
+    <p>Before you put an expensive phone in your child's hand, give them something more valuable first — the certainty that whatever life brings, they can always come back to their parents.</p>
+    <p class="final">Life is bigger than any phone.<br>Family is worth more than any installment.<br>And a single human life is priceless.</p>
+  </div>
+
+</main>
+
+<footer class="wrap">
+  <div class="care-box">
+    <h4>If This Story Feels Close to Home</h4>
+    <p>This is a sensitive topic. If you or someone you know is experiencing severe emotional distress or thoughts of self-harm, please don't face it alone.</p>
+    <p style="margin-bottom:0;">Stay with the person, listen calmly, and reach out to a trusted family member, friend, teacher, counselor, doctor, or mental health professional. If there is immediate danger, contact your local emergency services or a crisis support service in your country. You are not alone. Help is available. Your life matters.</p>
+  </div>
+  <p class="credit">One Mobile, Three Lives — an awareness story</p>
+</footer>
+
+<div class="voice-sticky" id="voiceSticky">
+  <button id="stickyBtn" aria-label="Play or pause reading">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" id="stickyIcon"><path d="M8 5v14l11-7L8 5z" fill="currentColor"/></svg>
+  </button>
+  <span>Listening to the story…</span>
+</div>
+
+<script>
+(function(){
+  var supported = 'speechSynthesis' in window;
+  var playBtn = document.getElementById('playBtn');
+  var playLabel = document.getElementById('playLabel');
+  var playIcon = document.getElementById('playIcon');
+  var voiceNote = document.getElementById('voiceNote');
+  var sticky = document.getElementById('voiceSticky');
+  var stickyBtn = document.getElementById('stickyBtn');
+  var stickyIcon = document.getElementById('stickyIcon');
+  var hero = document.querySelector('.hero');
+
+  var ICON_PLAY = '<path d="M8 5v14l11-7L8 5z" fill="currentColor"/>';
+  var ICON_PAUSE = '<path d="M7 5h4v14H7zM13 5h4v14h-4z" fill="currentColor"/>';
+
+  if(!supported){
+    voiceNote.textContent = "Read-aloud isn't supported in this browser — the story reads fine below.";
+    playBtn.disabled = true;
+    playBtn.style.opacity = 0.5;
+    playBtn.style.cursor = 'not-allowed';
+  } else {
+    var paragraphs = Array.prototype.slice.call(document.querySelectorAll('.tts-p'));
+    var utterances = paragraphs.map(function(p){
+      var u = new SpeechSynthesisUtterance(p.textContent.trim());
+      u.rate = 0.95;
+      u.pitch = 1;
+      u.onstart = function(){
+        paragraphs.forEach(function(el){ el.classList.remove('tts-active'); });
+        p.classList.add('tts-active');
+        p.scrollIntoView({ behavior:'smooth', block:'center' });
+      };
+      return u;
+    });
+    if(utterances.length){
+      utterances[utterances.length-1].onend = function(){ stopAll(); };
+    }
+
+    var playing = false;
+
+    function setState(state){
+      playBtn.setAttribute('data-state', state);
+      if(state === 'playing'){
+        playBtn.setAttribute('aria-pressed','true');
+        playLabel.textContent = 'Pause the Story';
+        playIcon.innerHTML = ICON_PAUSE;
+        stickyIcon.innerHTML = ICON_PAUSE;
+      } else {
+        playBtn.setAttribute('aria-pressed','false');
+        playLabel.textContent = state === 'paused' ? 'Resume the Story' : 'Listen to the Story';
+        playIcon.innerHTML = ICON_PLAY;
+        stickyIcon.innerHTML = ICON_PLAY;
+      }
+    }
+
+    function startAll(){
+      window.speechSynthesis.cancel();
+      utterances.forEach(function(u){ window.speechSynthesis.speak(u); });
+      playing = true;
+      setState('playing');
+    }
+    function stopAll(){
+      window.speechSynthesis.cancel();
+      playing = false;
+      paragraphs.forEach(function(el){ el.classList.remove('tts-active'); });
+      setState('idle');
+    }
+    function toggle(){
+      if(!playing){
+        startAll();
+      } else if(window.speechSynthesis.paused){
+        window.speechSynthesis.resume();
+        setState('playing');
+      } else {
+        window.speechSynthesis.pause();
+        setState('paused');
+      }
+    }
+
+    playBtn.addEventListener('click', toggle);
+    stickyBtn.addEventListener('click', toggle);
+
+    window.addEventListener('beforeunload', function(){ window.speechSynthesis.cancel(); });
+
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(!entry.isIntersecting && playing){
+          sticky.classList.add('show');
+        } else {
+          sticky.classList.remove('show');
+        }
+      });
+    }, { threshold: 0 });
+    io.observe(hero);
+  }
+})();
+</script>
+
+</body>
+</html>

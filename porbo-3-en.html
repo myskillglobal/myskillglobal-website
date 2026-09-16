@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 3: The Coming and Going of Joy and Sorrow — This Life, Once Gone, Never Returns</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ts-ink:#241a13;
+  --ts-parchment:#f2e8d3;
+  --ts-parchment-2:#e9dcc0;
+  --ts-walnut:#241610;
+  --ts-walnut-2:#3a2416;
+  --ts-brass:#a9814c;
+  --ts-brass-light:#d8bb80;
+  --ts-oxblood:#6d2c28;
+  --ts-muted:#71614c;
+  --ts-line:rgba(36,26,19,0.16);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--ts-parchment);
+  color:var(--ts-ink);
+  font-family:"Noto Serif","Georgia",serif;
+  line-height:1.85;
+}
+.topbar{
+  position:sticky; top:0; z-index:20;
+  display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  background:var(--ts-walnut); color:var(--ts-parchment-2);
+  padding:0.85rem 5vw; font-family:"Inter","Segoe UI",sans-serif;
+}
+.topbar a.home-link{color:var(--ts-brass-light); text-decoration:none; font-size:0.92rem; display:flex; align-items:center; gap:0.4rem;}
+.topbar a.home-link:hover{color:var(--ts-parchment);}
+.topbar a.home-link svg{width:16px;height:16px;}
+.voice-controls{display:flex; align-items:center; gap:0.5rem;}
+.voice-btn{
+  display:inline-flex; align-items:center; gap:0.4rem;
+  background:transparent; border:1px solid var(--ts-brass); color:var(--ts-brass-light);
+  font-family:"Inter","Segoe UI",sans-serif; font-size:0.85rem;
+  padding:0.45rem 0.85rem; border-radius:2px; cursor:pointer;
+  transition:background 0.2s ease, color 0.2s ease;
+}
+.voice-btn:hover{background:var(--ts-brass); color:var(--ts-walnut);}
+.voice-btn svg{width:15px;height:15px;}
+.resume-banner{
+  display:none; align-items:center; justify-content:space-between; gap:1rem;
+  background:var(--ts-parchment-2); border-bottom:1px solid var(--ts-line);
+  padding:0.8rem 5vw; font-family:"Inter","Segoe UI",sans-serif; font-size:0.9rem; color:var(--ts-ink);
+}
+.resume-banner.show{display:flex;}
+.resume-banner button{
+  background:var(--ts-oxblood); color:var(--ts-parchment); border:none;
+  padding:0.5rem 1rem; font-family:"Inter","Segoe UI",sans-serif; font-size:0.85rem; border-radius:2px; cursor:pointer; white-space:nowrap;
+}
+.resume-banner .dismiss{background:transparent; color:var(--ts-muted); padding:0.3rem;}
+.hero{
+  position:relative; width:100%; height:min(58vh, 480px); min-height:280px; overflow:hidden;
+}
+.hero img{width:100%; height:100%; object-fit:cover; display:block; filter:saturate(1.05) contrast(1.03);}
+.hero::after{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(36,22,16,0.15) 0%, rgba(36,22,16,0.35) 60%, var(--ts-parchment) 100%);
+}
+.hero-caption{
+  position:absolute; left:6vw; bottom:1.6rem; z-index:2;
+  color:var(--ts-parchment-2); font-family:"Inter","Segoe UI",sans-serif; font-size:0.85rem; letter-spacing:0.02em;
+  text-shadow:0 2px 8px rgba(0,0,0,0.5);
+}
+.story-header{max-width:680px; margin:0 auto; padding:3.5rem 6vw 1rem; text-align:center;}
+.story-header.with-hero{padding-top:2.2rem;}
+.story-header .series-name{font-family:"Inter","Segoe UI",sans-serif; font-size:0.9rem; color:var(--ts-oxblood); letter-spacing:0.01em;}
+.story-header h1{font-size:clamp(1.6rem,3.4vw,2.2rem); margin:0.6rem 0 0; color:var(--ts-ink);}
+.content{max-width:680px; margin:0 auto; padding:1rem 6vw 4rem;}
+.lyric{
+  margin:2.2rem 0 2.6rem; padding:1.4rem 1.6rem; background:var(--ts-parchment-2);
+  border-left:3px solid var(--ts-brass); font-style:italic; color:var(--ts-walnut-2); font-size:1.05rem;
+}
+.lyric p{margin:0.2rem 0;}
+p.para{
+  margin:0 0 1.3rem; font-size:1.12rem; transition:background 0.4s ease;
+  border-radius:2px; padding:0.1rem 0.3rem; margin-left:-0.3rem;
+}
+p.para.reading{background:rgba(169,129,76,0.16);}
+p.heading{font-size:1.28rem; font-weight:600; color:var(--ts-oxblood); margin:2rem 0 1.1rem;}
+strong{color:var(--ts-oxblood); font-weight:600;}
+.part-nav{
+  max-width:680px; margin:0 auto; padding:2rem 6vw 5rem; display:flex; justify-content:space-between; gap:1rem;
+  border-top:1px solid var(--ts-line); font-family:"Inter","Segoe UI",sans-serif;
+}
+.part-nav a{display:flex; flex-direction:column; text-decoration:none; color:var(--ts-ink); max-width:45%;}
+.part-nav a .label{font-size:0.78rem; color:var(--ts-muted);}
+.part-nav a .title{font-size:1rem; font-weight:600; margin-top:0.2rem;}
+.part-nav a:hover .title{color:var(--ts-oxblood);}
+.part-nav a.next{text-align:right; align-items:flex-end; margin-left:auto;}
+.credit{
+  max-width:680px; margin:0 auto; padding:0 6vw 2rem; font-family:"Inter","Segoe UI",sans-serif;
+  font-size:0.85rem; color:var(--ts-muted); border-top:1px solid var(--ts-line); padding-top:1.2rem;
+}
+.credit p{margin:0.15rem 0;}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} p.para{transition:none;} }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="home-link" href="index-time-story-en.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+    Back to Contents
+  </a>
+  <div class="voice-controls">
+    <button class="voice-btn" id="playBtn" onclick="startReading()">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      Read Aloud
+    </button>
+    <button class="voice-btn" id="pauseBtn" onclick="togglePause()" style="display:none;">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+      Pause
+    </button>
+    <button class="voice-btn" id="stopBtn" onclick="stopReading()" style="display:none;">
+      <svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12"/></svg>
+      Stop
+    </button>
+  </div>
+</div>
+
+<div class="resume-banner" id="resumeBanner">
+  <span>You were reading this chapter earlier — pick up where you left off?</span>
+  <span style="display:flex; gap:0.5rem;">
+    <button onclick="resumeScroll()">Continue</button>
+    <button class="dismiss" onclick="dismissBanner()">No thanks</button>
+  </span>
+</div>
+
+<header class="story-header">
+  <div class="series-name">This Life, Once Gone, Never Returns</div>
+  <h1>Chapter 3: The Coming and Going of Joy and Sorrow</h1>
+</header>
+
+<article class="content" id="storyContent">
+
+  <p class="para">Ayan had now moved on to college.</p>
+
+  <p class="para">Past the boundaries of school lay a whole new world. New friends, new freedom, new dreams.</p>
+
+  <p class="para">In place of that small school field, a much bigger world now stood before him.</p>
+
+  <p class="para">Some days he was overjoyed. Other days, the smallest failure was enough to bring his mood crashing down.</p>
+
+  <p class="para">One day, college exam results were announced.</p>
+
+  <p class="para">Ayan had thought he would do well.</p>
+
+  <p class="para">But when the results came into his hands, his face fell.</p>
+
+  <p class="para">The marks were far below what he had expected.</p>
+
+  <p class="para">Some of his friends had done very well. A couple had even won scholarships.</p>
+
+  <p class="para">Ayan sat quietly on the college veranda.</p>
+
+  <p class="para">His friend Rahul came and sat beside him.</p>
+
+  <p class="para">&mdash; <strong>&ldquo;What happened?&rdquo;</strong></p>
+
+  <p class="para">Ayan said, &mdash; &ldquo;I don't think I'll ever amount to anything.&rdquo;</p>
+
+  <p class="para">Rahul laughed and said, &mdash; <strong>&ldquo;One exam result doesn't decide a whole life.&rdquo;</strong></p>
+
+  <p class="para">Ayan gave no reply.</p>
+
+  <p class="para">Back home that day, his mood only sank further.</p>
+
+  <p class="para">Sensing this, his father said, &mdash; <strong>&ldquo;Failure has come — fine. But don't sit around dwelling on it. Push past it and move forward.&rdquo;</strong></p>
+
+  <p class="para">The words stayed with Ayan.</p>
+
+  <p class="para">A few days later, a competition was held at college. Ayan took part.</p>
+
+  <p class="para">Unbelievably, he came first.</p>
+
+  <p class="para">The same boy who, only days earlier, had thought he'd never amount to anything, stood on the stage that day and took home the prize.</p>
+
+  <p class="para">His friends applauded.</p>
+
+  <p class="para">Ayan smiled too.</p>
+
+  <p class="para">But on his way home, it occurred to him — <strong>where had that sorrow from a few days ago gone?</strong></p>
+
+  <p class="para">The sadness that had once felt like the biggest problem in the world was simply no longer there.</p>
+
+  <p class="para">That day, for the first time, he understood — <strong>neither joy lasts forever, nor does sorrow.</strong></p>
+
+  <p class="para">Good times will come in life, and so will bad ones.</p>
+
+  <p class="para">But time itself never stops. It keeps moving forward.</p>
+
+  <p class="para">In his final year of college, Ayan decided to start preparing for a job.</p>
+
+  <p class="para">Many paths lay ahead of him now.</p>
+
+  <p class="para">Some said try for a government job. Others said private jobs were better. Some suggested starting a business.</p>
+
+  <p class="para">Ayan found himself thinking about everything at once.</p>
+
+  <p class="para">One day Rahul said, &mdash; <strong>&ldquo;Make a decision. Try to do everything at once, and nothing gets done properly.&rdquo;</strong></p>
+
+  <p class="para">Ayan understood then that one of the hardest tasks in life is <strong>deciding which path deserves your time.</strong></p>
+
+  <p class="para">He chose a goal.</p>
+
+  <p class="para">He failed the first exam. And the second. And the third.</p>
+
+  <p class="para">Each time, it felt like — this will never happen.</p>
+
+  <p class="para">But this time, he didn't give up the way the old Ayan once would have.</p>
+
+  <p class="para">This time, he saw failure as a result, not as an identity.</p>
+
+  <p class="para">Each time, he wrote down his mistakes. Found where he had fallen short. Then prepared again.</p>
+
+  <p class="para">A few months later, he did well in an exam.</p>
+
+  <p class="para">He still hadn't landed a job — but his confidence had returned.</p>
+
+  <p class="para">He understood — <strong>joy and sorrow, victory and defeat, all come and go in life.</strong></p>
+
+  <p class="para">But one thing moves on in silence — <strong>time.</strong></p>
+
+  <p class="para">Time passes during failure too. Time passes during success too.</p>
+
+  <p class="para">Whether we weep or laugh — the hands of the clock walk their own path regardless.</p>
+
+  <p class="para">That night, Ayan stood by the window for a long while, gazing outside.</p>
+
+  <p class="para">It felt to him as though every moment of life was drifting away on a river's current.</p>
+
+  <p class="para">Some moments joyful. Some sorrowful. Some proud. Some full of regret.</p>
+
+  <p class="para">But not a single moment ever comes back.</p>
+
+  <p class="para">Ayan did not yet know that a time was coming in his life when he would have to settle accounts — not only with failure, but <strong>with his own past.</strong></p>
+
+</article>
+
+<nav class="part-nav">
+  <a class="prev" href="porbo-2-en.html">
+    <span class="label">← Previous Chapter</span>
+    <span class="title">2. The Hollow and the Essential</span>
+  </a>
+  <a class="next" href="porbo-4-en.html">
+    <span class="label">Next Chapter →</span>
+    <span class="title">4. What I Gained, What I Lost</span>
+  </a>
+</nav>
+
+<script>
+const STORAGE_KEY = 'ei-jibon-porbo3-scroll-en';
+const banner = document.getElementById('resumeBanner');
+window.addEventListener('load', () => {
+  const saved = parseInt(localStorage.getItem(STORAGE_KEY) || '0', 10);
+  if (saved > 300 && saved < document.body.scrollHeight - window.innerHeight - 200) {
+    banner.classList.add('show');
+  }
+});
+function resumeScroll() {
+  const saved = parseInt(localStorage.getItem(STORAGE_KEY) || '0', 10);
+  window.scrollTo({ top: saved, behavior: 'smooth' });
+  banner.classList.remove('show');
+}
+function dismissBanner() { banner.classList.remove('show'); }
+let scrollTimer;
+window.addEventListener('scroll', () => {
+  clearTimeout(scrollTimer);
+  scrollTimer = setTimeout(() => { localStorage.setItem(STORAGE_KEY, window.scrollY.toString()); }, 400);
+});
+const paras = Array.from(document.querySelectorAll('#storyContent .para, #storyContent .heading, #storyContent .lyric p'));
+let currentIndex = 0; let speaking = false; let paused = false;
+const playBtn = document.getElementById('playBtn');
+const pauseBtn = document.getElementById('pauseBtn');
+const stopBtn = document.getElementById('stopBtn');
+function clearHighlight() { paras.forEach(p => p.classList.remove('reading')); }
+function speakFrom(index) {
+  if (!('speechSynthesis' in window)) { alert('Voice reading is not supported in your browser.'); return; }
+  if (index >= paras.length) { stopReading(); return; }
+  currentIndex = index; clearHighlight();
+  const el = paras[index];
+  el.classList.add('reading');
+  el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  const utter = new SpeechSynthesisUtterance(el.textContent);
+  utter.lang = 'en-US'; utter.rate = 0.98;
+  utter.onend = () => { if (speaking && !paused) speakFrom(index + 1); };
+  speechSynthesis.speak(utter);
+}
+function startReading() {
+  speechSynthesis.cancel(); speaking = true; paused = false;
+  playBtn.style.display = 'none'; pauseBtn.style.display = 'inline-flex'; stopBtn.style.display = 'inline-flex';
+  speakFrom(0);
+}
+function togglePause() {
+  if (!speaking) return;
+  if (!paused) {
+    speechSynthesis.pause(); paused = true;
+    pauseBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg> Resume';
+  } else {
+    speechSynthesis.resume(); paused = false;
+    pauseBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg> Pause';
+  }
+}
+function stopReading() {
+  speechSynthesis.cancel(); speaking = false; paused = false; clearHighlight();
+  playBtn.style.display = 'inline-flex'; pauseBtn.style.display = 'none'; stopBtn.style.display = 'none';
+}
+window.addEventListener('beforeunload', () => speechSynthesis.cancel());
+</script>
+
+</body>
+</html>

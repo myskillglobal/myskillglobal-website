@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Four-Piece Treasure Map — Assessment Quiz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-deep:   #081521;
+    --navy-base:   #0e2233;
+    --navy-panel:  #14304a;
+    --navy-line:   #24476a;
+    --gold:        #c9a24b;
+    --gold-bright: #e8c874;
+    --cream:       #ede6d6;
+    --cream-dim:   #b9c2cc;
+    --green:       #5cb87a;
+    --red:         #c0574a;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; min-height:100vh;
+    background:
+      radial-gradient(ellipse at 50% -10%, rgba(201,162,75,0.10), transparent 55%),
+      var(--navy-deep);
+    color:var(--cream);
+    font-family:'Inter', sans-serif;
+    line-height:1.7;
+  }
+  .wrap{ max-width:640px; margin:0 auto; padding:1.6rem 1.2rem 3rem; }
+
+  h1,h2{ font-family:'Playfair Display', serif; color:var(--gold-bright); margin:0; }
+  .kicker{ font-size:0.82rem; color:var(--cream-dim); letter-spacing:0.05em; margin-bottom:0.4rem; }
+
+  /* --- intro screen --- */
+  #intro{ text-align:center; padding:2.4rem 0 1rem; }
+  #intro h1{ font-size:1.8rem; margin-bottom:0.6rem; }
+  #intro p.desc{ color:var(--cream-dim); margin:0.8rem 0 1.6rem; }
+  .rules{
+    text-align:left; background:var(--navy-panel); border:1px solid var(--navy-line);
+    border-radius:6px; padding:1.1rem 1.3rem; margin-bottom:1.6rem; font-size:0.92rem;
+  }
+  .rules li{ margin-bottom:0.4rem; color:var(--cream-dim); }
+  .rules b{ color:var(--gold-bright); }
+  input[type=text]{
+    width:100%; padding:0.8rem 1rem; border-radius:5px; border:1px solid var(--navy-line);
+    background:var(--navy-base); color:var(--cream); font-size:1rem; font-family:inherit;
+    margin-bottom:1rem;
+  }
+  input[type=text]:focus{ outline:none; border-color:var(--gold); }
+  button{
+    font-family:inherit; font-size:1rem; font-weight:600; cursor:pointer;
+    padding:0.85rem 1.6rem; border-radius:5px; border:none;
+    background:var(--gold); color:var(--navy-deep); transition:transform .1s;
+  }
+  button:hover{ background:var(--gold-bright); }
+  button:active{ transform:scale(0.98); }
+  button:disabled{ opacity:0.4; cursor:not-allowed; }
+  button.secondary{
+    background:transparent; border:1px solid var(--navy-line); color:var(--cream);
+  }
+  button.secondary:hover{ border-color:var(--gold); color:var(--gold-bright); background:transparent; }
+
+  /* --- quiz screen --- */
+  #quiz{ display:none; }
+  .progress-row{
+    display:flex; justify-content:space-between; align-items:center;
+    font-size:0.82rem; color:var(--cream-dim); margin-bottom:0.6rem;
+  }
+  .progress-track{
+    height:5px; background:var(--navy-panel); border-radius:3px; overflow:hidden; margin-bottom:1.8rem;
+  }
+  .progress-fill{
+    height:100%; background:linear-gradient(90deg, var(--gold), var(--gold-bright)); width:0%; transition:width .2s;
+  }
+  .ep-tag{
+    display:inline-block; font-size:0.76rem; color:var(--gold);
+    border:1px solid var(--navy-line); padding:0.2rem 0.6rem; border-radius:3px; margin-bottom:0.8rem;
+  }
+  #qtext{ font-family:'Playfair Display', serif; font-size:1.18rem; color:var(--cream); margin-bottom:1.4rem; }
+  .opt{
+    display:block; width:100%; text-align:left; padding:0.85rem 1.1rem; margin-bottom:0.7rem;
+    border:1px solid var(--navy-line); border-radius:6px; background:var(--navy-panel);
+    color:var(--cream); font-size:0.98rem; cursor:pointer; transition:border-color .12s;
+  }
+  .opt:hover{ border-color:var(--gold); }
+  .opt.selected{ border-color:var(--gold); background:rgba(201,162,75,0.14); }
+  .opt.correct{ border-color:var(--green); background:rgba(92,184,122,0.16); color:var(--green); }
+  .opt.wrong{ border-color:var(--red); background:rgba(192,87,74,0.16); color:#e79a90; }
+  .nav-row{ display:flex; justify-content:space-between; margin-top:1.6rem; }
+
+  /* --- result screen --- */
+  #result{ display:none; text-align:center; padding-top:1rem; }
+  .score-circle{
+    width:150px; height:150px; border-radius:50%; margin:1.2rem auto 1rem;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    border:6px solid var(--navy-line);
+  }
+  .score-circle.pass{ border-color:var(--green); }
+  .score-circle.fail{ border-color:var(--red); }
+  .score-circle .num{ font-size:2.1rem; font-weight:700; font-family:'Playfair Display', serif; }
+  .score-circle .lbl{ font-size:0.78rem; color:var(--cream-dim); }
+  #result .verdict{ font-size:1.2rem; font-family:'Playfair Display', serif; margin-bottom:0.3rem; }
+  #result .verdict.pass{ color:var(--green); }
+  #result .verdict.fail{ color:var(--red); }
+  #result .sub{ color:var(--cream-dim); font-size:0.92rem; margin-bottom:1.8rem; }
+
+  /* --- certificate --- */
+  #cert-wrap{ display:none; margin-top:1.6rem; }
+  #certificate{
+    position:relative; background:linear-gradient(160deg, var(--navy-panel), var(--navy-base));
+    border:2px solid var(--gold); border-radius:8px; padding:2.2rem 1.6rem; text-align:center;
+    box-shadow:0 20px 50px -20px rgba(0,0,0,0.7);
+  }
+  #certificate::before{
+    content:""; position:absolute; inset:8px; border:1px solid rgba(201,162,75,0.35); border-radius:4px; pointer-events:none;
+  }
+  .cert-eyebrow{ font-size:0.76rem; color:var(--cream-dim); letter-spacing:0.1em; }
+  .cert-title{ font-family:'Playfair Display', serif; color:var(--gold-bright); font-size:1.4rem; margin:0.5rem 0; }
+  .cert-line{ height:1px; width:60px; background:var(--gold); margin:0.9rem auto; }
+  .cert-name{ font-family:'Playfair Display', serif; font-size:1.5rem; color:var(--cream); margin:0.6rem 0; }
+  .cert-story{ font-size:1.02rem; color:var(--gold); margin-bottom:0.3rem; }
+  .cert-meta{ font-size:0.82rem; color:var(--cream-dim); margin-top:1.2rem; display:flex; justify-content:space-between; }
+  .cert-badge{
+    display:inline-block; margin-top:1rem; font-size:0.9rem; color:var(--navy-deep);
+    background:var(--gold); padding:0.35rem 1.2rem; border-radius:3px;
+  }
+  .btn-row{ display:flex; gap:0.7rem; margin-top:1.4rem; }
+  .btn-row button{ flex:1; }
+
+  @media print{
+    body *{ visibility:hidden; }
+    #certificate, #certificate *{ visibility:visible; }
+    #certificate{ position:fixed; top:0; left:0; width:100%; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- INTRO -->
+  <div id="intro">
+    <p class="kicker">Assessment Quiz</p>
+    <h1>The Four-Piece Treasure Map</h1>
+    <p class="desc">After reading the novel, answer the 50 questions below. Score <b style="color:var(--gold-bright)">40% or higher</b> to receive a certificate.</p>
+    <div class="rules">
+      <ul style="margin:0; padding-left:1.2rem;">
+        <li>Total questions: <b>50</b> (4 options each)</li>
+        <li>Passing mark: <b>40% (20/50)</b></li>
+        <li>Once you select an answer, you must move to the next question</li>
+        <li>At the end, your result — and, if you pass, a certificate — will be shown</li>
+      </ul>
+    </div>
+    <input type="text" id="nameInput" placeholder="Enter your name (for the certificate)">
+    <br>
+    <button id="startBtn">Start the Quiz</button>
+
+<button type="button"
+        onclick="window.location.href='four-piece-index.html'">
+  All Episodes
+</button>
+
+  </div>
+
+  <!-- QUIZ -->
+  <div id="quiz">
+    <div class="progress-row">
+      <span id="qCounter">Question 1 / 50</span>
+      <span id="scoreLive">Correct: 0</span>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="ep-tag" id="epTag">Episode 1</div>
+    <div id="qtext"></div>
+    <div id="options"></div>
+    <div class="nav-row">
+      <button class="secondary" id="quitBtn">Cancel</button>
+<button type="button"
+        onclick="window.location.href='four-piece-index.html'">
+  📖 All Episodes Reading
+</button>
+      <button id="nextBtn" disabled>Next Question →</button>
+    </div>
+  </div>
+
+  <!-- RESULT -->
+  <div id="result">
+    <p class="kicker">Result</p>
+    <h2>The Four-Piece Treasure Map — Assessment</h2>
+    <div class="score-circle" id="scoreCircle">
+      <div class="num" id="scoreNum">0%</div>
+      <div class="lbl" id="scoreFrac">0 / 50</div>
+    </div>
+    <div class="verdict" id="verdictText"></div>
+    <p class="sub" id="verdictSub"></p>
+    <div class="btn-row">
+      <button class="secondary" id="retakeBtn">Retake</button>
+      <button id="certBtn" style="display:none;">View Certificate</button>
+    </div>
+
+    <div id="cert-wrap">
+      <div id="certificate">
+        <div class="cert-eyebrow">MYSKILLGAME · CERTIFICATE OF COMPLETION</div>
+        <div class="cert-title">Certificate of Achievement</div>
+        <p style="color:var(--cream-dim); margin:0.6rem 0;">This is to certify that</p>
+        <div class="cert-name" id="certName">—</div>
+        <p style="color:var(--cream-dim); margin:0.2rem 0 0.8rem;">has successfully passed the assessment quiz for the novel</p>
+        <div class="cert-story">"The Four-Piece Treasure Map"</div>
+        <div class="cert-line"></div>
+        <div class="cert-badge" id="certScoreBadge">Score: —</div>
+        <div class="cert-meta">
+          <span id="certDate">Date: —</span>
+          <span id="certNo">Certificate No.: —</span>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="secondary" id="printBtn">Print / Download</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="quiz-data-en.js"></script>
+<script>
+  const EP_LABELS = {0:"General Questions",1:"Episode 1",2:"Episode 2",3:"Episode 3",4:"Episode 4",5:"Episode 5",6:"Episode 6",7:"Episode 7",8:"Episode 8",9:"Episode 9",10:"Episode 10",11:"Episode 11",12:"Episode 12",13:"Episode 13"};
+
+  let examName = "";
+  let current = 0;
+  let score = 0;
+  let answered = false;
+  let questions = QUESTIONS;
+
+  const introEl = document.getElementById('intro');
+  const quizEl = document.getElementById('quiz');
+  const resultEl = document.getElementById('result');
+  const certWrap = document.getElementById('cert-wrap');
+
+  document.getElementById('startBtn').addEventListener('click', () => {
+    examName = document.getElementById('nameInput').value.trim() || "Unknown Candidate";
+    introEl.style.display = 'none';
+    quizEl.style.display = 'block';
+    current = 0; score = 0;
+    renderQuestion();
+  });
+
+  document.getElementById('quitBtn').addEventListener('click', () => {
+    if (confirm('Are you sure you want to cancel the quiz?')) {
+      quizEl.style.display = 'none';
+      introEl.style.display = 'block';
+    }
+  });
+
+  document.getElementById('nextBtn').addEventListener('click', () => {
+    current++;
+    if (current >= questions.length) {
+      showResult();
+    } else {
+      renderQuestion();
+    }
+  });
+
+  function renderQuestion(){
+    answered = false;
+    const q = questions[current];
+    document.getElementById('qCounter').textContent = `Question ${current+1} / ${questions.length}`;
+    document.getElementById('scoreLive').textContent = `Correct: ${score}`;
+    document.getElementById('progressFill').style.width = ((current)/questions.length*100) + '%';
+    document.getElementById('epTag').textContent = EP_LABELS[q.ep] || '';
+    document.getElementById('qtext').textContent = q.q;
+    document.getElementById('nextBtn').disabled = true;
+    document.getElementById('nextBtn').textContent = (current === questions.length-1) ? 'See Result' : 'Next Question →';
+
+    const optWrap = document.getElementById('options');
+    optWrap.innerHTML = '';
+    q.options.forEach((opt, i) => {
+      const div = document.createElement('button');
+      div.className = 'opt';
+      div.textContent = opt;
+      div.addEventListener('click', () => selectOption(i, div));
+      optWrap.appendChild(div);
+    });
+  }
+
+  function selectOption(i, el){
+    if (answered) return;
+    answered = true;
+    const q = questions[current];
+    const allOpts = document.querySelectorAll('#options .opt');
+    allOpts.forEach((o, idx) => {
+      o.style.pointerEvents = 'none';
+      if (idx === q.correct) o.classList.add('correct');
+      else if (idx === i) o.classList.add('wrong');
+    });
+    if (i === q.correct) { score++; }
+    document.getElementById('scoreLive').textContent = `Correct: ${score}`;
+    document.getElementById('nextBtn').disabled = false;
+  }
+
+  function showResult(){
+    quizEl.style.display = 'none';
+    resultEl.style.display = 'block';
+    const total = questions.length;
+    const pct = Math.round((score/total)*100);
+    document.getElementById('scoreNum').textContent = pct + '%';
+    document.getElementById('scoreFrac').textContent = `${score} / ${total}`;
+    const circle = document.getElementById('scoreCircle');
+    const passed = pct >= PASS_PERCENT;
+    circle.classList.add(passed ? 'pass' : 'fail');
+    const verdict = document.getElementById('verdictText');
+    const sub = document.getElementById('verdictSub');
+    if (passed){
+      verdict.textContent = 'Passed! Congratulations 🎉';
+      verdict.classList.add('pass');
+      sub.textContent = `You've cleared the 40% passing mark — you can now claim your certificate.`;
+      document.getElementById('certBtn').style.display = 'inline-block';
+    } else {
+      verdict.textContent = 'Not Passed This Time';
+      verdict.classList.add('fail');
+      sub.textContent = `At least 40% (20/50) is needed to pass. Please try again.`;
+    }
+  }
+
+  document.getElementById('retakeBtn').addEventListener('click', () => {
+    resultEl.style.display = 'none';
+    certWrap.style.display = 'none';
+    document.getElementById('scoreCircle').classList.remove('pass','fail');
+    document.getElementById('certBtn').style.display = 'none';
+    introEl.style.display = 'block';
+  });
+
+  document.getElementById('certBtn').addEventListener('click', () => {
+    certWrap.style.display = 'block';
+    const total = questions.length;
+    const pct = Math.round((score/total)*100);
+    document.getElementById('certName').textContent = examName;
+    document.getElementById('certScoreBadge').textContent = `Score: ${score}/${total} (${pct}%)`;
+    const today = new Date();
+    const dateStr = today.getDate() + '-' + (today.getMonth()+1) + '-' + today.getFullYear();
+    document.getElementById('certDate').textContent = 'Date: ' + dateStr;
+    const certNo = 'CTN-' + today.getFullYear() + '-' + Math.floor(1000 + Math.random()*9000);
+    document.getElementById('certNo').textContent = 'Certificate No.: ' + certNo;
+
+    // save to certificate history (same pattern as other MySkillGame exams)
+    try {
+      const hist = JSON.parse(localStorage.getItem('myskill_cert_history') || '[]');
+      hist.push({
+        story: "The Four-Piece Treasure Map",
+        name: examName,
+        score: score,
+        total: total,
+        percent: pct,
+        date: dateStr,
+        certNo: certNo
+      });
+      localStorage.setItem('myskill_cert_history', JSON.stringify(hist));
+    } catch(e) { /* localStorage unavailable, skip silently */ }
+
+    certWrap.scrollIntoView({behavior:'smooth'});
+  });
+
+  document.getElementById('printBtn').addEventListener('click', () => {
+    window.print();
+  });
+</script>
+</body>
+</html>

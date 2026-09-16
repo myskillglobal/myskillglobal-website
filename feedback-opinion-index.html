@@ -394,13 +394,17 @@
             <option value="">General / Not sure</option>
             <option>Affordable Market</option>
             <option>Agri Farming Guide International</option>
-            <option>Bengal Heritage Youth Employment Guide</option>
+<option>Bengal Heritage Youth Employment Guide</option>
+            <option>Fish Scale Industry &amp; Export Guide</option>
+<option>Building Value & Responsibility</option>
             <option>Botanical Farm Guide</option>
+ <option>Should You Buy a Flat, or Land?</option>
             <option>Eco Water Game</option>
             <option>Exam Result Not Destiny</option>
             <option>Family Travel Safety with Emergency</option>
             <option>Fish Scale Industry Guide</option>
             <option>Health Tales</option>
+            <option>AkashVoice One concept?</option>
             <option>Jute Revival</option>
             <option>Locust Facts</option>
             <option>Mobile Smart Guide</option>
@@ -424,7 +428,7 @@
       <div class="thanks" id="thanksMsg">
         <div class="tick">🌟</div>
         <h3>Thank You for Your Opinion!</h3>
-        <p>Your voice genuinely helps shape what we build next for learners across West Bengal and beyond.</p>
+        <p>Your voice genuinely helps shape what we build next, creating better learning experiences for learners across the world and beyond.</p>
       </div>
     </div>
   </div>
@@ -432,7 +436,7 @@
 
 <footer>
   <div class="brand" style="justify-content:center; margin-bottom:10px;">
-    <img src="logo.png" alt="MySkill Global" style="width:34px;height:34px;border-radius:50%;">
+    <img src="images/logo.png" alt="MySkill Global" style="width:34px;height:34px;border-radius:50%;">
     <span class="fname">MySkill Global</span>
   </div>
   <p>Created &amp; Developed by <strong style="color:var(--gold-light);">Surajit Roy</strong> · Learn · Play · Explore · Grow</p>
@@ -440,88 +444,174 @@
 
 <script>
   const categories = [
-    { emoji:"💰", title:"Affordable Market", q:"What is your opinion about the Affordable Market guide?", href:"affordable-market-en.html" },
-    { emoji:"🌾", title:"Agriculture & Farming", q:"How useful did you find the farming guides?", href:"agri-farming-guide-international.html" },
-    { emoji:"🌿", title:"Botanical & Farm", q:"What is your opinion about the Botanical Farm Guide?", href:"botanical-farm-guide.html" },
-    { emoji:"🌱", title:"Environment", q:"How useful did you find the eco and water content?", href:"eco_water_game_tabs.html" },
+    { emoji:"🏠", title:"Building Value & Responsibility", q:"What more would you like to see about valuing hard work, caring for our home, and taking responsibility?", href:"four-gardens-four-continents.html" },  
     { emoji:"🎓", title:"Education & Results", q:"What is your opinion about Exam Result Not Destiny?", href:"exam_result_not_destiny.html" },
     { emoji:"👨‍👩‍👧", title:"Family & Safety", q:"How useful did you find the Family Travel Safety Guide?", href:"family_travel_safety_with_emergency.html" },
-    { emoji:"🐟", title:"Fishery & Rural Life", q:"What do you think about the Fish Scale Industry Guide?", href:"fish_scale_industry_guide.html" },
+    { emoji:"🏠", title:"Property & Family Values", q:"What do you think about the Flat or Land guide and its lessons on property, financial responsibility, and family values?", href:"flat-or-land-en (final).html" },
     { emoji:"🩺", title:"Health & Wellness", q:"What is your opinion about Health Tales?", href:"health-tales.html" },
     { emoji:"🧵", title:"Jute & Rural Industry", q:"Would you like to see more content like Jute Revival?", href:"jute_revival.html" },
     { emoji:"🦗", title:"Nature & Science", q:"What do you think about the Locust Facts and nature content?", href:"locust_facts.html" },
     { emoji:"📱", title:"Technology", q:"What is your opinion about the Mobile Smart Guide?", href:"mobile_smart_guide.html" },
     { emoji:"👨‍👩‍👦", title:"Parenting & Child Success", q:"What do you think about Parent Role in Child Success?", href:"parent_role_in_child_success.html" },
     { emoji:"🔬", title:"Science & The Unknown", q:"What is your opinion about Science and the Unknown?", href:"science-and-the-unknown.html" },
+    { emoji:"📻", title:"AkashVoice One", q:"What do you think about the AkashVoice One concept?", href:"https://akashvoice.netlify.app/" },
+    { emoji:"🐟", title:"Fishery & Rural Life", q:"What do you think about the Fish Scale Industry Guide?", href:"fish_scale_industry_guide.html" },
     { emoji:"🛡️", title:"Substance Harm Recovery", q:"What do you think about the Substance Harm Recovery guide?", href:"substance_harm_recovery_en.html" },
     { emoji:"🚶", title:"Life & Personal Growth", q:"Would you like to see more topics like Walk Your Path?", href:"walk_your_path_v2.html" },
     { emoji:"♻️", title:"Waste Management", q:"What do you think about the Waste to Wealth Guide?", href:"waste-to-wealth-guide.html" },
-    { emoji:"🏛️", title:"Heritage & Culture", q:"What more would you like to see about heritage and culture?", href:"bengal_heritage_youth_employment_guide.html" },
-
+    { emoji:"💰", title:"Affordable Market", q:"What is your opinion about the Affordable Market guide?", href:"affordable-market-en.html" },
+    { emoji:"🌾", title:"Agriculture & Farming", q:"How useful did you find the farming guides?", href:"agri-farming-guide-international.html" },
+    { emoji:"🌿", title:"Botanical & Farm", q:"What is your opinion about the Botanical Farm Guide?", href:"botanical-farm-guide.html" },
+    { emoji:"🌱", title:"Environment", q:"How useful did you find the eco and water content?", href:"eco_water_game_tabs.html" },
+    { emoji:"🏛️", title:"Heritage & Culture", q:"What more would you like to see about heritage and culture?", href:"bengal_heritage_youth_employment_guide.html" }
   ];
 
   const catGrid = document.getElementById('catGrid');
+
   categories.forEach(c => {
     const card = document.createElement('div');
     card.className = 'cat-card';
+
     card.innerHTML = `
       <div class="cat-top">
         <div class="cat-emoji">${c.emoji}</div>
         <div class="cat-title">${c.title}</div>
       </div>
+
       <p class="cat-q">${c.q}</p>
+
       <div class="cat-actions">
         <a href="${c.href}">Open Guide →</a>
-        <a href="#opinion-form" class="rate-btn" data-topic="${c.title}">Rate this →</a>
+        <a href="#opinion-form"
+           class="rate-btn"
+           data-topic="${c.title}">
+           Rate this →
+        </a>
       </div>
     `;
+
     catGrid.appendChild(card);
   });
+
 
   const ftopic = document.getElementById('ftopic');
   const moodRow = document.getElementById('moodRow');
 
-  function setMood(val){
-    [...moodRow.children].forEach(el => el.classList.toggle('active', el.dataset.val === val));
+
+  function setMood(val) {
+    [...moodRow.children].forEach(el =>
+      el.classList.toggle('active', el.dataset.val === val)
+    );
   }
+
 
   document.querySelectorAll('.opinion-chip').forEach(chip => {
     chip.addEventListener('click', () => {
       setMood(chip.dataset.mood);
-      document.getElementById('opinion-form').scrollIntoView({behavior:'smooth'});
+
+      document
+        .getElementById('opinion-form')
+        .scrollIntoView({ behavior:'smooth' });
     });
   });
+
 
   document.querySelectorAll('.rate-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
+
       const topicText = btn.dataset.topic;
-      [...ftopic.options].forEach(o => { if (o.text.trim() === topicText || o.value === topicText) ftopic.value = o.value; });
-      document.getElementById('opinion-form').scrollIntoView({behavior:'smooth'});
+
+      [...ftopic.options].forEach(o => {
+        if (
+          o.text.trim() === topicText ||
+          o.value === topicText
+        ) {
+          ftopic.value = o.value;
+        }
+      });
+
+      document
+        .getElementById('opinion-form')
+        .scrollIntoView({ behavior:'smooth' });
     });
   });
 
+
   moodRow.addEventListener('click', (e) => {
-    if (e.target.classList.contains('mood-opt')) setMood(e.target.dataset.val);
+    if (e.target.classList.contains('mood-opt')) {
+      setMood(e.target.dataset.val);
+    }
   });
 
-  document.getElementById('feedbackForm').addEventListener('submit', function(e){
-    e.preventDefault();
-    const name = document.getElementById('fname').value.trim() || "Anonymous";
-    const email = document.getElementById('femail').value.trim();
-    const topic = ftopic.value || "General";
-    const mood = moodRow.querySelector('.active') ? moodRow.querySelector('.active').dataset.val : "General feedback";
-    const msg = document.getElementById('fmsg').value.trim();
 
-    const subject = encodeURIComponent(`MySkill Global Opinion: ${mood} — ${topic}`);
-    const body = encodeURIComponent(
-      `Name: ${name}\nTopic: ${topic}\nType: ${mood}\n\nMessage:\n${msg}\n\n(Sent from the MySkill Global Opinion page)`
-    );
-    window.location.href = `mailto:?subject=${subject}&body=${body}`;
+  /* ══════════════════════════════════════════
+     FEEDBACK FORM
+  ══════════════════════════════════════════ */
 
-    this.style.display = 'none';
-    document.getElementById('thanksMsg').style.display = 'block';
-  });
+  document
+    .getElementById('feedbackForm')
+    .addEventListener('submit', function(e) {
+
+      e.preventDefault();
+
+      const name =
+        document.getElementById('fname').value.trim() ||
+        "Anonymous";
+
+      const email =
+        document.getElementById('femail').value.trim();
+
+      const topic =
+        ftopic.value || "General";
+
+      const activeMood =
+        moodRow.querySelector('.active');
+
+      const mood =
+        activeMood
+          ? activeMood.dataset.val
+          : "General feedback";
+
+      const msg =
+        document.getElementById('fmsg').value.trim();
+
+
+      const subject = encodeURIComponent(
+        `MySkill Global Opinion: ${mood} — ${topic}`
+      );
+
+
+      const body = encodeURIComponent(
+        `Name: ${name}\n` +
+        `Email: ${email || "Not provided"}\n` +
+        `Topic: ${topic}\n` +
+        `Type: ${mood}\n\n` +
+        `Message:\n${msg}\n\n` +
+        `(Sent from the MySkill Global Opinion page)`
+      );
+
+
+      /*
+       * Opens the visitor's email application
+       * with MySkill Global's email address already filled in.
+       */
+const gmailUrl =
+  `https://mail.google.com/mail/?view=cm&fs=1` +
+  `&to=myskillglobal@gmail.com` +
+  `&su=${subject}` +
+  `&body=${body}`;
+
+window.open(gmailUrl, '_blank');
+
+      this.style.display = 'none';
+
+      document
+        .getElementById('thanksMsg')
+        .style.display = 'block';
+
+    });
+
 </script>
 
 </body>

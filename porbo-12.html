@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Four-Piece Treasure Map — Episode 12</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-deep:   #081521;
+    --navy-base:   #0e2233;
+    --navy-panel:  #14304a;
+    --navy-line:   #24476a;
+    --gold:        #c9a24b;
+    --gold-bright: #e8c874;
+    --cream:       #ede6d6;
+    --cream-dim:   #b9c2cc;
+    --ember:       #a54b3a;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at 50% -10%, rgba(201,162,75,0.10), transparent 55%),
+      var(--navy-deep);
+    color:var(--cream);
+    font-family:'Inter', sans-serif;
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
+  }
+  a{ color:var(--gold-bright); }
+  a:focus-visible, button:focus-visible{ outline:2px solid var(--gold-bright); outline-offset:3px; }
+
+  .topnav{
+    max-width:640px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:1rem 1.4rem;
+    font-size:0.85rem;
+  }
+  .topnav a{ text-decoration:none; color:var(--cream-dim); }
+  .topnav a:hover{ color:var(--gold-bright); }
+  .topnav .brand{ color:var(--gold); font-family:'Playfair Display', serif; font-weight:600; }
+
+  .cover{
+    position:relative; width:100%; aspect-ratio:4/5; max-height:78vh; overflow:hidden;
+  }
+  .cover img{ width:100%; height:100%; object-fit:cover; object-position:50% 30%; display:block; filter:saturate(1.03); }
+  .cover::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(8,21,33,0.15) 0%, rgba(8,21,33,0.05) 45%, rgba(8,21,33,0.65) 82%, var(--navy-deep) 100%);
+  }
+  @media (min-width:640px){ .cover{ aspect-ratio:16/9; max-height:72vh; } }
+
+  .hero{
+    position:relative; padding:2.2rem 1.4rem 3rem; text-align:center; overflow:hidden;
+    border-bottom:1px solid var(--navy-line);
+  }
+  .hero.with-cover{ margin-top:-4.5rem; }
+  .hero.no-cover{ padding-top:4.2rem; }
+  .hero::before{
+    content:""; position:absolute; inset:0;
+    background:
+      repeating-linear-gradient(115deg, rgba(201,162,75,0.05) 0 2px, transparent 2px 70px),
+      linear-gradient(180deg, transparent, var(--navy-deep) 40%);
+    z-index:-1;
+  }
+  .hero.no-cover::before{
+    background:
+      repeating-linear-gradient(115deg, rgba(201,162,75,0.05) 0 2px, transparent 2px 70px),
+      linear-gradient(180deg, var(--navy-base), var(--navy-deep) 85%);
+  }
+  .hero .kicker{ font-size:0.82rem; letter-spacing:0.06em; color:var(--cream-dim); margin:0 0 0.9rem; }
+  .hero h1{
+    font-family:'Playfair Display', serif; font-weight:700;
+    font-size:clamp(1.7rem, 8vw, 2.6rem); line-height:1.3; margin:0 0 0.6rem;
+    color:var(--gold-bright); text-shadow:0 0 30px rgba(201,162,75,0.18);
+  }
+  .hero .tagline{ font-family:'Playfair Display', serif; font-size:1rem; color:var(--cream-dim); margin:0; font-style:italic; }
+
+  .meta-bar{
+    max-width:640px; margin:0 auto; padding:1.1rem 1.4rem;
+    display:flex; justify-content:space-between; align-items:center;
+    font-size:0.82rem; color:var(--cream-dim); border-bottom:1px solid var(--navy-line);
+  }
+  .meta-bar .ep-no{ color:var(--gold); font-weight:600; }
+
+  main{ max-width:640px; margin:0 auto; padding:2.6rem 1.4rem 1rem; }
+  article p{ margin:0 0 1.25rem; font-size:1.06rem; color:var(--cream); }
+  article p:first-of-type::first-letter{
+    font-family:'Playfair Display', serif; font-size:2.6rem; font-weight:700; color:var(--gold-bright);
+    float:left; line-height:0.8; padding:0.1rem 0.35rem 0 0;
+  }
+  .line{ color:var(--cream-dim); font-style:italic; font-size:0.98rem; }
+  .sfx{ text-align:center; color:var(--gold); font-family:'Playfair Display', serif; font-weight:600; font-size:1.15rem; letter-spacing:0.08em; margin:0.4rem 0 1.4rem; }
+  .dialogue{ color:var(--gold-bright); padding-left:0.9rem; border-left:2px solid var(--navy-line); margin:0 0 0.85rem; }
+  .board{ font-family:'Playfair Display', serif; text-align:center; color:var(--gold-bright); font-size:1.08rem; font-weight:600; margin:1.6rem 0 0.3rem; letter-spacing:0.02em; }
+  .board.sub{ font-family:'Inter', sans-serif; font-weight:400; font-style:italic; font-size:0.92rem; color:var(--cream-dim); margin-top:0; margin-bottom:1.6rem; }
+  .scene-divider{ display:flex; align-items:center; justify-content:center; gap:0.7rem; margin:2.6rem 0; color:var(--gold); }
+  .scene-divider::before, .scene-divider::after{ content:""; height:1px; width:80px; background:linear-gradient(90deg, transparent, var(--navy-line)); }
+  .scene-divider::after{ background:linear-gradient(90deg, var(--navy-line), transparent); }
+  .scene-divider span{ font-size:1.1rem; }
+  .subhead{
+    font-family:'Playfair Display', serif; font-weight:600; color:var(--gold); font-size:1rem;
+    margin:2.2rem 0 1.2rem; display:flex; align-items:center; gap:0.6rem;
+  }
+  .subhead::before{ content:""; width:18px; height:1px; background:var(--gold); }
+  .closing{ margin-top:2.6rem; padding-top:1.8rem; border-top:1px solid var(--navy-line); }
+  .closing p{ color:var(--cream-dim); }
+  .closing .names{ color:var(--gold-bright); font-weight:600; font-family:'Playfair Display', serif; }
+  .continued{ text-align:center; margin:2.4rem 0 1rem; }
+  .continued span{
+    display:inline-block; font-family:'Playfair Display', serif; font-style:italic; color:var(--navy-deep);
+    background:var(--gold); padding:0.5rem 1.6rem; border-radius:2px; font-size:0.95rem; letter-spacing:0.03em;
+  }
+  .ep-nav{
+    max-width:640px; margin:2rem auto 0; padding:1.4rem;
+    display:flex; justify-content:space-between; gap:1rem;
+    border-top:1px solid var(--navy-line);
+  }
+  .ep-nav a{
+    text-decoration:none; color:var(--cream); font-size:0.9rem;
+    padding:0.6rem 1rem; border:1px solid var(--navy-line); border-radius:3px;
+    flex:1; text-align:center;
+  }
+  .ep-nav a:hover{ border-color:var(--gold); color:var(--gold-bright); }
+  .ep-nav a.disabled{ opacity:0.35; pointer-events:none; }
+  footer{
+    text-align:center; padding:1.6rem 1.4rem 2.6rem; color:var(--cream-dim); font-size:0.8rem;
+    border-top:1px solid var(--navy-line);
+  }
+  @media (min-width:640px){ .hero{ padding:5.5rem 1.4rem 3.6rem; } .hero.with-cover{ padding-top:2.2rem; } article p{ font-size:1.1rem; } }
+
+</style>
+</head>
+<body>
+
+<div class="topnav">
+  <a href="four-piece-index.html">← All Episodes</a>
+  <span class="brand">The Four-Piece Treasure Map</span>
+</div>
+
+<div class="hero no-cover">
+  <p class="kicker">A Bengali Serial Novel</p>
+  <h1>The Four-Piece Treasure Map</h1>
+  <p class="tagline">A Hundred-Year-Old Truth Behind the Treasure</p>
+</div>
+
+<div class="meta-bar">
+  <span><span class="ep-no">Episode 12</span> — The Light Behind the Shadows and Arindam's Remorse</span>
+  <span>Ongoing</span>
+</div>
+
+<main>
+<article>
+<p>Kanchan and Supriya still stood in the darkness of the underground chamber. Before them lay Harinarayan's letter, the ancient copper-plate grant, and the old land documents belonging to so many people.</p>
+<p>They didn't know it — that beyond the darkness above, another person had already arrived at the very edge of this mystery.</p>
+
+<div class="scene-divider"><span>👁️</span></div>
+<p class="subhead">Arindam's Pursuit</p>
+
+<p>Seeing Supriya slip alone into the ancestral house late at night had roused suspicion in Arindam Chowdhury. He had followed his daughter from a distance and reached the house. After waiting a while and getting no response from Supriya, he had entered the house silently.</p>
+<p>His eyes fell on the stone slab that had slid aside in the floor of the room. A faint light was visible rising from below. Arindam stood still for a moment. Then, slowly, he began descending the stairs.</p>
+<p>Reaching the final step of the underground chamber, he stopped. Ahead of him stood Kanchan and Supriya. And before them lay—</p>
+<p class="board sub">Harinarayan's letter. The ancient copper-plate grant. Land documents many years old.</p>
+<p>Arindam stood in silence and began to listen to everything.</p>
+
+<div class="scene-divider"><span>📜</span></div>
+<p class="subhead">The Truth That Changed Arindam</p>
+
+<p>Kanchan was saying to Supriya just then—</p>
+<p class="dialogue">— "Look, Harinarayan didn't keep these for himself. He wanted these documents to one day be used to restore people's rights."</p>
+<p>Something shook inside Arindam's chest. Slowly, he looked toward the letter. It read—</p>
+<p class="board sub">"Whoever holds the gold in hand shall only grow wealthy; but whoever holds the truth in hand shall protect the homes and the futures of many people."</p>
+<p>Arindam closed his eyes. Suddenly, a night from many years ago came back to him — a few gold coins found beneath the Shiva lingam. The business he had built, starting from those very coins. And then, slowly, a mistaken belief that had taken root — that there must surely be some far greater treasure buried beneath this house.</p>
+<p>That belief was what had driven him, year after year, in pursuit of this house. He had pressured Kanchan's family to sell it. He had planned to buy the house and tear it down. He had even kept it under watch.</p>
+<p>But today — he understood that what he had spent all this time searching for was not gold at all. The real treasure had been people's own rights.</p>
+<p>And a still greater blow came the moment his eyes fell on the last page of the documents. There, written down, was a familiar name—</p>
+<p class="board">The name of his own great-grandfather.</p>
+<p>Arindam went still. His great-grandfather had been Harinarayan's trusted witness. Which meant — the very truth he had spent all this time believing to be a mystery of wealth was one his own family had once been bound to protect.</p>
+
+<div class="scene-divider"><span>🕯️</span></div>
+<p class="subhead">From the Shadows into the Light</p>
+
+<p>Arindam could stay hidden no longer. Slowly, he stepped out of the darkness and into the light.</p>
+<p>Supriya, suddenly catching sight of him, started in surprise.</p>
+<p class="dialogue">— "Baba! You're here?"</p>
+<p>Kanchan turned to look too. For a moment, Arindam couldn't find any words. Then, slowly, he said—</p>
+<p class="dialogue">— "Yes, Supriya. I followed you here."</p>
+<p>Supriya was stunned.</p>
+<p class="dialogue">— "But why?"</p>
+<p>Arindam looked at Kanchan. The old harshness was gone from his voice now. Only remorse remained.</p>
+<p class="dialogue">— "Because I thought you might have gotten yourself into some kind of trouble. But coming here, I've understood... the real danger, all this time, was me."</p>
+<p>Kanchan looked on in silence. Arindam said, slowly—</p>
+<p class="dialogue">— "Kanchan... I was chasing the wrong path."</p>
+<p class="dialogue">— "What do you mean?"</p>
+<p class="dialogue">— "I believed there was some enormous treasure buried beneath this house. It was that greed that made me want to buy your family's home. I planned to tear it down and put up a new building in its place."</p>
+<p>Tears rose in Supriya's eyes.</p>
+<p class="dialogue">— "Baba... you wanted to do all that harm to Kanchan, without even knowing?"</p>
+<p>Arindam lowered his head.</p>
+<p class="dialogue">— "Yes. I was wrong."</p>
+<p>A moment of silence. Then Arindam looked toward the copper plate and said—</p>
+<p class="dialogue">— "Today I understand — these were never anyone's personal wealth. These are the rights, the history, and the future of countless people."</p>
+
+<div class="scene-divider"><span>💔</span></div>
+<p class="subhead">Supriya's Pain</p>
+
+<p>Supriya wiped her eyes and said—</p>
+<p class="dialogue">— "So everything you've been doing about Kanchan's house, all this time... it was all for that treasure?"</p>
+<p>Arindam gave no answer. His silence became the answer.</p>
+<p>Tears rolled down Supriya's cheeks.</p>
+<p class="dialogue">— "Do you know how hard Kanchan has struggled to hold on to this house? He could have sold it long ago, if he'd wanted to."</p>
+<p>Kanchan said, calmly—</p>
+<p class="dialogue">— "Supriya, there's no use blaming your father."</p>
+<p>Supriya looked at him in surprise. Kanchan looked toward Harinarayan's letter and said—</p>
+<p class="dialogue">— "Our ancestors made great sacrifices. Today, we've come to understand the true meaning of that sacrifice."</p>
+<p>Slowly, Arindam turned to look at Kanchan. This time, there was respect in his eyes.</p>
+
+<div class="scene-divider"><span>🤝</span></div>
+<p class="subhead">A New Promise</p>
+
+<p>Arindam came and stood before Kanchan. Then he held out his hand.</p>
+<p class="dialogue">— "Will you forgive me, Kanchan?"</p>
+<p>Kanchan looked at his hand for a moment. Then he took it firmly and said—</p>
+<p class="dialogue">— "If you honor Harinarayan's wish, and the responsibility your own great-grandfather carried, then there's nothing left to forgive."</p>
+<p>Arindam's eyes grew wet. He pulled Kanchan into an embrace.</p>
+<p class="dialogue">— "From today, Kanchan, you're not just my daughter's friend. You're one of my own family."</p>
+<p>Supriya wiped away her tears and smiled softly.</p>
+<p>In the darkness of that underground chamber, three people stood together — one had recognized his own mistake and chosen to set his feet on a new path. One had taken on the responsibility of protecting a truth a hundred years old. And one had come to understand that hidden behind her father's connection to Kanchan lay a long, shared history between two families.</p>
+
+<div class="scene-divider"><span>🌅</span></div>
+<p class="subhead">Light at the End of the Darkness</p>
+
+<p>The three of them slowly climbed back up out of the underground chamber. Dawn had broken. The first light of the sun was rising in the eastern sky. As that light fell across the courtyard of the hundred-year-old, weathered house, it seemed as though the house itself had woken anew after a long darkness.</p>
+<p>Arindam looked back once. The darkness of the underground chamber no longer pulled at him. Because now he understood—</p>
+<p class="board sub">Gold makes a person wealthy. But truth makes a person great.</p>
+<p>Kanchan held Harinarayan's letter close to his chest. Supriya came and stood beside him. And Arindam, standing a little apart, looked at the two of them and smiled softly.</p>
+
+<div class="closing">
+  <p>The door to a hundred-year-old mystery had opened. But on the other side of that door lay something more valuable than gold — the rights of ordinary people, the sacrifices of ancestors, and a trust between two families that had once been lost.</p>
+  <p>This truth would be the beginning of their new path.</p>
+</div>
+<div class="continued"><span>To be continued…</span></div>
+
+</article>
+</main>
+
+<div class="ep-nav">
+  <a href="porbo-11.html">← Episode 11</a>
+  <a class="disabled">Next episode →</a>
+</div>
+
+<footer>
+  The Four-Piece Treasure Map · Episode 12
+</footer>
+
+</body>
+</html>

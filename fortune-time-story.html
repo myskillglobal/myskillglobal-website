@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>The Fortune That Time Protected</title>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyDfxtOP-YCrCXtQxZrrFNC1uXucvbW0K78",
+    authDomain: "my-skill-global.firebaseapp.com",
+    projectId: "my-skill-global",
+    storageBucket: "my-skill-global.firebasestorage.app",
+    messagingSenderId: "978471914749",
+    appId: "1:978471914749:web:595750b5d90738933f4294",
+    measurementId: "G-8D9BPY8HJ0"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#182018;
+    --forest:#16241c;
+    --forest-deep:#0e1712;
+    --moss:#26372c;
+    --paper:#f4efe1;
+    --paper-2:#e9dfc2;
+    --brass:#b8873f;
+    --brass-dim:#996f34;
+    --ledger:#3c5a44;
+    --line:rgba(184,135,63,0.32);
+    --shadow:0 18px 40px rgba(14,23,18,0.4);
+    --serif:'Lora', Georgia, serif;
+    --sans:'IBM Plex Sans', sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--forest-deep); color:var(--ink); font-family:var(--sans); -webkit-font-smoothing:antialiased;}
+  ::selection{background:var(--brass); color:var(--forest-deep);}
+  a{color:inherit;}
+
+  .skip-link{position:absolute; left:-999px; top:0; background:var(--brass); color:var(--forest-deep); padding:10px 16px; z-index:999; font-weight:600;}
+  .skip-link:focus{left:8px; top:8px;}
+
+  .topbar{
+    position:sticky; top:0; z-index:60; display:flex; align-items:center; justify-content:space-between; gap:10px;
+    padding:10px 16px; background:linear-gradient(180deg, rgba(14,23,18,0.97), rgba(14,23,18,0.86));
+    backdrop-filter:blur(6px); border-bottom:1px solid var(--line);
+  }
+  .topbar .mark{font-family:var(--serif); color:var(--paper); font-weight:600; letter-spacing:.02em; font-size:15px; display:flex; align-items:center; gap:8px;}
+  .topbar-actions{display:flex; gap:8px; align-items:center;}
+  .icon-btn{
+    appearance:none; border:1px solid var(--line); background:rgba(255,255,255,0.03); color:var(--paper);
+    border-radius:999px; width:40px; height:40px; display:flex; align-items:center; justify-content:center; cursor:pointer;
+    transition:background .15s, transform .15s, border-color .15s;
+  }
+  .icon-btn:hover{background:rgba(184,135,63,0.16); border-color:var(--brass);}
+  .icon-btn:active{transform:scale(.94);}
+  .icon-btn.active{background:var(--brass); border-color:var(--brass); color:var(--forest-deep);}
+  .icon-btn svg{width:18px; height:18px;}
+
+  .progress-rail{height:3px; background:rgba(255,255,255,0.08);}
+  .progress-fill{height:100%; width:0%; background:linear-gradient(90deg, var(--ledger), var(--brass)); transition:width .15s linear;}
+
+  .resume-banner{
+    display:none; align-items:center; justify-content:space-between; gap:12px; max-width:760px; margin:14px auto 0;
+    padding:12px 16px; background:var(--paper-2); border:1px solid #cbb47c; border-radius:12px; color:var(--ink); font-size:14px;
+  }
+  .resume-banner.show{display:flex;}
+  .resume-banner button{appearance:none; border:none; background:var(--ledger); color:#fff; padding:8px 14px; border-radius:8px; cursor:pointer; font-size:13px; font-weight:600; white-space:nowrap;}
+  .resume-banner .dismiss{background:transparent; color:var(--moss); padding:8px 10px;}
+
+  .hero{position:relative; min-height:78vh; display:flex; align-items:flex-end; overflow:hidden; color:var(--paper);}
+  .hero-img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:saturate(0.95) contrast(1.02) brightness(0.92);}
+  .hero-img.fallback{
+    background:
+      radial-gradient(ellipse at 75% 12%, rgba(184,135,63,0.16), transparent 55%),
+      radial-gradient(ellipse at 15% 85%, rgba(60,90,68,0.22), transparent 50%),
+      linear-gradient(180deg, #16241c 0%, #1c3025 45%, #0e1712 100%);
+  }
+  .hero::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(14,23,18,0.2) 0%, rgba(14,23,18,0.4) 45%, rgba(14,23,18,0.97) 100%);}
+  .hero-content{position:relative; z-index:2; padding:56px 20px 44px; max-width:820px; margin:0 auto; width:100%;}
+  .hero-eyebrow{letter-spacing:.06em; text-transform:uppercase; color:var(--brass); font-size:12px; margin:0 0 14px; display:flex; align-items:center; gap:10px;}
+  .hero-eyebrow::before{content:""; width:26px; height:1px; background:var(--brass); display:inline-block;}
+  .hero h1{font-family:var(--serif); font-weight:700; font-size:clamp(30px, 5.6vw, 54px); line-height:1.08; margin:0 0 16px; max-width:16ch;}
+  .hero p.dek{font-size:16px; line-height:1.65; color:#e2d9be; max-width:54ch; margin:0 0 26px;}
+  .hero-cta{display:flex; flex-wrap:wrap; gap:10px;}
+  .btn{appearance:none; cursor:pointer; border-radius:999px; padding:12px 20px; font-size:14px; font-weight:600; border:1px solid transparent; display:inline-flex; align-items:center; gap:8px; transition:transform .15s, background .15s;}
+  .btn:active{transform:scale(.97);}
+  .btn-primary{background:var(--brass); color:var(--forest-deep);}
+  .btn-primary:hover{background:#c99a4c;}
+  .btn-ghost{background:rgba(255,255,255,0.06); color:var(--paper); border-color:rgba(255,255,255,0.25);}
+  .btn-ghost:hover{background:rgba(255,255,255,0.12);}
+
+  .stage{background:var(--paper); position:relative;}
+  .stage::before{
+    content:""; position:absolute; top:-1px; left:0; right:0; height:24px; background:var(--paper);
+    clip-path:polygon(0 100%,100% 100%,100% 0%,96% 58%,92% 8%,88% 55%,84% 10%,80% 50%,76% 12%,72% 55%,68% 6%,64% 45%,60% 15%,56% 55%,52% 8%,48% 45%,44% 12%,40% 55%,36% 6%,32% 45%,28% 15%,24% 55%,20% 8%,16% 45%,12% 12%,8% 50%,4% 8%,0 30%);
+  }
+  .layout{max-width:980px; margin:0 auto; padding:40px 18px 100px; display:grid; grid-template-columns:56px 1fr; gap:8px 22px;}
+  @media (min-width:720px){.layout{grid-template-columns:64px 1fr; gap:8px 34px;}}
+
+  .path-col{position:relative;}
+  .path-line{position:absolute; left:50%; top:6px; bottom:6px; width:2px; transform:translateX(-50%); background:repeating-linear-gradient(180deg, var(--brass-dim) 0 6px, transparent 6px 13px); opacity:.5;}
+  .waypoint{position:relative; z-index:1; width:100%; display:flex; justify-content:center; scroll-margin-top:80px;}
+  .waypoint .dot{
+    width:16px; height:16px; border-radius:50%;
+    background:var(--paper);
+    border:2px solid var(--brass-dim);
+    box-shadow:inset 0 0 0 3px var(--paper), inset 0 0 0 4px var(--brass-dim);
+    transition:background .25s, border-color .25s, transform .25s, box-shadow .25s;
+  }
+  .waypoint.read .dot{background:var(--brass-dim); border-color:var(--brass-dim); box-shadow:inset 0 0 0 3px var(--paper-2), inset 0 0 0 4px var(--brass-dim);}
+  .waypoint.active .dot{background:var(--brass); border-color:var(--brass); transform:scale(1.35); box-shadow:inset 0 0 0 3px var(--paper), inset 0 0 0 4px var(--brass), 0 0 0 5px rgba(184,135,63,0.2);}
+  .waypoint.reading .dot{animation:pulse 1.4s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{box-shadow:inset 0 0 0 3px var(--paper), inset 0 0 0 4px var(--brass), 0 0 0 4px rgba(184,135,63,0.26);}50%{box-shadow:inset 0 0 0 3px var(--paper), inset 0 0 0 4px var(--brass), 0 0 0 9px rgba(184,135,63,0.06);}}
+
+  .chapter{padding:26px 0 34px; border-bottom:1px dashed #cbb47c; scroll-margin-top:74px;}
+  .chapter:last-of-type{border-bottom:none;}
+  .chapter-eyebrow{font-size:12px; color:var(--ledger); letter-spacing:.05em; text-transform:uppercase; margin:0 0 6px; display:flex; align-items:center; gap:8px;}
+  .chapter h2{font-family:var(--serif); font-size:clamp(21px,3vw,28px); margin:0 0 14px; color:var(--forest); font-weight:700;}
+  .chapter p{font-size:17px; line-height:1.85; margin:0 0 14px; color:#2f2a1f;}
+  .chapter p.speech-active{background:linear-gradient(90deg, rgba(184,135,63,0.15), transparent); border-left:3px solid var(--brass); padding-left:12px; margin-left:-15px; border-radius:0 6px 6px 0;}
+  .chapter .quote{font-family:var(--serif); font-style:italic; font-size:19px; color:var(--forest); margin:18px 0; padding-left:16px; border-left:3px solid var(--ledger);}
+
+  .moral-card{margin-top:10px; background:var(--forest-deep); color:var(--paper); border-radius:16px; padding:30px 26px; box-shadow:var(--shadow);}
+  .moral-card .chapter-eyebrow{color:var(--brass);}
+  .moral-card h2{color:var(--paper);}
+  .moral-card p{color:#e2d9be;}
+  .sign{margin-top:20px; padding-top:18px; border-top:1px solid rgba(184,135,63,0.3); font-family:var(--serif); font-style:italic; font-size:16px; color:var(--brass);}
+
+  .player{
+    position:fixed; left:50%; bottom:16px; transform:translateX(-50%); z-index:80; width:min(560px, calc(100% - 24px));
+    background:var(--forest-deep); color:var(--paper); border-radius:16px; box-shadow:var(--shadow); border:1px solid rgba(184,135,63,0.28);
+    padding:12px 14px; display:none;
+  }
+  .player.open{display:block;}
+  .player-row{display:flex; align-items:center; gap:10px;}
+  .player-btn{appearance:none; border:none; border-radius:50%; width:42px; height:42px; flex:none; background:var(--brass); color:var(--forest-deep); cursor:pointer; display:flex; align-items:center; justify-content:center;}
+  .player-btn.secondary{background:rgba(255,255,255,0.08); color:var(--paper); width:36px; height:36px;}
+  .player-btn svg{width:18px; height:18px;}
+  .player-info{flex:1; min-width:0;}
+  .player-title{font-size:12.5px; color:#e2d9be; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .player-sub{font-size:11px; color:#9aa89f; margin-top:2px;}
+  .player-more{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.08); font-size:12px; color:#c3bda1;}
+  .rate-row{display:flex; align-items:center; gap:8px;}
+  .rate-row input[type=range]{width:100px; accent-color:var(--brass);}
+  .voice-note{font-size:11px; color:#8b9790; margin-top:6px; line-height:1.5;}
+
+  .toast{
+    position:fixed; left:50%; top:16px; transform:translateX(-50%) translateY(-140%); background:var(--forest-deep); color:var(--paper);
+    font-size:13px; padding:10px 16px; border-radius:10px; z-index:100; border:1px solid var(--line);
+    transition:transform .25s ease; box-shadow:var(--shadow);
+  }
+  .toast.show{transform:translateX(-50%) translateY(0);}
+
+  footer{background:var(--forest-deep); color:#9aa89f; text-align:center; padding:34px 18px 46px; font-size:12.5px;}
+  footer .credit{color:var(--brass); font-family:var(--serif); font-style:italic; font-size:14px; margin-bottom:6px;}
+
+  @media (max-width:480px){
+    .hero{min-height:66vh;}
+    .layout{grid-template-columns:34px 1fr; gap:4px 12px;}
+    .waypoint .dot{width:12px; height:12px;}
+    .chapter p{font-size:15.5px;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .waypoint.reading .dot{animation:none;}
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<a href="#content" class="skip-link">Skip to main content</a>
+<div class="toast" id="toast"></div>
+
+<div class="topbar">
+  <div class="mark">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#b8873f" stroke-width="2"/><circle cx="12" cy="12" r="5" stroke="#b8873f" stroke-width="2"/><circle cx="12" cy="12" r="1.4" fill="#b8873f"/></svg>
+    The Sen Legacy
+  </div>
+  <div class="topbar-actions">
+    <button class="icon-btn" id="bookmarkBtn" title="Bookmark this spot" aria-label="Bookmark this spot">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1Z"/></svg>
+    </button>
+    <button class="icon-btn" id="playToggleTop" title="Listen to the story" aria-label="Start the voice reader">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3v18l15-9L5 3Z"/></svg>
+    </button>
+  </div>
+</div>
+<div class="progress-rail"><div class="progress-fill" id="progressFill"></div></div>
+
+<div class="resume-banner" id="resumeBanner">
+  <span>You were reading up to <strong id="resumeChapterName">this point</strong>.</span>
+  <span style="display:flex; gap:8px;">
+    <button id="resumeGo">Continue reading</button>
+    <button class="dismiss" id="resumeDismiss">Dismiss</button>
+  </span>
+</div>
+
+<header class="hero">
+  <img src="images/the-fortune.png" alt="A quiet, modest home that hides a fortune left to grow for decades" class="hero-img" id="heroImg"
+       onerror="this.classList.add('fallback'); this.removeAttribute('src');">
+  <div class="hero-content">
+    <p class="hero-eyebrow">A Story of Patience, Legacy, and Time</p>
+    <h1>The Fortune That Time Protected</h1>
+    <p class="dek">A modest businessman quietly builds wealth he never displays. Twenty-six years after his death, a forgotten investment resurfaces — and it teaches his children something no inheritance ever could.</p>
+    <div class="hero-cta">
+      <button class="btn btn-primary" id="startReading">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+        Start Reading
+      </button>
+      <button class="btn btn-ghost" id="startListening">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3v18l15-9L5 3Z"/></svg>
+        Listen Instead
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="stage" id="content">
+  <div class="layout">
+    <div class="path-col"><div class="path-line"></div></div>
+    <div></div>
+  </div>
+</main>
+
+<div class="player" id="player">
+  <div class="player-row">
+    <button class="player-btn secondary" id="prevBtn" title="Previous passage">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20 8 12l10-8M6 4v16"/></svg>
+    </button>
+    <button class="player-btn" id="playPauseBtn" title="Play / Pause">
+      <svg viewBox="0 0 24 24" fill="none" id="playIcon"><path d="M5 3v18l15-9L5 3Z" fill="currentColor"/></svg>
+    </button>
+    <button class="player-btn secondary" id="nextBtn" title="Next passage">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4l10 8-10 8M18 4v16"/></svg>
+    </button>
+    <div class="player-info">
+      <div class="player-title" id="playerTitle">Getting ready&hellip;</div>
+      <div class="player-sub" id="playerSub">Voice reader</div>
+    </div>
+    <button class="player-btn secondary" id="closePlayer" title="Close player">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+  </div>
+  <div class="player-more">
+    <span id="voiceLabel">Voice: searching&hellip;</span>
+    <span class="rate-row">Speed
+      <input type="range" id="rateSlider" min="0.7" max="1.1" step="0.01" value="0.88">
+      <span id="rateValue">0.88x</span>
+    </span>
+  </div>
+  <div class="voice-note" id="voiceNote"></div>
+</div>
+
+<footer>
+  <div class="credit">&ldquo;Invest in knowledge. Invest in integrity. Invest with patience.&rdquo;</div>
+  Made for anyone still planting seeds they may never see grow.
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var chapters = [
+    {
+      id: "ch-ordinary", eyebrow: "The Quiet Man",
+      title: "Such an Ordinary Man",
+      paras: [
+        "On the edge of a crowded city stood a small rented house with fading blue walls. Every morning, its owner rode an old bicycle to work. The neighbors knew him as a quiet, middle-class businessman named Arindam Sen.",
+        "He wore simple clothes. He never attended expensive parties. He never drove luxury cars. People often whispered,"
+      ],
+      quote: "\u201cSuch an ordinary man.\u201d",
+      paras2: [
+        "None of them knew the truth. Arindam owned successful businesses across the country. Instead of displaying his wealth, he lived with remarkable simplicity. His greatest belief was this:"
+      ],
+      quote2: "\u201cMoney should work quietly. Character should speak loudly.\u201d"
+    },
+    {
+      id: "ch-patience", eyebrow: "The Investor",
+      title: "Trees Never Grow Overnight",
+      paras: [
+        "Although his businesses prospered, Arindam worried constantly about the future. He invested a portion of his earnings every month into carefully selected companies and diversified mutual funds. Unlike many investors chasing quick profits, he never looked at daily market movements.",
+        "His financial diary contained only one sentence."
+      ],
+      quote: "\u201cTime is the greatest partner an investor will ever have.\u201d",
+      paras2: [
+        "His wife, Meghla, often smiled at his patience. \u201cEveryone else celebrates today's profits. You celebrate twenty years from now.\u201d",
+        "Arindam laughed."
+      ],
+      quote2: "\u201cTrees never grow overnight.\u201d"
+    },
+    {
+      id: "ch-children", eyebrow: "The Family",
+      title: "The Only Wealth No One Can Steal",
+      paras: [
+        "Their children, twelve-year-old Arnav and ten-year-old Ananya, grew up without realizing how wealthy their parents truly were. Their father never measured success by possessions. Instead, every evening he asked the same question."
+      ],
+      quote: "\u201cWhat new thing did you learn today?\u201d",
+      paras2: ["Knowledge, he believed, was the only wealth that no thief could ever steal."]
+    },
+    {
+      id: "ch-tragedy", eyebrow: "The Accident",
+      title: "In a Single Moment",
+      paras: [
+        "One stormy evening, while returning from a family trip, tragedy struck. A speeding truck lost control on a rain-soaked highway. The collision was devastating.",
+        "Arindam and Meghla died instantly. Only the children survived.",
+        "In a single moment, their childhood ended."
+      ]
+    },
+    {
+      id: "ch-abandoned", eyebrow: "What Followed",
+      title: "The Relatives Quietly Disappeared",
+      paras: [
+        "Relatives arrived from every direction. Some cried loudly. Some spoke of responsibility. Some promised to care for the children. But behind closed doors, many searched for property documents, valuables, and bank accounts.",
+        "Within weeks, the family's visible assets had disappeared into countless hands. The children were told there was almost nothing left.",
+        "Eventually, Arnav and Ananya were placed in an orphanage. The relatives quietly disappeared from their lives."
+      ]
+    },
+    {
+      id: "ch-promise", eyebrow: "Growing Up",
+      title: "We Will Never Allow Bitterness",
+      paras: [
+        "Life became difficult. There were no expensive schools. No private tutors. No inheritance. Only hope. Every night the two siblings made the same promise."
+      ],
+      quote: "\u201cWe will never allow bitterness to become our future.\u201d",
+      paras2: [
+        "Arnav worked part-time after school. Ananya spent every free hour in the library. Years passed. They earned scholarships. Graduated with distinction. Built honest careers through determination alone.",
+        "Neither of them ever imagined that their father's greatest gift was still waiting."
+      ]
+    },
+    {
+      id: "ch-letter", eyebrow: "Twenty-Six Years Later",
+      title: "An Official Letter Arrived",
+      paras: [
+        "Twenty-six years later, an official letter arrived. It came from an investment management company. At first, Arnav assumed it was a mistake. But after months of legal verification, every record confirmed the impossible.",
+        "Their father had named both children as nominees for a long-forgotten investment portfolio. The portfolio had remained untouched for more than a quarter of a century.",
+        "While the world had changed, those investments had quietly continued to grow. Dividend after dividend. Year after year. Market cycle after market cycle. The power of time had done what no human effort could have achieved.",
+        "The final valuation left everyone speechless. The forgotten portfolio was now worth several thousand crore rupees. News channels called it"
+      ],
+      quote: "\u201cThe Fortune That Time Protected.\u201d"
+    },
+    {
+      id: "ch-secret", eyebrow: "The Interview",
+      title: "Our Father Planted Seeds",
+      paras: [
+        "Reporters surrounded the siblings. \u201cWhat is the secret behind this incredible wealth?\u201d",
+        "Arnav answered calmly. \u201cIt wasn't luck. It wasn't magic. It was patience.\u201d"
+      ],
+      quote: "\u201cOur father planted seeds. Time grew the forest.\u201d"
+    },
+    {
+      id: "ch-temptation", eyebrow: "The Return",
+      title: "Never Confuse Investing With Gambling",
+      paras: [
+        "Soon, relatives who had abandoned them decades earlier began appearing once again. Some apologized. Some demanded forgiveness. Others offered investment advice.",
+        "\u201cPut everything into fast trading.\u201d \u201cYou can double your fortune within months.\u201d \u201cYou are wasting opportunities.\u201d",
+        "The promises sounded tempting. For a brief moment, Arnav considered them. Then he opened his father's old diary. Only one sentence was written on the first page."
+      ],
+      quote: "\u201cNever confuse investing with gambling.\u201d",
+      paras2: ["He closed the diary. His decision was made."]
+    },
+    {
+      id: "ch-foundation", eyebrow: "What They Built",
+      title: "Now Protecting Countless Lives",
+      paras: [
+        "Instead of chasing quick riches, the siblings created the Sen Foundation. Schools were built in forgotten villages. Scholarships were awarded to orphaned children. Hospitals received modern equipment. Young entrepreneurs were given interest-free seed funding. Libraries appeared where none had existed before.",
+        "The fortune that time had protected now began protecting countless lives."
+      ]
+    },
+    {
+      id: "ch-advice", eyebrow: "Years Later",
+      title: "Three Investments That Never Lose Value",
+      paras: [
+        "Years later, while inaugurating a new public library, a young student asked Ananya, \u201cMa'am, if you had one piece of advice for our generation, what would it be?\u201d",
+        "She smiled gently."
+      ],
+      quote: "\u201cThere are three investments that never lose value.\u201d",
+      paras2: [
+        "The audience waited. She continued, \u201cInvest in knowledge. Invest in integrity. And invest with patience. The first builds your mind. The second builds your character. The third builds your future.\u201d",
+        "The hall erupted in applause. Standing quietly at the back of the room, Arnav looked toward a portrait of their parents. For the first time in many years, he felt they had finally received the inheritance they truly deserved.",
+        "Not wealth. But wisdom."
+      ]
+    }
+  ];
+
+  var moral = {
+    eyebrow: "Moral",
+    title: "What Patience Builds",
+    paras: [
+      "Time rewards patience more faithfully than greed.",
+      "The greatest fortunes are not built overnight \u2014 they are built through wisdom, discipline, honesty, and the quiet power of long-term thinking.",
+      "Money can create comfort, but only character can create a legacy that lives long after wealth is gone."
+    ]
+  };
+
+  var layout = document.querySelector(".layout");
+  var pathCol = document.querySelector(".path-col");
+  var readCol = document.createElement("div");
+  layout.replaceChildren(pathCol, readCol);
+
+  var speechUnits = [];
+
+  function addParas(container, list, chapterIndex){
+    if(!list) return;
+    list.forEach(function(t){
+      var p = document.createElement("p");
+      p.textContent = t;
+      container.appendChild(p);
+      speechUnits.push({text:t, el:p, chapterIndex:chapterIndex});
+    });
+  }
+  function addQuote(container, text, chapterIndex){
+    if(!text) return;
+    var p = document.createElement("p");
+    p.className = "quote";
+    p.textContent = text.replace(/\u201c|\u201d/g,"");
+    container.appendChild(p);
+    speechUnits.push({text:text.replace(/\u201c|\u201d/g,""), el:p, chapterIndex:chapterIndex});
+  }
+
+  chapters.forEach(function(ch, i){
+    var wp = document.createElement("div");
+    wp.className = "waypoint";
+    wp.id = "wp-" + ch.id;
+    wp.innerHTML = '<span class="dot"></span>';
+    wp.title = ch.title;
+    wp.style.cursor = "pointer";
+    wp.addEventListener("click", function(){
+      document.getElementById(ch.id).scrollIntoView({behavior:"smooth", block:"start"});
+    });
+    pathCol.appendChild(wp);
+
+    var section = document.createElement("section");
+    section.className = "chapter";
+    section.id = ch.id;
+    section.dataset.index = i;
+    var eyebrow = document.createElement("p");
+    eyebrow.className = "chapter-eyebrow";
+    eyebrow.textContent = ch.eyebrow;
+    var h2 = document.createElement("h2");
+    h2.textContent = ch.title;
+    section.appendChild(eyebrow);
+    section.appendChild(h2);
+    addParas(section, ch.paras, i);
+    addQuote(section, ch.quote, i);
+    addParas(section, ch.paras2, i);
+    addQuote(section, ch.quote2, i);
+    readCol.appendChild(section);
+  });
+
+  var wpMoral = document.createElement("div");
+  wpMoral.className = "waypoint";
+  wpMoral.id = "wp-moral";
+  wpMoral.innerHTML = '<span class="dot"></span>';
+  wpMoral.title = moral.title;
+  wpMoral.style.cursor = "pointer";
+  wpMoral.addEventListener("click", function(){
+    document.getElementById("ch-moral").scrollIntoView({behavior:"smooth", block:"start"});
+  });
+  pathCol.appendChild(wpMoral);
+
+  var moralSection = document.createElement("section");
+  moralSection.className = "chapter";
+  moralSection.id = "ch-moral";
+  moralSection.dataset.index = chapters.length;
+  var moralCard = document.createElement("div");
+  moralCard.className = "moral-card";
+  var me = document.createElement("p"); me.className="chapter-eyebrow"; me.textContent = moral.eyebrow;
+  var mh = document.createElement("h2"); mh.textContent = moral.title;
+  moralCard.appendChild(me); moralCard.appendChild(mh);
+  addParas(moralCard, moral.paras, chapters.length);
+  var sign = document.createElement("div");
+  sign.className = "sign";
+  sign.textContent = "\u2014 The Sen Foundation";
+  moralCard.appendChild(sign);
+  moralSection.appendChild(moralCard);
+  readCol.appendChild(moralSection);
+
+  var allWaypoints = Array.prototype.slice.call(pathCol.querySelectorAll(".waypoint"));
+  var allSections = Array.prototype.slice.call(readCol.querySelectorAll(".chapter"));
+  var chapterNames = chapters.map(function(c){return c.title;}).concat([moral.title]);
+
+  var toastEl = document.getElementById("toast");
+  var toastTimer;
+  function toast(msg){
+    toastEl.textContent = msg;
+    toastEl.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toastEl.classList.remove("show"); }, 2200);
+  }
+
+  var currentChapterIndex = 0;
+
+  function throttle(fn, wait){
+    var last = 0, timer=null;
+    return function(){
+      var now = Date.now();
+      if(now - last >= wait){ last = now; fn.apply(null, arguments); }
+      else { clearTimeout(timer); timer = setTimeout(function(){ last = Date.now(); fn.apply(null, arguments); }, wait - (now-last)); }
+    };
+  }
+
+  function updateProgressBar(){
+    var doc = document.documentElement;
+    var scrollTop = doc.scrollTop || document.body.scrollTop;
+    var height = doc.scrollHeight - doc.clientHeight;
+    var pct = height > 0 ? (scrollTop / height) * 100 : 0;
+    document.getElementById("progressFill").style.width = pct + "%";
+  }
+  document.addEventListener("scroll", throttle(updateProgressBar, 100), {passive:true});
+  updateProgressBar();
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      var idx = parseInt(entry.target.dataset.index, 10);
+      var wp = allWaypoints[idx];
+      if(!wp) return;
+      if(entry.isIntersecting){
+        currentChapterIndex = idx;
+        allWaypoints.forEach(function(w,i){
+          w.classList.toggle("active", i === idx);
+          if(i < idx) w.classList.add("read");
+        });
+        saveScrollBookmark(idx, false);
+      }
+    });
+  }, {rootMargin: "-40% 0px -50% 0px", threshold: 0});
+  allSections.forEach(function(s){ io.observe(s); });
+
+  var BOOKMARK_KEY = "fortune_story_bookmark_v1";
+  var storageOK = true;
+  try{ localStorage.setItem("__t","1"); localStorage.removeItem("__t"); } catch(e){ storageOK = false; }
+
+  function saveScrollBookmark(idx, manual){
+    if(!storageOK) return;
+    try{
+      var data = {chapterIndex: idx, chapterName: chapterNames[idx], savedAt: Date.now(), manual: !!manual};
+      localStorage.setItem(BOOKMARK_KEY, JSON.stringify(data));
+      if(manual) toast("Bookmark saved \u2014 you can pick up from here next time.");
+    }catch(e){}
+  }
+  function readBookmark(){
+    if(!storageOK) return null;
+    try{ var raw = localStorage.getItem(BOOKMARK_KEY); return raw ? JSON.parse(raw) : null; }catch(e){ return null; }
+  }
+  document.getElementById("bookmarkBtn").addEventListener("click", function(){
+    saveScrollBookmark(currentChapterIndex, true);
+  });
+
+  var savedBM = readBookmark();
+  if(savedBM && typeof savedBM.chapterIndex === "number" && allSections[savedBM.chapterIndex]){
+    var banner = document.getElementById("resumeBanner");
+    document.getElementById("resumeChapterName").textContent = savedBM.chapterName || chapterNames[savedBM.chapterIndex];
+    banner.classList.add("show");
+    document.getElementById("resumeGo").addEventListener("click", function(){
+      allSections[savedBM.chapterIndex].scrollIntoView({behavior:"smooth", block:"start"});
+      banner.classList.remove("show");
+    });
+    document.getElementById("resumeDismiss").addEventListener("click", function(){ banner.classList.remove("show"); });
+  }
+  if(!storageOK){
+    document.getElementById("bookmarkBtn").title = "Bookmarking isn't available in this preview";
+  }
+
+  document.getElementById("startReading").addEventListener("click", function(){
+    allSections[0].scrollIntoView({behavior:"smooth", block:"start"});
+  });
+
+  var synth = window.speechSynthesis;
+  var speechSupported = !!synth;
+  var voices = [];
+  var chosenVoice = null;
+  var currentUnitIndex = -1;
+  var isPlaying = false;
+  var isPaused = false;
+  var rate = 0.88, pitch = 1.0;
+  var keepAliveTimer = null;
+
+  var player = document.getElementById("player");
+  var playIcon = document.getElementById("playIcon");
+  var playerTitle = document.getElementById("playerTitle");
+  var playerSub = document.getElementById("playerSub");
+  var voiceLabel = document.getElementById("voiceLabel");
+  var voiceNote = document.getElementById("voiceNote");
+  var rateSlider = document.getElementById("rateSlider");
+  var rateValue = document.getElementById("rateValue");
+
+  function pickVoice(list){
+    if(!list || !list.length) return null;
+    var chains = [
+      function(v){ return v.lang === "en-IN"; },
+      function(v){ return /en/i.test(v.lang) && /india|indian/i.test(v.name); },
+      function(v){ return v.lang === "en-GB"; },
+      function(v){ return v.lang === "en-US" && /female|woman/i.test(v.name); },
+      function(v){ return v.lang === "en-US"; },
+      function(v){ return /^en/i.test(v.lang); },
+      function(v){ return v.default; },
+      function(){ return true; }
+    ];
+    for(var i=0;i<chains.length;i++){
+      var found = list.find(chains[i]);
+      if(found) return found;
+    }
+    return null;
+  }
+
+  function refreshVoices(){
+    voices = synth ? synth.getVoices() : [];
+    chosenVoice = pickVoice(voices);
+    if(chosenVoice){
+      voiceLabel.textContent = "Voice: " + chosenVoice.name + " (" + chosenVoice.lang + ")";
+    } else if (voices.length === 0){
+      voiceLabel.textContent = "Loading voices\u2026";
+    } else {
+      voiceLabel.textContent = "Using the default voice";
+    }
+  }
+
+  if(speechSupported){
+    refreshVoices();
+    if(typeof synth.onvoiceschanged !== "undefined"){ synth.onvoiceschanged = refreshVoices; }
+    var pollCount = 0;
+    var pollVoices = setInterval(function(){
+      pollCount++;
+      if(voices.length === 0 && pollCount < 10){ refreshVoices(); }
+      else { clearInterval(pollVoices); }
+    }, 500);
+  } else {
+    voiceLabel.textContent = "Voice reader not supported in this browser";
+    voiceNote.textContent = "This browser doesn't support the Web Speech API, so reading aloud isn't available here. Please try Chrome on Android or desktop.";
+  }
+
+  rateSlider.addEventListener("input", function(){
+    rate = parseFloat(rateSlider.value);
+    rateValue.textContent = rate.toFixed(2) + "x";
+    if(isPlaying){ speakUnit(currentUnitIndex, true); }
+  });
+
+  function clearHighlights(){ speechUnits.forEach(function(u){ u.el.classList.remove("speech-active"); }); }
+
+  function setPlayIcon(playingState){
+    if(playingState){
+      playIcon.innerHTML = '<rect x="5" y="4" width="5" height="16" rx="1" fill="currentColor"/><rect x="14" y="4" width="5" height="16" rx="1" fill="currentColor"/>';
+    } else {
+      playIcon.innerHTML = '<path d="M5 3v18l15-9L5 3Z" fill="currentColor"/>';
+    }
+  }
+
+  function startKeepAlive(){
+    stopKeepAlive();
+    keepAliveTimer = setInterval(function(){
+      if(synth && synth.speaking && !synth.paused){ synth.pause(); synth.resume(); }
+    }, 8000);
+  }
+  function stopKeepAlive(){ if(keepAliveTimer){ clearInterval(keepAliveTimer); keepAliveTimer = null; } }
+
+  function speakUnit(index, isRestart){
+    if(!speechSupported) return;
+    if(index < 0 || index >= speechUnits.length){
+      stopReading();
+      toast("You've reached the end of the story. Thank you for reading.");
+      return;
+    }
+    synth.cancel();
+    clearHighlights();
+    currentUnitIndex = index;
+    var unit = speechUnits[index];
+    unit.el.classList.add("speech-active");
+    if(!isRestart){ unit.el.scrollIntoView({behavior:"smooth", block:"center"}); }
+
+    var utt = new SpeechSynthesisUtterance(unit.text);
+    if(chosenVoice) utt.voice = chosenVoice;
+    utt.rate = rate;
+    utt.pitch = pitch;
+    utt.lang = chosenVoice ? chosenVoice.lang : "en-US";
+
+    utt.onend = function(){ if(isPlaying){ speakUnit(index + 1); } };
+    utt.onerror = function(){ if(isPlaying){ speakUnit(index + 1); } };
+
+    isPaused = false;
+    synth.speak(utt);
+    startKeepAlive();
+
+    var chapterIdx = unit.chapterIndex;
+    playerTitle.textContent = chapterNames[chapterIdx] || "Reading";
+    playerSub.textContent = "Passage " + (index+1) + " of " + speechUnits.length;
+    saveScrollBookmark(chapterIdx, false);
+  }
+
+  function startReadingFrom(index){
+    if(!speechSupported){
+      toast("Voice reading isn't supported in this browser.");
+      return;
+    }
+    isPlaying = true; isPaused = false;
+    player.classList.add("open");
+    setPlayIcon(true);
+    document.getElementById("playToggleTop").classList.add("active");
+    speakUnit(index);
+  }
+  function pauseReading(){
+    if(!speechSupported) return;
+    if(synth.speaking && !synth.paused){
+      synth.pause(); isPaused = true; isPlaying = false; setPlayIcon(false); stopKeepAlive();
+    }
+  }
+  function resumeReading(){
+    if(!speechSupported) return;
+    if(isPaused){
+      synth.resume(); isPlaying = true; isPaused = false; setPlayIcon(true); startKeepAlive();
+    } else if(currentUnitIndex >= 0){
+      isPlaying = true; speakUnit(currentUnitIndex, true);
+    } else {
+      startReadingFrom(nearestUnitForChapter(currentChapterIndex));
+    }
+  }
+  function stopReading(){
+    isPlaying = false; isPaused = false;
+    if(speechSupported) synth.cancel();
+    stopKeepAlive(); clearHighlights(); setPlayIcon(false);
+    document.getElementById("playToggleTop").classList.remove("active");
+  }
+  function nearestUnitForChapter(chapterIdx){
+    for(var i=0;i<speechUnits.length;i++){ if(speechUnits[i].chapterIndex === chapterIdx) return i; }
+    return 0;
+  }
+
+  document.getElementById("playPauseBtn").addEventListener("click", function(){
+    if(isPlaying){ pauseReading(); } else { resumeReading(); }
+  });
+  document.getElementById("prevBtn").addEventListener("click", function(){
+    var target = Math.max(0, currentUnitIndex - 1);
+    isPlaying = true; setPlayIcon(true);
+    speakUnit(target);
+  });
+  document.getElementById("nextBtn").addEventListener("click", function(){
+    var target = Math.min(speechUnits.length - 1, currentUnitIndex + 1);
+    isPlaying = true; setPlayIcon(true);
+    speakUnit(target);
+  });
+  document.getElementById("closePlayer").addEventListener("click", function(){
+    stopReading(); player.classList.remove("open");
+  });
+
+  function openAndStart(){
+    player.classList.add("open");
+    startReadingFrom(nearestUnitForChapter(currentChapterIndex));
+  }
+  document.getElementById("playToggleTop").addEventListener("click", function(){
+    if(isPlaying){ pauseReading(); player.classList.add("open"); }
+    else if(isPaused){ resumeReading(); }
+    else { openAndStart(); }
+  });
+  document.getElementById("startListening").addEventListener("click", openAndStart);
+
+  document.addEventListener("visibilitychange", function(){
+    if(document.hidden && speechSupported && synth.speaking){ pauseReading(); }
+  });
+  window.addEventListener("beforeunload", function(){ if(speechSupported) synth.cancel(); });
+
+})();
+</script>
+</body>
+</html>

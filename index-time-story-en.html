@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>This Life, Once Gone, Never Returns</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ts-ink:#241a13;
+    --ts-parchment:#f2e8d3;
+    --ts-parchment-2:#e9dcc0;
+    --ts-walnut:#241610;
+    --ts-walnut-2:#3a2416;
+    --ts-brass:#a9814c;
+    --ts-brass-light:#d8bb80;
+    --ts-oxblood:#6d2c28;
+    --ts-muted:#71614c;
+    --ts-line:rgba(36,26,19,0.16);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ts-parchment);
+    color:var(--ts-ink);
+    font-family:"Noto Serif","Georgia",serif;
+    line-height:1.8;
+  }
+  img{max-width:100%;display:block;}
+
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
+    background-image:
+      radial-gradient(circle at 20% 20%, rgba(109,44,40,0.04), transparent 45%),
+      radial-gradient(circle at 80% 70%, rgba(169,129,76,0.06), transparent 50%);
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    min-height:100vh;
+    background:var(--ts-walnut);
+    color:var(--ts-parchment);
+    overflow:hidden;
+  }
+  .hero-text{
+    position:relative;
+    z-index:2;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:1.6rem;
+    padding:6vw 6vw 6vw 8vw;
+  }
+  .hero-kicker{
+    font-family:"Inter","Segoe UI",sans-serif;
+    font-size:0.95rem;
+    letter-spacing:0.02em;
+    color:var(--ts-brass-light);
+    opacity:0.9;
+  }
+  .hero-title{
+    font-size:clamp(2.1rem, 4.4vw, 3.6rem);
+    font-weight:700;
+    margin:0;
+    line-height:1.35;
+    color:#f4ead2;
+    max-width:14ch;
+  }
+  .hero-sub{
+    font-size:clamp(1.05rem, 1.6vw, 1.3rem);
+    color:var(--ts-brass-light);
+    margin:0;
+    font-weight:500;
+  }
+  .hero-desc{
+    font-size:1.05rem;
+    color:#d9cbb0;
+    max-width:44ch;
+    margin:0;
+  }
+  .hero-cta{
+    display:inline-flex;
+    align-items:center;
+    gap:0.6rem;
+    width:fit-content;
+    margin-top:0.6rem;
+    padding:0.85rem 1.6rem;
+    background:var(--ts-brass);
+    color:var(--ts-walnut);
+    text-decoration:none;
+    font-family:"Inter","Segoe UI",sans-serif;
+    font-weight:600;
+    font-size:1.02rem;
+    border-radius:2px;
+    transition:background 0.25s ease, transform 0.25s ease;
+  }
+  .hero-cta:hover{
+    background:var(--ts-brass-light);
+    transform:translateY(-2px);
+  }
+  .hero-cta svg{width:18px;height:18px;flex-shrink:0;}
+
+  .hero-image{
+    position:relative;
+    height:100%;
+    min-height:38vh;
+  }
+  .hero-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    filter:saturate(1.02) contrast(1.02);
+  }
+  .hero-image::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(90deg, var(--ts-walnut) 0%, rgba(36,22,16,0.15) 22%, transparent 55%);
+  }
+  .hero-image::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:1;
+    box-shadow:inset 0 0 8vw rgba(0,0,0,0.35);
+  }
+
+  @media (max-width:820px){
+    .hero{grid-template-columns:1fr;}
+    .hero-image{order:-1; min-height:46vh;}
+    .hero-text{padding:8vw 7vw;}
+    .hero-image::after{background:linear-gradient(180deg, transparent 55%, var(--ts-walnut) 100%);}
+  }
+
+  /* ---------- INTRO STRIP ---------- */
+  .intro{
+    position:relative;
+    z-index:1;
+    max-width:640px;
+    margin:0 auto;
+    padding:5.5rem 6vw 3rem;
+    text-align:center;
+  }
+  .intro p{
+    font-size:1.15rem;
+    color:var(--ts-ink);
+    margin:0;
+  }
+  .intro .accent-word{color:var(--ts-oxblood);}
+
+  /* ---------- TIMELINE / EPISODES ---------- */
+  .timeline-section{
+    position:relative;
+    z-index:1;
+    max-width:920px;
+    margin:0 auto;
+    padding:2rem 6vw 5rem;
+  }
+  .timeline-heading{
+    text-align:center;
+    font-size:1.7rem;
+    font-weight:600;
+    margin:0 0 3.2rem;
+    color:var(--ts-ink);
+  }
+  .timeline{
+    position:relative;
+  }
+  .timeline::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:0;
+    bottom:0;
+    width:1px;
+    background:linear-gradient(var(--ts-oxblood), var(--ts-brass) 50%, var(--ts-oxblood));
+    opacity:0.35;
+    transform:translateX(-50%);
+  }
+  .ep{
+    position:relative;
+    display:grid;
+    grid-template-columns:1fr 64px 1fr;
+    align-items:center;
+    margin-bottom:2.6rem;
+  }
+  .ep-card{
+    background:var(--ts-parchment-2);
+    border:1px solid var(--ts-line);
+    padding:1.5rem 1.7rem;
+    border-radius:2px;
+    box-shadow:0 10px 22px -18px rgba(36,26,19,0.6);
+  }
+  .ep:nth-child(odd) .ep-card{grid-column:1;}
+  .ep:nth-child(even) .ep-card{grid-column:3;}
+  .ep-num{
+    grid-column:2;
+    justify-self:center;
+    width:52px;
+    height:52px;
+    border-radius:50%;
+    background:var(--ts-walnut);
+    border:2px solid var(--ts-brass);
+    color:var(--ts-brass-light);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:"Inter","Segoe UI",sans-serif;
+    font-weight:600;
+    font-size:1.1rem;
+    z-index:2;
+  }
+  .ep-title{
+    font-size:1.28rem;
+    font-weight:600;
+    margin:0 0 0.5rem;
+    color:var(--ts-ink);
+  }
+  .ep-blurb{
+    font-size:1rem;
+    color:var(--ts-muted);
+    margin:0 0 1.1rem;
+  }
+  .ep-link{
+    font-family:"Inter","Segoe UI",sans-serif;
+    font-size:0.95rem;
+    font-weight:600;
+    color:var(--ts-oxblood);
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+    transition:border-color 0.2s ease;
+  }
+  .ep-link:hover{border-color:var(--ts-oxblood);}
+
+  @media (max-width:720px){
+    .timeline::before{left:26px;}
+    .ep{grid-template-columns:52px 1fr;}
+    .ep-num{grid-column:1; width:44px; height:44px; font-size:1rem;}
+    .ep:nth-child(odd) .ep-card,
+    .ep:nth-child(even) .ep-card{grid-column:2;}
+  }
+
+  /* ---------- CREDITS (once) ---------- */
+  .credits{
+    position:relative;
+    z-index:1;
+    max-width:680px;
+    margin:0 auto;
+    padding:0 6vw 6rem;
+  }
+  .credits-box{
+    border-top:1px solid var(--ts-line);
+    padding-top:1.8rem;
+    font-family:"Inter","Segoe UI",sans-serif;
+    font-size:0.88rem;
+    line-height:1.85;
+    color:var(--ts-muted);
+  }
+  .credits-box .credits-label{
+    display:block;
+    font-family:"Noto Serif",serif;
+    font-size:1rem;
+    font-weight:600;
+    color:var(--ts-ink);
+    margin-bottom:0.6rem;
+  }
+
+  footer{
+    text-align:center;
+    font-family:"Inter","Segoe UI",sans-serif;
+    font-size:0.85rem;
+    color:var(--ts-muted);
+    padding:0 6vw 3rem;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .hero-cta{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-text">
+    <span class="hero-kicker">A Story About Time</span>
+    <h1 class="hero-title">This Life, Once Gone, Never Returns</h1>
+    <p class="hero-sub">A story of time, life, and consequence</p>
+    <p class="hero-desc">The hands of the clock never stop. The time we imagine as spare simply slips away, unnoticed. Told across six chapters, this is the story of a life that pauses to ask — how much time did I truly have, and how much of it did I let slip through my fingers?</p>
+    <a class="hero-cta" href="porbo-1-en.html">
+      Start reading from Chapter 1
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+  <div class="hero-image">
+    <img src="time1.png" alt="A man sitting by a riverbank at sunset, gazing at the flowing water">
+  </div>
+</section>
+
+<div class="intro">
+  <p>We often think, <span class="accent-word">there's plenty of time left.</span> But time waits for no one — this story is a journey toward that very realization.</p>
+</div>
+
+<section class="timeline-section" id="porbo">
+  <h2 class="timeline-heading">Chapters</h2>
+  <div class="timeline">
+
+    <div class="ep">
+      <div class="ep-card">
+        <h3 class="ep-title">1. The Call to Wake Up</h3>
+        <p class="ep-blurb">School days. Time slips away in phones, games, and friends, while a parent's call goes unheard. There's only ever one answer — "There's still plenty of time left."</p>
+        <a class="ep-link" href="porbo-1-en.html">Read</a>
+      </div>
+      <div class="ep-num">1</div>
+    </div>
+
+    <div class="ep">
+      <div class="ep-card">
+        <h3 class="ep-title">2. The Hollow and the Essential</h3>
+        <p class="ep-blurb">In the freedom of college life, late nights, gossip, and films quietly eat away the time meant for building real skills. Regret comes before the exam — yet the mind still insists, "I'll do better next time."</p>
+        <a class="ep-link" href="porbo-2-en.html">Read</a>
+      </div>
+      <div class="ep-num">2</div>
+    </div>
+
+    <div class="ep">
+      <div class="ep-card">
+        <h3 class="ep-title">3. The Coming and Going of Joy and Sorrow</h3>
+        <p class="ep-blurb">Reality sets in at job-hunting age. Friends have moved ahead — some have jobs, some have started businesses. The time that once felt endless turns out to have been the greatest wealth of all.</p>
+        <a class="ep-link" href="porbo-3-en.html">Read</a>
+      </div>
+      <div class="ep-num">3</div>
+    </div>
+
+    <div class="ep">
+      <div class="ep-card">
+        <h3 class="ep-title">4. What I Gained, What I Lost</h3>
+        <p class="ep-blurb">The years for landing a job are nearly gone. Time is on hand now, but the old opportunities are not. Old notebooks, books, and photographs stir a memory — how many times was he told, "Don't waste your time"?</p>
+        <a class="ep-link" href="porbo-4-en.html">Read</a>
+      </div>
+      <div class="ep-num">4</div>
+    </div>
+
+    <div class="ep">
+      <div class="ep-card">
+        <h3 class="ep-title">5. One More Year</h3>
+        <p class="ep-blurb">Staring at the candles while cutting his birthday cake, a question suddenly rises — has his age gone up by one year today, or has one more year been taken away from his life?</p>
+        <a class="ep-link" href="porbo-5-en.html">Read</a>
+      </div>
+      <div class="ep-num">5</div>
+    </div>
+
+    <div class="ep">
+      <div class="ep-card">
+        <h3 class="ep-title">6. Time, Like a River's Current</h3>
+        <p class="ep-blurb">The past will not return, but the present is still in hand. A decision to use what remains with meaning — to keep learning, to teach others, and to help the young understand the true value of time.</p>
+        <a class="ep-link" href="porbo-6-en.html">Read</a>
+      </div>
+      <div class="ep-num">6</div>
+    </div>
+
+  </div>
+</section>
+
+<div class="credits">
+  <div class="credits-box">
+    <span class="credits-label">Sources &amp; Acknowledgements</span>
+    The philosophy of time at the heart of this story draws its original inspiration from a song written and directed by Tapan Sinha for the classic film <em>Golpo Holeo Satyi</em> (1966), and from the reflection on the passage of time found in Jogindranath Sarkar's poem <em>Kakatua</em>. Building on the ideas of that song, that poem, and this philosophy of time, the characters, events, dialogue, and story here have been independently created.
+  </div>
+</div>
+
+<footer>This Life, Once Gone, Never Returns</footer>
+
+</body>
+</html>

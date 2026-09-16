@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  
+  <!-- SEO & Canonical -->
+  <title>MySkill Global — Learn · Play · Explore · Grow | Surajit Roy</title>
+  <meta name="description" content="MySkill Global offers language learning, educational games, exam preparation, practical guides and digital tools for learners, students, educators and families."/>
+  <meta name="author" content="Surajit Roy"/>
+  <meta name="copyright" content="© Surajit Roy"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://myskillglobal.com/"/>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1034022057999423" crossorigin="anonymous"></script>
+
+  <!-- Firebase Analytics -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-analytics.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDfxtOP-YCrCXtQxZrrFNC1uXucvbW0K78",
+      authDomain: "my-skill-global.firebaseapp.com",
+      projectId: "my-skill-global",
+      storageBucket: "my-skill-global.firebasestorage.app",
+      messagingSenderId: "978471914749",
+      appId: "1:978471914749:web:595750b5d90738933f4294",
+      measurementId: "G-8D9BPY8HJ0"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
+
+  <!-- Open Graph / Facebook / LinkedIn -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="MySkill Global"/>
+  <meta property="og:title" content="MySkill Global — Learn · Play · Explore · Grow"/>
+  <meta property="og:description" content="Language learning, educational games, exam preparation, practical guides and useful digital tools for learners and families."/>
+  <meta property="og:url" content="https://myskillglobal.com/"/>
+<meta property="og:image" content="https://myskillglobal.com/images/social-preview.jpg"/>
+<meta property="og:image:alt" content="MySkill Global — Learn, Play, Explore, Grow"/>
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="MySkill Global — Learn · Play · Explore · Grow"/>
+  <meta name="twitter:description" content="Language learning, educational games, exam preparation, practical guides and useful digital tools for learners and families."/>
+  <meta name="twitter:image" content="https://myskillglobal.com/images/social-preview.jpg"/>
+
+  <!-- Fonts & Stylesheets -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Mukta:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+:root {
+  --ink: #22333B;
+  --ink-soft: #3C4A52;
+  --muted: #746B5E;
+  --paper: #FFFBF2;
+  --paper-warm: #FFF3DD;
+  --card: #FFFFFF;
+  --marigold: #F5A524;
+  --marigold-light: #FFD166;
+  --sky: #2E86AB;
+  --coral: #F2545B;
+  --leaf: #4C956C;
+  --plum: #8E5572;
+  --chalk: #22333B;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; overflow-x: hidden; max-width: 100%; }
+body {
+  background: var(--paper);
+  color: var(--ink-soft);
+  font-family: 'Mukta', sans-serif;
+  font-weight: 400;
+  overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
+  background-image:
+    linear-gradient(var(--paper-warm) 1px, transparent 1px);
+  background-size: 100% 42px;
+  -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;
+}
+img { pointer-events: none; -webkit-user-drag: none; }
+
+.wavy-rule {
+  width: 90px; height: 12px; margin: 22px auto 36px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='12' viewBox='0 0 90 12'%3E%3Cpath d='M0 6 Q 7.5 0, 15 6 T 30 6 T 45 6 T 60 6 T 75 6 T 90 6' stroke='%23F5A524' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+}
+.center .wavy-rule { margin-left: auto; margin-right: auto; }
+
+/* =========================================================
+   PUBLIC LEADERBOARD
+   ========================================================= */
+.leaderboard-section { background: var(--paper-warm); padding: 90px 20px; }
+.leaderboard-container { max-width: 1100px; margin: 0 auto; }
+.leaderboard-card {
+  background: var(--card);
+  border: 2px solid var(--marigold);
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 6px 6px 0 rgba(34,51,59,0.08);
+}
+.leaderboard-controls { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 25px 0; flex-wrap: wrap; }
+.leaderboard-select {
+  min-width: 180px; flex: 1 1 180px; padding: 12px 16px; border-radius: 10px;
+  border: 2px solid var(--sky); background: var(--paper); color: var(--ink);
+  font-family: inherit; font-size: 0.95rem; outline: none;
+}
+.leaderboard-refresh {
+  padding: 12px 18px; border: 2px solid var(--coral); border-radius: 10px;
+  background: var(--paper); color: var(--coral); font-family: 'Mukta', sans-serif;
+  font-weight: 700; cursor: pointer; transition: 0.25s ease;
+}
+.leaderboard-refresh:hover { background: var(--coral); color: #fff; }
+.leaderboard-table-wrap { width: 100%; overflow-x: auto; border-radius: 12px; }
+.leaderboard-table { width: 100%; min-width: 760px; border-collapse: collapse; }
+.leaderboard-table th {
+  padding: 14px 12px; background: var(--marigold-light); color: var(--ink);
+  font-size: 0.78rem; letter-spacing: 0.5px; text-align: left;
+  border-bottom: 2px solid var(--marigold);
+}
+.leaderboard-table td { padding: 14px 12px; color: var(--ink-soft); font-size: 0.9rem; border-bottom: 1px solid rgba(34,51,59,0.08); }
+.leaderboard-table tbody tr:hover { background: rgba(245,165,36,0.08); }
+.leaderboard-rank { color: var(--coral); font-weight: 900; }
+.leaderboard-score { color: var(--leaf); font-weight: 900; }
+.leaderboard-attempts { color: var(--sky); font-weight: 700; }
+.leaderboard-loading, .leaderboard-empty, .leaderboard-error { text-align: center; padding: 30px 15px; color: var(--muted); }
+.leaderboard-note { text-align: center; margin-top: 18px; color: var(--muted); font-size: 0.78rem; line-height: 1.7; }
+@media (max-width: 600px) {
+  .leaderboard-section { padding: 65px 12px; }
+  .leaderboard-card { padding: 18px 12px; border-radius: 14px; }
+  .leaderboard-select { width: 100%; min-width: 0; }
+  .leaderboard-refresh { width: 100%; }
+}
+
+/* ── NAV ── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 40px;
+  background: var(--paper);
+  border-bottom: 3px solid var(--marigold);
+}
+.nav-logo { font-family: 'Baloo 2', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--ink); }
+.nav-logo::before { content: '🌻 '; }
+.nav-links { display: flex; gap: 22px; flex-wrap: wrap; }
+.nav-links a {
+  font-family: 'Mukta', sans-serif; font-size: 0.78rem; font-weight: 600;
+  color: var(--muted); text-decoration: none; transition: color 0.2s; white-space: nowrap;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--coral); }
+
+/* ══ HERO ══ */
+.hero {
+  position: relative; min-height: 80vh; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center;
+  padding: 130px 24px 70px;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(245,165,36,0.16) 0%, transparent 45%),
+    radial-gradient(circle at 85% 75%, rgba(46,134,171,0.12) 0%, transparent 45%),
+    var(--paper);
+}
+.logo-wrap { margin-bottom: 24px; animation: fadeDown 0.9s ease both; }
+.logo-ring {
+  width: 140px; height: 140px; border-radius: 32px;
+  border: 3px solid var(--marigold);
+  display: flex; align-items: center; justify-content: center; position: relative;
+  box-shadow: 6px 6px 0 rgba(245,165,36,0.25);
+  background: var(--card);
+  transform: rotate(-3deg);
+}
+.logo-img { width: 100px; height: 100px; object-fit: contain; background: transparent; }
+.hero-badge {
+  display: inline-block; font-family: 'Baloo 2', sans-serif; font-size: 13px; font-weight: 700;
+  color: var(--ink); background: var(--marigold-light);
+  border-radius: 999px; padding: 7px 20px; margin-bottom: 22px;
+  animation: fadeDown 1s 0.2s ease both;
+}
+.hero-title {
+  font-family: 'Baloo 2', sans-serif; font-size: clamp(2.4rem, 6vw, 4rem); font-weight: 700;
+  line-height: 1.15; color: var(--ink); margin-bottom: 10px;
+  animation: fadeDown 1s 0.3s ease both;
+}
+.hero-title em { font-style: normal; color: var(--coral); }
+.hero-subtitle {
+  font-family: 'Mukta', sans-serif; font-size: clamp(0.75rem, 1.5vw, 0.95rem); font-weight: 600;
+  letter-spacing: 1px; color: var(--sky); margin-bottom: 24px;
+  animation: fadeDown 1s 0.4s ease both;
+}
+.hero-tagline {
+  max-width: 620px; font-size: 1.05rem; line-height: 1.9; color: var(--ink-soft);
+  font-weight: 400; animation: fadeUp 1s 0.5s ease both;
+}
+.hero-divider { display: none; }
+
+/* ── SECTION WRAPPER ── */
+.section { position: relative; max-width: 1100px; margin: 0 auto; padding: 90px 32px; }
+.section-label {
+  font-family: 'Baloo 2', sans-serif; font-size: 13px; font-weight: 700; color: var(--coral);
+  margin-bottom: 10px; display: inline-block; background: rgba(242,84,91,0.10);
+  padding: 5px 14px; border-radius: 999px;
+}
+.section-heading { font-family: 'Baloo 2', sans-serif; font-size: clamp(1.7rem, 4vw, 2.5rem); font-weight: 700; color: var(--ink); line-height: 1.25; margin-bottom: 6px; }
+.gold-line { display: none; }
+.center { text-align: center; }
+
+/* ── ABOUT ── */
+.about-bg { background: var(--paper-warm); padding: 10px 0 90px; position: relative; }
+.about-text { max-width: 780px; margin: 0 auto; }
+.about-text p { font-size: 0.98rem; line-height: 1.95; color: var(--ink-soft); margin-bottom: 20px; }
+.about-text p:last-child { margin-bottom: 0; }
+
+/* ── PORTAL / MAIN SECTIONS GRID ── */
+.portal-bg { background: var(--paper); padding: 10px 0 90px; position: relative; }
+.portal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 26px; }
+.portal-card {
+  background: var(--card);
+  border: 2px solid var(--ink);
+  border-radius: 16px;
+  padding: 30px 26px;
+  display: flex; flex-direction: column;
+  box-shadow: 5px 5px 0 rgba(34,51,59,0.14);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.portal-card:nth-child(6n+1) { border-color: var(--marigold); box-shadow: 5px 5px 0 rgba(245,165,36,0.30); }
+.portal-card:nth-child(6n+2) { border-color: var(--sky); box-shadow: 5px 5px 0 rgba(46,134,171,0.28); }
+.portal-card:nth-child(6n+3) { border-color: var(--coral); box-shadow: 5px 5px 0 rgba(242,84,91,0.26); }
+.portal-card:nth-child(6n+4) { border-color: var(--leaf); box-shadow: 5px 5px 0 rgba(76,149,108,0.26); }
+.portal-card:nth-child(6n+5) { border-color: var(--plum); box-shadow: 5px 5px 0 rgba(142,85,114,0.26); }
+.portal-card:hover { transform: translate(-2px, -2px); }
+.portal-icon { font-size: 2.1rem; margin-bottom: 14px; display: block; }
+.portal-card h3 { font-family: 'Baloo 2', sans-serif; font-size: 1rem; color: var(--ink); margin-bottom: 10px; }
+.portal-card p { font-size: 0.9rem; color: var(--ink-soft); line-height: 1.8; margin-bottom: 22px; flex-grow: 1; }
+.portal-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; }
+.portal-link {
+  font-family: 'Mukta', sans-serif; font-size: 0.75rem; font-weight: 700;
+  color: var(--ink); text-decoration: none; border: 2px solid var(--ink);
+  border-radius: 999px; padding: 9px 16px; transition: all 0.25s ease;
+}
+.portal-link:hover { background: var(--ink); color: var(--paper); }
+.portal-link.solid { background: var(--marigold); color: var(--ink); border-color: var(--marigold); font-weight: 700; }
+.portal-link.solid:hover { background: var(--marigold-light); border-color: var(--marigold-light); }
+
+/* ── APPS ── */
+.apps-bg { background: var(--paper-warm); padding: 10px 0 20px; }
+.apps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; }
+.app-card {
+  background: var(--card); border: 2px solid var(--ink); border-radius: 16px;
+  padding: 22px; display: flex; gap: 20px;
+  box-shadow: 5px 5px 0 rgba(34,51,59,0.1);
+  transition: transform 0.25s ease;
+}
+.app-card:hover { transform: translate(-2px, -2px); }
+.card-thumb img { width: 60px; height: 60px; border-radius: 14px; }
+.app-name { font-family: 'Baloo 2', sans-serif; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+.app-desc { font-size: 0.85rem; line-height: 1.65; color: var(--ink-soft); margin-bottom: 16px; }
+.app-footer { display: flex; flex-wrap: wrap; gap: 10px; }
+.app-btn {
+  font-family: 'Mukta', sans-serif; font-size: 0.72rem; font-weight: 700; text-decoration: none;
+  padding: 9px 16px; border: 2px solid var(--sky); border-radius: 999px; color: var(--sky);
+  transition: all 0.25s ease;
+}
+.app-btn:hover { background: var(--sky); color: #fff; }
+.app-btn.solid { background: var(--sky); color: #fff; border-color: var(--sky); }
+.app-btn.solid:hover { background: #256f8a; }
+
+/* ── DEVELOPER SECTION ── */
+.founder-section { background: var(--chalk); padding: 90px 0; position: relative; }
+.founder-container { max-width: 900px; }
+.founder-section .section-label { background: rgba(255,209,102,0.16); color: var(--marigold-light); }
+.founder-section .section-heading { color: var(--paper); }
+.founder-grid { display: grid; grid-template-columns: 220px 1fr; gap: 60px; align-items: center; margin-top: 30px; }
+.founder-photo {
+  width: 190px; height: 190px; margin: auto; border-radius: 24px; overflow: hidden;
+  border: 3px solid var(--marigold); background: var(--ink-soft); position: relative;
+  transform: rotate(-2deg);
+}
+.founder-photo img { width: 100%; height: 100%; object-fit: cover; }
+.founder-fallback { position: absolute; inset: 0; display: none; align-items: center; justify-content: center; font-size: 4rem; }
+.founder-namebox { text-align: center; margin-top: 16px; }
+.founder-role { font-family: 'Mukta', sans-serif; font-size: .75rem; font-weight: 700; letter-spacing: 0.5px; color: var(--marigold-light); margin-bottom: 6px; }
+.founder-name { font-family: 'Baloo 2', sans-serif; font-size: 1.15rem; font-weight: 700; color: var(--paper); }
+.founder-badge {
+  display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; margin-bottom: 18px;
+  border-radius: 999px; background: rgba(255,209,102,0.14);
+  font-family: 'Baloo 2', sans-serif; font-size: .75rem; font-weight: 700; color: var(--marigold-light);
+}
+.founder-text { font-size: .97rem; line-height: 1.95; color: rgba(255,251,242,0.82); margin-bottom: 18px; }
+.founder-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; margin-bottom: 26px; }
+.founder-tag { border-radius: 999px; border: 2px solid rgba(255,209,102,.4); padding: 7px 16px; font-family: 'Mukta', sans-serif; font-size: .7rem; font-weight: 600; color: var(--marigold-light); }
+.founder-projects { list-style: none; margin: 4px 0 26px; padding: 0; }
+.founder-projects li {
+  font-size: .92rem; color: rgba(255,251,242,0.85); padding: 8px 0 8px 22px; position: relative;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.founder-projects li::before { content: '🌼'; position: absolute; left: 0; font-size: 0.8rem; }
+.founder-contact-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: 'Baloo 2', sans-serif; font-size: 0.85rem; font-weight: 700;
+  text-decoration: none; color: var(--ink);
+  background: var(--marigold);
+  border-radius: 999px;
+  padding: 13px 26px;
+  transition: all 0.3s ease;
+}
+.founder-contact-btn:hover { background: var(--marigold-light); }
+
+@media (max-width: 768px) {
+  .founder-grid { grid-template-columns: 1fr; gap: 32px; }
+  .founder-photo-area { order: -1; }
+}
+
+/* ── FAQ ── */
+.faq-list { max-width: 780px; margin: 0 auto; }
+.faq-item {
+  border-radius: 14px;
+  background: var(--card);
+  border: 2px dashed var(--sky);
+  margin-bottom: 16px;
+  padding: 22px 26px;
+}
+.faq-item:nth-child(2n) { border-color: var(--coral); }
+.faq-item:nth-child(3n) { border-color: var(--leaf); }
+.faq-item h3 { font-family: 'Baloo 2', sans-serif; font-size: 0.95rem; color: var(--ink); margin-bottom: 8px; }
+.faq-item p { font-size: 0.92rem; line-height: 1.85; color: var(--ink-soft); }
+
+/* ── FOOTER ── */
+.footer { background: var(--chalk); border-top: 3px solid var(--marigold); padding: 40px 32px; text-align: center; }
+.footer-links { margin-bottom: 18px; font-size: 0.8rem; }
+.footer-links a { color: rgba(255,251,242,0.7); text-decoration: none; margin: 0 4px; }
+.footer-links a:hover { color: var(--marigold-light); }
+.footer-grid { display: flex; flex-wrap: wrap; gap: 8px 36px; justify-content: center; margin-bottom: 22px; font-family: 'Mukta', sans-serif; font-size: 0.78rem; font-weight: 600; }
+.footer-grid a { color: rgba(255,251,242,0.75); text-decoration: none; }
+.footer-grid a:hover { color: var(--marigold-light); }
+.footer-name { font-family: 'Baloo 2', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--marigold-light); margin-bottom: 8px; }
+.footer-tagline { font-size: 0.82rem; color: rgba(255,251,242,0.65); margin-bottom: 22px; }
+.footer-copy { font-size: 0.78rem; color: rgba(255,251,242,0.55); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 600px) {
+  .nav { padding: 14px 18px; }
+  .nav-logo { font-size: .85rem; }
+  .nav-links { display: none; }
+  .hero { padding: 110px 16px 60px; }
+  .hero-title { font-size: 2.1rem; line-height: 1.25; }
+  .founder-grid { grid-template-columns: 1fr; }
+  .app-card { flex-direction: column; }
+  .section { padding: 55px 18px; }
+  .portal-grid { grid-template-columns: 1fr; }
+  .apps-grid { grid-template-columns: 1fr; }
+  .footer { padding: 32px 18px; }
+  .footer-grid { gap: 6px 20px; }
+}
+/* =========================================
+   STORIES LIBRARY
+   Scoped styles - will not affect portal cards
+   ========================================= */
+
+.stories-library{
+  width:100%;
+  max-width:1100px;
+  margin:40px auto;
+  padding:0 20px;
+}
+
+.stories-library-heading{
+  text-align:center;
+  margin-bottom:28px;
+}
+
+.stories-library-heading > span{
+  display:block;
+  font-size:2rem;
+  margin-bottom:8px;
+}
+
+.stories-library-heading h2{
+  margin:0 0 10px;
+  font-size:1.8rem;
+}
+
+.stories-library-heading p{
+  max-width:750px;
+  margin:0 auto;
+  line-height:1.7;
+  opacity:.8;
+}
+
+
+/* Individual story */
+
+.library-story-item{
+  display:flex;
+  align-items:stretch;
+  gap:28px;
+  background:#fff;
+  border:1px solid #ddd;
+  border-radius:16px;
+  overflow:hidden;
+  margin-bottom:28px;
+  box-shadow:0 5px 18px rgba(0,0,0,.06);
+}
+
+
+/* Story image */
+
+.library-story-image{
+  flex:0 0 360px;
+  min-height:300px;
+}
+
+.library-story-image img{
+  width:100%;
+  height:100%;
+  min-height:300px;
+  object-fit:cover;
+  display:block;
+}
+
+
+/* Story text */
+
+.library-story-info{
+  flex:1;
+  padding:25px 25px 24px;
+}
+
+.library-story-info h3{
+  margin:0 0 12px;
+  font-size:1.45rem;
+}
+
+.library-story-info p{
+  margin:0 0 12px;
+  line-height:1.7;
+}
+
+
+/* Tags */
+
+.library-story-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin:16px 0;
+}
+
+.library-story-tags span{
+  display:inline-block;
+  padding:5px 9px;
+  border-radius:20px;
+  background:#f3f3f3;
+  font-size:.82rem;
+}
+
+
+/* Read button */
+
+.library-story-button{
+  display:inline-block;
+  margin-top:5px;
+  padding:9px 16px;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:600;
+  background:#3f6659;
+  color:#fff;
+}
+
+.library-story-button:hover{
+  opacity:.88;
+}
+
+
+/* Mobile */
+
+@media(max-width:700px){
+
+  .stories-library{
+    padding:0 12px;
+    margin:30px auto;
+  }
+
+  .library-story-item{
+    display:block;
+  }
+
+  .library-story-image{
+    width:100%;
+    height:auto;
+    min-height:0;
+  }
+
+  .library-story-image img{
+    width:100%;
+    height:auto;
+    min-height:0;
+    max-height:280px;
+    object-fit:cover;
+  }
+
+  .library-story-info{
+    padding:20px;
+  }
+
+  .library-story-info h3{
+    font-size:1.3rem;
+  }
+
+}
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/7.2.3/css/flag-icons.min.css">
+<style>
+.fi { border-radius: 2px; box-shadow: 0 0 0 1px rgba(255,255,255,0.15); vertical-align: -2px; margin-right: 6px; }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav class="nav">
+<div class="nav-logo">MySkill Global</div>
+<div class="nav-links">
+<a href="#about">About</a>
+<a class="active" href="exam-index.html">All Exam</a>
+<a href="https://akashvoice.netlify.app/">Akash Voice</a>
+<a href="#leaderboard">🏆 Leaderboard</a>
+<a href="feedback-opinion-index.html">We Would Like to Hear Your Opinion</a>
+<a href="language-index.html">Languages</a>
+<a href="https://myskill-drive-expense.netlify.app/">Drive &amp; Expense - Website</a>
+<a href="stories-novels-index.html">Stories Novels</a>
+<a href="#faq">FAQ</a>
+<a href="#developer">Developer</a>
+</div>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<section class="hero">
+<div class="logo-wrap">
+<div class="logo-ring">
+<img alt="MySkill Global Logo" class="logo-img" src="images/logo.png"/>
+</div>
+</div>
+<div class="hero-badge">🌻 MySkill Global</div>
+<h1 class="hero-title">My<em>Skill</em> Global</h1>
+<p class="hero-subtitle">Learn · Play · Explore · Grow</p>
+
+<p class="hero-tagline">
+  Skills, learning, games and useful tools — all in one place. One home for
+  everything Surajit Roy builds under the MySkill name: educational games
+  for children, language-learning resources for every age, exam preparation
+  with certificates, story and novel reading with comprehension checks, and
+  practical everyday tools like driving expense tracking — built to be free,
+  offline-friendly wherever possible, and accessible to students, families,
+  and communities who may not have reliable internet access.
+</p>
+</section>
+
+<!-- ══════════════════════════════════════════
+     ABOUT
+══════════════════════════════════════════ -->
+<div class="about-bg" id="about">
+<div class="section" style="padding-top:70px;">
+<div class="center">
+<span class="section-label">Our story</span>
+<h2 class="section-heading">What Is MySkill Global?</h2>
+<div class="wavy-rule"></div>
+</div>
+<div class="about-text">
+<p>
+MySkill Global began as a single offline educational game built for students
+in West Bengal who often had limited or unreliable access to the internet.
+Over time, that single project grew into a family of tools spanning
+education, language learning, exam preparation, and everyday life skills —
+all built around one idea: learning should not depend on where you live,
+how much data you can afford, or whether you have the latest device.
+</p>
+<p>
+Today, MySkill Global brings together <strong>MySkillGame</strong>, a
+collection of over 75 offline educational games covering safety, science,
+personal finance, and life skills; a growing <strong>Language Learning</strong>
+section with interactive lessons and practical everyday phrases across
+multiple Indian and international languages; an <strong>Exam &amp;
+Certificate</strong> section where learners can practice, test their
+understanding, and earn certificates to mark their progress; and a
+<strong>Stories &amp; Novels</strong> library where readers can enjoy
+original and curated stories, then test their comprehension with follow-up
+questions.
+</p>
+<p>
+Alongside the education-focused tools, MySkill Global also hosts practical
+apps for everyday life — including <strong>MySkill Drive &amp; Expense</strong>,
+which helps drivers track fuel, EV charging, tolls and running costs, and
+<strong>AkashVoice</strong>, an early concept exploring offline micro-payments
+and accessible communication tools designed with students, senior citizens,
+and rural communities in mind.
+</p>
+<p>
+Every product under the MySkill name is built and maintained by Surajit Roy,
+with content, testing, and educational review contributed by collaborators
+including Sampurna Roy. The platform is under continuous development, with
+new games, languages, and tools added regularly based on feedback from
+students, teachers, and everyday users — which is exactly why the feedback
+section below exists.
+</p>
+</div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     MAIN SECTIONS
+══════════════════════════════════════════ -->
+<div class="portal-bg">
+<div class="section" style="padding-top:70px;">
+<div class="center">
+<span class="section-label">Explore MySkill</span>
+<h2 class="section-heading">Everywhere You Can Grow</h2>
+<div class="wavy-rule"></div>
+</div>
+
+
+<div class="portal-grid">
+<div class="story-card reveal">
+  <div class="story-image">
+    <img src="images/6years.png"
+         alt="A Six-Year-Old's Smile">
+  </div>
+  <div class="story-card-content">
+    <h3>A Six-Year-Old's Smile</h3>
+    <p>
+      Four brilliant but unemployed friends, crushed by poverty and
+      humiliation, make a desperate and terrible decision: they kidnap
+      six-year-old Simpa, the only daughter of wealthy industrialist
+      Ashok Agarwal. But nothing goes as planned. Instead of fear, Simpa
+      brings laughter, innocence, and unexpected affection into their
+      secret hideout.
+    </p>
+    <p>
+      Her simple words slowly melt their hardened hearts and awaken
+      their conscience. When the friends finally decide to return her
+      without demanding any ransom, they face the consequences of their
+      actions—and an unexpected second chance.
+    </p>
+    <p>
+      A touching story of guilt, redemption, compassion, and how one
+      child’s innocent smile can change four lives forever.
+    </p>
+    <div class="story-meta">
+      <span>📖 Fiction</span>
+      <span>❤️ Compassion</span>
+      <span>🌱 Redemption</span>
+      <span>👨‍👩‍👧 Human Values</span>
+    </div>
+    <a class="story-read-btn"
+       href="six-year-old-smile-english.html">
+       Read Full Story →
+    </a>
+  </div>
+</div>
+<div class="story-card reveal">
+  <div class="story-image">
+    <img src="images/jemeyati.png" alt="The Girl Who Was Never Lost">
+  </div>
+  <div class="story-card-content">
+    <h3>The Girl Who Was Never Lost</h3>
+    <p>A five-year-old girl is believed to have died in a terrible mountain accident that claims the lives of her parents. But fate has other plans. Rescued and raised by an elderly childless couple, she is eventually handed over to a woman she has never met.</p>
+    <p>Then, in a shocking twist, she is secretly placed in the car of a wealthy young woman named Tandra—and told to call her “Mother.” Soon, a simple lie begins to create an extraordinary chain of confusion, love, and mystery.</p>
+    <p>Can a false identity become a real family? And will the truth about the lost child ever be discovered?</p>
+    <div class="story-meta">
+      <span>📖 Fiction</span><span>❤️ Love</span><span>🔍 Mystery</span><span>👩‍👧 Family</span>
+    </div>
+    <a class="story-read-btn" href="the-girl-who-was-never-lost.html">Read Full Story →</a>
+  </div>
+</div>
+
+<div class="story-card reveal">
+  <div class="story-image">
+    <img src="images/chair-1.png" alt="The Chair Speaks">
+  </div>
+  <div class="story-card-content">
+    <h3>The Chair Speaks</h3>
+    <p>A mysterious antique chair stands silently behind the desk of a powerful government officer. For years, it has witnessed corruption, bribery, fear, humiliation, and countless hidden injustices. But one day, the chair awakens—and begins asking questions that no corrupt official can escape.</p>
+    <p>As secrets buried for decades come to light, even those who remained silent must face their own conscience. Is the chair truly supernatural, or is it the embodiment of justice itself?</p>
+    <p>When power changes hands, a new officer takes the legendary seat and discovers its greatest warning: <strong>power is not a privilege—it is a responsibility.</strong></p>
+    <div class="story-meta">
+      <span>📖 Fiction</span><span>⚖️ Justice</span><span>🏛️ Power</span><span>🌱 Responsibility</span>
+    </div>
+    <a class="story-read-btn" href="the-chair-speaks-index.html">Read Full Story →</a>
+  </div>
+</div>
+
+
+<div class="portal-card reveal">
+  <span class="portal-icon">📚</span>
+  <h3>STORIES & NOVELS</h3>
+  <p>A growing library of original and curated stories and novels for readers
+  of different ages. Each title comes with comprehension questions afterward,
+  so reading for pleasure also becomes a way to practice understanding,
+  vocabulary, and recall — with certificates for completed titles.</p>
+  <div class="portal-links">
+    <a class="portal-link" href="stories-novels-index.html">Explore →</a>
+  </div>
+</div>
+</div>
+
+<div class="story-card reveal">
+  <div class="story-image">
+    <img src="images/bengali-story.png" alt="বাংলা গল্পের সংগ্রহ">
+  </div>
+  <div class="story-card-content">
+    <h3>বাংলা গল্পের জগৎ</h3>
+    <p>ভালোবাসা, রহস্য, মানবিকতা, নৈতিকতা এবং জীবনের নানা অনুভূতিতে ভরা বাংলা গল্পের এক বিশেষ সংগ্রহ। প্রতিটি গল্পে আছে আবেগ, চমক এবং জীবনের গুরুত্বপূর্ণ বার্তা।</p>
+    <p>শিশু থেকে বড়দের জন্য উপভোগ্য নানা গল্পের বাংলা সংস্করণ এখানে একসঙ্গে পাওয়া যাবে। কিছু গল্প আপনাকে আনন্দ দেবে, কিছু ভাবাবে, আবার কিছু গল্প হয়তো আপনার হৃদয় ছুঁয়ে যাবে।</p>
+    <p>নতুন গল্পের সঙ্গে পরিচিত হন এবং বাংলা ভাষায় গল্প পড়ার আনন্দ উপভোগ করুন।</p>
+    <div class="story-meta">
+      <span>📖 বাংলা গল্প</span><span>❤️ মানবিকতা</span><span>🔍 রহস্য</span><span>🌱 জীবনবোধ</span>
+    </div>
+    <a class="story-read-btn" href="bengali-index.html">বাংলা গল্প দেখুন →</a>
+  </div>
+</div>
+
+
+<div class="portal-grid">
+
+<div class="portal-card reveal">
+  <span class="portal-icon">💬</span>
+  <h3>Your Opinion Matters</h3>
+  <p>
+    <strong>We Would Like to Hear Your Opinion.</strong>
+    Your voice can help us improve. Tell us what you found useful,
+    share your suggestions, and let us know what you would like to see next.
+  </p>
+  <div class="portal-links">
+    <a class="portal-link" href="feedback-opinion-index.html">Share Your Opinion →</a>
+  </div>
+</div>
+
+<div class="portal-card reveal">
+  <span class="portal-icon">🌍</span>
+  <h3>LANGUAGE LEARNING</h3>
+  <p>Interactive lessons, flip-card vocabulary, and text-to-speech pronunciation
+  help across multiple languages — built for learners moving between Bengali,
+  Hindi, English, and other regional and international languages, with
+  everyday expressions rather than just textbook grammar.</p>
+  <div class="portal-links">
+    <a class="portal-link" href="language-index.html">Explore →</a>
+  </div>
+</div>
+
+<div class="portal-card reveal">
+<span class="portal-icon">🎓</span>
+<h3>EXAM &amp; CERTIFICATE</h3>
+<p>Structured practice tests across stories, languages, and general knowledge,
+with instant scoring and a printable certificate on completion — a simple
+way for students to measure their own progress and stay motivated to keep
+learning.</p>
+<div class="portal-links">
+<a class="portal-link" href="exam-index.html">Explore →</a>
+</div>
+</div>
+<div class="portal-card reveal">
+<span class="portal-icon">💰</span>
+<h3>AkashVoice &amp; Smart Physical Coin Concept</h3>
+<p>Listen More. Connect More. Live More. Designed for Students, Families, Senior Citizens and Rural Communities. Introduce the Smart Coin ecosystem. Enable offline micro-payments for all citizens.</p>
+<div class="portal-links">
+<a class="portal-link" href="https://akashvoice.netlify.app/">Explore →</a>
+</div>
+</div>
+
+<div class="portal-card reveal">
+<span class="portal-icon">🎮</span>
+<h3>MYSKILLGAME</h3>
+<p>A collection of more than 75 offline educational games designed for school
+students and young learners. Topics range from road and fire safety to
+basic science, personal finance, and everyday life skills — each game built
+to work with little or no internet connection so learning doesn't stop when
+the network does.</p>
+<div class="portal-links">
+<a class="portal-link solid" href="https://play.google.com/store/apps/details?id=com.surajit.childgame" rel="noopener noreferrer" target="_blank">Get the App →</a>
+<a class="portal-link" href="https://myskillgame.netlify.app/">Open Web Version</a>
+</div>
+</div>
+
+<div class="portal-card reveal">
+<span class="portal-icon">🚗</span>
+<h3>MYSKILL DRIVE &amp; EXPENSE</h3>
+<p>A practical tracking tool for everyday drivers. Log fuel fill-ups, EV
+charging sessions, toll payments, and general running costs for your
+vehicle, and get a clearer picture of what each trip actually costs over
+time — useful for personal budgeting or comparing petrol, diesel, and
+electric options.</p>
+<div class="portal-links">
+<a class="portal-link solid" href="https://myskill-drive-expense.netlify.app/">Open App / Website →</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ══════════════════════════════════════════
+     PUBLIC LEADERBOARD
+══════════════════════════════════════════ -->
+
+<section class="leaderboard-section" id="leaderboard">
+
+  <div class="leaderboard-container">
+
+    <div class="center">
+      <span class="section-label reveal">
+        Public achievement board
+      </span>
+
+      <h2 class="section-heading reveal">
+        🏆 Public Leaderboard
+      </h2>
+
+      <div class="gold-line reveal"></div>
+
+      <p
+        class="reveal"
+        style="
+          max-width:650px;
+          margin:18px auto 0;
+          color:var(--muted);
+          line-height:1.8;
+          text-align:center;
+        "
+      >
+        See the top performers across MySkill Global exams.
+        Your personal information remains private.
+      </p>
+    </div>
+    <div class="leaderboard-card reveal">
+      <!-- CONTROLS -->
+      <div class="leaderboard-controls">
+        <!-- COUNTRY -->
+        <select
+          id="leaderboardCountry"
+          class="leaderboard-select"
+          onchange="updateSchoolOptions()"
+        >
+          <option value="">🌍 All Countries</option>
+        </select>
+
+        <!-- SCHOOL -->
+        <select
+          id="leaderboardSchool"
+          class="leaderboard-select"
+          onchange="loadLeaderboard()"
+          disabled
+        >
+          <option value="">🏫 All Schools</option>
+        </select>
+
+        <!-- MAIN EXAM -->
+        <select
+          id="leaderboardExam"
+          class="leaderboard-select"
+          onchange="updateSubExamOptions()"
+        >
+          <option value="">🏆 All Exams</option>
+          <option value="story">📖 Story &amp; Novel</option>
+          <option value="language">🌐 Language Test</option>
+          <option value="miscellaneous">🧩 Miscellaneous</option>
+        </select>
+
+        <!-- SUB EXAM -->
+        <select
+          id="leaderboardSubExam"
+          class="leaderboard-select"
+          onchange="loadLeaderboard()"
+          disabled
+        >
+          <option value="">All Sub-Exams</option>
+        </select>
+        <button
+          type="button"
+          class="leaderboard-refresh"
+          onclick="loadLeaderboard()"
+        >
+          🔄 Refresh</button>
+      </div>
+      <!-- TABLE -->
+      <div class="leaderboard-table-wrap">
+        <table class="leaderboard-table">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Name</th>
+              <th>School</th>
+              <th>Country</th>
+              <th>Exam</th>
+              <th>Best Score</th>
+              <th>Attempts</th>
+            </tr>
+          </thead>
+          <tbody id="leaderboardBody">
+            <tr>
+              <td
+                colspan="7"
+                class="leaderboard-loading"
+              >
+                Loading leaderboard...
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="leaderboard-note">
+        🔒 Only name, school, country, exam, best score
+        and attempts are shown publicly.
+        Student ID and other private information are not displayed.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+<!-- ══════════════════════════════════════════
+     OUR APPS
+══════════════════════════════════════════ -->
+<div class="apps-bg">
+<div class="section">
+<div class="center">
+<span class="section-label">Official app links</span>
+<h2 class="section-heading">Our Apps</h2>
+<div class="wavy-rule"></div>
+</div>
+<div class="apps-grid">
+
+<div class="app-card reveal">
+<div class="card-thumb"><img alt="MySkillGame" src="images/logo1.png"/></div>
+<div>
+<div class="app-name">🎮 MySkillGame</div>
+<div class="app-desc">Learning through 75+ offline educational games.</div>
+<div class="app-footer">
+<a class="app-btn solid" href="https://play.google.com/store/apps/details?id=com.surajit.childgame" rel="noopener noreferrer" target="_blank">Google Play →</a>
+<a class="app-btn" href="https://myskillgame.netlify.app/">Open Web →</a>
+</div>
+</div>
+</div>
+
+<div class="app-card reveal">
+<div class="card-thumb"><img alt="MySkill Drive & Expense" src="images/car.png"/></div>
+<div>
+<div class="app-name">🚗 MySkill Drive &amp; Expense</div>
+<div class="app-desc">Smart driving, fuel, EV and expense awareness.</div>
+<div class="app-footer">
+<a class="app-btn solid" href="#" rel="noopener noreferrer" target="_blank">Google Play →</a>
+<a class="app-btn" href="https://myskill-drive-expense.netlify.app/">Open App →</a>
+</div>
+</div>
+</div>
+
+</div>
+<p style="text-align:center; color:var(--muted); font-size:0.82rem; margin-top:28px; max-width:600px; margin-left:auto; margin-right:auto; line-height:1.8;">
+More MySkill apps are on the way. This page always links to the current official Google Play listings and live web versions.
+</p>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     DEVELOPER INFORMATION
+══════════════════════════════════════════ -->
+<section class="founder-section" id="developer">
+<div class="section founder-container">
+<span class="section-label reveal">The creator</span>
+<h2 class="section-heading reveal">About the Developer</h2>
+<div class="gold-line reveal"></div>
+<div class="founder-grid reveal">
+<div class="founder-photo-area">
+<div class="founder-photo">
+<img alt="Surajit Roy" onerror="this.style.display='none';document.getElementById('devFallback').style.display='flex';" src="images/founder.jpg"/>
+<div class="founder-fallback" id="devFallback" style="display:none;">👤</div>
+</div>
+<div class="founder-namebox">
+<div class="founder-role">DEVELOPER &amp; CREATOR</div>
+<div class="founder-name">Surajit Roy</div>
+</div>
+</div>
+<div>
+<div class="founder-badge">🏫 MYSKILL GLOBAL</div>
+<p class="founder-text">
+  Built on years of hands-on experience in vocational education, computer applications
+  and student skill development, the MySkill platform brings together learning, games,
+  language tools and everyday practical apps under one roof.
+</p>
+<p class="founder-text">
+  Every product in the MySkill family shares one goal: make useful, well-designed tools
+  freely and easily accessible to students, families and everyday users.
+</p>
+<ul class="founder-projects">
+<li>MySkillGame</li>
+<li>MySkill Drive &amp; Expense</li>
+<li>MySkill Learning</li>
+<li>MySkill Language</li>
+<li>MySkill Community</li>
+</ul>
+<div class="founder-tags">
+<span class="founder-tag">VOCATIONAL EDUCATION</span>
+<span class="founder-tag">EDTECH DEVELOPER</span>
+<span class="founder-tag">EDUCATIONAL GAMES</span>
+<span class="founder-tag">DIGITAL LEARNING</span>
+<span class="founder-tag">WEST BENGAL</span>
+</div>
+<a class="founder-contact-btn" href="mailto:developer@myskillglobal.com">✉️ Contact Developer →</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     FAQ
+══════════════════════════════════════════ -->
+<div class="portal-bg" id="faq">
+<div class="section">
+<div class="center">
+<span class="section-label">Common questions</span>
+<h2 class="section-heading">Frequently Asked Questions</h2>
+<div class="wavy-rule"></div>
+</div>
+<div class="faq-list">
+
+<div class="faq-item">
+<h3>Is MySkill Global free to use?</h3>
+<p>Yes. The games, language lessons, exam practice, and story library are all
+free to access. MySkillGame is also available as a free offline app on
+Google Play, so students without a steady internet connection can still
+learn.</p>
+</div>
+
+<div class="faq-item">
+<h3>Who is MySkill Global designed for?</h3>
+<p>The platform is built mainly for school students, young learners, and
+first-time job seekers in West Bengal and across India, but the language
+tools, exam practice, and story library are useful for learners of any age
+or background, including families and community groups.</p>
+</div>
+
+<div class="faq-item">
+<h3>Do I need an internet connection to use the games?</h3>
+<p>Most MySkillGame titles are designed to run offline once downloaded,
+which matters for learners in areas with limited or unreliable internet.
+Some features, like the public leaderboard and certain web-based tools,
+do require a connection.</p>
+</div>
+
+<div class="faq-item">
+<h3>How do the certificates work?</h3>
+<p>After completing an exam, language test, or story comprehension quiz,
+learners receive a score and a certificate marking that milestone. It's a
+simple way to track progress over time rather than a formal accreditation.</p>
+</div>
+
+<div class="faq-item">
+<h3>Can I suggest a new game, language, or feature?</h3>
+<p>Yes — the "We Would Like to Hear Your Opinion" section in the menu above
+is exactly for this. Feedback from students, teachers, and everyday users
+directly shapes what gets built next.</p>
+</div>
+
+<div class="faq-item">
+<h3>Who builds and maintains MySkill Global?</h3>
+<p>The platform is created and developed by Surajit Roy, with content
+review, storytelling, and educational input from collaborators including
+Sampurna Roy. See the "About the Developer" section below for more.</p>
+</div>
+
+</div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer class="footer">
+<div class="footer-name">MySkill Global</div>
+<div class="footer-tagline">Learn · Play · Explore · Grow</div>
+<div class="footer-grid">
+<a href="apps.html">Apps</a><a href="learning.html">Learning</a><a href="language.html">Languages</a>
+<a href="game_catalog.html">Games</a><a href="https://myskill-drive-expense.netlify.app/">Drive &amp; Expense</a><a href="community.html">Community</a>
+</div>
+<div class="footer-links">
+<a href="#developer">Developer Information</a> |
+<a href="privacy.html">Privacy Policy</a> |
+<a href="terms.html">Terms of Use</a> |
+<a href="contact.html">Contact</a>
+</div>
+<div class="footer-copy">© 2026 MySkill Global · Created &amp; Developed by Surajit Roy</div>
+</footer>
+
+<script>
+  /* =========================================================
+     1. ANIMATION / REVEAL OBSERVER
+     ========================================================= */
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        const siblings = Array.from(e.target.parentElement.querySelectorAll('.reveal'));
+        setTimeout(() => e.target.classList.add('in-view', 'visible'), siblings.indexOf(e.target) * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => observer.observe(el));
+
+  /* =========================================================
+     2. PUBLIC LEADERBOARD CONFIG & API
+     ========================================================= */
+  const LEADERBOARD_API = "https://script.google.com/macros/s/AKfycbw6RCPloCBvzyM_quGnBgekRwAVZUVCjcATSetNwoNuhknnJah_5DJaGPtwEkqh7aY/exec";
+
+/* =========================================================
+   UNIVERSAL COUNTRY FLAG (real images via flag-icons library,
+   not emoji — emoji flags don't render on many systems,
+   especially Windows, and fall back to plain letter codes)
+   ========================================================= */
+
+const COUNTRY_ISO = {
+  "afghanistan": "AF", "albania": "AL", "algeria": "DZ", "andorra": "AD",
+  "angola": "AO", "antigua and barbuda": "AG", "argentina": "AR", "armenia": "AM",
+  "australia": "AU", "austria": "AT", "azerbaijan": "AZ", "bahamas": "BS",
+  "bahrain": "BH", "bangladesh": "BD", "barbados": "BB", "belarus": "BY",
+  "belgium": "BE", "belize": "BZ", "benin": "BJ", "bhutan": "BT",
+  "bolivia": "BO", "bosnia and herzegovina": "BA", "botswana": "BW", "brazil": "BR",
+  "brunei": "BN", "bulgaria": "BG", "burkina faso": "BF", "burundi": "BI",
+  "cambodia": "KH", "cameroon": "CM", "canada": "CA", "cape verde": "CV",
+  "central african republic": "CF", "chad": "TD", "chile": "CL", "china": "CN",
+  "colombia": "CO", "comoros": "KM", "congo": "CG",
+  "democratic republic of the congo": "CD", "dr congo": "CD",
+  "costa rica": "CR", "croatia": "HR", "cuba": "CU", "cyprus": "CY",
+  "czech republic": "CZ", "czechia": "CZ", "denmark": "DK", "djibouti": "DJ",
+  "dominica": "DM", "dominican republic": "DO", "east timor": "TL", "timor-leste": "TL",
+  "ecuador": "EC", "egypt": "EG", "el salvador": "SV", "equatorial guinea": "GQ",
+  "eritrea": "ER", "estonia": "EE", "eswatini": "SZ", "swaziland": "SZ",
+  "ethiopia": "ET", "fiji": "FJ", "finland": "FI", "france": "FR",
+  "gabon": "GA", "gambia": "GM", "georgia": "GE", "germany": "DE",
+  "ghana": "GH", "greece": "GR", "grenada": "GD", "guatemala": "GT",
+  "guinea": "GN", "guinea-bissau": "GW", "guyana": "GY", "haiti": "HT",
+  "honduras": "HN", "hungary": "HU", "iceland": "IS", "india": "IN",
+  "indonesia": "ID", "iran": "IR", "iraq": "IQ", "ireland": "IE",
+  "israel": "IL", "italy": "IT", "ivory coast": "CI", "cote d'ivoire": "CI",
+  "jamaica": "JM", "japan": "JP", "jordan": "JO", "kazakhstan": "KZ",
+  "kenya": "KE", "kiribati": "KI", "kosovo": "XK", "kuwait": "KW",
+  "kyrgyzstan": "KG", "laos": "LA", "latvia": "LV", "lebanon": "LB",
+  "lesotho": "LS", "liberia": "LR", "libya": "LY", "liechtenstein": "LI",
+  "lithuania": "LT", "luxembourg": "LU", "madagascar": "MG", "malawi": "MW",
+  "malaysia": "MY", "maldives": "MV", "mali": "ML", "malta": "MT",
+  "marshall islands": "MH", "mauritania": "MR", "mauritius": "MU", "mexico": "MX",
+  "micronesia": "FM", "moldova": "MD", "monaco": "MC", "mongolia": "MN",
+  "montenegro": "ME", "morocco": "MA", "mozambique": "MZ", "myanmar": "MM",
+  "burma": "MM", "namibia": "NA", "nauru": "NR", "nepal": "NP",
+  "netherlands": "NL", "new zealand": "NZ", "nicaragua": "NI", "niger": "NE",
+  "nigeria": "NG", "north korea": "KP", "north macedonia": "MK", "norway": "NO",
+  "oman": "OM", "pakistan": "PK", "palau": "PW", "palestine": "PS",
+  "panama": "PA", "papua new guinea": "PG", "paraguay": "PY", "peru": "PE",
+  "philippines": "PH", "poland": "PL", "portugal": "PT", "qatar": "QA",
+  "romania": "RO", "russia": "RU", "rwanda": "RW",
+  "saint kitts and nevis": "KN", "saint lucia": "LC",
+  "saint vincent and the grenadines": "VC", "samoa": "WS", "san marino": "SM",
+  "sao tome and principe": "ST", "saudi arabia": "SA", "senegal": "SN",
+  "serbia": "RS", "seychelles": "SC", "sierra leone": "SL", "singapore": "SG",
+  "slovakia": "SK", "slovenia": "SI", "solomon islands": "SB", "somalia": "SO",
+  "south africa": "ZA", "south korea": "KR", "korea": "KR", "south sudan": "SS",
+  "spain": "ES", "sri lanka": "LK", "sudan": "SD", "suriname": "SR",
+  "sweden": "SE", "switzerland": "CH", "syria": "SY", "taiwan": "TW",
+  "tajikistan": "TJ", "tanzania": "TZ", "thailand": "TH", "togo": "TG",
+  "tonga": "TO", "trinidad and tobago": "TT", "tunisia": "TN", "turkey": "TR",
+  "turkmenistan": "TM", "tuvalu": "TV", "uganda": "UG", "ukraine": "UA",
+  "united arab emirates": "AE", "uae": "AE",
+  "united kingdom": "GB", "uk": "GB", "great britain": "GB", "england": "GB",
+  "united states": "US", "usa": "US", "united states of america": "US",
+  "uruguay": "UY", "uzbekistan": "UZ", "vanuatu": "VU", "vatican city": "VA",
+  "venezuela": "VE", "vietnam": "VN", "yemen": "YE", "zambia": "ZM",
+  "zimbabwe": "ZW", "hong kong": "HK", "macau": "MO", "puerto rico": "PR"
+};
+
+function getCountryCode(country) {
+  const name = String(country || "").trim().toLowerCase();
+  return COUNTRY_ISO[name] || null;
+}
+
+function escapeHtml(str) {
+  return String(str || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
+/* Real flag image (use inside table cells / anywhere HTML is allowed) */
+function getCountryFlagHTML(country) {
+  const code = getCountryCode(country);
+  const safeName = escapeHtml(country);
+  if (!code) {
+    return `🌍 ${safeName}`;
+  }
+  return `<span class="fi fi-${code.toLowerCase()}"></span>${safeName}`;
+}
+
+/* Plain text label (use for <select><option> — options can't show
+   images in any browser, so we show the ISO code as text) */
+function getCountryLabel(country) {
+  const code = getCountryCode(country);
+  return code ? `${code} ${country}` : `🌍 ${country}`;
+}
+
+
+  function leaderboardMedal(rank) {
+    const r = Number(rank);
+    return r === 1 ? "🥇" : r === 2 ? "🥈" : r === 3 ? "🥉" : r;
+  }
+
+  /* =========================================================
+     IDENTIFY MAIN EXAM
+     ========================================================= */
+  function getMainExam(examName) {
+    const exam = String(examName || "").trim();
+    const lower = exam.toLowerCase();
+
+    /* LANGUAGE */
+    if (
+      lower.startsWith("language test") ||
+      lower.includes("language test")
+    ) {
+      return "language";
+    }
+
+    /* MISCELLANEOUS */
+    const miscellaneousExams = [
+      "Atmasamman",
+      "Bengali",
+      "Farm Safety",
+      "Jute Revival",
+      "Mobile Smart Guide",
+      "Nabajagaran",
+      "One Mobile Three Lives"
+    ];
+
+    if (
+      miscellaneousExams.some(function(item) {
+        return item.toLowerCase() === lower;
+      })
+    ) {
+      return "miscellaneous";
+    }
+
+    /* EVERYTHING ELSE */
+    return "story";
+  }
+
+  /* =========================================================
+     3. LOAD LEADERBOARD DATA FROM GOOGLE SHEETS
+     ========================================================= */
+  async function loadLeaderboard() {
+    const tbody = document.getElementById("leaderboardBody");
+    const examSelect = document.getElementById("leaderboardExam");
+    const subSelect = document.getElementById("leaderboardSubExam");
+    const countrySelect = document.getElementById("leaderboardCountry");
+    const schoolSelect = document.getElementById("leaderboardSchool");
+
+    if (!tbody) return;
+
+    tbody.innerHTML = `
+      <tr>
+        <td colspan="7" class="leaderboard-loading">
+          ⏳ Loading leaderboard...
+        </td>
+      </tr>
+    `;
+
+    try {
+      const selectedExam = examSelect ? examSelect.value.trim() : "";
+      const selectedSubExam = subSelect ? subSelect.value.trim() : "";
+      const selectedCountry = countrySelect ? countrySelect.value.trim() : "";
+      const selectedSchool = schoolSelect ? schoolSelect.value.trim() : "";
+
+      const response = await fetch(LEADERBOARD_API, {
+        method: "GET",
+        cache: "no-store"
+      });
+
+      if (!response.ok) {
+        throw new Error("Leaderboard request failed.");
+      }
+
+     const data = await response.json();
+
+     let filteredData = Array.isArray(data) ? data.slice() : [];
+
+// =====================================================
+// COUNTRY FILTER
+// =====================================================
+
+if (selectedCountry) {
+  filteredData = filteredData.filter(function(item) {
+    return String(item.country || "").trim() === selectedCountry;
+  });
+}
+
+// =====================================================
+// SCHOOL FILTER
+// =====================================================
+
+if (selectedSchool) {
+  filteredData = filteredData.filter(function(item) {
+    return String(item.school || "").trim() === selectedSchool;
+  });
+}
+
+// =====================================================
+// MAIN EXAM FILTER
+// =====================================================
+
+if (selectedExam) {
+  filteredData = filteredData.filter(function(item) {
+    return getMainExam(item.examName) === selectedExam;
+  });
+}
+
+// =====================================================
+// SUB EXAM FILTER
+// =====================================================
+
+if (selectedSubExam) {
+  filteredData = filteredData.filter(function(item) {
+    return String(item.examName || "").trim() === selectedSubExam;
+  });
+}
+
+// =====================================================
+// SORT BY BEST SCORE / RANK
+// =====================================================
+
+filteredData.sort(function(a, b) {
+  const scoreA = Number(a.highScore || 0);
+  const scoreB = Number(b.highScore || 0);
+
+  return scoreB - scoreA;
+});
+
+// =====================================================
+// SHOW TOP 100 ONLY
+// =====================================================
+
+const displayData = filteredData.slice(0, 100);
+
+// =====================================================
+// RENDER LEADERBOARD
+// =====================================================
+
+renderLeaderboard(displayData);
+
+    } catch (error) {
+      console.error("Leaderboard error:", error);
+      tbody.innerHTML = `
+        <tr>
+          <td colspan="7" class="leaderboard-empty" style="color: #ff6b6b;">
+            ⚠️ Unable to load leaderboard. Please try again.
+          </td>
+        </tr>
+      `;
+    }
+  }
+
+  /* =========================================================
+     4. RENDER LEADERBOARD ROWS
+     ========================================================= */
+  function renderLeaderboard(data) {
+    const tbody = document.getElementById("leaderboardBody");
+    if (!tbody) return;
+
+    tbody.innerHTML = "";
+
+    if (!Array.isArray(data) || data.length === 0) {
+      tbody.innerHTML = `
+        <tr>
+          <td colspan="7" class="leaderboard-empty">
+            🏆 No scores available yet.
+          </td>
+        </tr>
+      `;
+      return;
+    }
+
+    data.forEach(function(item, index) {
+      const row = document.createElement("tr");
+
+      /* Rank */
+      const rankCell = document.createElement("td");
+      rankCell.className = "rank-cell";
+      const displayRank = item.rank || (index + 1);
+      rankCell.innerHTML = `<span class="rank-medal">${leaderboardMedal(displayRank)}</span>`;
+      row.appendChild(rankCell);
+
+      /* Name */
+      const nameCell = document.createElement("td");
+      nameCell.textContent = item.name || "—";
+      row.appendChild(nameCell);
+
+      /* School */
+      const schoolCell = document.createElement("td");
+      schoolCell.textContent = item.school || "—";
+      row.appendChild(schoolCell);
+
+      /* Country */
+      const countryCell = document.createElement("td");
+      countryCell.innerHTML = item.country
+        ? getCountryFlagHTML(item.country)
+        : "—";
+      row.appendChild(countryCell);
+
+      /* Exam */
+      const examCell = document.createElement("td");
+      examCell.textContent = item.examName || "—";
+      row.appendChild(examCell);
+
+      /* Score */
+      const scoreCell = document.createElement("td");
+      scoreCell.style.fontWeight = "bold";
+      scoreCell.style.color = "var(--gold-light)";
+      scoreCell.textContent = (item.highScore || 0) + " / " + (item.totalMarks || 0);
+      row.appendChild(scoreCell);
+
+      /* Attempts */
+      const attemptsCell = document.createElement("td");
+      attemptsCell.textContent = item.attempts || 1;
+      row.appendChild(attemptsCell);
+
+      tbody.appendChild(row);
+    });
+  }
+
+  /* =========================================================
+     5. DYNAMICALLY FILL COUNTRY DROPDOWN FROM GOOGLE SHEETS
+     ========================================================= */
+  async function loadCountryOptions() {
+    const countrySelect = document.getElementById("leaderboardCountry");
+    if (!countrySelect) return;
+
+    try {
+      const response = await fetch(LEADERBOARD_API, {
+        method: "GET",
+        cache: "no-store"
+      });
+
+      if (!response.ok) return;
+
+      const data = await response.json();
+      if (!Array.isArray(data)) return;
+
+      const countries = [...new Set(
+        data.map(item => String(item.country || "").trim()).filter(Boolean)
+      )];
+
+      countries.sort((a, b) => a.localeCompare(b));
+
+      countries.forEach(function(country) {
+        const option = document.createElement("option");
+        option.value = country;
+        option.textContent = getCountryLabel(country);
+        countrySelect.appendChild(option);
+      });
+
+    } catch (error) {
+      console.error("Country list error:", error);
+    }
+  }
+
+  /* =========================================================
+     5b. DYNAMICALLY FILL SCHOOL DROPDOWN BASED ON COUNTRY
+     ========================================================= */
+  async function updateSchoolOptions() {
+    const countrySelect = document.getElementById("leaderboardCountry");
+    const schoolSelect = document.getElementById("leaderboardSchool");
+
+    if (!countrySelect || !schoolSelect) return;
+
+    const selectedCountry = countrySelect.value;
+
+    schoolSelect.innerHTML = `<option value="">🏫 All Schools</option>`;
+    schoolSelect.disabled = !selectedCountry;
+
+    if (!selectedCountry) {
+      loadLeaderboard();
+      return;
+    }
+
+    try {
+      const response = await fetch(LEADERBOARD_API, {
+        method: "GET",
+        cache: "no-store"
+      });
+
+      if (!response.ok) {
+        throw new Error("Unable to load data");
+      }
+
+      const data = await response.json();
+      if (!Array.isArray(data)) return;
+
+      const schools = [...new Set(
+        data
+          .filter(item => String(item.country || "").trim() === selectedCountry)
+          .map(item => String(item.school || "").trim())
+          .filter(Boolean)
+      )];
+
+      schools.sort((a, b) => a.localeCompare(b));
+
+      schools.forEach(function(school) {
+        const option = document.createElement("option");
+        option.value = school;
+        option.textContent = school;
+        schoolSelect.appendChild(option);
+      });
+
+      schoolSelect.disabled = false;
+
+      loadLeaderboard();
+
+    } catch (error) {
+      console.error("School loading error:", error);
+      loadLeaderboard();
+    }
+  }
+
+  /* =========================================================
+     6. UPDATE SUB-EXAM DROPDOWN BASED ON MAIN EXAM
+     ========================================================= */
+  async function updateSubExamOptions() {
+    const examSelect = document.getElementById("leaderboardExam");
+    const subSelect = document.getElementById("leaderboardSubExam");
+
+    if (!examSelect || !subSelect) return;
+
+    const selectedExam = examSelect.value;
+
+    subSelect.innerHTML = `<option value="">All Sub-Exams</option>`;
+    subSelect.disabled = !selectedExam;
+
+    if (!selectedExam) {
+      loadLeaderboard();
+      return;
+    }
+
+    try {
+      const response = await fetch(LEADERBOARD_API, {
+        method: "GET",
+        cache: "no-store"
+      });
+
+      if (!response.ok) {
+        throw new Error("Unable to load exams");
+      }
+
+      const data = await response.json();
+      if (!Array.isArray(data)) return;
+
+      const subExams = [];
+
+      data.forEach(function(item) {
+        const examName = String(item.examName || "").trim();
+        if (!examName) return;
+        if (getMainExam(examName) !== selectedExam) return;
+        if (!subExams.includes(examName)) {
+          subExams.push(examName);
+        }
+      });
+
+      subExams.sort((a, b) => a.localeCompare(b));
+
+      subExams.forEach(function(examName) {
+        const option = document.createElement("option");
+        option.value = examName;
+        option.textContent = examName;
+        subSelect.appendChild(option);
+      });
+
+      subSelect.disabled = false;
+
+      loadLeaderboard();
+
+    } catch (error) {
+      console.error("Sub-exam loading error:", error);
+      loadLeaderboard();
+    }
+  }
+
+  /* =========================================================
+     7. INITIAL LOAD
+     ========================================================= */
+  document.addEventListener("DOMContentLoaded", function() {
+    loadCountryOptions();
+    loadLeaderboard();
+  });
+</script>
+<script src="script.js"></script>
+</body>
+</html>

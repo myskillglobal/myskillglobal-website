@@ -4,6 +4,30 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Stories & Novels | MySkill Global</title>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyDfxtOP-YCrCXtQxZrrFNC1uXucvbW0K78",
+    authDomain: "my-skill-global.firebaseapp.com",
+    projectId: "my-skill-global",
+    storageBucket: "my-skill-global.firebasestorage.app",
+    messagingSenderId: "978471914749",
+    appId: "1:978471914749:web:595750b5d90738933f4294",
+    measurementId: "G-8D9BPY8HJ0"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -277,6 +301,10 @@
   }
   footer .fname{color:var(--gold-light); font-family:'Playfair Display',serif; font-weight:700;}
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/7.2.3/css/flag-icons.min.css">
+<style>
+.fi { border-radius: 2px; box-shadow: 0 0 0 1px rgba(255,255,255,0.15); vertical-align: -2px; margin-right: 6px; }
+</style>
 </head>
 <body>
 
@@ -294,7 +322,7 @@
       <a href="story-novel-exam.html">Story-Novel Exam</a>
       <a href="language_test.html">Language Test Exam</a>
       <a href="miscellaneous_exam.html">Miscellaneous Exam</a>
-      <a href="certificate.html">Certificate</a>
+      <a href="certificate-history.html">My Certificate</a>
     </nav>
   </div>
 </header>
@@ -310,9 +338,11 @@
     novels, discover new ideas and perspectives, test your understanding
     through questions and answers, and complete assessments to earn certificates.
   </p>
-  <div class="hero-btns">
-    <a href="#story-grid" class="btn btn-primary">📚 Start Reading →</a>
-    <a href="story-novel-exam.html" class="btn btn-outline">🎓Story-Novel Take the Exam →</a>
+<div class="hero-btns">
+  <a href="stories-novels-index.html" class="btn btn-outline">📖 Story-Novel Reading</a>
+  <a href="feedback-opinion-index.html" class="btn btn-outline">📚 Miscellaneous Topic Reading</a>
+  <a href="language-index.html" class="btn btn-outline">🌐 Language Learning</a>
+</div>
   </div>
 </section>
 
@@ -478,59 +508,90 @@
     </div>
     <div class="leaderboard-card reveal">
       <!-- CONTROLS -->
-      <div class="leaderboard-controls">
-        <select
-          id="leaderboardExam"
-          class="leaderboard-select"
-          onchange="loadLeaderboard()"
-        >
-          <option value="">🏆 All Exams</option>
-          <option value="Story &amp; Novel Exam">📚 Story &amp; Novel Exam</option>
-          <option value="Language Test">🗣️ Language Test</option>
-          <option value="Miscellaneous Exam">📝 Miscellaneous Exam</option>
-        </select>
-        <button
-          type="button"
-          class="leaderboard-refresh"
-          onclick="loadLeaderboard()"
-        >
-          🔄 Refresh
-        </button>
-      </div>
-      <!-- TABLE -->
-      <div class="leaderboard-table-wrap">
-        <table class="leaderboard-table">
-          <thead>
-            <tr>
-              <th>Rank</th>
-              <th>Name</th>
-              <th>School</th>
-              <th>Country</th>
-              <th>Exam</th>
-              <th>Best Score</th>
-              <th>Attempts</th>
-            </tr>
-          </thead>
-          <tbody id="leaderboardBody">
-            <tr>
-              <td colspan="7" class="leaderboard-loading">
-                Loading leaderboard...
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="leaderboard-note">
-        🔒 Only name, school, country, exam, best score
-        and attempts are shown publicly.
-        Student ID and other private information are not displayed.
-      </p>
-    </div>
-  </div>
+<div class="leaderboard-controls">
+  <!-- COUNTRY -->
+  <select
+    id="leaderboardCountry"
+    class="leaderboard-select"
+    onchange="updateSchoolOptions()"
+  >
+    <option value="">🌍 All Countries</option>
+  </select>
+
+  <!-- SCHOOL -->
+  <select
+    id="leaderboardSchool"
+    class="leaderboard-select"
+    onchange="loadLeaderboard()"
+    disabled
+  >
+    <option value="">🏫 All Schools</option>
+  </select>
+
+  <!-- MAIN EXAM -->
+  <select
+    id="leaderboardExam"
+    class="leaderboard-select"
+    onchange="updateSubExamOptions()"
+  >
+    <option value="">🏆 All Exams</option>
+    <option value="story">📖 Story &amp; Novel</option>
+    <option value="language">🌐 Language Test</option>
+    <option value="miscellaneous">🧩 Miscellaneous</option>
+  </select>
+
+  <!-- SUB EXAM -->
+  <select
+    id="leaderboardSubExam"
+    class="leaderboard-select"
+    onchange="loadLeaderboard()"
+    disabled>
+    <option value="">All Sub-Exams</option>
+  </select>
+  <button
+    type="button"
+    class="leaderboard-refresh"
+    onclick="loadLeaderboard()"
+  >
+    🔄 Refresh
+  </button>
+</div>
+
+<!-- LEADERBOARD TABLE -->
+<div class="leaderboard-table-wrap">
+  <table class="leaderboard-table">
+    <thead>
+      <tr>
+        <th>Rank</th>
+        <th>Name</th>
+        <th>School</th>
+        <th>Country</th>
+        <th>Exam</th>
+        <th>Best Score</th>
+        <th>Attempts</th>
+      </tr>
+    </thead>
+
+    <tbody id="leaderboardBody">
+      <tr>
+        <td colspan="7" class="leaderboard-loading">
+          Loading leaderboard...
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p class="leaderboard-note">
+  🔒 Only name, school, country, exam, best score and attempts are shown publicly.
+  Student ID and other private information are not displayed.
+</p>
+
+</div>
+</div>
 </section>
 
 <div class="divider"></div>
-
 <!-- ===== CLOSING ===== -->
 <section id="closing">
   <div class="section-inner">
@@ -538,15 +599,7 @@
       <h2>More Than Reading</h2>
       <p>Reading is not only about finishing a story. It is about understanding ideas, discovering different perspectives and learning from experiences.</p>
       <p>Our Story &amp; Novel section combines reading with questions, answers and assessment to turn reading into an interactive learning experience.</p>
-      <div class="btns">
-        <a href="story-novel-exam.html" class="btn btn-outline">🎓 Take the Exam : Story-Novel →</a>
-<br>
-        <a href="language_test.html" class="btn btn-outline">🎓 Take the Exam : Language →</a>
-<br>
-        <a href="miscellaneous_exam.html" class="btn btn-outline">🎓 Take the Exam : Miscellaneous Exam→</a>
-        <a href="certificate.html" class="btn btn-outline">🎓 Exam Certificate →</a>
-
-      </div>
+          </div>
     </div>
   </div>
 </section>
@@ -560,72 +613,852 @@
 </footer>
 
 <script>
-/* ---------- Public Leaderboard ----------
-   SAMPLE data below so the section is never empty while you wire up
-   a real source. To connect real results, replace LEADERBOARD_DATA
-   with a fetch() to your backend (Firebase / Google Sheet / API)
-   inside loadLeaderboard(). */
-const LEADERBOARD_DATA = [
-  { name:"Ananya Sen",  school:"Dhanicha High School",  country:"India",      exam:"Story & Novel Exam", score:98, attempts:2 },
-  { name:"Rahul Verma", school:"Delhi Public School",   country:"India",      exam:"Story & Novel Exam", score:94, attempts:1 },
-  { name:"Fatima Noor", school:"Green Valley School",   country:"Bangladesh", exam:"Language Test",      score:96, attempts:3 },
-  { name:"Wei Zhang",   school:"Riverdale Academy",     country:"Singapore",  exam:"Miscellaneous Exam", score:91, attempts:1 },
-  { name:"Priya Nair",  school:"St. Mary's School",     country:"India",      exam:"Language Test",      score:89, attempts:2 },
-  { name:"John Okafor", school:"Unity High",            country:"Nigeria",    exam:"Miscellaneous Exam", score:87, attempts:4 }
-];
+/* ---------- Public Leaderboard (Connected to Google Sheets) ---------- */
+/* =========================================================
+   PUBLIC LEADERBOARD
+   ========================================================= */
 
-function leaderboardMedal(rank){
-  return rank === 1 ? "🥇" : rank === 2 ? "🥈" : rank === 3 ? "🥉" : rank;
+const APPS_SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbw6RCPloCBvzyM_quGnBgekRwAVZUVCjcATSetNwoNuhknnJah_5DJaGPtwEkqh7aY/exec";
+
+/* =========================================================
+   UNIVERSAL COUNTRY FLAG (real images via flag-icons library,
+   not emoji — emoji flags don't render on many systems,
+   especially Windows, and fall back to plain letter codes)
+   ========================================================= */
+
+const COUNTRY_ISO = {
+  "afghanistan": "AF", "albania": "AL", "algeria": "DZ", "andorra": "AD",
+  "angola": "AO", "antigua and barbuda": "AG", "argentina": "AR", "armenia": "AM",
+  "australia": "AU", "austria": "AT", "azerbaijan": "AZ", "bahamas": "BS",
+  "bahrain": "BH", "bangladesh": "BD", "barbados": "BB", "belarus": "BY",
+  "belgium": "BE", "belize": "BZ", "benin": "BJ", "bhutan": "BT",
+  "bolivia": "BO", "bosnia and herzegovina": "BA", "botswana": "BW", "brazil": "BR",
+  "brunei": "BN", "bulgaria": "BG", "burkina faso": "BF", "burundi": "BI",
+  "cambodia": "KH", "cameroon": "CM", "canada": "CA", "cape verde": "CV",
+  "central african republic": "CF", "chad": "TD", "chile": "CL", "china": "CN",
+  "colombia": "CO", "comoros": "KM", "congo": "CG",
+  "democratic republic of the congo": "CD", "dr congo": "CD",
+  "costa rica": "CR", "croatia": "HR", "cuba": "CU", "cyprus": "CY",
+  "czech republic": "CZ", "czechia": "CZ", "denmark": "DK", "djibouti": "DJ",
+  "dominica": "DM", "dominican republic": "DO", "east timor": "TL", "timor-leste": "TL",
+  "ecuador": "EC", "egypt": "EG", "el salvador": "SV", "equatorial guinea": "GQ",
+  "eritrea": "ER", "estonia": "EE", "eswatini": "SZ", "swaziland": "SZ",
+  "ethiopia": "ET", "fiji": "FJ", "finland": "FI", "france": "FR",
+  "gabon": "GA", "gambia": "GM", "georgia": "GE", "germany": "DE",
+  "ghana": "GH", "greece": "GR", "grenada": "GD", "guatemala": "GT",
+  "guinea": "GN", "guinea-bissau": "GW", "guyana": "GY", "haiti": "HT",
+  "honduras": "HN", "hungary": "HU", "iceland": "IS", "india": "IN",
+  "indonesia": "ID", "iran": "IR", "iraq": "IQ", "ireland": "IE",
+  "israel": "IL", "italy": "IT", "ivory coast": "CI", "cote d'ivoire": "CI",
+  "jamaica": "JM", "japan": "JP", "jordan": "JO", "kazakhstan": "KZ",
+  "kenya": "KE", "kiribati": "KI", "kosovo": "XK", "kuwait": "KW",
+  "kyrgyzstan": "KG", "laos": "LA", "latvia": "LV", "lebanon": "LB",
+  "lesotho": "LS", "liberia": "LR", "libya": "LY", "liechtenstein": "LI",
+  "lithuania": "LT", "luxembourg": "LU", "madagascar": "MG", "malawi": "MW",
+  "malaysia": "MY", "maldives": "MV", "mali": "ML", "malta": "MT",
+  "marshall islands": "MH", "mauritania": "MR", "mauritius": "MU", "mexico": "MX",
+  "micronesia": "FM", "moldova": "MD", "monaco": "MC", "mongolia": "MN",
+  "montenegro": "ME", "morocco": "MA", "mozambique": "MZ", "myanmar": "MM",
+  "burma": "MM", "namibia": "NA", "nauru": "NR", "nepal": "NP",
+  "netherlands": "NL", "new zealand": "NZ", "nicaragua": "NI", "niger": "NE",
+  "nigeria": "NG", "north korea": "KP", "north macedonia": "MK", "norway": "NO",
+  "oman": "OM", "pakistan": "PK", "palau": "PW", "palestine": "PS",
+  "panama": "PA", "papua new guinea": "PG", "paraguay": "PY", "peru": "PE",
+  "philippines": "PH", "poland": "PL", "portugal": "PT", "qatar": "QA",
+  "romania": "RO", "russia": "RU", "rwanda": "RW",
+  "saint kitts and nevis": "KN", "saint lucia": "LC",
+  "saint vincent and the grenadines": "VC", "samoa": "WS", "san marino": "SM",
+  "sao tome and principe": "ST", "saudi arabia": "SA", "senegal": "SN",
+  "serbia": "RS", "seychelles": "SC", "sierra leone": "SL", "singapore": "SG",
+  "slovakia": "SK", "slovenia": "SI", "solomon islands": "SB", "somalia": "SO",
+  "south africa": "ZA", "south korea": "KR", "korea": "KR", "south sudan": "SS",
+  "spain": "ES", "sri lanka": "LK", "sudan": "SD", "suriname": "SR",
+  "sweden": "SE", "switzerland": "CH", "syria": "SY", "taiwan": "TW",
+  "tajikistan": "TJ", "tanzania": "TZ", "thailand": "TH", "togo": "TG",
+  "tonga": "TO", "trinidad and tobago": "TT", "tunisia": "TN", "turkey": "TR",
+  "turkmenistan": "TM", "tuvalu": "TV", "uganda": "UG", "ukraine": "UA",
+  "united arab emirates": "AE", "uae": "AE",
+  "united kingdom": "GB", "uk": "GB", "great britain": "GB", "england": "GB",
+  "united states": "US", "usa": "US", "united states of america": "US",
+  "uruguay": "UY", "uzbekistan": "UZ", "vanuatu": "VU", "vatican city": "VA",
+  "venezuela": "VE", "vietnam": "VN", "yemen": "YE", "zambia": "ZM",
+  "zimbabwe": "ZW", "hong kong": "HK", "macau": "MO", "puerto rico": "PR"
+};
+
+function getCountryCode(country) {
+  const name = String(country || "").trim().toLowerCase();
+  return COUNTRY_ISO[name] || null;
 }
 
-function loadLeaderboard(){
-  const examFilter = document.getElementById("leaderboardExam").value;
-  const body = document.getElementById("leaderboardBody");
-  body.innerHTML = '<tr><td colspan="7" class="leaderboard-loading">Loading leaderboard...</td></tr>';
+function escapeHtml(str) {
+  return String(str || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
 
-  setTimeout(() => {
-    let rows = LEADERBOARD_DATA.slice();
-    if (examFilter) rows = rows.filter(r => r.exam === examFilter);
-    rows.sort((a, b) => b.score - a.score);
+/* Real flag image (use inside table cells / anywhere HTML is allowed) */
+function getCountryFlagHTML(country) {
+  const code = getCountryCode(country);
+  const safeName = escapeHtml(country);
+  if (!code) {
+    return `🌍 ${safeName}`;
+  }
+  return `<span class="fi fi-${code.toLowerCase()}"></span>${safeName}`;
+}
 
-    if (!rows.length){
-      body.innerHTML = '<tr><td colspan="7" class="leaderboard-empty">No results yet for this exam. Be the first to take it!</td></tr>';
+/* Plain text label (use for <select><option> — options can't show
+   images in any browser, so we show the ISO code as text) */
+function getCountryLabel(country) {
+  const code = getCountryCode(country);
+  return code ? `${code} ${country}` : `🌍 ${country}`;
+}
+
+
+
+function leaderboardMedal(rank) {
+
+  return rank === 1
+    ? "🥇"
+    : rank === 2
+    ? "🥈"
+    : rank === 3
+    ? "🥉"
+    : rank;
+
+}
+
+
+/* =========================================================
+   IDENTIFY MAIN EXAM
+   ========================================================= */
+
+function getMainExam(examName) {
+
+  const exam =
+    String(examName || "").trim();
+
+  const lower =
+    exam.toLowerCase();
+
+
+  /* LANGUAGE */
+
+  if (
+    lower.startsWith("language test") ||
+    lower.includes("language test")
+  ) {
+    return "language";
+  }
+
+
+  /* MISCELLANEOUS */
+
+  const miscellaneousExams = [
+
+    "Atmasamman",
+    "Bengali",
+    "Farm Safety",
+    "Jute Revival",
+    "Mobile Smart Guide",
+    "Nabajagaran",
+    "One Mobile Three Lives"
+
+  ];
+
+
+  if (
+    miscellaneousExams
+      .some(function(item) {
+
+        return item.toLowerCase() === lower;
+
+      })
+  ) {
+
+    return "miscellaneous";
+
+  }
+
+
+  /* EVERYTHING ELSE */
+
+  return "story";
+
+}
+
+
+/* =========================================================
+   LOAD LEADERBOARD
+   ========================================================= */
+
+async function loadLeaderboard() {
+
+  const examSelect =
+    document.getElementById(
+      "leaderboardExam"
+    );
+
+  const subSelect =
+    document.getElementById(
+      "leaderboardSubExam"
+    );
+
+  const body =
+    document.getElementById(
+      "leaderboardBody"
+    );
+
+
+  if (!body) return;
+
+
+  body.innerHTML =
+    '<tr>' +
+    '<td colspan="7" class="leaderboard-loading">' +
+    'Loading leaderboard...' +
+    '</td>' +
+    '</tr>';
+
+
+  try {
+
+    /*
+     * Always load ALL records first.
+     * Main Exam and Sub-Exam filtering
+     * will happen safely in this page.
+     */
+
+    const response =
+      await fetch(
+        APPS_SCRIPT_URL
+      );
+
+
+    if (!response.ok) {
+
+      throw new Error(
+        "Network response was not ok"
+      );
+
+    }
+
+
+    const data =
+      await response.json();
+
+
+    if (
+      !Array.isArray(data)
+    ) {
+
+      throw new Error(
+        "Invalid leaderboard data"
+      );
+
+    }
+
+
+    const selectedExam =
+      examSelect
+        ? examSelect.value
+        : "";
+
+
+    const selectedSubExam =
+      subSelect
+        ? subSelect.value
+        : "";
+
+
+    const countrySelect =
+      document.getElementById("leaderboardCountry");
+
+    const schoolSelect =
+      document.getElementById("leaderboardSchool");
+
+    const selectedCountry =
+      countrySelect
+        ? countrySelect.value
+        : "";
+
+    const selectedSchool =
+      schoolSelect
+        ? schoolSelect.value
+        : "";
+
+
+    let filteredData =
+      data.slice();
+
+
+    /* =====================================================
+       COUNTRY FILTER
+       ===================================================== */
+
+    if (selectedCountry) {
+
+      filteredData =
+        filteredData.filter(
+          function(item) {
+
+            return (
+              String(item.country || "").trim()
+              === selectedCountry
+            );
+
+          }
+        );
+
+    }
+
+
+    /* =====================================================
+       SCHOOL FILTER
+       ===================================================== */
+
+    if (selectedSchool) {
+
+      filteredData =
+        filteredData.filter(
+          function(item) {
+
+            return (
+              String(item.school || "").trim()
+              === selectedSchool
+            );
+
+          }
+        );
+
+    }
+
+
+    /* =====================================================
+       MAIN EXAM FILTER
+       ===================================================== */
+
+    if (selectedExam) {
+
+      filteredData =
+        filteredData.filter(
+          function(item) {
+
+            return (
+              getMainExam(
+  item.examName
+) === selectedExam
+            );
+
+          }
+        );
+
+    }
+
+
+    /* =====================================================
+       SUB EXAM FILTER
+       ===================================================== */
+
+    if (selectedSubExam) {
+
+      filteredData =
+        filteredData.filter(
+          function(item) {
+
+            return (
+              String(
+                item.examName || ""
+              ).trim() ===
+              selectedSubExam
+            );
+
+          }
+        );
+
+    }
+// =====================================================
+// MAXIMUM 100 RECORDS
+// =====================================================
+
+filteredData = filteredData.slice(0, 100);
+
+renderLeaderboard(
+  filteredData
+);
+
+   // =====================================================
+// SORT BY SCORE / RANK
+// =====================================================
+
+filteredData.sort(function(a, b) {
+
+  const scoreA = Number(a.score || 0);
+  const scoreB = Number(b.score || 0);
+
+  return scoreB - scoreA;
+
+});
+
+
+// =====================================================
+// SHOW TOP 100 ONLY
+// =====================================================
+
+const displayData =
+  filteredData.slice(0, 100);
+
+
+// =====================================================
+// RENDER LEADERBOARD
+// =====================================================
+
+renderLeaderboard(
+  displayData
+);
+
+
+  } catch (error) {
+
+    console.error(
+      "Error loading leaderboard:",
+      error
+    );
+
+
+    body.innerHTML =
+      '<tr>' +
+      '<td colspan="7" class="leaderboard-empty">' +
+      'Failed to load leaderboard data. Please try again later.' +
+      '</td>' +
+      '</tr>';
+
+  }
+
+}
+
+
+/* =========================================================
+   LOAD COUNTRY DROPDOWN
+   ========================================================= */
+
+async function loadCountryOptions() {
+
+  const countrySelect =
+    document.getElementById("leaderboardCountry");
+
+  if (!countrySelect) {
+    return;
+  }
+
+  try {
+
+    const response =
+      await fetch(APPS_SCRIPT_URL);
+
+    if (!response.ok) {
+      throw new Error("Unable to load countries");
+    }
+
+    const data =
+      await response.json();
+
+    if (!Array.isArray(data)) {
       return;
     }
 
-    body.innerHTML = rows.map((r, i) => `
-      <tr>
-        <td class="rank-cell"><span class="rank-medal">${leaderboardMedal(i + 1)}</span></td>
-        <td>${r.name}</td>
-        <td>${r.school}</td>
-        <td>${r.country}</td>
-        <td>${r.exam}</td>
-        <td>${r.score}%</td>
-        <td>${r.attempts}</td>
-      </tr>
-    `).join("");
-  }, 250);
+    const countries = [];
+
+    data.forEach(function(item) {
+
+      const country =
+        String(item.country || "").trim();
+
+      if (
+        country &&
+        !countries.includes(country)
+      ) {
+
+        countries.push(country);
+
+      }
+
+    });
+
+    countries.sort(function(a, b) {
+      return a.localeCompare(b);
+    });
+
+    countries.forEach(function(country) {
+
+      const option =
+        document.createElement("option");
+
+      option.value = country;
+      option.textContent = getCountryLabel(country);
+
+      countrySelect.appendChild(option);
+
+    });
+
+  } catch (error) {
+
+    console.error(
+      "Country loading error:",
+      error
+    );
+
+  }
+
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+
+/* =========================================================
+   UPDATE SCHOOL DROPDOWN
+   ========================================================= */
+
+async function updateSchoolOptions() {
+
+  const countrySelect =
+    document.getElementById("leaderboardCountry");
+
+  const schoolSelect =
+    document.getElementById("leaderboardSchool");
+
+  if (!countrySelect || !schoolSelect) {
+    return;
+  }
+
+  const selectedCountry =
+    countrySelect.value;
+
+  /* Reset school */
+
+  schoolSelect.innerHTML =
+    '<option value="">🏫 All Schools</option>';
+
+  schoolSelect.disabled =
+    !selectedCountry;
+
+  if (!selectedCountry) {
+
+    loadLeaderboard();
+    return;
+
+  }
+
+  try {
+
+    const response =
+      await fetch(APPS_SCRIPT_URL);
+
+    if (!response.ok) {
+      throw new Error("Unable to load data");
+    }
+
+    const data =
+      await response.json();
+
+    if (!Array.isArray(data)) {
+      return;
+    }
+
+    const schools = [];
+
+    data.forEach(function(item) {
+
+      const country =
+        String(item.country || "").trim();
+
+      const school =
+        String(item.school || "").trim();
+
+      if (
+        country === selectedCountry &&
+        school &&
+        !schools.includes(school)
+      ) {
+
+        schools.push(school);
+
+      }
+
+    });
+
+    /* Sort schools */
+
+    schools.sort(function(a, b) {
+      return a.localeCompare(b);
+    });
+
+    /* Add schools */
+
+    schools.forEach(function(school) {
+
+      const option =
+        document.createElement("option");
+
+      option.value = school;
+      option.textContent = school;
+
+      schoolSelect.appendChild(option);
+
+    });
+
+    schoolSelect.disabled = false;
+
+    loadLeaderboard();
+
+  } catch (error) {
+
+    console.error(
+      "School loading error:",
+      error
+    );
+
+    loadLeaderboard();
+
+  }
+
+}
+
+
+/* =========================================================
+   UPDATE SUB-EXAM DROPDOWN
+   ========================================================= */
+
+async function updateSubExamOptions() {
+
+  const examSelect =
+    document.getElementById(
+      "leaderboardExam"
+    );
+
+  const subSelect =
+    document.getElementById(
+      "leaderboardSubExam"
+    );
+
+
+  if (!examSelect || !subSelect) {
+    return;
+  }
+
+
+  const selectedExam =
+    examSelect.value;
+
+
+  /*
+   * Reset
+   */
+
+  subSelect.innerHTML =
+    '<option value="">All Sub-Exams</option>';
+
+
+  subSelect.disabled =
+    !selectedExam;
+
+
+  /*
+   * All Exams
+   */
+
+  if (!selectedExam) {
+
+    loadLeaderboard();
+
+    return;
+
+  }
+
+
+  try {
+
+    const response =
+      await fetch(
+        APPS_SCRIPT_URL
+      );
+
+
+    if (!response.ok) {
+      throw new Error(
+        "Unable to load exams"
+      );
+    }
+
+
+    const data =
+      await response.json();
+
+
+    if (
+      !Array.isArray(data)
+    ) {
+      return;
+    }
+
+
+    /*
+     * Find Sub-Exams
+     */
+
+    const subExams = [];
+
+
+    data.forEach(
+      function(item) {
+
+       const examName =
+  String(
+    item.examName || ""
+  ).trim();
+
+
+        if (!examName) {
+          return;
+        }
+
+
+        if (
+          getMainExam(
+            examName
+          ) !== selectedExam
+        ) {
+          return;
+        }
+
+
+        if (
+          !subExams.includes(
+            examName
+          )
+        ) {
+
+          subExams.push(
+            examName
+          );
+
+        }
+
+      }
+    );
+
+
+    /*
+     * Sort alphabetically
+     */
+
+    subExams.sort(
+      function(a, b) {
+
+        return a.localeCompare(
+          b
+        );
+
+      }
+    );
+
+
+    /*
+     * Add options
+     */
+
+    subExams.forEach(
+      function(examName) {
+
+        const option =
+          document.createElement(
+            "option"
+          );
+
+        option.value =
+          examName;
+
+        option.textContent =
+          examName;
+
+        subSelect.appendChild(
+          option
+        );
+
+      }
+    );
+
+
+    /*
+     * Enable
+     */
+
+    subSelect.disabled =
+      false;
+
+
+    /*
+     * Load selected Main Exam
+     */
+
+    loadLeaderboard();
+
+
+  } catch (error) {
+
+    console.error(
+      "Sub-exam loading error:",
+      error
+    );
+
+    loadLeaderboard();
+  }
+}
+/* =========================================================
+   INITIAL LOAD
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", function() {
+
+  loadCountryOptions();
+
   loadLeaderboard();
 
   const revealEls = document.querySelectorAll(".reveal");
-  if ("IntersectionObserver" in window){
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting){
+
+  if ("IntersectionObserver" in window) {
+
+    const io = new IntersectionObserver(function(entries) {
+
+      entries.forEach(function(entry) {
+
+        if (entry.isIntersecting) {
+
           entry.target.classList.add("in-view");
+
           io.unobserve(entry.target);
+
         }
+
       });
+
     }, { threshold: 0.15 });
-    revealEls.forEach(el => io.observe(el));
+
+    revealEls.forEach(function(el) {
+      io.observe(el);
+    });
+
   } else {
-    revealEls.forEach(el => el.classList.add("in-view"));
+
+    revealEls.forEach(function(el) {
+      el.classList.add("in-view");
+    });
+
   }
+
 });
 </script>
 
+<script src="script.js"></script>
+<script src="security.js"></script>
 </body>
 </html>

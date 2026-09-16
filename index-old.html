@@ -334,42 +334,6 @@ img { pointer-events: none; -webkit-user-drag: none; }
   transition: all 0.25s ease;
 }
 .story-read-btn:hover { background: var(--marigold-light); }
-.story-read-btn.outline {
-  background: transparent;
-  color: var(--ink);
-  border: 2px solid var(--marigold);
-}
-.story-read-btn.outline:hover { background: var(--marigold); color: var(--ink); }
-
-.story-cta-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  justify-content: center;
-  margin: 6px 0 6px;
-}
-.story-cta-row .story-read-btn { align-self: center; margin-top: 0; }
-
-.stories-library { margin-top: 8px; }
-.stories-header { text-align: center; margin-bottom: 26px; }
-.stories-header h2 {
-  font-family: 'Baloo 2', sans-serif;
-  font-size: clamp(1.4rem, 3.2vw, 1.9rem);
-  color: var(--ink);
-  margin-bottom: 8px;
-}
-.stories-header p {
-  font-size: 0.92rem;
-  color: var(--muted);
-  max-width: 560px;
-  margin: 0 auto;
-  line-height: 1.7;
-}
-.stories-more-row {
-  display: flex;
-  justify-content: center;
-  margin-top: 30px;
-}
 
 @media (max-width: 720px) {
   .story-card { flex-direction: column; }
@@ -381,25 +345,22 @@ img { pointer-events: none; -webkit-user-drag: none; }
   display:grid !important;
   grid-template-columns:repeat(3,minmax(0,1fr)) !important;
   gap:20px;
-  align-items:stretch !important;
+  align-items:start !important;
 }
 .stories-grid .story-card{
   width:100% !important;
-  height:100% !important;
+  height:auto !important;
   min-height:0 !important;
   max-height:none !important;
   margin:0 !important;
   padding:0 !important;
-  align-self:stretch !important;
+  align-self:start !important;
   overflow:hidden;
-  display:flex !important;
-  flex-direction:column !important;
+  display:block !important;
   box-sizing:border-box;
 }
 .stories-grid .story-card-content{
-  display:flex !important;
-  flex-direction:column !important;
-  flex:1 1 auto !important;
+  display:block !important;
   height:auto !important;
   min-height:0 !important;
   max-height:none !important;
@@ -424,23 +385,15 @@ img { pointer-events: none; -webkit-user-drag: none; }
 }
 .stories-grid .story-read-btn{
   display:inline-block !important;
-  margin-top:auto !important;
-  align-self:flex-start !important;
 }
 .stories-grid .story-image{
-  flex:0 0 200px !important;
   height:200px !important;
   min-height:0 !important;
-  background: var(--paper-warm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 .stories-grid .story-image img{
   width:100% !important;
   height:200px !important;
-  object-fit:contain;
-  object-position:center center;
+  object-fit:cover;
   display:block;
 }
 @media(max-width:900px){
@@ -575,9 +528,7 @@ img { pointer-events: none; -webkit-user-drag: none; }
 </style>
 </head>
 <body>
-<link rel="manifest" href="/manifest.json">
-<link rel="icon" type="image/png" sizes="192x192" href="images/favicon.png">
-<link rel="apple-touch-icon" href="images/favicon.png">
+
 <!-- ── NAV ── -->
 <nav class="nav">
 <div class="nav-logo">MySkill Global</div>
@@ -599,166 +550,75 @@ img { pointer-events: none; -webkit-user-drag: none; }
      HERO
 ══════════════════════════════════════════ -->
 <section class="hero">
+<div class="logo-wrap">
+<div class="logo-ring">
+<img alt="MySkill Global Logo" class="logo-img" src="images/logo.png"/>
+</div>
+</div>
+<div class="hero-badge">🌻 MySkill Global</div>
+<h1 class="hero-title">My<em>Skill</em> Global</h1>
+<p class="hero-subtitle">Learn · Play · Explore · Grow</p>
 
-  <div class="logo-wrap">
-    <div class="logo-ring">
-      <img
-        alt="MySkill Global Logo"
-        class="logo-img"
-        src="images/logo.png"
-      />
-    </div>
-  </div>
-
-  <div class="hero-badge">🌻 MySkill Global</div>
-
-  <h1 class="hero-title">My<em>Skill</em> Global</h1>
-
-  <p class="hero-subtitle">Learn · Play · Explore · Grow</p>
-
-  <p class="hero-tagline">
-    MySkill Global is an independent learning platform bringing together
-    educational games, language-learning resources, assessments, certificates,
-    stories, practical life-skills content and useful digital tools in one
-    place. Our aim is to make learning accessible, engaging and meaningful
-    for students, families and communities, including learners who may not
-    always have reliable internet access.
-  </p>
-
+<p class="hero-tagline">
+  Skills, learning, games and useful tools — all in one place. One home for
+  everything Surajit Roy builds under the MySkill name: educational games
+  for children, language-learning resources for every age, exam preparation
+  with certificates, story and novel reading with comprehension checks, and
+  practical everyday tools like driving expense tracking — built to be free,
+  offline-friendly wherever possible, and accessible to students, families,
+  and communities who may not have reliable internet access.
+</p>
 </section>
-
 
 <!-- ══════════════════════════════════════════
      ABOUT
 ══════════════════════════════════════════ -->
 <div class="about-bg" id="about">
-
-  <div class="section" style="padding-top:70px;">
-
-    <div class="center">
-
-      <span class="section-label">Our Story</span>
-
-      <h2 class="section-heading">
-        What Is MySkill Global?
-      </h2>
-
-      <div class="wavy-rule"></div>
-
-    </div>
-
-
-    <div class="about-text">
-
+<div class="section" style="padding-top:70px;">
+<div class="center">
+<span class="section-label">Our story</span>
+<h2 class="section-heading">What Is MySkill Global?</h2>
+<div class="wavy-rule"></div>
+</div>
+<div class="about-text">
 <p>
-  <strong>MySkill Global</strong> began as a single offline educational
-  game created in India for students who often had limited or unreliable
-  access to the internet. Over time, that project grew into a broader
-  global learning platform bringing together educational games, language
-  learning, assessments, certificates, stories and practical life-skills
-  resources for learners around the world.
+MySkill Global began as a single offline educational game built for students
+in West Bengal who often had limited or unreliable access to the internet.
+Over time, that single project grew into a family of tools spanning
+education, language learning, exam preparation, and everyday life skills —
+all built around one idea: learning should not depend on where you live,
+how much data you can afford, or whether you have the latest device.
 </p>
-
 <p>
-  The platform is built around a simple idea: learning should be accessible
-  and useful regardless of where a learner lives, how much internet access
-  is available, or what type of device they use. Many of our resources,
-  particularly selected educational games, are designed to support offline
-  or low-connectivity use where practical. Some website features and online
-  services require an internet connection.
+Today, MySkill Global brings together <strong>MySkillGame</strong>, a
+collection of over 75 offline educational games covering safety, science,
+personal finance, and life skills; a growing <strong>Language Learning</strong>
+section with interactive lessons and practical everyday phrases across
+multiple Indian and international languages; an <strong>Exam &amp;
+Certificate</strong> section where learners can practice, test their
+understanding, and earn certificates to mark their progress; and a
+<strong>Stories &amp; Novels</strong> library where readers can enjoy
+original and curated stories, then test their comprehension with follow-up
+questions.
 </p>
-
-      <p>
-        Today, MySkill Global brings together
-        <strong>MySkillGame</strong>, a growing collection of offline
-        educational games covering areas such as safety awareness, science,
-        general knowledge, personal finance and life skills. These activities
-        are designed to encourage learning through interaction, practice,
-        exploration and problem-solving.
-      </p>
-
-
-      <p>
-        The <strong>Language Learning</strong> section provides interactive
-        learning resources and practical activities for people who want to
-        develop their language skills. Depending on the resource, learners
-        may find vocabulary, grammar, everyday expressions and other
-        language-learning activities across different languages.
-      </p>
-
-
-      <p>
-        The <strong>Exam &amp; Certificate</strong> section provides
-        assessments that allow learners to practise, test their understanding
-        and review their performance. Where an assessment is eligible for
-        certification, participants who successfully meet the applicable
-        requirements may receive a certificate recognising their achievement
-        within the MySkill Global learning platform.
-      </p>
-
-
-      <p>
-        Certificates issued by MySkill Global recognise achievement within
-        the platform. They are not government-issued certificates, university
-        degrees, statutory qualifications or a replacement for qualifications
-        issued by recognised educational institutions or authorities.
-      </p>
-
-
-      <p>
-        The <strong>Stories &amp; Novels</strong> section provides reading
-        materials for readers who enjoy stories and longer-form content.
-        Selected resources may include comprehension questions or follow-up
-        activities designed to encourage active reading and understanding.
-      </p>
-
-
-      <p>
-        Alongside its education-focused resources, MySkill Global also
-        develops practical digital tools for everyday life. These include
-        <strong>MySkill Drive &amp; Expense</strong>, a tool designed to help
-        drivers record and review vehicle-related expenses such as fuel,
-        EV charging, tolls and other running costs.
-      </p>
-
-
-      <p>
-        <strong>AkashVoice</strong> is an independently developed concept
-        exploring accessible communication and digital tools. The project
-        considers ways technology could be made simpler and more accessible
-        for students, senior citizens and communities where straightforward
-        digital solutions may be useful. Features and availability may change
-        as development continues.
-      </p>
-
-
-      <p>
-        MySkill Global is independently developed and maintained by
-        <strong>Surajit Roy</strong>. Content, testing and educational review
-        may also involve collaborators, including
-        <strong>Sampurna Roy</strong>.
-      </p>
-
-
-      <p>
-        The platform is continuously developing, with new games, languages,
-        assessments, stories and useful tools being added and improved over
-        time. Feedback from students, teachers, families and other users helps
-        us identify areas where the platform can become more useful,
-        accessible and relevant.
-      </p>
-
-
-      <p>
-        Our broader goal is to use technology in a practical and responsible
-        way to support <strong>knowledge, skills, creativity, awareness and
-        lifelong learning</strong>. We believe that meaningful learning can
-        take place both inside and outside the classroom, and that useful
-        digital resources should be accessible to people from different
-        backgrounds and communities.
-      </p>
-    </div>
-  </div>
+<p>
+Alongside the education-focused tools, MySkill Global also hosts practical
+apps for everyday life — including <strong>MySkill Drive &amp; Expense</strong>,
+which helps drivers track fuel, EV charging, tolls and running costs, and
+<strong>AkashVoice</strong>, an early concept exploring offline micro-payments
+and accessible communication tools designed with students, senior citizens,
+and rural communities in mind.
+</p>
+<p>
+Every product under the MySkill name is built and maintained by Surajit Roy,
+with content, testing, and educational review contributed by collaborators
+including Sampurna Roy. The platform is under continuous development, with
+new games, languages, and tools added regularly based on feedback from
+students, teachers, and everyday users — which is exactly why the feedback
+section below exists.
+</p>
+</div>
+</div>
 </div>
 
 <!-- ══════════════════════════════════════════
@@ -768,15 +628,8 @@ img { pointer-events: none; -webkit-user-drag: none; }
 <div class="section" style="padding-top:70px;">
 <div class="center">
 <span class="section-label">Explore MySkill</span>
-
 <h2 class="section-heading">Everywhere You Can Grow</h2>
-
-<p class="section-intro">
-  Read, imagine and learn through stories and novels. Explore engaging
-  tales of love, mystery, courage, relationships, human values, morality
-  and everyday life — created to entertain, inspire reflection and leave
-  you with something meaningful to remember.
-</p><div class="wavy-rule"></div>
+<div class="wavy-rule"></div>
 </div>
 
 <!-- Featured stories — pulled out of the card grid into their own
@@ -858,29 +711,33 @@ img { pointer-events: none; -webkit-user-drag: none; }
   </div>
   <div class="story-card-content">
     <h3>The Diamond Ring from the Catla Fish</h3>
-    <p>During a grand feast celebrating the young heir's annaprashan, a huge Catla fish reveals an astonishing secret—a magnificent diamond ring hidden inside its belly. Curious landlord Rajchandra keeps the ring and soon discovers its magical power: whoever wears it becomes invisible.</p>
+    <p>During a grand feast celebrating the young heir’s annaprashan, a huge Catla fish reveals an astonishing secret—a magnificent diamond ring hidden inside its belly. Curious landlord Rajchandra keeps the ring and soon discovers its magical power: whoever wears it becomes invisible.</p>
     <p>But there is one strange exception—the invisible person can be seen through blue glass and under blue light. Rajchandra secretly uses the ring to uncover corruption, kindness, conspiracies, and hidden truths.</p>
-    <p>When spies from a neighboring kingdom discover the ring's secret and kidnap his beloved wife, Rajchandra faces an impossible choice: extraordinary power or love?</p>
+    <p>When spies from a neighboring kingdom discover the ring’s secret and kidnap his beloved wife, Rajchandra faces an impossible choice: extraordinary power or love?</p>
     <div class="story-meta">
       <span>📖 Fiction</span><span>💎 Mystery</span><span>✨ Magic</span><span>❤️ Love</span>
     </div>
     <a class="story-read-btn" href="katla-macher-hirer-angti-english.html">Read Full Story →</a>
   </div>
 </div>
-<div class="story-card reveal"><div class="story-image"><img src="images/sleep.jpg" alt="Arnab and the Impossible Equations"></div><div class="story-card-content"><h3>Arnab and the Impossible Equations</h3><p>On the last day of school, Arnab falls asleep during a math class. When he wakes up, everyone has gone—and two mysterious equations are still written on the board. Believing they are simply holiday homework, Arnab begins solving them.</p><p>What he doesn't know is that mathematicians have struggled with these problems for years. Refusing to believe anything is impossible, he keeps trying, failing, learning, and trying again. His unexpected breakthrough leaves his teacher stunned and eventually attracts the attention of leading mathematicians.</p><p>But the greatest mystery is not how Arnab solved the equations—it is why he never believed they were impossible. 🧮✨</p><div class="story-meta"><span>📖 Fiction</span><span>🧮 Mathematics</span><span>🧠 Curiosity</span><span>🌟 Inspiration</span></div><a class="story-read-btn" href="sleep-index-en.html">Read Full Story →</a></div></div>
+<div class="story-card reveal"><div class="story-image"><img src="images/sleep.jpg" alt="Arnab and the Impossible Equations"></div><div class="story-card-content"><h3>Arnab and the Impossible Equations</h3><p>On the last day of school, Arnab falls asleep during a math class. When he wakes up, everyone has gone—and two mysterious equations are still written on the board. Believing they are simply holiday homework, Arnab begins solving them.</p><p>What he doesn’t know is that mathematicians have struggled with these problems for years. Refusing to believe anything is impossible, he keeps trying, failing, learning, and trying again. His unexpected breakthrough leaves his teacher stunned and eventually attracts the attention of leading mathematicians.</p><p>But the greatest mystery is not how Arnab solved the equations—it is why he never believed they were impossible. 🧮✨</p><div class="story-meta"><span>📖 Fiction</span><span>🧮 Mathematics</span><span>🧠 Curiosity</span><span>🌟 Inspiration</span></div><a class="story-read-btn" href="sleep-index-en.html">Read Full Story →</a></div></div>
 
-<div class="story-card reveal"><div class="story-image"><img src="images/cover.jpg" alt="The Four-Piece Treasure Map"></div><div class="story-card-content"><h3>The Four-Piece Treasure Map</h3><p>An old ancestral house. A mysterious letter. And a century-old map divided into four missing pieces. When Kanchan follows clues left behind by his great-grandfather Harinarayan, he discovers that every corner of the house hides a secret.</p><p>With Supriya by his side, he uncovers hidden clues, a strange mark beneath a Shiva lingam, a mysterious mirror, and a secret passage leading to an underground chamber. But someone else has been searching for the same treasure for years—and his connection to Kanchan's family may change everything.</p><p>Is the treasure really gold, or something far more valuable? The final secret awaits in the darkness...</p><div class="story-meta"><span>📖 Fiction</span><span>🗺️ Adventure</span><span>🔍 Mystery</span><span>💎 Treasure</span></div><a class="story-read-btn" href="four-piece-index.html">Read Full Story →</a></div></div>
+<div class="story-card reveal"><div class="story-image"><img src="images/cover.jpg" alt="The Four-Piece Treasure Map"></div><div class="story-card-content"><h3>The Four-Piece Treasure Map</h3><p>An old ancestral house. A mysterious letter. And a century-old map divided into four missing pieces. When Kanchan follows clues left behind by his great-grandfather Harinarayan, he discovers that every corner of the house hides a secret.</p><p>With Supriya by his side, he uncovers hidden clues, a strange mark beneath a Shiva lingam, a mysterious mirror, and a secret passage leading to an underground chamber. But someone else has been searching for the same treasure for years—and his connection to Kanchan’s family may change everything.</p><p>Is the treasure really gold, or something far more valuable? The final secret awaits in the darkness...</p><div class="story-meta"><span>📖 Fiction</span><span>🗺️ Adventure</span><span>🔍 Mystery</span><span>💎 Treasure</span></div><a class="story-read-btn" href="four-piece-index.html">Read Full Story →</a></div></div>
 <div class="story-card reveal"><div class="story-image"><img src="images/pic-1.png" alt="Rahim Miah and the Rickshaw Worth a Fortune."></div><div class="story-card-content"><h3>Rahim Miah and the Rickshaw Worth a Fortune.</h3><p>Rahim Miah, a poor rickshaw puller, spends almost his entire life believing that one lottery ticket will change his destiny. Then, one unbelievable day, he wins a crore taka. Suddenly, he has a luxury car, a magnificent house, generous friends, and endless demands for money.</p><p>But within four years, his fortune disappears. The people who once surrounded him vanish, and Rahim finds himself back on his old rickshaw. With his last ten taka in hand, he faces the lottery shop once again.</p><p>This time, however, Rahim must make the most important choice of his life: trust luck—or finally learn the value of financial wisdom. 💰🚲</p><div class="story-meta"><span>📖 Fiction</span><span>💰 Money</span><span>🧠 Wisdom</span><span>🌱 Life Lesson</span></div><a class="story-read-btn" href="rahim-miah-rickshaw.html">Read Full Story →</a></div></div>
 
 <div class="story-card reveal"><div class="story-image"><img src="images/umbrella.png" alt="Sukumar Chatterjee's Lost Umbrella"></div><div class="story-card-content"><h3>Sukumar Chatterjee's Lost Umbrella</h3><p>A simple black umbrella, marked with two small carved letters, is accidentally left behind by retired Sukumar Chatterjee at a tea stall on a rainy afternoon. From that moment, it begins an unexpected journey—from one stranger to another, across towns and through countless lives.</p><p>It is bought, lost, sold, and sometimes given up by people facing difficult circumstances. Along the way, it witnesses kindness, poverty, love, sacrifice, and unforgettable human moments. Years pass, its colour fades, and its iron ribs grow old—but the mysterious letters remain.</p><p>Then, after passing through many hands, the umbrella comes face-to-face with someone from its past. <strong>Will it finally find its way back to Sukumar Babu?</strong> ☔</p><div class="story-meta"><span>📖 Fiction</span><span>☔ Mystery</span><span>❤️ Humanity</span><span>🌱 Life Journey</span></div><a class="story-read-btn" href="umbrella-story-index.html">Read Full Story →</a></div></div>
 
-<div class="story-card reveal"><div class="story-image"><img src="time1.png" alt="This Life, Once Gone, Never Returns"></div><div class="story-card-content"><h3>This Life, Once Gone, Never Returns</h3><p>We often tell ourselves, "There's still plenty of time." But what if the time we keep postponing never comes back? This six-chapter story follows a life shaped by missed opportunities—from school days lost to phones and distractions, to college years spent dreaming of tomorrow, and adulthood filled with regret as others move ahead.</p><p>With every passing year, one painful truth becomes clearer: time may feel endless, but it is the most precious wealth we possess. As birthdays arrive and years disappear, a simple question begins to haunt the mind: <strong>Are we growing older, or simply losing another year of our lives?</strong></p><p>The past cannot return—but the present is still ours. ⏳</p><div class="story-meta"><span>📖 Fiction</span><span>⏳ Time</span><span>🌱 Life Lesson</span><span>💡 Inspiration</span></div><a class="story-read-btn" href="index-time-story-en.html">Read Full Story →</a></div></div>
+<div class="story-card reveal"><div class="story-image"><img src="time1.png" alt="This Life, Once Gone, Never Returns"></div><div class="story-card-content"><h3>This Life, Once Gone, Never Returns</h3><p>We often tell ourselves, “There’s still plenty of time.” But what if the time we keep postponing never comes back? This six-chapter story follows a life shaped by missed opportunities—from school days lost to phones and distractions, to college years spent dreaming of tomorrow, and adulthood filled with regret as others move ahead.</p><p>With every passing year, one painful truth becomes clearer: time may feel endless, but it is the most precious wealth we possess. As birthdays arrive and years disappear, a simple question begins to haunt the mind: <strong>Are we growing older, or simply losing another year of our lives?</strong></p><p>The past cannot return—but the present is still ours. ⏳</p><div class="story-meta"><span>📖 Fiction</span><span>⏳ Time</span><span>🌱 Life Lesson</span><span>💡 Inspiration</span></div><a class="story-read-btn" href="index-time-story-en.html">Read Full Story →</a></div></div>
 
-<div class="story-card reveal"><div class="story-image"><img src="images/signature.png" alt="The Value of a Signature"></div><div class="story-card-content"><h3>The Value of a Signature</h3><p>A government employee's signature may look like nothing more than a stroke of ink—but what if it can change the lives of thousands? Bikash Babu, an experienced government employee, explains to Anik and Dipanwita why a public servant's signature is not personal property, but a symbol of the people's trust.</p><p>From birth certificates and education to land, employment, marriage, business, law, and courts, countless lives depend on official signatures. But when that signature is sold for money, corruption spreads far beyond one document.</p><p>Before handing his pen to Anik, Bikash leaves him with a powerful question: <strong>When power comes to you, will you sell its price—or accept its responsibility?</strong> ✍️⚖️</p><div class="story-meta"><span>📖 Fiction</span><span>⚖️ Justice</span><span>✍️ Responsibility</span><span>🏛️ Public Service</span></div><a class="story-read-btn" href="signature_story.html">Read Full Story →</a></div></div>
+<div class="story-card reveal"><div class="story-image"><img src="images/signature.png" alt="The Value of a Signature"></div><div class="story-card-content"><h3>The Value of a Signature</h3><p>A government employee’s signature may look like nothing more than a stroke of ink—but what if it can change the lives of thousands? Bikash Babu, an experienced government employee, explains to Anik and Dipanwita why a public servant’s signature is not personal property, but a symbol of the people’s trust.</p><p>From birth certificates and education to land, employment, marriage, business, law, and courts, countless lives depend on official signatures. But when that signature is sold for money, corruption spreads far beyond one document.</p><p>Before handing his pen to Anik, Bikash leaves him with a powerful question: <strong>When power comes to you, will you sell its price—or accept its responsibility?</strong> ✍️⚖️</p><div class="story-meta"><span>📖 Fiction</span><span>⚖️ Justice</span><span>✍️ Responsibility</span><span>🏛️ Public Service</span></div><a class="story-read-btn" href="signature_story.html">Read Full Story →</a></div></div>
 
-<div class="story-card reveal"><div class="story-image"><img src="images/love-discipline.png" alt="The Discipline of Love"></div><div class="story-card-content"><h3>The Discipline of Love</h3><p>Suchorita loves her daughter Titli more than anything in the world. Whenever Titli makes a mistake, her mother protects her, comforts her, and refuses to believe she could be wrong. Slowly, however, this unconditional protection teaches Titli a dangerous lesson—she never needs to accept her mistakes.</p><p>As conflicts grow at school and in the neighbourhood, Suchorita finally begins to understand that love without boundaries can sometimes harm the person we love most. Guided by her own mother and shaken by painful consequences, she faces a difficult truth.</p><p><strong>True love does not always say "yes." Sometimes, the greatest act of love is having the courage to say "no."</strong> ❤️</p><div class="story-meta"><span>📖 Fiction</span><span>❤️ Love</span><span>👩‍👧 Parenting</span><span>🌱 Life Lesson</span></div><a class="story-read-btn" href="the-discipline-of-love.html">Read Full Story →</a></div></div>
+<div class="story-card reveal"><div class="story-image"><img src="images/love-discipline.png" alt="The Discipline of Love"></div><div class="story-card-content"><h3>The Discipline of Love</h3><p>Suchorita loves her daughter Titli more than anything in the world. Whenever Titli makes a mistake, her mother protects her, comforts her, and refuses to believe she could be wrong. Slowly, however, this unconditional protection teaches Titli a dangerous lesson—she never needs to accept her mistakes.</p><p>As conflicts grow at school and in the neighbourhood, Suchorita finally begins to understand that love without boundaries can sometimes harm the person we love most. Guided by her own mother and shaken by painful consequences, she faces a difficult truth.</p><p><strong>True love does not always say “yes.” Sometimes, the greatest act of love is having the courage to say “no.”</strong> ❤️</p><div class="story-meta"><span>📖 Fiction</span><span>❤️ Love</span><span>👩‍👧 Parenting</span><span>🌱 Life Lesson</span></div><a class="story-read-btn" href="the-discipline-of-love.html">Read Full Story →</a></div></div>
 
-<div class="story-card reveal"><div class="story-image"><img src="images/yamraj.png" alt="The Brahmin on Yama's Throne"></div><div class="story-card-content"><h3>The Brahmin on Yama's Throne</h3><p>A Brahmin sleeps on his rooftop—and wakes mid-air, carried away by Death's messenger. Thinking quickly, he forges a letter claiming to be Vishnu's envoy. Terrified of offending the gods, Yamaraj seats him on his own throne.</p><p>Drunk on borrowed power, the Brahmin begins sending sinners straight to heaven—until heaven overflows and Vishnu himself must intervene. Sent back to earth for what he believes is two days, he returns twelve years later, invisible, to watch his own family divide his wealth and forget his name.</p><p>What he does next—<strong>revenge or release</strong>—will decide whether power can ever truly change a man's soul.</p><div class="story-meta"><span>📖 Fiction</span><span>⚖️ Karma</span><span>👑 Power</span><span>🌱 Wisdom</span></div><a class="story-read-btn" href="the-brahmin-on-yamas-throne.html">Read Full Story →</a></div></div>
+<div class="story-card reveal"><div class="story-image"><img src="images/yamraj.png" alt="The Brahmin on Yama's Throne"></div><div class="story-card-content"><h3>The Brahmin on Yama's Throne</h3><p>A Brahmin sleeps on his rooftop—and wakes mid-air, carried away by Death’s messenger. Thinking quickly, he forges a letter claiming to be Vishnu’s envoy. Terrified of offending the gods, Yamaraj seats him on his own throne.</p><p>Drunk on borrowed power, the Brahmin begins sending sinners straight to heaven—until heaven overflows and Vishnu himself must intervene. Sent back to earth for what he believes is two days, he returns twelve years later, invisible, to watch his own family divide his wealth and forget his name.</p><p>What he does next—<strong>revenge or release</strong>—will decide whether power can ever truly change a man’s soul.</p><div class="story-meta"><span>📖 Fiction</span><span>⚖️ Karma</span><span>👑 Power</span><span>🌱 Wisdom</span></div><a class="story-read-btn" href="the-brahmin-on-yamas-throne.html">Read Full Story →</a></div></div>
+<div class="story-card reveal">
+
+<a class="story-read-btn" href="story-novel-exam.html">Take the Quiz →</a>
+<a class="story-read-btn" href="stories-novels-index.html">More Story and Novels →</a></div>
 
 <div class="stories-library reveal">
   <div class="stories-header">
@@ -894,7 +751,7 @@ img { pointer-events: none; -webkit-user-drag: none; }
     <div class="story-image">
       <img src="images/the-fortune.png" alt="The Fortune That Time Protected">
     </div>
-    <div class="story-card-content"><br>
+    <div class="story-card-content">
       <h3>The Fortune That Time Protected</h3>
       <p>Arindam Sen quietly builds wealth through patience, discipline, and honest long-term investing. After his tragic death, his children lose almost everything—until 26 years later, a forgotten investment reveals an astonishing fortune. But instead of chasing greed, they use it to transform lives. A powerful story about patience, integrity, wisdom, and a legacy beyond money.</p>
       <div class="story-meta">
@@ -923,10 +780,10 @@ img { pointer-events: none; -webkit-user-drag: none; }
 <div class="story-card reveal">
   <div class="story-image">
     <img src="images/the-kingdom.png" alt="A Kingdom's Reckoning">
-  </div><br>
+  </div>
   <div class="story-card-content">
     <h3>A Kingdom's Reckoning</h3>
-    <p>In a kingdom where justice serves power, Milan's greed leads him into danger. When an innocent man is chosen for execution simply because he is the fattest person available, a wise sage exposes the kingdom's madness. A powerful moral tale about greed, wisdom, justice, and the consequences of irrational power.</p>
+    <p>In a kingdom where justice serves power, Milan’s greed leads him into danger. When an innocent man is chosen for execution simply because he is the fattest person available, a wise sage exposes the kingdom’s madness. A powerful moral tale about greed, wisdom, justice, and the consequences of irrational power.</p>
     <div class="story-meta">
       <span>📖 Fiction</span><span>⚖️ Justice</span><span>🧠 Wisdom</span><span>🌱 Moral Tale</span>
     </div>
@@ -969,40 +826,20 @@ img { pointer-events: none; -webkit-user-drag: none; }
   </div>
   <div class="story-card-content">
     <h3>The Bracelet of Truth</h3>
-    <p>When Ananya loses her grandmother's gold bracelet, teacher Meera Roy refuses to accuse anyone and instead accepts responsibility for failing to teach the right values. Moved by her compassion, Riya confesses that she found the bracelet but was afraid to speak. A touching lesson about honesty, forgiveness, conscience, and true education.</p>
+    <p>When Ananya loses her grandmother’s gold bracelet, teacher Meera Roy refuses to accuse anyone and instead accepts responsibility for failing to teach the right values. Moved by her compassion, Riya confesses that she found the bracelet but was afraid to speak. A touching lesson about honesty, forgiveness, conscience, and true education.</p>
     <div class="story-meta">
       <span>📖 Fiction</span><span>❤️ Compassion</span><span>🤝 Honesty</span><span>🌱 Values</span>
     </div>
     <a class="story-read-btn" href="the-bracelet-of-truth.html">Read Full Story →</a>
   </div>
 </div>
+<a class="story-read-btn" href="https://the-small-story.netlify.app/">More Small Story →</a>
+  </div>
 
 </div>
 
-<div class="stories-more-row">
-  <p class="story-exam-note">
-    Love stories that make you think, feel and discover something new?
-    Explore more engaging stories and novels filled with emotion, mystery,
-    courage, human values and meaningful life lessons. Read at your own
-    pace, enjoy the journey, and when you feel ready, test how well you
-    understood the story with our Story Exam.
-  </p>
-</div>
-<div class="story-cta-row reveal">
-  <a
-    class="story-read-btn outline"
-    href="stories-novels-index.html"
-  >
-    Explore Stories &amp; Novels →
-  </a>&nbsp;
-  <a class="story-read-btn"
-    href="story-novel-exam.html" >
-    Try the Story Exam →
-  </a>&nbsp;&nbsp;  
-<a class="story-read-btn outline" href="certificate.html">
-      🏅 Certificate</a>   
 
-</div>
+
 <div class="story-card reveal">
   <div class="story-image">
     <img src="images/bengali-story.png" alt="বাংলা গল্পের সংগ্রহ">
@@ -1018,259 +855,94 @@ img { pointer-events: none; -webkit-user-drag: none; }
     <a class="story-read-btn" href="bengali-index.html">বাংলা গল্প দেখুন →</a>
   </div>
 </div>
+
 </div>
 
-<div class="story-card reveal">
-
-  <div class="story-image">
-    <img
-      src="images/language.png"
-      alt="Indian and International Language Learning"
-    >
-  </div>
-
-  <div class="story-card-content">
-
-    <h3>LANGUAGE LEARNING</h3>
-    <p>
-      Explore Indian and international languages through practical lessons,
-      useful vocabulary, pronunciation practice and everyday expressions.
-      Learn words and phrases that can help you communicate more naturally
-      and confidently in real-life situations.
-    </p>
-
-    <p>
-      Whether you are a student, traveller, tourist, tour guide or simply interested in learning a new language, these resources can help you communicate with people from different countries and cultures. Learn useful expressions for everyday conversations, travel and common situations — not just textbook grammar.
-    </p>
-
-    <p>
-      Learn at your own pace and build practical communication skills that
-      can make travel, tourism, cultural exchange and everyday interactions
-      easier and more enjoyable.
-    </p>
-
-    <div class="story-meta">
-      <span>🌍 Indian &amp; World Languages</span>
-      <span>🗣️ Communication</span>
-      <span>✈️ Travel &amp; Tourism</span>
-      <span>🎓 Learning</span>
-    </div>
-    <div class="story-exam-note">
-      <p>
-        <strong>📝 Ready to test your language skills?</strong>
-        After exploring the lessons and practicing your chosen language,
-        you can take our language test. Each language test includes
-        50 questions, and learners who achieve a score of 45% or higher
-        can unlock a PDF certificate recognising their achievement on
-        the MySkill Global learning platform.
-      </p><br> <a class="story-read-btn" href="language-index.html">
-      Explore Languages →
-    </a>&nbsp;&nbsp;&nbsp;
-    <a class="story-read-btn outline" href="language_test.html">
-      Take Language Test →</a>&nbsp;&nbsp;&nbsp;  
-<a class="story-read-btn outline" href="certificate.html">
-      🏅 Certificate</a>   
-  </div>
-</div>
-    </div>
-<!-- ══════════════════════════════════════════
-     OPINION & FEEDBACK
-══════════════════════════════════════════ -->
-
-<section class="opinion-section">
-
-  <div class="section">
-
-    <div class="center">
-
-      <span class="section-label">
-        Your Voice · Our Growth
-      </span>
-
-      <h2 class="section-heading">
-        WE WOULD LIKE TO<br>
-        HEAR YOUR OPINION
-      </h2>
-
-      <div class="wavy-rule"></div>
-
-    </div>
-
-    <div class="story-card reveal">
-
-      <div class="story-image">
-        <img
-          src="images/opinion.png"
-          alt="Share your opinion with MySkill Global"
-        >    <br><br>    <img
-          src="images/opinion-1.png"
-          alt="Share your opinion with MySkill Global"
-        >
-
-      </div>
-
-      <div class="story-card-content">
-
-        <h3><h2>💬 Your Voice. Your Ideas. Our Growth.</h2></h3>
-
-<p>
-  Your voice matters to us. MySkill Global is continuously growing with the
-  support, ideas and experiences of learners, parents, teachers, families and
-  curious readers like you. Every opinion helps us understand what people
-  find useful, what can be improved, and what kind of learning resources
-  should be developed next.
-</p>
-
-<p>
-  We would love to know which guides, stories, quizzes, learning resources or
-  practical knowledge topics you found most helpful. You can also tell us
-  which parts were difficult to understand, which information needs
-  improvement, or what additional examples and explanations would make the
-  content more useful for you and your family.
-</p>
-
-<p>
-  Have an idea for a new topic? Tell us. You can suggest a new educational
-  guide, awareness topic, family resource, safety lesson, science topic,
-  agricultural idea, technology guide, cultural subject or practical
-  life-skill resource that you would like to see on MySkill Global.
-</p>
-
-<p>
-  If you notice a mistake, outdated information, broken link, unclear
-  explanation or anything that does not work as expected, please let us know.
-  Your feedback helps us improve the quality, accuracy and usefulness of our
-  resources for everyone.
-</p>
-
-<p>
-  You can also share your personal experience, ask a question, recommend a
-  useful idea, or simply tell us what you liked about a particular guide.
-  Whether your suggestion is small or detailed, every meaningful contribution
-  helps us build better learning resources and a stronger knowledge community.
-</p>
-
-<p>
-  We believe learning is not a one-way journey. We learn from our readers too.
-  Your questions can inspire new content, your suggestions can improve
-  existing guides, and your experiences can help us create resources that are
-  more practical, relevant and helpful in everyday life.
-</p>
-
-<p>
-  Thank you for taking the time to share your thoughts with MySkill Global.
-  Together, we can continue building a growing knowledge platform that
-  encourages learning, responsibility, safety, creativity, practical skills
-  and positive values for individuals, families and communities.
-</p>
-
-<div class="story-meta">
-  <span>💬 Your Voice</span>
-  <span>💡 Your Ideas</span>
-  <span>📝 Report a Mistake</span>
-  <span>❓ Ask a Question</span>
-  <span>📚 Request New Topics</span>
-  <span>🌱 Help Us Grow</span>
-</div>
-        <div class="story-cta-row reveal">
-
-          <a
-            class="story-read-btn"
-            href="feedback-opinion-index.html"
-          >
-            Share Your Opinion →
-          </a>
-
-          <a
-            class="story-read-btn outline"
-            href="feedback-opinion-index.html"
-          >
-            Opinion Centre →
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 <div class="portal-grid">
 
-
 <div class="portal-card reveal">
-  <span class="portal-icon">🎮</span>
-
-<h3>MYSKILL APPS, GAMES &amp; WEBSITES</h3>
-  <p>
-    Explore the growing collection of MySkill Global apps, educational games
-    and practical digital tools created to support learning, everyday skills
-    and responsible living. Each project is designed with a simple goal:
-    make useful knowledge and technology easier to understand, access and use.
-  </p>
-
-  <p>
-    <strong>MySkillGame</strong> brings offline educational games and learning
-    activities for school students and young learners. Its topics include
-    safety awareness, science, general knowledge, personal finance,
-    environmental awareness and practical everyday life skills. The learning
-    experience is designed to remain useful even when internet access is
-    limited.
-  </p>
-
-  <p>
-    <strong>MySkill Drive &amp; Expense</strong> helps drivers keep track of
-    fuel purchases, EV charging, toll payments and other vehicle running
-    costs. Instead of depending on scattered receipts or memory, users can
-    maintain a clearer record of their driving expenses over time.
-  </p>
-
-  <p>
-    <strong>MyBudget</strong> is a personal expense-management project created
-    to help users record everyday spending and develop a clearer view of their
-    personal budget and financial habits.
-  </p>
-
-  <p>
-    <strong>Akash Voice</strong> explores accessible communication and simple
-    digital tools, with an emphasis on making technology easier to use for
-    students, senior citizens and communities that may benefit from
-    accessible digital experiences.
-  </p>
-
-  <p>
-    <strong>More Small Story</strong> focuses on reading and short stories,
-    encouraging storytelling, comprehension and a genuine interest in reading.
-    Together, these projects represent different aspects of the MySkill
-    Global vision — learning, practical skills, accessibility, financial
-    awareness and everyday knowledge.
-  </p>
-
-  <p>
-    Our projects are independently developed and continue to evolve. New
-    features, learning resources, games, guides and practical tools may be
-    added over time. We welcome ideas and feedback from students, parents,
-    teachers, drivers and everyday users who want to see useful digital
-    resources grow.
-  </p>
-
-  <div class="story-meta">
-    <span>🎮 Educational Games</span>
-    <span>📚 Learning Resources</span>
-    <span>🚗 Driving Tools</span>
-    <span>💰 Budgeting</span>
-    <span>🎙️ Accessible Technology</span>
-    <span>📖 Reading &amp; Stories</span>
-    <span>🌱 Practical Skills</span>
-  </div>
-
+  <span class="portal-icon">📚</span>
+  <h3>STORIES & NOVELS</h3>
+  <p>A growing library of original and curated stories and novels for readers
+  of different ages. Each title comes with comprehension questions afterward,
+  so reading for pleasure also becomes a way to practice understanding,
+  vocabulary, and recall — with certificates for completed titles.</p>
   <div class="portal-links">
-    <a class="portal-link solid"
-       href="apps.html"
-       rel="noopener noreferrer"
-       target="_blank">
-      Explore Apps &amp; Websites →
-    </a>
+    <a class="portal-link" href="stories-novels-index.html">Explore →</a>
   </div>
 </div>
 
+<div class="portal-card reveal">
+  <span class="portal-icon">💬</span>
+  <h3>Your Opinion Matters</h3>
+  <p>
+    <strong>We Would Like to Hear Your Opinion.</strong>
+    Your voice can help us improve. Tell us what you found useful,
+    share your suggestions, and let us know what you would like to see next.
+  </p>
+  <div class="portal-links">
+    <a class="portal-link" href="feedback-opinion-index.html">Share Your Opinion →</a>
+  </div>
+</div>
+
+<div class="portal-card reveal">
+  <span class="portal-icon">🌍</span>
+  <h3>LANGUAGE LEARNING</h3>
+  <p>Interactive lessons, flip-card vocabulary, and text-to-speech pronunciation
+  help across multiple languages — built for learners moving between Bengali,
+  Hindi, English, and other regional and international languages, with
+  everyday expressions rather than just textbook grammar.</p>
+  <div class="portal-links">
+    <a class="portal-link" href="language-index.html">Explore →</a>
+  </div>
+</div>
+
+<div class="portal-card reveal">
+<span class="portal-icon">🎓</span>
+<h3>EXAM &amp; CERTIFICATE</h3>
+<p>Structured practice tests across stories, languages, and general knowledge,
+with instant scoring and a printable certificate on completion — a simple
+way for students to measure their own progress and stay motivated to keep
+learning.</p>
+<div class="portal-links">
+<a class="portal-link" href="exam-index.html">Explore →</a>
+</div>
+</div>
+<div class="portal-card reveal">
+<span class="portal-icon">💰</span>
+<h3>AkashVoice &amp; Smart Physical Coin Concept</h3>
+<p>Listen More. Connect More. Live More. Designed for Students, Families, Senior Citizens and Rural Communities. Introduce the Smart Coin ecosystem. Enable offline micro-payments for all citizens.</p>
+<div class="portal-links">
+<a class="portal-link" href="https://akashvoice.netlify.app/">Explore →</a>
+</div>
+</div>
+
+<div class="portal-card reveal">
+<span class="portal-icon">🎮</span>
+<h3>MYSKILLGAME</h3>
+<p>A collection of more than 75 offline educational games designed for school
+students and young learners. Topics range from road and fire safety to
+basic science, personal finance, and everyday life skills — each game built
+to work with little or no internet connection so learning doesn't stop when
+the network does.</p>
+<div class="portal-links">
+<a class="portal-link solid" href="https://play.google.com/store/apps/details?id=com.surajit.childgame" rel="noopener noreferrer" target="_blank">Get the App →</a>
+<a class="portal-link" href="https://myskillgame.netlify.app/">Open Web Version</a>
+</div>
+</div>
+
+<div class="portal-card reveal">
+<span class="portal-icon">🚗</span>
+<h3>MYSKILL DRIVE &amp; EXPENSE</h3>
+<p>A practical tracking tool for everyday drivers. Log fuel fill-ups, EV
+charging sessions, toll payments, and general running costs for your
+vehicle, and get a clearer picture of what each trip actually costs over
+time — useful for personal budgeting or comparing petrol, diesel, and
+electric options.</p>
+<div class="portal-links">
+<a class="portal-link solid" href="https://myskill-drive-expense.netlify.app/">Open App / Website →</a>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1283,9 +955,8 @@ img { pointer-events: none; -webkit-user-drag: none; }
   <div class="leaderboard-container">
 
     <div class="center">
-
       <span class="section-label reveal">
-        Global achievement board
+        Public achievement board
       </span>
 
       <h2 class="section-heading reveal">
@@ -1304,12 +975,11 @@ img { pointer-events: none; -webkit-user-drag: none; }
           text-align:center;
         "
       >
-        Explore the top performers across MySkill Global assessments.
-        The leaderboard is designed to celebrate learning, participation
-        and achievement among learners from different countries.
+        See the top performers across MySkill Global exams.
+        Your personal information remains private.
       </p>
-
-    </div>    <div class="leaderboard-card reveal">
+    </div>
+    <div class="leaderboard-card reveal">
       <!-- CONTROLS -->
       <div class="leaderboard-controls">
         <!-- COUNTRY -->
@@ -1400,376 +1070,156 @@ img { pointer-events: none; -webkit-user-drag: none; }
      OUR APPS
 ══════════════════════════════════════════ -->
 <div class="apps-bg">
-  <div class="section">
-
-    <div class="center">
-<span class="section-label">Explore MySkill Projects</span>
-<h2 class="section-heading">Our Apps &amp; Digital Tools</h2>      <div class="wavy-rule"></div>
-    </div>
-
-    <div class="apps-grid">
-
-      <!-- MySkillGame -->
-      <div class="app-card reveal">
-        <div class="card-thumb">
-          <img
-            src="images/logo1.png"
-            alt="MySkillGame educational app"
-            loading="lazy"
-          />
-        </div>
-
-        <div>
-          <div class="app-name">🎮 MySkillGame</div>
-
-          <div class="app-desc">
-            An educational learning experience built around interactive
-            games, awareness activities, practical knowledge and everyday
-            life skills. Designed to make learning more engaging, meaningful
-            and enjoyable for young learners.
-          </div>
-
-          <div class="app-footer">
-            <a
-              class="app-btn solid"
-              href="https://play.google.com/store/apps/details?id=com.surajit.childgame"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              Google Play →
-            </a>
-
-            <a
-              class="app-btn"
-              href="https://myskillgame.netlify.app/"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              Open Web →
-            </a>
-          </div>
-        </div>
-      </div>
-
-
-      <!-- MySkill Drive & Expense -->
-      <div class="app-card reveal">
-        <div class="card-thumb">
-          <img
-            src="images/car.png"
-            alt="MySkill Drive and Expense app"
-            loading="lazy"
-          />
-        </div>
-
-        <div>
-          <div class="app-name">🚗 MySkill Drive &amp; Expense</div>
-
-          <div class="app-desc">
-            A practical digital tool for managing driving and vehicle-related
-            expenses, including fuel, EV charging, tolls and other running
-            costs. Built to help users keep their vehicle expenses organised
-            and easier to understand.
-          </div>
-
-          <div class="app-footer">
-            <a
-              class="app-btn solid"
-              href="https://play.google.com/store/apps/details?id=com.surajit.carexpenses"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              Google Play →
-            </a>
-
-            <a
-              class="app-btn"
-              href="https://myskill-drive-expense.netlify.app/"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              Open Web →
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <p style="
-      text-align:center;
-      color:var(--muted);
-      font-size:0.86rem;
-      margin-top:28px;
-      max-width:680px;
-      margin-left:auto;
-      margin-right:auto;
-      line-height:1.8;
-    ">
-      MySkill Global develops practical apps and digital learning tools
-      for education, everyday skills, responsible living and useful
-      technology. New projects and improvements may be introduced over
-      time. Please use the official links above to access the latest
-      available versions and web experiences.
-    </p>
-
-  </div>
+<div class="section">
+<div class="center">
+<span class="section-label">Official app links</span>
+<h2 class="section-heading">Our Apps</h2>
+<div class="wavy-rule"></div>
 </div>
+<div class="apps-grid">
+
+<div class="app-card reveal">
+<div class="card-thumb"><img alt="MySkillGame" src="images/logo1.png"/></div>
+<div>
+<div class="app-name">🎮 MySkillGame</div>
+<div class="app-desc">Learning through 75+ offline educational games.</div>
+<div class="app-footer">
+<a class="app-btn solid" href="https://play.google.com/store/apps/details?id=com.surajit.childgame" rel="noopener noreferrer" target="_blank">Google Play →</a>
+<a class="app-btn" href="https://myskillgame.netlify.app/">Open Web →</a>
+</div>
+</div>
+</div>
+
+<div class="app-card reveal">
+<div class="card-thumb"><img alt="MySkill Drive & Expense" src="images/car.png"/></div>
+<div>
+<div class="app-name">🚗 MySkill Drive &amp; Expense</div>
+<div class="app-desc">Smart driving, fuel, EV and expense awareness.</div>
+<div class="app-footer">
+<a class="app-btn solid" href="#" rel="noopener noreferrer" target="_blank">Google Play →</a>
+<a class="app-btn" href="https://myskill-drive-expense.netlify.app/">Open App →</a>
+</div>
+</div>
+</div>
+
+</div>
+<p style="text-align:center; color:var(--muted); font-size:0.82rem; margin-top:28px; max-width:600px; margin-left:auto; margin-right:auto; line-height:1.8;">
+More MySkill apps are on the way. This page always links to the current official Google Play listings and live web versions.
+</p>
+</div>
+</div>
+
 <!-- ══════════════════════════════════════════
      DEVELOPER INFORMATION
 ══════════════════════════════════════════ -->
 <section class="founder-section" id="developer">
-
-  <div class="section founder-container">
-
-    <span class="section-label reveal">
-      The Creator
-    </span>
-
-    <h2 class="section-heading reveal">
-      About the Developer
-    </h2>
-
-    <div class="gold-line reveal"></div>
-
-
-    <div class="founder-grid reveal">
-
-      <div class="founder-photo-area">
-
-        <div class="founder-photo">
-
-          <img
-            src="images/founder.jpg"
-            alt="Surajit Roy, Developer and Creator of MySkill Global"
-            onerror="this.style.display='none';document.getElementById('devFallback').style.display='flex';"
-          />
-
-          <div
-            class="founder-fallback"
-            id="devFallback"
-            style="display:none;"
-          >
-            👤
-          </div>
-
-        </div>
-
-
-        <div class="founder-namebox">
-
-          <div class="founder-role">
-            DEVELOPER &amp; CREATOR
-          </div>
-
-          <div class="founder-name">
-            Surajit Roy
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div>
-
-        <div class="founder-badge">
-          🏫 MYSKILL GLOBAL
-        </div>
-
-
-        <p class="founder-text">
-          MySkill Global is independently developed and maintained by
-          <strong>Surajit Roy</strong>, drawing on experience in vocational
-          education, computer applications, educational content and student
-          skill development.
-        </p>
-
-
-        <p class="founder-text">
-          The platform brings together educational games, learning resources,
-          language tools, assessments, certificates, stories and practical
-          digital applications under the MySkill name.
-        </p>
-
-
-        <p class="founder-text">
-          The aim is to create useful, accessible and engaging digital
-          resources that can support students, families, teachers and everyday
-          users in learning, practising skills and exploring useful knowledge.
-        </p>
-
-
-        <ul class="founder-projects">
-          <li>MySkillGame</li>
-          <li>MySkill Drive &amp; Expense</li>
-          <li>MySkill Learning</li>
-          <li>MySkill Language</li>
-          <li>MySkill Community</li>
-        </ul>
-
-
-        <div class="founder-tags">
-  <span class="founder-tag">TEACHER</span>
-  <span class="founder-tag">VOCATIONAL EDUCATION</span>
-  <span class="founder-tag">EDTECH DEVELOPER</span>
-  <span class="founder-tag">EDUCATIONAL GAMES</span>
-  <span class="founder-tag">INDIA</span>
-        </div>
-        <a
-          class="founder-contact-btn"
-          href="mailto:myskillglobal@gmail.com"
-        >
-          ✉️ Contact Developer →
-        </a>
-      </div>
-    </div>
-  </div>
+<div class="section founder-container">
+<span class="section-label reveal">The creator</span>
+<h2 class="section-heading reveal">About the Developer</h2>
+<div class="gold-line reveal"></div>
+<div class="founder-grid reveal">
+<div class="founder-photo-area">
+<div class="founder-photo">
+<img alt="Surajit Roy" onerror="this.style.display='none';document.getElementById('devFallback').style.display='flex';" src="images/founder.jpg"/>
+<div class="founder-fallback" id="devFallback" style="display:none;">👤</div>
+</div>
+<div class="founder-namebox">
+<div class="founder-role">DEVELOPER &amp; CREATOR</div>
+<div class="founder-name">Surajit Roy</div>
+</div>
+</div>
+<div>
+<div class="founder-badge">🏫 MYSKILL GLOBAL</div>
+<p class="founder-text">
+  Built on years of hands-on experience in vocational education, computer applications
+  and student skill development, the MySkill platform brings together learning, games,
+  language tools and everyday practical apps under one roof.
+</p>
+<p class="founder-text">
+  Every product in the MySkill family shares one goal: make useful, well-designed tools
+  freely and easily accessible to students, families and everyday users.
+</p>
+<ul class="founder-projects">
+<li>MySkillGame</li>
+<li>MySkill Drive &amp; Expense</li>
+<li>MySkill Learning</li>
+<li>MySkill Language</li>
+<li>MySkill Community</li>
+</ul>
+<div class="founder-tags">
+<span class="founder-tag">VOCATIONAL EDUCATION</span>
+<span class="founder-tag">EDTECH DEVELOPER</span>
+<span class="founder-tag">EDUCATIONAL GAMES</span>
+<span class="founder-tag">DIGITAL LEARNING</span>
+<span class="founder-tag">WEST BENGAL</span>
+</div>
+<a class="founder-contact-btn" href="mailto:developer@myskillglobal.com">✉️ Contact Developer →</a>
+</div>
+</div>
+</div>
 </section>
+
 <!-- ══════════════════════════════════════════
      FAQ
 ══════════════════════════════════════════ -->
 <div class="portal-bg" id="faq">
-
-  <div class="section">
-
-    <div class="center">
-      <span class="section-label">Common Questions</span>
-
-      <h2 class="section-heading">
-        Frequently Asked Questions
-      </h2>
-
-      <div class="wavy-rule"></div>
-    </div>
-
-
-    <div class="faq-list">
-
-
-      <div class="faq-item">
-        <h3>What is MySkill Global?</h3>
-
-        <p>
-          MySkill Global is an independent learning platform that brings
-          together educational games, language-learning resources,
-          assessments, certificates, stories, life-skills content and
-          practical digital tools in one place.
-        </p>
-      </div>
-
-
-      <div class="faq-item">
-        <h3>Is MySkill Global free to use?</h3>
-
-        <p>
-          Many MySkill Global resources are available free of charge,
-          including a range of educational games, learning materials,
-          language resources and reading content. Availability may vary
-          between individual resources, applications or services.
-        </p>
-
-        <p>
-          MySkillGame includes offline educational games that can be used
-          without a continuous internet connection after the relevant
-          content has been downloaded.
-        </p>
-      </div>
-
+<div class="section">
+<div class="center">
+<span class="section-label">Common questions</span>
+<h2 class="section-heading">Frequently Asked Questions</h2>
+<div class="wavy-rule"></div>
+</div>
+<div class="faq-list">
 
 <div class="faq-item">
-  <h3>Who is MySkill Global designed for?</h3>
-
-  <p>
-    MySkill Global is designed for learners, students, teachers, families
-    and communities around the world. Some resources are created especially
-    for children and school students, while other resources are suitable for
-    learners of different ages, backgrounds and levels of experience.
-  </p>
+<h3>Is MySkill Global free to use?</h3>
+<p>Yes. The games, language lessons, exam practice, and story library are all
+free to access. MySkillGame is also available as a free offline app on
+Google Play, so students without a steady internet connection can still
+learn.</p>
 </div>
-      <div class="faq-item">
-        <h3>Do I need an internet connection to use MySkillGame?</h3>
 
-        <p>
-          Many MySkillGame activities are designed to work offline after
-          they have been downloaded. However, some website features and
-          online services may require an internet connection. For example,
-          features such as online results, public leaderboards or
-          web-based resources may require connectivity.
-        </p>
-      </div>
-
-
-      <div class="faq-item">
-        <h3>How do MySkill Global assessments work?</h3>
-        <p>
-          MySkill Global provides different quizzes, tests and assessments
-          covering subjects and skills such as general knowledge, language,
-          safety, life skills and other educational topics. Participants
-          receive results according to the scoring system used by the
-          relevant assessment.
-        </p>
-        <p>
-          Assessment format, scoring, eligibility and availability may vary
-          between different assessments.
-        </p>
-      </div>
-
-
-      <div class="faq-item">
-        <h3>How do the certificates work?</h3>
-        <p>
-          Where an assessment is eligible for certification, participants
-          who successfully meet the applicable requirements may receive a
-          certificate recognising their achievement within the MySkill
-          Global learning platform.
-        </p>
-
-        <p>
-          MySkill Global certificates represent achievement within the
-          platform. They are not government-issued certificates, university
-          degrees, statutory qualifications or a replacement for
-          qualifications issued by recognised educational institutions or
-          authorities.
-        </p>
-      </div>
-
-
-      <div class="faq-item">
-        <h3>Can I suggest a new game, language, story or feature?</h3>
-        <p>
-          Yes. We welcome constructive suggestions, corrections and ideas
-          from learners, teachers, families and other users. You can use
-          the feedback section or contact MySkill Global by email to share
-          your suggestions.
-        </p>
-      </div>
-      <div class="faq-item">
-        <h3>Who develops and maintains MySkill Global?</h3>
-        <p>
-          MySkill Global is independently developed and maintained by
-          <strong>Surajit Roy</strong>, a teacher and educational technology
-          developer. Content, testing and educational input may also involve
-          collaborators, including <strong>Sampurna Roy</strong>.
-        </p>
-        <p>
-          More information is available in the
-          <a href="#developer">About the Developer</a>
-          section.
-        </p>
-      </div>
-      <div class="faq-item">
-        <h3>How can I contact MySkill Global?</h3>
-        <p>
-          For questions, suggestions, technical issues, content corrections,
-          certificate-related enquiries or other matters, please contact us
-          at
-          <a href="mailto:myskillglobal@gmail.com">
-            myskillglobal@gmail.com
-          </a>.
-        </p>
-      </div>
-    </div>
-  </div>
+<div class="faq-item">
+<h3>Who is MySkill Global designed for?</h3>
+<p>The platform is built mainly for school students, young learners, and
+first-time job seekers in West Bengal and across India, but the language
+tools, exam practice, and story library are useful for learners of any age
+or background, including families and community groups.</p>
 </div>
+
+<div class="faq-item">
+<h3>Do I need an internet connection to use the games?</h3>
+<p>Most MySkillGame titles are designed to run offline once downloaded,
+which matters for learners in areas with limited or unreliable internet.
+Some features, like the public leaderboard and certain web-based tools,
+do require a connection.</p>
+</div>
+
+<div class="faq-item">
+<h3>How do the certificates work?</h3>
+<p>After completing an exam, language test, or story comprehension quiz,
+learners receive a score and a certificate marking that milestone. It's a
+simple way to track progress over time rather than a formal accreditation.</p>
+</div>
+
+<div class="faq-item">
+<h3>Can I suggest a new game, language, or feature?</h3>
+<p>Yes — the "We Would Like to Hear Your Opinion" section in the menu above
+is exactly for this. Feedback from students, teachers, and everyday users
+directly shapes what gets built next.</p>
+</div>
+
+<div class="faq-item">
+<h3>Who builds and maintains MySkill Global?</h3>
+<p>The platform is created and developed by Surajit Roy, with content
+review, storytelling, and educational input from collaborators including
+Sampurna Roy. See the "About the Developer" section below for more.</p>
+</div>
+
+</div>
+</div>
+</div>
+
 <!-- ══════════════════════════════════════════
      FOOTER
 ══════════════════════════════════════════ -->
@@ -1784,10 +1234,9 @@ img { pointer-events: none; -webkit-user-drag: none; }
 <a href="#developer">Developer Information</a> |
 <a href="privacy.html">Privacy Policy</a> |
 <a href="terms.html">Terms of Use</a> |
-<a href="contact.html">Contact</a>|
-<a href="disclaimer.html">Disclaimer</a>
+<a href="contact.html">Contact</a>
 </div>
-<div class="footer-copy">© 2026 MySkill Global · Created &amp; Developed by Surajit Roy - All rights reserved.</div>
+<div class="footer-copy">© 2026 MySkill Global · Created &amp; Developed by Surajit Roy</div>
 </footer>
 
 <script>

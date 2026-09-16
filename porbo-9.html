@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Four-Piece Map — Episode 9</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-deep:   #081521;
+    --navy-base:   #0e2233;
+    --navy-panel:  #14304a;
+    --navy-line:   #24476a;
+    --gold:        #c9a24b;
+    --gold-bright: #e8c874;
+    --cream:       #ede6d6;
+    --cream-dim:   #b9c2cc;
+    --ember:       #a54b3a;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at 50% -10%, rgba(201,162,75,0.10), transparent 55%),
+      var(--navy-deep);
+    color:var(--cream);
+    font-family:'Inter', sans-serif;
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
+  }
+  a{ color:var(--gold-bright); }
+  a:focus-visible, button:focus-visible{ outline:2px solid var(--gold-bright); outline-offset:3px; }
+
+  .topnav{
+    max-width:640px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:1rem 1.4rem;
+    font-size:0.85rem;
+  }
+  .topnav a{ text-decoration:none; color:var(--cream-dim); }
+  .topnav a:hover{ color:var(--gold-bright); }
+  .topnav .brand{ color:var(--gold); font-family:'Playfair Display', serif; font-weight:600; }
+
+  .cover{
+    position:relative; width:100%; aspect-ratio:4/5; max-height:78vh; overflow:hidden;
+  }
+  .cover img{ width:100%; height:100%; object-fit:cover; object-position:50% 30%; display:block; filter:saturate(1.03); }
+  .cover::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(8,21,33,0.15) 0%, rgba(8,21,33,0.05) 45%, rgba(8,21,33,0.65) 82%, var(--navy-deep) 100%);
+  }
+  @media (min-width:640px){ .cover{ aspect-ratio:16/9; max-height:72vh; } }
+
+  .hero{
+    position:relative; padding:2.2rem 1.4rem 3rem; text-align:center; overflow:hidden;
+    border-bottom:1px solid var(--navy-line);
+  }
+  .hero.with-cover{ margin-top:-4.5rem; }
+  .hero.no-cover{ padding-top:4.2rem; }
+  .hero::before{
+    content:""; position:absolute; inset:0;
+    background:
+      repeating-linear-gradient(115deg, rgba(201,162,75,0.05) 0 2px, transparent 2px 70px),
+      linear-gradient(180deg, transparent, var(--navy-deep) 40%);
+    z-index:-1;
+  }
+  .hero.no-cover::before{
+    background:
+      repeating-linear-gradient(115deg, rgba(201,162,75,0.05) 0 2px, transparent 2px 70px),
+      linear-gradient(180deg, var(--navy-base), var(--navy-deep) 85%);
+  }
+  .hero .kicker{ font-size:0.82rem; letter-spacing:0.06em; color:var(--cream-dim); margin:0 0 0.9rem; }
+  .hero h1{
+    font-family:'Playfair Display', serif; font-weight:700;
+    font-size:clamp(1.7rem, 8vw, 2.6rem); line-height:1.3; margin:0 0 0.6rem;
+    color:var(--gold-bright); text-shadow:0 0 30px rgba(201,162,75,0.18);
+  }
+  .hero .tagline{ font-family:'Playfair Display', serif; font-size:1rem; color:var(--cream-dim); margin:0; font-style:italic; }
+
+  .meta-bar{
+    max-width:640px; margin:0 auto; padding:1.1rem 1.4rem;
+    display:flex; justify-content:space-between; align-items:center;
+    font-size:0.82rem; color:var(--cream-dim); border-bottom:1px solid var(--navy-line);
+  }
+  .meta-bar .ep-no{ color:var(--gold); font-weight:600; }
+
+  main{ max-width:640px; margin:0 auto; padding:2.6rem 1.4rem 1rem; }
+  article p{ margin:0 0 1.25rem; font-size:1.06rem; color:var(--cream); }
+  article p:first-of-type::first-letter{
+    font-family:'Playfair Display', serif; font-size:2.6rem; font-weight:700; color:var(--gold-bright);
+    float:left; line-height:0.8; padding:0.1rem 0.35rem 0 0;
+  }
+  .line{ color:var(--cream-dim); font-style:italic; font-size:0.98rem; }
+  .sfx{ text-align:center; color:var(--gold); font-family:'Playfair Display', serif; font-weight:600; font-size:1.15rem; letter-spacing:0.08em; margin:0.4rem 0 1.4rem; }
+  .dialogue{ color:var(--gold-bright); padding-left:0.9rem; border-left:2px solid var(--navy-line); margin:0 0 0.85rem; }
+  .board{ font-family:'Playfair Display', serif; text-align:center; color:var(--gold-bright); font-size:1.08rem; font-weight:600; margin:1.6rem 0 0.3rem; letter-spacing:0.02em; }
+  .board.sub{ font-family:'Inter', sans-serif; font-weight:400; font-style:italic; font-size:0.92rem; color:var(--cream-dim); margin-top:0; margin-bottom:1.6rem; }
+  .scene-divider{ display:flex; align-items:center; justify-content:center; gap:0.7rem; margin:2.6rem 0; color:var(--gold); }
+  .scene-divider::before, .scene-divider::after{ content:""; height:1px; width:80px; background:linear-gradient(90deg, transparent, var(--navy-line)); }
+  .scene-divider::after{ background:linear-gradient(90deg, var(--navy-line), transparent); }
+  .scene-divider span{ font-size:1.1rem; }
+  .subhead{
+    font-family:'Playfair Display', serif; font-weight:600; color:var(--gold); font-size:1rem;
+    margin:2.2rem 0 1.2rem; display:flex; align-items:center; gap:0.6rem;
+  }
+  .subhead::before{ content:""; width:18px; height:1px; background:var(--gold); }
+  .closing{ margin-top:2.6rem; padding-top:1.8rem; border-top:1px solid var(--navy-line); }
+  .closing p{ color:var(--cream-dim); }
+  .closing .names{ color:var(--gold-bright); font-weight:600; font-family:'Playfair Display', serif; }
+  .continued{ text-align:center; margin:2.4rem 0 1rem; }
+  .continued span{
+    display:inline-block; font-family:'Playfair Display', serif; font-style:italic; color:var(--navy-deep);
+    background:var(--gold); padding:0.5rem 1.6rem; border-radius:2px; font-size:0.95rem; letter-spacing:0.03em;
+  }
+  .ep-nav{
+    max-width:640px; margin:2rem auto 0; padding:1.4rem;
+    display:flex; justify-content:space-between; gap:1rem;
+    border-top:1px solid var(--navy-line);
+  }
+  .ep-nav a{
+    text-decoration:none; color:var(--cream); font-size:0.9rem;
+    padding:0.6rem 1rem; border:1px solid var(--navy-line); border-radius:3px;
+    flex:1; text-align:center;
+  }
+  .ep-nav a:hover{ border-color:var(--gold); color:var(--gold-bright); }
+  .ep-nav a.disabled{ opacity:0.35; pointer-events:none; }
+  footer{
+    text-align:center; padding:1.6rem 1.4rem 2.6rem; color:var(--cream-dim); font-size:0.8rem;
+    border-top:1px solid var(--navy-line);
+  }
+  @media (min-width:640px){ .hero{ padding:5.5rem 1.4rem 3.6rem; } .hero.with-cover{ padding-top:2.2rem; } article p{ font-size:1.1rem; } }
+
+</style>
+</head>
+<body>
+
+<div class="topnav">
+  <a href="four-piece-index.html">← All Episodes</a>
+  <span class="brand">The Four-Piece Map</span>
+</div>
+
+<div class="hero no-cover">
+  <p class="kicker">A Serialized Novel</p>
+  <h1>The Four-Piece Map</h1>
+  <p class="tagline">A hundred-year-old truth behind a hidden treasure</p>
+</div>
+
+<div class="meta-bar">
+  <span><span class="ep-no">Episode 9</span> — Attack at the Ancestral House and the Second Piece</span>
+  <span>Ongoing</span>
+</div>
+
+<main>
+<article>
+<p>It was nearly half past ten at night. After Bella Pizza's last customer left, Supriya said, pulling down the shutter—</p>
+<p class="dialogue">— "Come a little earlier tomorrow. It's gotten very late tonight."</p>
+<p>Kanchan nodded.</p>
+<p class="dialogue">— "Yes, I will."</p>
+<p>After Supriya left, Kanchan stood in front of the shop for a while. Then he set off for home.</p>
+<p>In his pocket was the first piece of the map, found behind that old photograph. That strange line kept turning over in his mind, again and again—</p>
+<p class="board sub">"Where water lies, and yet the water never touches..."</p>
+<p>Along with it, he kept remembering that old well in the courtyard of the ancestral house. It struck Kanchan that the answer might well be hidden there.</p>
+
+<div class="scene-divider"><span>🌑</span></div>
+<p class="subhead">The Ancestral House</p>
+
+<p>Reaching the front of the house, Kanchan stopped. The surroundings were strangely silent. The broken parts of the old house looked even more mysterious in the moonlight.</p>
+<p>Kanchan slowly stepped into the courtyard. Suddenly—</p>
+<p class="sfx">Thok! Thok! Thok!</p>
+<p>The sound came drifting from the direction of the well. Kanchan's heart lurched inside him. He moved forward without a sound.</p>
+<p>As he reached the well, he saw — a stranger, his face covered with cloth, crouched by the loose brick, trying to pull something out.</p>
+<p>Kanchan watched him from a distance for a moment. Then he suddenly called out—</p>
+<p class="dialogue">— "Hey! Who are you?"</p>
+<p>The man startled and turned. For a few seconds, their eyes met. Then he sprang up and ran.</p>
+
+<div class="scene-divider"><span>🕵️‍♂️</span></div>
+<p class="subhead">Face to Face</p>
+
+<p class="dialogue">— "Stop!"</p>
+<p>Kanchan ran after him. The man dashed across the courtyard toward the broken part of the house. Kanchan kept chasing him. He had almost caught up.</p>
+<p>Just then, the man turned and hurled a heavy iron rod at Kanchan. Kanchan dodged quickly. The rod hit the ground with—</p>
+<p class="sfx">Clang!</p>
+<p>In that moment, the man slipped through the gap in the broken wall and vanished into the darkness. Kanchan followed him for a stretch. But he couldn't find him in the dark.</p>
+<p>He slowly made his way back to the well. Only one question filled his mind — what had the man been searching for here?</p>
+
+<div class="scene-divider"><span>🧩</span></div>
+<p class="subhead">The Second Piece</p>
+
+<p>Reaching the well, Kanchan saw that the loose brick had already been pulled out partway. The man must have worked out the sign as well.</p>
+<p>Kanchan carefully removed the brick. Behind it was a small hidden cavity. Inside sat a little metal case. Its mouth was sealed tight with wax.</p>
+<p>Kanchan's heart pounded. He took the case in his hand and peeled away the wax seal. Out of it came an old paper wrapped in cloth. The moment he unwrapped it, Kanchan understood — this was the second piece of the map.</p>
+<p>He took the first piece out of his pocket as well. The moment he placed the two pieces side by side, their drawn lines matched up with each other, astonishingly. Part of an incomplete path now became clearer.</p>
+<p>Kanchan stared in astonishment.</p>
+<p class="dialogue">— "So the sign on the first piece really has brought me here..."</p>
+<p>He turned the second piece over. On the back, in small letters, was written—</p>
+<p class="board sub">"Where there is no sound, and yet the scripture speaks..."</p>
+<p>Kanchan stayed silent for a moment. Then he said, slowly—</p>
+<p class="dialogue">— "Scripture... a manuscript..."</p>
+<p>The old prayer room of the house rose before his eyes. Some manuscripts, many years old, were still kept there. Excitement lit up Kanchan's face.</p>
+<p class="dialogue">— "Then the third piece is... inside the old manuscript in the prayer room!"</p>
+
+<div class="scene-divider"><span>👀</span></div>
+<p class="subhead">Someone Is Following Him</p>
+
+<p>Kanchan carefully folded the two pieces and tucked them inside his shirt. Just then, it struck him — someone seemed to be watching him.</p>
+<p>He looked slowly all around. The broken house. The dark windows. The silent courtyard. No one was in sight anywhere.</p>
+<p>But what had happened just moments before set him thinking. How had the stranger known about this sign? Had he already known the well's location? Or — had someone sent him?</p>
+<p>Kanchan found no answer. He only understood that he wasn't alone behind this mystery. Someone else was already trying to follow the same path, ahead of him.</p>
+
+<div class="scene-divider"><span>🔐</span></div>
+<p class="subhead">A New Path</p>
+
+<p>Kanchan looked at the well one last time. In his hands now — the first piece. The second piece. And ahead of him — the search for the third.</p>
+<p>He slowly made his way into the house. Looking at the door of the prayer room, it struck him — as though Harinarayan Chowdhury, even after all these years, was still guiding his path.</p>
+
+<div class="closing">
+  <p>But Kanchan didn't know — that hidden within that old manuscript in the prayer room lay not just the third piece, but a piece of information that would change everything he thought he knew about his own family's history.</p>
+  <p>And the stranger who had fled into the darkness had already called someone to report — <span class="names">"The second piece has gone to Kanchan as well."</span></p>
+</div>
+<div class="continued"><span>To be continued...</span></div>
+
+</article>
+</main>
+
+<div class="ep-nav">
+  <a href="porbo-8.html">← Episode 8</a>
+  <a href="porbo-10.html">Next Episode →</a>
+</div>
+<footer>
+  The Four-Piece Map · Episode 9
+</footer>
+
+</body>
+</html>

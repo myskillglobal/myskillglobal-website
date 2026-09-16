@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rahim Miah and the Rickshaw Worth a Fortune.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Literata:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+<script src="security.js" defer></script>
+
+<style>
+  :root{
+    --dusk-navy:#1c2540;
+    --dusk-navy-deep:#12182c;
+    --rust:#b5563c;
+    --rust-deep:#8f4230;
+    --paper:#f6efe0;
+    --paper-warm:#efe4cc;
+    --ink:#2c2416;
+    --ink-soft:#54493a;
+    --ticket-yellow:#e8b23d;
+    --ticket-red:#a8322d;
+    --line:#d8c8a4;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Literata', serif;
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3,.eyebrow-title{
+    font-family:'Fraunces', serif;
+    font-optical-sizing:auto;
+  }
+
+  a{color:inherit;}
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    background:linear-gradient(180deg, var(--dusk-navy) 0%, var(--dusk-navy-deep) 60%, var(--ink) 100%);
+    color:var(--paper);
+    overflow:hidden;
+    padding:0;
+  }
+
+  .hero-sky{
+    position:absolute;
+    inset:0;
+    background:
+      radial-gradient(circle at 78% 18%, rgba(232,178,61,0.55) 0%, rgba(232,178,61,0.0) 32%),
+      linear-gradient(180deg, #2b3b63 0%, #1c2540 45%, #12182c 100%);
+    z-index:0;
+  }
+
+  .hero-inner{
+    position:relative;
+    z-index:2;
+    max-width:760px;
+    margin:0 auto;
+    padding:64px 24px 40px;
+    text-align:center;
+  }
+
+  .hero-kicker{
+    display:inline-block;
+    font-family:'Literata', serif;
+    font-weight:600;
+    font-size:0.9rem;
+    letter-spacing:0.03em;
+    color:var(--ticket-yellow);
+    border:1.5px dashed rgba(232,178,61,0.6);
+    padding:6px 18px;
+    border-radius:999px;
+    margin-bottom:22px;
+  }
+
+  .hero-title{
+    font-size:clamp(2.1rem, 5.5vw, 3.5rem);
+    font-weight:700;
+    font-optical-sizing:auto;
+    margin:0 0 14px;
+    line-height:1.2;
+    color:#fff;
+  }
+
+  .hero-title .accent{
+    color:var(--ticket-yellow);
+    font-style:italic;
+  }
+
+  .hero-sub{
+    font-size:1.12rem;
+    color:#dcd6c8;
+    margin:0 auto 36px;
+    max-width:520px;
+    font-style:italic;
+  }
+
+  .hero-image-frame{
+    position:relative;
+    z-index:2;
+    max-width:820px;
+    margin:0 auto;
+    padding:0 20px 56px;
+  }
+
+  .hero-image-wrap{
+    position:relative;
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.55), 0 0 0 6px rgba(232,178,61,0.12);
+  }
+
+  .hero-image-wrap img{
+    display:block;
+    width:100%;
+    height:auto;
+    aspect-ratio:16/10;
+    object-fit:cover;
+  }
+
+  .hero-image-caption{
+    position:absolute;
+    left:0; right:0; bottom:0;
+    padding:14px 18px;
+    font-size:0.9rem;
+    color:#f1ead8;
+    background:linear-gradient(0deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 100%);
+  }
+
+  /* ===== WAVE DIVIDER ===== */
+  .wave-divider{
+    display:block;
+    width:100%;
+    line-height:0;
+  }
+  .wave-divider svg{width:100%; height:56px; display:block;}
+
+  /* ===== ARTICLE ===== */
+  .article{
+    max-width:680px;
+    margin:0 auto;
+    padding:8px 24px 40px;
+  }
+
+  .part-tag{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin:44px 0 8px;
+  }
+  .part-tag .num{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:1.4rem;
+    color:var(--rust);
+    background:var(--paper-warm);
+    border:2px solid var(--rust);
+    width:44px; height:44px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .part-tag .label{
+    font-family:'Fraunces', serif;
+    font-size:1.3rem;
+    font-weight:600;
+    color:var(--ink);
+  }
+
+  .lede{
+    font-size:1.14rem;
+    color:var(--ink);
+  }
+
+  .lede p{margin:0 0 22px;}
+
+  p{margin:0 0 20px; font-size:1.08rem; color:var(--ink);}
+
+  .quote-block{
+    position:relative;
+    margin:32px 0;
+    padding:22px 26px;
+    background:var(--paper-warm);
+    border-radius:10px;
+    border-right:6px solid var(--ticket-yellow);
+  }
+  .quote-block p{
+    margin:0;
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:600;
+    font-size:1.25rem;
+    color:var(--rust-deep);
+  }
+
+  .dialogue{
+    color:var(--ink-soft);
+    font-style:italic;
+  }
+
+  .section-heading{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin:52px 0 22px;
+  }
+  .section-heading::before{
+    content:"";
+    width:34px;
+    height:34px;
+    flex-shrink:0;
+    background:var(--rust);
+    -webkit-mask: radial-gradient(circle at 50% 50%, transparent 4px, black 5px);
+    mask: radial-gradient(circle at 50% 50%, transparent 4px, black 5px);
+    border-radius:50%;
+  }
+  .section-heading h2{
+    font-size:1.55rem;
+    font-weight:600;
+    font-style:italic;
+    color:var(--dusk-navy);
+    margin:0;
+  }
+
+  /* ticket-perforation divider */
+  .ticket-break{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    margin:44px 0;
+  }
+  .ticket-break span{
+    width:8px; height:8px;
+    border-radius:50%;
+    background:var(--line);
+  }
+
+  .warning-box{
+    margin:40px 0;
+    padding:26px 24px;
+    background:var(--dusk-navy);
+    color:var(--paper);
+    border-radius:14px;
+    position:relative;
+  }
+  .warning-box .tag{
+    display:inline-block;
+    font-size:0.8rem;
+    font-weight:600;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    color:var(--ticket-yellow);
+    background:rgba(232,178,61,0.14);
+    padding:4px 12px;
+    border-radius:999px;
+    margin-bottom:14px;
+  }
+  .warning-box p{
+    color:#e9e3d2;
+    margin:0 0 14px;
+    font-size:1.06rem;
+  }
+  .warning-box p:last-child{margin-bottom:0;}
+  .warning-box strong{color:#fff;}
+
+  .cliff-card{
+    margin:48px 0 12px;
+    padding:30px 26px;
+    text-align:center;
+    background:linear-gradient(135deg, var(--ticket-red), var(--rust-deep));
+    color:#fff;
+    border-radius:16px;
+    box-shadow:0 18px 40px -18px rgba(168,50,45,0.55);
+  }
+  .cliff-card .q{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:1.3rem;
+    font-weight:600;
+    margin:0 0 10px;
+  }
+  .cliff-card .next{
+    display:inline-block;
+    margin-top:10px;
+    font-size:0.9rem;
+    font-weight:600;
+    letter-spacing:0.02em;
+    color:var(--ticket-yellow);
+    border:1.5px dashed rgba(255,255,255,0.5);
+    padding:8px 20px;
+    border-radius:999px;
+  }
+
+  .final-lesson{
+    margin:52px 0 8px;
+    padding:34px 28px;
+    background:linear-gradient(160deg, var(--paper-warm), var(--paper));
+    border:2px solid var(--ticket-yellow);
+    border-radius:18px;
+    text-align:center;
+  }
+  .final-lesson .tag{
+    display:inline-block;
+    font-size:0.8rem;
+    font-weight:700;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    color:var(--rust-deep);
+    background:rgba(232,178,61,0.25);
+    padding:5px 16px;
+    border-radius:999px;
+    margin-bottom:18px;
+  }
+  .final-lesson p{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.18rem;
+    color:var(--dusk-navy);
+    margin:0 0 12px;
+    line-height:1.55;
+  }
+  .final-lesson p:last-child{margin-bottom:0;}
+
+  .final-question{
+    margin:36px 0 12px;
+    padding:32px 26px;
+    text-align:center;
+    background:linear-gradient(135deg, var(--dusk-navy), var(--dusk-navy-deep));
+    color:#fff;
+    border-radius:16px;
+    box-shadow:0 18px 40px -18px rgba(28,37,64,0.55);
+  }
+  .final-question .q{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:1.25rem;
+    font-weight:600;
+    margin:0;
+    color:#f6efe0;
+  }
+  .final-question .tag{
+    display:inline-block;
+    font-size:0.8rem;
+    font-weight:600;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    color:var(--ticket-yellow);
+    background:rgba(232,178,61,0.14);
+    padding:4px 14px;
+    border-radius:999px;
+    margin-bottom:16px;
+  }
+
+  footer{
+    text-align:center;
+    padding:34px 20px 40px;
+    font-size:0.85rem;
+    color:var(--ink-soft);
+    border-top:1px solid var(--line);
+    margin-top:20px;
+  }
+
+  footer a{
+    color:var(--rust-deep);
+    text-decoration:none;
+    font-weight:600;
+  }
+
+  @media (max-width:480px){
+    .hero-inner{padding:48px 18px 30px;}
+    .article{padding:0 18px 30px;}
+    .section-heading h2{font-size:1.32rem;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-sky"></div>
+  <div class="hero-inner">
+    <span class="hero-kicker">The Complete Story · Financial Literacy</span>
+    <h1 class="hero-title">Rahim Miah and the <span class="accent">Rickshaw Worth</span> a Fortune.</h1>
+    <p class="hero-sub">A four-part tale of fortune, madness, ruin — and the financial sense he finally earned</p>
+  </div>
+  <div class="hero-image-frame">
+    <div class="hero-image-wrap">
+      <img src="images/pic-1.png" alt="Rahim Miah's old rickshaw standing by the roadside in the fading evening light">
+      <div class="hero-image-caption">In the fading evening light, Rahim Miah and his old, worn-out rickshaw</div>
+    </div>
+  </div>
+  <div class="wave-divider">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,32 C240,60 480,0 720,20 C960,40 1200,60 1440,28 L1440,60 L0,60 Z" fill="#f6efe0"></path></svg>
+  </div>
+</div>
+
+<main class="article">
+
+  <div class="part-tag">
+    <span class="num">1</span>
+    <span class="label">The Fortune That Knocked</span>
+  </div>
+
+  <div class="lede">
+    <p>The evening light was slowly fading. One by one, the shops lining the street lit up. From a tea stall came the clink of cups and saucers; somewhere the smell of fried onions thickened the evening air.</p>
+    <p>On one side of that busy street stood an old rickshaw. Its paint had worn off long ago. Rust had crept over the iron frame in patches. The seat's leather had torn, spilling out old cotton stuffing.</p>
+    <p>Beside the rickshaw stood Rahim Miah, catching his breath. He had passed sixty-five. The legs that once pedalled ten or fifteen kilometres a day without effort now trembled after the shortest stretch — especially the knees.</p>
+    <p>He climbed on and set his feet on the pedals. He pressed once. The rickshaw inched forward. He pressed again. The old iron chain rattled with a sharp click.</p>
+  </div>
+
+  <p class="dialogue">Rahim Miah gritted his teeth and said,<br>"Come on, old friend... just a little further."</p>
+
+  <p>This rickshaw was now his only means. And yet, just four years earlier, no one who knew this man would have believed such a day could ever come.</p>
+
+  <p>Four years ago, when Rahim Miah rode down this very street, people would point at him and say—</p>
+
+  <p class="dialogue">"There he is! Rahim Miah, who won a crore rupees in the lottery!"</p>
+
+  <p>Some stared in astonishment. Some came close to shake his hand. Some laughed and said,<br><span class="dialogue">"Rahim bhai, don't forget us now!"</span></p>
+
+  <p>Back then, a smile never left Rahim Miah's face. He used to think—</p>
+
+  <div class="quote-block"><p>"My life has changed."</p></div>
+
+  <p>It truly had changed. Just not in the way he had imagined.</p>
+
+  <div class="ticket-break"><span></span><span></span><span></span></div>
+
+  <div class="section-heading"><h2>A Childhood Dream</h2></div>
+
+  <p>Rahim Miah's obsession with the lottery was not new. It began when he was only nine. His father was a day labourer. His mother worked in other people's homes. Want was a constant companion in the household.</p>
+
+  <p>Rahim never got far in school. The family's needs pulled him into work at a tea stall while he was still a boy — wiping tables, washing glasses, carrying tea all day long, every day.</p>
+
+  <p>When the owner handed him a few coins at day's end, Rahim would clutch them tight in his fist and walk home. But at the corner stood a small shop, and hanging there were colourful lottery tickets. They seemed to call out to him — red, blue, yellow paper, printed with big bold numbers.</p>
+
+  <p class="dialogue">The shopkeeper would say, "Take one, Rahim! Today your luck might turn!"</p>
+
+  <p>The first day, Rahim only stood and watched. The second day too. On the third day, he pulled a coin from his pocket. The shopkeeper placed a ticket in his hand.</p>
+
+  <p>Holding that ticket, it occurred to Rahim—</p>
+
+  <div class="quote-block"><p>"Maybe this is the road that changes my fortune."</p></div>
+
+  <p>The ticket won nothing. He bought another the next week. That one won nothing either. Then? Another. And another. That is how it began.</p>
+
+  <div class="ticket-break"><span></span><span></span><span></span></div>
+
+  <div class="section-heading"><h2>Rickshaw Handles and Lottery Tickets</h2></div>
+
+  <p>The years passed. Rahim left the tea stall and took up pulling a rickshaw. He set out each morning and returned each night, exhausted. But every day, he set aside a small share of his earnings for the lottery.</p>
+
+  <p class="dialogue">His friends would say, "Rahim, give this up. Save the money instead."<br>Rahim would laugh and say, "One day you'll see — this ticket will make me a rich man."</p>
+
+  <p>Some laughed. Some said, <span class="dialogue">"You dream too much."</span> But Rahim never stopped.</p>
+
+  <p>He skipped a cup of tea to buy a ticket. He went without a new shirt to buy a ticket. Sometimes he even poured household money meant for necessities into the lottery. In his heart lived one belief—</p>
+
+  <div class="quote-block"><p>"My day will come too."</p></div>
+
+  <p>Years rolled by — ten, twenty, thirty, forty. Grey crept into Rahim's hair. Then one day his age drew close to sixty-five. But the habit of buying lottery tickets never left him. By now, it had become something closer to an addiction.</p>
+
+  <div class="ticket-break"><span></span><span></span><span></span></div>
+
+  <div class="section-heading"><h2>That Morning</h2></div>
+
+  <p>Four years earlier, on an ordinary morning, Rahim had set out with his rickshaw as always. A few loose coins jingled in his pocket. At the familiar corner shop, he stopped in front of the lottery stand.</p>
+
+  <p class="dialogue">The shopkeeper said, "Rahim uncle, a new series just came in."<br>Rahim laughed and said, "Go on, give me one."</p>
+
+  <p>The shopkeeper held out a few tickets. Rahim picked one — a small-value ticket. He tucked it into his pocket and rode off. The day passed like any other.</p>
+
+  <p>But that evening, back home, when Rahim checked the ticket against the numbers, his hand began to shake. He looked once. He looked again. Then he sat holding the ticket in front of his eyes, silent for a long while.</p>
+
+  <p>The numbers flashing on the shop's little television matched his ticket! Rahim couldn't believe it. He ran to the shop next door.</p>
+
+  <p class="dialogue">"Brother... check this for me, will you!"</p>
+
+  <p>The shopkeeper took the ticket, matched the numbers, and suddenly fell silent.</p>
+
+  <p class="dialogue">"Rahim uncle..."<br>"What is it?"<br>"Your ticket..."</p>
+
+  <p>The man checked the numbers once more. Then he said—</p>
+
+  <div class="quote-block"><p>"You've won a crore rupees!"</p></div>
+
+  <p>Rahim couldn't even grasp the meaning of the words. "What did you say?" "A crore rupees, uncle!"</p>
+
+  <p>A small crowd gathered around. Someone wanted to see the ticket. Someone was holding his hand. Someone said, <span class="dialogue">"Uncle, you're a millionaire today!"</span></p>
+
+  <p>Rahim Miah looked up at the sky. Tears rolled down his cheeks. The dream he had chased for so many years — it had come true!</p>
+
+  <p>That night he couldn't sleep. Again and again he pulled the ticket from his pocket, looked at it, folded it back. He told himself, again and again—</p>
+
+  <p class="dialogue">"Now I'll never have to pull a rickshaw again."</p>
+
+  <div class="warning-box">
+    <span class="tag">Looking Back</span>
+    <p>He didn't know it yet—<strong>that day, alongside the greatest joy of his life, the door to its greatest danger had also swung open.</strong></p>
+    <p>Because winning a crore rupees is hard. <strong>Holding on to a crore rupees is harder still.</strong></p>
+  </div>
+
+  <div class="part-tag">
+    <span class="num">2</span>
+    <span class="label">The Madness of a Crore</span>
+  </div>
+
+  <div class="lede">
+    <p>A crore rupees! It didn't take long for the news to spread through Rahim Miah's village. The man everyone had known simply as an ordinary rickshaw-puller suddenly became the most talked-about person in the village.</p>
+    <p>From morning to evening, a crowd gathered outside his house. Some came to congratulate him. Some brought boxes of sweets. Some, after many years, showed up saying—</p>
+  </div>
+
+  <p class="dialogue">"Rahim bhai, do you remember me?"</p>
+
+  <p>Rahim Miah couldn't recognise everyone. But he trusted everyone.</p>
+
+  <div class="quote-block"><p>That trust would slowly become his greatest danger.</p></div>
+
+  <div class="ticket-break"><span></span><span></span><span></span></div>
+
+  <div class="section-heading"><h2>Dreaming Before the Money Even Arrived</h2></div>
+
+  <p>Before the lottery money had even reached his hands, Rahim Miah had already made his plans. He would never pull a rickshaw again. He would buy an expensive car. He would tear down the house and build a new one. He would set up his son in business. He would help his friends. He would give money to people in the village. And want would never touch his life again.</p>
+
+  <p class="dialogue">The bank manager had called him in and said, "Don't take the money directly in cash — keep it safely in a bank account first. Don't spend such a large, unexpected sum without a plan."<br>Rahim nodded and said, "Yes, I understand."</p>
+
+  <p>But in truth, he understood nothing. Bank paperwork, taxes, investments, interest, risk — these were an alien world to him. He understood only one thing—</p>
+
+  <div class="quote-block"><p>"I now have a lot of money."</p></div>
+
+  <p>And that single feeling became the start of the biggest mistake of his life.</p>
+
+  <div class="ticket-break"><span></span><span></span><span></span></div>
+
+  <div class="section-heading"><h2>The First Big Purchase</h2></div>
+
+  <p>Within days of the money arriving, Rahim Miah bought a shiny, air-conditioned car. When it pulled up in front of the house, the village gathered to see it. Rahim opened the door, sat inside, and smiled.</p>
+
+  <p class="dialogue">Someone said, "Rahim uncle, this car looks straight out of the city!"<br>Rahim said proudly, "I'm a rich man now too!"</p>
+
+  <p>But there was one small problem. <strong>He didn't know how to drive.</strong> So he had to hire a driver. Petrol, the driver's salary, servicing, insurance — together, a large sum began leaving his pocket every month.</p>
+
+  <p>But Rahim never counted any of it as an expense. He thought—</p>
+
+  <p class="dialogue">"I have the money — of course it will be spent."</p>
+
+  <div class="ticket-break"><span></span><span></span><span></span></div>
+
+  <div class="section-heading"><h2>A Palace of His Own</h2></div>
+
+  <p>Next came the house. The old cottage no longer suited him. On a vast plot near the village crossing rose a three-storey house — marble, expensive tiles, air-conditioning, chandeliers, a grand gate, costly furniture. In every detail, Rahim Miah seemed to be proving one thing—</p>
+
+  <div class="quote-block"><p>"I am no longer that old Rahim."</p></div>
+
+  <p>The moment the house was finished, he threw a great feast for his friends. Hundreds of people ate that day.</p>
+
+  <p class="dialogue">Someone said, "Rahim bhai, you've truly become a king!"<br>Rahim laughed and said, "God has given it. Everyone shall eat together."</p>
+
+  <p>But no one asked him — "How long will this money last?" And Rahim never asked himself either.</p>
+
+  <div class="ticket-break"><span></span><span></span><span></span></div>
+
+  <div class="section-heading"><h2>Giving in the Name of Help</h2></div>
+
+  <p>The biggest trouble began once the village realised — <strong>Rahim Miah never said no to a request for money.</strong></p>
+
+  <p class="dialogue">One came saying, "Uncle, my daughter's wedding." Rahim gave fifty thousand.<br>Another came saying, "I want to start a business." He gave a lakh.<br>Someone said, "There's illness at home." He gave more still.</p>
+
+  <p>Some were genuinely in need. Others simply took advantage of his simplicity. Rahim never verified a thing. A tear in someone's eye was enough to soften his heart. He thought—</p>
+
+  <p class="dialogue">"I have so much money. What difference does it make if I give some away?"</p>
+
+  <p>But he didn't know—</p>
+
+  <div class="quote-block"><p>No fortune, however large, survives spending without a reckoning.</p></div>
+
+  <div class="ticket-break"><span></span><span></span><span></span></div>
+
+  <div class="section-heading"><h2>A Strange Faith in Cash</h2></div>
+
+  <p>Rahim also feared keeping money in the bank. He would say, "It's only safe if it's right in front of my own eyes." So he withdrew large sums and stashed them — sometimes under the mattress, sometimes in the cupboard, sometimes in the rice drum.</p>
+
+  <p>His household watched in disbelief.</p>
+
+  <p class="dialogue">One day his wife said, "Is it really right to keep so much cash in the house like this?"<br>Rahim laughed and said, "What's there to fear? It's my own money."</p>
+
+  <p>He never understood—</p>
+
+  <div class="quote-block"><p>Money isn't only about owning it — you must also know how to keep it safe.</p></div>
+
+  <div class="ticket-break"><span></span><span></span><span></span></div>
+
+  <div class="section-heading"><h2>Spending Without a Ledger</h2></div>
+
+  <p>In the first year, Rahim Miah never really grasped how much money was leaving his hands. By the second year, nothing about his lifestyle had changed — if anything, the spending grew. Where a household once managed on just a few thousand a month, now a fortune was being spent on the house and the car alone.</p>
+
+  <p>On top of that came relatives' demands, friends' requests, money handed to various businesses, land bought on someone's word, funds poured into ventures on someone else's advice. Nowhere was there a written account. Nowhere a plan. Only one belief—</p>
+
+  <div class="quote-block"><p>"I have a crore rupees!"</p></div>
+
+  <p>But the crore was no longer where it had been. Slowly, that mountain of money had begun to shrink.</p>
+
+  <div class="ticket-break"><span></span><span></span><span></span></div>
+
+  <div class="section-heading"><h2>The Manager's Warning</h2></div>
+
+  <p class="dialogue">One day the bank manager called Rahim in and said, "Rahim Sheikh, have you looked at your spending lately?"<br>Rahim laughed and said, "Ah sir, why worry so much? I have plenty of money."</p>
+
+  <div class="quote-block"><p>"Having a lot of money and having money for a long time are not the same thing."</p></div>
+
+  <p class="dialogue">Rahim laughed at the remark. "You're a bank man. Worrying about money is your job."<br>The manager said nothing more. He only added, "Let's hope that remark doesn't come back to you too late."</p>
+
+  <p>Rahim still didn't understand what he meant.</p>
+
+  <div class="warning-box">
+    <span class="tag">Looking Back</span>
+    <p>Time passed. The man who had once dreamed of turning a crore into several crores was, without even realising it, slipping toward <strong>losing that fortune altogether</strong>.</p>
+    <p>And around him, the people who had once smiled and gathered close were still watching — watching his money. <strong>But for how much longer?</strong></p>
+  </div>
+
+  <div class="part-tag">
+    <span class="num">3</span>
+    <span class="label">Where Did the Crore Go?</span>
+  </div>
+
+  <div class="lede">
+    <p>By the third year, Rahim Miah had begun to sense that something was wrong. Withdrawing money from the bank no longer brought the same relief. Where the sight of the balance once filled him with pride, the numbers were now shrinking fast.</p>
+  </div>
+
+  <p class="dialogue">Still, he told himself—<br>"I've spent a lot, that's why it's dropped a little. It'll sort itself out."</p>
+
+  <p>But the money never came back on its own.</p>
+
+  <div class="ticket-break"><span></span><span></span><span></span></div>
+
+  <div class="section-heading"><h2>A Mountain of Expenses</h2></div>
+
+  <p>The car's costs kept coming. The house's costs kept coming. The electricity bill climbed. Staff had to be paid. Relatives' demands never eased. And most of the money he had put into other people's businesses never returned.</p>
+
+  <p>Some shut down their businesses. Some stopped answering the phone. Some said plainly—</p>
+
+  <p class="dialogue">"Rahim bhai, the business didn't turn a profit. I can't pay you back right now."</p>
+
+  <p>Rahim finally understood—</p>
+
+  <div class="quote-block"><p>Giving money away and investing money are not the same thing.</p></div>
+
+  <div class="ticket-break"><span></span><span></span><span></span></div>
+
+  <div class="section-heading"><h2>The Car Became a Burden</h2></div>
+
+  <p class="dialogue">One day the driver came and said, "Sir, the car needs servicing."<br>Rahim, irritated, asked, "How much will it cost?"<br>"Quite a lot."</p>
+
+  <p>Rahim reached into his pocket and stopped. Once, he never gave a second thought to such an expense. Now he had to.</p>
+
+  <p>Within a few months, the car had all but stopped being used. Dust gathered in a corner of the garage. The car that was once a symbol of his pride had become, in his eyes, <strong>a burden of expense</strong>.</p>
+
+  <p>No petrol. No servicing. No money for upkeep. Rahim would gaze at it from a distance and sigh.</p>
+
+  <div class="ticket-break"><span></span><span></span><span></span></div>
+
+  <div class="section-heading"><h2>Darkness Even in the Palace</h2></div>
+
+  <p>Then came a bigger blow. The electricity bill for the massive house had gone unpaid for months. Rahim Miah sat for a long while, silent, holding the bill in his hands.</p>
+
+  <p>Where every room of the house had once been lit, now several rooms had to go dark. The air-conditioning was switched off. Unneeded rooms were shut up. Staff were let go. Even so, the expenses couldn't be brought under control.</p>
+
+  <p>For the first time, Rahim understood—</p>
+
+  <div class="quote-block"><p>The bigger the house, the bigger the responsibility.</p></div>
+
+  <div class="ticket-break"><span></span><span></span><span></span></div>
+
+  <div class="section-heading"><h2>Where Did the People Go?</h2></div>
+
+  <p>What hurt most was how people behaved. Those who once visited his house daily no longer came at all.</p>
+
+  <p class="dialogue">The friend who used to say — "Rahim bhai, you're like my own brother" — was now always busy whenever he called.<br>The relative who used to say — "Where would we be without you?" — no longer even checked in.</p>
+
+  <p class="dialogue">One day Rahim called an old friend and said, "Brother, it's been so long. Come by sometime."<br>The answer came back, "Sure, I'll come when I find the time."</p>
+
+  <p>He never came. That day Rahim understood—</p>
+
+  <div class="quote-block"><p>Many of these people had never loved him. They had loved his money.</p></div>
+
+  <div class="ticket-break"><span></span><span></span><span></span></div>
+
+  <div class="section-heading"><h2>The Last Cushion Gone</h2></div>
+
+  <p>By the start of the fourth year, Rahim's bank account was nearly empty. Debt hung over the house. The car sat idle. Money given to businesses was never returned. And most of the people he had once helped were nowhere near him now.</p>
+
+  <p>To settle the debts, he finally had to sell off a large part of the grand house — the very house he had once taken such pride in had become the means of paying off his loans.</p>
+
+  <p>Standing in front of the house, Rahim Miah fell silent. Through the gate where an expensive car once entered, buyers now walked in.</p>
+
+  <p class="dialogue">A buyer looked the house over and said, "It's quite large. But you're asking a bit much."<br>Rahim, head bowed, said, "Give whatever you can."</p>
+
+  <p>There was no pride left in his voice.</p>
+
+  <div class="ticket-break"><span></span><span></span><span></span></div>
+
+  <div class="section-heading"><h2>That Same Old Bank Manager</h2></div>
+
+  <p>One day Rahim Miah went back to the bank. The same manager was still there. Seeing Rahim, he stood up.</p>
+
+  <p class="dialogue">"How are you?"<br>Rahim smiled faintly. "Not well."</p>
+
+  <p>The manager asked him to sit. After a long silence, Rahim said,</p>
+
+  <p class="dialogue">"Sir... where did my money go?"</p>
+
+  <p>The manager gave no answer at first. He checked some figures on his computer. Then he pulled out a sheet of paper and set it in front of Rahim.</p>
+
+  <p class="dialogue">"If you'd like, I can show you the numbers."<br>Rahim said, "Show me."</p>
+
+  <p class="dialogue">The manager said, "You've been buying lottery tickets since you were nine years old. If, over nearly fifty years, you had regularly set aside even a small part of that money — daily or weekly — and kept it invested wisely over the long term, those small amounts could have grown considerably over time."</p>
+
+  <p class="dialogue">Rahim looked at him in surprise. "How?"<br>The manager said, "Through compounding."<br>"What's that?"</p>
+
+  <p>The manager wrote it out simply on the paper—</p>
+
+  <div class="quote-block"><p>Principal → return → return on that return → an even larger sum.</p></div>
+
+  <p class="dialogue">"That's compounding. The more time it has, the bigger its effect can be."</p>
+
+  <p>Rahim sat quietly. The manager continued,</p>
+
+  <p class="dialogue">"You waited on luck through the lottery. But through regular saving and long-term investing, you had the chance to build your own future."</p>
+
+  <p>Rahim bowed his head. For the first time, it occurred to him—</p>
+
+  <div class="quote-block"><p>Losing the crore was not his greatest loss. His greatest loss was that he never once tried to learn.</p></div>
+
+  <div class="ticket-break"><span></span><span></span><span></span></div>
+
+  <div class="section-heading"><h2>But By Then, It Was Too Late</h2></div>
+
+  <p>Rahim walked slowly toward the street after leaving the bank. Once, his pocket had held the dream of a crore rupees. Today, it held only a few notes.</p>
+
+  <p>At the crossing, he looked at his old rickshaw. It was still there — rusted, its seat torn, its wheels weak. And yet it was now his only remaining resource.</p>
+
+  <p>Rahim slowly rested his hand on the rickshaw's handle. Before his eyes rose the memory of that day, four years ago — people shouting,</p>
+
+  <div class="quote-block"><p>"Rahim Miah, the Millionaire!"</p></div>
+
+  <p>Today, no one recognised him at all.</p>
+
+  <div class="warning-box">
+    <span class="tag">Looking Back</span>
+<p>But the story doesn't end here. Rahim still held just <strong>twenty</strong> in his hand.</p>
+    <p>And with that twenty-unit note, he was about to make a decision that would prove one thing—<strong>you can lose the money, but the habit doesn't always have to stay lost.</strong></p>
+  </div>
+
+  <div class="part-tag">
+    <span class="num">4</span>
+    <span class="label">Back on the Rickshaw Seat</span>
+  </div>
+
+  <div class="lede">
+    <p>After leaving the bank that day, Rahim Miah stood by the roadside for a long while in silence. The memory of that day, four years earlier, kept returning — the day everyone had said—</p>
+  </div>
+
+  <div class="quote-block"><p>"Rahim Miah has won a crore rupees in the lottery!"</p></div>
+
+<p>That much was true. The declared prize really was <strong>ten million</strong>. But after tax and other applicable deductions, only about <strong>6.5 million</strong> actually reached his hands. The village never knew the difference — everyone simply believed that Rahim had won a fortune. And around that belief, people's expectations had grown.</p>
+
+  <div class="ticket-break"><span></span><span></span><span></span></div>
+
+  <div class="section-heading"><h2>"You've Got a Crore, Haven't You!"</h2></div>
+
+  <p class="dialogue">"Rahim bhai, you've got a crore! Help us out a little."<br>"You've got all that money sitting there — set our business up for us."</p>
+
+  <p>Rahim never explained to anyone that he didn't actually have a crore in hand. In his own mind he thought, "Sixty-five lakh is hardly small!" But the real problem lay elsewhere—<strong>he never looked at that sixty-five lakh as wealth to be preserved; he saw it only as a great deal of money to be spent.</strong> The car, the house, the furniture, the feasts, the help given to relatives, the money poured into businesses — he walked the very same path all over again, until the sixty-five lakh dwindled to a few lakh, and then that too ran out.</p>
+
+  <div class="ticket-break"><span></span><span></span><span></span></div>
+
+  <div class="section-heading"><h2>The Manager's Final Lesson</h2></div>
+
+  <p>A few days later, Rahim went back to the same bank manager.</p>
+
+  <p class="dialogue">The manager said, "You won a crore, but what reached your hands was about sixty-five lakh. If you had kept a portion of that safely aside, invested another portion for the future, and set a clear limit for spending — things might look very different today."</p>
+
+  <p class="dialogue">Rahim said, "I thought having the money would be enough to keep everything fine."<br>The manager said, "Money alone isn't enough."</p>
+
+  <div class="quote-block"><p>"You have to know how to put your money to work for you."</p></div>
+
+  <p class="dialogue">"Could I have started with just a little?" Rahim asked.<br>The manager smiled. "Of course. Building wealth doesn't always take a large sum — time, regular saving, and sound financial decisions matter far more."</p>
+
+  <div class="ticket-break"><span></span><span></span><span></span></div>
+
+  <div class="section-heading"><h2>Back on the Rickshaw</h2></div>
+
+  <p>Four years later. The evening light fading. That same old rickshaw at the crossing.</p>
+
+  <p>Rahim Miah sat once more on the rickshaw seat. The veins stood out on his hands. His hair had turned white. Tiredness had settled under his eyes. His knee ached the moment he pressed the pedal.</p>
+
+  <p>And still the rickshaw moved. Because life doesn't stop.</p>
+
+  <div class="ticket-break"><span></span><span></span><span></span></div>
+
+  <div class="section-heading"><h2>The Last Ten</h2></div>
+
+  <p>That evening, his pocket held only twenty. At the roadside stall, he bought a cup of liquor tea for ten unit note. Holding the hot cup, he sat quietly for a long while.</p>
+
+  <p>Then he drew out the remaining ten- note and looked toward the lottery shop ahead.</p>
+
+  <p class="dialogue">The shopkeeper saw him and said with a smile, "Rahim uncle, shall I give you a ticket?"</p>
+
+  <p>Rahim stayed silent for a moment. Before his eyes rose the day, four years past. A crore rupees. The crowds. Relatives. Friends. An expensive car. A grand house. And then — emptiness. The rickshaw. Debt. Want. And that one line from the manager, still echoing in his ears.</p>
+
+  <p>The ten-unit note trembled between Rahim's fingers.</p>
+
+  <p class="dialogue">The shopkeeper said again, "Uncle, your luck might turn!"</p>
+
+  <p>Rahim looked at the tickets for a long moment. And then — what did he do? Did he buy the ticket? Or had he, at last, truly understood the biggest mistake of his life?</p>
+
+  <p>A few seconds later, Rahim slowly tucked the ten-unit note back into his pocket. The shopkeeper stared in surprise. Rahim only said—</p>
+
+  <div class="quote-block"><p>"How much longer should I keep depending on luck?"</p></div>
+
+  <p>Then he took hold of the rickshaw's handle. Slowly, he pressed the pedal. The rickshaw rolled forward, into the darkening street.</p>
+
+  <p>Perhaps he no longer had a crore rupees. Perhaps there was no grand house left. Perhaps no expensive car either. But that day, for the first time, something had come back into his hands that no amount of money could ever buy—</p>
+
+  <div class="quote-block"><p>Financial sense.</p></div>
+
+  <div class="final-lesson">
+    <span class="tag">The Story's Final Lesson</span>
+    <p>Luck may hand you money one day. But holding on to it takes knowledge.</p>
+    <p>Earning money matters. Saving it matters more. And building wealth wisely matters most of all.</p>
+  </div>
+
+  <div class="final-question">
+    <span class="tag">Something Worth Thinking About</span>
+    <p class="q">If you suddenly received a crore rupees, would you spend it the way Rahim Miah did — or would you use it to build your own future?</p>
+  </div>
+
+</main>
+
+<footer>
+  A MySkillGame presentation · Financial literacy &amp; awareness story collection<br>
+  Design &amp; development — <a href="#">Surajit Roy</a>
+</footer>
+
+</body>
+</html>

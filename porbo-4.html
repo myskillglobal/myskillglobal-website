@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Episode 4: The Night of Fire — Bella Pizza</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #1b120e;
+    --bg-alt: #241811;
+    --panel: #2a1c14;
+    --crust: #e0a03f;
+    --crust-soft: #c98a34;
+    --tomato: #b04a30;
+    --cream: #f4ead9;
+    --muted: #c3ac93;
+    --line: rgba(224,160,63,0.22);
+    --serif: 'Playfair Display', serif;
+    --body: 'Inter', sans-serif;
+    --latin: 'Cormorant Garamond', serif;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--cream);
+    font-family:var(--body);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  #progress{
+    position:fixed; top:0; left:0; height:3px; width:0%;
+    background:linear-gradient(90deg, var(--tomato), var(--crust));
+    z-index:60; transition:width .1s linear;
+  }
+
+  a{color:inherit;}
+
+  .topbar{
+    display:flex; align-items:center; justify-content:space-between;
+    max-width:760px; margin:0 auto; padding:22px 24px 0;
+  }
+  .brand{
+    font-family:var(--latin); font-style:italic; font-weight:600;
+    font-size:1.15rem; letter-spacing:.02em; color:var(--crust);
+  }
+  .brand span{color:var(--muted); font-style:normal; font-size:.85rem; margin-left:6px;}
+  .part-tag{
+    font-family:var(--serif); font-size:.95rem; color:var(--muted);
+    border:1px solid var(--line); padding:5px 14px; border-radius:2px;
+  }
+
+  .hero{
+    max-width:760px; margin:26px auto 0; padding:0 24px;
+  }
+  .hero-frame{
+    position:relative; width:100%; aspect-ratio:16/10;
+    border-radius:6px; overflow:hidden;
+    background:
+      radial-gradient(circle at 30% 20%, #3a2417 0%, transparent 55%),
+      linear-gradient(160deg, #2c1c12, #1b120e 70%);
+    box-shadow: 0 18px 40px -18px rgba(0,0,0,.65);
+  }
+  .hero-frame img{
+    width:100%; height:100%; object-fit:cover; display:block;
+  }
+  .hero-frame .fallback{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    flex-direction:column; gap:8px; text-align:center; padding:20px;
+  }
+  .fallback svg{width:64px; height:64px; opacity:.55;}
+  .fallback p{margin:0; color:var(--muted); font-size:.85rem;}
+  .hero-frame::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(0deg, rgba(20,13,9,.92) 0%, rgba(20,13,9,.15) 45%, transparent 70%);
+  }
+  .hero-caption{
+    position:absolute; left:0; right:0; bottom:0; padding:22px 26px 20px; z-index:2;
+  }
+  .hero-eyebrow{
+    font-size:.82rem; color:var(--crust); letter-spacing:.02em;
+  }
+  .hero h1{
+    font-family:var(--serif); font-weight:500;
+    font-size:clamp(1.6rem, 4vw, 2.3rem);
+    margin:6px 0 0; color:var(--cream);
+  }
+
+  article{
+    max-width:640px; margin:0 auto; padding:46px 24px 10px;
+  }
+  .intro-rule{
+    display:flex; align-items:center; gap:12px; color:var(--muted);
+    font-size:.9rem; margin-bottom:34px;
+  }
+  .intro-rule::before, .intro-rule::after{
+    content:""; flex:1; height:1px; background:var(--line);
+  }
+
+  p{
+    font-size:1.06rem; color:var(--cream); margin:0 0 18px;
+  }
+  p.narration{color:#e7dac6;}
+
+  .dialogue{
+    margin:0 0 4px 18px;
+    padding-left:16px;
+    border-left:2px solid var(--tomato);
+    color:#f1e2cc;
+  }
+  .dialogue-block{margin-bottom:22px;}
+  .dialogue-block.hostile .dialogue{border-left-color:#8f7a3a;}
+
+  .divider{
+    display:flex; align-items:center; gap:14px;
+    margin:44px 0 26px; color:var(--crust);
+  }
+  .divider .glyph{
+    width:34px; height:34px; flex:none;
+    border:1px solid var(--line); border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1rem;
+  }
+  .divider .label{
+    font-family:var(--serif); font-size:1.05rem; color:var(--crust);
+  }
+  .divider .rule{flex:1; height:1px; background:var(--line);}
+
+  .scene-shift{
+    margin:44px 0 30px; text-align:center; color:var(--muted); font-size:.92rem;
+  }
+
+  .flare{
+    text-align:center; font-family:var(--serif); font-size:1.25rem;
+    color:var(--crust); margin:6px 0 24px; letter-spacing:.02em;
+  }
+  .sfx{
+    text-align:center; color:var(--tomato); font-family:var(--serif);
+    font-weight:600; font-size:1.1rem; letter-spacing:.06em; margin:0 0 22px;
+  }
+
+  .closing{
+    margin:44px 0 6px; text-align:center;
+  }
+  .closing .stamp{
+    display:inline-block; font-family:var(--serif); font-size:1rem;
+    color:var(--bg); background:var(--crust);
+    padding:7px 22px; border-radius:2px; letter-spacing:.03em;
+  }
+
+  nav.chapter-nav{
+    max-width:640px; margin:52px auto 0; padding:26px 24px 60px;
+    border-top:1px solid var(--line);
+  }
+  .nav-row{
+    display:flex; align-items:stretch; gap:10px; margin-top:24px;
+  }
+  .nav-link{
+    flex:1; text-decoration:none; padding:16px 16px;
+    border:1px solid var(--line); border-radius:4px;
+    background:var(--panel); transition:border-color .15s ease, transform .15s ease;
+    display:flex; flex-direction:column; gap:4px;
+  }
+  .nav-link:hover{border-color:var(--crust-soft); transform:translateY(-1px);}
+  .nav-link .cap{font-size:.74rem; color:var(--muted);}
+  .nav-link .ttl{font-family:var(--serif); font-size:1rem; color:var(--cream);}
+  .nav-link.prev{text-align:left;}
+  .nav-link.next{text-align:right; align-items:flex-end;}
+  .nav-link.home{
+    flex:0 0 auto; align-items:center; justify-content:center;
+    text-align:center; padding:16px 20px;
+  }
+  .nav-link.home .ttl{font-size:.92rem;}
+
+  footer.credit{
+    text-align:center; color:var(--muted); font-size:.82rem;
+    padding-bottom:40px;
+  }
+
+  @media (max-width:480px){
+    .nav-row{flex-wrap:wrap;}
+    .nav-link.home{order:3; flex:1 1 100%;}
+  }
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<div class="topbar">
+  <div class="brand">Bella Pizza <span>— A Serial Story</span></div>
+  <div class="part-tag">Episode 4</div>
+</div>
+
+<div class="hero">
+  <div class="hero-frame">
+    <img src="images/part-4.png" alt="Bella Pizza's shutter after the fire"
+         onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='flex';">
+    <div class="fallback" style="display:none;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+        <circle cx="12" cy="12" r="9"></circle>
+        <path d="M8 13c1 1.4 2.4 2 4 2s3-.6 4-2"></path>
+        <circle cx="9" cy="10" r=".6" fill="currentColor"></circle>
+        <circle cx="15" cy="10" r=".6" fill="currentColor"></circle>
+        <circle cx="12" cy="15.5" r=".5" fill="currentColor"></circle>
+      </svg>
+      <p>Add images/part-4.jpg</p>
+    </div>
+    <div class="hero-caption">
+      <div class="hero-eyebrow">Kanchan · Supriya</div>
+      <h1>The Night of Fire</h1>
+    </div>
+  </div>
+</div>
+
+<article>
+  <div class="intro-rule">Episode 4</div>
+
+  <p class="narration">It was nearly two in the morning. The city had long since fallen asleep.<br>
+  Bella Pizza's shutter had been pulled down hours ago.<br>
+  Her day's work done, Supriya had gone home.<br>
+  Kanchan, too, was in his own room.</p>
+
+  <p class="narration">But on that deserted street, someone stepped up silently to Bella Pizza's door.<br>
+  Looking carefully around, he made sure no one was watching.<br>
+  Then, within minutes, the figure vanished into the darkness.</p>
+
+  <p class="narration">No one knew that the spark he had left behind was about to become a terrible danger — in just a few minutes.</p>
+
+  <div class="divider">
+    <span class="glyph">🔥</span>
+    <span class="label">Sudden Fire!</span>
+    <span class="rule"></span>
+  </div>
+
+  <p class="narration">2:17 a.m. Smoke began curling out from inside Bella Pizza. Within moments—</p>
+  <p class="flare">Flames roared to life.</p>
+  <p class="narration">The wooden shelves inside the shop, along with some cartons and packaging material, caught fire.</p>
+  <p class="narration">A security guard at a nearby building suddenly spotted the smoke. He shouted—</p>
+  <div class="dialogue-block hostile">
+    <p class="dialogue">— "Fire! Fire!"</p>
+  </div>
+  <p class="narration">His shout brought several people out of their homes nearby.<br>
+  One of them called the fire department at once.<br>
+  Another notified the police.<br>
+  A few stood at a distance, watching it unfold. No one dared go near the flames.</p>
+  <p class="narration">Within minutes, the fire engine arrived. The firefighters quickly pulled out their hoses and began spraying water at the flames.</p>
+  <p class="sfx">Shhhoooo...!</p>
+  <p class="narration">By then the fire had spread through several parts of the shop's interior.<br>
+  Because of the side grille, there was no need to break down the shutter.<br>
+  After a long struggle, the firefighters brought it under control. A while later, it was out completely.</p>
+  <p class="narration">It was fortunate the fire had been caught in the night. Otherwise, the whole shop might have burned to ash.</p>
+
+  <div class="divider">
+    <span class="glyph">🌅</span>
+    <span class="label">News at Dawn</span>
+    <span class="rule"></span>
+  </div>
+
+  <p class="narration">Dawn's light hadn't fully broken yet. As he did every day, Kanchan had headed out to the market.<br>
+  As he neared Bella Pizza, he spotted from a distance — a few people standing in front of the shop.</p>
+  <p class="narration">He stopped his bicycle quickly. Part of the shutter had turned black. Charred debris lay scattered outside. Kanchan's heart dropped.</p>
+  <p class="narration">He quickly asked a local passerby—</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "What happened?"</p>
+  </div>
+  <p class="narration">The man said—</p>
+  <div class="dialogue-block hostile">
+    <p class="dialogue">— "There was a fire in the shop last night. The fire brigade came and put it out."</p>
+  </div>
+  <p class="narration">Kanchan didn't wait another moment. He called Supriya at once.<br>
+  After it rang a few times, she picked up, her voice thick with sleep.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Hello?"</p>
+  </div>
+  <p class="narration">Worry filled Kanchan's voice—</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Supriya! Come to the shop, quickly!"</p>
+  </div>
+  <p class="narration">Supriya was startled awake.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "What happened?"</p>
+  </div>
+  <div class="dialogue-block">
+    <p class="dialogue">— "There was a fire in the shop last night."</p>
+  </div>
+  <div class="dialogue-block">
+    <p class="dialogue">— "What!"</p>
+  </div>
+  <p class="narration">She asked nothing more. She rushed straight out.</p>
+
+  <div class="divider">
+    <span class="glyph">🏪</span>
+    <span class="label">After the Fire</span>
+    <span class="rule"></span>
+  </div>
+
+  <p class="narration">Within minutes, Supriya reached the shop. A few people were still standing outside.<br>
+  Part of the shutter had blackened. The smell of burning hung inside.<br>
+  Several wooden shelves had burned. Some cartons, packaging material and other things had been ruined.<br>
+  But the main structure of the shop had largely survived.</p>
+  <p class="narration">Supriya stood at the door, stunned into silence. Tears rose in her eyes.<br>
+  This shop wasn't just a business. It was a dream she had built with her own two hands —<br>
+  a dream she had kept alive for two years, even hiding her own identity to protect it.</p>
+  <p class="narration">Kanchan came and stood beside her.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "It's fortunate the fire was caught in time."</p>
+  </div>
+  <p class="narration">Supriya said softly—</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "And if it had been caught a little later?"</p>
+  </div>
+  <p class="narration">Kanchan gave no answer. Both of them understood exactly what might have happened.</p>
+
+  <div class="divider">
+    <span class="glyph">🔍</span>
+    <span class="label">Was It an Accident?</span>
+    <span class="rule"></span>
+  </div>
+
+  <p class="narration">The police and the fire crew were still at the scene.<br>
+  Kanchan began looking carefully around the shop, examining the burned sections.</p>
+  <p class="narration">Suddenly his eyes caught on a corner of the floor. He crouched down to look at something.<br>
+  Beside the charred wood lay a dark, damp scrap of cloth. Without touching it, Kanchan studied it closely. Then he said slowly—</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Supriya..."</p>
+  </div>
+  <div class="dialogue-block">
+    <p class="dialogue">— "What?"</p>
+  </div>
+  <div class="dialogue-block">
+    <p class="dialogue">— "This doesn't look like a natural fire to me."</p>
+  </div>
+  <p class="narration">Supriya looked at him. Kanchan said—</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "I can smell something like kerosene here."</p>
+  </div>
+  <p class="narration">Supriya's expression changed.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Are you sure?"</p>
+  </div>
+  <div class="dialogue-block">
+    <p class="dialogue">— "I can't say for certain. But the smell is unusual."</p>
+  </div>
+  <p class="narration">A police officer, overhearing this, stepped closer.</p>
+  <div class="dialogue-block hostile">
+    <p class="dialogue">— "What did you say?"</p>
+  </div>
+  <p class="narration">Kanchan pointed to the burned spot and said—</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Sir, there's an unusual smell in this section. I suspect the fire may have been set deliberately."</p>
+  </div>
+  <p class="narration">The officer began examining the spot at once.</p>
+  <div class="dialogue-block hostile">
+    <p class="dialogue">— "No one touch anything. We'll look into this."</p>
+  </div>
+  <p class="narration">Supriya spoke now, in a firm voice—</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "I'm going to file a written complaint."</p>
+  </div>
+  <p class="narration">Kanchan looked at her. Supriya said—</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "First, strange complaints about the food. Then pressure to sell the shop. And now, a fire. It's all happening together."</p>
+  </div>
+  <p class="narration">This time, there was no fear in her eyes — only anger.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "If someone did this on purpose, they need to be found."</p>
+  </div>
+  <p class="narration">The officer nodded.</p>
+  <div class="dialogue-block hostile">
+    <p class="dialogue">— "Come to the station and file your complaint. We'll collect whatever evidence we can find here."</p>
+  </div>
+  <div class="dialogue-block">
+    <p class="dialogue">— "I'll come."</p>
+  </div>
+
+  <div class="divider">
+    <span class="glyph">💭</span>
+    <span class="label">A Shadow of Doubt</span>
+    <span class="rule"></span>
+  </div>
+
+  <p class="narration">After the police left, Kanchan stood silent for a while. Then he said—</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Supriya, can I say something?"</p>
+  </div>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Go on."</p>
+  </div>
+  <div class="dialogue-block">
+    <p class="dialogue">— "I don't think this is just an attempt to shut down the shop."</p>
+  </div>
+  <p class="narration">Supriya looked at him.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Then what is it?"</p>
+  </div>
+  <p class="narration">Kanchan said slowly—</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Someone might be trying to drive you out of this city altogether."</p>
+  </div>
+  <p class="narration">Supriya said nothing. That night came back to her mind.<br>
+  Sundar. His arrogant eyes. His threat—</p>
+  <div class="dialogue-block hostile">
+    <p class="dialogue">— "You'll pay for this insult."</p>
+  </div>
+  <p class="narration">But Supriya knew — no one could be called guilty on suspicion alone. She said—</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "I won't blame anyone without proof."</p>
+  </div>
+  <p class="narration">Kanchan nodded.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "All right. But we'll stay alert."</p>
+  </div>
+
+  <div class="divider">
+    <span class="glyph">🔥</span>
+    <span class="label">Starting Again</span>
+    <span class="rule"></span>
+  </div>
+
+  <p class="narration">Looking at the charred remains inside the shop, tears welled up in Supriya's eyes.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Everything's over..."</p>
+  </div>
+  <p class="narration">Kanchan said at once—</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Nothing's over."</p>
+  </div>
+  <p class="narration">Supriya looked at him. Kanchan glanced around and said—</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Some things in the shop have burned. But the shop is still standing."</p>
+  </div>
+  <p class="narration">Then he smiled faintly and said—</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "And our will hasn't burned, either."</p>
+  </div>
+  <p class="narration">Slowly, a smile spread across Supriya's face. She wiped away her tears and said—</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Then let's start again."</p>
+  </div>
+  <p class="narration">Kanchan nodded.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Starting today."</p>
+  </div>
+
+  <p class="scene-shift">— ✦ —</p>
+
+  <p class="narration">Neither of them knew — this fire was only the beginning.<br>
+  Because the person working behind the scenes was about to make a move that would put not Bella Pizza, but Supriya's own hidden identity, in danger.</p>
+  <p class="narration">And tied to that identity was a mystery many years old...</p>
+
+  <div class="closing">
+    <span class="stamp">To be continued...</span>
+  </div>
+</article>
+
+<nav class="chapter-nav">
+  <div class="nav-row">
+    <a class="nav-link prev" href="porbo-3.html">
+      <span class="cap">← Previous</span>
+      <span class="ttl">Episode 3</span>
+    </a>
+    <a class="nav-link home" href="four-piece-index.html">
+      <span class="ttl">Contents</span>
+    </a>
+    <a class="nav-link next" href="porbo-5.html">
+      <span class="cap">Next →</span>
+      <span class="ttl">Episode 5</span>
+    </a>
+  </div>
+</nav>
+
+<footer class="credit">Surajit Roy · Bella Pizza</footer>
+
+<script>
+  window.addEventListener('scroll', function(){
+    var h = document.documentElement;
+    var scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    document.getElementById('progress').style.width = (isFinite(scrolled) ? scrolled : 0) + '%';
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 4: What I Gained, What I Lost — This Life, Once Gone, Never Returns</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ts-ink:#241a13;
+  --ts-parchment:#f2e8d3;
+  --ts-parchment-2:#e9dcc0;
+  --ts-walnut:#241610;
+  --ts-walnut-2:#3a2416;
+  --ts-brass:#a9814c;
+  --ts-brass-light:#d8bb80;
+  --ts-oxblood:#6d2c28;
+  --ts-muted:#71614c;
+  --ts-line:rgba(36,26,19,0.16);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--ts-parchment);
+  color:var(--ts-ink);
+  font-family:"Noto Serif","Georgia",serif;
+  line-height:1.85;
+}
+.topbar{
+  position:sticky; top:0; z-index:20;
+  display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  background:var(--ts-walnut); color:var(--ts-parchment-2);
+  padding:0.85rem 5vw; font-family:"Inter","Segoe UI",sans-serif;
+}
+.topbar a.home-link{color:var(--ts-brass-light); text-decoration:none; font-size:0.92rem; display:flex; align-items:center; gap:0.4rem;}
+.topbar a.home-link:hover{color:var(--ts-parchment);}
+.topbar a.home-link svg{width:16px;height:16px;}
+.voice-controls{display:flex; align-items:center; gap:0.5rem;}
+.voice-btn{
+  display:inline-flex; align-items:center; gap:0.4rem;
+  background:transparent; border:1px solid var(--ts-brass); color:var(--ts-brass-light);
+  font-family:"Inter","Segoe UI",sans-serif; font-size:0.85rem;
+  padding:0.45rem 0.85rem; border-radius:2px; cursor:pointer;
+  transition:background 0.2s ease, color 0.2s ease;
+}
+.voice-btn:hover{background:var(--ts-brass); color:var(--ts-walnut);}
+.voice-btn svg{width:15px;height:15px;}
+.resume-banner{
+  display:none; align-items:center; justify-content:space-between; gap:1rem;
+  background:var(--ts-parchment-2); border-bottom:1px solid var(--ts-line);
+  padding:0.8rem 5vw; font-family:"Inter","Segoe UI",sans-serif; font-size:0.9rem; color:var(--ts-ink);
+}
+.resume-banner.show{display:flex;}
+.resume-banner button{
+  background:var(--ts-oxblood); color:var(--ts-parchment); border:none;
+  padding:0.5rem 1rem; font-family:"Inter","Segoe UI",sans-serif; font-size:0.85rem; border-radius:2px; cursor:pointer; white-space:nowrap;
+}
+.resume-banner .dismiss{background:transparent; color:var(--ts-muted); padding:0.3rem;}
+.hero{
+  position:relative; width:100%; height:min(58vh, 480px); min-height:280px; overflow:hidden;
+}
+.hero img{width:100%; height:100%; object-fit:cover; display:block; filter:saturate(1.05) contrast(1.03);}
+.hero::after{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(36,22,16,0.15) 0%, rgba(36,22,16,0.35) 60%, var(--ts-parchment) 100%);
+}
+.hero-caption{
+  position:absolute; left:6vw; bottom:1.6rem; z-index:2;
+  color:var(--ts-parchment-2); font-family:"Inter","Segoe UI",sans-serif; font-size:0.85rem; letter-spacing:0.02em;
+  text-shadow:0 2px 8px rgba(0,0,0,0.5);
+}
+.story-header{max-width:680px; margin:0 auto; padding:3.5rem 6vw 1rem; text-align:center;}
+.story-header.with-hero{padding-top:2.2rem;}
+.story-header .series-name{font-family:"Inter","Segoe UI",sans-serif; font-size:0.9rem; color:var(--ts-oxblood); letter-spacing:0.01em;}
+.story-header h1{font-size:clamp(1.6rem,3.4vw,2.2rem); margin:0.6rem 0 0; color:var(--ts-ink);}
+.content{max-width:680px; margin:0 auto; padding:1rem 6vw 4rem;}
+.lyric{
+  margin:2.2rem 0 2.6rem; padding:1.4rem 1.6rem; background:var(--ts-parchment-2);
+  border-left:3px solid var(--ts-brass); font-style:italic; color:var(--ts-walnut-2); font-size:1.05rem;
+}
+.lyric p{margin:0.2rem 0;}
+p.para{
+  margin:0 0 1.3rem; font-size:1.12rem; transition:background 0.4s ease;
+  border-radius:2px; padding:0.1rem 0.3rem; margin-left:-0.3rem;
+}
+p.para.reading{background:rgba(169,129,76,0.16);}
+p.heading{font-size:1.28rem; font-weight:600; color:var(--ts-oxblood); margin:2rem 0 1.1rem;}
+strong{color:var(--ts-oxblood); font-weight:600;}
+.part-nav{
+  max-width:680px; margin:0 auto; padding:2rem 6vw 5rem; display:flex; justify-content:space-between; gap:1rem;
+  border-top:1px solid var(--ts-line); font-family:"Inter","Segoe UI",sans-serif;
+}
+.part-nav a{display:flex; flex-direction:column; text-decoration:none; color:var(--ts-ink); max-width:45%;}
+.part-nav a .label{font-size:0.78rem; color:var(--ts-muted);}
+.part-nav a .title{font-size:1rem; font-weight:600; margin-top:0.2rem;}
+.part-nav a:hover .title{color:var(--ts-oxblood);}
+.part-nav a.next{text-align:right; align-items:flex-end; margin-left:auto;}
+.credit{
+  max-width:680px; margin:0 auto; padding:0 6vw 2rem; font-family:"Inter","Segoe UI",sans-serif;
+  font-size:0.85rem; color:var(--ts-muted); border-top:1px solid var(--ts-line); padding-top:1.2rem;
+}
+.credit p{margin:0.15rem 0;}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} p.para{transition:none;} }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="home-link" href="index-time-story-en.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+    Back to Contents
+  </a>
+  <div class="voice-controls">
+    <button class="voice-btn" id="playBtn" onclick="startReading()">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      Read Aloud
+    </button>
+    <button class="voice-btn" id="pauseBtn" onclick="togglePause()" style="display:none;">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+      Pause
+    </button>
+    <button class="voice-btn" id="stopBtn" onclick="stopReading()" style="display:none;">
+      <svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12"/></svg>
+      Stop
+    </button>
+  </div>
+</div>
+
+<div class="resume-banner" id="resumeBanner">
+  <span>You were reading this chapter earlier — pick up where you left off?</span>
+  <span style="display:flex; gap:0.5rem;">
+    <button onclick="resumeScroll()">Continue</button>
+    <button class="dismiss" onclick="dismissBanner()">No thanks</button>
+  </span>
+</div>
+
+<header class="story-header">
+  <div class="series-name">This Life, Once Gone, Never Returns</div>
+  <h1>Chapter 4: What I Gained, What I Lost</h1>
+</header>
+
+<article class="content" id="storyContent">
+
+  <p class="para">One never quite notices when time carries a person from one chapter of life into the next.</p>
+
+  <p class="para">Ayan was working now.</p>
+
+  <p class="para">He had his own income. Responsibilities toward his family. A salary arriving at the start of each month, and accounts to settle by its end.</p>
+
+  <p class="para">The boy who once worried about his future with an exam sheet in hand now carried far bigger worries.</p>
+
+  <p class="para">Household expenses. His parents' needs. Countless family responsibilities. Office work.</p>
+
+  <p class="para">Taken together, the days seemed to have grown smaller.</p>
+
+  <p class="para">Office from morning to evening. Home after that.</p>
+
+  <p class="para">Sometimes sitting exhausted in front of the television, sometimes losing time on the phone for no reason at all.</p>
+
+  <p class="para">One night, while tidying the cupboard, Ayan pulled out an old file.</p>
+
+  <p class="para">Inside were his school report cards. Some college papers. Old certificates. And a photograph.</p>
+
+  <p class="para">In the photo, he and Rahul stood together on the school field.</p>
+
+  <p class="para">They had both been so young then.</p>
+
+  <p class="para">Ayan smiled, looking at the picture.</p>
+
+  <p class="para">Then, suddenly, the smile faded.</p>
+
+  <p class="para">On the back of the photo, in Rahul's handwriting — <strong>&ldquo;One day, we'll both become someone great.&rdquo;</strong></p>
+
+  <p class="para">Ayan sat there quietly for a long while.</p>
+
+  <p class="para">Rahul really had become someone great.</p>
+
+  <p class="para">He had built his own company. Learned new things. Sharpened his skills, year after year.</p>
+
+  <p class="para">And Ayan?</p>
+
+  <p class="para">He wasn't doing badly. He had a job. A family.</p>
+
+  <p class="para">But suddenly it occurred to him — <strong>had he actually used the full measure of his own ability?</strong></p>
+
+  <p class="para">The question left him uneasy.</p>
+
+  <p class="para">Sleep did not come that night.</p>
+
+  <p class="para">He lay in bed, staring up at the ceiling.</p>
+
+  <p class="para">The small decisions of his life kept coming back to him.</p>
+
+  <p class="para">The course he had meant to take, but never finished.</p>
+
+  <p class="para">The book he had bought meaning to read, still sitting untouched in the cupboard.</p>
+
+  <p class="para">The exam he was supposed to sit for, but skipped at the last minute for lack of preparation.</p>
+
+  <p class="para">The opportunity that had come his way, which he had turned down for lack of faith in himself.</p>
+
+  <p class="para">One memory after another kept surfacing.</p>
+
+  <p class="para">None of them, on their own, was a very big mistake.</p>
+
+  <p class="para">But that night, for the first time, Ayan understood just how much difference small, accumulated neglect could make.</p>
+
+  <p class="para">The next day, he ran into Rahul at the office.</p>
+
+  <p class="para">The two of them hadn't met in a long while.</p>
+
+  <p class="para">Sitting over tea, chatting, Rahul asked, &mdash; <strong>&ldquo;Do you still think about learning something new?&rdquo;</strong></p>
+
+  <p class="para">Ayan smiled faintly and said, &mdash; &ldquo;I do think about it.&rdquo;</p>
+
+  <p class="para">&mdash; <strong>&ldquo;Then why don't you start?&rdquo;</strong></p>
+
+  <p class="para">Ayan fell silent.</p>
+
+  <p class="para">Rahul said, &mdash; <strong>&ldquo;Don't make the excuse of not having time. Everyone's time is limited. The question is, what are we choosing to prioritize.&rdquo;</strong></p>
+
+  <p class="para">The words lodged themselves in Ayan's mind.</p>
+
+  <p class="para">He realized that, all this while, he had been blaming a lack of time.</p>
+
+  <p class="para">But perhaps the truth lay elsewhere.</p>
+
+  <p class="para">He had had the time.</p>
+
+  <p class="para">He had simply never given a part of it the importance it deserved.</p>
+
+  <p class="para">Back home that day, Ayan cleared off his own desk.</p>
+
+  <p class="para">He took out his old books.</p>
+
+  <p class="para">He opened a notebook and wrote on the first page — <strong>&ldquo;Not an account of what I've lost. But how I use what remains.&rdquo;</strong></p>
+
+  <p class="para">And below that, he wrote — <strong>&ldquo;At least one hour a day, for myself.&rdquo;</strong></p>
+
+  <p class="para">His life did not change completely from that day.</p>
+
+  <p class="para">The next day there was still office. Still household work. Still exhaustion.</p>
+
+  <p class="para">But by the end of the day, he kept that one hour for himself.</p>
+
+  <p class="para">Sometimes he read a book. Sometimes he learned something new. Sometimes he finished an old, unfinished task of his own.</p>
+
+  <p class="para">After a while, he understood — changing yourself doesn't always require some grand opportunity.</p>
+
+  <p class="para"><strong>Even small stretches of time are enough — if you choose to give them their due.</strong></p>
+
+  <p class="para">But Ayan didn't know that the hardest reckoning of his life was still ahead.</p>
+
+  <p class="para">Because his fortieth birthday was approaching.</p>
+
+  <p class="para">And on that very birthday, a question would shake him in a way he could no longer avoid.</p>
+
+  <p class="para"><strong>&ldquo;Another year has gone by — what have I actually gained?&rdquo;</strong></p>
+
+  <p class="para">The hands of the clock moved on.</p>
+
+  <p class="para">And Ayan moved on too, toward that question waiting for him in his life.</p>
+
+</article>
+
+<nav class="part-nav">
+  <a class="prev" href="porbo-3-en.html">
+    <span class="label">← Previous Chapter</span>
+    <span class="title">3. The Coming and Going of Joy and Sorrow</span>
+  </a>
+  <a class="next" href="porbo-5-en.html">
+    <span class="label">Next Chapter →</span>
+    <span class="title">5. One More Year</span>
+  </a>
+</nav>
+
+<script>
+const STORAGE_KEY = 'ei-jibon-porbo4-scroll-en';
+const banner = document.getElementById('resumeBanner');
+window.addEventListener('load', () => {
+  const saved = parseInt(localStorage.getItem(STORAGE_KEY) || '0', 10);
+  if (saved > 300 && saved < document.body.scrollHeight - window.innerHeight - 200) {
+    banner.classList.add('show');
+  }
+});
+function resumeScroll() {
+  const saved = parseInt(localStorage.getItem(STORAGE_KEY) || '0', 10);
+  window.scrollTo({ top: saved, behavior: 'smooth' });
+  banner.classList.remove('show');
+}
+function dismissBanner() { banner.classList.remove('show'); }
+let scrollTimer;
+window.addEventListener('scroll', () => {
+  clearTimeout(scrollTimer);
+  scrollTimer = setTimeout(() => { localStorage.setItem(STORAGE_KEY, window.scrollY.toString()); }, 400);
+});
+const paras = Array.from(document.querySelectorAll('#storyContent .para, #storyContent .heading, #storyContent .lyric p'));
+let currentIndex = 0; let speaking = false; let paused = false;
+const playBtn = document.getElementById('playBtn');
+const pauseBtn = document.getElementById('pauseBtn');
+const stopBtn = document.getElementById('stopBtn');
+function clearHighlight() { paras.forEach(p => p.classList.remove('reading')); }
+function speakFrom(index) {
+  if (!('speechSynthesis' in window)) { alert('Voice reading is not supported in your browser.'); return; }
+  if (index >= paras.length) { stopReading(); return; }
+  currentIndex = index; clearHighlight();
+  const el = paras[index];
+  el.classList.add('reading');
+  el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  const utter = new SpeechSynthesisUtterance(el.textContent);
+  utter.lang = 'en-US'; utter.rate = 0.98;
+  utter.onend = () => { if (speaking && !paused) speakFrom(index + 1); };
+  speechSynthesis.speak(utter);
+}
+function startReading() {
+  speechSynthesis.cancel(); speaking = true; paused = false;
+  playBtn.style.display = 'none'; pauseBtn.style.display = 'inline-flex'; stopBtn.style.display = 'inline-flex';
+  speakFrom(0);
+}
+function togglePause() {
+  if (!speaking) return;
+  if (!paused) {
+    speechSynthesis.pause(); paused = true;
+    pauseBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg> Resume';
+  } else {
+    speechSynthesis.resume(); paused = false;
+    pauseBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg> Pause';
+  }
+}
+function stopReading() {
+  speechSynthesis.cancel(); speaking = false; paused = false; clearHighlight();
+  playBtn.style.display = 'inline-flex'; pauseBtn.style.display = 'none'; stopBtn.style.display = 'none';
+}
+window.addEventListener('beforeunload', () => speechSynthesis.cancel());
+</script>
+
+</body>
+</html>

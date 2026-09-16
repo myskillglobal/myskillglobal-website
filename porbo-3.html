@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Episode 3: The First Enemy — Bella Pizza</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #1b120e;
+    --bg-alt: #241811;
+    --panel: #2a1c14;
+    --crust: #e0a03f;
+    --crust-soft: #c98a34;
+    --tomato: #b04a30;
+    --cream: #f4ead9;
+    --muted: #c3ac93;
+    --line: rgba(224,160,63,0.22);
+    --serif: 'Playfair Display', serif;
+    --body: 'Inter', sans-serif;
+    --latin: 'Cormorant Garamond', serif;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--cream);
+    font-family:var(--body);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  #progress{
+    position:fixed; top:0; left:0; height:3px; width:0%;
+    background:linear-gradient(90deg, var(--tomato), var(--crust));
+    z-index:60; transition:width .1s linear;
+  }
+
+  a{color:inherit;}
+
+  .topbar{
+    display:flex; align-items:center; justify-content:space-between;
+    max-width:760px; margin:0 auto; padding:22px 24px 0;
+  }
+  .brand{
+    font-family:var(--latin); font-style:italic; font-weight:600;
+    font-size:1.15rem; letter-spacing:.02em; color:var(--crust);
+  }
+  .brand span{color:var(--muted); font-style:normal; font-size:.85rem; margin-left:6px;}
+  .part-tag{
+    font-family:var(--serif); font-size:.95rem; color:var(--muted);
+    border:1px solid var(--line); padding:5px 14px; border-radius:2px;
+  }
+
+  .hero{
+    max-width:760px; margin:26px auto 0; padding:0 24px;
+  }
+  .hero-frame{
+    position:relative; width:100%; aspect-ratio:16/10;
+    border-radius:6px; overflow:hidden;
+    background:
+      radial-gradient(circle at 30% 20%, #3a2417 0%, transparent 55%),
+      linear-gradient(160deg, #2c1c12, #1b120e 70%);
+    box-shadow: 0 18px 40px -18px rgba(0,0,0,.65);
+  }
+  .hero-frame img{
+    width:100%; height:100%; object-fit:cover; display:block;
+  }
+  .hero-frame .fallback{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    flex-direction:column; gap:8px; text-align:center; padding:20px;
+  }
+  .fallback svg{width:64px; height:64px; opacity:.55;}
+  .fallback p{margin:0; color:var(--muted); font-size:.85rem;}
+  .hero-frame::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(0deg, rgba(20,13,9,.92) 0%, rgba(20,13,9,.15) 45%, transparent 70%);
+  }
+  .hero-caption{
+    position:absolute; left:0; right:0; bottom:0; padding:22px 26px 20px; z-index:2;
+  }
+  .hero-eyebrow{
+    font-size:.82rem; color:var(--crust); letter-spacing:.02em;
+  }
+  .hero h1{
+    font-family:var(--serif); font-weight:500;
+    font-size:clamp(1.6rem, 4vw, 2.3rem);
+    margin:6px 0 0; color:var(--cream);
+  }
+
+  article{
+    max-width:640px; margin:0 auto; padding:46px 24px 10px;
+  }
+  .intro-rule{
+    display:flex; align-items:center; gap:12px; color:var(--muted);
+    font-size:.9rem; margin-bottom:34px;
+  }
+  .intro-rule::before, .intro-rule::after{
+    content:""; flex:1; height:1px; background:var(--line);
+  }
+
+  p{
+    font-size:1.06rem; color:var(--cream); margin:0 0 18px;
+  }
+  p.narration{color:#e7dac6;}
+
+  .dialogue{
+    margin:0 0 4px 18px;
+    padding-left:16px;
+    border-left:2px solid var(--tomato);
+    color:#f1e2cc;
+  }
+  .dialogue-block{margin-bottom:22px;}
+  .dialogue-block.hostile .dialogue{border-left-color:#8f7a3a;}
+
+  .divider{
+    display:flex; align-items:center; gap:14px;
+    margin:44px 0 26px; color:var(--crust);
+  }
+  .divider .glyph{
+    width:34px; height:34px; flex:none;
+    border:1px solid var(--line); border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1rem;
+  }
+  .divider .label{
+    font-family:var(--serif); font-size:1.05rem; color:var(--crust);
+  }
+  .divider .rule{flex:1; height:1px; background:var(--line);}
+
+  .scene-shift{
+    margin:44px 0 30px; text-align:center; color:var(--muted); font-size:.92rem;
+  }
+
+  .closing{
+    margin:44px 0 6px; text-align:center;
+  }
+  .closing .stamp{
+    display:inline-block; font-family:var(--serif); font-size:1rem;
+    color:var(--bg); background:var(--crust);
+    padding:7px 22px; border-radius:2px; letter-spacing:.03em;
+  }
+
+  nav.chapter-nav{
+    max-width:640px; margin:52px auto 0; padding:26px 24px 60px;
+    border-top:1px solid var(--line);
+  }
+  .nav-row{
+    display:flex; align-items:stretch; gap:10px; margin-top:24px;
+  }
+  .nav-link{
+    flex:1; text-decoration:none; padding:16px 16px;
+    border:1px solid var(--line); border-radius:4px;
+    background:var(--panel); transition:border-color .15s ease, transform .15s ease;
+    display:flex; flex-direction:column; gap:4px;
+  }
+  .nav-link:hover{border-color:var(--crust-soft); transform:translateY(-1px);}
+  .nav-link .cap{font-size:.74rem; color:var(--muted);}
+  .nav-link .ttl{font-family:var(--serif); font-size:1rem; color:var(--cream);}
+  .nav-link.prev{text-align:left;}
+  .nav-link.next{text-align:right; align-items:flex-end;}
+  .nav-link.home{
+    flex:0 0 auto; align-items:center; justify-content:center;
+    text-align:center; padding:16px 20px;
+  }
+  .nav-link.home .ttl{font-size:.92rem;}
+
+  footer.credit{
+    text-align:center; color:var(--muted); font-size:.82rem;
+    padding-bottom:40px;
+  }
+
+  @media (max-width:480px){
+    .nav-row{flex-wrap:wrap;}
+    .nav-link.home{order:3; flex:1 1 100%;}
+  }
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<div class="topbar">
+  <div class="brand">Bella Pizza <span>— A Serial Story</span></div>
+  <div class="part-tag">Episode 3</div>
+</div>
+
+<div class="hero">
+  <div class="hero-frame">
+    <img src="images/part-3.png" alt="A heated moment inside Bella Pizza"
+         onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='flex';">
+    <div class="fallback" style="display:none;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+        <circle cx="12" cy="12" r="9"></circle>
+        <path d="M8 13c1 1.4 2.4 2 4 2s3-.6 4-2"></path>
+        <circle cx="9" cy="10" r=".6" fill="currentColor"></circle>
+        <circle cx="15" cy="10" r=".6" fill="currentColor"></circle>
+        <circle cx="12" cy="15.5" r=".5" fill="currentColor"></circle>
+      </svg>
+      <p>Add images/part-3.jpg</p>
+    </div>
+    <div class="hero-caption">
+      <div class="hero-eyebrow">Sundar · Supriya · Kanchan</div>
+      <h1>The First Enemy</h1>
+    </div>
+  </div>
+</div>
+
+<article>
+  <div class="intro-rule">Episode 3</div>
+
+  <p class="narration">Ever since Kanchan had come to Bella Pizza, the business had slowly started turning around.<br>
+  The taste of the pizza had changed.<br>
+  Customers were growing in number too.<br>
+  Supriya tried to learn something new every day, and Kanchan took charge of the kitchen each evening.<br>
+  A quiet understanding had grown between the two of them.<br>
+  Kanchan didn't just make pizzas — he thought about the shop's cleanliness, its customer service, and new recipes too.<br>
+  Supriya, for her part, took his advice seriously.</p>
+  <p class="narration">But their small success wasn't sitting well with everyone.</p>
+
+  <div class="divider">
+    <span class="glyph">💰</span>
+    <span class="label">Sundar</span>
+    <span class="rule"></span>
+  </div>
+
+  <p class="narration">Sundar was the son of one of the city's wealthiest business families.<br>
+  Money was never a problem for him.<br>
+  He carried real weight in his own family's business too. Since childhood, he had grown used to one thing — money could buy almost anything.</p>
+  <p class="narration">That evening, he came to Bella Pizza with a group of friends.<br>
+  His friends ordered pizza.<br>
+  As Sundar ate, he glanced around the shop.<br>
+  Suddenly, his eyes landed on Supriya.<br>
+  He kept looking at her for a moment. Then he said quietly to his friend—</p>
+
+  <div class="dialogue-block hostile">
+    <p class="dialogue">— "Seen that girl?"</p>
+  </div>
+  <p class="narration">His friend laughed.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Why?"</p>
+  </div>
+  <div class="dialogue-block hostile">
+    <p class="dialogue">— "I like her."</p>
+  </div>
+  <p class="narration">His friend teased,</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Go talk to her, then."</p>
+  </div>
+
+  <p class="narration">Sundar strode over to Supriya, full of confidence.</p>
+  <div class="dialogue-block hostile">
+    <p class="dialogue">— "What's your name?"</p>
+  </div>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Supriya."</p>
+  </div>
+  <div class="dialogue-block hostile">
+    <p class="dialogue">— "This shop's yours?"</p>
+  </div>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Yes."</p>
+  </div>
+  <p class="narration">Sundar looked around and smiled faintly.</p>
+  <div class="dialogue-block hostile">
+    <p class="dialogue">— "Working so hard to run a little shop like this?"</p>
+  </div>
+  <p class="narration">Supriya answered calmly.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Yes. My own business."</p>
+  </div>
+  <div class="dialogue-block hostile">
+    <p class="dialogue">— "How much could a business like this even bring in?"</p>
+  </div>
+  <p class="narration">This time Supriya looked straight at him.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Whatever it brings in, I'm happy with it."</p>
+  </div>
+  <p class="narration">Sundar smiled and put his phone back in his pocket.</p>
+  <div class="dialogue-block hostile">
+    <p class="dialogue">— "This life of yours could get a lot easier, if you wanted."</p>
+  </div>
+  <p class="narration">Supriya, a little surprised, asked—</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "What do you mean?"</p>
+  </div>
+  <p class="narration">Sundar stepped a little closer and lowered his voice.</p>
+  <div class="dialogue-block hostile">
+    <p class="dialogue">— "Why work this hard to run a shop like this? You could work with my franchise instead. If you want, I could set up a separate branch just for you. You'd never have to worry about money again."</p>
+  </div>
+  <p class="narration">Supriya understood at once — there was another motive hiding behind his words. She kept her voice calm.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Thank you. But I'm content with my own business."</p>
+  </div>
+  <p class="narration">Sundar said,</p>
+  <div class="dialogue-block hostile">
+    <p class="dialogue">— "Maybe you don't see it yet. Life with me by your side would change completely."</p>
+  </div>
+  <p class="narration">Supriya's face hardened.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "How my life goes is for me to decide."</p>
+  </div>
+  <p class="narration">Sundar fell silent for a moment. Then he laughed.</p>
+  <div class="dialogue-block hostile">
+    <p class="dialogue">— "You're quite stubborn."</p>
+  </div>
+  <div class="dialogue-block">
+    <p class="dialogue">— "And you're quite rude."</p>
+  </div>
+
+  <p class="narration">The smile vanished from Sundar's face.<br>
+  Right then, Kanchan stepped out of the kitchen.<br>
+  He hadn't caught the full exchange, but one look at Supriya's face told him something was wrong.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Is there a problem here?"</p>
+  </div>
+  <p class="narration">Sundar turned to look at him.</p>
+  <div class="dialogue-block hostile">
+    <p class="dialogue">— "Who are you?"</p>
+  </div>
+  <div class="dialogue-block">
+    <p class="dialogue">— "I work here."</p>
+  </div>
+  <p class="narration">Sundar said with contempt,</p>
+  <div class="dialogue-block hostile">
+    <p class="dialogue">— "You don't need to say anything here."</p>
+  </div>
+  <p class="narration">Kanchan replied calmly.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "If someone comes into this shop and disrespects a woman, I have every reason to speak."</p>
+  </div>
+  <p class="narration">Sundar's eyes flashed with anger.</p>
+  <div class="dialogue-block hostile">
+    <p class="dialogue">— "You're going to lecture me?"</p>
+  </div>
+  <p class="narration">Kanchan's voice stayed steady.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Having money doesn't give anyone the right to insult someone."</p>
+  </div>
+
+  <p class="narration">In an instant, the situation turned tense.<br>
+  In a fit of rage, Sundar shoved Kanchan.<br>
+  Kanchan steadied himself and pushed him back.<br>
+  His friends rushed to hold Sundar back.<br>
+  But by then Sundar was blind with anger.<br>
+  In his rage, he grabbed a nearby chair and hurled it to the floor.<br>
+  Crash!<br>
+  The glass top of a table shattered.<br>
+  Another chair toppled over as well.</p>
+  <p class="narration">Supriya cried out,</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Stop it!"</p>
+  </div>
+
+  <p class="narration">A moment later, his friends dragged Sundar out of the shop by force.<br>
+  As he was pulled out the door, he turned back and looked at them.<br>
+  His eyes were full of rage.</p>
+  <div class="dialogue-block hostile">
+    <p class="dialogue">— "You'll pay for this insult."</p>
+  </div>
+  <p class="narration">Kanchan said nothing.<br>
+  Supriya just stood there, staring at the door.<br>
+  She could feel it—<br>
+  this wasn't the end of it.</p>
+
+  <div class="divider">
+    <span class="glyph">🕵️</span>
+    <span class="label">A Few Days Later</span>
+    <span class="rule"></span>
+  </div>
+
+  <p class="narration">Supriya had thought the whole thing would end there.<br>
+  She was wrong.<br>
+  A few days later, strange incidents began happening one after another.</p>
+  <p class="narration">One day, a customer opened a pizza box and screamed,</p>
+  <div class="dialogue-block hostile">
+    <p class="dialogue">— "What is this! There's hair in the food!"</p>
+  </div>
+  <p class="narration">Supriya was stunned.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "That's impossible! We always wear hair caps while preparing food."</p>
+  </div>
+  <p class="narration">The customer said angrily,</p>
+  <div class="dialogue-block hostile">
+    <p class="dialogue">— "I'm never eating here again!"</p>
+  </div>
+  <p class="narration">Supriya apologized and replaced the pizza.<br>
+  But the next day, the same complaint came again.<br>
+  And a third day too.<br>
+  By now, it no longer looked like an ordinary mistake.</p>
+
+  <p class="narration">Negative comments about Bella Pizza began spreading on social media.</p>
+  <p class="narration" style="font-style:italic; color:var(--muted); padding-left:16px; border-left:2px solid rgba(176,74,48,.4);">
+    "There's something filthy in Bella Pizza's food!"<br>
+    "Don't buy food from this place!"<br>
+    "Questions are being raised about the food quality!"
+  </p>
+  <p class="narration">Customers walking into the shop started to dwindle.</p>
+
+  <p class="narration">Kanchan looked over several of the complaints closely.<br>Then he said,</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "These don't look like accidents."</p>
+  </div>
+  <p class="narration">Supriya looked at him.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "What are you trying to say?"</p>
+  </div>
+  <p class="narration">Kanchan said,</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Someone is deliberately trying to ruin our name."</p>
+  </div>
+  <p class="narration">Supriya stayed quiet for a while.<br>
+  Then she remembered that night.<br>
+  Sundar.<br>
+  Kanchan was thinking the exact same thing.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Sundar?"</p>
+  </div>
+  <p class="narration">Supriya nodded slowly.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Possibly."</p>
+  </div>
+  <p class="narration">Kanchan said,</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "But it wouldn't be right to blame anyone without proof."</p>
+  </div>
+  <p class="narration">Supriya said,</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "You're right. We need to find proof first."</p>
+  </div>
+
+  <div class="divider">
+    <span class="glyph">🏪</span>
+    <span class="label">More Pressure</span>
+    <span class="rule"></span>
+  </div>
+
+  <p class="narration">Within a few days, another offer reached Supriya.<br>
+  One afternoon, an unfamiliar man walked into the shop and stood there.</p>
+  <div class="dialogue-block hostile">
+    <p class="dialogue">— "Are you Supriya?"</p>
+  </div>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Yes. Go on."</p>
+  </div>
+  <p class="narration">The man pulled out a piece of paper and set it on the counter.</p>
+  <div class="dialogue-block hostile">
+    <p class="dialogue">— "You could sell this shop. You'd get a good price for it."</p>
+  </div>
+  <p class="narration">Supriya glanced at the paper. Then she said, calmly—</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "I have no intention of selling my shop."</p>
+  </div>
+  <p class="narration">The man said,</p>
+  <div class="dialogue-block hostile">
+    <p class="dialogue">— "Think it over. Your business isn't doing so well right now."</p>
+  </div>
+  <p class="narration">Supriya pushed the paper back toward him.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "If the business isn't doing well, I'll work to fix it. I won't be selling the shop."</p>
+  </div>
+  <p class="narration">The man smiled faintly.</p>
+  <div class="dialogue-block hostile">
+    <p class="dialogue">— "If things carry on this way, you might have to make a different kind of decision."</p>
+  </div>
+  <p class="narration">Supriya's eyes turned hard.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "You can leave now."</p>
+  </div>
+  <p class="narration">The man said nothing more.<br>
+  He took the paper and walked out of the shop.</p>
+  <p class="narration">Kanchan stood staring at the door.<br>Then he said,</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "This doesn't feel like a coincidence anymore."</p>
+  </div>
+  <p class="narration">Supriya nodded slowly.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "I feel the same way."</p>
+  </div>
+
+  <div class="divider">
+    <span class="glyph">👨‍👧</span>
+    <span class="label">A Call From Her Father</span>
+    <span class="rule"></span>
+  </div>
+
+  <p class="narration">That night, Supriya's phone rang.<br>Her father.</p>
+  <p class="narration">Supriya picked up.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Hello, Baba."</p>
+  </div>
+  <p class="narration">Arindam Chowdhury's voice came through.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "How are you?"</p>
+  </div>
+  <div class="dialogue-block">
+    <p class="dialogue">— "I'm fine."</p>
+  </div>
+  <div class="dialogue-block">
+    <p class="dialogue">— "How's the work going?"</p>
+  </div>
+  <p class="narration">Supriya hesitated for a moment.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "It's going fine."</p>
+  </div>
+  <p class="narration">Arindam stayed quiet for a moment. Then he asked—</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Has something gone wrong?"</p>
+  </div>
+  <p class="narration">Supriya knew — if she wanted, one phone call from her father could fix everything.<br>
+  But she wanted to stand by her own decision.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "No, Baba. I'm fine. Don't worry about me."</p>
+  </div>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Are you sure?"</p>
+  </div>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Yes. I'll handle everything."</p>
+  </div>
+  <div class="dialogue-block">
+    <p class="dialogue">— "All right. Let me know if you ever need anything."</p>
+  </div>
+  <div class="dialogue-block">
+    <p class="dialogue">— "I will."</p>
+  </div>
+  <p class="narration">The call ended.</p>
+
+  <p class="narration">Supriya sat quietly for a while.<br>
+  Then, looking toward her own shop, she said softly—</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "I built this shop with my own two hands. I won't run to Baba the moment I hit a problem. I have to at least try on my own."</p>
+  </div>
+
+  <p class="narration">Just then, Kanchan came out of the kitchen.<br>
+  He hadn't heard the whole conversation.<br>
+  Only the last part.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Why didn't you ask your father for help?"</p>
+  </div>
+  <p class="narration">Supriya looked up, startled. Then she smiled faintly.</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Because this fight is mine to fight."</p>
+  </div>
+  <p class="narration">Kanchan looked at her for a moment. Then he said, calmly—</p>
+  <div class="dialogue-block">
+    <p class="dialogue">— "Then in this fight, you're not alone."</p>
+  </div>
+  <p class="narration">Supriya said nothing in reply.<br>
+  But for the first time, a small flicker of reassurance appeared in her eyes.</p>
+
+  <p class="scene-shift">— ✦ —</p>
+
+  <p class="narration">Elsewhere, on the other side of the city, Sundar sat alone in his room.<br>
+  A photograph of Bella Pizza lay in front of him.<br>
+  He looked at it and smiled faintly.</p>
+  <div class="dialogue-block hostile">
+    <p class="dialogue">— "Let's see how long you can hold onto that stubbornness of yours..."</p>
+  </div>
+  <p class="narration">For him, it was no longer just about winning Supriya over.<br>
+  This had become a matter of his own pride.</p>
+  <p class="narration">But Sundar didn't know—<br>
+  that this small conflict he'd started around Bella Pizza would one day open a door onto a mystery he believed, right now, had nothing at all to do with him.<br>
+  And the roots of that mystery lay buried in a dark past, many years old.</p>
+
+  <div class="closing">
+    <span class="stamp">To be continued...</span>
+  </div>
+</article>
+
+<nav class="chapter-nav">
+  <div class="nav-row">
+    <a class="nav-link prev" href="porbo-2.html">
+      <span class="cap">← Previous</span>
+      <span class="ttl">Episode 2</span>
+    </a>
+    <a class="nav-link home" href="four-piece-index.html">
+      <span class="ttl">Contents</span>
+    </a>
+    <a class="nav-link next" href="porbo-4.html">
+      <span class="cap">Next →</span>
+      <span class="ttl">Episode 4</span>
+    </a>
+  </div>
+</nav>
+
+<footer class="credit">Surajit Roy · Bella Pizza</footer>
+
+<script>
+  window.addEventListener('scroll', function(){
+    var h = document.documentElement;
+    var scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    document.getElementById('progress').style.width = (isFinite(scrolled) ? scrolled : 0) + '%';
+  });
+</script>
+
+</body>
+</html>

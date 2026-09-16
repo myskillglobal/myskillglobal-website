@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pradip in the Foggy Night</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-deep:#0B1D33;
+    --navy-mid:#16324F;
+    --fog-mist:#93AEC4;
+    --amber:#F4A93B;
+    --amber-soft:#FCD79B;
+    --crimson:#E14848;
+    --dawn-bg:#FDF3E3;
+    --dawn-panel:#FFFFFF;
+    --dawn-gold:#C97F1E;
+    --ink-light:#EDF1F6;
+    --ink-dark:#22293A;
+    --ink-soft:#4C5A70;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:'Mulish', sans-serif;
+    background:var(--dawn-bg);
+    color:var(--ink-dark);
+    line-height:1.9;
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3, .display{
+    font-family:'Baloo 2', sans-serif;
+    font-weight:700;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:92vh;
+    display:flex;
+    align-items:center;
+    background:
+      radial-gradient(ellipse at 75% 15%, rgba(244,169,59,0.16), transparent 45%),
+      linear-gradient(180deg, #08152A 0%, var(--navy-deep) 45%, var(--navy-mid) 100%);
+    overflow:hidden;
+  }
+
+  .fog-layer{
+    position:absolute;
+    left:-20%;
+    width:140%;
+    height:220px;
+    background:linear-gradient(90deg, transparent, rgba(147,174,196,0.28), transparent);
+    filter:blur(6px);
+    pointer-events:none;
+  }
+  .fog-layer.f1{ top:18%; animation:drift 38s linear infinite; }
+  .fog-layer.f2{ top:52%; height:180px; opacity:0.7; animation:driftBack 52s linear infinite; }
+  .fog-layer.f3{ bottom:6%; height:260px; opacity:0.55; animation:drift 65s linear infinite; }
+
+  @keyframes drift{
+    0%{ transform:translateX(-6%); }
+    50%{ transform:translateX(6%); }
+    100%{ transform:translateX(-6%); }
+  }
+  @keyframes driftBack{
+    0%{ transform:translateX(5%); }
+    50%{ transform:translateX(-5%); }
+    100%{ transform:translateX(5%); }
+  }
+
+  .hero-inner{
+    position:relative;
+    z-index:2;
+    max-width:1180px;
+    margin:0 auto;
+    padding:60px 6vw;
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:48px;
+    align-items:center;
+  }
+
+  .hero-eyebrow{
+    display:inline-block;
+    color:var(--amber-soft);
+    font-size:0.95rem;
+    letter-spacing:0.02em;
+    margin-bottom:18px;
+    opacity:0.9;
+  }
+
+  .hero h1{
+    color:var(--ink-light);
+    font-size:clamp(2.3rem, 4.6vw, 3.6rem);
+    line-height:1.25;
+    margin-bottom:20px;
+    text-shadow:0 2px 24px rgba(0,0,0,0.35);
+  }
+
+  .hero p.lede{
+    color:var(--fog-mist);
+    font-size:1.15rem;
+    max-width:46ch;
+    margin-bottom:14px;
+  }
+
+  .hero .tagline{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    margin-top:22px;
+    padding:10px 20px;
+    border:1px solid rgba(244,169,59,0.35);
+    border-radius:999px;
+    color:var(--amber-soft);
+    font-size:0.98rem;
+    background:rgba(244,169,59,0.06);
+  }
+
+  .hero-media{
+    position:relative;
+  }
+
+  .hero-media .frame{
+    position:relative;
+    border-radius:22px;
+    overflow:hidden;
+    box-shadow:
+      0 30px 70px rgba(0,0,0,0.55),
+      0 0 0 1px rgba(244,169,59,0.15);
+  }
+
+  .hero-media img{
+    display:block;
+    width:100%;
+    height:420px;
+    object-fit:cover;
+    filter:saturate(0.92) contrast(1.02);
+  }
+
+  .hero-media .glow-overlay{
+    position:absolute;
+    inset:0;
+    background:
+      linear-gradient(180deg, rgba(8,21,42,0) 40%, rgba(8,21,42,0.55) 100%),
+      radial-gradient(circle at 82% 22%, rgba(244,169,59,0.35), transparent 40%);
+    pointer-events:none;
+  }
+
+  .hero-media .taillight{
+    position:absolute;
+    left:14px;
+    bottom:14px;
+    width:11px;
+    height:11px;
+    border-radius:50%;
+    background:var(--crimson);
+    box-shadow:0 0 14px 4px rgba(225,72,72,0.7);
+  }
+
+  .scroll-cue{
+    position:absolute;
+    bottom:28px;
+    left:50%;
+    transform:translateX(-50%);
+    color:var(--fog-mist);
+    font-size:0.85rem;
+    z-index:2;
+    opacity:0.75;
+  }
+
+  @media (max-width:860px){
+    .hero-inner{ grid-template-columns:1fr; padding-top:90px; }
+    .hero-media img{ height:280px; }
+  }
+
+  /* ---------- NIGHT STORY (Part 1) ---------- */
+  .night-section{
+    background:linear-gradient(180deg, var(--navy-mid) 0%, #102640 100%);
+    padding:100px 6vw 120px;
+    position:relative;
+  }
+
+  .story-wrap{
+    max-width:720px;
+    margin:0 auto;
+  }
+
+  .part-label{
+    color:var(--amber-soft);
+    font-family:'Baloo 2', sans-serif;
+    font-size:1rem;
+    margin-bottom:10px;
+  }
+
+  .night-section h2{
+    color:var(--ink-light);
+    font-size:clamp(1.7rem, 3vw, 2.3rem);
+    margin-bottom:34px;
+  }
+
+  .story-text p{
+    color:#D6E0EC;
+    font-size:1.08rem;
+    margin-bottom:22px;
+    max-width:66ch;
+    border-radius:8px;
+    transition:background 0.4s ease;
+  }
+
+  .quote-box{
+    position:relative;
+    margin:38px 0 8px;
+    padding:26px 28px 26px 32px;
+    background:rgba(244,169,59,0.07);
+    border-left:3px solid var(--amber);
+    border-radius:4px 14px 14px 4px;
+    transition:background 0.4s ease;
+  }
+
+  .quote-box p{
+    color:var(--amber-soft);
+    font-size:1.12rem;
+    font-style:normal;
+    margin-bottom:0;
+  }
+
+  .quote-who{
+    display:block;
+    margin-top:12px;
+    color:var(--fog-mist);
+    font-size:0.9rem;
+  }
+
+  /* ---------- DAWN STORY (Part 2) ---------- */
+  .dawn-section{
+    background:
+      radial-gradient(ellipse at 15% 0%, rgba(201,127,30,0.10), transparent 50%),
+      var(--dawn-bg);
+    padding:100px 6vw 60px;
+  }
+
+  .dawn-section .part-label{ color:var(--dawn-gold); }
+
+  .dawn-section h2{
+    color:var(--ink-dark);
+    font-size:clamp(1.7rem, 3vw, 2.3rem);
+    margin-bottom:34px;
+  }
+
+  .dawn-section .story-text p{
+    color:var(--ink-soft);
+  }
+
+  .dawn-section .quote-box{
+    background:rgba(201,127,30,0.06);
+    border-left:3px solid var(--dawn-gold);
+  }
+  .dawn-section .quote-box p{ color:#8C5A12; }
+  .dawn-section .quote-who{ color:var(--ink-soft); }
+
+  /* ---------- CHECKLIST ---------- */
+  .checklist{
+    max-width:720px;
+    margin:46px auto 0;
+    background:var(--dawn-panel);
+    border-radius:18px;
+    padding:8px;
+    box-shadow:0 18px 40px rgba(34,41,58,0.08);
+  }
+
+  .checklist-title{
+    padding:22px 26px 6px;
+    font-family:'Baloo 2', sans-serif;
+    font-size:1.2rem;
+    color:var(--ink-dark);
+  }
+
+  .checklist ol{
+    list-style:none;
+    padding:10px 10px 18px;
+  }
+
+  .checklist li{
+    display:flex;
+    align-items:flex-start;
+    gap:16px;
+    padding:14px 16px;
+    border-radius:12px;
+    transition:background 0.4s ease;
+  }
+
+  .checklist li:hover{ background:#FBF3E4; }
+
+  .step-num{
+    flex:none;
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    background:var(--dawn-gold);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Baloo 2', sans-serif;
+    font-size:0.95rem;
+  }
+
+  .step-body b{
+    display:block;
+    color:var(--ink-dark);
+    font-size:1.02rem;
+    margin-bottom:2px;
+  }
+  .step-body span{
+    color:var(--ink-soft);
+    font-size:0.95rem;
+  }
+
+  /* ---------- CLOSING ---------- */
+  .closing{
+    background:linear-gradient(180deg, var(--dawn-bg), #F6E7CC);
+    text-align:center;
+    padding:90px 6vw 110px;
+  }
+
+  .closing p.mark{
+    max-width:20ch;
+    margin:0 auto;
+    font-family:'Baloo 2', sans-serif;
+    font-size:clamp(1.5rem, 3.4vw, 2.1rem);
+    color:var(--ink-dark);
+    line-height:1.5;
+    border-radius:8px;
+    transition:background 0.4s ease;
+  }
+
+  .closing .icons{
+    margin-top:26px;
+    font-size:1.6rem;
+    letter-spacing:10px;
+  }
+
+  footer{
+    background:var(--navy-deep);
+    color:var(--fog-mist);
+    text-align:center;
+    padding:26px 6vw;
+    font-size:0.9rem;
+  }
+
+  a:focus-visible, button:focus-visible{
+    outline:3px solid var(--amber);
+    outline-offset:3px;
+  }
+
+  /* ---------- READ-ALOUD HIGHLIGHT ---------- */
+  .reading-active{
+    background:rgba(244,169,59,0.16) !important;
+    box-shadow:0 0 0 6px rgba(244,169,59,0.16);
+  }
+  .dawn-section .reading-active,
+  .checklist .reading-active,
+  .closing .reading-active{
+    background:rgba(201,127,30,0.14) !important;
+    box-shadow:0 0 0 6px rgba(201,127,30,0.14);
+  }
+
+  /* ---------- TOOLBAR ---------- */
+  .story-toolbar{
+    position:fixed;
+    right:18px;
+    bottom:22px;
+    z-index:50;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    align-items:flex-end;
+  }
+
+  .tool-btn{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    background:var(--navy-deep);
+    color:var(--ink-light);
+    border:1px solid rgba(244,169,59,0.35);
+    padding:12px 18px;
+    border-radius:999px;
+    font-family:'Mulish', sans-serif;
+    font-size:0.92rem;
+    font-weight:600;
+    cursor:pointer;
+    box-shadow:0 12px 30px rgba(0,0,0,0.28);
+    transition:transform 0.15s ease, background 0.2s ease;
+  }
+  .tool-btn:hover{ transform:translateY(-2px); background:#0F2237; }
+  .tool-btn:active{ transform:translateY(0); }
+  .tool-btn .ic{ font-size:1.1rem; }
+
+  .tool-btn.bookmark-on{
+    background:var(--amber);
+    color:var(--navy-deep);
+    border-color:var(--amber);
+  }
+  .tool-btn.speaking{
+    background:var(--dawn-gold);
+    color:#fff;
+    border-color:var(--dawn-gold);
+  }
+
+  .toast{
+    position:fixed;
+    left:50%;
+    bottom:96px;
+    transform:translateX(-50%) translateY(16px);
+    background:var(--navy-deep);
+    color:var(--ink-light);
+    padding:12px 22px;
+    border-radius:999px;
+    font-size:0.92rem;
+    box-shadow:0 12px 30px rgba(0,0,0,0.3);
+    opacity:0;
+    pointer-events:none;
+    transition:opacity 0.25s ease, transform 0.25s ease;
+    z-index:60;
+    white-space:nowrap;
+  }
+  .toast.show{
+    opacity:1;
+    transform:translateX(-50%) translateY(0);
+  }
+
+  .resume-banner{
+    position:fixed;
+    top:16px;
+    left:50%;
+    transform:translateX(-50%) translateY(-140%);
+    z-index:60;
+    background:var(--dawn-panel);
+    color:var(--ink-dark);
+    padding:12px 16px;
+    border-radius:14px;
+    box-shadow:0 14px 34px rgba(34,41,58,0.22);
+    display:flex;
+    align-items:center;
+    gap:14px;
+    font-size:0.92rem;
+    transition:transform 0.35s ease;
+    max-width:92vw;
+  }
+  .resume-banner.show{ transform:translateX(-50%) translateY(0); }
+  .resume-banner button{
+    border:none;
+    background:var(--dawn-gold);
+    color:#fff;
+    padding:8px 14px;
+    border-radius:999px;
+    font-size:0.85rem;
+    font-weight:600;
+    cursor:pointer;
+  }
+  .resume-banner .close-x{
+    background:none;
+    color:var(--ink-soft);
+    font-size:1rem;
+    padding:4px 6px;
+  }
+
+  @media (max-width:600px){
+    .tool-btn{ padding:11px 14px; font-size:0.85rem; }
+    .tool-btn span.label{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="resume-banner" id="resumeBanner">
+  <span>📍 You have a bookmark on this page.</span>
+  <button id="resumeGo">Go there</button>
+  <button class="close-x" id="resumeClose" aria-label="Dismiss">✕</button>
+</div>
+
+<section class="hero">
+  <div class="fog-layer f1"></div>
+  <div class="fog-layer f2"></div>
+  <div class="fog-layer f3"></div>
+
+  <div class="hero-inner">
+    <div>
+      <span class="hero-eyebrow">A Road Safety Story</span>
+      <h1>🌫️ Pradip in the Foggy Night</h1>
+      <p class="lede">A foggy highway, an unlit bicycle, and one moment's carelessness — one night changed the way Pradip rode his cycle forever.</p>
+      <span class="tagline">🚲 A Story of Getting Home Safely</span>
+    </div>
+    <div class="hero-media">
+      <div class="frame">
+        <img src="images/cycle.png" alt="Cycling on a foggy highway at night">
+        <div class="glow-overlay"></div>
+        <div class="taillight"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-cue">Scroll down ↓</div>
+</section>
+
+<section class="night-section">
+  <div class="story-wrap">
+    <span class="part-label">Part 1</span>
+    <h2>The Dark Highway</h2>
+
+    <div class="story-text">
+      <p class="read-aloud">It was a cold night, wrapped in fog. Pradip was cycling back home after his tuition class. As he pressed down on the pedals, there was no sound around him except the whirring of the wheels. A thin, white sheet of fog had settled over the road, cutting visibility down considerably.</p>
+
+      <p class="read-aloud">Pradip rode on his old bicycle, lost in thought. What he hadn't noticed was that his bicycle had no light, front or back, not even a simple reflector.</p>
+
+      <p class="read-aloud">A little ahead, a motorised van was moving along, hugging the darkness. By sheer coincidence, that van too had no red light or reflector at its rear.</p>
+
+      <p class="read-aloud">Suddenly, Pradip heard the heavy roar of an engine from behind. A massive lorry was approaching fast. Between the fog and the darkness, the van ahead was almost invisible to the lorry driver's eyes, and Pradip's small bicycle was nothing more than a faint shadow.</p>
+
+      <p class="read-aloud">When the lorry was just a few feet away, its powerful headlights finally caught the outline of the van. Startled, the driver slammed on the brakes. With a deafening screech, the lorry skidded to a halt at the side of the road. A terrible accident had been narrowly avoided.</p>
+
+      <p class="read-aloud">Pradip stood still for a moment, his hand on his chest. Back home, still trembling, he told his father everything that had happened.</p>
+    </div>
+
+    <div class="quote-box">
+      <p class="read-aloud">"You can't just watch your own path when you're cycling at night, Pradip. It's just as important that other drivers can see you too, even in the dark or in fog."</p>
+      <span class="quote-who">— Father</span>
+    </div>
+  </div>
+</section>
+
+<section class="dawn-section">
+  <div class="story-wrap">
+    <span class="part-label">Part 2</span>
+    <h2>Habits of Safe Cycling</h2>
+
+    <div class="story-text">
+      <p class="read-aloud">The next morning, Father called Pradip and brought out his bicycle. "Before you take your cycle out on the highway," he said, "it's absolutely essential to check it over first."</p>
+
+      <p class="read-aloud">Father began by testing the front and rear brakes. He checked whether the brake pads were in good condition. Then he examined the tyre pressure, the wear on the tyres, and the spokes and rims of the wheels.</p>
+
+      <p class="read-aloud">Fitting a safety rod, a fork-guard, to the front of the bicycle, Father said, "If something goes wrong at the front, or if the cycle suddenly gives way, there's a real risk of falling. That's why every important part of the bicycle needs to be sturdy and properly fitted."</p>
+
+      <p class="read-aloud">After that, a bright white light was fixed at the front of Pradip's bicycle, and a red light with a reflector at the back. Finally, Father placed a correctly sized helmet on Pradip's head.</p>
+    </div>
+
+    <div class="quote-box">
+      <p class="read-aloud">"Geared cycles can go fast, so make it a habit to wear a helmet. And never skip this two or three minute check before you head out onto the highway."</p>
+      <span class="quote-who">— Father</span>
+    </div>
+
+    <p class="read-aloud" style="margin-top:30px; color:var(--ink-soft); max-width:66ch;">Pradip nodded, smiling. This time, with a helmet on his head, bright lights on his bicycle, and a reflector at the back, he put his foot to the pedal.</p>
+  </div>
+
+  <div class="checklist">
+    <div class="checklist-title">Father's Checklist</div>
+    <ol>
+      <li>
+        <span class="step-num">1</span>
+        <span class="step-body read-aloud"><b>Brakes &amp; Brake Pads</b><span>Test the front and rear brakes, and check that the pads are in good condition</span></span>
+      </li>
+      <li>
+        <span class="step-num">2</span>
+        <span class="step-body read-aloud"><b>Tyres &amp; Wheels</b><span>Check tyre pressure, tyre wear, and the spokes and rims</span></span>
+      </li>
+      <li>
+        <span class="step-num">3</span>
+        <span class="step-body read-aloud"><b>Fork-guard</b><span>Make sure the front safety rod is sturdy and properly fitted</span></span>
+      </li>
+      <li>
+        <span class="step-num">4</span>
+        <span class="step-body read-aloud"><b>Front White Light</b><span>So the road can be seen even in darkness or fog</span></span>
+      </li>
+      <li>
+        <span class="step-num">5</span>
+        <span class="step-body read-aloud"><b>Rear Red Light &amp; Reflector</b><span>So vehicles behind can spot you from a distance</span></span>
+      </li>
+      <li>
+        <span class="step-num">6</span>
+        <span class="step-body read-aloud"><b>Helmet</b><span>A correctly sized helmet, especially important on geared cycles</span></span>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="closing">
+  <p class="mark read-aloud">Cycling isn't just about covering distance — it's also about the responsibility of getting home safely.</p>
+  <div class="icons">🚲 🌫️ 🪖</div>
+</section>
+
+<footer>
+  A Road Safety Awareness Story — MySkillGame
+</footer>
+
+<div class="story-toolbar">
+  <button class="tool-btn" id="bookmarkBtn" aria-pressed="false">
+    <span class="ic">🔖</span><span class="label">Bookmark</span>
+  </button>
+  <button class="tool-btn" id="speakBtn" aria-pressed="false">
+    <span class="ic" id="speakIcon">🔊</span><span class="label" id="speakLabel">Listen</span>
+  </button>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  var STORAGE_KEY = 'pradip-foggy-night-bookmark';
+  var toastEl = document.getElementById('toast');
+  var toastTimer = null;
+
+  function showToast(msg){
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toastEl.classList.remove('show'); }, 2200);
+  }
+
+  /* ---------- BOOKMARK ---------- */
+  var bookmarkBtn = document.getElementById('bookmarkBtn');
+  var resumeBanner = document.getElementById('resumeBanner');
+  var resumeGo = document.getElementById('resumeGo');
+  var resumeClose = document.getElementById('resumeClose');
+
+  function getSavedBookmark(){
+    try{
+      var raw = localStorage.getItem(STORAGE_KEY);
+      return raw ? JSON.parse(raw) : null;
+    }catch(e){ return null; }
+  }
+
+  function setBookmarkUI(active){
+    bookmarkBtn.classList.toggle('bookmark-on', active);
+    bookmarkBtn.setAttribute('aria-pressed', active ? 'true' : 'false');
+    bookmarkBtn.querySelector('.label').textContent = active ? 'Bookmarked' : 'Bookmark';
+  }
+
+  var existing = getSavedBookmark();
+  if (existing && existing.scrollY > 200) {
+    setBookmarkUI(true);
+    setTimeout(function(){ resumeBanner.classList.add('show'); }, 700);
+  }
+
+  bookmarkBtn.addEventListener('click', function(){
+    var saved = getSavedBookmark();
+    if (saved) {
+      try{ localStorage.removeItem(STORAGE_KEY); }catch(e){}
+      setBookmarkUI(false);
+      resumeBanner.classList.remove('show');
+      showToast('Bookmark removed');
+    } else {
+      var data = { scrollY: window.scrollY || window.pageYOffset, savedAt: Date.now() };
+      try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); }catch(e){}
+      setBookmarkUI(true);
+      showToast('Bookmarked this spot 🔖');
+    }
+  });
+
+  resumeGo.addEventListener('click', function(){
+    var saved = getSavedBookmark();
+    if (saved) {
+      window.scrollTo({ top: saved.scrollY, behavior: 'smooth' });
+    }
+    resumeBanner.classList.remove('show');
+  });
+
+  resumeClose.addEventListener('click', function(){
+    resumeBanner.classList.remove('show');
+  });
+
+  /* ---------- VOICE READER (Indian English) ---------- */
+  var speakBtn = document.getElementById('speakBtn');
+  var speakIcon = document.getElementById('speakIcon');
+  var speakLabel = document.getElementById('speakLabel');
+  var blocks = Array.prototype.slice.call(document.querySelectorAll('.read-aloud'));
+  var synth = window.speechSynthesis;
+  var chosenVoice = null;
+  var currentIndex = 0;
+  var isSpeaking = false;
+  var isPaused = false;
+
+  function pickVoice(){
+    if (!synth) return;
+    var voices = synth.getVoices();
+    if (!voices || !voices.length) return;
+    chosenVoice =
+      voices.find(function(v){ return v.lang === 'en-IN'; }) ||
+      voices.find(function(v){ return /en-IN/i.test(v.lang); }) ||
+      voices.find(function(v){ return /india/i.test(v.name); }) ||
+      voices.find(function(v){ return v.lang && v.lang.indexOf('en') === 0; }) ||
+      voices[0];
+  }
+
+  if (synth) {
+    pickVoice();
+    synth.onvoiceschanged = pickVoice;
+  }
+
+  function clearHighlights(){
+    blocks.forEach(function(b){ b.classList.remove('reading-active'); });
+  }
+
+  function setSpeakingUI(active){
+    speakBtn.classList.toggle('speaking', active);
+    speakBtn.setAttribute('aria-pressed', active ? 'true' : 'false');
+    speakIcon.textContent = active ? '⏸️' : '🔊';
+    speakLabel.textContent = active ? 'Pause' : 'Listen';
+  }
+
+  function speakFrom(index){
+    if (!synth || index >= blocks.length) {
+      isSpeaking = false;
+      isPaused = false;
+      clearHighlights();
+      setSpeakingUI(false);
+      currentIndex = 0;
+      return;
+    }
+    currentIndex = index;
+    var el = blocks[index];
+    clearHighlights();
+    el.classList.add('reading-active');
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    var utter = new SpeechSynthesisUtterance(el.textContent.trim());
+    if (chosenVoice) utter.voice = chosenVoice;
+    utter.lang = (chosenVoice && chosenVoice.lang) || 'en-IN';
+    utter.rate = 0.98;
+    utter.pitch = 1;
+
+    utter.onend = function(){
+      if (isSpeaking && !isPaused) speakFrom(index + 1);
+    };
+    utter.onerror = function(){
+      isSpeaking = false;
+      isPaused = false;
+      clearHighlights();
+      setSpeakingUI(false);
+    };
+
+    synth.speak(utter);
+  }
+
+  speakBtn.addEventListener('click', function(){
+    if (!synth) {
+      showToast('Voice reading is not supported in this browser');
+      return;
+    }
+    if (!isSpeaking) {
+      isSpeaking = true;
+      isPaused = false;
+      setSpeakingUI(true);
+      speakFrom(currentIndex);
+    } else if (!isPaused) {
+      isPaused = true;
+      synth.pause();
+      setSpeakingUI(false);
+    } else {
+      isPaused = false;
+      synth.resume();
+      setSpeakingUI(true);
+    }
+  });
+
+  window.addEventListener('beforeunload', function(){
+    if (synth) synth.cancel();
+  });
+})();
+</script>
+
+</body>
+</html>
