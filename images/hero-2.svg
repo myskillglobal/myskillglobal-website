@@ -1,0 +1,94 @@
+<svg viewBox="0 0 1000 640" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="heroTitle">
+  <title id="heroTitle">A small house at night with one warm, lit window</title>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#060a14"/>
+      <stop offset="55%" stop-color="#0b1220"/>
+      <stop offset="100%" stop-color="#101a2e"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f4d99a" stop-opacity="0.95"/>
+      <stop offset="45%" stop-color="#e8b94f" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#e8b94f" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="hillFar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#141f37"/>
+      <stop offset="100%" stop-color="#0f1829"/>
+    </linearGradient>
+    <linearGradient id="hillNear" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0c1524"/>
+      <stop offset="100%" stop-color="#080e19"/>
+    </linearGradient>
+    <linearGradient id="roofGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#151f36"/>
+      <stop offset="100%" stop-color="#0a0f1c"/>
+    </linearGradient>
+    <linearGradient id="wallGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0e1728"/>
+      <stop offset="100%" stop-color="#080d18"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="1000" height="640" fill="url(#sky)"/>
+
+  <!-- stars -->
+  <g fill="#f3eee4" opacity="0.75">
+    <circle cx="90" cy="70" r="1.6"/>
+    <circle cx="160" cy="130" r="1.1"/>
+    <circle cx="240" cy="60" r="1.4"/>
+    <circle cx="320" cy="110" r="1.1"/>
+    <circle cx="410" cy="50" r="1.6"/>
+    <circle cx="520" cy="90" r="1.2"/>
+    <circle cx="610" cy="45" r="1.4"/>
+    <circle cx="700" cy="95" r="1.1"/>
+    <circle cx="780" cy="55" r="1.6"/>
+    <circle cx="860" cy="115" r="1.2"/>
+    <circle cx="930" cy="65" r="1.4"/>
+    <circle cx="50" cy="180" r="1.1"/>
+    <circle cx="960" cy="170" r="1.1"/>
+  </g>
+
+  <!-- crescent moon -->
+  <g transform="translate(860,110)">
+    <circle cx="0" cy="0" r="34" fill="#f3eee4" opacity="0.9"/>
+    <circle cx="14" cy="-8" r="30" fill="#0b1220"/>
+  </g>
+
+  <!-- distant hills -->
+  <path d="M0,430 C150,390 300,410 460,395 C640,378 780,405 1000,385 L1000,640 L0,640 Z" fill="url(#hillFar)"/>
+  <!-- near hills -->
+  <path d="M0,480 C180,450 340,470 520,455 C700,440 860,470 1000,450 L1000,640 L0,640 Z" fill="url(#hillNear)"/>
+
+  <!-- warm glow behind house -->
+  <circle cx="500" cy="430" r="230" fill="url(#glow)"/>
+
+  <!-- path to the door -->
+  <path d="M500,640 C480,560 470,500 500,470 C530,500 520,560 500,640 Z" fill="#12213a" opacity="0.6"/>
+
+  <!-- house -->
+  <g>
+    <!-- roof -->
+    <polygon points="500,330 400,410 600,410" fill="url(#roofGrad)"/>
+    <!-- chimney -->
+    <rect x="555" y="345" width="18" height="45" fill="#0a0f1c"/>
+    <!-- body -->
+    <rect x="415" y="410" width="170" height="130" fill="url(#wallGrad)"/>
+    <!-- door -->
+    <rect x="485" y="470" width="34" height="70" rx="3" fill="#080d18" stroke="#1c2c48" stroke-width="2"/>
+    <circle cx="509" cy="507" r="1.8" fill="#e8b94f"/>
+    <!-- lit window -->
+    <g>
+      <rect x="440" y="435" width="34" height="34" rx="2" fill="#f4d99a"/>
+      <rect x="440" y="435" width="34" height="34" rx="2" fill="none" stroke="#e8b94f" stroke-width="2"/>
+      <line x1="457" y1="435" x2="457" y2="469" stroke="#0a0f1c" stroke-width="2"/>
+      <line x1="440" y1="452" x2="474" y2="452" stroke="#0a0f1c" stroke-width="2"/>
+    </g>
+    <!-- second, dark window -->
+    <rect x="530" y="435" width="34" height="34" rx="2" fill="#0a0f1c" stroke="#1c2c48" stroke-width="2"/>
+    <line x1="547" y1="435" x2="547" y2="469" stroke="#1c2c48" stroke-width="2"/>
+    <line x1="530" y1="452" x2="564" y2="452" stroke="#1c2c48" stroke-width="2"/>
+  </g>
+
+  <!-- foreground silhouette hill -->
+  <path d="M0,560 C220,520 380,555 560,530 C740,505 880,545 1000,520 L1000,640 L0,640 Z" fill="#060a12"/>
+</svg>
