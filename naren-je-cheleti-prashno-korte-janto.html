@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>নরেন — যে ছেলেটি প্রশ্ন করতে জানত</title>
+<style>
+  :root{
+    --navy:#0a1128;
+    --navy2:#0f1c3f;
+    --navy3:#132a52;
+    --gold:#d4af37;
+    --gold-soft:#e8c96b;
+    --text:#eae6d8;
+    --text-dim:#a9b0c4;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-padding-top:env(safe-area-inset-top,0px);}
+  body{
+    margin:0;
+    background:linear-gradient(180deg,var(--navy) 0%,var(--navy2) 100%);
+    color:var(--text);
+    font-family:'Noto Sans Bengali','Hind Siliguri',sans-serif;
+    line-height:1.9;
+    min-height:100%;
+  }
+  header{
+    position:sticky;
+    top:0;
+    top:env(safe-area-inset-top,0px);
+    z-index:50;
+    background:rgba(10,17,40,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(212,175,55,0.35);
+    padding:12px 16px;
+    padding-top:calc(12px + env(safe-area-inset-top,0px));
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+  }
+  .icon-btn{
+    background:transparent;
+    border:1px solid rgba(212,175,55,0.5);
+    color:var(--gold-soft);
+    border-radius:10px;
+    padding:8px 12px;
+    font-size:14px;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    cursor:pointer;
+    transition:.2s;
+    font-family:inherit;
+  }
+  .icon-btn:active{background:rgba(212,175,55,0.15);}
+  .icon-btn.active{
+    background:var(--gold);
+    color:var(--navy);
+    border-color:var(--gold);
+  }
+  header h1{
+    font-size:15px;
+    margin:0;
+    color:var(--gold-soft);
+    text-align:center;
+    flex:1;
+    font-weight:600;
+    letter-spacing:.5px;
+  }
+  main{
+    max-width:640px;
+    margin:0 auto;
+    padding:20px 18px 60px;
+  }
+  .hero{
+    text-align:center;
+    margin-bottom:26px;
+  }
+  .hero-frame{
+    width:100%;
+    max-width:340px;
+    margin:0 auto 16px;
+    border-radius:16px;
+    overflow:hidden;
+    border:2px solid var(--gold);
+    box-shadow:0 8px 28px rgba(0,0,0,0.5), 0 0 0 6px rgba(212,175,55,0.08);
+    background:var(--navy3);
+  }
+  .hero-frame img{
+    width:100%;
+    display:block;
+    aspect-ratio:4/5;
+    object-fit:cover;
+  }
+  .hero-frame .fallback{
+    width:100%;
+    aspect-ratio:4/5;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--text-dim);
+    font-size:13px;
+    text-align:center;
+    padding:20px;
+  }
+  .eyebrow{
+    color:var(--gold);
+    font-size:13px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:8px;
+  }
+  .title{
+    font-size:26px;
+    font-weight:700;
+    color:var(--text);
+    margin:0 0 6px;
+  }
+  .subtitle{
+    color:var(--gold-soft);
+    font-size:16px;
+    font-style:italic;
+    margin:0;
+  }
+  nav.toc{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    justify-content:center;
+    margin:22px 0 6px;
+  }
+  nav.toc a{
+    color:var(--gold-soft);
+    background:rgba(212,175,55,0.08);
+    border:1px solid rgba(212,175,55,0.3);
+    border-radius:20px;
+    padding:6px 14px;
+    font-size:13px;
+    text-decoration:none;
+  }
+  .episode-bar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    margin:34px 0 14px;
+    padding-bottom:10px;
+    border-bottom:1px solid rgba(212,175,55,0.25);
+    scroll-margin-top:70px;
+  }
+  .episode-tag{
+    color:var(--gold);
+    font-weight:700;
+    font-size:15px;
+    letter-spacing:.5px;
+  }
+  .story p{
+    margin:0 0 18px;
+    font-size:17px;
+    color:var(--text);
+  }
+  .story .dialog{
+    color:var(--gold-soft);
+    padding-left:14px;
+    border-left:2px solid rgba(212,175,55,0.4);
+  }
+  .story h2{
+    color:var(--gold);
+    font-size:19px;
+    margin:32px 0 14px;
+    border-bottom:1px solid rgba(212,175,55,0.25);
+    padding-bottom:8px;
+  }
+  .moral-list{
+    list-style:none;
+    margin:20px 0;
+    padding:18px 20px;
+    background:rgba(212,175,55,0.06);
+    border:1px solid rgba(212,175,55,0.3);
+    border-radius:12px;
+  }
+  .moral-list li{
+    color:var(--gold-soft);
+    font-size:18px;
+    font-weight:600;
+    padding:6px 0;
+  }
+  .closing-name{
+    text-align:center;
+    font-size:24px;
+    font-weight:700;
+    color:var(--gold);
+    letter-spacing:1px;
+    margin:22px 0;
+  }
+  .footer-note{
+    margin-top:40px;
+    text-align:center;
+    color:var(--text-dim);
+    font-size:13px;
+    line-height:1.7;
+  }
+  .footer-note .gold{color:var(--gold-soft);}
+  .the-end{
+    text-align:center;
+    color:var(--gold);
+    letter-spacing:4px;
+    font-size:13px;
+    margin-top:36px;
+    text-transform:uppercase;
+  }
+  #voiceStatus{
+    position:fixed;
+    left:50%;
+    bottom:18px;
+    bottom:calc(18px + env(safe-area-inset-bottom,0px));
+    transform:translateX(-50%) translateY(120%);
+    background:var(--gold);
+    color:var(--navy);
+    padding:10px 18px;
+    border-radius:30px;
+    font-size:13px;
+    font-weight:600;
+    box-shadow:0 6px 20px rgba(0,0,0,0.4);
+    transition:transform .25s ease;
+    z-index:60;
+    white-space:nowrap;
+  }
+  #voiceStatus.show{transform:translateX(-50%) translateY(0);}
+  @media (min-width:600px){
+    .title{font-size:30px;}
+    .story p{font-size:18px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <button class="icon-btn" id="homeBtn" title="হোম">🏠 <span>হোম</span></button>
+  <h1>নরেন</h1>
+  <button class="icon-btn" id="bookmarkBtn" title="বুকমার্ক">🔖 <span>বুকমার্ক</span></button>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-frame">
+      <img src="images/swamiji.png" alt="নরেন্দ্রনাথ দত্ত" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'fallback',textContent:'ছবি: images/swamiji.png'}))">
+    </div>
+    <div class="eyebrow">উনিশ শতকের কলকাতা</div>
+    <h1 class="title">নরেন — যে ছেলেটি প্রশ্ন করতে জানত</h1>
+    <p class="subtitle">এক অদ্ভুত স্বভাবের বালকের গল্প, যে বিশ্বাস করার আগে দেখতে চাইত</p>
+  </section>
+
+  <nav class="toc">
+    <a href="#ep1">পর্ব ১</a>
+    <a href="#ep2">পর্ব ২</a>
+    <a href="#ep3">পর্ব ৩</a>
+    <a href="#ep4">পর্ব ৪</a>
+    <a href="#ep5">পর্ব ৫</a>
+    <a href="#ep6">পর্ব ৬</a>
+  </nav>
+
+  <div class="episode-bar" id="ep1-bar">
+    <span class="episode-tag">পর্ব ১</span>
+    <button class="icon-btn voice-btn" data-target="ep1">🔊 <span>শুনুন</span></button>
+  </div>
+
+  <article class="story" id="ep1">
+    <p>ঘোড়ার গাড়ির শব্দে তখনও শহরের রাস্তা মুখরিত হয়। গঙ্গার হাওয়া এসে মিশে যায় পুরনো বাড়িগুলোর বারান্দায়। সেই কলকাতার সিমুলিয়া অঞ্চলের এক বাড়িতে বড় হয়ে উঠছিল এক অদ্ভুত স্বভাবের ছেলে।</p>
+    <p>তার নাম—নরেন্দ্রনাথ দত্ত।</p>
+    <p>বাড়িতে সবাই তাকে ভালোবেসে ডাকত—নরেন।</p>
+    <p>নরেনকে এক জায়গায় বেশিক্ষণ বসিয়ে রাখা ছিল কঠিন কাজ।</p>
+    <p>কখনও সে বন্ধুদের নিয়ে খেলছে, কখনও গান গাইছে, কখনও শরীরচর্চা করছে, আবার কখনও কোনো বই হাতে নিয়ে গভীর মনোযোগে পড়ছে।</p>
+    <p>কিন্তু তার সবচেয়ে বড় বৈশিষ্ট্য ছিল অন্য কিছু।</p>
+    <p>সে প্রশ্ন করত।</p>
+    <p>অনেক প্রশ্ন।</p>
+    <p>একদিন বাড়ির ঠাকুরঘরে বসে নরেন মায়ের কাছে জিজ্ঞেস করল,</p>
+    <p class="dialog">"মা, ঈশ্বরকে দেখা যায়?"</p>
+    <p>মা হেসে বললেন,</p>
+    <p class="dialog">"ভক্তি দিয়ে তাঁকে অনুভব করতে হয়।"</p>
+    <p>নরেন আবার প্রশ্ন করল,</p>
+    <p class="dialog">"কিন্তু সত্যিই কি তাঁকে দেখা যায়?"</p>
+    <p>মা ছেলের মুখের দিকে তাকিয়ে রইলেন।</p>
+    <p>তিনি বুঝতেন, এই ছেলে শুধু উত্তর শুনে থেমে থাকবে না।</p>
+    <p>নরেন নিজের চোখে সত্যকে দেখতে চায়।</p>
+
+    <h2>ভূতের গাছ</h2>
+    <p>পাড়ার কয়েকজন ছেলে একদিন একটি বড় গাছের নিচে দাঁড়িয়ে গল্প করছিল।</p>
+    <p>একজন বলল,</p>
+    <p class="dialog">"ওই গাছে ভূত আছে।"</p>
+    <p>নরেন বলল,</p>
+    <p class="dialog">"কে দেখেছে?"</p>
+    <p class="dialog">"সবাই জানে!"</p>
+    <p class="dialog">"সবাই জানে মানেই সত্যি?"</p>
+    <p>ছেলেরা চুপ।</p>
+    <p>একজন বলল,</p>
+    <p class="dialog">"তুমি বিশ্বাস করো না?"</p>
+    <p>নরেন গাছটার দিকে তাকিয়ে বলল,</p>
+    <p class="dialog">"দেখে না নিয়ে বিশ্বাস করব কেন?"</p>
+    <p>সে ধীরে ধীরে গাছটির দিকে এগিয়ে গেল।</p>
+    <p>বন্ধুরা দূর থেকে তাকিয়ে রইল।</p>
+    <p>নরেন গাছের চারপাশ ঘুরে দেখল। কিছুই নেই।</p>
+    <p>ফিরে এসে সে বলল,</p>
+    <p class="dialog">"ভয় অনেক সময় আমাদের চোখকে এমন জিনিসও দেখায়, যা আসলে নেই।"</p>
+    <p>এই ছোট্ট ঘটনাটিই যেন তার চরিত্রের একটি দিক প্রকাশ করেছিল—</p>
+    <p>সে অন্ধভাবে বিশ্বাস করতে চাইত না।</p>
+
+    <h2>মায়ের শিক্ষা</h2>
+    <p>নরেনের মা ভুবনেশ্বরী দেবী ছিলেন ধর্মপরায়ণা, দৃঢ়চেতা এবং গভীর স্মৃতিশক্তির অধিকারিণী।</p>
+    <p>তিনি ছেলেকে শুধু ধর্মের কথা শেখাতেন না। শেখাতেন সত্য, সাহস, আত্মসম্মান এবং মানুষের প্রতি শ্রদ্ধা।</p>
+    <p>একদিন তিনি নরেনকে বললেন,</p>
+    <p class="dialog">"বাবা, জীবনে সত্যের পথে থেকো। অন্যায় করলে নিজের কাছেই ছোট হয়ে যাবে।"</p>
+    <p>নরেন চুপ করে মায়ের কথা শুনল।</p>
+    <p>তারপর বলল,</p>
+    <p class="dialog">"মা, যদি সবাই অন্যায় করে?"</p>
+    <p>মা উত্তর দিলেন,</p>
+    <p class="dialog">"তবু তুমি অন্যায় করবে না।"</p>
+    <p>নরেন মায়ের দিকে তাকিয়ে রইল।</p>
+    <p>সেই কথাটি তার মনে গভীরভাবে গেঁথে গেল।</p>
+    <p>কারণ ভবিষ্যতে পৃথিবী তাকে যতই পরীক্ষা করুক, সত্যের প্রতি সেই আকর্ষণ তার চরিত্রের অন্যতম শক্তি হয়ে থাকবে।</p>
+  </article>
+
+  <div class="episode-bar" id="ep2-bar">
+    <span class="episode-tag">পর্ব ২</span>
+    <button class="icon-btn voice-btn" data-target="ep2">🔊 <span>শুনুন</span></button>
+  </div>
+
+  <article class="story" id="ep2">
+    <p>নরেনের পৃথিবী ছিল অনেক বড়।</p>
+    <p>তার কাছে শিক্ষা মানে শুধু বই পড়া নয়।</p>
+    <p>সে গান শিখত, শরীরচর্চা করত, সাঁতার কাটত, খেলাধুলা করত এবং বন্ধুদের সঙ্গে নানা ধরনের দুঃসাহসিক কাজে অংশ নিত।</p>
+    <p>তার কণ্ঠস্বর ছিল সুন্দর। গান শুনতে সে যেমন ভালোবাসত, তেমনই নিজেও গান গাইত।</p>
+    <p>আবার শরীরকে শক্ত রাখার ব্যাপারেও সে ছিল আগ্রহী।</p>
+    <p>একদিন এক বন্ধু বলল,</p>
+    <p class="dialog">"নরেন, তুমি এত কিছু একসঙ্গে কীভাবে করো?"</p>
+    <p>নরেন হেসে বলল,</p>
+    <p class="dialog">"শুধু বই পড়লেই তো মানুষ শক্তিশালী হয় না। শরীরও শক্ত হতে হবে, মনও।"</p>
+    <p>সে বুঝতে শুরু করেছিল—মানুষের সম্পূর্ণ বিকাশের জন্য শরীর, মন ও চরিত্র—সবকিছুরই প্রয়োজন।</p>
+
+    <h2>বাবার কাছ থেকে অন্য শিক্ষা</h2>
+    <p>নরেনের বাবা বিশ্বনাথ দত্ত ছিলেন শিক্ষিত, উদারমনা এবং আইনজীবী।</p>
+    <p>বাড়িতে নানা ধরনের মানুষের যাতায়াত ছিল।</p>
+    <p>বিভিন্ন মতের মানুষ, বিভিন্ন সম্প্রদায়ের মানুষ—অনেকেই আসতেন।</p>
+    <p>নরেন ছোট থেকেই তাঁদের কথাবার্তা শুনত।</p>
+    <p>তার বাবা তাকে স্বাধীনভাবে ভাবতে উৎসাহ দিতেন।</p>
+    <p>একদিন কোনো একটি বিষয় নিয়ে নরেন বাবাকে প্রশ্ন করল।</p>
+    <p>বাবা সরাসরি উত্তর না দিয়ে বললেন,</p>
+    <p class="dialog">"নিজে ভেবে দেখো।"</p>
+    <p>নরেন একটু অবাক।</p>
+    <p class="dialog">"আপনি বলছেন না কেন?"</p>
+    <p>বাবা মৃদু হেসে বললেন,</p>
+    <p class="dialog">"সব উত্তর অন্যের মুখ থেকে শুনে নিলে নিজের বুদ্ধি কখন ব্যবহার করবে?"</p>
+    <p>নরেন চুপ করে গেল।</p>
+    <p>এই শিক্ষাটিও তার মনে থেকে গেল।</p>
+
+    <h2>বইয়ের জগৎ</h2>
+    <p>বয়স বাড়ার সঙ্গে সঙ্গে নরেনের পড়াশোনার পরিধিও বাড়তে লাগল।</p>
+    <p>ইতিহাস, দর্শন, সাহিত্য, ধর্ম—বিভিন্ন বিষয় তাকে আকর্ষণ করত।</p>
+    <p>কিন্তু বই পড়ে তার প্রশ্ন কমত না।</p>
+    <p>বরং বাড়ত।</p>
+    <p>একটি বইয়ের উত্তর তাকে নিয়ে যেত আরেকটি প্রশ্নের কাছে।</p>
+    <p>একদিন সে ভাবল,</p>
+    <p class="dialog">"মানুষ কেন দুঃখ পায়?"</p>
+    <p class="dialog">"ঈশ্বর যদি থাকেন, তবে পৃথিবীতে এত অন্যায় কেন?"</p>
+    <p class="dialog">"মানুষের জীবনের উদ্দেশ্য কী?"</p>
+    <p>এই প্রশ্নগুলো তখনও তার কাছে পরিষ্কার ছিল না।</p>
+    <p>কিন্তু তার ভিতরে যেন একটি অনুসন্ধান শুরু হয়ে গিয়েছিল।</p>
+    <p>সে জানত না সেই অনুসন্ধান তাকে কোথায় নিয়ে যাবে।</p>
+    <p>শুধু জানত—</p>
+    <p>সত্যকে জানতে হবে।</p>
+  </article>
+
+  <div class="episode-bar" id="ep3-bar">
+    <span class="episode-tag">পর্ব ৩</span>
+    <button class="icon-btn voice-btn" data-target="ep3">🔊 <span>শুনুন</span></button>
+  </div>
+
+  <article class="story" id="ep3">
+    <p>নরেনের সাহসের গল্প পাড়ায় ছড়িয়ে পড়েছিল।</p>
+    <p>তবে সাহস মানে যে কখনও ভয় না পাওয়া—এ কথা নরেনও জানত না।</p>
+    <p>সাহস মানে ছিল ভয়ের সামনে দাঁড়াতে শেখা।</p>
+    <p>একদিন কয়েকজন বন্ধু মিলে কোথাও বেড়াতে যাওয়ার পরিকল্পনা করল।</p>
+    <p>এক বন্ধু বলল,</p>
+    <p class="dialog">"ওখানে গেলে সাবধানে থাকতে হবে।"</p>
+    <p>নরেন হেসে বলল,</p>
+    <p class="dialog">"কেন?"</p>
+    <p class="dialog">"জায়গাটা নাকি বিপজ্জনক।"</p>
+    <p>নরেন বলল,</p>
+    <p class="dialog">"তাহলে সাবধানে যাব। কিন্তু ভয় পেয়ে যাওয়াই কি সমাধান?"</p>
+    <p>তার এই স্বভাব অনেকের কাছে আশ্চর্য লাগত।</p>
+
+    <h2>অন্যের জন্য নিজের কথা ভুলে যাওয়া</h2>
+    <p>নরেনের মধ্যে আরেকটি গুণ ধীরে ধীরে স্পষ্ট হচ্ছিল—অন্যের কষ্ট দেখলে সে স্থির থাকতে পারত না।</p>
+    <p>কোনো দরিদ্র মানুষকে দেখলে তার মনে প্রশ্ন জাগত,</p>
+    <p class="dialog">"ওঁরাও তো আমাদের মতো মানুষ। তাহলে তাঁদের এত কষ্ট কেন?"</p>
+    <p>এই প্রশ্ন পরে তার জীবনের অন্যতম বড় চিন্তায় পরিণত হবে।</p>
+    <p>কিন্তু তখন সে ছিল কেবল এক কিশোর।</p>
+    <p>তার সামর্থ্য ছিল সীমিত।</p>
+    <p>তবু যতটুকু পারত, সাহায্য করত।</p>
+    <p>কখনও নিজের খাবার ভাগ করে দিত, কখনও কারও কথা মন দিয়ে শুনত।</p>
+
+    <h2>একটি গভীর প্রশ্ন</h2>
+    <p>একদিন এক ধর্মীয় আলোচনায় বসে নরেন অনেক কথা শুনল।</p>
+    <p>ঈশ্বর, আত্মা, ধর্ম—অনেক আলোচনা হলো।</p>
+    <p>সবাই কথা বলছে।</p>
+    <p>কিন্তু নরেনের মনে একটি প্রশ্নই ঘুরছে।</p>
+    <p>শেষে সে বলেই ফেলল,</p>
+    <p class="dialog">"কেউ কি সত্যিই ঈশ্বরকে দেখেছেন?"</p>
+    <p>ঘরে কিছুক্ষণের জন্য নীরবতা নেমে এল।</p>
+    <p>অনেকে নানা ব্যাখ্যা দিলেন।</p>
+    <p>কেউ বললেন, "শাস্ত্রে লেখা আছে।"</p>
+    <p>কেউ বললেন, "বিশ্বাস করতে হয়।"</p>
+    <p>কিন্তু নরেনের মন তাতে শান্ত হলো না।</p>
+    <p>সে ভাবল,</p>
+    <p class="dialog">"আমি শুধু শুনতে চাই না। আমি সত্যটা জানতে চাই।"</p>
+    <p>এই প্রশ্নই একদিন তাকে এমন একজন মানুষের কাছে নিয়ে যাবে, যিনি তার জীবনকে সম্পূর্ণ নতুন পথে পরিচালিত করবেন।</p>
+  </article>
+
+  <div class="episode-bar" id="ep4-bar">
+    <span class="episode-tag">পর্ব ৪</span>
+    <button class="icon-btn voice-btn" data-target="ep4">🔊 <span>শুনুন</span></button>
+  </div>
+
+  <article class="story" id="ep4">
+    <p>দিন কেটে যাচ্ছিল।</p>
+    <p>নরেন তখন যুবক। তার প্রশ্নগুলো আরও গভীর হয়েছে।</p>
+    <p>সে বিভিন্ন জায়গায় ধর্মীয় বক্তৃতা শুনেছে, নানা মানুষের সঙ্গে আলোচনা করেছে। কিন্তু তার মনের তৃষ্ণা মেটেনি।</p>
+    <p>একদিন তার পরিচয় হলো দক্ষিণেশ্বরের এক সাধকের সঙ্গে।</p>
+    <p>তিনি—শ্রীরামকৃষ্ণ পরমহংস।</p>
+    <p>প্রথম সাক্ষাতে নরেন তাঁর সামনে বসে রইল।</p>
+    <p>নরেনের স্বভাবই ছিল সরাসরি কথা বলা।</p>
+    <p>সে প্রশ্ন করল,</p>
+    <p class="dialog">"আপনি কি ঈশ্বরকে দেখেছেন?"</p>
+    <p>প্রশ্নটি শুনে শ্রীরামকৃষ্ণের মুখে যেন অন্যরকম হাসি ফুটে উঠল।</p>
+    <p>তিনি বললেন,</p>
+    <p class="dialog">"হ্যাঁ, দেখেছি।"</p>
+    <p>নরেন অবাক।</p>
+    <p>এমন উত্তর সে আশা করেনি।</p>
+    <p>শ্রীরামকৃষ্ণ আরও বললেন যে ঈশ্বরকে যেমন প্রত্যক্ষভাবে অনুভব করা যায়, তেমনই মানুষের মধ্যেও ঈশ্বরকে উপলব্ধি করার শিক্ষা তিনি নরেনকে দিতে শুরু করেন।</p>
+    <p>নরেন তখনও সবকিছু মেনে নেয়নি।</p>
+    <p>তার স্বভাব ছিল প্রশ্ন করা, যাচাই করা।</p>
+    <p>তাই এই সম্পর্কও একদিনে তৈরি হয়নি।</p>
+    <p>ছিল প্রশ্ন, দ্বিধা, পরীক্ষা এবং ধীরে ধীরে গভীরতর উপলব্ধির পথ।</p>
+    <p>কিন্তু সেই প্রথম সাক্ষাৎটি ছিল অত্যন্ত গুরুত্বপূর্ণ।</p>
+    <p>কারণ নরেনের জীবনের অনুসন্ধান এবার একটি নতুন দিক পেল।</p>
+
+    <h2>নরেনের সামনে নতুন দরজা</h2>
+    <p>সে বুঝতে শুরু করল—</p>
+    <p>ধর্ম শুধু বইয়ের বিষয় নয়।</p>
+    <p>মানুষকে ভালোবাসা, সত্যের অনুসন্ধান এবং নিজের ভিতরের শক্তিকে জাগিয়ে তোলাও তার সঙ্গে যুক্ত।</p>
+    <p>তার শৈশবের প্রশ্নগুলো যেন একে একে নতুন অর্থ পেতে শুরু করল।</p>
+    <p>কিন্তু সামনে তখনও অনেক পথ।</p>
+    <p>অনেক পরীক্ষা।</p>
+    <p>অনেক দুঃখ।</p>
+    <p>অনেক সংগ্রাম।</p>
+  </article>
+
+  <div class="episode-bar" id="ep5-bar">
+    <span class="episode-tag">পর্ব ৫</span>
+    <button class="icon-btn voice-btn" data-target="ep5">🔊 <span>শুনুন</span></button>
+  </div>
+
+  <article class="story" id="ep5">
+    <p>কলকাতার সেই বাড়িটা একসময় ছিল হাসি-আনন্দে ভরা।</p>
+    <p>কিন্তু হঠাৎ সবকিছু বদলে গেল।</p>
+    <p>নরেনের বাবা, বিশ্বনাথ দত্ত, মারা গেলেন।</p>
+    <p>সংসারের ওপর যেন একসঙ্গে অনেকগুলো দরজা বন্ধ হয়ে গেল।</p>
+    <p>যে পরিবারে একসময় অতিথিদের আনাগোনা ছিল, সেই বাড়িতেই এবার হিসেব কষতে হচ্ছে—কীভাবে সংসার চলবে?</p>
+    <p>নরেন তখন তরুণ।</p>
+    <p>তার নিজের ভবিষ্যৎ নিয়ে স্বপ্ন ছিল। পড়াশোনা ছিল। গান ছিল। বন্ধু ছিল। কিন্তু বাবার মৃত্যুর পর সংসারের দায়িত্ব তার কাঁধে এসে পড়ল।</p>
+    <p>একদিন অনেক চেষ্টা করে সে একটি বাড়িতে কাজের আশায় গেল।</p>
+    <p>ফিরে এল খালি হাতে।</p>
+    <p>আরেকদিন গেল।</p>
+    <p>সেখানেও কোনো ব্যবস্থা হলো না।</p>
+    <p>দিনের পর দিন একই অবস্থা।</p>
+    <p>একসময় তার নিজের কাছেই প্রশ্ন জাগল,</p>
+    <p class="dialog">"যে ঈশ্বরের কথা এত শুনেছি, তিনি কোথায়?"</p>
+    <p>প্রশ্নটি এবার আর কৌতূহলের প্রশ্ন ছিল না।</p>
+    <p>এ ছিল জীবনের গভীর যন্ত্রণার প্রশ্ন।</p>
+
+    <h2>দক্ষিণেশ্বরে</h2>
+    <p>নরেন আবার শ্রীরামকৃষ্ণের কাছে গেল।</p>
+    <p>তার চোখে তখন আগের সেই দুরন্ত কিশোরের উজ্জ্বলতা নেই। জীবনের কঠিন বাস্তবতা তাকে অনেকটাই বদলে দিয়েছে।</p>
+    <p>সে বলল,</p>
+    <p class="dialog">"আমার পরিবারের এত কষ্ট। আপনি কি মায়ের কাছে প্রার্থনা করে আমাদের জন্য কিছু চাইতে পারেন না?"</p>
+    <p>শ্রীরামকৃষ্ণ বললেন,</p>
+    <p class="dialog">"তুমি নিজেই মায়ের কাছে চাও।"</p>
+    <p>নরেন দক্ষিণেশ্বরের মন্দিরে গেল।</p>
+    <p>তার মনে ছিল—আজ সে পরিবারের জন্য প্রার্থনা করবে।</p>
+    <p>কিন্তু মন্দিরের সামনে দাঁড়াতেই তার মুখ থেকে বেরিয়ে এল অন্য কথা।</p>
+    <p>সে চাইল—</p>
+    <p class="dialog">"মা, আমাকে জ্ঞান দাও, ভক্তি দাও, বৈরাগ্য দাও।"</p>
+    <p>ফিরে এসে সে বুঝতে পারল, সে সংসারের অভাবের কথা বলতে ভুলে গেছে।</p>
+    <p>শ্রীরামকৃষ্ণ আবার তাকে পাঠালেন।</p>
+    <p>দ্বিতীয়বারও একই ঘটনা।</p>
+    <p>তৃতীয়বারও।</p>
+    <p>শেষে শ্রীরামকৃষ্ণ মৃদু হেসে বললেন,</p>
+    <p class="dialog">"তোমার পরিবারের অন্ন-বস্ত্রের অভাব হবে না।"</p>
+    <p>নরেন চুপ করে রইল।</p>
+    <p>তার ভিতরে তখন এক নতুন লড়াই শুরু হয়েছে।</p>
+    <p>জীবনের কষ্ট তাকে শুধু নিজের কথা ভাবতে শেখায়নি—বরং অন্য মানুষের কষ্টকেও নতুন চোখে দেখতে শিখিয়েছে।</p>
+
+    <h2>এক নতুন পথ</h2>
+    <p>এরপরের দিনগুলো সহজ ছিল না।</p>
+    <p>নরেনের সামনে ছিল সংসারের দায়িত্ব, নিজের ভবিষ্যৎ এবং আধ্যাত্মিক সত্যের অনুসন্ধান।</p>
+    <p>শ্রীরামকৃষ্ণের সান্নিধ্যে তার চিন্তা আরও গভীর হতে লাগল।</p>
+    <p>সে বুঝতে শুরু করল—</p>
+    <p>মানুষকে ভালোবাসা আর ঈশ্বরকে খোঁজা আলাদা কোনো পথ নয়।</p>
+    <p>কিন্তু তখনও সে জানত না, ভবিষ্যৎ তাকে কোথায় নিয়ে যাবে।</p>
+    <p>তার সামনে তখন এক দীর্ঘ পথ।</p>
+    <p>এই পথেই একদিন নরেন্দ্রনাথ দত্ত পরিচিত হবেন অন্য এক নামে—</p>
+    <p class="closing-name">স্বামী বিবেকানন্দ।</p>
+  </article>
+
+  <div class="episode-bar" id="ep6-bar">
+    <span class="episode-tag">পর্ব ৬ · শেষ পর্ব</span>
+    <button class="icon-btn voice-btn" data-target="ep6">🔊 <span>শুনুন</span></button>
+  </div>
+
+  <article class="story" id="ep6">
+    <p>সময় এগিয়ে গেল।</p>
+    <p>শ্রীরামকৃষ্ণের মহাপ্রয়াণের পর নরেন ও তাঁর সহশিষ্যরা সন্ন্যাসজীবনের পথে এগিয়ে গেলেন।</p>
+    <p>নরেন্দ্রনাথ তখন আর শুধু নিজের জন্য সত্য খুঁজছেন না।</p>
+    <p>তিনি ভারতবর্ষকে দেখতে বেরিয়ে পড়লেন।</p>
+    <p>শহর থেকে গ্রাম।</p>
+    <p>রাজপ্রাসাদ থেকে সাধারণ মানুষের ঘর।</p>
+    <p>পথে পথে তিনি দেখলেন এক বিশাল দেশ—অসীম ঐতিহ্যের অধিকারী, অথচ দারিদ্র্য ও অশিক্ষায় জর্জরিত অসংখ্য মানুষ।</p>
+    <p>একদিন পথ চলতে চলতে তাঁর মনে হলো,</p>
+    <p class="dialog">"যে দেশের মানুষ এত কষ্টে আছে, তাদের জন্য কিছু না করে শুধু নিজের মুক্তির কথা ভাবব কীভাবে?"</p>
+    <p>শৈশবের সেই প্রশ্নগুলো যেন নতুন অর্থ পেল।</p>
+    <p>ঈশ্বর কোথায়?</p>
+    <p>মানুষের মধ্যেই কি তাঁর প্রকাশ নেই?</p>
+
+    <h2>সমুদ্রের ওপারে</h2>
+    <p>১৮৯৩ সাল।</p>
+    <p>নরেন্দ্রনাথ তখন স্বামী বিবেকানন্দ।</p>
+    <p>তিনি আমেরিকার শিকাগো শহরে বিশ্বধর্ম মহাসভায় যোগ দিতে গিয়েছেন।</p>
+    <p>সেখানে পৌঁছানোও সহজ ছিল না।</p>
+    <p>অপরিচিত দেশ।</p>
+    <p>অপরিচিত মানুষ।</p>
+    <p>অর্থের অভাব।</p>
+    <p>অনিশ্চয়তা।</p>
+    <p>তবু তিনি এগিয়ে গেলেন।</p>
+    <p>অবশেষে সেই দিন এল।</p>
+    <p>বিশাল সভাকক্ষে নানা ধর্ম ও দেশের প্রতিনিধিরা উপস্থিত।</p>
+    <p>স্বামী বিবেকানন্দের পালা আসতে আর বেশি দেরি নেই।</p>
+    <p>মুহূর্তটি যেন তাঁর জীবনের সমস্ত পথকে এক জায়গায় এনে দাঁড় করাল।</p>
+    <p>সেই ছোট্ট নরেন—</p>
+    <p>যে একদিন গাছের কাছে গিয়ে ভূতের গল্পের সত্যতা যাচাই করেছিল,</p>
+    <p>যে মায়ের কাছে ঈশ্বরকে নিয়ে প্রশ্ন করেছিল,</p>
+    <p>যে বাবার কাছে শুনেছিল নিজের বুদ্ধি দিয়ে ভাবতে,</p>
+    <p>যে দুঃখের দিনে মানুষের কষ্টকে নিজের কষ্টের মতো অনুভব করতে শিখেছিল—</p>
+    <p>সেই নরেনই আজ বিশ্বের সামনে দাঁড়াতে চলেছে।</p>
+    <p>তিনি মঞ্চে উঠলেন।</p>
+    <p>তারপর শুরু হলো তাঁর ঐতিহাসিক বক্তৃতা।</p>
+    <p>সেদিন তাঁর কণ্ঠে শুধু একটি ধর্মের কথা ছিল না।</p>
+    <p>ছিল মানবতা, সহিষ্ণুতা এবং পারস্পরিক শ্রদ্ধার কথা।</p>
+
+    <h2>ফিরে দেখা</h2>
+    <p>অনেক বছর পরে যদি ছোট্ট নরেনকে কেউ প্রশ্ন করত,</p>
+    <p class="dialog">"তুমি বড় হয়ে কী হবে?"</p>
+    <p>সে হয়তো কোনো উত্তর দিতে পারত না।</p>
+    <p>কারণ সে জানত না ভবিষ্যৎ তাকে কোথায় নিয়ে যাবে।</p>
+    <p>কিন্তু তার মধ্যে তখন থেকেই কিছু জিনিস ছিল—</p>
+
+    <ul class="moral-list">
+      <li>প্রশ্ন করার সাহস।</li>
+      <li>সত্যকে যাচাই করার অভ্যাস।</li>
+      <li>শেখার আগ্রহ।</li>
+      <li>অন্যের কষ্ট অনুভব করার ক্ষমতা।</li>
+      <li>আর ছিল নিজের ভিতরের শক্তিকে খুঁজে পাওয়ার চেষ্টা।</li>
+    </ul>
+
+    <p>এই গুণগুলোই ধীরে ধীরে তাকে নরেন্দ্রনাথ থেকে স্বামী বিবেকানন্দে পরিণত করেছিল।</p>
+    <p>তাই স্বামী বিবেকানন্দের শৈশবের গল্প আসলে শুধু একটি মহান মানুষের ছোটবেলার গল্প নয়।</p>
+    <p>এটি একটি শিশুর ভিতরে লুকিয়ে থাকা সম্ভাবনার গল্প।</p>
+    <p>যে শিশু প্রশ্ন করে, সে হয়তো একদিন নতুন উত্তর খুঁজে পাবে।</p>
+    <p>যে শিশু সত্য জানতে চায়, সে হয়তো একদিন অন্যদেরও সত্যের পথে ডাকবে।</p>
+    <p>আর যে শিশু মানুষের কষ্ট বুঝতে শেখে, তার জীবন হয়তো একদিন মানুষের জন্যই উৎসর্গিত হবে।</p>
+    <p>ছোট্ট নরেনের গল্প তাই এখানেই শেষ নয়।</p>
+    <p>কারণ তাঁর রেখে যাওয়া প্রশ্ন আজও আমাদের সামনে দাঁড়িয়ে আছে—</p>
+    <p class="closing-name">"তুমি তোমার ভিতরের শক্তিকে কীভাবে ব্যবহার করবে?"</p>
+  </article>
+
+  <div class="the-end">— সমাপ্ত —</div>
+
+  <div class="footer-note">
+    <span class="gold">নরেন — যে ছেলেটি প্রশ্ন করতে জানত</span>
+  </div>
+</main>
+
+<div id="voiceStatus"></div>
+
+<script>
+(function(){
+  const STORAGE_KEY = 'naren_bookmark';
+  const bookmarkBtn = document.getElementById('bookmarkBtn');
+  const homeBtn = document.getElementById('homeBtn');
+  const voiceStatus = document.getElementById('voiceStatus');
+  let statusTimer = null;
+
+  function showStatus(msg){
+    voiceStatus.textContent = msg;
+    voiceStatus.classList.add('show');
+    clearTimeout(statusTimer);
+    statusTimer = setTimeout(()=>voiceStatus.classList.remove('show'), 2200);
+  }
+
+  // ---- Bookmark ----
+  function saveBookmark(){
+    try{
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        scrollY: window.scrollY,
+        savedAt: Date.now()
+      }));
+      bookmarkBtn.classList.add('active');
+      showStatus('বুকমার্ক সংরক্ষিত হয়েছে');
+    }catch(e){
+      showStatus('বুকমার্ক সংরক্ষণ করা যায়নি');
+    }
+  }
+
+  function goToBookmark(){
+    try{
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if(!raw){ showStatus('কোনো বুকমার্ক নেই'); return; }
+      const data = JSON.parse(raw);
+      window.scrollTo({top:data.scrollY, behavior:'smooth'});
+      showStatus('বুকমার্ক করা জায়গায় ফিরে যাওয়া হচ্ছে');
+    }catch(e){
+      showStatus('কোনো বুকমার্ক নেই');
+    }
+  }
+
+  bookmarkBtn.addEventListener('click', function(){
+    try{
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if(raw){ goToBookmark(); } else { saveBookmark(); }
+    }catch(e){ saveBookmark(); }
+  });
+  bookmarkBtn.addEventListener('dblclick', function(e){
+    e.preventDefault();
+    saveBookmark();
+  });
+
+  try{
+    if(localStorage.getItem(STORAGE_KEY)){
+      bookmarkBtn.classList.add('active');
+    }
+  }catch(e){}
+
+  // ---- Home button ----
+  homeBtn.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+
+  // ---- Voice narration (Web Speech API, per episode) ----
+  let currentBtn = null;
+
+  function stopSpeaking(){
+    if(window.speechSynthesis){
+      window.speechSynthesis.cancel();
+    }
+    if(currentBtn){
+      currentBtn.classList.remove('active');
+      currentBtn.querySelector('span').textContent = 'শুনুন';
+    }
+    currentBtn = null;
+  }
+
+  function pickBengaliVoice(){
+    const voices = window.speechSynthesis ? window.speechSynthesis.getVoices() : [];
+    return voices.find(v => /bn|bengali/i.test(v.lang) || /bengali/i.test(v.name)) || null;
+  }
+
+  document.querySelectorAll('.voice-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      const targetId = btn.getAttribute('data-target');
+      const target = document.getElementById(targetId);
+
+      if(!('speechSynthesis' in window)){
+        showStatus('এই ব্রাউজারে ভয়েস সমর্থিত নয়');
+        return;
+      }
+
+      if(currentBtn === btn){
+        stopSpeaking();
+        return;
+      }
+
+      stopSpeaking();
+
+      const text = target.innerText || target.textContent;
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = 'bn-IN';
+      const voice = pickBengaliVoice();
+      if(voice) utter.voice = voice;
+      utter.rate = 0.95;
+      utter.pitch = 1;
+
+      utter.onend = function(){ stopSpeaking(); };
+      utter.onerror = function(){ stopSpeaking(); showStatus('ভয়েস চালাতে সমস্যা হয়েছে'); };
+
+      currentBtn = btn;
+      btn.classList.add('active');
+      btn.querySelector('span').textContent = 'থামুন';
+
+      window.speechSynthesis.speak(utter);
+      showStatus('পড়া শুরু হচ্ছে...');
+    });
+  });
+
+  if('speechSynthesis' in window){
+    window.speechSynthesis.onvoiceschanged = function(){};
+  }
+
+  window.addEventListener('beforeunload', stopSpeaking);
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+
+<html lang="bn">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>পঙ্গপাল — যে আকাশ সব খেয়ে ফেলে</title>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+<meta content="fDyEKiSXue5cIsS7SGLU15BpPCVqkLNuuoRmGpaHEL8" name="google-site-verification"/>
+<meta content="Surajit Roy" name="author">
+<meta content="© Surajit Roy" name="copyright"/>
+<meta content="index,follow" name="robots"/>
+<link href="style.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&amp;family=DM+Sans:wght@400;500;600&amp;family=DM+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --black: #0a0a0a;
+    --off-white: #f7f5ef;
+    --cream: #ede8da;
+    --amber: #b45309;
+    --amber-dark: #78350f;
+    --amber-light: #fef3c7;
+    --amber-mid: #d97706;
+    --red: #c8302a;
+    --red-light: #fef2f2;
+    --teal: #0d7a6b;
+    --teal-light: #d1f5ee;
+    --purple: #5b3fa6;
+    --purple-light: #ede9fc;
+    --green: #2d6a23;
+    --green-light: #e3f5dc;
+    --blue: #1a5fa8;
+    --blue-light: #dbeafe;
+    --gray: #6b7280;
+    --gray-light: #f3f4f6;
+    --border: #e2ddd0;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--off-white);
+    color: var(--black);
+    line-height: 1.7;
+-webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: #110900;
+    color: white;
+    padding: 80px 24px 100px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 50% 80%, rgba(180,83,9,0.28) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber-mid);
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(48px, 10vw, 96px);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin-bottom: 28px;
+  }
+  .hero h1 span { color: var(--amber-mid); display: block; }
+  .hero-sub {
+    font-size: 18px;
+    color: #a09080;
+    max-width: 560px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(180,83,9,0.18);
+    border: 1px solid rgba(180,83,9,0.45);
+    color: #45420C;
+    font-size: 14px;
+    padding: 8px 20px;
+    border-radius: 100px;
+  }
+  .hero-badge::before { content: '⚡'; font-size: 16px; }
+.hero-banner{
+    width:100%;
+    overflow:hidden;
+    background:#110900;
+}
+
+.hero-banner img{
+    width:100%;
+    display:block;
+    height:auto;
+}
+.hero-image{
+    position:relative;
+    width:100%;
+    overflow:hidden;
+}
+img{
+    pointer-events:none;
+    -webkit-user-drag:none;
+}
+.hero-image img{
+    width:100%;
+    height:700px;
+    object-fit:cover;
+    display:block;
+}
+
+.hero-overlay{
+    position:absolute;
+    inset:0;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+    padding:20px;
+
+    background:linear-gradient(
+        rgba(0,0,0,0.25),
+        rgba(0,0,0,0.55)
+    );
+}
+
+.hero-overlay .hero-eyebrow{
+    color:#f59e0b;
+    letter-spacing:4px;
+    font-size:12px;
+    margin-bottom:20px;
+}
+
+.hero-overlay h1{
+    color:white;
+    font-size:clamp(3rem,8vw,7rem);
+    font-weight:800;
+    text-transform:uppercase;
+    margin:0;
+    text-shadow:0 0 25px rgba(0,0,0,.8);
+}
+
+.hero-tagline{
+    margin-top:20px;
+    color:#f5f5f5;
+    font-size:1.2rem;
+    letter-spacing:2px;
+}
+  /* ── SECTION ── */
+  .section {
+    padding: 72px 24px;
+    max-width: 1060px;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 10px;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(28px, 5vw, 44px);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 40px;
+    letter-spacing: -0.02em;
+  }
+  .divider {
+    height: 1px;
+    background: var(--border);
+    max-width: 1060px;
+    margin: 0 auto;
+  }
+
+  /* ── STATS ── */
+  .stats-band {
+    background: #110900;
+    padding: 60px 24px;
+  }
+  .stats-inner { max-width: 1060px; margin: 0 auto; }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 2px;
+    background: #1e0f00;
+    border: 1px solid #1e0f00;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .stat-card { background: #140a00; padding: 28px 20px; text-align: center; }
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--amber-mid);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-label { font-size: 12px; color: #7a6a55; line-height: 1.4; }
+
+  /* ── BIO CARDS ── */
+  .bio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 640px) { .bio-grid { grid-template-columns: 1fr; } }
+  .bio-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .bio-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .bio-card.amber::before { background: var(--amber-mid); }
+  .bio-card.red::before { background: var(--red); }
+  .bio-card.teal::before { background: var(--teal); }
+  .bio-card.purple::before { background: var(--purple); }
+  .bio-card.green::before { background: var(--green); }
+  .bio-card.blue::before { background: var(--blue); }
+  .bio-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 52px;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 8px;
+    opacity: 0.08;
+    position: absolute;
+    top: 12px; right: 16px;
+  }
+  .bio-icon { font-size: 28px; margin-bottom: 12px; }
+  .bio-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+  .bio-card p { font-size: 13px; color: var(--gray); line-height: 1.6; }
+
+  /* ── DAMAGE BAND ── */
+  .damage-band {
+    background: #1a0800;
+    padding: 72px 24px;
+    color: white;
+  }
+  .damage-inner { max-width: 1060px; margin: 0 auto; }
+  .damage-inner .section-title { color: white; }
+  .damage-inner .section-label { color: rgba(255,255,255,0.35); }
+  .damage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 36px;
+  }
+  .damage-item {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .damage-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--amber-mid);
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+  .damage-item h4 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .damage-item p { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+
+  /* ── HISTORY ── */
+  .history-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .history-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px 28px;
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+  @media (max-width: 600px) { .history-card { grid-template-columns: 1fr; } }
+  .history-year {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--amber-mid);
+    line-height: 1.1;
+  }
+  .history-region {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-top: 4px;
+  }
+  .history-card h4 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+  .history-card p { font-size: 13px; color: var(--gray); line-height: 1.6; }
+  .history-tag {
+    display: inline-block;
+    font-size: 11px;
+    padding: 2px 10px;
+    border-radius: 100px;
+    margin-top: 8px;
+    background: var(--amber-light);
+    color: var(--amber-dark);
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* ── BUSINESSES ── */
+  .biz-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .biz-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px 22px;
+  }
+  .biz-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .biz-icon-wrap {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .biz-card h3 { font-size: 15px; font-weight: 600; }
+  .biz-items { display: flex; flex-direction: column; gap: 6px; }
+  .biz-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--gray);
+  }
+  .biz-item::before {
+    content: '';
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--amber-mid);
+    flex-shrink: 0;
+  }
+
+  /* ── ECONOMY ── */
+  .economy-band {
+    background: var(--cream);
+    padding: 72px 24px;
+  }
+  .economy-inner { max-width: 1060px; margin: 0 auto; }
+  .economy-bars { display: flex; flex-direction: column; gap: 14px; margin-top: 36px; }
+  .ebar {
+    display: grid;
+    grid-template-columns: 200px 1fr 80px;
+    align-items: center;
+    gap: 16px;
+  }
+  @media (max-width: 600px) { .ebar { grid-template-columns: 130px 1fr 60px; gap: 8px; } }
+  .ebar-label { font-size: 13px; font-weight: 500; text-align: right; }
+  .ebar-track {
+    height: 28px;
+    background: white;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .ebar-fill { height: 100%; border-radius: 6px; transition: width 1.2s ease; }
+  .ebar-val { font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500; color: var(--gray); }
+  .economy-total {
+    margin-top: 32px;
+    background: #110900;
+    color: white;
+    border-radius: 14px;
+    padding: 28px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .economy-total p { font-size: 15px; color: #8a7a65; max-width: 420px; }
+  .economy-total-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--amber-mid);
+    line-height: 1;
+  }
+  .economy-total-sub { font-size: 12px; color: #555; margin-top: 2px; }
+
+  /* ── DEBATE ── */
+  .debate-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 640px) { .debate-grid { grid-template-columns: 1fr; } }
+  .debate-side { border-radius: 14px; padding: 28px; }
+  .debate-side.pros { background: var(--green-light); border: 1px solid #b7e2a0; }
+  .debate-side.cons { background: var(--amber-light); border: 1px solid #fcd34d; }
+  .debate-side h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px; font-weight: 700; margin-bottom: 18px;
+  }
+  .debate-side.pros h3 { color: var(--green); }
+  .debate-side.cons h3 { color: var(--amber-dark); }
+  .debate-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 14px; }
+  .debate-bullet {
+    width: 20px; height: 20px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700; flex-shrink: 0; margin-top: 2px;
+  }
+  .pros .debate-bullet { background: var(--green); color: white; }
+  .cons .debate-bullet { background: var(--amber); color: white; }
+  .debate-item p { font-size: 13px; line-height: 1.5; }
+
+  /* ── BENEFITS BAND ── */
+  .benefits-band {
+    background: #050f0a;
+    padding: 72px 24px;
+    color: white;
+  }
+  .benefits-inner { max-width: 1060px; margin: 0 auto; }
+  .benefits-inner .section-title { color: white; }
+  .benefits-inner .section-label { color: rgba(255,255,255,0.35); }
+  .benefits-inner .section-title span { color: #6ee7b7; }
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 16px;
+    margin-top: 36px;
+  }
+  .benefit-card {
+    background: rgba(110,231,183,0.07);
+    border: 1px solid rgba(110,231,183,0.18);
+    border-radius: 14px;
+    padding: 24px;
+  }
+  .benefit-card-icon { font-size: 32px; margin-bottom: 14px; }
+  .benefit-card h4 { font-size: 15px; font-weight: 600; margin-bottom: 8px; color: #a7f3d0; }
+  .benefit-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+  .benefit-note {
+    margin-top: 28px;
+    background: rgba(251,191,36,0.08);
+    border: 1px solid rgba(251,191,36,0.2);
+    border-radius: 10px;
+    padding: 16px 20px;
+    font-size: 13px;
+    color: #fde68a;
+    line-height: 1.6;
+  }
+  .benefit-note strong { color: #fbbf24; }
+
+  /* ── FUN FACTS ── */
+  .funfacts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin-top: 36px;
+  }
+  .fact-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    position: relative;
+  }
+  .fact-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 64px; font-weight: 800;
+    position: absolute; top: -10px; right: 16px;
+    opacity: 0.05; line-height: 1;
+  }
+  .fact-emoji { font-size: 28px; margin-bottom: 12px; }
+  .fact-card h4 { font-size: 15px; font-weight: 600; margin-bottom: 8px; }
+  .fact-card p { font-size: 13px; color: var(--gray); line-height: 1.6; }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: #110900;
+    color: rgba(255,255,255,0.35);
+    text-align: center;
+    padding: 40px 24px;
+    font-size: 13px;
+  }
+  .footer strong { color: rgba(255,255,255,0.65); }
+  .quote-block {
+    background: var(--cream);
+    border-left: 3px solid var(--amber-mid);
+    padding: 20px 28px;
+    margin: 40px 0 0;
+    border-radius: 0 10px 10px 0;
+    font-size: 15px;
+    font-style: italic;
+    color: #4a3a20;
+  }
+.site-footer{
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+    font-size:14px;
+    color:#777;
+    border-top:1px solid #ddd;
+}
+  /* ── WHO EATS LOCUSTS ── */
+  .eaters-band { background: #0a0f06; padding: 72px 24px; color: white; }
+  .eaters-inner { max-width: 1060px; margin: 0 auto; }
+  .eaters-inner .section-title { color: white; }
+  .eaters-inner .section-label { color: rgba(255,255,255,0.35); }
+  .eaters-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; margin-top: 36px; }
+  .eater-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09); border-radius: 14px; padding: 22px 12px; text-align: center; }
+  .eater-emoji { font-size: 36px; margin-bottom: 10px; }
+  .eater-card h4 { font-size: 14px; font-weight: 600; color: #d1fae5; margin-bottom: 6px; }
+  .eater-card p { font-size: 11px; color: rgba(255,255,255,0.42); line-height: 1.4; }
+  .eaters-tagline { margin-top: 28px; text-align: center; font-size: 15px; color: rgba(255,255,255,0.5); font-style: italic; }
+  .eaters-tagline strong { color: #6ee7b7; font-style: normal; }
+
+  /* ── SOUTH ASIA ── */
+  .southasia-card { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 24px 28px; display: grid; grid-template-columns: 130px 1fr; gap: 24px; align-items: start; margin-bottom: 20px; }
+  @media (max-width: 600px) { .southasia-card { grid-template-columns: 1fr; } }
+  .sa-year { font-family: 'Syne', sans-serif; font-size: 26px; font-weight: 800; color: var(--amber-mid); line-height: 1.1; }
+  .sa-region { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); margin-top: 4px; }
+  .southasia-card h4 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+  .southasia-card p { font-size: 13px; color: var(--gray); line-height: 1.6; }
+  .sa-tag { display: inline-block; font-size: 11px; padding: 2px 10px; border-radius: 100px; margin-top: 8px; background: #fef3c7; color: var(--amber-dark); font-family: 'DM Mono', monospace; }
+
+  /* ── CLIMATE CHANGE ── */
+  .climate-band { background: #05090f; padding: 72px 24px; color: white; }
+  .climate-inner { max-width: 1060px; margin: 0 auto; }
+  .climate-inner .section-title { color: white; }
+  .climate-inner .section-label { color: rgba(255,255,255,0.35); }
+  .climate-inner .section-title span { color: #93c5fd; }
+  .climate-chain { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 36px; }
+  .climate-step { background: rgba(147,197,253,0.06); border: 1px solid rgba(147,197,253,0.15); border-radius: 14px; padding: 22px 18px; text-align: center; }
+  .climate-step-num { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.15em; color: rgba(147,197,253,0.5); margin-bottom: 10px; }
+  .climate-step-icon { font-size: 30px; margin-bottom: 10px; }
+  .climate-step h4 { font-size: 14px; font-weight: 600; color: #bfdbfe; margin-bottom: 6px; }
+  .climate-step p { font-size: 12px; color: rgba(255,255,255,0.42); line-height: 1.5; }
+  .climate-projection { margin-top: 28px; background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); border-radius: 10px; padding: 16px 20px; font-size: 13px; color: #fca5a5; line-height: 1.6; }
+  .climate-projection strong { color: #f87171; }
+
+  /* ── FUTURE TECH ── */
+  .tech-band { background: #04050f; padding: 72px 24px; color: white; }
+  .tech-inner { max-width: 1060px; margin: 0 auto; }
+  .tech-inner .section-title { color: white; }
+  .tech-inner .section-label { color: rgba(255,255,255,0.35); }
+  .tech-inner .section-title span { color: #a78bfa; }
+  .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; margin-top: 36px; }
+  .tech-card { background: rgba(167,139,250,0.07); border: 1px solid rgba(167,139,250,0.18); border-radius: 14px; padding: 24px; }
+  .tech-card-icon { font-size: 32px; margin-bottom: 14px; }
+  .tech-card h4 { font-size: 15px; font-weight: 600; margin-bottom: 8px; color: #c4b5fd; }
+  .tech-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+  /* ── FOOD INDUSTRY ── */
+  .food-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 36px; }
+  .food-card { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 24px 20px; text-align: center; position: relative; overflow: hidden; }
+  .food-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--amber-mid); }
+  .food-card-icon { font-size: 36px; margin-bottom: 12px; }
+  .food-stat { font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800; color: var(--amber-mid); line-height: 1; margin-bottom: 6px; }
+  .food-card h4 { font-size: 15px; font-weight: 600; margin-bottom: 8px; }
+  .food-card p { font-size: 13px; color: var(--gray); line-height: 1.6; }
+
+  /* ── SCROLL ANIMATION ── */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+</style>
+</meta><script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1034022057999423"></script><link href="https://myskillgame.netlify.app/11-7-26 website/locust_facts.html" rel="canonical"/></head>
+<body>
+<!-- HERO -->
+<section class="hero-image">
+<img alt="The Sky That Eats" src="images/locust-hero.png"/>
+<div class="hero-overlay">
+<p class="hero-eyebrow">
+            কীটতত্ত্ব · কৃষি · প্রতিবেশবিজ্ঞান
+        </p>
+<h1>
+            যে আকাশ সব খেয়ে ফেলে
+        </h1>
+<p class="hero-tagline">
+            যখন পতঙ্গই হয়ে ওঠে প্রাকৃতিক দুর্যোগ।
+        </p>
+</div>
+</section>
+<p class="hero-sub">পঙ্গপালের ঝাঁক প্রতি বর্গকিলোমিটারে ৪-৮ কোটি পতঙ্গের ঘনত্বে পৌঁছাতে পারে, একদিনেই ৩৫,০০০ মানুষের খাবার সাবাড় করে দেয়, আর কয়েক ঘণ্টার মধ্যেই গোটা এলাকাকে ন্যাড়া করে ফেলে।</p>
+<div class="hero-badge">একটিমাত্র ঝাঁক আকাশের ৪৬০ বর্গকিলোমিটার এলাকা ছেয়ে ফেলতে পারে</div>
+<!-- STATS BAND -->
+<div class="stats-band">
+<div class="stats-inner">
+<div class="stats-grid reveal">
+<div class="stat-card">
+<div class="stat-num">40–80M</div>
+<div class="stat-label">পঙ্গপাল প্রতি বর্গকিমিতে (FAO-র হিসাব)</div>
+</div>
+<div class="stat-card">
+<div class="stat-num">35K</div>
+<div class="stat-label">মানুষের একদিনের খাবার, প্রতি ঝাঁক প্রতিদিন খেয়ে ফেলে</div>
+</div>
+<div class="stat-card">
+<div class="stat-num">460km²</div>
+<div class="stat-label">ঝাঁকের সর্বোচ্চ বিস্তৃত এলাকা</div>
+</div>
+<div class="stat-card">
+<div class="stat-num">150km</div>
+<div class="stat-label">একদিনে অতিক্রম করা দূরত্ব</div>
+</div>
+<div class="stat-card">
+<div class="stat-num">2g</div>
+<div class="stat-label">প্রতিদিন একটি পঙ্গপাল যা খায় — তার নিজের ওজনের সমান</div>
+</div>
+<div class="stat-card">
+<div class="stat-num">60+</div>
+<div class="stat-label">ইতিহাসে ক্ষতিগ্রস্ত দেশের সংখ্যা</div>
+</div>
+</div>
+</div>
+</div>
+<!-- BIOLOGY -->
+<div class="divider"></div>
+<section class="section reveal">
+<p class="section-label">জীববিজ্ঞান</p>
+<h2 class="section-title">পঙ্গপাল কীভাবে কাজ করে</h2>
+<div class="bio-grid">
+<div class="bio-card amber">
+<div class="bio-num">01</div>
+<div class="bio-icon">🔄</div>
+<h3>দুটি রূপ: একাকী ও দলবদ্ধ</h3>
+<p>পঙ্গপাল আলাদা কোনো প্রজাতি নয় — এরা সাধারণ ফড়িংয়েরই আরেক রূপ। ভিড়ের মধ্যে থাকলে একটি রাসায়নিক সংকেতের প্রভাবে এদের শরীর ও আচরণে নাটকীয় বদল ঘটে এবং এরা দলবদ্ধ, ঝাঁক বাঁধা রূপ ধারণ করে।</p>
+</div>
+<div class="bio-card red">
+<div class="bio-num">02</div>
+<div class="bio-icon">🧪</div>
+<h3>সেরোটোনিনই ঝাঁক তৈরির কারণ</h3>
+<p>অন্য পঙ্গপালের সংস্পর্শে এলে স্নায়ুতন্ত্রে সেরোটোনিনের মাত্রা হঠাৎ বেড়ে যায়। এই একটিমাত্র রাসায়নিক বদলই একাকী প্রাণীটিকে বদলে দেয় সামাজিক, পরিযায়ী ও ভয়ংকর ক্ষুধার্ত এক ঝাঁকবদ্ধ পতঙ্গে।</p>
+</div>
+<div class="bio-card teal">
+<div class="bio-num">03</div>
+<div class="bio-icon">🌬️</div>
+<h3>বাতাসের ভরসায় পরিযান</h3>
+<p>পঙ্গপালের ঝাঁক অসাধারণ দক্ষতায় বায়ুপ্রবাহের সাহায্যে ভেসে চলে, প্রায়ই ঘণ্টায় ১৫-২০ কিলোমিটার বেগে। এরা অনুসরণ করে আন্তঃক্রান্তীয় অভিসরণ অঞ্চল — যে বৃষ্টিবলয় তাদের সামনে নতুন সবুজ তৈরি করে দেয়।</p>
+</div>
+<div class="bio-card purple">
+<div class="bio-num">04</div>
+<div class="bio-icon">🥗</div>
+<h3>সবুজ প্রায় সবকিছুই এরা খেয়ে ফেলে</h3>
+<p>পঙ্গপাল ঘাস, পাতা, ছাল, ফুল, বীজ আর ফসল — সবকিছুই নির্বিচারে খেয়ে ফেলে। উড়ন্ত অবস্থাতেও ঝাঁক খেতে থাকে। মাটিতে নামলে কয়েক মিনিটেই একটি জমির সব গাছ ন্যাড়া ডাঁটায় পরিণত করে দিতে পারে।</p>
+</div>
+<div class="bio-card green">
+<div class="bio-num">05</div>
+<div class="bio-icon">🥚</div>
+<h3>বিস্ফোরক হারে বংশবৃদ্ধি</h3>
+<p>একটি স্ত্রী পঙ্গপাল প্রতিবার ৮০-১৬০টি ডিম পাড়ে, তার সংক্ষিপ্ত জীবনে সর্বোচ্চ ৩ বার। অনুকূল পরিবেশে — উষ্ণ মাটি ও পর্যাপ্ত বৃষ্টি থাকলে — মাত্র তিন মাসেই পঙ্গপালের সংখ্যা ২০ গুণ বেড়ে যেতে পারে।</p>
+</div>
+<div class="bio-card blue">
+<div class="bio-num">06</div>
+<div class="bio-icon">🎨</div>
+<h3>রং বলে দেয় বিপদের মাত্রা</h3>
+<p>একাকী দশায় পঙ্গপাল সবুজ বা বাদামি রঙের হয় — ছদ্মবেশে ঢাকা। দলবদ্ধ দশায় এরা উজ্জ্বল হলুদ-কালো রং ধারণ করে, যা গাছপালা থেকে জমা করা বিষাক্ত উপাদানের ইঙ্গিত দেয়। রং যত উজ্জ্বল, ঝাঁক তত বিপজ্জনক।</p>
+</div>
+</div>
+</section>
+<!-- DAMAGE BAND -->
+<div class="damage-band">
+<div class="damage-inner">
+<p class="section-label">কৃষি সংকট</p>
+<h2 class="section-title" style="color:white;">কেন কৃষকরা এই ঝাঁককে ভয় পান</h2>
+<div class="damage-grid reveal">
+<div class="damage-item">
+<div class="damage-dot"></div>
+<div>
+<h4>মুহূর্তেই ধ্বংস হয় ফসল</h4>
+<p>ধান, গম, ভুট্টা, জোয়ার, বাজরা, ডাল — সবই সমান দক্ষতায় খেয়ে ফেলে। মাসের পর মাসের পরিশ্রম কয়েক ঘণ্টায় মুছে যেতে পারে।</p>
+</div>
+</div>
+<div class="damage-item">
+<div class="damage-dot"></div>
+<div>
+<h4>খাদ্য নিরাপত্তা ভেঙে পড়ে</h4>
+<p>২০১৯-২০২১ সালের পূর্ব আফ্রিকার সংকট কেনিয়া, ইথিওপিয়া ও সোমালিয়া জুড়ে ২.৫ কোটিরও বেশি মানুষের খাদ্য সরবরাহকে হুমকির মুখে ফেলেছিল।</p>
+</div>
+</div>
+<div class="damage-item">
+<div class="damage-dot"></div>
+<div>
+<h4>দুর্ভিক্ষের আশঙ্কা</h4>
+<p>ইতিহাসে বহু ঝাঁক প্রকৃত দুর্ভিক্ষ ডেকে এনেছে — ১৮৭৪ সালে রকি মাউন্টেন পঙ্গপালের তাণ্ডবে আমেরিকার মধ্য-পশ্চিমাঞ্চলের প্রাথমিক কৃষক সমাজ সর্বস্বান্ত হয়ে পড়েছিল।</p>
+</div>
+</div>
+<div class="damage-item">
+<div class="damage-dot"></div>
+<div>
+<h4>চারণভূমি ও গবাদি পশু</h4>
+<p>শুধু ফসল নয় — পঙ্গপাল চারণভূমিও ন্যাড়া করে দেয়, ফলে গবাদি পশুর খাবার থাকে না এবং গ্রামীণ সমাজের আর্থিক ক্ষতি আরও বেড়ে যায়।</p>
+</div>
+</div>
+<div class="damage-item">
+<div class="damage-dot"></div>
+<div>
+<h4>সীমান্ত পেরোনো সংকট</h4>
+<p>ঝাঁক কোনো জাতীয় সীমান্ত মানে না। একটিমাত্র ঘটনা একসঙ্গে বারোটিরও বেশি দেশকে প্রভাবিত করতে পারে, যা আন্তর্জাতিক সাহায্য ও কৃষি ব্যবস্থাপনার ওপর প্রবল চাপ তৈরি করে।</p>
+</div>
+</div>
+<div class="damage-item">
+<div class="damage-dot"></div>
+<div>
+<h4>সরকারি বাজেটের ওপর চাপ</h4>
+<p>জরুরি কীটনাশক অভিযান, আকাশপথে স্প্রে করার কাজ এবং কৃষকদের ক্ষতিপূরণ কর্মসূচিতে প্রতিটি সংকটে সরকারের কয়েকশো কোটি ডলার খরচ হতে পারে।</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- HISTORY -->
+<div class="divider"></div>
+<section class="section reveal">
+<p class="section-label">ইতিহাস</p>
+<h2 class="section-title">বিখ্যাত পঙ্গপাল হানার ঘটনা</h2>
+<div class="history-grid">
+<div class="history-card">
+<div>
+<div class="history-year">1874</div>
+<div class="history-region">উত্তর আমেরিকা</div>
+</div>
+<div>
+<h4>রকি মাউন্টেন পঙ্গপালের ঝাঁক</h4>
+<p>ইতিহাসে রেকর্ড করা সবচেয়ে বড় পঙ্গপালের ঝাঁক আমেরিকার মধ্য-পশ্চিমাঞ্চলের ৫,১০,০০০ বর্গমাইল এলাকা ঢেকে ফেলেছিল — যা ক্যালিফোর্নিয়ার চেয়েও বড়। আনুমানিক ১২.৫ লক্ষ কোটি পতঙ্গ কানাডা থেকে টেক্সাস পর্যন্ত গম, ভুট্টা ও কৃষিজমির ফসল খেয়ে ফেলেছিল, যার ক্ষতির পরিমাণ ছিল কয়েকশো কোটি ডলারের সমান। ১৯০২ সালের মধ্যে এই প্রজাতিটিই বিলুপ্ত হয়ে যায়।</p>
+<span class="history-tag">প্রজাতিটি এখন বিলুপ্ত</span>
+</div>
+</div>
+<div class="history-card">
+<div>
+<div class="history-year">1915</div>
+<div class="history-region">মধ্যপ্রাচ্য</div>
+</div>
+<div>
+<h4>প্যালেস্তাইনের মহা পঙ্গপাল বিপর্যয়</h4>
+<p>প্রথম বিশ্বযুদ্ধের সময় এক ভয়াবহ ঝাঁক প্যালেস্তাইন, সিরিয়া ও লেবাননের ফসল ধ্বংস করে দেয়, যা প্রায় ২,০০,০০০ মানুষের মৃত্যু ঘটানো এক দুর্ভিক্ষের অন্যতম কারণ হয়ে ওঠে — সেই অঞ্চলে যুদ্ধকালীন খাদ্যাভাবকে আরও তীব্র করে তোলে।</p>
+<span class="history-tag">দুর্ভিক্ষের ঘটনা</span>
+</div>
+</div>
+<div class="history-card">
+<div>
+<div class="history-year">1986–89</div>
+<div class="history-region">আফ্রিকা ও মধ্যপ্রাচ্য</div>
+</div>
+<div>
+<h4>আফ্রিকার মরু পঙ্গপালের সংকট</h4>
+<p>বিংশ শতাব্দীর অন্যতম ভয়াবহ এই সংকট পশ্চিম আফ্রিকা, উত্তর আফ্রিকা এবং মধ্যপ্রাচ্য জুড়ে ছড়িয়ে পড়েছিল। ২৫০ কোটিরও বেশি হেক্টর জমি হুমকির মুখে পড়ে। ৩০ কোটি ডলারেরও বেশি খরচের এক বহুজাতিক আকাশপথ স্প্রে অভিযান শেষপর্যন্ত পরিস্থিতি নিয়ন্ত্রণে আনে।</p>
+<span class="history-tag">নিয়ন্ত্রণ খরচ ৩০ কোটি ডলার</span>
+</div>
+</div>
+<div class="history-card">
+<div>
+<div class="history-year">2019–21</div>
+<div class="history-region">পূর্ব আফ্রিকা ও এশিয়া</div>
+</div>
+<div>
+<h4>একবিংশ শতাব্দীর সবচেয়ে ভয়াবহ সংকট</h4>
+<p>জলবায়ু পরিবর্তনজনিত ঘূর্ণিঝড় আরব উপদ্বীপ ও হর্ন অফ আফ্রিকা জুড়ে ডিম পাড়ার আদর্শ পরিবেশ তৈরি করে দেয়। ঝাঁক ছড়িয়ে পড়ে পাকিস্তান, ভারত, ইরান এবং আফ্রিকার ২৩টি দেশে। জাতিসংঘের FAO একে কিছু দেশের জন্য গত ৭০ বছরের সবচেয়ে ভয়াবহ সংকট বলে অভিহিত করে। ২.৫ কোটিরও বেশি মানুষ খাদ্য অনিশ্চয়তার সম্মুখীন হয়।</p>
+<span class="history-tag">২.৫ কোটি+ মানুষ ক্ষতিগ্রস্ত</span>
+</div>
+</div>
+</div>
+</section>
+<!-- BUSINESSES AFFECTED -->
+<div class="divider"></div>
+<section class="section reveal">
+<p class="section-label">অর্থনীতি</p>
+<h2 class="section-title">পঙ্গপালকে ঘিরে গড়ে ওঠা শিল্প</h2>
+<div class="biz-grid">
+<div class="biz-card">
+<div class="biz-header">
+<div class="biz-icon-wrap" style="background:#fef3c7;">🧪</div>
+<h3>কীটনাশক শিল্প</h3>
+</div>
+<div class="biz-items">
+<div class="biz-item">অর্গানোফসফেট পঙ্গপাল স্প্রে</div>
+<div class="biz-item">জৈব-কীটনাশক (গ্রিন মাসল ছত্রাক)</div>
+<div class="biz-item">ফসল রক্ষাকারী রাসায়নিক</div>
+<div class="biz-item">আল্ট্রা-লো ভলিউম (ULV) মিশ্রণ</div>
+</div>
+</div>
+<div class="biz-card">
+<div class="biz-header">
+<div class="biz-icon-wrap" style="background:#dbeafe;">🚁</div>
+<h3>আকাশপথে স্প্রে পরিষেবা</h3>
+</div>
+<div class="biz-items">
+<div class="biz-item">কৃষি বিমান ও হেলিকপ্টার</div>
+<div class="biz-item">ড্রোন দিয়ে স্প্রে অভিযান</div>
+<div class="biz-item">শক্তিশালী স্থলভিত্তিক স্প্রেয়ার</div>
+<div class="biz-item">লজিস্টিক্স ও জ্বালানি সরবরাহ ব্যবস্থা</div>
+</div>
+</div>
+<div class="biz-card">
+<div class="biz-header">
+<div class="biz-icon-wrap" style="background:#ede9fc;">🛰️</div>
+<h3>নজরদারি ও আগাম সতর্কতা</h3>
+</div>
+<div class="biz-items">
+<div class="biz-item">উপগ্রহ দূর-সংবেদন ব্যবস্থা</div>
+<div class="biz-item">FAO মরু পঙ্গপাল তথ্য পরিষেবা</div>
+<div class="biz-item">মাঠ-জরিপ নেটওয়ার্ক</div>
+<div class="biz-item">AI-চালিত পূর্বাভাস মডেল</div>
+</div>
+</div>
+<div class="biz-card">
+<div class="biz-header">
+<div class="biz-icon-wrap" style="background:#d1f5ee;">🔬</div>
+<h3>গবেষণা ও কীটতত্ত্ব</h3>
+</div>
+<div class="biz-items">
+<div class="biz-item">পঙ্গপালের জীববিজ্ঞান ও আচরণ গবেষণাগার</div>
+<div class="biz-item">কৃষি কীটতত্ত্ব প্রতিষ্ঠান</div>
+<div class="biz-item">কীটপতঙ্গ ব্যবস্থাপনা পরামর্শদাতা</div>
+<div class="biz-item">বিশ্ববিদ্যালয় গবেষণা কর্মসূচি</div>
+</div>
+</div>
+<div class="biz-card">
+<div class="biz-header">
+<div class="biz-icon-wrap" style="background:#e3f5dc;">🌾</div>
+<h3>কৃষি পরামর্শ পরিষেবা</h3>
+</div>
+<div class="biz-items">
+<div class="biz-item">ফসল বিমা প্রদানকারী</div>
+<div class="biz-item">কীটপতঙ্গ ব্যবস্থাপনা প্রশিক্ষণ কর্মসূচি</div>
+<div class="biz-item">কৃষক সতর্কতা ও সাড়াদান নেটওয়ার্ক</div>
+<div class="biz-item">সরকারি সম্প্রসারণ পরিষেবা</div>
+</div>
+</div>
+<div class="biz-card">
+<div class="biz-header">
+<div class="biz-icon-wrap" style="background:#fef2f2;">🌍</div>
+<h3>আন্তর্জাতিক প্রতিক্রিয়া</h3>
+</div>
+<div class="biz-items">
+<div class="biz-item">জাতিসংঘ FAO জরুরি সাড়াদান তহবিল</div>
+<div class="biz-item">সীমান্ত নজরদারি কর্মসূচি</div>
+<div class="biz-item">বহুপাক্ষিক দাতা সমন্বয়</div>
+<div class="biz-item">আঞ্চলিক পঙ্গপাল নিয়ন্ত্রণ সংস্থা</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ECONOMY BARS -->
+<div class="economy-band">
+<div class="economy-inner">
+<p class="section-label">বাজারের আকার</p>
+<h2 class="section-title reveal">পঙ্গপাল নিয়ন্ত্রণের অর্থনীতি</h2>
+<div class="economy-bars reveal" id="ebars">
+<div class="ebar">
+<div class="ebar-label">ফসলের কীটনাশক</div>
+<div class="ebar-track"><div class="ebar-fill" data-w="90%" style="width:0%; background:#d97706;"></div></div>
+<div class="ebar-val">$3.8B</div>
+</div>
+<div class="ebar">
+<div class="ebar-label">আকাশপথে স্প্রে অভিযান</div>
+<div class="ebar-track"><div class="ebar-fill" data-w="68%" style="width:0%; background:#b45309;"></div></div>
+<div class="ebar-val">$2.9B</div>
+</div>
+<div class="ebar">
+<div class="ebar-label">ফসল ক্ষতির বিমা</div>
+<div class="ebar-track"><div class="ebar-fill" data-w="52%" style="width:0%; background:#5b3fa6;"></div></div>
+<div class="ebar-val">$2.2B</div>
+</div>
+<div class="ebar">
+<div class="ebar-label">আগাম সতর্কতা ব্যবস্থা</div>
+<div class="ebar-track"><div class="ebar-fill" data-w="30%" style="width:0%; background:#0d7a6b;"></div></div>
+<div class="ebar-val">$1.3B</div>
+</div>
+<div class="ebar">
+<div class="ebar-label">গবেষণা ও জৈব-নিয়ন্ত্রণ</div>
+<div class="ebar-track"><div class="ebar-fill" data-w="18%" style="width:0%; background:#2d6a23;"></div></div>
+<div class="ebar-val">$0.8B</div>
+</div>
+</div>
+<div class="economy-total reveal">
+<div>
+<div class="economy-total-num">$11B+</div>
+<div class="economy-total-sub">আনুমানিক সম্মিলিত বার্ষিক বাজার</div>
+</div>
+<p>সরাসরি নিয়ন্ত্রণ খরচের বাইরেও, সাধারণ বছরগুলিতে পঙ্গপাল বার্ষিক আনুমানিক ১৫০-৩০০ কোটি ডলারের ফসলহানি ঘটায় — বড় সংকটের সময় যা বেড়ে দাঁড়ায় ৮০০-১২০০ কোটি ডলারে। পঙ্গপাল সমস্যার অর্থনৈতিক পরিধি বিশাল।</p>
+</div>
+</div>
+</div>
+<!-- EXTINCTION DEBATE -->
+<div class="divider"></div>
+<section class="section reveal">
+<p class="section-label">প্রতিবেশবিজ্ঞান</p>
+<h2 class="section-title">পঙ্গপাল যদি হারিয়ে যেত?</h2>
+<div class="debate-grid">
+<div class="debate-side pros">
+<h3>যদি এরা বিলুপ্ত হয়ে যেত ✓</h3>
+<div class="debate-item">
+<div class="debate-bullet">+</div>
+<p>বিধ্বংসী ফসলহানি ও তার জেরে হওয়া দুর্ভিক্ষ চিরতরে দূর হয়ে যেত, যা সরাসরি কোটি কোটি মানুষের খাদ্য নিরাপত্তা রক্ষা করত।</p>
+</div>
+<div class="debate-item">
+<div class="debate-bullet">+</div>
+<p>প্রতিটি সংকটের চক্রে জরুরি কীটনাশক, আকাশপথে স্প্রে ও কৃষি সহায়তায় খরচ হওয়া কোটি কোটি ডলার বেঁচে যেত।</p>
+</div>
+<div class="debate-item">
+<div class="debate-bullet">+</div>
+<p>বিশাল এলাকা জুড়ে কীটনাশক স্প্রে কমে যাওয়ায় প্রতিবেশতন্ত্র, বন্যপ্রাণী ও কৃষক সমাজের ওপর রাসায়নিকের প্রভাব কমত।</p>
+</div>
+<div class="debate-item">
+<div class="debate-bullet">+</div>
+<p>আফ্রিকা, দক্ষিণ এশিয়া ও মধ্যপ্রাচ্যের ক্ষুদ্র কৃষকরা — যারা সবচেয়ে ঝুঁকিপূর্ণ — বেশি আর্থিক স্থিতিশীলতা ও খাদ্য নিরাপত্তা পেতেন।</p>
+</div>
+<div class="debate-item">
+<div class="debate-bullet">+</div>
+<p>বিশ্বব্যাপী খাদ্যশস্য ও খাদ্যপণ্যের বাজারে পঙ্গপাল-জনিত সরবরাহ ধাক্কা থেকে মূল্যের অস্থিরতা কমত।</p>
+</div>
+</div>
+<div class="debate-side cons">
+<h3>আমরা যা হারাতে পারি ✗</h3>
+<div class="debate-item">
+<div class="debate-bullet">−</div>
+<p>শুকনো ও অর্ধ-শুকনো প্রতিবেশতন্ত্রে বিশেষত পঙ্গপাল শত শত প্রজাতির পাখি, টিকটিকি, ব্যাঙ, সাপ, মাকড়সা ও ছোট স্তন্যপায়ী প্রাণীর গুরুত্বপূর্ণ খাদ্যের উৎস।</p>
+</div>
+<div class="debate-item">
+<div class="debate-bullet">−</div>
+<p>মৃত পঙ্গপাল মাটিতে মিশে গিয়ে নাইট্রোজেন ও জৈব পদার্থ ফিরিয়ে দেয়, যা বিশ্বের সবচেয়ে শুষ্ক অঞ্চলগুলির ক্ষয়প্রাপ্ত জমিকে উর্বর করে তোলে।</p>
+</div>
+<div class="debate-item">
+<div class="debate-bullet">−</div>
+<p>আফ্রিকা, মধ্যপ্রাচ্য ও এশিয়ার বহু সংস্কৃতিতে পঙ্গপাল উচ্চ-প্রোটিনযুক্ত এক ঐতিহ্যবাহী খাদ্য। এদের বিলুপ্তি দরিদ্র সমাজের বিনামূল্যের পুষ্টি উৎস কেড়ে নিত।</p>
+</div>
+<div class="debate-item">
+<div class="debate-bullet">−</div>
+<p>কিছু ক্ষেত্রে পঙ্গপালের ঝাঁকের চারণ ঘন গাছপালা পরিষ্কার করে তৃণভূমি বাস্তুতন্ত্রে নতুন পুনর্জন্মের চক্র শুরু করতে পারে।</p>
+</div>
+<div class="debate-item">
+<div class="debate-bullet">−</div>
+<p>যেকোনো বিলুপ্তির মতোই, একটি প্রজাতিকে সরিয়ে দিলে তৈরি হয় এক প্রতিবেশগত শূন্যতা, যা প্রায়ই অনিশ্চিতভাবে পূরণ হয় — কখনো কখনো আরও ক্ষতিকর কিছু দিয়ে।</p>
+</div>
+</div>
+</div>
+</section>
+<!-- BENEFITS / ECOLOGICAL ROLE -->
+<div class="benefits-band">
+<div class="benefits-inner">
+<p class="section-label">অন্য দিকটিও দেখা যাক</p>
+<h2 class="section-title">প্রকৃতির <span>শৃঙ্খলে পঙ্গপাল</span></h2>
+<div class="benefits-grid reveal">
+<div class="benefit-card">
+<div class="benefit-card-icon">🦅</div>
+<h4>শিকারিদের জন্য ভোজ</h4>
+<p>ঝাঁক অসংখ্য পাখিকে আকৃষ্ট করে — মৌমাছি-ভুক, সারস, চিল ও শিকারি পাখিরা মহাদেশজুড়ে এদের অনুসরণ করে সহজ শিকারে ভোজ সারে। একটিমাত্র সংকট মাসের পর মাস বন্যপ্রাণীর জনসংখ্যা টিকিয়ে রাখতে পারে।</p>
+</div>
+<div class="benefit-card">
+<div class="benefit-card-icon">🌱</div>
+<h4>মাটির উর্বরতা বৃদ্ধি</h4>
+<p>মৃত ও পচনশীল পঙ্গপাল সরাসরি মাটিতে উচ্চ-নাইট্রোজেনযুক্ত জৈববস্তু যোগ করে। কিছু শুষ্ক অঞ্চলে ঝাঁক চলে যাওয়ার পরের বছরগুলিতে মাটির উর্বরতা ও গাছপালার বৃদ্ধিতে লক্ষণীয় বৃদ্ধি দেখা যায়।</p>
+</div>
+<div class="benefit-card">
+<div class="benefit-card-icon">🍽️</div>
+<h4>মানুষের খাদ্যের উৎস</h4>
+<p>৩০টিরও বেশি দেশে পঙ্গপাল খাওয়া হয়। শুকনো ওজনের ৬০-৭৫% এতে প্রোটিন থাকে, আর থাকে প্রচুর আয়রন ও জিঙ্ক। পূর্ব আফ্রিকায় ঝাঁক এলে ভাজা পঙ্গপাল সংগ্রহ করে বিক্রি করা হয় — কিছু সমাজের জন্য এ যেন এক সুবর্ণ সুযোগ।</p>
+</div>
+<div class="benefit-card">
+<div class="benefit-card-icon">🔬</div>
+<h4>বিজ্ঞানের গবেষণার আদর্শ প্রাণী</h4>
+<p>পঙ্গপালের রূপান্তর — প্রাণীজগতের অন্যতম নাটকীয় আচরণগত পরিবর্তন — স্নায়ুবিজ্ঞান, জনতার আচরণ, এমনকি শহুরে ট্রাফিক মডেলিংয়েও বড় বড় আবিষ্কারের পথ দেখিয়েছে।</p>
+</div>
+</div>
+<div class="benefit-note reveal">
+<strong>🌿 বৃহত্তর চিত্র:</strong> জাতিসংঘের খাদ্য ও কৃষি সংস্থা (FAO) আনুষ্ঠানিকভাবে পঙ্গপালকে <em>ঐতিহ্যবাহী খাদ্য ও পশুখাদ্য</em> হিসেবে শ্রেণিবদ্ধ করেছে। পৃথিবীর সবচেয়ে পুষ্টিসমৃদ্ধ পতঙ্গগুলির মধ্যে এরা অন্যতম — আর বিশ্ব যখন টেকসই প্রোটিনের উৎস খুঁজছে, তখন পঙ্গপাল চাষকে একটি সম্ভাব্য খাদ্যশিল্প হিসেবে গুরুত্বের সঙ্গে বিবেচনা করা হচ্ছে।
+    </div>
+</div>
+</div>
+<!-- FUN FACTS -->
+<div class="divider"></div>
+<section class="section">
+<p class="section-label">আপনি কি জানেন?</p>
+<h2 class="section-title reveal">কিছু চমকপ্রদ তথ্য</h2>
+<div class="funfacts-grid reveal">
+<div class="fact-card">
+<div class="fact-num">01</div>
+<div class="fact-emoji">📖</div>
+<h4>বাইবেল, কোরান ও প্রাচীন গ্রন্থে এদের উল্লেখ আছে</h4>
+<p>বাইবেলে মিশরের দশটি অভিশাপের একটি হলো পঙ্গপাল, আর কোরানেও এদের উল্লেখ পাওয়া যায়। প্রাচীন মেসোপটেমীয়, চৈনিক ও ভারতীয় গ্রন্থে এরা ঐশ্বরিক শাস্তির প্রতীক হিসেবে এসেছে — আবার কিছু ঐতিহ্যে এদের বৈধ খাদ্যও বলা হয়েছে।</p>
+</div>
+<div class="fact-card">
+<div class="fact-num">02</div>
+<div class="fact-emoji">🏙️</div>
+<h4>এরা জনতার আচরণ-বিজ্ঞানকে অনুপ্রাণিত করেছে</h4>
+<p>পঙ্গপালের ঝাঁকের নিজে-নিজে সংগঠিত চলাফেরা — কোনো নেতা ছাড়াই লক্ষ লক্ষ প্রাণী একসঙ্গে একটি সত্তার মতো চলা — সরাসরি অনুপ্রাণিত করেছে সেইসব গাণিতিক মডেলকে, যা আজ ট্রাফিক ইঞ্জিনিয়ারিং, জনতা ব্যবস্থাপনা এবং স্বয়ংক্রিয় গাড়ি চলাচলে ব্যবহৃত হয়।</p>
+</div>
+<div class="fact-card">
+<div class="fact-num">03</div>
+<div class="fact-emoji">🧲</div>
+<h4>এরা নরখাদক — আর এটাই ঝাঁক তৈরির মূল কারণ</h4>
+<p>খাদ্যের অভাব হলে পঙ্গপাল একে অপরকে খেয়ে ফেলে। শিশু পঙ্গপালের দল বেঁধে হাঁটার আচরণ অনেকটাই এই কারণে — প্রতিটি পঙ্গপাল সামনেরটিকে খাওয়ার চেষ্টা করে, আর পিছনেরটির হাত থেকে বাঁচার চেষ্টা করে। মূলত এই ঝাঁক একধরনের পদদলনেরই রূপ।</p>
+</div>
+<div class="fact-card">
+<div class="fact-num">04</div>
+<div class="fact-emoji">💀</div>
+<h4>একটি প্রজাতি সম্পূর্ণ দুর্ঘটনাবশত বিলুপ্ত হয়ে গিয়েছিল</h4>
+<p>একসময় উত্তর আমেরিকার সবচেয়ে বেশি সংখ্যায় থাকা পতঙ্গ রকি মাউন্টেন পঙ্গপাল ১৯০২ সালের মধ্যে বিলুপ্ত হয়ে যায় — সম্ভবত বসতি স্থাপনকারীরা যে নদী উপত্যকায় এরা ডিম পাড়ত, তা চাষ করার ফলেই এই বিলুপ্তি ঘটে। পৃথিবীর জানা সবচেয়ে বড় ঝাঁকটি আজ চিরতরে হারিয়ে গেছে।</p>
+</div>
+<div class="fact-card">
+<div class="fact-num">05</div>
+<div class="fact-emoji">🌡️</div>
+<h4>জলবায়ু পরিবর্তন সংকটকে আরও তীব্র করছে</h4>
+<p>ভারত মহাসাগরের উষ্ণতা বৃদ্ধি আরব উপদ্বীপে বেশি ঘূর্ণিঝড় তৈরি করছে, যা ডিম পাড়ার আদর্শ পরিবেশ গড়ে তুলছে। বিজ্ঞানীদের পূর্বাভাস, বিশ্ব উষ্ণায়নের সঙ্গে সঙ্গে ২০৫০ সালের মধ্যে পঙ্গপালের সংকটের সংখ্যা ও তীব্রতা উল্লেখযোগ্যভাবে বাড়বে।</p>
+</div>
+<div class="fact-card">
+<div class="fact-num">06</div>
+<div class="fact-emoji">🍗</div>
+<h4>স্বাদে অনেকটা চিংড়ির মতো</h4>
+<p>পঙ্গপাল ও চিংড়ি দুটোই সন্ধিপদী প্রাণী, রান্না করলে এদের স্বাদও আশ্চর্যরকম মিলে যায়। পূর্ব আফ্রিকা ও মধ্যপ্রাচ্যে এদের ভেজে, সেঁকে অথবা শুকিয়ে গুঁড়ো করে খাওয়া হয়। ইউরোপের শেফরাও এখন এদের বিশেষ পদের মেনুতে যোগ করছেন।</p>
+</div>
+<div class="fact-card">
+<div class="fact-num">07</div>
+<div class="fact-emoji">🛰️</div>
+<h4>উপগ্রহের মাধ্যমে ঝাঁকের ওপর নজর রাখা হয়</h4>
+<p>FAO-র মরু পঙ্গপাল তথ্য পরিষেবা উপগ্রহের গাছপালা সংক্রান্ত তথ্য, আবহাওয়া মডেল এবং ৩০টি দেশের মাঠপর্যায়ের রিপোর্ট ব্যবহার করে ঝাঁক তৈরি হওয়ার ওপর নজর রাখে — দূরবর্তী প্রজনন অঞ্চলে নতুন ঝাঁক তৈরি হলে বিশ্বব্যাপী সতর্কতা জারি করে।</p>
+</div>
+<div class="fact-card">
+<div class="fact-num">08</div>
+<div class="fact-emoji">⚗️</div>
+<h4>সেরোটোনিনই এদের ঝাঁক বাঁধায়</h4>
+<p>২০০৯ সালে বিজ্ঞানীরা আবিষ্কার করেন, একটি ফড়িংয়ের শরীরে সেরোটোনিন প্রবেশ করালে তার সম্পূর্ণ দলবদ্ধ রূপান্তর ঘটে যায় — রং বদল, ক্ষুধা বৃদ্ধি এবং সামাজিক আচরণ। এটি সেই একই স্নায়ু-রাসায়নিক, যা মানুষের মেজাজ, ক্ষুধা ও সামাজিক আচরণের সঙ্গেও জড়িত।</p>
+</div>
+</div>
+<div class="quote-block">
+    "প্রকৃতিতে কোনো প্রাণীই একেবারে উদ্দেশ্যহীন নয় — প্রতিটি প্রজাতি, এমনকি পঙ্গপালও, জীবনের বুননে একটি সুতো।" 🌿🦗
+  </div>
+</section>
+<!-- WHO EATS LOCUSTS -->
+<div class="eaters-band">
+<div class="eaters-inner">
+<p class="section-label">খাদ্যশৃঙ্খল</p>
+<h2 class="section-title">পঙ্গপাল কারা খায়?</h2>
+<div class="eaters-grid reveal">
+<div class="eater-card">
+<div class="eater-emoji">🦅</div>
+<h4>পাখি</h4>
+<p>মৌমাছি-ভুক, সারস, চিল ও শিকারি পাখিরা মহাদেশ জুড়ে ঝাঁক অনুসরণ করে</p>
+</div>
+<div class="eater-card">
+<div class="eater-emoji">🐍</div>
+<h4>সাপ</h4>
+<p>তৃণভূমি দিয়ে শিশু পঙ্গপালের দল হেঁটে গেলে মাটিতে থাকা সাপেরা পেট ভরে খায়</p>
+</div>
+<div class="eater-card">
+<div class="eater-emoji">🦎</div>
+<h4>টিকটিকি</h4>
+<p>আফ্রিকা ও এশিয়ায় পঙ্গপালের সংকটের সময় গোসাপ ও অ্যাগামা টিকটিকিরা প্রচুর খেয়ে নেয়</p>
+</div>
+<div class="eater-card">
+<div class="eater-emoji">🐸</div>
+<h4>ব্যাঙ</h4>
+<p>জলাভূমির কাছের উভচর প্রাণীরা পঙ্গপালের সংখ্যা বৃদ্ধি থেকে প্রচুর উপকৃত হয়</p>
+</div>
+<div class="eater-card">
+<div class="eater-emoji">🕷️</div>
+<h4>মাকড়সা</h4>
+<p>বড় জাল-বোনা ও নেকড়ে মাকড়সারা সুযোগ পেলেই পঙ্গপাল খায়</p>
+</div>
+<div class="eater-card">
+<div class="eater-emoji">🦊</div>
+<h4>শিয়াল</h4>
+<p>আফ্রিকা ও আরবের মরু শিয়ালরা মরসুমি প্রোটিনের জোগান হিসেবে পঙ্গপালের ওপর নির্ভর করে</p>
+</div>
+<div class="eater-card">
+<div class="eater-emoji">🐒</div>
+<h4>বনমানুষ ও বানর জাতীয় প্রাণী</h4>
+<p>বেবুন ও বানরেরা উচ্চ-শক্তিসম্পন্ন খাবারের সন্ধানে সক্রিয়ভাবে পঙ্গপালের ঝাঁক খুঁজে বের করে</p>
+</div>
+<div class="eater-card">
+<div class="eater-emoji">👨</div>
+<h4>মানুষ</h4>
+<p>৩০টিরও বেশি দেশে খাওয়া হয় — সেঁকা, ভাজা বা শুকনো অবস্থায়; শুকনো ওজনের ৭০% প্রোটিন</p>
+</div>
+</div>
+<p class="eaters-tagline">প্রতিটি পঙ্গপালের ঝাঁক অনুসরণকারী শিকারিদের জন্য <strong>প্রাচুর্যের এক ধারাবাহিক প্রবাহ</strong> তৈরি করে।</p>
+</div>
+</div>
+<!-- SOUTH ASIA -->
+<div class="divider"></div>
+<section class="section reveal">
+<p class="section-label">আঞ্চলিক ইতিহাস</p>
+<h2 class="section-title">দক্ষিণ এশিয়ায় পঙ্গপাল</h2>
+<div>
+<div class="southasia-card">
+<div>
+<div class="sa-year">1926–31</div>
+<div class="sa-region">ভারত</div>
+</div>
+<div>
+<h4>মহা ভারতীয় পঙ্গপাল বিপর্যয়</h4>
+<p>ভারতের নথিভুক্ত ইতিহাসের অন্যতম ভয়াবহ পঙ্গপাল সংকট টানা পাঁচ বছর ধরে পাঞ্জাব, সিন্ধু, রাজস্থান ও যুক্তপ্রদেশ জুড়ে ছড়িয়ে পড়েছিল। বিশাল ঝাঁক গম ও তুলার ফসল ধ্বংস করে দেয়, ব্রিটিশ ভারতের বহু অংশে তীব্র খাদ্যাভাব দেখা দেয়। এর প্রতিক্রিয়ায় ঔপনিবেশিক প্রশাসন উপমহাদেশে প্রথম সুসংগঠিত আকাশপথ স্প্রে অভিযানের একটি শুরু করে।</p>
+<span class="sa-tag">টানা ৫ বছরের সংকট</span>
+</div>
+</div>
+<div class="southasia-card">
+<div>
+<div class="sa-year">1993</div>
+<div class="sa-region">রাজস্থান, ভারত</div>
+</div>
+<div>
+<h4>রাজস্থানের মরু পঙ্গপালের ঝাঁক</h4>
+<p>পাকিস্তান ও ইরানের প্রজনন ক্ষেত্র থেকে বিপুল সংখ্যায় মরু পঙ্গপাল রাজস্থানে ঢুকে পড়ে, বারমের, জয়সলমীর, যোধপুর ও বিকানের জেলার ফসল নষ্ট করে দেয়। হাজার হাজার হেক্টর বাজরা, সরষে ও গুয়ার ফসল ক্ষতিগ্রস্ত হয়। পূর্বদিকে ছড়িয়ে পড়ার আগেই সংকট আটকাতে ভারতীয় প্রশাসন সীমান্ত জেলাগুলিতে আকাশ ও স্থলপথে স্প্রে অভিযান চালায়।</p>
+<span class="sa-tag">সীমান্ত জেলাগুলি সবচেয়ে বেশি ক্ষতিগ্রস্ত</span>
+</div>
+</div>
+<div class="southasia-card">
+<div>
+<div class="sa-year">2020</div>
+<div class="sa-region">ভারত ও পাকিস্তান</div>
+</div>
+<div>
+<h4>একবিংশ শতাব্দীর দক্ষিণ এশীয় সংকট</h4>
+<p>প্রায় ৩০ বছরের মধ্যে ভারতের সবচেয়ে বড় পঙ্গপাল আক্রমণ ঘটে ২০২০ সালের গ্রীষ্মে, ঠিক কোভিড-১৯ লকডাউনের সময়ে। পাকিস্তান থেকে আসা ঝাঁক রাজস্থান, মধ্যপ্রদেশ, উত্তরপ্রদেশ ও গুজরাটে ঢুকে পড়ে — এক পর্যায়ে দিল্লির উপকণ্ঠেও হুমকি তৈরি করে। একইসঙ্গে পাকিস্তানও জাতীয় জরুরি অবস্থা ঘোষণা করে, কারণ সিন্ধু ও পাঞ্জাবে পঙ্গপালের ঝাঁক ফসল ধ্বংস করে দিচ্ছিল। ভারত ২০০-রও বেশি স্প্রে দল মোতায়েন করে এবং পঙ্গপাল নিয়ন্ত্রণে প্রথমবার ড্রোন ব্যবহার করে। আনুমানিক ফসলহানির পরিমাণ ছিল হাজার হাজার কোটি টাকা।</p>
+<span class="sa-tag">পাকিস্তানে জাতীয় জরুরি অবস্থা · ভারতে প্রথম ড্রোন নিয়ন্ত্রণ ব্যবহার</span>
+</div>
+</div>
+</div>
+</section>
+<!-- CLIMATE CHANGE -->
+<div class="climate-band">
+<div class="climate-inner">
+<p class="section-label">জলবায়ু বিজ্ঞান</p>
+<h2 class="section-title">জলবায়ু পরিবর্তন ও <span>পঙ্গপালের সংকট</span></h2>
+<div class="climate-chain reveal">
+<div class="climate-step">
+<div class="climate-step-num">ধাপ ০১</div>
+<div class="climate-step-icon">🌊</div>
+<h4>উষ্ণ ভারত মহাসাগর</h4>
+<p>সমুদ্রের উপরিভাগের তাপমাত্রা বাড়ার ফলে আরব সাগরে ঘন ঘন এবং আরও তীব্র ঘূর্ণিঝড় তৈরি হচ্ছে।</p>
+</div>
+<div class="climate-step">
+<div class="climate-step-num">ধাপ ০২</div>
+<div class="climate-step-icon">🌧️</div>
+<h4>ঘূর্ণিঝড়জনিত বৃষ্টি</h4>
+<p>ঘূর্ণিঝড় আরব উপদ্বীপের অভ্যন্তরীণ মরু অঞ্চলে অস্বাভাবিক পরিমাণ বৃষ্টি ঢেলে দেয় — যে এলাকাগুলি সাধারণত একেবারে শুকনো থাকে।</p>
+</div>
+<div class="climate-step">
+<div class="climate-step-num">ধাপ ০৩</div>
+<div class="climate-step-icon">🌿</div>
+<h4>মরুভূমির সবুজায়ন</h4>
+<p>প্রবল বৃষ্টি ধু ধু বালিকে সাময়িকভাবে সবুজে পরিণত করে — যা পঙ্গপালের জন্য আদর্শ প্রজননস্থল, কারণ ডিম পাড়তে এদের ভেজা মাটি দরকার।</p>
+</div>
+<div class="climate-step">
+<div class="climate-step-num">ধাপ ০৪</div>
+<div class="climate-step-icon">💥</div>
+<h4>জনসংখ্যার বিস্ফোরণ</h4>
+<p>প্রচুর খাবার ও ভেজা মাটির সুবাদে পঙ্গপালের সংখ্যা কয়েক মাসের মধ্যেই ২০ গুণ বেড়ে যায়, তারপর বাতাস এদের বয়ে নিয়ে যায় আফ্রিকা ও দক্ষিণ এশিয়ার দিকে।</p>
+</div>
+<div class="climate-step">
+<div class="climate-step-num">ধাপ ০৫</div>
+<div class="climate-step-icon">🌍</div>
+<h4>আঞ্চলিক সংকট</h4>
+<p>ঝাঁক পূর্ব আফ্রিকা, দক্ষিণ এশিয়া ও মধ্যপ্রাচ্যের কৃষিজমিতে পৌঁছায় — কোটি কোটি মানুষের খাদ্য নিরাপত্তাকে হুমকির মুখে ফেলে।</p>
+</div>
+</div>
+<div class="climate-projection reveal">
+<strong>⚠ ২০৫০ সাল নিয়ে বিজ্ঞানীদের পূর্বাভাস:</strong> জলবায়ু মডেল অনুযায়ী, ভারত মহাসাগরের উষ্ণতা বৃদ্ধি আরব সাগরে আরও তীব্র ঘূর্ণিঝড় তৈরি করবে, যার ফলে বড় পঙ্গপাল প্রজননের পরিস্থিতি তৈরি হওয়ার সম্ভাবনা প্রায় দ্বিগুণ হয়ে যেতে পারে। ২০১৯-২০২১ সালের পূর্ব আফ্রিকার সংকট — গত ৭০ বছরের সবচেয়ে ভয়াবহ — হয়তো এক প্রজন্মে একবারের বদলে প্রতি দশকে একবার ঘটতে পারে।
+    </div>
+</div>
+</div>
+<!-- FUTURE TECHNOLOGY -->
+<div class="tech-band">
+<div class="tech-inner">
+<p class="section-label">অগ্রণী সমাধান</p>
+<h2 class="section-title">ঝাঁকের বিরুদ্ধে লড়াই — <span>ভবিষ্যতের প্রযুক্তি</span></h2>
+<div class="tech-grid reveal">
+<div class="tech-card">
+<div class="tech-card-icon">🛰️</div>
+<h4>উপগ্রহ-AI নজরদারি</h4>
+<p>মেশিন লার্নিং ব্যবস্থা উপগ্রহের গাছপালা সংক্রান্ত সূচক ও মাটির আর্দ্রতার তথ্য বিশ্লেষণ করে ঝাঁক তৈরি হওয়ার কয়েক সপ্তাহ আগেই প্রজননস্থল চিহ্নিত করতে পারে — যা সরকারকে গুরুত্বপূর্ণ আগাম সতর্কতার সময় দেয়।</p>
+</div>
+<div class="tech-card">
+<div class="tech-card-icon">🚁</div>
+<h4>ড্রোন দিয়ে স্প্রে</h4>
+<p>স্বয়ংক্রিয় ড্রোনের বহর গাড়ি বা বিমানের অগম্য দুর্গম এলাকায় পৌঁছে নিখুঁত নিশানায় জৈব-কীটনাশক প্রয়োগ করতে পারে, আশেপাশের প্রতিবেশতন্ত্রের ন্যূনতম ক্ষতি করে।</p>
+</div>
+<div class="tech-card">
+<div class="tech-card-icon">🤖</div>
+<h4>AI দিয়ে সংকটের পূর্বাভাস</h4>
+<p>FAO-র মরু পঙ্গপাল তথ্য পরিষেবা এখন ৭০ বছরেরও বেশি সময়ের সংকট তথ্য, আবহাওয়ার ধরন এবং গাছপালার মানচিত্রে প্রশিক্ষিত AI মডেল ব্যবহার করে ঝাঁকের গতিপথের ১০ দিন আগে পর্যন্ত পূর্বাভাস দিতে পারে।</p>
+</div>
+<div class="tech-card">
+<div class="tech-card-icon">🧬</div>
+<h4>জৈব নিয়ন্ত্রণ</h4>
+<p>মেটারাইজিয়াম অ্যাক্রিডাম (গ্রিন মাসল) নামের প্রাকৃতিক ছত্রাক-জাত জৈব-কীটনাশক পাখি, স্তন্যপায়ী প্রাণী বা উপকারী পতঙ্গের ক্ষতি না করেই পঙ্গপাল ধ্বংস করে। এটি এখন আফ্রিকা ও মধ্য এশিয়া জুড়ে ব্যবহৃত হচ্ছে।</p>
+</div>
+<div class="tech-card">
+<div class="tech-card-icon">📱</div>
+<h4>কৃষক সতর্কতা অ্যাপ</h4>
+<p>FAO-র eLocust3m-এর মতো মোবাইল প্ল্যাটফর্মে মাঠকর্মী ও কৃষকরা GPS-ট্যাগ করা ছবির মাধ্যমে তাৎক্ষণিকভাবে পঙ্গপাল দেখা যাওয়ার খবর জানাতে পারেন, যা সরাসরি বিশ্বব্যাপী সংকট মানচিত্রে যুক্ত হয়ে যায় এবং সাড়াদানকারী দলগুলির কাজে লাগে।</p>
+</div>
+<div class="tech-card">
+<div class="tech-card-icon">🌐</div>
+<h4>সীমান্ত পেরিয়ে দ্রুত সাড়াদান</h4>
+<p>CLCPRO (আফ্রিকা) ও SWAC-এর মতো আঞ্চলিক সংস্থাগুলি যৌথ দ্রুত-সাড়াদান পদ্ধতি গড়ে তুলছে — যৌথ বিমানবহর, কীটনাশকের মজুত এবং সমন্বিত পরিচালন ব্যবস্থা — যাতে কূটনৈতিক বিলম্বে হারানো দিনগুলি এড়ানো যায়।</p>
+</div>
+</div>
+</div>
+</div>
+<!-- HUMAN FOOD INDUSTRY -->
+<div class="divider"></div>
+<section class="section reveal">
+<p class="section-label">ভবিষ্যতের খাদ্য</p>
+<h2 class="section-title">পঙ্গপাল কি খাদ্য হয়ে উঠতে পারে?</h2>
+<div class="food-grid">
+<div class="food-card">
+<div class="food-card-icon">💪</div>
+<div class="food-stat">70%</div>
+<h4>শুকনো ওজনের প্রোটিন</h4>
+<p>পৃথিবীর সবচেয়ে প্রোটিন-সমৃদ্ধ খাদ্যগুলির একটি পঙ্গপাল — গরুর মাংসের সমতুল্য, অথচ উৎপাদনে লাগে জমি, জল ও খাবারের সামান্যই অংশ।</p>
+</div>
+<div class="food-card">
+<div class="food-card-icon">🌍</div>
+<div class="food-stat">30+</div>
+<h4>দেশ ইতিমধ্যেই এদের খায়</h4>
+<p>পূর্ব আফ্রিকার সেঁকা পঙ্গপাল থেকে শুরু করে থাইল্যান্ড, মেক্সিকো ও মধ্যপ্রাচ্যের ভাজা পঙ্গপাল পর্যন্ত — এটা নতুন কোনো ধারণা নয়। বরং এক ঐতিহ্যবাহী খাদ্যের নতুন করে আবিষ্কার।</p>
+</div>
+<div class="food-card">
+<div class="food-card-icon">♻️</div>
+<div class="food-stat">12×</div>
+<h4>গরুর মাংসের চেয়ে বেশি কার্যকর</h4>
+<p>১ কেজি পঙ্গপাল প্রোটিন তৈরি করতে গরুর মাংসের চেয়ে ১২ গুণ কম খাবার লাগে, গ্রিনহাউস গ্যাসও তৈরি হয় অনেক কম, আর জল লাগে সামান্য — যা একে পৃথিবীর অন্যতম টেকসই প্রোটিন উৎসে পরিণত করেছে।</p>
+</div>
+<div class="food-card">
+<div class="food-card-icon">🏭</div>
+<div class="food-stat">$1.4B</div>
+<h4>২০৩০ সালের মধ্যে পতঙ্গ-খাদ্যের বাজার</h4>
+<p>বিশ্বব্যাপী ভোজ্য পতঙ্গের বাজার ২০৩০ সালের মধ্যে ১৪০ কোটি ডলারে পৌঁছাবে বলে অনুমান করা হচ্ছে। নেদারল্যান্ডস, যুক্তরাজ্য ও কেনিয়ার সংস্থাগুলি ইতিমধ্যেই খাদ্য ও পশুখাদ্যের জন্য বাণিজ্যিকভাবে পঙ্গপাল চাষ করছে।</p>
+</div>
+<div class="food-card">
+<div class="food-card-icon">⚠️</div>
+<div class="food-stat">!</div>
+<h4>একটি বড় সমস্যা</h4>
+<p>সংকটের সময় বুনো পঙ্গপাল আকাশপথে স্প্রে করা কীটনাশকে দূষিত থাকে — ফলে সংকটকালে সংগ্রহ করা পঙ্গপাল খাওয়া নিরাপদ নয়। বাণিজ্যিক চাষ খাদ্যের উৎসকে পতঙ্গ-সংকট সমস্যা থেকে আলাদা রাখে।</p>
+</div>
+</div>
+</section>
+<!-- FOOTER -->
+
+<footer class="site-footer">
+    © ২০২৬ সুরজিৎ রায়। সর্বস্বত্ব সংরক্ষিত।
+</footer>
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 60);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => obs.observe(el));
+
+  const barObs = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (en.isIntersecting) {
+        en.target.querySelectorAll('.ebar-fill').forEach((bar, i) => {
+          setTimeout(() => { bar.style.width = bar.dataset.w; }, i * 130);
+        });
+        barObs.unobserve(en.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  const ebars = document.getElementById('ebars');
+  if (ebars) barObs.observe(ebars);
+</script>
+<script src="security.js"></script>
+
+<footer class="footer">
+<div style="margin-bottom:18px;">
+<a href="about.html">পরিচিতি</a> |
+<a href="privacy.html">গোপনীয়তা নীতি</a> |
+<a href="terms.html">শর্তাবলী</a> |
+<a href="contact.html">যোগাযোগ</a> |
+<a href="disclaimer.html">দাবিত্যাগ</a>
+</div>
+<div class="footer-name">MYSKILLGAME</div>
+<div class="footer-copy">© ২০২৬ MySkillGame • তৈরি করেছেন সুরজিৎ রায়</div>
+</footer>
+</body>
+</html>

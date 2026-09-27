@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>সাদা থান থেকে লাল শাড়ি</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+
+<style>
+:root{
+  --bg:#0a0e27; --bg2:#0f1638; --card:#131b45; --gold:#d4af37; --gold-soft:#e8c968;
+  --text:#eef0fa; --text-dim:#a7adcf; --border:#26305f;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box;}
+html{scroll-padding-top:env(safe-area-inset-top,0px);height:100%;}
+body{
+  height:100%;margin:0;background:var(--bg);color:var(--text);
+  font-family:'Noto Sans Bengali','Hind Siliguri',system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+.app{max-width:640px;margin:0 auto;min-height:100%;display:flex;flex-direction:column;}
+header{
+  position:sticky;top:env(safe-area-inset-top,0px);z-index:10;
+  background:linear-gradient(180deg,var(--bg2),rgba(15,22,56,0.96));
+  border-bottom:1px solid var(--border);padding:16px 18px;
+  text-align:center;
+}
+header h1{margin:0;font-size:1.3rem;color:var(--gold-soft);letter-spacing:0.5px;}
+header p{margin:4px 0 0;font-size:0.8rem;color:var(--text-dim);}
+.home-btn{
+  position:absolute;left:14px;top:calc(14px + env(safe-area-inset-top,0px));
+  width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;
+  background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.35);color:var(--gold-soft);
+  text-decoration:none;font-size:1.05rem;
+}
+main{flex:1;padding:16px 16px 40px;}
+
+.hero-img{
+  max-width:260px;width:100%;margin:6px auto 18px;display:block;
+  border-radius:14px;border:1px solid var(--border);
+}
+.intro{
+  background:var(--card);border:1px solid var(--border);border-radius:14px;
+  padding:16px 18px;margin-bottom:18px;
+}
+.intro h2{margin:0 0 10px;font-size:1.05rem;color:var(--gold-soft);text-align:center;}
+.intro p{margin:0;font-size:0.95rem;line-height:1.9;color:var(--text);white-space:pre-wrap;}
+
+/* Episode list */
+.ep-list{display:flex;flex-direction:column;gap:12px;}
+.ep-card{
+  background:var(--card);border:1px solid var(--border);border-radius:14px;
+  padding:14px 16px;display:flex;align-items:center;gap:12px;cursor:pointer;
+  transition:border-color .15s;
+}
+.ep-card:active{border-color:var(--gold);}
+.ep-num{
+  min-width:38px;height:38px;border-radius:50%;background:rgba(212,175,55,0.12);
+  color:var(--gold-soft);display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:0.95rem;flex-shrink:0;border:1px solid rgba(212,175,55,0.35);
+}
+.ep-info{flex:1;min-width:0;}
+.ep-title{font-size:1rem;color:var(--text);margin:0;}
+.ep-sub{font-size:0.75rem;color:var(--text-dim);margin:2px 0 0;}
+.ep-badge{font-size:0.7rem;color:var(--gold);flex-shrink:0;}
+.ep-voice-btn{
+  flex-shrink:0;width:34px;height:34px;border-radius:50%;
+  background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.35);
+  color:var(--gold-soft);display:flex;align-items:center;justify-content:center;
+  font-size:0.95rem;
+}
+.ep-voice-btn.on{background:var(--gold);color:#161200;border-color:var(--gold);}
+
+.continue-bar{
+  background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.4);
+  border-radius:12px;padding:12px 14px;margin-bottom:12px;display:flex;
+  align-items:center;justify-content:space-between;gap:10px;
+}
+.continue-bar span{font-size:0.85rem;color:var(--gold-soft);}
+.continue-bar button{
+  background:var(--gold);color:#161200;border:none;border-radius:8px;
+  padding:8px 14px;font-size:0.8rem;font-weight:700;flex-shrink:0;
+}
+.bookmark-bar{
+  background:rgba(212,175,55,0.06);border:1px dashed rgba(212,175,55,0.4);
+  border-radius:12px;padding:12px 14px;margin-bottom:16px;display:flex;
+  align-items:center;justify-content:space-between;gap:10px;
+}
+.bookmark-bar span{font-size:0.85rem;color:var(--gold-soft);}
+.bookmark-bar button{
+  background:transparent;color:var(--gold-soft);border:1px solid var(--gold);border-radius:8px;
+  padding:8px 14px;font-size:0.8rem;font-weight:700;flex-shrink:0;
+}
+
+/* Reading view */
+.reader{display:none;flex-direction:column;}
+.reader.active{display:flex;}
+.ep-list.hidden{display:none;}
+.reader-title{color:var(--gold-soft);font-size:1.15rem;margin:0 0 14px;text-align:center;}
+.reader-content{
+  font-size:1.05rem;line-height:2;color:var(--text);white-space:pre-wrap;
+}
+.controls{
+  position:sticky;bottom:0;padding:10px 0 calc(10px + env(safe-area-inset-bottom,0px));
+  background:linear-gradient(0deg,var(--bg) 60%,transparent);
+  display:flex;gap:8px;margin-top:18px;
+}
+.btn{
+  flex:1;border:1px solid var(--border);background:var(--card);color:var(--text);
+  border-radius:10px;padding:12px 8px;font-size:0.85rem;display:flex;align-items:center;
+  justify-content:center;gap:6px;
+}
+.btn.gold{background:var(--gold);color:#161200;border:none;font-weight:700;}
+.btn.on{border-color:var(--gold);color:var(--gold-soft);}
+.btn:disabled{opacity:0.35;}
+.backbtn{
+  background:none;border:none;color:var(--text-dim);font-size:0.85rem;
+  padding:6px 0 14px;text-align:left;
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <a class="home-btn" href="index.html" aria-label="হোম">🏠</a>
+<h1>আমার কি খিদে পায় না?</h1>
+<p>সাদা থান-পরা এক ছোট্ট মেয়ের প্রশ্নে নড়ে উঠেছিল গোটা সমাজ</p>  </header>
+  <main>
+    <div id="listView">
+      <img class="hero-img" src="images/jyotsna.png" alt="জ্যোৎস্নার প্রতিকৃতি — বিধবার জীবন থেকে নতুন জীবনে উত্তরণের প্রতীক" loading="lazy">
+      <div class="intro">
+        <h2>সূচনা</h2>
+        <p>উনিশ শতকের বাংলায় সমাজ বদলের হাওয়া বইতে শুরু করেছিল। একদিকে নতুন শিক্ষার আলো, অন্যদিকে বহু পুরোনো সংস্কার তখনও মানুষের জীবনকে শক্ত করে বেঁধে রেখেছে। বিশেষ করে বিধবা নারীদের জীবন ছিল নানা সামাজিক বিধিনিষেধে আবদ্ধ।
+
+এই গল্প সেই সময়ের পটভূমিতে নির্মিত একটি কল্পকাহিনি।
+
+জ্যোৎস্না—একটি ছোট্ট মেয়ে। খুব অল্প বয়সেই বিধবা হয়েছে। তার কাছে তখনও বিধবা হওয়ার অর্থ বোঝার মতো বয়স আসেনি; সে শুধু জানে, অন্যরা যখন খায়, তখন তাকে কেন না খেয়ে থাকতে হয়, সে বুঝতে পারে না।
+
+একদিন একাদশীর দুপুরে তার মুখ থেকে বেরিয়ে আসে একটি সরল প্রশ্ন—
+
+"আমার কি খিদে পায় না?"
+
+একটি শিশুর এই প্রশ্নই বদলে দেয় তার দাদার ভাবনা, নাড়িয়ে দেয় একটি পরিবারের বিশ্বাস, আর ধীরে ধীরে তাকে পৌঁছে দেয় এমন এক ভবিষ্যতের দিকে—যেখানে তার জীবন সম্পর্কে সিদ্ধান্ত অন্য কেউ নয়, সে নিজেই নেবে।
+
+এ গল্প তাই শুধু জ্যোৎস্নার নয়।
+
+এ গল্প ক্ষুধার বিরুদ্ধে মানবিকতার, সংস্কারের বিরুদ্ধে বিবেকের, এবং একটি মেয়ের নিজের জীবন ফিরে পাওয়ার গল্প।</p>
+      </div>
+      <div id="continueBar"></div>
+      <div id="bookmarkBar"></div>
+      <div class="ep-list" id="epList"></div>
+    </div>
+    <div class="reader" id="readerView">
+      <button class="backbtn" onclick="showList()">← পর্ব তালিকায় ফিরুন</button>
+      <h2 class="reader-title" id="rTitle"></h2>
+      <div class="reader-content" id="rContent"></div>
+      <div class="controls">
+        <button class="btn" id="voiceBtn" onclick="toggleVoice()">🔊 পড়ে শোনাও</button>
+        <button class="btn" id="bookBtn" onclick="toggleBookmark()">🔖 বুকমার্ক</button>
+      </div>
+      <div class="controls">
+        <button class="btn" id="prevBtn" onclick="navEp(-1)">‹ আগের পর্ব</button>
+        <button class="btn" id="nextBtn" onclick="navEp(1)">পরের পর্ব ›</button>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+const episodes = [
+{title:"১. একাদশীর দুপুর", text:`সাল ১৮৫৩।
+
+হুগলি ও বর্ধমানের সীমানার কাছাকাছি, দশঘরার অদূরে এক অভিজাত জমিদারবাড়ি।
+
+বেলা তখন প্রায় এগারোটা।
+
+বাড়ির বৈঠকখানায় আজ বিশেষ সভা বসেছে। গ্রামের কয়েকজন গণ্যমান্য ব্যক্তি এসেছেন। বাড়ির কর্তা রাজেন্দ্রনারায়ণ চৌধুরী নিজে সভার আয়োজন করেছেন।
+
+বিষয়টি সাহসী—গ্রামে একটি বিদ্যালয় প্রতিষ্ঠা করা হবে। সেখানে ছেলেদের পাশাপাশি মেয়েরাও পড়ার সুযোগ পাবে।
+
+কিন্তু কাজটি সহজ নয়।
+
+গ্রামের রক্ষণশীল মানুষজন মেয়েদের লেখাপড়ার বিরোধী। তাঁদের ধারণা, মেয়েদের হাতে বই তুলে দিলে সংসারের সর্বনাশ হবে।
+
+তাই আজ বিশেষ অতিথি হিসেবে এসেছেন ঈশ্বরচন্দ্র বিদ্যাসাগর।
+
+রাজেন্দ্রনারায়ণের বিশ্বাস, তাঁর যুক্তি ও জ্ঞানের সামনে হয়তো মানুষের বহুদিনের সংস্কারের দেওয়াল একটু হলেও নড়বে।
+
+বৈঠকখানার একপাশে খাবারের আয়োজন চলছে।
+
+গরম লুচি, ছোলার ডাল, মিষ্টি, সন্দেশ—সব সাজানো হয়েছে। ঘিয়ের গন্ধে চারদিক ভরে গেছে।
+
+ঠিক তখনই দরজার কাছে ছোট্ট পায়ের শব্দ শোনা গেল।
+
+একটি মেয়ে দৌড়ে এসে ঘরে ঢুকল।
+
+বয়স দশ কি এগারো।
+
+গায়ে সাদা থান।
+
+মাথার চুল ছোট করে কাটা।
+
+মুখ শুকনো, চোখ দুটি বড় বড়।
+
+সে সোজা বাবার কাছে গিয়ে দাঁড়াল।
+
+—"বাবা... বাবা..."
+
+রাজেন্দ্রনারায়ণ তাকালেন।
+
+—"কী হয়েছে জ্যোৎস্না?"
+
+মেয়েটি চারদিকে তাকিয়ে বাবার কাছে মুখ নিয়ে ফিসফিস করে বলল,
+
+—"মাকে বলো না বাবা... আমার খুব খিদে পেয়েছে।"
+
+রাজেন্দ্রনারায়ণ থমকে গেলেন।
+
+জ্যোৎস্না এবার একটু জোরে বলল,
+
+—"দাদারা লুচি খাচ্ছে। আমিও চেয়েছিলাম। মা বলল, 'ছিঃ! আজ একাদশী। আজ খাবারের কথা বলতে নেই।'"
+
+তার চোখে জল এসে গেল।
+
+—"কিন্তু বাবা, আমি সকাল থেকে কিছুই খাইনি। জলও না। তুমি খাচ্ছ না, মা খাচ্ছে না—ঠিক আছে। কিন্তু হরনাথদা আর গিরীশদা তো খাচ্ছে। আমাকেই কেন করতে হবে? আমার কি খিদে পায় না?"
+
+ঘরের সব কথা থেমে গেল।
+
+রাজেন্দ্রনারায়ণ মেয়ের মুখের দিকে তাকিয়ে রইলেন।
+
+কিন্তু এতজন মানুষের সামনে তিনি যেন নিজের কণ্ঠস্বর হারিয়ে ফেললেন।
+
+ধীরে বললেন,
+
+—"এখন এখানে সভা চলছে মা। তুমি ভেতরে যাও।"
+
+জ্যোৎস্না কিছুক্ষণ বাবার দিকে তাকিয়ে রইল।
+
+তারপর খাবারের থালাগুলোর দিকে তাকাল।
+
+কোনও কথা না বলে ধীরে ধীরে ঘর থেকে বেরিয়ে গেল।
+
+দরজার আড়ালে মিলিয়ে গেল সাদা থানটি।`},
+
+{title:"২. একটি রুপোর থালা ও মেয়েদের বিদ্যালয়", text:`কিছুক্ষণ পর রান্নাঘর থেকে রামকানাই ভট্টাচার্য রুপোর থালায় খাবার সাজিয়ে নিয়ে এলেন।
+
+থালাটি বিদ্যাসাগরের সামনে রাখা হল।
+
+রাজেন্দ্রনারায়ণ বললেন,
+
+—"বিদ্যাসাগর মহাশয়, আগে কিছু মুখে দিন। তারপর আলোচনা শুরু করি।"
+
+বিদ্যাসাগর থালাটির দিকে তাকিয়ে বললেন,
+
+—"না, আজ খাব না।"
+
+—"কিছুই খাবেন না?"
+
+—"শরীরটা ভালো লাগছে না।"
+
+রামকানাই থালা নিয়ে চলে গেলেন।
+
+কিন্তু বিদ্যাসাগরের চোখে তখন আর সভার প্রস্তুতি নেই।
+
+তিনি যেন এখনও সেই শিশুটির মুখ দেখতে পাচ্ছেন।
+
+সভা শুরু হল।
+
+প্রথমেই ভুবনেশ্বর মুখোপাধ্যায় বললেন,
+
+—"মেয়েদের আবার বিদ্যালয়ে পাঠানোর কী দরকার? তারা ঘর সামলাবে, সেটাই যথেষ্ট।"
+
+মধুসূদন বন্দ্যোপাধ্যায়ও বললেন,
+
+—"আমাদের সমাজে তো এমন রীতি নেই।"
+
+বিদ্যাসাগর শান্তভাবে শুনলেন।
+
+তারপর বললেন,
+
+—"যে সমাজ তার অর্ধেক মানুষকে অশিক্ষিত রাখে, সে সমাজ কখনও পূর্ণ উন্নতি করতে পারে না।"
+
+তিনি বোঝালেন—একটি শিশুর প্রথম শিক্ষক তার মা।
+
+মা যদি শিক্ষিত হন, তাহলে তাঁর সন্তানও শিক্ষার আলো পায়।
+
+কেউ আপত্তি তুললেন,
+
+—"ধর্মে এর অনুমতি কোথায়?"
+
+বিদ্যাসাগর মৃদু হেসে বললেন,
+
+—"জ্ঞান কি পাপ?"
+
+কেউ উত্তর দিল না।
+
+—"আমরা জ্ঞানের জন্য কার কাছে প্রার্থনা করি?"
+
+একজন বললেন,
+
+—"সরস্বতী দেবীর কাছে।"
+
+বিদ্যাসাগর বললেন,
+
+—"তিনি নারী। তাহলে জ্ঞান যদি পবিত্র হয়, জ্ঞানের প্রতীক একজন নারী হলে নারীর শিক্ষা অপবিত্র হয় কীভাবে?"
+
+এরপর তিনি গার্গী, লোপামুদ্রা, অপালা, ঘোষার মতো শিক্ষিতা নারীদের কথা তুলে ধরলেন।
+
+একসময় আপত্তির স্বর ধীরে ধীরে কমে গেল।
+
+বিদ্যালয় প্রতিষ্ঠার প্রস্তাবে সম্মতি এল।
+
+রাজেন্দ্রনারায়ণের মুখে স্বস্তির হাসি ফুটল।
+
+কিন্তু বিদ্যাসাগরের মুখে হাসি নেই।`},
+
+{title:"৩. জ্যোৎস্নার মুখ", text:`সবাই চলে গেলে রাজেন্দ্রনারায়ণ বললেন,
+
+—"এবার আপনি কিছু খান। লুচি আছে।"
+
+বিদ্যাসাগর ধীরে বললেন,
+
+—"রাজেন্দ্রনারায়ণবাবু, আমার ক্ষুধা নেই।"
+
+—"শরীর খারাপ?"
+
+—"শরীর নয়।"
+
+তিনি একটু থামলেন।
+
+—"মনটা খারাপ।"
+
+রাজেন্দ্রনারায়ণ বুঝতে পারলেন।
+
+—"জ্যোৎস্নার জন্য?"
+
+বিদ্যাসাগর মাথা নাড়লেন।
+
+—"আজ আমরা নারীর শিক্ষা নিয়ে এতক্ষণ কথা বললাম। অথচ আপনার নিজের বাড়িতে একটি শিশু শুধু বিধবা বলে না খেয়ে রইল।"
+
+রাজেন্দ্রনারায়ণ মাথা নিচু করলেন।
+
+—"আমি... কী করতে পারি?"
+
+বিদ্যাসাগর বললেন,
+
+—"আপনি বাবা। আপনি অনেক কিছুই করতে পারেন।"
+
+রাজেন্দ্রনারায়ণ চুপ।
+
+—"একটি শিশু ক্ষুধার্ত। তাকে খাবার দেওয়ার জন্যও কি সমাজের অনুমতি নিতে হবে?"
+
+রাজেন্দ্রনারায়ণ উত্তর দিতে পারলেন না।
+
+বিদ্যাসাগর চলে যাওয়ার সময় শুধু বললেন,
+
+—"আজ আপনার মেয়ের চোখে আমি একটি প্রশ্ন দেখেছি। সেই প্রশ্নের উত্তর একদিন সমাজকে দিতেই হবে।"`},
+
+{title:"৪. হরনাথের প্রথম প্রতিবাদ", text:`সেদিন বিদ্যাসাগর রাজেন্দ্রনারায়ণ চৌধুরীর বাড়ি থেকে বেরিয়ে যাওয়ার পর অনেকক্ষণ কেউ কোনও কথা বলেনি।
+
+বৈঠকখানার এক কোণে পড়ে ছিল তাঁর জন্য সাজানো রুপোর থালা।
+
+লুচিগুলো ঠান্ডা হয়ে গিয়েছিল।
+
+আর বাড়ির অন্য প্রান্তে, নিজের ছোট্ট ঘরে বসে জ্যোৎস্না তখনও বুঝতে পারছিল না—তার বলা কয়েকটি কথার জন্য এত বড় মানুষের মনে এত আলোড়ন উঠেছে।
+
+সে শুধু জানত, তার খুব খিদে পেয়েছিল।
+
+সেদিন বিকেলে হরনাথ চুপচাপ বোনের ঘরে ঢুকল।
+
+জ্যোৎস্না মাটিতে বসে ছিল। সামনে কোনও খাবার নেই।
+
+হরনাথ কিছু না বলে নিজের হাতে রাখা একটি ছোট থালা তার সামনে এগিয়ে দিল।
+
+দুটি লুচি।
+
+একটু ডাল।
+
+আর একটি সন্দেশ।
+
+জ্যোৎস্না অবাক হয়ে তাকাল।
+
+—"দাদা, মা দেখলে?"
+
+হরনাথ দরজার দিকে তাকিয়ে বলল,
+
+—"দেখলে দেখবে।"
+
+—"আজ তো একাদশী।"
+
+হরনাথ কিছুক্ষণ চুপ করে থেকে বলল,
+
+—"তুই জানিস, একাদশী কী?"
+
+জ্যোৎস্না মাথা নাড়ল।
+
+—"না।"
+
+—"আমিও সব জানি না। কিন্তু একটা জিনিস জানি—খিদে পেলে খাবার দরকার।"
+
+জ্যোৎস্না মৃদু হাসল।
+
+তারপর লুচিটা হাতে তুলে নিল।
+
+হরনাথ তাকিয়ে রইল।
+
+মেয়েটি খেতে শুরু করল।
+
+সেদিন হরনাথের মনে প্রথম একটি প্রশ্ন জন্ম নিল—
+
+একটি শিশুর ক্ষুধার চেয়েও কি কোনও সামাজিক নিয়ম বড় হতে পারে?
+
+পরদিন থেকেই বাড়ির পরিবেশ বদলাতে শুরু করল।
+
+হরনাথ আর আগের মতো চুপ করে থাকল না।
+
+জ্যোৎস্নার জন্য আলাদা করে খাবার লুকিয়ে রাখা শুরু হল না—বরং সে প্রকাশ্যেই বোনের পাশে দাঁড়াল।
+
+হেমাঙ্গিনী দেবী প্রথমে বাধা দিলেন।
+
+—"লোকজন কী বলবে?"
+
+হরনাথ শান্তভাবে উত্তর দিল,
+
+—"লোকজন তো সেদিনও অনেক কিছু বলেছিল। কিন্তু জ্যোৎস্নার খিদে কি লোকজনের কথায় চলে যাবে?"
+
+হেমাঙ্গিনী কোনও উত্তর দিতে পারলেন না।
+
+রাজেন্দ্রনারায়ণও এবার ছেলের কথায় আপত্তি করলেন না।
+
+বরং একদিন তিনি নিজেই বললেন,
+
+—"জ্যোৎস্নার জন্য যা প্রয়োজন, তা দেবে।"
+
+সেই প্রথম বাড়ির নিয়মের চেয়ে মেয়েটির জীবন বড় হয়ে উঠল।`},
+
+{title:"৫. বিদ্যাসাগরের লড়াই ও জ্যোৎস্নার বড় হয়ে ওঠা", text:`এদিকে কলকাতায় শুরু হয়ে গেছে আর-এক যুদ্ধ।
+
+জ্যোৎস্নার মুখটি বিদ্যাসাগরের মনে থেকে গেল।
+
+মেয়েদের শিক্ষার জন্য যে মানুষ এতদিন লড়ছিলেন, তিনি এবার বুঝলেন—শিক্ষার সঙ্গে নারীর স্বাধীন জীবনযাপনের অধিকারও জড়িয়ে আছে।
+
+রাতের পর রাত তিনি পুরোনো শাস্ত্রের পুঁথি ঘাঁটতে লাগলেন।
+
+একদিকে বালিকা বিদ্যালয় প্রতিষ্ঠার কাজ।
+
+অন্যদিকে বিধবা-বিবাহের পক্ষে শাস্ত্রীয় ভিত্তি খোঁজা।
+
+সমাজের বিরোধিতা ক্রমেই বাড়ছিল।
+
+কিন্তু বিদ্যাসাগর থামলেন না।
+
+দীর্ঘ অনুসন্ধানের পর তিনি পরাশর সংহিতার সেই বিধানের দিকে সমাজের দৃষ্টি আকর্ষণ করলেন, যা তাঁর মতে নির্দিষ্ট পরিস্থিতিতে বিধবার পুনর্বিবাহের সুযোগকে সমর্থন করে।
+
+তারপর শুরু হল আবেদন, পিটিশন, যুক্তি ও প্রচারের দীর্ঘ পথ।
+
+অবশেষে ১৮৫৬ সালে বিধবা-বিবাহ আইন প্রণীত হল।
+
+আইন বদলাল।
+
+কিন্তু মানুষের মন বদলাতে আরও সময় লাগবে।
+
+এর মধ্যে বছর গড়িয়ে গেল।
+
+জ্যোৎস্না বড় হতে লাগল।
+
+রাজেন্দ্রনারায়ণ কথা রেখেছিলেন।
+
+মেয়েটি পড়াশোনা করল।
+
+হরনাথ তার পড়ার বই এনে দিত।
+
+গিরীশও মাঝে মাঝে তাকে পড়াত।
+
+বাড়ির যে মেয়েটি একদিন খাবারের জন্য কাঁদত, সেই মেয়েটিই ধীরে ধীরে বইয়ের পাতায় নিজের পৃথিবী খুঁজে পেল।
+
+একদিন হরনাথ তাকে জিজ্ঞেস করল,
+
+—"তুই বড় হয়ে কী হতে চাস?"
+
+জ্যোৎস্না হেসে বলল,
+
+—"আমি জানি না। তবে আমি আর কারও ওপর নির্ভর করে বাঁচতে চাই না।"
+
+হরনাথ বলল,
+
+—"তাহলেই তো পড়াশোনা কর।"`},
+
+{title:"৬. বিয়ের কথা ও অমরেশ", text:`জ্যোৎস্না যখন কৈশোর পেরোতে শুরু করল, আত্মীয়স্বজনের মধ্যে আবার বিয়ের আলোচনা উঠল।
+
+একদিন ভুবনেশ্বর মুখোপাধ্যায় রাজেন্দ্রনারায়ণকে বললেন,
+
+—"মেয়ের বিয়ের কথা ভাবছেন তো? বেশি দেরি করা ঠিক নয়।"
+
+রাজেন্দ্রনারায়ণ এবার আগের মানুষটি নন।
+
+তিনি বললেন,
+
+—"জ্যোৎস্নার বয়স এখনও হয়নি।"
+
+—"কিন্তু সমাজ?"
+
+হরনাথ পাশে বসে বলল,
+
+—"সমাজের জন্য আমার বোনের জীবন থামবে না।"
+
+ভুবনেশ্বর অবাক হয়ে তাকালেন।
+
+—"তুমি কী বলতে চাইছ?"
+
+হরনাথ স্পষ্ট গলায় বলল,
+
+— “প্রাপ্ত বয়স্কা না হওয়া পর্যন্ত জ্যোৎস্নার বিয়ে নয়। আর প্রাপ্ত বয়স্কা হলেই বিয়ে দিতেই হবে—এমন কথাও নেই। নিজের বিচার-বুদ্ধিতে, নিজের ইচ্ছায় সে রাজি না হলে তার বিয়ে হবে না।”
+
+ঘরে নীরবতা নেমে এল।
+
+জ্যোৎস্নার বয়স তখন বারো। খাবার নিয়ে কাঁদা সেই ছোট্ট মেয়েটির মুখে এখন বইয়ের অক্ষর, কিন্তু বিয়ের কথায় তার মুখ এখনও সেদিনের মতোই শক্ত হয়ে ওঠে।
+
+হরনাথ আবার বলল,
+
+—"জ্যোৎস্নার শৈশব শেষ করে দিয়ে তাকে কারও ঘরে পাঠানো হবে না। ও পড়বে, বড় হবে, নিজের জীবন সম্পর্কে নিজেই সিদ্ধান্ত নেবে। নিজের ইচ্ছায় ও রাজি না হলে ওর বিয়ের কথা আর উঠবে না।"
+
+—"বাল্যবিবাহে একটি মেয়ের জীবন শুরু হয় না। অনেক সময় সেখানেই তার শৈশব শেষ হয়ে যায়।"
+
+রাজেন্দ্রনারায়ণ ধীরে ধীরে মাথা নাড়লেন।
+
+—"হরনাথ ঠিক বলেছে।"
+
+এই সময় হরনাথের এক বন্ধু প্রায়ই বাড়িতে আসত।
+
+নাম অমরেশ।
+
+শিক্ষিত, শান্ত স্বভাবের যুবক।
+
+জ্যোৎস্নার সঙ্গে তার প্রথম পরিচয় হয়েছিল বই নিয়ে।
+
+একদিন জ্যোৎস্না একটি বই খুঁজছিল।
+
+অমরেশ তাক থেকে বইটি নামিয়ে দিয়ে বলল,
+
+—"এই বইটা?"
+
+জ্যোৎস্না বইটি নিয়ে বলল,
+
+—"আপনি পড়েছেন?"
+
+—"হ্যাঁ।"
+
+—"কেমন?"
+
+—"তুমি পড়ে বলো। তোমার মতামতটাই শুনতে চাই।"
+
+সেদিন থেকেই তাদের মধ্যে এক ধরনের বন্ধুত্ব তৈরি হল।
+
+কিন্তু অমরেশ কখনও জ্যোৎস্নার অতীত নিয়ে প্রশ্ন করেনি।
+
+কখনও তাকে করুণা করেনি।
+
+কখনও বলেনি, "তুমি বিধবা, তাই..."
+
+বরং সে জ্যোৎস্নাকে একজন মানুষ হিসেবেই দেখত।
+
+হরনাথ একদিন বন্ধুকে বলল,
+
+—"অমরেশ, একটা কথা মনে রাখিস। আমার বোনের জীবনে যদি কখনও বিয়ে আসে, সেটা হবে তার নিজের ইচ্ছায়।"
+
+অমরেশ উত্তর দিল,
+
+—"জ্যোৎস্না যদি আমাকে না চায়, আমি কোনওদিন তাকে বিয়ের কথা বলব না।"
+
+হরনাথ বন্ধুর দিকে তাকিয়ে হাসল।
+
+—"তুই আমার বন্ধু বলেই তোকে এতদিন বিশ্বাস করেছি।"`},
+
+{title:"৭. আঠারো ও জ্যোৎস্নার বিয়ের সিদ্ধান্ত", text:`আরও কয়েক বছর কেটে গেল।
+
+এক সকালে রাজেন্দ্রনারায়ণের বাড়ির উঠোনে জ্যোৎস্না দাঁড়িয়ে ছিল।
+
+আজ তার আঠারো বছর পূর্ণ হয়েছে। নিজের জীবনের সিদ্ধান্ত নেওয়ার মতো পরিণত হয়েছে সে।
+
+হরনাথ হাতে একটি বই নিয়ে এসে বলল,
+
+—"এই নে।"
+
+জ্যোৎস্না বইটি নিয়ে বলল,
+
+—"কী বই?"
+
+—"তোর জন্য।"
+
+—"কেন?"
+
+হরনাথ হেসে বলল,
+
+—"আজ থেকে তোর জীবনের সিদ্ধান্ত তুই নিজে নেবি।"
+
+জ্যোৎস্না কিছুক্ষণ চুপ করে রইল।
+
+তারপর আস্তে করে বলল,
+
+—"দাদা... একটা কথা বলব?"
+
+—"বল।"
+
+—"অমরেশকে আমি পছন্দ করি।"
+
+হরনাথের মুখে হাসি ফুটে উঠল।
+
+—"আমি জানতাম।"
+
+—"তুমি রাগ করবে না?"
+
+—"কেন রাগ করব?"
+
+—"তুমি তো বলেছিলে আমার বিয়ে নিয়ে সিদ্ধান্ত আমি নেব।"
+
+হরনাথ বলল,
+
+—"সেই কথাই তো রেখেছি।"
+
+অমরেশের সঙ্গে জ্যোৎস্নার বিয়ের কথা উঠতেই আবার কিছু মানুষের আপত্তি এল।
+
+কেউ বলল,
+
+—"ও তো বিধবা ছিল!"
+
+হরনাথ এবার সামনে দাঁড়াল।
+
+—"ছিল। এখন সে একজন প্রাপ্তবয়স্ক নারী। তার নিজের জীবন সম্পর্কে সিদ্ধান্ত নেওয়ার অধিকার আছে।"
+
+কেউ বলল,
+
+—"সমাজ কী বলবে?"
+
+হরনাথ মৃদু হেসে বলল,
+
+—"এই প্রশ্নের উত্তর আমার বোনের কাছে আছে।"
+
+সবাই জ্যোৎস্নার দিকে তাকাল।
+
+জ্যোৎস্না শান্ত গলায় বলল,
+
+—"সমাজ যদি মানুষের সুখের পথে দাঁড়ায়, তবে সমাজকে বদলানো দরকার।"
+
+রাজেন্দ্রনারায়ণের চোখ ভিজে উঠল।
+
+হেমাঙ্গিনী দেবী মেয়েকে জড়িয়ে ধরলেন।`},
+
+{title:"৮. শেষ দেখা ও শেষ কথা", text:`বিয়ের আগে বিদ্যাসাগর একদিন রাজেন্দ্রনারায়ণের বাড়িতে এলেন।
+
+জ্যোৎস্না তাঁকে দেখে এগিয়ে গেল।
+
+—"আমাকে মনে আছে?"
+
+বিদ্যাসাগর হেসে বললেন,
+
+—"তোমাকে কী করে ভুলব?"
+
+জ্যোৎস্না মাথা নিচু করে দাঁড়িয়ে রইল।
+
+বিদ্যাসাগর বললেন,
+
+—"সেদিন তুমি শুধু খাবার চেয়েছিলে।"
+
+জ্যোৎস্না মৃদু হেসে বলল,
+
+—"আর আজ?"
+
+—"আজ তুমি নিজের জীবন বেছে নিয়েছ।"
+
+জ্যোৎস্নার চোখে জল এসে গেল।
+
+সে বলল,
+
+—"আপনি না এলে হয়তো কিছুই বদলাত না।"
+
+বিদ্যাসাগর মাথা নাড়লেন।
+
+—"না মা। আমি শুধু একটি দরজায় ধাক্কা দিয়েছিলাম। দরজা খুলেছিল তোমার দাদা।"
+
+হরনাথ দূর থেকে দাঁড়িয়ে ছিল।
+
+বিদ্যাসাগর তার দিকে তাকিয়ে বললেন,
+
+—"মনে রেখো, সমাজ পরিবর্তন বড় বড় বক্তৃতায় হয় না সবসময়। কখনও কখনও হয় একটি ক্ষুধার্ত শিশুর হাতে একখানা লুচি তুলে দেওয়ার সাহসে।"
+
+হরনাথের চোখ ভিজে উঠল।
+
+বিয়ের দিন জ্যোৎস্নার পরনে লাল শাড়ি।
+
+কপালে সিঁদুর।
+
+পাশে অমরেশ।
+
+কিন্তু সেই দৃশ্যের সবচেয়ে বড় অর্থ ছিল অন্য কোথাও।
+
+একদিন যে শিশুটি বাবার সামনে দাঁড়িয়ে কেঁদে বলেছিল—
+
+"আমার কি খিদে পায় না?"
+
+আজ সেই মেয়েটিই নিজের জীবনের সিদ্ধান্ত নিজে নিয়েছে।
+
+তার বাল্যবিবাহ হয়নি।
+
+তার শৈশব কেড়ে নেওয়া হয়নি।
+
+তার বিধবা পরিচয় তার ভবিষ্যৎ নির্ধারণ করেনি।
+
+প্রাপ্ত বয়স্কা হওয়ার পর, নিজের ইচ্ছায়, নিজের পছন্দের মানুষকে সে জীবনসঙ্গী করেছে।
+
+আর তার এই পথের শুরু হয়েছিল একটি ছোট্ট প্রতিবাদ দিয়ে—
+
+একজন দাদা সমাজের ভয়কে উপেক্ষা করে তার ক্ষুধার্ত বোনকে একখানা লুচি খেতে দিয়েছিল।
+
+সেদিন হয়তো হরনাথ জানত না, সেই একখানা লুচিই একদিন তার বোনের জীবনের স্বাধীনতার প্রথম প্রতীক হয়ে উঠবে।
+
+সমাপ্ত।`}
+];
+
+let current = 0;
+let speaking = false;   // true while an utterance is actively playing (not paused)
+let paused = false;
+let voicingIndex = null; // which episode index is currently loaded into the speech engine
+let utter = null;
+
+// Unique key so this story's saved progress never collides with any other
+// story/app that might share the same browser/site.
+const STATE_KEY = 'sada-than-lal-shari_state_v1';
+
+function loadState(){
+  try{ return JSON.parse(localStorage.getItem(STATE_KEY)||'{}'); }catch(e){ return {}; }
+}
+function saveState(s){
+  try{ localStorage.setItem(STATE_KEY, JSON.stringify(s)); }catch(e){}
+}
+
+function renderList(){
+  const state = loadState();
+  const listEl = document.getElementById('epList');
+  listEl.innerHTML = '';
+  episodes.forEach((ep,i)=>{
+    const card = document.createElement('div');
+    card.className='ep-card';
+    card.innerHTML = `<div class="ep-num">${i+1}</div>
+      <div class="ep-info">
+        <p class="ep-title">${ep.title}</p>
+        <p class="ep-sub">পর্ব ${i+1} / ${episodes.length}</p>
+      </div>
+      ${state.bookmark===i?'<div class="ep-badge">🔖</div>':''}
+      <button class="ep-voice-btn" id="listVoiceBtn-${i}" aria-label="পর্বটি পড়ে শোনাও">🔊</button>`;
+    card.querySelector('.ep-info').onclick = ()=>openEp(i);
+    card.querySelector('.ep-num').onclick = ()=>openEp(i);
+    card.querySelector('.ep-voice-btn').onclick = (e)=>{ e.stopPropagation(); toggleVoice(i); };
+    listEl.appendChild(card);
+  });
+
+  const bar = document.getElementById('continueBar');
+  if(typeof state.lastRead==='number' && episodes[state.lastRead] && state.lastRead!==state.bookmark){
+    bar.innerHTML = `<div class="continue-bar">
+      <span>পড়া চালিয়ে যান: ${episodes[state.lastRead].title}</span>
+      <button onclick="openEp(${state.lastRead})">চালিয়ে যান</button>
+    </div>`;
+  } else { bar.innerHTML=''; }
+
+  const bbar = document.getElementById('bookmarkBar');
+  if(typeof state.bookmark==='number' && episodes[state.bookmark]){
+    bbar.innerHTML = `<div class="bookmark-bar">
+      <span>🔖 বুকমার্ক করা আছে: ${episodes[state.bookmark].title}</span>
+      <button onclick="openEp(${state.bookmark})">বুকমার্কে যান</button>
+    </div>`;
+  } else { bbar.innerHTML=''; }
+
+  syncVoiceButtons();
+}
+
+function openEp(i){
+  // If voice is playing for a different episode, stop it; if it's the same
+  // episode, leave it running so switching views doesn't cut the audio.
+  if(voicingIndex!==null && voicingIndex!==i) stopVoice();
+  current = i;
+  const ep = episodes[i];
+  document.getElementById('rTitle').textContent = ep.title;
+  document.getElementById('rContent').textContent = ep.text;
+  document.getElementById('listView').style.display='none';
+  document.getElementById('readerView').classList.add('active');
+  document.getElementById('prevBtn').disabled = i===0;
+  document.getElementById('nextBtn').disabled = i===episodes.length-1;
+  updateBookmarkBtn();
+  syncVoiceButtons();
+  const s = loadState(); s.lastRead=i; saveState(s);
+  window.scrollTo(0,0);
+}
+
+function showList(){
+  document.getElementById('readerView').classList.remove('active');
+  document.getElementById('listView').style.display='block';
+  renderList();
+}
+
+function navEp(d){
+  const n = current+d;
+  if(n>=0 && n<episodes.length) openEp(n);
+}
+
+function toggleBookmark(){
+  const s = loadState();
+  s.bookmark = (s.bookmark===current) ? undefined : current;
+  saveState(s);
+  updateBookmarkBtn();
+  renderList();
+}
+function updateBookmarkBtn(){
+  const s = loadState();
+  document.getElementById('bookBtn').classList.toggle('on', s.bookmark===current);
+}
+
+// --- Voice: works per-episode and independently of which view is open.
+// Uses pause()/resume() (not cancel+restart) so stopping mid-sentence and
+// pressing play again continues from roughly where it left off instead of
+// jumping back to the start of the episode.
+function toggleVoice(i){
+  if(typeof i!=='number') i = current;
+
+  if(voicingIndex===i && speaking && !paused){
+    // currently reading this exact episode -> pause it
+    try{ speechSynthesis.pause(); }catch(e){}
+    speaking=false; paused=true;
+    syncVoiceButtons();
+    return;
+  }
+  if(voicingIndex===i && paused){
+    // resume this episode from where it paused
+    try{ speechSynthesis.resume(); }catch(e){}
+    speaking=true; paused=false;
+    syncVoiceButtons();
+    return;
+  }
+
+  // starting a different episode (or starting fresh) -> stop whatever is
+  // playing now and begin this one from its own beginning
+  stopVoice();
+  try{
+    const ep = episodes[i];
+    utter = new SpeechSynthesisUtterance(ep.text);
+    utter.lang='bn-IN';
+    const voices = speechSynthesis.getVoices();
+    const bn = voices.find(v=>v.lang && v.lang.toLowerCase().startsWith('bn'));
+    if(bn) utter.voice = bn;
+    utter.rate = 0.95;
+    utter.onend = ()=>{ speaking=false; paused=false; voicingIndex=null; syncVoiceButtons(); };
+    utter.onerror = ()=>{ speaking=false; paused=false; voicingIndex=null; syncVoiceButtons(); };
+    speechSynthesis.speak(utter);
+    speaking=true; paused=false; voicingIndex=i;
+    syncVoiceButtons();
+  }catch(e){
+    alert('এই ব্রাউজারে ভয়েস সাপোর্ট নেই।');
+  }
+}
+function stopVoice(){
+  try{ speechSynthesis.cancel(); }catch(e){}
+  speaking=false; paused=false; voicingIndex=null;
+  syncVoiceButtons();
+}
+function syncVoiceButtons(){
+  // reader view button
+  const rb = document.getElementById('voiceBtn');
+  if(rb){
+    if(voicingIndex===current && speaking) rb.textContent='⏸ থামান';
+    else if(voicingIndex===current && paused) rb.textContent='▶ চালু করুন';
+    else rb.textContent='🔊 পড়ে শোনাও';
+  }
+  // list view buttons
+  episodes.forEach((ep,i)=>{
+    const b = document.getElementById('listVoiceBtn-'+i);
+    if(!b) return;
+    const active = voicingIndex===i;
+    b.classList.toggle('on', active && (speaking||paused));
+    b.textContent = active && speaking ? '⏸' : (active && paused ? '▶' : '🔊');
+  });
+}
+
+if(typeof speechSynthesis!=='undefined'){
+  speechSynthesis.onvoiceschanged = ()=>{};
+}
+
+renderList();
+</script>
+</body>
+</html>

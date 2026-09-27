@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>পর্ব ৩ : সুখ-দুঃখের আসা-যাওয়া — এ জীবন গেলে ফিরে আসে না আবার</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;500;600;700&family=Hind+Siliguri:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ts-ink:#241a13;
+    --ts-parchment:#f2e8d3;
+    --ts-parchment-2:#e9dcc0;
+    --ts-walnut:#241610;
+    --ts-walnut-2:#3a2416;
+    --ts-brass:#a9814c;
+    --ts-brass-light:#d8bb80;
+    --ts-oxblood:#6d2c28;
+    --ts-muted:#71614c;
+    --ts-line:rgba(36,26,19,0.16);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ts-parchment);
+    color:var(--ts-ink);
+    font-family:"Noto Serif Bengali","Hind Siliguri",serif;
+    line-height:1.85;
+  }
+
+  /* ---------- TOP BAR ---------- */
+  .topbar{
+    position:sticky;
+    top:0;
+    z-index:20;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:1rem;
+    background:var(--ts-walnut);
+    color:var(--ts-parchment-2);
+    padding:0.85rem 5vw;
+    font-family:"Hind Siliguri",sans-serif;
+  }
+  .topbar a.home-link{
+    color:var(--ts-brass-light);
+    text-decoration:none;
+    font-size:0.92rem;
+    display:flex;
+    align-items:center;
+    gap:0.4rem;
+  }
+  .topbar a.home-link:hover{color:var(--ts-parchment);}
+  .topbar a.home-link svg{width:16px;height:16px;}
+  .voice-controls{
+    display:flex;
+    align-items:center;
+    gap:0.5rem;
+  }
+  .voice-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:0.4rem;
+    background:transparent;
+    border:1px solid var(--ts-brass);
+    color:var(--ts-brass-light);
+    font-family:"Hind Siliguri",sans-serif;
+    font-size:0.85rem;
+    padding:0.45rem 0.85rem;
+    border-radius:2px;
+    cursor:pointer;
+    transition:background 0.2s ease, color 0.2s ease;
+  }
+  .voice-btn:hover{background:var(--ts-brass); color:var(--ts-walnut);}
+  .voice-btn svg{width:15px;height:15px;}
+  .voice-status{
+    font-size:0.78rem;
+    color:var(--ts-muted);
+    display:none;
+  }
+
+  /* ---------- RESUME BANNER ---------- */
+  .resume-banner{
+    display:none;
+    align-items:center;
+    justify-content:space-between;
+    gap:1rem;
+    background:var(--ts-parchment-2);
+    border-bottom:1px solid var(--ts-line);
+    padding:0.8rem 5vw;
+    font-family:"Hind Siliguri",sans-serif;
+    font-size:0.9rem;
+    color:var(--ts-ink);
+  }
+  .resume-banner.show{display:flex;}
+  .resume-banner button{
+    background:var(--ts-oxblood);
+    color:var(--ts-parchment);
+    border:none;
+    padding:0.5rem 1rem;
+    font-family:"Hind Siliguri",sans-serif;
+    font-size:0.85rem;
+    border-radius:2px;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .resume-banner .dismiss{
+    background:transparent;
+    color:var(--ts-muted);
+    padding:0.3rem;
+  }
+
+  /* ---------- HEADER ---------- */
+  .story-header{
+    max-width:680px;
+    margin:0 auto;
+    padding:3.5rem 6vw 1rem;
+    text-align:center;
+  }
+  .story-header .series-name{
+    font-family:"Hind Siliguri",sans-serif;
+    font-size:0.9rem;
+    color:var(--ts-oxblood);
+    letter-spacing:0.01em;
+  }
+  .story-header h1{
+    font-size:clamp(1.6rem,3.4vw,2.2rem);
+    margin:0.6rem 0 0;
+    color:var(--ts-ink);
+  }
+
+  /* ---------- CONTENT ---------- */
+  .content{
+    max-width:680px;
+    margin:0 auto;
+    padding:1rem 6vw 4rem;
+  }
+  .lyric{
+    margin:2.2rem 0 2.6rem;
+    padding:1.4rem 1.6rem;
+    background:var(--ts-parchment-2);
+    border-left:3px solid var(--ts-brass);
+    font-style:italic;
+    color:var(--ts-walnut-2);
+    font-size:1.12rem;
+  }
+  .lyric p{margin:0.2rem 0;}
+  p.para{
+    margin:0 0 1.3rem;
+    font-size:1.12rem;
+    transition:background 0.4s ease;
+    border-radius:2px;
+    padding:0.1rem 0.3rem;
+    margin-left:-0.3rem;
+  }
+  p.para.reading{
+    background:rgba(169,129,76,0.16);
+  }
+  strong{color:var(--ts-oxblood); font-weight:600;}
+
+  /* ---------- FOOTER NAV ---------- */
+  .part-nav{
+    max-width:680px;
+    margin:0 auto;
+    padding:2rem 6vw 5rem;
+    display:flex;
+    justify-content:space-between;
+    gap:1rem;
+    border-top:1px solid var(--ts-line);
+    font-family:"Hind Siliguri",sans-serif;
+  }
+  .part-nav a{
+    display:flex;
+    flex-direction:column;
+    text-decoration:none;
+    color:var(--ts-ink);
+    max-width:45%;
+  }
+  .part-nav a .label{
+    font-size:0.78rem;
+    color:var(--ts-muted);
+  }
+  .part-nav a .title{
+    font-size:1rem;
+    font-weight:600;
+    margin-top:0.2rem;
+  }
+  .part-nav a:hover .title{color:var(--ts-oxblood);}
+  .part-nav a.next{text-align:right; align-items:flex-end; margin-left:auto;}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    p.para{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="home-link" href="index-time-story.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+    সূচিপত্রে ফিরুন
+  </a>
+  <div class="voice-controls">
+    <button class="voice-btn" id="playBtn" onclick="startReading()">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      পড়ে শোনান
+    </button>
+    <button class="voice-btn" id="pauseBtn" onclick="togglePause()" style="display:none;">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+      থামান
+    </button>
+    <button class="voice-btn" id="stopBtn" onclick="stopReading()" style="display:none;">
+      <svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12"/></svg>
+      বন্ধ
+    </button>
+  </div>
+</div>
+
+<div class="resume-banner" id="resumeBanner">
+  <span>আপনি আগে এই পর্বটি পড়ছিলেন — সেখান থেকে চালিয়ে যাবেন?</span>
+  <span style="display:flex; gap:0.5rem;">
+    <button onclick="resumeScroll()">চালিয়ে যান</button>
+    <button class="dismiss" onclick="dismissBanner()">না থাক</button>
+  </span>
+</div>
+
+<header class="story-header">
+  <div class="series-name">এ জীবন গেলে ফিরে আসে না আবার</div>
+  <h1>পর্ব ৩ : সুখ-দুঃখের আসা-যাওয়া</h1>
+</header>
+
+<article class="content" id="storyContent">
+
+  <p class="para">অয়ন এবার কলেজে উঠেছে।</p>
+
+  <p class="para">স্কুলের গণ্ডি পেরিয়ে নতুন পরিবেশ। নতুন বন্ধু, নতুন স্বাধীনতা, নতুন স্বপ্ন।</p>
+
+  <p class="para">স্কুলের সেই ছোট্ট মাঠের বদলে এখন তার সামনে বড় পৃথিবী।</p>
+
+  <p class="para">কখনও সে খুব আনন্দে থাকে। আবার কোনো দিন সামান্য ব্যর্থতাতেই মন খারাপ হয়ে যায়।</p>
+
+  <p class="para">একদিন কলেজে পরীক্ষার ফল প্রকাশ হলো।</p>
+
+  <p class="para">অয়ন ভেবেছিল ভালো করবে।</p>
+
+  <p class="para">কিন্তু ফল হাতে নিয়ে তার মুখটা শুকিয়ে গেল।</p>
+
+  <p class="para">প্রত্যাশার চেয়ে অনেক কম নম্বর।</p>
+
+  <p class="para">বন্ধুদের কেউ খুব ভালো করেছে। কেউ বৃত্তিও পেয়েছে।</p>
+
+  <p class="para">অয়ন চুপচাপ কলেজের বারান্দায় বসে রইল।</p>
+
+  <p class="para">তার বন্ধু রাহুল এসে পাশে বসল।</p>
+
+  <p class="para">— <strong>“কী হয়েছে?”</strong></p>
+
+  <p class="para">অয়ন বলল, — “আমার দ্বারা কিছু হবে না মনে হয়।”</p>
+
+  <p class="para">রাহুল হেসে বলল, — <strong>“একটা পরীক্ষার ফল দিয়ে জীবন ঠিক হয় না।”</strong></p>
+
+  <p class="para">অয়ন কোনো উত্তর দিল না।</p>
+
+  <p class="para">সেদিন বাড়ি ফিরে তার মনটা আরও খারাপ হয়ে গেল।</p>
+
+  <p class="para">বাবা বুঝতে পেরে বললেন, — <strong>“ব্যর্থতা এসেছে, ঠিক আছে। কিন্তু ব্যর্থতার সঙ্গে বসে থেকো না। ওকে পাশ কাটিয়ে সামনে এগিয়ে যাও।”</strong></p>
+
+  <p class="para">কথাটা অয়নের মনে রইল।</p>
+
+  <p class="para">কয়েকদিন পর কলেজে একটি প্রতিযোগিতা হলো। অয়ন সেখানে অংশ নিল।</p>
+
+  <p class="para">অবিশ্বাস্যভাবে সে প্রথম হলো।</p>
+
+  <p class="para">যে ছেলেটি কয়েকদিন আগেই ভেবেছিল তার দ্বারা কিছু হবে না, সেই ছেলেটিই সেদিন মঞ্চে উঠে পুরস্কার নিল।</p>
+
+  <p class="para">বন্ধুরা হাততালি দিল।</p>
+
+  <p class="para">অয়নও হাসল।</p>
+
+  <p class="para">কিন্তু ফেরার পথে তার মনে হলো— <strong>কয়েকদিন আগের দুঃখ কোথায় গেল?</strong></p>
+
+  <p class="para">যে দুঃখটাকে তখন পৃথিবীর সবচেয়ে বড় সমস্যা মনে হয়েছিল, সেটাই তো আজ আর নেই।</p>
+
+  <p class="para">সেদিন সে প্রথমবার বুঝল— <strong>সুখও স্থায়ী নয়, দুঃখও নয়।</strong></p>
+
+  <p class="para">জীবনে ভালো সময় আসবে, আবার খারাপ সময়ও আসবে।</p>
+
+  <p class="para">কিন্তু সময় নিজে থেমে থাকে না। সে এগিয়ে যায়।</p>
+
+  <hr style="border:none; border-top:1px solid var(--ts-line); margin:2.6rem 0;">
+
+  <p class="para">কলেজের শেষ বর্ষে অয়ন চাকরির প্রস্তুতি নেওয়ার সিদ্ধান্ত নিল।</p>
+
+  <p class="para">তার সামনে তখন অনেকগুলো পথ।</p>
+
+  <p class="para">কেউ বলল সরকারি চাকরির চেষ্টা কর। কেউ বলল বেসরকারি চাকরি ভালো। কেউ বলল ব্যবসা কর।</p>
+
+  <p class="para">অয়ন সবকিছু নিয়ে ভাবতে লাগল।</p>
+
+  <p class="para">একদিন রাহুল বলল, — <strong>“তুই একটা সিদ্ধান্ত নে। সবকিছু একসঙ্গে করতে গেলে কোনো কিছুই ঠিকমতো হবে না।”</strong></p>
+
+  <p class="para">অয়ন বুঝল, জীবনের সবচেয়ে কঠিন কাজগুলোর একটি হলো <strong>কোন পথে সময় দেওয়া উচিত, সেটা ঠিক করা।</strong></p>
+
+  <p class="para">সে একটি লক্ষ্য বেছে নিল।</p>
+
+  <p class="para">প্রথম পরীক্ষায় ব্যর্থ হলো। দ্বিতীয়বারও। তৃতীয়বারও।</p>
+
+  <p class="para">প্রতিবারই মনে হলো—আর হবে না।</p>
+
+  <p class="para">কিন্তু এবার সে আগের অয়নের মতো হাল ছেড়ে দিল না।</p>
+
+  <p class="para">ব্যর্থতাকে সে এবার ফলাফল হিসেবে দেখল, পরিচয় হিসেবে নয়।</p>
+
+  <p class="para">প্রতিবার ভুলগুলো লিখে রাখল। কোথায় কমতি ছিল, তা খুঁজে বের করল। তারপর আবার প্রস্তুতি নিল।</p>
+
+  <p class="para">কয়েক মাস পর একটি পরীক্ষায় সে ভালো ফল করল।</p>
+
+  <p class="para">চাকরি পেল না এখনও, কিন্তু এবার তার আত্মবিশ্বাস ফিরে এসেছে।</p>
+
+  <p class="para">সে বুঝল— <strong>জীবনের সুখ-দুঃখ, জয়-পরাজয় সবই আসা-যাওয়া করে।</strong></p>
+
+  <p class="para">কিন্তু একটি জিনিস নীরবে এগিয়ে যায়— <strong>সময়।</strong></p>
+
+  <p class="para">ব্যর্থতার সময়ও সময় চলে যায়। সাফল্যের সময়ও সময় চলে যায়।</p>
+
+  <p class="para">আমরা কাঁদি বা হাসি—ঘড়ির কাঁটা তার নিজের পথেই হাঁটে।</p>
+
+  <p class="para">সেদিন রাতে অয়ন জানালার পাশে দাঁড়িয়ে অনেকক্ষণ বাইরে তাকিয়ে রইল।</p>
+
+  <p class="para">তার মনে হলো, জীবনের প্রতিটি মুহূর্ত যেন নদীর স্রোতে ভেসে যাচ্ছে।</p>
+
+  <p class="para">কিছু মুহূর্ত আনন্দের। কিছু দুঃখের। কিছু গর্বের। কিছু আফসোসের।</p>
+
+  <p class="para">কিন্তু কোনো মুহূর্তই আর ফিরে আসে না।</p>
+
+  <p class="para">অয়ন তখনও জানত না, সামনে তার জীবনের এমন একটি সময় আসছে, যখন তাকে শুধু ব্যর্থতার সঙ্গে নয়—<strong>নিজের অতীতের সঙ্গেও হিসাব মেলাতে হবে।</strong></p>
+
+  <p class="para">ঘড়ির কাঁটা এগিয়ে চলল।</p>
+
+  <p class="para">আর অয়ন ধীরে ধীরে জীবনের পরের অধ্যায়ের দিকে এগিয়ে গেল।</p>
+
+</article>
+
+<nav class="part-nav">
+  <a class="prev" href="porbo-2t.html">
+    <span class="label">← আগের পর্ব</span>
+    <span class="title">২. অসার আর সার</span>
+  </a>
+  <a class="next" href="porbo-4t.html">
+    <span class="label">পরের পর্ব →</span>
+    <span class="title">৪. কী পেলাম, কী হারালাম</span>
+  </a>
+</nav>
+
+<script>
+  // ---------- Bookmarking ----------
+  const STORAGE_KEY = 'ei-jibon-porbo3-scroll';
+  const banner = document.getElementById('resumeBanner');
+
+  window.addEventListener('load', () => {
+    const saved = parseInt(localStorage.getItem(STORAGE_KEY) || '0', 10);
+    if (saved > 300 && saved < document.body.scrollHeight - window.innerHeight - 200) {
+      banner.classList.add('show');
+    }
+  });
+
+  function resumeScroll() {
+    const saved = parseInt(localStorage.getItem(STORAGE_KEY) || '0', 10);
+    window.scrollTo({ top: saved, behavior: 'smooth' });
+    banner.classList.remove('show');
+  }
+  function dismissBanner() {
+    banner.classList.remove('show');
+  }
+
+  let scrollTimer;
+  window.addEventListener('scroll', () => {
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(() => {
+      localStorage.setItem(STORAGE_KEY, window.scrollY.toString());
+    }, 400);
+  });
+
+  // ---------- Voice reading ----------
+  const paras = Array.from(document.querySelectorAll('#storyContent .para, #storyContent .lyric p'));
+  let currentIndex = 0;
+  let speaking = false;
+  let paused = false;
+
+  const playBtn = document.getElementById('playBtn');
+  const pauseBtn = document.getElementById('pauseBtn');
+  const stopBtn = document.getElementById('stopBtn');
+
+  function clearHighlight() {
+    paras.forEach(p => p.classList.remove('reading'));
+  }
+
+  function speakFrom(index) {
+    if (!('speechSynthesis' in window)) {
+      alert('আপনার ব্রাউজারে ভয়েস রিডিং সমর্থিত নয়।');
+      return;
+    }
+    if (index >= paras.length) {
+      stopReading();
+      return;
+    }
+    currentIndex = index;
+    clearHighlight();
+    const el = paras[index];
+    el.classList.add('reading');
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    const utter = new SpeechSynthesisUtterance(el.textContent);
+    utter.lang = 'bn-IN';
+    utter.rate = 0.95;
+    utter.onend = () => {
+      if (speaking && !paused) speakFrom(index + 1);
+    };
+    speechSynthesis.speak(utter);
+  }
+
+  function startReading() {
+    speechSynthesis.cancel();
+    speaking = true;
+    paused = false;
+    playBtn.style.display = 'none';
+    pauseBtn.style.display = 'inline-flex';
+    stopBtn.style.display = 'inline-flex';
+    speakFrom(0);
+  }
+
+  function togglePause() {
+    if (!speaking) return;
+    if (!paused) {
+      speechSynthesis.pause();
+      paused = true;
+      pauseBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg> চালিয়ে যান';
+    } else {
+      speechSynthesis.resume();
+      paused = false;
+      pauseBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg> থামান';
+    }
+  }
+
+  function stopReading() {
+    speechSynthesis.cancel();
+    speaking = false;
+    paused = false;
+    clearHighlight();
+    playBtn.style.display = 'inline-flex';
+    pauseBtn.style.display = 'none';
+    stopBtn.style.display = 'none';
+  }
+
+  window.addEventListener('beforeunload', () => speechSynthesis.cancel());
+</script>
+
+</body>
+</html>

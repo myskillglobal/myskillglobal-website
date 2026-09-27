@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="bn-IN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>তালাবদ্ধ দরজার আড়ালে — স্কুল নিরাপত্তা</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Baloo+Da+2:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0f1e; --bg2:#0f1830; --panel:#121b34;
+    --gold:#d4af6a; --gold-soft:#e8cd9a; --ink:#eef1fb; --ink-dim:#aab3cf;
+    --line:rgba(212,175,106,.18);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-padding-top:env(safe-area-inset-top,0px);}
+  body{
+    margin:0; background:radial-gradient(ellipse at top, var(--bg2), var(--bg) 60%);
+    color:var(--ink); font-family:'Hind Siliguri', sans-serif; font-size:19px; line-height:1.95;
+    padding-top:env(safe-area-inset-top,0px); padding-bottom:calc(40px + env(safe-area-inset-bottom,0px));
+  }
+  .wrap{max-width:760px; margin:0 auto; padding:0 24px;}
+  header.hero{
+    text-align:center; padding:70px 24px 46px; border-bottom:1px solid var(--line);
+    background:linear-gradient(180deg, rgba(212,175,106,.06), transparent);
+  }
+  .door{font-size:44px; filter:drop-shadow(0 0 18px rgba(212,175,106,.35));}
+  .kicker{font-family:'Inter',sans-serif; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); font-size:12px; margin:14px 0 6px;}
+  h1{font-family:'Baloo Da 2', sans-serif; font-weight:800; font-size:clamp(28px,5.2vw,42px); margin:8px 0 14px; color:var(--ink);}
+  .tags{font-family:'Hind Siliguri',sans-serif; font-size:14px; color:var(--ink-dim);}
+  .tags span{color:var(--gold-soft);}
+  nav.listen-bar{
+    display:flex; justify-content:center; gap:10px; padding:16px 24px; position:sticky; top:0; z-index:5;
+    background:rgba(10,15,30,.85); backdrop-filter:blur(6px); border-bottom:1px solid var(--line);
+  }
+  button.listen{
+    font-family:'Hind Siliguri',sans-serif; font-size:14px; color:var(--gold-soft);
+    background:transparent; border:1px solid var(--line); padding:9px 18px; border-radius:30px; cursor:pointer;
+    transition:.2s;
+  }
+  button.listen:hover{border-color:var(--gold); background:rgba(212,175,106,.08);}
+  button.listen.playing{background:var(--gold); color:#1a1305; border-color:var(--gold);}
+  main{padding:48px 24px 10px;}
+  section.beat{margin-bottom:44px;}
+  h2{font-family:'Baloo Da 2', sans-serif; font-weight:700; font-size:22px; color:var(--gold-soft); margin:0 0 14px;}
+  p{margin:0 0 16px; color:var(--ink);}
+  .drop::first-letter{
+    font-family:'Baloo Da 2', sans-serif; font-size:46px; float:left; line-height:.85; padding:4px 10px 0 0;
+    color:var(--gold); font-weight:800;
+  }
+  .rule{width:64px; height:1px; background:var(--line); margin:44px auto;}
+  .takeaways{
+    background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:36px 30px; margin:20px 0 60px;
+  }
+  .takeaways h2{text-align:center; margin-bottom:24px;}
+  .tk{display:flex; gap:14px; padding:14px 0; border-top:1px solid var(--line);}
+  .tk:first-of-type{border-top:none;}
+  .tk .ic{font-size:22px; flex:0 0 auto;}
+  .tk p{margin:0; font-size:18px; color:var(--ink-dim);}
+  footer{text-align:center; font-family:'Inter',sans-serif; font-size:12px; color:var(--ink-dim); opacity:.6; padding:20px 24px;}
+  @media (max-width:520px){ body{font-size:18px;} h1{font-size:28px;} .takeaways{padding:26px 18px;} }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="door">🚪</div>
+  <div class="kicker">স্কুল নিরাপত্তা</div>
+  <h1>তালাবদ্ধ দরজার আড়ালে</h1>
+  <p class="tags"><span>অসতর্কতা</span> · <span>দায়িত্ব</span> · <span>স্কুল নিরাপত্তা পদ্ধতি</span></p>
+</header>
+
+<nav class="listen-bar">
+  <button class="listen" id="playAll">▶ গল্পটি শুনুন</button>
+  <button class="listen" id="stopAll" style="display:none;">■ থামান</button>
+</nav>
+
+<main class="wrap">
+
+<section class="beat" data-read="ছোট্ট একটি শহরের হাইস্কুলে গ্রীষ্মের ছুটির আগের শেষ দিন। পুরো স্কুল জুড়ে ছিল উত্তেজনার আমেজ — এক মাসের লম্বা ছুটি শুরু হতে চলেছে, আর ছাত্রছাত্রীরা আনন্দে বাড়ি ফেরার প্রস্তুতি নিচ্ছিল। নবম শ্রেণীর ছাত্রী স্নেহা বন্ধুদের সঙ্গে হাসতে হাসতে বেরোচ্ছিল, হঠাৎ বলল, একটু দাঁড়া, আমি ওয়াশরুম হয়ে আসছি। কিন্তু ঠিক কোথায় যাচ্ছে তা কাউকে বলেনি। বন্ধুরা ভেবেছিল, কয়েক মিনিটের মধ্যেই ফিরে আসবে।">
+  <p class="drop">ছোট্ট একটি শহরের হাইস্কুলে গ্রীষ্মের ছুটির আগের শেষ দিন। পুরো স্কুল জুড়ে ছিল উত্তেজনার আমেজ — এক মাসের লম্বা ছুটি শুরু হতে চলেছে, আর ছাত্রছাত্রীরা আনন্দে বাড়ি ফেরার প্রস্তুতি নিচ্ছিল।</p>
+  <p>নবম শ্রেণীর ছাত্রী স্নেহা বন্ধুদের সঙ্গে হাসতে হাসতে বেরোচ্ছিল, হঠাৎ বলল, "একটু দাঁড়া, আমি ওয়াশরুম হয়ে আসছি।" কিন্তু ঠিক কোথায় যাচ্ছে তা কাউকে বলেনি। বন্ধুরা ভেবেছিল, কয়েক মিনিটের মধ্যেই ফিরে আসবে।</p>
+</section>
+
+<section class="beat" data-read="একটি ফাঁকা স্কুল। এদিকে স্কুলের দিন শেষ হয়ে গেল। একে একে শিক্ষক, কর্মী আর ছাত্রছাত্রীরা বাড়ি ফিরে গেল। প্রতিদিনের মতোই দারোয়ান ঘরগুলো তালা দিতে শুরু করল, আর শেষে ওয়াশরুমের লোহার দরজাতেও তালা দিয়ে দিল — না জেনেই যে স্নেহা তখনও ভিতরে আটকে আছে। দরজায় তালা পড়ার শব্দ শুনে স্নেহা ছুটে এল দরজার কাছে। দরজায় ধাক্কা দিয়ে চিৎকার করে বলল, কেউ আছেন? দয়া করে আমাকে বের করুন! কিন্তু ততক্ষণে স্কুল প্রায় ফাঁকা হয়ে গিয়েছিল। ওয়াশরুমটি মূল ভবন থেকে দূরে ছিল, তার আওয়াজ কারো কানে পৌঁছাল না।">
+  <h2>একটি ফাঁকা স্কুল</h2>
+  <p>এদিকে স্কুলের দিন শেষ হয়ে গেল। একে একে শিক্ষক, কর্মী আর ছাত্রছাত্রীরা বাড়ি ফিরে গেল। প্রতিদিনের মতোই দারোয়ান ঘরগুলো তালা দিতে শুরু করল, আর শেষে ওয়াশরুমের লোহার দরজাতেও তালা দিয়ে দিল — না জেনেই যে স্নেহা তখনও ভিতরে আটকে আছে।</p>
+  <p>দরজায় তালা পড়ার শব্দ শুনে স্নেহা ছুটে এল দরজার কাছে। দরজায় ধাক্কা দিয়ে চিৎকার করে বলল, "কেউ আছেন? দয়া করে আমাকে বের করুন!" কিন্তু ততক্ষণে স্কুল প্রায় ফাঁকা হয়ে গিয়েছিল। ওয়াশরুমটি মূল ভবন থেকে দূরে ছিল, তার আওয়াজ কারো কানে পৌঁছাল না।</p>
+</section>
+
+<section class="beat" data-read="দীর্ঘ খোঁজ। সন্ধ্যা নামল। স্নেহা বাড়ি ফিরল না। উদ্বিগ্ন বাবা-মা স্কুলে গেলেন। দারোয়ান বলল, সবাই তো অনেকক্ষণ আগেই চলে গেছে। তাঁরা আরেকবার খুঁজে দেখার অনুরোধ করলেন, কিন্তু দুর্ভাগ্যবশত স্কুলটি আর ভালোভাবে খোঁজা হলো না। পরের দিন নিখোঁজ ডায়েরি করা হলো। খবরের কাগজে তার ছবি বেরোল। সামাজিক মাধ্যমে খবর ছড়িয়ে পড়ল — সঙ্গে ছড়াল ভিত্তিহীন গুজবও। কেউ বলল তাকে অপহরণ করা হয়েছে, কেউ বলল সে নির্মীয়মাণ একটি সেতুর কাছে থাকতে পারে। অনেকে এই গুজবের পিছনে ছুটল, যদিও তার কোনো প্রমাণ ছিল না — অথচ যে জায়গাটা সবচেয়ে গুরুত্বপূর্ণ ছিল, স্কুলটি নিজেই, তা আর কখনো পুঙ্খানুপুঙ্খভাবে খোঁজা হলো না।">
+  <h2>দীর্ঘ খোঁজ</h2>
+  <p>সন্ধ্যা নামল। স্নেহা বাড়ি ফিরল না। উদ্বিগ্ন বাবা-মা স্কুলে গেলেন। দারোয়ান বলল, "সবাই তো অনেকক্ষণ আগেই চলে গেছে।" তাঁরা আরেকবার খুঁজে দেখার অনুরোধ করলেন, কিন্তু দুর্ভাগ্যবশত স্কুলটি আর ভালোভাবে খোঁজা হলো না।</p>
+  <p>পরের দিন নিখোঁজ ডায়েরি করা হলো। খবরের কাগজে তার ছবি বেরোল। সামাজিক মাধ্যমে খবর ছড়িয়ে পড়ল — সঙ্গে ছড়াল ভিত্তিহীন গুজবও। কেউ বলল তাকে অপহরণ করা হয়েছে, কেউ বলল সে নির্মীয়মাণ একটি সেতুর কাছে থাকতে পারে। অনেকে এই গুজবের পিছনে ছুটল, যদিও তার কোনো প্রমাণ ছিল না — অথচ যে জায়গাটা সবচেয়ে গুরুত্বপূর্ণ ছিল, স্কুলটি নিজেই, তা আর কখনো পুঙ্খানুপুঙ্খভাবে খোঁজা হলো না।</p>
+</section>
+
+<section class="beat" data-read="আবিষ্কার। দিন কেটে গেল। এক সপ্তাহ, দুই সপ্তাহ, প্রায় এক মাস। ছুটি শেষ হওয়ার আগের দিন, স্কুল পরিষ্কার করতে আসা এক কর্মী ওয়াশরুমের কাছে তীব্র দুর্গন্ধ লক্ষ্য করলেন। তালা খোলা হলে সবার বুক কেঁপে উঠল। ভিতরে পাওয়া গেল স্নেহার নিথর দেহ। সারা শহর শোকে স্তব্ধ হয়ে গেল। তদন্তে জানা গেল, কেউ না জেনেই স্নেহাকে ভিতরে তালাবন্দি করে ফেলেছিল, আর সে যখন নিখোঁজ হয়েছিল তখনই যদি পুরো স্কুল ভবন — প্রতিটি ঘর, প্রতিটি ওয়াশরুম — খুঁটিয়ে খোঁজা হতো, তাহলে হয়তো এই দুর্ঘটনা এড়ানো যেত।">
+  <h2>আবিষ্কার</h2>
+  <p>দিন কেটে গেল। এক সপ্তাহ, দুই সপ্তাহ, প্রায় এক মাস। ছুটি শেষ হওয়ার আগের দিন, স্কুল পরিষ্কার করতে আসা এক কর্মী ওয়াশরুমের কাছে তীব্র দুর্গন্ধ লক্ষ্য করলেন। তালা খোলা হলে সবার বুক কেঁপে উঠল। ভিতরে পাওয়া গেল স্নেহার নিথর দেহ। সারা শহর শোকে স্তব্ধ হয়ে গেল।</p>
+  <p>তদন্তে জানা গেল, কেউ না জেনেই স্নেহাকে ভিতরে তালাবন্দি করে ফেলেছিল, আর সে যখন নিখোঁজ হয়েছিল তখনই যদি পুরো স্কুল ভবন — প্রতিটি ঘর, প্রতিটি ওয়াশরুম — খুঁটিয়ে খোঁজা হতো, তাহলে হয়তো এই দুর্ঘটনা এড়ানো যেত।</p>
+</section>
+
+<div class="rule"></div>
+
+<section class="beat" data-read="নতুন নীতি। এই মর্মান্তিক ঘটনার পর জেলায় নতুন স্কুল নিরাপত্তা ব্যবস্থা চালু হলো: তালা দেওয়ার আগে প্রতিটি ঘর, ওয়াশরুম ও ভবন সাবধানে পরীক্ষা করতে হবে; ক্যাম্পাস ফাঁকা ঘোষণা করার আগে উপস্থিতি ক্রস-ভেরিফাই করতে হবে; কোনো ভবন তালা দেওয়ার আগে একাধিক কর্মীর নিশ্চিত করা আবশ্যক যে সেটি সম্পূর্ণ ফাঁকা; এবং যেখানে প্রযোজ্য, স্কুলগুলোকে শুধুমাত্র বাইরের তালার উপর নির্ভর না করে নিরাপদ তালা ব্যবস্থা বা জরুরি-মুক্তির ব্যবস্থা বিবেচনা করতে উৎসাহিত করা হলো। ছাত্রছাত্রীদেরও শেখানো হলো, একা কোথাও গেলে সবসময় যেন কোনো শিক্ষক বা বন্ধুকে ঠিক কোথায় যাচ্ছে তা বলে যায়। বছর পেরিয়ে গেছে, আজও সেই স্কুলে প্রতিদিন শেষে ঘণ্টা বাজে — আর শিক্ষকরা আজও চলে যাওয়ার আগে একবার করে প্রতিটি ওয়াশরুম, ক্লাসরুম আর কোণ ঘুরে দেখেন, কারণ তাঁরা জানেন, একটুখানি অসতর্কতা একটি পরিবারের জীবন চিরদিনের জন্য বদলে দিতে পারে।">
+  <h2>নতুন নীতি</h2>
+  <p>এই মর্মান্তিক ঘটনার পর জেলায় নতুন স্কুল নিরাপত্তা ব্যবস্থা চালু হলো: তালা দেওয়ার আগে প্রতিটি ঘর, ওয়াশরুম ও ভবন সাবধানে পরীক্ষা করতে হবে; ক্যাম্পাস ফাঁকা ঘোষণা করার আগে উপস্থিতি ক্রস-ভেরিফাই করতে হবে; কোনো ভবন তালা দেওয়ার আগে একাধিক কর্মীর নিশ্চিত করা আবশ্যক যে সেটি সম্পূর্ণ ফাঁকা; এবং যেখানে প্রযোজ্য, স্কুলগুলোকে শুধুমাত্র বাইরের তালার উপর নির্ভর না করে নিরাপদ তালা ব্যবস্থা বা জরুরি-মুক্তির ব্যবস্থা বিবেচনা করতে উৎসাহিত করা হলো। ছাত্রছাত্রীদেরও শেখানো হলো, একা কোথাও গেলে সবসময় যেন কোনো শিক্ষক বা বন্ধুকে ঠিক কোথায় যাচ্ছে তা বলে যায়।</p>
+  <p>বছর পেরিয়ে গেছে, আজও সেই স্কুলে প্রতিদিন শেষে ঘণ্টা বাজে — আর শিক্ষকরা আজও চলে যাওয়ার আগে একবার করে প্রতিটি ওয়াশরুম, ক্লাসরুম আর কোণ ঘুরে দেখেন, কারণ তাঁরা জানেন, একটুখানি অসতর্কতা একটি পরিবারের জীবন চিরদিনের জন্য বদলে দিতে পারে।</p>
+</section>
+
+<div class="takeaways">
+  <h2>মূল শিক্ষা</h2>
+  <div class="tk"><div class="ic">🏫</div><p>দিনের শেষে বা ছুটির আগে তালা দেওয়ার আগে স্কুলগুলোর উচিত প্রতিটি ক্লাসরুম, ওয়াশরুম ও ঘর সম্পূর্ণ ফাঁকা কিনা তা সাবধানে পরীক্ষা করা।</p></div>
+  <div class="tk"><div class="ic">👥</div><p>কোনো ছাত্রছাত্রী নিখোঁজ হলে সবচেয়ে গুরুত্বপূর্ণ প্রথম পদক্ষেপ হলো, তাকে শেষবার যেখানে দেখা গিয়েছিল সেই জায়গা — প্রতিষ্ঠানটি নিজেই — পুঙ্খানুপুঙ্খভাবে খোঁজা।</p></div>
+  <div class="tk"><div class="ic">⚠️</div><p>যাচাই না করা গুজব অনুসন্ধানকে বিভ্রান্ত করতে পারে এবং মূল্যবান সময় নষ্ট করতে পারে। প্রমাণ-ভিত্তিক তদন্তই সবচেয়ে গুরুত্বপূর্ণ।</p></div>
+  <div class="tk"><div class="ic">❤️</div><p>দায়িত্ববোধ, সতর্কতা এবং সঠিক নিরাপত্তা পদ্ধতি এমন একটি জীবন রক্ষা করতে পারে যা কখনো ফিরে পাওয়া যায় না।</p></div>
+</div>
+
+</main>
+
+<footer>স্কুল নিরাপত্তা, সচেতনতা ও দায়িত্ববোধ নিয়ে একটি গল্প।</footer>
+
+<script>
+(function(){
+  const synth = window.speechSynthesis;
+  const playBtn = document.getElementById('playAll');
+  const stopBtn = document.getElementById('stopAll');
+  const sections = Array.from(document.querySelectorAll('.beat'));
+  let queue = [], idx = 0;
+
+  function pickVoice(){
+    const voices = synth.getVoices();
+    return voices.find(v => v.lang === 'bn-IN') || voices.find(v => v.lang && v.lang.startsWith('bn')) || null;
+  }
+
+  function speakNext(){
+    if(idx >= queue.length){ finish(); return; }
+    const sec = queue[idx];
+    sec.classList.add('playing-section');
+    const u = new SpeechSynthesisUtterance(sec.dataset.read);
+    u.lang = 'bn-IN'; u.rate = 0.95; u.pitch = 1;
+    const v = pickVoice(); if(v) u.voice = v;
+    u.onend = () => { sec.classList.remove('playing-section'); idx++; speakNext(); };
+    u.onerror = () => { sec.classList.remove('playing-section'); idx++; speakNext(); };
+    synth.speak(u);
+  }
+
+  function finish(){
+    playBtn.style.display = 'inline-block';
+    stopBtn.style.display = 'none';
+    playBtn.classList.remove('playing');
+  }
+
+  playBtn.addEventListener('click', () => {
+    if(!synth){ alert('এই ব্রাউজারে ভয়েস প্লেব্যাক সমর্থিত নয়।'); return; }
+    synth.cancel();
+    queue = sections; idx = 0;
+    playBtn.style.display = 'none';
+    stopBtn.style.display = 'inline-block';
+    speakNext();
+  });
+
+  stopBtn.addEventListener('click', () => {
+    synth.cancel();
+    finish();
+  });
+})();
+</script>
+</body>
+</html>

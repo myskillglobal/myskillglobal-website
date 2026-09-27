@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>পর্ব ২ : অসার আর সার — এ জীবন গেলে ফিরে আসে না আবার</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;500;600;700&family=Hind+Siliguri:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ts-ink:#241a13;
+    --ts-parchment:#f2e8d3;
+    --ts-parchment-2:#e9dcc0;
+    --ts-walnut:#241610;
+    --ts-walnut-2:#3a2416;
+    --ts-brass:#a9814c;
+    --ts-brass-light:#d8bb80;
+    --ts-oxblood:#6d2c28;
+    --ts-muted:#71614c;
+    --ts-line:rgba(36,26,19,0.16);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ts-parchment);
+    color:var(--ts-ink);
+    font-family:"Noto Serif Bengali","Hind Siliguri",serif;
+    line-height:1.85;
+  }
+
+  /* ---------- TOP BAR ---------- */
+  .topbar{
+    position:sticky;
+    top:0;
+    z-index:20;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:1rem;
+    background:var(--ts-walnut);
+    color:var(--ts-parchment-2);
+    padding:0.85rem 5vw;
+    font-family:"Hind Siliguri",sans-serif;
+  }
+  .topbar a.home-link{
+    color:var(--ts-brass-light);
+    text-decoration:none;
+    font-size:0.92rem;
+    display:flex;
+    align-items:center;
+    gap:0.4rem;
+  }
+  .topbar a.home-link:hover{color:var(--ts-parchment);}
+  .topbar a.home-link svg{width:16px;height:16px;}
+  .voice-controls{
+    display:flex;
+    align-items:center;
+    gap:0.5rem;
+  }
+  .voice-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:0.4rem;
+    background:transparent;
+    border:1px solid var(--ts-brass);
+    color:var(--ts-brass-light);
+    font-family:"Hind Siliguri",sans-serif;
+    font-size:0.85rem;
+    padding:0.45rem 0.85rem;
+    border-radius:2px;
+    cursor:pointer;
+    transition:background 0.2s ease, color 0.2s ease;
+  }
+  .voice-btn:hover{background:var(--ts-brass); color:var(--ts-walnut);}
+  .voice-btn svg{width:15px;height:15px;}
+  .voice-status{
+    font-size:0.78rem;
+    color:var(--ts-muted);
+    display:none;
+  }
+
+  /* ---------- RESUME BANNER ---------- */
+  .resume-banner{
+    display:none;
+    align-items:center;
+    justify-content:space-between;
+    gap:1rem;
+    background:var(--ts-parchment-2);
+    border-bottom:1px solid var(--ts-line);
+    padding:0.8rem 5vw;
+    font-family:"Hind Siliguri",sans-serif;
+    font-size:0.9rem;
+    color:var(--ts-ink);
+  }
+  .resume-banner.show{display:flex;}
+  .resume-banner button{
+    background:var(--ts-oxblood);
+    color:var(--ts-parchment);
+    border:none;
+    padding:0.5rem 1rem;
+    font-family:"Hind Siliguri",sans-serif;
+    font-size:0.85rem;
+    border-radius:2px;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .resume-banner .dismiss{
+    background:transparent;
+    color:var(--ts-muted);
+    padding:0.3rem;
+  }
+
+  /* ---------- HEADER ---------- */
+  .story-header{
+    max-width:680px;
+    margin:0 auto;
+    padding:3.5rem 6vw 1rem;
+    text-align:center;
+  }
+  .story-header .series-name{
+    font-family:"Hind Siliguri",sans-serif;
+    font-size:0.9rem;
+    color:var(--ts-oxblood);
+    letter-spacing:0.01em;
+  }
+  .story-header h1{
+    font-size:clamp(1.6rem,3.4vw,2.2rem);
+    margin:0.6rem 0 0;
+    color:var(--ts-ink);
+  }
+
+  /* ---------- CONTENT ---------- */
+  .content{
+    max-width:680px;
+    margin:0 auto;
+    padding:1rem 6vw 4rem;
+  }
+  .lyric{
+    margin:2.2rem 0 2.6rem;
+    padding:1.4rem 1.6rem;
+    background:var(--ts-parchment-2);
+    border-left:3px solid var(--ts-brass);
+    font-style:italic;
+    color:var(--ts-walnut-2);
+    font-size:1.12rem;
+  }
+  .lyric p{margin:0.2rem 0;}
+  p.para{
+    margin:0 0 1.3rem;
+    font-size:1.12rem;
+    transition:background 0.4s ease;
+    border-radius:2px;
+    padding:0.1rem 0.3rem;
+    margin-left:-0.3rem;
+  }
+  p.para.reading{
+    background:rgba(169,129,76,0.16);
+  }
+  strong{color:var(--ts-oxblood); font-weight:600;}
+
+  /* ---------- FOOTER NAV ---------- */
+  .part-nav{
+    max-width:680px;
+    margin:0 auto;
+    padding:2rem 6vw 5rem;
+    display:flex;
+    justify-content:space-between;
+    gap:1rem;
+    border-top:1px solid var(--ts-line);
+    font-family:"Hind Siliguri",sans-serif;
+  }
+  .part-nav a{
+    display:flex;
+    flex-direction:column;
+    text-decoration:none;
+    color:var(--ts-ink);
+    max-width:45%;
+  }
+  .part-nav a .label{
+    font-size:0.78rem;
+    color:var(--ts-muted);
+  }
+  .part-nav a .title{
+    font-size:1rem;
+    font-weight:600;
+    margin-top:0.2rem;
+  }
+  .part-nav a:hover .title{color:var(--ts-oxblood);}
+  .part-nav a.next{text-align:right; align-items:flex-end; margin-left:auto;}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    p.para{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="home-link" href="index-time-story.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+    সূচিপত্রে ফিরুন
+  </a>
+  <div class="voice-controls">
+    <button class="voice-btn" id="playBtn" onclick="startReading()">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      পড়ে শোনান
+    </button>
+    <button class="voice-btn" id="pauseBtn" onclick="togglePause()" style="display:none;">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+      থামান
+    </button>
+    <button class="voice-btn" id="stopBtn" onclick="stopReading()" style="display:none;">
+      <svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12"/></svg>
+      বন্ধ
+    </button>
+  </div>
+</div>
+
+<div class="resume-banner" id="resumeBanner">
+  <span>আপনি আগে এই পর্বটি পড়ছিলেন — সেখান থেকে চালিয়ে যাবেন?</span>
+  <span style="display:flex; gap:0.5rem;">
+    <button onclick="resumeScroll()">চালিয়ে যান</button>
+    <button class="dismiss" onclick="dismissBanner()">না থাক</button>
+  </span>
+</div>
+
+<header class="story-header">
+  <div class="series-name">এ জীবন গেলে ফিরে আসে না আবার</div>
+  <h1>পর্ব ২ : অসার আর সার</h1>
+</header>
+
+<article class="content" id="storyContent">
+
+  <div class="lyric">
+    <p>“মনে রেখো এ সংসারে যারা কর বাস,</p>
+    <p>সং ছাড়ি সারটিতে রাখ অভিলাষ।”</p>
+  </div>
+
+  <p class="para">জীবনের পথে চলতে চলতে আমাদের সামনে প্রতিদিন কত কিছু আসে।</p>
+
+  <p class="para">সবকিছুই কি সমান গুরুত্বপূর্ণ?</p>
+
+  <p class="para">অয়ন তখন নবম শ্রেণিতে উঠেছে।</p>
+
+  <p class="para">বয়সটা এমন, যখন পড়াশোনার পাশাপাশি খেলাধুলা, বন্ধুদের সঙ্গে আড্ডা, নতুন নতুন কৌতূহল—সবকিছুই তাকে টানে।</p>
+
+  <p class="para">স্কুল থেকে ফিরে ব্যাগটা টেবিলের ওপর রেখে সে প্রথমে বই খুলত।</p>
+
+  <p class="para">কিন্তু বইয়ের পাশে রাখা মোবাইলটাই যেন তাকে বেশি করে ডাকত।</p>
+
+  <p class="para">একদিন রাহুল তাকে বলল, <strong>“নতুন একটা ভিডিও এসেছে। দেখেছিস?”</strong></p>
+
+  <p class="para">অয়ন বই বন্ধ করে মোবাইলটা হাতে নিল।</p>
+
+  <p class="para">— “না, দেখিনি।”</p>
+
+  <p class="para">— <strong>“দারুণ! পাঁচ মিনিটের।”</strong></p>
+
+  <p class="para">পাঁচ মিনিটের ভিডিও শেষ হলো। তারপর আরেকটা। তারপর আরেকটা।</p>
+
+  <p class="para">অয়ন যখন মোবাইলটা নামিয়ে রাখল, তখন প্রায় এক ঘণ্টা কেটে গেছে।</p>
+
+  <p class="para">টেবিলের ওপর বইটা ঠিক আগের জায়গাতেই পড়ে আছে।</p>
+
+  <p class="para">সে বই খুলল। অঙ্কের কয়েকটি সমস্যা সমাধান করতে হবে।</p>
+
+  <p class="para">প্রথম অঙ্কটা করতে গিয়ে আটকে গেল।</p>
+
+  <p class="para">মনে হলো— <strong>“আজ থাক। কাল ভালো করে করব।”</strong></p>
+
+  <p class="para">পরদিন স্কুলে শিক্ষক খাতা দেখতে চাইলেন।</p>
+
+  <p class="para">অয়ন খাতা খুলে চুপ করে দাঁড়িয়ে রইল।</p>
+
+  <p class="para">খাতায় অঙ্কগুলো অসম্পূর্ণ।</p>
+
+  <p class="para">শিক্ষক কিছুক্ষণ তার দিকে তাকিয়ে বললেন, <strong>“তুমি পারবে, অয়ন। কিন্তু শুধু পারলেই হবে না, সময়মতো কাজটাও করতে হবে।”</strong></p>
+
+  <p class="para">অয়ন মাথা নিচু করল।</p>
+
+  <p class="para">কথাটা খুব সাধারণ ছিল। কিন্তু সেদিন কথাটা তার মনে একটু দাগ কাটল।</p>
+
+  <p class="para">তবুও অভ্যাস বদলাল না।</p>
+
+  <p class="para">কয়েকদিন পর স্কুলে একটি আন্তঃশ্রেণি ফুটবল প্রতিযোগিতা শুরু হলো।</p>
+
+  <p class="para">অয়ন খেলতে খুব ভালোবাসত।</p>
+
+  <p class="para">বিকেলের পর বিকেল মাঠে কাটতে লাগল।</p>
+
+  <p class="para">খেলা খারাপ কিছু নয়। শরীর সুস্থ রাখতে খেলাধুলা দরকার। বন্ধুত্ব, দলগত কাজ, শৃঙ্খলা—খেলার মধ্যেও অনেক শিক্ষা আছে।</p>
+
+  <p class="para">কিন্তু সমস্যা হলো, অয়ন ধীরে ধীরে <strong>খেলার সময় আর পড়ার সময়ের মধ্যে ভারসাম্য হারিয়ে ফেলল।</strong></p>
+
+  <p class="para">একদিন বাবা বললেন, <strong>“খেলবি, অবশ্যই খেলবি। কিন্তু নিজের ভবিষ্যতের জন্যও তো সময় রাখতে হবে।”</strong></p>
+
+  <p class="para">অয়ন হেসে বলল, <strong>“চিন্তা করো না বাবা। পরীক্ষা এখনও অনেক দেরি।”</strong></p>
+
+  <p class="para">বাবা আর কিছু বললেন না।</p>
+
+  <p class="para">কারণ কিছু কথা মানুষকে বলে বোঝানো যায় না। সময়ই একদিন সেই কথার অর্থ বুঝিয়ে দেয়।</p>
+
+  <p class="para">পরীক্ষা এগিয়ে এল।</p>
+
+  <p class="para">অয়ন তখন একসঙ্গে অনেক কিছু সামলাতে গিয়ে বুঝল—সময়কে জমিয়ে রাখা যায় না।</p>
+
+  <p class="para">যে অধ্যায়গুলো মাসখানেক আগে পড়া যেত, এখন সেগুলো কয়েক রাতের মধ্যে শেষ করতে হবে।</p>
+
+  <p class="para">বন্ধুরা যখন পরীক্ষার আগে প্রস্তুতি গুছিয়ে নিচ্ছে, অয়ন তখন বইয়ের পাতা উল্টে চলেছে দ্রুত হাতে।</p>
+
+  <p class="para">রাতে পড়তে বসে হঠাৎ তার মনে হলো— <strong>“আমি যদি প্রতিদিন একটু একটু করে পড়তাম!”</strong></p>
+
+  <p class="para">কিন্তু এখন আর সেই প্রতিদিনগুলো তার হাতে নেই।</p>
+
+  <p class="para">পরীক্ষা শেষ হলো।</p>
+
+  <p class="para">ফল প্রকাশের দিন অয়ন আশানুরূপ নম্বর পেল না।</p>
+
+  <p class="para">রাহুল ভালো করেছে।</p>
+
+  <p class="para">অয়ন চুপ করে ফলের কাগজটা হাতে নিয়ে দাঁড়িয়ে রইল।</p>
+
+  <p class="para">বাড়ি ফেরার পথে সে প্রথমবার ভাবল— <strong>সব আনন্দ কি সত্যিই সমান?</strong></p>
+
+  <p class="para">এক ঘণ্টার একটি ভিডিও তাকে কী দিয়েছিল?</p>
+
+  <p class="para">কয়েক ঘণ্টার অতিরিক্ত খেলা কি তার পরীক্ষার ফলের চেয়ে বেশি গুরুত্বপূর্ণ ছিল?</p>
+
+  <p class="para">না। কিন্তু তখনও সে পুরো উত্তরটা জানত না।</p>
+
+  <p class="para">সে শুধু বুঝতে শুরু করেছিল— জীবনে এমন কিছু আছে, যা মুহূর্তের আনন্দ দেয়। আর এমন কিছু আছে, যা ভবিষ্যৎ তৈরি করে। দুটিকে এক করে ফেললে সমস্যা হয়।</p>
+
+  <p class="para">সেদিন রাতে অয়ন বই খুলে বসেছিল। মোবাইলটা টেবিলের অন্য প্রান্তে রেখে।</p>
+
+  <p class="para">কতক্ষণ পড়েছিল, সে জানত না।</p>
+
+  <p class="para">কিন্তু সেই রাতে প্রথমবার তার মনে হয়েছিল— <strong>সময়কে শুধু কাটিয়ে দিলেই হয় না। সময়কে কোথায় ব্যয় করছি, সেটাও গুরুত্বপূর্ণ।</strong></p>
+
+  <p class="para">জানালার বাইরে তখন রাত গভীর।</p>
+
+  <p class="para">ঘড়ির কাঁটা নিজের গতিতে এগিয়ে চলেছে।</p>
+
+  <p class="para">অয়ন বইয়ের পাতায় চোখ রাখল।</p>
+
+  <p class="para">তার সামনে তখনও অনেক বছর পড়ে আছে।</p>
+
+  <p class="para">সে জানত না, সেই “অনেক বছর” একদিন কত দ্রুত ফুরিয়ে যাবে।</p>
+
+</article>
+
+<nav class="part-nav">
+  <a class="prev" href="porbo-1t.html">
+    <span class="label">← আগের পর্ব</span>
+    <span class="title">১. জেগে ওঠার ডাক</span>
+  </a>
+  <a class="next" href="porbo-3t.html">
+    <span class="label">পরের পর্ব →</span>
+    <span class="title">৩. সুখ-দুঃখের আসা-যাওয়া</span>
+  </a>
+</nav>
+
+<script>
+  // ---------- Bookmarking ----------
+  const STORAGE_KEY = 'ei-jibon-porbo2-scroll';
+  const banner = document.getElementById('resumeBanner');
+
+  window.addEventListener('load', () => {
+    const saved = parseInt(localStorage.getItem(STORAGE_KEY) || '0', 10);
+    if (saved > 300 && saved < document.body.scrollHeight - window.innerHeight - 200) {
+      banner.classList.add('show');
+    }
+  });
+
+  function resumeScroll() {
+    const saved = parseInt(localStorage.getItem(STORAGE_KEY) || '0', 10);
+    window.scrollTo({ top: saved, behavior: 'smooth' });
+    banner.classList.remove('show');
+  }
+  function dismissBanner() {
+    banner.classList.remove('show');
+  }
+
+  let scrollTimer;
+  window.addEventListener('scroll', () => {
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(() => {
+      localStorage.setItem(STORAGE_KEY, window.scrollY.toString());
+    }, 400);
+  });
+
+  // ---------- Voice reading ----------
+  const paras = Array.from(document.querySelectorAll('#storyContent .para, #storyContent .lyric p'));
+  let currentIndex = 0;
+  let speaking = false;
+  let paused = false;
+
+  const playBtn = document.getElementById('playBtn');
+  const pauseBtn = document.getElementById('pauseBtn');
+  const stopBtn = document.getElementById('stopBtn');
+
+  function clearHighlight() {
+    paras.forEach(p => p.classList.remove('reading'));
+  }
+
+  function speakFrom(index) {
+    if (!('speechSynthesis' in window)) {
+      alert('আপনার ব্রাউজারে ভয়েস রিডিং সমর্থিত নয়।');
+      return;
+    }
+    if (index >= paras.length) {
+      stopReading();
+      return;
+    }
+    currentIndex = index;
+    clearHighlight();
+    const el = paras[index];
+    el.classList.add('reading');
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    const utter = new SpeechSynthesisUtterance(el.textContent);
+    utter.lang = 'bn-IN';
+    utter.rate = 0.95;
+    utter.onend = () => {
+      if (speaking && !paused) speakFrom(index + 1);
+    };
+    speechSynthesis.speak(utter);
+  }
+
+  function startReading() {
+    speechSynthesis.cancel();
+    speaking = true;
+    paused = false;
+    playBtn.style.display = 'none';
+    pauseBtn.style.display = 'inline-flex';
+    stopBtn.style.display = 'inline-flex';
+    speakFrom(0);
+  }
+
+  function togglePause() {
+    if (!speaking) return;
+    if (!paused) {
+      speechSynthesis.pause();
+      paused = true;
+      pauseBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg> চালিয়ে যান';
+    } else {
+      speechSynthesis.resume();
+      paused = false;
+      pauseBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg> থামান';
+    }
+  }
+
+  function stopReading() {
+    speechSynthesis.cancel();
+    speaking = false;
+    paused = false;
+    clearHighlight();
+    playBtn.style.display = 'inline-flex';
+    pauseBtn.style.display = 'none';
+    stopBtn.style.display = 'none';
+  }
+
+  window.addEventListener('beforeunload', () => speechSynthesis.cancel());
+</script>
+
+</body>
+</html>

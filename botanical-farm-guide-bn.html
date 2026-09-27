@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+
+<html lang="bn">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Surajit Roy" name="author"/>
+<meta content="© Surajit Roy" name="copyright"/>
+<meta content="index,follow" name="robots"/>
+<title>উদ্ভিদ সম্পদ – ভেষজ চাষ, ফুল চাষ, হাইড্রোপনিক্স ও আরও অনেক কিছু | MySkillGame</title>
+<meta content="MySkillGame থেকে ভেষজ চাষ, ফুল চাষ, হাইড্রোপনিক্স, শামুক চাষ, ভার্মিকম্পোস্ট ও মূল্য সংযোজিত পণ্য নিয়ে ব্যবহারিক গাইড।" name="description"/>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&amp;family=Quicksand:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#fffbf4;
+  --bg2:#fff8ec;
+  --paper:#ffffff;
+  --herb:#2e7d32;
+  --herb2:#43a047;
+  --herb3:#c8e6c9;
+  --rose:#c62828;
+  --rose2:#ef9a9a;
+  --rose3:#fce4e4;
+  --amber:#e65100;
+  --amber2:#ffcc80;
+  --amber3:#fff3e0;
+  --indigo:#283593;
+  --indigo2:#9fa8da;
+  --indigo3:#e8eaf6;
+  --teal:#00695c;
+  --teal2:#80cbc4;
+  --teal3:#e0f2f1;
+  --grape:#6a1b9a;
+  --grape2:#ce93d8;
+  --grape3:#f3e5f5;
+  --gold:#f57f17;
+  --gold2:#ffe082;
+  --gold3:#fffde7;
+  --brown:#4e342e;
+  --brown2:#bcaaa4;
+  --brown3:#efebe9;
+  --text:#1a2710;
+  --text2:#3c4a35;
+  --text3:#7a8c72;
+  --border:#ddd8cc;
+  --shadow:rgba(20,30,10,0.09);
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Quicksand',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  padding-bottom:60px;user-select:none;
+}
+
+/* ── HERO ── */
+.hero{
+  position:relative;overflow:hidden;
+  padding:0 0 0 0;
+  background:var(--herb);
+}
+.hero-banner{
+  background:linear-gradient(135deg,#1b5e20 0%,#2e7d32 40%,#388e3c 70%,#1b5e20 100%);
+  padding:38px 18px 30px;
+  text-align:center;
+  position:relative;
+}
+.hero-banner::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.hero-emojis{font-size:40px;display:flex;justify-content:center;gap:10px;margin-bottom:14px;position:relative;flex-wrap:wrap}
+.hero-emojis span{display:inline-block;animation:wobble 2.5s ease-in-out infinite}
+.hero-emojis span:nth-child(2){animation-delay:.3s}
+.hero-emojis span:nth-child(3){animation-delay:.6s}
+.hero-emojis span:nth-child(4){animation-delay:.9s}
+.hero-emojis span:nth-child(5){animation-delay:1.2s}
+.hero-emojis span:nth-child(6){animation-delay:1.5s}
+@keyframes wobble{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-7px) rotate(4deg)}}
+.hero h1{
+  font-family:'Abril Fatface',serif;
+  font-size:clamp(24px,6vw,44px);
+  color:#fff;
+  line-height:1.15;
+  position:relative;
+  text-shadow:0 2px 12px rgba(0,0,0,0.25);
+}
+.hero h1 em{color:var(--gold2);font-style:normal}
+.hero-sub{font-size:13px;color:rgba(255,255,255,0.8);margin-top:8px;position:relative;font-weight:600;letter-spacing:0.3px}
+.hero-ribbon{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:7px;margin-top:16px;position:relative;
+}
+.rb{
+  background:rgba(255,255,255,0.15);
+  border:1.5px solid rgba(255,255,255,0.35);
+  border-radius:20px;padding:4px 12px;
+  font-size:11px;color:#fff;font-weight:700;
+  backdrop-filter:blur(4px);
+}
+.myskill-tag{
+  background:rgba(245,127,23,0.18);
+  border:1.5px solid rgba(245,127,23,0.5);
+  border-radius:10px;padding:10px 16px;
+  font-size:11.5px;color:var(--gold2);
+  max-width:640px;margin:16px auto 0;
+  position:relative;line-height:1.6;font-weight:600;
+}
+
+/* ── CATEGORY SELECTOR (pill tabs) ── */
+.cat-strip{
+  background:#fff;
+  border-bottom:2px solid var(--border);
+  padding:10px 12px 0;
+  overflow-x:auto;scrollbar-width:none;
+  position:sticky;top:0;z-index:50;
+  box-shadow:0 3px 14px var(--shadow);
+}
+.cat-strip::-webkit-scrollbar{display:none}
+.cat-inner{display:flex;gap:6px;min-width:max-content;padding-bottom:10px}
+.cat-btn{
+  display:flex;align-items:center;gap:6px;
+  padding:8px 15px;border-radius:25px;
+  border:2px solid var(--border);background:var(--bg2);
+  font-size:12px;font-weight:700;cursor:pointer;
+  color:var(--text3);transition:all 0.22s;
+  font-family:'Quicksand',sans-serif;white-space:nowrap;
+}
+.cat-btn i{font-size:16px}
+.cat-btn.active,
+.cat-btn:hover{color:#fff;border-color:transparent}
+
+/* per-category active colour */
+.cat-btn[data-cat="medicinal"].active,.cat-btn[data-cat="medicinal"]:hover{background:var(--herb)}
+.cat-btn[data-cat="flori"].active,.cat-btn[data-cat="flori"]:hover{background:var(--rose)}
+.cat-btn[data-cat="hydro"].active,.cat-btn[data-cat="hydro"]:hover{background:var(--indigo)}
+.cat-btn[data-cat="snail"].active,.cat-btn[data-cat="snail"]:hover{background:var(--teal)}
+.cat-btn[data-cat="vermi"].active,.cat-btn[data-cat="vermi"]:hover{background:var(--brown)}
+.cat-btn[data-cat="value"].active,.cat-btn[data-cat="value"]:hover{background:var(--amber)}
+.cat-btn[data-cat="schemes"].active,.cat-btn[data-cat="schemes"]:hover{background:var(--grape)}
+.cat-btn[data-cat="export"].active,.cat-btn[data-cat="export"]:hover{background:var(--indigo)}
+.cat-btn[data-cat="myskill"].active,.cat-btn[data-cat="myskill"]:hover{background:var(--herb)}
+
+/* ── LAYOUT ── */
+.content{max-width:800px;margin:0 auto;padding:20px 14px}
+.section{display:none;animation:fadeUp 0.3s ease}
+.section.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── SECTION HEADER ── */
+.sec-head{
+  font-family:'Abril Fatface',serif;
+  font-size:19px;
+  margin:22px 0 14px;
+  display:flex;align-items:center;gap:10px;
+  letter-spacing:0.2px;
+}
+.sec-head i{font-size:21px}
+.sec-head-line{flex:1;height:2px;border-radius:4px;opacity:.35}
+.herb-head{color:var(--herb)} .herb-line{background:var(--herb)}
+.rose-head{color:var(--rose)} .rose-line{background:var(--rose)}
+.amber-head{color:var(--amber)} .amber-line{background:var(--amber)}
+.indigo-head{color:var(--indigo)} .indigo-line{background:var(--indigo)}
+.teal-head{color:var(--teal)} .teal-line{background:var(--teal)}
+.brown-head{color:var(--brown)} .brown-line{background:var(--brown)}
+.grape-head{color:var(--grape)} .grape-line{background:var(--grape)}
+
+/* ── ALERT ── */
+.alert{
+  border-radius:12px;padding:12px 16px;margin-bottom:16px;
+  font-size:13px;line-height:1.65;display:flex;gap:10px;align-items:flex-start;
+  font-weight:500;border-left:4px solid;
+}
+.alert i{font-size:20px;min-width:20px;margin-top:1px;flex-shrink:0}
+.al-herb{background:var(--herb3);border-color:var(--herb2);color:var(--herb)}
+.al-rose{background:var(--rose3);border-color:var(--rose2);color:var(--rose)}
+.al-amber{background:var(--amber3);border-color:var(--amber2);color:var(--amber)}
+.al-indigo{background:var(--indigo3);border-color:var(--indigo2);color:var(--indigo)}
+.al-teal{background:var(--teal3);border-color:var(--teal2);color:var(--teal)}
+.al-brown{background:var(--brown3);border-color:var(--brown2);color:var(--brown)}
+.al-grape{background:var(--grape3);border-color:var(--grape2);color:var(--grape)}
+.al-gold{background:var(--gold3);border-color:var(--gold2);color:var(--gold)}
+
+/* ── STATS ── */
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:16px}
+.stat-card{
+  background:var(--paper);border:2px solid var(--border);border-radius:14px;
+  padding:14px 12px;text-align:center;
+  box-shadow:0 2px 8px var(--shadow);transition:transform .2s;
+}
+.stat-card:hover{transform:translateY(-2px)}
+.stat-num{font-family:'Abril Fatface',serif;font-size:24px;line-height:1}
+.stat-label{font-size:10.5px;color:var(--text3);margin-top:5px;line-height:1.4;font-weight:600}
+.sn-herb{color:var(--herb)} .sn-rose{color:var(--rose)} .sn-amber{color:var(--amber)}
+.sn-indigo{color:var(--indigo)} .sn-teal{color:var(--teal)} .sn-grape{color:var(--grape)}
+
+/* ── PLANT CARDS ── */
+.plant-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:12px;margin-bottom:16px}
+.plant-card{
+  background:var(--paper);border:2px solid var(--border);border-radius:16px;
+  padding:16px 12px;text-align:center;
+  box-shadow:0 2px 8px var(--shadow);transition:all .2s;cursor:default;
+}
+.plant-card:hover{transform:translateY(-3px);box-shadow:0 8px 20px var(--shadow)}
+.plant-icon{font-size:32px;display:block;margin-bottom:8px;
+  animation:gentlePulse 3s ease-in-out infinite}
+@keyframes gentlePulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+.plant-name{font-size:13px;font-weight:700;color:var(--text);line-height:1.3}
+.plant-sci{font-size:10.5px;color:var(--text3);font-style:italic;margin-top:2px}
+.plant-price{font-size:11px;font-weight:700;margin-top:5px;padding:2px 8px;border-radius:10px;display:inline-block}
+.pp-herb{background:var(--herb3);color:var(--herb)}
+.pp-rose{background:var(--rose3);color:var(--rose)}
+.pp-amber{background:var(--amber3);color:var(--amber)}
+.pp-teal{background:var(--teal3);color:var(--teal)}
+.pp-grape{background:var(--grape3);color:var(--grape)}
+
+/* ── CARDS ── */
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-bottom:16px}
+.card{
+  background:var(--paper);border:2px solid var(--border);border-radius:16px;
+  padding:16px 18px;box-shadow:0 2px 8px var(--shadow);
+  transition:transform .2s,box-shadow .2s;
+}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 22px var(--shadow)}
+
+.c-herb{background:linear-gradient(135deg,#e8f5e9,#c8e6c9);border-color:rgba(46,125,50,.25)}
+.c-rose{background:linear-gradient(135deg,#fce4e4,#f8bbd0);border-color:rgba(198,40,40,.2)}
+.c-amber{background:linear-gradient(135deg,#fff3e0,#ffe0b2);border-color:rgba(230,81,0,.2)}
+.c-indigo{background:linear-gradient(135deg,#e8eaf6,#c5cae9);border-color:rgba(40,53,147,.2)}
+.c-teal{background:linear-gradient(135deg,#e0f2f1,#b2dfdb);border-color:rgba(0,105,92,.2)}
+.c-brown{background:linear-gradient(135deg,#efebe9,#d7ccc8);border-color:rgba(78,52,46,.2)}
+.c-grape{background:linear-gradient(135deg,#f3e5f5,#e1bee7);border-color:rgba(106,27,154,.2)}
+.c-gold{background:linear-gradient(135deg,#fffde7,#fff9c4);border-color:rgba(245,127,23,.25)}
+.c-paper{background:var(--paper);border-color:var(--border)}
+
+.card-title{font-size:14px;font-weight:700;margin-bottom:9px;display:flex;align-items:center;gap:8px;color:var(--text)}
+.card-title i{font-size:18px}
+.badge{display:inline-block;font-size:10.5px;padding:3px 10px;border-radius:20px;margin-bottom:9px;font-weight:700}
+.b-herb{background:var(--herb3);color:var(--herb);border:1px solid rgba(46,125,50,.4)}
+.b-rose{background:var(--rose3);color:var(--rose);border:1px solid rgba(198,40,40,.35)}
+.b-amber{background:var(--amber3);color:var(--amber);border:1px solid rgba(230,81,0,.35)}
+.b-indigo{background:var(--indigo3);color:var(--indigo);border:1px solid rgba(40,53,147,.35)}
+.b-teal{background:var(--teal3);color:var(--teal);border:1px solid rgba(0,105,92,.35)}
+.b-brown{background:var(--brown3);color:var(--brown);border:1px solid rgba(78,52,46,.35)}
+.b-grape{background:var(--grape3);color:var(--grape);border:1px solid rgba(106,27,154,.35)}
+.b-gold{background:var(--gold3);color:var(--gold);border:1px solid rgba(245,127,23,.4)}
+
+.tip{font-size:12.5px;color:var(--text2);line-height:1.7;padding:4px 0;border-bottom:1px solid var(--border);display:flex;gap:8px}
+.tip:last-child{border-bottom:none;padding-bottom:0}
+.tip::before{content:"✦";font-size:11px;line-height:2;min-width:12px;font-weight:900;flex-shrink:0}
+.tip-herb::before{color:var(--herb)}
+.tip-rose::before{color:var(--rose)}
+.tip-amber::before{color:var(--amber)}
+.tip-indigo::before{color:var(--indigo)}
+.tip-teal::before{color:var(--teal)}
+.tip-brown::before{color:var(--brown)}
+.tip-grape::before{color:var(--grape)}
+.tip-gold::before{color:var(--gold)}
+
+/* ── PROCESS STEPS ── */
+.steps{counter-reset:step;margin-bottom:16px}
+.step{
+  display:flex;gap:14px;align-items:flex-start;
+  padding:13px 15px;background:var(--paper);
+  border:2px solid var(--border);border-radius:14px;margin-bottom:10px;
+  box-shadow:0 2px 6px var(--shadow);
+}
+.step::before{
+  content:counter(step);counter-increment:step;
+  min-width:30px;height:30px;border-radius:50%;
+  color:#fff;font-weight:700;font-size:13px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Abril Fatface',serif;flex-shrink:0;margin-top:2px;
+}
+.step-herb::before{background:linear-gradient(135deg,var(--herb),var(--herb2))}
+.step-rose::before{background:linear-gradient(135deg,var(--rose),#e53935)}
+.step-amber::before{background:linear-gradient(135deg,var(--amber),#fb8c00)}
+.step-indigo::before{background:linear-gradient(135deg,var(--indigo),#3949ab)}
+.step-teal::before{background:linear-gradient(135deg,var(--teal),#00897b)}
+.step-brown::before{background:linear-gradient(135deg,var(--brown),#6d4c41)}
+.step-grape::before{background:linear-gradient(135deg,var(--grape),#8e24aa)}
+.step-title{font-size:13.5px;font-weight:700;color:var(--text);margin-bottom:4px}
+.step-desc{font-size:12px;color:var(--text2);line-height:1.65}
+
+/* ── FLOWER CARDS ── */
+.flower-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:10px;margin-bottom:14px}
+.flower-card{
+  background:var(--paper);border:2px solid var(--border);border-radius:14px;
+  padding:14px 10px;text-align:center;box-shadow:0 2px 6px var(--shadow);
+  transition:all .2s;
+}
+.flower-card:hover{transform:translateY(-3px);border-color:var(--rose2)}
+.flower-icon{font-size:30px;margin-bottom:6px;display:block}
+.flower-name{font-size:12px;font-weight:700;color:var(--text)}
+.flower-price{font-size:11px;color:var(--rose);font-weight:700;margin-top:3px}
+.flower-use{font-size:10.5px;color:var(--text3);margin-top:2px}
+
+/* ── VALUE PRODUCT ── */
+.value-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-bottom:14px}
+.value-card{
+  background:var(--paper);border:2px solid var(--border);border-radius:14px;
+  padding:14px 10px;text-align:center;box-shadow:0 2px 6px var(--shadow);
+  transition:all .2s;
+}
+.value-card:hover{transform:translateY(-3px);border-color:var(--amber2)}
+.value-icon{font-size:28px;margin-bottom:6px;display:block}
+.value-name{font-size:12px;font-weight:700;color:var(--text)}
+.value-margin{font-size:11px;font-weight:700;color:var(--amber);margin-top:3px}
+
+/* ── INCOME TABLE ── */
+.inc-table{width:100%;border-collapse:collapse;margin-bottom:16px;font-size:12.5px}
+.inc-table th{
+  padding:10px 12px;text-align:left;font-weight:700;
+  border:1.5px solid var(--border);font-size:11.5px;letter-spacing:.3px;color:#fff;
+}
+.inc-table td{
+  padding:9px 12px;border:1.5px solid var(--border);
+  color:var(--text2);background:var(--paper);vertical-align:top;line-height:1.6;
+}
+.inc-table tr:nth-child(even) td{background:var(--bg2)}
+.inc-table tr:hover td{background:#f0f8f1}
+
+/* ── MARKET BAR ── */
+.market-item{margin-bottom:12px}
+.market-label{display:flex;justify-content:space-between;margin-bottom:4px}
+.market-name{font-size:13px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:6px}
+.market-flag{font-size:16px}
+.market-pct{font-size:12px;font-weight:700}
+.market-bg{background:var(--border);border-radius:10px;height:9px;overflow:hidden}
+.market-fill{height:100%;border-radius:10px;transition:width .9s ease}
+
+/* ── STORY ── */
+.story{
+  background:linear-gradient(135deg,#f1f8e9,#e8f5e9);
+  border:2px solid rgba(46,125,50,.2);border-radius:16px;
+  padding:16px 18px;margin-bottom:14px;
+  box-shadow:0 2px 8px var(--shadow);
+}
+.story-header{display:flex;align-items:center;gap:12px;margin-bottom:9px}
+.story-avatar{
+  width:44px;height:44px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:21px;flex-shrink:0;
+}
+.story-name{font-size:14px;font-weight:700;color:var(--text)}
+.story-loc{font-size:11.5px;color:var(--teal)}
+.story-income{
+  display:inline-block;background:var(--herb3);
+  border:1px solid rgba(46,125,50,.3);border-radius:20px;
+  padding:2px 10px;font-size:11px;font-weight:700;color:var(--herb);margin-bottom:7px;
+}
+.story-text{font-size:12.5px;color:var(--text2);line-height:1.7}
+
+/* ── CHECKLIST ── */
+.chk-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);cursor:pointer;user-select:none}
+.chk-item:last-child{border-bottom:none}
+.chk-box{width:19px;height:19px;min-width:19px;border:2px solid var(--border);border-radius:5px;display:flex;align-items:center;justify-content:center;transition:all .15s;background:var(--paper)}
+.chk-box.done{background:var(--herb);border-color:var(--herb)}
+.chk-box.done i{color:#fff;font-size:12px}
+.chk-text{font-size:12.5px;color:var(--text2);line-height:1.6}
+.chk-text.done{text-decoration:line-through;color:var(--text3)}
+
+/* ── PROGRESS ── */
+.prog-wrap{margin-bottom:18px}
+.prog-label{font-size:11.5px;color:var(--text3);margin-bottom:5px;display:flex;justify-content:space-between;font-weight:600}
+.prog-bg{background:var(--border);border-radius:20px;height:8px;overflow:hidden}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--herb2),var(--teal));border-radius:20px;transition:width .3s}
+
+/* ── FOOTER ── */
+.myskill-footer{
+  background:linear-gradient(135deg,#e8f5e9,#e0f2f1);
+  border:2px solid rgba(46,125,50,.25);border-radius:18px;
+  padding:22px 20px;margin-top:22px;text-align:center;
+  box-shadow:0 4px 16px var(--shadow);
+}
+.myskill-footer h3{font-family:'Abril Fatface',serif;font-size:22px;color:var(--herb);margin-bottom:8px}
+.myskill-footer h3 em{color:var(--amber);font-style:normal}
+.myskill-footer p{font-size:12.5px;color:var(--text2);line-height:1.7;max-width:580px;margin:0 auto 14px}
+.ms-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;margin-bottom:14px}
+.ms-pill{background:rgba(46,125,50,.1);border:1px solid rgba(46,125,50,.3);border-radius:20px;padding:4px 12px;font-size:11.5px;color:var(--herb);font-weight:700}
+.tagline{font-size:11px;color:var(--amber);font-style:italic;border-top:1px solid var(--border);padding-top:12px;font-weight:600}
+
+/* ── HYDROPONIC DIAGRAM ── */
+.hydro-compare{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.hydro-col{background:var(--paper);border:2px solid var(--border);border-radius:14px;padding:14px;box-shadow:0 2px 6px var(--shadow)}
+.hydro-col-title{font-size:13px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+
+/* ── RESPONSIVE ── */
+@media(max-width:520px){
+  .cards-grid{grid-template-columns:1fr}
+  .plant-grid{grid-template-columns:repeat(2,1fr)}
+  .flower-grid{grid-template-columns:repeat(2,1fr)}
+  .value-grid{grid-template-columns:repeat(2,1fr)}
+  .stat-row{grid-template-columns:repeat(2,1fr)}
+  .hydro-compare{grid-template-columns:1fr}
+  .hero h1{font-size:22px}
+  .hero-emojis{font-size:30px;gap:8px}
+}
+</style>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1034022057999423"></script><link href="https://myskillgame.netlify.app/11-7-26 website/botanical-farm-guide.html" rel="canonical"/></head>
+<body>
+<!-- ══ HERO ══ -->
+<div class="hero">
+<div class="hero-banner">
+<div class="hero-emojis">
+<span>🌿</span><span>🌺</span><span>💧</span><span>🐌</span><span>🪱</span><span>🍯</span>
+</div>
+<h1>উদ্ভিদ <em>সম্পদ</em> গাইড</h1>
+<p class="hero-sub">ভেষজ উদ্ভিদ · ফুল চাষ · হাইড্রোপনিক্স · শামুক চাষ · ভার্মিকম্পোস্ট · মূল্য সংযোজিত পণ্য</p>
+<div class="hero-ribbon">
+<span class="rb">🌿 ভেষজ উদ্ভিদ</span>
+<span class="rb">🌺 ফুল চাষ</span>
+<span class="rb">💧 হাইড্রোপনিক্স</span>
+<span class="rb">🐌 শামুক চাষ</span>
+<span class="rb">🪱 ভার্মিকম্পোস্ট</span>
+<span class="rb">🍯 মূল্য সংযোজিত পণ্য</span>
+</div>
+<div class="myskill-tag">
+      🎓 <strong>MySkillGame-এর জন্য তৈরি</strong> – বৃত্তিমূলক শিক্ষা, উদ্যোক্তা উন্নয়ন, আর্থিক সাক্ষরতা, পরিবেশ সচেতনতা এবং টেকসই জীবিকার সুযোগ প্রচারের লক্ষ্যে।
+    </div>
+</div>
+</div>
+<!-- ══ CATEGORY TABS ══ -->
+<div class="cat-strip">
+<div class="cat-inner">
+<button class="cat-btn active" data-cat="medicinal" onclick="switchCat('medicinal',this)"><i class="ti ti-leaf"></i>ভেষজ উদ্ভিদ</button>
+<button class="cat-btn" data-cat="flori" onclick="switchCat('flori',this)"><i class="ti ti-rosette"></i>ফুল চাষ</button>
+<button class="cat-btn" data-cat="hydro" onclick="switchCat('hydro',this)"><i class="ti ti-droplet"></i>হাইড্রোপনিক্স</button>
+<button class="cat-btn" data-cat="snail" onclick="switchCat('snail',this)"><i class="ti ti-snail"></i>শামুক চাষ</button>
+<button class="cat-btn" data-cat="vermi" onclick="switchCat('vermi',this)"><i class="ti ti-worm"></i>ভার্মিকম্পোস্ট</button>
+<button class="cat-btn" data-cat="value" onclick="switchCat('value',this)"><i class="ti ti-bottle"></i>মূল্য সংযোজিত পণ্য</button>
+<button class="cat-btn" data-cat="schemes" onclick="switchCat('schemes',this)"><i class="ti ti-clipboard-list"></i>সরকারি প্রকল্প</button>
+<button class="cat-btn" data-cat="export" onclick="switchCat('export',this)"><i class="ti ti-world"></i>রপ্তানি</button>
+<button class="cat-btn" data-cat="myskill" onclick="switchCat('myskill',this)"><i class="ti ti-school"></i>MySkillGame</button>
+</div>
+</div>
+<div class="content">
+<!-- ══ MEDICINAL PLANTS ══ -->
+<div class="section active" id="cat-medicinal">
+<div class="alert al-herb"><i class="ti ti-sparkles"></i><span>ভেষজ উদ্ভিদ উৎপাদন ও রপ্তানিতে ভারত বিশ্বে শীর্ষস্থানে। বিশ্বব্যাপী ভেষজ বাজার <strong>২০৩০ সালের মধ্যে ৬০০ বিলিয়ন ডলারে</strong> পৌঁছাবে বলে অনুমান করা হচ্ছে — আর আপনার বাড়ির পেছনের জমিও এর অংশ হতে পারে।</span></div>
+<div class="stat-row">
+<div class="stat-card"><div class="stat-num sn-herb">₹৮,০০০ কোটি</div><div class="stat-label">ভারতের বার্ষিক ভেষজ উদ্ভিদ রপ্তানি</div></div>
+<div class="stat-card"><div class="stat-num sn-herb">৪৫%</div><div class="stat-label">অশ্বগন্ধার বিশ্ব চাহিদার বার্ষিক বৃদ্ধির হার (CAGR)</div></div>
+<div class="stat-card"><div class="stat-num sn-herb">৭,৫০০+</div><div class="stat-label">ভারতে ভেষজ উদ্ভিদের প্রজাতি</div></div>
+<div class="stat-card"><div class="stat-num sn-herb">০.১ একর</div><div class="stat-label">লাভজনকভাবে শুরু করার জন্য ন্যূনতম প্রয়োজনীয় জমি</div></div>
+</div>
+<div class="sec-head herb-head"><i class="ti ti-leaf"></i>চাষের জন্য প্রধান ভেষজ উদ্ভিদ <span class="sec-head-line herb-line"></span></div>
+<div class="plant-grid">
+<div class="plant-card">
+<span class="plant-icon">🌿</span>
+<div class="plant-name">তুলসী (Holy Basil)</div>
+<div class="plant-sci">Ocimum sanctum</div>
+<div class="plant-price pp-herb">₹২০–৬০/কেজি শুকনো</div>
+</div>
+<div class="plant-card">
+<span class="plant-icon">🌱</span>
+<div class="plant-name">অশ্বগন্ধা</div>
+<div class="plant-sci">Withania somnifera</div>
+<div class="plant-price pp-herb">₹৮০–২৫০/কেজি মূল</div>
+</div>
+<div class="plant-card">
+<span class="plant-icon">🪴</span>
+<div class="plant-name">অ্যালোভেরা</div>
+<div class="plant-sci">Aloe barbadensis</div>
+<div class="plant-price pp-herb">₹৫০–৩০০/লিটার জেল</div>
+</div>
+<div class="plant-card">
+<span class="plant-icon">🌾</span>
+<div class="plant-name">লেমনগ্রাস</div>
+<div class="plant-sci">Cymbopogon citratus</div>
+<div class="plant-price pp-amber">₹৮০০–২,৫০০/কেজি তেল</div>
+</div>
+<div class="plant-card">
+<span class="plant-icon">🌿</span>
+<div class="plant-name">সিট্রোনেলা</div>
+<div class="plant-sci">Cymbopogon nardus</div>
+<div class="plant-price pp-amber">₹৭০০–১,৮০০/কেজি তেল</div>
+</div>
+<div class="plant-card">
+<span class="plant-icon">🌺</span>
+<div class="plant-name">শতমূলী</div>
+<div class="plant-sci">Asparagus racemosus</div>
+<div class="plant-price pp-herb">₹১০০–৪০০/কেজি মূল</div>
+</div>
+<div class="plant-card">
+<span class="plant-icon">🌿</span>
+<div class="plant-name">ব্রাহ্মী</div>
+<div class="plant-sci">Bacopa monnieri</div>
+<div class="plant-price pp-herb">₹৪০–১২০/কেজি শুকনো</div>
+</div>
+<div class="plant-card">
+<span class="plant-icon">🌱</span>
+<div class="plant-name">স্টিভিয়া</div>
+<div class="plant-sci">Stevia rebaudiana</div>
+<div class="plant-price pp-teal">₹১৫০–৬০০/কেজি পাতা</div>
+</div>
+<div class="plant-card">
+<span class="plant-icon">💛</span>
+<div class="plant-name">হলুদ (ভেষজ)</div>
+<div class="plant-sci">Curcuma longa</div>
+<div class="plant-price pp-amber">₹২০০–১,২০০/কেজি নির্যাস</div>
+</div>
+<div class="plant-card">
+<span class="plant-icon">🌿</span>
+<div class="plant-name">পুদিনা (পিপারমিন্ট)</div>
+<div class="plant-sci">Mentha × piperita</div>
+<div class="plant-price pp-teal">₹৬০০–১,৫০০/কেজি তেল</div>
+</div>
+</div>
+<div class="sec-head herb-head"><i class="ti ti-settings-2"></i>কীভাবে শুরু করবেন — ধাপে ধাপে <span class="sec-head-line herb-line"></span></div>
+<div class="steps">
+<div class="step step-herb"><div><div class="step-title">২–৩টি উচ্চ-চাহিদাসম্পন্ন ফসল বেছে নিন</div><div class="step-desc">তুলসী + লেমনগ্রাস + অ্যালোভেরা দিয়ে শুরু করুন। এগুলোর যত্ন কম লাগে, স্থানীয় ও রপ্তানি বাজারে শক্তিশালী চাহিদা আছে, এবং বাঁকুড়া জেলাসহ সমগ্র পশ্চিমবঙ্গে ভালো জন্মায়।</div></div></div>
+<div class="step step-herb"><div><div class="step-title">জমি প্রস্তুতি ও উপকরণ সংগ্রহ</div><div class="step-desc">একর প্রতি ৫–৮ টন জৈব সার দিয়ে উঁচু বেড তৈরি করুন। CSIR-NBRI লখনউ, CIMAP (কেন্দ্রীয় ভেষজ ও সুগন্ধি উদ্ভিদ গবেষণা প্রতিষ্ঠান) বা নিকটস্থ KVK থেকে প্রত্যায়িত রোপণ উপকরণ সংগ্রহ করুন। ভেষজ উদ্ভিদের ক্ষেত্রে অপ্রত্যায়িত রাস্তার বিক্রেতা এড়িয়ে চলুন।</div></div></div>
+<div class="step step-herb"><div><div class="step-title">চাষ ও ফাঁক পূরণ</div><div class="step-desc">ভালো জন্মানোর জন্য বর্ষাকালে (জুলাই–আগস্ট) রোপণ করুন। তুলসী: ৩০×৩০ সেমি ব্যবধান; লেমনগ্রাস: ৬০×৬০ সেমি; অ্যালোভেরা: ৪৫×৪৫ সেমি। প্রথম ২ মাসে আগাছা নিয়ন্ত্রণ অত্যন্ত জরুরি। ভারী রাসায়নিক সার নয় — বাজারে ভালো দামের জন্য জৈব পদ্ধতি অগ্রাধিকার পায়।</div></div></div>
+<div class="step step-herb"><div><div class="step-title">ফসল কাটা ও শুকানো</div><div class="step-desc">তুলসী: প্রতি ৬০–৭৫ দিনে উপরের অংশ কাটুন। লেমনগ্রাস: প্রতি ৩ মাসে মাটি থেকে ১৫ সেমি উপরে কাটুন। অ্যালোভেরা: ৬–৮ মাস পর বাইরের পাতা কাটুন। সক্রিয় উপাদান ধরে রাখতে ৪৫°C-এর নিচে ছায়ায় শুকান। রপ্তানির জন্য আর্দ্রতা ১০%-এর নিচে রাখুন।</div></div></div>
+<div class="step step-herb"><div><div class="step-title">এসেনশিয়াল অয়েল নিষ্কাশন (উন্নত পদ্ধতি)</div><div class="step-desc">লেমনগ্রাস/সিট্রোনেলা তেলের জন্য বাষ্প পাতন যন্ত্র: ছোট ইউনিট ₹৫০,০০০–১,৫০,০০০। ১০০ কেজি তাজা লেমনগ্রাস থেকে ০.৬–০.৮ কেজি এসেনশিয়াল অয়েল পাওয়া যায়, যার মূল্য ₹৮০০–২,৫০০/কেজি। বিক্রির আগে CIMAP বা বেসরকারি ল্যাবে তেল পরীক্ষা করান।</div></div></div>
+<div class="step step-herb"><div><div class="step-title">বিক্রয় ও নিবন্ধন</div><div class="step-desc">শুকনো ভেষজ স্থানীয় আয়ুর্বেদিক ওষুধ প্রস্তুতকারক, কলকাতার বড়বাজার ভেষজ বাজারের ব্যবসায়ী বা eNAM-এর মাধ্যমে পাইকারি ক্রেতাদের কাছে বিক্রি করুন। রপ্তানির জন্য: ভেষজ রপ্তানি সনদের জন্য APEDA + আয়ুষ মন্ত্রণালয়ে নিবন্ধন করুন। AGMARK সনদ আপনার বাজারমূল্য উল্লেখযোগ্যভাবে বাড়ায়।</div></div></div>
+</div>
+<div class="sec-head herb-head"><i class="ti ti-package"></i>পণ্য ও মূল্য শৃঙ্খল <span class="sec-head-line herb-line"></span></div>
+<div class="cards-grid">
+<div class="card c-herb">
+<div class="card-title"><i class="ti ti-flask"></i>এসেনশিয়াল অয়েল (সর্বোচ্চ মূল্য)</div>
+<span class="badge b-herb">₹৭০০–২৫,০০০/কেজি</span>
+<div class="tip tip-herb">লেমনগ্রাস তেল: ₹৮০০–২,৫০০/কেজি — জাপান, আমেরিকা, জার্মানি শীর্ষ ক্রেতা</div>
+<div class="tip tip-herb">সিট্রোনেলা তেল: ₹৭০০–১,৮০০/কেজি — প্রাকৃতিক মশা প্রতিরোধক, ইউরোপে শক্তিশালী চাহিদা</div>
+<div class="tip tip-herb">পুদিনা তেল: ₹১,৫০০–৬,০০০/কেজি — খাদ্য, ওষুধ, প্রসাধনী শিল্পে ব্যবহৃত</div>
+<div class="tip tip-herb">রোজ জেরানিয়াম তেল: ₹৮,০০০–২৫,০০০/কেজি — বিলাসবহুল পারফিউম শিল্পের উপাদান</div>
+</div>
+<div class="card c-teal">
+<div class="card-title"><i class="ti ti-leaf"></i>শুকনো ভেষজ ও গুঁড়ো</div>
+<span class="badge b-teal">স্থিতিশীল আয়</span>
+<div class="tip tip-teal">অশ্বগন্ধা মূলের গুঁড়ো: ₹১৫০–৮০০/কেজি — নিউট্রাসিউটিক্যাল বাজার বছরে ৪০% বাড়ছে</div>
+<div class="tip tip-teal">তুলসী শুকনো পাতা: ₹৪০–২০০/কেজি — ভেষজ চায়ের উপাদান, ইউরোপে রপ্তানি হয়</div>
+<div class="tip tip-teal">অ্যালোভেরা জেল/গুঁড়ো: ₹৩০০–১,২০০/কেজি — প্রসাধনী, খাদ্য শিল্পে চাহিদা</div>
+<div class="tip tip-teal">স্টিভিয়া পাতার গুঁড়ো: ₹২০০–১,০০০/কেজি — প্রাকৃতিক মিষ্টিকারক, বিশ্বব্যাপী চিনির বিকল্প হয়ে উঠছে</div>
+</div>
+<div class="card c-amber">
+<div class="card-title"><i class="ti ti-brand-mastercard"></i>প্রক্রিয়াজাত পণ্য</div>
+<span class="badge b-amber">সর্বোচ্চ মুনাফা</span>
+<div class="tip tip-amber">তুলসী হার্বাল টি ব্যাগ — ব্র্যান্ডেড প্যাকেজিং, ₹২০০–৮০০/১০০ ব্যাগ বিক্রি হয়</div>
+<div class="tip tip-amber">অ্যালোভেরা জুস (বোতলজাত) — FSSAI লাইসেন্সপ্রাপ্ত, খুচরা মূল্য ₹৮০–২০০/লিটার</div>
+<div class="tip tip-amber">অশ্বগন্ধা ক্যাপসুল — ওষুধ কোম্পানির সহযোগিতায় বা নিজস্ব ব্র্যান্ডে, ₹৪০০–২,০০০/বোতল</div>
+<div class="tip tip-amber">হার্বাল ফেস প্যাক / কসমেটিক কিট — কুটির শিল্প, ইনস্টাগ্রাম ও অ্যামাজনে বিক্রি</div>
+</div>
+</div>
+</div>
+<!-- ══ FLORICULTURE ══ -->
+<div class="section" id="cat-flori">
+<div class="alert al-rose"><i class="ti ti-rosette"></i><span>ভারতের ফুল চাষের বাজার ₹১৫,০০০ কোটির বেশি এবং বছরে ২৫% হারে বাড়ছে। ফুল চাষ সবচেয়ে <strong>মন্দা-প্রতিরোধী</strong> ব্যবসাগুলোর একটি — বিয়ে, উৎসব ও রপ্তানি থেকে চাহিদা কখনো থামে না।</span></div>
+<div class="stat-row">
+<div class="stat-card"><div class="stat-num sn-rose">₹১৫,০০০ কোটি</div><div class="stat-label">ভারতের অভ্যন্তরীণ ফুল চাষের বাজার</div></div>
+<div class="stat-card"><div class="stat-num sn-rose">$৮০০ মিলিয়ন</div><div class="stat-label">২০২৫-এ ভারতের ফুল রপ্তানির লক্ষ্যমাত্রা</div></div>
+<div class="stat-card"><div class="stat-num sn-rose">৩৬৫ দিন</div><div class="stat-label">চাহিদা কখনো থামে না — সারাবছর উৎসব</div></div>
+<div class="stat-card"><div class="stat-num sn-rose">₹৩–৮ লাখ</div><div class="stat-label">০.৫ একর পলি-হাউস প্রতি বার্ষিক আয়</div></div>
+</div>
+<div class="sec-head rose-head"><i class="ti ti-rosette"></i>চাহিদা অনুযায়ী ফুল চাষ <span class="sec-head-line rose-line"></span></div>
+<div class="flower-grid">
+<div class="flower-card"><span class="flower-icon">🌼</span><div class="flower-name">গাঁদা</div><div class="flower-price">₹১৫–৬০/কেজি</div><div class="flower-use">পূজা · মালা · রং</div></div>
+<div class="flower-card"><span class="flower-icon">🤍</span><div class="flower-name">রজনীগন্ধা</div><div class="flower-price">₹৪০–১২০/কেজি</div><div class="flower-use">বিয়ে · রপ্তানি</div></div>
+<div class="flower-card"><span class="flower-icon">🌸</span><div class="flower-name">জারবেরা</div><div class="flower-price">₹২–৮/কাণ্ড</div><div class="flower-use">তোড়া · হোটেল</div></div>
+<div class="flower-card"><span class="flower-icon">🌹</span><div class="flower-name">গোলাপ</div><div class="flower-price">₹৩–১৫/কাণ্ড</div><div class="flower-use">সকল অনুষ্ঠান · রপ্তানি</div></div>
+<div class="flower-card"><span class="flower-icon">🌻</span><div class="flower-name">চন্দ্রমল্লিকা</div><div class="flower-price">₹৩০–১০০/কেজি</div><div class="flower-use">পূজা · সাজসজ্জা</div></div>
+<div class="flower-card"><span class="flower-icon">💐</span><div class="flower-name">গ্ল্যাডিওলাস</div><div class="flower-price">₹২–৬/কাণ্ড</div><div class="flower-use">সাজসজ্জা · ফুলবিক্রেতা</div></div>
+<div class="flower-card"><span class="flower-icon">🌺</span><div class="flower-name">অ্যান্থুরিয়াম</div><div class="flower-price">₹১৫–৬০/কাণ্ড</div><div class="flower-use">হোটেল · রপ্তানি</div></div>
+<div class="flower-card"><span class="flower-icon">💜</span><div class="flower-name">অর্কিড (হাইব্রিড)</div><div class="flower-price">₹৩০–২০০/কাণ্ড</div><div class="flower-use">বিলাসবহুল · রপ্তানি</div></div>
+</div>
+<div class="sec-head rose-head"><i class="ti ti-calendar-event"></i>বার্ষিক বাজার সুযোগ <span class="sec-head-line rose-line"></span></div>
+<div class="cards-grid">
+<div class="card c-rose">
+<div class="card-title"><i class="ti ti-star"></i>উৎসব ও ধর্মীয় চাহিদা</div>
+<span class="badge b-rose">সারাবছর বিক্রি</span>
+<div class="tip tip-rose">দুর্গাপূজা (অক্টোবর) — বাংলার সবচেয়ে বড় চাহিদা; গাঁদা, রজনীগন্ধার দাম ৩০০–৫০০% বেড়ে যায়</div>
+<div class="tip tip-rose">কালীপূজা, জগদ্ধাত্রী পূজা — বাংলায় একের পর এক উৎসবের চাহিদা</div>
+<div class="tip tip-rose">সরস্বতী পূজা (ফেব্রুয়ারি) — পশ্চিমবঙ্গে হলুদ গাঁদার চাহিদা বিশেষভাবে বেশি</div>
+<div class="tip tip-rose">ঈদ, বড়দিন, দীপাবলি — সারা ভারতে সারাবছর ধারাবাহিক চাহিদা</div>
+<div class="tip tip-rose">মন্দিরে সরবরাহ চুক্তি — স্থানীয় মন্দির ও প্যান্ডেল থেকে স্থিতিশীল দৈনিক আয়</div>
+</div>
+<div class="card c-amber">
+<div class="card-title"><i class="ti ti-heart"></i>বিয়ে ও অনুষ্ঠানের বাজার</div>
+<span class="badge b-amber">উচ্চমূল্যের অর্ডার</span>
+<div class="tip tip-amber">বিয়ের মরসুম (নভেম্বর–ফেব্রুয়ারি) — সাজসজ্জাকারীদের কাছ থেকে প্রতি অনুষ্ঠানে ₹১০,০০০–৫,০০,০০০ মূল্যের বড় অর্ডার</div>
+<div class="tip tip-amber">কর্পোরেট অনুষ্ঠান, হোটেল সাজসজ্জা — মাসিক সরবরাহ চুক্তি সম্ভব</div>
+<div class="tip tip-amber">শুকনো ফুলের কারুপণ্য — Etsy, Amazon Handmade-এর মাধ্যমে ইউরোপ ও আমেরিকায় রপ্তানি</div>
+<div class="tip tip-amber">ফুলের এসেনশিয়াল অয়েল (গোলাপ, জুঁই) — কসমেটিক গ্রেড, উচ্চমূল্যের রপ্তানি</div>
+</div>
+</div>
+<div class="sec-head rose-head"><i class="ti ti-settings-2"></i>চাষের কৌশল — গাঁদা ও রজনীগন্ধা <span class="sec-head-line rose-line"></span></div>
+<div class="steps">
+<div class="step step-rose"><div><div class="step-title">গাঁদা — সবচেয়ে সহজ শুরু</div><div class="step-desc">জুন–জুলাইয়ে নার্সারি ট্রেতে বীজ বপন করুন। ২৫–৩০ দিনে ৪৫×৪৫ সেমি ব্যবধানে রোপণ করুন। ৭০–৮০ দিনে প্রথম ফসল। দীর্ঘস্থায়িত্বের জন্য পুরো ফোটার আগেই তুলুন। ফলন: একর প্রতি ৮–১২ টন। মালা প্রস্তুতকারক, ফুলের মান্ডি, পাইকারি ব্যবসায়ীদের কাছে বিক্রি করুন। সর্বোচ্চ ফলনের জন্য আফ্রিকান গাঁদা (Tagetes erecta) চাষ করুন।</div></div></div>
+<div class="step step-rose"><div><div class="step-title">রজনীগন্ধা — উন্নত মানের আয়</div><div class="step-desc">মার্চ–এপ্রিলে ৩০×১৫ সেমি ব্যবধানে বাল্ব রোপণ করুন। স্থানীয় বাজারের জন্য একক পাপড়ির জাত (শৃঙ্গার, ক্যালকাটা ডাবল); মালা রপ্তানির জন্য দ্বৈত পাপড়ি। ৯০–১০০ দিনে প্রথম ফুল। বাল্ব সেট বাড়তে থাকে — একবার প্রতিষ্ঠিত হলে পুনরায় রোপণের প্রয়োজন কম। ফলন: একর প্রতি ৮–১০ টন কাণ্ড।</div></div></div>
+<div class="step step-rose"><div><div class="step-title">জারবেরা — পলি-হাউস মূল্য</div><div class="step-desc">রপ্তানি-মানের গুণমানের জন্য পলি-হাউসে চাষ করুন। ৩০×৩০ সেমি ব্যবধানে টিস্যু-কালচার চারা রোপণ করুন। ফার্টিগেশনসহ ড্রিপ সেচ দিন। ৭০–৮০ দিনে প্রথম ফসল; ৩–৪ বছর উৎপাদনশীল। ফলন: প্রতি গাছে বছরে ৬০–৮০ কাণ্ড। হোটেল ও ফুলবিক্রেতাদের কাছে ₹৪–৮/কাণ্ড দামে সরবরাহের জন্য কোল্ড-চেইন করাগেটেড বাক্সে প্যাক করুন।</div></div></div>
+</div>
+</div>
+<!-- ══ HYDROPONICS ══ -->
+<div class="section" id="cat-hydro">
+<div class="alert al-indigo"><i class="ti ti-droplet"></i><span>হাইড্রোপনিক্স — মাটি ছাড়া পুষ্টিসমৃদ্ধ পানিতে ফসল চাষ — ভারতের দ্রুততম বর্ধনশীল শহুরে কৃষি প্রযুক্তি। <strong>জমি নেই? কোনো সমস্যা নেই।</strong> ফ্ল্যাট, ছাদ ও বারান্দায় উন্নত মানের সবজি ও ভেষজ চাষ করুন।</span></div>
+<div class="stat-row">
+<div class="stat-card"><div class="stat-num sn-indigo">৯০%</div><div class="stat-label">মাটিতে চাষের তুলনায় কম পানি লাগে</div></div>
+<div class="stat-card"><div class="stat-num sn-indigo">৩–৫×</div><div class="stat-label">মাটিতে জন্মানো গাছের তুলনায় দ্রুত বৃদ্ধি</div></div>
+<div class="stat-card"><div class="stat-num sn-indigo">₹৩০,০০০</div><div class="stat-label">সাধারণ শখের সেটআপ খরচ (১০ বর্গফুট)</div></div>
+<div class="stat-card"><div class="stat-num sn-indigo">শূন্য</div><div class="stat-label">মাটির প্রয়োজন নেই — শহুরে স্থানের জন্য আদর্শ</div></div>
+</div>
+<div class="sec-head indigo-head"><i class="ti ti-plant-2"></i>হাইড্রোপনিক্সের জন্য সেরা ফসল <span class="sec-head-line indigo-line"></span></div>
+<div class="plant-grid">
+<div class="plant-card"><span class="plant-icon">🥬</span><div class="plant-name">লেটুস</div><div class="plant-sci">ফসল তুলতে ২৫–৩৫ দিন</div><div class="plant-price pp-teal">₹৮০–২০০/কেজি</div></div>
+<div class="plant-card"><span class="plant-icon">🌿</span><div class="plant-name">তুলসী ও ভেষজ</div><div class="plant-sci">২০–৩০ দিন</div><div class="plant-price pp-herb">₹১৫০–৬০০/কেজি</div></div>
+<div class="plant-card"><span class="plant-icon">🍅</span><div class="plant-name">চেরি টমেটো</div><div class="plant-sci">৬০–৭৫ দিন</div><div class="plant-price pp-rose">₹১২০–৩৫০/কেজি</div></div>
+<div class="plant-card"><span class="plant-icon">🫑</span><div class="plant-name">ক্যাপসিকাম / বেল পেপার</div><div class="plant-sci">৭০–৮০ দিন</div><div class="plant-price pp-amber">₹১০০–৪০০/কেজি</div></div>
+<div class="plant-card"><span class="plant-icon">🥒</span><div class="plant-name">শসা</div><div class="plant-sci">৪৫–৫৫ দিন</div><div class="plant-price pp-herb">₹৬০–১৫০/কেজি</div></div>
+<div class="plant-card"><span class="plant-icon">🌱</span><div class="plant-name">পালং শাক</div><div class="plant-sci">২০–২৫ দিন</div><div class="plant-price pp-teal">₹৬০–১৮০/কেজি</div></div>
+<div class="plant-card"><span class="plant-icon">🌿</span><div class="plant-name">ধনেপাতা / পুদিনা</div><div class="plant-sci">১৫–২০ দিন</div><div class="plant-price pp-herb">₹৮০–৩০০/কেজি</div></div>
+<div class="plant-card"><span class="plant-icon">🍓</span><div class="plant-name">স্ট্রবেরি</div><div class="plant-sci">৯০+ দিন</div><div class="plant-price pp-rose">₹১৫০–৪০০/কেজি</div></div>
+</div>
+<div class="sec-head indigo-head"><i class="ti ti-list"></i>হাইড্রোপনিক পদ্ধতির তুলনা <span class="sec-head-line indigo-line"></span></div>
+<div class="hydro-compare">
+<div class="hydro-col">
+<div class="hydro-col-title" style="color:var(--herb)">🟢 শিক্ষানবিশদের পদ্ধতি</div>
+<div class="tip tip-herb"><strong>NFT (নিউট্রিয়েন্ট ফিল্ম টেকনিক)</strong> — শিকড়ের উপর দিয়ে পুষ্টি দ্রবণের পাতলা স্তর প্রবাহিত হয়; পাতাযুক্ত সবজির জন্য আদর্শ</div>
+<div class="tip tip-herb"><strong>ক্রাটকি পদ্ধতি</strong> — নিষ্ক্রিয়, পাম্প প্রয়োজন নেই; শিকড় বাতাসের ফাঁকসহ পুষ্টি পানিতে থাকে; স্থাপন করতে সবচেয়ে সস্তা</div>
+<div class="tip tip-herb"><strong>ডিপ ওয়াটার কালচার (DWC)</strong> — শিকড় বায়ুচালিত পুষ্টি দ্রবণে ডুবানো থাকে; লেটুসের জন্য দ্রুত বৃদ্ধি</div>
+<div class="tip tip-herb">সেটআপ খরচ: প্রতি গাছের স্থান ₹৫০০–৫,০০০; ২০–৩০টি গাছ দিয়ে শুরু করুন</div>
+</div>
+<div class="hydro-col">
+<div class="hydro-col-title" style="color:var(--indigo)">🔵 উন্নত পদ্ধতি</div>
+<div class="tip tip-indigo"><strong>ভার্টিক্যাল টাওয়ার গার্ডেন</strong> — উল্লম্বভাবে অনেক গাছ স্তূপ করা; শহুরে ছাদের জন্য উপযুক্ত</div>
+<div class="tip tip-indigo"><strong>এরোপনিক্স</strong> — শিকড়ে পুষ্টি দ্রবণ স্প্রে করা হয়; দ্রুততম বৃদ্ধি, সর্বোচ্চ ফলন</div>
+<div class="tip tip-indigo"><strong>ডাচ বাকেট সিস্টেম</strong> — বড় ফলবাহী ফসলের জন্য (টমেটো, ক্যাপসিকাম, শসা)</div>
+<div class="tip tip-indigo">সেটআপ খরচ: ₹১৫,০০০–৩,০০,০০০; বাণিজ্যিক উৎপাদনের জন্য উপযুক্ত</div>
+</div>
+</div>
+<div class="cards-grid">
+<div class="card c-indigo">
+<div class="card-title"><i class="ti ti-building"></i>বাণিজ্যিক সুযোগ</div>
+<span class="badge b-indigo">শহুরে কৃষি</span>
+<div class="tip tip-indigo">হোটেল ও রেস্তোরাঁয় সরবরাহ — উন্নত মানের হাইড্রোপনিক লেটুসের দাম ₹২০০–৪০০/কেজি, মাঠে জন্মানো ₹৪০/কেজির তুলনায়</div>
+<div class="tip tip-indigo">সুপারমার্কেট সংযোগ — ব্র্যান্ডেড "কীটনাশকমুক্ত" হাইড্রোপনিক সবজি ২–৪× বেশি দামে বিক্রি হয়</div>
+<div class="tip tip-indigo">কলকাতায় ১,০০০ বর্গফুটের ছাদ হাইড্রোপনিক খামার মাসে ₹৪০,০০০–৮০,০০০ উপার্জন করতে পারে</div>
+<div class="tip tip-indigo">NABARD কৃষি-ব্যবসা ঋণের আওতায় হাইড্রোপনিক্সকে অর্থায়নযোগ্য কার্যক্রম হিসেবে বিবেচনা করে</div>
+</div>
+<div class="card c-teal">
+<div class="card-title"><i class="ti ti-coin"></i>আয়ের সম্ভাবনা</div>
+<span class="badge b-teal">সম্প্রসারণযোগ্য</span>
+<div class="tip tip-teal">বাড়িতে সেটআপ (১০০টি গাছ): মাসে ₹৮,০০০–১৫,০০০ অতিরিক্ত আয়</div>
+<div class="tip tip-teal">ছোট বাণিজ্যিক (৫০০টি গাছ, ছাদ): মাসে ₹২৫,০০০–৬০,০০০</div>
+<div class="tip tip-teal">বড় ইউনিট (২,০০০+ গাছ, পলি-হাউস): মাসে ₹১,০০,০০০–২,৫০,০০০</div>
+<div class="tip tip-teal">মাইক্রোগ্রিনস (১০ দিনের ফসল): ₹২০০–১,৫০০/ট্রে — দ্রুততম নগদ আয়কারী হাইড্রোপনিক ফসল</div>
+</div>
+</div>
+</div>
+<!-- ══ SNAIL FARMING ══ -->
+<div class="section" id="cat-snail">
+<div class="alert al-teal"><i class="ti ti-snail"></i><span>শামুক চাষ (হেলিকালচার) একটি দ্রুত বিকাশমান নিশ ব্যবসা, যার <strong>বিশাল রপ্তানি সম্ভাবনা</strong> রয়েছে। শামুকের শ্লেষ্মা (মিউসিন) এখন বিশ্বব্যাপী একটি প্রিমিয়াম কসমেটিক উপাদান। ফ্রান্স, ইতালি, বেলজিয়াম জীবন্ত শামুক ও প্রক্রিয়াজাত পণ্যের শীর্ষ ক্রেতা।</span></div>
+<div class="stat-row">
+<div class="stat-card"><div class="stat-num sn-teal">$2 বিলিয়ন+</div><div class="stat-label">বিশ্বব্যাপী শামুক কসমেটিক উপাদান বাজার (২০২৪)</div></div>
+<div class="stat-card"><div class="stat-num sn-teal">₹৫০০–৮০০</div><div class="stat-label">প্রতি কেজি জীবন্ত শামুকের রপ্তানি মূল্য</div></div>
+<div class="stat-card"><div class="stat-num sn-teal">১০ বর্গফুট</div><div class="stat-label">শুরু করার জন্য ন্যূনতম স্থান প্রয়োজন</div></div>
+<div class="stat-card"><div class="stat-num sn-teal">৩–৫ বছর</div><div class="stat-label">একটি শামুকের উৎপাদনশীল আয়ুষ্কাল</div></div>
+</div>
+<div class="sec-head teal-head"><i class="ti ti-list"></i>কেন শামুক চাষ? <span class="sec-head-line teal-line"></span></div>
+<div class="cards-grid">
+<div class="card c-teal">
+<div class="card-title"><i class="ti ti-sparkles"></i>কসমেটিক শিল্প (সর্বোচ্চ মূল্য)</div>
+<span class="badge b-teal">₹১০,০০০–৮০,০০০/কেজি</span>
+<div class="tip tip-teal">শামুকের শ্লেষ্মা (Helix Aspersa Muller নিঃসরণ ফিল্ট্রেট) প্রিমিয়াম বলিরেখা প্রতিরোধী ক্রিমে ব্যবহৃত হয়</div>
+<div class="tip tip-teal">কোরিয়ান বিউটি (K-Beauty) প্রবণতা বিশ্বব্যাপী শামুক ক্রিমকে জনপ্রিয় করেছে — চাহিদা বিস্ফোরকভাবে বাড়ছে</div>
+<div class="tip tip-teal">L'Occitane, Tony Moly, COSRX সবাই শামুকের নিঃসরণ ব্যবহার করে — বড় উপাদান কোম্পানিগুলো সংগ্রহ করছে</div>
+<div class="tip tip-teal">১০০ গ্রাম বিশুদ্ধ শামুক মিউসিন বিশুদ্ধতা ও গ্রেড অনুযায়ী ₹৫,০০০–৮০,০০০-এ বিক্রি হতে পারে</div>
+<div class="tip tip-teal">শামুক কসমেটিক উপাদান উৎপাদনে ভারতে প্রায় কোনো প্রতিযোগিতা নেই — প্রথম-প্রবেশকারীর সুবিধা</div>
+</div>
+<div class="card c-green">
+<div class="card-title"><i class="ti ti-drumstick"></i>খাদ্য ও ফিড ব্যবহার</div>
+<span class="badge b-green">একাধিক বাজার</span>
+<div class="tip tip-herb">এস্কার্গো (ভোজ্য শামুক) — ইউরোপীয় সুস্বাদু খাবার; ফ্রান্স, বেলজিয়াম, ইতালি বছরে ৩,০০,০০০ টন আমদানি করে</div>
+<div class="tip tip-herb">শামুকের মাংস উচ্চ প্রোটিন (১৬%), কম চর্বি, ওমেগা-৩ ও আয়রনে সমৃদ্ধ — স্বাস্থ্যকর খাদ্যের বাজার</div>
+<div class="tip tip-herb">শামুকের খোলের গুঁড়ো (ক্যালসিয়াম কার্বনেট) — পোল্ট্রি ফিড সম্পূরক, ₹২০–৫০/কেজি দরে বিক্রি হয়</div>
+<div class="tip tip-herb">শামুকের ডিমের প্রোটিন — ইউরোপীয় ফাইন ডাইনিংয়ে উদীয়মান বিলাসবহুল খাদ্য উপাদান</div>
+<div class="tip tip-herb">প্রোটিন খাদ্য হিসেবে শামুকের নিজস্ব ভারতীয় বাজার ছোট হলেও আদিবাসী ও উপকূলীয় এলাকায় বাড়ছে</div>
+</div>
+</div>
+<div class="sec-head teal-head"><i class="ti ti-settings-2"></i>কীভাবে শামুক চাষ শুরু করবেন <span class="sec-head-line teal-line"></span></div>
+<div class="steps">
+<div class="step step-teal"><div><div class="step-title">প্রজাতি নির্বাচন করুন</div><div class="step-desc">রপ্তানি/কসমেটিকের জন্য: Helix Aspersa Muller (বাগানের শামুক) বা Achatina fulica (জায়ান্ট আফ্রিকান শামুক)। A. fulica ভারতীয় জলবায়ুতে পালন করা সবচেয়ে সহজ — ২০০–৫০০ গ্রাম পর্যন্ত বাড়ে, দ্রুত প্রজননকারী। প্রতিষ্ঠিত প্রজননকারীদের কাছ থেকে সংগ্রহ করুন বা প্রচুর পরিমাণে থাকা স্থানীয় আবাসস্থল থেকে নৈতিকভাবে সংগ্রহ করুন।</div></div></div>
+<div class="step step-teal"><div><div class="step-title">ঘেরাও তৈরি করুন</div><div class="step-desc">কাঠের বাক্স, জালের খাঁচা বা ছোট গ্রিনহাউস-জাতীয় ঘেরাও (স্নেইলারি বলা হয়) ব্যবহার করুন। মাটির স্তর বা উঁচু বেড: ১ বর্গমিটারে ৫০–৮০টি পূর্ণবয়স্ক শামুক থাকতে পারে। ছায়া জাল অপরিহার্য — শামুক নিশাচর এবং সরাসরি সূর্যালোক এড়িয়ে চলে। ৭৫–৮০% আর্দ্রতা বজায় রাখুন।</div></div></div>
+<div class="step step-teal"><div><div class="step-title">খাওয়ানো ও যত্ন</div><div class="step-desc">খাবার: পাতাযুক্ত শাক, পেঁপে পাতা, কলা, রান্না করা ভুট্টার আটা, গাজর, স্কোয়াশ। খোলের বিকাশের জন্য ক্যালসিয়াম উৎস (গুঁড়ো করা ডিমের খোসা, চুনাপাথরের গুঁড়ো) যোগ করুন। প্রতিদিন শরীরের ওজনের ৫% খাবার দিন। প্রতি সপ্তাহে ঘেরাও পরিষ্কার করুন — রোগ প্রাদুর্ভাব রোধে স্বাস্থ্যবিধি অত্যন্ত গুরুত্বপূর্ণ।</div></div></div>
+<div class="step step-teal"><div><div class="step-title">প্রজনন ও ফসল সংগ্রহ</div><div class="step-desc">শামুক উভলিঙ্গ — সব শামুকই প্রজনন করতে পারে। এক জোড়া বছরে ২০০–৪০০টি ডিম দেয়। ডিম ২–৩ সপ্তাহে ফুটে। শামুক ৮–১২ মাসে বাজারযোগ্য আকারে (১০০–২৫০ গ্রাম) পৌঁছায়। হাতে সংগ্রহ করুন। কসমেটিক মিউসিনের জন্য: মৃদু নাড়াচাড়া বা হালকা উদ্দীপক দিয়ে নিঃসরণ উদ্দীপিত করুন — শামুকের কোনো ক্ষতি হয় না।</div></div></div>
+<div class="step step-teal"><div><div class="step-title">বাজার ও রপ্তানি</div><div class="step-desc">স্থানীয় বিক্রির জন্য: কলকাতা/মেট্রো শহরের বিদেশি খাবারের রেস্তোরাঁর সাথে যোগাযোগ করুন। রপ্তানির জন্য: Alibaba.com-এ ক্রেতা খুঁজুন ("snail suppliers Europe" অনুসন্ধান করুন)। APEDA-তে নিবন্ধন করুন। কসমেটিকের জন্য শামুক মিউসিনের ল্যাবরেটরি বিশুদ্ধিকরণ প্রয়োজন — প্রক্রিয়াকরণের জন্য বায়োটেক কোম্পানি বা CSIR ল্যাবের সাথে অংশীদারত্ব করুন।</div></div></div>
+</div>
+</div>
+<!-- ══ VERMICOMPOST ══ -->
+<div class="section" id="cat-vermi">
+<div class="alert al-brown"><i class="ti ti-worm"></i><span>ভার্মিকম্পোস্ট মাটির জন্য তরল সোনা। বিশ্বব্যাপী জৈব চাষ বৃদ্ধি এবং ভারত সরকারের প্রাকৃতিক চাষে জোর দেওয়ার ফলে, <strong>ভার্মিকম্পোস্টের চাহিদা আগে কখনো এত বেশি ছিল না</strong>। আর আপনার শুধু প্রয়োজন রান্নাঘরের বর্জ্য ও কেঁচো।</span></div>
+<div class="stat-row">
+<div class="stat-card"><div class="stat-num sn-amber">₹৬,০০০ কোটি</div><div class="stat-label">ভারতের ভার্মিকম্পোস্ট বাজারের আকার (২০২৪)</div></div>
+<div class="stat-card"><div class="stat-num sn-amber">₹৪–১২/কেজি</div><div class="stat-label">ভার্মিকম্পোস্টের বিক্রয়মূল্য</div></div>
+<div class="stat-card"><div class="stat-num sn-amber">শূন্য</div><div class="stat-label">কাঁচামালের খরচ — সবই কৃষি বর্জ্য</div></div>
+<div class="stat-card"><div class="stat-num sn-amber">৪৫–৬০</div><div class="stat-label">প্রতি উৎপাদন চক্রের দিন</div></div>
+</div>
+<div class="sec-head brown-head"><i class="ti ti-worm"></i>কেন ভার্মিকম্পোস্ট একটি ব্যবসার সুযোগ <span class="sec-head-line brown-line"></span></div>
+<div class="cards-grid">
+<div class="card c-brown">
+<div class="card-title"><i class="ti ti-trending-up"></i>বাজারের চাহিদা</div>
+<span class="badge b-brown">দ্রুত বাড়ছে</span>
+<div class="tip tip-brown">ভারতের জাতীয় প্রাকৃতিক কৃষি মিশন রাসায়নিকমুক্ত চাষে জোর দিচ্ছে — বিশাল প্রাতিষ্ঠানিক চাহিদা</div>
+<div class="tip tip-brown">জৈব কৃষকরা মানসম্পন্ন ভার্মিকম্পোস্টের জন্য ₹৮–১৫/কেজি দেন — রাসায়নিক সারের দামের চেয়ে ৩–৪× বেশি</div>
+<div class="tip tip-brown">পশ্চিমবঙ্গসহ রাজ্য সরকারগুলো সরকারি উদ্যান ও শহুরে কৃষির জন্য ভার্মিকম্পোস্ট কিনছে</div>
+<div class="tip tip-brown">রপ্তানি সম্ভাবনা: EU জৈব উপাদান ক্রেতারা ভার্মিকম্পোস্ট চা ও কৃমি কাস্টিং সংগ্রহ করছে</div>
+</div>
+<div class="card c-herb">
+<div class="card-title"><i class="ti ti-recycle"></i>বর্জ্য থেকে সম্পদের সংযোগ</div>
+<span class="badge b-herb">চক্রাকার অর্থনীতি</span>
+<div class="tip tip-herb">উপকরণ: কৃষি বর্জ্য, গোবর, রান্নাঘরের বর্জ্য, পাতার আবর্জনা, মাছ প্রক্রিয়াকরণ বর্জ্য — সবই বিনামূল্যে বা প্রায় বিনামূল্যে</div>
+<div class="tip tip-herb">কাছাকাছি বাজার থেকে মাছের আঁশ ও মাছ প্রক্রিয়াকরণ বর্জ্য ভার্মি বেডে যোগ করা যায়</div>
+<div class="tip tip-herb">বায়োসলিড বর্জ্য ব্যবস্থাপনার জন্য পৌরসভার চুক্তি — B2B চক্রাকার অর্থনীতি সেবা সম্ভব</div>
+<div class="tip tip-herb">কার্বন ক্রেডিটের সম্ভাবনা — ভার্মিকম্পোস্ট কার্বন ধরে রাখে, ভবিষ্যতের অফসেট প্রকল্পের জন্য যোগ্য</div>
+</div>
+</div>
+<div class="sec-head brown-head"><i class="ti ti-settings-2"></i>ভার্মিকম্পোস্ট ইউনিট স্থাপন <span class="sec-head-line brown-line"></span></div>
+<div class="steps">
+<div class="step step-brown"><div><div class="step-title">স্থান ও বেডের ধরন নির্বাচন করুন</div><div class="step-desc">ছায়াযুক্ত খোলা জায়গা বা শেড। ইটের ট্যাংক, HDPE টাব বা সিমেন্টের মেঝেতে (১.৫ মি × ১ মি × ০.৬ মি) বেড তৈরি করুন। উঁচু বেড বন্যা প্রতিরোধ করে। উপরে ছায়া জাল — ৩৫°C-এর উপরে এবং সরাসরি সূর্যালোকে কেঁচো মারা যায়। বিনিয়োগ: প্রাথমিক সেটআপের জন্য ₹৩,০০০–২৫,০০০।</div></div></div>
+<div class="step step-brown"><div><div class="step-title">কেঁচো সংগ্রহ করুন</div><div class="step-desc">ভার্মিকম্পোস্টিংয়ের জন্য Eisenia fetida (লাল কেঁচো) সবচেয়ে ভালো। KVK, ICAR কেন্দ্র বা বেসরকারি বিক্রেতাদের কাছ থেকে প্রতি বেডে ১–২ কেজি কেঁচো কিনুন (₹২০০–৪০০/কেজি)। এগুলো প্রতি ৬০–৯০ দিনে প্রজনন করে — একবারের বিনিয়োগ। মাঠের কেঁচো কখনো ব্যবহার করবেন না — এগুলো কার্যকরভাবে কম্পোস্ট তৈরি করে না।</div></div></div>
+<div class="step step-brown"><div><div class="step-title">খাদ্য উপকরণ প্রস্তুত ও যোগ করুন</div><div class="step-desc">গোবর + কৃষি বর্জ্য + রান্নাঘরের বর্জ্য ২:১:১ অনুপাতে মেশান। কেঁচো যোগ করার আগে ১৫–২০ দিন প্রাক-কম্পোস্ট করুন (হট কম্পোস্টিং) — কাঁচামাল কেঁচোর জন্য খুব গরম থাকে। ৬০–৭০% আর্দ্রতা বজায় রাখুন — চাপ পরীক্ষা: এক মুঠো আকৃতি ধরে রাখবে কিন্তু ফোঁটা পড়বে না। প্রতি ১০–১৫ দিনে পাতলা স্তরে উপকরণ যোগ করুন।</div></div></div>
+<div class="step step-brown"><div><div class="step-title">ফসল সংগ্রহ ও প্যাকিং</div><div class="step-desc">৪৫–৬০ দিন পর, উপরিভাগ গাঢ়, ঝুরঝুরে এবং মাটির গন্ধযুক্ত হয়ে যায় — সংগ্রহের জন্য প্রস্তুত। সংগ্রহের ১৫ দিন আগে খাওয়ানো বন্ধ করুন যাতে কেঁচো নিচে চলে যায়। ৬ মিমি জাল দিয়ে ছাঁকুন। চটের বস্তা বা HDPE ব্যাগে (২৫ কেজি) প্যাক করুন। ভার্মিকম্পোস্ট: ₹৪–১২/কেজি। কৃমি কাস্টিং তরল (লিচেট): ১:১০ পাতলা করুন — তরল সার হিসেবে ফসলে স্প্রে করুন।</div></div></div>
+<div class="step step-brown"><div><div class="step-title">সম্প্রসারণ ও বিক্রয়</div><div class="step-desc">১০টি বেড (১৫ বর্গমিটার): মাসে ১–২ টন উৎপাদন — আয় মাসে ₹৫,০০০–২০,০০০। সরাসরি কৃষকদের কাছে, কৃষক বাজার, জৈব দোকান, eNAM পোর্টালে বিক্রি করুন। ১০ জন মহিলার একটি SHG ₹৫০,০০০ বিনিয়োগে ৩০–৫০টি বেড পরিচালনা করতে পারে। রাজ্য উদ্যান বিভাগ ও NABARD ভার্মিকম্পোস্ট ইউনিটে ৫০–৭৫% ভর্তুকি প্রদান করে।</div></div></div>
+</div>
+<div class="cards-grid">
+<div class="card c-gold">
+<div class="card-title"><i class="ti ti-package"></i>আপনি যেসব পণ্য বিক্রি করতে পারেন</div>
+<span class="badge b-gold">একাধিক আয়ের উৎস</span>
+<div class="tip tip-gold">ভার্মিকম্পোস্ট (কঠিন) — পাইকারিতে ₹৪–১২/কেজি; ব্র্যান্ডেড খুচরা প্যাক ₹৩০–৮০/কেজি</div>
+<div class="tip tip-gold">ভার্মি-ওয়াশ / লিচেট তরল — জৈব কৃষকদের জন্য পাতলা স্প্রে, ₹৫০–২০০/লিটার</div>
+<div class="tip tip-gold">জীবন্ত কেঁচো (প্রজনন স্টক) — ₹২০০–৪০০/কেজি; নতুন কৃষকদের কাছ থেকে উচ্চ চাহিদা</div>
+<div class="tip tip-gold">কৃমি কাস্টিং (বিশুদ্ধ) — প্রিমিয়াম জৈব নার্সারি ও বাগানের জন্য ₹২০–৬০/কেজি</div>
+<div class="tip tip-gold">ব্যবহারের জন্য প্রস্তুত পটিং মিক্স (কম্পোস্ট + নারকেলের ছোবড়া + বালি) — প্রতি ৫ কেজি ব্যাগ ₹৫০–১৫০</div>
+</div>
+</div>
+</div>
+<!-- ══ VALUE-ADDED PRODUCTS ══ -->
+<div class="section" id="cat-value">
+<div class="alert al-amber"><i class="ti ti-bottle"></i><span>মূল্য সংযোজন ₹১০ মূল্যের ফলকে ₹১০০ মূল্যের পণ্যে পরিণত করে। আচার, জ্যাম, জেলি, স্কোয়াশ এবং শুকনো ফল <strong>কুটির শিল্পের সোনার খনি</strong>, যেখানে ন্যূনতম বিনিয়োগ প্রয়োজন এবং কোনো বিশেষ প্রযুক্তিগত ডিগ্রি লাগে না।</span></div>
+<div class="stat-row">
+<div class="stat-card"><div class="stat-num sn-amber">₹২৫,০০০ কোটি</div><div class="stat-label">২০২৭ সালের মধ্যে ভারতের প্যাকেজড খাদ্য বাজারের বৃদ্ধি</div></div>
+<div class="stat-card"><div class="stat-num sn-amber">৫–১০×</div><div class="stat-label">কাঁচা থেকে প্রক্রিয়াজাত পর্যন্ত মূল্যের গুণক</div></div>
+<div class="stat-card"><div class="stat-num sn-amber">₹৫,০০০</div><div class="stat-label">বাড়িতে প্রক্রিয়াকরণ ইউনিট শুরু করার ন্যূনতম খরচ</div></div>
+<div class="stat-card"><div class="stat-num sn-amber">১২ মাস</div><div class="stat-label">সঠিকভাবে সংরক্ষিত পণ্যের সংরক্ষণকাল</div></div>
+</div>
+<div class="sec-head amber-head"><i class="ti ti-bottle"></i>যেসব পণ্য তৈরি ও বিক্রি করতে পারেন <span class="sec-head-line amber-line"></span></div>
+<div class="value-grid">
+<div class="value-card"><span class="value-icon">🫙</span><div class="value-name">আচার</div><div class="value-margin">₹১৫০–৫০০/কেজি</div></div>
+<div class="value-card"><span class="value-icon">🍯</span><div class="value-name">জ্যাম</div><div class="value-margin">₹২০০–৬০০/কেজি</div></div>
+<div class="value-card"><span class="value-icon">🍬</span><div class="value-name">জেলি</div><div class="value-margin">₹২৫০–৮০০/কেজি</div></div>
+<div class="value-card"><span class="value-icon">🧃</span><div class="value-name">স্কোয়াশ / সিরাপ</div><div class="value-margin">₹১০০–৩৫০/লিটার</div></div>
+<div class="value-card"><span class="value-icon">🍂</span><div class="value-name">শুকনো ফল</div><div class="value-margin">₹৫০০–৩,০০০/কেজি</div></div>
+<div class="value-card"><span class="value-icon">🫙</span><div class="value-name">চাটনি</div><div class="value-margin">₹১৫০–৪০০/কেজি</div></div>
+<div class="value-card"><span class="value-icon">🍹</span><div class="value-name">ভেষজ চা মিশ্রণ</div><div class="value-margin">₹৩০০–১,৫০০/কেজি</div></div>
+<div class="value-card"><span class="value-icon">🌶️</span><div class="value-name">মশলা গুঁড়ো মিশ্রণ</div><div class="value-margin">₹২০০–৮০০/কেজি</div></div>
+<div class="value-card"><span class="value-icon">🍃</span><div class="value-name">শুকনো ভেষজ স্যাশে</div><div class="value-margin">₹২০০–৬০০/কেজি</div></div>
+<div class="value-card"><span class="value-icon">🧴</span><div class="value-name">এসেনশিয়াল অয়েল-যুক্ত পণ্য</div><div class="value-margin">প্রিমিয়াম</div></div>
+</div>
+<div class="sec-head amber-head"><i class="ti ti-settings-2"></i>কীভাবে বাড়িতে প্রক্রিয়াকরণ ইউনিট শুরু করবেন <span class="sec-head-line amber-line"></span></div>
+<div class="steps">
+<div class="step step-amber"><div><div class="step-title">আইনি প্রক্রিয়া (প্রথম ও সবচেয়ে গুরুত্বপূর্ণ)</div><div class="step-desc">FSSAI বেসিক নিবন্ধন করুন (বাড়ি-ভিত্তিক ক্ষুদ্র ইউনিটের জন্য বছরে ₹১০০)। যেকোনো খাদ্যপণ্য বিক্রির জন্য এটি বাধ্যতামূলক। বছরে ₹১২ লাখের বেশি টার্নওভারের জন্য: FSSAI রাজ্য লাইসেন্স (₹২,০০০–৫,০০০)। ₹২০ লাখের নিচে টার্নওভারে GST নিবন্ধন ঐচ্ছিক। Udyam MSME নিবন্ধন: বিনামূল্যে, সরকারি প্রকল্প ও ঋণে প্রবেশাধিকার দেয়।</div></div></div>
+<div class="step step-amber"><div><div class="step-title">শিক্ষানবিশদের জন্য যন্ত্রপাতি (₹১০,০০০–৩০,০০০)</div><div class="step-desc">স্টেইনলেস স্টিলের পাত্র (২০–৫০ লিটার), ওজন মাপার যন্ত্র, রিফ্র্যাক্টোমিটার (জ্যাম/জেলির চিনি মাপার জন্য), সিলিং মেশিন (₹২,০০০–৮,০০০), কাচ/PET বোতল/জার, লেবেলিং প্রিন্টার। মাত্র ১–২টি পণ্য দিয়ে শুরু করুন — বৈচিত্র্য আনার আগে গুণমান আয়ত্ত করুন।</div></div></div>
+<div class="step step-amber"><div><div class="step-title">রেসিপি মানসম্মতকরণ ও গুণমান</div><div class="step-desc">FSSAI-অনুমোদিত রেসিপি ও প্রিজারভেটিভের মাত্রা ব্যবহার করুন। মূল নিয়ম: জ্যামে ন্যূনতম ৬৮% TSS (রিফ্র্যাক্টোমিটার দিয়ে মাপা মোট দ্রবণীয় কঠিন পদার্থ) থাকতে হবে। আচারে তেল-সবজির অনুপাত ও লবণের শতাংশ সংরক্ষণকাল নির্ধারণ করে। বাণিজ্যিক লঞ্চের আগে প্রথম ব্যাচ NABL ল্যাবে পরীক্ষা করান। ধারাবাহিকতাই পুনরাবৃত্ত গ্রাহক তৈরি করে।</div></div></div>
+<div class="step step-amber"><div><div class="step-title">প্যাকেজিং ও ব্র্যান্ডিং</div><div class="step-desc">আকর্ষণীয় প্যাকেজিং আপনার খুচরা সাফল্যের ৬০%। খাদ্য-গ্রেড কাচের জার ব্যবহার করুন। একটি ব্র্যান্ড নাম, লোগো তৈরি করুন (Canva-তে বিনামূল্যে)। লেবেলে অবশ্যই থাকতে হবে: পণ্যের নাম, উপাদান, নিট ওজন, উৎপাদনের তারিখ, মেয়াদ উত্তীর্ণের তারিখ, FSSAI লাইসেন্স নম্বর এবং আপনার ঠিকানা। আইন অনুযায়ী ন্যূনতম লেবেল প্রয়োজনীয়তা।</div></div></div>
+<div class="step step-amber"><div><div class="step-title">অনলাইন ও অফলাইনে বিক্রয়</div><div class="step-desc">স্থানীয়: মুদি দোকান, কৃষক বাজার, স্কুল ক্যান্টিন, উপহারের দোকান। অনলাইন: Amazon Easy Store, Meesho, WhatsApp Business, Instagram Shop। নিশ সুযোগ: "ঘরে তৈরি", "প্রিজারভেটিভমুক্ত", "বাঙালি ঐতিহ্যবাহী" অবস্থান ২–৩× বেশি দাম আদায় করতে পারে। দুর্গাপূজা, দীপাবলির জন্য উপহার হ্যাম্পার সেট — উচ্চ মুনাফাসহ মরসুমি ব্যবসা।</div></div></div>
+</div>
+<div class="sec-head amber-head"><i class="ti ti-fruit"></i>সেরা ফল-পণ্য সমন্বয় <span class="sec-head-line amber-line"></span></div>
+<table class="inc-table">
+<thead>
+<tr style="background:linear-gradient(90deg,var(--amber),var(--gold))"><th>কাঁচামাল</th><th>সেরা পণ্য</th><th>কেজি প্রতি কাঁচামালের খরচ</th><th>বিক্রয়মূল্য</th><th>মুনাফা</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>🍓 স্ট্রবেরি</strong></td><td>জ্যাম / শুকনো স্ট্রবেরি</td><td>₹৪০–৮০</td><td>₹৩০০–২,০০০/কেজি</td><td>অত্যন্ত বেশি</td></tr>
+<tr><td><strong>🥭 আম</strong></td><td>আচার / স্কোয়াশ / আমচুর</td><td>₹২০–৬০</td><td>₹১৫০–৬০০/কেজি</td><td>বেশি</td></tr>
+<tr><td><strong>🍈 পেয়ারা</strong></td><td>জ্যাম / জেলি</td><td>₹১৫–৪০</td><td>₹২০০–৫০০/কেজি</td><td>অত্যন্ত বেশি</td></tr>
+<tr><td><strong>🍋 লেবু</strong></td><td>আচার / স্কোয়াশ</td><td>₹২০–৫০</td><td>₹১৫০–৪০০/কেজি</td><td>বেশি</td></tr>
+<tr><td><strong>🧅 পেঁয়াজ / রসুন</strong></td><td>আচার / চাটনি</td><td>₹২০–৬০</td><td>₹২০০–৫০০/কেজি</td><td>ভালো</td></tr>
+<tr><td><strong>🌿 তুলসী / জবা</strong></td><td>ভেষজ চা / সিরাপ</td><td>₹৫–৩০</td><td>₹৫০০–২,০০০/কেজি</td><td>চমৎকার</td></tr>
+<tr><td><strong>🐉 ড্রাগন ফল</strong></td><td>জ্যাম / শুকনো / জুস</td><td>₹৮০–১৫০</td><td>₹৪০০–২,৫০০/কেজি</td><td>বেশি</td></tr>
+</tbody>
+</table>
+</div>
+<!-- ══ SCHEMES ══ -->
+<div class="section" id="cat-schemes">
+<div class="alert al-grape"><i class="ti ti-shield-check"></i><span>এই গাইডে অন্তর্ভুক্ত ছয়টি খাতই কেন্দ্রীয় ও রাজ্য সরকারের প্রকল্প দ্বারা সরাসরি সমর্থিত, যা ভর্তুকি, প্রশিক্ষণ, কোল্ড-চেইন সহায়তা এবং বাজার সংযোগ প্রদান করে।</span></div>
+<div class="sec-head grape-head"><i class="ti ti-clipboard-list"></i>কেন্দ্রীয় সরকারের প্রকল্প <span class="sec-head-line grape-line"></span></div>
+<table class="inc-table">
+<thead>
+<tr style="background:linear-gradient(90deg,var(--grape),#8e24aa)"><th>প্রকল্প</th><th>সুবিধা</th><th>কাদের জন্য</th><th>আবেদন করুন</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>PMFME (ক্ষুদ্র খাদ্য উদ্যোগ)</strong></td><td>খাদ্য প্রক্রিয়াকরণ ইউনিট উন্নয়নে ₹১০ লাখ পর্যন্ত ৩৫% অনুদান — জ্যাম, আচার, স্কোয়াশ, শুকানো</td><td>ব্যক্তিগত ক্ষুদ্র খাদ্য উদ্যোগ</td><td>mofpi.gov.in</td></tr>
+<tr><td><strong>MIDH (সমন্বিত উদ্যান উন্নয়ন)</strong></td><td>ফুল চাষ, ভেষজ উদ্ভিদ চাষ, পলি-হাউস, কোল্ড স্টোরেজে ৪০–৫০% ভর্তুকি</td><td>কৃষক, FPO</td><td>midh.gov.in</td></tr>
+<tr><td><strong>NMPP (ভেষজ উদ্ভিদ মিশন)</strong></td><td>ভেষজ উদ্ভিদ চাষ, প্রক্রিয়াকরণ ও বাজার সংযোগের জন্য সহায়তা — আয়ুষ সংযুক্ত</td><td>নির্দিষ্ট গুচ্ছের কৃষক</td><td>nmpb.nic.in</td></tr>
+<tr><td><strong>PMEGP</strong></td><td>২৫–৩৫% মার্জিন মানি; ভার্মিকম্পোস্ট ইউনিট, খাদ্য প্রক্রিয়াকরণ, শামুক চাষের জন্য ₹২৫ লাখ পর্যন্ত ঋণ</td><td>ব্যক্তি, SHG, সমবায়</td><td>kviconline.gov.in</td></tr>
+<tr><td><strong>DAY-NRLM (আজীবিকা)</strong></td><td>এই যেকোনো জীবিকা কার্যক্রমে SHG মহিলাদের জন্য ₹১.৫–৩ লাখ ঘূর্ণায়মান তহবিল + প্রশিক্ষণ</td><td>মহিলা SHG সদস্য</td><td>aajeevika.gov.in</td></tr>
+<tr><td><strong>স্টার্টআপ ইন্ডিয়া সীড ফান্ড</strong></td><td>হাইড্রোপনিক্স, শামুক চাষ, উদ্ভাবনী মূল্য সংযোজনসহ কৃষি-প্রযুক্তি স্টার্টআপের জন্য ₹২০ লাখ পর্যন্ত সীড ফান্ডিং</td><td>নিবন্ধিত স্টার্টআপ</td><td>startupindia.gov.in</td></tr>
+<tr><td><strong>NABARD FPO প্রকল্প</strong></td><td>মৎস্যজীবী/কৃষক উৎপাদক সংস্থার জন্য ₹১৮ লাখ ইক্যুইটি অনুদান; ভেষজ উদ্ভিদ, ফুল চাষ গুচ্ছ অন্তর্ভুক্ত</td><td>৩০০+ কৃষকের গ্রুপ</td><td>nabard.org</td></tr>
+</tbody>
+</table>
+<div class="sec-head grape-head"><i class="ti ti-map-pin"></i>পশ্চিমবঙ্গ রাজ্য সরকারের প্রকল্প <span class="sec-head-line grape-line"></span></div>
+<div class="cards-grid">
+<div class="card c-grape">
+<div class="card-title"><i class="ti ti-plant-2"></i>WB উদ্যান ও কৃষি</div>
+<span class="badge b-grape">রাজ্য সহায়তা</span>
+<div class="tip tip-grape">WBHDC ফুল চাষ মিশন — গাঁদা, রজনীগন্ধা, জারবেরার জন্য বিনামূল্যে রোপণ উপকরণ ও পলি-হাউস ভর্তুকি</div>
+<div class="tip tip-grape">বাংলা সহায়তা কেন্দ্র — সকল রাজ্য প্রকল্পের আবেদনের জন্য এক-স্টপ শপ; বিষ্ণুপুর ব্লকে উপলব্ধ</div>
+<div class="tip tip-grape">মাটির স্মৃতি প্রকল্প — মাটির স্বাস্থ্য ও জৈব চাষে সহায়তা; ভার্মিকম্পোস্ট ইউনিট স্থাপনে ভর্তুকি</div>
+<div class="tip tip-grape">পশ্চিমবঙ্গ সংখ্যালঘু উন্নয়ন অর্থ নিগম — এই খাতে সংখ্যালঘু মহিলাদের জন্য অতিরিক্ত ঋণ</div>
+</div>
+<div class="card c-indigo">
+<div class="card-title"><i class="ti ti-school"></i>বিষ্ণুপুরের কাছে উপলব্ধ প্রশিক্ষণ</div>
+<span class="badge b-indigo">বিনামূল্যে প্রশিক্ষণ</span>
+<div class="tip tip-indigo">KVK বিষ্ণুপুর — ভেষজ উদ্ভিদ, ফুল চাষ, ভার্মিকম্পোস্ট, খাদ্য প্রক্রিয়াকরণ; কৃষকদের জন্য বিনামূল্যে</div>
+<div class="tip tip-indigo">NIFTEM কলকাতা — মূল্য সংযোজিত পণ্যের জন্য খাদ্য প্রক্রিয়াকরণ প্রযুক্তি; সার্টিফিকেট প্রোগ্রাম</div>
+<div class="tip tip-indigo">CIMAP লখনউ — ভেষজ সুগন্ধি উদ্ভিদ চাষ ও পাতনের অনলাইন কোর্স</div>
+<div class="tip tip-indigo">স্কিল ইন্ডিয়া ডিজিটাল — ফ্লোরিকালচার টেকনিশিয়ান লেভেল ৩ কোর্স; সরকার-স্বীকৃত সার্টিফিকেট</div>
+</div>
+</div>
+</div>
+<!-- ══ EXPORT ══ -->
+<div class="section" id="cat-export">
+<div class="alert al-indigo"><i class="ti ti-world"></i><span>এই গাইডের প্রতিটি পণ্যের আন্তর্জাতিক বাজার রয়েছে। ভেষজ নির্যাস থেকে ভার্মিকম্পোস্ট, শামুকের শ্লেষ্মা থেকে হস্তনির্মিত আচার — বিশ্বব্যাপী ক্রেতারা সক্রিয়ভাবে ভারত থেকে সংগ্রহ করছেন।</span></div>
+<div class="sec-head indigo-head"><i class="ti ti-chart-bar"></i>পণ্যের বিভাগ অনুযায়ী রপ্তানি বাজার <span class="sec-head-line indigo-line"></span></div>
+<div class="cards-grid">
+<div class="card c-herb">
+<div class="card-title"><i class="ti ti-leaf"></i>🌿 ভেষজ উদ্ভিদ ও এসেনশিয়াল অয়েল</div>
+<div class="market-item"><div class="market-label"><span class="market-name"><span class="market-flag">🇩🇪</span>জার্মানি</span><span class="market-pct" style="color:var(--herb)">ভেষজ নির্যাস ₹৫০০–৮,০০০/কেজি</span></div><div class="market-bg"><div class="market-fill" style="width:88%;background:linear-gradient(90deg,var(--herb2),var(--teal))"></div></div></div>
+<div class="market-item"><div class="market-label"><span class="market-name"><span class="market-flag">🇺🇸</span>আমেরিকা</span><span class="market-pct" style="color:var(--herb)">অশ্বগন্ধা সাপ্লিমেন্ট</span></div><div class="market-bg"><div class="market-fill" style="width:75%;background:linear-gradient(90deg,var(--herb2),var(--teal))"></div></div></div>
+<div class="market-item"><div class="market-label"><span class="market-name"><span class="market-flag">🇯🇵</span>জাপান</span><span class="market-pct" style="color:var(--herb)">এসেনশিয়াল অয়েল, শুকনো ভেষজ</span></div><div class="market-bg"><div class="market-fill" style="width:60%;background:linear-gradient(90deg,var(--herb2),var(--teal))"></div></div></div>
+<div class="market-item"><div class="market-label"><span class="market-name"><span class="market-flag">🇦🇪</span>UAE</span><span class="market-pct" style="color:var(--herb)">তুলসী, ভেষজ চা</span></div><div class="market-bg"><div class="market-fill" style="width:50%;background:linear-gradient(90deg,var(--herb2),var(--teal))"></div></div></div>
+</div>
+<div class="card c-rose">
+<div class="card-title"><i class="ti ti-rosette"></i>🌺 ফুল চাষ</div>
+<div class="market-item"><div class="market-label"><span class="market-name"><span class="market-flag">🇳🇱</span>নেদারল্যান্ডস (কেন্দ্র)</span><span class="market-pct" style="color:var(--rose)">কাটা ফুল, গোলাপ</span></div><div class="market-bg"><div class="market-fill" style="width:85%;background:linear-gradient(90deg,var(--rose),#e53935)"></div></div></div>
+<div class="market-item"><div class="market-label"><span class="market-name"><span class="market-flag">🇦🇪</span>UAE / উপসাগরীয় অঞ্চল</span><span class="market-pct" style="color:var(--rose)">বাল্ক ফুল, মালা</span></div><div class="market-bg"><div class="market-fill" style="width:70%;background:linear-gradient(90deg,var(--rose),#e53935)"></div></div></div>
+<div class="market-item"><div class="market-label"><span class="market-name"><span class="market-flag">🇯🇵</span>জাপান</span><span class="market-pct" style="color:var(--rose)">অর্কিড, শুকনো ফুল</span></div><div class="market-bg"><div class="market-fill" style="width:55%;background:linear-gradient(90deg,var(--rose),#e53935)"></div></div></div>
+</div>
+<div class="card c-teal">
+<div class="card-title"><i class="ti ti-snail"></i>🐌 শামুক পণ্য</div>
+<div class="market-item"><div class="market-label"><span class="market-name"><span class="market-flag">🇫🇷</span>ফ্রান্স</span><span class="market-pct" style="color:var(--teal)">জীবন্ত শামুক, এস্কার্গো</span></div><div class="market-bg"><div class="market-fill" style="width:90%;background:linear-gradient(90deg,var(--teal),#00897b)"></div></div></div>
+<div class="market-item"><div class="market-label"><span class="market-name"><span class="market-flag">🇰🇷</span>দক্ষিণ কোরিয়া</span><span class="market-pct" style="color:var(--teal)">শামুকের শ্লেষ্মা (K-Beauty)</span></div><div class="market-bg"><div class="market-fill" style="width:75%;background:linear-gradient(90deg,var(--teal),#00897b)"></div></div></div>
+<div class="market-item"><div class="market-label"><span class="market-name"><span class="market-flag">🇮🇹</span>ইতালি / বেলজিয়াম</span><span class="market-pct" style="color:var(--teal)">ভোজ্য শামুক</span></div><div class="market-bg"><div class="market-fill" style="width:60%;background:linear-gradient(90deg,var(--teal),#00897b)"></div></div></div>
+</div>
+<div class="card c-amber">
+<div class="card-title"><i class="ti ti-bottle"></i>🍯 মূল্য সংযোজিত পণ্য</div>
+<div class="market-item"><div class="market-label"><span class="market-name"><span class="market-flag">🇬🇧</span>UK (প্রবাসী ভারতীয়)</span><span class="market-pct" style="color:var(--amber)">আচার, চাটনি</span></div><div class="market-bg"><div class="market-fill" style="width:80%;background:linear-gradient(90deg,var(--amber),var(--gold))"></div></div></div>
+<div class="market-item"><div class="market-label"><span class="market-name"><span class="market-flag">🇺🇸</span>আমেরিকা (জৈব দোকান)</span><span class="market-pct" style="color:var(--amber)">ভেষজ চা, শুকনো ভেষজ</span></div><div class="market-bg"><div class="market-fill" style="width:65%;background:linear-gradient(90deg,var(--amber),var(--gold))"></div></div></div>
+<div class="market-item"><div class="market-label"><span class="market-name"><span class="market-flag">🇦🇺</span>অস্ট্রেলিয়া</span><span class="market-pct" style="color:var(--amber)">জ্যাম, শুকনো ফল</span></div><div class="market-bg"><div class="market-fill" style="width:50%;background:linear-gradient(90deg,var(--amber),var(--gold))"></div></div></div>
+</div>
+</div>
+<div class="sec-head indigo-head"><i class="ti ti-certificate"></i>রপ্তানি চেকলিস্ট — সকল পণ্য <span class="sec-head-line indigo-line"></span></div>
+<div class="prog-wrap">
+<div class="prog-label"><span id="prog-label-text">১০টির মধ্যে ০টি সম্পন্ন</span><span id="prog-pct">0%</span></div>
+<div class="prog-bg"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div>
+</div>
+<div class="card c-paper" id="export-checklist"></div>
+</div>
+<!-- ══ MYSKILLGAME ══ -->
+<div class="section" id="cat-myskill">
+<div class="myskill-footer">
+<h3>🎓 <em>MySkillGame</em> সম্পর্কে</h3>
+<p>MySkillGame মানুষকে বৃত্তিমূলক দক্ষতা, উদ্যোক্তা জ্ঞান এবং জীবিকার সুযোগ দিয়ে ক্ষমতায়িত করে। মাছের আঁশ থেকে ফুল চাষ, শামুক চাষ থেকে হাইড্রোপনিক্স — আমরা বিশ্বাস করি ব্যবহারিক জ্ঞানই স্বাধীনতার সবচেয়ে শক্তিশালী রূপ।</p>
+<div class="ms-pills">
+<span class="ms-pill">📚 বৃত্তিমূলক শিক্ষা</span>
+<span class="ms-pill">💼 স্ব-কর্মসংস্থান</span>
+<span class="ms-pill">💡 স্টার্টআপ আইডিয়া</span>
+<span class="ms-pill">👩 নারী ক্ষমতায়ন</span>
+<span class="ms-pill">🤝 SHG সুযোগ</span>
+<span class="ms-pill">🌱 পরিবেশ সচেতনতা</span>
+<span class="ms-pill">♻️ চক্রাকার অর্থনীতি</span>
+<span class="ms-pill">💰 আর্থিক সাক্ষরতা</span>
+</div>
+<div class="tagline">"MySkillGame-এর জন্য তৈরি – বৃত্তিমূলক শিক্ষা, উদ্যোক্তা উন্নয়ন, আর্থিক সাক্ষরতা, পরিবেশ সচেতনতা এবং টেকসই জীবিকার সুযোগ প্রচারের লক্ষ্যে।"</div>
+</div>
+<div class="sec-head herb-head"><i class="ti ti-link"></i>মূল সম্পদ ও যোগাযোগ <span class="sec-head-line herb-line"></span></div>
+<div class="cards-grid">
+<div class="card c-herb">
+<div class="card-title"><i class="ti ti-building"></i>সরকারি পোর্টাল</div>
+<div class="tip tip-herb">APEDA: apeda.gov.in — সকল কৃষি পণ্যের রপ্তানি নিবন্ধন</div>
+<div class="tip tip-herb">NMPB (ভেষজ উদ্ভিদ): nmpb.nic.in — ভেষজ উদ্ভিদ মিশন প্রকল্প</div>
+<div class="tip tip-herb">MIDH: midh.gov.in — উদ্যানপালন ভর্তুকি ও ফুল চাষে সহায়তা</div>
+<div class="tip tip-herb">PMFME: mofpi.gov.in — খাদ্য প্রক্রিয়াকরণ ক্ষুদ্র উদ্যোগ অনুদান</div>
+<div class="tip tip-herb">eNAM: enam.gov.in — সরাসরি ক্রেতাদের কাছে অনলাইনে পণ্য বিক্রি</div>
+<div class="tip tip-herb">KVK বিষ্ণুপুর: +91-3244-252120 — বিনামূল্যে প্রশিক্ষণ, ডেমো ইউনিট, প্রযুক্তিগত পরামর্শ</div>
+</div>
+<div class="card c-amber">
+<div class="card-title"><i class="ti ti-devices"></i>গবেষণা ও প্রশিক্ষণ প্রতিষ্ঠান</div>
+<div class="tip tip-amber">CIMAP লখনউ (cimap.res.in) — এসেনশিয়াল অয়েল ফসল, ভেষজ উদ্ভিদ প্রশিক্ষণ</div>
+<div class="tip tip-amber">NIFTEM কলকাতা — খাদ্য প্রক্রিয়াকরণ প্রযুক্তি কোর্স (niftem.ac.in)</div>
+<div class="tip tip-amber">ICAR-IIHR বেঙ্গালুরু — ফুল চাষের জাত সংক্রান্ত তথ্য, হাইব্রিড বীজ</div>
+<div class="tip tip-amber">স্কিল ইন্ডিয়া ডিজিটাল (skillindiadigital.gov.in) — বিনামূল্যে কোর্স: ফুল চাষ, মৎস্য চাষ, খাদ্য প্রক্রিয়াকরণ</div>
+<div class="tip tip-amber">WBHDC, কলকাতা — পশ্চিমবঙ্গ উদ্যানপালন প্রকল্প ও রোপণ উপকরণ</div>
+</div>
+<div class="card c-teal">
+<div class="card-title"><i class="ti ti-heart"></i>আজই বিষ্ণুপুর থেকে শুরু করুন</div>
+<span class="badge b-teal">আপনার প্রথম পদক্ষেপ</span>
+<div class="tip tip-teal">KVK বিষ্ণুপুর পরিদর্শন করুন — বিনামূল্যে মাটি পরীক্ষা, ফসলের সুপারিশ এবং প্রশিক্ষণের সময়সূচি পান</div>
+<div class="tip tip-teal">বাংলা সহায়তা কেন্দ্র (বিষ্ণুপুর ব্লক) পরিদর্শন করুন — এক জায়গায় যেকোনো WB প্রকল্পের জন্য আবেদন করুন</div>
+<div class="tip tip-teal">একটি SHG গঠন করুন বা যোগ দিন — ₹১.৫–৩ লাখ NRLM ঘূর্ণায়মান তহবিল + সমষ্টিগত শক্তি পান</div>
+<div class="tip tip-teal">সবচেয়ে ছোট সংস্করণ দিয়ে শুরু করুন: ১০টি মাশরুম ব্যাগ, বা ১টি ফুলের বেড, বা ১টি ভার্মি বেড</div>
+<div class="tip tip-teal">সবকিছু নথিভুক্ত করুন: খরচ, ফলন, আয় — এটাই ব্যাংক ঋণের জন্য আপনার ব্যবসার প্রমাণ</div>
+</div>
+</div>
+<div class="alert al-gold" style="margin-top:8px">
+<i class="ti ti-rocket"></i>
+<span><strong>সবচেয়ে গুরুত্বপূর্ণ বার্তা:</strong> এই প্রতিটি ব্যবসাই এমন কারো দিয়ে শুরু হয়েছিল যার কোনো অভিজ্ঞতা ছিল না, সামান্য টাকা ছিল, এবং বড় সংশয় ছিল। তাদের আর আপনার মধ্যে একমাত্র পার্থক্য হলো তারা প্রথম পদক্ষেপটি নিয়েছিল। <strong>🌿 আপনার উদ্ভিদ সম্পদের যাত্রা শুরু হয় একটি বীজ, একটি কেঁচো, একটি জ্যামের জার দিয়ে। আজই শুরু করুন।</strong></span>
+</div>
+</div>
+<footer class="site-footer">
+   © ২০২৬ MySkillGame • শিক্ষামূলক গেম ও সচেতনতা প্রকল্প
+</footer>
+</div><!-- /content -->
+<script>
+function switchCat(name, btn){
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('cat-' + name).classList.add('active');
+  btn.classList.add('active');
+  btn.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
+}
+
+// Export Checklist
+const exportChecks = [
+  "Udyam MSME নিবন্ধন সম্পন্ন হয়েছে (বিনামূল্যে অনলাইন)",
+  "FSSAI বেসিক নিবন্ধন করা হয়েছে (₹১০০/বছর)",
+  "DGFT থেকে IEC কোডের জন্য আবেদন করা হয়েছে (dgft.gov.in — বিনামূল্যে)",
+  "কৃষি/খাদ্য পণ্যের জন্য APEDA নিবন্ধন সম্পন্ন হয়েছে",
+  "পণ্যের নমুনা NABL-স্বীকৃত ল্যাবরেটরিতে পাঠানো হয়েছে",
+  "প্রাসঙ্গিক ক্ষেত্রে AGMARK বা জৈব সনদের জন্য আবেদন করা হয়েছে",
+  "পণ্যের ছবি ও ল্যাব রিপোর্টসহ Alibaba / TradeIndia প্রোফাইল তৈরি করা হয়েছে",
+  "প্রথম ১০–৫০ কেজি ট্রায়াল চালান সঠিকভাবে প্যাক ও লেবেল করা হয়েছে",
+  "অন্তত ২টি আন্তর্জাতিক ক্রেতার অনুসন্ধান পাওয়া গেছে",
+  "প্রথম রপ্তানি ট্রায়াল অর্ডার নিশ্চিত ও পাঠানো হয়েছে"
+];
+
+let states = exportChecks.map(() => false);
+
+function renderChecklist(){
+  const c = document.getElementById('export-checklist');
+  if(!c) return;
+  const done = states.filter(Boolean).length;
+  const pct = Math.round(done / exportChecks.length * 100);
+  document.getElementById('prog-fill').style.width = pct + '%';
+  document.getElementById('prog-label-text').textContent = `${exportChecks.length}টির মধ্যে ${done}টি সম্পন্ন`;
+  document.getElementById('prog-pct').textContent = pct + '%';
+  c.innerHTML = exportChecks.map((t,i) => `
+    <div class="chk-item" onclick="toggleChk(${i})">
+      <div class="chk-box ${states[i]?'done':''}">
+        ${states[i]?'<i class="ti ti-check"></i>':''}
+      </div>
+      <span class="chk-text ${states[i]?'done':''}">${t}</span>
+    </div>
+  `).join('');
+}
+
+function toggleChk(i){
+  states[i] = !states[i];
+  renderChecklist();
+}
+
+renderChecklist();
+
+// Animate market bars when export tab opens
+document.querySelector('[data-cat="export"]').addEventListener('click', () => {
+  setTimeout(() => {
+    document.querySelectorAll('.market-fill').forEach(bar => {
+      const w = bar.style.width;
+      bar.style.width = '0%';
+      setTimeout(() => bar.style.width = w, 80);
+    });
+  }, 100);
+});
+</script><script src="security.js"></script>
+
+<footer class="footer">
+<div style="margin-bottom:18px;">
+<a href="about.html">আমাদের সম্পর্কে</a> |
+<a href="privacy.html">গোপনীয়তা নীতি</a> |
+<a href="terms.html">শর্তাবলী</a> |
+<a href="contact.html">যোগাযোগ</a> |
+<a href="disclaimer.html">দাবিত্যাগ</a>
+</div>
+<div class="footer-name">MYSKILLGAME</div>
+<div class="footer-copy">© ২০২৬ MySkillGame • তৈরি করেছেন সুরজিৎ রায়</div>
+</footer>
+</body>
+</html>

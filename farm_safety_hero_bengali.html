@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>কৃষি নিরাপত্তা বীর - কৃষি নিরাপত্তা খেলা</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+:root{--bg:#F1F8E9;--card:#FFF;--text:#1B2A0E;--muted:#558B2F;--r:14px;--rl:22px}
+html,body{height:100%;overflow:hidden;background:#2E7D32}
+body{font-family:'Segoe UI','Arial Rounded MT Bold',system-ui,sans-serif;display:flex;justify-content:center;align-items:flex-start}
+#app{width:100%;max-width:430px;height:100vh;height:100dvh;overflow:hidden;position:relative;background:var(--bg)}
+.screen{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;display:none;flex-direction:column}
+.screen.active{display:flex}
+
+/* SPLASH */
+#splash{background:linear-gradient(170deg,#1B5E20 0%,#2E7D32 45%,#388E3C 100%);align-items:center;justify-content:flex-start;text-align:center;padding:1.2rem 1.4rem 2rem}
+.splash-hero{font-size:78px;line-height:1;margin:0.8rem 0 0.4rem;animation:bounce 2.2s infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.splash-title{font-size:1.9rem;font-weight:800;color:#FFF;letter-spacing:-0.5px;line-height:1.1;margin-bottom:0.25rem}
+.splash-badge{background:#FDD835;color:#1B2A0E;border-radius:50px;padding:0.3rem 1.1rem;font-size:0.82rem;font-weight:800;display:inline-block;margin-bottom:0.9rem}
+.splash-desc{background:rgba(255,255,255,0.13);border-radius:var(--rl);padding:0.95rem 1.1rem;margin-bottom:1.2rem;color:#DCEDC8;font-size:0.83rem;line-height:1.6;text-align:left;width:100%}
+.splash-desc strong{color:#FFF}
+.topic-preview{display:grid;grid-template-columns:1fr 1fr;gap:7px;width:100%;margin-bottom:1.4rem}
+.tp-chip{background:rgba(255,255,255,0.14);border-radius:10px;padding:0.5rem 0.55rem;font-size:0.76rem;color:#DCEDC8;text-align:left;line-height:1.3}
+.tp-chip span{display:block;font-weight:700;font-size:0.92rem;margin-bottom:1px}
+.btn-start{background:#FDD835;color:#1B2A0E;font-size:1.1rem;font-weight:800;border:none;border-radius:50px;padding:1rem 2.5rem;cursor:pointer;width:100%;max-width:280px;box-shadow:0 6px 20px rgba(0,0,0,0.3);transition:transform 0.1s}
+.btn-start:active{transform:scale(0.96)}
+
+/* MAP */
+#map{background:var(--bg)}
+.map-header{background:linear-gradient(160deg,#1B5E20,#2E7D32);padding:1rem 1rem 1.8rem}
+.map-header p{color:#C8E6C9;font-size:0.82rem;margin-top:3px}
+.prog-row{display:flex;gap:5px;margin-top:0.7rem;flex-wrap:wrap}
+.prog-dot{height:7px;border-radius:4px;background:rgba(255,255,255,0.25);flex:1;min-width:20px;transition:background 0.3s}
+.prog-dot.done{background:#FDD835}
+.topics-grid{padding:0 0.9rem;margin-top:-1rem;display:flex;flex-direction:column;gap:0.6rem;padding-bottom:1.5rem}
+.topic-card{background:var(--card);border-radius:var(--rl);padding:1rem;display:flex;align-items:center;gap:0.85rem;cursor:pointer;border:2px solid transparent;transition:transform 0.15s;box-shadow:0 2px 10px rgba(0,0,0,0.07)}
+.topic-card:active{transform:scale(0.97)}
+.topic-icon-box{font-size:2rem;width:50px;height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.topic-info{flex:1;min-width:0}
+.topic-title{font-size:0.93rem;font-weight:700;color:var(--text);margin-bottom:0.18rem}
+.topic-desc{font-size:0.75rem;color:var(--muted);line-height:1.35}
+.topic-badge{flex-shrink:0;font-size:0.88rem;text-align:center}
+
+/* QUIZ */
+#quiz{background:var(--bg)}
+.quiz-header{padding:0.9rem 1rem 1.1rem;display:flex;flex-direction:column;gap:0.55rem}
+.progress-bar-wrap{background:rgba(255,255,255,0.28);border-radius:4px;height:7px;overflow:hidden}
+.progress-bar-fill{height:100%;background:#FDD835;border-radius:4px;transition:width 0.4s ease}
+.quiz-body{padding:0.85rem}
+.question-card{background:var(--card);border-radius:var(--rl);padding:1.15rem;margin-bottom:0.85rem;box-shadow:0 2px 10px rgba(0,0,0,0.07)}
+.q-icon{font-size:2.1rem;margin-bottom:0.55rem;text-align:center;display:block}
+.q-text{font-size:1rem;font-weight:600;color:var(--text);line-height:1.5;text-align:center}
+.btn-row{display:flex;flex-direction:column;gap:0.6rem;margin-bottom:0.85rem}
+.btn-tf{border:none;border-radius:var(--rl);padding:0.88rem 1.1rem;font-size:0.93rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:0.55rem;transition:transform 0.15s;width:100%}
+.btn-tf:active{transform:scale(0.97)}
+.btn-true{background:#E8F5E9;color:#2E7D32;border:2px solid #A5D6A7}
+.btn-false{background:#FFEBEE;color:#C62828;border:2px solid #FFCDD2}
+.btn-tf.sel-ok{background:#4CAF50;color:#FFF;border-color:#4CAF50}
+.btn-tf.sel-bad{background:#F44336;color:#FFF;border-color:#F44336}
+.btn-tf.faded{opacity:0.33}
+.explanation-box{border-radius:var(--rl);padding:1.05rem;margin-bottom:0.85rem;animation:fadeIn 0.3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.explanation-box.correct{background:#E8F5E9;border:2px solid #A5D6A7}
+.explanation-box.wrong{background:#FFEBEE;border:2px solid #FFCDD2}
+.exp-head{font-weight:800;font-size:0.92rem;margin-bottom:0.4rem}
+.exp-head.correct{color:#2E7D32}
+.exp-head.wrong{color:#C62828}
+.exp-text{font-size:0.86rem;color:var(--text);line-height:1.62}
+.btn-next{border:none;border-radius:50px;padding:0.85rem 2rem;font-size:0.93rem;font-weight:700;cursor:pointer;width:100%;margin-bottom:0.85rem;margin-top:-20px;transition:transform 0.15s;color:#FFF}
+.btn-next:active{transform:scale(0.97)}
+
+/* RESULT */
+#result{align-items:center;text-align:center}
+.result-bg{width:100%;padding:2.5rem 1.5rem 1.5rem;display:flex;flex-direction:column;align-items:center}
+.result-emoji{font-size:4.2rem;margin-bottom:0.7rem;animation:pop 0.5s cubic-bezier(0.34,1.56,0.64,1)}
+@keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
+.result-title{font-size:1.65rem;font-weight:800;color:#FFF;margin-bottom:0.35rem}
+.result-sub{font-size:0.92rem;color:rgba(255,255,255,0.85);margin-bottom:1.1rem}
+.stars-display{display:flex;gap:6px;justify-content:center;font-size:2.1rem;margin-bottom:1.1rem}
+@keyframes starPop{0%{transform:scale(0) rotate(-30deg)}70%{transform:scale(1.3) rotate(5deg)}100%{transform:scale(1) rotate(0)}}
+.result-card{background:var(--card);border-radius:var(--rl);padding:1.1rem;margin:0 0.9rem 0.75rem;width:calc(100% - 1.8rem);text-align:left}
+.ans-row{display:flex;align-items:flex-start;gap:0.45rem;font-size:0.8rem;color:var(--muted);line-height:1.4;margin-bottom:0.38rem}
+.btn-continue{background:#FDD835;color:#1B2A0E;border:none;border-radius:50px;padding:0.95rem 2rem;font-size:0.97rem;font-weight:800;cursor:pointer;margin:0 0.9rem 0.6rem;width:calc(100% - 1.8rem);transition:transform 0.15s}
+.btn-continue:active{transform:scale(0.97)}
+.btn-retry{background:rgba(255,255,255,0.18);color:#FFF;border:2px solid rgba(255,255,255,0.38);border-radius:50px;padding:0.72rem 2rem;font-size:0.88rem;font-weight:700;cursor:pointer;margin:0 0.9rem 1.5rem;width:calc(100% - 1.8rem);transition:transform 0.15s}
+.btn-retry:active{transform:scale(0.97)}
+
+/* FINAL */
+#final{background:linear-gradient(160deg,#1A237E,#1B5E20,#2E7D32);align-items:center;text-align:center;padding-bottom:2rem}
+.final-hero{font-size:5.2rem;margin:2rem 0 0.7rem;animation:bounce 2s infinite}
+.final-title{font-size:1.75rem;font-weight:800;color:#FFF;margin-bottom:0.35rem}
+.final-sub{font-size:0.88rem;color:#C8E6C9;margin-bottom:1.1rem;padding:0 1.8rem;line-height:1.55}
+.final-score-big{font-size:2.9rem;font-weight:900;color:#FDD835;margin-bottom:0.28rem}
+.final-score-label{font-size:0.82rem;color:#A5D6A7;margin-bottom:1.4rem}
+.final-cards{width:100%;padding:0 0.9rem;display:flex;flex-direction:column;gap:0.48rem;margin-bottom:1.4rem}
+.ft-row{background:rgba(255,255,255,0.11);border-radius:12px;padding:0.75rem 0.95rem;display:flex;align-items:center;gap:0.7rem;text-align:left}
+.ft-icon{font-size:1.45rem;flex-shrink:0}
+.ft-info{flex:1;min-width:0}
+.ft-title{font-size:0.84rem;font-weight:700;color:#FFF}
+.ft-detail{font-size:0.73rem;color:#A5D6A7}
+.ft-stars{font-size:0.92rem;color:#FDD835;flex-shrink:0}
+.btn-play-again{background:#FDD835;color:#1B2A0E;border:none;border-radius:50px;padding:1rem 2.5rem;font-size:1.02rem;font-weight:800;cursor:pointer;width:calc(100% - 1.8rem);margin:0 0.9rem;transition:transform 0.15s}
+.btn-play-again:active{transform:scale(0.97)}
+.cert-badge{background:#FDD835;border-radius:50px;padding:0.42rem 1.2rem;font-size:0.82rem;font-weight:800;color:#1B2A0E;margin-bottom:1.4rem;display:inline-block}
+.back-btn{background:rgba(255,255,255,0.2);border:2px solid rgba(255,255,255,0.38);border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.1rem;color:#FFF;flex-shrink:0}
+.back-btn:active{background:rgba(255,255,255,0.35)}
+</style>
+</head>
+<body>
+<div id="app">
+
+<!-- SPLASH -->
+<div id="splash" class="screen active">
+  <div class="splash-hero">🌾</div>
+  <div class="splash-title">কৃষি নিরাপত্তা বীর!</div>
+  <div class="splash-badge">🌱 কৃষি নিরাপত্তা শিক্ষামূলক খেলা</div>
+  <div class="splash-desc">
+    <strong>🎮 কীভাবে খেলবে:</strong> প্রতিটি কৃষি পরিস্থিতি পড়ুন — যদি এটি নিরাপদ ও সঠিক হয় তাহলে <strong>সত্য ✅</strong>-তে চাপুন, আর যদি ভুল ও বিপজ্জনক হয় তাহলে <strong>মিথ্যা ❌</strong>-তে চাপুন। প্রতিটি উত্তরের পর কারণ জেনে নাও!<br><br>
+    <strong>৯টি বিষয় • ৩৬টি প্রশ্ন • ⭐⭐⭐ তারা অর্জন করো!</strong>
+  </div>
+  <div class="topic-preview">
+    <div class="tp-chip"><span>🧪</span>কীটনাশক নিরাপত্তা</div>
+    <div class="tp-chip"><span>🚜</span>কৃষি যন্ত্রপাতি</div>
+    <div class="tp-chip"><span>💧</span>জল নিরাপত্তা</div>
+    <div class="tp-chip"><span>🌱</span>মাটি ও পরিবেশ</div>
+    <div class="tp-chip"><span>👩‍🌾</span>মহিলা কৃষি শ্রমিক</div>
+    <div class="tp-chip"><span>📚</span>শিশু শ্রম নিষিদ্ধ</div>
+    <div class="tp-chip"><span>☀️</span>রোদ ও তাপ নিরাপত্তা</div>
+    <div class="tp-chip"><span>🍅</span>নিরাপদ ফসল</div>
+    <div class="tp-chip"><span>🐄</span>পশু নিরাপত্তা</div>
+  </div>
+  <button class="btn-start" onclick="startGame()">🚀শেখা শুরু করি!</button>
+</div>
+
+<!-- MAP -->
+<div id="map" class="screen">
+  <div class="map-header">
+    <div style="display:flex;align-items:center;gap:9px;margin-bottom:5px">
+      <button class="back-btn" onclick="goBack()">←</button>
+      <span style="color:#FFF;font-size:1.08rem;font-weight:800">একটি বিষয় বেছে নিন</span>
+      <span id="map-score" style="margin-left:auto;background:rgba(255,255,255,0.2);border-radius:50px;padding:0.22rem 0.7rem;color:#FFF;font-size:0.8rem;font-weight:700">স্কোর: ০</span>
+    </div>
+    <p>কৃষি নিরাপত্তা বীর হতে সবগুলো ৯টি বিষয় সম্পূর্ণ করো!</p>
+    <div class="prog-row" id="prog-dots"></div>
+  </div>
+  <div class="topics-grid" id="topics-grid"></div>
+</div>
+
+<!-- QUIZ -->
+<div id="quiz" class="screen">
+  <div id="quiz-header" class="quiz-header">
+    <div style="display:flex;align-items:center;gap:9px">
+      <button class="back-btn" onclick="goBack()">←</button>
+      <span id="quiz-title" style="color:#FFF;font-size:0.93rem;font-weight:800;flex:1"></span>
+      <span id="quiz-score-disp" style="background:rgba(255,255,255,0.2);border-radius:50px;padding:0.22rem 0.68rem;color:#FFF;font-size:0.78rem;font-weight:700">স্কোর: ০</span>
+    </div>
+    <div class="progress-bar-wrap"><div class="progress-bar-fill" id="quiz-prog"></div></div>
+    <div id="q-num" style="font-size:0.8rem;color:rgba(255,255,255,0.8);font-weight:600"></div>
+  </div>
+  <div class="quiz-body" id="quiz-body"></div>
+</div>
+
+<!-- RESULT -->
+<div id="result" class="screen">
+  <div class="result-bg" id="result-bg">
+    <div class="result-emoji" id="res-emoji"></div>
+    <div class="result-title" id="res-title"></div>
+    <div class="result-sub" id="res-sub"></div>
+    <div class="stars-display" id="res-stars"></div>
+  </div>
+  <div class="result-card" id="res-answers"></div>
+  <button class="btn-continue" id="btn-continue" onclick="continueFromResult()">এগিয়ে চলো ▶</button>
+  <button class="btn-retry" id="btn-retry" onclick="retryTopic()">🔄 আবার চেষ্টা করো</button>
+</div>
+
+<!-- FINAL -->
+<div id="final" class="screen">
+  <div class="final-hero">🏆</div>
+  <div class="final-title">কৃষি নিরাপত্তা বীর!</div>
+  <div class="final-sub">অসাধারণ! তুমি সবগুলো ৯টি বিষয়ে দক্ষতা অর্জন করেছ এবং শিখেছ কীভাবে কৃষক, কৃষি শ্রমিক, পশু ও পরিবেশকে নিরাপদ রাখা যায়!</div>
+  <div class="cert-badge">🌾 কৃষি নিরাপত্তা চ্যাম্পিয়ন 🌾</div>
+  <div class="final-score-big" id="final-score"></div>
+  <div class="final-score-label">মোট অর্জিত পয়েন্ট</div>
+  <div class="final-cards" id="final-cards"></div>
+  <button class="btn-play-again" onclick="playAgain()">🔄 আবার খেলো!</button>
+</div>
+
+</div>
+<script>
+// ========================
+// AUDIO ENGINE
+// ========================
+let audioCtx=null;
+function getCtx(){
+  if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();
+  if(audioCtx.state==='suspended')audioCtx.resume();
+  return audioCtx;
+}
+function tone(freq,start,dur,vol=0.25,type='sine'){
+  try{
+    const ctx=getCtx(),osc=ctx.createOscillator(),g=ctx.createGain();
+    osc.connect(g);g.connect(ctx.destination);
+    osc.type=type;osc.frequency.setValueAtTime(freq,start);
+    g.gain.setValueAtTime(0,start);
+    g.gain.linearRampToValueAtTime(vol,start+0.01);
+    g.gain.exponentialRampToValueAtTime(0.001,start+dur);
+    osc.start(start);osc.stop(start+dur+0.05);
+  }catch(e){}
+}
+function snd_click(){const ctx=getCtx(),t=ctx.currentTime;tone(550,t,0.07,0.13,'square')}
+function snd_correct(){const ctx=getCtx(),t=ctx.currentTime;tone(523,t,0.11,0.24);tone(659,t+0.11,0.11,0.24);tone(784,t+0.22,0.24,0.28)}
+function snd_wrong(){const ctx=getCtx(),t=ctx.currentTime;tone(300,t,0.17,0.24,'sawtooth');tone(200,t+0.17,0.26,0.24,'sawtooth')}
+function snd_star(){const ctx=getCtx(),t=ctx.currentTime;[880,1047,1319].forEach((f,i)=>tone(f,t+i*0.1,0.1,0.2))}
+function snd_victory(){const ctx=getCtx(),t=ctx.currentTime;[523,659,784,1047,1047].forEach((f,i)=>tone(f,t+i*0.13,0.13,0.28));tone(1047,t+0.73,0.58,0.28)}
+
+// ========================
+// TOPIC DATA
+// ========================
+const TOPICS=[
+  {
+    id:'pesticide',title:'কীটনাশক নিরাপত্তা!',icon:'🧪',
+    color:'#6A1B9A',bg:'linear-gradient(135deg,#4A148C,#6A1B9A)',
+    desc:'কৃষি রাসায়নিকের নিরাপদ ব্যবহার, সংরক্ষণ ও নিষ্কাশন',
+    questions:[
+      {icon:'⚗️',
+       q:'কৃষকরা একটি স্প্রেয়ারে দুই বা তিনটি ভিন্ন কীটনাশক একসাথে মিশিয়ে ব্যবহার করতে পারেন, এতে তা আরও শক্তিশালী হয় এবং সময় বাঁচে।',
+       ans:false,
+       exp:'কীটনাশক মেশালে বিপজ্জনক রাসায়নিক বিক্রিয়া, বিষাক্ত ধোঁয়া তৈরি হতে পারে, এমনকি মিশ্রণটি বিস্ফোরকও হয়ে উঠতে পারে! লেবেলে যেমন নির্দেশনা দেওয়া আছে ঠিক সেভাবে সবসময় কীটনাশক আলাদাভাবে ব্যবহার করুন। মেশানো আইনত নিষিদ্ধ এবং কৃষকের স্বাস্থ্যের জন্য অত্যন্ত ক্ষতিকর!'},
+      {icon:'🧤',
+       q:'যেকোনো কীটনাশক স্প্রে করার আগে কৃষকদের অবশ্যই লেবেল ভালোভাবে পড়তে হবে এবং গ্লাভস, মাস্ক, চশমা ও সুরক্ষামূলক পোশাক পরতে হবে।',
+       ans:true,
+       exp:'কীটনাশকের লেবেলের নির্দেশনা আপনার জীবন বাঁচানোর জন্যই দেওয়া থাকে! সুরক্ষা সরঞ্জাম রাসায়নিক পদার্থকে ত্বক, চোখ ও ফুসফুসের মাধ্যমে শরীরে প্রবেশ করা থেকে আটকায়। সুরক্ষা ছাড়া মাত্র এক ঘণ্টা স্প্রে করলেও গুরুতর বিষক্রিয়া, স্নায়ুর ক্ষতি বা দীর্ঘমেয়াদে ক্যান্সার হতে পারে!'},
+      {icon:'🐟',
+       q:'স্প্রে করা শেষ হলে অবশিষ্ট কীটনাশকের দ্রবণ কাছের নদী, পুকুর বা নালায় ফেলে দেওয়া যায়।',
+       ans:false,
+       exp:'জলাশয়ে কীটনাশকের বর্জ্য ফেলা একটি গুরুতর পরিবেশগত অপরাধ! এতে মাছ, ব্যাঙ ও জলজ প্রাণী মারা যায়, এবং সম্পূর্ণ গ্রামের পানীয় জল বিষাক্ত হয়ে ওঠে। অবশিষ্ট কীটনাশক নিরাপদে মাটিচাপা দিতে হবে অথবা লাইসেন্সপ্রাপ্ত নিষ্কাশন কেন্দ্রে নিয়ে যেতে হবে!'},
+      {icon:'🔒',
+       q:'কীটনাশক সবসময় তার আসল লেবেলযুক্ত পাত্রে, তালাবদ্ধ আলমারিতে, শিশু, পশু ও খাবার থেকে দূরে সংরক্ষণ করতে হবে।',
+       ans:true,
+       exp:'লেবেলবিহীন বা খাবারের পাত্রে সংরক্ষিত কীটনাশকের কারণে প্রতি বছর দুর্ঘটনাবশত বিষক্রিয়ায় মৃত্যু হয়! তালাবদ্ধ সংরক্ষণ কৌতূহলী শিশু ও পশুদের নিরাপদ রাখে। কখনোই কীটনাশক খাবার, শস্য বা পশুখাদ্যের কাছে রাখবেন না — দূষণ প্রাণঘাতী হতে পারে!'}
+    ]
+  },
+  {
+    id:'machinery',title:'কৃষি যন্ত্রপাতি নিরাপত্তা!',icon:'🚜',
+    color:'#E65100',bg:'linear-gradient(135deg,#BF360C,#E64A19)',
+    desc:'ট্রাক্টর, হার্ভেস্টার ও কৃষি যন্ত্রপাতি নিরাপদে চালাতে হবে',
+    questions:[
+      {icon:'🚜',
+       q:'যেকোনো কৃষি শ্রমিক প্রশিক্ষণ ছাড়াই ট্রাক্টর বা হার্ভেস্টিং মেশিন চালাতে পারেন — এটি নিজে নিজেই বুঝে নেওয়ার মতো সহজ।',
+       ans:false,
+       exp:'অপ্রশিক্ষিত অবস্থায় কৃষি যন্ত্রপাতি চালানোর ফলে প্রতি বছর হাজার হাজার মানুষ মারা যায় বা অঙ্গহানি হয়! ঢালু জমিতে ট্রাক্টর উল্টে যেতে পারে, এবং হার্ভেস্টারের খোলা ব্লেড সেকেন্ডের মধ্যে অঙ্গ কেটে দিতে পারে। শুধুমাত্র প্রশিক্ষিত, লাইসেন্সপ্রাপ্ত চালকদেরই ভারী কৃষি যন্ত্রপাতি চালানো উচিত!'},
+      {icon:'🔧',
+       q:'কোনো কৃষি যন্ত্র মেরামত বা আটকে থাকা অংশ পরিষ্কার করার আগে ইঞ্জিন সম্পূর্ণভাবে বন্ধ করে ঠান্ডা হতে দিতে হবে।',
+       ans:true,
+       exp:'চলন্ত মেশিন মেরামত করার চেষ্টা করা কৃষি-সংক্রান্ত মৃত্যুর অন্যতম সাধারণ কারণ! চলমান যন্ত্রাংশ, বেল্ট ও ব্লেড মুহূর্তেই হাত-বাহু টেনে নিতে পারে। মেশিনের যেকোনো অংশ স্পর্শ করার আগে — এমনকি সামান্য আটকে থাকা অংশ পরিষ্কার করতে হলেও — সবসময় বন্ধ করে অপেক্ষা করুন!'},
+      {icon:'🧒',
+       q:'শিশুরা যাত্রী হিসেবে ট্রাক্টর ও কৃষি যানবাহনে চড়তে পারে — এটি নিরাপদ এবং তাদের কৃষিকাজের অভিজ্ঞতা দেয়।',
+       ans:false,
+       exp:'শিশুদের কখনোই ট্রাক্টর বা কৃষি যানবাহনে চড়তে দেওয়া উচিত নয়! এই যন্ত্রগুলো বিনা সতর্কতায় উল্টে যেতে পারে, বিশেষত অসমতল জমিতে। শিশুদের ছোট শরীর চাপা পড়া বা পিষ্ট হওয়া থেকে বাঁচতে পারে না। চলমান কৃষি যন্ত্রপাতি থেকে শিশুদের সম্পূর্ণভাবে দূরে রাখতে হবে!'},
+      {icon:'🛠️',
+       q:'কৃষি যন্ত্রপাতি নিরাপদ রাখতে ও বিপজ্জনক বিকল হওয়া এড়াতে নিয়মিত পরিষ্কার, তেল দেওয়া ও পেশাদারভাবে পরীক্ষা করতে হবে।',
+       ans:true,
+       exp:'যথাযথভাবে রক্ষণাবেক্ষণ না করা মেশিন দুর্ঘটনার অপেক্ষায় থাকে! ক্ষয়প্রাপ্ত টায়ার, ত্রুটিপূর্ণ ব্রেক এবং আলগা যন্ত্রাংশ হঠাৎ বিকল হয়ে শ্রমিকদের মৃত্যুর কারণ হতে পারে। নিয়মিত রক্ষণাবেক্ষণ মেশিন, চালক ও আশেপাশের সবাইকে রক্ষা করে — এবং এতে ব্যয়বহুল মেরামতের খরচও বাঁচে!'}
+    ]
+  },
+  {
+    id:'water',title:'পরিষ্কার জল ও সেচ!',icon:'💧',
+    color:'#0277BD',bg:'linear-gradient(135deg,#01579B,#0277BD)',
+    desc:'জলের উৎস রক্ষা করা এবং খামারে বিচক্ষণভাবে জল ব্যবহার করা',
+    questions:[
+      {icon:'🌊',
+       q:'কৃষিজমি থেকে ধুয়ে নদী ও পুকুরে চলে যাওয়া রাসায়নিক সার নিরাপদ, কারণ এটি জলজ উদ্ভিদের বৃদ্ধিতে সাহায্য করে।',
+       ans:false,
+       exp:'সারের বহিঃপ্রবাহ "শৈবাল বৃদ্ধি" ঘটায় — শৈবালের বিশাল বৃদ্ধি জলের সব অক্সিজেন শুষে নেয়, ফলে মাছ ও অন্যান্য জলজ প্রাণী মারা যায়! এটি পানীয় জলও দূষিত করে। সঠিক জমি ব্যবস্থাপনা ও বাফার জোন বহিঃপ্রবাহ রোধ করে এবং জলাশয় রক্ষা করে!'},
+      {icon:'🌿',
+       q:'ড্রিপ সেচ — ছোট পাইপের মাধ্যমে সরাসরি গাছের শিকড়ে জল পৌঁছে দেওয়া — জল বাঁচায় এবং জলপথে রাসায়নিক বহিঃপ্রবাহ কমায়।',
+       ans:true,
+       exp:'বন্যা সেচের তুলনায় ড্রিপ সেচে ৫০% পর্যন্ত কম জল ব্যবহার হয়! জমিতে কম জল প্রবাহিত হওয়া মানে নদী ও স্রোতে কম কীটনাশক ও সার ধুয়ে যাওয়া। এটি পরিবেশ, কৃষকের খরচ ও সম্প্রদায়ের পানীয় জলের জন্য ভালো!'},
+      {icon:'🥤',
+       q:'কৃষিজমির কাছের সেচ খালের জল যদি স্বচ্ছ দেখায় ও কোনো দুর্গন্ধ না থাকে, তাহলে তা সরাসরি পান করা নিরাপদ।',
+       ans:false,
+       exp:'সেচের জলে প্রায়ই কীটনাশকের অবশিষ্টাংশ, সারের রাসায়নিক ও উজানের খামার থেকে আসা ক্ষতিকর ব্যাকটেরিয়া থাকে — এমনকি এটি একদম স্বচ্ছ দেখালেও! কৃষি শ্রমিকদের সবসময় নিয়োগকর্তার সরবরাহ করা পরিষ্কার, পরীক্ষিত পানীয় জলই পান করতে হবে — সেচের জল কখনোই নয়!'},
+      {icon:'🦟',
+       q:'খামারে সঠিক নিষ্কাশন নালা জল জমে থাকা রোধ করতে সাহায্য করে, যা মশার প্রজনন ঘটিয়ে ম্যালেরিয়া ও ডেঙ্গুর মতো রোগ ছড়ায়।',
+       ans:true,
+       exp:'জল জমে থাকা জমি রোগ বহনকারী মশার প্রজননের জন্য আদর্শ পরিবেশ তৈরি করে! ভালো নিষ্কাশন কৃষি শ্রমিক ও আশেপাশের সম্প্রদায়ের স্বাস্থ্য রক্ষা করে। সঠিক নিষ্কাশন ফসলের শিকড়কে পচে যাওয়া থেকেও রক্ষা করে এবং খামারের ফলন উল্লেখযোগ্যভাবে বৃদ্ধি করে!'}
+    ]
+  },
+  {
+    id:'soil',title:'মাটি ও পরিবেশ রক্ষা করো!',icon:'🌱',
+    color:'#558B2F',bg:'linear-gradient(135deg,#33691E,#558B2F)',
+    desc:'স্বাস্থ্যকর মাটি ও পরিষ্কার পরিবেশ কৃষিকাজের ভিত্তি',
+    questions:[
+      {icon:'🔥',
+       q:'ফসল কাটার পর নাড়া ও অবশিষ্ট গাছের অংশ পুড়িয়ে ফেলা পরবর্তী ফসলের জন্য জমি প্রস্তুত করার সবচেয়ে সহজ ও কার্যকর উপায়।',
+       ans:false,
+       exp:'নাড়া পোড়ানো মাটি, বাতাস ও স্বাস্থ্যের জন্য একটি বিপর্যয়! এটি মাটির উপকারী অণুজীব ধ্বংস করে, কার্বন ডাই-অক্সাইড ও বিষাক্ত ধোঁয়া নির্গত করে, আশেপাশের গ্রামে শ্বাসযন্ত্রের অসুখ ঘটায়, এবং এখন অনেক রাজ্যে এটি আইনত নিষিদ্ধ। এর চেয়ে ভালো উপায় হলো মালচিং, কম্পোস্টিং, অথবা যন্ত্রের সাহায্যে নাড়া মাটিতে মিশিয়ে দেওয়া!'},
+      {icon:'♻️',
+       q:'রাসায়নিক সারের বদলে জৈব কম্পোস্ট, গোবর সার ও সবুজ সার ব্যবহার করলে মাটি বহু প্রজন্ম ধরে জীবন্ত ও স্বাস্থ্যকর থাকে।',
+       ans:true,
+       exp:'স্বাস্থ্যকর মাটিতে লক্ষ লক্ষ অণুজীব, কেঁচো ও ছত্রাক থাকে যা প্রাকৃতিকভাবে উদ্ভিদের জন্য পুষ্টি উপলব্ধ করে! জৈব পদার্থ মাটির গঠন, জল ধরে রাখার ক্ষমতা ও দীর্ঘমেয়াদী উর্বরতা উন্নত করে। শুধুমাত্র রাসায়নিক নির্ভর চাষ ধীরে ধীরে মাটির জীবন ধ্বংস করে, যার ফলে কয়েক দশকের মধ্যেই জমি শক্ত ও অনুর্বর হয়ে পড়ে!'},
+      {icon:'🌾',
+       q:'লেবেলে সুপারিশ করা পরিমাণের চেয়ে বেশি কীটনাশক স্প্রে করলে ফসলের আরও ভালো সুরক্ষা মেলে, কোনো নেতিবাচক প্রভাব ছাড়াই।',
+       ans:false,
+       exp:'অতিরিক্ত স্প্রে করলে অর্থ অপচয় হয়, এবং মৌমাছি ও লেডিবার্ডের মতো উপকারী পোকা ধ্বংস হয়ে যায় যা প্রাকৃতিকভাবে কীটপতঙ্গ নিয়ন্ত্রণ করে! এটি মাটির জীব ধ্বংস করে, প্রতিরোধী "সুপার কীটপতঙ্গ" তৈরি করে, ফসলকে বিপজ্জনকভাবে দূষিত করে এবং কৃষককেও বিষাক্ত করে। সবসময় লেবেলের সঠিক মাত্রা অনুসরণ করুন!'},
+      {icon:'🔄',
+       q:'ফসল আবর্তন — একই জমিতে বিভিন্ন মৌসুমে ভিন্ন ধরনের ফসল চাষ করা — প্রাকৃতিকভাবে মাটির স্বাস্থ্য উন্নত করে এবং পোকামাকড় কমায়।',
+       ans:true,
+       exp:'ভিন্ন ফসল ভিন্ন পুষ্টি যোগ করে এবং পোকামাকড় ও রোগের চক্র ভেঙে দেয়! উদাহরণস্বরূপ, ডালের মতো ডালশস্য বাতাস থেকে নাইট্রোজেন সংগ্রহ করে মাটিতে যুক্ত করে, যা পরবর্তী ফসলকে প্রাকৃতিকভাবে সার দেয়। আবর্তন ব্যয়বহুল কীটনাশক ও রাসায়নিক সারের প্রয়োজনীয়তা কমায় এবং দীর্ঘমেয়াদী ফলন বাড়ায়!'}
+    ]
+  },
+  {
+    id:'women',title:'মহিলা কৃষি শ্রমিকদের অধিকার!',icon:'👩‍🌾',
+    color:'#AD1457',bg:'linear-gradient(135deg,#880E4F,#AD1457)',
+    desc:'কৃষিকাজে মহিলাদের সমান অধিকার, ন্যায্য মজুরি, নিরাপত্তা ও মর্যাদা',
+    questions:[
+      {icon:'⚖️',
+       q:'পুরুষদের মতোই একই কৃষিকাজ — রোপণ, নিড়ানি, ফসল কাটা — করা মহিলাদের কম মজুরি দেওয়া যেতে পারে কারণ এটি ঐতিহ্য।',
+       ans:false,
+       exp:'ঐতিহ্য কখনোই মজুরি বৈষম্যকে ন্যায্যতা দিতে পারে না! সমান কাজ মানে সমান মজুরি — এটাই আইন। ভারতে বেশিরভাগ কৃষি শ্রম মহিলারাই করেন, তবুও তাদের প্রায় সবসময় কম মজুরি দেওয়া হয়। ন্যায্য মজুরির জন্য লড়াই করা একটি আইনি অধিকার, দাবি নয় — একই কাজের জন্য মহিলা কৃষি শ্রমিকদের পুরুষদের সমান দৈনিক মজুরি পেতেই হবে!'},
+      {icon:'🤰',
+       q:'গর্ভবতী মহিলা কৃষি শ্রমিকদের গর্ভাবস্থায় ভারী বোঝা বহন, কীটনাশক স্প্রে করা বা প্রচণ্ড গরমে কাজ করতে বাধ্য করা উচিত নয়।',
+       ans:true,
+       exp:'গর্ভাবস্থায় কীটনাশকের সংস্পর্শে জন্মগত ত্রুটি, গর্ভপাত ও শিশুর গুরুতর বিকাশজনিত সমস্যা হতে পারে! ভারী বোঝা ও প্রচণ্ড গরম অকাল প্রসবের ঝুঁকি বাড়ায়। গর্ভবতী মহিলা শ্রমিকরা আইনত হালকা কাজ, নিয়মিত বিরতি এবং ক্ষতিকর রাসায়নিক থেকে সুরক্ষা পাওয়ার অধিকারী — কোনো ব্যতিক্রম নেই!'},
+      {icon:'🚿',
+       q:'মহিলা কৃষি শ্রমিকদের জমিতে আলাদা শৌচাগার, পরিষ্কার পানীয় জল বা বিশ্রামের ছায়ার প্রয়োজন নেই — তারা এসব ছাড়াই চালিয়ে নিতে পারেন।',
+       ans:false,
+       exp:'কৃষিজমিতে শৌচাগার, পরিষ্কার জল ও ছায়ার অভাবে মহিলাদের গুরুতর মূত্রনালীর সংক্রমণ, পানিশূন্যতা ও হিটস্ট্রোক হতে পারে! কনট্রাক্ট লেবার অ্যাক্ট অনুযায়ী সব খামার নিয়োগকর্তাকে এই মৌলিক সুবিধাগুলো প্রদান করতেই হবে। কাজের জায়গায় মর্যাদা ও নিরাপত্তা আইনি অধিকার — কোনো অনুগ্রহ নয়!'},
+      {icon:'🚌',
+       q:'মহিলা কৃষি শ্রমিকদের, বিশেষত যারা দূরবর্তী জমিতে কাজ করেন বা অন্ধকার নামার পর কাজ শেষ করেন, তাদের বাড়ি ফেরার নিরাপদ যাতায়াতের অধিকার আছে।',
+       ans:true,
+       exp:'দূরবর্তী কৃষিজমি থেকে একা যাতায়াত করা মহিলারা গুরুতর নিরাপত্তা ঝুঁকির সম্মুখীন হন! মহিলাদের কৃষিকাজে নিয়োগ করা নিয়োগকর্তাদের যত্নের দায়িত্বের মধ্যে নিরাপদ যাতায়াতও অন্তর্ভুক্ত। মহিলারা নিরাপদ যাতায়াত ব্যবস্থার দাবি করতে পারেন এবং করা উচিত — এবং যারা প্রত্যাখ্যান করে তাদের স্থানীয় শ্রম দপ্তরে রিপোর্ট করা উচিত!'}
+    ]
+  },
+  {
+    id:'childlabor',title:'শিশুদের জায়গা স্কুলে!',icon:'📚',
+    color:'#1565C0',bg:'linear-gradient(135deg,#0D47A1,#1565C0)',
+    desc:'কৃষিকাজে শিশুশ্রম বেআইনি — প্রতিটি শিশুরই শিক্ষা পাওয়ার অধিকার আছে',
+    questions:[
+      {icon:'🌾',
+       q:'স্কুলের সময় শিশুরা নিজেদের পারিবারিক খামারে সাহায্য করা ঠিক আছে — এটি ভালো প্রশিক্ষণ এবং তাদের ব্যস্ত রাখে।',
+       ans:false,
+       exp:'যেকোনো ধরনের কৃষিকাজের জন্য — এমনকি পারিবারিক খামারের কাজের জন্যও — স্কুল মিস করলে শিশুর ভবিষ্যৎ স্থায়ীভাবে ক্ষতিগ্রস্ত হয়! স্কুলের সময় "বাড়িতে সাহায্য করা"ও ভারতের শিক্ষার অধিকার আইনের অধীনে বেআইনি। প্রতিটি শিশুকে প্রতিদিন স্কুলে যেতেই হবে। কৃষিকাজ সবসময় অপেক্ষা করতে পারে — শৈশবের শিক্ষা পারে না!'},
+      {icon:'⚠️',
+       q:'শিশুদের কীটনাশক ব্যবহার করতে, কৃষি যন্ত্রপাতি চালাতে বা ভারী বোঝা বহন করতে দেওয়া তাদের চরম শারীরিক বিপদে ফেলে।',
+       ans:true,
+       exp:'শিশুদের ক্রমবর্ধমান শরীর প্রাপ্তবয়স্কদের তুলনায় কীটনাশকের রাসায়নিক অনেক বেশি সহজে শোষণ করে, যা মস্তিষ্ক, অঙ্গ ও বৃদ্ধির গুরুতর ক্ষতি করে! তাদের ছোট শরীর ভারী বোঝার জন্য তৈরি নয়। কৃষি দুর্ঘটনায় শিশুরা আজীবনের আঘাত পায়। শিশুদের কীটনাশক, যন্ত্রপাতি বা ভারী কৃষিকাজের ধারেকাছেও যেতে দেবেন না!'},
+      {icon:'🍵',
+       q:'১৪ বছরের কম বয়সী শিশুদের চা বাগান, ধানক্ষেত ও আখের খামারে কাজে নিয়োগ করা যায় কারণ এটি খোলা আকাশের নিচে প্রাকৃতিক কাজ।',
+       ans:false,
+       exp:'শিশুশ্রম (নিষেধাজ্ঞা ও নিয়ন্ত্রণ) সংশোধনী আইন ২০১৬ কৃষিসহ সব পেশায় ১৪ বছরের কম বয়সী শিশুদের নিয়োগ নিষিদ্ধ করে! চা বাগান ও ধানক্ষেতের কাজ ঝুঁকিপূর্ণ হিসেবে শ্রেণীবদ্ধ। শিশুশ্রম ব্যবহার করতে ধরা পড়লে নিয়োগকর্তাদের ভারী জরিমানা ও ২ বছর পর্যন্ত কারাদণ্ড হতে পারে!'},
+      {icon:'💰',
+       q:'প্রাপ্তবয়স্ক কৃষি শ্রমিকদের ন্যায্য ও পর্যাপ্ত মজুরি দেওয়া তাদের পরিবারকে শিশুদের কাজে না পাঠিয়ে স্কুলে পাঠানোর সামর্থ্য দেয়।',
+       ans:true,
+       exp:'বেশিরভাগ শিশুশ্রম ঘটে কারণ পরিবারগুলো প্রাপ্তবয়স্কদের মজুরিতে টিকে থাকতে পারে না! প্রাপ্তবয়স্ক শ্রমিকরা ন্যায্য মজুরি — আইনত নির্ধারিত ন্যূনতম মজুরি — পেলে পরিবারগুলো শিশুদের কাজে না লাগিয়েই তাদের প্রয়োজন মেটাতে পারে। প্রাপ্তবয়স্কদের জন্য ন্যায্য মজুরি সরাসরি শিশুদের শিক্ষার অধিকার রক্ষা করে। সবকিছুই একে অপরের সাথে জড়িত!'}
+    ]
+  },
+  {
+    id:'heat',title:'গরম থেকে বাঁচো — নিরাপদ থাকো!',icon:'☀️',
+    color:'#E65100',bg:'linear-gradient(135deg,#E65100,#F57C00)',
+    desc:'রোদ, তাপ ও পানিশূন্যতা কৃষি শ্রমিকদের জন্য গুরুতর বিপদ',
+    questions:[
+      {icon:'🌡️',
+       q:'গ্রীষ্মে দ্রুত কাজ শেষ করতে কৃষি শ্রমিকদের সকাল ১১টা থেকে বিকেল ৩টা পর্যন্ত দিনের সবচেয়ে গরম সময়ে বিরতি ছাড়া কাজ করা উচিত।',
+       ans:false,
+       exp:'বিরতি ছাড়া প্রচণ্ড গরমে কাজ করলে হিট এক্সহসশন ও হিট স্ট্রোক হতে পারে — এটি একটি চিকিৎসা জরুরি অবস্থা যা কয়েক ঘণ্টার মধ্যে প্রাণঘাতী হতে পারে! নিয়োগকর্তাদের অবশ্যই সবচেয়ে গরম সময়ে বাধ্যতামূলক বিশ্রামের বিরতি নির্ধারণ করতে হবে। বিশ্রাম ও জল ছাড়া শরীর নিজেকে ঠান্ডা করতে পারে না। কোনো ফসল কাটার লক্ষ্যমাত্রাই একজন শ্রমিকের জীবনের চেয়ে মূল্যবান নয়!'},
+      {icon:'🥤',
+       q:'নিয়োগকর্তাদের অবশ্যই খোলা আকাশের নিচে কাজ করা কৃষি শ্রমিকদের বিনামূল্যে পরিষ্কার পানীয় জল, ছায়াযুক্ত বিশ্রামের জায়গা এবং প্রতি দুই ঘণ্টায় অন্তত ১৫ মিনিটের বিশ্রামের বিরতি দিতে হবে।',
+       ans:true,
+       exp:'গরম মাঠে পানিশূন্যতা কয়েক ঘণ্টার মধ্যেই প্রাণঘাতী হতে পারে! প্রচুর ঘামা শ্রমিকদের প্রতি ২০ মিনিটে অন্তত ২৫০ মিলিলিটার জল প্রয়োজন। ছায়ায় বিশ্রাম শরীরকে ঠান্ডা হতে সাহায্য করে। আন্তঃরাজ্য পরিযায়ী শ্রমিক আইন ও বিভিন্ন রাজ্যের শ্রম আইনের অধীনে এই ব্যবস্থাগুলো সব খামার নিয়োগকর্তার জন্য আইনি বাধ্যবাধকতা!'},
+      {icon:'😰',
+       q:'কাজের সময় যে কৃষি শ্রমিকের মাথা ঘুরছে, তীব্র মাথাব্যথা হচ্ছে, ঘাম বন্ধ হয়ে গেছে বা বিভ্রান্ত বোধ করছেন, তার জোর করে কাজ চালিয়ে যাওয়া উচিত।',
+       ans:false,
+       exp:'এগুলো হিট স্ট্রোকের লক্ষণ — একটি জীবন-হুমকিস্বরূপ জরুরি অবস্থা! মিনিটের মধ্যেই শরীরের তাপমাত্রা প্রাণঘাতী মাত্রায় বেড়ে যেতে পারে। এই লক্ষণ দেখানো যেকোনো শ্রমিককে অবিলম্বে ছায়ায় নিয়ে যেতে হবে, ঠান্ডা জল খাওয়াতে হবে, ভেজা কাপড় লাগাতে হবে এবং হাসপাতালে নিতে হবে। উপেক্ষা করলে হিট স্ট্রোক প্রাণঘাতী হতে পারে!'},
+      {icon:'👒',
+       q:'হালকা রঙের, ঢিলেঢালা, লম্বা হাতার পোশাক ও চওড়া কিনারার টুপি পরা কৃষি শ্রমিকদের সানস্ট্রোক ও ত্বকের রোগ থেকে উল্লেখযোগ্যভাবে রক্ষা করে।',
+       ans:true,
+       exp:'হালকা রঙ তাপ শোষণ না করে সূর্যের আলো প্রতিফলিত করে! ঢিলেঢালা, লম্বা হাতার পোশাক ত্বককে UV বিকিরণ থেকে রক্ষা করে যা ত্বকের ক্যান্সার ও যন্ত্রণাদায়ক পোড়া ঘটাতে পারে। চওড়া কিনারার টুপি মাথা ও ঘাড় ঠান্ডা রাখে। সাধারণ সুরক্ষামূলক পোশাক শরীরের তাপমাত্রা ৩-৫°সে কমাতে পারে — যা মাঠে জীবন রক্ষাকারী পার্থক্য তৈরি করে!'}
+    ]
+  },
+  {
+    id:'produce',title:'সবার জন্য নিরাপদ ও বিশুদ্ধ খাদ্য!',icon:'🍅',
+    color:'#2E7D32',bg:'linear-gradient(135deg,#1B5E20,#2E7D32)',
+    desc:'ক্রেতাদের স্বাস্থ্যকর ও নিরাপদ রাখতে কৃষকরা কীভাবে দায়িত্বশীলভাবে খাদ্য উৎপাদন করেন',
+    questions:[
+      {icon:'💊',
+       q:'ফসল কাটার এক বা দুই দিন আগে সবজি ও ফলে কীটনাশক স্প্রে করা ঠিক আছে — ক্রেতা ধুয়ে নিলে রাসায়নিকটি চলে যাবে।',
+       ans:false,
+       exp:'বেশিরভাগ কীটনাশক ফল ও সবজির ভেতরে প্রবেশ করে যায় — ধোয়ায় শুধু পৃষ্ঠের অবশিষ্টাংশই দূর হয়! প্রতিটি কীটনাশকের ফসল কাটার আগে স্প্রে করার পর একটি আইনত নির্ধারিত "অপেক্ষার সময়" (প্রায়ই ৭-২১ দিন) থাকে। খুব তাড়াতাড়ি ফসল কাটলে খাদ্যের ভেতরে বেআইনি, ক্ষতিকর কীটনাশকের অবশিষ্টাংশ থেকে যায় যা ক্রেতাদের ক্যান্সার, হরমোনের সমস্যা ও বিষক্রিয়া ঘটাতে পারে!'},
+      {icon:'📅',
+       q:'কৃষকদের প্রতিটি কীটনাশক প্রয়োগের পর যেকোনো ফসল কাটার আগে বাধ্যতামূলক "ফসল কাটার পূর্ববর্তী অপেক্ষার সময়" কঠোরভাবে মেনে চলতে হবে।',
+       ans:true,
+       exp:'অপেক্ষার সময় কীটনাশককে ফসলের ভেতরে নিরাপদ মাত্রায় ভেঙে যেতে দেয়। এটি ঐচ্ছিক নয় — এটি ইনসেক্টিসাইড অ্যাক্টের অধীনে একটি আইনি বাধ্যবাধকতা! যেসব কৃষক অপেক্ষার সময় লঙ্ঘন করেন তাদের ভারী জরিমানার মুখোমুখি হতে হয়, এবং তাদের ফসল বাজেয়াপ্ত ও ধ্বংস করা হতে পারে। অপেক্ষার সময় মেনে চলা ক্রেতা ও কৃষকের নিজের সুনাম উভয়কেই রক্ষা করে!'},
+      {icon:'🏪',
+       q:'একবার কৃষক বাজারে বা ব্যবসায়ীর কাছে ফসল বিক্রি করে দিলে, খাদ্য নিরাপত্তার দায়িত্ব সম্পূর্ণভাবে বিক্রেতার কাছে চলে যায় — কৃষকের আর কোনো দায়িত্ব থাকে না।',
+       ans:false,
+       exp:'কৃষক যে ফসল ফলান তার নিরাপত্তার প্রাথমিক দায়িত্ব তারই থাকে! খাদ্যে ক্ষতিকর মাত্রার কীটনাশক পাওয়া গেলে, যে কৃষক তা ফলিয়েছেন তার বিরুদ্ধে খাদ্য নিরাপত্তা ও মান আইনের অধীনে মামলা হতে পারে। কৃষকদের এমন খাদ্য উৎপাদন করা উচিত যা তারা গর্বের সাথে নিজের পরিবার ও সম্প্রদায়কে খাওয়াতে পারবেন!'},
+      {icon:'🌿',
+       q:'শুধুমাত্র সরকার-অনুমোদিত কীটনাশক সঠিক পরিমাণে এবং শুধুমাত্র সত্যিকারের প্রয়োজনে ব্যবহার করা ক্রেতা, পরাগবাহক ও পরিবেশকে রক্ষা করে।',
+       ans:true,
+       exp:'অনুমোদিত কীটনাশক সঠিক মাত্রায় নিরাপত্তার জন্য বৈজ্ঞানিকভাবে পরীক্ষিত। সমন্বিত কীটপতঙ্গ ব্যবস্থাপনার নীতি অনুসরণ করে শুধুমাত্র প্রকৃত প্রয়োজনে সেগুলো ব্যবহার করলে মৌমাছির মতো উপকারী পোকা রক্ষা পায়, কৃষকের খরচ কমে এবং পরিবারের জন্য খাদ্য নিরাপদ থাকে। সঠিকভাবে কম কীটনাশক ব্যবহার সবসময় অসতর্কভাবে বেশি ব্যবহারের চেয়ে ভালো!'}
+    ]
+  },
+  {
+    id:'animals',title:'পশু ও গবাদি পশু নিরাপত্তা!',icon:'🐄',
+    color:'#4E342E',bg:'linear-gradient(135deg,#3E2723,#4E342E)',
+    desc:'কৃষি পশুদের নিরাপদে সামলানো এবং মানবিকভাবে দেখাশোনা করা',
+    questions:[
+      {icon:'🦠',
+       q:'কৃষি শ্রমিকরা খালি হাতে ও কোনো সুরক্ষা ছাড়াই অসুস্থ বা আহত পশু সামলাতে পারেন — পশুর রোগ মানুষের মধ্যে ছড়াতে পারে না।',
+       ans:false,
+       exp:'অনেক পশুর রোগ জুনোটিক — এগুলো সরাসরি পশু থেকে মানুষে ছড়ায়! ব্রুসেলোসিস, লেপ্টোস্পাইরোসিস, জলাতঙ্ক ও বার্ড ফ্লু কৃষি পশু থেকে পাওয়া জীবন-হুমকিস্বরূপ রোগের উদাহরণ। অসুস্থ পশু সামলানোর সময় সবসময় গ্লাভস পরুন, ভালোভাবে হাত ধুয়ে নিন এবং অসুস্থতার লক্ষণ দেখানো যেকোনো পশুর জন্য অবিলম্বে একজন পশু চিকিৎসকের পরামর্শ নিন!'},
+      {icon:'🌾',
+       q:'গবাদি পশুকে প্রতিদিন পরিষ্কার পানীয় জল, পর্যাপ্ত পুষ্টিকর খাদ্য, চরম আবহাওয়া থেকে সঠিক আশ্রয় ও মানবিক আচরণ দিতে হবে।',
+       ans:true,
+       exp:'সুস্থ, ভালোভাবে যত্ন নেওয়া পশু বেশি দুধ দেয়, ভালো বাড়ে এবং শ্রমিক ও সম্প্রদায়ে রোগ ছড়ানোর সম্ভাবনা অনেক কম থাকে! ভারতের পশু কল্যাণ আইন যত্নের ন্যূনতম মান আবশ্যক করে। খারাপ পরিবেশে রাখা পশু কষ্ট পায়, কম উৎপাদন করে এবং বিপজ্জনক রোগের আধার হয়ে ওঠে। ভালো পশু যত্ন নৈতিক এবং অর্থনৈতিকভাবেও বুদ্ধিমানের কাজ!'},
+      {icon:'💊',
+       q:'কৃষি পশুদের দ্রুত বাড়ানোর জন্য নিয়মিত বড় মাত্রায় অ্যান্টিবায়োটিক দেওয়া উৎপাদনশীলতা নিরাপদে বাড়ানোর একটি ভালো উপায়।',
+       ans:false,
+       exp:'গবাদি পশুতে নিয়মিত অ্যান্টিবায়োটিকের অতিরিক্ত ব্যবহার প্রাণঘাতী অ্যান্টিবায়োটিক-প্রতিরোধী ব্যাকটেরিয়া তৈরি করছে — যাকে কখনো কখনো "সুপারবাগ" বলা হয়! এই প্রতিরোধী ব্যাকটেরিয়া মাংস, দুধ ও পরিবেশের মাধ্যমে মানুষের মধ্যে ছড়ায়, যার ফলে মানুষের সংক্রমণ চিকিৎসা করা অসম্ভব হয়ে পড়ে। পশুদের অ্যান্টিবায়োটিক শুধুমাত্র নির্দিষ্ট অসুখের জন্য লাইসেন্সপ্রাপ্ত পশু চিকিৎসকের প্রেসক্রিপশনেই দেওয়া উচিত!'},
+      {icon:'🐃',
+       q:'ষাঁড়, মহিষ ও ঘোড়ার মতো বড় পশুর কাছে নিরাপদে যাওয়া, তাদের সামলানো ও সরানোর জন্য কৃষি শ্রমিকদের নির্দিষ্ট প্রশিক্ষণ পেতে হবে।',
+       ans:true,
+       exp:'বড় কৃষি পশু চমকে গেলে, কোণঠাসা হলে বা ব্যথায় থাকলে মানুষকে গুরুতরভাবে আহত বা হত্যা করতে পারে! ষাঁড় ও মহিষ শ্রমিকদের শিং দিয়ে গুঁতো, লাথি বা প্রাণঘাতী শক্তিতে চাপা দিতে পারে। সঠিক প্রশিক্ষণ শ্রমিকদের পশুর দেহভঙ্গি বোঝা, নিরাপদে কাছে যাওয়া, সঠিক নিয়ন্ত্রণ পদ্ধতি ব্যবহার করা এবং প্রতিরক্ষামূলক আচরণ এড়ানো শেখায়। এই প্রশিক্ষণ প্রতি বছর জীবন বাঁচায়!'}
+    ]
+  }
+];
+
+// ========================
+// GAME STATE
+// ========================
+let currentScreen='splash',navStack=['splash'],currentTopicIdx=-1;
+let currentQ=0,quizAnswers=[],topicScores={},totalScore=0,answered=false;
+
+// ========================
+// NAVIGATION
+// ========================
+function switchScreen(to){
+  document.getElementById(currentScreen).classList.remove('active');
+  document.getElementById(to).classList.add('active');
+  navStack.push(to);currentScreen=to;
+  history.pushState({s:to},'','');
+}
+function goBack(){
+  snd_click();
+  if(navStack.length>1){
+    navStack.pop();
+    const prev=navStack[navStack.length-1];
+    document.getElementById(currentScreen).classList.remove('active');
+    document.getElementById(prev).classList.add('active');
+    currentScreen=prev;
+    if(prev==='map')renderMap();
+  }
+}
+window.addEventListener('popstate',function(){
+  if(navStack.length>1){
+    navStack.pop();
+    const prev=navStack[navStack.length-1];
+    document.getElementById(currentScreen).classList.remove('active');
+    document.getElementById(prev).classList.add('active');
+    currentScreen=prev;
+    if(prev==='map')renderMap();
+  }else history.pushState({},'','');
+});
+
+// ========================
+// SPLASH → MAP
+// ========================
+function startGame(){snd_click();renderMap();switchScreen('map')}
+function playAgain(){
+  snd_click();topicScores={};totalScore=0;
+  navStack=['splash'];currentScreen='splash';
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById('splash').classList.add('active');
+}
+
+// ========================
+// MAP
+// ========================
+function renderMap(){
+  document.getElementById('map-score').textContent='স্কোর: '+totalScore;
+  document.getElementById('prog-dots').innerHTML=TOPICS.map(t=>`<div class="prog-dot ${topicScores[t.id]?'done':''}"></div>`).join('');
+  const grid=document.getElementById('topics-grid');
+  grid.innerHTML=TOPICS.map((t,i)=>{
+    const done=topicScores[t.id];
+    const stars=done?done.stars:0;
+    const starStr='⭐'.repeat(stars)+'☆'.repeat(3-stars);
+    return `
+    <div class="topic-card" onclick="startTopic(${i})" style="border-color:${done?'#4CAF50':'transparent'}">
+      <div class="topic-icon-box" style="background:${t.color}20">${t.icon}</div>
+      <div class="topic-info">
+        <div class="topic-title" style="color:${t.color}">${t.title}</div>
+        <div class="topic-desc">${t.desc}</div>
+        ${done?`<div style="font-size:0.73rem;color:#4CAF50;font-weight:700;margin-top:2px">✅ Completed</div>`:''}
+      </div>
+      <div class="topic-badge">${done?`<span style="font-size:0.95rem">${starStr}</span>`:`<span style="font-size:1.25rem;color:${t.color}">▶</span>`}</div>
+    </div>`;
+  }).join('');
+  if(TOPICS.every(t=>topicScores[t.id]))
+    grid.innerHTML+=`<button onclick="showFinal()" style="background:linear-gradient(135deg,#F9A825,#FDD835);color:#1B2A0E;border:none;border-radius:50px;padding:1rem;font-size:0.98rem;font-weight:800;width:100%;cursor:pointer;margin-top:0.3rem">🏆 চূড়ান্ত ফলাফল দেখো!</button>`;
+}
+
+// ========================
+// QUIZ
+// ========================
+function startTopic(idx){
+  snd_click();currentTopicIdx=idx;currentQ=0;quizAnswers=[];answered=false;
+  const t=TOPICS[idx];
+  document.getElementById('quiz-header').style.background=t.bg;
+  document.getElementById('quiz-title').textContent=t.icon+' '+t.title;
+  renderQuestion();switchScreen('quiz');
+}
+function renderQuestion(){
+  const t=TOPICS[currentTopicIdx],q=t.questions[currentQ];
+  answered=false;
+  document.getElementById('quiz-prog').style.width=(currentQ/t.questions.length*100)+'%';
+  document.getElementById('q-num').textContent='প্রশ্ন '+(currentQ+1)+' / '+t.questions.length;
+  document.getElementById('quiz-score-disp').textContent='স্কোর: '+totalScore;
+  document.getElementById('quiz-body').innerHTML=`
+    <div class="question-card">
+      <span class="q-icon">${q.icon}</span>
+      <div class="q-text">${q.q}</div>
+    </div>
+    <div class="btn-row">
+      <button class="btn-tf btn-true" id="btn-t" onclick="answer(true)">✅ সত্য — এটি সঠিক ও নিরাপদ!</button>
+      <button class="btn-tf btn-false" id="btn-f" onclick="answer(false)">❌ মিথ্যা — এটি ভুল ও বিপজ্জনক!</button>
+    </div>
+    <div id="exp-area"></div>
+  `;
+}
+function answer(userAns){
+  if(answered)return;answered=true;snd_click();
+  const t=TOPICS[currentTopicIdx],q=t.questions[currentQ];
+  const correct=userAns===q.ans;
+  quizAnswers.push({correct,icon:q.icon,q:q.q});
+  if(correct){snd_correct();totalScore+=10;}else snd_wrong();
+  document.getElementById('quiz-score-disp').textContent='স্কোর: '+totalScore;
+  const bt=document.getElementById('btn-t'),bf=document.getElementById('btn-f');
+  if(userAns===true){bt.className='btn-tf '+(correct?'sel-ok':'sel-bad');bf.className='btn-tf btn-false faded';}
+  else{bf.className='btn-tf '+(correct?'sel-ok':'sel-bad');bt.className='btn-tf btn-true faded';}
+  if(!correct){if(q.ans===true)bt.className='btn-tf sel-ok';else bf.className='btn-tf sel-ok';}
+  bt.disabled=true;bf.disabled=true;
+  const isLast=currentQ===t.questions.length-1;
+  document.getElementById('exp-area').innerHTML=`
+    <div class="explanation-box ${correct?'correct':'wrong'}">
+      <div class="exp-head ${correct?'correct':'wrong'}">${correct?'🎉 চমৎকার! তুমি ঠিক বলেছ!':'💡 ঠিক হয়নি — কিন্তু এখন তুমি জেনে গেলে!'}</div>
+      <div class="exp-text">${q.exp}</div>
+    </div>
+    <button class="btn-next" style="background:${t.color}" onclick="nextQuestion()">${isLast?'ফলাফল দেখো 🏁':'পরবর্তী প্রশ্ন ▶'}</button>
+  `;
+}
+function nextQuestion(){
+  snd_click();
+  const t=TOPICS[currentTopicIdx];
+  if(currentQ<t.questions.length-1){currentQ++;renderQuestion();document.getElementById('quiz').scrollTop=0;}
+  else showResult();
+}
+
+// ========================
+// RESULT
+// ========================
+function showResult(){
+  const t=TOPICS[currentTopicIdx];
+  const correct=quizAnswers.filter(a=>a.correct).length,total=quizAnswers.length;
+  const stars=correct===total?3:correct>=total*0.75?2:correct>=total*0.5?1:0;
+  topicScores[t.id]={correct,total,stars};
+  const emoji=stars===3?'🏆':stars===2?'🎉':stars===1?'👍':'💪';
+  const msg=stars===3?'পারফেক্ট স্কোর!':stars===2?'দারুণ করেছ!':stars===1?'ভালো চেষ্টা!':'শিখতে থাকো!';
+  document.getElementById('result-bg').style.background=t.bg;
+  document.getElementById('res-emoji').textContent=emoji;
+  document.getElementById('res-title').textContent=msg;
+  document.getElementById('res-sub').textContent='তুমি '+total+' টির মধ্যে '+correct+' টি সঠিক উত্তর দিয়েছ!';
+  document.getElementById('res-stars').innerHTML=[0,1,2].map(i=>`<span style="${i<stars?'animation:starPop 0.4s ease forwards;animation-delay:'+(i*0.2)+'s;animation-fill-mode:both':''}">${i<stars?'⭐':'☆'}</span>`).join('');
+  setTimeout(()=>{for(let i=0;i<stars;i++)setTimeout(()=>snd_star(),i*250);if(stars===3)setTimeout(snd_victory,800);},300);
+  document.getElementById('res-answers').innerHTML=`
+    <div style="font-size:0.92rem;font-weight:700;color:${t.color};margin-bottom:0.6rem">${t.icon} প্রশ্নের সারাংশ</div>
+    ${quizAnswers.map((a,i)=>`
+      <div class="ans-row">
+        <span>${a.correct?'✅':'❌'}</span>
+        <span>${t.questions[i].q.substring(0,88)}${t.questions[i].q.length>88?'...':''}</span>
+      </div>`).join('')}
+  `;
+  document.getElementById('btn-continue').textContent=TOPICS.every(tp=>topicScores[tp.id])?'🏆 চূড়ান্ত ফলাফল!':'🗺️ পরবর্তী বিষয়';
+  switchScreen('result');
+}
+function continueFromResult(){
+  snd_click();
+  if(TOPICS.every(t=>topicScores[t.id])){showFinal();return;}
+  navStack=['splash','map'];
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById('map').classList.add('active');
+  currentScreen='map';renderMap();
+  history.pushState({s:'map'},'','');
+}
+function retryTopic(){snd_click();delete topicScores[TOPICS[currentTopicIdx].id];startTopic(currentTopicIdx);navStack.pop();}
+
+// ========================
+// FINAL
+// ========================
+function showFinal(){
+  snd_victory();
+  let grand=0;
+  TOPICS.forEach(t=>{if(topicScores[t.id])grand+=topicScores[t.id].correct*10;});
+  document.getElementById('final-score').textContent=grand+' pts';
+  document.getElementById('final-cards').innerHTML=TOPICS.map(t=>{
+    const s=topicScores[t.id];
+    return `
+    <div class="ft-row">
+      <span class="ft-icon">${t.icon}</span>
+      <div class="ft-info">
+        <div class="ft-title">${t.title}</div>
+        <div class="ft-detail">${s?s.correct+'/'+s.total+' সঠিক':'চেষ্টা করা হয়নি'}</div>
+      </div>
+      <div class="ft-stars">${s?'⭐'.repeat(s.stars)+'☆'.repeat(3-s.stars):'☆☆☆'}</div>
+    </div>`;
+  }).join('');
+  switchScreen('final');
+}
+
+// INIT
+history.pushState({s:'splash'},'','');
+</script>
+</body>
+</html>

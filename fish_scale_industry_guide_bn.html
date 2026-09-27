@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Surajit Roy" name="author"/>
+<meta content="© Surajit Roy" name="copyright"/>
+<meta content="index,follow" name="robots"/>
+<title>মাছের আঁশ শিল্প ও রপ্তানি গাইড – MySkillGame</title>
+<meta content="মাছের আঁশ থেকে আয়, ব্যবসা ও রপ্তানি সংক্রান্ত ব্যবহারিক নির্দেশিকা — MySkillGame থেকে।" name="description"/>
+<!-- Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+<meta content="মাছের আঁশ শিল্প, মাছের আঁশ ব্যবসা, মাছের আঁশ রপ্তানি, ফিশ কোলাজেন, মাছের আঁশের হস্তশিল্প, বর্জ্য থেকে সম্পদ, বৃত্তিমূলক শিক্ষা, MySkillGame, স্বনিয়োজন, উদ্যোগ" name="keywords">
+<link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&amp;family=DM+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --teal:#00c9a7;--teal2:#00e5c0;--gold:#f6c90e;--orange:#ff7043;
+  --indigo:#3f51b5;--pink:#e91e8c;--green:#43a047;--sky:#29b6f6;
+  --bg:#0b1623;--bg2:#0f2235;--bg3:#132b42;--card:#152d45;--card2:#1a3550;
+  --text:#e8f4fd;--text2:#a8c8e8;--text3:#6a94b8;
+  --border:rgba(255,255,255,0.09);
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);user-select:none;min-height:100vh;padding-bottom:60px}
+
+/* ── HERO ── */
+.hero{
+  background:linear-gradient(135deg,#0b1f35 0%,#0a3d62 45%,#0b1f35 100%);
+  padding:36px 16px 28px;text-align:center;position:relative;overflow:hidden;
+  border-bottom:2px solid var(--teal);
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(0,201,167,0.18),transparent);
+}
+.hero-fish{font-size:52px;display:block;margin-bottom:10px;animation:floatFish 3s ease-in-out infinite}
+@keyframes floatFish{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-8px) rotate(3deg)}}
+.hero h1{
+  font-family:'Playfair Display',serif;font-size:clamp(22px,5vw,34px);
+  color:#fff;font-weight:800;line-height:1.2;position:relative;
+}
+.hero h1 span{color:var(--teal)}
+.hero-sub{font-size:14px;color:rgba(255,255,255,0.7);margin-top:8px;position:relative}
+.hero-badges{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:16px;position:relative}
+.hb{
+  background:rgba(0,201,167,0.15);border:1px solid rgba(0,201,167,0.4);
+  border-radius:20px;padding:4px 12px;font-size:11.5px;color:var(--teal2);font-weight:600;
+}
+.myskill-tag{
+  margin-top:18px;background:rgba(246,201,14,0.12);border:1px solid rgba(246,201,14,0.35);
+  border-radius:10px;padding:10px 16px;font-size:11.5px;color:var(--gold);
+  max-width:620px;margin-inline:auto;position:relative;line-height:1.6
+}
+
+/* ── TABS ── */
+.tab-row{
+  display:flex;overflow-x:auto;gap:0;
+  background:linear-gradient(180deg,#091825,#0b1f35);
+  padding:0;scrollbar-width:none;border-bottom:1px solid var(--border);
+  position:sticky;top:0;z-index:50;
+}
+.tab-row::-webkit-scrollbar{display:none}
+.tab-btn{
+  flex:0 0 auto;padding:12px 14px;border:none;
+  background:transparent;font-size:11.5px;font-weight:600;
+  cursor:pointer;color:rgba(255,255,255,0.45);
+  border-bottom:3px solid transparent;transition:all 0.22s;
+  white-space:nowrap;text-align:center;font-family:'DM Sans',sans-serif;
+}
+.tab-btn i{display:block;font-size:19px;margin-bottom:3px}
+.tab-btn.active{color:#fff;border-bottom-color:var(--teal)}
+.tab-btn:hover{color:rgba(255,255,255,0.8);background:rgba(255,255,255,0.04)}
+
+/* ── LAYOUT ── */
+.content{max-width:760px;margin:0 auto;padding:20px 14px}
+.section{display:none;animation:fadeIn 0.3s ease}
+.section.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── SECTION HEAD ── */
+.sec-head{
+  font-family:'Playfair Display',serif;
+  font-size:18px;font-weight:700;color:#fff;
+  margin:22px 0 14px;display:flex;align-items:center;gap:10px;
+}
+.sec-head i{font-size:22px;color:var(--teal)}
+.sec-head-line{flex:1;height:1px;background:linear-gradient(90deg,var(--teal),transparent)}
+
+/* ── ALERT BOX ── */
+.alert-box{
+  border-radius:12px;padding:12px 16px;margin-bottom:16px;
+  font-size:13px;line-height:1.65;display:flex;gap:10px;align-items:flex-start;
+}
+.alert-box i{font-size:21px;min-width:20px;margin-top:1px}
+.a-teal{background:rgba(0,201,167,0.1);border:1px solid rgba(0,201,167,0.35);color:var(--teal2)}
+.a-gold{background:rgba(246,201,14,0.1);border:1px solid rgba(246,201,14,0.35);color:var(--gold)}
+.a-orange{background:rgba(255,112,67,0.1);border:1px solid rgba(255,112,67,0.35);color:#ff9966}
+.a-pink{background:rgba(233,30,140,0.1);border:1px solid rgba(233,30,140,0.35);color:#f48fb1}
+
+/* ── CARDS GRID ── */
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:14px;margin-bottom:16px}
+.card{
+  border-radius:14px;padding:16px 18px;border:1px solid var(--border);
+  transition:transform 0.2s,box-shadow 0.2s;
+}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.3)}
+
+/* card colour variants */
+.c-teal{background:linear-gradient(135deg,#003d33,#00695c)}
+.c-teal2{background:linear-gradient(135deg,#002a24,#003d33)}
+.c-gold{background:linear-gradient(135deg,#3d2e00,#6d5200)}
+.c-gold2{background:linear-gradient(135deg,#2a2000,#3d2e00)}
+.c-orange{background:linear-gradient(135deg,#3d1a00,#7b3400)}
+.c-orange2{background:linear-gradient(135deg,#2a1200,#3d1a00)}
+.c-indigo{background:linear-gradient(135deg,#1a1f5e,#2e3792)}
+.c-indigo2{background:linear-gradient(135deg,#10143e,#1a1f5e)}
+.c-pink{background:linear-gradient(135deg,#3d0021,#7a0042)}
+.c-pink2{background:linear-gradient(135deg,#280016,#3d0021)}
+.c-green{background:linear-gradient(135deg,#0d3320,#1b5e3a)}
+.c-green2{background:linear-gradient(135deg,#071f14,#0d3320)}
+.c-sky{background:linear-gradient(135deg,#003d5e,#005c8a)}
+.c-sky2{background:linear-gradient(135deg,#002940,#003d5e)}
+
+.card-title{font-size:14px;font-weight:700;color:#fff;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.card-title i{font-size:19px}
+
+/* ── BADGE ── */
+.badge{display:inline-block;font-size:10.5px;padding:3px 10px;border-radius:20px;margin-bottom:10px;font-weight:700;letter-spacing:0.3px}
+.b-teal{background:rgba(0,201,167,0.2);color:var(--teal2);border:1px solid rgba(0,201,167,0.45)}
+.b-gold{background:rgba(246,201,14,0.2);color:var(--gold);border:1px solid rgba(246,201,14,0.45)}
+.b-orange{background:rgba(255,112,67,0.2);color:#ffab91;border:1px solid rgba(255,112,67,0.45)}
+.b-pink{background:rgba(233,30,140,0.2);color:#f48fb1;border:1px solid rgba(233,30,140,0.45)}
+.b-green{background:rgba(67,160,71,0.2);color:#a5d6a7;border:1px solid rgba(67,160,71,0.45)}
+.b-sky{background:rgba(41,182,246,0.2);color:#81d4fa;border:1px solid rgba(41,182,246,0.45)}
+.b-indigo{background:rgba(63,81,181,0.2);color:#c5cae9;border:1px solid rgba(63,81,181,0.45)}
+
+/* ── TIP ROW ── */
+.tip{
+  font-size:12.5px;color:var(--text2);line-height:1.7;
+  padding:5px 0;border-bottom:1px solid var(--border);
+  display:flex;gap:8px;
+}
+.tip:last-child{border-bottom:none;padding-bottom:0}
+.tip::before{content:"›";color:var(--teal);font-size:17px;line-height:1.3;min-width:10px;font-weight:700}
+
+/* ── STAT ROW ── */
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:16px}
+.stat-card{
+  background:var(--card2);border:1px solid var(--border);border-radius:12px;
+  padding:14px 12px;text-align:center;transition:transform 0.2s;
+}
+.stat-card:hover{transform:translateY(-2px)}
+.stat-num{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--teal);line-height:1}
+.stat-label{font-size:11px;color:var(--text3);margin-top:5px;line-height:1.4}
+
+/* ── PRODUCT GRID ── */
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-bottom:16px}
+.product-card{
+  background:var(--card2);border:1px solid var(--border);border-radius:12px;
+  padding:14px 12px;text-align:center;cursor:default;transition:all 0.2s;
+}
+.product-card:hover{border-color:var(--teal);box-shadow:0 0 14px rgba(0,201,167,0.18)}
+.product-icon{font-size:28px;display:block;margin-bottom:6px}
+.product-name{font-size:12px;font-weight:700;color:#fff;line-height:1.4}
+.product-value{font-size:11px;color:var(--teal2);margin-top:3px}
+
+/* ── PROCESS STEP ── */
+.process-steps{counter-reset:step;margin-bottom:16px}
+.process-step{
+  display:flex;gap:14px;align-items:flex-start;padding:14px;
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  margin-bottom:10px;position:relative;overflow:hidden;
+}
+.process-step::before{
+  content:counter(step);counter-increment:step;
+  min-width:32px;height:32px;border-radius:50%;
+  background:linear-gradient(135deg,var(--teal),#005f4e);
+  color:#fff;font-weight:800;font-size:14px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;flex-shrink:0;margin-top:1px;
+}
+.step-title{font-size:13.5px;font-weight:700;color:#fff;margin-bottom:4px}
+.step-desc{font-size:12px;color:var(--text2);line-height:1.65}
+
+/* ── SCHEME TABLE ── */
+.scheme-table{width:100%;border-collapse:collapse;margin-bottom:16px;font-size:12.5px}
+.scheme-table th{
+  background:linear-gradient(90deg,#003d33,#0a3d62);
+  color:var(--teal2);padding:10px 12px;text-align:left;font-weight:700;
+  border:1px solid var(--border);font-size:11.5px;letter-spacing:0.4px;
+}
+.scheme-table td{
+  padding:9px 12px;border:1px solid var(--border);
+  color:var(--text2);background:var(--card);vertical-align:top;line-height:1.6;
+}
+.scheme-table tr:nth-child(even) td{background:var(--card2)}
+.scheme-table tr:hover td{background:#1e3d5c}
+
+/* ── MARKET BAR ── */
+.market-item{margin-bottom:14px}
+.market-label{display:flex;justify-content:space-between;margin-bottom:5px}
+.market-country{font-size:13px;font-weight:600;color:#fff;display:flex;align-items:center;gap:6px}
+.market-flag{font-size:17px}
+.market-pct{font-size:12px;font-weight:700;color:var(--teal)}
+.market-bar-bg{background:rgba(255,255,255,0.08);border-radius:10px;height:8px;overflow:hidden}
+.market-bar-fill{height:100%;border-radius:10px;background:linear-gradient(90deg,var(--teal),var(--sky));transition:width 0.8s ease}
+
+/* ── CHECKLIST ── */
+.check-item{
+  display:flex;align-items:flex-start;gap:10px;padding:8px 0;
+  border-bottom:1px solid var(--border);cursor:pointer;user-select:none;
+}
+.check-item:last-child{border-bottom:none}
+.chk-box{
+  width:19px;height:19px;min-width:19px;border:1.5px solid rgba(255,255,255,0.3);
+  border-radius:5px;display:flex;align-items:center;justify-content:center;
+  transition:all 0.15s;margin-top:1px;
+}
+.chk-box.done{background:var(--teal);border-color:var(--teal)}
+.chk-box.done i{color:#fff;font-size:12px}
+.check-text{font-size:12.5px;color:var(--text2);line-height:1.6}
+.check-text.done{text-decoration:line-through;color:var(--text3)}
+
+/* ── PROGRESS ── */
+.prog-wrap{margin-bottom:18px}
+.prog-label{font-size:11.5px;color:var(--text3);margin-bottom:5px;display:flex;justify-content:space-between}
+.prog-bg{background:rgba(255,255,255,0.08);border-radius:20px;height:7px;overflow:hidden}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--sky));border-radius:20px;transition:width 0.3s}
+
+/* ── STORY CARD ── */
+.story-card{
+  background:linear-gradient(135deg,#0a2d40,#0f3d55);
+  border:1px solid rgba(0,201,167,0.25);border-radius:14px;
+  padding:16px 18px;margin-bottom:14px;
+}
+.story-header{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.story-avatar{
+  width:44px;height:44px;border-radius:50%;
+  background:linear-gradient(135deg,var(--teal),var(--sky));
+  display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;
+}
+.story-name{font-size:14px;font-weight:700;color:#fff}
+.story-location{font-size:11.5px;color:var(--teal2)}
+.story-income{
+  display:inline-block;background:rgba(0,201,167,0.15);
+  border:1px solid rgba(0,201,167,0.3);border-radius:20px;
+  padding:3px 10px;font-size:11px;font-weight:700;color:var(--teal);margin-bottom:8px;
+}
+.story-text{font-size:12.5px;color:var(--text2);line-height:1.7}
+
+/* ── MYSKILLGAME FOOTER ── */
+.myskill-footer{
+  background:linear-gradient(135deg,#0a1f30,#0b3d2e);
+  border:2px solid rgba(0,201,167,0.35);border-radius:16px;
+  padding:20px 20px;margin-top:24px;text-align:center;
+}
+.myskill-footer h3{
+  font-family:'Playfair Display',serif;font-size:20px;color:#fff;
+  margin-bottom:8px;
+}
+.myskill-footer h3 span{color:var(--teal)}
+.myskill-footer p{font-size:12.5px;color:var(--text2);line-height:1.7;max-width:580px;margin:0 auto 14px}
+.myskill-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:14px}
+.ms-pill{
+  background:rgba(0,201,167,0.12);border:1px solid rgba(0,201,167,0.3);
+  border-radius:20px;padding:5px 12px;font-size:11.5px;color:var(--teal2);font-weight:600;
+}
+.myskill-footer .tagline{
+  font-size:11px;color:var(--gold);font-style:italic;
+  border-top:1px solid var(--border);padding-top:12px;margin-top:2px;
+}
+
+/* ── PACKING (checklist) ── */
+.pack-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px;margin-bottom:12px}
+.pack-item{
+  background:rgba(255,255,255,0.05);border:1px solid var(--border);
+  border-radius:10px;padding:9px 11px;font-size:12px;color:var(--text2);
+  cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:7px;user-select:none;
+}
+.pack-item:hover{background:rgba(255,255,255,0.09)}
+.pack-item.checked{background:rgba(0,201,167,0.15);border-color:rgba(0,201,167,0.5);color:var(--teal2)}
+.pack-item i.ci{font-size:14px;min-width:14px}
+
+/* ── RESPONSIVE ── */
+@media(max-width:500px){
+  .cards-grid{grid-template-columns:1fr}
+  .product-grid{grid-template-columns:repeat(2,1fr)}
+  .stat-row{grid-template-columns:repeat(2,1fr)}
+  .tab-btn{padding:10px 11px;font-size:11px}
+  .hero h1{font-size:22px}
+}
+</style>
+</meta><script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1034022057999423"></script><link href="https://myskillgame.netlify.app/11-7-26 website/fish_scale_industry_guide.html" rel="canonical"/></head>
+<body>
+<!-- ══ HERO ══ -->
+<div class="hero">
+<span class="hero-fish">🐟</span>
+<h1>মাছের আঁশ শিল্প<br/><span>ও রপ্তানি গাইড</span></h1>
+<p class="hero-sub">বর্জ্য থেকে সম্পদ · কর্মসংস্থান · আন্তর্জাতিক বাণিজ্য</p>
+<div class="hero-badges">
+<span class="hb">♻️ চক্রাকার অর্থনীতি</span>
+<span class="hb">💼 স্বনিয়োজন</span>
+<span class="hb">🌍 বিশ্ব রপ্তানি</span>
+<span class="hb">👩 নারী ক্ষমতায়ন</span>
+<span class="hb">🌱 পরিবেশবান্ধব</span>
+</div>
+<div class="myskill-tag">
+    🎓 <strong>MySkillGame-এর জন্য তৈরি</strong> – বৃত্তিমূলক শিক্ষা, উদ্যোগ, আর্থিক সাক্ষরতা, পরিবেশ সচেতনতা এবং টেকসই জীবিকার সুযোগ প্রসারে।
+  </div>
+</div>
+<!-- ══ TABS ══ -->
+<div class="tab-row" role="tablist">
+<button class="tab-btn active" onclick="switchTab('intro',this)"><i class="ti ti-info-circle"></i>পরিচিতি</button>
+<button class="tab-btn" onclick="switchTab('what',this)"><i class="ti ti-fish"></i>এটি কী?</button>
+<button class="tab-btn" onclick="switchTab('process',this)"><i class="ti ti-settings-2"></i>প্রক্রিয়াকরণ</button>
+<button class="tab-btn" onclick="switchTab('products',this)"><i class="ti ti-package"></i>পণ্যসমূহ</button>
+<button class="tab-btn" onclick="switchTab('industry',this)"><i class="ti ti-building-factory-2"></i>শিল্প</button>
+<button class="tab-btn" onclick="switchTab('income',this)"><i class="ti ti-coin"></i>আয়</button>
+<button class="tab-btn" onclick="switchTab('schemes',this)"><i class="ti ti-clipboard-list"></i>সরকারি প্রকল্প</button>
+<button class="tab-btn" onclick="switchTab('export',this)"><i class="ti ti-world"></i>রপ্তানি</button>
+<button class="tab-btn" onclick="switchTab('roadmap',this)"><i class="ti ti-map-2"></i>রোডম্যাপ</button>
+<button class="tab-btn" onclick="switchTab('stories',this)"><i class="ti ti-star"></i>সাফল্য</button>
+<button class="tab-btn" onclick="switchTab('myskill',this)"><i class="ti ti-school"></i>MySkillGame</button>
+</div>
+<div class="content">
+<!-- ══ 1. INTRODUCTION ══ -->
+<div class="section active" id="tab-intro">
+<div class="alert-box a-teal"><i class="ti ti-sparkles"></i><span>মাছের আঁশ — একসময় অপ্রয়োজনীয় বর্জ্য মনে করা হত — আজ এটি কোটি কোটি ডলারের <strong>বিশ্ব পণ্য</strong>। উপকূলীয় সব জনগোষ্ঠীর কাছেই এই শিল্পে নেতৃত্ব দেওয়ার বিশাল সুযোগ রয়েছে।</span></div>
+<div class="stat-row">
+<div class="stat-card"><div class="stat-num">১৮ কোটি+</div><div class="stat-label">টন মাছ বিশ্বব্যাপী প্রতি বছর প্রক্রিয়াজাত হয়</div></div>
+<div class="stat-card"><div class="stat-num">৩০%</div><div class="stat-label">মাছের ওজনের এই অংশই আঁশ, পাখনা ও কাঁটা (বর্জ্য)</div></div>
+<div class="stat-card"><div class="stat-num">$৪০০ কোটি+</div><div class="stat-label">বিশ্ব ফিশ কোলাজেন বাজারের আকার (২০২৪)</div></div>
+<div class="stat-card"><div class="stat-num">৬ কোটি+</div><div class="stat-label">বিশ্বব্যাপী জেলে ও মৎস্য শ্রমিক</div></div>
+</div>
+<div class="sec-head"><i class="ti ti-info-circle"></i>মাছের আঁশ কেন গুরুত্বপূর্ণ <span class="sec-head-line"></span></div>
+<div class="cards-grid">
+<div class="card c-teal">
+<div class="card-title"><i class="ti ti-recycle"></i>বর্জ্য থেকে সম্পদে</div>
+<span class="badge b-teal">চক্রাকার অর্থনীতি</span>
+<div class="tip">প্রতিটি মাছ থেকে যে আঁশ বেরোয়, তা বিশ্বের মাছবাজারগুলোতে নিয়মিত ফেলে দেওয়া হয়</div>
+<div class="tip">এই আঁশে থাকে কোলাজেন, হাইড্রক্সিঅ্যাপাটাইট, কাইটিন ও ক্যালসিয়াম — অত্যন্ত মূল্যবান উপাদান</div>
+<div class="tip">বিশ্বব্যাপী কিছু শিল্পে মাছের আঁশজাত উপজাত থেকে মাছের মাংসের চেয়েও বেশি আয় হয়</div>
+<div class="tip">প্রতি বছর বিশ্বে লক্ষ লক্ষ টন মাছ প্রক্রিয়াকরণ উপজাত অপচয় হয় — এটাই এক বিশাল সুযোগ</div>
+</div>
+<div class="card c-gold">
+<div class="card-title"><i class="ti ti-trending-up"></i>বাজারের সুযোগ</div>
+<span class="badge b-gold">দ্রুত বর্ধনশীল খাত</span>
+<div class="tip">বিশ্ব ফিশ কোলাজেন বাজার বার্ষিক ৯.৮% হারে বাড়ছে — চাহিদা বর্তমান জোগানের চেয়ে অনেক বেশি</div>
+<div class="tip">বিশ্বজুড়ে ওষুধ ও প্রসাধনী কোম্পানিগুলো সক্রিয়ভাবে মাছের আঁশজাত উপাদান সংগ্রহ করছে</div>
+<div class="tip">মাছের আঁশ থেকে তৈরি বায়ো-উপাদান পরিবেশবান্ধব প্যাকেজিংয়ে প্লাস্টিকের জায়গা নিচ্ছে — নতুন বাজার দ্রুত বাড়ছে</div>
+<div class="tip">জাপান, জার্মানি, আমেরিকা ও দক্ষিণ কোরিয়া প্রক্রিয়াজাত মাছের আঁশ পণ্যের সবচেয়ে বড় ক্রেতা</div>
+</div>
+<div class="card c-indigo">
+<div class="card-title"><i class="ti ti-users"></i>কর্মসংস্থানের সম্ভাবনা</div>
+<span class="badge b-indigo">সবার জন্য কাজ</span>
+<div class="tip">মাছের আঁশ সংগ্রহ, বাছাই ও পরিষ্কার করার কাজে উপকূলীয় গ্রামের নারী ও যুবকদের কর্মসংস্থান হতে পারে</div>
+<div class="tip">ছোট প্রক্রিয়াকরণ ইউনিটে ৫–২০ জন শ্রমিক দরকার; শুরুতে ভারী পরিকাঠামোর প্রয়োজন নেই</div>
+<div class="tip">স্বসহায়ক দল (SHG) মাত্র $৩০০–৬০০ প্রাথমিক বিনিয়োগ দিয়ে শুরু করতে পারে</div>
+<div class="tip">কোলাজেন নিষ্কাশনে দক্ষ শ্রমিকরা মাসে $১৮০–৪২০ আয় করতে পারেন</div>
+</div>
+</div>
+</div>
+<!-- ══ 2. WHAT IS FISH SCALE INDUSTRY ══ -->
+<div class="section" id="tab-what">
+<div class="alert-box a-teal"><i class="ti ti-fish"></i><span>মাছের আঁশ হল মাছের দেহ ঢাকা পাতলা, হাড়সদৃশ প্লেট। এতে ৪০–৭০% কোলাজেন এবং ৩০–৪৫% ক্যালসিয়াম ফসফেট থাকে — যা একে অত্যন্ত মূল্যবান কাঁচামালে পরিণত করে।</span></div>
+<div class="sec-head"><i class="ti ti-fish"></i>মাছের আঁশের গঠন <span class="sec-head-line"></span></div>
+<div class="stat-row">
+<div class="stat-card"><div class="stat-num">৪৫–৬৫%</div><div class="stat-label">টাইপ-I কোলাজেন (রূপচর্চা ও ওষুধ শিল্প)</div></div>
+<div class="stat-card"><div class="stat-num">৩০–৪৫%</div><div class="stat-label">হাইড্রক্সিঅ্যাপাটাইট (দাঁত / হাড়)</div></div>
+<div class="stat-card"><div class="stat-num">৫–১০%</div><div class="stat-label">কাইটিন (বায়ো-উপাদান / প্যাকেজিং)</div></div>
+<div class="stat-card"><div class="stat-num">সামান্য</div><div class="stat-label">খনিজ: Ca, P, Mg, K, Na</div></div>
+</div>
+<div class="sec-head"><i class="ti ti-list"></i>ব্যবহৃত মাছের আঁশের ধরন <span class="sec-head-line"></span></div>
+<div class="cards-grid">
+<div class="card c-sky">
+<div class="card-title"><i class="ti ti-fish"></i>সেরা উৎস প্রজাতি (বিশ্বব্যাপী)</div>
+<span class="badge b-sky">উচ্চ কোলাজেন ফলন</span>
+<div class="tip">রুই ও কাতলা — দক্ষিণ এশিয়ায় সবচেয়ে বেশি পাওয়া যায় এমন স্বাদুজলের কার্প প্রজাতি, বড় আঁশ, উচ্চ কোলাজেন</div>
+<div class="tip">তেলাপিয়া — বিশ্বজুড়ে ব্যাপকভাবে চাষ হয়, রপ্তানিমানের কোলাজেনের জন্য আঁশ প্রক্রিয়াজাত হয়</div>
+<div class="tip">ইলিশ / শ্যাড পরিবার — উন্নতমানের আঁশ, বিলাসবহুল প্রসাধনীতে ব্যবহৃত হয়</div>
+<div class="tip">স্যামন আঁশ — নরওয়ে, চিলি, স্কটল্যান্ডের মতো স্যামন-প্রক্রিয়াকরণ অঞ্চলে প্রচুর পরিমাণে পাওয়া যায়</div>
+<div class="tip">সি বাস, স্ন্যাপার, গ্রুপার, কড — সামুদ্রিক প্রজাতি, সর্বত্র উচ্চ শিল্পমূল্যসম্পন্ন</div>
+</div>
+<div class="card c-green">
+<div class="card-title"><i class="ti ti-world"></i>শিল্পের সারসংক্ষেপ</div>
+<span class="badge b-green">বিশ্ব শিল্প</span>
+<div class="tip">মাছের আঁশ শিল্প $২৫,০০০ কোটি ডলারের বিশ্ব সামুদ্রিক খাদ্য শিল্পের একটি উপ-খাত</div>
+<div class="tip">প্রধান উৎপাদনকারী দেশ: চীন, ভিয়েতনাম, ভারত, নরওয়ে, পেরু, চিলি, ইন্দোনেশিয়া, বাংলাদেশ, নাইজেরিয়া</div>
+<div class="tip">অধিকাংশ উৎপাদনকারী দেশে মাছের আঁশ রপ্তানি এখনও অনুন্নত — পূরণ করার মতো বিশাল ফাঁক রয়েছে</div>
+<div class="tip">চীন বিশ্বের মোট মাছের আঁশ কোলাজেনের ৭০% প্রক্রিয়াজাত করে, যা আবার আমেরিকা ও ইউরোপের বাজারে বিক্রি হয়</div>
+<div class="tip">অনেক উপকূলীয় দেশে কাঁচামালের সুবিধা থাকলেও প্রক্রিয়াকরণের পরিকাঠামোর অভাব রয়েছে</div>
+</div>
+</div>
+</div>
+<!-- ══ 3. PROCESSING METHOD ══ -->
+<div class="section" id="tab-process">
+<div class="alert-box a-gold"><i class="ti ti-tool"></i><span>মাছের আঁশ প্রক্রিয়াকরণ সাধারণ পরিষ্কার-শুকানো থেকে শুরু করে উন্নত কোলাজেন নিষ্কাশন পর্যন্ত বিস্তৃত। নিজের বিনিয়োগ ক্ষমতা অনুযায়ী স্তর বেছে নিন।</span></div>
+<div class="sec-head"><i class="ti ti-settings-2"></i>ধাপে ধাপে প্রক্রিয়াকরণ <span class="sec-head-line"></span></div>
+<div class="process-steps">
+<div class="process-step">
+<div>
+<div class="step-title">সংগ্রহ ও বাছাই</div>
+<div class="step-desc">মাছবাজার, প্রক্রিয়াকরণ ইউনিট বা নিজের ধরা মাছ থেকে টাটকা আঁশ সংগ্রহ করুন। প্রজাতি অনুযায়ী আলাদা করুন — কার্প, তেলাপিয়া, সামুদ্রিক প্রজাতি আলাদা আলাদাভাবে। হাত দিয়ে বাছাই করে চামড়ার টুকরো ও অন্যান্য আবর্জনা সরিয়ে ফেলুন।</div>
+</div>
+</div>
+<div class="process-step">
+<div>
+<div class="step-title">ধোয়া ও গন্ধমুক্তকরণ</div>
+<div class="step-desc">পরিষ্কার জলে ৩–৪ বার ভালোভাবে ধুয়ে নিন। গন্ধ ও উপরিভাগের ব্যাকটেরিয়া দূর করতে ৫% NaCl (লবণ) দ্রবণে ২ ঘণ্টা ভিজিয়ে রাখুন। এরপর পরিষ্কার জলে ধুয়ে সম্পূর্ণ ঝরিয়ে নিন।</div>
+</div>
+</div>
+<div class="process-step">
+<div>
+<div class="step-title">প্রাক-চিকিৎসা (চর্বি অপসারণ)</div>
+<div class="step-desc">খনিজ উপাদান ও চর্বি দূর করতে আঁশ পাতলা অ্যাসিড দ্রবণে (0.1M HCl বা অ্যাসিটিক অ্যাসিড) ২৪–৪৮ ঘণ্টা ভিজিয়ে রাখুন। কোলাজেন নিষ্কাশনের গুণমানের জন্য এই ধাপ অত্যন্ত গুরুত্বপূর্ণ। এরপর পাতিত জলে ধুয়ে নিন।</div>
+</div>
+</div>
+<div class="process-step">
+<div>
+<div class="step-title">শুকানো</div>
+<div class="step-desc">পরিষ্কার জালের ট্রেতে ২–৩ দিন রোদে শুকান, অথবা ৪০–৫০°C তাপমাত্রায় বৈদ্যুতিক ড্রায়ারে ৮–১২ ঘণ্টা শুকান। সঠিকভাবে শুকানো আঁশ ৬–১২ মাস সংরক্ষণ করা যায়। রপ্তানিমানের জন্য আর্দ্রতা অবশ্যই ১০%-এর নিচে রাখতে হবে।</div>
+</div>
+</div>
+<div class="process-step">
+<div>
+<div class="step-title">কোলাজেন নিষ্কাশন (উন্নত পদ্ধতি)</div>
+<div class="step-desc">অ্যাসিড-দ্রবণীয় নিষ্কাশন পদ্ধতি: প্রাক-চিকিৎসিত আঁশ 0.5M অ্যাসিটিক অ্যাসিডে 4°C তাপমাত্রায় ৭২ ঘণ্টা দ্রবীভূত করুন। ছেঁকে নিন, NaCl দিয়ে অধঃক্ষেপণ করুন, সেন্ট্রিফিউজ করুন। কোলাজেন গুঁড়ো পেতে ফ্রিজ-ড্রাই করুন। ফলন: শুষ্ক ওজনের ১৫–৩০%।</div>
+</div>
+</div>
+<div class="process-step">
+<div>
+<div class="step-title">গুঁড়ো / দানা তৈরি</div>
+<div class="step-desc">শুকনো আঁশ হ্যামার মিলে গুঁড়ো করা যায় (মেশ ৮০–২০০)। এই মাছের আঁশের গুঁড়ো সার কোম্পানি, খাদ্য প্রস্তুতকারক ও প্রসাধনী উপাদান সরবরাহকারীদের কাছে সরাসরি $০.৭০–১.৪০/কেজি দরে বিক্রি হয়।</div>
+</div>
+</div>
+<div class="process-step">
+<div>
+<div class="step-title">গুণমান পরীক্ষা ও প্যাকেজিং</div>
+<div class="step-desc">কোলাজেনের বিশুদ্ধতা (FTIR স্পেকট্রোস্কোপি), ভারী ধাতু (আর্সেনিক, পারদ, সীসা — সবই EU/USFDA সীমার নিচে থাকতে হবে) এবং জীবাণুর সংখ্যা পরীক্ষা করুন। খাদ্যমানের, আর্দ্রতা-প্রতিরোধী প্যাকেটে লট নম্বরসহ প্যাক করুন, যাতে সহজে শনাক্ত করা যায়।</div>
+</div>
+</div>
+<div class="process-step">
+<div>
+<div class="step-title">রপ্তানি-প্রস্তুত প্রত্যয়ন</div>
+<div class="step-desc">EIC (এক্সপোর্ট ইন্সপেকশন কাউন্সিল) সার্টিফিকেট নিন। ইউরোপীয় বাজারের জন্য: REACH নিয়ম মেনে চলুন। আমেরিকার জন্য: FDA নিবন্ধন প্রয়োজন। ISO 22000 প্রত্যয়ন ক্রেতার আস্থা উল্লেখযোগ্যভাবে বাড়ায়।</div>
+</div>
+</div>
+</div>
+<div class="alert-box a-orange"><i class="ti ti-alert-circle"></i><span>⚠️ সাধারণ শুকানো ও গুঁড়ো তৈরির কাজ খুব সামান্য বিনিয়োগে করা যায় (~$৬০০)। কোলাজেন নিষ্কাশনের জন্য ল্যাব-মানের সরঞ্জাম দরকার (~$৬,০০০–১৮,০০০)। একটি সমবায় গঠন বা সরকারি অনুদানের জন্য আবেদন করার কথা বিবেচনা করুন।</span></div>
+</div>
+<!-- ══ 4. PRODUCTS FROM FISH SCALES ══ -->
+<div class="section" id="tab-products">
+<div class="alert-box a-teal"><i class="ti ti-package"></i><span>মাছের আঁশ থেকে সৌন্দর্যচর্চা, স্বাস্থ্য, খাদ্য, কৃষি ও শিল্প খাতে ২০টিরও বেশি মূল্যবান পণ্য তৈরি করা যায়।</span></div>
+<div class="sec-head"><i class="ti ti-sparkles"></i>রূপচর্চা ও প্রসাধনী <span class="sec-head-line"></span></div>
+<div class="product-grid">
+<div class="product-card"><span class="product-icon">✨</span><div class="product-name">কোলাজেন গুঁড়ো</div><div class="product-value">$১০–৪২/কেজি</div></div>
+<div class="product-card"><span class="product-icon">💆</span><div class="product-name">অ্যান্টি-এজিং সিরাম</div><div class="product-value">উচ্চ মুনাফা</div></div>
+<div class="product-card"><span class="product-icon">💄</span><div class="product-name">পার্ল এসেন্স / শিমার</div><div class="product-value">$১৫–৬০/কেজি</div></div>
+<div class="product-card"><span class="product-icon">🧴</span><div class="product-name">ফেস ক্রিম বেস</div><div class="product-value">রপ্তানি মান</div></div>
+<div class="product-card"><span class="product-icon">💊</span><div class="product-name">কোলাজেন ক্যাপসুল</div><div class="product-value">$১৮–৯৬/কেজি</div></div>
+<div class="product-card"><span class="product-icon">🛁</span><div class="product-name">সাবান / বডি ওয়াশ</div><div class="product-value">দেশীয় + রপ্তানি</div></div>
+</div>
+<div class="sec-head"><i class="ti ti-first-aid-kit"></i>ওষুধ ও চিকিৎসা <span class="sec-head-line"></span></div>
+<div class="product-grid">
+<div class="product-card"><span class="product-icon">🦷</span><div class="product-name">দাঁতের হাড় প্রতিস্থাপন</div><div class="product-value">অতি উচ্চমূল্য</div></div>
+<div class="product-card"><span class="product-icon">🩹</span><div class="product-name">ক্ষত সারানোর ফিল্ম</div><div class="product-value">চিকিৎসা মান</div></div>
+<div class="product-card"><span class="product-icon">💉</span><div class="product-name">হাইড্রোজেল (ওষুধ সরবরাহ)</div><div class="product-value">গবেষণা পর্যায়</div></div>
+<div class="product-card"><span class="product-icon">🦴</span><div class="product-name">অর্থোপেডিক স্ক্যাফোল্ড</div><div class="product-value">বায়ো-উপাদান</div></div>
+</div>
+<div class="sec-head"><i class="ti ti-leaf"></i>কৃষি ও খাদ্য <span class="sec-head-line"></span></div>
+<div class="product-grid">
+<div class="product-card"><span class="product-icon">🌾</span><div class="product-name">মৎস্য গুঁড়ো সার</div><div class="product-value">$০.৩০–০.৭০/কেজি</div></div>
+<div class="product-card"><span class="product-icon">🐄</span><div class="product-name">পোলট্রি/মাছের খাবার</div><div class="product-value">$০.৩৫–০.৯৫/কেজি</div></div>
+<div class="product-card"><span class="product-icon">🍬</span><div class="product-name">জেলাটিন (খাদ্যমান)</div><div class="product-value">$২.৪০–৯.৬০/কেজি</div></div>
+<div class="product-card"><span class="product-icon">🦐</span><div class="product-name">অ্যাকোয়াকালচার সাপ্লিমেন্ট</div><div class="product-value">ক্রমবর্ধমান বাজার</div></div>
+</div>
+<div class="sec-head"><i class="ti ti-box"></i>শিল্প ও পরিবেশবান্ধব পণ্য <span class="sec-head-line"></span></div>
+<div class="product-grid">
+<div class="product-card"><span class="product-icon">♻️</span><div class="product-name">বায়ো-প্যাকেজিং ফিল্ম</div><div class="product-value">উদীয়মান বাজার</div></div>
+<div class="product-card"><span class="product-icon">🎨</span><div class="product-name">বায়োপ্লাস্টিক পেলেট</div><div class="product-value">গবেষণা + রপ্তানি</div></div>
+<div class="product-card"><span class="product-icon">💡</span><div class="product-name">নমনীয় সোলার সেল</div><div class="product-value">গবেষণা পর্যায়</div></div>
+<div class="product-card"><span class="product-icon">🎸</span><div class="product-name">গিটার / গয়নার ইনলে</div><div class="product-value">কারুশিল্প বাজার</div></div>
+<div class="product-card"><span class="product-icon">🎭</span><div class="product-name">কারুশিল্প ও শিল্প উপকরণ</div><div class="product-value">SHG পণ্য</div></div>
+<div class="product-card"><span class="product-icon">🪣</span><div class="product-name">বর্জ্য জল শোধন</div><div class="product-value">শিল্প ব্যবহার</div></div>
+</div>
+</div>
+<!-- ══ 5. INDUSTRIAL APPLICATIONS ══ -->
+<div class="section" id="tab-industry">
+<div class="alert-box a-pink"><i class="ti ti-building-factory-2"></i><span>এখন লরিয়াল, শিসেইডো, নেসলে ও বিশ্বের শত শত ওষুধ কোম্পানির পণ্যে মাছের আঁশজাত উপাদান ব্যবহৃত হচ্ছে।</span></div>
+<div class="sec-head"><i class="ti ti-microscope"></i>প্রধান শিল্প প্রয়োগ <span class="sec-head-line"></span></div>
+<div class="cards-grid">
+<div class="card c-pink">
+<div class="card-title"><i class="ti ti-sparkles"></i>রূপচর্চা ও ব্যক্তিগত পরিচর্যা</div>
+<span class="badge b-pink">$৩৪০ কোটি বিশ্ব বাজার</span>
+<div class="tip">মাছের আঁশ থেকে পাওয়া সামুদ্রিক কোলাজেন গরুর কোলাজেনের চেয়ে ১.৫ গুণ বেশি শোষণযোগ্য — শীর্ষ ব্র্যান্ডগুলোর পছন্দ</div>
+<div class="tip">পার্ল এসেন্স (আঁশ থেকে পাওয়া গুয়ানিন স্ফটিক) নেলপলিশ, লিপস্টিক, আই শ্যাডোতে চকচকে ভাব দেয়</div>
+<div class="tip">মাছের আঁশের কোলাজেন পেপটাইড অ্যান্টি-এজিং ক্রিম ও সিরামের মূল উপাদান</div>
+<div class="tip">জাপানি সৌন্দর্য ব্র্যান্ড (শিসেইডো, পোলা) এশীয় মৎস্য প্রক্রিয়াকারীদের থেকে বিপুল পরিমাণে সংগ্রহ করে</div>
+<div class="tip">হালাল ও ভেগান-বান্ধব অবস্থান — শুকরজাত জেলাটিনের বদলে মাছের কোলাজেন পছন্দ করা হয়</div>
+</div>
+<div class="card c-green">
+<div class="card-title"><i class="ti ti-heartbeat"></i>ওষুধ শিল্প</div>
+<span class="badge b-green">উচ্চমূল্যের বিশেষ খাত</span>
+<div class="tip">মাছের আঁশ থেকে পাওয়া হাইড্রক্সিঅ্যাপাটাইট হাড় মেরামতের অস্ত্রোপচার ও দাঁতের ইমপ্ল্যান্ট কোটিংয়ে ব্যবহৃত হয়</div>
+<div class="tip">মাছজাত জেলাটিন ক্যাপসুলের খোলস তৈরিতে ব্যবহৃত হয় — বিশ্বজুড়ে শুকরজাত জেলাটিনের জায়গা নিচ্ছে</div>
+<div class="tip">মাছের আঁশের কোলাজেন স্ক্যাফোল্ড ক্ষত সারানো ও টিস্যু ইঞ্জিনিয়ারিংয়ে ব্যবহৃত হয়</div>
+<div class="tip">মাছের আঁশজাত উপাদান দিয়ে ওষুধ-সরবরাহকারী হাইড্রোজেল নিয়ে গবেষণা চলছে</div>
+</div>
+<div class="card c-sky">
+<div class="card-title"><i class="ti ti-box"></i>প্যাকেজিং ও পরিবেশ</div>
+<span class="badge b-sky">ভবিষ্যতের শিল্প</span>
+<div class="tip">মাছের আঁশ থেকে তৈরি বায়ো-প্লাস্টিক ফিল্ম ৬ সপ্তাহের মধ্যে ১০০% জৈব-বিয়োজ্য</div>
+<div class="tip">ইউরোপীয় প্লাস্টিক নিষেধাজ্ঞা (২০২৫) বায়ো-ভিত্তিক প্যাকেজিং বিকল্পের চাহিদা নাটকীয়ভাবে বাড়িয়েছে</div>
+<div class="tip">মাছের আঁশের কাইটোসান খাদ্য সংরক্ষণ কোটিংয়ে ব্যবহৃত হয় — প্রাকৃতিকভাবে শেলফ লাইফ বাড়ায়</div>
+<div class="tip">আঁশজাত উপাদান দিয়ে তৈরি জল পরিশোধন ঝিল্লি দক্ষভাবে ভারী ধাতু অপসারণ করে</div>
+</div>
+<div class="card c-orange">
+<div class="card-title"><i class="ti ti-solar-panel"></i>প্রযুক্তি ও শক্তি</div>
+<span class="badge b-orange">উদীয়মান গবেষণা</span>
+<div class="tip">IIT খড়গপুরের গবেষকরা মাছের আঁশের বায়ো-উপাদান দিয়ে নমনীয় সোলার সেল তৈরি করেছেন</div>
+<div class="tip">মাছের আঁশের কোলাজেনের পিজোইলেকট্রিক বৈশিষ্ট্য শক্তি আহরণের যন্ত্রে ব্যবহৃত হয়</div>
+<div class="tip">CSIR ল্যাব হাইড্রোজেন জ্বালানি কোষে ব্যবহারের জন্য আঁশজাত ক্যাটালিস্ট পরীক্ষা করছে</div>
+<div class="tip">মাছের আঁশের ন্যানো-উপাদান ইলেকট্রনিক্স ও অপটিক্যাল যন্ত্রে সম্ভাবনা দেখাচ্ছে</div>
+</div>
+</div>
+</div>
+<!-- ══ 6. INCOME OPPORTUNITIES ══ -->
+<div class="section" id="tab-income">
+<div class="alert-box a-gold"><i class="ti ti-coin"></i><span>মাছের আঁশের মূল্য শৃঙ্খলের প্রতিটি স্তরেই আয়ের সুযোগ আছে — বাজার সংগ্রাহকদের মাসে $৬০ আয় থেকে শুরু করে রপ্তানি উদ্যোক্তাদের বার্ষিক $৬০,০০০ টার্নওভার পর্যন্ত।</span></div>
+<div class="sec-head"><i class="ti ti-layers-difference"></i>কার্যক্রমের স্তর অনুযায়ী আয় <span class="sec-head-line"></span></div>
+<div class="cards-grid">
+<div class="card c-teal">
+<div class="card-title"><i class="ti ti-user"></i>স্তর ১: সংগ্রাহক</div>
+<span class="badge b-teal">$৩৫–৯৫/মাস</span>
+<div class="tip">স্থানীয় বাজার, রেস্তোরাঁ, মাছের দোকান থেকে আঁশ সংগ্রহ করুন — প্রতিদিনের সংগ্রহের জন্য চুক্তি করুন</div>
+<div class="tip">পরিষ্কার, বাছাই, রোদে শুকিয়ে প্রক্রিয়াকারীদের কাছে $০.২০–০.৩৫ প্রতি কেজি দরে শুকনো আঁশ বিক্রি করুন</div>
+<div class="tip">প্রয়োজনীয় সরঞ্জাম: বালতি, জাল, শুকানোর ট্রে, ব্যাগ — মোট বিনিয়োগ $৩৫-এর কম</div>
+<div class="tip">একজন ব্যক্তি মাঝারি আকারের মাছবাজার থেকে প্রতিদিন ২০–৫০ কেজি আঁশ সংগ্রহ করতে পারেন</div>
+<div class="tip">বেশি পরিমাণ ও ভালো দামের জন্য ৫–১০ জন সংগ্রাহকের দল গঠন করুন</div>
+</div>
+<div class="card c-gold">
+<div class="card-title"><i class="ti ti-users"></i>স্তর ২: SHG প্রক্রিয়াকারী</div>
+<span class="badge b-gold">$১৮০–৪৮০/মাস</span>
+<div class="tip">১০–২০ জন নারীর স্বসহায়ক দল — একটি ভাগ করা গ্রাইন্ডার দিয়ে শুকনো আঁশকে গুঁড়োতে রূপান্তর করে</div>
+<div class="tip">সার কোম্পানি, ফিড মিল ও ছোট প্রসাধনী প্রস্তুতকারকদের কাছে মাছের আঁশের গুঁড়ো বিক্রি করুন</div>
+<div class="tip">বিনিয়োগ: গ্রাইন্ডার, ড্রায়ার, সংরক্ষণ ড্রাম, ওজন যন্ত্রের জন্য $৩০০–৯০০</div>
+<div class="tip">NABARD ও রাজ্য মৎস্য দপ্তর SHG-দের সরঞ্জামের উপর ৫০–৭৫% ভর্তুকি দেয়</div>
+<div class="tip">সরকার MSP-তে মৎস্য গুঁড়ো সার ক্রয় করে — মৌলিক পণ্যের নিশ্চিত ক্রেতা</div>
+</div>
+<div class="card c-indigo">
+<div class="card-title"><i class="ti ti-building"></i>স্তর ৩: ছোট উদ্যোক্তা</div>
+<span class="badge b-indigo">$৭২০–২,৪০০/মাস</span>
+<div class="tip">অ্যাসিড ট্রিটমেন্ট ও শুকানোর সরঞ্জামসহ একটি ছোট কোলাজেন নিষ্কাশন ইউনিট স্থাপন করুন</div>
+<div class="tip">প্রসাধনী উপাদান কোম্পানিগুলোকে $১০–৪২ প্রতি কেজি দরে কোলাজেন গুঁড়ো সরবরাহ করুন</div>
+<div class="tip">বিনিয়োগ: $৬,০০০–১৮,০০০ — ক্ষুদ্র ব্যবসা বা MSME উন্নয়ন ঋণের জন্য যোগ্য</div>
+<div class="tip">রপ্তানি প্রত্যয়নের জন্য MPEDA (মেরিন প্রোডাক্টস এক্সপোর্ট ডেভেলপমেন্ট অথরিটি)-তে নিবন্ধন করুন</div>
+<div class="tip">কাঁচামাল সরবরাহ শৃঙ্খলের নির্ভরযোগ্যতার জন্য NABARD-সমর্থিত FPO-দের সাথে অংশীদারি করুন</div>
+</div>
+<div class="card c-pink">
+<div class="card-title"><i class="ti ti-plane-departure"></i>স্তর ৪: রপ্তানি ব্যবসা</div>
+<span class="badge b-pink">$১২,০০০–৬০,০০০+/বছর</span>
+<div class="tip">আমেরিকা, ইউরোপ, জাপানে মাছের কোলাজেন গুঁড়ো, জেলাটিন ও হাইড্রক্সিঅ্যাপাটাইট সরাসরি রপ্তানি করুন</div>
+<div class="tip">বাণিজ্য পোর্টালের মাধ্যমে সম্পর্ক গড়ুন: Alibaba, IndiaMART, Export India, FIEO ডিরেক্টরি</div>
+<div class="tip">সামুদ্রিক খাদ্য বাণিজ্য মেলায় যোগ দিন: Seafood Expo Global (ব্রাসেলস), ইন্ডিয়া ইন্টারন্যাশনাল সিফুড শো</div>
+<div class="tip">ISO 22000, HACCP ও EIC প্রত্যয়ন নিন — অধিকাংশ আন্তর্জাতিক ক্রেতার জন্য আবশ্যক</div>
+<div class="tip">সাধারণ FOB মূল্য: মাছের আঁশ গুঁড়োর জন্য $৫–৭/কেজি; কোলাজেনের জন্য $২৪–৬০/কেজি</div>
+</div>
+</div>
+<div class="sec-head"><i class="ti ti-woman"></i>নারী ও SHG-দের বিশেষ সুযোগ <span class="sec-head-line"></span></div>
+<div class="cards-grid">
+<div class="card c-green">
+<div class="card-title"><i class="ti ti-heart"></i>নারী ক্ষমতায়নে গুরুত্ব</div>
+<span class="badge b-green">SHG-বান্ধব</span>
+<div class="tip">আঁশ পরিষ্কার, বাছাই, শুকানো — নমনীয় সময়ে ঘরে বসে আয়ের জন্য আদর্শ</div>
+<div class="tip">মাছের আঁশ দিয়ে গয়না তৈরি: কানের দুল, ব্রেসলেট — Meesho, Instagram-এ অনলাইনে বিক্রি করুন</div>
+<div class="tip">মাছের আঁশের নির্যাস দিয়ে সাবান ও প্রসাধনী তৈরি — উচ্চ মুনাফাসহ কুটির শিল্প</div>
+<div class="tip">NFDB (জাতীয় মৎস্য উন্নয়ন বোর্ড)-এর উপকূলীয় কেন্দ্রগুলোতে প্রশিক্ষণ পাওয়া যায়</div>
+<div class="tip">নারী জীবিকা মিশন মৎস্য খাতে নারীদের SHG-কে $১,৮০০–৩,৬০০ প্রাথমিক তহবিল দেয়</div>
+</div>
+<div class="card c-sky">
+<div class="card-title"><i class="ti ti-school"></i>যুবকদের জন্য স্টার্টআপ ধারণা</div>
+<span class="badge b-sky">স্টার্টআপ সুযোগ</span>
+<div class="tip">অনলাইন সংগ্রহ প্ল্যাটফর্ম — বিভিন্ন জেলার মাছের আঁশ সংগ্রাহক ও প্রক্রিয়াকারীদের সংযুক্ত করুন</div>
+<div class="tip">ব্র্যান্ডেড ফিশ কোলাজেন সাপ্লিমেন্ট — স্বাস্থ্যসচেতন ক্রেতাদের লক্ষ্য করে D2C ব্র্যান্ড</div>
+<div class="tip">পরিবেশবান্ধব মাছের আঁশের স্টেশনারি ও শিল্পপণ্য — Etsy, Amazon Handmade-এ বিক্রি করুন</div>
+<div class="tip">গুণমান প্রত্যয়ন সহায়তা প্রয়োজন এমন ছোট প্রক্রিয়াকারীদের জন্য ল্যাব পরীক্ষার সেবা</div>
+<div class="tip">পৌরসভার সাথে কৃষি-মৎস্য বর্জ্য ব্যবস্থাপনা চুক্তি — B2B চক্রাকার অর্থনীতি সেবা</div>
+</div>
+</div>
+</div>
+<!-- ══ 7. GOVERNMENT SCHEMES ══ -->
+<div class="section" id="tab-schemes">
+<div class="alert-box a-green"><i class="ti ti-shield-check"></i><span>বিশ্বজুড়ে সরকারগুলো মাছের আঁশ উদ্যোক্তা ও স্বসহায়ক দলগুলোর জন্য অর্থায়ন, প্রশিক্ষণ, পরিকাঠামো ও বাজার সহায়তা দেওয়ার প্রকল্প চালায়। দেশভেদে প্রকল্পের নাম আলাদা হলেও নিচের সহায়তার ধরনগুলো প্রায় সর্বত্রই মিলবে — নিজের এলাকার সমতুল্য প্রকল্পের জন্য জাতীয় মৎস্য মন্ত্রণালয়ে খোঁজ নিন।</span></div>
+<div class="sec-head"><i class="ti ti-clipboard-list"></i>সরকারি সহায়তার সাধারণ শ্রেণি <span class="sec-head-line"></span></div>
+<table class="scheme-table">
+<thead>
+<tr><th>সহায়তার ধরন</th><th>সাধারণ সুবিধা</th><th>উদাহরণ প্রকল্প</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>মৎস্য পরিকাঠামো ভর্তুকি</strong></td><td>প্রক্রিয়াকরণ পরিকাঠামো ও মূল্য সংযোজন সরঞ্জামে ৬০% পর্যন্ত ভর্তুকি</td><td>ভারত: PM মৎস্য সম্পদ যোজনা; ভিয়েতনাম, ইন্দোনেশিয়া ও বাংলাদেশে একই ধরনের জাতীয় মৎস্য তহবিল রয়েছে</td></tr>
+<tr><td><strong>ক্ষুদ্র ব্যবসা / স্বনিয়োজন ঋণ</strong></td><td>২৫–৩৫% মার্জিন ভর্তুকি; উৎপাদন ইউনিটের জন্য $৩০,০০০ পর্যন্ত ঋণ</td><td>ভারত: PMEGP; বেশিরভাগ দেশেই সমতুল্য SME বা ক্ষুদ্র উদ্যোগ ঋণ প্রকল্প রয়েছে</td></tr>
+<tr><td><strong>উৎপাদক সংগঠন অনুদান</strong></td><td>নতুন কৃষক/জেলে উৎপাদক সংগঠন বা সমবায়ের জন্য প্রায় $২০,০০০+ ইক্যুইটি অনুদান</td><td>বিশ্বব্যাপী কৃষি উন্নয়ন ব্যাংক ও সমবায় ইউনিয়নের মাধ্যমে ব্যাপকভাবে পাওয়া যায়</td></tr>
+<tr><td><strong>রপ্তানি প্রত্যয়ন সহায়তা</strong></td><td>গুণমান প্রত্যয়ন (HACCP, ISO), কোল্ড চেইন ও প্যাকেজিংয়ে ভর্তুকি</td><td>ভারত: MPEDA; বেশিরভাগ রপ্তানিকারক দেশেই মেরিন পণ্য রপ্তানি প্রসার সংস্থা রয়েছে</td></tr>
+<tr><td><strong>নারী ও অনগ্রসর উদ্যোক্তা ঋণ</strong></td><td>ছাড়যুক্ত সুদে $১২,০০০–১,২০,০০০ ঋণ</td><td>ভারত: Stand-Up India; বেশিরভাগ দেশেই তুলনামূলক নারী-উদ্যোগ অর্থায়ন প্রকল্প আছে</td></tr>
+<tr><td><strong>নারী SHG / জীবিকা তহবিল</strong></td><td>নারীদের স্বসহায়ক দলের জন্য $১,৮০০–৩,৬০০ আবর্তক তহবিল ও দক্ষতা প্রশিক্ষণ</td><td>ভারত: DAY-NRLM; দক্ষিণ ও দক্ষিণ-পূর্ব এশিয়া এবং আফ্রিকা জুড়ে মাইক্রোফাইন্যান্স ও জীবিকা মিশনের সমতুল্য প্রকল্প রয়েছে</td></tr>
+<tr><td><strong>বিনামূল্যে দক্ষতা প্রশিক্ষণ</strong></td><td>উপকূলীয় কেন্দ্রগুলোতে মাছ প্রক্রিয়াকরণ ও মূল্য সংযোজনে বিনামূল্যে দক্ষতা প্রশিক্ষণ</td><td>জাতীয় মৎস্য উন্নয়ন বোর্ড ও বিশ্বব্যাপী বৃত্তিমূলক প্রশিক্ষণ সংস্থা</td></tr>
+</tbody>
+</table>
+<div class="sec-head"><i class="ti ti-map-pin"></i>নিজের এলাকায় সহায়তা খোঁজা <span class="sec-head-line"></span></div>
+<div class="cards-grid">
+<div class="card c-teal2">
+<div class="card-title"><i class="ti ti-building"></i>স্থানীয়ভাবে কোথায় খুঁজবেন</div>
+<span class="badge b-teal">রাজ্য/আঞ্চলিক সহায়তা</span>
+<div class="tip">আপনার রাজ্য, প্রাদেশিক বা আঞ্চলিক মৎস্য দপ্তর — প্রায়ই ভর্তুকিযুক্ত শুকানো ও সংরক্ষণ ইউনিট প্রকল্প চালায়</div>
+<div class="tip">আঞ্চলিক মৎস্য উন্নয়ন কর্পোরেশন — মূল্য সংযোজিত মাছ পণ্যের জন্য কারিগরি সহায়তা দেয়</div>
+<div class="tip">গ্রামীণ/কৃষি উন্নয়ন ব্যাংক — অনেকেই SHG ও সমবায়ের জন্য ছাড়যুক্ত সুদে কৃষি ও মৎস্য ঋণ দেয়</div>
+<div class="tip">স্থানীয় জেলা বা পৌর মৎস্য কর্মকর্তা — আপনার এলাকার নির্দিষ্ট প্রকল্প আবেদনে গাইড করতে পারেন</div>
+</div>
+<div class="card c-gold2">
+<div class="card-title"><i class="ti ti-school"></i>প্রশিক্ষণ প্রতিষ্ঠানের ধরন</div>
+<span class="badge b-gold">শিখুন ও উপার্জন করুন</span>
+<div class="tip">জাতীয় মৎস্য শিক্ষা প্রতিষ্ঠান — মাছ প্রক্রিয়াকরণে অনলাইন সার্টিফিকেট কোর্স (যেমন ভারতের CIFE, অন্যত্র সমতুল্য সংস্থা)</div>
+<div class="tip">মৎস্য প্রযুক্তি প্রতিষ্ঠান — মাছ পণ্য প্রযুক্তিতে ডিপ্লোমা প্রোগ্রাম</div>
+<div class="tip">আঞ্চলিক কৃষি/মৎস্য গবেষণা প্রতিষ্ঠান — স্বাদুজল ও সামুদ্রিক মৎস্য গবেষণা ও প্রশিক্ষণ</div>
+<div class="tip">জাতীয় দক্ষতা উন্নয়ন কর্পোরেশন — অ্যাকোয়াকালচার টেকনিশিয়ান ধাঁচের বৃত্তিমূলক প্রত্যয়ন</div>
+</div>
+</div>
+<div class="sec-head"><i class="ti ti-book"></i>কীভাবে আবেদন করবেন — দ্রুত ধাপ (নিজের দেশ অনুযায়ী মানিয়ে নিন) <span class="sec-head-line"></span></div>
+<div class="process-steps">
+<div class="process-step"><div><div class="step-title">আপনার প্রকল্প চিহ্নিত করুন</div><div class="step-desc">আপনার জাতীয় মৎস্য মন্ত্রণালয়ের ওয়েবসাইট বা স্থানীয় জেলা মৎস্য দপ্তরে যান। জাতীয় পরিচয়পত্র, ব্যাংক অ্যাকাউন্টের বিবরণ ও জমি/দোকানের নথি সাথে নিন।</div></div></div>
+<div class="process-step"><div><div class="step-title">একটি সহজ প্রকল্প প্রতিবেদন তৈরি করুন</div><div class="step-desc">একটি প্রকল্প প্রতিবেদন লিখুন: কী পণ্য, কত বিনিয়োগ, কত কর্মসংস্থান তৈরি হবে, প্রত্যাশিত টার্নওভার কত। সাধারণত গ্রামীণ উন্নয়ন ব্যাংক অফিসে টেমপ্লেট পাওয়া যায়।</div></div></div>
+<div class="process-step"><div><div class="step-title">ব্যাংক ঋণের আবেদন</div><div class="step-desc">আপনার প্রকল্প প্রতিবেদন ও প্রকল্প আবেদন যেকোনো তফসিলি ব্যাংক বা মাইক্রোফাইন্যান্স প্রতিষ্ঠানে জমা দিন। প্রক্রিয়াকরণে সাধারণত ২–৩ মাস সময় লাগে।</div></div></div>
+<div class="process-step"><div><div class="step-title">উদ্যোক্তা প্রশিক্ষণ নিন</div><div class="step-desc">বেশিরভাগ প্রকল্পে একটি সংক্ষিপ্ত উদ্যোক্তা উন্নয়ন প্রোগ্রাম সম্পন্ন করা আবশ্যক। এগুলো সাধারণত জেলা শিল্প/উদ্যোগ কেন্দ্রের মাধ্যমে বিনামূল্যে পাওয়া যায়।</div></div></div>
+</div>
+</div>
+<!-- ══ 8. EXPORT MARKETS ══ -->
+<div class="section" id="tab-export">
+<div class="alert-box a-teal"><i class="ti ti-world"></i><span>শুধু ভারতই ২০২৩–২৪ সালে $৭৭০ কোটি ডলারেরও বেশি মূল্যের সামুদ্রিক পণ্য রপ্তানি করেছে, এবং আরও অনেক উপকূলীয় দেশে একই ধরনের বৃদ্ধি দেখা যাচ্ছে। মাছের আঁশজাত পণ্য দ্রুত বর্ধনশীল রপ্তানি বিভাগগুলোর মধ্যে অন্যতম, যার প্রচুর অব্যবহৃত সম্ভাবনা রয়েছে।</span></div>
+<div class="sec-head"><i class="ti ti-chart-bar"></i>মাছের আঁশ পণ্যের শীর্ষ বিশ্ব বাজার <span class="sec-head-line"></span></div>
+<div class="market-item"><div class="market-label"><span class="market-country"><span class="market-flag">🇯🇵</span>জাপান</span><span class="market-pct">২৮%</span></div><div class="market-bar-bg"><div class="market-bar-fill" style="width:88%"></div></div></div>
+<div class="market-item"><div class="market-label"><span class="market-country"><span class="market-flag">🇺🇸</span>আমেরিকা</span><span class="market-pct">২২%</span></div><div class="market-bar-bg"><div class="market-bar-fill" style="width:72%"></div></div></div>
+<div class="market-item"><div class="market-label"><span class="market-country"><span class="market-flag">🇩🇪</span>জার্মানি</span><span class="market-pct">১৪%</span></div><div class="market-bar-bg"><div class="market-bar-fill" style="width:52%"></div></div></div>
+<div class="market-item"><div class="market-label"><span class="market-country"><span class="market-flag">🇰🇷</span>দক্ষিণ কোরিয়া</span><span class="market-pct">১১%</span></div><div class="market-bar-bg"><div class="market-bar-fill" style="width:42%"></div></div></div>
+<div class="market-item"><div class="market-label"><span class="market-country"><span class="market-flag">🇫🇷</span>ফ্রান্স</span><span class="market-pct">৯%</span></div><div class="market-bar-bg"><div class="market-bar-fill" style="width:35%"></div></div></div>
+<div class="market-item"><div class="market-label"><span class="market-country"><span class="market-flag">🇨🇳</span>চীন (পুনঃপ্রক্রিয়াকরণ)</span><span class="market-pct">৮%</span></div><div class="market-bar-bg"><div class="market-bar-fill" style="width:30%"></div></div></div>
+<div class="market-item"><div class="market-label"><span class="market-country"><span class="market-flag">🇦🇺</span>অস্ট্রেলিয়া / নিউজিল্যান্ড</span><span class="market-pct">৫%</span></div><div class="market-bar-bg"><div class="market-bar-fill" style="width:22%"></div></div></div>
+<div class="sec-head"><i class="ti ti-certificate"></i>রপ্তানির শর্ত ও প্রত্যয়ন <span class="sec-head-line"></span></div>
+<div class="cards-grid">
+<div class="card c-indigo">
+<div class="card-title"><i class="ti ti-file-certificate"></i>আবশ্যিক প্রত্যয়ন</div>
+<span class="badge b-indigo">রপ্তানির আগে</span>
+<div class="tip">একটি ইম্পোর্টার-এক্সপোর্টার কোড (বা আপনার দেশের সমতুল্য) — সকল রপ্তানিকারকের জন্য আবশ্যক, সাধারণত অনলাইনে বিনামূল্যে ও দ্রুত পাওয়া যায়</div>
+<div class="tip">একটি জাতীয় এক্সপোর্ট ইন্সপেকশন সার্টিফিকেট — বেশিরভাগ দেশে মাছ ও মাছজাত পণ্য রপ্তানির জন্য আবশ্যক</div>
+<div class="tip">HACCP (হ্যাজার্ড অ্যানালাইসিস ক্রিটিক্যাল কন্ট্রোল পয়েন্ট) — খাদ্য নিরাপত্তা ব্যবস্থা, বিশ্বব্যাপী বেশিরভাগ ক্রেতার প্রয়োজন</div>
+<div class="tip">ISO 22000:2018 — খাদ্য নিরাপত্তা ব্যবস্থাপনা, ইউরোপীয় ও জাপানি ক্রেতারা পছন্দ করেন</div>
+<div class="tip">একটি স্থানীয় খাদ্য নিরাপত্তা নিবন্ধন — রপ্তানিকৃত যেকোনো খাদ্যমানের কোলাজেন বা জেলাটিন পণ্যের জন্য</div>
+<div class="tip">জাতীয় ওষুধ/স্বাস্থ্য নিয়ন্ত্রকের GMP সার্টিফিকেট — ওষুধমানের কোলাজেন রপ্তানির জন্য</div>
+</div>
+<div class="card c-orange">
+<div class="card-title"><i class="ti ti-ban"></i>জেনে রাখা জরুরি নিয়মকানুন</div>
+<span class="badge b-orange">কমপ্লায়েন্স</span>
+<div class="tip">EU REACH নিয়ম: সব সামুদ্রিক-উৎসজাত উপাদান নিবন্ধিত ও নিরাপত্তা পরীক্ষিত হতে হবে</div>
+<div class="tip">US FDA: আমেরিকায় খাদ্য/ওষুধ পণ্য রপ্তানির আগে নিবন্ধন আবশ্যক</div>
+<div class="tip">জাপান MHLW: কঠোর ভারী ধাতু সীমা — কোলাজেন পণ্যে পারদ &lt;0.5 ppm, সীসা &lt;0.5 ppm</div>
+<div class="tip">CITES: নিশ্চিত করুন যে উৎস মাছ প্রজাতি বন্যপ্রাণী বাণিজ্য চুক্তির আওতায় সুরক্ষিত নয়</div>
+<div class="tip">নিজের দেশের কর নিয়ম যাচাই করুন — মাছের আঁশ পণ্য (HS কোড 0511.91) প্রায়ই কম শুল্ক বা ইনপুট ট্যাক্স ক্রেডিটের যোগ্য</div>
+</div>
+</div>
+<div class="sec-head"><i class="ti ti-shopping-cart"></i>ক্রেতা কোথায় খুঁজবেন <span class="sec-head-line"></span></div>
+<div class="cards-grid">
+<div class="card c-teal2">
+<div class="card-title"><i class="ti ti-world-www"></i>অনলাইন প্ল্যাটফর্ম</div>
+<span class="badge b-teal">ডিজিটাল রপ্তানি</span>
+<div class="tip">Alibaba.com — বৃহত্তম বিশ্ব B2B প্ল্যাটফর্ম; সিরিয়াস ক্রেতা আকৃষ্ট করতে ল্যাব রিপোর্টসহ পণ্য তালিকাভুক্ত করুন</div>
+<div class="tip">জাতীয় B2B মার্কেটপ্লেস (যেমন IndiaMART, Global Sources) — দেশীয় ও আঞ্চলিক ক্রেতাদের কাছে পৌঁছান</div>
+<div class="tip">নিজের দেশের রপ্তানি প্রসার পরিষদ বা ফেডারেশন — ক্রেতা-বিক্রেতা সাক্ষাৎ ও বাণিজ্য মেলা</div>
+<div class="tip">সরকারি কৃষি/সামুদ্রিক রপ্তানি পোর্টাল — বেশিরভাগ রপ্তানিকারক দেশে রপ্তানিকারকদের বিশ্ব ক্রেতাদের সাথে সংযুক্ত করা ডিরেক্টরি আছে</div>
+<div class="tip">জাতীয় "মেড-ইন-[দেশ]" বাণিজ্য পোর্টাল — প্রায়ই সব ধরনের রপ্তানিকারকদের জন্য বিনামূল্যে তালিকাভুক্তির সুযোগ দেয়</div>
+</div>
+<div class="card c-sky2">
+<div class="card-title"><i class="ti ti-calendar-event"></i>বাণিজ্য মেলা ও প্রদর্শনী</div>
+<span class="badge b-sky">ক্রেতাদের সাথে দেখা করুন</span>
+<div class="tip">Seafood Expo Global, ব্রাসেলস (এপ্রিল) — বিশ্বের বৃহত্তম সামুদ্রিক খাদ্য বাণিজ্য মেলা, ২,০০০+ প্রদর্শক</div>
+<div class="tip">আঞ্চলিক আন্তর্জাতিক সিফুড শো — বেশিরভাগ প্রধান রপ্তানিকারক দেশে বার্ষিক প্রধান সামুদ্রিক পণ্যের অনুষ্ঠান হয়</div>
+<div class="tip">Natural &amp; Organic Products Europe, লন্ডন (এপ্রিল) — কোলাজেন/সৌন্দর্য উপাদান ক্রেতাদের জন্য উপযুক্ত</div>
+<div class="tip">In-Cosmetics Global (এপ্রিল/মে) — বিশ্ব সৌন্দর্য উপাদান বাণিজ্য মেলা, প্রসাধনী প্রস্তুতকারকদের খুঁজে পান</div>
+</div>
+</div>
+</div>
+<!-- ══ 9. EXPORT ROADMAP ══ -->
+<div class="section" id="tab-roadmap">
+<div class="alert-box a-gold"><i class="ti ti-map-2"></i><span>শূন্য থেকে মাছের আঁশ রপ্তানি ব্যবসা গড়ে তুলতে এই ধাপে ধাপে রোডম্যাপ অনুসরণ করুন — কাঁচামাল সংগ্রহ থেকে ১২–১৮ মাসের মধ্যে আন্তর্জাতিক চালান পাঠানো পর্যন্ত।</span></div>
+<div class="sec-head"><i class="ti ti-timeline"></i>১২ মাসের রপ্তানি স্টার্টআপ রোডম্যাপ <span class="sec-head-line"></span></div>
+<div class="process-steps">
+<div class="process-step"><div><div class="step-title">মাস ১–২: ভিত্তি স্থাপন</div><div class="step-desc">প্রতিদিনের আঁশের জোগান যাচাই করতে স্থানীয় মাছবাজারে যান। সরবরাহ চুক্তির জন্য ৩–৫ জন মাছ ব্যবসায়ীর সাথে দেখা করুন। আপনার ব্যবসা নিবন্ধন করুন (সাধারণত অনলাইনে বিনামূল্যে বা কম খরচে)। একটি কারেন্ট ব্যাংক অ্যাকাউন্ট খুলুন। স্থানীয় খাদ্য নিরাপত্তা প্রাথমিক নিবন্ধন নিন (সাধারণত কম খরচে, প্রায়ই বছরে $২-এর কম)।</div></div></div>
+<div class="process-step"><div><div class="step-title">মাস ২–৩: কাঁচামাল ব্যবস্থাপনা</div><div class="step-desc">একটি পরিষ্কার সংগ্রহ ও বাছাই এলাকা তৈরি করুন (একটি শেড বা খোলা উঠান হতে পারে)। সাধারণ শুকানোর র‍্যাক তৈরি করুন বা কিনুন। সপ্তাহে ৫০–১০০ কেজি আঁশ সংগ্রহ শুরু করুন। মৌলিক গুণমান বাছাই শিখুন — টাটকা বনাম বাসি আঁশ। বিনামূল্যে কারিগরি পরামর্শের জন্য NFDB বা KVK-এর সাথে যোগাযোগ করুন।</div></div></div>
+<div class="process-step"><div><div class="step-title">মাস ৩–৪: প্রথম পণ্য ও বিক্রয়</div><div class="step-desc">শুকনো মাছের আঁশ বা আঁশের গুঁড়োর প্রথম ব্যাচ তৈরি করুন। স্থানীয়ভাবে সার ব্যবসায়ী ও ফিড কোম্পানিকে $০.২৫–০.৫০/কেজি দরে বিক্রি করুন। আরও বিনিয়োগের জন্য আয় ব্যবহার করুন। ব্যবসা বাড়াতে হলে ক্ষুদ্র ব্যবসা ঋণের জন্য আবেদন করুন। ব্যাংকের রেকর্ডের জন্য সব লেনদেন নথিভুক্ত করুন।</div></div></div>
+<div class="process-step"><div><div class="step-title">মাস ৪–৬: গুণমান ও প্রত্যয়ন</div><div class="step-desc">একটি স্বীকৃত জাতীয় বা বেসরকারি ল্যাবে নমুনা পরীক্ষা করান। এক্সপোর্ট ইন্সপেকশন নিবন্ধন ও এক্সপোর্টার কোডের জন্য আবেদন করুন। যদি থাকে, নিজের দেশের মেরিন পণ্য গুণমান উন্নয়ন প্রকল্পে নাম লেখান। HACCP নথিপত্র শুরু করুন — সাধারণত এক্সপোর্ট ইন্সপেকশন অফিসে টেমপ্লেট পাওয়া যায়।</div></div></div>
+<div class="process-step"><div><div class="step-title">মাস ৬–৯: প্রথম রপ্তানি প্রচেষ্টা</div><div class="step-desc">ল্যাব রিপোর্ট ও পণ্যের ছবিসহ Alibaba বা আঞ্চলিক B2B মার্কেটপ্লেস প্রোফাইল তৈরি করুন। ক্রেতা-বিক্রেতা পরিচিতি কর্মসূচির জন্য নিজের দেশের রপ্তানি প্রসার সংস্থার সাথে যোগাযোগ করুন। একটি বাণিজ্য মেলায় যোগ দিন (খরচ বাঁচাতে ভার্চুয়াল বিকল্পও আছে)। ছোট ট্রায়াল অর্ডার লক্ষ্য করুন — ক্রেতাদের যাচাইয়ের জন্য ১০০–৫০০ কেজি নমুনা।</div></div></div>
+<div class="process-step"><div><div class="step-title">মাস ৯–১২: ব্যবসা বৃদ্ধি</div><div class="step-desc">২–৩ জন বারবার আসা আন্তর্জাতিক ক্রেতা নিশ্চিত করুন। প্রথম রপ্তানি আয় দিয়ে ভালো সরঞ্জামে বিনিয়োগ করুন। যদি নিজের দেশের মৎস্য প্রকল্পে থাকে, কোলাজেন নিষ্কাশন সরঞ্জাম অনুদানের জন্য আবেদন করুন। প্রথম বছরে বার্ষিক $১২,০০০–৩০,০০০ রপ্তানি টার্নওভার লক্ষ্য রাখুন। সরকারি সহায়তার জন্য নিজের দেশের মেরিন-এক্সপোর্ট প্রসার সংস্থায় নিবন্ধন করুন।</div></div></div>
+<div class="process-step"><div><div class="step-title">২য় বছর ও পরে: সম্প্রসারণ</div><div class="step-desc">নিজস্ব লেবেলযুক্ত ব্র্যান্ডেড কোলাজেন গুঁড়ো পণ্য তৈরি করুন। অঞ্চল-নির্দিষ্ট মাছ ব্যবহার করলে জিওগ্রাফিক্যাল ইন্ডিকেশন ট্যাগের জন্য আবেদন করুন। সরবরাহ শৃঙ্খলের জন্য পার্শ্ববর্তী মৎস্যজীবী সম্প্রদায়দের সাথে একটি উৎপাদক সংগঠন গড়ে তুলুন। মধ্যস্বত্বভোগীদের বাদ দিয়ে প্রসাধনী কোম্পানিগুলোর সাথে সরাসরি সম্পর্ক লক্ষ্য করুন। ওষুধ কোম্পানিগুলোর জন্য চুক্তিভিত্তিক উৎপাদন খুঁজে দেখুন।</div></div></div>
+</div>
+<div class="sec-head"><i class="ti ti-checklist"></i>রপ্তানি প্রস্তুতি চেকলিস্ট <span class="sec-head-line"></span></div>
+<div class="prog-wrap">
+<div class="prog-label"><span id="prog-label-text">0 of 12 tasks completed</span><span id="prog-pct">0%</span></div>
+<div class="prog-bg"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div>
+</div>
+<div class="card c-teal2" id="export-checklist"></div>
+</div>
+<!-- ══ 10. SUCCESS STORIES ══ -->
+<div class="section" id="tab-stories">
+<div class="alert-box a-pink"><i class="ti ti-star"></i><span>বিশ্বজুড়ে উপকূলীয় দেশগুলোর সাধারণ মানুষ মাছের আঁশ শিল্প থেকে সফল জীবিকা গড়ে তুলছেন। তাঁদের গল্প প্রমাণ করে যে এই সুযোগ বাস্তব ও নাগালের মধ্যে।</span></div>
+<div class="sec-head"><i class="ti ti-user-star"></i>সাফল্যের গল্প <span class="sec-head-line"></span></div>
+<div class="story-card">
+<div class="story-header">
+<div class="story-avatar">👩</div>
+<div><div class="story-name">লক্ষ্মী দেবী ও একটি উপকূলীয় নারী SHG</div><div class="story-location">অন্ধ্রপ্রদেশ, ভারত</div></div>
+</div>
+<span class="story-income">💰 মাসিক আয়: প্রতি সদস্য $৯৫–১৪৫</span>
+<p class="story-text">১৫ জন মাছবাজার নারীর একটি দল স্থানীয় মাছবাজারে প্রতিদিন ফেলে দেওয়া কার্প মাছের আঁশ সংগ্রহ করা শুরু করে। একটি উন্নয়ন ব্যাংকের $৬০০ অনুদান দিয়ে তারা একটি গ্রাইন্ডার ও ড্রায়ার কেনে। আজ তারা প্রতি মাসে ২ টন মাছের আঁশের গুঁড়ো স্থানীয় সার কোম্পানি ও জৈব চাষিদের সরবরাহ করে। তাদের সাফল্য পার্শ্ববর্তী গ্রামে আরও ৩টি একই ধরনের স্বসহায়ক দলকে অনুপ্রাণিত করেছে।</p>
+</div>
+<div class="story-card">
+<div class="story-header">
+<div class="story-avatar">👨</div>
+<div><div class="story-name">রফিক এম.</div><div class="story-location">মহারাষ্ট্র, ভারত</div></div>
+</div>
+<span class="story-income">💰 বার্ষিক টার্নওভার: $৩৪,০০০</span>
+<p class="story-text">খাদ্য প্রযুক্তি নিয়ে পড়াশোনা করা এক জেলের ছেলে রফিক ২০২১ সালে $১৫,০০০ ক্ষুদ্র ব্যবসা ঋণ নিয়ে একটি ছোট মাছের কোলাজেন নিষ্কাশন ইউনিট স্থাপন করেন। এখন তিনি দক্ষিণ কোরিয়ার প্রসাধনী কোম্পানিগুলোতে কোলাজেন গুঁড়ো রপ্তানি করেন। তিনি বলেন, "আমরা যে গুণমানের পণ্য তৈরি করতে পারি তা দেখে ক্রেতারা অবাক হয়েছিলেন।" তিনি এখন ৮ জন স্থানীয় যুবককে কর্মসংস্থান দিচ্ছেন এবং জাপানি ক্রেতাদের লক্ষ্য করে উন্নতমানের প্রজাতির কোলাজেনে সম্প্রসারণের পরিকল্পনা করছেন।</p>
+</div>
+<div class="story-card">
+<div class="story-header">
+<div class="story-avatar">👩</div>
+<div><div class="story-name">মাই থি লান</div><div class="story-location">মেকং ব-দ্বীপ, ভিয়েতনাম</div></div>
+</div>
+<span class="story-income">💰 মাসিক বিক্রয়: $৪২০+</span>
+<p class="story-text">লান মাছের আঁশ দিয়ে গয়না তৈরিকে একটি সমৃদ্ধ ঘরোয়া ব্যবসায় পরিণত করেছেন। স্থানীয় মাছবাজারের আঁশ ব্যবহার করে তিনি হাতে তৈরি কানের দুল, পেনডেন্ট ও সাজসজ্জার সামগ্রী তৈরি করেন। তিনি সোশ্যাল মিডিয়া ও অনলাইন মার্কেটপ্লেসের মাধ্যমে বিক্রি করেন, যুক্তরাজ্য ও অস্ট্রেলিয়ার গ্রাহকদের কাছে রপ্তানি করেন। তিনি গর্বের সাথে বলেন, "এখন মাছ সরাসরি বিক্রির চেয়ে আঁশ থেকেই বেশি আয় হয়।" এখন তিনি আরও ২০ জন নারীকে তাঁর এই কারুশিল্প শেখাচ্ছেন।</p>
+</div>
+<div class="story-card">
+<div class="story-header">
+<div class="story-avatar">🏭</div>
+<div><div class="story-name">OceanBio Ingredients Ltd.</div><div class="story-location">লাগোস, নাইজেরিয়া</div></div>
+</div>
+<span class="story-income">💰 বার্ষিক রপ্তানি: $৫,০০,০০০</span>
+<p class="story-text">২০১৮ সালে দুই ইঞ্জিনিয়ারিং স্নাতক দ্বারা শুরু হওয়া OceanBio উপকূল জুড়ে ৫০টিরও বেশি প্রক্রিয়াকরণ ইউনিট থেকে আঁশ সংগ্রহ করে একটি সম্পূর্ণ মাছের কোলাজেন সুবিধা গড়ে তুলেছে। তাদের ওষুধমানের মাছের কোলাজেন এখন US FDA দ্বারা প্রত্যয়িত এবং আমেরিকা ও কানাডার নিউট্রাসিউটিক্যাল কোম্পানিগুলোতে রপ্তানি হয়। তারা ২০০+ আঁশ সংগ্রাহককে ফিরতি-ক্রয় নিশ্চয়তা দেয়, যা একটি স্থিতিশীল গ্রামীণ সরবরাহ শৃঙ্খল তৈরি করেছে।</p>
+</div>
+<div class="alert-box a-teal" style="margin-top:16px"><i class="ti ti-bulb"></i><span>🌟 এই গল্পগুলো ছোট থেকে শুরু হয়েছিল — মাত্র $৩৫ থেকে $৬০০ দিয়ে। মাছের আঁশ শিল্প <strong>ধারাবাহিকতা, গুণমান ও নেটওয়ার্কিংকে</strong> পুরস্কৃত করে। আপনার যাত্রা আজই শুরু হতে পারে।</span></div>
+</div>
+<!-- ══ 11. MYSKILLGAME ══ -->
+<div class="alert-box a-gold">
+<i class="ti ti-info-circle"></i>
+<span>
+এই গাইড শিক্ষামূলক ও সচেতনতা বৃদ্ধির উদ্দেশ্যে তৈরি। বাজার মূল্য, রপ্তানির শর্ত, নিয়মকানুন এবং ব্যবসায়িক সুযোগ সময়ের সাথে পরিবর্তিত হতে পারে। ব্যবসায়িক সিদ্ধান্ত নেওয়ার আগে পাঠকদের সরকারি ও শিল্প সংক্রান্ত সরকারি সূত্র থেকে বর্তমান তথ্য যাচাই করা উচিত।
+</span>
+</div>
+<div class="myskill-footer">
+<h3>নির্মাতা</h3>
+<p>
+শ্রী সুরজিৎ রায়<br/>
+শিক্ষক (বৃত্তিমূলক বিভাগ)<br/>
+MySkillGame-এর নির্মাতা
+</p>
+</div>
+<div class="alert-box a-teal">
+<i class="ti ti-language"></i>
+<span>
+একসময় বর্জ্য হিসেবে ফেলে দেওয়া মাছের আঁশ এখন কর্মসংস্থান সৃষ্টি, হস্তশিল্প, প্রসাধনী, কোলাজেন উৎপাদন, জৈব সার এবং আন্তর্জাতিক বাণিজ্যের সুযোগের এক মূল্যবান সম্পদ হিসেবে স্বীকৃত।
+</span>
+</div>
+<div class="section" id="tab-myskill">
+<div class="myskill-footer">
+<h3>🎓 <span>MySkillGame</span> সম্পর্কে</h3>
+<p>MySkillGame একটি প্ল্যাটফর্ম, যা মানুষকে বৃত্তিমূলক দক্ষতা, উদ্যোগ জ্ঞান ও জীবিকার সুযোগ দিয়ে ক্ষমতায়িত করতে নিবেদিত। আমরা বিশ্বাস করি প্রতিটি মানুষের — শিক্ষা বা পটভূমি যা-ই হোক না কেন — ব্যবহারিক, আয়বর্ধক জ্ঞানে প্রবেশাধিকার প্রাপ্য।</p>
+<div class="myskill-pills">
+<span class="ms-pill">📚 বৃত্তিমূলক শিক্ষা</span>
+<span class="ms-pill">💼 স্বনিয়োজন</span>
+<span class="ms-pill">💡 স্টার্টআপ ধারণা</span>
+<span class="ms-pill">👩 নারী ক্ষমতায়ন</span>
+<span class="ms-pill">🤝 SHG সুযোগ</span>
+<span class="ms-pill">🌱 পরিবেশ সচেতনতা</span>
+<span class="ms-pill">♻️ চক্রাকার অর্থনীতি</span>
+<span class="ms-pill">💰 আর্থিক সাক্ষরতা</span>
+</div>
+<div class="tagline">"MySkillGame-এর জন্য তৈরি – বৃত্তিমূলক শিক্ষা, উদ্যোগ, আর্থিক সাক্ষরতা, পরিবেশ সচেতনতা এবং টেকসই জীবিকার সুযোগ প্রসারে।"</div>
+</div>
+<div class="sec-head"><i class="ti ti-school"></i>শেখার উপকরণ <span class="sec-head-line"></span></div>
+<div class="cards-grid">
+<div class="card c-teal">
+<div class="card-title"><i class="ti ti-book"></i>অনলাইন কোর্স</div>
+<span class="badge b-teal">বিনামূল্যে / স্বল্প খরচে</span>
+<div class="tip">CIFE ই-লার্নিং: মৎস্য প্রযুক্তি কোর্স — cife.edu.in (জেলেদের সন্তানদের জন্য বিনামূল্যে)</div>
+<div class="tip">NIFTEM অনলাইন প্রোগ্রাম: খাদ্য প্রক্রিয়াকরণ ও সংরক্ষণ — niftem.ac.in</div>
+<div class="tip">Coursera: ডিউক বিশ্ববিদ্যালয়ের "Sustainable Fisheries" — বিনামূল্যে অডিট করা যায়</div>
+<div class="tip">YouTube: ICAR-CIBA চ্যানেল — হিন্দি/তামিল/বাংলায় মাছের উপজাত মূল্যায়নের ভিডিও</div>
+<div class="tip">NSDC স্কিল ইন্ডিয়া পোর্টাল — অ্যাকোয়াকালচার টেকনিশিয়ান কোর্স, স্বীকৃত সার্টিফিকেট</div>
+</div>
+<div class="card c-gold">
+<div class="card-title"><i class="ti ti-file-text"></i>প্রধান সংস্থা</div>
+<span class="badge b-gold">সহায়তা নিন</span>
+<div class="tip">MPEDA (মেরিন প্রোডাক্টস এক্সপোর্ট ডেভেলপমেন্ট অথরিটি) — mpeda.gov.in — রপ্তানি নির্দেশনা</div>
+<div class="tip">NFDB (জাতীয় মৎস্য উন্নয়ন বোর্ড) — nfdb.gov.in — প্রকল্পের আবেদন</div>
+<div class="tip">CIFT কোচি (সেন্ট্রাল ইনস্টিটিউট অফ ফিশারিজ টেকনোলজি) — কারিগরি পরামর্শ, বিনামূল্যে ল্যাব পরীক্ষার সুবিধা</div>
+<div class="tip">NABARD জেলা অফিস — FPO গঠন, SHG অর্থায়ন, গ্রামীণ উদ্যোগ সহায়তা</div>
+<div class="tip">KVIC অফিস — PMEGP আবেদন, EDP প্রশিক্ষণ, কাঁচামাল সংগ্রহে সহায়তা</div>
+</div>
+<div class="card c-indigo">
+<div class="card-title"><i class="ti ti-link"></i>দরকারি লিংক ও যোগাযোগ</div>
+<span class="badge b-indigo">দ্রুত অ্যাক্সেস</span>
+<div class="tip">PMMSY পোর্টাল: pmmsy.gov.in — প্রকল্পের আবেদন ও নির্দেশিকা</div>
+<div class="tip">DGFT (IEC কোড): dgft.gov.in — বিনামূল্যে ইম্পোর্টার এক্সপোর্টার কোড নিবন্ধন</div>
+<div class="tip">EIC (এক্সপোর্ট ইন্সপেকশন কাউন্সিল): eicindia.gov.in — রপ্তানির জন্য প্রত্যয়ন</div>
+<div class="tip">জাতীয় মৎস্য পোর্টাল: fisheries.gov.in — সম্পূর্ণ তথ্যভাণ্ডার</div>
+<div class="tip">APEDA Agri Exchange: agriexchange.apeda.gov.in — আন্তর্জাতিক ক্রেতা খুঁজুন</div>
+<div class="tip">হেল্পলাইন: NFDB — 040-24000201 | MPEDA — 0484-2311979</div>
+</div>
+</div>
+<div class="sec-head"><i class="ti ti-heart"></i>পরিবেশগত ও সামাজিক প্রভাব <span class="sec-head-line"></span></div>
+<div class="cards-grid">
+<div class="card c-green">
+<div class="card-title"><i class="ti ti-leaf"></i>পরিবেশগত সুবিধা</div>
+<span class="badge b-green">শূন্য-বর্জ্য দৃষ্টিভঙ্গি</span>
+<div class="tip">মাছের আঁশ প্রক্রিয়াকরণ মাছবাজার ও নদীর উপর কঠিন বর্জ্য নিষ্কাশনের চাপ কমায়</div>
+<div class="tip">মাছের আঁশ থেকে তৈরি বায়ো-প্লাস্টিক প্যাকেজিং ফিল্মের বিকল্প হয়ে পেট্রোলিয়াম-ভিত্তিক প্লাস্টিকের চাহিদা কমায়</div>
+<div class="tip">মাছের আঁশের সার রাসায়নিক সারের উপর নির্ভরতা কমায় — মাটির মাইক্রোবায়োমের জন্য ভালো</div>
+<div class="tip">সঠিক আঁশ ব্যবহার পচনশীল মাছের বর্জ্য থেকে জলাশয়ের দূষণ রোধ করে</div>
+<div class="tip">মাছের কোলাজেনের কার্বন পদচিহ্ন স্থল-প্রাণীজাত কোলাজেন উৎপাদনের চেয়ে ৮০% কম</div>
+</div>
+<div class="card c-pink">
+<div class="card-title"><i class="ti ti-users"></i>সামাজিক প্রভাব</div>
+<span class="badge b-pink">সম্প্রদায়ে পরিবর্তন</span>
+<div class="tip">মাছের আঁশের ব্যবসা মৎস্যজীবী সম্প্রদায়ের দরিদ্রতম অংশের জন্য আয়ের সুযোগ তৈরি করে</div>
+<div class="tip">যেসব নারীর আগে কোনো আয়ের উৎস ছিল না, তারা আঁশ প্রক্রিয়াকরণের মাধ্যমে আর্থিক স্বাধীনতা পান</div>
+<div class="tip">মাছের বর্জ্য খোলা জায়গায় পোড়ানো কমে যাওয়ায় উপকূলীয় মৎস্যজীবী গ্রামে বাতাসের মান উন্নত হয়</div>
+<div class="tip">মূল্য সংযোজন শহুরে মধ্যস্বত্বভোগীদের বদলে স্থানীয় মৎস্যজীবী সম্প্রদায়ের মধ্যেই বেশি অর্থ ধরে রাখে</div>
+<div class="tip">মাছের আঁশ ব্যবসার কারণে উপকূলীয় গ্রামে যুবকদের থেকে যাওয়া শহরমুখী অভিবাসনের চাপ কমায়</div>
+</div>
+</div>
+<div class="alert-box a-gold" style="margin-top:8px">
+<i class="ti ti-rocket"></i>
+<span><strong>আজই শুরু করুন:</strong> আপনার নিকটতম মাছবাজারে যান, মাছ ব্যবসায়ীদের সাথে কথা বলুন এবং সংগ্রহ শুরু করুন। কাঁচামাল বিনামূল্যে বা প্রায় বিনামূল্যে পাওয়া যায়। বাজার বিশ্বব্যাপী। দক্ষতা শেখা যায়। <strong>আপনার জীবিকার রূপান্তর শুরু হয় একটি পদক্ষেপ দিয়ে।</strong> 🐟✨</span>
+</div>
+</div>
+<footer class="site-footer">
+   © 2026 MySkillGame • শিক্ষামূলক গেম ও সচেতনতা প্রকল্প
+</footer>
+</div><!-- /content -->
+<script>
+// ── Tab Switching ──
+function switchTab(name, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  btn.classList.add('active');
+  btn.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
+}
+
+// ── Export Checklist ──
+const exportChecks = [
+  "উদ্যম (MSME) নিবন্ধন সম্পন্ন হয়েছে",
+  "FSSAI বেসিক নিবন্ধন পাওয়া গেছে",
+  "ব্যবসার জন্য ব্যাংক কারেন্ট অ্যাকাউন্ট খোলা হয়েছে",
+  "DGFT থেকে IEC (ইম্পোর্টার এক্সপোর্টার কোড) আবেদন করা হয়েছে",
+  "EIC (এক্সপোর্ট ইন্সপেকশন কাউন্সিল) নিবন্ধন সম্পন্ন",
+  "NABL-স্বীকৃত ল্যাবে পণ্যের পরীক্ষা সম্পন্ন হয়েছে",
+  "HACCP নথিপত্র প্রস্তুত করা হয়েছে",
+  "Alibaba / IndiaMART ব্যবসায়িক প্রোফাইল তৈরি হয়েছে",
+  "প্রথম ১০০ কেজি নমুনা চালান রপ্তানি-প্রস্তুত করে প্যাক করা হয়েছে",
+  "অন্তত ২টি আন্তর্জাতিক ক্রেতার অনুসন্ধান পাওয়া গেছে",
+  "প্রথম ট্রায়াল চালান পাঠানো হয়েছে",
+  "আন্তর্জাতিক ক্রেতার কাছ থেকে পুনরায় অর্ডার নিশ্চিত হয়েছে"
+];
+
+let exportCheckStates = exportChecks.map(() => false);
+
+function renderExportChecklist() {
+  const c = document.getElementById('export-checklist');
+  if (!c) return;
+  const done = exportCheckStates.filter(Boolean).length;
+  const pct = Math.round(done / exportChecks.length * 100);
+  document.getElementById('prog-fill').style.width = pct + '%';
+  document.getElementById('prog-label-text').textContent = `${exportChecks.length}টির মধ্যে ${done}টি কাজ সম্পন্ন`;
+  document.getElementById('prog-pct').textContent = pct + '%';
+  c.innerHTML = exportChecks.map((t, i) => `
+    <div class="check-item" onclick="toggleExport(${i})">
+      <div class="chk-box ${exportCheckStates[i] ? 'done' : ''}">
+        ${exportCheckStates[i] ? '<i class="ti ti-check"></i>' : ''}
+      </div>
+      <span class="check-text ${exportCheckStates[i] ? 'done' : ''}">${t}</span>
+    </div>
+  `).join('');
+}
+
+function toggleExport(i) {
+  exportCheckStates[i] = !exportCheckStates[i];
+  renderExportChecklist();
+}
+
+renderExportChecklist();
+
+// ── Market bar animation on load ──
+setTimeout(() => {
+  document.querySelectorAll('.market-bar-fill').forEach(bar => {
+    const w = bar.style.width;
+    bar.style.width = '0%';
+    setTimeout(() => bar.style.width = w, 100);
+  });
+}, 300);
+</script><script src="security.js"></script>
+
+<footer class="footer">
+<div style="margin-bottom:18px;">
+<a href="about.html">আমাদের সম্পর্কে</a> |
+<a href="privacy.html">গোপনীয়তা নীতি</a> |
+<a href="terms.html">শর্তাবলী</a> |
+<a href="contact.html">যোগাযোগ</a> |
+<a href="disclaimer.html">দাবিত্যাগ</a>
+</div>
+<div class="footer-name">MYSKILLGAME</div>
+<div class="footer-copy">© 2026 MySkillGame • নির্মাতা: সুরজিৎ রায়</div>
+</footer>
+</body>
+</html>

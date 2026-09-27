@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>বাবাও কিন্তু হাসি-আনন্দে বাঁচতে চেয়েছিলেন</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;600;700&family=Hind+Siliguri:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0a1322;
+    --navy-2:#0f1e33;
+    --navy-3:#142943;
+    --gold:#c9a227;
+    --gold-soft:#a5842a;
+    --ember:#a5622d;
+    --ink:#ece6d6;
+    --ink-dim:#9aa4b8;
+    --line:rgba(201,162,39,0.18);
+    box-sizing:border-box;
+  }
+  *{box-sizing:inherit; margin:0; padding:0;}
+  html{scroll-behavior:smooth; scroll-padding-top:56px;}
+  body{
+    background:
+      radial-gradient(ellipse at 20% -10%, rgba(201,162,39,0.07), transparent 45%),
+      radial-gradient(ellipse at 100% 20%, rgba(165,98,45,0.05), transparent 40%),
+      var(--navy);
+    color:var(--ink);
+    font-family:'Hind Siliguri', sans-serif;
+    font-weight:300;
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  h1,h2,h3,.serif{font-family:'Noto Serif Bengali', serif;}
+
+  /* the single taut string — doubles as scroll progress */
+  #string-track{
+    position:fixed; top:0; left:0; right:0; height:3px; z-index:60;
+    background:rgba(255,255,255,0.03);
+    padding-top:env(safe-area-inset-top,0px);
+  }
+  #string-fill{
+    height:3px; width:0%;
+    background:linear-gradient(90deg, var(--ember), var(--gold));
+    box-shadow:0 0 8px rgba(201,162,39,0.6);
+    transition:width .1s linear;
+  }
+
+  header{
+    padding:64px 22px 40px;
+    padding-top:calc(64px + env(safe-area-inset-top,0px));
+    max-width:680px; margin:0 auto;
+    text-align:center;
+    border-bottom:1px solid var(--line);
+  }
+  .eyebrow-mark{
+    display:inline-block; width:34px; height:34px; margin-bottom:22px;
+    opacity:0.85;
+  }
+  header h1{
+    font-size:clamp(1.7rem, 6vw, 2.5rem);
+    font-weight:700;
+    color:var(--ink);
+    line-height:1.5;
+  }
+  header .tagline{
+    margin-top:16px;
+    color:var(--gold-soft);
+    font-size:1.02rem;
+    font-style:normal;
+  }
+  header .meta{
+    margin-top:26px;
+    color:var(--ink-dim);
+    font-size:0.88rem;
+    letter-spacing:0.02em;
+  }
+
+  #continue-bar{
+    display:none;
+    max-width:680px; margin:22px auto 0; padding:0 22px;
+  }
+  #continue-bar a{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:12px;
+    background:var(--navy-3);
+    border:1px solid var(--line);
+    border-radius:2px;
+    padding:14px 18px;
+    text-decoration:none;
+    color:var(--ink);
+  }
+  #continue-bar a span.lbl{color:var(--ink-dim); font-size:0.82rem; display:block;}
+  #continue-bar a span.ep{font-family:'Noto Serif Bengali',serif; font-size:1.02rem; margin-top:2px; display:block;}
+  #continue-bar a span.arrow{color:var(--gold); font-size:1.3rem;}
+
+  nav#toc{
+    max-width:680px; margin:40px auto; padding:0 22px;
+  }
+  nav#toc ol{list-style:none;}
+  nav#toc li{
+    border-bottom:1px solid var(--line);
+  }
+  nav#toc li:first-child{border-top:1px solid var(--line);}
+  nav#toc a{
+    display:flex; align-items:baseline; gap:16px;
+    padding:20px 4px;
+    text-decoration:none;
+    color:var(--ink);
+  }
+  nav#toc .num{
+    font-family:'Noto Serif Bengali', serif;
+    color:var(--gold);
+    font-size:0.95rem;
+    min-width:2.4em;
+  }
+  nav#toc .ttl{
+    font-family:'Noto Serif Bengali', serif;
+    font-size:1.05rem;
+    flex:1;
+  }
+  nav#toc .sub{
+    display:block; color:var(--ink-dim); font-size:0.82rem; margin-top:4px; font-family:'Hind Siliguri',sans-serif;
+  }
+
+  main{max-width:680px; margin:0 auto; padding:0 22px 140px;}
+
+  section.episode{
+    padding:56px 0 24px;
+    border-bottom:1px solid var(--line);
+    scroll-margin-top:64px;
+  }
+  section.episode:last-of-type{border-bottom:none;}
+
+  .ep-head{margin-bottom:30px;}
+  .ep-num{
+    color:var(--gold); font-family:'Noto Serif Bengali', serif; font-size:0.95rem;
+  }
+  .ep-title{
+    font-size:clamp(1.4rem,5vw,1.85rem);
+    margin-top:8px;
+    font-weight:600;
+  }
+
+  .listen-btn{
+    margin-top:20px;
+    display:inline-flex; align-items:center; gap:10px;
+    background:transparent;
+    border:1px solid var(--gold-soft);
+    color:var(--gold);
+    font-family:'Hind Siliguri', sans-serif;
+    font-size:0.92rem;
+    padding:10px 20px;
+    border-radius:2px;
+    cursor:pointer;
+  }
+  .listen-btn:active{background:rgba(201,162,39,0.1);}
+  .listen-btn.playing{background:rgba(201,162,39,0.12); border-color:var(--gold);}
+  .listen-btn svg{width:14px; height:14px;}
+
+  .prose p{
+    margin-bottom:1.3em;
+    font-size:1.04rem;
+    color:var(--ink);
+  }
+  .prose p.quote{
+    color:#f2e9c9;
+    padding-right:16px;
+    border-right:2px solid var(--gold-soft);
+    margin-right:2px;
+  }
+  .prose p.tts-active{
+    color:#fff6df;
+    transition:color .3s ease;
+  }
+  .prose .closing{
+    margin-top:8px;
+    padding-top:28px;
+  }
+  .prose .closing p{color:#dcd3b8;}
+
+  .bookmark-toggle{
+    position:sticky; top:14px; float:left; margin-right:-4px;
+    display:none;
+  }
+
+  footer{
+    max-width:680px; margin:0 auto; padding:50px 22px 60px;
+    text-align:center; color:var(--ink-dim); font-size:0.85rem;
+    border-top:1px solid var(--line);
+  }
+  footer .sign{
+    color:var(--gold-soft); font-family:'Noto Serif Bengali', serif; margin-top:10px; font-size:1rem;
+  }
+
+  /* persistent player bar */
+  #player{
+    position:fixed; left:0; right:0; bottom:0; z-index:70;
+    background:var(--navy-2);
+    border-top:1px solid var(--line);
+    padding:12px 16px;
+    padding-bottom:calc(12px + env(safe-area-inset-bottom,0px));
+    transform:translateY(110%);
+    transition:transform .35s ease;
+  }
+  #player.show{transform:translateY(0);}
+  #player .row{
+    display:flex; align-items:center; gap:12px;
+    max-width:680px; margin:0 auto;
+  }
+  #player .info{flex:1; min-width:0;}
+  #player .info .now-ep{
+    font-size:0.72rem; color:var(--ink-dim); letter-spacing:0.02em;
+  }
+  #player .info .now-title{
+    font-family:'Noto Serif Bengali', serif; font-size:0.95rem;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    color:var(--ink);
+  }
+  #player button{
+    background:none; border:none; color:var(--ink);
+    width:38px; height:38px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+  }
+  #player button.play-pause{
+    background:var(--gold); color:var(--navy); width:44px; height:44px;
+  }
+  #player button svg{width:18px; height:18px;}
+  #player button.play-pause svg{width:20px; height:20px;}
+  #player button:disabled{opacity:0.35;}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    #player, #string-fill{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<div id="string-track"><div id="string-fill"></div></div>
+
+<header>
+  <svg class="eyebrow-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="20" cy="30" rx="11" ry="7" stroke="#c9a227" stroke-width="1.4"/>
+    <line x1="20" y1="23" x2="20" y2="3" stroke="#c9a227" stroke-width="1.4"/>
+    <path d="M20 3 C 24 5, 26 9, 22 12" stroke="#c9a227" stroke-width="1.4" fill="none"/>
+  </svg>
+  <h1>বাবাও কিন্তু হাসি-আনন্দে বাঁচতে চেয়েছিলেন</h1>
+  <p class="tagline">একটি একতারা, একজন বাবা, আর সন্তানের ভালোবাসার নামে ধীরে ধীরে ফাঁকা হয়ে যাওয়া একটি জীবনের গল্প</p>
+  <p class="meta">৫টি পর্ব · পড়ুন অথবা শুনুন</p>
+</header>
+
+<div id="continue-bar">
+  <a id="continue-link" href="#">
+    <span>
+      <span class="lbl">আপনি যেখানে থেমেছিলেন</span>
+      <span class="ep" id="continue-ep-title">—</span>
+    </span>
+    <span class="arrow">→</span>
+  </a>
+</div>
+
+<nav id="toc" aria-label="পর্ব তালিকা">
+  <ol>
+    <li><a href="#ep1"><span class="num">পর্ব ১</span><span class="ttl">একতারার মানুষ<span class="sub">হরিপদ, তাঁর একতারা, আর সংসারের শুরু</span></span></a></li>
+    <li><a href="#ep2"><span class="num">পর্ব ২</span><span class="ttl">মেয়ের সুখের জন্য<span class="sub">শ্বশুরবাড়ির চাহিদা আর নিঃশব্দে ভেঙে পড়া সঞ্চয়</span></span></a></li>
+    <li><a href="#ep3"><span class="num">পর্ব ৩</span><span class="ttl">নিজের বাড়ি থেকে ভাড়ার ঘরে<span class="sub">শেষ সম্বল আর মিতার বিদায়</span></span></a></li>
+    <li><a href="#ep4"><span class="num">পর্ব ৪</span><span class="ttl">জানলার ওপারে<span class="sub">মেয়ের ঘরে, নিয়মের ভেতর ছোট হতে থাকা একটা জীবন</span></span></a></li>
+    <li><a href="#ep5"><span class="num">শেষ পর্ব</span><span class="ttl">শেষ সুর<span class="sub">যে রোদের জন্য তিনি অপেক্ষা করেছিলেন</span></span></a></li>
+  </ol>
+</nav>
+
+<main>
+
+<section class="episode" id="ep1" data-title="একতারার মানুষ">
+  <div class="ep-head">
+    <div class="ep-num">পর্ব ১</div>
+    <h2 class="ep-title">একতারার মানুষ</h2>
+    <button class="listen-btn" data-ep="ep1">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      শুনুন
+    </button>
+  </div>
+  <div class="prose">
+    <p>হরিপদবাবু খুব সাধারণ একজন মানুষ ছিলেন। বছরের পর বছর সরকারি চাকরি করেছেন, নির্দিষ্ট বেতনেই সংসার আর সন্তানদের পড়াশোনার হিসাব মিলিয়ে চলতেন। নিজের জন্য বিলাসিতা বলতে কিছু ছিল না — শুধু একটা পুরোনো কাঠের একতারার প্রতি ছিল তাঁর অদ্ভুত টান, বহু বছর আগে এক গ্রাম্য মেলা থেকে কেনা।</p>
+    <p>প্রতিদিন বিকেলে অফিস থেকে ফিরে উঠোনে মোড়া পেতে বসতেন, হাতে তুলে নিতেন একতারা। টুন… টাং… সুর সবসময় ঠিক থাকত না, কিন্তু তাতে কিছু আসত যেত না — তিনি বাজাতেন নিজের জন্য, সারাদিনের ক্লান্তি থেকে নিজেকে ফিরে পাওয়ার জন্য। স্ত্রী মিতা একদিন হেসে বলেছিলেন, "তোমার একতারার সুর শুনলেই বুঝি, আজ তোমার মন ভালো।" হরিপদ উত্তর দিয়েছিলেন, "মন খারাপ থাকলেও বাজাই। বাজালে মনটা একটু ভালো হয়ে যায়।"</p>
+    <p>তাঁদের দুই সন্তান — ছেলে অর্ক, পড়াশোনায় মনোযোগী, বড় চাকরির স্বপ্ন দেখত; আর মেয়ে অপু, বাবার খুব আদরের। একদিন অর্ক জানাল সে MBA করতে চায়। খরচের কথা তুলতেই হরিপদ ছেলের কাঁধে হাত রেখে বললেন, "বাবা-মা যতদিন আছে, সন্তানের স্বপ্নের সামনে টাকা বাধা হতে পারে না।" মিতা জানতেন, কথাটা মন থেকে বলা হলেও তার জন্য কতটা হিসাব পাল্টাতে হবে, সেটাও তাঁর অজানা ছিল না।</p>
+    <p>অপু তখনও ছোট। বাবা একতারা বাজাতে বসলেই পাশে এসে বসত, একদিন বায়না ধরল শিখবে বলে। হরিপদ হেসে বললেন, "আগে পড়াশোনা শিখ, তারপর একতারা — কারণ আমি চাই, একদিন তুই নিজের পায়ে দাঁড়াস।" অপু বাবার হাত ধরে বলেছিল, "আমি তোমাকে ছেড়ে যাব না।" সেই বয়সের প্রতিশ্রুতি কতটা সত্যি, কতটা শিশুমনের কথা — তখন কেউ জানত না।</p>
+    <p>MBA-র ভর্তির সময় হরিপদ আলমারি থেকে বছরের পর বছরের জমানো সঞ্চয় বের করলেন। মিতা জিজ্ঞেস করলেন, "সামনে তো অপুর বিয়ের কথাও ভাবতে হবে।" হরিপদ শুধু বললেন, "কিছু একটা হয়ে যাবে" — একটা কথা যা সংসারের প্রতিটি সংকটে তাঁর মুখে ফিরে আসত।</p>
+    <p>সময় এগোল। অর্ক MBA শেষ করে ভালো চাকরি পেল, প্রথম বেতনে বাবার জন্য পাঞ্জাবি কিনে আনল — "সারাজীবন তো তুমি আমাদের জন্য কিনেছ, এবার আমার পালা।" সেই সন্ধ্যায় উঠোনে আবার একতারা বাজল, আর অপু ছুটে এসে বলল, "আজ থেকে আমিও শিখব।" ছোট্ট উঠোনে তখন কোনো অভাবের হিসাব ছিল না — শুধু পরিবারের হাসি।</p>
+    <p>কয়েক বছর পর অপুর জন্য ভালো সম্বন্ধ এল। মিতা চিন্তিত — "আমাদের সঞ্চয়?" হরিপদ শান্ত গলায়, "মেয়ের বিয়ে জীবনে একবারই হয়। কিছু একটা হয়ে যাবে।" এবার মিতা আর হাসলেন না; তিনি জানতেন, অর্কের পড়াশোনায় প্রায় শেষ হয়ে যাওয়া সঞ্চয়ের পরেও স্বামী মেয়ের বিয়েতে কোনো কমতি রাখবেন না।</p>
+    <p class="quote">বিদায়ের সময় অপু বাবাকে জড়িয়ে ধরে বলল, "তুমি আমাকে ভুলে যেও না।" হরিপদর চোখ ভিজে গেল। "বাবা কি কোনোদিন মেয়েকে ভুলতে পারে? তুই শুধু ভালো থাকিস।"</p>
+    <p>সবাই চলে যাওয়ার পর বাড়িটা অদ্ভুত নীরব হয়ে গেল। হরিপদ উঠোনে মোড়ায় বসে একতারা হাতে নিলেন, তারপর থেমে গেলেন। "আজ উঠোনটা কেমন ফাঁকা লাগছে," বললেন তিনি। মিতা পাশে বসে বললেন, "এবার হয়তো নিজেদের জন্যও একটু বাঁচতে পারো।" হরিপদ হাসলেন, আবার একতারা বাজালেন — টুন… টাং — জানতেন না, একদিন এই সুরই হবে তাঁর জীবনের সবচেয়ে বড় আনন্দ, আবার সবচেয়ে গভীর কষ্টের স্মৃতি।</p>
+  </div>
+</section>
+
+<section class="episode" id="ep2" data-title="মেয়ের সুখের জন্য">
+  <div class="ep-head">
+    <div class="ep-num">পর্ব ২</div>
+    <h2 class="ep-title">মেয়ের সুখের জন্য</h2>
+    <button class="listen-btn" data-ep="ep2">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      শুনুন
+    </button>
+  </div>
+  <div class="prose">
+    <p>অপুর বিয়ের পর সংসারটা একটু ফাঁকা হলেও হরিপদবাবুর মনে দুঃখ ছিল না — মেয়ে ভালো থাকলেই তাঁর শান্তি। প্রথমদিকে অপুর ফোনের কথাগুলো ছিল খুব সাধারণ — খাওয়া, মায়ের খবর, বাবা একতারা বাজান কি না। কিন্তু সময়ের সঙ্গে সেই কথায় ধীরে ধীরে অন্য সুর ঢুকতে শুরু করল।</p>
+    <p>একদিন রাতে অপুর কণ্ঠ নিচু। "এখানে সবাই খুব হিসাব করে কথা বলে বাবা — বিয়ের সময় কে কী দিয়েছে, কী দেয়নি, তা নিয়ে।" তারপর ধীরে, "একটা ফ্রিজ থাকলে ভালো হতো। আমাদের নেই বলে খুব অস্বস্তি হয়।" হরিপদ শুধু বললেন, "দেখি মা।"</p>
+    <p>ফোন রাখার পর মিতা জিজ্ঞেস করলেন কী হয়েছে। "মেয়েটা যদি শ্বশুরবাড়িতে কথা শুনে…" — হরিপদর এই একটি চিন্তাতেই তাঁর সব হিসাব ভুলে যাওয়ার অভ্যাস মিতা চিনতেন। অর্ককে ফোন করে সাহায্য চাইলে অর্ক জানাল এই মাসে তারও অনেক খরচ, আর যোগ করল, "অপুর সঙ্গে একবার কথা বলো বাবা, শুধু জিনিস দিলেই তো সব সমাধান হবে না।" হরিপদ বিরক্ত হয়ে বললেন, "তুই ওকে বুঝিস না।" সেই রাতে নিজের আলমারি থেকে আরও কিছু সঞ্চয় বের করলেন। মিতা বললেন, "তোমার এই 'আমি তো আছি' কথাটাই একদিন তোমার সব সঞ্চয় শেষ করে দেবে।"</p>
+    <p>ফ্রিজ গেল। অপু খুশি হয়ে ফোন করল, তারপর নতুন অভিযোগ — টিভি। "সবাই বলে, বিয়ের পর মেয়ের বাবার বাড়ি থেকে ভালো একটা টিভি দেওয়া উচিত ছিল।" হরিপদ চুপ করে রইলেন। অপু দ্রুত যোগ করল, "না না, তুমি পারবে না হলে দরকার নেই" — আর এই শেষ কথাটাই তাঁর মনে সবচেয়ে বেশি লাগল। টিভিও গেল।</p>
+    <p>ফোনের সংখ্যা কমল না, বাড়ল — কখনও আলমারি দরকার, কখনও গয়না সাধারণ লাগছে, কখনও "সবাই নতুন জিনিস ব্যবহার করে।" প্রতিবারই হরিপদ বলতেন, "দেখি মা।" মিতা একদিন শান্তভাবে বললেন, "মেয়ের প্রয়োজন আর প্রতিটি চাহিদা — দুটো আলাদা।" হরিপদ কিছু বললেন না।</p>
+    <p>অর্ক আবার ফোন করে বলল, "বাবা, তুমি ওকে এত কিছু দিচ্ছ কেন? সীমা থাকা দরকার।" হরিপদ বিরক্ত হয়ে বললেন, "তুই ছেলে, তোর নিজের সংসার আছে, তুই বুঝবি না।" ফোন কেটে গেল, কেউ আর কথা বাড়াল না।</p>
+    <p>সেদিন রাতে হরিপদ নিজের বাড়ির উঠোনে অনেকক্ষণ হাঁটলেন — এই বাড়ি তাঁর চাকরিজীবনের প্রথম সঞ্চয়ে তৈরি, প্রতিটা ইটের সঙ্গে জড়িয়ে অর্কের স্কুলে যাওয়া, অপুর জন্মদিন, মিতার সঙ্গে অসংখ্য সন্ধ্যা। "এই বাড়িটা যদি না থাকে?" — ভাবনাটা আসতেই নিজেই চমকে উঠলেন, তারপর নিজেকে বোঝালেন এতদূর ভাবার কিছু নেই।</p>
+    <p class="quote">কিছুদিন পর অপুর ফোনে ভারী কণ্ঠ — "বাবা, আমি আর পারছি না। বিয়েতে নাকি অনেক কিছু কম হয়েছে, প্রতিদিন কথা শুনতে হয়।" ওপাশে কান্নার শব্দ। হরিপদ জানলার বাইরে নিজের বাড়ির দিকে তাকালেন, তারপর ধীরে বললেন, "কিছু একটা হয়ে যাবে।"</p>
+    <p>সেই রাতে আলমারি খুলে পুরোনো দলিলটা হাতে নিয়ে অনেকক্ষণ তাকিয়ে রইলেন। এক কোণে একতারা নিশ্চুপ পড়ে ছিল। তিনি জানতেন না, মেয়ের সুখ কিনতে গিয়ে এবার তিনি নিজের শেষ আশ্রয়টুকুও দিয়ে দিতে চলেছেন।</p>
+  </div>
+</section>
+
+<section class="episode" id="ep3" data-title="নিজের বাড়ি থেকে ভাড়ার ঘরে">
+  <div class="ep-head">
+    <div class="ep-num">পর্ব ৩</div>
+    <h2 class="ep-title">নিজের বাড়ি থেকে ভাড়ার ঘরে</h2>
+    <button class="listen-btn" data-ep="ep3">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      শুনুন
+    </button>
+  </div>
+  <div class="prose">
+    <p>কয়েকদিনের মধ্যেই বাড়ি বিক্রির কথা পাকা হয়ে গেল। ক্রেতাকে ঘর দেখাতে গিয়ে হরিপদ একে একে দেখলেন — এই ঘরে অর্ক পড়ত, এই বারান্দায় অপু পুতুল নিয়ে বসত, এই উঠোনেই সন্ধ্যার পর একতারা বাজত। ক্রেতা বলল, "বাড়িটা বেশ ভালো।" হরিপদ শুধু বললেন, "হ্যাঁ, অনেক দিনের।" লোকটি বুঝল না, সেই "অনেক দিনের" কথায় কতটা জীবন লুকিয়ে ছিল।</p>
+    <p>চাবি তুলে দেওয়ার আগে দরজার সামনে দাঁড়িয়ে হরিপদ মিতাকে মনে করালেন, এই বাড়িতে প্রথম ঢোকার দিন তিনি বলেছিলেন — "একদিন এই বাড়িটা বাচ্চাদের হাসিতে ভরে যাবে।" "ভরেছিল তো," মিতা হেসে বললেন। "এখন আবার খালি হয়ে গেল," হরিপদ আস্তে বললেন। মিতা তাঁর হাত ধরলেন — "আমরা তো আছি।"</p>
+    <p>শহরের এক গলিতে ছোট্ট একটা ভাড়া বাড়ি নিলেন তাঁরা। প্রথম দিন হরিপদ চারদিকে তাকিয়ে বললেন, "খারাপ না — আমার একতারা রাখার জায়গা না থাকলে আমি থাকব না।" মিতা হেসে ফেললেন। সেই সন্ধ্যায় বারান্দায় বসে একতারা বাজালেন তিনি — বাড়ি ছোট হয়েছে, কিন্তু সুরটা যেন আগের মতোই বড়। "মনটা তো ছোট হয়নি," হরিপদ বললেন।</p>
+    <p>বাড়ি বিক্রির টাকা থেকে অপুর জন্য ফ্রিজ, টিভি, আসবাব কেনা হলো — মেয়ের পছন্দের জিনিসও। অপু ফোনে বলল, "তোমরা এখন কোথায় থাকবে?" "একটা ছোট ভাড়া বাড়িতে," হরিপদ জানালেন। মিতা পরে জিজ্ঞেস করলেন, "সব দিয়ে দিলে?" হরিপদ একতারা তুলে দেখালেন — "এটা বাকি আছে। এটা কেউ নিতে পারবে না।" তিনি জানতেন না, একদিন তাঁর সবচেয়ে প্রিয় জিনিসটিও তাঁর হাতের নাগালের বাইরে চলে যাবে।</p>
+    <p>নতুন সংসারে জীবন সাধারণ কিন্তু শান্ত ছিল — সকালে চা, দুপুরে একসঙ্গে খাওয়া, সন্ধ্যায় একতারা, পুরোনো দিনের গল্প। একদিন মিতা জিজ্ঞেস করলেন, "বাড়িটা বিক্রি করার আফসোস হয়?" "না," হরিপদ বললেন। "মেয়ের মুখে হাসি দেখলে বাবার আর কী চাই?" মিতা শুধু বললেন, "তোমার নিজের হাসিটাও যেন ভুলে যেও না।"</p>
+    <p>কিছুদিন পর মিতার শরীর খারাপ হতে শুরু করল — দুর্বলতা, তারপর জ্বর, কাশি, শ্বাসকষ্ট। অর্ক খবর পেয়ে ছুটে এল, কিছুদিন মায়ের পাশে রইল, তারপর কাজে ফিরে যাওয়ার তাড়ায় আবার চলে গেল।</p>
+    <p class="quote">সেই রাতে মিতার শ্বাসকষ্ট বাড়ল। ধীরে চোখ খুলে তিনি অর্ক আর হরিপদের দিকে তাকালেন। ছেলেকে বললেন, "বাবার খেয়াল রাখিস।" স্বামীকে বললেন, "তুমি কিন্তু একা হয়ে যেও না।" হরিপদ তাঁর হাত শক্ত করে ধরলেন — "আমি একা হব কেন?" মিতা মৃদু হাসলেন, "তুমি সবসময় এমনই বলো।" তারপর তাঁর চোখ ধীরে বন্ধ হয়ে গেল।</p>
+    <p>মিতার মৃত্যুর পর বাড়িটা সত্যিই বদলে গেল। সকালে চা বানানোর মানুষ নেই, সন্ধ্যায় "আজ একটু আস্তে বাজাও" বলার মানুষ নেই। একদিন একতারায় আঙুল রেখে কোনো সুর বেরোল না। তিনি শুধু বললেন, "মিতা, তুই থাকলে বলতিস — আবার বাজাও।"</p>
+    <p>অর্ক তাঁকে নিজের কাছে নিয়ে যেতে চাইল, কিন্তু হরিপদ রাজি হলেন না — "তোর নিজের সংসার আছে, আমি গিয়ে সেখানে নতুন করে জায়গা নিলে তোদেরও অস্বস্তি হবে।" এরপর অপু ফোন করে জোর করল — "তুমি কি আমার জন্য এত কিছু করোনি? এবার তোমার দায়িত্ব আমাদের।" এই কথায় হরিপদ আর কিছু বলতে পারলেন না।</p>
+    <p>যাওয়ার আগে নিজের ঘর গুছাতে গিয়ে কাপড়, ওষুধ, কিছু পুরোনো ছবি, মিতার শাড়ির একটা অংশের সঙ্গে একতারাটাও কাপড়ে জড়িয়ে ব্যাগে রাখলেন। দরজায় তালা দেওয়ার আগে একবার ঘুরে তাকালেন — এই বাড়িও তাঁর নয়, তবু এখানে মিতার শেষ দিনগুলোর স্মৃতি আছে। "চল, আবার নতুন জায়গায় যাই," তিনি বললেন। একতারা কোনো উত্তর দিল না।</p>
+  </div>
+</section>
+
+<section class="episode" id="ep4" data-title="জানলার ওপারে">
+  <div class="ep-head">
+    <div class="ep-num">পর্ব ৪</div>
+    <h2 class="ep-title">জানলার ওপারে</h2>
+    <button class="listen-btn" data-ep="ep4">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      শুনুন
+    </button>
+  </div>
+  <div class="prose">
+    <p>মেয়ের বাড়িতে এসে হরিপদবাবুর জীবনে একটা নতুন নিয়ম তৈরি হয়ে গেল — সকালে ওঠা, চুপচাপ চা খাওয়া, জানলার পাশে বসে থাকা, দীর্ঘ বিকেল, আর সন্ধ্যা নামলেই একতারার কথা মনে পড়া। অপু বলত, "বাবা, বেশি সময় বাইরে বসে থেকো না, ঠান্ডা লাগবে।" জামাই সৌরভ বলত, "রাস্তার দিকে বেশি তাকিয়ে থাকবেন না, কেউ কিছু ভাবতে পারে।" হরিপদ কখনও প্রতিবাদ করতেন না, শুধু মৃদু হেসে বলতেন, "আচ্ছা।"</p>
+    <p>একদিন একতারা চাইতে গেলে অপু বলল, "এখন তোমার হাতেও তো আগের মতো জোর নেই, পড়ে গিয়ে যদি কিছু হয়?" কয়েকদিন পর অপু নিজেই সেটা তুলে নিয়ে বললেন, "এখানে রাখলে নষ্ট হয়ে যাবে, আমি আলমারিতে তুলে রাখছি, মাঝে মাঝে দেব।" হরিপদ শুধু মাথা নাড়লেন, মনে মনে ভাবলেন, "পরে — এই কথাটা মানুষকে কত কিছু থেকে দূরে সরিয়ে দেয়।"</p>
+    <p>পাশের পাড়ার পুরোনো বন্ধু নিতাই একদিন জানলার কাছে দেখে ডাকলেন, চায়ের দোকানে বসার প্রস্তাব দিলেন। হরিপদর চোখ উজ্জ্বল হয়ে উঠল — এক কাপ চা, কত সামান্য ইচ্ছে, তবু তাঁর কাছে অনেক বড়। কিন্তু অপু শুনেই বলল, "না বাবা, তোমার বয়স হয়েছে, বাইরে গিয়ে পড়ে গেলে?" হরিপদ চুপ করে রাজি হয়ে গেলেন।</p>
+    <p>তারপর থেকে অপু বাইরে গেলে দরজা বাইরে থেকে বন্ধ করে যেতেন। একদিন দুপুরে উঠে দরজা খুলতে গিয়ে দেখলেন বন্ধ, ডাকলেন — কোনো উত্তর নেই। জানলার কাছে দাঁড়িয়ে রাস্তায় খেলা করা একটা ছেলে বলল, "কাকু, নিচে আসুন না!" হরিপদ শুধু বললেন, "আসতে পারছি না রে।" নিজের কাছেই প্রশ্ন এল — "আমি কি সত্যিই আর নিজের ইচ্ছেমতো কোথাও যেতে পারি না?"</p>
+    <p>সন্ধ্যায় অপুকে জিজ্ঞেস করলে সে বলল, "আমি তো তোমার ভালোর জন্যই বন্ধ করে যাই।" হরিপদ শুধু বললেন, "শুধু দরজাটা পুরো বন্ধ করে যাস না।" অপু হেসে বলল, "তুমি তো বাবাই, তোমাকে নিয়ে ভাবতেই হয়।" হরিপদও হাসলেন — কিন্তু সেই হাসিতে আনন্দের চেয়ে বেশি ছিল মেনে নেওয়া।</p>
+    <p>শীতের মুখে তাঁর শরীর খারাপ হতে লাগল — কাশি, দুর্বলতা, হাঁপিয়ে যাওয়া। ওষুধ ফুরিয়ে গেলে অপু বলল, "আজ এনে দেব," ডাক্তার দেখানোরও কথা হলো — কিন্তু সেই "আজ" আর এল না। দুদিন পর সৌরভ বলল, "কাল নিয়ে আসব," আর হরিপদ জানতেন, "কাল" শব্দটার ওপর বেশি ভরসা করা ঠিক নয়, তবু সারাজীবন সন্তানের কথায় বিশ্বাস করার মতোই এবারও করলেন।</p>
+    <p>রাতে অর্ককে ফোন করে নিজের কাশির কথা বললে অর্ক অপুর সঙ্গে কথা বলতে চাইল। হরিপদ তাড়াতাড়ি থামালেন — "না না, ওর অনেক কাজ, আমি আছি বাবা, তুই চিন্তা করিস না।" অর্ক বুঝতে পারল না, "আমি আছি" কথাটার আড়ালে বাবা কতটা একা হয়ে গেছেন।</p>
+    <p>একদিন হরিপদ আবার একতারা চাইলেন। "শরীর খারাপ হলে কি মনটাও বন্ধ করে রাখতে হয়?" — এই কথায় অপু আলমারি খুলে সেই পুরোনো কাপড়ের ব্যাগটা বের করে দিল। হরিপদর চোখ উজ্জ্বল হয়ে উঠল, বহু বছর পর যেন কোনো হারানো বন্ধুকে ফিরে পেলেন। তারে আঙুল ছুঁলেন — টুন… — চোখ বন্ধ করে বললেন, "শুনছ মিতা?" সেদিন একটু বেশি সময় বাজালেন, খুব ধীরে, যেন নিজের জীবনটাকেই স্পর্শ করছিলেন। সৌরভ বাইরে থেকে বলল, "একটু আস্তে বাজাবেন? ক্লান্ত লাগছে।" হরিপদ সঙ্গে সঙ্গে থেমে গেলেন।</p>
+    <p class="quote">একদিন দুপুরে বিছানা থেকে উঠতে গিয়ে পড়ে যেতে যেতে বেঁচে গেলেন। অপু ছুটে এসে বলল, "তুমি একা উঠবে না।" ডাক্তার দেখানোর কথায় আবার সেই — "কাল নিয়ে যাব।" হরিপদ গ্লাসটা নামিয়ে আর কিছু বললেন না।</p>
+    <p>নিতাই আবার এলেন, তাঁকে দুর্বল দেখে ডাক্তার নিয়ে আসার প্রস্তাব দিলেন। হরিপদ তাড়াতাড়ি বললেন, "না না, মেয়ের অনেক কাজ, ও নিয়ে যাবে।" শুধু অনুরোধ করলেন, "আমার একতারাটা যদি কখনও দেখতে পাস, এনে দিস — তাহলে একদিন আবার বাজাব।" সেই রাতে হালকা জ্বরের মধ্যেই তিনি অপুকে বললেন, "কাল যদি পারিস, আমাকে একটু বাইরে বসাবি? অনেকদিন রোদে বসিনি।" অপু রাজি হলো। হরিপদ জানতেন না কাল উঠতে পারবেন কি না, তবু বহুদিন পর তাঁর মনে হলো — হয়তো কাল একটু রোদে বসবেন, হয়তো নিতাইকে দেখবেন, হয়তো একতারা বাজাবেন।</p>
+  </div>
+</section>
+
+<section class="episode" id="ep5" data-title="শেষ সুর">
+  <div class="ep-head">
+    <div class="ep-num">শেষ পর্ব</div>
+    <h2 class="ep-title">শেষ সুর</h2>
+    <button class="listen-btn" data-ep="ep5">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      শুনুন
+    </button>
+  </div>
+  <div class="prose">
+    <p>সকালে ঘুম ভাঙল বেশ দেরিতে। জানলার ফাঁক দিয়ে ঠিক সেই রোদ এসে পড়েছে, যার জন্য গতরাতে অপেক্ষা করেছিলেন। উঠে বসতে চেষ্টা করলেন, কিন্তু শরীর যেন আজ আর সাড়া দিল না। ডাকলেন, "অপু… মা…" — ঘর নিস্তব্ধ, দূরে রান্নাঘর থেকে শুধু বাসনের শব্দ। মেঝেতে পা রাখতেই মাথা ঘুরে গেল, আবার বসে পড়লেন।</p>
+    <p>দরজা তখন বন্ধ। ধীরে ধীরে জানলার কাছে গিয়ে দাঁড়ালেন, গ্রিলের ফাঁক দিয়ে রোদের উষ্ণতা মুখে এসে পড়ল। চোখ বন্ধ করতেই মনে হলো বহু বছর আগের উঠোনে দাঁড়িয়ে আছেন — মিতা চা নিয়ে আসছেন, অর্ক বই হাতে বসে, অপু দৌড়ে এসে বলছে, "বাবা, একতারা বাজাবে?" চোখে জল এসে গেল — "কতদিন হয়ে গেল…"</p>
+    <p>দুপুরে অনেক কষ্টে অর্ককে ফোন করলেন। "কেমন আছিস?" জিজ্ঞেস করে নিজেই কাশতে শুরু করলেন। অর্ক উদ্বিগ্ন হয়ে ডাক্তারের কথা জিজ্ঞেস করলে হরিপদ শুধু বললেন, "বাবা, তুই মাঝে মাঝে বাড়িতে আসিস।" তারপর সেই পুরোনো উত্তর — "আমি তো আছি" — কিন্তু এবার গলায় আগের দৃঢ়তা ছিল না। ফোন কাটার পর অর্কের বুকে একটা অস্বস্তি তৈরি হলো, যদিও কারণটা সে তখনও বুঝল না।</p>
+    <p>বিকেলে নিতাই এলেন, তাঁকে দুর্বল দেখে বললেন, "ডাক্তার দেখানো দরকার, আমি নিয়ে যাব?" হরিপদ তার বদলে বললেন, "আমার একতারাটা যদি কখনও দেখতে পাস…" নিতাই হেসে প্রতিশ্রুতি দিলেন এনে দেবেন। "তাহলে একদিন আবার বাজাব," হরিপদ বললেন। দুজনের কেউই জানত না, সেই "একদিন" আর আসবে কি না।</p>
+    <p>সন্ধ্যার পর জ্বর বাড়ল। কয়েকবার জল চাইলেন, ঘরে কেউ ছিল না। অনেক কষ্টে নিজেই গ্লাস তুলতে গিয়ে হাত কেঁপে জল পড়ে গেল, আর চেষ্টা করলেন না। জানলার বাইরে তখন অন্ধকার, দূরে কোথাও টেলিভিশনের শব্দ, শিশুর হাসি, রান্নার গন্ধ — মানুষের সাধারণ জীবন চলছিল, যার বাইরে তিনি একা শুয়ে ছিলেন।</p>
+    <p class="quote">চোখ বন্ধ করে খুব আস্তে ডাকলেন, "মিতা…" মনে হলো যেন মিতা পাশে বসে বলছেন, "এত চিন্তা করছ কেন, তুমি তো বলেছিলে — কিছু একটা হয়ে যাবে।" তিনি মৃদু হাসলেন। তারপর একে একে ভেসে উঠল অপুর বিয়ের দিন, অর্কের ভর্তি, বাড়ি বিক্রির দিন — নিজের জীবনটাকে যেন পেছন থেকে দেখছিলেন। কত কিছু দিয়েছেন, কত কিছু ছেড়েছেন, বিনিময়ে কিছু চাননি — শুধু চেয়েছিলেন সন্তানরা ভালো থাকুক।</p>
+    <p>রাত গড়িয়ে গেলে চোখ পড়ল ঘরের কোণে রাখা একতারায়। অনেক কষ্টে সেটি কোলে টেনে নিলেন, তারে আঙুল ছোঁয়ালেন — টুন… ক্ষীণ একটা সুর। আবার — টাং… সুরটা ভেঙে গেল। চোখ বন্ধ করলেন, মনে হলো সেই পুরোনো উঠোনে বসে আছেন, মিতা পাশে, অর্ক আর অপু সামনে। "আর একটা বাজাই?" — কেউ উত্তর দিল না, তবু হাসলেন। তারপর শেষবারের মতো তারে আঙুল রাখলেন — টুন — একটা ক্ষীণ সুর, যার মধ্যে মিশে ছিল তাঁর সারাজীবনের হাসি, কষ্ট, ভালোবাসা আর অপেক্ষা।</p>
+    <p>পরদিন সকালে নিতাই ডাকলেন, কোনো উত্তর এল না। জানলা দিয়ে তাকিয়ে বুক কেঁপে উঠল — হরিপদবাবু শুয়ে আছেন, চোখ বন্ধ, মুখে অদ্ভুত শান্তি, পাশে রাখা একতারা। অপু ছুটে এসে হাত ধরে ডাকলেন, "বাবা…" — হাতটা ঠান্ডা। যে মানুষটি সারাজীবন সন্তানের ডাক শুনে ছুটে এসেছেন, আজ তাঁর আর ওঠার শক্তি ছিল না।</p>
+    <p>ঘর গুছাতে গিয়ে অর্ক একটা পুরোনো খাতা পেল — সংসারের হিসাব, অর্কের পড়াশোনার খরচ, অপুর বিয়ের খরচ, ফ্রিজ-টিভি-আসবাবের হিসাব। শেষের পাতায় লেখা ছোট হয়ে এসেছিল — "নিজের ওষুধ — পরে কিনব," "ডাক্তার দেখানো — প্রয়োজন হলে।" অর্ক বুঝল, বাবা শুধু নিজের বাড়িটাই বিক্রি করেননি, সারাজীবন নিজের প্রয়োজনগুলোও একে একে বিক্রি করে গিয়েছিলেন।</p>
+    <p>অপু একতারাটা বুকের কাছে চেপে ধরলেন, কোনো কথা বললেন না।</p>
+    <p>কয়েকদিন পর অর্ক সেই ঘরে ফিরে এসে জানলার দুটো পাল্লা পুরো খুলে দিল। সকালের আলো ঘরে ঢুকে পড়ল। একতারাটা হাতে তুলে নিল — বাজাতে জানে না, তবু তারে আঙুল রাখল — টুন — একটা ক্ষীণ সুর। চোখ বন্ধ করে মনে হলো বাবা যেন বলছেন, "মন খারাপ থাকলেও বাজাই। তাহলে মনটা একটু ভালো হয়ে যায়।" অর্ক আস্তে বলল, "বাবা, তোমার মনটা আমরা ভালো রাখতে পারিনি।"</p>
+    <div class="closing">
+      <p>হরিপদবাবু বড় কিছু চাননি — না বড় বাড়ি, না দামি জিনিস। চেয়েছিলেন শুধু একটু কথা, এক কাপ চা, বিকেলের একটু রোদ, আর প্রিয় একতারাটা হাতে নিয়ে নিজের মতো করে কিছুক্ষণ বসে থাকা। তিনি শুধু দায়িত্ব ছিলেন না — তিনি একজন মানুষ ছিলেন।</p>
+      <p class="quote">বাবা-মাকে শুধু দায়িত্ব হিসেবে নয়, মানুষ হিসেবেও দেখুন। কারণ বাবাও কিন্তু হাসি-আনন্দে বাঁচতে চেয়েছিলেন।</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>সমাপ্ত</p>
+  <p class="sign">একতারার সুর কখনও থামে না — শুধু শোনার মানুষ বদলে যায়</p>
+</footer>
+
+<div id="player">
+  <div class="row">
+    <button id="btn-prev" aria-label="আগের পর্ব">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+    </button>
+    <button id="btn-play" class="play-pause" aria-label="চালু/বিরতি">
+      <svg id="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      <svg id="icon-pause" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+    </button>
+    <button id="btn-next" aria-label="পরের পর্ব">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 18h2V6h-2zM4 18l8.5-6L4 6z"/></svg>
+    </button>
+    <div class="info">
+      <div class="now-ep" id="now-ep">পর্ব ১</div>
+      <div class="now-title" id="now-title">একতারার মানুষ</div>
+    </div>
+    <button id="btn-close" aria-label="বন্ধ করুন">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.4 5L5 6.4 10.6 12 5 17.6 6.4 19 12 13.4 17.6 19 19 17.6 13.4 12 19 6.4 17.6 5 12 10.6z"/></svg>
+    </button>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- scroll progress ("string fill") ---------- */
+  var fill = document.getElementById('string-fill');
+  function updateFill(){
+    var h = document.documentElement;
+    var pct = (h.scrollTop) / (h.scrollHeight - h.clientHeight || 1) * 100;
+    fill.style.width = Math.min(100, Math.max(0,pct)) + '%';
+  }
+  document.addEventListener('scroll', updateFill, {passive:true});
+  updateFill();
+
+  /* ---------- episode registry ---------- */
+  var EP_ORDER = ['ep1','ep2','ep3','ep4','ep5'];
+  var episodes = {};
+  EP_ORDER.forEach(function(id, idx){
+    var sec = document.getElementById(id);
+    episodes[id] = {
+      id:id,
+      idx:idx,
+      title:sec.dataset.title,
+      numLabel: sec.querySelector('.ep-num').textContent,
+      paragraphs: Array.prototype.slice.call(sec.querySelectorAll('.prose p, .prose .closing p'))
+    };
+  });
+
+  /* ---------- bookmark ---------- */
+  var LS_KEY = 'babao_bookmark_ep';
+  function saveBookmark(id){
+    try{ localStorage.setItem(LS_KEY, id); }catch(e){}
+  }
+  function showContinueBar(){
+    var saved;
+    try{ saved = localStorage.getItem(LS_KEY); }catch(e){ saved = null; }
+    if(saved && episodes[saved]){
+      var bar = document.getElementById('continue-bar');
+      var link = document.getElementById('continue-link');
+      var epTitle = document.getElementById('continue-ep-title');
+      epTitle.textContent = episodes[saved].numLabel + ' — ' + episodes[saved].title;
+      link.href = '#' + saved;
+      bar.style.display = 'block';
+    }
+  }
+  showContinueBar();
+
+  /* mark bookmark when an episode is scrolled into view */
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting && en.intersectionRatio > 0.35){
+          saveBookmark(en.target.id);
+        }
+      });
+    }, {threshold:[0.35]});
+    EP_ORDER.forEach(function(id){ io.observe(document.getElementById(id)); });
+  }
+
+  /* ---------- speech synthesis player ---------- */
+  var synth = window.speechSynthesis;
+  var supportsTTS = !!synth;
+  var bnVoice = null;
+
+  function pickVoice(){
+    if(!supportsTTS) return;
+    var voices = synth.getVoices();
+    bnVoice = voices.find(function(v){ return /bn/i.test(v.lang); }) ||
+              voices.find(function(v){ return /hi/i.test(v.lang); }) ||
+              voices[0] || null;
+  }
+  if(supportsTTS){
+    pickVoice();
+    synth.onvoiceschanged = pickVoice;
+  }
+
+  var player = document.getElementById('player');
+  var btnPlay = document.getElementById('btn-play');
+  var iconPlay = document.getElementById('icon-play');
+  var iconPause = document.getElementById('icon-pause');
+  var btnPrev = document.getElementById('btn-prev');
+  var btnNext = document.getElementById('btn-next');
+  var btnClose = document.getElementById('btn-close');
+  var nowEp = document.getElementById('now-ep');
+  var nowTitle = document.getElementById('now-title');
+
+  var state = {
+    epId:null,
+    paraIndex:0,
+    isPlaying:false
+  };
+
+  function clearHighlights(epId){
+    if(!epId) return;
+    episodes[epId].paragraphs.forEach(function(p){ p.classList.remove('tts-active'); });
+  }
+
+  function setListenBtnState(epId, playing){
+    document.querySelectorAll('.listen-btn').forEach(function(b){
+      var isThis = b.dataset.ep === epId;
+      b.classList.toggle('playing', isThis && playing);
+      b.innerHTML = (isThis && playing)
+        ? '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg> বিরতি'
+        : '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg> শুনুন';
+    });
+  }
+
+  function updatePlayerBar(){
+    var ep = episodes[state.epId];
+    nowEp.textContent = ep.numLabel;
+    nowTitle.textContent = ep.title;
+    btnPrev.disabled = ep.idx === 0;
+    btnNext.disabled = ep.idx === EP_ORDER.length - 1;
+    player.classList.add('show');
+  }
+
+  function speakParagraph(epId, i){
+    if(!supportsTTS) return;
+    var ep = episodes[epId];
+    if(i >= ep.paragraphs.length){
+      // episode finished — advance if possible
+      var nextIdx = ep.idx + 1;
+      if(nextIdx < EP_ORDER.length){
+        startEpisode(EP_ORDER[nextIdx]);
+      } else {
+        state.isPlaying = false;
+        iconPlay.style.display='block'; iconPause.style.display='none';
+        setListenBtnState(epId,false);
+      }
+      return;
+    }
+    clearHighlights(epId);
+    var p = ep.paragraphs[i];
+    p.classList.add('tts-active');
+    p.scrollIntoView({block:'center', behavior:'smooth'});
+
+    var text = p.textContent.trim();
+    var utter = new SpeechSynthesisUtterance(text);
+    if(bnVoice) utter.voice = bnVoice;
+    utter.lang = bnVoice ? bnVoice.lang : 'bn-IN';
+    utter.rate = 0.95;
+    utter.pitch = 1;
+
+    utter.onend = function(){
+      if(state.isPlaying && state.epId === epId){
+        state.paraIndex = i + 1;
+        speakParagraph(epId, state.paraIndex);
+      }
+    };
+    synth.speak(utter);
+  }
+
+  function startEpisode(epId, fromIndex){
+    if(!supportsTTS){
+      alert('আপনার ব্রাউজারে ভয়েস সমর্থন নেই। তবু নিশ্চিন্তে পড়তে পারেন।');
+      return;
+    }
+    synth.cancel();
+    if(state.epId && state.epId !== epId) clearHighlights(state.epId);
+    state.epId = epId;
+    state.paraIndex = fromIndex || 0;
+    state.isPlaying = true;
+    saveBookmark(epId);
+    updatePlayerBar();
+    iconPlay.style.display='none'; iconPause.style.display='block';
+    setListenBtnState(epId, true);
+    speakParagraph(epId, state.paraIndex);
+  }
+
+  function pause(){
+    if(!supportsTTS) return;
+    synth.pause();
+    state.isPlaying = false;
+    iconPlay.style.display='block'; iconPause.style.display='none';
+    setListenBtnState(state.epId, false);
+  }
+
+  function resume(){
+    if(!supportsTTS) return;
+    if(synth.paused){
+      synth.resume();
+    } else if(!synth.speaking){
+      speakParagraph(state.epId, state.paraIndex);
+    }
+    state.isPlaying = true;
+    iconPlay.style.display='none'; iconPause.style.display='block';
+    setListenBtnState(state.epId, true);
+  }
+
+  document.querySelectorAll('.listen-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var epId = btn.dataset.ep;
+      if(state.epId === epId && state.isPlaying){
+        pause();
+      } else if(state.epId === epId && !state.isPlaying){
+        resume();
+      } else {
+        startEpisode(epId, 0);
+      }
+    });
+  });
+
+  btnPlay.addEventListener('click', function(){
+    if(!state.epId) return;
+    if(state.isPlaying) pause(); else resume();
+  });
+
+  btnPrev.addEventListener('click', function(){
+    var ep = episodes[state.epId];
+    if(ep.idx > 0) startEpisode(EP_ORDER[ep.idx - 1], 0);
+  });
+
+  btnNext.addEventListener('click', function(){
+    var ep = episodes[state.epId];
+    if(ep.idx < EP_ORDER.length - 1) startEpisode(EP_ORDER[ep.idx + 1], 0);
+  });
+
+  btnClose.addEventListener('click', function(){
+    if(supportsTTS) synth.cancel();
+    state.isPlaying = false;
+    if(state.epId) clearHighlights(state.epId);
+    setListenBtnState(state.epId, false);
+    player.classList.remove('show');
+  });
+
+  window.addEventListener('beforeunload', function(){
+    if(supportsTTS) synth.cancel();
+  });
+})();
+</script>
+
+</body>
+</html>

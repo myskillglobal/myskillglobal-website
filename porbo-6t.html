@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>পর্ব ৬ : সময় নদীর স্রোতের মতো — এ জীবন গেলে ফিরে আসে না আবার</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;500;600;700&family=Hind+Siliguri:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ts-ink:#241a13;
+    --ts-parchment:#f2e8d3;
+    --ts-parchment-2:#e9dcc0;
+    --ts-walnut:#241610;
+    --ts-walnut-2:#3a2416;
+    --ts-brass:#a9814c;
+    --ts-brass-light:#d8bb80;
+    --ts-oxblood:#6d2c28;
+    --ts-muted:#71614c;
+    --ts-line:rgba(36,26,19,0.16);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ts-parchment);
+    color:var(--ts-ink);
+    font-family:"Noto Serif Bengali","Hind Siliguri",serif;
+    line-height:1.85;
+  }
+
+  /* ---------- TOP BAR ---------- */
+  .topbar{
+    position:sticky;
+    top:0;
+    z-index:20;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:1rem;
+    background:var(--ts-walnut);
+    color:var(--ts-parchment-2);
+    padding:0.85rem 5vw;
+    font-family:"Hind Siliguri",sans-serif;
+  }
+  .topbar a.home-link{
+    color:var(--ts-brass-light);
+    text-decoration:none;
+    font-size:0.92rem;
+    display:flex;
+    align-items:center;
+    gap:0.4rem;
+  }
+  .topbar a.home-link:hover{color:var(--ts-parchment);}
+  .topbar a.home-link svg{width:16px;height:16px;}
+  .voice-controls{
+    display:flex;
+    align-items:center;
+    gap:0.5rem;
+  }
+  .voice-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:0.4rem;
+    background:transparent;
+    border:1px solid var(--ts-brass);
+    color:var(--ts-brass-light);
+    font-family:"Hind Siliguri",sans-serif;
+    font-size:0.85rem;
+    padding:0.45rem 0.85rem;
+    border-radius:2px;
+    cursor:pointer;
+    transition:background 0.2s ease, color 0.2s ease;
+  }
+  .voice-btn:hover{background:var(--ts-brass); color:var(--ts-walnut);}
+  .voice-btn svg{width:15px;height:15px;}
+  .voice-status{
+    font-size:0.78rem;
+    color:var(--ts-muted);
+    display:none;
+  }
+
+  /* ---------- RESUME BANNER ---------- */
+  .resume-banner{
+    display:none;
+    align-items:center;
+    justify-content:space-between;
+    gap:1rem;
+    background:var(--ts-parchment-2);
+    border-bottom:1px solid var(--ts-line);
+    padding:0.8rem 5vw;
+    font-family:"Hind Siliguri",sans-serif;
+    font-size:0.9rem;
+    color:var(--ts-ink);
+  }
+  .resume-banner.show{display:flex;}
+  .resume-banner button{
+    background:var(--ts-oxblood);
+    color:var(--ts-parchment);
+    border:none;
+    padding:0.5rem 1rem;
+    font-family:"Hind Siliguri",sans-serif;
+    font-size:0.85rem;
+    border-radius:2px;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .resume-banner .dismiss{
+    background:transparent;
+    color:var(--ts-muted);
+    padding:0.3rem;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    width:100%;
+    height:min(58vh, 480px);
+    min-height:280px;
+    overflow:hidden;
+  }
+  .hero img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    filter:saturate(1.05) contrast(1.03);
+  }
+  .hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg, rgba(36,22,16,0.15) 0%, rgba(36,22,16,0.35) 60%, var(--ts-parchment) 100%);
+  }
+  .hero-caption{
+    position:absolute;
+    left:6vw;
+    bottom:1.6rem;
+    z-index:2;
+    color:var(--ts-parchment-2);
+    font-family:"Hind Siliguri",sans-serif;
+    font-size:0.85rem;
+    letter-spacing:0.02em;
+    text-shadow:0 2px 8px rgba(0,0,0,0.5);
+  }
+
+  /* ---------- HEADER ---------- */
+  .story-header{
+    max-width:680px;
+    margin:0 auto;
+    padding:2.2rem 6vw 1rem;
+    text-align:center;
+  }
+  .story-header .series-name{
+    font-family:"Hind Siliguri",sans-serif;
+    font-size:0.9rem;
+    color:var(--ts-oxblood);
+    letter-spacing:0.01em;
+  }
+  .story-header h1{
+    font-size:clamp(1.6rem,3.4vw,2.2rem);
+    margin:0.6rem 0 0;
+    color:var(--ts-ink);
+  }
+
+  /* ---------- CONTENT ---------- */
+  .content{
+    max-width:680px;
+    margin:0 auto;
+    padding:1rem 6vw 4rem;
+  }
+  .lyric{
+    margin:2.2rem 0 2.6rem;
+    padding:1.4rem 1.6rem;
+    background:var(--ts-parchment-2);
+    border-left:3px solid var(--ts-brass);
+    font-style:italic;
+    color:var(--ts-walnut-2);
+    font-size:1.12rem;
+  }
+  .lyric p{margin:0.2rem 0;}
+  p.para{
+    margin:0 0 1.3rem;
+    font-size:1.12rem;
+    transition:background 0.4s ease;
+    border-radius:2px;
+    padding:0.1rem 0.3rem;
+    margin-left:-0.3rem;
+  }
+  p.para.reading{
+    background:rgba(169,129,76,0.16);
+  }
+  p.heading{
+    font-size:1.28rem;
+    font-weight:600;
+    color:var(--ts-oxblood);
+    margin:2rem 0 1.1rem;
+  }
+  strong{color:var(--ts-oxblood); font-weight:600;}
+
+  /* ---------- FOOTER NAV ---------- */
+  .part-nav{
+    max-width:680px;
+    margin:0 auto;
+    padding:2rem 6vw 5rem;
+    display:flex;
+    justify-content:space-between;
+    gap:1rem;
+    border-top:1px solid var(--ts-line);
+    font-family:"Hind Siliguri",sans-serif;
+  }
+  .part-nav a{
+    display:flex;
+    flex-direction:column;
+    text-decoration:none;
+    color:var(--ts-ink);
+    max-width:45%;
+  }
+  .part-nav a .label{
+    font-size:0.78rem;
+    color:var(--ts-muted);
+  }
+  .part-nav a .title{
+    font-size:1rem;
+    font-weight:600;
+    margin-top:0.2rem;
+  }
+  .part-nav a:hover .title{color:var(--ts-oxblood);}
+  .part-nav a.next{text-align:right; align-items:flex-end; margin-left:auto;}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    p.para{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="home-link" href="index-time-story.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+    সূচিপত্রে ফিরুন
+  </a>
+  <div class="voice-controls">
+    <button class="voice-btn" id="playBtn" onclick="startReading()">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      পড়ে শোনান
+    </button>
+    <button class="voice-btn" id="pauseBtn" onclick="togglePause()" style="display:none;">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+      থামান
+    </button>
+    <button class="voice-btn" id="stopBtn" onclick="stopReading()" style="display:none;">
+      <svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12"/></svg>
+      বন্ধ
+    </button>
+  </div>
+</div>
+
+<div class="resume-banner" id="resumeBanner">
+  <span>আপনি আগে এই পর্বটি পড়ছিলেন — সেখান থেকে চালিয়ে যাবেন?</span>
+  <span style="display:flex; gap:0.5rem;">
+    <button onclick="resumeScroll()">চালিয়ে যান</button>
+    <button class="dismiss" onclick="dismissBanner()">না থাক</button>
+  </span>
+</div>
+
+<div class="hero">
+  <img src="time1.png" alt="নদীর ধারে সূর্যাস্তে বসে থাকা একজন মানুষ, স্রোতের দিকে তাকিয়ে">
+  <div class="hero-caption">নদী কখনও পেছনে ফিরে দেখে না — সে শুধু বয়ে চলে।</div>
+</div>
+
+<header class="story-header">
+  <div class="series-name">এ জীবন গেলে ফিরে আসে না আবার</div>
+  <h1>পর্ব ৬ : সময় নদীর স্রোতের মতো</h1>
+</header>
+
+<article class="content" id="storyContent">
+
+  <p class="para">জন্মদিনের রাতের পর অয়নের মধ্যে একটা অদ্ভুত পরিবর্তন এসেছিল।</p>
+
+  <p class="para">বাইরে থেকে দেখলে কিছুই বদলায়নি।</p>
+
+  <p class="para">সকাল হয়। অফিস হয়। সংসারের কাজ চলে। মানুষজনের সঙ্গে দেখা হয়। দিন শেষে রাত নামে।</p>
+
+  <p class="para">কিন্তু অয়ন এখন আগের মতো সময়কে শুধু ঘড়ির কাঁটায় মাপত না।</p>
+
+  <p class="para">সে সময়কে অনুভব করতে শুরু করেছিল।</p>
+
+  <p class="para">একদিন অফিসে যাওয়ার পথে রাস্তার মোড়ে দাঁড়িয়ে সে দেখল, একটি দোকানের সামনে কয়েকজন মানুষ ভিড় করে দাঁড়িয়ে আছে।</p>
+
+  <p class="para">কেউ একজন বলল,</p>
+
+  <p class="para">— “আর মাত্র দুই মিনিট!”</p>
+
+  <p class="para">কাছেই একটি ফুটবল ম্যাচের বড় পর্দায় খেলা চলছে।</p>
+
+  <p class="para">দলটি এক গোলে এগিয়ে।</p>
+
+  <p class="para">ম্যাচের শেষ মুহূর্ত।</p>
+
+  <p class="para">দর্শকদের মুখে টানটান উত্তেজনা।</p>
+
+  <p class="para">এক মিনিট।</p>
+
+  <p class="para">তারপর আরও কয়েকটি সেকেন্ড।</p>
+
+  <p class="para">প্রতিপক্ষ মরিয়া হয়ে আক্রমণ করছে।</p>
+
+  <p class="para">যে দলটি এতক্ষণ সময়কে এগিয়ে নিয়ে যেতে চাইছিল, তারাই এখন চাইছে সময় যেন দ্রুত শেষ হয়ে যায়।</p>
+
+  <p class="para">কেউ বলছে—</p>
+
+  <p class="para">— “রেফারি, বাঁশি বাজান!”</p>
+
+  <p class="para">অয়ন দাঁড়িয়ে দাঁড়িয়ে দৃশ্যটা দেখল।</p>
+
+  <p class="para">তার মনে হলো, সময়ের মূল্য কত অদ্ভুত!</p>
+
+  <p class="para">একই এক মিনিট।</p>
+
+  <p class="para">কিন্তু পরিস্থিতি বদলে গেলে সেই এক মিনিটের মূল্যও বদলে যায়।</p>
+
+  <p class="para">কখনও এক মিনিট মনে হয় খুব দীর্ঘ।</p>
+
+  <p class="para">কখনও এক ঘণ্টাও চোখের পলকে চলে যায়।</p>
+
+  <p class="para">কয়েকদিন পর আরেকটি ঘটনা ঘটল।</p>
+
+  <p class="para">অফিস থেকে ফেরার সময় অয়ন রাস্তা পার হচ্ছিল।</p>
+
+  <p class="para">হঠাৎ ডান দিক থেকে একটি বাইক দ্রুতগতিতে এসে তার একেবারে পাশ দিয়ে বেরিয়ে গেল।</p>
+
+  <p class="para">অয়ন এক পা পিছিয়ে গেল।</p>
+
+  <p class="para">বাইকটি চলে গেল কয়েক হাত দূরে।</p>
+
+  <p class="para">সবকিছু ঘটল এক মুহূর্তে।</p>
+
+  <p class="para">সে কিছুক্ষণ রাস্তার ধারে দাঁড়িয়ে রইল।</p>
+
+  <p class="para">বুকের ভেতরটা ধকধক করছে।</p>
+
+  <p class="para">তারপর ধীরে ধীরে মনে হলো—</p>
+
+  <p class="para">মাত্র এক সেকেন্ড।</p>
+
+  <p class="para">একটি সেকেন্ড আগে যদি সে রাস্তার মাঝখানে পৌঁছে যেত?</p>
+
+  <p class="para">একটি সেকেন্ড পরে যদি বাইকটি আসত?</p>
+
+  <p class="para">একটু এদিক-ওদিক হলেই হয়তো আজকের সন্ধ্যাটা অন্যরকম হতে পারত।</p>
+
+  <p class="para">অয়ন আকাশের দিকে তাকাল।</p>
+
+  <p class="para">সেদিন তার কাছে সময় আর ঘণ্টা, মিনিট কিংবা সেকেন্ডের হিসাব ছিল না।</p>
+
+  <p class="para">সময় তখন হয়ে উঠেছিল—</p>
+
+  <p class="para"><strong>জীবন আর মৃত্যুর মাঝখানের একটি সূক্ষ্ম রেখা।</strong></p>
+
+  <p class="para">সন্ধ্যায় বাড়ি ফিরে অয়ন বারান্দায় বসে ছিল।</p>
+
+  <p class="para">তার মেয়ে পড়াশোনা করছিল।</p>
+
+  <p class="para">হঠাৎ সে বলল,</p>
+
+  <p class="para">— “বাবা, কাল আমার প্রজেক্টটা জমা দিতে হবে।”</p>
+
+  <p class="para">অয়ন বলল,</p>
+
+  <p class="para">— “হয়ে গেছে?”</p>
+
+  <p class="para">মেয়ে মাথা নেড়ে বলল,</p>
+
+  <p class="para">— “না। ভাবছিলাম রাতে করব।”</p>
+
+  <p class="para">অয়ন কিছুক্ষণ চুপ করে থাকল।</p>
+
+  <p class="para">তারপর মৃদু হেসে বলল,</p>
+
+  <p class="para">— <strong>“রাত তো আসবেই। কিন্তু সময়টা কি তোমার জন্য থেমে থাকবে?”</strong></p>
+
+  <p class="para">মেয়ে বাবার দিকে তাকাল।</p>
+
+  <p class="para">অয়ন আর কিছু বলল না।</p>
+
+  <p class="para">সে বুঝেছিল, সময়ের শিক্ষা বক্তৃতা দিয়ে বোঝানো যায় না।</p>
+
+  <p class="para">কখনও একটি দেরি করে ওঠা সকাল শেখায়।</p>
+
+  <p class="para">কখনও পরীক্ষার ফল।</p>
+
+  <p class="para">কখনও খেলার শেষ কয়েকটি মিনিট।</p>
+
+  <p class="para">আবার কখনও একটি দুর্ঘটনা থেকে বেঁচে যাওয়া এক সেকেন্ড।</p>
+
+  <p class="para">অয়ন সেদিন রাতে জানালার পাশে দাঁড়িয়ে বাইরে তাকিয়ে ছিল।</p>
+
+  <p class="para">দূরে নদীর ওপর আলো পড়েছে।</p>
+
+  <p class="para">জলের স্রোত নিরন্তর এগিয়ে যাচ্ছে।</p>
+
+  <p class="para">এক মুহূর্তের জন্য তার মনে হলো—</p>
+
+  <p class="para">মানুষের জীবনও কি এমন নয়?</p>
+
+  <p class="para">নদী কখনও পেছনে ফিরে দেখে না, কোন পাথর কোথায় ছিল।</p>
+
+  <p class="para">সে শুধু বয়ে চলে।</p>
+
+  <p class="para">সময়ও তাই।</p>
+
+  <p class="para">শৈশব চলে যায়।</p>
+
+  <p class="para">কৈশোর চলে যায়।</p>
+
+  <p class="para">যৌবন চলে যায়।</p>
+
+  <p class="para">চাকরির বয়স চলে যায়।</p>
+
+  <p class="para">একদিন অবসরও এসে দাঁড়ায়।</p>
+
+  <p class="para">আমরা চাই বা না চাই—জীবনের প্রতিটি অধ্যায় নিজের সময়মতো শেষ হয়ে যায়।</p>
+
+  <p class="para">কিছু মুহূর্ত আমরা আনন্দে কাটাই।</p>
+
+  <p class="para">কিছু মুহূর্ত দুঃখে।</p>
+
+  <p class="para">কিছু মুহূর্ত ব্যস্ততায়।</p>
+
+  <p class="para">আর কিছু মুহূর্ত অকারণে হারিয়ে ফেলি।</p>
+
+  <p class="para">কিন্তু সময় কাউকেই আলাদা করে হিসাব দেয় না।</p>
+
+  <p class="para">সে শুধু চলে যায়।</p>
+
+  <p class="para">অয়ন নিজের খাতাটা খুলল।</p>
+
+  <p class="para">জন্মদিনের রাতে লেখা তিনটি সংকল্পের নিচে আজ আরেকটি বাক্য লিখল—</p>
+
+  <p class="heading">“সময়কে ধরে রাখা যায় না। কিন্তু সময়কে অর্থপূর্ণ করা যায়।”</p>
+
+  <p class="para">কলমটা নামিয়ে সে অনেকক্ষণ সেই কথাটার দিকে তাকিয়ে রইল।</p>
+
+  <p class="para">তার মনে হলো, এতদিন সে সময়কে হারানোর ভয় পেয়েছে।</p>
+
+  <p class="para">এবার থেকে সে সময়কে ব্যবহার করার চেষ্টা করবে।</p>
+
+  <p class="para">কারণ নদীর স্রোতকে থামানো যায় না।</p>
+
+  <p class="para">কিন্তু একজন মানুষ চাইলে তার নৌকাটাকে সঠিক দিকে চালাতে পারে।</p>
+
+  <p class="para">আর জীবনের সবচেয়ে বড় প্রশ্ন হয়তো সেটাই—</p>
+
+  <p class="para"><strong>স্রোত কত দ্রুত বয়ে গেল, সেটা নয়। সেই স্রোতের মধ্যে আমরা আমাদের জীবনকে কোন দিকে নিয়ে গেলাম?</strong></p>
+
+  <p class="para">অয়ন জানত না সামনে তার জন্য আর কত বছর অপেক্ষা করছে।</p>
+
+  <p class="para">কিন্তু আজকের দিনটি তার হাতে ছিল।</p>
+
+  <p class="para">আর সে সিদ্ধান্ত নিল—</p>
+
+  <p class="para"><strong>আজকের দিনটিকে আর শুধু পার করে দেবে না।</strong></p>
+
+</article>
+
+<nav class="part-nav">
+  <a class="prev" href="porbo-5t.html">
+    <span class="label">← আগের পর্ব</span>
+    <span class="title">৫. আর একটি বছর</span>
+  </a>
+  <a class="next" href="index-time-story.html">
+    <span class="label">সূচিপত্রে ফিরুন →</span>
+    <span class="title">সব পর্ব দেখুন</span>
+  </a>
+</nav>
+
+<script>
+  // ---------- Bookmarking ----------
+  const STORAGE_KEY = 'ei-jibon-porbo6-scroll';
+  const banner = document.getElementById('resumeBanner');
+
+  window.addEventListener('load', () => {
+    const saved = parseInt(localStorage.getItem(STORAGE_KEY) || '0', 10);
+    if (saved > 300 && saved < document.body.scrollHeight - window.innerHeight - 200) {
+      banner.classList.add('show');
+    }
+  });
+
+  function resumeScroll() {
+    const saved = parseInt(localStorage.getItem(STORAGE_KEY) || '0', 10);
+    window.scrollTo({ top: saved, behavior: 'smooth' });
+    banner.classList.remove('show');
+  }
+  function dismissBanner() {
+    banner.classList.remove('show');
+  }
+
+  let scrollTimer;
+  window.addEventListener('scroll', () => {
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(() => {
+      localStorage.setItem(STORAGE_KEY, window.scrollY.toString());
+    }, 400);
+  });
+
+  // ---------- Voice reading ----------
+  const paras = Array.from(document.querySelectorAll('#storyContent .para, #storyContent .heading, #storyContent .lyric p'));
+  let currentIndex = 0;
+  let speaking = false;
+  let paused = false;
+
+  const playBtn = document.getElementById('playBtn');
+  const pauseBtn = document.getElementById('pauseBtn');
+  const stopBtn = document.getElementById('stopBtn');
+
+  function clearHighlight() {
+    paras.forEach(p => p.classList.remove('reading'));
+  }
+
+  function speakFrom(index) {
+    if (!('speechSynthesis' in window)) {
+      alert('আপনার ব্রাউজারে ভয়েস রিডিং সমর্থিত নয়।');
+      return;
+    }
+    if (index >= paras.length) {
+      stopReading();
+      return;
+    }
+    currentIndex = index;
+    clearHighlight();
+    const el = paras[index];
+    el.classList.add('reading');
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    const utter = new SpeechSynthesisUtterance(el.textContent);
+    utter.lang = 'bn-IN';
+    utter.rate = 0.95;
+    utter.onend = () => {
+      if (speaking && !paused) speakFrom(index + 1);
+    };
+    speechSynthesis.speak(utter);
+  }
+
+  function startReading() {
+    speechSynthesis.cancel();
+    speaking = true;
+    paused = false;
+    playBtn.style.display = 'none';
+    pauseBtn.style.display = 'inline-flex';
+    stopBtn.style.display = 'inline-flex';
+    speakFrom(0);
+  }
+
+  function togglePause() {
+    if (!speaking) return;
+    if (!paused) {
+      speechSynthesis.pause();
+      paused = true;
+      pauseBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg> চালিয়ে যান';
+    } else {
+      speechSynthesis.resume();
+      paused = false;
+      pauseBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg> থামান';
+    }
+  }
+
+  function stopReading() {
+    speechSynthesis.cancel();
+    speaking = false;
+    paused = false;
+    clearHighlight();
+    playBtn.style.display = 'inline-flex';
+    pauseBtn.style.display = 'none';
+    stopBtn.style.display = 'none';
+  }
+
+  window.addEventListener('beforeunload', () => speechSynthesis.cancel());
+</script>
+
+</body>
+</html>

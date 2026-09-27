@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>পর্ব ৫ : আর একটি বছর — এ জীবন গেলে ফিরে আসে না আবার</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;500;600;700&family=Hind+Siliguri:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ts-ink:#241a13;
+    --ts-parchment:#f2e8d3;
+    --ts-parchment-2:#e9dcc0;
+    --ts-walnut:#241610;
+    --ts-walnut-2:#3a2416;
+    --ts-brass:#a9814c;
+    --ts-brass-light:#d8bb80;
+    --ts-oxblood:#6d2c28;
+    --ts-muted:#71614c;
+    --ts-line:rgba(36,26,19,0.16);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ts-parchment);
+    color:var(--ts-ink);
+    font-family:"Noto Serif Bengali","Hind Siliguri",serif;
+    line-height:1.85;
+  }
+
+  /* ---------- TOP BAR ---------- */
+  .topbar{
+    position:sticky;
+    top:0;
+    z-index:20;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:1rem;
+    background:var(--ts-walnut);
+    color:var(--ts-parchment-2);
+    padding:0.85rem 5vw;
+    font-family:"Hind Siliguri",sans-serif;
+  }
+  .topbar a.home-link{
+    color:var(--ts-brass-light);
+    text-decoration:none;
+    font-size:0.92rem;
+    display:flex;
+    align-items:center;
+    gap:0.4rem;
+  }
+  .topbar a.home-link:hover{color:var(--ts-parchment);}
+  .topbar a.home-link svg{width:16px;height:16px;}
+  .voice-controls{
+    display:flex;
+    align-items:center;
+    gap:0.5rem;
+  }
+  .voice-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:0.4rem;
+    background:transparent;
+    border:1px solid var(--ts-brass);
+    color:var(--ts-brass-light);
+    font-family:"Hind Siliguri",sans-serif;
+    font-size:0.85rem;
+    padding:0.45rem 0.85rem;
+    border-radius:2px;
+    cursor:pointer;
+    transition:background 0.2s ease, color 0.2s ease;
+  }
+  .voice-btn:hover{background:var(--ts-brass); color:var(--ts-walnut);}
+  .voice-btn svg{width:15px;height:15px;}
+  .voice-status{
+    font-size:0.78rem;
+    color:var(--ts-muted);
+    display:none;
+  }
+
+  /* ---------- RESUME BANNER ---------- */
+  .resume-banner{
+    display:none;
+    align-items:center;
+    justify-content:space-between;
+    gap:1rem;
+    background:var(--ts-parchment-2);
+    border-bottom:1px solid var(--ts-line);
+    padding:0.8rem 5vw;
+    font-family:"Hind Siliguri",sans-serif;
+    font-size:0.9rem;
+    color:var(--ts-ink);
+  }
+  .resume-banner.show{display:flex;}
+  .resume-banner button{
+    background:var(--ts-oxblood);
+    color:var(--ts-parchment);
+    border:none;
+    padding:0.5rem 1rem;
+    font-family:"Hind Siliguri",sans-serif;
+    font-size:0.85rem;
+    border-radius:2px;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .resume-banner .dismiss{
+    background:transparent;
+    color:var(--ts-muted);
+    padding:0.3rem;
+  }
+
+  /* ---------- HEADER ---------- */
+  .story-header{
+    max-width:680px;
+    margin:0 auto;
+    padding:3.5rem 6vw 1rem;
+    text-align:center;
+  }
+  .story-header .series-name{
+    font-family:"Hind Siliguri",sans-serif;
+    font-size:0.9rem;
+    color:var(--ts-oxblood);
+    letter-spacing:0.01em;
+  }
+  .story-header h1{
+    font-size:clamp(1.6rem,3.4vw,2.2rem);
+    margin:0.6rem 0 0;
+    color:var(--ts-ink);
+  }
+
+  /* ---------- CONTENT ---------- */
+  .content{
+    max-width:680px;
+    margin:0 auto;
+    padding:1rem 6vw 4rem;
+  }
+  .lyric{
+    margin:2.2rem 0 2.6rem;
+    padding:1.4rem 1.6rem;
+    background:var(--ts-parchment-2);
+    border-left:3px solid var(--ts-brass);
+    font-style:italic;
+    color:var(--ts-walnut-2);
+    font-size:1.12rem;
+  }
+  .lyric p{margin:0.2rem 0;}
+  p.para{
+    margin:0 0 1.3rem;
+    font-size:1.12rem;
+    transition:background 0.4s ease;
+    border-radius:2px;
+    padding:0.1rem 0.3rem;
+    margin-left:-0.3rem;
+  }
+  p.para.reading{
+    background:rgba(169,129,76,0.16);
+  }
+  p.heading{
+    font-size:1.28rem;
+    font-weight:600;
+    color:var(--ts-oxblood);
+    margin:2rem 0 1.1rem;
+  }
+  strong{color:var(--ts-oxblood); font-weight:600;}
+
+  /* ---------- FOOTER NAV ---------- */
+  .part-nav{
+    max-width:680px;
+    margin:0 auto;
+    padding:2rem 6vw 5rem;
+    display:flex;
+    justify-content:space-between;
+    gap:1rem;
+    border-top:1px solid var(--ts-line);
+    font-family:"Hind Siliguri",sans-serif;
+  }
+  .part-nav a{
+    display:flex;
+    flex-direction:column;
+    text-decoration:none;
+    color:var(--ts-ink);
+    max-width:45%;
+  }
+  .part-nav a .label{
+    font-size:0.78rem;
+    color:var(--ts-muted);
+  }
+  .part-nav a .title{
+    font-size:1rem;
+    font-weight:600;
+    margin-top:0.2rem;
+  }
+  .part-nav a:hover .title{color:var(--ts-oxblood);}
+  .part-nav a.next{text-align:right; align-items:flex-end; margin-left:auto;}
+
+  /* ---------- SOURCE CREDIT ---------- */
+  .credit{
+    max-width:680px;
+    margin:0 auto;
+    padding:0 6vw 2rem;
+    font-family:"Hind Siliguri",sans-serif;
+    font-size:0.85rem;
+    color:var(--ts-muted);
+    border-top:1px solid var(--ts-line);
+    padding-top:1.2rem;
+  }
+  .credit p{margin:0.15rem 0;}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    p.para{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="home-link" href="index-time-story.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+    সূচিপত্রে ফিরুন
+  </a>
+  <div class="voice-controls">
+    <button class="voice-btn" id="playBtn" onclick="startReading()">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      পড়ে শোনান
+    </button>
+    <button class="voice-btn" id="pauseBtn" onclick="togglePause()" style="display:none;">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+      থামান
+    </button>
+    <button class="voice-btn" id="stopBtn" onclick="stopReading()" style="display:none;">
+      <svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12"/></svg>
+      বন্ধ
+    </button>
+  </div>
+</div>
+
+<div class="resume-banner" id="resumeBanner">
+  <span>আপনি আগে এই পর্বটি পড়ছিলেন — সেখান থেকে চালিয়ে যাবেন?</span>
+  <span style="display:flex; gap:0.5rem;">
+    <button onclick="resumeScroll()">চালিয়ে যান</button>
+    <button class="dismiss" onclick="dismissBanner()">না থাক</button>
+  </span>
+</div>
+
+<header class="story-header">
+  <div class="series-name">এ জীবন গেলে ফিরে আসে না আবার</div>
+  <h1>পর্ব ৫ : আর একটি বছর</h1>
+</header>
+
+<article class="content" id="storyContent">
+
+  <p class="para">অয়নের চল্লিশতম জন্মদিন।</p>
+
+  <p class="para">সকাল থেকেই বাড়িতে উৎসবের পরিবেশ।</p>
+
+  <p class="para">মা সকালে পায়েস রান্না করেছেন। স্ত্রী বাজার থেকে অয়নের পছন্দের কিছু খাবার এনেছে। মেয়েটা নিজের হাতে একটা ছোট্ট কার্ড বানিয়ে বাবার হাতে দিয়ে বলল,</p>
+
+  <p class="para">— <strong>“বাবা, শুভ জন্মদিন!”</strong></p>
+
+  <p class="para">অয়ন মেয়েকে জড়িয়ে ধরল।</p>
+
+  <p class="para">সারাদিন ফোনে শুভেচ্ছা এসেছে।</p>
+
+  <p class="para">বন্ধুদের মেসেজ।</p>
+
+  <p class="para">সহকর্মীদের শুভেচ্ছা।</p>
+
+  <p class="para">সামাজিক যোগাযোগমাধ্যমে একের পর এক পোস্ট।</p>
+
+  <p class="para">সব মিলিয়ে দিনটা আনন্দেই কাটল।</p>
+
+  <p class="para">সন্ধ্যায় কেক এল।</p>
+
+  <p class="para">ঘরের আলো কিছুটা কমিয়ে দেওয়া হলো।</p>
+
+  <p class="para">কেকের ওপর চল্লিশটি মোমবাতি।</p>
+
+  <p class="para">সবাই একসঙ্গে বলল—</p>
+
+  <p class="para"><strong>“হ্যাপি বার্থডে!”</strong></p>
+
+  <p class="para">অয়ন মোমবাতিগুলোর দিকে তাকিয়ে রইল।</p>
+
+  <p class="para">তারপর একে একে সেগুলো নিভিয়ে দিল।</p>
+
+  <p class="para">সবাই হাততালি দিল।</p>
+
+  <p class="para">মেয়েটা বলল,</p>
+
+  <p class="para">— <strong>“বাবা, কী হলো? এত চুপ করে আছ কেন?”</strong></p>
+
+  <p class="para">অয়ন হেসে বলল,</p>
+
+  <p class="para">— “কিছু না।”</p>
+
+  <p class="para">কিন্তু সত্যিই কি কিছু না?</p>
+
+  <p class="para">রাতে সবাই ঘুমিয়ে পড়ার পর অয়ন একা বসে রইল।</p>
+
+  <p class="para">টেবিলের ওপর জন্মদিনের কেকের শেষ টুকরোটা পড়ে আছে।</p>
+
+  <p class="para">পাশে সেই মোমবাতিগুলো।</p>
+
+  <p class="para">সে একটি মোমবাতি হাতে তুলে নিল।</p>
+
+  <p class="para">হঠাৎ তার মনে হলো—</p>
+
+  <p class="para"><strong>আজ কি সত্যিই তার জীবনে আরও একটি বছর যোগ হলো?</strong></p>
+
+  <p class="para">নাকি—</p>
+
+  <p class="para"><strong>তার জীবন থেকে আরও একটি বছর চলে গেল?</strong></p>
+
+  <p class="para">প্রশ্নটা তার মাথা থেকে আর সরল না।</p>
+
+  <p class="para">সে একটা খাতা বের করল।</p>
+
+  <p class="para">পাতার ওপরে লিখল—</p>
+
+  <p class="heading">“আমার গত এক বছর”</p>
+
+  <p class="para">তারপর নিচে কয়েকটি প্রশ্ন।</p>
+
+  <p class="para"><strong>আমি কী শিখেছি?</strong></p>
+
+  <p class="para">কিছুক্ষণ কলম থেমে রইল।</p>
+
+  <p class="para">একটি নতুন দক্ষতা?</p>
+
+  <p class="para">না।</p>
+
+  <p class="para">একটি নতুন বই?</p>
+
+  <p class="para">দু-একটি।</p>
+
+  <p class="para">কোনো অসমাপ্ত কাজ শেষ করেছি?</p>
+
+  <p class="para">কিছু।</p>
+
+  <p class="para">পরিবারকে সময় দিয়েছি?</p>
+
+  <p class="para">হ্যাঁ, কিন্তু আরও দেওয়া যেত।</p>
+
+  <p class="para">নিজের জন্য সময়?</p>
+
+  <p class="para">খুব কম।</p>
+
+  <p class="para">সমাজের জন্য কিছু?</p>
+
+  <p class="para">সামান্য।</p>
+
+  <p class="para">অয়ন অনেকক্ষণ খাতার দিকে তাকিয়ে রইল।</p>
+
+  <p class="para">তারপর দ্বিতীয় প্রশ্ন লিখল—</p>
+
+  <p class="heading">“আমার এক বছর কোথায় গেল?”</p>
+
+  <p class="para">এবার উত্তর খুঁজে পাওয়া সহজ হলো।</p>
+
+  <p class="para">অফিসের ব্যস্ততা।</p>
+
+  <p class="para">অপ্রয়োজনীয় ফোন।</p>
+
+  <p class="para">সামাজিক যোগাযোগমাধ্যম।</p>
+
+  <p class="para">অকারণ ভিডিও।</p>
+
+  <p class="para">ক্লান্তির পরে উদ্দেশ্যহীন সময় কাটানো।</p>
+
+  <p class="para">সবকিছু যোগ করলে একটা অস্বস্তিকর সত্য সামনে এল।</p>
+
+  <p class="para">বছরটা চলে গেছে।</p>
+
+  <p class="para">কিন্তু বছরটাকে সে কতটা <strong>ব্যবহার</strong> করেছে?</p>
+
+  <p class="para">এই প্রশ্নের উত্তর তার কাছে পরিষ্কার ছিল না।</p>
+
+  <p class="para">অয়ন চেয়ার ছেড়ে উঠে জানালার কাছে গেল।</p>
+
+  <p class="para">বাইরে রাত।</p>
+
+  <p class="para">রাস্তার আলো জ্বলছে।</p>
+
+  <p class="para">দূরে কোনো বাড়িতে এখনও টেলিভিশনের শব্দ।</p>
+
+  <p class="para">সবকিছু স্বাভাবিক।</p>
+
+  <p class="para">শুধু অয়নের ভেতরে যেন কিছু একটা বদলে গেছে।</p>
+
+  <p class="para">সে ভাবল—</p>
+
+  <p class="para">শৈশবে একটা দিন মানে ছিল অনেক বড় একটা সময়।</p>
+
+  <p class="para">স্কুলে এক ঘণ্টা ক্লাস শেষ হতে চাইত না।</p>
+
+  <p class="para">খেলার মাঠে দুই ঘণ্টা কখন চলে যেত, বোঝাই যেত না।</p>
+
+  <p class="para">আর এখন?</p>
+
+  <p class="para">সপ্তাহ কেটে যায়।</p>
+
+  <p class="para">মাস কেটে যায়।</p>
+
+  <p class="para">বছর কেটে যায়।</p>
+
+  <p class="para">ক্যালেন্ডারের পাতাগুলো যেন নিজেরাই উল্টে যায়।</p>
+
+  <p class="para">অয়ন ডেস্কে ফিরে এসে খাতার নিচে আরেকটি প্রশ্ন লিখল—</p>
+
+  <p class="heading">“পরের জন্মদিনে আমি কী উত্তর দিতে চাই?”</p>
+
+  <p class="para">এবার সে আর অনেক কিছু লিখল না।</p>
+
+  <p class="para">মাত্র তিনটি বাক্য লিখল—</p>
+
+  <p class="para"><strong>একটি নতুন দক্ষতা শিখব।</strong></p>
+
+  <p class="para"><strong>একটি ভালো অভ্যাস তৈরি করব।</strong></p>
+
+  <p class="para"><strong>আমার সময়ের একটা অংশ অন্যের কাজে লাগাব।</strong></p>
+
+  <p class="para">খাতা বন্ধ করার আগে অয়ন কিছুক্ষণ চুপ করে বসে রইল।</p>
+
+  <p class="para">তার মনে হলো, জন্মদিনের সবচেয়ে বড় উপহার সে আজই পেয়েছে।</p>
+
+  <p class="para">কেউ তাকে দেয়নি।</p>
+
+  <p class="para">সে নিজেই নিজেকে দিয়েছে—</p>
+
+  <p class="para"><strong>নিজের সময়ের হিসাব করার সাহস।</strong></p>
+
+  <p class="para">ঘড়িতে তখন রাত বারোটা পেরিয়ে গেছে।</p>
+
+  <p class="para">চল্লিশতম জন্মদিন শেষ।</p>
+
+  <p class="para">একচল্লিশতম বছরের প্রথম দিন শুরু।</p>
+
+  <p class="para">অয়ন জানালার বাইরে তাকিয়ে ধীরে ধীরে বলল—</p>
+
+  <p class="para"><strong>“এবার বছরটা শুধু পার করব না। বছরটাকে কাজে লাগাব।”</strong></p>
+
+  <p class="para">ঘড়ির কাঁটা চলতেই থাকল।</p>
+
+  <p class="para">কিন্তু এবার অয়ন প্রথমবার তার চলার শব্দ শুনতে পেল।</p>
+
+</article>
+
+<div class="credit">
+  <p>গানের কথা: তপন সিংহ</p>
+  <p>চলচ্চিত্র: গল্প হলেও সত্যি (১৯৬৬)</p>
+</div>
+
+<nav class="part-nav">
+  <a class="prev" href="porbo-4t.html">
+    <span class="label">← আগের পর্ব</span>
+    <span class="title">৪. কী পেলাম, কী হারালাম</span>
+  </a>
+  <a class="next" href="porbo-6t.html">
+    <span class="label">পরের পর্ব →</span>
+    <span class="title">৬. সময় নদীর স্রোতের মতো</span>
+  </a>
+</nav>
+
+<script>
+  // ---------- Bookmarking ----------
+  const STORAGE_KEY = 'ei-jibon-porbo5-scroll';
+  const banner = document.getElementById('resumeBanner');
+
+  window.addEventListener('load', () => {
+    const saved = parseInt(localStorage.getItem(STORAGE_KEY) || '0', 10);
+    if (saved > 300 && saved < document.body.scrollHeight - window.innerHeight - 200) {
+      banner.classList.add('show');
+    }
+  });
+
+  function resumeScroll() {
+    const saved = parseInt(localStorage.getItem(STORAGE_KEY) || '0', 10);
+    window.scrollTo({ top: saved, behavior: 'smooth' });
+    banner.classList.remove('show');
+  }
+  function dismissBanner() {
+    banner.classList.remove('show');
+  }
+
+  let scrollTimer;
+  window.addEventListener('scroll', () => {
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(() => {
+      localStorage.setItem(STORAGE_KEY, window.scrollY.toString());
+    }, 400);
+  });
+
+  // ---------- Voice reading ----------
+  const paras = Array.from(document.querySelectorAll('#storyContent .para, #storyContent .heading, #storyContent .lyric p'));
+  let currentIndex = 0;
+  let speaking = false;
+  let paused = false;
+
+  const playBtn = document.getElementById('playBtn');
+  const pauseBtn = document.getElementById('pauseBtn');
+  const stopBtn = document.getElementById('stopBtn');
+
+  function clearHighlight() {
+    paras.forEach(p => p.classList.remove('reading'));
+  }
+
+  function speakFrom(index) {
+    if (!('speechSynthesis' in window)) {
+      alert('আপনার ব্রাউজারে ভয়েস রিডিং সমর্থিত নয়।');
+      return;
+    }
+    if (index >= paras.length) {
+      stopReading();
+      return;
+    }
+    currentIndex = index;
+    clearHighlight();
+    const el = paras[index];
+    el.classList.add('reading');
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    const utter = new SpeechSynthesisUtterance(el.textContent);
+    utter.lang = 'bn-IN';
+    utter.rate = 0.95;
+    utter.onend = () => {
+      if (speaking && !paused) speakFrom(index + 1);
+    };
+    speechSynthesis.speak(utter);
+  }
+
+  function startReading() {
+    speechSynthesis.cancel();
+    speaking = true;
+    paused = false;
+    playBtn.style.display = 'none';
+    pauseBtn.style.display = 'inline-flex';
+    stopBtn.style.display = 'inline-flex';
+    speakFrom(0);
+  }
+
+  function togglePause() {
+    if (!speaking) return;
+    if (!paused) {
+      speechSynthesis.pause();
+      paused = true;
+      pauseBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg> চালিয়ে যান';
+    } else {
+      speechSynthesis.resume();
+      paused = false;
+      pauseBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg> থামান';
+    }
+  }
+
+  function stopReading() {
+    speechSynthesis.cancel();
+    speaking = false;
+    paused = false;
+    clearHighlight();
+    playBtn.style.display = 'inline-flex';
+    pauseBtn.style.display = 'none';
+    stopBtn.style.display = 'none';
+  }
+
+  window.addEventListener('beforeunload', () => speechSynthesis.cancel());
+</script>
+
+</body>
+</html>

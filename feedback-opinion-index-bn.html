@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>আমরা আপনার মতামত শুনতে চাই | MySkill Global</title>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyDfxtOP-YCrCXtQxZrrFNC1uXucvbW0K78",
+    authDomain: "my-skill-global.firebaseapp.com",
+    projectId: "my-skill-global",
+    storageBucket: "my-skill-global.firebasestorage.app",
+    messagingSenderId: "978471914749",
+    appId: "1:978471914749:web:595750b5d90738933f4294",
+    measurementId: "G-8D9BPY8HJ0"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#050608;
+    --bg-panel:#0c0e12;
+    --bg-panel-2:#111319;
+    --navy:#0a1428;
+    --navy-2:#0d1b33;
+    --gold:#d4af37;
+    --gold-light:#f3d98b;
+    --gold-dim:#8a7332;
+    --ink:#eae6da;
+    --ink-dim:#a9a89c;
+    --line:rgba(212,175,55,0.22);
+    --shadow:0 20px 50px rgba(0,0,0,0.55);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at top, #10121a 0%, #050608 55%),
+      var(--bg);
+    color:var(--ink);
+    font-family:'Hind Siliguri','Cormorant Garamond',serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{font-family:'Playfair Display',serif;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+
+  /* ===== Header ===== */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(5,6,8,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .header-inner{
+    max-width:1180px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:10px 20px;
+  }
+  .brand{display:flex; align-items:center; gap:12px;}
+  .brand img{width:48px; height:48px; border-radius:50%;}
+  .brand-text{display:flex; flex-direction:column; line-height:1.15;}
+  .brand-text .name{font-family:'Playfair Display',serif; font-weight:800; font-size:1.05rem; color:var(--gold-light); letter-spacing:.3px;}
+  .brand-text .tag{font-size:.68rem; letter-spacing:2px; color:var(--ink-dim); text-transform:uppercase;}
+  .header-links{display:flex; gap:22px; font-size:.9rem;}
+  .header-links a{color:var(--ink-dim); border-bottom:1px solid transparent; padding-bottom:3px; transition:.25s;}
+  .header-links a:hover{color:var(--gold-light); border-color:var(--gold-dim);}
+  @media (max-width:640px){ .header-links{display:none;} }
+
+  /* ===== Hero ===== */
+  .hero{
+    position:relative;
+    padding:76px 20px 60px;
+    text-align:center;
+    overflow:hidden;
+    border-bottom:1px solid var(--line);
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(212,175,55,0.10), transparent 55%),
+      repeating-linear-gradient(120deg, rgba(212,175,55,0.025) 0px, rgba(212,175,55,0.025) 1px, transparent 1px, transparent 60px);
+    pointer-events:none;
+  }
+  .hero-logo{
+    width:112px; height:112px; margin:0 auto 22px; border-radius:50%;
+    box-shadow:0 0 0 2px var(--gold), 0 0 40px rgba(212,175,55,0.35);
+    position:relative; z-index:1;
+  }
+  .kicker{
+    display:inline-block; font-size:.72rem; letter-spacing:3.5px; color:var(--gold);
+    text-transform:uppercase; margin-bottom:18px; position:relative; z-index:1;
+  }
+  .kicker::before,.kicker::after{content:"—"; margin:0 10px; color:var(--gold-dim);}
+  h1.hero-title{
+    font-size:clamp(2rem, 5vw, 3.4rem);
+    font-weight:800;
+    letter-spacing:.5px;
+    margin:0 0 14px;
+    background:linear-gradient(180deg,#fdf3d0 0%, var(--gold) 55%, var(--gold-dim) 100%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    position:relative; z-index:1;
+  }
+  .hero-sub{
+    font-family:'Cormorant Garamond', serif; font-style:italic;
+    font-size:clamp(1.15rem,2vw,1.5rem); color:var(--ink);
+    margin:0 0 22px; position:relative; z-index:1;
+  }
+  .hero-desc{
+    max-width:680px; margin:0 auto 34px; color:var(--ink-dim);
+    font-size:1.02rem; position:relative; z-index:1;
+  }
+  .hero-desc strong{color:var(--ink);}
+  .hero-btns{display:flex; gap:16px; justify-content:center; flex-wrap:wrap; position:relative; z-index:1;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:14px 28px; border-radius:999px; font-family:'Hind Siliguri',sans-serif;
+    font-weight:600; font-size:.98rem; cursor:pointer; border:1px solid transparent;
+    transition:.25s ease;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg, var(--gold-light), var(--gold));
+    color:#1a1204; box-shadow:0 8px 24px rgba(212,175,55,0.28);
+  }
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 12px 30px rgba(212,175,55,0.4);}
+  .btn-outline{
+    background:transparent; border-color:var(--gold-dim); color:var(--gold-light);
+  }
+  .btn-outline:hover{border-color:var(--gold); background:rgba(212,175,55,0.08); transform:translateY(-2px);}
+
+  /* ===== Section shells ===== */
+  section{padding:64px 20px;}
+  .section-inner{max-width:1180px; margin:0 auto;}
+  .section-head{text-align:center; max-width:700px; margin:0 auto 44px;}
+  .section-head .eyebrow{font-size:.7rem; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:10px; display:block;}
+  .section-head h2{font-size:clamp(1.6rem,3vw,2.3rem); margin:0 0 12px; color:var(--gold-light);}
+  .section-head p{color:var(--ink-dim); margin:0; font-size:1rem;}
+
+  /* ===== Opinion Centre chips ===== */
+  .opinion-grid{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+    gap:16px; margin-top:10px;
+  }
+  .opinion-chip{
+    background:linear-gradient(160deg, var(--navy-2), var(--bg-panel));
+    border:1px solid var(--line); border-radius:16px;
+    padding:22px 18px; text-align:center; cursor:pointer;
+    transition:.25s ease;
+  }
+  .opinion-chip:hover{
+    border-color:var(--gold); transform:translateY(-4px);
+    box-shadow:var(--shadow);
+    background:linear-gradient(160deg, #16223f, var(--bg-panel-2));
+  }
+  .opinion-chip .icon{font-size:1.9rem; margin-bottom:10px; display:block;}
+  .opinion-chip .label{font-weight:600; color:var(--ink); font-size:.98rem;}
+
+  /* ===== Category cards ===== */
+  .cat-grid{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+    gap:20px;
+  }
+  .cat-card{
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:24px 22px;
+    display:flex; flex-direction:column; gap:12px;
+    transition:.25s ease; position:relative; overflow:hidden;
+  }
+  .cat-card::before{
+    content:""; position:absolute; top:0; left:0; right:0; height:3px;
+    background:linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity:0; transition:.3s;
+  }
+  .cat-card:hover{border-color:var(--gold); transform:translateY(-4px); box-shadow:var(--shadow);}
+  .cat-card:hover::before{opacity:1;}
+  .cat-top{display:flex; align-items:center; gap:12px;}
+  .cat-emoji{font-size:1.6rem; width:46px; height:46px; display:flex; align-items:center; justify-content:center;
+    background:var(--navy); border-radius:12px; border:1px solid var(--line); flex-shrink:0;}
+  .cat-title{font-family:'Playfair Display',serif; font-weight:700; color:var(--gold-light); font-size:1.08rem;}
+  .cat-q{color:var(--ink-dim); font-size:.92rem; margin:0;}
+  .cat-actions{display:flex; gap:10px; margin-top:auto; flex-wrap:wrap;}
+  .cat-actions a{
+    font-size:.82rem; padding:7px 14px; border-radius:999px; border:1px solid var(--gold-dim);
+    color:var(--ink); transition:.2s;
+  }
+  .cat-actions a:hover{background:var(--gold); color:#1a1204; border-color:var(--gold);}
+  .cat-actions .rate-btn{border-style:dashed;}
+
+  /* ===== Feedback Form ===== */
+  .form-wrap{
+    max-width:760px; margin:0 auto;
+    background:linear-gradient(165deg, var(--navy-2), var(--bg-panel));
+    border:1px solid var(--line); border-radius:22px; padding:40px clamp(20px,4vw,48px);
+    box-shadow:var(--shadow);
+  }
+  .form-row{margin-bottom:20px; display:flex; flex-direction:column; gap:8px;}
+  .form-row label{font-size:.88rem; color:var(--gold-light); font-weight:600; letter-spacing:.3px;}
+  .form-row input, .form-row select, .form-row textarea{
+    background:#05070a; border:1px solid var(--line); border-radius:10px;
+    padding:12px 14px; color:var(--ink); font-family:'Hind Siliguri',sans-serif; font-size:.96rem;
+    resize:vertical;
+  }
+  .form-row input:focus, .form-row select:focus, .form-row textarea:focus{
+    outline:none; border-color:var(--gold);
+  }
+  .form-two{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+  @media (max-width:560px){ .form-two{grid-template-columns:1fr;} }
+  .mood-row{display:flex; gap:10px; flex-wrap:wrap;}
+  .mood-opt{
+    border:1px solid var(--line); border-radius:999px; padding:9px 16px; cursor:pointer;
+    font-size:.85rem; color:var(--ink-dim); transition:.2s; user-select:none;
+  }
+  .mood-opt.active{background:var(--gold); color:#1a1204; border-color:var(--gold); font-weight:600;}
+  .form-submit{
+    width:100%; margin-top:8px; border:none;
+    background:linear-gradient(135deg, var(--gold-light), var(--gold));
+    color:#1a1204; padding:15px; border-radius:12px; font-weight:700; font-size:1rem;
+    cursor:pointer; transition:.25s;
+  }
+  .form-submit:hover{transform:translateY(-2px); box-shadow:0 10px 26px rgba(212,175,55,0.35);}
+  .form-note{font-size:.78rem; color:var(--ink-dim); text-align:center; margin-top:14px;}
+  .thanks{
+    display:none; text-align:center; padding:30px 10px;
+  }
+  .thanks .tick{font-size:2.6rem; margin-bottom:12px;}
+  .thanks h3{color:var(--gold-light); margin:0 0 8px;}
+  .thanks p{color:var(--ink-dim); margin:0;}
+
+  /* ===== Footer ===== */
+  footer{
+    border-top:1px solid var(--line); padding:36px 20px; text-align:center;
+    color:var(--ink-dim); font-size:.85rem;
+  }
+  footer .fname{color:var(--gold-light); font-family:'Playfair Display',serif; font-weight:700;}
+
+  .divider{
+    max-width:1180px; margin:0 auto; height:1px;
+    background:linear-gradient(90deg, transparent, var(--line), transparent);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <img src="images/logo.png" alt="MySkill Global">
+      <div class="brand-text">
+        <span class="name">MySkill Global</span>
+        <span class="tag">শেখো · খেলো · অন্বেষণ করো · এগিয়ে যাও</span>
+      </div>
+    </div>
+    <nav class="header-links">
+      <a href="language-index.html">লার্নিং হাব</a>
+      <a href="index.html">হোম</a>
+      <a href="#opinion-form">মতামত জানান</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <img class="hero-logo" src="images/logo.png" alt="MySkill Global logo">
+  <span class="kicker">আপনার কণ্ঠস্বর · আমাদের উন্নতি</span>
+  <h1 class="hero-title">আমরা আপনার মতামত<br>শুনতে চাই</h1>
+  <p class="hero-sub">আপনার মতামত গুরুত্বপূর্ণ</p>
+  <p class="hero-desc">
+    আপনার মতামত আমাদের আরও ভালো হতে সাহায্য করতে পারে। আমরা ক্রমাগত নতুন নতুন
+    <strong>শিক্ষামূলক উপকরণ, গাইড, কুইজ এবং ব্যবহারিক জ্ঞানের হাতিয়ার</strong> তৈরি করে চলেছি।
+    আমাদের জানান আপনি কী মনে করেন, কোনটি আপনার কাজে লেগেছে, এবং পরবর্তীতে আপনি আর কী দেখতে চান।
+  </p>
+  <div class="hero-btns">
+    <a href="#opinion-form" class="btn btn-primary">💬 আপনার মতামত জানান →</a>
+    <a href="language-index.html" class="btn btn-outline">📚 শেখার বিষয়গুলি দেখুন →</a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== OPINION CENTRE ===== -->
+<section id="opinion-centre">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="eyebrow">মতামত কেন্দ্র</span>
+      <h2>আপনি আমাদের কী বলতে চান?</h2>
+      <p>যেটি আপনার সবচেয়ে উপযুক্ত মনে হয় সেটি বেছে নিন — এটি নিচে আপনার বার্তা লিখতে সাহায্য করবে।</p>
+    </div>
+    <div class="opinion-grid">
+      <div class="opinion-chip" data-mood="আমার এই কনটেন্টটি ভালো লেগেছে">
+        <span class="icon">👍</span><span class="label">আমার এই কনটেন্টটি ভালো লেগেছে</span>
+      </div>
+      <div class="opinion-chip" data-mood="আমার একটি পরামর্শ আছে">
+        <span class="icon">💡</span><span class="label">আমার একটি পরামর্শ আছে</span>
+      </div>
+      <div class="opinion-chip" data-mood="আমি আরও বিষয় দেখতে চাই">
+        <span class="icon">📚</span><span class="label">আমি আরও বিষয় দেখতে চাই</span>
+      </div>
+      <div class="opinion-chip" data-mood="আমি একটি ভুল খুঁজে পেয়েছি">
+        <span class="icon">🐞</span><span class="label">আমি একটি ভুল খুঁজে পেয়েছি</span>
+      </div>
+      <div class="opinion-chip" data-mood="আমার একটি প্রশ্ন আছে">
+        <span class="icon">❓</span><span class="label">আমার একটি প্রশ্ন আছে</span>
+      </div>
+      <div class="opinion-chip" data-mood="আমি আমার অভিজ্ঞতা শেয়ার করতে চাই">
+        <span class="icon">🌟</span><span class="label">আমি আমার অভিজ্ঞতা শেয়ার করতে চাই</span></div>
+
+<a href="https://akashvoice.netlify.app/"
+   class="opinion-chip"
+   data-mood="আকাশভয়েস : স্ক্রিন-মুক্ত বিনোদন"
+   target="_blank"
+   rel="noopener noreferrer">
+
+  <span class="icon">🌟</span>
+  <span class="label">আকাশভয়েস : স্ক্রিন-মুক্ত বিনোদন</span>
+
+</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== CATEGORY OPINIONS ===== -->
+<section id="categories">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="eyebrow">বিষয় অনুযায়ী</span>
+      <h2>একটি নির্দিষ্ট গাইড সম্পর্কে আমাদের জানান</h2>
+      <p>খুলতে একটি বিষয় বেছে নিন, অথবা সরাসরি এখান থেকেই রেটিং দিন।</p>
+    </div>
+    <div class="cat-grid" id="catGrid">
+      <!-- injected by JS -->
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== FEEDBACK FORM ===== -->
+<section id="opinion-form">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="eyebrow">আপনার মতামত জানান</span>
+      <h2>আপনার মতামত আমাদের এগিয়ে যেতে, উন্নতি করতে এবং আরও ভালো শেখার অভিজ্ঞতা তৈরি করতে সাহায্য করে।</h2>
+    </div>
+
+    <div class="form-wrap">
+      <form id="feedbackForm">
+        <div class="form-row">
+          <label>এটি কী সম্পর্কে?</label>
+          <div class="mood-row" id="moodRow">
+            <span class="mood-opt" data-val="আমার এই কনটেন্টটি ভালো লেগেছে">👍 ভালো লেগেছে</span>
+            <span class="mood-opt" data-val="আমার একটি পরামর্শ আছে">💡 পরামর্শ</span>
+            <span class="mood-opt" data-val="আমি আরও বিষয় দেখতে চাই">📚 আরও বিষয়</span>
+            <span class="mood-opt" data-val="আমি একটি ভুল খুঁজে পেয়েছি">🐞 ভুল খুঁজে পেয়েছি</span>
+            <span class="mood-opt" data-val="আমার একটি প্রশ্ন আছে">❓ প্রশ্ন</span>
+            <span class="mood-opt" data-val="আমি আমার অভিজ্ঞতা শেয়ার করতে চাই">🌟 অভিজ্ঞতা</span>
+          </div>
+        </div>
+
+        <div class="form-two">
+          <div class="form-row">
+            <label for="fname">আপনার নাম</label>
+            <input type="text" id="fname" placeholder="যেমন: অনন্যা রায়">
+          </div>
+          <div class="form-row">
+            <label for="femail">ইমেইল (ঐচ্ছিক)</label>
+            <input type="email" id="femail" placeholder="you@example.com">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label for="ftopic">এটি কোন বিষয় সম্পর্কে?</label>
+          <select id="ftopic">
+            <option value="">সাধারণ / নিশ্চিত নই</option>
+            <option>সাশ্রয়ী বাজার</option>
+            <option>আন্তর্জাতিক কৃষি গাইড</option>
+<option>বাংলার ঐতিহ্য ও যুব কর্মসংস্থান গাইড</option>
+            <option>মাছের আঁশ শিল্প ও রপ্তানি গাইড</option>
+<option>মূল্যবোধ ও দায়িত্ববোধ গঠন</option>
+            <option>উদ্ভিদ খামার গাইড</option>
+ <option>ফ্ল্যাট নাকি জমি কেনা উচিত?</option>
+            <option>পরিবেশ ও জল খেলা</option>
+            <option>পরীক্ষার ফলাফলই ভাগ্য নয়</option>
+            <option>পারিবারিক ভ্রমণ নিরাপত্তা ও জরুরি অবস্থা</option>
+            <option>মাছের আঁশ শিল্প গাইড</option>
+            <option>স্বাস্থ্য কাহিনি</option>
+            <option>আকাশভয়েস ওয়ান ধারণা?</option>
+            <option>পাট শিল্পের পুনরুজ্জীবন</option>
+            <option>পঙ্গপাল তথ্য</option>
+            <option>মোবাইল স্মার্ট গাইড</option>
+            <option>সন্তানের সাফল্যে অভিভাবকের ভূমিকা</option>
+            <option>বিজ্ঞান ও অজানা রহস্য</option>
+            <option>মাদকাসক্তি থেকে পুনরুদ্ধার</option>
+            <option>নিজের পথে চলো</option>
+            <option>বর্জ্য থেকে সম্পদ গাইড</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label for="fmsg">আপনার বার্তা</label>
+          <textarea id="fmsg" rows="5" placeholder="আপনার মতামত, পরামর্শ অথবা পরবর্তীতে যে বিষয়গুলি দেখতে চান, তা এখানে লিখুন..."></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">আমার মতামত পাঠান</button>
+        <p class="form-note">এটি আপনার ইমেইল অ্যাপ খুলবে এবং বার্তা পাঠানোর জন্য প্রস্তুত থাকবে — কোথাও কিছু সংরক্ষিত বা শেয়ার করা হয় না।</p>
+      </form>
+
+      <div class="thanks" id="thanksMsg">
+        <div class="tick">🌟</div>
+        <h3>আপনার মতামতের জন্য ধন্যবাদ!</h3>
+        <p>আপনার মতামত সত্যিই আমাদের ভবিষ্যতের নির্মাণকে দিশা দেখায়, যা বিশ্বজুড়ে শিক্ষার্থীদের জন্য আরও ভালো শেখার অভিজ্ঞতা তৈরি করতে সাহায্য করে।</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="brand" style="justify-content:center; margin-bottom:10px;">
+    <img src="images/logo.png" alt="MySkill Global" style="width:34px;height:34px;border-radius:50%;">
+    <span class="fname">MySkill Global</span>
+  </div>
+  <p>তৈরি ও উন্নয়ন করেছেন <strong style="color:var(--gold-light);">সুরজিৎ রায়</strong> · শেখো · খেলো · অন্বেষণ করো · এগিয়ে যাও</p>
+</footer>
+
+<script>
+  const categories = [
+    { emoji:"🏠", title:"মূল্যবোধ ও দায়িত্ববোধ গঠন", q:"পরিশ্রমের মূল্য, নিজের ঘরের যত্ন এবং দায়িত্ববোধ নিয়ে আপনি আর কী দেখতে চান?", href:"four-gardens-four-continents.html" },  
+    { emoji:"🎓", title:"শিক্ষা ও ফলাফল", q:"\u2018পরীক্ষার ফলাফলই ভাগ্য নয়\u2019 বিষয়ে আপনার মতামত কী?", href:"exam_result_not_destiny.html" },
+    { emoji:"👨‍👩‍👧", title:"পরিবার ও নিরাপত্তা", q:"পারিবারিক ভ্রমণ নিরাপত্তা গাইডটি আপনার কাছে কতটা কার্যকর মনে হয়েছে?", href:"family_travel_safety_with_emergency.html" },
+    { emoji:"🏠", title:"সম্পত্তি ও পারিবারিক মূল্যবোধ", q:"ফ্ল্যাট নাকি জমি গাইড এবং সম্পত্তি, আর্থিক দায়িত্ব ও পারিবারিক মূল্যবোধ নিয়ে এর শিক্ষা সম্পর্কে আপনার মতামত কী?", href:"flat-or-land-en (final).html" },
+    { emoji:"🩺", title:"স্বাস্থ্য ও সুস্থতা", q:"\u2018স্বাস্থ্য কাহিনি\u2019 সম্পর্কে আপনার মতামত কী?", href:"health-tales.html" },
+    { emoji:"🧵", title:"পাট ও গ্রামীণ শিল্প", q:"\u2018পাট শিল্পের পুনরুজ্জীবন\u2019-এর মতো আরও কনটেন্ট দেখতে চান কি?", href:"jute_revival.html" },
+    { emoji:"🦗", title:"প্রকৃতি ও বিজ্ঞান", q:"পঙ্গপাল তথ্য এবং প্রকৃতি বিষয়ক কনটেন্ট সম্পর্কে আপনার মতামত কী?", href:"locust_facts.html" },
+    { emoji:"📱", title:"প্রযুক্তি", q:"মোবাইল স্মার্ট গাইড সম্পর্কে আপনার মতামত কী?", href:"mobile_smart_guide.html" },
+    { emoji:"👨‍👩‍👦", title:"অভিভাবকত্ব ও সন্তানের সাফল্য", q:"সন্তানের সাফল্যে অভিভাবকের ভূমিকা নিয়ে আপনি কী মনে করেন?", href:"parent_role_in_child_success.html" },
+    { emoji:"🔬", title:"বিজ্ঞান ও অজানা রহস্য", q:"\u2018বিজ্ঞান ও অজানা রহস্য\u2019 সম্পর্কে আপনার মতামত কী?", href:"science-and-the-unknown.html" },
+    { emoji:"📻", title:"আকাশভয়েস ওয়ান", q:"আকাশভয়েস ওয়ান ধারণা সম্পর্কে আপনি কী মনে করেন?", href:"https://akashvoice.netlify.app/" },
+    { emoji:"🐟", title:"মৎস্যচাষ ও গ্রামীণ জীবন", q:"মাছের আঁশ শিল্প গাইড সম্পর্কে আপনি কী মনে করেন?", href:"fish_scale_industry_guide.html" },
+    { emoji:"🛡️", title:"মাদকাসক্তি থেকে পুনরুদ্ধার", q:"মাদকাসক্তি থেকে পুনরুদ্ধার গাইড সম্পর্কে আপনি কী মনে করেন?", href:"substance_harm_recovery_en.html" },
+    { emoji:"🚶", title:"জীবন ও ব্যক্তিগত উন্নতি", q:"\u2018নিজের পথে চলো\u2019-এর মতো আরও বিষয় দেখতে চান কি?", href:"walk_your_path_v2.html" },
+    { emoji:"♻️", title:"বর্জ্য ব্যবস্থাপনা", q:"বর্জ্য থেকে সম্পদ গাইড সম্পর্কে আপনি কী মনে করেন?", href:"waste-to-wealth-guide.html" },
+    { emoji:"💰", title:"সাশ্রয়ী বাজার", q:"সাশ্রয়ী বাজার গাইড সম্পর্কে আপনার মতামত কী?", href:"affordable-market-en.html" },
+    { emoji:"🌾", title:"কৃষি ও চাষাবাদ", q:"কৃষি গাইডগুলি আপনার কাছে কতটা কার্যকর মনে হয়েছে?", href:"agri-farming-guide-international.html" },
+    { emoji:"🌿", title:"উদ্ভিদবিদ্যা ও খামার", q:"উদ্ভিদ খামার গাইড সম্পর্কে আপনার মতামত কী?", href:"botanical-farm-guide.html" },
+    { emoji:"🌱", title:"পরিবেশ", q:"পরিবেশ ও জল সম্পর্কিত কনটেন্ট আপনার কাছে কতটা কার্যকর মনে হয়েছে?", href:"eco_water_game_tabs.html" },
+    { emoji:"🏛️", title:"ঐতিহ্য ও সংস্কৃতি", q:"ঐতিহ্য ও সংস্কৃতি নিয়ে আপনি আর কী দেখতে চান?", href:"bengal_heritage_youth_employment_guide.html" }
+  ];
+
+  const catGrid = document.getElementById('catGrid');
+
+  categories.forEach(c => {
+    const card = document.createElement('div');
+    card.className = 'cat-card';
+
+    card.innerHTML = `
+      <div class="cat-top">
+        <div class="cat-emoji">${c.emoji}</div>
+        <div class="cat-title">${c.title}</div>
+      </div>
+
+      <p class="cat-q">${c.q}</p>
+
+      <div class="cat-actions">
+        <a href="${c.href}">গাইড খুলুন →</a>
+        <a href="#opinion-form"
+           class="rate-btn"
+           data-topic="${c.title}">
+           রেটিং দিন →
+        </a>
+      </div>
+    `;
+
+    catGrid.appendChild(card);
+  });
+
+
+  const ftopic = document.getElementById('ftopic');
+  const moodRow = document.getElementById('moodRow');
+
+
+  function setMood(val) {
+    [...moodRow.children].forEach(el =>
+      el.classList.toggle('active', el.dataset.val === val)
+    );
+  }
+
+
+  document.querySelectorAll('.opinion-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      setMood(chip.dataset.mood);
+
+      document
+        .getElementById('opinion-form')
+        .scrollIntoView({ behavior:'smooth' });
+    });
+  });
+
+
+  document.querySelectorAll('.rate-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      const topicText = btn.dataset.topic;
+
+      [...ftopic.options].forEach(o => {
+        if (
+          o.text.trim() === topicText ||
+          o.value === topicText
+        ) {
+          ftopic.value = o.value;
+        }
+      });
+
+      document
+        .getElementById('opinion-form')
+        .scrollIntoView({ behavior:'smooth' });
+    });
+  });
+
+
+  moodRow.addEventListener('click', (e) => {
+    if (e.target.classList.contains('mood-opt')) {
+      setMood(e.target.dataset.val);
+    }
+  });
+
+
+  /* ══════════════════════════════════════════
+     FEEDBACK FORM
+  ══════════════════════════════════════════ */
+
+  document
+    .getElementById('feedbackForm')
+    .addEventListener('submit', function(e) {
+
+      e.preventDefault();
+
+      const name =
+        document.getElementById('fname').value.trim() ||
+        "Anonymous";
+
+      const email =
+        document.getElementById('femail').value.trim();
+
+      const topic =
+        ftopic.value || "General";
+
+      const activeMood =
+        moodRow.querySelector('.active');
+
+      const mood =
+        activeMood
+          ? activeMood.dataset.val
+          : "General feedback";
+
+      const msg =
+        document.getElementById('fmsg').value.trim();
+
+
+      const subject = encodeURIComponent(
+        `MySkill Global Opinion: ${mood} — ${topic}`
+      );
+
+
+      const body = encodeURIComponent(
+        `Name: ${name}\n` +
+        `Email: ${email || "Not provided"}\n` +
+        `Topic: ${topic}\n` +
+        `Type: ${mood}\n\n` +
+        `Message:\n${msg}\n\n` +
+        `(Sent from the MySkill Global Opinion page)`
+      );
+
+
+      /*
+       * Opens the visitor's email application
+       * with MySkill Global's email address already filled in.
+       */
+const gmailUrl =
+  `https://mail.google.com/mail/?view=cm&fs=1` +
+  `&to=myskillglobal@gmail.com` +
+  `&su=${subject}` +
+  `&body=${body}`;
+
+window.open(gmailUrl, '_blank');
+
+      this.style.display = 'none';
+
+      document
+        .getElementById('thanksMsg')
+        .style.display = 'block';
+
+    });
+
+</script>
+
+</body>
+</html>

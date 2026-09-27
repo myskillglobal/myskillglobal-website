@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,  maximum-scale=1.0">
+<title>MySkillGame</title>
+<body>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: system-ui, -apple-system, sans-serif; background: #f4f4f6; min-height: 100vh; }
+#app { max-width: 480px; margin: 0 auto; background: #fff; min-height: 100vh; }
+.screen { display: none; }
+.screen.active { display: block; }
+
+/* HOME */
+.home-header { text-align: center; padding: 2rem 1rem 1rem; background: linear-gradient(135deg,#1D9E75 0%,#0F6E56 100%); color: #fff; }
+.game-logo { font-size: 26px; font-weight: 700; letter-spacing: -0.5px; }
+.game-sub { font-size: 12px; opacity: 0.85; margin-top: 5px; }
+.topic-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; padding: 1rem; }
+.topic-card { background: #fff; border: 1.5px solid #e8e8ec; border-radius: 14px; padding: 14px 12px; cursor: pointer; transition: all 0.15s; text-align: left; box-shadow: 0 1px 4px rgba(0,0,0,.05); }
+.topic-card:hover { border-color: #1D9E75; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(29,158,117,.15); }
+.topic-emoji { font-size: 24px; display: block; margin-bottom: 6px; }
+.topic-name { font-size: 12px; font-weight: 600; color: #1a1a2e; line-height: 1.3; }
+.topic-count { font-size: 11px; color: #888; margin-top: 3px; }
+
+/* QUIZ HEADER */
+.quiz-header { padding: 0.9rem 1rem 0.5rem; background: #fff; border-bottom: 1px solid #f0f0f4; position: sticky; top: 0; z-index: 10; }
+.header-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.back-btn { background: none; border: none; font-size: 13px; color: #666; cursor: pointer; padding: 4px 0; display: flex; align-items: center; gap: 4px; }
+.voice-btn { background: #f0faf6; border: 1.5px solid #1D9E75; border-radius: 20px; padding: 4px 10px; font-size: 12px; cursor: pointer; display: flex; align-items: center; gap: 5px; color: #0F6E56; font-weight: 600; transition: all 0.15s; }
+.voice-btn.muted { background: #f5f5f5; border-color: #ccc; color: #888; }
+.topic-title-bar { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.topic-icon { font-size: 18px; }
+.topic-label { font-size: 14px; font-weight: 600; color: #1a1a2e; }
+.progress-bar-bg { height: 5px; background: #eee; border-radius: 3px; overflow: hidden; }
+.progress-bar-fill { height: 100%; border-radius: 3px; transition: width 0.4s ease; background: linear-gradient(90deg,#1D9E75,#2dc98f); }
+.progress-text { font-size: 11px; color: #999; margin-top: 5px; text-align: right; }
+
+/* QUESTION */
+.q-card { margin: 0.75rem 1rem; background: #f8f9fb; border: 1.5px solid #eaeaf0; border-radius: 14px; padding: 1.25rem; }
+.q-number { font-size: 10px; font-weight: 700; color: #1D9E75; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+.q-text { font-size: 15px; color: #1a1a2e; line-height: 1.55; font-weight: 600; }
+
+/* OPTIONS */
+.options { padding: 0 1rem; display: flex; flex-direction: column; gap: 8px; margin-top: 0.75rem; }
+.opt-btn { display: flex; align-items: flex-start; gap: 10px; background: #fff; border: 1.5px solid #e4e4ea; border-radius: 12px; padding: 12px 14px; cursor: pointer; text-align: left; transition: all 0.15s; width: 100%; }
+.opt-btn:hover:not(:disabled) { border-color: #1D9E75; background: #f0faf6; }
+.opt-letter { font-size: 11px; font-weight: 700; color: #999; min-width: 18px; margin-top: 2px; background: #f0f0f4; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.opt-text { font-size: 13.5px; color: #333; line-height: 1.4; }
+.opt-btn.correct { background: #edfaf4; border-color: #1D9E75; }
+.opt-btn.correct .opt-letter { background: #1D9E75; color: #fff; }
+.opt-btn.correct .opt-text { color: #0a5c3f; font-weight: 600; }
+.opt-btn.wrong { background: #fff0f0; border-color: #e24b4a; }
+.opt-btn.wrong .opt-letter { background: #e24b4a; color: #fff; }
+.opt-btn.wrong .opt-text { color: #a32d2d; }
+.opt-btn:disabled { cursor: default; }
+
+/* FEEDBACK */
+.feedback-section { margin: 0.75rem 1rem 0; }
+.feedback-bar { padding: 10px 14px; border-radius: 10px 10px 0 0; font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+.feedback-bar.correct { background: #edfaf4; color: #0a5c3f; border: 1.5px solid #1D9E75; border-bottom: none; }
+.feedback-bar.wrong { background: #fff0f0; color: #a32d2d; border: 1.5px solid #e24b4a; border-bottom: none; }
+.explanation-box { padding: 10px 14px 12px; border-radius: 0 0 10px 10px; font-size: 12.5px; line-height: 1.55; color: #444; }
+.explanation-box.correct { background: #f5fcf8; border: 1.5px solid #1D9E75; border-top: 1px dashed #a3d9c0; }
+.explanation-box.wrong { background: #fff8f8; border: 1.5px solid #e24b4a; border-top: 1px dashed #f0a0a0; }
+.explanation-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 4px; color: #888; }
+
+.next-btn { display: block; width: calc(100% - 2rem); margin: 0.75rem 1rem 1.5rem; background: linear-gradient(135deg,#1D9E75,#0F6E56); border: none; border-radius: 12px; padding: 13px; font-size: 14px; font-weight: 600; color: #fff; cursor: pointer; transition: opacity 0.15s; text-align: center; box-shadow: 0 4px 12px rgba(29,158,117,.3); }
+.next-btn:hover { opacity: 0.9; }
+
+/* RESULT */
+.result-screen { padding: 2rem 1.25rem; text-align: center; }
+.result-emoji { font-size: 56px; display: block; margin-bottom: 14px; }
+.result-score { font-size: 48px; font-weight: 700; color: #1a1a2e; }
+.result-label { font-size: 14px; color: #888; margin-top: 4px; }
+.result-msg { font-size: 14px; color: #444; margin: 1.25rem 0; padding: 1rem; background: #f8f9fb; border-radius: 12px; line-height: 1.6; border-left: 3px solid #1D9E75; text-align: left; }
+.score-badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-top: 10px; }
+.score-badge.good { background: #edfaf4; color: #0a5c3f; }
+.score-badge.mid { background: #fef3e2; color: #8a5a00; }
+.score-badge.low { background: #fff0f0; color: #a32d2d; }
+.result-actions { display: flex; flex-direction: column; gap: 10px; margin-top: 1.5rem; }
+.result-actions button { padding: 13px; border-radius: 12px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.15s; }
+.result-actions button.primary { background: linear-gradient(135deg,#1D9E75,#0F6E56); color: #fff; border: none; box-shadow: 0 4px 12px rgba(29,158,117,.3); }
+.result-actions button.secondary { background: #fff; color: #333; border: 1.5px solid #e4e4ea; }
+.result-actions button:hover { opacity: 0.9; }
+
+/* Speaking indicator */
+.speaking-dot { display: inline-block; width: 6px; height: 6px; background: #1D9E75; border-radius: 50%; animation: pulse 0.8s ease-in-out infinite; margin-left: 4px; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.6)} }
+</style>
+</head>
+<body>
+<div id="app">
+
+<!-- HOME -->
+<div id="home" class="screen active">
+  <div class="home-header">
+    <div class="game-logo">🎓 MySkillVerse</div>
+    <div class="game-sub">14 Topics · 10 Questions Each · Test Your Knowledge</div>
+  </div>
+  <div class="topic-grid" id="topicGrid"></div>
+</div>
+
+<!-- QUIZ -->
+<div id="quiz" class="screen">
+  <div class="quiz-header">
+    <div class="header-row">
+      <button class="back-btn" onclick="goHome()">← All topics</button>
+      <button class="voice-btn" id="voiceBtn" onclick="toggleVoice()">🔊 Voice On</button>
+    </div>
+    <div class="topic-title-bar">
+      <span class="topic-icon" id="qIcon"></span>
+      <span class="topic-label" id="qTitle"></span>
+    </div>
+    <div class="progress-bar-bg"><div class="progress-bar-fill" id="progressFill" style="width:0%"></div></div>
+    <div class="progress-text" id="progressText"></div>
+  </div>
+  <div class="q-card">
+    <div class="q-number" id="qNumber"></div>
+    <div class="q-text" id="qText"></div>
+  </div>
+  <div class="options" id="optionsContainer"></div>
+  <div id="feedbackSection" class="feedback-section" style="display:none;">
+    <div class="feedback-bar" id="feedbackBar"></div>
+    <div class="explanation-box" id="explanationBox">
+      <div class="explanation-label">💡 Did you know?</div>
+      <div id="explanationText"></div>
+    </div>
+  </div>
+  <button class="next-btn" id="nextBtn" style="display:none;" onclick="nextQuestion()">Next question →</button>
+</div>
+
+<!-- RESULT -->
+<div id="result" class="screen">
+  <div class="result-screen">
+    <span class="result-emoji" id="resultEmoji"></span>
+    <div class="result-score" id="resultScore"></div>
+    <div class="result-label" id="resultLabel"></div>
+    <div id="resultBadge"></div>
+    <div class="result-msg" id="resultMsg"></div>
+    <div class="result-actions">
+      <button class="primary" onclick="retryTopic()">🔄 Try again</button>
+      <button class="secondary" onclick="goHome()">📚 Choose another topic</button>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+// ─── VOICE ENGINE ───────────────────────────────────────────────
+
+let voiceEnabled = true;
+
+function toggleVoice(){
+
+  voiceEnabled = !voiceEnabled;
+
+  const btn = document.getElementById('voiceBtn');
+
+  if(voiceEnabled){
+
+    btn.innerHTML = '🔊 Voice On';
+
+    btn.classList.remove('muted');
+
+    speechSynthesis.resume();
+
+  }else{
+
+    btn.innerHTML = '🔇 Voice Off';
+
+    btn.classList.add('muted');
+
+    speechSynthesis.cancel();
+  }
+}
+
+
+/* SPEAK FUNCTION */
+
+function speak(text){
+
+  if(!voiceEnabled) return;
+
+  if(!('speechSynthesis' in window)) return;
+
+  speechSynthesis.cancel();
+
+  const utter = new SpeechSynthesisUtterance(text);
+
+  utter.lang = 'en-US';
+
+  utter.rate = 0.9;
+
+  utter.pitch = 1;
+
+  utter.volume = 1;
+
+  /* Better mobile voice */
+
+  const voices = speechSynthesis.getVoices();
+
+  const mobileVoice = voices.find(v =>
+    v.lang.includes('en') &&
+    (
+      v.name.includes('Google') ||
+      v.name.includes('Samantha') ||
+      v.name.includes('Karen')
+    )
+  );
+
+  if(mobileVoice){
+    utter.voice = mobileVoice;
+  }
+
+  /* Android Chrome fix */
+
+  setTimeout(()=>{
+
+    speechSynthesis.speak(utter);
+
+  },100);
+}
+
+
+/* Load voices */
+
+if(window.speechSynthesis){
+
+  speechSynthesis.onvoiceschanged = ()=>{
+
+    speechSynthesis.getVoices();
+
+  };
+
+}
+
+
+/* Mobile unlock */
+
+document.body.addEventListener('touchstart',()=>{
+
+  speechSynthesis.resume();
+
+},{once:true});
+// ─── TOPIC DATA ──────────────────────────────────────────────────
+const topics = [
+  {
+    emoji: "☢️", name: "Radiation Emergency", id: "radiation",
+    questions: [
+      { q: "What is the FIRST thing you should do during a radiation leak?", opts: ["Run outside immediately","Take immediate shelter indoors","Call friends and inform them","Record a video of the event"], ans: 1, exp: "Shelter reduces your exposure to radioactive particles that are being carried by the wind. Going outside increases the risk of inhaling or contacting contaminated air." },
+      { q: "Which three principles form the basic rules of radiation safety?", opts: ["Run, Hide, Fight","Stop, Drop, Roll","Time, Distance, Shielding","Alert, Assess, Act"], ans: 2, exp: "Time, Distance, and Shielding are the three golden principles. Less time near the source, more distance, and solid barriers all combine to dramatically reduce your radiation dose." },
+      { q: "Why is staying indoors important during a radiation emergency?", opts: ["It is warmer inside","It reduces exposure to harmful radiation","Internet works better inside","Food is available inside"], ans: 1, exp: "Buildings block radioactive particles suspended in the air. Walls and roofs act as shielding, significantly reducing the amount of radiation that reaches you." },
+      { q: "How do you decontaminate your body after possible radiation exposure?", opts: ["Use perfume to cover contamination","Wipe with a dry cloth only","Remove clothes and wash with soap and water","Apply moisturiser on exposed skin"], ans: 2, exp: "Removing clothing eliminates up to 80% of radioactive contamination. Washing with soap and water removes most of the remaining particles from your skin." },
+      { q: "What does potassium iodide protect?", opts: ["Lungs","Kidneys","Thyroid gland","Heart"], ans: 2, exp: "The thyroid gland absorbs radioactive iodine released during nuclear events. Potassium iodide saturates the thyroid so it cannot absorb the harmful radioactive form." },
+      { q: "Which of the following BEST reduces radiation dose received?", opts: ["Increasing time near the source","Decreasing distance from the source","Removing shielding barriers","Increasing distance and reducing time near the source"], ans: 3, exp: "Radiation intensity decreases with the square of distance. Combining more distance with less exposure time provides the greatest reduction in absorbed dose." },
+      { q: "After a radiation emergency, which clothing action should come FIRST?", opts: ["Dry the clothes and rewear","Remove and bag contaminated clothing","Iron the clothes to kill radiation","Share clothes with others"], ans: 1, exp: "Contaminated clothing keeps exposing your body to radiation. Removing and sealing it in a bag prevents further contamination and protects emergency responders too." },
+      { q: "Which of these is NOT a basic safety principle during radiation exposure?", opts: ["Shielding","Distance","Time","Speed"], ans: 3, exp: "The three recognised principles are Time, Distance, and Shielding. Speed is not a radiation safety principle — panicked running can actually increase your risk." },
+      { q: "What type of material is most commonly used as radiation shielding?", opts: ["Wood","Plastic","Concrete or lead","Cloth"], ans: 2, exp: "Dense materials like lead and concrete are highly effective at absorbing and blocking radiation. Their high density stops gamma rays and other penetrating radiation types." },
+      { q: "Potassium iodide is a form of which type of protection?", opts: ["Curative treatment","Preventive protection","Surgical procedure","Radiation therapy"], ans: 1, exp: "Potassium iodide is a preventive measure — it must be taken before or immediately after exposure to be effective. It does not cure radiation sickness or treat other organs." }
+    ]
+  },
+  {
+    emoji: "🚁", name: "Drone Attack Safety", id: "drone",
+    questions: [
+      { q: "Where is the SAFEST place to shelter during a drone attack?", opts: ["Under a tree","In an open field","Inside a strong building","On a rooftop"], ans: 2, exp: "Strong buildings absorb blast energy and shield you from shrapnel. Trees and open spaces offer zero protection against explosive fragments." },
+      { q: "Why should you avoid open areas during a drone attack?", opts: ["Open areas have poor phone signals","They increase the risk of injury","Drones avoid open areas","Buildings are always closer"], ans: 1, exp: "Open areas leave your body completely exposed to blast waves and shrapnel with no physical barrier. Buildings and walls deflect or absorb the deadly fragments." },
+      { q: "What should you do if you spot a suspicious drone?", opts: ["Throw objects at it","Ignore it and continue your work","Inform the authorities immediately","Try to capture it"], ans: 2, exp: "Authorities have the training and equipment to respond to drone threats safely. Throwing objects or trying to capture a drone puts you in direct danger." },
+      { q: "Why should you NOT record videos of a drone attack?", opts: ["Your phone battery will drain","It puts you in unnecessary danger","Video evidence is not useful","Drones can detect cameras"], ans: 1, exp: "Recording a drone attack means you are stationary in an exposed position. Staying still in a dangerous zone dramatically increases the risk of injury or death." },
+      { q: "What is considered ESSENTIAL to have during any emergency?", opts: ["A luxury vehicle","An emergency kit","Extra clothing","A television set"], ans: 1, exp: "An emergency kit with first-aid supplies, water, torch, and essentials ensures you can survive and function during any crisis without depending on external help immediately." },
+      { q: "Which behaviour shows the HIGHEST level of safety awareness?", opts: ["Going outside to watch","Posting updates on social media","Seeking cover indoors and calling authorities","Shouting warnings in the street"], ans: 2, exp: "Seeking cover protects your life, while alerting authorities triggers a professional response. Social media and watching from outside delay protection and increase personal risk." },
+      { q: "Which of the following should ideally be in an emergency kit?", opts: ["Luxury food items","First-aid supplies, water, and a torch","Books and magazines","Electronic gadgets only"], ans: 1, exp: "First aid manages injuries, water sustains life, and a torch ensures visibility during power cuts. These are universally critical for surviving any emergency situation." },
+      { q: "Why is bravery NOT the recommended response during a drone attack?", opts: ["Bravery is illegal","Safety depends on protection, not bravery","Authorities dislike bravery","Drones target brave individuals"], ans: 1, exp: "In drone warfare, physical courage without cover is simply exposure to lethal danger. Trained responders handle threats; civilians protect themselves by sheltering effectively." },
+      { q: "What does staying indoors during a drone attack primarily protect you from?", opts: ["Rain and cold","Noise pollution","Blast and shrapnel injuries","Traffic accidents"], ans: 2, exp: "Drone strikes cause injuries primarily through blast pressure and high-velocity shrapnel. Walls and roofs absorb these forces, preventing the injuries that kill and maim." },
+      { q: "Which attitude BEST reflects responsible behaviour during a drone threat?", opts: ["Curiosity overrides danger","Record everything for social media","Responsibility saves lives","Ignore official warnings"], ans: 2, exp: "Taking responsibility means prioritising your safety and following official guidance. Curiosity and social media instincts lead people into danger during active threats." }
+    ]
+  },
+  {
+    emoji: "⚡", name: "Electrical Hazard", id: "electrical",
+    questions: [
+      { q: "Why is electric shock particularly dangerous to the human body?", opts: ["It causes hair loss","It can stop the heart","It causes skin discolouration","It affects only bones"], ans: 1, exp: "Even a small electric current passing through the chest can cause cardiac arrest by disrupting the heart's natural electrical rhythm, which can be fatal within minutes." },
+      { q: "How does electricity affect the heart?", opts: ["It strengthens the heart muscles","It makes the heart beat faster permanently","It disrupts the heart's natural rhythm","It has no effect on the heart"], ans: 2, exp: "Electrical current can cause ventricular fibrillation — a chaotic, ineffective heartbeat. Without immediate treatment, this is rapidly fatal even in healthy individuals." },
+      { q: "What is the FIRST step before doing any electrical repair at home?", opts: ["Wear rubber gloves","Turn off the main power supply","Use a wooden stick","Call a neighbour"], ans: 1, exp: "Turning off the main power supply eliminates live current from the circuit. Wearing gloves alone is insufficient if the power remains on during repairs." },
+      { q: "Why is it dangerous to handle electrical equipment with wet hands?", opts: ["Hands become slippery","Water increases electrical conductivity","Water damages the equipment","It is only a myth"], ans: 1, exp: "Water dramatically lowers the body's electrical resistance, allowing current to flow more easily and intensely through you. This greatly increases the severity of any shock." },
+      { q: "How do short circuits typically cause fires?", opts: ["They produce extreme cold","They release chemical gases","Sparks from short circuits ignite nearby materials","They drain power from the building"], ans: 2, exp: "Short circuit sparks carry enormous heat energy that can instantly ignite insulation, wood, paper, and furniture. This is how many home fires start from electrical faults." },
+      { q: "Which of the following is the SAFEST practice when using electrical appliances?", opts: ["Use appliances near water for convenience","Overload sockets with multiple devices","Switch off and unplug appliances when not in use","Repair live wires yourself"], ans: 2, exp: "Unplugged appliances cannot cause electric shocks, fires, or energy waste. Overloaded sockets and live wire repairs are among the leading causes of electrical accidents." },
+      { q: "What type of flooring provides the BEST protection against electric shock?", opts: ["Wet marble","Metal flooring","Rubber or dry wooden flooring","Wet concrete"], ans: 2, exp: "Rubber and dry wood are electrical insulators that prevent current from flowing through your body to the ground, breaking the circuit that causes shock." },
+      { q: "Which of these actions is MOST likely to cause an electrical fire?", opts: ["Using energy-saving bulbs","Overloading electrical sockets","Switching off lights when leaving a room","Using circuit breakers"], ans: 1, exp: "Overloaded sockets draw more current than they are designed for, generating excessive heat. This heat builds up and can ignite the surrounding materials without warning." },
+      { q: "What device is designed to prevent electrical overload in a home?", opts: ["A transformer","A circuit breaker or fuse","A battery","A voltmeter"], ans: 1, exp: "Circuit breakers and fuses automatically interrupt current flow when it exceeds safe levels. They are the primary safety mechanism protecting homes from electrical fires." },
+      { q: "Which statement about electrical safety is TRUE?", opts: ["Electricity is safe to handle if the voltage is low","Invisible electrical dangers can be deadly","Short circuits are harmless","Wet hands improve grip on electrical tools"], ans: 1, exp: "Faulty wiring hidden inside walls, damaged insulation, and corroded connections are invisible hazards that can cause electrocution or fire with no advance warning." }
+    ]
+  },
+  {
+    emoji: "♻️", name: "E-Waste Hazard", id: "ewaste",
+    questions: [
+      { q: "What is e-waste?", opts: ["Waste produced by eating habits","Discarded electronic devices","Energy wasted by appliances","Electronic bills and receipts"], ans: 1, exp: "E-waste includes discarded computers, mobile phones, televisions, and other electronic equipment. It is one of the fastest-growing waste streams in the world." },
+      { q: "Which of the following toxic metals is commonly found in e-waste?", opts: ["Calcium","Iron","Lead","Sodium"], ans: 2, exp: "Lead is a highly toxic heavy metal found in circuit boards and old CRT screens. It damages the brain, kidneys, and nervous system, especially in children." },
+      { q: "How does improperly disposed e-waste harm the environment?", opts: ["It makes the soil more fertile","It brightens the sky with chemicals","It contaminates soil and water","It has no environmental impact"], ans: 2, exp: "Toxic chemicals from e-waste leach into groundwater and soil when electronics are buried or burned. These contaminants enter the food chain and harm ecosystems." },
+      { q: "Which three toxic metals are commonly found in electronic waste?", opts: ["Gold, Silver, Platinum","Lead, Mercury, Cadmium","Zinc, Copper, Tin","Iron, Aluminium, Nickel"], ans: 1, exp: "Lead, mercury, and cadmium are the three most hazardous heavy metals in e-waste. Each accumulates in the body over time and causes serious long-term health damage." },
+      { q: "What is the correct method for disposing of old electronic devices?", opts: ["Bury them underground","Burn them in open spaces","Recycle at authorised centres","Dump in water bodies"], ans: 2, exp: "Authorised recycling centres safely extract valuable materials and neutralise or contain hazardous substances. Burning e-waste releases toxic fumes into the air we breathe." },
+      { q: "Why is e-waste considered a hidden danger of technological progress?", opts: ["It slows down internet speeds","It emits radio waves","It contains toxic chemicals that harm health and environment","It takes up storage space"], ans: 2, exp: "While technology improves lives, the devices we discard contain dozens of toxic substances. These hazards are invisible until they contaminate the environment and our bodies." },
+      { q: "Which organ system is MOST affected by mercury found in e-waste?", opts: ["Digestive system","Nervous system","Skeletal system","Endocrine system"], ans: 1, exp: "Mercury targets the nervous system, causing tremors, memory loss, and cognitive decline. In children, even low-level mercury exposure causes permanent developmental damage." },
+      { q: "Which of the following e-waste items contains the MOST hazardous materials?", opts: ["Paper manuals","Plastic packaging","Old CRT monitors and batteries","Cardboard boxes"], ans: 2, exp: "CRT monitors contain several kilograms of lead in their glass screen, while old batteries hold cadmium, mercury, and lead — making both among the most dangerous e-waste." },
+      { q: "What does responsible e-waste management primarily reflect?", opts: ["Wealth and status","Speed of disposal","Responsibility continuing after use","A preference for new gadgets"], ans: 2, exp: "Buying a device is only the start of your responsibility. How you dispose of it at the end of its life determines whether you protect or harm the world around you." },
+      { q: "Cadmium found in e-waste is particularly harmful to which organ?", opts: ["Heart","Eyes","Kidneys","Lungs"], ans: 2, exp: "Cadmium accumulates in the kidneys over time, causing progressive and irreversible kidney damage. It is also linked to bone softening and certain types of cancer." }
+    ]
+  },
+  {
+    emoji: "🌱", name: "Plantation & Employment", id: "plantation",
+    questions: [
+      { q: "Which of the following is an example of a long-term crop?", opts: ["Rice","Wheat","Mango tree","Onion"], ans: 2, exp: "Mango trees take several years to mature but then provide reliable harvests for decades. Long-term crops require patience but deliver sustained income over time." },
+      { q: "Why is it important to choose crops based on local region and climate?", opts: ["It makes farming look better","Climate directly affects the success of crops","Regional crops cost more money","Government mandates region-based farming"], ans: 1, exp: "Crops unsuited to local climate will fail regardless of effort. Matching crops to their natural environment maximises yield and reduces the risk of crop failure." },
+      { q: "What are the TWO key benefits of plantation-based work?", opts: ["Fame and social media presence","Income generation and environment protection","Quick money and leisure time","Government awards and recognition"], ans: 1, exp: "Plantation work creates a sustainable livelihood while simultaneously increasing green cover, reducing carbon dioxide, and restoring ecological balance in the local area." },
+      { q: "Why is combining short-term and long-term crops recommended?", opts: ["It makes the farm look more attractive","It ensures a steady and balanced income","Short-term crops drive away pests","It is required by agricultural law"], ans: 1, exp: "Short-term crops like vegetables provide immediate cash flow, while long-term crops like fruit trees build lasting wealth. Together they create a stable, year-round income." },
+      { q: "The sal tree is an example of which type of crop?", opts: ["Short-term food crop","Annual crop","Long-term plantation crop","Water crop"], ans: 2, exp: "The sal tree is a valuable timber tree with a long growth cycle. It provides timber, resin, and environmental benefits, making it a classic long-term plantation crop." },
+      { q: "What is the PRIMARY risk associated with long-term plantation work?", opts: ["Government intervention","Soil erosion","Time investment and ongoing maintenance","Overproduction of fruits"], ans: 2, exp: "Long-term crops require years of consistent care and investment before generating significant income. The extended time to return is the primary financial and practical risk." },
+      { q: "How does plantation work contribute to environmental protection?", opts: ["By using more chemical fertilisers","By increasing plastic use on farms","By increasing green cover and reducing carbon dioxide","By replacing forests with monoculture"], ans: 2, exp: "Trees and plants absorb CO₂, improve biodiversity, prevent soil erosion, and restore groundwater levels — making plantation work a powerful tool for environmental restoration." },
+      { q: "Which BEST represents a sustainable livelihood strategy?", opts: ["Depending solely on government aid","Cultivating only one crop type","Combining short-term and long-term income through farming","Abandoning rural areas for urban work"], ans: 2, exp: "Diversifying income sources through different crop types protects against price fluctuations and seasonal failures, creating genuine long-term financial and ecological sustainability." },
+      { q: "What does 'growth takes time but gives stability' reflect in plantation work?", opts: ["Long-term crops require patience but provide lasting income","Trees grow faster than vegetables","Stability is only possible in cities","Plantation work suits only large landowners"], ans: 0, exp: "Long-term plantation crops like fruit trees and timber require years of care before yielding returns, but once established they provide reliable income for decades without replanting." },
+      { q: "Which crop would be MOST appropriate for a region with high annual rainfall?", opts: ["Cactus","Desert wheat","Rice or jute","Dry-region millet"], ans: 2, exp: "Rice and jute are water-intensive crops that thrive in high-rainfall regions. Matching crops to natural water availability reduces irrigation costs and maximises natural yield." }
+    ]
+  },
+  {
+    emoji: "🧠", name: "Brain Death & Organ Donation", id: "braindeath",
+    questions: [
+      { q: "What is brain death?", opts: ["A temporary loss of consciousness","A state similar to deep sleep","Permanent and irreversible loss of all brain function","A condition that can be reversed with medication"], ans: 2, exp: "Brain death is the complete and irreversible cessation of all brain activity, including the brainstem. Unlike a coma, brain death cannot be reversed by any medical intervention." },
+      { q: "How is brain death DIFFERENT from a coma?", opts: ["A coma is more serious than brain death","Brain death is irreversible; a coma may be reversible","Both are exactly the same condition","Coma patients are always brain dead"], ans: 1, exp: "Coma patients retain some brain activity and may recover with treatment. Brain death means zero brain function permanently — there is no possibility of recovery." },
+      { q: "Why can organ donation still happen after brain death?", opts: ["Because the brain continues to function partially","Because other organs may still be functioning normally","Because the body is completely alive","Because brain death is temporary"], ans: 1, exp: "Medical support can maintain blood flow and oxygenation to organs like the heart, kidneys, and liver after brain death, keeping them viable for transplantation." },
+      { q: "How many people can potentially be saved by a single organ donor?", opts: ["1–2","2–3","5–8","10–15"], ans: 2, exp: "A single brain-dead donor can provide heart, two lungs, liver, two kidneys, pancreas, and intestine — potentially transforming the lives of up to eight separate recipients." },
+      { q: "What is ESSENTIAL for organ donation to proceed after brain death?", opts: ["Hospital approval only","Government permit","Family consent","Doctor's personal decision"], ans: 2, exp: "Family consent is both a legal and ethical requirement before any organ can be retrieved. Without written family consent, donation cannot proceed regardless of other factors." },
+      { q: "Which of the following organs CAN be donated after brain death?", opts: ["Brain","Skull","Heart, kidneys, and liver","Bones only"], ans: 2, exp: "Heart, kidneys, liver, lungs, pancreas, and corneas can all be successfully donated and transplanted from a brain-dead donor to save or transform recipients' lives." },
+      { q: "Which statement about brain death is TRUE?", opts: ["Patients can recover from brain death with therapy","Brain death and cardiac arrest are the same","Brain death means permanent cessation of all brain activity","Brain dead patients can breathe without support"], ans: 2, exp: "Brain death is a medically and legally defined state of permanent, irreversible cessation of all brain function. There is no therapy or treatment that can reverse it." },
+      { q: "What role does the family play in the organ donation process?", opts: ["They have no legal role","They must provide written consent for donation","They only choose which organs to donate","They perform the donation procedure"], ans: 1, exp: "Family consent is the critical legal step that authorises organ retrieval. Hospitals and doctors cannot proceed without the family's explicit written agreement." },
+      { q: "Which BEST describes the significance of organ donation?", opts: ["It benefits only the recipient's family","It is a government requirement","One life can give multiple others a chance to live","It is only relevant for elderly donors"], ans: 2, exp: "One brain-dead donor's decision can provide organs that save or significantly improve the lives of multiple recipients across different hospitals and cities." },
+      { q: "A person in a coma is DIFFERENT from a brain-dead person because:", opts: ["Coma patients have no heartbeat","Brain dead patients can still speak","Coma patients may still have some brain activity","Coma is always caused by accidents"], ans: 2, exp: "Coma patients retain varying levels of brain activity and may respond to stimuli or recover. Brain death involves total, permanent loss of all brain and brainstem function." }
+    ]
+  },
+  {
+    emoji: "🩸", name: "Blood Donation", id: "blood",
+    questions: [
+      { q: "What is the PRIMARY reason for donating blood?", opts: ["To earn money","To receive a certificate","To save lives","To fulfil a legal requirement"], ans: 2, exp: "Blood cannot be manufactured artificially — it can only come from human donors. Every unit donated has the potential to save the life of someone in urgent medical need." },
+      { q: "How much blood is typically collected during a single blood donation?", opts: ["100–150 ml","200–250 ml","350–450 ml","600–700 ml"], ans: 2, exp: "350 to 450 ml is the safe standard donation volume. This amount is quickly replenished by the body and has minimal impact on the healthy donor's wellbeing." },
+      { q: "How frequently can a healthy adult donate blood?", opts: ["Every week","Every month","Every 3–4 months","Only once a lifetime"], ans: 2, exp: "The body replenishes red blood cells within 4–6 weeks. A gap of 3–4 months between donations ensures the donor's iron stores and blood count remain at healthy levels." },
+      { q: "Who is ELIGIBLE to donate blood?", opts: ["Children below 10 years","Healthy adults meeting standard criteria","Only doctors and nurses","Only people with O-negative blood type"], ans: 1, exp: "Healthy adults between 18 and 65 years, weighing at least 45 kg, and meeting basic health checks are generally eligible regardless of their blood type or profession." },
+      { q: "What should a donor do IMMEDIATELY after donating blood?", opts: ["Exercise vigorously","Skip meals to avoid nausea","Rest and drink plenty of fluids","Donate blood again to maximise impact"], ans: 2, exp: "Resting allows the body to stabilise blood pressure, while fluids help replace the lost plasma volume quickly. Strenuous activity immediately after donation can cause dizziness." },
+      { q: "Which blood component is MOST urgently needed during surgery?", opts: ["Plasma only","White blood cells","Whole blood or red blood cells","Bone marrow"], ans: 2, exp: "Red blood cells carry oxygen to tissues. During surgery or trauma, oxygen delivery is critical for organ survival, making whole blood and red blood cells the most urgent need." },
+      { q: "Why is regular blood donation described as 'consistency creates change'?", opts: ["Frequent donation increases donor's blood pressure","Steady donations ensure a reliable blood supply for patients","It changes the donor's blood type over time","It helps the body generate extra blood"], ans: 1, exp: "Hospitals need a constant, reliable blood supply. Regular donors create that stability, ensuring blood is available in emergencies rather than only during special donation drives." },
+      { q: "What is the approximate time required for the body to replenish donated blood?", opts: ["24 hours","1 week","4–8 weeks","6 months"], ans: 2, exp: "Plasma replenishes within 24 hours, but red blood cells take 4–6 weeks to fully regenerate. This is why donations are limited to every 3–4 months for safe practice." },
+      { q: "Which of the following is a BENEFIT of donating blood?", opts: ["It permanently reduces the donor's iron levels","It benefits only the recipient","It may also have positive health effects for the donor","It increases the risk of infection for the donor"], ans: 2, exp: "Research suggests regular blood donation may help reduce excess iron in the body, lower cardiovascular risk, and trigger beneficial renewal of blood cells in the donor." },
+      { q: "'Small sacrifice, big impact' in blood donation means:", opts: ["Donation requires a lot of physical effort","A small volume of blood can help save a patient's life","Blood donation is painful","Only large donations are useful"], ans: 1, exp: "Donating 350–450 ml of blood takes less than an hour and causes minimal discomfort. Yet that small volume can be the decisive factor between life and death for a patient." }
+    ]
+  },
+  {
+    emoji: "👶", name: "Child Labour", id: "childlabour",
+    questions: [
+      { q: "How is child labour defined?", opts: ["Children doing household chores","Children participating in school activities","Illegal employment of children that harms their development","Children working voluntarily during holidays"], ans: 2, exp: "Child labour specifically refers to work that is harmful, exploitative, or prevents children from accessing education and a safe childhood — not all forms of children's participation in activity." },
+      { q: "Why is child labour considered illegal in most countries?", opts: ["Children are less productive than adults","It harms children's physical, mental, and educational development","Adult workers complain about competition","Children cannot handle money"], ans: 1, exp: "Child labour causes lasting physical harm, psychological damage, and denies children education — the very tool they need to escape poverty and build better futures." },
+      { q: "Which of the following is an example of HAZARDOUS child labour?", opts: ["Helping parents in a home garden","Reading books for a family member","Working in a chemical factory or mine","Participating in a school play"], ans: 2, exp: "Chemical factories and mines expose children to toxic substances, heavy machinery, and extreme physical danger — environments specifically prohibited under child labour laws." },
+      { q: "What is the legal punishment for employing children in hazardous work?", opts: ["A warning letter only","Community service","Jail and financial fine","Temporary business closure only"], ans: 2, exp: "Most countries impose both imprisonment and substantial financial penalties on employers who use child labour, reflecting the seriousness of the violation of children's rights." },
+      { q: "How does education serve as a solution to child labour?", opts: ["Education keeps children occupied so they cannot work","Education is only for wealthy families","Education builds skills and breaks the cycle of poverty","Education teaches children to avoid all work"], ans: 2, exp: "Education equips children with skills, qualifications, and opportunities that allow them to earn better livelihoods as adults, breaking the intergenerational cycle of poverty." },
+      { q: "According to international standards, what is the minimum age for light employment?", opts: ["10 years","12 years","14–15 years","18 years"], ans: 2, exp: "The International Labour Organization sets 14–15 years as the minimum age for light, non-hazardous work that does not interfere with education or development." },
+      { q: "What does 'danger steals childhood' mean in the context of child labour?", opts: ["Dangerous games are bad for children","Hazardous work deprives children of their right to a normal childhood","Children should be protected from all outdoor activities","Stealing is a common result of poverty"], ans: 1, exp: "When children work in hazardous conditions, they lose their childhood years to danger and exhaustion instead of experiencing learning, play, and healthy development." },
+      { q: "Which is the MOST effective long-term strategy to eliminate child labour?", opts: ["Stricter border controls","Universal access to quality education","Higher taxes on businesses","Reducing working hours for adults"], ans: 1, exp: "Universal quality education addresses the root causes of child labour by giving families economic alternatives and giving children the skills to build their own better futures." },
+      { q: "Child labour violates which fundamental right of children?", opts: ["The right to vote","The right to drive","The right to education and a safe childhood","The right to own property"], ans: 2, exp: "Education and safety are fundamental rights enshrined in the UN Convention on the Rights of the Child. Child labour denies both, trapping children in cycles of poverty." },
+      { q: "If you witness a child working illegally, what is the CORRECT action?", opts: ["Ignore it as it is none of your business","Scold the child","Report it to the appropriate authorities","Hire the child yourself for lighter work"], ans: 2, exp: "Reporting to authorities like Childline or the labour department is the correct civic response. Ignoring it or engaging with the situation personally may worsen outcomes for the child." }
+    ]
+  },
+  {
+    emoji: "🚫", name: "Human Trafficking", id: "trafficking",
+    questions: [
+      { q: "What is human trafficking?", opts: ["Legal migration of workers across borders","Buying and selling of goods at high prices","The illegal trade and exploitation of human beings","Trafficking of illegal substances"], ans: 2, exp: "Human trafficking involves using force, fraud, or coercion to exploit people for labour, sexual purposes, or other forms of abuse. It is a severe violation of human freedom." },
+      { q: "Why is human trafficking considered one of the most serious crimes?", opts: ["It damages property","It reduces government revenue","It violates fundamental human rights and dignity","It disrupts trade routes"], ans: 2, exp: "Trafficking strips people of their freedom, dignity, and bodily autonomy — the most fundamental human rights. It represents one of the gravest forms of modern-day slavery." },
+      { q: "Which of the following is a common form of human trafficking?", opts: ["Voluntary international employment","Forced labour and sexual exploitation","Educational exchange programmes","Adoption through legal processes"], ans: 1, exp: "Forced labour and sexual exploitation are the two most prevalent forms of trafficking. Victims are coerced through threats, debt bondage, or physical violence." },
+      { q: "What is the helpline number to report suspected trafficking in India?", opts: ["100","101","1098 / 112","1800"], ans: 2, exp: "1098 is the Childline number for reporting child-related trafficking, while 112 is the national emergency number. Both connect you to authorities who can respond immediately." },
+      { q: "What punishment does human trafficking typically carry?", opts: ["A small fine","Community service","Long-term imprisonment","Loss of voting rights only"], ans: 2, exp: "Human trafficking carries severe prison sentences in most countries due to the gravity of the crime. In India, it can carry up to life imprisonment for the most serious offences." },
+      { q: "How are victims of trafficking MOST commonly recruited?", opts: ["Through official government channels","False promises of jobs, education, or a better life","By direct force only","Through social welfare organisations"], ans: 1, exp: "Traffickers predominantly use deception — fake job offers, education opportunities, or promises of a better life — to lure victims before trapping them in exploitation." },
+      { q: "Which group is MOST vulnerable to human trafficking?", opts: ["Wealthy adults in cities","Government employees","Children and women in economically disadvantaged areas","University graduates"], ans: 2, exp: "Economic vulnerability, lack of education, and social marginalisation make children and women in poor areas the most targeted population for traffickers worldwide." },
+      { q: "'Humans are not commodities' means:", opts: ["People should not trade goods","People cannot be bought, sold, or exploited under any circumstances","Commodities are more valuable than people","Only certain humans have rights"], ans: 1, exp: "Every human being has inherent dignity and rights that cannot be traded, priced, or transferred. Trafficking treats people as objects — a fundamental violation of humanity." },
+      { q: "Which organisation in India combats human trafficking?", opts: ["Reserve Bank of India","Ministry of Finance","National Crime Records Bureau and Anti-Human Trafficking Units","Ministry of Agriculture"], ans: 2, exp: "Anti-Human Trafficking Units are specialised police units deployed across India to investigate, disrupt, and prosecute trafficking networks and support survivors." },
+      { q: "What is the MOST important role awareness plays in preventing trafficking?", opts: ["It increases fear in communities","Awareness helps potential victims and communities respond and report","It is only useful for law enforcement","Awareness has little effect on trafficking rates"], ans: 1, exp: "Awareness empowers communities to recognise warning signs, question suspicious offers, and report concerns — creating a community-level protective barrier around potential victims." }
+    ]
+  },
+  {
+    emoji: "🌍", name: "Eco Bottle Awareness", id: "ecobottle",
+    questions: [
+      { q: "Why should single-use plastic water bottles be avoided?", opts: ["They are too expensive","They are difficult to open","They harm the environment and leak chemicals","They change the taste of water immediately"], ans: 2, exp: "Single-use plastic bottles leach chemicals like BPA into the water, especially when heated. They also take up to 500 years to decompose, accumulating in landfills and oceans." },
+      { q: "Which of the following is an eco-friendly alternative to plastic bottles?", opts: ["Polystyrene cup","Disposable paper cup","Stainless steel bottle","PVC container"], ans: 2, exp: "Stainless steel bottles are durable, free from harmful chemicals, reusable for years, and fully recyclable at end of life — making them one of the best eco-friendly choices." },
+      { q: "What is considered the CHEAPEST safe alternative to plastic bottles?", opts: ["Copper bottle","Glass bottle","Steel bottle","Titanium bottle"], ans: 2, exp: "Stainless steel bottles are affordable, widely available, long-lasting, and safe for daily use. They offer the best combination of cost, durability, and environmental benefit." },
+      { q: "What is the MAIN benefit of reusing a bottle instead of buying single-use plastic?", opts: ["Reusable bottles are always colourful","It reduces plastic waste significantly","Reusable bottles are lighter","Reusable bottles never break"], ans: 1, exp: "A single reusable bottle can replace hundreds of plastic bottles per year. Multiplied across millions of users, this creates a massive reduction in plastic pollution." },
+      { q: "What is the PRIMARY risk of reusing single-use plastic bottles?", opts: ["They become too heavy","They change colour","Chemical leakage into the water over time","They attract insects"], ans: 2, exp: "Single-use plastic bottles are not designed for repeated use. With reuse, microscopic cracks develop and chemicals like BPA and phthalates leach into the water you drink." },
+      { q: "Which property of copper makes copper bottles beneficial?", opts: ["It adds a sweet taste to water","It has natural antimicrobial properties","It makes water colder","It filters out salt from water"], ans: 1, exp: "Copper has well-documented natural antimicrobial properties. Water stored in copper bottles for several hours may have reduced bacterial content, a practice rooted in traditional medicine." },
+      { q: "'Convenience has consequences' in eco bottle awareness refers to:", opts: ["Eco bottles are inconvenient to carry","The short-term ease of plastic use causes long-term environmental damage","Consequences are only relevant for manufacturers","Convenience products are always expensive"], ans: 1, exp: "Buying and discarding plastic bottles is convenient in the moment but creates pollution that persists for centuries. Every convenient choice has an environmental cost we often cannot see." },
+      { q: "How long does a single plastic bottle take to decompose in nature?", opts: ["1–2 years","10–20 years","100–500 years","Plastic decomposes within months"], ans: 2, exp: "Plastic does not truly biodegrade — it breaks into microplastics that persist in the environment for 100 to 500 years, contaminating soil, water, and the food we eat." },
+      { q: "Which personal habit creates the biggest environmental change?", opts: ["Buying expensive bottles","Switching from plastic to reusable bottles daily","Recycling only at designated centres","Reducing water consumption entirely"], ans: 1, exp: "Daily habits, repeated consistently across millions of people, create the largest environmental impact. Switching to reusable bottles is one of the most actionable individual changes." },
+      { q: "What does BPA stand for and why is it harmful?", opts: ["Basic Plastic Agent — reduces water quality","Bisphenol A — a chemical that can disrupt hormones in the body","Bio-Plastic Additive — causes water to freeze faster","Bacterial Plastic Agent — causes infections"], ans: 1, exp: "BPA (Bisphenol A) is an industrial chemical used in plastic production. It mimics estrogen in the body, disrupting hormonal balance and linked to developmental and reproductive issues." }
+    ]
+  },
+  {
+    emoji: "🧵", name: "Eco Bag Welfare", id: "ecobag",
+    questions: [
+      { q: "What is work-based welfare?", opts: ["Receiving free goods from the government","Earning a livelihood through productive work rather than aid","Welfare only available to working adults","A government tax scheme"], ans: 1, exp: "Work-based welfare empowers people through employment, giving them dignity, income, and self-reliance rather than creating dependency on ongoing charitable or government assistance." },
+      { q: "How do eco bag production units create employment?", opts: ["By importing bags from other countries","By automating all production processes","By setting up local manufacturing units that employ community members","By selling bags online only"], ans: 2, exp: "Local production units hire community members directly, keeping income within the community and creating meaningful livelihoods close to people's homes and families." },
+      { q: "Why are eco bags considered better than plastic bags?", opts: ["Eco bags are more waterproof","Eco bags cost more to produce","Eco bags are biodegradable and eco-friendly","Eco bags are only available in cities"], ans: 2, exp: "Eco bags made from jute or cotton decompose naturally, unlike plastic bags that persist for centuries. They reduce plastic pollution and can be reused hundreds of times." },
+      { q: "What does SHG stand for in the context of eco bag welfare?", opts: ["State Housing Group","Self-Help Group","Social Health Grant","Scheme for Home Growth"], ans: 1, exp: "Self-Help Groups are community-based cooperative networks where members pool resources, skills, and savings to support collective economic activities like eco bag production." },
+      { q: "What is the PRIMARY environmental benefit of producing and using eco bags?", opts: ["They use more water to produce","They generate more employment than plastic","They reduce plastic pollution","They increase land use for farming"], ans: 2, exp: "Replacing single-use plastic bags with biodegradable eco bags directly reduces the volume of non-degradable plastic waste that accumulates in landfills, rivers, and oceans." },
+      { q: "'Dignity comes from earning' means:", opts: ["Earning money is the only source of happiness","Self-earned income gives people a sense of respect and independence","Aid programmes are unnecessary","Dignity requires earning a high salary"], ans: 1, exp: "When people earn their own income through work, they gain financial independence and self-respect. This sense of agency and dignity is fundamental to human wellbeing." },
+      { q: "How do Self-Help Groups (SHGs) contribute to eco bag production?", opts: ["They provide government subsidies only","They import raw materials from abroad","They organise group-based production and income sharing","They export products to foreign countries"], ans: 2, exp: "SHGs pool the skills and efforts of community members to produce goods collectively. Income is shared among members, creating an equitable and self-sustaining economic model." },
+      { q: "Which BEST describes the economic model of eco bag welfare units?", opts: ["High-tech, capital-intensive manufacturing","Grassroots, community-driven small-scale production","Corporate franchise model","Government-operated factory production"], ans: 1, exp: "Eco bag welfare units are typically small-scale, community-driven operations requiring minimal capital. This model is inclusive, locally empowering, and economically sustainable." },
+      { q: "'Unity creates strength' refers to which aspect of the eco bag programme?", opts: ["Government policies","Individual craftsmanship","Collective work through SHGs producing more efficiently","Strength required to carry large bags"], ans: 2, exp: "When community members work collectively through SHGs, they achieve greater production volume, shared efficiency, and stronger market presence than any individual could alone." },
+      { q: "Which material is MOST commonly used to make eco-friendly cloth bags?", opts: ["Nylon","Polyester","Jute or cotton","Fibreglass"], ans: 2, exp: "Jute and cotton are natural, biodegradable, and renewable plant-based fibres. They decompose safely in the environment and have a much lower ecological footprint than synthetic materials." }
+    ]
+  },
+  {
+    emoji: "🙏", name: "After Death Body Donation", id: "bodydonation",
+    questions: [
+      { q: "What is body donation?", opts: ["Donating a living person's organs","Donating one's entire body after death for medical education and research","Donating blood before death","Donating hospital equipment after use"], ans: 1, exp: "Body donation is the act of pledging one's entire body posthumously to medical institutions. It is one of the most profound gifts a person can make to the future of medicine." },
+      { q: "What is the PRIMARY purpose of body donation?", opts: ["For burial cost reduction","To help medical students learn human anatomy","For cosmetic research only","For government database creation"], ans: 1, exp: "Medical students use donated bodies to study the complexity of human anatomy firsthand. This hands-on learning is irreplaceable and produces better-trained, more competent doctors." },
+      { q: "Who is eligible to pledge for body donation?", opts: ["Only doctors and nurses","Only people above 70 years of age","Any person who pledges willingly and whose family gives consent","Only government employees"], ans: 2, exp: "Any willing adult can register as a body donor regardless of age, profession, or health status. The key requirements are personal willingness during life and family consent after death." },
+      { q: "What is REQUIRED for a body donation to be successfully completed?", opts: ["Only a hospital recommendation","Only government approval","Prior registration by the donor and consent of the family after death","Approval from religious leaders only"], ans: 2, exp: "Both advance registration during the donor's lifetime and explicit family consent after death are required. Without either, medical institutions cannot legally accept the body." },
+      { q: "How are donated bodies treated at medical institutions?", opts: ["With minimal care as they are donated freely","They are used immediately without any protocol","With full dignity and respect","They are displayed publicly for awareness"], ans: 2, exp: "Medical institutions follow strict protocols for handling donated bodies with the same respect afforded to living patients. Donors are often honoured formally by the institutions they support." },
+      { q: "Why is body donation particularly important for future generations?", opts: ["It reduces hospital costs for the poor","It allows medical students to learn anatomy without harming living patients","It provides income for the donor's family","It replaces the need for medical textbooks"], ans: 1, exp: "Cadaveric study provides anatomy knowledge that no textbook or simulation can fully replicate. Surgeons and doctors trained on real bodies deliver safer and more effective patient care." },
+      { q: "What does 'the decision is personal, but the impact is universal' mean?", opts: ["Body donation only benefits the donor","The choice to donate is individual, but it benefits all of humanity through better-trained doctors","Universal laws force body donation","Personal decisions should be kept private"], ans: 1, exp: "One person's private decision to donate their body after death creates a ripple effect — training doctors who then treat thousands of patients throughout their careers." },
+      { q: "Which of the following is NOT a step required in the body donation process?", opts: ["Prior registration during one's lifetime","Family consent at the time of death","Payment of a fee to the medical institution","Notifying the receiving institution promptly after death"], ans: 2, exp: "Body donation is entirely free of charge. Medical institutions do not charge families for accepting donated bodies. Payment is never a requirement or condition for donation." },
+      { q: "What does 'respect continues beyond life' reflect in body donation?", opts: ["The body continues to live after death","Medical institutions treat donated bodies with the same respect as living patients","Respect is only relevant during a person's lifetime","Religious ceremonies replace respect in medical settings"], ans: 1, exp: "Medical institutions maintain strict protocols of dignity and respect for donated bodies throughout their use. Many institutions hold formal ceremonies of gratitude for donors." },
+      { q: "Body donation is MOST directly linked to improving which field?", opts: ["Veterinary science","Agricultural research","Medical education and surgical training","Pharmaceutical manufacturing"], ans: 2, exp: "Body donation directly improves medical education by providing students with hands-on anatomical study, and surgical training through realistic practice on actual human tissue structures." }
+    ]
+  },
+  {
+    emoji: "👁️", name: "Eye Donation", id: "eyedonation",
+    questions: [
+      { q: "Which part of the eye is donated after death?", opts: ["The retina","The iris","The cornea","The pupil"], ans: 2, exp: "The cornea is the transparent dome at the front of the eye that focuses light. It can be surgically replaced when damaged, restoring vision to people with corneal blindness." },
+      { q: "Within how many hours of death should eye donation ideally take place?", opts: ["1–2 hours","4–6 hours","12–24 hours","48 hours"], ans: 1, exp: "The cornea begins to deteriorate rapidly after death. Collection within 4–6 hours ensures the tissue remains viable and suitable for successful transplantation into a recipient." },
+      { q: "How many people can have their vision restored from a single eye donor?", opts: ["One person","Two people","Five people","Ten people"], ans: 1, exp: "Each donor provides two corneas — one from each eye. Each cornea is transplanted into one recipient, allowing a single donor to restore vision in two separate individuals." },
+      { q: "Does eye donation alter the facial appearance of the deceased?", opts: ["Yes, it significantly changes facial appearance","Yes, but only slightly","No, it does not affect facial appearance","It depends on the age of the donor"], ans: 2, exp: "Cornea retrieval is performed with care and precision. The eye appearance is preserved for open-casket ceremonies, making this a common misconception that unnecessarily discourages donation." },
+      { q: "Who can donate their eyes after death?", opts: ["Only people below 50 years of age","Only those who wore spectacles","Almost anyone regardless of age or eyesight condition","Only people with perfect vision"], ans: 2, exp: "Age, spectacle use, or minor eye conditions generally do not prevent donation. Even people with conditions like myopia or diabetes can often donate usable corneas." },
+      { q: "What is the medical term for the surgical procedure using a donated cornea?", opts: ["Cataract surgery","Lasik surgery","Corneal transplantation (keratoplasty)","Retinal detachment repair"], ans: 2, exp: "Keratoplasty is the surgical replacement of a damaged or diseased cornea with a healthy donated one. It is one of the most commonly performed and successful transplant surgeries." },
+      { q: "Why is timely eye donation critical?", opts: ["Late donation increases the donor's cost","The cornea deteriorates quickly after death and becomes unusable","Late donation is illegal","Hospitals do not accept donations after 12 hours"], ans: 1, exp: "Corneal cells break down rapidly after death without blood circulation. Beyond 6 hours, the tissue quality decreases significantly, reducing the chance of a successful transplant." },
+      { q: "Which statement about eye donation is a COMMON misconception?", opts: ["Eye donation helps blind people regain vision","Eye donation changes the donor's facial appearance","Eye donation occurs only after death","The cornea is the donated part"], ans: 1, exp: "Many people hesitate to pledge because they fear their appearance will change after donation. This is false — cornea retrieval is subtle and does not alter how the face looks." },
+      { q: "'A small part can restore someone's entire vision' refers to:", opts: ["A full eye transplant restores vision","Just the cornea — a thin transparent layer — is enough to restore sight","Glasses made from donor eyes restore vision","The entire eye socket is replaced"], ans: 1, exp: "The cornea is a thin, transparent tissue only about half a millimetre thick. Yet replacing this tiny layer alone is sufficient to fully restore vision in someone with corneal blindness." },
+      { q: "Which condition is MOST commonly treated by a donated cornea?", opts: ["Glaucoma","Colour blindness","Corneal blindness","Cataract"], ans: 2, exp: "Corneal blindness from injury, infection, or disease is one of the leading causes of treatable blindness worldwide. A donated cornea can completely restore functional vision in these cases." }
+    ]
+  },
+  {
+    emoji: "☠️", name: "Chemical / Toxic Gas Leak", id: "gasleak",
+    questions: [
+      { q: "What is the FIRST action to take during a toxic gas leak?", opts: ["Open all windows to let the gas out","Move away from the area quickly, preferably upwind","Stay indoors and do nothing","Breathe deeply to assess the smell"], ans: 1, exp: "Moving upwind immediately reduces your exposure because the wind carries the gas away from you rather than toward you. Distance from the source is your most urgent priority." },
+      { q: "Why should you cover your nose and mouth during a chemical gas leak?", opts: ["To keep warm","To reduce inhalation of harmful gases","To block dust only","It is only a psychological comfort measure"], ans: 1, exp: "Covering your airways reduces the concentration of toxic gas entering your lungs. Even a wet cloth provides some filtration and buys critical time to reach a safer area." },
+      { q: "What should you do if you are INDOORS during a toxic gas leak?", opts: ["Open all doors and windows for fresh air","Go to the highest floor of the building","Close doors, windows, and seal all openings","Turn on all fans and air conditioners"], ans: 2, exp: "Sealing your space prevents outside gas from entering while you await official evacuation guidance. Opening windows allows toxic gas to flood in, dramatically worsening your exposure." },
+      { q: "If toxic chemicals come into contact with your skin, what should you do IMMEDIATELY?", opts: ["Cover the area with cloth and wait for help","Apply cream or lotion to the affected area","Wash the area immediately with clean water for several minutes","Rub the area dry to remove the chemical"], ans: 2, exp: "Prolonged skin contact with toxic chemicals causes burns and systemic absorption. Immediate, thorough flushing with water dilutes and washes away the chemical before damage deepens." },
+      { q: "Why should you avoid low-lying areas during a toxic gas leak?", opts: ["Low-lying areas have poor phone signals","Many toxic gases are heavier than air and settle in low-lying places","Emergency services cannot reach low areas","Low-lying areas are always flooded"], ans: 1, exp: "Gases like chlorine and methyl isocyanate are denser than air and sink into valleys, ditches, and basements. Moving to higher ground keeps you above the heaviest concentration." },
+      { q: "Which direction should you move relative to wind during a gas leak?", opts: ["Downwind — in the direction the wind is blowing","Upwind — against the direction the wind is blowing","Perpendicular to the wind","Direction of wind does not matter"], ans: 1, exp: "Moving upwind means you are walking against the wind's direction — so the gas cloud is blown away from you rather than being carried towards you as you move." },
+      { q: "Which household item can serve as a temporary nose/mouth cover during a gas leak?", opts: ["A plastic bag","A wet cloth","A mobile phone cover","A metal sheet"], ans: 1, exp: "A wet cloth captures some airborne particles and vapours, reducing the concentration of toxic gas you inhale while you evacuate to a safe distance from the affected zone." },
+      { q: "Which industrial gas is commonly responsible for factory gas leak disasters in India?", opts: ["Oxygen","Nitrogen","Methyl isocyanate (MIC) or ammonia","Carbon dioxide"], ans: 2, exp: "The 1984 Bhopal disaster involved methyl isocyanate (MIC) from a Union Carbide plant — the deadliest industrial accident in history. Ammonia leaks also cause multiple industrial casualties annually." },
+      { q: "What should you do AFTER evacuating from a toxic gas leak area?", opts: ["Return immediately to collect belongings","Seek medical attention and follow official guidance","Share your experience on social media","Help others by re-entering the danger zone"], ans: 1, exp: "Many toxic gases cause delayed symptoms — you may feel fine initially but develop serious complications later. Medical evaluation after any exposure is essential even without immediate symptoms." },
+      { q: "Why is understanding gas behaviour (density, movement) important for safety?", opts: ["It helps chemical engineers only","It is only relevant in factories","Understanding danger patterns helps individuals make better escape decisions","Gas behaviour has no relevance to personal safety"], ans: 2, exp: "Knowing whether a gas is heavier or lighter than air, and how wind affects its movement, allows anyone to choose the safest escape route and avoid zones of maximum concentration." }
+    ]
+  }
+];
+
+// ─── STATE ────────────────────────────────────────────────────────
+let currentTopic = null;
+let currentQ = 0;
+let score = 0;
+let answered = false;
+let currentTopicIndex = 0;
+
+// ─── NAVIGATION ───────────────────────────────────────────────────
+function goHome() {
+  if (window.speechSynthesis) window.speechSynthesis.cancel();
+  showScreen('home');
+}
+
+function showScreen(id) {
+  ['home','quiz','result'].forEach(s => {
+    document.getElementById(s).classList.toggle('active', s === id);
+  });
+}
+
+function retryTopic() {
+  if (window.speechSynthesis) window.speechSynthesis.cancel();
+  startTopic(currentTopicIndex);
+}
+
+// ─── TOPIC START ──────────────────────────────────────────────────
+function startTopic(idx) {
+  currentTopicIndex = idx;
+  currentTopic = topics[idx];
+  currentQ = 0;
+  score = 0;
+  answered = false;
+  showScreen('quiz');
+  document.getElementById('qIcon').textContent = currentTopic.emoji;
+  document.getElementById('qTitle').textContent = currentTopic.name;
+  renderQuestion();
+}
+
+// ─── RENDER QUESTION ──────────────────────────────────────────────
+function renderQuestion() {
+  answered = false;
+  if (window.speechSynthesis) window.speechSynthesis.cancel();
+
+  const q = currentTopic.questions[currentQ];
+  const total = currentTopic.questions.length;
+  const pct = (currentQ / total) * 100;
+
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressText').textContent = `Question ${currentQ + 1} of ${total}`;
+  document.getElementById('qNumber').textContent = `Question ${currentQ + 1}`;
+  document.getElementById('qText').textContent = q.q;
+
+  const opts = document.getElementById('optionsContainer');
+  opts.innerHTML = '';
+  ['A','B','C','D'].forEach((letter, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'opt-btn';
+    btn.innerHTML = `<span class="opt-letter">${letter}</span><span class="opt-text">${q.opts[i]}</span>`;
+    btn.onclick = () => selectAnswer(i, btn);
+    opts.appendChild(btn);
+  });
+
+  document.getElementById('feedbackSection').style.display = 'none';
+  document.getElementById('nextBtn').style.display = 'none';
+
+  // Speak the question after a short delay
+  setTimeout(() => speak(q.q), 300);
+}
+
+// ─── SELECT ANSWER ────────────────────────────────────────────────
+function selectAnswer(idx, btn) {
+  if (answered) return;
+  answered = true;
+
+  const q = currentTopic.questions[currentQ];
+  const allBtns = document.querySelectorAll('.opt-btn');
+  allBtns.forEach(b => b.disabled = true);
+
+  const isCorrect = idx === q.ans;
+  if (isCorrect) score++;
+
+  btn.classList.add(isCorrect ? 'correct' : 'wrong');
+  if (!isCorrect) allBtns[q.ans].classList.add('correct');
+
+  // Feedback section
+  const section = document.getElementById('feedbackSection');
+  const fb = document.getElementById('feedbackBar');
+  const expBox = document.getElementById('explanationBox');
+  const expText = document.getElementById('explanationText');
+
+  fb.className = 'feedback-bar ' + (isCorrect ? 'correct' : 'wrong');
+  fb.innerHTML = isCorrect
+    ? '✅ Correct!'
+    : `❌ Wrong — correct answer: <strong>${['A','B','C','D'][q.ans]}</strong>`;
+
+  expBox.className = 'explanation-box ' + (isCorrect ? 'correct' : 'wrong');
+  expText.textContent = q.exp;
+  section.style.display = 'block';
+
+  const total = currentTopic.questions.length;
+  const isLast = currentQ === total - 1;
+  const nextBtn = document.getElementById('nextBtn');
+  nextBtn.style.display = 'block';
+  nextBtn.textContent = isLast ? 'See results →' : 'Next question →';
+
+  // Speak feedback + explanation
+  const voiceText = (isCorrect ? 'Correct! ' : 'Wrong. The correct answer is ' + q.opts[q.ans] + '. ') + 'Did you know? ' + q.exp;
+  setTimeout(() => speak(voiceText), 300);
+}
+
+// ─── NEXT QUESTION ────────────────────────────────────────────────
+function nextQuestion() {
+  if (window.speechSynthesis) window.speechSynthesis.cancel();
+  currentQ++;
+  if (currentQ >= currentTopic.questions.length) {
+    showResult();
+  } else {
+    document.getElementById('progressFill').style.width = ((currentQ / currentTopic.questions.length) * 100) + '%';
+    renderQuestion();
+  }
+}
+
+// ─── RESULT ───────────────────────────────────────────────────────
+function showResult() {
+  showScreen('result');
+  const total = currentTopic.questions.length;
+  const pct = Math.round((score / total) * 100);
+
+  let emoji, badgeClass, badgeText, msg;
+  if (pct >= 80) {
+    emoji = '🏆'; badgeClass = 'good'; badgeText = 'Excellent!';
+    msg = 'Outstanding performance! You clearly know this topic well. Keep spreading awareness!';
+  } else if (pct >= 50) {
+    emoji = '👍'; badgeClass = 'mid'; badgeText = 'Good effort';
+    msg = "Good effort! A few more revisions and you'll master this topic completely.";
+  } else {
+    emoji = '📚'; badgeClass = 'low'; badgeText = 'Keep learning';
+    msg = "Don't give up! Review the topic and try again — every attempt makes you stronger.";
+  }
+
+  document.getElementById('resultEmoji').textContent = emoji;
+  document.getElementById('resultScore').textContent = `${score}/${total}`;
+  document.getElementById('resultLabel').textContent = `${pct}% correct`;
+  document.getElementById('resultBadge').innerHTML = `<span class="score-badge ${badgeClass}">${currentTopic.emoji} ${badgeText}</span>`;
+  document.getElementById('resultMsg').textContent = msg;
+
+  setTimeout(() => speak(`You scored ${score} out of ${total}. ${msg}`), 400);
+}
+
+// ─── BUILD HOME GRID ──────────────────────────────────────────────
+function buildTopicGrid() {
+  const grid = document.getElementById('topicGrid');
+  topics.forEach((t, i) => {
+    const card = document.createElement('div');
+    card.className = 'topic-card';
+    card.innerHTML = `<span class="topic-emoji">${t.emoji}</span><div class="topic-name">${t.name}</div><div class="topic-count">10 questions</div>`;
+    card.onclick = () => startTopic(i);
+    grid.appendChild(card);
+  });
+}
+
+buildTopicGrid();
+/* MOBILE BACK BUTTON FIX */
+
+history.pushState(null,null,location.href);
+
+window.addEventListener('popstate',function(){
+
+  if(document.getElementById('quiz').classList.contains('active') ||
+     document.getElementById('result').classList.contains('active')){
+
+      goHome();
+
+      history.pushState(null,null,location.href);
+  }
+
+});
+</script>
+</body>
+</html>
