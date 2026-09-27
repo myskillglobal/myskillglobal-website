@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>From White Sari to Red Saree</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+<style>
+:root{
+  --bg:#0a0e27; --bg2:#0f1638; --card:#131b45; --gold:#d4af37; --gold-soft:#e8c968;
+  --text:#eef0fa; --text-dim:#a7adcf; --border:#26305f;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box;}
+html{scroll-padding-top:env(safe-area-inset-top,0px);height:100%;}
+body{
+  height:100%;margin:0;background:var(--bg);color:var(--text);
+  font-family:Georgia,'Noto Serif',serif;
+  -webkit-font-smoothing:antialiased;
+}
+.app{max-width:640px;margin:0 auto;min-height:100%;display:flex;flex-direction:column;}
+header{
+  position:sticky;top:env(safe-area-inset-top,0px);z-index:10;
+  background:linear-gradient(180deg,var(--bg2),rgba(15,22,56,0.96));
+  border-bottom:1px solid var(--border);padding:16px 18px;
+  text-align:center;
+}
+header h1{margin:0;font-size:1.25rem;color:var(--gold-soft);letter-spacing:0.5px;}
+header p{margin:4px 0 0;font-size:0.8rem;color:var(--text-dim);}
+.home-btn{
+  position:absolute;left:14px;top:calc(14px + env(safe-area-inset-top,0px));
+  width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;
+  background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.35);color:var(--gold-soft);
+  text-decoration:none;font-size:1.05rem;
+}
+main{flex:1;padding:16px 16px 40px;}
+
+.hero-img{
+  max-width:260px;width:100%;margin:6px auto 18px;display:block;
+  border-radius:14px;border:1px solid var(--border);
+}
+.intro{
+  background:var(--card);border:1px solid var(--border);border-radius:14px;
+  padding:16px 18px;margin-bottom:18px;
+}
+.intro h2{margin:0 0 10px;font-size:1.05rem;color:var(--gold-soft);text-align:center;}
+.intro p{margin:0;font-size:0.95rem;line-height:1.9;color:var(--text);white-space:pre-wrap;}
+
+/* Episode list */
+.ep-list{display:flex;flex-direction:column;gap:12px;}
+.ep-card{
+  background:var(--card);border:1px solid var(--border);border-radius:14px;
+  padding:14px 16px;display:flex;align-items:center;gap:12px;cursor:pointer;
+  transition:border-color .15s;
+}
+.ep-card:active{border-color:var(--gold);}
+.ep-num{
+  min-width:38px;height:38px;border-radius:50%;background:rgba(212,175,55,0.12);
+  color:var(--gold-soft);display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:0.95rem;flex-shrink:0;border:1px solid rgba(212,175,55,0.35);
+}
+.ep-info{flex:1;min-width:0;}
+.ep-title{font-size:1rem;color:var(--text);margin:0;}
+.ep-sub{font-size:0.75rem;color:var(--text-dim);margin:2px 0 0;}
+.ep-badge{font-size:0.7rem;color:var(--gold);flex-shrink:0;}
+.ep-voice-btn{
+  flex-shrink:0;width:34px;height:34px;border-radius:50%;
+  background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.35);
+  color:var(--gold-soft);display:flex;align-items:center;justify-content:center;
+  font-size:0.95rem;
+}
+.ep-voice-btn.on{background:var(--gold);color:#161200;border-color:var(--gold);}
+
+.continue-bar{
+  background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.4);
+  border-radius:12px;padding:12px 14px;margin-bottom:12px;display:flex;
+  align-items:center;justify-content:space-between;gap:10px;
+}
+.continue-bar span{font-size:0.85rem;color:var(--gold-soft);}
+.continue-bar button{
+  background:var(--gold);color:#161200;border:none;border-radius:8px;
+  padding:8px 14px;font-size:0.8rem;font-weight:700;flex-shrink:0;
+}
+.bookmark-bar{
+  background:rgba(212,175,55,0.06);border:1px dashed rgba(212,175,55,0.4);
+  border-radius:12px;padding:12px 14px;margin-bottom:16px;display:flex;
+  align-items:center;justify-content:space-between;gap:10px;
+}
+.bookmark-bar span{font-size:0.85rem;color:var(--gold-soft);}
+.bookmark-bar button{
+  background:transparent;color:var(--gold-soft);border:1px solid var(--gold);border-radius:8px;
+  padding:8px 14px;font-size:0.8rem;font-weight:700;flex-shrink:0;
+}
+
+/* Reading view */
+.reader{display:none;flex-direction:column;}
+.reader.active{display:flex;}
+.ep-list.hidden{display:none;}
+.reader-title{color:var(--gold-soft);font-size:1.1rem;margin:0 0 14px;text-align:center;}
+.reader-content{
+  font-size:1.05rem;line-height:1.9;color:var(--text);white-space:pre-wrap;
+}
+.controls{
+  position:sticky;bottom:0;padding:10px 0 calc(10px + env(safe-area-inset-bottom,0px));
+  background:linear-gradient(0deg,var(--bg) 60%,transparent);
+  display:flex;gap:8px;margin-top:18px;
+}
+.btn{
+  flex:1;border:1px solid var(--border);background:var(--card);color:var(--text);
+  border-radius:10px;padding:12px 8px;font-size:0.85rem;display:flex;align-items:center;
+  justify-content:center;gap:6px;
+}
+.btn.gold{background:var(--gold);color:#161200;border:none;font-weight:700;}
+.btn.on{border-color:var(--gold);color:var(--gold-soft);}
+.btn:disabled{opacity:0.35;}
+.backbtn{
+  background:none;border:none;color:var(--text-dim);font-size:0.85rem;
+  padding:6px 0 14px;text-align:left;
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <a class="home-btn" href="index.html" aria-label="Home">🏠</a>
+    <h1>From White Sari to Red Saree</h1>
+<p>“Don’t I Feel Hungry?” — A Little Girl’s Question That Stirred a Society</p>
+  </header>
+  <main>
+    <div id="listView">
+      <img class="hero-img" src="images/jyotsna.png" alt="Portrait of Jyotsna — a symbol of the passage from a widow's life to a new one" loading="lazy">
+      <div class="intro">
+        <h2>Introduction</h2>
+        <p>In nineteenth-century Bengal, the winds of social change had begun to stir. On one side glowed the new light of education; on the other, many old customs still bound people's lives with an iron grip. The lives of widowed women, in particular, were hemmed in by countless social restrictions.
+
+This story is a work of fiction set against that historical backdrop.
+
+Jyotsna — a small girl. Widowed at a very young age. She was not yet old enough to understand what being a widow even meant; she only knew that she could not understand why, when everyone else ate, she alone had to go without.
+
+One Ekadashi afternoon, a simple question slipped from her lips —
+
+"Don't I feel hungry too?"
+
+That one question from a child changed the thinking of her elder brother, shook the beliefs of an entire family, and slowly carried her toward a future in which no one but she herself would decide the course of her own life.
+
+So this story is not only Jyotsna's story.
+
+It is a story of humanity standing against hunger, of conscience standing against custom, and of a girl reclaiming her own life.</p>
+      </div>
+      <div id="continueBar"></div>
+      <div id="bookmarkBar"></div>
+      <div class="ep-list" id="epList"></div>
+    </div>
+    <div class="reader" id="readerView">
+      <button class="backbtn" onclick="showList()">← Back to Episode List</button>
+      <h2 class="reader-title" id="rTitle"></h2>
+      <div class="reader-content" id="rContent"></div>
+      <div class="controls">
+        <button class="btn" id="voiceBtn" onclick="toggleVoice()">🔊 Read Aloud</button>
+        <button class="btn" id="bookBtn" onclick="toggleBookmark()">🔖 Bookmark</button>
+      </div>
+      <div class="controls">
+        <button class="btn" id="prevBtn" onclick="navEp(-1)">‹ Previous</button>
+        <button class="btn" id="nextBtn" onclick="navEp(1)">Next ›</button>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+const episodes = [
+{title:"1. The Ekadashi Afternoon", text:`The year 1853.
+
+Near the border of Hooghly and Bardhaman, not far from Dashghara, stood a grand zamindar's mansion.
+
+It was almost eleven in the morning.
+
+A special gathering had been called in the house's drawing room that day. Several respected men of the village had come. The head of the household, Rajendranarayan Chowdhury, had organized the meeting himself.
+
+The matter at hand was a bold one — a school was to be founded in the village, where girls would have the chance to study alongside boys.
+
+But it was no easy task.
+
+The conservative people of the village were opposed to educating girls. They believed that putting books in girls' hands would bring ruin upon the household.
+
+So today, as a special guest, Ishwar Chandra Vidyasagar had come.
+
+Rajendranarayan believed that in the face of Vidyasagar's reasoning and learning, the long-standing wall of custom might, if only a little, begin to shift.
+
+At one side of the drawing room, food was being laid out.
+
+Hot luchis, chickpea dal, sweets, sandesh — everything had been arranged. The smell of ghee filled the air.
+
+Just then, the sound of small footsteps came from near the door.
+
+A girl ran into the room.
+
+She was ten or eleven years old.
+
+She wore a plain white sari, the kind a widow wears.
+
+Her hair was cropped short.
+
+Her face was drawn, her eyes wide.
+
+She walked straight up to her father and stood before him.
+
+—"Baba... Baba..."
+
+Rajendranarayan looked at her.
+
+—"What is it, Jyotsna?"
+
+The girl glanced around the room, then leaned close to her father and whispered,
+
+—"Don't tell Ma, Baba... I'm very hungry."
+
+Rajendranarayan froze.
+
+Jyotsna spoke again, a little louder this time.
+
+—"The boys are eating luchis. I wanted some too. Ma said, 'Shame on you! Today is Ekadashi. You mustn't speak of food today.'"
+
+Tears welled up in her eyes.
+
+—"But Baba, I haven't eaten anything since morning. Not even water. You're not eating, Ma isn't eating — that's fine. But Harinath-da and Girish-da are eating. Why must it only be me? Don't I feel hungry too?"
+
+Every voice in the room fell silent.
+
+Rajendranarayan stared at his daughter's face.
+
+But in front of so many people, he seemed to lose his own voice.
+
+Slowly, he said,
+
+—"There's a meeting going on here right now, dear. Go inside."
+
+Jyotsna looked at her father for a moment longer.
+
+Then she glanced at the plates of food.
+
+Without a word, she turned and walked slowly out of the room.
+
+The white sari faded from view behind the door.`},
+
+{title:"2. A Silver Plate and a School for Girls", text:`A little while later, Ramkanai Bhattacharya came from the kitchen carrying a silver plate laden with food.
+
+The plate was set before Vidyasagar.
+
+Rajendranarayan said,
+
+—"Vidyasagar Mahashay, please eat something first. Then we shall begin our discussion."
+
+Vidyasagar looked at the plate and said,
+
+—"No, I won't eat today."
+
+—"Nothing at all?"
+
+—"I'm not feeling well."
+
+Ramkanai took the plate away.
+
+But by then, Vidyasagar's mind was no longer on the meeting.
+
+He could still see that child's face before him.
+
+The meeting began.
+
+Bhuvaneshwar Mukhopadhyay spoke first.
+
+—"What need is there to send girls to school? Let them run the household — that's enough."
+
+Madhusudan Bandyopadhyay added,
+
+—"Our society has no such custom."
+
+Vidyasagar listened calmly.
+
+Then he said,
+
+—"A society that keeps half its people uneducated can never achieve true progress."
+
+He explained that a child's first teacher is its mother.
+
+If the mother is educated, her child too receives the light of learning.
+
+Someone objected,
+
+—"Where does religion permit this?"
+
+Vidyasagar smiled gently and said,
+
+—"Is knowledge a sin?"
+
+No one answered.
+
+—"To whom do we pray for knowledge?"
+
+Someone said,
+
+—"To the goddess Saraswati."
+
+Vidyasagar said,
+
+—"She is a woman. If knowledge itself is sacred, and a woman is its very symbol, then how can a woman's education be impure?"
+
+He then spoke of learned women such as Gargi, Lopamudra, Apala, and Ghosha.
+
+Slowly, the voices of objection grew quieter.
+
+Consent was given to establish the school.
+
+A look of relief spread across Rajendranarayan's face.
+
+But there was no smile on Vidyasagar's.`},
+
+{title:"3. Jyotsna's Face", text:`Once everyone had left, Rajendranarayan said,
+
+—"Now please eat something. There are luchis."
+
+Vidyasagar said quietly,
+
+—"Rajendranarayan-babu, I have no appetite."
+
+—"Are you unwell?"
+
+—"It isn't my body."
+
+He paused for a moment.
+
+—"It's my heart that's troubled."
+
+Rajendranarayan understood.
+
+—"Because of Jyotsna?"
+
+Vidyasagar nodded.
+
+—"Today we spent so long speaking of women's education. And yet in your own house, a child went hungry simply because she is a widow."
+
+Rajendranarayan lowered his head.
+
+—"What... what can I do?"
+
+Vidyasagar said,
+
+—"You are her father. You can do a great deal."
+
+Rajendranarayan said nothing.
+
+—"A child is hungry. Must one seek society's permission even to feed her?"
+
+Rajendranarayan had no answer.
+
+As he was leaving, Vidyasagar said only,
+
+—"Today, in your daughter's eyes, I saw a question. One day, society itself will have to answer it."`},
+
+{title:"4. Harinath's First Protest", text:`After Vidyasagar left Rajendranarayan Chowdhury's house that day, no one spoke for a long while.
+
+In one corner of the drawing room lay the silver plate that had been set out for him.
+
+The luchis had gone cold.
+
+And at the other end of the house, sitting alone in her small room, Jyotsna still could not understand why a few words of hers had stirred such a great man so deeply.
+
+She only knew that she had been very hungry.
+
+That evening, Harinath quietly slipped into his sister's room.
+
+Jyotsna sat on the floor. There was no food in front of her.
+
+Without a word, Harinath set a small plate down before her — one he had carried in with his own hands.
+
+Two luchis.
+
+A little dal.
+
+And a piece of sandesh.
+
+Jyotsna looked up, startled.
+
+—"Dada, what if Ma sees?"
+
+Harinath glanced toward the door and said,
+
+—"If she sees, she sees."
+
+—"But it's Ekadashi today."
+
+Harinath was quiet for a moment, then said,
+
+—"Do you even know what Ekadashi is?"
+
+Jyotsna shook her head.
+
+—"No."
+
+—"Neither do I, not fully. But I know one thing — when you're hungry, you need food."
+
+Jyotsna smiled faintly.
+
+Then she picked up the luchi.
+
+Harinath watched her.
+
+She began to eat.
+
+That day, for the first time, a question took root in Harinath's mind —
+
+Can any social rule truly matter more than a child's hunger?
+
+From the next day on, something in the household began to change.
+
+Harinath no longer stayed silent as he used to.
+
+He stopped hiding food away for Jyotsna in secret — instead, he stood by his sister's side openly.
+
+Hemangini Devi objected at first.
+
+—"What will people say?"
+
+Harinath answered calmly,
+
+—"People said plenty that day too. But will Jyotsna's hunger simply vanish because of what people say?"
+
+Hemangini had no answer.
+
+This time, Rajendranarayan did not object to his son's words either.
+
+In fact, one day he himself said,
+
+—"Give Jyotsna whatever she needs."
+
+For the first time, the girl's life had come to matter more than the rules of the house.`},
+
+{title:"5. Vidyasagar's Struggle, and Jyotsna's Growing Up", text:`Meanwhile, another battle had begun in Calcutta.
+
+Jyotsna's face stayed with Vidyasagar.
+
+The man who had fought so long for girls' education now understood that education was tied up with something more — a widow's right to live her life freely.
+
+Night after night, he pored over old scriptural texts.
+
+On one side lay the work of founding girls' schools.
+
+On the other, the search for scriptural grounds to support the remarriage of widows.
+
+Society's opposition kept growing.
+
+But Vidyasagar did not stop.
+
+After a long search, he drew society's attention to a provision of the Parashara Samhita which, in his view, permitted a widow's remarriage under certain conditions.
+
+Then began the long road of appeals, petitions, argument, and public campaigning.
+
+At last, in 1856, the Widow Remarriage Act was passed.
+
+The law had changed.
+
+But it would take far longer for people's hearts to change.
+
+Meanwhile, the years rolled on.
+
+Jyotsna grew.
+
+Rajendranarayan kept his word.
+
+The girl studied.
+
+Harinath brought her books to read.
+
+Girish, too, would sometimes teach her.
+
+The girl who had once wept for food slowly found her own world in the pages of books.
+
+One day Harinath asked her,
+
+—"What do you want to become when you grow up?"
+
+Jyotsna smiled and said,
+
+—"I don't know. But I don't want to live depending on anyone else."
+
+Harinath said,
+
+—"Then keep studying."`},
+
+{title:"6. Talk of Marriage, and Amaresh", text:`As Jyotsna began to pass out of childhood into adolescence, talk of marriage rose once more among the relatives.
+
+One day Bhuvaneshwar Mukhopadhyay said to Rajendranarayan,
+
+—"You're thinking of your daughter's marriage, surely? It isn't wise to delay too long."
+
+Rajendranarayan was no longer the man he had once been.
+
+He said,
+
+—"Jyotsna isn't of age yet."
+
+—"But what of society?"
+
+Harinath, sitting beside him, said,
+
+—"My sister's life will not come to a halt for society's sake."
+
+Bhuvaneshwar looked at him, startled.
+
+—"What are you trying to say?"
+
+Harinath said, his voice clear and firm,
+
+—"There will be no marriage for Jyotsna until she comes of age. And it isn't as though marriage must follow the moment she does. If she herself, of her own judgment and her own will, does not consent, there will be no marriage at all."
+
+A silence fell over the room.
+
+Jyotsna was twelve then. The letters of books now filled the face of the little girl who had once wept for food, but at the mention of marriage, her face still hardened the same way it had that day long ago.
+
+Harinath spoke again.
+
+—"Jyotsna's childhood will not be cut short to send her into someone else's home. She will study, she will grow, and she alone will decide the course of her own life. Unless she herself is willing, there will be no more talk of her marriage."
+
+—"A girl's life does not begin with child marriage. Very often, that is exactly where her childhood ends."
+
+Rajendranarayan slowly nodded.
+
+—"Harinath is right."
+
+Around this time, a friend of Harinath's began visiting the house often.
+
+His name was Amaresh.
+
+An educated young man, quiet and even-tempered.
+
+He and Jyotsna first came to know each other over a book.
+
+One day Jyotsna was searching for a book.
+
+Amaresh took it down from the shelf and asked,
+
+—"This one?"
+
+Jyotsna took the book and said,
+
+—"Have you read it?"
+
+—"Yes."
+
+—"What's it like?"
+
+—"Read it yourself and tell me. I'd rather hear your opinion."
+
+From that day on, a kind of friendship grew between them.
+
+But Amaresh never once asked about Jyotsna's past.
+
+He never once pitied her.
+
+He never once said, "You're a widow, so..."
+
+Instead, he simply saw her as a person.
+
+One day Harinath said to his friend,
+
+—"Amaresh, remember one thing. If marriage ever comes into my sister's life, it will be by her own choice, and no one else's."
+
+Amaresh replied,
+
+—"If Jyotsna doesn't want me, I will never speak to her of marriage."
+
+Harinath looked at his friend and smiled.
+
+—"It's because you're my friend that I've trusted you all this while."`},
+
+{title:"7. Eighteen, and Jyotsna's Decision to Marry", text:`A few more years passed.
+
+One morning, Jyotsna stood in the courtyard of Rajendranarayan's house.
+
+Today she had turned eighteen.
+
+Harinath came to her with a book in his hand and said,
+
+—"Here, take this."
+
+Jyotsna took the book and asked,
+
+—"What book is it?"
+
+—"It's for you."
+
+—"Why?"
+
+Harinath smiled and said,
+
+—"From today, the decisions of your life are yours alone to make."
+
+Jyotsna stood silent for a while.
+
+Then she said softly,
+
+—"Dada... may I tell you something?"
+
+—"Tell me."
+
+—"I have feelings for Amaresh."
+
+A smile spread across Harinath's face.
+
+—"I knew it."
+
+—"You won't be angry?"
+
+—"Why would I be angry?"
+
+—"You had told me that the decision about my marriage would be mine."
+
+Harinath said,
+
+—"And I've kept my word."
+
+The moment talk arose of Jyotsna's marriage to Amaresh, objections came from some quarters once more.
+
+Someone said,
+
+—"But she was a widow!"
+
+This time, Harinath stood his ground.
+
+—"She was. Now she is a grown woman. She has every right to decide her own life."
+
+Someone said,
+
+—"What will society say?"
+
+Harinath smiled faintly and said,
+
+—"The answer to that question lies with my sister."
+
+Everyone turned to look at Jyotsna.
+
+In a calm voice, she said,
+
+—"If society stands in the way of a person's happiness, then it is society that needs to change."
+
+Rajendranarayan's eyes grew moist.
+
+Hemangini Devi drew her daughter into an embrace.`},
+
+{title:"8. The Last Meeting, the Last Words", text:`Before the wedding, Vidyasagar came one day to Rajendranarayan's house.
+
+Jyotsna, seeing him, went forward to meet him.
+
+—"Do you remember me?"
+
+Vidyasagar smiled and said,
+
+—"How could I ever forget you?"
+
+Jyotsna stood with her head bowed.
+
+Vidyasagar said,
+
+—"That day, all you asked for was food."
+
+Jyotsna smiled faintly.
+
+—"And today?"
+
+—"Today, you have chosen your own life."
+
+Tears welled up in Jyotsna's eyes.
+
+She said,
+
+—"If you hadn't come that day, perhaps nothing would have changed."
+
+Vidyasagar shook his head.
+
+—"No, my child. I only knocked on a door. It was your brother who opened it."
+
+Harinath stood a little way off.
+
+Vidyasagar looked at him and said,
+
+—"Remember this — society does not always change through great speeches. Sometimes it changes through the courage of placing a single luchi in a hungry child's hand."
+
+Harinath's eyes grew moist.
+
+On her wedding day, Jyotsna wore a red saree.
+
+Vermilion marked her forehead.
+
+Amaresh stood beside her.
+
+But the deepest meaning of that moment lay elsewhere.
+
+The same child who had once stood before her father, weeping, and asked —
+
+"Don't I feel hungry too?"
+
+—had now, herself, chosen the course of her own life.
+
+She had not been married as a child.
+
+Her childhood had not been taken from her.
+
+Being a widow had not decided her future for her.
+
+Once she had come of age, of her own free will, she made her own choice of life partner.
+
+And the path that led her there had begun with one small act of protest —
+
+a brother who defied society's fear and let his hungry sister eat a single luchi.
+
+Harinath may not have known it then, but that one luchi would one day become the very first symbol of his sister's freedom.
+
+The End.`}
+];
+
+let current = 0;
+let speaking = false;   // true while an utterance is actively playing (not paused)
+let paused = false;
+let voicingIndex = null; // which episode index is currently loaded into the speech engine
+let utter = null;
+
+// Unique key so this story's saved progress never collides with any other
+// story/app that might share the same browser/site.
+const STATE_KEY = 'ws2rs_en_state_v1';
+
+function loadState(){
+  try{ return JSON.parse(localStorage.getItem(STATE_KEY)||'{}'); }catch(e){ return {}; }
+}
+function saveState(s){
+  try{ localStorage.setItem(STATE_KEY, JSON.stringify(s)); }catch(e){}
+}
+
+function renderList(){
+  const state = loadState();
+  const listEl = document.getElementById('epList');
+  listEl.innerHTML = '';
+  episodes.forEach((ep,i)=>{
+    const card = document.createElement('div');
+    card.className='ep-card';
+    card.innerHTML = `<div class="ep-num">${i+1}</div>
+      <div class="ep-info">
+        <p class="ep-title">${ep.title}</p>
+        <p class="ep-sub">Episode ${i+1} / ${episodes.length}</p>
+      </div>
+      ${state.bookmark===i?'<div class="ep-badge">🔖</div>':''}
+      <button class="ep-voice-btn" id="listVoiceBtn-${i}" aria-label="Read episode aloud">🔊</button>`;
+    card.querySelector('.ep-info').onclick = ()=>openEp(i);
+    card.querySelector('.ep-num').onclick = ()=>openEp(i);
+    card.querySelector('.ep-voice-btn').onclick = (e)=>{ e.stopPropagation(); toggleVoice(i); };
+    listEl.appendChild(card);
+  });
+
+  const bar = document.getElementById('continueBar');
+  if(typeof state.lastRead==='number' && episodes[state.lastRead] && state.lastRead!==state.bookmark){
+    bar.innerHTML = `<div class="continue-bar">
+      <span>Continue reading: ${episodes[state.lastRead].title}</span>
+      <button onclick="openEp(${state.lastRead})">Continue</button>
+    </div>`;
+  } else { bar.innerHTML=''; }
+
+  const bbar = document.getElementById('bookmarkBar');
+  if(typeof state.bookmark==='number' && episodes[state.bookmark]){
+    bbar.innerHTML = `<div class="bookmark-bar">
+      <span>🔖 Bookmarked: ${episodes[state.bookmark].title}</span>
+      <button onclick="openEp(${state.bookmark})">Go to bookmark</button>
+    </div>`;
+  } else { bbar.innerHTML=''; }
+
+  syncVoiceButtons();
+}
+
+function openEp(i){
+  // If voice is playing for a different episode, stop it; if it's the same
+  // episode, leave it running so switching views doesn't cut the audio.
+  if(voicingIndex!==null && voicingIndex!==i) stopVoice();
+  current = i;
+  const ep = episodes[i];
+  document.getElementById('rTitle').textContent = ep.title;
+  document.getElementById('rContent').textContent = ep.text;
+  document.getElementById('listView').style.display='none';
+  document.getElementById('readerView').classList.add('active');
+  document.getElementById('prevBtn').disabled = i===0;
+  document.getElementById('nextBtn').disabled = i===episodes.length-1;
+  updateBookmarkBtn();
+  syncVoiceButtons();
+  const s = loadState(); s.lastRead=i; saveState(s);
+  window.scrollTo(0,0);
+}
+
+function showList(){
+  document.getElementById('readerView').classList.remove('active');
+  document.getElementById('listView').style.display='block';
+  renderList();
+}
+
+function navEp(d){
+  const n = current+d;
+  if(n>=0 && n<episodes.length) openEp(n);
+}
+
+function toggleBookmark(){
+  const s = loadState();
+  s.bookmark = (s.bookmark===current) ? undefined : current;
+  saveState(s);
+  updateBookmarkBtn();
+}
+function updateBookmarkBtn(){
+  const s = loadState();
+  document.getElementById('bookBtn').classList.toggle('on', s.bookmark===current);
+}
+
+// --- Voice: works per-episode and independently of which view is open.
+// Uses pause()/resume() (not cancel+restart) so stopping mid-sentence and
+// pressing play again continues from roughly where it left off instead of
+// jumping back to the start of the episode.
+function toggleVoice(i){
+  if(typeof i!=='number') i = current;
+
+  if(voicingIndex===i && speaking && !paused){
+    // currently reading this exact episode -> pause it
+    try{ speechSynthesis.pause(); }catch(e){}
+    speaking=false; paused=true;
+    syncVoiceButtons();
+    return;
+  }
+  if(voicingIndex===i && paused){
+    // resume this episode from where it paused
+    try{ speechSynthesis.resume(); }catch(e){}
+    speaking=true; paused=false;
+    syncVoiceButtons();
+    return;
+  }
+
+  // starting a different episode (or starting fresh) -> stop whatever is
+  // playing now and begin this one from its own beginning
+  stopVoice();
+  try{
+    const ep = episodes[i];
+    utter = new SpeechSynthesisUtterance(ep.text);
+    utter.lang='en-US';
+    const voices = speechSynthesis.getVoices();
+    const en = voices.find(v=>v.lang && v.lang.toLowerCase().startsWith('en-in'))
+             || voices.find(v=>v.lang && v.lang.toLowerCase().startsWith('en-gb'))
+             || voices.find(v=>v.lang && v.lang.toLowerCase().startsWith('en'));
+    if(en) utter.voice = en;
+    utter.rate = 0.95;
+    utter.onend = ()=>{ speaking=false; paused=false; voicingIndex=null; syncVoiceButtons(); };
+    utter.onerror = ()=>{ speaking=false; paused=false; voicingIndex=null; syncVoiceButtons(); };
+    speechSynthesis.speak(utter);
+    speaking=true; paused=false; voicingIndex=i;
+    syncVoiceButtons();
+  }catch(e){
+    alert('Voice support isn\'t available in this browser.');
+  }
+}
+function stopVoice(){
+  try{ speechSynthesis.cancel(); }catch(e){}
+  speaking=false; paused=false; voicingIndex=null;
+  syncVoiceButtons();
+}
+function syncVoiceButtons(){
+  // reader view button
+  const rb = document.getElementById('voiceBtn');
+  if(rb){
+    if(voicingIndex===current && speaking) rb.textContent='⏸ Pause';
+    else if(voicingIndex===current && paused) rb.textContent='▶ Resume';
+    else rb.textContent='🔊 Read Aloud';
+  }
+  // list view buttons
+  episodes.forEach((ep,i)=>{
+    const b = document.getElementById('listVoiceBtn-'+i);
+    if(!b) return;
+    const active = voicingIndex===i;
+    b.classList.toggle('on', active && (speaking||paused));
+    b.textContent = active && speaking ? '⏸' : (active && paused ? '▶' : '🔊');
+  });
+}
+
+if(typeof speechSynthesis!=='undefined'){
+  speechSynthesis.onvoiceschanged = ()=>{};
+}
+
+renderList();
+</script>
+</body>
+</html>

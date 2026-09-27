@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Price of Trust</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0f1e; --bg2:#0f1830; --panel:#121b34;
+    --gold:#d4af6a; --gold-soft:#e8cd9a; --ink:#eef1fb; --ink-dim:#aab3cf;
+    --line:rgba(212,175,106,.18); --c1:#7fb0e0;
+  }
+.home-btn{
+  position:absolute;left:14px;top:calc(14px + env(safe-area-inset-top,0px));
+  width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;
+  background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.35);color:var(--gold-soft);
+  text-decoration:none;font-size:1.05rem;
+}
+  *{box-sizing:border-box;}
+  html{scroll-padding-top:env(safe-area-inset-top,0px);}
+  body{
+    margin:0; background:radial-gradient(ellipse at top, var(--bg2), var(--bg) 60%);
+    color:var(--ink); font-family:'Cormorant Garamond', serif; font-size:19px; line-height:1.8;
+    padding-top:env(safe-area-inset-top,0px); padding-bottom:calc(40px + env(safe-area-inset-bottom,0px));
+  }
+  .wrap{max-width:760px; margin:0 auto; padding:0 24px;}
+  header.hero{
+    text-align:center; border-bottom:1px solid var(--line);
+    background:linear-gradient(180deg, rgba(212,175,106,.06), transparent);
+  }
+  .hero-img{width:100%; height:300px; object-fit:cover; display:block; opacity:.88;
+    -webkit-mask-image:linear-gradient(to bottom, black 55%, transparent 100%);
+    mask-image:linear-gradient(to bottom, black 55%, transparent 100%);}
+  .hero-text{padding:16px 24px 46px;}
+  .kicker{font-family:'Inter',sans-serif; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); font-size:12px; margin:14px 0 6px;}
+  h1{font-family:'Playfair Display', serif; font-weight:800; font-size:clamp(30px,5.2vw,46px); margin:8px 0 14px; color:var(--ink); letter-spacing:.01em;}
+  .tags{font-family:'Inter',sans-serif; font-size:13px; color:var(--ink-dim); letter-spacing:.03em;}
+  .tags span{color:var(--gold-soft);}
+  main{padding:48px 24px 10px;}
+  p{margin:0 0 16px; color:var(--ink);}
+  .drop::first-letter{
+    font-family:'Playfair Display', serif; font-size:58px; float:left; line-height:.8; padding:6px 10px 0 0;
+    color:var(--gold); font-weight:800;
+  }
+  p.dialogue{
+    margin:0 0 14px; padding:10px 18px; border-radius:0 10px 10px 0;
+  }
+  p.dialogue.c1{border-left:3px solid var(--c1); background:rgba(127,176,224,.07); color:var(--ink);}
+  .rule{width:64px; height:1px; background:var(--line); margin:44px auto;}
+  .moral-box{
+    background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:32px 30px; margin:30px 0 60px;
+  }
+  .moral-kicker{font-family:'Inter',sans-serif; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); font-size:12px; margin-bottom:14px; text-align:center;}
+  .moral-box p{color:var(--gold-soft); text-align:center; font-size:20px; margin-bottom:10px;}
+  .moral-box p:last-child{margin-bottom:0;}
+  footer{text-align:center; font-family:'Inter',sans-serif; font-size:12px; color:var(--ink-dim); opacity:.6; padding:20px 24px;}
+  @media (max-width:520px){ body{font-size:18px;} h1{font-size:30px;} .moral-box{padding:24px 18px;} .hero-img{height:220px;} }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <img class="hero-img" src="images/mutton.png" alt="A bag of gifts brought by a stranger">
+  <div class="hero-text">
+    <div class="kicker">A Story of Trust</div>
+    <h1>The Price of Trust</h1>
+    <p class="tags"><span>Trust</span> · <span>Caution</span> · <span>A Hard Lesson</span></p>
+  </div>
+    <a class="home-btn" href="index.html" aria-label="Home">🏠</a>
+
+</header>
+
+<main class="wrap">
+
+<section>
+  <p class="drop">One morning, a knock came at the door of a teacher's home. When his wife opened it, she found a young man standing there with a polite smile.</p>
+  <p class="dialogue c1">"Good morning, ma'am. How are you?"</p>
+  <p class="dialogue c1">"Fine, thank you. What brings you here?"</p>
+  <p class="dialogue c1">"I am one of sir's students. I ran into him on the road this morning, touched his feet, and told him I had got a good job. He was very happy. So I've brought a small gift to celebrate."</p>
+  <p>The young man handed over a large bag.</p>
+  <p class="dialogue c1">"Inside is a kilogram of mutton, cooking oil, spices, and a few other things. I want sir to eat well today in honour of this happy occasion."</p>
+  <p>The wife was delighted.</p>
+  <p class="dialogue c1">"How wonderful! Come in, sit down — let me bring you some tea."</p>
+  <p>After tea, the young man spoke again.</p>
+  <p class="dialogue c1">"Ma'am, sir asked me to take his car for a short errand. His phone has been broken for a few days, so he couldn't call you. May I take it?"</p>
+  <p>Without a moment's hesitation, the wife agreed.</p>
+  <p class="dialogue c1">"Of course — just make sure you're back in time. I'm already starting the cooking."</p>
+  <p>The young man drove away in the teacher's beloved car.</p>
+  <p>A little while later, the teacher returned from his morning walk. He stepped inside and sniffed the air with surprise.</p>
+  <p class="dialogue c1">"Why is there such a wonderful smell of cooking?"</p>
+  <p>His wife smiled and told him about the student's visit. The teacher's expression shifted.</p>
+  <p class="dialogue c1">"My student? I didn't send anyone. And — you gave him the car?"</p>
+  <p>He waited the rest of the day and all through the night. The young man did not return. Neither did the car.</p>
+  <p>The next morning, the teacher took the bus to college. The gatekeeper blinked in surprise.</p>
+  <p class="dialogue c1">"Sir, why have you come by bus? Your car is in the garage!"</p>
+  <p>The teacher ran to the garage. There was the car, parked in its spot. Inside, a letter was waiting.</p>
+  <p class="dialogue c1">"Sir, I apologise. My friends had made a bet with me — that if I could trick you into handing over your car, they would give me ten thousand rupees. I won the bet. I am sorry to have troubled you. I have filled the tank with petrol and replaced the door lock. I am also leaving three cinema tickets and a two-thousand-rupee food coupon for you. Take care."</p>
+  <p>Reading the letter, the teacher and his wife almost laughed. The boy wasn't entirely wicked after all. The next evening, they went to the cinema — all three of them including their housekeeper — watched the film, ate well, and had a genuinely pleasant time.</p>
+  <p>But at the end of the night, when they returned to the parking area, the car was gone.</p>
+  <p>In its place lay one final letter.</p>
+  <p class="dialogue c1">"Sir, you are truly a very simple man. You did not know that I still had the original key. With that key, I have now taken your car for real. And perhaps tonight you have also understood how dangerous it is to leave your home empty while you all go out together. Go home now — and see what is waiting for you."</p>
+  <p>The teacher's blood ran cold. He hailed a taxi and rushed home.</p>
+  <p>The door had been forced open. Every room had been ransacked. The television, the jewellery, the furniture — everything was gone. A truck had clearly been brought in to strip the house bare.</p>
+  <p>One moment of misplaced trust had cost them everything they owned.</p>
+  <p>That night, the teacher understood what he had never truly believed before: trusting people is not a sin. But trusting blindly — without a single question, without a moment's pause — is never wisdom. Caution and trust must walk side by side. Because in this world, alongside the genuinely good, there are also those who use your faith in people as the very weapon to destroy you.</p>
+</section>
+
+<div class="rule"></div>
+
+<div class="moral-box">
+  <div class="moral-kicker">The Lesson</div>
+  <p>Trust is a gift worth giving — but not blindly. Verify before you hand over what you value.</p>
+  <p>Blind trust can become the greatest loss of a lifetime.</p>
+</div>
+
+</main>
+
+<footer>A story on trust, caution, and the cost of a careless moment.</footer>
+
+</body>
+</html>

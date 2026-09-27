@@ -1,0 +1,1713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Weight of Identity | Surajit Roy</title>
+<meta name="description" content="The Weight of Identity — a story of inheritance, in which the weight of identity stands in the way of truth.">
+<meta name="theme-color" content="#0e1f27">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+<script src="security.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --night:#0e1f27;
+    --lamp:#f2c46b;
+    --display:'Playfair Display',serif;
+    --text:'Source Serif Pro',serif;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;background:var(--night);-webkit-text-size-adjust:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+  body{
+    margin:0;
+    background:var(--night);
+    color:#e8e4d6;
+    font-family:var(--text);
+    font-size:clamp(1.05rem,1rem + .3vw,1.2rem);
+    line-height:1.95;
+  }
+  a{color:inherit}
+  a:focus-visible{outline:3px solid var(--accent,var(--lamp));outline-offset:4px;border-radius:2px}
+
+  /* ---------- Hero: stage light ---------- */
+  .hero{
+    position:relative;isolation:isolate;overflow:hidden;
+    min-height:92vh;min-height:92svh;
+    display:grid;place-items:center;
+    padding:4rem 1.25rem 5rem;
+    text-align:center;
+  }
+  .beam{
+    position:absolute;z-index:-1;top:-2rem;left:50%;
+    width:min(130vw,66rem);height:82%;
+    transform:translateX(-50%);
+    background:linear-gradient(to bottom,rgba(255,222,150,.36),rgba(255,222,150,.07) 80%,rgba(255,222,150,0));
+    clip-path:polygon(43% 0,57% 0,100% 100%,0 100%);
+    opacity:0;
+    animation:lampOn 2.4s ease-out .3s forwards;
+  }
+  .pool{
+    position:absolute;z-index:-1;left:50%;bottom:7%;
+    width:min(85vw,44rem);height:6rem;
+    transform:translateX(-50%);
+    background:radial-gradient(ellipse at center,rgba(255,222,150,.26),rgba(255,222,150,0) 70%);
+    opacity:0;
+    animation:lampOn 2.4s ease-out .3s forwards;
+  }
+  @keyframes lampOn{
+    0%{opacity:0}
+    12%{opacity:.55}
+    20%{opacity:.1}
+    34%{opacity:.85}
+    42%{opacity:.5}
+    100%{opacity:1}
+  }
+  .hero h1{
+    margin:0;
+    font-family:var(--display);font-weight:400;
+    font-size:clamp(4.4rem,18vw,10.5rem);
+    line-height:1.25;
+    color:#fbebc0;
+    text-shadow:0 0 60px rgba(255,214,130,.35);
+  }
+  .hero .eyebrow{margin:0 0 .4rem;font-size:1rem;letter-spacing:.04em;color:var(--lamp)}
+  .hero .sub{
+    margin:.6rem auto 0;max-width:32rem;
+    font-size:clamp(1.1rem,1rem + .6vw,1.4rem);line-height:1.8;
+    color:#d5d9cf;
+  }
+  .hero .by{margin:1.1rem 0 .3rem;color:#9fb0ab;font-size:1rem}
+  .hero .line{
+    max-width:30rem;margin:1.2rem auto 2.4rem;
+    color:#9fb0ab;font-size:1rem;line-height:1.8;
+  }
+  .cta{
+    display:inline-block;
+    background:var(--lamp);color:#1b1408;
+    padding:.75rem 1.8rem;border-radius:.35rem;
+    font-weight:700;text-decoration:none;
+    transition:background .2s;
+  }
+  .cta:hover{background:#ffd98a}
+
+  /* ---------- Summary and Introduction ---------- */
+  .intro{--fg:#e8e4d6;--accent:#f2c46b;color:var(--fg);padding:2rem 1.25rem 4rem}
+  .intro-in{max-width:40rem;margin:0 auto}
+  .intro h2,.author h2{
+    margin:.1rem 0 1.2rem;font-family:var(--display);font-weight:400;
+    font-size:clamp(2.3rem,1.6rem + 3.6vw,3.6rem);line-height:1.4;color:#fbebc0;
+  }
+  .about p{margin:0 0 1.15rem;color:#d5d9cf;font-size:1.06em}
+  .about p.ask{
+    margin:1.8rem 0 0;font-family:var(--display);font-size:clamp(1.4rem,1.1rem + 1.4vw,1.9rem);
+    line-height:1.65;color:var(--lamp);
+  }
+
+  /* ---------- About the Author ---------- */
+  .author{background:#f4e6c3;color:#2b2415;--fg:#2b2415;--accent:#9c4a15}
+  .author-in{max-width:40rem;margin:0 auto;padding:1rem 1.25rem 3rem}
+  .author h2{color:#2b2415;margin-bottom:1.4rem}
+
+  /* ---------- Contents ---------- */
+  .toc{padding:1rem 1.25rem 7rem}
+  .toc-inner{max-width:40rem;margin:0 auto}
+  .toc h2{
+    margin:0 0 1rem;
+    font-family:var(--display);font-weight:400;
+    font-size:2.3rem;line-height:1.4;color:#fbebc0;
+  }
+  .toc ol{list-style:none;margin:0;padding:0}
+  .toc li+li{border-top:1px solid rgba(232,228,214,.16)}
+  .toc a{
+    display:flex;align-items:center;gap:1.2rem;
+    padding:1rem .25rem;text-decoration:none;color:#e8e4d6;
+  }
+  .lamp{
+    flex:none;width:.95rem;height:.95rem;border-radius:50%;
+    background:var(--c);
+    box-shadow:0 0 14px 3px color-mix(in srgb,var(--c) 55%,transparent);
+  }
+  .toc .no{display:block;font-size:.85em;line-height:1.6;color:var(--c)}
+  .toc .ttl{
+    display:block;
+    font-family:var(--display);font-size:1.5rem;line-height:1.45;
+    transition:color .2s;
+  }
+  .toc a:hover .ttl{color:var(--c)}
+
+  /* ---------- Act/Part ---------- */
+  .act{position:relative;background:var(--bg);color:var(--fg)}
+  .act::before{
+    content:"";position:absolute;inset:0 0 auto 0;height:8rem;
+    background:linear-gradient(var(--prev),var(--bg));
+    pointer-events:none;
+  }
+  .act-inner{
+    position:relative;
+    max-width:40rem;margin:0 auto;
+    padding:9rem 1.25rem 3.5rem;
+  }
+  .act-head{margin:0 0 2.2rem}
+  .act-no{margin:0;font-size:1rem;line-height:1.6;color:var(--accent)}
+  .act h2{
+    margin:.1rem 0 0;
+    font-family:var(--display);font-weight:400;
+    font-size:clamp(2.3rem,1.6rem + 3.6vw,3.6rem);
+    line-height:1.4;
+  }
+
+  .act-1{--prev:#0e1f27;--bg:#182430;--fg:#e8e4d6;--accent:#e8bd63}
+  .act-2{--prev:#182430;--bg:#1d2b26;--fg:#e6e8de;--accent:#9fc39a}
+  .act-3{--prev:#1d2b26;--bg:#14282f;--fg:#e8e4d6;--accent:#7fc0c9}
+  .act-4{--prev:#14282f;--bg:#2a281c;--fg:#ece6d2;--accent:#d2b85a}
+  .act-5{--prev:#2a281c;--bg:#3a1611;--fg:#f5e6da;--accent:#ff9155}
+  .act-6{--prev:#3a1611;--bg:#463f5c;--fg:#f3eff7;--accent:#f4bfa4}
+  .act-7{--prev:#463f5c;--bg:#f4e6c3;--fg:#2b2415;--accent:#9c4a15}
+
+  .prose p{margin:0 0 1.15rem}
+  .prose strong{font-weight:700}
+  .prose p.d{margin:.3rem 0 .9rem;padding-left:1.4em;text-indent:-1.4em}
+  .prose p.d strong{color:var(--accent)}
+  .prose p.beats{margin:1.3rem 0 1.5rem;color:var(--accent);letter-spacing:.02em}
+  .prose p.em{margin:1.6rem 0 1.2rem;font-size:1.12em;font-weight:700;color:var(--accent)}
+  .prose p.pull{
+    margin:2.4rem 0;
+    font-family:var(--display);font-weight:400;
+    font-size:clamp(1.6rem,1.1rem + 2vw,2.3rem);
+    line-height:1.6;color:var(--accent);
+  }
+  .prose ul.bag{list-style:none;margin:0 0 1.4rem;padding:0}
+  .prose ul.bag li{position:relative;padding:.15rem 0 .15rem 1.6rem}
+  .prose ul.bag li::before{
+    content:"";position:absolute;left:.15rem;top:1.05em;
+    width:.5rem;height:.5rem;border-radius:50%;background:var(--accent);
+  }
+
+  .break{display:flex;align-items:center;gap:1rem;margin:3rem 0;color:var(--accent)}
+  .break::before,.break::after{content:"";flex:1;height:1px;background:currentColor;opacity:.35}
+  .break i{width:.55rem;height:.55rem;border-radius:50%;background:currentColor;opacity:.85}
+
+  /* Two young men side by side — Part 5 */
+  .split{
+    margin:2.6rem 0;padding-left:1.4rem;
+    border-left:2px solid var(--accent);
+  }
+  .split p:last-child{margin-bottom:0}
+  .split .who{
+    margin:0 0 .4rem;font-weight:700;color:var(--accent);
+    font-size:1.05em;
+  }
+
+  .finale{
+    margin:3.5rem -1.25rem 0;padding:3rem 1.5rem 3.2rem;
+    text-align:center;
+    background:radial-gradient(ellipse at 50% 0%,#fff7dd 0%,rgba(255,247,221,0) 75%);
+  }
+  .finale p{
+    margin:0;
+    font-family:var(--display);font-weight:400;
+    font-size:clamp(1.7rem,1.2rem + 2.4vw,2.6rem);
+    line-height:1.65;color:var(--fg);
+  }
+
+  .part-nav{
+    display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem 1.5rem;
+    margin-top:3rem;padding-top:1.2rem;
+    border-top:1px solid color-mix(in srgb,var(--fg) 28%,transparent);
+    font-size:1rem;line-height:1.7;
+  }
+  .part-nav a{color:var(--accent);text-underline-offset:.25em}
+  .part-nav .next{margin-left:auto;text-align:right}
+
+  .foot{
+    background:#f4e6c3;color:#5a4a2a;
+    padding:2.5rem 1.25rem 3rem;text-align:center;font-size:.95rem;line-height:1.7;
+  }
+  .foot p{margin:0}
+.home-btn{
+  position:absolute;left:14px;top:calc(14px + env(safe-area-inset-top,0px));
+  width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;
+  background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.35);color:var(--gold-soft);
+  text-decoration:none;font-size:1.05rem;
+}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .beam,.pool{animation:none;opacity:1}
+  }
+  @media (max-width:480px){
+    .act-inner{padding-top:8.5rem}
+    .part-nav .next{margin-left:0;text-align:left}
+  }
+</style>
+</head>
+<body>
+
+<body>
+
+<header class="hero">
+  <div class="beam" aria-hidden="true"></div>
+  <div class="pool" aria-hidden="true"></div>
+  <div>
+    <p class="eyebrow">Family Drama · Revenge · Redemption</p>
+    <h1>The Weight of Identity</h1>
+    <p class="sub">A story of inheritance, where the weight of identity stands in the way of truth</p>
+    <p class="by">By Surajit Roy</p>
+    <a class="home-btn" href="index.html" aria-label="Home">🏠</a>
+
+    <p class="line">The same stage. The same words. The same lesson reaching two young men's ears.<br>One chooses revenge. The other stops himself.</p>
+    <a class="cta" href="#intro">Begin Reading</a>
+  </div>
+</header>
+
+<section class="intro" id="intro" aria-labelledby="intro-h">
+  <div class="intro-in prose">
+
+    <div class="about">
+      <p>A young man leaves behind the safe shadow of a life of luxury to go out and live under an identity of his own. Arin did not know that in searching for his own identity, he would one day have to face the dark past his father had left behind.</p>
+      <p>On the other side, Bishakha carries her family's lost dreams and the memory of an old injustice, while Achinta, in search of an answer to that same injustice, chooses the path of revenge. A lost bag, a diary, a letter, and an old truth bound up with several people's lives slowly pry open the door to the past.</p>
+      <p class="ask">"The Weight of Identity" is not merely a story of crime and revenge. It asks a question—does a father's identity determine a child's fate? Or does a person build their true identity through their own decisions, actions, and humanity?</p>
+    </div>
+
+    <div class="break" role="separator"><i></i></div>
+
+    <h2 id="intro-h">Introduction</h2>
+    <p>Every human being is born into an identity. Sometimes that identity comes from family, sometimes from society, sometimes from a name received through inheritance.</p>
+    <p>But the question is—is a person's identity determined only by their lineage, their family, or their father's identity?</p>
+    <p>Arin's life changes precisely as he comes to stand before this question.</p>
+    <p>From a life of luxury, he is suddenly forced to stand on his own feet. Arriving in a new city in search of work, he comes to know Bishakha—a young woman whose life is marked by want, but never by a lack of honesty or self-respect. Slowly, Arin's own life too begins to change.</p>
+    <p class="em">But the past sometimes returns to a person's door.</p>
+    <p>A lost bag, a diary, and a letter open the door to a truth in which Arin's own family is entangled. In the shadow of that truth lie injustice, lives lost, revenge, and certain decisions whose effects fall even upon the lives of the next generation.</p>
+    <p>In this story, Arin and Achinta face the same kind of injustice, yet do not choose the same path. One learns to hold back the fire within himself; the other carries that same fire down the road of revenge. And before Bishakha stands an even harder question—should a person be judged their whole life for the crimes of their father?</p>
+    <p class="em">"The Weight of Identity," then, is not merely the story of one family.</p>
+    <p>It is a story of identity, inheritance, revenge, forgiveness, and a person's own choices.</p>
+    <p>And perhaps, in the end, the question will remain with the reader—</p>
+    <p class="pull">Are we made by what we inherit, or is it our own decisions that build our true identity?</p>
+  </div>
+</section>
+
+<nav class="toc" id="toc" aria-labelledby="toc-h">
+  <div class="toc-inner">
+    <h2 id="toc-h">Contents</h2>
+    <ol>
+      <li style="--c:#e8bd63"><a href="#part1"><span class="lamp" aria-hidden="true"></span><span><span class="no">Part 1</span><span class="ttl">Sleeping Till Noon</span></span></a></li>
+      <li style="--c:#9fc39a"><a href="#part2"><span class="lamp" aria-hidden="true"></span><span><span class="no">Part 2</span><span class="ttl">An Identity of One's Own</span></span></a></li>
+      <li style="--c:#7fc0c9"><a href="#part3"><span class="lamp" aria-hidden="true"></span><span><span class="no">Part 3</span><span class="ttl">The Lost Bag</span></span></a></li>
+      <li style="--c:#d2b85a"><a href="#part4"><span class="lamp" aria-hidden="true"></span><span><span class="no">Part 4</span><span class="ttl">The Four Guards</span></span></a></li>
+      <li style="--c:#ff9155"><a href="#part5"><span class="lamp" aria-hidden="true"></span><span><span class="no">Part 5</span><span class="ttl">The Fire Begins</span></span></a></li>
+      <li style="--c:#f4bfa4"><a href="#part6"><span class="lamp" aria-hidden="true"></span><span><span class="no">Part 6</span><span class="ttl">The Final Lesson</span></span></a></li>
+      <li style="--c:#f2c46b"><a href="#part7"><span class="lamp" aria-hidden="true"></span><span><span class="no">Part 7</span><span class="ttl">The Weight of Identity</span></span></a></li>
+      <li style="--c:#c9a25a"><a href="#author"><span class="lamp" aria-hidden="true"></span><span><span class="no">About the Author</span><span class="ttl">Surajit Roy</span></span></a></li>
+    </ol>
+  </div>
+</nav>
+
+<main>
+
+<!-- ================= Part 1 ================= -->
+<section class="act act-1" id="part1" aria-labelledby="t1">
+  <div class="act-inner">
+    <header class="act-head">
+      <p class="act-no">Part 1</p>
+      <h2 id="t1">Sleeping Till Noon</h2>
+    </header>
+    <div class="prose">
+      <p>Arin's day began at noon.</p>
+      <p>Before that, the curtains of his room were never drawn back. The house help would leave a cup of tea outside his door and go; the cup would go cold, and no one said a word.</p>
+      <p>The household knew Arin never came home before three in the morning.</p>
+      <p>Twenty-five years old. No work. Countless friends.</p>
+      <p>Just the previous night, he had gone out with friends to the most expensive place in the city. The bill had come to the table—</p>
+      <p class="em">Three lakh fifty thousand rupees.</p>
+      <p>Arin hadn't even glanced at the bill. He had simply pushed his card forward.</p>
+      <p>To him, it was nothing out of the ordinary. Nights like this came around several times a month.</p>
+      <p>The question of where the money came from had never once occurred to him.</p>
+      <p>His father's business. His father's name. His father's wealth.</p>
+      <p>Beyond these, he had nothing he could call his own—a fact he had never once stopped to consider.</p>
+
+      <div class="break" role="separator"><i></i></div>
+
+      <p>That afternoon, the moment he woke, he saw the curtains had been drawn back.</p>
+      <p>His mother sat in the chair by the window.</p>
+      <p>Arin sat up.</p>
+      <p class="d">— "You're here?"</p>
+      <p>His mother gave no answer. She placed a sheet of paper on the table.</p>
+      <p>An account of the last six months' expenses.</p>
+      <p>Arin stared at the paper.</p>
+      <p class="d">— "What's there to look at?"</p>
+      <p>His mother said, in a calm voice,</p>
+      <p class="d">— "From today, this money stops."</p>
+      <p>Arin laughed.</p>
+      <p class="d">— "Mother, you're angry."</p>
+      <p class="d">— "No. I've decided."</p>
+      <p>This time Arin's laughter stopped.</p>
+      <p>His mother stood up.</p>
+      <p class="d">— "You will leave this house, and this city. Go to another city — somewhere no one knows your father's name or identity."</p>
+      <p class="d">— "And if I don't go?"</p>
+      <p class="d">— "Then there will be nothing left for you in this house."</p>
+      <p>Arin stayed silent for a while.</p>
+      <p>Then he said,</p>
+      <p class="d">— "What will I do there?"</p>
+      <p>His mother put an envelope in his hand.</p>
+      <p>Inside the envelope, <strong>twenty thousand rupees</strong>.</p>
+      <p class="d">— "This is the last of it. After this, whatever you need, you earn yourself."</p>
+      <p class="d">— "How much?"</p>
+      <p class="d">— "At least twenty-five thousand rupees. By your own labor. Earn it within six months and show me."</p>
+      <p>Arin stood there, envelope in hand.</p>
+      <p>His mother stopped near the door.</p>
+      <p class="d">— "One more condition."</p>
+      <p class="d">— "Tell me."</p>
+      <p class="d">— "You will not mention your father's name anywhere. You will take no advantage from it. No one is to know whose son you are."</p>
+      <p>Arin asked, surprised,</p>
+      <p class="d">— "Why?"</p>
+      <p>His mother paused briefly.</p>
+      <p>A shadow crossed her face that Arin had never seen before.</p>
+      <p class="d">— "One day you'll understand."</p>
+
+      <div class="break" role="separator"><i></i></div>
+
+      <p>The next morning at dawn, Arin left home.</p>
+      <p>Standing outside the gate, he turned to look back once.</p>
+      <p>The enormous house. The iron gate. The nameplate.</p>
+      <p>All this time, he had lived in the shelter of the name written on that plate.</p>
+      <p>Sitting on the train, gazing out the window, he thought—</p>
+      <p class="pull">"Can I really live under an identity of my own?"</p>
+      <p>But he did not yet know that, in the new city, his father's old past would very soon become entangled with his new life.</p>
+    </div>
+    <nav class="part-nav" aria-label="Navigation at end of Part 1">
+      <a href="#toc">Back to Contents</a>
+      <a class="next" href="#part2">Next: An Identity of One's Own</a>
+    </nav>
+  </div>
+</section>
+
+<!-- ================= Part 2 ================= -->
+<section class="act act-2" id="part2" aria-labelledby="t2">
+  <div class="act-inner">
+    <header class="act-head">
+      <p class="act-no">Part 2</p>
+      <h2 id="t2">An Identity of One's Own</h2>
+    </header>
+    <div class="prose">
+      <p>The room Arin rented in the new city was at the back of an old single-storey house.</p>
+      <p>Damp stains on the walls. Water leaking from the ceiling.</p>
+      <p>The landlady's name was <strong>Sudha Devi</strong>.</p>
+      <p>She was getting on in years. Her household ran on hardship. The rent money was her main support.</p>
+      <p>On the very first day, she said,</p>
+      <p class="d">— "Son, you'll have to pay the rent in advance. Don't mind my asking."</p>
+      <p>Arin paid.</p>
+      <p>For the first time in his life, he counted out money to pay for something.</p>
+
+      <div class="break" role="separator"><i></i></div>
+
+      <p>Then began the search for work.</p>
+      <p>Arin had thought—how long could it take to find a job?</p>
+      <p>But at every place, the same questions—</p>
+      <p class="beats">How much experience do you have?<br>Where have you worked before?<br>Do you have any references?</p>
+      <p>For Arin, the answer to all three was the same.</p>
+      <p>None.</p>
+      <p>A single name spoken aloud might have opened every door.</p>
+      <p>But he remembered his mother's condition.</p>
+      <p>He did not say the name.</p>
+      <p>By the two-month mark, the money from the envelope had nearly run out.</p>
+      <p>One morning he realized that what was left in his pocket would last him two more days.</p>
+
+      <div class="break" role="separator"><i></i></div>
+
+      <p>Living in that very house was <strong>Bishakha</strong> — Sudha Devi's daughter.</p>
+      <p>Arin saw her often.</p>
+      <p>In the morning Bishakha left for the factory. In the evening she returned home, her body worn out.</p>
+      <p>The two of them ran into each other nearly every day — sometimes on the stairs, sometimes in the courtyard, sometimes at the front door.</p>
+      <p>But they never spoke.</p>
+      <p>Bishakha only knew that the new tenant was trying to find work. She had seen him leave in the mornings and return in the afternoons a few times.</p>
+      <p>Arin, too, knew that the girl went to work at the factory every day.</p>
+      <p>No friendship had yet formed between them. There was only a silent familiarity — the daily meeting of two people who lived in the same house.</p>
+
+      <div class="break" role="separator"><i></i></div>
+
+      <p>One evening Arin was standing in the courtyard. A few papers in hand — yet another job application.</p>
+      <p>Exhaustion on his face. Despair in his eyes.</p>
+      <p>Just then, returning from the factory, Bishakha came and stood by the door.</p>
+      <p>After looking for a while at the papers in Arin's hand, she spoke to him for the first time,</p>
+      <p class="d">— "Trying to find work?"</p>
+      <p>Arin looked at her, a little surprised.</p>
+      <p>Then, with a faint smile, he said,</p>
+      <p class="d">— "Yes. Nothing yet."</p>
+      <p>Bishakha nodded.</p>
+      <p class="d">— "It'll happen. If you keep trying, sooner or later it does."</p>
+      <p>This was the first thing they ever said to each other.</p>
+      <p>A few very ordinary words.</p>
+      <p>But Arin did not yet know that this small exchange would one day become the beginning of the most important relationship of his life.</p>
+      <p class="d">— "You've been going around to so many places. They're hiring at our factory. Will you come?"</p>
+      <p>Arin hesitated.</p>
+      <p class="d">— "But I don't know how to do that kind of work."</p>
+      <p>Bishakha said, plainly,</p>
+      <p class="d">— "No one is born knowing how."</p>
+      <p>It was a very ordinary thing to say. But somehow, the words lodged themselves somewhere in Arin's mind.</p>
+      <p>The next morning, Arin went with her to the factory.</p>
+      <p>Bishakha introduced him to the factory supervisor.</p>
+      <p class="d">— "Sir, he's looking for work. He really needs a job."</p>
+      <p>The supervisor looked at Arin.</p>
+      <p class="d">— "Have you worked anywhere before?"</p>
+      <p>Arin paused a moment, then said,</p>
+      <p class="d">— "No. But I can learn."</p>
+      <p>Bishakha spoke up at once,</p>
+      <p class="d">— "Give him a chance. He'll learn the work."</p>
+      <p>The supervisor looked at Arin for a while. Then he said,</p>
+      <p class="d">— "All right. Start tomorrow. First you'll learn the work. If you do well, we'll take you on permanently."</p>
+      <p>Arin could hardly believe it. The opportunity he had failed to find after going around to so many places for so long had come to him, today, so easily.</p>
+      <p>He looked at Bishakha.</p>
+      <p class="d">— "Thank you."</p>
+      <p>Bishakha smiled and said,</p>
+      <p class="d">— "No need to thank me. The work is yours to do now."</p>
+      <p>Arin nodded.</p>
+      <p>Walking home that day, it struck him — for the first time in his life, someone had given him a chance not because of his father's name, but as a human being in his own right.</p>
+      <p>And it was Bishakha who had opened that first door of opportunity.</p>
+      <p>From that day, a new chapter of his life began.</p>
+
+      <div class="break" role="separator"><i></i></div>
+
+      <p>In the first week, his hands blistered.</p>
+      <p>In the second week, his back ached so badly he couldn't sleep at night.</p>
+      <p>In the third week, he received his first wages, earned by his own hands.</p>
+      <p>The sum was nothing next to the bill from just one of his old nights out.</p>
+      <p>But as he took the money in his hand, his hand trembled.</p>
+      <p>For the first time — not his father's money, not his family's money, not money earned on the strength of anyone's name.</p>
+      <p><strong>This money was his own.</strong></p>
+      <p>Arin stared at the money in silence for a while.</p>
+      <p>It felt to him that, for the first time in his life, he hadn't just earned money — he had taken his first step on the road to building an identity of his own.</p>
+
+      <div class="break" role="separator"><i></i></div>
+
+      <p>As he worked at the factory, Arin slowly began to know Bishakha more closely.</p>
+      <p>One day he was asked to help a little with the accounts. In between tasks, Arin was going through the wages ledger to check the figures.</p>
+      <p>Suddenly his eye caught on one entry.</p>
+      <p>Against Bishakha's name, a hundred rupees too much had been recorded.</p>
+      <p>The mistake had likely slipped past the accountant's notice. No one had caught it.</p>
+      <p>Arin thought Bishakha probably didn't even know.</p>
+      <p>But a little later, Bishakha herself came to check the ledger and noticed the error.</p>
+      <p>She went straight to the accountant and said,</p>
+      <p class="d">— "There's a hundred rupees too much recorded against my name."</p>
+      <p>The accountant said, surprised,</p>
+      <p class="d">— "No one even noticed that. Just let it be."</p>
+      <p>Bishakha shook her head.</p>
+      <p class="d">— "Money received by mistake isn't mine."</p>
+      <p>She returned the hundred rupees.</p>
+      <p>Arin had watched the whole thing from a distance. Later, when he got the chance, he said,</p>
+      <p class="d">— "No one would even have known."</p>
+      <p>Bishakha said, calmly,</p>
+      <p class="d">— "Even if no one else knew, I would have known."</p>
+      <p>Arin had nothing more to say.</p>
+      <p>In a household where putting together two meals a day was itself a struggle, the daughter of that house was giving back a hundred rupees.</p>
+      <p>And he himself had squandered three and a half lakh rupees in a single night.</p>
+      <p>That night, Arin could not sleep for a long time.</p>
+      <p>For the first time, a question rose in his mind—</p>
+      <p><strong>Does having more money make a person greater?</strong></p>
+
+      <div class="break" role="separator"><i></i></div>
+
+      <p>After three months of hard labor, Arin's savings stood at twenty-five thousand rupees.</p>
+      <p>Holding the money in his hand, Arin felt a strange joy that day.</p>
+      <p>He had decided to call his mother and say—</p>
+      <p class="em">"Mother, I did it. I saved twenty-five thousand rupees through my own labor."</p>
+      <p>But that joy did not last long.</p>
+
+      <div class="break" role="separator"><i></i></div>
+
+      <p>That afternoon, news suddenly arrived — Sudha Devi had been in an accident on the road.</p>
+      <p>Bishakha rushed to the hospital. Arin went with her.</p>
+      <p>Outside the emergency ward, the doctor told them Sudha Devi needed urgent treatment.</p>
+      <p>After the initial treatment, when the doctor named the estimated cost, Bishakha's face went pale.</p>
+      <p class="em">Nearly one lakh rupees.</p>
+      <p>Bishakha sat in a corner of the hospital corridor, her face buried in her hands.</p>
+      <p>Arin came slowly and sat down beside her.</p>
+      <p class="d">— "Bishakha..."</p>
+      <p>Bishakha raised her face. Tears at the corners of her eyes.</p>
+      <p>Arin was silent for a moment, then said,</p>
+      <p class="d">— "I have twenty-five thousand rupees right now. I can give you all of it."</p>
+      <p>Bishakha shook her head.</p>
+      <p class="d">— "That won't be enough."</p>
+      <p>Arin said,</p>
+      <p class="d">— "We'll arrange the rest somehow. Don't worry."</p>
+      <p>Bishakha stayed quiet for a while. Then, slowly, she said,</p>
+      <p class="d">— "Can I tell you something?"</p>
+      <p>Arin looked at her.</p>
+      <p class="d">— "Tell me."</p>
+      <p>Bishakha said, in a low voice,</p>
+      <p class="d">— "There was a time we had everything, you know?"</p>
+      <p>Arin looked at her, taken aback.</p>
+      <p>Bishakha began to tell her story.</p>
+      <p>Her father had had land in the village, and a small business. There was no want in the family. They weren't rich, but they lived well enough, in their own way.</p>
+      <p>Then one day a dispute began between their family and a powerful man.</p>
+      <p>One document after another slipped from their hands. Trouble arose over the land papers. The business too was gradually lost.</p>
+      <p>Her father filed a case. But in fighting it, their savings ran dry.</p>
+      <p>Bishakha paused. Her voice grew heavy.</p>
+      <p class="d">— "In the end, Father broke down."</p>
+      <p>Arin listened in silence.</p>
+      <p>Bishakha spoke again,</p>
+      <p class="d">— "One day, Father simply never came home again."</p>
+      <p>Something twisted inside Arin's chest.</p>
+      <p>He asked, slowly,</p>
+      <p class="d">— "The man who took everything from you... who was he?"</p>
+      <p>Bishakha was quiet for a few moments. Then she said,</p>
+      <p class="pull">Rai Bahadur Vikram Babu.</p>
+      <p>The moment he heard the name, Arin's whole body seemed to go numb.</p>
+      <p>The lights of the hospital corridor, the sound of footsteps, the distant bustle of the nurses — everything seemed to recede from him for a moment.</p>
+      <p>He could say nothing.</p>
+      <p>Because Bishakha did not know—</p>
+      <p class="em">that the very man she had been speaking of all this time, Rai Bahadur Vikram Babu, was Arin's own father.</p>
+      <p>Arin looked down.</p>
+      <p>His fists tightened.</p>
+      <p>Before him stood two truths—</p>
+      <p>On one side, his father.</p>
+      <p>On the other, that same man, whom he had never before recognized as the greatest defining fact of his own life.</p>
+      <p>And Bishakha?</p>
+      <p>She still did not know how deeply the man sitting beside her was bound up with her family's old wound.</p>
+
+      <div class="break" role="separator"><i></i></div>
+
+      <p>That night, Arin called his mother.</p>
+      <p>He told her everything — the hospital, Sudha Devi's condition, the cost of treatment.</p>
+      <p>For a long time, there was no sound from the other end of the line.</p>
+      <p>Then his mother said, slowly,</p>
+      <p class="d">— "I'm sending the money."</p>
+      <p>Arin was quiet for a moment, then said,</p>
+      <p class="d">— "You said there would be no more money."</p>
+      <p>This time there was a different kind of firmness in his mother's voice.</p>
+      <p class="d">— "This isn't your expense."</p>
+      <p>After a brief pause, she said, slowly,</p>
+      <p class="d">— "This is our debt."</p>
+      <p>Arin had nothing more to say.</p>
+      <p>On the other end, his mother remained silent.</p>
+      <p>She knew that many things had happened in Vikram Babu's life that had never been fully told to Arin. Injustices done to others, the abuse of power, decisions that had ruined lives — she did not know everything, but she had guessed a great deal.</p>
+      <p>And in recent years, she had begun to see some of the same signs in her own son.</p>
+      <p>Money had been coming to Arin too easily. And that money seemed to be pushing him, little by little, toward his father's old shadow.</p>
+      <p>It was after he spent three and a half lakh rupees in a single night that she understood — if she let this continue, Arin might one day inherit not only his father's wealth, but some of his mistakes as well.</p>
+      <p>So she'd had to make a hard decision.</p>
+      <p>Turning her son out of the house, cutting off his money — she had done neither of these gladly.</p>
+      <p>She had wanted Arin to one day understand—</p>
+      <p class="pull"><strong>Growing up on someone else's money and becoming a person through your own labor are not the same thing.</strong></p>
+      <p>But hearing today's news from the hospital, the old question rose again in her chest.</p>
+      <p class="em">In trying to punish my son, have I also taken from him even his right to a mother?</p>
+      <p>No.</p>
+      <p>This money was not for Arin.</p>
+      <p>It was for a family whose life might well bear the shadow of some past injustice done by her own.</p>
+      <p>So she decided to send the money.</p>
+      <p>But she still did not tell Arin the truth.</p>
+      <p>Because she knew—</p>
+      <p class="em">some truths change a person, but a truth spoken at the wrong time can break them instead.</p>
+      <p>Arin had nothing more to say.</p>
+      <p>After hanging up, he sat silently on a bench in the hospital corridor for a long time.</p>
+      <p>It struck him—</p>
+      <p class="pull">My father's wealth has sustained me all this time. And yet it may have been that very wealth which destroyed another family entirely.</p>
+      <p>Until now, he had thought his father's name was his strength.</p>
+      <p>That day, for the first time, it occurred to him—</p>
+      <p class="em">perhaps bound up with that identity was a debt as well.</p>
+      <p>But even that day, he could not bring himself to tell Bishakha.</p>
+      <p>The truth of whose son he was still caught in his throat, unspoken.</p>
+    </div>
+    <nav class="part-nav" aria-label="Navigation at end of Part 2">
+      <a href="#part1">Previous: Sleeping Till Noon</a>
+      <a href="#toc">Back to Contents</a>
+      <a class="next" href="#part3">Next: The Lost Bag</a>
+    </nav>
+  </div>
+</section>
+
+<!-- ================= Part 3 ================= -->
+<section class="act act-3" id="part3" aria-labelledby="t3">
+  <div class="act-inner">
+    <header class="act-head">
+      <p class="act-no">Part 3</p>
+      <h2 id="t3">The Lost Bag</h2>
+    </header>
+    <div class="prose">
+      <p>From here, the story goes back a little.</p>
+      <p>One of the city's best-known businessmen was <strong>Rai Bahadur Vikram Babu</strong>.</p>
+      <p>Alongside business, he wielded considerable influence in politics too. His company with major leaders, the weight his word carried in the area — all told, in the eyes of ordinary people he was a man of great respectability.</p>
+      <p>But behind that respectability lay hidden a dark life.</p>
+      <p>One morning, Vikram Babu went to a bank to deposit money. With him was a black leather bag.</p>
+      <p>Inside the bag were—</p>
+      <ul class="bag">
+        <li><strong>Fifty thousand rupees</strong></li>
+        <li>A personal <strong>diary</strong></li>
+        <li>An important <strong>letter</strong></li>
+      </ul>
+      <p>At that time, the bank had <strong>no CCTV system in place</strong>.</p>
+      <p>So if something was lost inside the bank, there was no visual record of it at all — who went where, how the thing was lost — working it out afterward was nearly impossible. In the rush of depositing the money and stepping out, Vikram Babu never even noticed where the bag had fallen from his hand.</p>
+      <p>Back home, finding the bag missing, he was seized with panic.</p>
+      <p>He worried far less about the money than about the diary and the letter.</p>
+      <p>Because the diary was a secret history, written in his own hand.</p>
+      <p>In it was the mystery surrounding the death of his party's young worker, <strong>Biswajit</strong>. It described his relationship with Biswajit's wife <strong>Rekha</strong>, the promises of a job made to her, the gifts — everything was recorded there.</p>
+      <p>The diary also carried hints that his own hand lay behind Biswajit's death.</p>
+      <p>It described, too, not only Rekha but several other women, and how he had used his influence over their lives.</p>
+      <p>Along with these were some old accounts of land and property — records of how papers had been taken, and from which families.</p>
+      <p>The letter, too, was an important piece of evidence connected to those same events.</p>
+      <p>So that night, only one fear filled Vikram Babu's mind—</p>
+      <p class="pull">"What if the diary falls into the wrong hands?"</p>
+      <p>The next afternoon, someone knocked at his door.</p>
+      <p>His name was <strong>Nibaran</strong>.</p>
+      <p>In his hand, the same black bag.</p>
+      <p>Vikram Babu opened the bag and looked — the full <strong>fifty thousand rupees</strong> was there.</p>
+      <p>But no diary.</p>
+      <p>No letter either.</p>
+      <p>He looked at Nibaran and said,</p>
+      <p class="d">— "Where are the diary and the letter?"</p>
+      <p>Nibaran answered calmly,</p>
+      <p class="d">— "With me."</p>
+      <p>Vikram Babu's face went dry.</p>
+      <p class="d">— "What do you want?"</p>
+      <p>Nibaran said, in a calm voice,</p>
+      <p class="d">— "Not money."</p>
+      <p>He paused, then said,</p>
+      <p class="d">— "I know four young men who are unemployed. Get them jobs."</p>
+      <p>Vikram Babu did not agree right away.</p>
+      <p class="d">— "The power to give jobs isn't in my hands."</p>
+      <p>Nibaran understood this path wouldn't be easy.</p>
+      <p>But he had already worked out his own calculations beforehand.</p>
+      <p>If the four men's jobs could be secured through Vikram Babu's influence, his plan was to take <strong>one lakh rupees</strong> from each of them. Four lakh rupees in all — <strong>every bit of which he intended to keep for himself.</strong></p>
+      <p>But what if Vikram Babu refused to arrange the jobs?</p>
+      <p>Nibaran hadn't left that possibility out of his calculations either.</p>
+      <p>In that case, his second plan was to collect <strong>eight thousand rupees</strong> every month in the four men's names.</p>
+      <p>He would give each young man only <strong>one thousand rupees</strong>.</p>
+      <p>The remaining <strong>four thousand</strong> he would keep for himself as commission.</p>
+      <p>But the four young men would never be told of this arrangement.</p>
+      <p>To Nibaran, the matter was perfectly clear—</p>
+      <p class="pull">"If the jobs come through, four lakh all at once. If not, four thousand every month."</p>
+      <p>In the end, Vikram Babu refused the job proposal.</p>
+      <p>So Nibaran brought forward his second plan.</p>
+      <p>Vikram Babu remained silent for a while.</p>
+      <p>Then Nibaran said, calmly,</p>
+      <p class="d">— "If you can't arrange the jobs, there's another arrangement we could make."</p>
+      <p>Vikram Babu looked at him.</p>
+      <p class="d">— "What arrangement?"</p>
+      <p>Nibaran said,</p>
+      <p class="d">— "The four of them will stay with you all day. Wherever you go, they'll be around. If any trouble comes, they'll protect you. Your safety will be their responsibility."</p>
+      <p>Vikram Babu frowned and said,</p>
+      <p class="d">— "And in exchange?"</p>
+      <p>Nibaran said,</p>
+      <p class="d">— "You'll give me <strong>eight thousand rupees</strong> a month. I'll pass it on to them."</p>
+      <p>Vikram Babu looked at Nibaran in silence for a while.</p>
+      <p>Nibaran spoke again,</p>
+      <p class="d">— "They won't ask you for anything directly. I'll handle everything."</p>
+      <p>In the end, Vikram Babu agreed.</p>
+      <p>A secret arrangement was struck—</p>
+      <p>Vikram Babu would give Nibaran <strong>eight thousand rupees</strong> every month, and in exchange, Nibaran would have the four young men guard Vikram Babu during the daytime.</p>
+      <p>Nibaran knew — for as long as Vikram Babu lived, this arrangement would give him a steady income of his own.</p>
+      <p>Nibaran would keep the diary and the letter for himself.</p>
+      <p>Vikram Babu knew this arrangement was no freedom for him.</p>
+      <p>It was the price of his secret past.</p>
+      <p>But he did not know—</p>
+      <p class="em">that Nibaran too had never told anyone the whole truth.</p>
+    </div>
+    <nav class="part-nav" aria-label="Navigation at end of Part 3">
+      <a href="#part2">Previous: An Identity of One's Own</a>
+      <a href="#toc">Back to Contents</a>
+      <a class="next" href="#part4">Next: The Four Guards</a>
+    </nav>
+  </div>
+</section>
+
+<!-- ================= Part 4 ================= -->
+<section class="act act-4" id="part4" aria-labelledby="t4">
+  <div class="act-inner">
+    <header class="act-head">
+      <p class="act-no">Part 4</p>
+      <h2 id="t4">The Four Guards</h2>
+    </header>
+    <div class="prose">
+      <p>A few days passed after that strange arrangement between Vikram Babu and Nibaran.</p>
+      <p>Nibaran understood that even with the diary and letter in his hands, his position with Vikram Babu was not entirely secure. The man was powerful. His enemies were not few. There was no telling from where, or when, danger might come.</p>
+      <p>So Nibaran sent for four unemployed young men,</p>
+      <p>All four thought perhaps their jobs had finally come through.</p>
+      <p>Nibaran looked at their faces and said,</p>
+      <p class="d">— "It's not a job just yet. But there's work."</p>
+      <p>One of them asked,</p>
+      <p class="d">— "What work?"</p>
+      <p>Nibaran said,</p>
+      <p class="d">— "You'll keep an eye on Vikram Babu during the day. Watch where he goes, who he meets. If any trouble comes, you'll step in right away."</p>
+      <p>The four of them looked at one another.</p>
+      <p>Nibaran said,</p>
+      <p class="d">— "Each of you will get <strong>a thousand rupees</strong> a month."</p>
+      <p>One of them asked, a little surprised,</p>
+      <p class="d">— "Just during the day?"</p>
+      <p>Nibaran nodded.</p>
+      <p class="d">— "Yes. You won't need to be there at night."</p>
+      <p>All four agreed.</p>
+      <p>They didn't know the total amount Vikram Babu was paying out for them each month.</p>
+      <p>They only knew — each of them would get <strong>a thousand rupees</strong> for this work.</p>
+      <p>And Nibaran?</p>
+      <p>He told no one of his own arithmetic.</p>
+      <p class="em">Half of the money that came in the name of the four men's shares would go straight into his own pocket — this was his real plan all along.</p>
+
+      <div class="break" role="separator"><i></i></div>
+
+      <p>From the very next day, the watching began.</p>
+      <p>From morning to evening, the four of them stayed spread out around him.</p>
+      <p>One would sit outside a tea stall, another at a street corner, another near Vikram Babu's office.</p>
+      <p>Wherever Vikram Babu went, they would follow at a distance.</p>
+      <p>Vikram Babu, however, did not know that Nibaran had placed these four men there for his protection.</p>
+      <p>One day, seeing the four young men loitering nearby, Vikram Babu asked Nibaran,</p>
+      <p class="d">— "Who are they, again?"</p>
+      <p>Nibaran said,</p>
+      <p class="d">— "Just boys from the area."</p>
+      <p>Vikram Babu looked at them for a moment, then said,</p>
+      <p class="d">— "Fine. Keep your distance. Don't let anyone realize you're guarding me."</p>
+      <p>The four young men nodded.</p>
+      <p>Nibaran said,</p>
+      <p class="d">— "They'll always be near you during the day. If you go anywhere, they'll follow from a distance."</p>
+      <p>Vikram Babu said nothing more.</p>
+      <p>Given his political standing and his business, he was used to matters of security. So he did not take the matter too seriously.</p>
+      <p>But he did not know — bound up with these four young men was Nibaran's own self-interest as well.</p>
+      <p>Vikram Babu asked no further questions.</p>
+
+      <div class="break" role="separator"><i></i></div>
+
+      <p>One thing, however, had been clear from the start.</p>
+      <p class="em">There was no arrangement for guarding him at night.</p>
+      <p>After evening fell, the four would go home.</p>
+      <p>Nor had Nibaran ever asked them to stay at night.</p>
+      <p>Because his own calculations lay elsewhere.</p>
+      <p>For as long as Vikram Babu lived, money would keep coming from his secret arrangement.</p>
+      <p>So any harm to Vikram Babu would, in fact, work directly against Nibaran's own interest.</p>
+      <p>But the arithmetic went deeper still.</p>
+      <p>The agreed sum was <strong>eight thousand rupees</strong>.</p>
+      <p>Of it, a total of four thousand reached the four men's hands.</p>
+      <p><strong>The remaining four thousand, Nibaran kept for himself.</strong></p>
+      <p>The four young men believed Vikram Babu was helping them according to his own means.</p>
+      <p>All they knew was—</p>
+      <p class="em">guard him during the day, and a thousand rupees a month would come. That was what Nibaran had told them.</p>
+
+      <div class="break" role="separator"><i></i></div>
+
+      <p>Meanwhile, in that same city, Arin's days were passing between the factory and his rented room.</p>
+      <p>Sudha Devi had recovered and returned home.</p>
+      <p>But inside Arin, one thing kept pricking at him like a thorn.</p>
+      <p>Bishakha's father's land.</p>
+      <p>His own father's name.</p>
+      <p>On some piece of business, Vikram Babu had come to that same city.</p>
+      <p>At the end of work that day, Arin learned that Vikram Babu had come to his office nearby.</p>
+      <p>Arin stood there hesitating for a while.</p>
+      <p>Then, slowly, he went and stood across the street from the office.</p>
+      <p>From a distance, he stared at that familiar man—</p>
+      <p class="em">Rai Bahadur Vikram Babu.</p>
+      <p>His father.</p>
+      <p>But Vikram Babu did not know that his son Arin was in this very city.</p>
+      <p>From a distance, he watched — his father was stepping out of the car.</p>
+      <p>People came forward to shake his hand. Some spoke with smiling faces, some paid their respects.</p>
+      <p>Arin stood there for a long time.</p>
+      <p>Even amid the crowd, his eyes kept returning again and again to that one man—</p>
+      <p>whose identity had, until now, been a source of pride, but which was now becoming entangled with one unknown question after another.</p>
+      <p>Just then, his eyes fell on another young man.</p>
+      <p>Thin. Young. Leaning against an old wall on the opposite side of the street.</p>
+      <p>He too was staring fixedly at Vikram Babu.</p>
+      <p>Suddenly, his eyes met Arin's.</p>
+      <p>One moment.</p>
+      <p>Then the boy quickly turned away and slipped off.</p>
+      <p>Arin did not know him.</p>
+      <p>He did not know that in this boy's eyes too, there was an old score wrapped around Vikram Babu.</p>
+      <p>What that score was, Arin still did not know.</p>
+      <p>In the boy's mind, only one name turned, again and again—</p>
+      <p class="em">Vikram Babu.</p>
+    </div>
+    <nav class="part-nav" aria-label="Navigation at end of Part 4">
+      <a href="#part3">Previous: The Lost Bag</a>
+      <a href="#toc">Back to Contents</a>
+      <a class="next" href="#part5">Next: The Fire Begins</a>
+    </nav>
+  </div>
+</section>
+
+<!-- ================= Part 5 ================= -->
+<section class="act act-5" id="part5" aria-labelledby="t5">
+  <div class="act-inner">
+    <header class="act-head">
+      <p class="act-no">Part 5</p>
+      <h2 id="t5">The Fire Begins</h2>
+    </header>
+    <div class="prose">
+      <p>That winter, a play was staged in the neighborhood field.</p>
+      <p>A bamboo frame, a tin roof, two lamps on either side of the stage.</p>
+      <p>No ticket was needed.</p>
+      <p>Bishakha had said,</p>
+      <p class="d">— "Come, there's a play here every year. You'll like it."</p>
+      <p>Arin agreed.</p>
+      <p>By the time they arrived, the front rows were already full.</p>
+      <p>The two of them sat toward the back.</p>
+      <p>A few rows ahead, off to one side, sat that same thin boy.</p>
+      <p>Arin had seen him before — across the street from Vikram Babu's office.</p>
+      <p>But that day, he thought no more of it.</p>
+      <p>The lights went out.</p>
+
+      <div class="break" role="separator"><i></i></div>
+
+      <p>The play told the story of a tyrannical man.</p>
+      <p>His wrongdoing destroys a family.</p>
+      <p>Their land is lost. A court case drags on. The head of the household dies.</p>
+      <p>In the final scene, a young man of that family kills the tyrant.</p>
+      <p>The stage lights turned red.</p>
+      <p>Some in the audience applauded.</p>
+      <p>Two young men, sitting in two different spots, were watching the very same scene.</p>
+      <p>One beside Bishakha.</p>
+      <p>The other alone.</p>
+
+      <div class="break" role="separator"><i></i></div>
+
+      <p>After the play ended, the actors came forward to stand before the audience.</p>
+      <p>One of them said,</p>
+      <p class="d">— "Theatre is not merely entertainment."</p>
+      <p>Another said,</p>
+      <p class="d">— "Sri Ramakrishna said, <strong>the theatre teaches the people.</strong>"</p>
+      <p>Then they spoke about standing against injustice, establishing what is right, and society's responsibility.</p>
+      <p>That same message reached the ears of two young men that day.</p>
+
+      <div class="split">
+        <p class="who">Arin</p>
+        <p>Walking home, Arin was silent.</p>
+        <p>The stage's final scene kept turning in his mind.</p>
+        <p>A family. A piece of land. A tyrant.</p>
+        <p>He knew that story was no one's invention.</p>
+        <p>That story was the very life of the girl walking beside him.</p>
+        <p>And the tyrant was his own father.</p>
+        <p>Suddenly, a fury rose within him — a fury he had never felt before.</p>
+        <p>Fury at his father. Fury at himself.</p>
+        <p>It struck him that he wanted to go, right then, and break everything apart.</p>
+        <p>Just then, Bishakha said,</p>
+        <p class="d">— "The play was good, wasn't it?"</p>
+        <p>Arin looked at her.</p>
+        <p>The girl who had lost everything was smiling.</p>
+        <p>The girl who could have kept a hundred rupees without anyone ever knowing had gone and returned it herself.</p>
+        <p>Arin said, slowly,</p>
+        <p class="d">— "Don't you ever get angry?"</p>
+        <p>Bishakha was quiet for a moment, then said,</p>
+        <p class="d">— "I do. Every single day."</p>
+        <p class="d">— "Then?"</p>
+        <p class="d">— "Anger won't bring my father back. And my mother is still alive."</p>
+        <p>Arin said nothing more.</p>
+        <p>That night, he could not sleep.</p>
+        <p>But at dawn, he got up and went to the factory.</p>
+        <p>The fire inside him did not go out.</p>
+        <p>He only decided that he would not use that fire to burn anyone.</p>
+      </div>
+
+      <div class="split">
+        <p class="who">Achinta</p>
+        <p>At the other end of the field, unknown to Arin, inside another young man, years of pent-up resentment waited to explode.</p>
+        <p>Even after everyone else had risen and gone, he remained sitting.</p>
+        <p>His name was <strong>Achinta</strong>.</p>
+        <p>He was not yet eighteen.</p>
+        <p>There was no Bishakha beside him.</p>
+        <p>No voice was there that night to hold him back.</p>
+        <p>The words from the stage rang differently in his ears.</p>
+        <p>The actors had said one must stand against injustice.</p>
+        <p>What Achinta heard was—</p>
+        <p class="pull">"The injustice done to my life — I myself must be the one to judge it."</p>
+        <p>The same stage.</p>
+        <p>The same words.</p>
+        <p>But two different meanings for two different ears.</p>
+        <p>That very night, his decision was made.</p>
+        <p>In the days that followed, he went every day and lingered around Vikram Babu's house and office.</p>
+        <p>In the mornings, he would see four young men positioned all around — one at a tea stall, one at the corner, one outside the office. Wherever Vikram Babu went, they trailed him at a distance.</p>
+        <p>As evening fell, he would see them leave, one by one.</p>
+        <p>At night, no one stood watch outside the house.</p>
+        <p>Achinta noticed all of it. Opportunity lay in the dark.</p>
+        <p>But he did not choose the night.</p>
+        <p>It seemed to him that what he was about to do was justice. And justice is not done in hiding — it must be done before everyone's eyes.</p>
+        <p>The wrong meaning of the play's words had, for him, become the only meaning there was.</p>
+      </div>
+
+      <div class="break" role="separator"><i></i></div>
+
+      <p>Why that name had burned for years on end inside Achinta's chest, no one yet knew.</p>
+      <p>Not the police. Not Arin either.</p>
+      <p>The reason still lay some days from coming to light.</p>
+    </div>
+    <nav class="part-nav" aria-label="Navigation at end of Part 5">
+      <a href="#part4">Previous: The Four Guards</a>
+      <a href="#toc">Back to Contents</a>
+      <a class="next" href="#part6">Next: The Final Lesson</a>
+    </nav>
+  </div>
+</section>
+
+<!-- ================= Part 6 ================= -->
+<section class="act act-6" id="part6" aria-labelledby="t6">
+  <div class="act-inner">
+    <header class="act-head">
+      <p class="act-no">Part 6</p>
+      <h2 id="t6">The Final Lesson</h2>
+    </header>
+    <div class="prose">
+      <p>It happened in broad daylight.</p>
+      <p>After noon, Vikram Babu had gone out on some errand.</p>
+      <p>The four guards were in their places, as always.</p>
+      <p>Suddenly, amid the crowd, Achinta reached right up to Vikram Babu's side.</p>
+      <p>Before anyone understood what was happening, he struck.</p>
+      <p>Within a few moments, it was all over.</p>
+      <p class="beats">An attack.<br>Screams.<br>People running.</p>
+      <p>Vikram Babu fell to the ground.</p>
+      <p>The four guards came running.</p>
+      <p>But by then, it was already over.</p>
+      <p class="em">Vikram Babu was dead.</p>
+      <p>Chaos broke out all around.</p>
+      <p>Achinta did not stay a single moment more.</p>
+      <p>Pushing through the crowd, he moved away fast.</p>
+      <p>The four guards, spotting him, went after him.</p>
+      <div class="break" role="separator"><i></i></div>
+      <p>Before the police could arrive, Achinta reached the theatre office — the very place where he had watched the play a few days before.</p>
+      <p>He was moving quickly toward the theatre office.</p>
+
+      <p>In one hand, he still held the <strong>blood-stained knife</strong>.</p>
+
+      <p>The four guards followed some distance behind him. They understood by now that this was the boy who had attacked Vikram Babu.</p>
+
+      <p>Panting, Achinta came and stood at the door of the theatre office.</p>
+
+      <p>Inside, rehearsals for the next play were underway.</p>
+
+      <p>Standing at the door, Achinta said,</p>
+
+      <p class="d">— "I have something to say to you."</p>
+
+      <p>Everyone in the room turned to look at him. Seeing the blood-stained knife in his hand, several people were seized with fear.</p>
+
+      <p>One of the actors stepped forward and said,</p>
+
+      <p class="d">— "What happened? What is that in your hand?"</p>
+
+      <p>Achinta stood silent for a few moments. Then he said,</p>
+
+      <p class="d">— "I took my revenge because of your play."</p>
+
+      <p>A sudden silence fell over the room.</p>
+
+      <p>An elderly actor stared at him in disbelief and said,</p>
+
+      <p class="d">— "What are you saying?"</p>
+
+      <p>There was a strange stillness in Achinta's eyes now. He said, slowly,</p>
+
+      <p class="em">— "The theatre teaches the people."</p>
+
+      <p>Hearing this, everyone in the room went still.</p>
+
+      <p>Just then, the four guards arrived.</p>
+
+      <p>One of them said to the theatre people,</p>
+
+      <p class="d">— "This is the boy who attacked Vikram Babu."</p>
+
+      <p>The theatre people took no more chances. The police were informed at once.</p>
+
+      <p>Within a short time, the police arrived and took Achinta into custody.</p>
+
+      <p>Achinta did not deny what he had done.</p>
+
+      <p>The police asked him,</p>
+
+      <p class="d">— "Why did you attack Vikram Babu?"</p>
+
+      <p>Achinta was quiet for a moment, then said,</p>
+
+      <p class="d">— "What I did, I did. But you need to know why I did it."</p>
+
+      <p>The police set off for the station with Achinta.</p>
+
+      <p>The four guards stood there for a while.</p>
+
+      <p>Then, in silence, they left the theatre.</p>
+
+      <p>Their job had been to protect Vikram Babu.</p>
+
+      <p class="em">But the very man they had been charged with protecting was no longer alive.</p>
+
+      <div class="break" role="separator"><i></i></div>
+
+      <p>The next morning, before work began at the factory, a colleague turned his phone screen toward the others.</p>
+
+      <p class="d">— "Have you seen? That big businessman in the city, Vikram Babu. Yesterday, in broad daylight, right in the middle of the street..."</p>
+
+      <p>Someone said,</p>
+
+      <p class="d">— "As one sows, so shall one reap."</p>
+
+      <p>Another said, in a low voice,</p>
+
+      <p class="d">— "Everyone knew what he'd done. No one ever spoke of it, that's all."</p>
+
+      <div class="break" role="separator"><i></i></div>
+
+      <p>Standing with the others, Arin too was listening to the news.</p>
+
+      <p>But in that whole crowd, only Arin knew—</p>
+
+      <p class="em">Vikram Babu was his father.</p>
+
+      <p>As he listened, a heaviness grew inside his chest.</p>
+
+      <p>Bishakha stood right beside him.</p>
+
+      <p>Hearing the news, she fell silent.</p>
+
+      <p>Neither joy nor grief — only her eyes stayed fixed, unmoving, on the phone screen.</p>
+
+      <p>Arin glanced at her once.</p>
+
+      <p>He started to say something, and stopped.</p>
+
+      <div class="break" role="separator"><i></i></div>
+
+      <p>Elsewhere, news of Vikram Babu's death had reached his own house as well.</p>
+
+      <p>Arin's mother sat in silence for a while.</p>
+
+      <p>Vikram Babu's death was not, to her, simply the death of a husband.</p>
+
+      <p>It was as if a door, hiding some truth for many years, had suddenly swung open.</p>
+
+      <p>She knew that much of Vikram Babu's past would, one day, inevitably come to light.</p>
+
+      <p>And all this time, she had been trying to keep her own son away from the shadow of that past.</p>
+
+      <p>Behind her decision to send Arin out of the house had lain more than just his wastefulness.</p>
+
+      <p>In her mind lay a deeper fear still—</p>
+
+      <p class="em">that her son might one day walk the very same path as his father.</p>
+
+      <p>She called Arin.</p>
+
+      <p class="d">— "Arin, stay right where you are."</p>
+
+      <p>Arin was quiet for a moment, then said,</p>
+
+      <p class="d">— "Mother... I've heard the news."</p>
+
+      <p>His mother said nothing more.</p>
+
+      <p>Between them, only silence, for a while.</p>
+
+      <p>Arin said, slowly,</p>
+
+      <p class="d">— "Did you know everything about Father?"</p>
+
+      <p>His mother sighed.</p>
+
+      <p class="d">— "Not everything. But whatever I did know, it was enough to frighten me for you."</p>
+
+      <p>Arin closed his eyes.</p>
+
+      <p>His mother said,</p>
+
+      <p class="d">— "I didn't send you out of the house only for spending money. I wanted you to build your own life with your own hands. Neither your father's name, nor his path — I wanted neither of them to ever control you."</p>
+
+      <p>Arin gave no answer.</p>
+
+      <div class="break" role="separator"><i></i></div>
+
+      <p>After hanging up, he sat silently for a long time.</p>
+
+      <p>He thought of Bishakha's mother's words.</p>
+
+      <p>Then of Achinta.</p>
+
+      <p>Then of his father's face.</p>
+
+      <p>Everything seemed bound by the same single thread.</p>
+
+      <p class="em">One person's past — how many other people's present it could change!</p>
+
+      <p>Arin knew the truth could not be held back much longer.</p>
+
+      <p>But he still could not tell Bishakha, standing right beside him—</p>
+
+      <p class="em">whose son he really was.</p>
+      <p>But he understood, the truth could not be held back much longer.</p>
+
+      <div class="break" role="separator"><i></i></div>
+
+      <p>The day after Vikram Babu's death, the four young men went to Nibaran.</p>
+      <p>One of them said,</p>
+      <p class="d">— "Brother, what happens to us now?"</p>
+      <p>Nibaran shook his head slowly.</p>
+      <p class="d">— "There won't be any more money for you."</p>
+      <p class="d">— "But we were doing the work..."</p>
+      <p class="d">— "When the man himself is gone, who is there left to guard?"</p>
+      <p>The four of them had no answer to give.</p>
+      <p>But Nibaran was thinking of something else entirely.</p>
+      <p>Vikram Babu was gone.</p>
+      <p>Which meant the diary and letter were no longer security — they were danger.</p>
+      <p>If these two things fell into the wrong hands, it wouldn't just be Vikram Babu's past exposed—</p>
+      <p class="em">Nibaran's own secret accounting could come to light too.</p>
+      <p>That very night, he made his decision.</p>
+      <p>The next day, he called the four young men and handed the diary and letter over to them.</p>
+      <p class="d">— "Go turn these in at the police station."</p>
+      <p class="d">— "What should we say?"</p>
+      <p class="d">— "Say you found them lying in the street. Say you were too afraid of Vikram Babu to hand them in until now."</p>
+      <p>Fearful, but the four of them agreed.</p>
+      <p>The next day, they went to the station and handed in the diary and the letter.</p>
+
+      <div class="break" role="separator"><i></i></div>
+
+      <p>The police had only to read a few pages of the diary to understand this was no ordinary matter.</p>
+      <p>Out of a dead businessman's private diary rose one old event after another.</p>
+      <p class="beats">Biswajit.<br>Rekha.<br>Several other women.<br>Promises of jobs.<br>Gifts.<br>Land papers.<br>Abuse of power.</p>
+      <p>The direction of the investigation shifted.</p>
+      <p>And one question came to the fore—</p>
+      <p class="em">Who had had the diary all this time?</p>
+      <p>The four young men were summoned to the station.</p>
+      <p class="d">— "Found lying in the street? Which street?"</p>
+      <p>One said near the market. Another said beside the station.</p>
+      <p>The investigating officer said nothing. He only wrote something in his notebook.</p>
+      <p class="d">— "What was your relationship with Vikram Babu?"</p>
+      <p class="d">— "We used to guard him, sir. During the day."</p>
+      <p class="d">— "Who put you there?"</p>
+      <p class="d">— "Nibaran, sir."</p>
+      <p class="d">— "How much did you get paid?"</p>
+      <p class="d">— "We each got only a thousand rupees."</p>
+      <p>This time the officer placed a sheet of paper on the table.</p>
+      <p>A record from Vikram Babu's bank account. Eight thousand rupees withdrawn in cash on the same date, every month.</p>
+      <p>The four young men stared at the paper.</p>
+      <p class="d">— "A thousand each for four of you — four thousand in total."</p>
+      <p>The officer looked up.</p>
+      <p class="em">Then where was the rest of the money going?</p>
+      <p>Nibaran was summoned.</p>
+      <p>At first he sidestepped everything. Asked about the diary, he said he knew nothing — the boys had found it themselves.</p>
+      <p>Then the officer said,</p>
+      <p class="d">— "How much money was taken from Vikram Babu each month?"</p>
+      <p>Nibaran fell silent.</p>
+      <p>Outside the door, the four young men stood listening. They heard it all.</p>
+      <p>All this time, they had believed the man was doing them a favor.</p>
+      <p>Tears rose in one of their eyes.</p>
+      <p>In the shadow of a great wrong, a small wrong had made its home.</p>
+
+      <div class="break" role="separator"><i></i></div>
+
+      <p>Meanwhile, the investigation uncovered Achinta's past.</p>
+      <p>Many years before, his father had stood up against Vikram Babu.</p>
+      <p>Then, one day, he had died.</p>
+      <p>Questions had been raised about it, but under Vikram Babu's influence, they had all been buried.</p>
+      <p>After her husband's death, Achinta's mother never recovered.</p>
+      <p>In the end, she too passed away.</p>
+      <p>It was from this old wound that the fire of revenge had grown inside Achinta.</p>
+      <p>Since Achinta was under eighteen, his case was taken up under the juvenile justice system.</p>
+      <p>His age, his family circumstances, and the question of his rehabilitation were all given weight.</p>
+
+      <div class="break" role="separator"><i></i></div>
+
+      <p>A few days later, Rekha Devi went to the station and read the pages of the diary.</p>
+      <p>Biswajit's name.</p>
+      <p>Her own name.</p>
+      <p>The truth that had burned inside her for years on end now lay before her, written down, proven.</p>
+      <p>Then she learned of Achinta.</p>
+      <p>She asked to see him.</p>
+      <p>Achinta was brought before her.</p>
+      <p>For a while, the two of them sat in silence.</p>
+      <p>Rekha said,</p>
+      <p class="d">— "What you did — I don't approve of it."</p>
+      <p>Achinta lowered his head.</p>
+      <p class="d">— "I know."</p>
+      <p class="d">— "But now I also know what happened to you."</p>
+      <p>Achinta's eyes grew wet.</p>
+      <p class="d">— "I have no one."</p>
+      <p>Rekha said, gently,</p>
+      <p class="d">— "From now on, you won't be alone."</p>
+      <p>One day Achinta asked her,</p>
+      <p class="d">— "Then what about what I saw in the play?"</p>
+      <p>Rekha said,</p>
+      <p class="d">— "A play can teach you to ask questions. But it cannot make the decision for you."</p>
+      <p>Then she said,</p>
+      <p class="d">— "That night, in that field, many others were sitting too. They heard the very same words."</p>
+      <p>Achinta stayed silent.</p>
+      <p>For the first time since that night, a question rose in his mind.</p>
+      <p>Was what he'd heard, sitting in that field, really the whole of it?</p>
+    </div>
+    <nav class="part-nav" aria-label="Navigation at end of Part 6">
+      <a href="#part5">Previous: The Fire Begins</a>
+      <a href="#toc">Back to Contents</a>
+      <a class="next" href="#part7">Next: The Weight of Identity</a>
+    </nav>
+  </div>
+</section>
+
+<!-- ================= Part 7 ================= -->
+<section class="act act-7" id="part7" aria-labelledby="t7">
+  <div class="act-inner">
+    <header class="act-head">
+      <p class="act-no">Part 7</p>
+      <h2 id="t7">The Weight of Identity</h2>
+    </header>
+    <div class="prose">
+      <p>The evening light was slowly fading.</p>
+
+      <p>In the courtyard of Sudha Devi's old house, Bishakha sat alone.</p>
+
+      <p>Before her, on the table, lay a few papers.</p>
+
+      <p>Property deeds.</p>
+
+      <p>Property that had once belonged to their family.</p>
+
+      <p>Property her mother had spoken to no one about for many years.</p>
+
+      <p>And beside those papers, a file about Arin.</p>
+
+      <p>Bishakha sat staring at the file.</p>
+
+      <p>Her hands were trembling.</p>
+
+      <p>Because today she had learned a truth that had changed the whole of who Arin was to her.</p>
+
+      <p>Arin—</p>
+
+      <p class="em">Vikram Babu's son.</p>
+
+      <div class="break" role="separator"><i></i></div>
+
+      <p>Just then, a car pulled up at the door of the house.</p>
+
+      <p>Bishakha looked up.</p>
+
+      <p>A woman stepped slowly out of the car.</p>
+
+      <p>Weariness in her face, a deep sorrow in her eyes.</p>
+
+      <p>She glanced around once, and came forward.</p>
+
+      <p>Bishakha rose to her feet.</p>
+
+      <p class="d">— "You are...?"</p>
+
+      <p>The woman looked at Bishakha for a moment.</p>
+
+      <p>Then, in a calm voice, she said,</p>
+
+      <p class="d">— "I am Arin's mother."</p>
+
+      <p>Something trembled inside Bishakha's chest.</p>
+
+      <p>For a few moments, neither of them spoke.</p>
+
+      <p>At last Bishakha said,</p>
+
+      <p class="d">— "Why have you come here?"</p>
+
+      <p>Arin's mother came slowly and stood by the table.</p>
+
+      <p>She looked at the deeds.</p>
+
+      <p>Then at Arin's file.</p>
+
+      <p>Tears came to her eyes.</p>
+
+      <p class="d">— "These papers were meant to be yours."</p>
+
+      <p>Bishakha remained silent.</p>
+
+      <p>Arin's mother said,</p>
+
+      <p class="d">— "I know what happened to your family. I knew a great deal. Perhaps I did not have the power to stop it all... but I stayed silent. That too was my wrongdoing."</p>
+
+      <p>Bishakha asked, slowly,</p>
+
+      <p class="d">— "Does Arin know?"</p>
+
+      <p>The woman shook her head.</p>
+
+      <p class="d">— "Not everything. But he can no longer be kept from the truth now."</p>
+
+      <p>Bishakha's eyes went to Arin's file.</p>
+
+      <p>Arin's face came to her mind.</p>
+
+      <p>His honesty, his labor, his standing by her side during her mother's treatment — all of it.</p>
+
+      <p>But that man's father was the very Vikram Babu because of whom their family had lost everything.</p>
+
+      <p>Inside Bishakha, it was as if two people were fighting.</p>
+
+      <p>One said—</p>
+
+      <p class="em">"He's Vikram Babu's son."</p>
+
+      <p>The other said, without a sound—</p>
+
+      <p class="em">"But he's Arin."</p>
+
+      <p>Arin's mother said, slowly,</p>
+
+      <p class="d">— "I haven't come today to ask your forgiveness. Because for some losses, an apology alone can never make it whole."</p>
+
+      <p>She looked at the deeds.</p>
+
+      <p class="d">— "I want to give back whatever I can."</p>
+
+      <p>Bishakha stared at her, astonished.</p>
+
+      <p>The woman said,</p>
+
+      <p class="d">— "I have gone through the accounts of the property that was unjustly taken from you. I will arrange to return as much of it as possible."</p>
+
+      <p>Bishakha's eyes grew wet.</p>
+
+      <p>But she gave no answer right away.</p>
+
+      <p>Because a question far greater than any property deed now stood before her—</p>
+
+      <p class="em">Would she judge Arin by his father's crime?</p>
+
+      <p>Or would she know Arin by his own identity?</p>
+
+      <div class="break" role="separator"><i></i></div>
+
+      <p>One after another, old scenes rose before Bishakha's eyes.</p>
+      <p class="beats">Her father's face.<br>Her father's helplessness.<br>Her mother's tears.<br>The days of losing their house.<br>A household ruled by want.</p>
+      <p>And that name—</p>
+      <p>Vikram Babu.</p>
+      <p>The name alone had always, until now, stirred a suppressed anger inside her chest.</p>
+      <p>Today, that very man's son was the person closest to her in the world.</p>
+      <p>Bishakha said to herself,</p>
+      <p class="d">— "Then who is Arin?"</p>
+      <p>She tried herself to search for the answer.</p>
+      <p>Vikram Babu's son?</p>
+      <p>Or that Arin, who had come to their house concealing his own father's identity?</p>
+
+      <div class="break" role="separator"><i></i></div>
+
+      <p>Suddenly she remembered that first day.</p>
+      <p>Arin, unable to find work.</p>
+      <p>No money left in his pocket. Despair on his face.</p>
+      <p>And yet, he had told no one his father's name.</p>
+      <p>It was Bishakha who had gotten him the chance to work at the factory.</p>
+      <p>Then she had watched — how Arin had changed.</p>
+      <p>The boy who had once spent lakhs upon lakhs of rupees had saved money through his own labor.</p>
+      <p>When he made mistakes at work, he had owned them.</p>
+      <p>He had stood against injustice.</p>
+      <p>He had never tried to cheat anyone.</p>
+      <p>And, most of all — when it came to her mother's treatment, he had not thought twice about giving his own savings.</p>
+
+      <div class="break" role="separator"><i></i></div>
+
+      <p>Bishakha closed her eyes.</p>
+      <p>It was as if two voices were speaking inside her.</p>
+      <p>One said—</p>
+      <p class="d">"He's Vikram Babu's son."</p>
+      <p>The other said—</p>
+      <p class="d">"But he isn't Vikram Babu."</p>
+      <p>The first voice spoke again—</p>
+      <p class="d">"How can you make your life's companion the son of the man because of whom your family lost everything?"</p>
+      <p>Tears came to Bishakha's eyes.</p>
+      <p>She whispered,</p>
+      <p class="d">— "I don't know..."</p>
+
+      <div class="break" role="separator"><i></i></div>
+
+      <p>That very night, Arin came to see her.</p>
+      <p>Bishakha stood by the door.</p>
+      <p>Arin understood something had happened.</p>
+      <p class="d">— "Bishakha, why are you avoiding me?"</p>
+      <p>No answer.</p>
+      <p>Arin said again,</p>
+      <p class="d">— "Mother has decided to return your property. I've learned everything."</p>
+      <p>This time Bishakha said, slowly,</p>
+      <p class="d">— "It isn't only about the property."</p>
+      <p>Arin stopped.</p>
+      <p>Bishakha looked at him. Tears in her eyes.</p>
+      <p class="d">— "You never told me before."</p>
+      <p class="d">— "You've found out?"</p>
+      <p>Bishakha nodded.</p>
+      <p class="d">— "You... are Vikram Babu's son."</p>
+      <p>Arin looked down.</p>
+      <p>For a while, neither of them spoke.</p>
+      <p>Then Arin said,</p>
+      <p class="d">— "Yes."</p>
+      <p>Bishakha's voice trembled.</p>
+      <p class="d">— "Did you know what he did to us?"</p>
+      <p class="d">— "I didn't know everything."</p>
+      <p class="d">— "But you could have known."</p>
+      <p>Arin was silent.</p>
+      <p>Bishakha said,</p>
+      <p class="d">— "Your father destroyed our lives."</p>
+      <p>Tears came to Arin's eyes too.</p>
+      <p class="d">— "I know."</p>
+      <p class="d">— "And still you came to our house?"</p>
+      <p class="d">— "I didn't know then, none of it, what had happened to you."</p>
+      <p>After a brief pause, Arin said,</p>
+      <p class="d">— "And even after I knew, I didn't leave you."</p>
+      <p>Bishakha kept looking at him.</p>
+
+      <div class="break" role="separator"><i></i></div>
+
+      <p>Arin said, slowly,</p>
+      <p class="d">— "Bishakha, I didn't choose my father."</p>
+      <p class="d">— "But you got his wealth."</p>
+      <p class="d">— "Yes."</p>
+      <p class="d">— "You got his name."</p>
+      <p class="d">— "Yes."</p>
+      <p class="d">— "Then the shadow of his wrongs will stay with you too."</p>
+      <p>Arin bowed his head.</p>
+      <p class="d">— "It will."</p>
+      <p>Then, looking straight into Bishakha's eyes, he said,</p>
+      <p class="d">— "But I don't want to become like him."</p>
+      <p>Bishakha's tears rolled down.</p>
+      <p>Arin said,</p>
+      <p class="d">— "If you reject me, I won't blame you."</p>
+      <p class="d">— "But I'll say one thing."</p>
+      <p class="d">— "What?"</p>
+      <p class="d">— "You don't have to forgive me for my father's wrongs. Just judge me by my own actions."</p>
+
+      <div class="break" role="separator"><i></i></div>
+
+      <p>Bishakha gave no answer.</p>
+      <p>Arin turned to leave.</p>
+      <p>Just then, Bishakha said,</p>
+      <p class="d">— "Arin."</p>
+      <p>He turned back.</p>
+      <p class="d">— "Will you keep all your father's property?"</p>
+      <p>Arin was quiet for a moment, then said,</p>
+      <p class="d">— "Not what isn't legally ours."</p>
+      <p class="d">— "And what's ours?"</p>
+      <p class="d">— "Whatever was unjustly taken from you will be returned to you."</p>
+      <p>Bishakha kept looking at him.</p>
+      <p>Arin said,</p>
+      <p class="d">— "To me, your family's honor matters more than any property."</p>
+
+      <div class="break" role="separator"><i></i></div>
+
+      <p>That night, Bishakha sat beside her mother.</p>
+      <p>Sudha Devi, after sitting silent for a long while, said,</p>
+      <p class="d">— "Do you love Arin?"</p>
+      <p>Bishakha lowered her head.</p>
+      <p>After a long while, she said,</p>
+      <p class="d">— "Yes."</p>
+      <p class="d">— "Then where does the fear lie?"</p>
+      <p>Bishakha took her mother's hand and said,</p>
+      <p class="d">— "When I think of his father, I feel afraid."</p>
+      <p>Sudha Devi sighed.</p>
+      <p class="d">— "For what happened to your father, your pain will remain. It will never fully go away."</p>
+      <p>Then, placing a hand on her daughter's head, she said,</p>
+      <p class="d">— "But a father's sins and a person's own character are not the same thing."</p>
+      <p>Bishakha looked at her mother.</p>
+      <p>Sudha Devi said,</p>
+      <p class="d">— "You've seen Arin. You've watched, with your own eyes, how he changed."</p>
+      <p>After a moment's silence, she said,</p>
+      <p class="d">— "The decision is yours."</p>
+
+      <div class="break" role="separator"><i></i></div>
+
+      <p>That night, Bishakha could not sleep.</p>
+      <p>After her mother fell asleep, she quietly got up. She opened the old tin box kept in the corner of the room.</p>
+      <p>Inside was a photograph of her father, set in a frame with cracked glass.</p>
+      <p>Bishakha gazed at the photograph for a long while.</p>
+      <p>This man had never, in his whole life, cheated anyone out of a single coin.</p>
+      <p>What had she received from her father?</p>
+      <p>Not land. Not a house. Something that could never be written into any deed.</p>
+      <p>The stubbornness to stay honest. The habit of returning a hundred extra rupees the moment it came.</p>
+      <p>Holding the photograph to her chest, she sat there in silence.</p>
+      <p>It struck her that inheritance was never only a matter of property.</p>
+      <p>From one father, someone inherits honesty. From another, someone inherits wealth.</p>
+      <p>There is only one question — what a person does with what they have received.</p>
+
+      <div class="break" role="separator"><i></i></div>
+
+      <p>The next morning, Bishakha sat alone in the courtyard of Sudha Devi's old house.</p>
+
+      <p>Before her, on the table, lay a few papers.</p>
+
+      <p>Property deeds.</p>
+
+      <p>Property that had once belonged to their family.</p>
+
+      <p>Property her mother had spoken to no one about for many years.</p>
+
+      <p>And beside those papers, a file about Arin.</p>
+
+      <p>Bishakha sat staring at the file.</p>
+
+      <p>Her hands were trembling.</p>
+
+      <p>Because today she had learned a truth that had changed the whole of who Arin was to her.</p>
+
+      <p>Arin—</p>
+
+      <p class="em">Vikram Babu's son.</p>
+
+      <div class="break" role="separator"><i></i></div>
+
+      <p>Just then, a car pulled up in front of the house.</p>
+
+      <p>Arin's mother stepped out of the car.</p>
+
+      <p>Bishakha rose to her feet.</p>
+
+      <p>Arin's mother came forward slowly and said,</p>
+
+      <p class="d">— "Is Sudha Devi at home?"</p>
+
+      <p>Bishakha led her inside.</p>
+
+      <p>Seeing her, Sudha Devi said, surprised,</p>
+
+      <p class="d">— "You're here?"</p>
+
+      <p>Arin's mother was quiet for a moment, then said,</p>
+
+      <p class="d">— "I've come today to say something."</p>
+
+      <p>Sudha Devi remained silent.</p>
+
+      <p>Arin's mother looked at Bishakha and said,</p>
+
+      <p class="d">— "My son has changed."</p>
+
+      <p>Bishakha lowered her head.</p>
+
+      <p class="d">— "The Arin who once had no idea what money was worth now earns it with his own hard work. He understands others' suffering. He has learned to own up to his mistakes."</p>
+
+      <p>She paused a moment.</p>
+
+      <p class="d">— "And I know — this change was possible because of you."</p>
+
+      <p>Bishakha looked at her, astonished.</p>
+
+      <p class="d">— "Because of me?"</p>
+
+      <p>Arin's mother smiled faintly and said,</p>
+
+      <p class="d">— "Yes. Your honesty, your labor, and your sense of duty toward others — these are what changed Arin."</p>
+
+      <p>Sudha Devi sighed.</p>
+
+      <p class="d">— "But the suffering our family endured because of your husband..."</p>
+
+      <p>Arin's mother lowered her head.</p>
+
+      <p class="d">— "I know. I am not denying that wrong."</p>
+
+      <p>After a while of silence, she said,</p>
+
+      <p class="d">— "That is why I want the weight of the past's injustice not to ruin our children's lives."</p>
+
+      <p>She looked now, directly, at Sudha Devi.</p>
+
+      <p class="d">— "I want to make Bishakha my daughter-in-law."</p>
+
+      <p>Bishakha went still.</p>
+
+      <p>Sudha Devi too could not speak for a moment.</p>
+
+      <p>Arin's mother said, slowly,</p>
+
+      <p class="d">— "My own household has fallen apart. My relationship with Arin's father had, for a long time, survived in name only. I want, at least, my son's household to be a true one."</p>
+
+      <p>Then, looking at Bishakha, she said,</p>
+
+      <p class="d">— "If you agree, I will accept you not merely as a daughter-in-law, but as my own daughter."</p>
+
+      <p>Tears came to Bishakha's eyes.</p>
+
+      <p>She looked at her mother.</p>
+
+      <p>Sudha Devi slowly took her hand and said,</p>
+
+      <p class="d">— "The decision is yours."</p>
+
+      <p>Bishakha remained silent for a while.</p>
+
+      <p>Arin's face rose before her eyes.</p>
+
+      <p>The Arin who had once lived hiding his own father's identity.</p>
+
+      <p>The Arin who had changed through his own hard work.</p>
+
+      <p>The Arin who had wanted to give his own savings for her mother's treatment.</p>
+
+      <p>And the Arin who had never clung to his father's wrongs as if they were his own right.</p>
+
+      <p>Slowly wiping her tears, Bishakha said,</p>
+
+      <p class="d">— "I don't want to judge Arin by his father's identity."</p>
+
+      <p>After a brief pause, she said,</p>
+
+      <p class="d">— "The Arin I have come to know — that is the one I know."</p>
+
+      <p>Arin's mother wiped her tears and smiled faintly.</p>
+
+      <p>There were tears in Sudha Devi's eyes now too.</p>
+
+      <p>And in that moment, it was as if the years of distance between the two families began, little by little, to close.</p>
+
+      <p class="em">Arin's identity was no longer only his father's name.</p>
+
+      <p class="em">His own actions had built his new identity.</p>
+
+
+      <div class="break" role="separator"><i></i></div>
+
+      <p>The following winter, a play was staged again in that same field.</p>
+      <p>The bamboo frame. The tin roof. Two lamps on either side of the stage.</p>
+      <p>This time, sitting side by side in the front row were Sudha Devi, Bishakha, and Arin.</p>
+      <p>A little way off sat Rekha Devi. Beside her, Achinta.</p>
+      <p>Arin didn't recognize him at first. Then he did — the thin boy from across the street.</p>
+      <p>Achinta saw him too.</p>
+      <p>Not a single word passed between them.</p>
+      <p>The lights went out.</p>
+      <p>In the play's final scene, an old man was saying—</p>
+      <p class="pull">"When you see injustice, protest it. But do not, in the name of justice, commit injustice with your own hands."</p>
+      <p>When the play ended, applause spread across the field.</p>
+      <p>Achinta sat still. Tears in his eyes.</p>
+      <p>He remembered that old night. That play. Those words — "The theatre teaches the people."</p>
+      <p>This time, he understood the meaning of those words differently.</p>
+      <p>On the way out, Arin paused a moment. He turned to Achinta and nodded. Achinta nodded back, slowly.</p>
+      <p>The same stage. The same words.</p>
+      <p>This time, both young men went home carrying the very same meaning of those words.</p>
+
+      <div class="finale">
+        <p>A person is not bound to inherit their father's sins;<br>if they choose, they can inherit the truth instead.</p>
+      </div>
+    </div>
+    <nav class="part-nav" aria-label="Navigation at end of Part 7">
+      <a href="#part6">Previous: The Final Lesson</a>
+      <a class="next" href="#toc">Back to Contents</a>
+    </nav>
+  </div>
+</section>
+
+<!-- ================= About the Author ================= -->
+<section class="author" id="author" aria-labelledby="author-h">
+  <div class="author-in">
+    <div class="break" role="separator"><i></i></div>
+    <p class="act-no">About the Author</p>
+    <h2 id="author-h">Surajit Roy</h2>
+    <div class="prose">
+      <p>Surajit Roy is a teacher and creative writer who treats education, humanity, ethics, and social awareness as essential elements of his writing.</p>
+      <p>His writing gives particular attention to the lives of ordinary people, the strains within relationships, moral conflict, and the decisions people make in difficult circumstances.</p>
+      <p>In "The Weight of Identity," he weaves the questions of inheritance and identity into a story of family drama, revenge, and self-transformation. His aim is not merely to tell a story — it is to give the reader, through that story, an occasion to turn and look back at their own decisions, values, and humanity.</p>
+    </div>
+    <nav class="part-nav" aria-label="Navigation at end of Author Bio">
+      <a href="#toc">Back to Contents</a>
+    </nav>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <p>By Surajit Roy · The Weight of Identity</p>
+  <p>MySkillGlobal</p>
+</footer>
+
+</body>
+</html>

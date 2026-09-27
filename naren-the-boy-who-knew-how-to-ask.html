@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Naren — The Boy Who Knew How to Ask</title>
+<style>
+  :root{
+    --navy:#0a1128;
+    --navy2:#0f1c3f;
+    --navy3:#132a52;
+    --gold:#d4af37;
+    --gold-soft:#e8c96b;
+    --text:#eae6d8;
+    --text-dim:#a9b0c4;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-padding-top:env(safe-area-inset-top,0px);}
+  body{
+    margin:0;
+    background:linear-gradient(180deg,var(--navy) 0%,var(--navy2) 100%);
+    color:var(--text);
+    font-family:'Georgia','Noto Serif',serif;
+    line-height:1.85;
+    min-height:100%;
+  }
+  header{
+    position:sticky;
+    top:0;
+    top:env(safe-area-inset-top,0px);
+    z-index:50;
+    background:rgba(10,17,40,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(212,175,55,0.35);
+    padding:12px 16px;
+    padding-top:calc(12px + env(safe-area-inset-top,0px));
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    font-family:'Helvetica Neue',Arial,sans-serif;
+  }
+  .icon-btn{
+    background:transparent;
+    border:1px solid rgba(212,175,55,0.5);
+    color:var(--gold-soft);
+    border-radius:10px;
+    padding:8px 12px;
+    font-size:13px;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    cursor:pointer;
+    transition:.2s;
+    font-family:inherit;
+  }
+  .icon-btn:active{background:rgba(212,175,55,0.15);}
+  .icon-btn.active{
+    background:var(--gold);
+    color:var(--navy);
+    border-color:var(--gold);
+  }
+  header h1{
+    font-size:14px;
+    margin:0;
+    color:var(--gold-soft);
+    text-align:center;
+    flex:1;
+    font-weight:600;
+    letter-spacing:.5px;
+  }
+  main{
+    max-width:640px;
+    margin:0 auto;
+    padding:20px 18px 60px;
+  }
+  .hero{
+    text-align:center;
+    margin-bottom:26px;
+  }
+  .hero-frame{
+    width:100%;
+    max-width:340px;
+    margin:0 auto 16px;
+    border-radius:16px;
+    overflow:hidden;
+    border:2px solid var(--gold);
+    box-shadow:0 8px 28px rgba(0,0,0,0.5), 0 0 0 6px rgba(212,175,55,0.08);
+    background:var(--navy3);
+  }
+  .hero-frame img{
+    width:100%;
+    display:block;
+    aspect-ratio:4/5;
+    object-fit:cover;
+  }
+  .hero-frame .fallback{
+    width:100%;
+    aspect-ratio:4/5;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--text-dim);
+    font-size:13px;
+    text-align:center;
+    padding:20px;
+    font-family:'Helvetica Neue',Arial,sans-serif;
+  }
+  .eyebrow{
+    color:var(--gold);
+    font-size:12px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    margin-bottom:8px;
+    font-family:'Helvetica Neue',Arial,sans-serif;
+  }
+  .title{
+    font-size:27px;
+    font-weight:700;
+    color:var(--text);
+    margin:0 0 8px;
+  }
+  .subtitle{
+    color:var(--gold-soft);
+    font-size:16px;
+    font-style:italic;
+    margin:0;
+  }
+  nav.toc{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    justify-content:center;
+    margin:22px 0 6px;
+    font-family:'Helvetica Neue',Arial,sans-serif;
+  }
+  nav.toc a{
+    color:var(--gold-soft);
+    background:rgba(212,175,55,0.08);
+    border:1px solid rgba(212,175,55,0.3);
+    border-radius:20px;
+    padding:6px 14px;
+    font-size:12px;
+    text-decoration:none;
+  }
+  .episode-bar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    margin:34px 0 14px;
+    padding-bottom:10px;
+    border-bottom:1px solid rgba(212,175,55,0.25);
+    scroll-margin-top:70px;
+    font-family:'Helvetica Neue',Arial,sans-serif;
+  }
+  .episode-tag{
+    color:var(--gold);
+    font-weight:700;
+    font-size:14px;
+    letter-spacing:.5px;
+  }
+  .story p{
+    margin:0 0 18px;
+    font-size:17px;
+    color:var(--text);
+  }
+  .story .dialog{
+    color:var(--gold-soft);
+    padding-left:14px;
+    border-left:2px solid rgba(212,175,55,0.4);
+    font-style:italic;
+  }
+  .story h2{
+    color:var(--gold);
+    font-size:19px;
+    margin:32px 0 14px;
+    border-bottom:1px solid rgba(212,175,55,0.25);
+    padding-bottom:8px;
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    letter-spacing:.5px;
+  }
+  .moral-list{
+    list-style:none;
+    margin:20px 0;
+    padding:18px 20px;
+    background:rgba(212,175,55,0.06);
+    border:1px solid rgba(212,175,55,0.3);
+    border-radius:12px;
+  }
+  .moral-list li{
+    color:var(--gold-soft);
+    font-size:17px;
+    font-weight:600;
+    padding:6px 0;
+  }
+  .closing-name{
+    text-align:center;
+    font-size:22px;
+    font-weight:700;
+    color:var(--gold);
+    letter-spacing:.5px;
+    margin:22px 0;
+    font-style:italic;
+  }
+  .footer-note{
+    margin-top:40px;
+    text-align:center;
+    color:var(--text-dim);
+    font-size:13px;
+    line-height:1.7;
+    font-family:'Helvetica Neue',Arial,sans-serif;
+  }
+  .footer-note .gold{color:var(--gold-soft);}
+  .the-end{
+    text-align:center;
+    color:var(--gold);
+    letter-spacing:4px;
+    font-size:13px;
+    margin-top:36px;
+    text-transform:uppercase;
+    font-family:'Helvetica Neue',Arial,sans-serif;
+  }
+  #voiceStatus{
+    position:fixed;
+    left:50%;
+    bottom:18px;
+    bottom:calc(18px + env(safe-area-inset-bottom,0px));
+    transform:translateX(-50%) translateY(120%);
+    background:var(--gold);
+    color:var(--navy);
+    padding:10px 18px;
+    border-radius:30px;
+    font-size:13px;
+    font-weight:600;
+    box-shadow:0 6px 20px rgba(0,0,0,0.4);
+    transition:transform .25s ease;
+    z-index:60;
+    white-space:nowrap;
+    font-family:'Helvetica Neue',Arial,sans-serif;
+  }
+  #voiceStatus.show{transform:translateX(-50%) translateY(0);}
+  @media (min-width:600px){
+    .title{font-size:30px;}
+    .story p{font-size:18px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <button class="icon-btn" id="homeBtn" title="Home">🏠 <span>Home</span></button>
+  <h1>NAREN</h1>
+  <button class="icon-btn" id="bookmarkBtn" title="Bookmark">🔖 <span>Bookmark</span></button>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-frame">
+      <img src="images/swamiji.png" alt="Narendranath Dutta" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'fallback',textContent:'Image: images/swamiji.png'}))">
+    </div>
+    <div class="eyebrow">Calcutta, Nineteenth Century</div>
+    <h1 class="title">Naren — The Boy Who Knew How to Ask</h1>
+    <p class="subtitle">The story of a boy of an unusual nature, who wanted to see before he believed</p>
+  </section>
+
+  <nav class="toc">
+    <a href="#ep1">Episode 1</a>
+    <a href="#ep2">Episode 2</a>
+    <a href="#ep3">Episode 3</a>
+    <a href="#ep4">Episode 4</a>
+    <a href="#ep5">Episode 5</a>
+    <a href="#ep6">Episode 6</a>
+  </nav>
+
+  <div class="episode-bar" id="ep1-bar">
+    <span class="episode-tag">Episode 1</span>
+    <button class="icon-btn voice-btn" data-target="ep1">🔊 <span>Listen</span></button>
+  </div>
+
+  <article class="story" id="ep1">
+    <p>The sound of horse-drawn carriages still filled the city's streets. The breeze off the Ganges drifted onto the verandas of old houses. In that Calcutta, in the neighbourhood of Simulia, a boy of an unusual nature was growing up.</p>
+    <p>His name — Narendranath Dutta.</p>
+    <p>At home, everyone lovingly called him — Naren.</p>
+    <p>Keeping Naren seated in one place for long was no easy task.</p>
+    <p>Sometimes he was off playing with friends, sometimes singing, sometimes exercising, and sometimes sitting with a book, lost in deep attention.</p>
+    <p>But his greatest trait was something else.</p>
+    <p>He asked questions.</p>
+    <p>Many questions.</p>
+    <p>One day, sitting in the family's prayer room, Naren asked his mother,</p>
+    <p class="dialog">"Mother, can God be seen?"</p>
+    <p>His mother smiled and said,</p>
+    <p class="dialog">"You feel Him through devotion."</p>
+    <p>Naren asked again,</p>
+    <p class="dialog">"But can He really be seen?"</p>
+    <p>His mother looked into her son's face.</p>
+    <p>She understood — this boy would not stop at merely hearing an answer.</p>
+    <p>Naren wanted to see the truth with his own eyes.</p>
+
+    <h2>The Ghost Tree</h2>
+    <p>One day, a few boys from the neighbourhood stood beneath a large tree, telling stories.</p>
+    <p>One said,</p>
+    <p class="dialog">"There's a ghost in that tree."</p>
+    <p>Naren said,</p>
+    <p class="dialog">"Who has seen it?"</p>
+    <p class="dialog">"Everyone knows it!"</p>
+    <p class="dialog">"Does everyone knowing make it true?"</p>
+    <p>The boys fell silent.</p>
+    <p>One of them asked,</p>
+    <p class="dialog">"Don't you believe it?"</p>
+    <p>Naren looked at the tree and said,</p>
+    <p class="dialog">"Why should I believe without seeing?"</p>
+    <p>He walked slowly toward the tree.</p>
+    <p>His friends watched from a distance.</p>
+    <p>Naren circled the tree. There was nothing there.</p>
+    <p>Coming back, he said,</p>
+    <p class="dialog">"Fear can sometimes make our eyes see things that aren't really there."</p>
+    <p>This small incident seemed to reveal one side of his character —</p>
+    <p>He did not want to believe blindly.</p>
+
+    <h2>Mother's Teaching</h2>
+    <p>Naren's mother, Bhubaneswari Devi, was devout, strong-willed, and blessed with a remarkable memory.</p>
+    <p>She did not teach her son only about religion. She taught him truth, courage, self-respect, and reverence for other people.</p>
+    <p>One day she told Naren,</p>
+    <p class="dialog">"Son, stay on the path of truth in life. If you do wrong, you will only grow small in your own eyes."</p>
+    <p>Naren listened quietly to his mother.</p>
+    <p>Then he said,</p>
+    <p class="dialog">"Mother, what if everyone does wrong?"</p>
+    <p>His mother answered,</p>
+    <p class="dialog">"Still, you will not do wrong."</p>
+    <p>Naren looked at his mother.</p>
+    <p>Those words lodged themselves deep in his mind.</p>
+    <p>Because however much the world would test him in the years to come, that pull toward truth would remain one of the great strengths of his character.</p>
+  </article>
+
+  <div class="episode-bar" id="ep2-bar">
+    <span class="episode-tag">Episode 2</span>
+    <button class="icon-btn voice-btn" data-target="ep2">🔊 <span>Listen</span></button>
+  </div>
+
+  <article class="story" id="ep2">
+    <p>Naren's world was a very large one.</p>
+    <p>To him, education did not mean only reading books.</p>
+    <p>He learned to sing, exercised, swam, played sports, and joined his friends in all kinds of daring exploits.</p>
+    <p>His voice was beautiful. Just as he loved listening to music, he loved singing it too.</p>
+    <p>He was equally keen on keeping his body strong.</p>
+    <p>One day a friend said,</p>
+    <p class="dialog">"Naren, how do you manage to do so many things at once?"</p>
+    <p>Naren laughed and said,</p>
+    <p class="dialog">"A person doesn't grow strong just by reading books. The body has to grow strong too, and so does the mind."</p>
+    <p>He was beginning to understand — the full development of a person needs everything: body, mind, and character.</p>
+
+    <h2>A Different Lesson From Father</h2>
+    <p>Naren's father, Bishwanath Dutta, was educated, open-minded, and a lawyer.</p>
+    <p>Many kinds of people came and went in their house.</p>
+    <p>People of different opinions, people of different communities — many would visit.</p>
+    <p>From early on, Naren listened to their conversations.</p>
+    <p>His father encouraged him to think for himself.</p>
+    <p>One day, on some matter, Naren asked his father a question.</p>
+    <p>Instead of answering directly, his father said,</p>
+    <p class="dialog">"Think it over for yourself."</p>
+    <p>Naren was a little surprised.</p>
+    <p class="dialog">"Why won't you just tell me?"</p>
+    <p>His father smiled gently and said,</p>
+    <p class="dialog">"If you take every answer from someone else's mouth, when will you ever use your own mind?"</p>
+    <p>Naren fell silent.</p>
+    <p>This lesson, too, stayed with him.</p>
+
+    <h2>The World of Books</h2>
+    <p>As he grew older, the range of Naren's reading kept widening.</p>
+    <p>History, philosophy, literature, religion — many subjects drew him in.</p>
+    <p>But reading books did not lessen his questions.</p>
+    <p>Instead, they grew.</p>
+    <p>The answer in one book carried him straight to another question.</p>
+    <p>One day he found himself thinking,</p>
+    <p class="dialog">"Why does man suffer?"</p>
+    <p class="dialog">"If God exists, then why is there so much injustice in the world?"</p>
+    <p class="dialog">"What is the purpose of a human life?"</p>
+    <p>These questions were not yet clear to him.</p>
+    <p>But inside him, a search had already begun.</p>
+    <p>He did not know where that search would take him.</p>
+    <p>He only knew —</p>
+    <p>The truth had to be known.</p>
+  </article>
+
+  <div class="episode-bar" id="ep3-bar">
+    <span class="episode-tag">Episode 3</span>
+    <button class="icon-btn voice-btn" data-target="ep3">🔊 <span>Listen</span></button>
+  </div>
+
+  <article class="story" id="ep3">
+    <p>Stories of Naren's courage spread through the neighbourhood.</p>
+    <p>But even Naren did not know that courage doesn't mean never being afraid.</p>
+    <p>Courage meant learning to stand in front of fear.</p>
+    <p>One day, some friends made a plan to go somewhere together.</p>
+    <p>A friend said,</p>
+    <p class="dialog">"We'll have to be careful if we go there."</p>
+    <p>Naren laughed and said,</p>
+    <p class="dialog">"Why?"</p>
+    <p class="dialog">"They say the place is dangerous."</p>
+    <p>Naren said,</p>
+    <p class="dialog">"Then we'll go carefully. But is being afraid really the answer?"</p>
+    <p>This habit of his puzzled a good many people.</p>
+
+    <h2>Forgetting Himself for Others</h2>
+    <p>Another quality was slowly becoming clear in Naren — when he saw someone's suffering, he could not stay still.</p>
+    <p>Seeing a poor person, a question would rise in his mind,</p>
+    <p class="dialog">"Aren't they people just like us? Then why do they suffer so much?"</p>
+    <p>This question would later grow into one of the great concerns of his life.</p>
+    <p>But for now, he was still just a boy.</p>
+    <p>His means were limited.</p>
+    <p>Still, he helped however little he could.</p>
+    <p>Sometimes he shared his own food, sometimes he simply listened, with his whole heart, to someone's troubles.</p>
+
+    <h2>A Deep Question</h2>
+    <p>One day, sitting in on a religious discussion, Naren listened to a great deal of talk.</p>
+    <p>There was much discussion of God, the soul, religion.</p>
+    <p>Everyone was speaking.</p>
+    <p>But in Naren's mind, only one question kept turning.</p>
+    <p>At last, he blurted it out,</p>
+    <p class="dialog">"Has anyone truly seen God?"</p>
+    <p>For a moment, silence fell over the room.</p>
+    <p>Many people offered various explanations.</p>
+    <p>Someone said, "It is written in the scriptures."</p>
+    <p>Someone said, "One must simply have faith."</p>
+    <p>But Naren's mind found no peace in that.</p>
+    <p>He thought,</p>
+    <p class="dialog">"I don't just want to hear it. I want to know the truth."</p>
+    <p>This very question would one day lead him to a man who would set his whole life on a completely new path.</p>
+  </article>
+
+  <div class="episode-bar" id="ep4-bar">
+    <span class="episode-tag">Episode 4</span>
+    <button class="icon-btn voice-btn" data-target="ep4">🔊 <span>Listen</span></button>
+  </div>
+
+  <article class="story" id="ep4">
+    <p>The days kept passing.</p>
+    <p>Naren was a young man now. His questions had grown deeper.</p>
+    <p>He had listened to religious talks in many places, argued and discussed with all kinds of people. But the thirst in his mind was not quenched.</p>
+    <p>One day, he was introduced to an ascetic at Dakshineswar.</p>
+    <p>He — Sri Ramakrishna Paramahamsa.</p>
+    <p>At their first meeting, Naren sat down before him.</p>
+    <p>It was Naren's nature to speak plainly.</p>
+    <p>He asked,</p>
+    <p class="dialog">"Have you seen God?"</p>
+    <p>Hearing the question, an unusual smile spread across Sri Ramakrishna's face.</p>
+    <p>He said,</p>
+    <p class="dialog">"Yes, I have."</p>
+    <p>Naren was astonished.</p>
+    <p>He had not expected such an answer.</p>
+    <p>Sri Ramakrishna went on to say that just as God could be felt directly, God could also be realized within human beings — and he began, from then on, to teach Naren this.</p>
+    <p>Naren did not accept everything all at once.</p>
+    <p>It was his nature to question, to test.</p>
+    <p>So this bond, too, was not built in a single day.</p>
+    <p>There was questioning, hesitation, testing — and slowly, a path toward deeper understanding.</p>
+    <p>But that first meeting was extremely important.</p>
+    <p>Because Naren's lifelong search now found a new direction.</p>
+
+    <h2>A New Door Opens Before Naren</h2>
+    <p>He began to understand —</p>
+    <p>Religion was not merely a matter for books.</p>
+    <p>Loving people, seeking the truth, and awakening the strength within oneself — all of it was bound up together.</p>
+    <p>The questions of his childhood seemed, one by one, to take on new meaning.</p>
+    <p>But ahead still lay a long road.</p>
+    <p>Many trials.</p>
+    <p>Much sorrow.</p>
+    <p>Much struggle.</p>
+  </article>
+
+  <div class="episode-bar" id="ep5-bar">
+    <span class="episode-tag">Episode 5</span>
+    <button class="icon-btn voice-btn" data-target="ep5">🔊 <span>Listen</span></button>
+  </div>
+
+  <article class="story" id="ep5">
+    <p>That house in Calcutta had once been filled with laughter and joy.</p>
+    <p>But suddenly, everything changed.</p>
+    <p>Naren's father, Bishwanath Dutta, passed away.</p>
+    <p>It was as though, all at once, many doors had closed upon the household.</p>
+    <p>The family that had once welcomed a steady stream of guests now had to work out — how would the household even manage?</p>
+    <p>Naren was young then.</p>
+    <p>He had dreams for his own future. He had his studies. He had his music. He had his friends. But after his father's death, the weight of the family fell onto his shoulders.</p>
+    <p>One day, after much effort, he went to a house hoping for work.</p>
+    <p>He came back empty-handed.</p>
+    <p>He went again, another day.</p>
+    <p>That, too, came to nothing.</p>
+    <p>Day after day, it was the same.</p>
+    <p>At some point, a question rose inside him,</p>
+    <p class="dialog">"This God I have heard so much about — where is He?"</p>
+    <p>This time, the question was no longer one of curiosity.</p>
+    <p>It was a question born of life's deep pain.</p>
+
+    <h2>At Dakshineswar</h2>
+    <p>Naren went to Sri Ramakrishna once more.</p>
+    <p>The brightness of the restless boy he once was no longer showed in his eyes. The hard reality of life had changed him a great deal.</p>
+    <p>He said,</p>
+    <p class="dialog">"My family is in such distress. Could you not pray to the Mother, and ask something on our behalf?"</p>
+    <p>Sri Ramakrishna said,</p>
+    <p class="dialog">"Ask the Mother yourself."</p>
+    <p>Naren went into the temple at Dakshineswar.</p>
+    <p>He had meant, that day, to pray for his family.</p>
+    <p>But standing before the goddess, quite different words came from his mouth.</p>
+    <p>He asked —</p>
+    <p class="dialog">"Mother, give me knowledge, give me devotion, give me detachment."</p>
+    <p>Coming back out, he realized he had forgotten to mention his family's want.</p>
+    <p>Sri Ramakrishna sent him back in again.</p>
+    <p>The second time, the very same thing happened.</p>
+    <p>And the third time, too.</p>
+    <p>At last, Sri Ramakrishna said with a gentle smile,</p>
+    <p class="dialog">"Your family will not go without food or clothing."</p>
+    <p>Naren stayed silent.</p>
+    <p>A new struggle had begun within him.</p>
+    <p>The hardship of life had not merely taught him to think of himself — it had also taught him to see other people's suffering with new eyes.</p>
+
+    <h2>A New Path</h2>
+    <p>The days that followed were not easy.</p>
+    <p>Before Naren lay the weight of the household, his own future, and the search for spiritual truth.</p>
+    <p>In Sri Ramakrishna's presence, his thinking grew deeper still.</p>
+    <p>He began to understand —</p>
+    <p>Loving people and seeking God were not two separate paths.</p>
+    <p>But he still did not know where the future would carry him.</p>
+    <p>Ahead of him now lay a long road.</p>
+    <p>It was on this road that Narendranath Dutta would one day become known by another name —</p>
+    <p class="closing-name">Swami Vivekananda.</p>
+  </article>
+
+  <div class="episode-bar" id="ep6-bar">
+    <span class="episode-tag">Episode 6 · Final Episode</span>
+    <button class="icon-btn voice-btn" data-target="ep6">🔊 <span>Listen</span></button>
+  </div>
+
+  <article class="story" id="ep6">
+    <p>Time moved on.</p>
+    <p>After Sri Ramakrishna's passing, Naren and his fellow disciples set out on the path of monastic life.</p>
+    <p>Narendranath was no longer searching for truth only for his own sake.</p>
+    <p>He set out to see the length and breadth of India for himself.</p>
+    <p>From city to village.</p>
+    <p>From royal palaces to the homes of ordinary people.</p>
+    <p>Along the way, he saw a vast country — a land of boundless heritage, and yet home to countless people worn down by poverty and lack of education.</p>
+    <p>One day, walking on, it struck him,</p>
+    <p class="dialog">"How can I think only of my own liberation, when the people of this land suffer so much, and I do nothing for them?"</p>
+    <p>The questions of his childhood seemed to take on new meaning.</p>
+    <p>Where was God?</p>
+    <p>Was He not present within the people themselves?</p>
+
+    <h2>Across the Ocean</h2>
+    <p>1893.</p>
+    <p>Narendranath was now Swami Vivekananda.</p>
+    <p>He had travelled to the city of Chicago, in America, to attend the World's Parliament of Religions.</p>
+    <p>Even getting there had not been easy.</p>
+    <p>An unfamiliar country.</p>
+    <p>Unfamiliar people.</p>
+    <p>A lack of money.</p>
+    <p>Uncertainty.</p>
+    <p>Still, he pressed on.</p>
+    <p>At last, the day arrived.</p>
+    <p>In the great hall sat representatives of many religions, from many nations.</p>
+    <p>Swami Vivekananda's turn was drawing near.</p>
+    <p>The moment seemed to gather the whole of his life's journey into one place.</p>
+    <p>That same little Naren —</p>
+    <p>who had once gone up to a tree to test the truth of a ghost story,</p>
+    <p>who had once questioned his mother about God,</p>
+    <p>who had heard from his father to think with his own mind,</p>
+    <p>who, in his days of hardship, had learned to feel other people's suffering as his own —</p>
+    <p>that very Naren now stood ready to face the world.</p>
+    <p>He rose to the podium.</p>
+    <p>And then his historic address began.</p>
+    <p>That day, his voice carried not the message of a single religion.</p>
+    <p>It carried humanity, tolerance, and mutual respect.</p>
+
+    <h2>Looking Back</h2>
+    <p>If, many years earlier, someone had asked the little boy Naren,</p>
+    <p class="dialog">"What will you become when you grow up?"</p>
+    <p>He probably could not have answered.</p>
+    <p>Because he did not know where the future would take him.</p>
+    <p>But even then, certain things were already within him —</p>
+
+    <ul class="moral-list">
+      <li>The courage to ask questions.</li>
+      <li>The habit of testing the truth.</li>
+      <li>An eagerness to learn.</li>
+      <li>The capacity to feel other people's suffering.</li>
+      <li>And the effort to find the strength within himself.</li>
+    </ul>
+
+    <p>These very qualities, little by little, turned him from Narendranath into Swami Vivekananda.</p>
+    <p>So the story of Swami Vivekananda's childhood is not only the story of one great man's boyhood.</p>
+    <p>It is the story of the possibility hidden inside every child.</p>
+    <p>A child who asks questions may one day find new answers.</p>
+    <p>A child who wants to know the truth may one day call others onto the path of truth as well.</p>
+    <p>And a child who learns to understand others' suffering may one day give their whole life to people.</p>
+    <p>So the story of little Naren does not end here.</p>
+    <p>Because the question he left behind still stands before us today —</p>
+    <p class="closing-name">"How will you use the strength within you?"</p>
+  </article>
+
+  <div class="the-end">— The End —</div>
+
+  <div class="footer-note">
+    <span class="gold">Naren — The Boy Who Knew How to Ask</span>
+  </div>
+</main>
+
+<div id="voiceStatus"></div>
+
+<script>
+(function(){
+  const STORAGE_KEY = 'naren_bookmark_en';
+  const bookmarkBtn = document.getElementById('bookmarkBtn');
+  const homeBtn = document.getElementById('homeBtn');
+  const voiceStatus = document.getElementById('voiceStatus');
+  let statusTimer = null;
+
+  function showStatus(msg){
+    voiceStatus.textContent = msg;
+    voiceStatus.classList.add('show');
+    clearTimeout(statusTimer);
+    statusTimer = setTimeout(()=>voiceStatus.classList.remove('show'), 2200);
+  }
+
+  // ---- Bookmark ----
+  function saveBookmark(){
+    try{
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        scrollY: window.scrollY,
+        savedAt: Date.now()
+      }));
+      bookmarkBtn.classList.add('active');
+      showStatus('Bookmark saved');
+    }catch(e){
+      showStatus('Could not save bookmark');
+    }
+  }
+
+  function goToBookmark(){
+    try{
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if(!raw){ showStatus('No bookmark yet'); return; }
+      const data = JSON.parse(raw);
+      window.scrollTo({top:data.scrollY, behavior:'smooth'});
+      showStatus('Returning to your bookmark');
+    }catch(e){
+      showStatus('No bookmark yet');
+    }
+  }
+
+  bookmarkBtn.addEventListener('click', function(){
+    try{
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if(raw){ goToBookmark(); } else { saveBookmark(); }
+    }catch(e){ saveBookmark(); }
+  });
+  bookmarkBtn.addEventListener('dblclick', function(e){
+    e.preventDefault();
+    saveBookmark();
+  });
+
+  try{
+    if(localStorage.getItem(STORAGE_KEY)){
+      bookmarkBtn.classList.add('active');
+    }
+  }catch(e){}
+
+  // ---- Home button ----
+  homeBtn.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+
+  // ---- Voice narration (Web Speech API, per episode, English) ----
+  let currentBtn = null;
+
+  function stopSpeaking(){
+    if(window.speechSynthesis){
+      window.speechSynthesis.cancel();
+    }
+    if(currentBtn){
+      currentBtn.classList.remove('active');
+      currentBtn.querySelector('span').textContent = 'Listen';
+    }
+    currentBtn = null;
+  }
+
+  function pickEnglishVoice(){
+    const voices = window.speechSynthesis ? window.speechSynthesis.getVoices() : [];
+    return voices.find(v => /^en(-|_|$)/i.test(v.lang)) || null;
+  }
+
+  document.querySelectorAll('.voice-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      const targetId = btn.getAttribute('data-target');
+      const target = document.getElementById(targetId);
+
+      if(!('speechSynthesis' in window)){
+        showStatus('Voice is not supported in this browser');
+        return;
+      }
+
+      if(currentBtn === btn){
+        stopSpeaking();
+        return;
+      }
+
+      stopSpeaking();
+
+      const text = target.innerText || target.textContent;
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = 'en-US';
+      const voice = pickEnglishVoice();
+      if(voice) utter.voice = voice;
+      utter.rate = 0.95;
+      utter.pitch = 1;
+
+      utter.onend = function(){ stopSpeaking(); };
+      utter.onerror = function(){ stopSpeaking(); showStatus('Something went wrong playing the voice'); };
+
+      currentBtn = btn;
+      btn.classList.add('active');
+      btn.querySelector('span').textContent = 'Stop';
+
+      window.speechSynthesis.speak(utter);
+      showStatus('Reading aloud…');
+    });
+  });
+
+  if('speechSynthesis' in window){
+    window.speechSynthesis.onvoiceschanged = function(){};
+  }
+
+  window.addEventListener('beforeunload', stopSpeaking);
+})();
+</script>
+
+</body>
+</html>

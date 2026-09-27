@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Father, Too, Wanted to Live in Laughter and Joy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0a1322;
+    --navy-2:#0f1e33;
+    --navy-3:#142943;
+    --gold:#c9a227;
+    --gold-soft:#a5842a;
+    --ember:#a5622d;
+    --ink:#ece6d6;
+    --ink-dim:#9aa4b8;
+    --line:rgba(201,162,39,0.18);
+    box-sizing:border-box;
+  }
+  *{box-sizing:inherit; margin:0; padding:0;}
+  html{scroll-behavior:smooth; scroll-padding-top:56px;}
+  body{
+    background:
+      radial-gradient(ellipse at 20% -10%, rgba(201,162,39,0.07), transparent 45%),
+      radial-gradient(ellipse at 100% 20%, rgba(165,98,45,0.05), transparent 40%),
+      var(--navy);
+    color:var(--ink);
+    font-family:'Source Sans 3', sans-serif;
+    font-weight:300;
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  h1,h2,h3,.serif{font-family:'Playfair Display', serif;}
+
+  /* the single taut string — doubles as scroll progress */
+  #string-track{
+    position:fixed; top:0; left:0; right:0; height:3px; z-index:60;
+    background:rgba(255,255,255,0.03);
+    padding-top:env(safe-area-inset-top,0px);
+  }
+  #string-fill{
+    height:3px; width:0%;
+    background:linear-gradient(90deg, var(--ember), var(--gold));
+    box-shadow:0 0 8px rgba(201,162,39,0.6);
+    transition:width .1s linear;
+  }
+
+  header{
+    padding:56px 22px 40px;
+    padding-top:calc(56px + env(safe-area-inset-top,0px));
+    max-width:680px; margin:0 auto;
+    text-align:center;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-portrait{
+    width:112px; height:112px; border-radius:50%;
+    margin:0 auto 22px;
+    object-fit:cover;
+    border:2px solid var(--gold-soft);
+    box-shadow:0 0 0 6px rgba(201,162,39,0.08), 0 8px 30px rgba(0,0,0,0.4);
+    display:block;
+  }
+  header h1{
+    font-size:clamp(1.7rem, 6vw, 2.5rem);
+    font-weight:700;
+    color:var(--ink);
+    line-height:1.4;
+  }
+  header .tagline{
+    margin-top:16px;
+    color:var(--gold-soft);
+    font-size:1.02rem;
+    font-style:normal;
+  }
+  header .meta{
+    margin-top:26px;
+    color:var(--ink-dim);
+    font-size:0.88rem;
+    letter-spacing:0.02em;
+  }
+
+  #continue-bar{
+    display:none;
+    max-width:680px; margin:22px auto 0; padding:0 22px;
+  }
+  #continue-bar a{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:12px;
+    background:var(--navy-3);
+    border:1px solid var(--line);
+    border-radius:2px;
+    padding:14px 18px;
+    text-decoration:none;
+    color:var(--ink);
+  }
+  #continue-bar a span.lbl{color:var(--ink-dim); font-size:0.82rem; display:block;}
+  #continue-bar a span.ep{font-family:'Playfair Display',serif; font-size:1.02rem; margin-top:2px; display:block;}
+  #continue-bar a span.arrow{color:var(--gold); font-size:1.3rem;}
+
+  nav#toc{
+    max-width:680px; margin:40px auto; padding:0 22px;
+  }
+  nav#toc ol{list-style:none;}
+  nav#toc li{
+    border-bottom:1px solid var(--line);
+  }
+  nav#toc li:first-child{border-top:1px solid var(--line);}
+  nav#toc a{
+    display:flex; align-items:baseline; gap:16px;
+    padding:20px 4px;
+    text-decoration:none;
+    color:var(--ink);
+  }
+  nav#toc .num{
+    font-family:'Playfair Display', serif;
+    color:var(--gold);
+    font-size:0.95rem;
+    min-width:5.2em;
+  }
+  nav#toc .ttl{
+    font-family:'Playfair Display', serif;
+    font-size:1.05rem;
+    flex:1;
+  }
+  nav#toc .sub{
+    display:block; color:var(--ink-dim); font-size:0.82rem; margin-top:4px; font-family:'Source Sans 3',sans-serif;
+  }
+
+  main{max-width:680px; margin:0 auto; padding:0 22px 140px;}
+
+  section.episode{
+    padding:56px 0 24px;
+    border-bottom:1px solid var(--line);
+    scroll-margin-top:64px;
+  }
+  section.episode:last-of-type{border-bottom:none;}
+
+  .ep-head{margin-bottom:30px;}
+  .ep-num{
+    color:var(--gold); font-family:'Playfair Display', serif; font-size:0.95rem;
+  }
+  .ep-title{
+    font-size:clamp(1.4rem,5vw,1.85rem);
+    margin-top:8px;
+    font-weight:600;
+  }
+
+  .listen-btn{
+    margin-top:20px;
+    display:inline-flex; align-items:center; gap:10px;
+    background:transparent;
+    border:1px solid var(--gold-soft);
+    color:var(--gold);
+    font-family:'Source Sans 3', sans-serif;
+    font-size:0.92rem;
+    padding:10px 20px;
+    border-radius:2px;
+    cursor:pointer;
+  }
+  .listen-btn:active{background:rgba(201,162,39,0.1);}
+  .listen-btn.playing{background:rgba(201,162,39,0.12); border-color:var(--gold);}
+  .listen-btn svg{width:14px; height:14px;}
+
+  .prose p{
+    margin-bottom:1.3em;
+    font-size:1.04rem;
+    color:var(--ink);
+  }
+  .prose p.quote{
+    color:#f2e9c9;
+    padding-right:16px;
+    border-right:2px solid var(--gold-soft);
+    margin-right:2px;
+  }
+  .prose p.tts-active{
+    color:#fff6df;
+    transition:color .3s ease;
+  }
+  .prose .closing{
+    margin-top:8px;
+    padding-top:28px;
+  }
+  .prose .closing p{color:#dcd3b8;}
+
+  .bookmark-toggle{
+    position:sticky; top:14px; float:left; margin-right:-4px;
+    display:none;
+  }
+
+  footer{
+    max-width:680px; margin:0 auto; padding:50px 22px 60px;
+    text-align:center; color:var(--ink-dim); font-size:0.85rem;
+    border-top:1px solid var(--line);
+  }
+  footer .sign{
+    color:var(--gold-soft); font-family:'Playfair Display', serif; margin-top:10px; font-size:1rem;
+  }
+
+  /* persistent player bar */
+  #player{
+    position:fixed; left:0; right:0; bottom:0; z-index:70;
+    background:var(--navy-2);
+    border-top:1px solid var(--line);
+    padding:12px 16px;
+    padding-bottom:calc(12px + env(safe-area-inset-bottom,0px));
+    transform:translateY(110%);
+    transition:transform .35s ease;
+  }
+  #player.show{transform:translateY(0);}
+  #player .row{
+    display:flex; align-items:center; gap:12px;
+    max-width:680px; margin:0 auto;
+  }
+  #player .info{flex:1; min-width:0;}
+  #player .info .now-ep{
+    font-size:0.72rem; color:var(--ink-dim); letter-spacing:0.02em;
+  }
+  #player .info .now-title{
+    font-family:'Playfair Display', serif; font-size:0.95rem;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    color:var(--ink);
+  }
+  #player button{
+    background:none; border:none; color:var(--ink);
+    width:38px; height:38px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+  }
+  #player button.play-pause{
+    background:var(--gold); color:var(--navy); width:44px; height:44px;
+  }
+  #player button svg{width:18px; height:18px;}
+  #player button.play-pause svg{width:20px; height:20px;}
+  #player button:disabled{opacity:0.35;}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    #player, #string-fill{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<div id="string-track"><div id="string-fill"></div></div>
+
+<header>
+  <img class="hero-portrait" src="images/baba.png" alt="Portrait of Haripada Babu">
+  <h1>Father, Too, Wanted to Live in Laughter and Joy</h1>
+  <p class="tagline">The story of an ektara, a father, and a life that slowly emptied out in the name of his children's love</p>
+  <p class="meta">5 Episodes · Read or Listen</p>
+</header>
+
+<div id="continue-bar">
+  <a id="continue-link" href="#">
+    <span>
+      <span class="lbl">Where you left off</span>
+      <span class="ep" id="continue-ep-title">—</span>
+    </span>
+    <span class="arrow">→</span>
+  </a>
+</div>
+
+<nav id="toc" aria-label="Episode list">
+  <ol>
+    <li><a href="#ep1"><span class="num">Episode 1</span><span class="ttl">The Man and His Ektara<span class="sub">Haripada, his ektara, and the beginning of a family</span></span></a></li>
+    <li><a href="#ep2"><span class="num">Episode 2</span><span class="ttl">For His Daughter's Happiness<span class="sub">Demands from her in-laws, and savings quietly crumbling away</span></span></a></li>
+    <li><a href="#ep3"><span class="num">Episode 3</span><span class="ttl">From His Own Home to a Rented Room<span class="sub">The last of what remained, and Mita's farewell</span></span></a></li>
+    <li><a href="#ep4"><span class="num">Episode 4</span><span class="ttl">Beyond the Window<span class="sub">In his daughter's house, a life growing smaller within its rules</span></span></a></li>
+    <li><a href="#ep5"><span class="num">Final Episode</span><span class="ttl">The Last Tune<span class="sub">The sunlight he had been waiting for</span></span></a></li>
+  </ol>
+</nav>
+
+<main>
+
+<section class="episode" id="ep1" data-title="The Man and His Ektara">
+  <div class="ep-head">
+    <div class="ep-num">Episode 1</div>
+    <h2 class="ep-title">The Man and His Ektara</h2>
+    <button class="listen-btn" data-ep="ep1">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      Listen
+    </button>
+  </div>
+  <div class="prose">
+    <p>Haripada Babu was a very ordinary man. For years he had worked a government job, running the household and his children's education on a fixed salary. He allowed himself no luxuries — except for a strange pull he felt toward an old wooden ektara, bought many years ago at a village fair.</p>
+    <p>Every evening he'd come home from the office, set down a stool in the courtyard, and pick up the ektara. Toon… taang… the tune wasn't always right, but that never mattered — he played for himself, to find his way back from the day's exhaustion. His wife Mita once laughed and said, "The moment I hear your ektara, I know your mood is good today." Haripada answered, "I play even when I'm not. Playing makes the mind a little lighter."</p>
+    <p>They had two children — a son, Arka, studious and dreaming of a big career, and a daughter, Apu, her father's darling. One day Arka said he wanted to do an MBA. The moment the cost came up, Haripada put a hand on his son's shoulder and said, "As long as your parents are here, money can never stand in the way of a child's dream." Mita knew the words came from the heart — and she also knew exactly how many numbers would have to be rearranged because of them.</p>
+    <p>Apu was still little then. Whenever her father sat to play the ektara, she'd come and sit beside him, and one day she insisted on learning it herself. Haripada laughed and said, "Study first, the ektara later — because I want you standing on your own feet one day." Apu held her father's hand and said, "I'll never leave you." No one knew then how much of that childhood promise was truth, and how much was just a child's heart talking.</p>
+    <p>At the time of the MBA admission, Haripada took out years of savings from the cupboard. Mita asked, "We'll need to think about Apu's wedding too, someday." Haripada only said, "Something will work out" — a phrase that returned to his lips at every crisis the family faced.</p>
+    <p>Time moved on. Arka finished his MBA and landed a good job; with his first salary, he bought his father a panjabi. "You spent your whole life buying things for us — now it's my turn." That evening the ektara played in the courtyard again, and Apu came running, saying, "From today, I'll learn too." In that little courtyard, there was no accounting of what was lacking — only the family's laughter.</p>
+    <p>A few years later, a good match came for Apu. Mita worried aloud, "What about our savings?" Haripada said calmly, "A daughter's wedding happens only once in a lifetime. Something will work out." This time Mita didn't smile back; she knew that even with their savings nearly emptied by Arka's education, her husband would let nothing be lacking at his daughter's wedding.</p>
+    <p class="quote">At the farewell, Apu hugged her father and said, "Don't ever forget me." Haripada's eyes welled up. "Can a father ever forget his daughter? Just promise me you'll be happy."</p>
+    <p>After everyone left, the house fell into a strange silence. Haripada sat on his stool in the courtyard, picked up the ektara, then stopped. "The courtyard feels so empty today," he said. Mita sat beside him. "Maybe now you can live a little for yourself too." Haripada smiled and played again — toon… taang — not knowing that one day this very tune would become both the greatest joy of his life and its deepest, saddest memory.</p>
+  </div>
+</section>
+
+<section class="episode" id="ep2" data-title="For His Daughter's Happiness">
+  <div class="ep-head">
+    <div class="ep-num">Episode 2</div>
+    <h2 class="ep-title">For His Daughter's Happiness</h2>
+    <button class="listen-btn" data-ep="ep2">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      Listen
+    </button>
+  </div>
+  <div class="prose">
+    <p>After Apu's wedding, the house grew a little emptier, but there was no sorrow in Haripada's heart — his daughter's happiness was peace enough. At first, Apu's phone calls were simple things — meals, news of her mother, whether Baba was still playing his ektara. But slowly, over time, a different note began creeping into those calls.</p>
+    <p>One night, Apu's voice was low. "Everyone here counts everything so carefully, Baba — who gave what at the wedding, who didn't." Then, softly, "It would be nice to have a fridge. It's embarrassing that we don't." Haripada only said, "Let me see what I can do, my dear."</p>
+    <p>After the call, Mita asked what was wrong. "If the girl has to hear things from her in-laws…" — Mita knew this single worry well enough; it was the one that always made Haripada forget every calculation. He called Arka for help, but Arka said he had a lot of expenses that month too, adding, "Talk to Apu yourself sometime, Baba — just giving things won't solve everything." Haripada, irritated, said, "You don't understand her." That night he took out more savings from his cupboard. Mita said, "That 'I'm here for you' of yours is going to empty every last bit of our savings one day."</p>
+    <p>The fridge was sent. Apu called, delighted, and then came a new complaint — a television. "Everyone says a good TV should have come from the bride's side after the wedding." Haripada stayed quiet. Apu added quickly, "No, no, it's fine if you can't manage it" — and it was that last sentence that hurt him most. The TV was sent too.</p>
+    <p>The calls didn't get fewer — they grew. Sometimes it was a wardrobe they needed, sometimes her jewelry felt too plain, sometimes "everyone else uses newer things." Every time, Haripada would say, "Let me see, my dear." One day Mita said quietly, "A daughter's needs and every want she voices — those are two different things." Haripada said nothing.</p>
+    <p>Arka called again. "Baba, why do you keep giving her so much? There has to be a limit." Haripada snapped, "You're a son, you have your own household, you won't understand." The call ended, and neither of them said anything more.</p>
+    <p>That night, Haripada walked a long while in the courtyard of his own house — this house, built with the very first savings of his working life, every brick woven through with Arka's school mornings, Apu's birthdays, countless evenings with Mita. "What if this house weren't here anymore?" — the thought startled even him, and he told himself there was no need to think that far.</p>
+    <p class="quote">A few days later, Apu's voice broke on the phone. "Baba, I can't take it anymore. They say so much was missing at the wedding, and I hear about it every day." There was crying on the other end. Haripada looked out the window at his own house, then said slowly, "Something will work out."</p>
+    <p>That night, he opened the cupboard, took the old deed to the house in his hands, and sat staring at it for a long time. In a corner, the ektara lay silent. He didn't yet know that, in trying to buy his daughter's happiness, he was about to give away his very last shelter.</p>
+  </div>
+</section>
+
+<section class="episode" id="ep3" data-title="From His Own Home to a Rented Room">
+  <div class="ep-head">
+    <div class="ep-num">Episode 3</div>
+    <h2 class="ep-title">From His Own Home to a Rented Room</h2>
+    <button class="listen-btn" data-ep="ep3">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      Listen
+    </button>
+  </div>
+  <div class="prose">
+    <p>Within a few days, the sale of the house was settled. Showing the buyer around, Haripada looked at each room in turn — this was where Arka used to study, this veranda was where Apu sat with her dolls, this courtyard was where the ektara played every evening. The buyer said, "It's a fine house." Haripada only said, "Yes, it's been here a long time." The man had no idea how much life was folded into those words.</p>
+    <p>Before handing over the keys, Haripada stood at the door and reminded Mita of what he'd said the day they first moved in — "One day this house will be full of children's laughter." "It was, wasn't it," Mita said, smiling. "Now it's empty again," Haripada said softly. Mita took his hand. "We're still here."</p>
+    <p>They took a small rented room in a lane in town. On the first day, Haripada looked around and said, "Not bad — but I won't stay anywhere without room for my ektara." Mita laughed. That evening he sat on the little veranda and played — the house had grown smaller, but the tune sounded just as big as before. "The heart hasn't shrunk," Haripada said.</p>
+    <p>From the money the house had brought, a fridge, a television, and furniture were bought for Apu — even the things she'd specifically wanted. Apu asked on the phone, "Where will you two live now?" "A small rented place," Haripada told her. Mita later asked, "You gave away everything?" Haripada lifted the ektara and showed her. "This is still left. No one can take this from me." He didn't know yet that one day even his most beloved possession would slip beyond his reach.</p>
+    <p>Life in the new place was simple but peaceful — tea in the morning, lunch together, the ektara in the evening, stories of old days. One day Mita asked, "Do you regret selling the house?" "No," Haripada said. "What more does a father need than to see his daughter smile?" Mita only said, "Just don't forget your own smile."</p>
+    <p>Not long after, Mita's health began to fail — weakness, then fever, a cough, shortness of breath. Arka rushed over when he heard, stayed by his mother's side for a few days, then had to hurry back to work.</p>
+    <p class="quote">That night Mita's breathing grew worse. She opened her eyes slowly and looked at Arka and Haripada. To her son she said, "Look after your father." To her husband she said, "Don't you go and become alone." Haripada gripped her hand tightly. "Why would I be alone?" Mita smiled faintly. "You always say that." Then her eyes slowly closed.</p>
+    <p>After Mita's death, the house truly changed. No one to make tea in the morning, no one to say, "play a little softer tonight." One day he laid his fingers on the ektara and no tune came out. He only said, "Mita, if you were here, you'd say — play again."</p>
+    <p>Arka wanted to take him in, but Haripada wouldn't agree — "You have your own household; if I come and take up new space there, it'll be uncomfortable for you too." Then Apu called and insisted. "Didn't you do so much for me? It's our turn to take care of you now." At those words, Haripada could say nothing more.</p>
+    <p>Before leaving, packing up his room, he wrapped the ektara in cloth along with his clothes, his medicines, a few old photographs, and a piece of one of Mita's saris, and placed it all in a bag. Before locking the door, he turned once to look back — this house wasn't even his own, and yet it held the memory of Mita's last days. "Come on, let's go to a new place again," he said. The ektara gave no answer.</p>
+  </div>
+</section>
+
+<section class="episode" id="ep4" data-title="Beyond the Window">
+  <div class="ep-head">
+    <div class="ep-num">Episode 4</div>
+    <h2 class="ep-title">Beyond the Window</h2>
+    <button class="listen-btn" data-ep="ep4">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      Listen
+    </button>
+  </div>
+  <div class="prose">
+    <p>Coming to his daughter's house, a new routine settled over Haripada's life — waking up, drinking tea in silence, sitting by the window, long afternoons, and the thought of the ektara returning every evening. Apu would say, "Baba, don't sit outside too long, you'll catch cold." His son-in-law Sourav would say, "Don't stare out at the street too much, people might think something." Haripada never protested — he'd only smile faintly and say, "All right."</p>
+    <p>One day, when he asked for the ektara, Apu said, "Your hands don't have their old strength anymore — what if you drop it and hurt yourself?" A few days later, she took it away herself and said, "It'll get damaged lying around here, I'll put it up in the cupboard and give it to you now and then." Haripada only nodded, thinking to himself, "Later — how far that one word can push a person away from things."</p>
+    <p>One day Nitai, an old friend from his former neighborhood, spotted him by the window and called out, inviting him to sit at the tea stall. Haripada's eyes lit up — such a small wish, a cup of tea, and yet it felt enormous to him. But the moment Apu heard, she said, "No, Baba, you're getting older, what if you fall outside?" Haripada quietly gave in.</p>
+    <p>From then on, whenever Apu went out, she'd lock the door from outside. One afternoon, getting up to open the door, he found it locked; he called out — no answer. Standing at the window, a boy playing on the street called up, "Uncle, come down, won't you!" Haripada only said, "I can't, son." A question rose within him — "Can I really no longer go anywhere of my own will?"</p>
+    <p>When he asked Apu about it that evening, she said, "I only lock it for your own good, Baba." Haripada only said, "Just don't lock it completely." Apu laughed. "You're my father, of course I have to worry about you." Haripada smiled too — but there was more resignation in that smile than joy.</p>
+    <p>As winter approached, his health began to decline — coughing, weakness, breathlessness. When his medicine ran out, Apu said, "I'll bring it today," and there was talk of seeing a doctor too — but that "today" never arrived. Two days later Sourav said, "I'll bring it tomorrow," and Haripada knew it wasn't wise to place too much trust in the word "tomorrow" — and yet, as he had believed his children's words all his life, he believed it once again.</p>
+    <p>That night, when he mentioned his cough to Arka on the phone, Arka wanted to speak to Apu about it. Haripada quickly stopped him. "No, no, she's got a lot to do, I'm fine, son, don't worry." Arka never understood how alone his father had become behind those words, "I'm fine."</p>
+    <p>One day Haripada asked for the ektara again. "Does the heart have to be shut away too, just because the body is unwell?" At those words, Apu opened the cupboard and brought out the old cloth bag. Haripada's eyes brightened, as though he'd found a long-lost friend after many years. He touched the strings — toon… — and closed his eyes. "Are you listening, Mita?" He played a little longer that day, very slowly, as if he were touching his own life. Sourav called from outside, "Could you play a bit softer? It's tiring to hear." Haripada stopped at once.</p>
+    <p class="quote">One afternoon, getting up from bed, he nearly fell and caught himself just in time. Apu came running. "Don't get up alone." At the mention of a doctor, the same answer came again — "I'll take you tomorrow." Haripada set down his glass and said nothing more.</p>
+    <p>Nitai came by again, and seeing how weak he looked, offered to bring a doctor. Haripada said quickly, "No, no, my daughter's very busy, she'll take me." He only asked, "If you ever see my ektara lying around, bring it to me — I'll play again one day." That night, with a mild fever, he told Apu, "Tomorrow, if you can, will you let me sit outside for a while? It's been so long since I sat in the sun." Apu agreed. Haripada didn't know if he'd even be able to get up tomorrow, but for the first time in a long while, he found himself hoping — maybe tomorrow he'd sit in the sun a little, maybe he'd see Nitai, maybe he'd play the ektara.</p>
+  </div>
+</section>
+
+<section class="episode" id="ep5" data-title="The Last Tune">
+  <div class="ep-head">
+    <div class="ep-num">Final Episode</div>
+    <h2 class="ep-title">The Last Tune</h2>
+    <button class="listen-btn" data-ep="ep5">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      Listen
+    </button>
+  </div>
+  <div class="prose">
+    <p>He woke quite late in the morning. Through the gap in the window, exactly the sunlight he'd waited for the night before was streaming in. He tried to sit up, but his body simply wouldn't respond today. He called out, "Apu… my dear…" — the room was silent, only the clatter of dishes from the distant kitchen. The moment his feet touched the floor, his head spun, and he sat back down.</p>
+    <p>The door was locked, as always. He slowly made his way to the window and stood there; the warmth of the sun came through the bars onto his face. Closing his eyes, he felt as though he were standing in the courtyard of years ago — Mita bringing tea, Arka sitting with a book, Apu running up and saying, "Baba, will you play the ektara?" Tears came to his eyes. "How long has it been…"</p>
+    <p>In the afternoon, with great effort, he managed to call Arka. "How are you?" he asked, and then began coughing himself. Arka, worried, asked about the doctor. Haripada only said, "Son, come home now and then." Then that old answer — "I'm fine" — but this time there was none of the old firmness in his voice. After the call ended, a strange unease settled in Arka's chest, though he didn't yet understand why.</p>
+    <p>In the evening Nitai came by, and seeing him so weak, said, "You need to see a doctor, shall I take you?" Instead, Haripada said, "If you ever come across my ektara…" Nitai smiled and promised to bring it. "Then I'll play again one day," Haripada said. Neither of them knew whether that "one day" would ever come.</p>
+    <p>After nightfall, the fever rose. He asked for water several times; no one was in the room. Struggling to lift the glass himself, his hand shook and the water spilled — he didn't try again. Outside the window it was dark now; somewhere in the distance a television played, a child laughed, the smell of cooking drifted by — ordinary human life going on, and he lay alone, outside all of it.</p>
+    <p class="quote">With his eyes closed, he called out very softly, "Mita…" It felt as though she were sitting beside him, saying, "Why are you worrying so much? You always said — something will work out." He smiled faintly. Then, one by one, they rose before him — the day of Apu's wedding, Arka's admission, the day the house was sold — as if he were watching his own life from somewhere behind it. He had given so much, let go of so much, asked for nothing in return — he had only wanted his children to be happy.</p>
+    <p>As the night wore on, his eyes fell on the ektara resting in the corner of the room. With great effort, he pulled it into his lap and touched the strings — toon… a faint note. Again — taang… and the note broke off. He closed his eyes; it felt as though he were sitting in that old courtyard again, Mita beside him, Arka and Apu before him. "Shall I play one more?" No one answered, and yet he smiled. Then, for the last time, he laid his fingers on the strings — toon — one faint note, carrying within it all the laughter, the sorrow, the love, and the waiting of his whole life.</p>
+    <p>The next morning, Nitai called out, but there was no answer. Looking through the window, his heart lurched — Haripada Babu lay there, eyes closed, a strange peace on his face, the ektara beside him. Apu ran in and took his hand, calling, "Baba…" — the hand was cold. The man who had spent his whole life rushing to answer his children's every call no longer had the strength left to rise.</p>
+    <p>While clearing out the room, Arka found an old notebook — the household accounts, the cost of his own education, Apu's wedding expenses, the fridge, the TV, the furniture. On the last pages, the writing had grown small — "My own medicine — will buy later." "See a doctor — if needed." Arka understood then: his father hadn't just sold his house. Across a lifetime, he had sold off his own needs, one by one.</p>
+    <p>Apu pressed the ektara to her chest and said nothing.</p>
+    <p>A few days later, Arka returned to that room and threw both window shutters wide open. Morning light poured in. He picked up the ektara — he didn't know how to play, but he laid his fingers on the strings anyway — toon — one faint note. With his eyes closed, it felt as though his father were saying, "I play even when I'm not well. It makes the mind a little lighter." Arka said softly, "Baba, we couldn't keep your mind at ease."</p>
+    <div class="closing">
+      <p>Haripada Babu never asked for much — not a big house, not expensive things. He only wanted a little conversation, a cup of tea, a bit of afternoon sun, and a while to sit with his beloved ektara in his own way. He was never just a duty. He was a person.</p>
+      <p class="quote">See your parents not only as a duty, but as people too. Because Father, too, wanted to live with laughter and joy.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>The End</p>
+  <p class="sign">The ektara's tune never truly stops — only those who listen change</p>
+</footer>
+
+<div id="player">
+  <div class="row">
+    <button id="btn-prev" aria-label="Previous episode">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+    </button>
+    <button id="btn-play" class="play-pause" aria-label="Play/Pause">
+      <svg id="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      <svg id="icon-pause" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+    </button>
+    <button id="btn-next" aria-label="Next episode">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 18h2V6h-2zM4 18l8.5-6L4 6z"/></svg>
+    </button>
+    <div class="info">
+      <div class="now-ep" id="now-ep">Episode 1</div>
+      <div class="now-title" id="now-title">The Man and His Ektara</div>
+    </div>
+    <button id="btn-close" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.4 5L5 6.4 10.6 12 5 17.6 6.4 19 12 13.4 17.6 19 19 17.6 13.4 12 19 6.4 17.6 5 12 10.6z"/></svg>
+    </button>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- scroll progress ("string fill") ---------- */
+  var fill = document.getElementById('string-fill');
+  function updateFill(){
+    var h = document.documentElement;
+    var pct = (h.scrollTop) / (h.scrollHeight - h.clientHeight || 1) * 100;
+    fill.style.width = Math.min(100, Math.max(0,pct)) + '%';
+  }
+  document.addEventListener('scroll', updateFill, {passive:true});
+  updateFill();
+
+  /* ---------- episode registry ---------- */
+  var EP_ORDER = ['ep1','ep2','ep3','ep4','ep5'];
+  var episodes = {};
+  EP_ORDER.forEach(function(id, idx){
+    var sec = document.getElementById(id);
+    episodes[id] = {
+      id:id,
+      idx:idx,
+      title:sec.dataset.title,
+      numLabel: sec.querySelector('.ep-num').textContent,
+      paragraphs: Array.prototype.slice.call(sec.querySelectorAll('.prose p, .prose .closing p'))
+    };
+  });
+
+  /* ---------- bookmark ---------- */
+  var LS_KEY = 'babao_bookmark_ep';
+  function saveBookmark(id){
+    try{ localStorage.setItem(LS_KEY, id); }catch(e){}
+  }
+  function showContinueBar(){
+    var saved;
+    try{ saved = localStorage.getItem(LS_KEY); }catch(e){ saved = null; }
+    if(saved && episodes[saved]){
+      var bar = document.getElementById('continue-bar');
+      var link = document.getElementById('continue-link');
+      var epTitle = document.getElementById('continue-ep-title');
+      epTitle.textContent = episodes[saved].numLabel + ' — ' + episodes[saved].title;
+      link.href = '#' + saved;
+      bar.style.display = 'block';
+    }
+  }
+  showContinueBar();
+
+  /* mark bookmark when an episode is scrolled into view */
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting && en.intersectionRatio > 0.35){
+          saveBookmark(en.target.id);
+        }
+      });
+    }, {threshold:[0.35]});
+    EP_ORDER.forEach(function(id){ io.observe(document.getElementById(id)); });
+  }
+
+  /* ---------- speech synthesis player ---------- */
+  var synth = window.speechSynthesis;
+  var supportsTTS = !!synth;
+  var enVoice = null;
+
+  function pickVoice(){
+    if(!supportsTTS) return;
+    var voices = synth.getVoices();
+    enVoice = voices.find(function(v){ return /en-US/i.test(v.lang); }) ||
+              voices.find(function(v){ return /en-GB/i.test(v.lang); }) ||
+              voices.find(function(v){ return /en/i.test(v.lang); }) ||
+              voices[0] || null;
+  }
+  if(supportsTTS){
+    pickVoice();
+    synth.onvoiceschanged = pickVoice;
+  }
+
+  var player = document.getElementById('player');
+  var btnPlay = document.getElementById('btn-play');
+  var iconPlay = document.getElementById('icon-play');
+  var iconPause = document.getElementById('icon-pause');
+  var btnPrev = document.getElementById('btn-prev');
+  var btnNext = document.getElementById('btn-next');
+  var btnClose = document.getElementById('btn-close');
+  var nowEp = document.getElementById('now-ep');
+  var nowTitle = document.getElementById('now-title');
+
+  var state = {
+    epId:null,
+    paraIndex:0,
+    isPlaying:false
+  };
+
+  function clearHighlights(epId){
+    if(!epId) return;
+    episodes[epId].paragraphs.forEach(function(p){ p.classList.remove('tts-active'); });
+  }
+
+  function setListenBtnState(epId, playing){
+    document.querySelectorAll('.listen-btn').forEach(function(b){
+      var isThis = b.dataset.ep === epId;
+      b.classList.toggle('playing', isThis && playing);
+      b.innerHTML = (isThis && playing)
+        ? '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg> Pause'
+        : '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg> Listen';
+    });
+  }
+
+  function updatePlayerBar(){
+    var ep = episodes[state.epId];
+    nowEp.textContent = ep.numLabel;
+    nowTitle.textContent = ep.title;
+    btnPrev.disabled = ep.idx === 0;
+    btnNext.disabled = ep.idx === EP_ORDER.length - 1;
+    player.classList.add('show');
+  }
+
+  function speakParagraph(epId, i){
+    if(!supportsTTS) return;
+    var ep = episodes[epId];
+    if(i >= ep.paragraphs.length){
+      // episode finished — advance if possible
+      var nextIdx = ep.idx + 1;
+      if(nextIdx < EP_ORDER.length){
+        startEpisode(EP_ORDER[nextIdx]);
+      } else {
+        state.isPlaying = false;
+        iconPlay.style.display='block'; iconPause.style.display='none';
+        setListenBtnState(epId,false);
+      }
+      return;
+    }
+    clearHighlights(epId);
+    var p = ep.paragraphs[i];
+    p.classList.add('tts-active');
+    p.scrollIntoView({block:'center', behavior:'smooth'});
+
+    var text = p.textContent.trim();
+    var utter = new SpeechSynthesisUtterance(text);
+    if(enVoice) utter.voice = enVoice;
+    utter.lang = enVoice ? enVoice.lang : 'en-US';
+    utter.rate = 0.95;
+    utter.pitch = 1;
+
+    utter.onend = function(){
+      if(state.isPlaying && state.epId === epId){
+        state.paraIndex = i + 1;
+        speakParagraph(epId, state.paraIndex);
+      }
+    };
+    synth.speak(utter);
+  }
+
+  function startEpisode(epId, fromIndex){
+    if(!supportsTTS){
+      alert('Your browser doesn\'t support voice playback. You can still read comfortably.');
+      return;
+    }
+    synth.cancel();
+    if(state.epId && state.epId !== epId) clearHighlights(state.epId);
+    state.epId = epId;
+    state.paraIndex = fromIndex || 0;
+    state.isPlaying = true;
+    saveBookmark(epId);
+    updatePlayerBar();
+    iconPlay.style.display='none'; iconPause.style.display='block';
+    setListenBtnState(epId, true);
+    speakParagraph(epId, state.paraIndex);
+  }
+
+  function pause(){
+    if(!supportsTTS) return;
+    synth.pause();
+    state.isPlaying = false;
+    iconPlay.style.display='block'; iconPause.style.display='none';
+    setListenBtnState(state.epId, false);
+  }
+
+  function resume(){
+    if(!supportsTTS) return;
+    if(synth.paused){
+      synth.resume();
+    } else if(!synth.speaking){
+      speakParagraph(state.epId, state.paraIndex);
+    }
+    state.isPlaying = true;
+    iconPlay.style.display='none'; iconPause.style.display='block';
+    setListenBtnState(state.epId, true);
+  }
+
+  document.querySelectorAll('.listen-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var epId = btn.dataset.ep;
+      if(state.epId === epId && state.isPlaying){
+        pause();
+      } else if(state.epId === epId && !state.isPlaying){
+        resume();
+      } else {
+        startEpisode(epId, 0);
+      }
+    });
+  });
+
+  btnPlay.addEventListener('click', function(){
+    if(!state.epId) return;
+    if(state.isPlaying) pause(); else resume();
+  });
+
+  btnPrev.addEventListener('click', function(){
+    var ep = episodes[state.epId];
+    if(ep.idx > 0) startEpisode(EP_ORDER[ep.idx - 1], 0);
+  });
+
+  btnNext.addEventListener('click', function(){
+    var ep = episodes[state.epId];
+    if(ep.idx < EP_ORDER.length - 1) startEpisode(EP_ORDER[ep.idx + 1], 0);
+  });
+
+  btnClose.addEventListener('click', function(){
+    if(supportsTTS) synth.cancel();
+    state.isPlaying = false;
+    if(state.epId) clearHighlights(state.epId);
+    setListenBtnState(state.epId, false);
+    player.classList.remove('show');
+  });
+
+  window.addEventListener('beforeunload', function(){
+    if(supportsTTS) synth.cancel();
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Technologies That Were Once Our Life</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a1128; --bg2:#0d1638; --panel:#101a3d; --panel2:#0c1530;
+    --gold:#d4af37; --gold-soft:#e8c96a;
+    --text:#eef1fb; --text-dim:#aab2d1;
+    --border:rgba(212,175,55,0.25);
+    --shadow:0 10px 30px rgba(0,0,0,0.45);
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+    box-sizing:border-box;
+  }
+.home-btn{
+  position:absolute;left:14px;top:calc(14px + env(safe-area-inset-top,0px));
+  width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;
+  background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.35);color:var(--gold-soft);
+  text-decoration:none;font-size:1.05rem;
+}
+  @media (prefers-color-scheme: light){
+    :root:not([data-theme="dark"]){
+      --bg:#0a1128; --bg2:#0d1638; --panel:#101a3d; --panel2:#0c1530;
+      --text:#eef1fb; --text-dim:#aab2d1;
+    }
+  }
+  html{scroll-padding-top:env(safe-area-inset-top,0px);}
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:radial-gradient(1200px 600px at 50% -10%, #142055 0%, var(--bg) 55%), var(--bg);
+    color:var(--text); font-family:'Inter', sans-serif;
+    line-height:1.85; -webkit-font-smoothing:antialiased; min-height:100%;
+  }
+  a{color:inherit;}
+  .wrap{max-width:720px;margin:0 auto;padding:0 18px 100px;}
+
+  header.top{
+    position:sticky;top:env(safe-area-inset-top,0px);z-index:30;
+    background:rgba(10,17,40,0.9);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  .top-inner{max-width:720px;margin:0 auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px;}
+  .series-name{font-size:0.78rem;color:var(--gold-soft);letter-spacing:0.03em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .ep-badge{font-size:0.72rem;background:linear-gradient(135deg,var(--gold),#a9791f);color:#1a1200;padding:4px 10px;border-radius:999px;font-weight:700;flex-shrink:0;}
+
+  .hero{padding:34px 0 18px;text-align:center;}
+  .hero-img{
+    width:100%;max-width:520px;aspect-ratio:16/9;object-fit:cover;
+    border-radius:18px;border:1px solid var(--border);box-shadow:var(--shadow);
+    margin:0 auto 22px;display:block;
+  }
+  .hero .kicker{color:var(--gold-soft);font-size:0.85rem;letter-spacing:0.08em;margin-bottom:10px;}
+  .hero h1{
+    font-family:'Fraunces', serif;
+    font-size:1.5rem;line-height:1.45;margin:0 0 14px;
+    background:linear-gradient(135deg,#fff,var(--gold-soft));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero .sub{color:var(--text-dim);font-size:0.95rem;max-width:520px;margin:0 auto;}
+  .hero .divider{width:70px;height:3px;margin:20px auto 0;background:linear-gradient(90deg,transparent,var(--gold),transparent);border-radius:3px;}
+
+  .toc{
+    background:var(--panel);border:1px solid var(--border);border-radius:16px;
+    padding:16px 18px;margin:22px 0;box-shadow:var(--shadow);
+  }
+  .toc h3{margin:0 0 12px;font-size:0.9rem;color:var(--gold-soft);}
+  .toc ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px;}
+  .toc > ul > li > a{
+    display:flex;align-items:center;gap:10px;padding:10px 8px;font-size:0.96rem;
+    color:var(--text);text-decoration:none;border-radius:10px;font-weight:600;
+  }
+  .toc > ul > li > a:hover{background:rgba(212,175,55,0.08);}
+  .toc .num{
+    color:#1a1200;background:var(--gold);font-weight:700;width:26px;height:26px;flex-shrink:0;
+    border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.78rem;
+  }
+  .toc .num.locked{background:var(--panel2);color:var(--text-dim);border:1px solid var(--border);}
+  .toc .sub-title{font-size:0.78rem;color:var(--text-dim);font-weight:400;display:block;}
+
+  .continue-banner{
+    display:none;align-items:center;justify-content:space-between;gap:10px;
+    background:linear-gradient(135deg,rgba(212,175,55,0.14),rgba(212,175,55,0.04));
+    border:1px solid var(--border);border-radius:14px;padding:12px 16px;margin:18px 0;
+  }
+  .continue-banner.show{display:flex;}
+  .continue-banner span{font-size:0.86rem;color:var(--text);}
+  .continue-banner button{
+    background:var(--gold);color:#1a1200;border:none;border-radius:999px;
+    padding:8px 16px;font-weight:700;font-size:0.82rem;flex-shrink:0;cursor:pointer;
+  }
+
+  .episode{margin:44px 0;}
+  .episode-head{
+    display:flex;align-items:center;gap:10px;margin-bottom:6px;
+    scroll-margin-top:calc(env(safe-area-inset-top,0px) + 60px);
+  }
+  .episode-head .ep-num{
+    font-size:0.72rem;background:linear-gradient(135deg,var(--gold),#a9791f);
+    color:#1a1200;padding:4px 10px;border-radius:999px;font-weight:700;flex-shrink:0;
+  }
+  .episode-title{
+    font-family:'Fraunces',serif;
+    font-size:1.28rem;color:var(--gold-soft);margin:10px 0 6px;line-height:1.4;
+  }
+  .episode-sub{color:var(--text-dim);font-size:0.9rem;margin:0 0 16px;}
+
+  .voice-bar{
+    display:flex;align-items:center;gap:10px;
+    background:var(--panel2);border:1px solid var(--border);border-radius:14px;
+    padding:10px 14px;margin:16px 0 22px;
+  }
+  .voice-bar button{
+    display:flex;align-items:center;justify-content:center;
+    width:38px;height:38px;border-radius:50%;border:1px solid var(--border);
+    background:var(--panel);color:var(--gold-soft);font-size:1rem;cursor:pointer;flex-shrink:0;
+  }
+  .voice-bar button.active{background:var(--gold);color:#1a1200;}
+  .voice-bar .label{font-size:0.82rem;color:var(--text-dim);}
+
+  .episode section.sub-section{
+    margin:26px 0;scroll-margin-top:calc(env(safe-area-inset-top,0px) + 110px);
+  }
+  .episode section.sub-section h2{
+    font-family:'Fraunces',serif;
+    font-size:1.1rem;color:var(--gold-soft);margin:0 0 12px;
+    padding-bottom:8px;border-bottom:1px dashed var(--border);
+  }
+  .episode p{margin:0 0 14px;color:var(--text);font-size:1.02rem;}
+  .episode p.small-gap{margin-bottom:6px;}
+  .episode blockquote{
+    margin:20px 0;padding:14px 16px;border-left:3px solid var(--gold);
+    background:rgba(212,175,55,0.06);border-radius:0 10px 10px 0;
+    color:var(--gold-soft);font-style:italic;font-size:0.96rem;
+  }
+  .divider-orn{text-align:center;color:var(--border);margin:30px 0;font-size:0.9rem;letter-spacing:0.4em;}
+
+  .personal-tag{
+    display:inline-flex;align-items:center;gap:6px;
+    font-size:0.74rem;color:var(--gold-soft);
+    background:rgba(212,175,55,0.08);border:1px solid var(--border);
+    border-radius:999px;padding:4px 12px;margin-bottom:14px;
+  }
+
+  .next-box{
+    background:var(--panel);border:1px solid var(--border);border-radius:16px;
+    padding:20px;margin:20px 0 10px;text-align:center;
+  }
+  .next-box .tag{font-size:0.78rem;color:var(--gold-soft);letter-spacing:0.06em;margin-bottom:8px;}
+  .next-box p{color:var(--text-dim);font-size:0.92rem;margin:0;}
+
+  .ep-nav{display:flex;justify-content:center;margin:14px 0 6px;}
+  .ep-nav a{
+    font-size:0.82rem;color:var(--gold-soft);text-decoration:none;
+    border:1px solid var(--border);border-radius:999px;padding:7px 14px;
+  }
+
+  footer{text-align:center;color:var(--text-dim);font-size:0.78rem;padding:20px 0 10px;}
+
+  .fab{
+    position:fixed;left:50%;transform:translateX(-50%);
+    bottom:calc(env(safe-area-inset-bottom,0px) + 14px);z-index:25;
+    background:rgba(16,26,61,0.92);backdrop-filter:blur(10px);
+    border:1px solid var(--border);border-radius:999px;
+    padding:8px 10px;display:flex;gap:8px;align-items:center;box-shadow:var(--shadow);
+  }
+  .fab button{
+    background:none;border:none;color:var(--text-dim);font-size:0.78rem;
+    padding:6px 10px;border-radius:999px;cursor:pointer;display:flex;align-items:center;gap:6px;
+  }
+  .fab button.gold{background:var(--gold);color:#1a1200;font-weight:700;}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="series-name">The Technologies That Were Once Our Life</div>
+    <div class="ep-badge" id="topBadge">8 Episodes</div>
+  </div>
+<a class="home-btn" href="index.html" aria-label="Home">🏠</a>
+</header>
+
+<div class="wrap">
+
+  <div class="hero">
+    <img class="hero-img" src="images/technology-1.png" alt="The Technologies That Were Once Our Life" loading="eager">
+    <div class="kicker">A Serial Essay</div>
+    <h1>The Technologies That Were Once Our Life</h1>
+    <p class="sub">From the indigo cauldron to the typewriter, shorthand, cyclostyle, and DTP — the story of lost technologies, and the people bound up with them.</p>
+    <div class="divider"></div>
+  </div>
+
+  <div class="continue-banner" id="continueBanner">
+    <span id="continueText">Continue reading from where you left off</span>
+    <button onclick="resumeReading()">Continue</button>
+  </div>
+
+  <div class="toc" id="tocBox">
+    <h3>Episodes</h3>
+    <ul id="tocList"></ul>
+  </div>
+
+  <div id="episodesRoot"></div>
+
+  <footer>The Technologies That Were Once Our Life · Complete in 8 Episodes</footer>
+</div>
+
+<div class="fab">
+  <button id="bookmarkBtn" onclick="toggleBookmark()">🔖 <span id="bmLabel">Bookmark</span></button>
+  <button class="gold" onclick="window.scrollTo({top:0,behavior:'smooth'})">Scroll to top</button>
+</div>
+
+<script>
+const BOOKMARK_KEY = 'technologies-progress-en';
+
+const episodes = [
+  {
+    id: 'ep1',
+    num: 'Episode 1',
+    title: 'The Cauldron Sleeping Beneath the Pond',
+    sub: 'The story of indigo cultivation, the Indigo Revolt, and the arrival of synthetic dye',
+    sections: [
+      { title: "", html: `
+        <p>A small pond.</p>
+        <p>Not very big, yet not entirely small either.</p>
+        <p>During the monsoon, rainwater would collect there. Some water remained through the rest of the year too. People in the neighborhood used that water—some washed dishes, some washed clothes, some drew on it for other needs. So the pond was never anything special to anyone. It was simply an ordinary part of everyday neighborhood life.</p>
+        <p>But no one knew what lay hidden beneath the soil.</p>
+        <p>On two sides of the pond, some rounded shapes could be seen. They had been buried for years under earth, silt, and time. At first no one paid them any attention. Later, suspicion grew—were these the remains of some old structure?</p>
+        <p>Digging began.</p>
+        <p>With spades, crowbars, and human labor, the earth slowly gave way. The more soil that was cleared, the more a strange shape came into focus. It was no ordinary vessel. It was massive, made of metal, bearing every mark of having lain buried for many years.</p>
+        <p>Slowly the picture became clear—</p>
+        <p>This was likely part of a large cauldron or vat once used in indigo production.</p>
+        <p>Beneath an ordinary pond, an old, long-forgotten door had suddenly swung open.` },
+      { title: "🔵 The Color of Indigo, the Economy of Indigo", html: `
+        <p>Today blue is an ordinary color to us. We see it in clothing, in pictures, in print—countless uses.</p>
+        <p>But once, natural indigo was a valuable commercial commodity. Europe's textile industry demanded indigo dye, and around that demand, a vast economic system of indigo cultivation and production grew up in colonial India.</p>
+        <p>Indigo cultivation spread across Bengal in the eighteenth and nineteenth centuries. Tied to it were land, farmers, labor, advance payments, indigo factories (nilkuthis), production units, and export trade.</p>
+        <p>Large vats and cauldrons played an important role in that indigo-making system. So a cauldron found today beneath the soil is not merely an old piece of iron—it could be material testimony to that vanished system of production.` },
+      { title: "⚔️ The Indigo Revolt: The Year of the Farmers' Protest", html: `
+        <p>But within this indigo economy lay deep discontent.</p>
+        <p>Many farmers were forced into indigo cultivation; through advances and contracts, pressure was placed upon them, and indigo farming was not profitable for them. In 1859, widespread resistance against indigo cultivation began among Bengal's farmers. This movement is known in history as the Indigo Revolt of 1859–60.</p>
+        <p>In the wake of the revolt, the government formed the Indigo Commission in 1860. The commission's inquiry gave weight to the issue of coercion faced by farmers in indigo cultivation, and measures were taken against forcing unwilling farmers into it.</p>
+        <p>But here a misconception must be avoided.</p>
+        <p>Indigo cultivation did not vanish from the world overnight after the Indigo Revolt.</p>
+        <p>A large part of Bengal's indigo industry collapsed and many factories shut down, but some production continued. At the same time, the center of the industry gradually shifted outside Bengal—particularly to the indigo-growing regions of Bihar.</p>
+        <p>In other words, the Indigo Revolt was a major turning point, but not the final chapter.` },
+      { title: "🧪 Then Came Another Revolution—Synthetic Indigo", html: `
+        <p>In the face of nature's own indigo, a rival now arose—human-made chemistry.</p>
+        <p>In the late nineteenth century, chemists found a way to synthesize blue dye artificially. In 1897, Germany's BASF and Hoechst brought industrially produced synthetic indigo to the international market. It was comparatively cheap and pure, and competing with it became increasingly difficult for natural indigo.</p>
+        <p>The impact was profound.</p>
+        <p>The market for natural indigo began to shrink. In the decade following 1897, exports of plant-derived indigo fell significantly. By around 1914, indigo production had all but stopped in most regions of India; in Bihar, some large-scale industry still survived.</p>
+        <p>In other words—</p>
+        <p>The Indigo Revolt had shaken the old system. And synthetic indigo transformed the market of that old industry even more profoundly.</p>
+        <p>A technology or a mode of production is never lost for political reasons alone. Sometimes, an even newer technology comes and stands in its way.` },
+      { title: "🪨 But the Cauldron Remained", html: `
+        <p>The industry departed. Farming methods changed. Markets changed. Synthetic indigo began taking the place of natural indigo.</p>
+        <p>But at some point in that time, the cauldron once used there stayed behind, under the soil.</p>
+        <p>Time covered it over. People forgot it.</p>
+        <p>Then one day, while clearing an ordinary pond, it was found again.</p>
+        <p>If, at that moment, the cauldron had been viewed through the eyes of history, its worth could not have been measured by the weight of its metal alone.</p>
+        <p>But history's value is not always understood in history's own time.` },
+      { title: "🔨 When History Breaks Under a Hammer's Blow", html: `
+        <p>In the end, the cauldron was not preserved.</p>
+        <p>Neither its enormous size, nor its age, nor its historical importance could save it.</p>
+        <p>It was broken apart under hammer blows. Then sold for next to nothing.</p>
+        <p>An object that had witnessed an era became a piece of scrap metal.</p>
+        <p>It is easy here to blame any one person. But the reality is perhaps more complicated.</p>
+        <p class="small-gap">There was ignorance.</p>
+        <p class="small-gap">There was poverty.</p>
+        <p class="small-gap">There was a lack of understanding the value of old things.</p>
+        <p class="small-gap">There was a lack of any culture of preservation.</p>
+        <p>There was also a lack of institutional initiative.</p>
+        <p>To someone with no concept of today's crore-rupee historical artifacts, selling an old iron cauldron for a few rupees may not have seemed unusual at all.</p>
+        <p>But to history, that is the greatest loss of all.</p>
+        <p>Because money can perhaps build another iron cauldron. But the particular time that vanished with that particular cauldron can never be brought back.` },
+      { title: "🏚️ The Story Did Not End With the Cauldron", html: `
+        <p>As if bound by an invisible thread, another old memory lay tied to the cauldron's story—a very old house.</p>
+        <p>The house had stood for many years. Marks of time on its walls. An old structure. Old rooms.</p>
+        <p>And inside that house was a printing press.</p>
+        <p>Once, printing work was done there. With paper, letters, ink, and the sound of machines, the house stayed alive.</p>
+        <p>A printing press means more than just a machine. Tied to it are—mechanics, typesetters, the paper trade, bookbinding, suppliers, small staff—the work of countless people.</p>
+        <p>But technology knocked at the door once more.` },
+      { title: "🖨️ From Lead Type to the Computer Screen", html: `
+        <p>Once, letters had to be set by hand. Then came new technology. Computers. DTP.</p>
+        <p>Arranging text, laying out pages, correcting mistakes, changing fonts—everything became fast.</p>
+        <p>Those who could learn the new technology and keep pace with the times moved on to new work.</p>
+        <p>And those who remained dependent on the old methods found their field of work gradually shrinking before them.</p>
+        <p>Here, another truth about technology comes to light—</p>
+        <blockquote>New technology does not merely displace old work; it also forces people to learn anew.</blockquote>
+        <p>Someone who was setting type yesterday might today have to sit in front of a computer.</p>
+        <p>Someone who worked in analog methods yesterday might today have to learn digital methods.</p>
+        <p>If one does not change with the times, the profession itself may one day be lost.` },
+      { title: "🏚️ Then One Day, the House Was No More", html: `
+        <p>First the cauldron was lost. Then the sound of the printing press fell silent. Then the old house grew decrepit. Finally, the house too was torn down.</p>
+        <p class="small-gap">A cauldron.</p>
+        <p class="small-gap">A printing press.</p>
+        <p>A house.</p>
+        <p>Though they seem like three separate objects, within their stories lies the imprint of the same era.</p>
+        <p>Technology changed. Work changed. People's needs changed. Then the place itself was lost too.` },
+      { title: "⏳ From the Cauldron of the Past to a Question for the Future", html: `
+        <p>Today, when we see an old machine, we often say—"These aren't useful anymore."</p>
+        <p>But history asks a different question. Is usefulness the only measure of worth?</p>
+        <p>An old typewriter may be of no use in an office today. A gramophone may not be the easiest way to hear music today. An old camera may not compete with a smartphone. An old printing press cannot keep pace with modern DTP's speed. And an indigo cauldron is not used in any industry today at all.</p>
+        <p>Yet these are witnesses to an era.` },
+      { title: "🌱 What Does This Cauldron Teach Us?", html: `
+        <p>When a technology becomes unnecessary, its existence may come to an end.</p>
+        <p>But let its history not end. Because today's technology, too, will one day be old.</p>
+        <p>Today's computer, today's mobile phone, today's camera, today's car—nothing is permanent.</p>
+        <p>The technology we today consider indispensable—tomorrow's generation may look at it and ask, "People once worked with these things?"</p>
+        <p>Then perhaps, somewhere beneath the soil, some machine of today's world will lie buried.</p>
+        <p class="small-gap">Someone might recognize it.</p>
+        <p class="small-gap">Someone might not.</p>
+        <p class="small-gap">Someone might preserve it.</p>
+        <p>And someone else might say—"Old iron. Sell it off."` },
+      { title: "🔵 Closing Words", html: `
+        <p>That cauldron found beneath the pond exists no longer. But its story remains.</p>
+        <p>There is the history of indigo cultivation. There is the history of the farmers' protest. There is the history of the rivalry between natural and synthetic indigo. There is the memory of an old house. There is the sound of a printing press.</p>
+        <p>And there is the eternal lesson of technology's endless change.</p>
+        <p>Once, the indigo cauldron became unnecessary. Once, the printing press's old methods became unnecessary. Once, even the typewriter fell behind. Once, analog technology gave way to digital.</p>
+        <p>But the story of people? That never becomes unnecessary. Because—</p>
+        <blockquote>Machines get lost. Technology changes. Professions change. Houses fall. But if we write down the stories of those who kept a time alive through their own labor, then history truly lives on.</blockquote>
+        <p>The story of this cauldron does not end here. It is, in fact, only the beginning.</p>` }
+    ],
+    nextTeaser: "Episode 2: The Sound of Letters — the typewriter, shorthand, the cyclostyle, and DTP."
+  },
+  {
+    id: 'ep2',
+    num: 'Episode 2',
+    title: 'The Sound of Letters: From Typewriter, Shorthand, and Cyclostyle to DTP',
+    sub: 'How an office morning once began with the clatter of a typewriter',
+    sections: [
+      { title: "", html: `
+        <p>There was a time when an office morning did not begin with the soft hum of a computer—but with the clack-clack of a typewriter.</p>
+        <p>Clack... clack... clack...</p>
+        <p>Then suddenly—</p>
+        <p>Ding!</p>
+        <p>The carriage jumped back a step.</p>
+        <p>Clack... clack... clack... again.</p>
+        <p>That sound was not merely the sound of a machine. It was the sound of a profession, the sound of a livelihood, the sound of an era.</p>
+        <p>Today that sound has almost vanished.` },
+      { title: "⌨️ The Typewriter: When Letters Lived in the Body of a Machine", html: `
+        <p>The typewriter was once indispensable in offices and courts, schools and colleges, businesses, newspaper offices—countless places.</p>
+        <p>A sheet of paper was fed into the machine. Then the press of a finger. One letter at a time appeared on the page.</p>
+        <p>A mistake meant trouble.</p>
+        <p>Unlike a computer, you couldn't erase a word and type it again. Correction fluid had to be dabbed onto the wrong letter; sometimes the whole page had to be retyped from scratch.</p>
+        <p>So behind a beautifully typed page lay not just the machine's ability—but the typist's skill.` },
+      { title: "👨‍💼 The Typist: A Full-Fledged Profession", html: `
+        <p>Once, knowing how to type was a special skill.</p>
+        <p>A person who could type fast and accurately had a distinct value.</p>
+        <p>Letters needed to be typed at the office. Applications needed typing. Legal documents needed typing. Business letters needed typing. Forms needed typing.</p>
+        <p>Many people would write something out by hand and take it to a typist. The typist would listen or look at the writing and quickly set down the letters.</p>
+        <p>The skill of typing without looking at the keyboard was a kind of art.</p>
+        <p>To today's generation this might seem astonishing. But back then, that was the very mark of modernity.` },
+      { title: "✍️ Shorthand: The Art of Catching the Speed of Speech", html: `
+        <p>Alongside the typewriter, another important skill was shorthand.</p>
+        <p>Someone is speaking quickly. And another person is not trying to write those words in ordinary letters. They are using special signs and an abbreviated system of writing.</p>
+        <p>To keep pace with speech, the hand had to move fast, and the mind had to stay alert.</p>
+        <p>The office boss is speaking. A meeting is underway. A letter needs to be prepared. Notes need to be taken.</p>
+        <p>There, the person who knew shorthand held immense importance.` },
+      { title: "👩‍💼 Those Who Taught Shorthand", html: `
+        <p>It wasn't just learning—teaching shorthand was itself a profession.</p>
+        <p>Small training centers. Typing classes. Shorthand notebooks. The same signs practiced over and over.</p>
+        <p>Many young men and women learned these in hope of a job. They held onto a dream—"If I know typing and shorthand, I'll get a job."</p>
+        <p>In today's computer age, that very path of dreams has changed.` },
+      { title: "🖨️ Cyclostyle: Many Copies, Little Cost", html: `
+        <p>Then came another strange yet important technology—the cyclostyle machine.</p>
+        <p>Today, making a hundred copies of a document takes seconds. But once, photocopiers were not everywhere.</p>
+        <p>Back then, the cyclostyle was vital. A stencil would be made. Then, using that stencil, one copy after another could be produced.</p>
+        <p>School notices. Office orders. Papers for meetings or organizations. Training materials. Various kinds of documents reached many people through the cyclostyle machine.</p>
+        <p>The smell of ink, stacks of paper, and the sound of the machine turning—these too were once familiar experiences of office and school life.` },
+      { title: "📄 Then Came the Photocopier", html: `
+        <p>After the cyclostyle, copying gradually became easier.</p>
+        <p>Along came the photocopy machine. Place the original paper. Wait a few moments. A copy would come out. Then another. Then another.</p>
+        <p>Much of the cyclostyle's work gradually shifted to photocopying. And a new business was born—photocopy shops.` },
+      { title: "💻 Then Came the Computer", html: `
+        <p>This time the change was even bigger.</p>
+        <p>Instead of sitting in front of a typewriter and setting letters directly onto paper, people began sitting in front of computers.</p>
+        <p>Now, a mistake? Backspace. Delete the wrong word. Type it again. Move a line. Change the font. Arrange the page. Insert an image. Create a table.</p>
+        <p>And then came—DTP, that is, Desktop Publishing.` },
+      { title: "🖥️ DTP: A New Door", html: `
+        <p>DTP was not merely a substitute for the typewriter. It transformed the very nature of printing and publishing work.</p>
+        <p>Book pages. Wedding cards. Leaflets. Posters. Business advertisements. School question papers. Visiting cards. Countless kinds of printable designs—all could now be created on a computer.</p>
+        <p>Even a small room could now begin work that once depended on large printing establishments.` },
+      { title: "👨‍💻 My Own Journey With DTP", html: `
+        <span class="personal-tag">✒️ From the author's own experience</span>
+        <p>At the time of this change, a person had to make a decision—change with the times, or stay stuck with the old method?</p>
+        <p>As the writer of this series, let me say—I too was a witness to this change. Back then, I earned a little doing DTP work. The work was small. The earnings weren't very large either.</p>
+        <p>But technology was changing. So I too had to learn the new technology.</p>
+        <p>Because real life often places a very difficult question in front of us—</p>
+        <blockquote>Will you change, or will time leave you behind?</blockquote>` },
+      { title: "🔄 One by One, Professions Changed", html: `
+        <p>The typewriter declined. Demand for shorthand fell. The cyclostyle vanished. Photocopying arrived. DTP arrived. Then came even more advanced digital publishing.</p>
+        <p>Today, so much can be done on a mobile phone alone that once required a separate office, machines, and skilled staff.</p>
+        <p>Inside one small screen now—typewriter, camera, scanner, printing design, communication—all together.` },
+      { title: "🏚️ The Connection With That Old House", html: `
+        <p>The house where the sound of the printing press was once heard—technological change reached there too.</p>
+        <p>The old method fell gradually behind. The new method took its place. Then, at some point, the press shut down.</p>
+        <p>And the house, growing more and more decrepit, one day collapsed—first from people's memory, then in reality too.</p>
+        <p>The cauldron was lost to change in industry. The press was lost to change in technology. Within these two stories lies the same question—</p>
+        <blockquote>When a technology departs, is it only the machine that is lost?</blockquote>
+        <p>No. Along with it may be lost—a profession, a skill, a shop, a workshop, a path of livelihood, even an entire way of life.` },
+      { title: "🌱 But There Is Another Side to Change", html: `
+        <p>Still, to call technology's story only a story of loss would be to tell only half the truth.</p>
+        <p>DTP created new opportunities for many people too. Those who learned computers found new work. Designers found more work. Digital printing arrived. Online publishing arrived. New software arrived.</p>
+        <p>In other words—one old door closed, but a new door opened too.</p>
+        <p>The problem arises only when someone cannot find the new door before the old one closes.` },
+      { title: "🕰️ The Sound of an Era", html: `
+        <p>If, in some old office today, the sound of a typewriter is suddenly heard—clack... clack... clack... ding!—</p>
+        <p>then it is not merely the sound of a machine. It's as if it's saying, "Once, I was the language of the office."</p>
+        <p>And the cyclostyle machine seems to say, "Once, news reached many people through my body."</p>
+        <p>The shorthand notebook seems to say, "Once, catching the pace of speech was itself a profession."</p>
+        <p>And the old DTP computer seems to say, "I came to replace old technology. Then even newer technology replaced me too."` },
+      { title: "✨ Closing Words of This Episode", html: `
+        <p>The history of technology is really no straight road. It is wave after wave. One arrives. It displaces another. Then a third comes and makes even the second one unnecessary.</p>
+        <p>Lead type → typewriter → cyclostyle → photocopy → computer → DTP → digital publishing → AI.</p>
+        <p>The technology we depend on today may well meet a similar fate one day.</p>
+        <p>So old technology is not something to merely laugh at. It's worth looking back and trying to understand—</p>
+        <blockquote>How many people's lives were bound up with this machine?</blockquote>
+        <p>Because—</p>
+        <blockquote>A machine grows old, technology changes; but the story of the people who built their lives standing on that technology never grows old.</blockquote>` }
+    ],
+    nextTeaser: "Episode 3: From Postman to Pager — postcards, inland letters, money orders, the telegraph, trunk calls, Morse code, and the world of the pager."
+  },
+  {
+    id: 'ep3',
+    num: 'Episode 3',
+    title: 'The Sound of Waiting: The Postman, the Telegraph, Trunk Calls, Morse Code, and the Pager',
+    sub: 'When it took time for news to arrive, and even waiting had its own emotion',
+    sections: [
+      { title: "", html: `
+        <p>Today we send a message, and within a few seconds a reply comes back.</p>
+        <p>A message was sent. Two check marks appeared. Then—"Seen."</p>
+        <p>But there was a time when people had to wait for news to arrive.</p>
+        <p>Not hours. Sometimes days. Sometimes longer still.</p>
+        <p>And that waiting had its own particular emotion.` },
+      { title: "📮 Waiting for the Postman", html: `
+        <p>Down the road in the morning, a man is walking. A bag on his shoulder. His clothing marked with a government insignia. From far off, many eyes would turn toward him.</p>
+        <p>The postman.</p>
+        <p>He is bringing a letter for someone. A money order for someone. Government papers for someone. Perhaps news of a loved one living far away, for someone.</p>
+        <p>There were no mobile phones then. No email. No instant messaging.</p>
+        <p>A letter meant—someone, somewhere, had sat and taken the time to think of you.` },
+      { title: "✉️ The Letter: A Human Voice Written on Paper", html: `
+        <p>Even sitting down to write a letter required its own preparation.</p>
+        <p>Take out paper. Pick up a pen. Write the address. Buy an envelope. Attach a stamp. Then go drop it in the postbox.</p>
+        <p>After sending a letter, the waiting would begin. "Has the letter arrived?" Then the wait—"When will the reply come?"</p>
+        <p>Today, sending a photo takes a second. Back then, sending even one photograph inside a letter was a special matter.</p>
+        <p>So there was a distinct excitement in the moment of opening and reading a letter.` },
+      { title: "🟨 The Postcard", html: `
+        <p>The postcard was even simpler. No envelope. No chance to fold it shut. Whatever you wrote, you wrote almost in the open.</p>
+        <p>In just a few lines, you had to convey as much news as possible.</p>
+        <p>For many, the postcard was the easiest and cheapest way to stay in touch with people far away.</p>
+        <p>A tiny card—but inside it could carry the news of an entire family.` },
+      { title: "✉️ The Inland Letter", html: `
+        <p>Then there was the Inland Letter Card. More space than a postcard. Foldable like an envelope. Convenient for longer letters.</p>
+        <p>A letter written home by a student. News of a job. News from relatives. Family matters.</p>
+        <p>Many relationships were bound up with those folded sheets of paper.` },
+      { title: "💰 The Money Order: Money That Reached a Distant Home", html: `
+        <p>Today, sending money takes seconds. But once, an important means of sending money to a distant home was the Money Order.</p>
+        <p>Someone works in the city. Their family is in the village. At month's end, a portion of their earnings needs to be sent home.</p>
+        <p>A money order was arranged. Then the wait. The postal carrier arrived at the house with the money.</p>
+        <p>Along with receiving the money came not just funds—but a family's sense of relief.` },
+      { title: "⚡ Then Came the Telegraph", html: `
+        <p>Letters were slow. But not all news can wait. Urgent news needed to be sent fast.</p>
+        <p>That's where the telegraph mattered. A short message would be sent to a distant city.</p>
+        <p>A few words. Necessary information. Brief language. Because every word carried a cost.` },
+      { title: "⚡ \"Tick-Tock, Click-Clack\"", html: `
+        <p>When talk turns to the telegraph, one particular sound still echoes in many people's memories—the clatter of Morse code.</p>
+        <p>That world of dots and dashes in Morse code seemed mysterious to ordinary people.</p>
+        <p>A message didn't sound like words. It sounded like signals. Click... click... click...</p>
+        <p>But within those signals lay—news. Orders. Urgent messages. Sometimes joyful news. Sometimes terrible news.` },
+      { title: "🕯️ The Hardest Side of the Telegram", html: `
+        <p>Today we send news with emojis. ❤️ 👍 🙂</p>
+        <p>But once, a single sentence in a telegram could carry immense weight. Especially in cases of death, accidents, serious illness, or urgent news.</p>
+        <p>A man stands at the door with a telegram in hand. The family opens the envelope. A few words are read—and the whole room's atmosphere changes.</p>
+        <p>Technology had made news fast. But it could never shrink the emotion within that news.` },
+      { title: "☎️ The Trunk Call: Hearing a Distant Voice", html: `
+        <p>Then came another astonishing technology—the trunk call.</p>
+        <p>A call had to be made to a distant city. But unlike a local call, dialing a number directly wasn't always possible.</p>
+        <p>The call had to be booked. Help from an operator was needed. There was waiting. There was no guarantee of exactly when the connection would come through.` },
+      { title: "📞 \"The Call Has Come!\"", html: `
+        <p>Suddenly, news arrived at the house—"The trunk call has come!"</p>
+        <p>Everyone rushed to the phone. Who would speak first? How long could they talk? Time itself felt as precious as money.</p>
+        <p>Hearing the voice of a distant relative—"Hello... can you hear me?"</p>
+        <p>Then a faraway voice would drift through. Sometimes clear. Sometimes cutting out. Sometimes again—"Hello! Hello! Can you hear me?"</p>
+        <p>In today's age of video calls, this experience might seem unbelievable.` },
+      { title: "☎️ STD: Distance Grew Even Smaller", html: `
+        <p>Gradually, telephone communication became easier. STD arrived. Calling a distant city became far simpler.</p>
+        <p>People began standing in front of Public Call Offices, or PCOs. Yellow-and-blue signboards. A phone. A meter. A counter.</p>
+        <p>After a few minutes of talking, a bill. The PCO itself became a small but important business of its time.` },
+      { title: "🟡 The PCO: A Small Shop's Big Story", html: `
+        <p>A small room. A phone. Sometimes a fax machine. Sometimes photocopying. Sometimes STD/ISD.</p>
+        <p>From that small shop, people made calls home, gave news of jobs, discussed business, spoke with distant relatives, delivered urgent news.</p>
+        <p>Then mobile phones arrived. The need to stand in front of a PCO diminished.</p>
+        <p>A shop that was once a hub of communication gradually became unnecessary.` },
+      { title: "📟 The Pager: The Little Messenger Before Mobile Phones", html: `
+        <p>Then came another small device—the pager.</p>
+        <p>A small device. Someone would send you a message. A number or a short message would show on the pager. Then you had to contact them from some other phone.</p>
+        <p>In other words, the pager was a kind of technology for receiving messages, but not a full mobile phone.` },
+      { title: "👨‍⚕️ The Pager and Its Connection to Professions", html: `
+        <p>The pager was especially important for emergency services and certain professionals.</p>
+        <p>Someone is trying to reach you. A signal comes to your pager. You understand—someone needs to reach you right now.</p>
+        <p>Then you had to search for a nearby phone. Sometimes the office phone. Sometimes a PCO. Sometimes a friend's phone.</p>
+        <p>In today's world, where a single phone holds messages, voice, photos, video—everything—the pager's limitations are exactly the mark of its own time.` },
+      { title: "📱 Then Came the Mobile Phone", html: `
+        <p>After the pager, communication technology didn't stop. The mobile phone arrived.</p>
+        <p>At first, big. Heavy. Expensive. Then, gradually, smaller. Even smaller.</p>
+        <p>Then—Nokia. Small phones. Long battery life. SMS. Snake Game. Ringtones. Missed calls. Contact lists.</p>
+        <p>A new era began. But that would be the story of our next chapter.` },
+      { title: "⏳ From a World of Waiting to a World of the Instant", html: `
+        <p>Looking back a little, it's astonishing.</p>
+        <p>A letter—days. A telegram—fast if urgent, but a limited message. A trunk call—waiting for a connection. A PCO—standing in line to talk. A pager—get the message, then go find a phone.</p>
+        <p>And today—a smartphone. Inside one device—letters, telegraphs, telephones, cameras, radio, television, newspapers, clocks, maps, libraries—all together.` },
+      { title: "❤️ But What Did We Lose?", html: `
+        <p>Technology has reduced our waiting. This has undoubtedly made human life easier.</p>
+        <p>But some feelings tied to that waiting have also been lost.</p>
+        <p>Waiting for a letter. Listening for the sound of the postman's footsteps. A heart pounding at the sight of a telegram envelope. Sitting beside the phone waiting for a trunk call. Standing at a PCO listening to a distant person's voice. Seeing your number on a pager and rushing to find a phone.</p>
+        <p>These were the human moments in the history of communication.</p>
+        <p>Today, communication has become fast. But as waiting has shrunk, many patterns of memory have changed too.` },
+      { title: "🌿 Closing Words of Episode 3", html: `
+        <p>Communication technology has shrunk our distances.</p>
+        <p>But every new technology has not only displaced the old one—it has also changed part of the professions and livelihoods tied to it.</p>
+        <p>The postman remains, but the nature of letters has changed. The telegraph has vanished. The trunk call has become history. The PCO is almost invisible. The pager is almost forgotten.</p>
+        <p>And the mobile phone has become one of the most prominent technologies in people's daily lives.</p>
+        <p>Yet that old world must not be forgotten. Because—</p>
+        <blockquote>Once, news came by the postman's hand, urgent messages came over the telegraph wire, distant voices came through the trunk call, and the pager told you—someone is looking for you. Today, news arrives in an instant. But that world of waiting, too, was a chapter of our lives.</blockquote>` }
+    ],
+    nextTeaser: "Episode 4: From Newspaper to Television — when the morning began with a newspaper, the afternoon's companion was the radio, and in the evening the whole neighborhood gathered before one television."
+  },
+  {
+    id: 'ep4',
+    num: 'Episode 4',
+    title: 'The Age of the Newspaper, the Radio, and Television',
+    sub: 'When news came on paper, songs came over the radio, and as evening fell, people gathered in front of the television',
+    sections: [
+      { title: "", html: `
+        <p>There was a time when, to learn the news of the world, people didn't need to open their phones.</p>
+        <p>Waking in the morning, one glance at the door was enough—had the newspaper arrived or not?</p>
+        <p>Then, picking up the paper and sitting down. Turning the pages.</p>
+        <p>National news. International news. Sports. Job advertisements. Weddings. Obituaries. Films. Editorials.</p>
+        <p>Within that small sheet of paper, it was as if the entire world arrived each day at the door.` },
+      { title: "📰 The Morning Companion — the Newspaper", html: `
+        <p>The newspaper was not merely a medium of news. It was part of a family's morning ritual.</p>
+        <p>Someone reading the front-page news. Someone looking for the sports pages. Someone checking job advertisements. Someone reading film news. Someone else reading the editor's column.</p>
+        <p>Once a piece of news was read, the paper would pass to someone else's hands. Then to another's.</p>
+        <p>A newspaper often became the shared reading material of several members of a household.` },
+      { title: "🖨️ How Many People's Work Lies Behind a Newspaper", html: `
+        <p>When we hold a newspaper in hand, we see only the paper. But behind it lay an entire vast world of work.</p>
+        <p>Journalists. Correspondents. Photographers. Editors. Proofreaders. Typesetters. Printing workers. Binding and packing staff. Transporters. Hawkers.</p>
+        <p>From gathering a piece of news to it reaching a reader's door, the labor of countless people was involved.</p>
+        <p>Delivering the early-morning newspaper, in particular, was a world all its own.` },
+      { title: "🚲 The Newspaper Hawker", html: `
+        <p>Dawn hadn't fully broken. The streets of the town or village were still largely quiet. But somewhere, a bicycle bell could be heard. Ring... ring...</p>
+        <p>The hawker arrived, stopping with a bundle of newspapers. Then, one by one, he flung papers toward specific houses.</p>
+        <p>Someone opened the door and picked up the paper. Someone else picked it up later from beside the window.</p>
+        <p>For the hawker, it was hardly unusual to have every house's address memorized.</p>
+        <p>Today, news reaches our phones before we've even woken up. Yet that image of the dawn bicycle and the bundle of papers remains the memory of an era.` },
+      { title: "📰 Job Advertisements: A Page of Hope for the Future", html: `
+        <p>The job page of the newspaper held a special importance. An unemployed young man opens the paper in the morning and sits down. His eyes go straight to the advertisements.</p>
+        <p>"Qualification..." "Age limit..." "Last date of application..."</p>
+        <p>Then an advertisement gets cut out and kept. Collecting the form. Applying by post. The exam. The interview.</p>
+        <p>A small advertisement could sometimes change an entire family's future.</p>
+        <p>Today, the method of job hunting has changed. But back then, a newspaper advertisement was a page of hope.` },
+      { title: "📻 Then Came the Radio", html: `
+        <p>A newspaper could be read. But not heard. The radio changed that limitation.</p>
+        <p>A box. An antenna. Sometimes a battery. Sometimes electricity.</p>
+        <p>And from within it came drifting—voices, songs, news, weather, farming programs, dramas, sports commentary, discussions, educational programs.</p>
+        <p>The radio became a silent yet lively member of the household.` },
+      { title: "📻 The Transistor — When the Radio Fit in a Pocket", html: `
+        <p>After the large radio came the transistor radio. Small. Easy to carry. Ran on batteries. Could be taken outside the house.</p>
+        <p>At the tea stall. In the field. In the shop. On the boat. At the farmer's workplace. On journeys.</p>
+        <p>The radio no longer stayed only indoors. It went out into the world with people.` },
+      { title: "🏏 Cricket Commentary", html: `
+        <p>Memories of sports are also deeply woven into the radio. Before television reached everywhere, many people listened to cricket commentary on the radio.</p>
+        <p>The game isn't in front of your eyes. But a voice creates the scene. "He bowls..." "The batsman plays..." "Four runs!"</p>
+        <p>A commentator's voice alone could construct the entire field in a listener's imagination.</p>
+        <p>For a generation raised on today's HD broadcasts, multiple cameras, and replays, that experience might feel different. But radio's power lay in this—building imagination through sound alone.` },
+      { title: "🎙️ Livelihoods Tied to the Radio", html: `
+        <p>Along with the radio's popularity came many kinds of work—radio sales shops, radio repair shops, battery businesses, antenna installation work, electronics technicians, radio parts businesses.</p>
+        <p>When a radio broke, people didn't throw it away. They took it to a technician. The cover would be opened. Wires, resistors, transistors, speakers—everything examined.</p>
+        <p>Sometimes a small repair was enough to bring the radio back to life, playing again.</p>
+        <p>Today's culture of "if it's broken, replace it" was not so dominant back then, for many electronic devices.` },
+      { title: "📺 Then Came Television", html: `
+        <p>On the radio, we listened. Television taught us to watch.</p>
+        <p>In the early days, television was a big deal for many families. A television arriving in a house was as if a new window had opened inside it.</p>
+        <p>A black-and-white screen. A small screen. An antenna. An antenna mounted on the roof or atop a bamboo pole, turned this way and that in an effort to clear the picture.` },
+      { title: "📡 \"Is the Picture Coming Through?\"", html: `
+        <p>This question was once very familiar. The TV picture is flickering. Someone is told—"Turn the antenna a bit!"</p>
+        <p>Someone climbs onto the roof. Instructions from below—"This way... this way... stop!"</p>
+        <p>Then—"Yes, it's fine now!"</p>
+        <p>In today's age of digital signals, this scene has almost disappeared.` },
+      { title: "🏠 One Television, Many Viewers", html: `
+        <p>Not every house had a television. So if one house in the neighborhood had one, people from nearby would gather there in the evening.</p>
+        <p>Children in front. Elders behind. Some sitting on the floor. Some in chairs. Some standing near the door. The program begins on the screen.</p>
+        <p>A television back then wasn't just one family's possession—it often became a neighborhood's gathering place.` },
+      { title: "📺 Sunday Morning", html: `
+        <p>A specific program at a specific time meant getting the household chores done quickly. The children waiting. The elders sitting too. Everyone in front of the television.</p>
+        <p>Unlike today, not everyone has their own separate screen in hand. Everyone is watching the same screen.</p>
+        <p>This experience of "watching together" has also changed a great deal with technological change.` },
+      { title: "🎭 Serials, Films, and Programs", html: `
+        <p>Television didn't just deliver news. It changed the very nature of people's entertainment.</p>
+        <p>Dramas. Serials. Films. Songs. Agricultural programs. Children's programs. Educational programs. Sports. News.</p>
+        <p>Gradually, television became one of the primary mediums of home entertainment and information.` },
+      { title: "📺 Color Television", html: `
+        <p>After the black-and-white world came color television. What could once be seen only in shades of light, shadow, and grey now took on color.</p>
+        <p>Television technology changed. From CRT, gradually—to LCD → LED. Screens grew thinner. Picture quality improved. Then came—Digital TV.` },
+      { title: "🎥 VCR and VCD: Watching Programs on Your Own Time", html: `
+        <p>After television came another change. People would no longer only watch broadcast programs. If they wished, they could also watch pre-recorded programs.</p>
+        <p>The VCR arrived. Video cassettes. Play. Pause. Rewind. Fast Forward.</p>
+        <p>Then came the VCD. A new shift came to the once-popular market of films, songs, and videos.</p>
+        <p>Video parlors. Cassette rentals. VCD shops. Video cameras. New businesses sprang up for many people.` },
+      { title: "📼 But Technology Didn't Stop Here Either", html: `
+        <p>The VCR went. The VCD went. Then came the DVD. Then the computer. Then the pen drive. Then online video. Then streaming.</p>
+        <p>What was once the video cassette shop is today, in many places, only a memory.` },
+      { title: "👨‍🔧 The World of the Repairman", html: `
+        <p>Another important character of this entire era was—the repairman.</p>
+        <p>TV broken? Take it to the technician. Radio broken? It could be repaired. VCR not working? A technician would look at it. Cassette player head needs cleaning? A technician was there.</p>
+        <p>These people possessed a skill that couldn't be learned from a book in a single day. Understanding a problem by listening to its sound. Understanding a problem by looking at the picture. Opening the device and testing the circuit. Replacing one small part to bring the whole machine back to life.` },
+      { title: "📉 Then the Culture of Repair Changed Too", html: `
+        <p>With new technology, devices grew more complex. In many cases, small circuits, chips, integrated components—everything began to be built in such a way that local repair became difficult.</p>
+        <p>In place of "Is it broken? Take it to the technician," came—"Is it broken? Buy a new one."</p>
+        <p>This was not merely a change in technology. It was also a change in livelihood.` },
+      { title: "📰📻📺 Three Mediums, Three Worlds", html: `
+        <p>The newspaper taught us to read. The radio taught us to listen. Television taught us to watch.</p>
+        <p>And today's smartphone—lets you read, listen, watch, and respond, all at once.</p>
+        <p>In one device, as if three eras have come together.` },
+      { title: "❤️ But Something Has Also Been Lost", html: `
+        <p>The rustle of newspaper pages. The static crackle of the radio. The bustle of turning a television antenna. Many people sitting together in front of one house to watch a program.</p>
+        <p>Radio-repair shops. Small TV-repair workshops. VCR's video cassettes. The shelves of a VCD shop.</p>
+        <p>These are not just memories of technology. They are memories of people's social life.` },
+      { title: "🌱 Technology Has Changed, and So Have People", html: `
+        <p>Once, people waited for the newspaper. Then they listened to news on the radio at a fixed time. Then they watched news on television. Today, news arrives in our hands on its own.</p>
+        <p>To judge this change simply as good or bad would leave the story incomplete. Because every technology has brought some benefit, while also bringing an end to some old habit or livelihood.` },
+      { title: "🌅 Closing Words of Episode 4", html: `
+        <p>A newspaper was our morning companion. A radio was the household's voice. A television was a family's gathering place.</p>
+        <p>Then technology grew faster still. Screens grew smaller. Pictures grew clearer. News became instant.</p>
+        <p>But along with that, the habit of sitting together to read the same news, hear the same song, watch the same program also changed. Today, everyone has a separate screen in hand. Everyone faces a separate world.</p>
+        <p>Yet somewhere, a question remains—</p>
+        <blockquote>Has technology made our world bigger, or has it made each of our worlds separate?</blockquote>
+        <p>Perhaps time will answer that question one day. Because the history of technology is not yet finished.` }
+    ],
+    nextTeaser: "Episode 5: From Gramophone to CD — records, cassettes, CDs, VCR to VCD — that world of holding onto sound and image."
+  },
+  {
+    id: 'ep5',
+    num: 'Episode 5',
+    title: 'The Days of Holding Onto Sound and Image',
+    sub: "From gramophone to cassette, CD, VCR, and VCD — the story of an era's songs, films, and livelihoods",
+    sections: [
+      { title: "", html: `
+        <p>There was a time when, to listen to a song, people didn't open their phones. There were no earphones in their ears either.</p>
+        <p>To hear a song, you first had to decide—which song shall I hear? Then you had to find the medium for that song.</p>
+        <p>Perhaps an old record kept atop a cupboard. Perhaps a cassette box. Perhaps a CD's shiny round disc.</p>
+        <p>And to watch a film? Then perhaps you needed a VCR, or later a VCD player.</p>
+        <p>In today's world, finding a song takes only a few seconds. But once, even listening to a song involved preparation, care, waiting—and a particular joy.` },
+      { title: "🎵 The Gramophone: When Songs Spun With the Disc", html: `
+        <p>Picture an old-time gramophone. A large horn shaped like a shell. Beneath it, a round turntable. On the turntable, a record. And a fine needle.</p>
+        <p>The record spins. The needle moves along its grooves. Then—a hiss... a hiss... and slowly a song rises up.</p>
+        <p>The sound isn't as clear as today's. Sometimes a scratching noise. Sometimes slight distortion. Yet people listened, enchanted. Because there was no alternative to that sound back then.` },
+      { title: "💿 A Record Was More Than Just a Song", html: `
+        <p>Tied to a gramophone record were the artist, the history of the song, and the joy of collecting. If someone's house held many records, that itself was a kind of wealth.</p>
+        <p>A record had to be kept carefully. Protected from dust. Held incorrectly, or scratched, and the sound could suffer.</p>
+        <p>And if a record's grooves were damaged, the song on that particular record was damaged too.</p>
+        <p>Today a song can be played a thousand times. Back then, a record demanded far more care.` },
+      { title: "🎶 A Small Economy Tied to Listening to Music", html: `
+        <p>Tied to the gramophone were many other professions as well—record sellers, gramophone repairers, needle sellers, record importers and distributors, music shops, artists, and workers in the recording industry.</p>
+        <p>A technology never arrives alone. An entire economy grows up around it.` },
+      { title: "📼 Then Came the Cassette", html: `
+        <p>Then one day, music arrived inside a small box. The audio cassette.</p>
+        <p>Two small wheels. Between them, magnetic tape. A small plastic box.</p>
+        <p>But that little box brought a huge change to the world of music. This time, songs weren't just bought—they could be recorded too.` },
+      { title: "🎙️ Your Own Song, Your Own Recording", html: `
+        <p>One of the cassette's biggest draws was the ability to record.</p>
+        <p>A favorite song plays on the radio. Record is pressed on the cassette player. The song is recorded.</p>
+        <p>Sometimes an entire program. Sometimes a few favorite songs. Sometimes your own voice. Sometimes a mixed cassette made for a friend.</p>
+        <p>A cassette was thus often not simply a product bought from a shop. It became a personal memory.` },
+      { title: "✏️ The Pencil's Famous Job", html: `
+        <p>A cassette's tape got tangled? A new cassette wasn't always bought.</p>
+        <p>With the help of a pencil or a pen, the cassette's wheel would be turned to wind the tape back neatly.</p>
+        <p>This might seem strange to today's generation. But back then—a pencil was sometimes a cassette-repair tool! 😊` },
+      { title: "🎧 The Cassette Shop", html: `
+        <p>Once, cassette shops could be seen in every neighborhood. Rows of cassettes in the shop. A new film's songs have arrived. A new album has arrived.</p>
+        <p>Fans came to buy. Some borrowed songs. Some had cassettes copied. Some had a new cassette made with their own chosen songs.</p>
+        <p>The shopkeeper often had it memorized—which artist's which song was on which cassette.` },
+      { title: "🔧 The Small World of Cassette Repair", html: `
+        <p>When a cassette player broke, it wasn't discarded outright either. The mechanism would be opened up.</p>
+        <p>Is the belt loose? Does the head need cleaning? Is the motor okay?</p>
+        <p>Sometimes a small repair was enough to make the machine play songs again. Livelihoods were built on this skill too.` },
+      { title: "💿 Then Came the CD", html: `
+        <p>After the cassette, another marvel arrived in the world of music—the Compact Disc, the CD.</p>
+        <p>A shiny round disc. No magnetic tape. Digital information. Clear sound. None of the cassette's problem of tangled tape.</p>
+        <p>It brought a new experience in music's quality and method of use.` },
+      { title: "✨ The CD's Shining Appeal", html: `
+        <p>In the early days, the CD was, for many, a symbol of modernity. Holding a disc in hand felt as if technology had arrived from the future.</p>
+        <p>Compared to the cassette, it was smaller, thinner, and beautiful to look at. It was placed in a CD player. Play was pressed. And the song began.` },
+      { title: "💿 But Even the CD Was Not Permanent", html: `
+        <p>And here lies technology's greatest lesson. The very CD that once made the cassette seem modern found, within just a few years, even newer technology standing before it.</p>
+        <p>MP3. Computers. Pen drives. Memory cards. MP3 players. Then smartphones. Then streaming.</p>
+        <p>Today, a memory device or an online library can hold many times more songs than a CD ever could. The CD, too, became part of history.` },
+      { title: "🎥 Now Let Us Turn to the World of Moving Pictures", html: `
+        <p>Not just songs. People wanted to hold onto moving images too.</p>
+        <p>Here enters—📼 the VCR, the Video Cassette Recorder.</p>
+        <p>A video cassette would be inserted. The VCR connected to the television. Then—Play. The film would begin on screen.` },
+      { title: "🎬 When Cinema Entered the Home", html: `
+        <p>Before this, watching a film meant going to the cinema hall. The VCR changed that experience considerably.</p>
+        <p>Now, watching a film at home was possible. Friends coming over. Family sitting down. The video cassette playing.</p>
+        <p>You could pause. You could rewind. You could fast-forward. A film could be watched at your own convenience.` },
+      { title: "📹 The Video Cassette Business", html: `
+        <p>From here grew a new business—the video library.</p>
+        <p>Rows of film cassettes in the shop. Bengali. Hindi. English. Films in other languages too.</p>
+        <p>Customers came to rent cassettes. They returned them a day or two later. A whole household could be supported by one small shop.` },
+      { title: "🎥 Video Cameras and Occasions", html: `
+        <p>Alongside the VCR, another industry grew up too—video recording.</p>
+        <p>Weddings. Social functions. School programs. Plays. Cultural events.</p>
+        <p>People would arrive with cameras. Hours upon hours of recording. Then preserved on cassette.</p>
+        <p>For a family, that cassette became a box of memories.` },
+      { title: "💿 The VCD: Video Became Even Easier", html: `
+        <p>Then came the VCD, the Video Compact Disc. Smaller than a video cassette. Easier to operate.</p>
+        <p>A new experience of watching films and video through discs. The VCD player entered the home.</p>
+        <p>Alongside the video cassette shop, VCD shops sprang up too.` },
+      { title: "📀 The New Business of VCD Shops", html: `
+        <p>Rows of discs in the shop. Film covers. Song albums. Children's videos. Educational videos.</p>
+        <p>Once, buying or renting a VCD was a familiar part of entertainment. But once again, technology changed.` },
+      { title: "🔄 VCR → VCD → DVD → Digital", html: `
+        <p>One technology displaced another. VCR → VCD → DVD → computer file → pen drive / memory card → online video → streaming.</p>
+        <p>At each step, some profession tied to the old device weakened or vanished along with it.</p>
+        <p>Video libraries declined. The cassette business declined. VCR repair work declined. VCD shops declined. And with them, certain special skills were lost too.` },
+      { title: "👨‍🔧 Those Who Kept These Machines Alive", html: `
+        <p>There was a technician who could open up a cassette player and fix it again. Another who understood VCR problems. Someone who repaired video cameras. Someone who did recording work. Someone who copied cassettes. Someone who repaired VCD players.</p>
+        <p>For these people, technology wasn't just a machine—it was a livelihood.</p>
+        <p>As the machines changed, their work had to change too. Some learned new technology. Some changed profession. Some gradually lost their work altogether.` },
+      { title: "🎥 The World of the Cameraman", html: `
+        <p>When the cameraman arrived at a wedding, a distinct bustle would take over the house.</p>
+        <p>A big camera. Cassettes. Batteries. A tripod. Then a long shoot.</p>
+        <p>The cameraman had to know—when to turn the camera on. When to turn it off. Which moment could not be missed.</p>
+        <p>If an important shot was ruined, bringing that moment back was not always possible.</p>
+        <p>Today, ten videos can be shot on a smartphone at once. Back then, making one good video demanded both skill and a greater sense of responsibility.` },
+      { title: "🎞️ Editing: From Raw Footage to Memory", html: `
+        <p>Once the shoot ended, the work wasn't done. The video had to be edited.</p>
+        <p>Cutting one part. Joining another. Keeping the necessary scenes. Discarding the unnecessary. Adding a title. Placing music.</p>
+        <p>This too was once a special skill. Editing machines, video tape, monitors—an entire separate world of work was built around all of this.</p>
+        <p>Today, on computer and mobile software, ordinary users can do what was once the domain of a trained professional.` },
+      { title: "💔 Then Change Came Again", html: `
+        <p>The analog video era began to end. Digital cameras arrived. Then DSLRs. Then smartphones.</p>
+        <p>Video files became digital. Editing moved to computers. Then to the cloud.</p>
+        <p>Today, inside one phone—camera + editing studio + storage + publishing.` },
+      { title: "🕰️ From a Song to a Memory", html: `
+        <p>Open an old cassette and perhaps written on the tape you'll find—"Wedding songs," or "Mother's favorites," or "1998."</p>
+        <p>A CD cover with someone's handwritten name. A VCD box with a picture from an old film. A video cassette labeled—"Elder brother's wedding."</p>
+        <p>This technology may be useless today. But trapped within it is people's life.` },
+      { title: "❤️ Technology's Greatest Lesson", html: `
+        <p>The gramophone let us hear songs. The cassette taught us to arrange songs our own way. The CD digitized sound. The VCR brought cinema into our homes. The VCD made video even simpler. Digital technology turned everything into files. And the smartphone brought it all together in one hand.</p>
+        <p>But with every change, some people had to learn anew. Some managed. Some couldn't. Some moved to other professions. Some gradually got left behind, outside technology's history.` },
+      { title: "🌱 Closing Words", html: `
+        <p>Today, if we want to hear a song, we type its name. Within seconds, the song arrives. If we want to watch a film, we search for it.</p>
+        <p>No cassette. No record. No VCR. No VCD.</p>
+        <p>But behind that ease lies many decades of technological change.</p>
+        <p>Once, a song lived in a disc's grooves. Then in magnetic tape. Then on a digital disc. Then in a file. Today it often comes to us as a data stream.</p>
+        <p>Yet that old record's crackling sound, the cassette's tape, the VCR's Play button, the VCD's shining disc—all of it reminds us of one thing—</p>
+        <blockquote>However fast technology moves, the speed of human memory is slow. A machine may pass, but the era tied to it lingers long in people's minds.</blockquote>` }
+    ],
+    nextTeaser: "Episode 6: From the Box Camera to the Digital Age — film, the studio, the darkroom, the Beta camera, and the editing machine — that world where a single click didn't have today's value."
+  },
+  {
+    id: 'ep6',
+    num: 'Episode 6',
+    title: "A World Lost in the Camera's Eye",
+    sub: 'The box camera, film, the studio, the darkroom, the video camera, the Beta camera, the editing machine, and the end of the analog era',
+    sections: [
+      { title: "", html: `
+        <p>There was a time when taking a photo did not mean seeing the photo right away.</p>
+        <p>You had to stand before the camera. Get the pose right. Get the light right. The photographer had to be careful.</p>
+        <p>Then—click. The picture was taken.</p>
+        <p>But that picture still couldn't be seen with the eye. Because the image was trapped inside the film.</p>
+        <p>Then began another story.` },
+      { title: "📷 The Box Camera: Photography's First Wonder", html: `
+        <p>Cameras of the old days weren't small like today's smartphones. Some cameras were shaped like boxes. A lens in front. A viewfinder behind. Film inside.</p>
+        <p>Holding a camera was itself a kind of ceremony. Because to take a photo, you first had to think—is this moment really worth keeping?</p>
+        <p>Today, one can take ten pictures of a scene and choose one. That option didn't exist then.` },
+      { title: "🎞️ Film: A Count for Every Shot", html: `
+        <p>A roll of film had a fixed capacity. 24. 36. Sometimes rolls of other capacities. In other words, you had a limited number of chances.</p>
+        <p>If one shot was ruined, it wouldn't come back. Is the frame right? Is the light right? Are the person's eyes open? Did anyone move? Is the camera's focus right?</p>
+        <p>Thinking through all of it, then—click. This is exactly why a skilled photographer held such great importance back then.` },
+      { title: "😄 \"Smile... Don't Move!\"", html: `
+        <p>While taking photos in a studio, the photographer's instructions were very important. "Sit up straight a little." "Look this way." "Smile." Then—"Don't move."</p>
+        <p>Because even a slight movement after the shutter was pressed could affect the photo. Staying still mattered particularly during long exposures.</p>
+        <p>Today, we can see a photo right after taking it and say, "Let's take it again." That option didn't exist then.` },
+      { title: "🏢 The Studio: A World of Photography in a Small Room", html: `
+        <p>A photographic studio was not just a room for keeping a camera. There you'd find—cameras, lenses, lights, backdrops, film, various kinds of props, arrangements for printing, arrangements for preserving customers' photos.</p>
+        <p>Wedding photos. Passport photos. Photos for job applications. Family photos. Children's photos. Photos of events.</p>
+        <p>A studio was an important place in an area for preserving people's memories.` },
+      { title: "👨‍👩‍👧‍👦 The Value of Family Photos", html: `
+        <p>Open an old family album even today and you might see—parents in their young days, photos of grandparents, wedding photos, childhood photos, school photos.</p>
+        <p>Someone may no longer be in this world. But in the photo, they still stand there.</p>
+        <p>This is exactly why the value of old photos isn't merely the value of paper. It's the value of a family's memory.` },
+      { title: "🌑 The Darkroom: Where a Photo Was Born", html: `
+        <p>Taking a photo with a camera didn't mean the picture came into your hand right away. The film had to be processed. And here enters—the darkroom.</p>
+        <p>The name itself gives it away. A room where light is controlled, kept dark. Special chemical solutions. Trays. Film. Negatives. Patience. Skill.</p>
+        <p>One mistake could ruin the entire roll.` },
+      { title: "🧪 From Negative to Photograph", html: `
+        <p>After the film was processed, a negative would result. There, the relationship of light-and-dark and color in the picture appeared in reverse from what we normally see.</p>
+        <p>Then, from that negative, a photographic print would be made. Through a chemical process, the shape of the picture would gradually emerge.</p>
+        <p>For a skilled worker, that moment felt almost like magic. On white paper, a face slowly appears. A house. A child. A wedding. A life. The photograph is being born before your very eyes.` },
+      { title: "💰 The Darkroom Too Was a World of Livelihood", html: `
+        <p>Alongside photographers worked—film-processing staff, printing staff, darkroom technicians, photo-lab workers.</p>
+        <p>One knew the right quantity of chemicals. One knew film processing. One understood print quality. Someone enlarged photos. Someone made albums.</p>
+        <p>Behind one photograph, then, lay the labor of many people.` },
+      { title: "📸 The Cameraman's Responsibility", html: `
+        <p>Especially at weddings or major events, the photographer had to act something like a guardian of memory.</p>
+        <p>Which moment matters? Where will everyone stand? When should the photo be taken? How is the light? How much film is left? Everything had to be kept in mind.</p>
+        <p>Because—if a shot was ruined, there was no way to say "delete" and bring that moment back.</p>
+        <p>Sometimes, when an important photo was ruined, the cameraman had to face a difficult situation. Often, harsh scolding, even humiliation, had to be endured. Because a special moment of a wedding, once gone, cannot be recreated.` },
+      { title: "🎥 Then, Beyond the Still Photo, the Moving Image", html: `
+        <p>After photography, people wanted more—moving memories. The video camera brought that opportunity.</p>
+        <p>This time, not just a single moment. An entire event could be recorded. Weddings. Cultural functions. School programs. Plays. Religious events. Family gatherings. A child's birthday.</p>
+        <p>The camera kept rolling. People talking. Walking. Laughing. Singing. Dancing. As if a moment of time were being captured for the future.` },
+      { title: "📼 Analog Video: An Even Greater Responsibility Than Photography", html: `
+        <p>In video recording too, there was little room for error. The tape's capacity was limited. Battery limited. Recording time limited too.</p>
+        <p>The cameraman had to know when to switch the camera on. If an important scene was missed, it couldn't be brought back.</p>
+        <p>Making multiple copies or backups of the same moment, as is easy today, was not so simple back then.` },
+      { title: "🎥 The Beta Camera: An Important Chapter in Professional Video", html: `
+        <p>In the history of video technology, professional videotape formats like Betacam/Beta Camera played an important role, especially in broadcasting and professional video production.</p>
+        <p>This wasn't an ordinary household camera. Skill was required in the professional camera-and-tape systems built for professional use.</p>
+        <p>Television production. News gathering. Studios. Documentaries. Major events—this was an important era for professional video equipment in these fields.</p>
+        <p>A camera wasn't just a machine. It was a profession.` },
+      { title: "💼 The Value of a Beta Camera", html: `
+        <p>The professional video cameras and associated recording systems of that time were not devices for everyday use by ordinary people; their cost and maintenance expenses were substantial too.</p>
+        <p>So these were bought or used mainly by professional institutions, broadcasting organizations, production houses, or video professionals.</p>
+        <p>Buying an advanced camera meant not just buying one device. Along with it came—batteries, tape, lenses, maintenance, lighting, tripods, recording equipment, editing arrangements.</p>
+        <p>In other words, an entire professional system grew up around one camera.` },
+      { title: "🎬 Then Came Editing", html: `
+        <p>The shoot is over. But the work isn't. Now begins—editing.</p>
+        <p>Which scene stays? Which is cut? Where's the cut point? Where's the transition? Where does the music go? Where's the title? Which scene comes first? Which comes later?</p>
+        <p>Editing was a distinct skill.` },
+      { title: "🎛️ The Era of the Editing Machine", html: `
+        <p>Today, opening a video-editing app on a mobile phone—Trim, Cut, Text, Music, Filter, Export—everything can be done.</p>
+        <p>But once, video editing required special machines, monitors, tapes, and a trained operator.</p>
+        <p>Taking a portion from one video into another, arranging them, adding sound—all of it took time. A good edit was proof of skill.` },
+      { title: "🧑‍💻 An Editor's Mistakes Had a Price Too", html: `
+        <p>A wrong cut. A wrong sequence. An important scene missing. Wrong audio. Because of these, the entire job might have to be redone.</p>
+        <p>So an editor didn't just operate a computer or machine. They had to understand the story too. Which scene would evoke which feeling in the audience—that too had to be understood.` },
+      { title: "📹 From Studio to Videographer", html: `
+        <p>During this time, wedding and event videography became an important livelihood.</p>
+        <p>Someone bought a camera. Someone became an assistant. Someone held the light. Someone shot the video. Someone edited. Someone made copies. Someone delivered the video cassette to the customer.</p>
+        <p>A single event provided income for many people.` },
+      { title: "🔄 Then Came the Digital Revolution", html: `
+        <p>Now another change. Film → Digital Camera. Analog Video → Digital Video. Tape → Memory Card. Editing Machine → Computer. Photographic Lab → Digital Printing. Physical Album → Digital Album.</p>
+        <p>This change was immense. You could see the picture right after taking it. If it was wrong, you could take it again. Countless photos on one memory card. Copying a video file became easy. Editing could be done in software.` },
+      { title: "📱 And Then Came the Smartphone", html: `
+        <p>The work that once required—camera + film + lab + printer + album—is today largely possible on one phone.</p>
+        <p>Inside one smartphone—📷 camera, 🎥 video, ✂️ editing, 💾 storage, 🌐 internet, ☁️ cloud backup, 📤 instant sharing—all together.` },
+      { title: "💔 But This Convenience Had Its Cost Too", html: `
+        <p>Technological change has made human life easier. But some professions' need has diminished.</p>
+        <p>Film sellers. Film-processing labs. Darkroom workers. Film-printing staff. Cassette-based videographers. Analog editing operators. VCR/VTR technicians.</p>
+        <p>Many professions have had to remake themselves. Some moved into digital. Some learned new technology. And some perhaps could no longer remain in that profession.` },
+      { title: "🧓 The Old Photographer's Box", html: `
+        <p>Open the cupboard of an old studio today, and you might find—an old camera, a few old lenses, empty film canisters, negatives, old albums, a few bottles of chemicals, an old enlarger.</p>
+        <p>Perhaps an old bag with a cameraman's name written on it.</p>
+        <p>The machines may no longer work. But looking at them, you understand—once, these were the tools that created people's memories.` },
+      { title: "🕰️ The Value of a Single Click", html: `
+        <p>Today, to capture a child's smile, we take ten photos. One turns out good. We delete the other nine.</p>
+        <p>In the analog era, that wasn't so simple. Every frame of a roll of film was accounted for. So you had to think before a click. Is this moment really worth keeping?</p>
+        <p>This is perhaps why every photo in an old album carried its own distinct importance. Photos were fewer. But every photo carried a story.` },
+      { title: "🌅 The Last Light of the Analog Era", html: `
+        <p>The analog era did not end in a single day. It fell gradually behind. One technology arrived. Then another. Then technology that was even simpler, faster, and cheaper.</p>
+        <p>Eventually, digital technology reached a point where competing with the old analog system became difficult.</p>
+        <p>But to dismiss the analog era simply as "old" would fail to understand its importance. Because this era taught us—patience. Skill. Making the right decision within limited opportunity. The value of a single photograph.` },
+      { title: "❤️ The People Must Not Be Forgotten", html: `
+        <p>When writing the history of technology, we usually write the camera's name. Film's name. VCR's name. Beta camera's name. Editing machine's name.</p>
+        <p>But the names of the people behind those machines are rarely written down. The photographer. The cameraman. The darkroom worker. The videographer. The editor. The lab technician. The repairman. The assistant.</p>
+        <p>It was in their hands that technology came alive.` },
+      { title: "🌿 Closing Words of Episode 6", html: `
+        <p>The path from the box camera to the smartphone is not merely a story of technological progress. It is a story of professions changing.</p>
+        <p>Once, film was precious. Then digital photography arrived and left film behind.</p>
+        <p>Once, the darkroom was where a photo was born. Then the computer took over much of that work.</p>
+        <p>Once, the Beta camera was a powerful tool in the world of professional video. Then digital cameras and a file-based workflow arrived and transformed the tape-based system.</p>
+        <p>Once, operating an editing machine was a special skill. Today, a child can cut and join video on a mobile phone.</p>
+        <p>There is no simple story of winners and losers in this change. There is a story of people adapting over time. And so—</p>
+        <blockquote>The analog era has ended, but those who preserved people's memories with the skill of their own hands during that era were never merely workers of old technology. They were, each of them, guardians of the memory of an age.</blockquote>
+        <p>Today we have countless photographs in hand. But once, one had to wait to get a single photo.</p>
+        <p>Today, making a video is easy. But once, making a video required the skill of many people working together.</p>
+        <p>Technology has become easier. Preserving memory has become easier. But the world of the professions that once created that memory has changed too.` }
+    ],
+    nextTeaser: "Episode 7: From the Landline to Mobile — the black landline, the rotary dial, the telephone exchange, trunk calls to STD, PCOs — then the small mobile, SMS, Nokia, Snake Game, and finally the smartphone."
+  },
+  {
+    id: 'ep7',
+    num: 'Episode 7',
+    title: 'From Landline to Mobile',
+    sub: "From a black telephone to an entire world in the palm of a hand",
+    sections: [
+      { title: "", html: `
+        <p>There was a time when a phone didn't mean a mobile phone.</p>
+        <p>A phone meant—a device kept in one fixed place. It would sit in a corner of the house. If someone called, everyone would hear it. And to make a call, you had to go to that very device.</p>
+        <p>To today's generation this might sound unbelievable. But once, having a phone at home was an important convenience—sometimes even a mark of social status.</p>
+        <p>That journey began with a familiar face—☎️ the black landline phone.</p>
+        <p>A heavy black body. A receiver. Two ends for the ear and the mouth. And, in front or on top, an arrangement for dialing numbers.</p>
+        <p>The phone couldn't be carried anywhere. It stayed in its place. People would go to the phone. The complete opposite of today's mobile.` },
+      { title: "☎️ The Rotary Dial — Turning the Finger to Dial a Number", html: `
+        <p>The most familiar feature of the old phone was the rotary dial. Numbers arranged on a circular dial. You'd put a finger in the hole of a specific number and turn it. Then release. The dial would return to its place on its own. Then the next number.</p>
+        <p>Dialing a number didn't take a single moment like today. Especially for long numbers, it took time. And if you dialed a wrong number? Often, you'd have to start over from the beginning.` },
+      { title: "📞 The Sound of the Phone", html: `
+        <p>Then one day—ring... ring... the phone rang out. Everyone in the house knew—someone was calling.</p>
+        <p>Someone ran to pick up the phone. "Hello?" Then the conversation began.</p>
+        <p>Today, our phones are personal. Back then, phones were largely a family matter. Who had called—others in the house could know that too.` },
+      { title: "🏠 What Did Having a Phone at Home Mean?", html: `
+        <p>Not every house had a phone. So if someone's house had one, neighbors could also come, when necessary, to answer or make calls there.</p>
+        <p>Someone called from far away and said—"Could you call him for me?" Then someone in the house went outside to give that person the news. Someone said—"There's a call for you."</p>
+        <p>Within that small sentence lay an entire era's social communication system. A phone was never just one family's phone. It became a hub of communication for the whole neighborhood.` },
+      { title: "🏢 The Telephone Exchange — The Center of an Invisible Web", html: `
+        <p>We dial a number on the phone. But how did that call, back then, reach another phone? Behind it lay the telephone exchange.</p>
+        <p>For managing telephone connections across a city or region, the exchange was an important center of the communication system. In early systems, operators played an important role too. Later, these systems gradually became automated.</p>
+        <p>But at one time, the telephone system was—a vast network of wires, poles, exchanges, switches, and human skill.` },
+      { title: "👨‍🔧 The Lineman: The Person on the Other Side of the Wire", html: `
+        <p>The phone had a problem. No dial tone. No sound could be heard. The line kept cutting off. A complaint would be lodged. Then would come—the telephone lineman.</p>
+        <p>Sometimes he had to climb a pole. Sometimes check the wire. Sometimes inspect a junction box. Sometimes check the connection at a house.</p>
+        <p>Sun. Rain. Mud. A high pole. Still, the work had to be done. Because on the other end of a phone, someone might be waiting, for whom that connection was extremely urgent.` },
+      { title: "🔧 The Telephone Mechanic", html: `
+        <p>Even if the line was fine, the phone device could break. The receiver isn't working. It doesn't ring. The dial is giving trouble. The sound of the voice is weak.</p>
+        <p>These would be fixed by the telephone mechanic or related technicians. Opening a phone and examining its inner parts was their skill.</p>
+        <p>Before the complex modern electronics of today's smartphone motherboards, repairing this kind of electromechanical and electronic telephone equipment also required particular experience.` },
+      { title: "☎️ The Trunk Call — Waiting for a Distant Voice", html: `
+        <p>After local calls, people's great desire was to talk with someone far away. But once, calling far away wasn't so easy. The trunk call.</p>
+        <p>You had to call a distant city. Book the call. Wait for the connection. Then perhaps, at some point, news would come—"The line has come through."</p>
+        <p>Everyone was ready by the phone. Who would talk? What would be said? No time could be wasted. Because a distant call was, back then, precious.` },
+      { title: "☎️ STD — Distance Grew Even Smaller", html: `
+        <p>Later, through the STD (Subscriber Trunk Dialling) system, calling distant cities or regions became much easier. Dependence on operators decreased.</p>
+        <p>It became possible to make a call to a distant place yourself, using a specific code and number. In the world of telephone communication, this was a major change.</p>
+        <p>Distant relatives. Job news. Business matters. Urgent news. For everything, communication became easier.` },
+      { title: "🟡 The PCO — When the Phone Lived in a Shop", html: `
+        <p>But even then, not every house had a phone. So an important small business grew up—the PCO, the Public Call Office.</p>
+        <p>A small shop. One or a few phones. A counter. Sometimes STD/ISD facility.</p>
+        <p>People would go there to make calls. Talk. Then pay according to the time used.` },
+      { title: "💰 The PCO Owner's Livelihood", html: `
+        <p>A small PCO was the source of income for many families. Sitting beside the phone. Handling customers' calls. Calculating the time. Taking payment. Keeping the connection working.</p>
+        <p>Many PCOs later added—photocopying, fax, typing, stationery, computers, printing.</p>
+        <p>So a small communication center gradually became a small business and service center.` },
+      { title: "📠 From PCO to Internet Café", html: `
+        <p>As technology advanced, many PCO shops began to transform themselves. Alongside the phone came—computers, internet, printing, scanning, email, online forms.</p>
+        <p>Some shops became internet cafes. But within a few years, the smartphone and cheap mobile data brought major change to that business too.` },
+      { title: "📱 Then Came the Mobile", html: `
+        <p>The landline's biggest limitation was—the phone stayed fixed. People would move. The phone would not.</p>
+        <p>The mobile phone changed exactly this idea. Now the phone would go with the person. On the road. On the bus. On the train. At the market. At the workplace. In the field. Wherever a person went, so did the phone.` },
+      { title: "📱 The Early Mobiles", html: `
+        <p>Early mobile phones were bigger and heavier than today's. Limited battery. High price. Talking was the main purpose.</p>
+        <p>But gradually, technology began to shrink. Phones got thinner. Lighter. Batteries improved. And people's use of mobile phones grew.` },
+      { title: "🔤 SMS — A Small Message's Big Revolution", html: `
+        <p>On mobile phones, not just talking—SMS, Short Message Service. A short message could be sent.</p>
+        <p>"Where are you?" "Come home." "I've arrived." "Happy birthday." "I can't come today."</p>
+        <p>Communication became possible without even speaking. A big feature of SMS was—a message could be written and sent, and read later.` },
+      { title: "⌨️ A Small Keypad, Great Patience", html: `
+        <p>On old mobile keypads, typing a letter sometimes meant pressing the same key several times. Typing a word took time.</p>
+        <p>Being able to write an SMS quickly was itself a kind of skill. Some people typed so fast that others would be astonished.</p>
+        <p>And if there was a mistake? Backspace. Write it again.` },
+      { title: "📱 Nokia — A Familiar Name in Mobile Phones", html: `
+        <p>Then, in the history of mobile phones, one name became bound to the memory of countless people—Nokia.</p>
+        <p>Small phones. Sturdy build. Simple interface. Long battery life—for many models, this became, in users' eyes, an important feature.</p>
+        <p>And there was—🎵 the polyphonic ringtone. After the earlier phones' simple beep, the polyphonic ringtone was a new attraction for many. When a phone rang, you knew—"A new ringtone has arrived!" Which ringtone someone used could even become part of their personal preference.` },
+      { title: "🐍 Snake Game — A Companion in Waiting", html: `
+        <p>Bound to Nokia phones, as if inseparably, is another name—Snake Game.</p>
+        <p>A little snake. It eats food. It grows longer. It mustn't hit the wall. It mustn't hit its own body.</p>
+        <p>The game looked extremely simple. But at that time, on a small phone screen, it was, for many, extraordinary entertainment.</p>
+        <p>Waiting for the bus? Snake. Waiting for someone's call? Snake. Class running late? Snake. 😊` },
+      { title: "🔋 Another Habit That Came With the Mobile — Charging", html: `
+        <p>With mobile freedom came a new worry—how much battery is left? 20%. 10%. 5%.</p>
+        <p>Power banks weren't always on hand like today. You had to search for a charger. You had to see where a plug point was.</p>
+        <p>In other words, where on the landline the worry was "is the line working?", on the mobile it became—"is there charge left?"` },
+      { title: "💳 The Recharge Shopkeeper — A New Livelihood", html: `
+        <p>As mobile phones grew, a new business arose—the mobile recharge shop.</p>
+        <p>Someone uses a prepaid connection. It needs recharging. They went to the shop. Gave their number. Paid the money. The recharge was done.</p>
+        <p>Once, this small business was an important source of income for many shops.` },
+      { title: "🏪 The Mobile Shop: A New Economy", html: `
+        <p>As mobile phones became popular, an enormous market emerged—mobile sales, SIM sales, recharge, mobile accessories, covers, chargers, batteries, earphones, screen replacement, repairing.</p>
+        <p>How much a new technology can open the doors of new livelihood for people—mobile phones are a prime example.` },
+      { title: "📞 From Feature Phone to Smartphone", html: `
+        <p>The mobile phone's next major change—feature phone → smartphone.</p>
+        <p>Earlier, a phone's main functions were—📞 calling, 💬 SMS. Then phones added—📷 camera, 🎵 music, 🌐 internet, 📧 email, 🗺️ GPS, 📱 apps.</p>
+        <p>The phone was no longer just a phone. It became a small computer.` },
+      { title: "🌐 When the Internet Got Into the Phone", html: `
+        <p>Once, using the internet required a computer. Then a laptop. Then the smartphone broke that boundary.</p>
+        <p>Now the internet is in people's pockets. News can be read. Photos can be sent. Videos can be watched. Banking can be done. Tickets can be booked. Work can be done. Education can be pursued. Business can be conducted.` },
+      { title: "📷 The Camera Got Into the Phone Too", html: `
+        <p>Once, taking photos required a camera. Then the mobile phone got a camera too. At first, quality was ordinary. But technology improved quickly.</p>
+        <p>Today, the smartphone camera has reduced many ordinary users' need for a separate compact camera. The phone is at once—camera + phone + computer + recorder.` },
+      { title: "🎥 Video, Social Media, and New Kinds of Work", html: `
+        <p>With the smartphone, video became even easier. People themselves now—shoot video, edit it, publish it, reach an audience.</p>
+        <p>As a result, new kinds of work have also emerged—content creator, video editor, social media manager, online teacher, digital marketer, app developer, influencer.</p>
+        <p>On one hand, some old kinds of work have declined. On the other, much new work has been created. This is an important characteristic of technological change.` },
+      { title: "🔧 But What of the Old Livelihoods?", html: `
+        <p>Once there were—linemen, telephone mechanics, PCO owners, STD booth workers, recharge shopkeepers.</p>
+        <p>Their work has changed with technology. Some have learned new work. Some have gone into mobile repairing. Some have gone into computer services. Some have taken up other businesses. And some have perhaps gradually drifted away from that old profession.` },
+      { title: "🏠 From One House's Phone to One Person's Phone", html: `
+        <p>This change runs very deep. Then: one phone → one house. Later: one phone → one family. Then: one mobile → one person. Today: one smartphone → one person's personal digital world.</p>
+        <p>This change isn't merely one of technology. It's a change in social life too.` },
+      { title: "📞 Even the Privacy of the Phone Has Changed", html: `
+        <p>On the landline, if a call came, others in the house could know. The mobile has made personal communication far more private.</p>
+        <p>One's own contact list. One's own messages. One's own photos. One's own social media. One's own browsing.</p>
+        <p>The phone has gradually become part of a person's identity.` },
+      { title: "⏳ One Journey: Five Eras", html: `
+        <p>☎️ First era — the landline — speaking from a fixed place.</p>
+        <p>📞 Second era — trunk call / STD — communicating with someone far away.</p>
+        <p>🟡 Third era — the PCO — public phones for everyone.</p>
+        <p>📱 Fourth era — feature phones — personal mobile communication.</p>
+        <p>🌐 Fifth era — the smartphone — call + internet + apps + media.</p>
+        <p>In this journey, it isn't just the phone that has changed. People's lives have changed too.` },
+      { title: "❤️ Some Memories Tied to the Phone", html: `
+        <p>A black phone. A rotary dial. The ring-ring sound. Waiting for the telephone line. The excitement of a trunk call. Standing in front of a PCO talking.</p>
+        <p>Your first mobile of your own. Your first SMS. A favorite ringtone. Playing Snake with a Nokia in hand. Then your first smartphone.</p>
+        <p>Each of these is the memory of a particular generation.` },
+      { title: "🌱 Technology's Lesson", html: `
+        <p>The landline brought the voices of the far away close to us. The mobile gave us the freedom to talk while on the move. The smartphone has given us, alongside communication, countless opportunities for knowledge, entertainment, work, and creation.</p>
+        <p>But with this change, we need to remember one thing—technology never merely changes devices. It changes—professions, businesses, habits, time, relationships.` },
+      { title: "🌅 Closing Words of Episode 7", html: `
+        <p>Once, the phone sat by the wall. Then on the table. Then at the shop counter. Then in a pocket. And now—in the palm of a hand.</p>
+        <p>In this journey from a black landline phone to the smartphone, we have witnessed not merely the evolution of one device.</p>
+        <p>We have witnessed—a lineman climbing a pole, a telephone mechanic opening up a device, a PCO owner sitting in his shop, a recharge shopkeeper's busy day, a young person's joy at buying their first mobile, and finally, a world where imagining a single day without a phone has become difficult.</p>
+        <blockquote>Once, people went to the phone to speak. Today, the phone walks alongside the person. And walking along like that, the phone itself has, one day, become a person's own small world.</blockquote>
+        <p>But this story doesn't end here. Because alongside the phone, another powerful technology had also arrived in people's hands—the computer.</p>` }
+    ],
+    nextTeaser: "Episode 8: The Technology of Tomorrow — from the computer to AI, from drones to driverless cars — where will humanity stand?"
+  },
+  {
+    id: 'ep8',
+    num: 'Episode 8 · Final Episode',
+    title: 'The Technology of Tomorrow: Where Will Humanity Stand?',
+    sub: 'From computer to AI, from drone to driverless car — and a new world before humanity',
+    sections: [
+      { title: "", html: `
+        <p>In the previous seven episodes, we looked back.</p>
+        <p>From the indigo-making cauldron buried under the soil to the printing press, the newspaper, radio, television, the gramophone, the cassette, the CD, the VCR, the camera, film, the darkroom, the landline, PCOs, Nokia—one technology after another has changed people's lives.</p>
+        <p>Some technology has been lost. Some has changed. Some has returned in new form.</p>
+        <p>And with that change, people's livelihoods have changed. The typist had to learn computers. The photographer had to learn digital cameras. The PCO owner had to adapt to the mobile era. The DTP worker had to learn new software.</p>
+        <p>Some managed. Some didn't. But time did not stop.</p>
+        <p>And today we stand at a moment where the technology of the future has arrived at our door.` },
+      { title: "💻 The Computer — A Silent Revolution in the Office", html: `
+        <p>Once, an office meant—typewriters, paper, carbon paper, files, registers, account books. Then came—the computer.</p>
+        <p>At first, many found it difficult. Keyboards. Monitors. Mice. Files. Software.</p>
+        <p>But gradually, the computer changed the very way office work was done. A document no longer had to be retyped over and over. A single mistake no longer meant discarding an entire page. Files could be saved. Documents could be printed. Calculations could be made. Images could be inserted. Designs could be created.</p>
+        <p>And once the internet arrived, the computer became even more powerful.` },
+      { title: "🌐 The Internet — The World Grew Smaller", html: `
+        <p>Once, communicating with someone far away meant sending a letter. Then a phone call. Then email.</p>
+        <p>The internet came and changed the very idea of distance. From one computer to another. From one country to another. From one continent to another. Information began arriving in an instant.</p>
+        <p>Today, work that we do in a few seconds could once have taken hours, days, or weeks.` },
+      { title: "🤖 Then Came AI", html: `
+        <p>Even the idea that computers would only follow instructions began to change. Artificial Intelligence, AI.</p>
+        <p>AI is becoming a helper to humans in various kinds of work—writing and editing text, translation, data analysis, work with images and video, education, research, software development, customer service, assistance with planning and decision-making.</p>
+        <p>One thing is important to remember here—whether AI replaces humans doesn't have the same answer for every field of work. Some work may become automated. Some work's method may change. And in many cases, AI could become a supportive tool that makes human work faster and easier.` },
+      { title: "👨‍💼 The Worker of the Future", html: `
+        <p>Once, knowing the typewriter was enough. Then computers had to be learned. Then the internet. Today, many professions require knowing digital tools.</p>
+        <p>Tomorrow, perhaps the question will be—</p>
+        <blockquote>Can you use AI?</blockquote>
+        <p>A teacher might use AI to create teaching materials. A writer might take help with research. A businessperson might analyze data. A farmer might use technology to analyze information about their land.</p>
+        <p>In other words, AI is not merely a machine. It could change the method of much work.` },
+      { title: "🚁 The Drone — Humanity's New Assistant in the Sky", html: `
+        <p>Once, taking aerial photographs required a large aircraft or helicopter. Today, small drones can be used for many kinds of work.</p>
+        <p>📷 Photography and video, 🌾 agricultural monitoring, 🗺️ mapping, 🏗️ construction-site inspection, 🌳 environmental monitoring, 🚨 surveillance in some emergency situations.</p>
+        <p>A small device can rise into the sky and see places where it's hard, or risky, for people to go.` },
+      { title: "🌾 Agriculture and the Drone", html: `
+        <p>A farmer cannot stand in the field and examine every part of it. On a large farm, this is even harder.</p>
+        <p>Images or other sensor data gathered from drones can help monitor and analyze crop conditions in specific areas. AI can also be used to analyze that data.</p>
+        <p>In other words, in the agriculture of the future, we may see—farmer + drone + sensor + AI, a new cooperative system.</p>
+        <p>But ensuring that technology's benefits reach small farmers too—that matters as well.` },
+      { title: "🚗 The Driverless Car — When the Car Finds Its Own Way", html: `
+        <p>In our childhood we saw cars. A driver in front. Both hands on the steering wheel. Eyes on the road.</p>
+        <p>Then came—automatic transmission, parking sensors, reverse cameras, cruise control.</p>
+        <p>Today, autonomous driving technology has advanced further still. Cameras. Radar. Lidar. Sensors. Computers. Software. All combined, cars are moving toward the ability to understand their surroundings and drive themselves.` },
+      { title: "👨‍✈️ If the Driverless Car Arrives?", html: `
+        <p>Then an old question will come to the fore again—what will happen to drivers? Bus drivers. Taxi drivers. Truck drivers. Other professional drivers.</p>
+        <p>If autonomous vehicles come into wide use, the nature of some work in the transport sector may change. But at the same time, there may be need for—vehicle technicians, software specialists, sensor technicians, fleet operators, safety supervisors, system-maintenance staff.</p>
+        <p>In other words, if one kind of work declines, another kind may be created. But during that transition, retraining and new opportunities for those whose livelihoods are affected also matter greatly.` },
+      { title: "🚇 The Metro — New Life for the City", html: `
+        <p>Once, getting around the city meant buses, trams, rickshaws, cars. Then came the metro. On elevated lines. Underground. At high speed.</p>
+        <p>The metro isn't just a train. Along with it come—signal systems, control rooms, station staff, maintenance teams, electrical systems, safety systems.</p>
+        <p>A metro network is, in fact, an enormous technological system.` },
+      { title: "🚄 The Bullet Train — An Attempt to Shrink Distance", html: `
+        <p>In the history of railways, speed has always mattered. From slow trains to fast ones. And then—the high-speed rail, the bullet train.</p>
+        <p>High-speed rail requires more than just building a fast train. It needs advanced tracks, advanced signaling, safety systems, control technology, maintenance.</p>
+        <p>In other words, behind a bullet train works an enormous technological ecosystem.` },
+      { title: "✈️ The Air Taxi — A New Possibility in the City Sky", html: `
+        <p>Once, only aircraft flew in the sky. Then helicopters. Now, as a possibility for future urban transport, the air taxi has entered the discussion.</p>
+        <p>Particularly, electric vertical take-off and landing craft, or eVTOL types. Rising straight up. Landing straight down. The possibility of fast travel over short distances.</p>
+        <p>Even today it isn't a common everyday mode of travel. But it's an important field of research and testing in future transport. Perhaps one day, a new kind of traffic will form even in city skies.` },
+      { title: "🚑 The Air Ambulance — Life Measured Against Time", html: `
+        <p>Not all technology is for comfort. The purpose of some technology is—to reduce the time needed to save a life.</p>
+        <p>The air ambulance can offer critically ill patients the chance to reach medical care quickly, especially where the road route would take a long time.</p>
+        <p>An accident. A severe illness. A remote area. There, time matters immensely. So the air ambulance is another humane use of technology.` },
+      { title: "📦 Quick Commerce — When the Market Comes to Your Door", html: `
+        <p>Once, you had to go to the market. Then, ordering by phone. Then online shopping. Now, some services are trying to deliver everyday necessities within very little time—quick commerce.</p>
+        <p>You open an app. Choose a product. Place the order. The product is readied from a nearby fulfilment center or store. A delivery worker takes it and heads out. Then—it arrives at your door.` },
+      { title: "🛵 The People Behind Those Few Minutes", html: `
+        <p>When we say—"It arrived in ten minutes"—we shouldn't forget the labor behind those ten minutes.</p>
+        <p>There may be—warehouse workers, pickers, packers, inventory staff, delivery workers, logistics staff, software developers, customer support staff.</p>
+        <p>Technology doesn't make work invisible. Often, it changes work's form and location.` },
+      { title: "🏗️ The JCB and Major Construction", html: `
+        <p>Toward the end of this series, another old question arises—should everything be done by machine?</p>
+        <p>Major railway lines. Bridges. Dams. Major roads. Dangerous construction. Deep excavation. In such cases, the JCB and other heavy machinery can play an important role in reducing people's physical labor and increasing capacity for work.</p>
+        <p>But when technology is used in small farmland or small labor-dependent construction work, its social impact must also be considered. Because—making one person's work faster can be tied to the question of another person's livelihood.` },
+      { title: "🌾 Development Doesn't Mean Machines Alone", html: `
+        <p>We certainly need major projects. We need better railways. We need bridges. We need safe transport. We need better healthcare. We need modern agriculture. We need technology too.</p>
+        <p>But at the same time we need—people's livelihoods, skill development, retraining, opportunities for small business, capacity for small farmers, workers' dignity.</p>
+        <p>The important goal is that technology should increase people's capacity, not stand against them.` },
+      { title: "🕰️ That Old Cauldron Again", html: `
+        <p>Remember that small pond? It would fill during the rains. People of the neighborhood used its water.</p>
+        <p>No one knew—history lay hidden beneath it. Digging the earth brought out the indigo-making cauldron. But before its importance could be understood, it broke apart. It sold for next to nothing.</p>
+        <p>Then the old house fell too. The printing press was lost. Then, one by one, many technologies were lost.` },
+      { title: "🔄 History Seems to Return Again and Again", html: `
+        <p>The cauldron was once new technology. Then it grew old. The printing press was once new technology. Then digital printing arrived.</p>
+        <p>The typewriter was once modern. Then the computer arrived. Film was once modern. Then the digital camera arrived. The landline was once a revolution. Then mobile arrived. Nokia once gave people a new world in their hands. Then the smartphone arrived.</p>
+        <p>Today AI is new. The drone is new. Driverless technology is new. Air taxis are new. But—one day, these too will be old.` },
+      { title: "❤️ So What Is the Real Story of This Series?", html: `
+        <p>This is not the history of a machine. It is the history of human adaptation.</p>
+        <p>The person who made the indigo cauldron—had skill. The person who worked at the printing press—had skill. The typist who typed thousands upon thousands of letters—had skill. The cameraman who preserved an important moment—had skill. The lineman who climbed poles in the rain—had skill. The PCO owner who brought distant conversations close—also had skill.</p>
+        <p>Today, the person using AI needs skill too. Operating a drone requires skill. Building driverless systems requires skill. Running and maintaining a metro requires skill. The bullet train requires skill. The air ambulance needs trained people. Behind quick commerce, too, lies a vast network of skilled people.` },
+      { title: "🌅 Closing Words", html: `
+        <p>One day we may live in a world where cars drive themselves. The metro will be even more automated. The bullet train will shrink distance even further. Air taxis will be seen in city skies. Critically ill patients will reach hospitals quickly by air ambulance. Drones will work in the sky. AI will assist us in many tasks. And products will reach our doors within minutes.</p>
+        <p>Then, perhaps, our children will laugh looking at today's smartphone. Perhaps they'll say—"People did everything with such a small device?" Just as today we're astonished looking at an old typewriter. We turn an old rotary dial and look at it. We think, looking at a VCR. We hold a cassette's tape in our hands. We gaze at an old camera.` },
+      { title: "❤️ The Final Scene", html: `
+        <p>The camera slowly rests upon an old object. A broken indigo-making cauldron. Then the scene changes.</p>
+        <p>An old printing press. A typewriter. A gramophone. A cassette. A VCR. A film camera. A landline. A Nokia. A computer. A smartphone.</p>
+        <p>Then—an AI screen. A drone flying in the sky. A driverless car moving down the road. A metro speeding along. A bullet train crossing distances. An air taxi rising into the sky. An urgent air ambulance racing forward. And quick commerce delivering products from one end of the city to another.</p>
+        <p>Then the camera returns once more to that cauldron.</p>
+        <blockquote>Once, even this cauldron was new technology. People made it to make their own lives easier. Then time changed. The cauldron grew old. The printing press grew old. The typewriter grew old. The cassette grew old. Film grew old. The landline grew old. Even Nokia, one day, became part of history. Today AI is new. The drone is new. The driverless car is new. The air taxi is new. But tomorrow? Perhaps someone will look at any one of these and call it old too. So the history of technology is, in truth, not the history of machines. It is the history of human learning. The history of human labor. The history of human livelihood. The history of loss. And the history of beginning anew, again and again. Technology will change. Machines will change. Professions will change. Cities will change. But let us never forget the human being. Because the ultimate goal of development is not to make the machine powerful—it is to make human life safer, more dignified, and more beautiful.</blockquote>
+        <p>And perhaps, one day, some child of the future will hold an old AI device and ask, "What is this?" May someone then not tell them only the name of the machine. May they also tell the story of the people—who remade themselves anew with every new technology.</p>
+        <blockquote>Technology changes. But the human capacity to learn is humanity's greatest technology of all.</blockquote>
+        <p style="text-align:center;color:var(--gold-soft);letter-spacing:0.15em;margin-top:24px;">— THE END —</p>` }
+    ]
+  }
+];
+
+// ---- render TOC + episodes ----
+const tocList = document.getElementById('tocList');
+const root = document.getElementById('episodesRoot');
+document.getElementById('topBadge').textContent = episodes.length + ' Episodes';
+
+episodes.forEach((ep, ei) => {
+  const li = document.createElement('li');
+  li.innerHTML = `<a href="#${ep.id}"><span class="num">${ei+1}</span><span><span>${ep.num}: ${ep.title}</span><span class="sub-title">${ep.sub}</span></span></a>`;
+  tocList.appendChild(li);
+
+  const epDiv = document.createElement('div');
+  epDiv.className = 'episode';
+  epDiv.id = ep.id;
+
+  const head = document.createElement('div');
+  head.className = 'episode-head';
+  head.id = ep.id + '-head';
+  head.innerHTML = `<span class="ep-num">${ep.num}</span>`;
+  epDiv.appendChild(head);
+
+  const h2 = document.createElement('h2');
+  h2.className = 'episode-title';
+  h2.textContent = ep.title;
+  epDiv.appendChild(h2);
+
+  const sub = document.createElement('p');
+  sub.className = 'episode-sub';
+  sub.textContent = ep.sub;
+  epDiv.appendChild(sub);
+
+  const vbar = document.createElement('div');
+  vbar.className = 'voice-bar';
+  vbar.innerHTML = `<button class="playBtn" data-ep="${ei}" aria-label="Listen">▶</button><div class="label" data-ep-label="${ei}">Listen to this episode (English voice)</div>`;
+  epDiv.appendChild(vbar);
+
+  ep.sections.forEach((s, si) => {
+    const sec = document.createElement('section');
+    sec.className = 'sub-section';
+    sec.id = ep.id + '-sec-' + si;
+    sec.innerHTML = (s.title ? `<h2>${s.title}</h2>` : '') + s.html;
+    epDiv.appendChild(sec);
+  });
+
+  if (ep.nextTeaser) {
+    const nb = document.createElement('div');
+    nb.className = 'next-box';
+    nb.innerHTML = `<div class="tag">Next episode</div><p>${ep.nextTeaser}</p>`;
+    epDiv.appendChild(nb);
+  }
+
+  if (ei < episodes.length - 1) {
+    const dv = document.createElement('div');
+    dv.className = 'divider-orn';
+    dv.textContent = '◆ ◆ ◆';
+    epDiv.appendChild(dv);
+  }
+
+  root.appendChild(epDiv);
+});
+
+// wire up per-episode narration buttons
+document.querySelectorAll('.playBtn').forEach(btn => {
+  btn.addEventListener('click', () => toggleNarration(parseInt(btn.getAttribute('data-ep'), 10)));
+});
+
+// ---- Bookmark ----
+function safeGet(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }
+function safeSet(k,v){ try { localStorage.setItem(k,v); } catch(e){} }
+function safeRemove(k){ try { localStorage.removeItem(k); } catch(e){} }
+
+function currentPosition(){
+  let best = null;
+  document.querySelectorAll('.episode').forEach((epDiv, ei) => {
+    epDiv.querySelectorAll('.sub-section').forEach((sec, si) => {
+      const r = sec.getBoundingClientRect();
+      if (r.top < window.innerHeight * 0.5) best = { ep: ei, sec: si };
+    });
+  });
+  return best || { ep: 0, sec: 0 };
+}
+
+function toggleBookmark(){
+  const existing = safeGet(BOOKMARK_KEY);
+  const label = document.getElementById('bmLabel');
+  if (existing) {
+    safeRemove(BOOKMARK_KEY);
+    label.textContent = 'Bookmark';
+  } else {
+    safeSet(BOOKMARK_KEY, JSON.stringify(currentPosition()));
+    label.textContent = 'Bookmarked ✓';
+  }
+}
+
+function resumeReading(){
+  const raw = safeGet(BOOKMARK_KEY);
+  if (!raw) return;
+  try {
+    const data = JSON.parse(raw);
+    const ep = episodes[data.ep];
+    if (!ep) return;
+    const target = document.getElementById(ep.id + '-sec-' + data.sec);
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  } catch(e){}
+}
+
+function initBookmarkUI(){
+  const raw = safeGet(BOOKMARK_KEY);
+  const banner = document.getElementById('continueBanner');
+  const label = document.getElementById('bmLabel');
+  if (raw) {
+    try {
+      const data = JSON.parse(raw);
+      const ep = episodes[data.ep];
+      if (ep) {
+        document.getElementById('continueText').textContent = 'Continue reading from ' + ep.num;
+        banner.classList.add('show');
+        label.textContent = 'Bookmarked ✓';
+      }
+    } catch(e){}
+  }
+}
+initBookmarkUI();
+
+// ---- English voice narration per episode ----
+let utterance = null;
+let speakingEp = null;
+
+function getEnglishVoice(){
+  const voices = window.speechSynthesis ? window.speechSynthesis.getVoices() : [];
+  return voices.find(v => v.lang && v.lang.toLowerCase().startsWith('en')) || null;
+}
+
+function episodeText(ei){
+  const ep = episodes[ei];
+  return ep.title + '. ' + ep.sections.map(s =>
+    (s.title ? s.title.replace(/^[^A-Za-z]*\s*/, '') + '. ' : '') +
+    s.html.replace(/<[^>]+>/g, ' ')
+  ).join(' ');
+}
+
+function setBtnState(ei, active){
+  const btn = document.querySelector('.playBtn[data-ep="' + ei + '"]');
+  const label = document.querySelector('[data-ep-label="' + ei + '"]');
+  if (!btn) return;
+  if (active) {
+    btn.textContent = '❚❚'; btn.classList.add('active');
+    if (label) label.textContent = 'Reading aloud... tap to stop';
+  } else {
+    btn.textContent = '▶'; btn.classList.remove('active');
+    if (label) label.textContent = 'Listen to this episode (English voice)';
+  }
+}
+
+function toggleNarration(ei){
+  if (!('speechSynthesis' in window)) {
+    const label = document.querySelector('[data-ep-label="' + ei + '"]');
+    if (label) label.textContent = 'Voice is not supported in this browser';
+    return;
+  }
+
+  if (speakingEp === ei) {
+    window.speechSynthesis.cancel();
+    setBtnState(ei, false);
+    speakingEp = null;
+    return;
+  }
+
+  window.speechSynthesis.cancel();
+  if (speakingEp !== null) setBtnState(speakingEp, false);
+
+  try {
+    utterance = new SpeechSynthesisUtterance(episodeText(ei));
+    const v = getEnglishVoice();
+    if (v) utterance.voice = v;
+    utterance.lang = 'en-US';
+    utterance.rate = 0.98;
+    utterance.onend = () => { setBtnState(ei, false); speakingEp = null; };
+    utterance.onerror = () => { setBtnState(ei, false); speakingEp = null; };
+    window.speechSynthesis.speak(utterance);
+    speakingEp = ei;
+    setBtnState(ei, true);
+  } catch(e){}
+}
+
+if ('speechSynthesis' in window) {
+  window.speechSynthesis.onvoiceschanged = () => {};
+}
+</script>
+</body>
+</html>

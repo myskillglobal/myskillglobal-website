@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Silent Assassin — Snake Bite Awareness</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0f1e; --bg2:#0f1830; --panel:#121b34;
+    --gold:#d4af6a; --gold-soft:#e8cd9a; --ink:#eef1fb; --ink-dim:#aab3cf;
+    --line:rgba(212,175,106,.18); --red:#e2685f; --red-line:rgba(226,104,95,.25); --red-bg:rgba(226,104,95,.07);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-padding-top:env(safe-area-inset-top,0px);}
+  body{
+    margin:0; background:radial-gradient(ellipse at top, var(--bg2), var(--bg) 60%);
+    color:var(--ink); font-family:'Cormorant Garamond', serif; font-size:19px; line-height:1.8;
+    padding-top:env(safe-area-inset-top,0px); padding-bottom:calc(40px + env(safe-area-inset-bottom,0px));
+  }
+  .wrap{max-width:760px; margin:0 auto; padding:0 24px;}
+  header.hero{
+    text-align:center; padding:70px 24px 46px; border-bottom:1px solid var(--line);
+    background:linear-gradient(180deg, rgba(212,175,106,.06), transparent);
+  }
+  .icon{font-size:44px; filter:drop-shadow(0 0 18px rgba(212,175,106,.35));}
+  .kicker{font-family:'Inter',sans-serif; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); font-size:12px; margin:14px 0 6px;}
+  h1{font-family:'Playfair Display', serif; font-weight:800; font-size:clamp(30px,5.2vw,46px); margin:8px 0 14px; color:var(--ink); letter-spacing:.01em;}
+  .tags{font-family:'Inter',sans-serif; font-size:13px; color:var(--ink-dim); letter-spacing:.03em;}
+  .tags span{color:var(--gold-soft);}
+  nav.listen-bar{
+    display:flex; justify-content:center; gap:10px; padding:16px 24px; position:sticky; top:0; z-index:5;
+    background:rgba(10,15,30,.85); backdrop-filter:blur(6px); border-bottom:1px solid var(--line);
+  }
+  button.listen{
+    font-family:'Inter',sans-serif; font-size:13px; letter-spacing:.03em; color:var(--gold-soft);
+    background:transparent; border:1px solid var(--line); padding:9px 18px; border-radius:30px; cursor:pointer;
+    transition:.2s;
+  }
+  button.listen:hover{border-color:var(--gold); background:rgba(212,175,106,.08);}
+  main{padding:48px 24px 10px;}
+  section.beat{margin-bottom:44px;}
+  h2{font-family:'Playfair Display', serif; font-weight:700; font-size:22px; color:var(--gold-soft); margin:0 0 14px; letter-spacing:.01em;}
+  p{margin:0 0 16px; color:var(--ink);}
+  .drop::first-letter{
+    font-family:'Playfair Display', serif; font-size:58px; float:left; line-height:.8; padding:6px 10px 0 0;
+    color:var(--gold); font-weight:800;
+  }
+  blockquote{
+    margin:0 0 16px; padding:18px 22px; border-left:3px solid var(--gold); background:rgba(212,175,106,.06);
+    border-radius:0 10px 10px 0; font-style:italic; color:var(--gold-soft);
+  }
+  .rule{width:64px; height:1px; background:var(--line); margin:44px auto;}
+  .danger{
+    background:var(--red-bg); border:1px solid var(--red-line); border-radius:16px; padding:30px 30px; margin:20px 0 40px;
+  }
+  .danger h2{color:var(--red); text-align:center; margin-bottom:20px;}
+  .dg{display:flex; align-items:center; gap:12px; padding:10px 0; border-top:1px solid var(--red-line); font-size:18px;}
+  .dg:first-of-type{border-top:none;}
+  .dg .ic{font-size:14px; flex:0 0 auto;}
+  .takeaways{
+    background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:36px 30px; margin:20px 0 60px;
+  }
+  .takeaways h2{text-align:center; margin-bottom:24px;}
+  .tk{display:flex; gap:14px; padding:14px 0; border-top:1px solid var(--line);}
+  .tk:first-of-type{border-top:none;}
+  .tk .ic{font-size:22px; flex:0 0 auto;}
+  .tk p{margin:0; font-size:18px; color:var(--ink-dim);}
+  footer{text-align:center; font-family:'Inter',sans-serif; font-size:12px; color:var(--ink-dim); opacity:.6; padding:20px 24px;}
+  @media (max-width:520px){ body{font-size:18px;} h1{font-size:30px;} .takeaways,.danger{padding:24px 18px;} }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="icon">🐍</div>
+  <div class="kicker">Snake Bite Awareness</div>
+  <h1>The Silent Assassin</h1>
+  <p class="tags"><span>Snake Bite Awareness</span> · <span>Common Krait</span> · <span>Timely Medical Care</span></p>
+</header>
+
+<nav class="listen-bar">
+  <button class="listen" id="playAll">▶ Listen to the story</button>
+  <button class="listen" id="stopAll" style="display:none;">■ Stop</button>
+</nav>
+
+<main class="wrap">
+
+<section class="beat" data-read="Sourav was a bright eighth-grade student in a village. Every evening he would study, have dinner with his family, and fall asleep on his bed in their mud house. It was monsoon season — bushes had grown thick and rats had become numerous. One night, a Common Krait snake entered the house searching for food and came close to sleeping Sourav. Suddenly, it bit him. The astonishing thing was — Sourav felt almost no pain. He thought perhaps an insect had bitten him, and fell back asleep.">
+  <p class="drop">Sourav was a bright eighth-grade student in a village. Every evening he would study, have dinner with his family, and fall asleep on his bed in their mud house.</p>
+  <p>It was monsoon season — bushes had grown thick and rats had become numerous. One night, a Common Krait snake entered the house searching for food and came close to sleeping Sourav. Suddenly, it bit him.</p>
+  <p>The astonishing thing was — Sourav felt almost no pain. He thought perhaps an insect had bitten him, and fell back asleep.</p>
+</section>
+
+<section class="beat" data-read="The Warning Signs Appear. Toward dawn, his speech became slurred. His eyelids grew heavy. Strength left his hands and feet. Breathing became difficult. The family at first thought he was simply unwell — they called the local faith healer. Precious time was lost. By the time he was taken to the hospital, it was too late. Despite the doctors' best efforts, Sourav could not be saved. The entire village was silent with grief.">
+  <h2>The Warning Signs Appear</h2>
+  <p>Toward dawn, his speech became slurred. His eyelids grew heavy. Strength left his hands and feet. Breathing became difficult. The family at first thought he was simply unwell — they called the local faith healer. Precious time was lost.</p>
+  <p>By the time he was taken to the hospital, it was too late. Despite the doctors' best efforts, Sourav could not be saved. The entire village was silent with grief.</p>
+</section>
+
+<section class="beat" data-read="The Doctor's Awareness Session. A few days later, a health center doctor visited the village school and explained to everyone: Common Krait bites are often painless. That's why people don't realize. But it is extremely venomous. Drooping eyelids, slurred speech, difficulty swallowing, or difficulty breathing — if these symptoms appear, go to the hospital immediately without any delay. Wasting time with traditional healers can be fatal.">
+  <h2>The Doctor's Awareness Session</h2>
+  <p>A few days later, a health center doctor visited the village school and explained to everyone:</p>
+  <blockquote>"Common Krait bites are often painless. That's why people don't realize. But it is extremely venomous. Drooping eyelids, slurred speech, difficulty swallowing, or difficulty breathing — if these symptoms appear, go to the hospital immediately without any delay. Wasting time with traditional healers can be fatal."</blockquote>
+</section>
+
+<div class="rule"></div>
+
+<div class="danger">
+  <h2>⚠️ Danger Signs — Go to Hospital Immediately</h2>
+  <div class="dg"><span class="ic">🔴</span><span>Drooping eyelids or difficulty keeping eyes open</span></div>
+  <div class="dg"><span class="ic">🔴</span><span>Slurred speech or difficulty speaking</span></div>
+  <div class="dg"><span class="ic">🔴</span><span>Difficulty swallowing</span></div>
+  <div class="dg"><span class="ic">🔴</span><span>Weakness in arms and legs</span></div>
+  <div class="dg"><span class="ic">🔴</span><span>Difficulty breathing</span></div>
+</div>
+
+<div class="takeaways">
+  <h2>Key Takeaways</h2>
+  <div class="tk"><div class="ic">🐍</div><p>Common Krait bites are often painless — do not ignore symptoms just because there is no pain.</p></div>
+  <div class="tk"><div class="ic">🚑</div><p>After a snakebite, go to the nearest hospital as quickly as possible. Antivenom and treatment can save lives if given in time.</p></div>
+  <div class="tk"><div class="ic">❌</div><p>Do not waste valuable time on traditional healers or home remedies. Do not cut the wound, suck the venom, or tie tightly.</p></div>
+  <div class="tk"><div class="ic">🛏️</div><p>Use a mosquito net at night, keep your home clean, and reduce rats — this reduces the chance of snakes entering your home.</p></div>
+  <div class="tk"><div class="ic">✅</div><p>Awareness and fast medical treatment are the most powerful tools against snakebite deaths.</p></div>
+</div>
+
+</main>
+
+<footer>A story on snake bite awareness, first response, and timely medical care.</footer>
+
+<script>
+(function(){
+  const synth = window.speechSynthesis;
+  const playBtn = document.getElementById('playAll');
+  const stopBtn = document.getElementById('stopAll');
+  const sections = Array.from(document.querySelectorAll('.beat'));
+  let queue = [], idx = 0;
+
+  function pickVoice(){
+    const voices = synth.getVoices();
+    return voices.find(v => v.lang === 'en-IN') || voices.find(v => v.lang && v.lang.startsWith('en')) || null;
+  }
+
+  function speakNext(){
+    if(idx >= queue.length){ finish(); return; }
+    const sec = queue[idx];
+    const u = new SpeechSynthesisUtterance(sec.dataset.read);
+    u.lang = 'en-IN'; u.rate = 0.95; u.pitch = 1;
+    const v = pickVoice(); if(v) u.voice = v;
+    u.onend = () => { idx++; speakNext(); };
+    u.onerror = () => { idx++; speakNext(); };
+    synth.speak(u);
+  }
+
+  function finish(){
+    playBtn.style.display = 'inline-block';
+    stopBtn.style.display = 'none';
+  }
+
+  playBtn.addEventListener('click', () => {
+    if(!synth){ alert('Voice playback is not supported on this browser.'); return; }
+    synth.cancel();
+    queue = sections; idx = 0;
+    playBtn.style.display = 'none';
+    stopBtn.style.display = 'inline-block';
+    speakNext();
+  });
+
+  stopBtn.addEventListener('click', () => {
+    synth.cancel();
+    finish();
+  });
+})();
+</script>
+</body>
+</html>

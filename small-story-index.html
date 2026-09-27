@@ -5,10 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Small Stories — MySkill Global</title>
-
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
 <meta name="description"
 content="Discover short stories of mystery, humanity, adventure, responsibility, courage, honesty, nature and life lessons from MySkill Global.">
-
 <style>
   :root{
     --night:#121a2e;
@@ -21,6 +27,12 @@ content="Discover short stories of mystery, humanity, adventure, responsibility,
     --paper:#f4efe4;
     --paper-dim:#b9c0d6;
   }
+.home-btn{
+  position:absolute;left:14px;top:calc(14px + env(safe-area-inset-top,0px));
+  width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;
+  background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.35);color:var(--gold-soft);
+  text-decoration:none;font-size:1.05rem;
+}
 
   *{
     box-sizing:border-box;
@@ -281,23 +293,26 @@ content="Discover short stories of mystery, humanity, adventure, responsibility,
      STORY IMAGE
   ========================= */
 
-  .story-image{
-    width:100%;
-    height:150px;
-    border-radius:8px;
-    overflow:hidden;
-    background:#111a2e;
-    margin-bottom:14px;
-  }
+.story-image{
+  width:100%;
+  height:150px;
+  border-radius:8px;
+  overflow:hidden;
+  background:#111a2e;
+  margin-bottom:14px;
 
-  .story-image img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    display:block;
-    transition:transform .3s ease;
-  }
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
 
+.story-image img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+  transition:transform .3s ease;
+}
   a.card:hover .story-image img{
     transform:scale(1.04);
   }
@@ -407,10 +422,10 @@ content="Discover short stories of mystery, humanity, adventure, responsibility,
   }
 </style>
 </head>
-
 <body>
 
 <header>
+<a class="home-btn" href="index.html" aria-label="Home">🏠</a>
 
   <p class="eyebrow">
     MySkill Global · Story Trail
@@ -437,166 +452,6 @@ content="Discover short stories of mystery, humanity, adventure, responsibility,
 <main>
 
 <ul class="trail">
-  <!-- 01 -->
-  <li class="stop">
-    <div class="lantern"></div>
-
-    <a class="card" href="pradip-foggy-night.html">
-
-      <div class="story-image">
-        <img
-          src="images/cycle.png"
-          alt="Pradip in the Foggy Night"
-          loading="lazy"
-        >
-      </div>
-
-      <span class="tag">Safety</span>
-
-      <span class="title">
-        Pradip in the Foggy Night
-      </span>
-
-      <span class="no">01</span>
-
-    </a>
-  </li>
-
-  <!-- 02 -->
-  <li class="stop">
-    <div class="lantern"></div>
-
-    <a class="card" href="one-mobile-three-lives.html">
-
-      <div class="story-image">
-        <img
-          src="images/one-mobile.png"
-          alt="One Mobile, Three Lives"
-          loading="lazy"
-        >
-      </div>
-
-      <span class="tag">Safety</span>
-
-      <span class="title">
-        One Mobile, Three Lives
-      </span>
-
-      <span class="no">02</span>
-
-    </a>
-  </li>
-
-
-
-
-  <!-- 03 -->
-  <li class="stop">
-    <div class="lantern"></div>
-
-    <a class="card"
-       href="The_Boy_Who_Learned_Before_He_Grew.html">
-
-      <div class="story-image">
-        <img
-          src="images/the-boy-who-learned.png"
-          alt="The Boy Who Learned Before He Grew"
-          loading="lazy"
-        >
-      </div>
-
-      <span class="tag">Growth</span>
-
-      <span class="title">
-        The Boy Who Learned Before He Grew
-      </span>
-
-      <span class="no">03</span>
-
-    </a>
-  </li>
-
-
-  <!-- 04 -->
-  <li class="stop">
-    <div class="lantern"></div>
-
-    <a class="card"
-       href="The_Computer_That_Arrived_at_the_Perfect_Time.html">
-
-      <div class="story-image">
-        <img
-          src="images/the-computer.png"
-          alt="The Computer That Arrived at the Perfect Time"
-          loading="lazy"
-        >
-      </div>
-
-      <span class="tag">Opportunity</span>
-
-      <span class="title">
-        The Computer That Arrived at the Perfect Time
-      </span>
-
-      <span class="no">04</span>
-
-    </a>
-  </li>
-
-
-  <!-- 05 -->
-  <li class="stop">
-    <div class="lantern"></div>
-
-    <a class="card"
-       href="The_Fire_That_Ate_the_Forest.html">
-
-      <div class="story-image">
-        <img
-          src="images/the-fire.png"
-          alt="The Fire That Ate the Forest"
-          loading="lazy"
-        >
-      </div>
-
-      <span class="tag">Environment</span>
-
-      <span class="title">
-        The Fire That Ate the Forest
-      </span>
-
-      <span class="no">05</span>
-
-    </a>
-  </li>
-
-
-  <!-- 06 -->
-  <li class="stop">
-    <div class="lantern"></div>
-
-    <a class="card"
-       href="The_Glass_That_Saved_a_Life.html">
-
-      <div class="story-image">
-        <img
-          src="images/the-glass-saved.png"
-          alt="The Glass That Saved a Life"
-          loading="lazy"
-        >
-      </div>
-
-      <span class="tag">Safety</span>
-
-      <span class="title">
-        The Glass That Saved a Life
-      </span>
-
-      <span class="no">06</span>
-
-    </a>
-  </li>
-
 
   <!-- 07 -->
   <li class="stop">
@@ -619,7 +474,7 @@ content="Discover short stories of mystery, humanity, adventure, responsibility,
         The Invisible Blade
       </span>
 
-      <span class="no">07</span>
+      <span class="no">01</span>
 
     </a>
   </li>
@@ -646,7 +501,7 @@ content="Discover short stories of mystery, humanity, adventure, responsibility,
         The Milk That Poisoned Trust
       </span>
 
-      <span class="no">08</span>
+      <span class="no">02</span>
 
     </a>
   </li>
@@ -675,7 +530,7 @@ content="Discover short stories of mystery, humanity, adventure, responsibility,
         The Invisible Message
       </span>
 
-      <span class="no">09</span>
+      <span class="no">03</span>
 
     </a>
   </li>
@@ -704,7 +559,7 @@ content="Discover short stories of mystery, humanity, adventure, responsibility,
         There's a Debt and a Way
       </span>
 
-      <span class="no">10</span>
+      <span class="no">04</span>
 
     </a>
   </li>
@@ -731,7 +586,7 @@ content="Discover short stories of mystery, humanity, adventure, responsibility,
         The Sky That Gave a Warning
       </span>
 
-      <span class="no">16</span>
+      <span class="no">05</span>
 
     </a>
   </li>
@@ -758,12 +613,12 @@ content="Discover short stories of mystery, humanity, adventure, responsibility,
         When the Pond Disappeared
       </span>
 
-      <span class="no">17</span>
+      <span class="no">06</span>
 
     </a>
   </li>
 
-  <!-- 18 -->
+  <!-- 13 -->
   <li class="stop">
     <div class="lantern"></div>
 
@@ -781,13 +636,327 @@ content="Discover short stories of mystery, humanity, adventure, responsibility,
       <span class="title">
         The Ideal Boy
       </span>
-      <span class="no">18</span>
+      <span class="no">07</span>
+    </a>
+  </li>
+
+<!-- 14 -->
+<li class="stop">
+  <div class="lantern"></div>
+
+  <a class="card"
+     href="katla-macher-hirer-angti-english.html">
+
+    <div class="story-image">
+      <img
+        src="front.png"
+        alt="The Diamond Ring from the Catla Fish"
+        loading="lazy"
+      >
+    </div>
+
+    <span class="tag">
+      The Diamond Ring from the Catla Fish
+    </span>
+
+    <span class="title">
+      The Diamond Ring from the Catla Fish
+    </span>
+
+    <span class="no">08</span>
+
+  </a>
+</li>
+<!-- 15 -->
+<li class="stop">
+  <div class="lantern"></div>
+
+  <a class="card"
+     href="naren-the-boy-who-knew-how-to-ask.html">
+
+    <div class="story-image">
+      <img
+        src="images/swamiji.png"
+        alt="Naren: The Boy Who Knew How to Ask"
+        loading="lazy"
+      >
+    </div>
+
+    <span class="tag">
+      Naren: The Boy Who Knew How to Ask
+    </span>
+
+    <span class="title">
+      Naren: The Boy Who Knew How to Ask
+    </span>
+
+    <span class="no">09</span>
+
+  </a>
+</li>
+<!-- 16 -->
+<li class="stop">
+  <div class="lantern"></div>
+
+  <a class="card"
+     href="white-sari-to-red-saree.html">
+
+    <div class="story-image">
+      <img
+        src="images/jyotsna.png"
+        alt="Don't I Feel Hungry? — A Little Girl's Question That Stirred a Society"
+        loading="lazy"
+      >
+    </div>
+
+    <span class="tag">
+      Don’t I Feel Hungry?
+    </span>
+
+    <span class="title">
+      A Little Girl’s Question That Stirred a Society
+    </span>
+
+    <span class="no">10</span>
+
+  </a>
+</li>
+  <!-- 01 -->
+  <li class="stop">
+    <div class="lantern"></div>
+
+    <a class="card" href="pradip-foggy-night.html">
+
+      <div class="story-image">
+        <img
+          src="images/cycle.png"
+          alt="Pradip in the Foggy Night"
+          loading="lazy"
+        >
+      </div>
+
+      <span class="tag">Safety</span>
+
+      <span class="title">
+        Pradip in the Foggy Night
+      </span>
+
+      <span class="no">11</span>
+
+    </a>
+  </li>
+
+  <!-- 02 -->
+  <li class="stop">
+    <div class="lantern"></div>
+
+    <a class="card" href="one-mobile-three-lives.html">
+
+      <div class="story-image">
+        <img
+          src="images/one-mobile.png"
+          alt="One Mobile, Three Lives"
+          loading="lazy"
+        >
+      </div>
+
+      <span class="tag">Safety</span>
+
+      <span class="title">
+        One Mobile, Three Lives
+      </span>
+
+      <span class="no">12</span>
+
+    </a>
+  </li>
+  <!-- 03 -->
+  <li class="stop">
+    <div class="lantern"></div>
+
+    <a class="card"
+       href="The_Boy_Who_Learned_Before_He_Grew.html">
+
+      <div class="story-image">
+        <img
+          src="images/the-boy-who-learned.png"
+          alt="The Boy Who Learned Before He Grew"
+          loading="lazy"
+        >
+      </div>
+
+      <span class="tag">Growth</span>
+
+      <span class="title">
+        The Boy Who Learned Before He Grew
+      </span>
+
+      <span class="no">12</span>
+
     </a>
   </li>
 
 
-</ul>
+  <!-- 04 -->
+  <li class="stop">
+    <div class="lantern"></div>
 
+    <a class="card"
+       href="The_Computer_That_Arrived_at_the_Perfect_Time.html">
+
+      <div class="story-image">
+        <img
+          src="images/the-computer.png"
+          alt="The Computer That Arrived at the Perfect Time"
+          loading="lazy"
+        >
+      </div>
+
+      <span class="tag">Opportunity</span>
+
+      <span class="title">
+        The Computer That Arrived at the Perfect Time
+      </span>
+
+      <span class="no">13</span>
+
+    </a>
+  </li>
+
+
+  <!-- 05 -->
+  <li class="stop">
+    <div class="lantern"></div>
+
+    <a class="card"
+       href="The_Fire_That_Ate_the_Forest.html">
+
+      <div class="story-image">
+        <img
+          src="images/the-fire.png"
+          alt="The Fire That Ate the Forest"
+          loading="lazy"
+        >
+      </div>
+
+      <span class="tag">Environment</span>
+
+      <span class="title">
+        The Fire That Ate the Forest
+      </span>
+
+      <span class="no">14</span>
+
+    </a>
+  </li>
+
+
+  <!-- 06 -->
+  <li class="stop">
+    <div class="lantern"></div>
+
+    <a class="card"
+       href="The_Glass_That_Saved_a_Life.html">
+
+      <div class="story-image">
+        <img
+          src="images/the-glass-saved.png"
+          alt="The Glass That Saved a Life"
+          loading="lazy"
+        >
+      </div>
+
+      <span class="tag">Safety</span>
+
+      <span class="title">
+        The Glass That Saved a Life
+      </span>
+
+      <span class="no">15</span>
+
+    </a>
+  </li>
+<!-- 17 -->
+<li class="stop">
+  <div class="lantern"></div>
+
+  <a class="card"
+     href="je_technology_ekdin_chilo_english.html">
+
+    <div class="story-image">
+      <img
+        src="images/technology.png"
+        alt="The Technologies That Were Once Our Life"
+        loading="lazy"
+      >
+    </div>
+
+    <span class="tag">
+      The Technologies That Were Once Our Life
+    </span>
+
+    <span class="title">
+      The Technologies That Were Once Our Life
+    </span>
+
+    <span class="no">16</span>
+
+  </a>
+</li>
+<!-- 18 -->
+<li class="stop">
+  <div class="lantern"></div>
+
+  <a class="card"
+     href="weight-of-identity.html">
+
+    <div class="story-image">
+      <img
+        src="images/weight-of-identity.png"
+        alt="Can I really live under an identity of my own?"
+        loading="lazy"
+      >
+    </div>
+
+    <span class="tag">
+      Can I Really Live Under an Identity of My Own?
+    </span>
+
+    <span class="title">
+      Can I Really Live Under an Identity of My Own?
+    </span>
+
+    <span class="no">17</span>
+
+  </a>
+</li>
+
+<!-- 19 -->
+<li class="stop">
+  <div class="lantern"></div>
+
+  <a class="card"
+     href="the-silent-assassin-en.html">
+
+    <div class="story-image">
+      <span style="font-size:64px; display:flex; align-items:center; justify-content:center; height:100%;">
+        🐍
+      </span>
+    </div>
+
+    <span class="tag">
+      The Silent Assassin
+    </span>
+
+    <span class="title">
+      The Silent Assassin
+    </span>
+
+    <span class="no">18</span>
+
+  </a>
+</li>
+</ul>
 </main>
 
 

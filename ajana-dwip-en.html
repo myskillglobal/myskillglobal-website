@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Unknown Island</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0d2530;--deep:#123847;--sand:#efe3c8;--paper:#f7f0df;--gold:#d8b25a;--leaf:#3d6a52;--text:#1d2b30;--muted:#5d6b6b;--card:#fffaf0;--line:#dccfae}
+.home-btn{
+  position:absolute;left:14px;top:calc(14px + env(safe-area-inset-top,0px));
+  width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;
+  background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.35);color:var(--gold-soft);
+  text-decoration:none;font-size:1.05rem;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--paper:#0f1f27;--card:#152b35;--text:#e8e0cc;--muted:#a3b0ad;--line:#28444f}}
+:root[data-theme=dark]{--paper:#0f1f27;--card:#152b35;--text:#e8e0cc;--muted:#a3b0ad;--line:#28444f}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--paper);color:var(--text);font-family:'Lora',serif;line-height:1.9}
+.hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;color:#fff;background:linear-gradient(180deg,#1b5a6b,#0d2530);overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,37,48,.15) 20%,rgba(13,37,48,.92))}
+.hero-in{position:relative;z-index:1;max-width:820px;margin:0 auto;padding:0 22px 56px;width:100%}
+.hero h1{font-family:'Playfair Display',serif;font-weight:800;font-size:clamp(2.4rem,9vw,5rem);line-height:1.15;margin:0 0 10px;text-shadow:0 3px 18px rgba(0,0,0,.5)}
+.hero p{font-size:1.2rem;margin:0 0 24px;max-width:34em;color:#f1e7cd}
+.btn{font:inherit;font-weight:600;border:0;border-radius:999px;padding:10px 22px;cursor:pointer;background:var(--gold);color:#1b1608;text-decoration:none;display:inline-block}
+.btn.ghost{background:transparent;color:inherit;border:1.5px solid currentColor}
+.btn:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.hero .btn+.btn{margin-left:8px}
+main{max-width:720px;margin:0 auto;padding:0 20px}
+h2{font-family:'Playfair Display',serif;font-size:1.6rem;margin:56px 0 18px}
+.parts{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;padding:0;list-style:none}
+.parts li{border:1.5px solid var(--line);background:var(--card);border-radius:14px;padding:12px 14px;font-size:.95rem}
+.parts li strong{display:block;font-family:'Playfair Display',serif}
+.parts li.on{border-color:var(--leaf);border-width:2px}
+.parts li.on a{color:var(--leaf);font-weight:600;text-decoration:none}
+.parts li.off{opacity:.55}
+.bar{position:sticky;top:0;z-index:10;background:var(--ink);color:#f1e7cd;padding:8px 14px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;font-size:.9rem}
+.bar button{font:inherit;background:transparent;color:inherit;border:1.5px solid rgba(241,231,205,.5);border-radius:999px;padding:4px 14px;cursor:pointer}
+.bar button.act{background:var(--gold);color:#1b1608;border-color:var(--gold)}
+.bar select{font:inherit;border-radius:8px;padding:3px 6px}
+.story-head h2{font-size:2rem;margin-bottom:4px}
+.story-head p{color:var(--muted);margin:0 0 28px}
+.story p{font-family:'Lora',serif;font-size:1.13rem;line-height:2.1;margin:0 0 .9em;padding:2px 12px 2px 14px;border-left:4px solid transparent;border-radius:4px;cursor:pointer;transition:background .2s}
+.story p.q{padding-left:30px;color:var(--leaf)}
+.story p.big{font-weight:800;font-size:1.3rem;color:var(--deep);text-align:center;border-left:0;margin:1.2em 0}
+:root[data-theme=dark] .story p.big,:root:not([data-theme=light]) .story p.big{color:var(--gold)}
+.story p.reading{background:rgba(216,178,90,.28)}
+.story p.mark{border-left-color:var(--gold);background:rgba(216,178,90,.14)}
+.story p.mark::before{content:"🔖 ";font-size:.85rem}
+.story h3{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--leaf);margin:1.8em 0 .6em;padding-left:14px}
+.story hr{border:0;border-top:1px dashed var(--line);margin:1.6em 0}
+.part-gap{margin-top:70px;padding-top:10px;border-top:3px double var(--line)}
+.tip{font-size:.9rem;color:var(--muted);margin-bottom:26px}
+.next{margin:40px 0 70px;padding:22px;border-radius:16px;background:var(--ink);color:#f1e7cd}
+.next b{font-family:'Playfair Display',serif;font-size:1.15rem}
+footer{text-align:center;color:var(--muted);padding:0 20px 50px;font-size:.9rem}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <img src="images/ratna-deep.png" alt="The Unknown Island" onerror="this.style.display='none'">
+  <div class="hero-in">
+    <h1>The Unknown Island</h1>
+    <p>Everyone left him behind. But on this island, he was not alone.</p>
+    <a class="btn" href="#porbo1">Read Part 1</a>
+    <button class="btn ghost" id="goMark" hidden>Return to Bookmark</button>
+  </div>
+</header>
+    <a class="home-btn" href="index.html" aria-label="Home">🏠</a>
+
+<div class="bar" role="toolbar" aria-label="Reading controls">
+  <button id="play">🔊 Listen</button>
+  <button id="stop">⏹ Stop</button>
+  <label>Speed
+    <select id="rate"><option value=".8">Slow</option><option value=".95" selected>Normal</option><option value="1.15">Fast</option></select>
+  </label>
+  <button id="theme">🌓 Theme</button>
+  <span id="vmsg" aria-live="polite"></span>
+</div>
+
+<main>
+  <h2>The Nine Parts of the Story</h2>
+  <ul class="parts">
+    <li class="on"><strong>Part 1</strong><a href="#porbo1">The Unknown Island</a></li>
+    <li class="on"><strong>Part 2</strong><a href="#porbo2">Fire at Sea</a></li>
+    <li class="on"><strong>Part 3</strong><a href="#porbo3">The Girl of the Jungle</a></li>
+    <li class="on"><strong>Part 4</strong><a href="#porbo4">Deep in the Jungle</a></li>
+    <li class="on"><strong>Part 5</strong><a href="#porbo5">Three Months of Life</a></li>
+    <li class="on"><strong>Part 6</strong><a href="#porbo6">The Man Who Returned</a></li>
+    <li class="on"><strong>Part 7</strong><a href="#porbo7">The Thread That Led Home</a></li>
+    <li class="on"><strong>Part 8</strong><a href="#porbo8">Five Years Later</a></li>
+    <li class="on"><strong>Final Part</strong><a href="#porbo9">The Debt That Can Never Be Repaid</a></li>
+  </ul>
+
+  <section id="porbo1" class="story-head">
+    <h2>Part 1</h2>
+    <p>The island where everyone left him behind</p>
+  </section>
+  <p class="tip">Tap or click on any paragraph to bookmark it. The paragraph being read aloud will be highlighted.</p>
+
+  <article class="story" id="story">
+<p>A group of neighbours had been planning a trip for some time. At last, one morning, amid much excitement, they all hired a launch and set off across the sea.</p>
+<p>Someone carried a packet of food, someone a bottle of water, while another turned on music and started dancing.</p>
+<p>Shambhu was among them.</p>
+<p>Shambhu was a quiet, gentle boy. He had lost his parents when he was very young, and had no family of his own to speak of. He lived among the people of the neighbourhood, so whenever he got the chance to go on a trip with them, it filled him with joy.</p>
+<p>Shambhu was a hard worker. Whenever anyone asked him to do something, he rarely refused. But he had one weakness — every now and then he would say something so simple and guileless that everyone would end up laughing at him.</p>
+<p>That day was no different.</p>
+<p>By afternoon the launch had travelled a long way out.</p>
+<p>There was nothing but sea on every side. No familiar jetty, no houses, no other boats.</p>
+<p>Even the men steering the launch realised they had gone off course.</p>
+<p>After a long while, an unfamiliar island came into view in the distance.</p>
+<p class="q">—"There's an island!"</p>
+<p>Everyone grew excited. They steered the launch closer and brought it to a stop.</p>
+<p>No one knew the island's name. No one knew whether anyone lived there. Yet among the sightseers, curiosity outweighed fear.</p>
+<p>Everyone climbed down from the launch.</p>
+<p>The moment they stepped onto the island, they saw dense jungle all around — tall trees, unfamiliar vines, the calls of birds, and somewhere in the distance the strange cry of some creature. But there was no sign of any human being.</p>
+<p>Someone said—</p>
+<p class="q">—"There must be fruit to be found here."</p>
+<p>Another said—</p>
+<p class="q">—"Come on, let's each go in a different direction and look around."</p>
+<p>Hungry, everyone scattered into the jungle. After a while, someone found some wild fruit.</p>
+<p>Someone said—</p>
+<p class="q">—"This one looks edible."</p>
+<p>Another popped one in his mouth and said—</p>
+<p class="q">—"Not bad!"</p>
+<p>Slowly, everyone began filling their bellies on fruit from the trees.</p>
+<p>Just then, someone looked into the distance and shouted—</p>
+<p class="q">—"Look over there! Coconut trees!"</p>
+<p>Everyone turned to look. Sure enough, there stood row upon row of tall coconut palms, each one hung with countless green coconuts.</p>
+<p>Everyone ran over, delighted.</p>
+<p>But soon a problem arose. The trees were terribly tall. Who would climb them?</p>
+<p>A few of them looked at one another. Then, all at once, every eye landed on Shambhu.</p>
+<p class="q">—"Shambhu, you're a strong, hard-working lad. Can you climb it?"</p>
+<p>Shambhu looked up at the tree.</p>
+<p class="q">—"But it's so tall!"</p>
+<p>Everyone burst out laughing.</p>
+<p class="q">—"You can do it. Go on, up you go!"</p>
+<p>Shambhu said nothing more. He put his hands to the trunk and began to climb. Slowly he made his way higher and higher.</p>
+<p class="q">—"Here you go!"</p>
+<p>A coconut dropped to the ground. Then another. Then one after another, green coconuts and ripe ones came tumbling down. The people below gathered them up and carried them to the launch.</p>
+<p>After a while, when Shambhu wanted to come down, they said—</p>
+<p class="q">—"Pick more! Let's fill up the whole launch."</p>
+<p>Shambhu climbed again. He kept picking coconuts while the people below kept loading them onto the launch. A good while passed this way.</p>
+<p>Suddenly, someone glanced at the sea and cried out—</p>
+<p class="q">—"Look! Waves!"</p>
+<p>Everyone turned toward the sea. Far out, enormous waves were rising, and they were racing swiftly toward the island.</p>
+<p>Someone shouted—</p>
+<p class="q">—"If the launch stays at the shore, it'll be smashed to pieces!"</p>
+<p>Another said—</p>
+<p class="q">—"Everyone, get on the launch, quickly!"</p>
+<p>In an instant, everyone ran for the launch.</p>
+<p>No one remembered Shambhu.</p>
+<p>Shambhu was still high up in the coconut tree. He looked down and saw that everyone had already boarded the launch.</p>
+<p class="q">—"Hey! Wait!"</p>
+<p>No one heard him.</p>
+<p class="q">—"Take me with you!"</p>
+<p>The launch's engine roared to life. Shambhu screamed from the top of the tree with all his strength—</p>
+<p class="q">—"I'm here!"</p>
+<p class="q">—"Don't leave me behind!"</p>
+<p>But his voice was lost in the roar of the sea.</p>
+<p>Slowly the launch pulled away from the shore and headed into the distance.</p>
+<p>Shambhu scrambled down the tree as fast as he could. He ran to the water's edge. But by then it was already far too late.</p>
+<p>The launch grew farther and farther away, smaller and smaller, until at last it vanished near the horizon.</p>
+<p>Shambhu stood there, unmoving. Before him lay nothing but the vast sea. Behind him, an unknown jungle. Not a single soul around him. No one left he could call his own.</p>
+<p>Slowly he sank down onto the sand. Tears welled in his eyes. In a faint voice, he said—</p>
+<p class="big">"I only picked all those coconuts for you..."</p>
+<p>But there was no one there to answer. Only the distant sea went on roaring.</p>
+<p>And from that very moment—</p>
+<p class="big">Shambhu's solitary life on the unknown island began.</p>
+<p>But Shambhu did not yet know—</p>
+<p>that he was not alone on this island. Deep in its jungle, hidden away for five years, lived a lost girl...</p>
+<p class="big">Khona.</p>
+  </article>
+
+
+  <section id="porbo2" class="story-head part-gap">
+    <h2>Part 2</h2>
+    <p>Fire at Sea</p>
+  </section>
+  <article class="story">
+<p>Shambhu sat alone on the sands of the unknown island.</p>
+<p>But long before his own arrival, another life's story had already become bound to this island.</p>
+<p>It happened almost five years earlier.</p>
+<p>The sea was calm that day. A beautiful launch was gliding slowly across the water.</p>
+<p>At the wheel was a wealthy gem merchant, who loved to steer the launch himself. With him were his wife and his twelve-year-old daughter, Khona.</p>
+<p>Khona sat by her father watching the sea, and now and then chatted with her mother.</p>
+<p class="q">—"Papa, what's on the other side of the sea?"</p>
+<p>Her father had smiled and said—</p>
+<p class="q">—"If you go far enough, you'll find many more islands."</p>
+<p class="q">—"Do people live on those islands too?"</p>
+<p class="q">—"Some do, some don't."</p>
+<p>Gazing out the window, Khona had said dreamily—</p>
+<p class="q">—"Someday I want to see an unknown island."</p>
+<p>Her father had laughed and rested a hand on her head.</p>
+<p class="q">—"You really have become quite the curious one!"</p>
+<p>Who could have known that, only a few hours later, an unknown island would truly become tangled with her life!</p>
+<hr>
+<h3>Fire Without Warning</h3>
+<p>By evening, smoke had suddenly started rising from the back of the launch. Khona's father grew alert at once and turned toward the engine.</p>
+<p class="q">—"What's happening?"</p>
+<p>The very next moment, flames flickered through the smoke.</p>
+<p class="q">—"Fire!"</p>
+<p>In terror, Khona's mother pulled her daughter close. Her father tried to bring the launch to a stop. But the fire was spreading fast.</p>
+<p>He tried to douse the flames, but by then the fire had already reached several parts of the launch's interior. Breathing through the smoke grew difficult.</p>
+<p>Both of Khona's parents were burned. Weeping, Khona said—</p>
+<p class="q">—"Papa, are we going to die?"</p>
+<p>Her father pulled her tight against his chest.</p>
+<p class="q">—"No, my dear. Be brave."</p>
+<p>But there was fear in his own eyes too.</p>
+<hr>
+<h3>Trying to Save Khona</h3>
+<p>There was no way out through the launch's door — the fire had blocked it.</p>
+<p>Khona's father quickly fetched a life jacket.</p>
+<p class="q">—"Put this on Khona."</p>
+<p>Weeping, her mother strapped the life jacket onto her. Khona could not understand what was about to happen.</p>
+<p class="q">—"Mama, where will you go?"</p>
+<p>Her mother embraced her and said—</p>
+<p class="q">—"We're right here with you, my love."</p>
+<p>Her father looked toward the window. The fire was closing in.</p>
+<p class="q">—"We have to break the window."</p>
+<p>Together, in desperation, her parents fought to break the window. Even with their burned bodies, they did not stop. At last—</p>
+<p class="big">the glass shattered with a crash.</p>
+<p>Beyond the window lay the churning sea.</p>
+<hr>
+<h3>Khona in the Sea</h3>
+<p>Her father held Khona tight and carried her to the window.</p>
+<p class="q">—"Don't be afraid, my dear."</p>
+<p>Her mother kissed her on the forehead.</p>
+<p class="q">—"Be brave."</p>
+<p>Then they lowered Khona into the sea. The life jacket kept her afloat, but fear, weakness, and injury soon overwhelmed her, and she lost consciousness.</p>
+<p>The waves carried her further and further from the launch. Her parents stood at the window, watching her go, but they had no way of knowing which way she was drifting.</p>
+<hr>
+<h3>Her Parents' Final Attempt</h3>
+<p>Once Khona had drifted some way off, her father said—</p>
+<p class="q">—"Now we have to get out too."</p>
+<p>They put on their own life jackets. With their burned bodies, they leapt through the broken window into the sea.</p>
+<p>For a few moments they struggled to stay afloat. But their burns had left them too weak, and before long, both of them lost consciousness.</p>
+<p>Behind them, the burning launch slowly tilted to one side. And then—</p>
+<p class="big">with a tremendous roar, it sank into the depths of the sea.</p>
+<hr>
+<h3>The Rescue Launch</h3>
+<p>Another launch happened to be passing at a distance. Its passengers suddenly spotted a great blaze rising over the sea.</p>
+<p class="q">—"Something's happened over there!"</p>
+<p>They quickly turned the boat and headed that way. But by the time they reached the spot, the burning launch had already gone under.</p>
+<p>They began searching all around. Suddenly, someone shouted—</p>
+<p class="q">—"There are two people over there!"</p>
+<p>Two figures were floating in the water, life jackets holding them up. They were quickly pulled aboard — Khona's father and mother, both unconscious.</p>
+<p>But Khona? She was nowhere to be seen. The waves had already carried her far, far away.</p>
+<hr>
+<h3>Toward the Unknown Island</h3>
+<p>Still unconscious, Khona drifted on with the waves. Hour after hour passed. And then, at last—</p>
+<p>a great wave lifted her up and cast her onto the sands of an unknown island.</p>
+<p>She lay there limp and still. No one was around — only the roar of the sea, and behind her, a vast forest.</p>
+<p>After a while, a great gorilla emerged from the jungle. It spotted the small girl lying on the sand.</p>
+<p>The gorilla approached her slowly. Khona showed no response. Carefully, it lifted her up, cradled her against its chest, and carried her deep into the jungle.</p>
+<p>It did not know who this girl was. It did not know where her parents were. But in that moment, only one thing mattered to it—</p>
+<p class="big">This helpless child had to be saved.</p>
+<p>From that day on, Khona's new life began deep in the jungle of the unknown island.</p>
+<p>And far away, across the sea, her parents still did not know that their daughter was alive.</p>
+<p class="big">But no one knew where.</p>
+  </article>
+
+  <section id="porbo3" class="story-head part-gap">
+    <h2>Part 3</h2>
+    <p>The Girl of the Jungle</p>
+  </section>
+  <article class="story">
+<p>When Khona regained consciousness, she found herself in an unfamiliar world.</p>
+<p>The moment she opened her eyes, she saw an enormous gorilla sitting beside her. She wanted to scream in terror, but no sound would come from her throat.</p>
+<p>The gorilla simply looked at her. There was no violence in its eyes — only, somehow, a kind of tenderness.</p>
+<p>When Khona tried to move, the gorilla stepped back a little. Then it went into the jungle, brought back some fruit, and set it down in front of her.</p>
+<p>Khona looked at the fruit, then at the gorilla. Hunger got the better of her; she picked up a piece and began to eat. The gorilla sat quietly, watching.</p>
+<p>That day, Khona had no idea that this great creature would one day become the being closest to her in the whole world.</p>
+<hr>
+<h3>A New Life</h3>
+<p>The days went by. Khona slowly grew stronger. The gorilla began taking her to different parts of the jungle.</p>
+<p>Where to find water, which fruits were safe to eat, which trees offered shelter, which places were dangerous — Khona learned it all, one lesson at a time.</p>
+<p>The gorilla never left her alone. At night, once Khona fell asleep, it would sit close by her side, and at the first hint of a predator's cry, it would turn instantly alert.</p>
+<p>One day, Khona fell ill. The gorilla sat by her the whole night through. When she woke in the morning, she found it sitting right beside her head.</p>
+<p>Slowly, Khona reached out and rested her hand against its side. Then she said—</p>
+<p class="q">—"Are you my mother?"</p>
+<p>Whether the gorilla understood, no one could say. But it drew her close.</p>
+<p>From that day on, Khona began to call her—</p>
+<p class="big">"Mother."</p>
+<hr>
+<h3>Five Years</h3>
+<p>One year. Then two. Three. Four. Five years.</p>
+<p>Khona had grown up. She now knew every path through the jungle. She could tell a change in the weather just by the sound of the sea, could read the wind's direction in the sway of the leaves. Even the behaviour of the jungle's creatures had become familiar to her.</p>
+<p>Yet deep within her, one question never left her—</p>
+<p class="big">Where were her parents?</p>
+<p>Sometimes she would stand at the shore, gazing at the distant horizon. She imagined that some day a launch might appear. That her father might call out—</p>
+<p class="q">—"Khona!"</p>
+<p>But no one ever came. Still, Khona never gave up hope.</p>
+<hr>
+<h3>Meanwhile, Shambhu</h3>
+<p>Shambhu's first days alone on the unknown island were full of hardship. He survived on fruit from the trees and water from a spring.</p>
+<p>On the morning of the second day, a thought struck him—</p>
+<p class="big">"I can't go on living like this forever. I have to get to know this island."</p>
+<p>Ever since childhood, Shambhu had felt a curiosity about exploring unfamiliar places. So he decided to venture deep into the jungle. Perhaps there was a settlement somewhere. Perhaps a path. Perhaps, one day, he might even find a way off this island.</p>
+<p>Slowly, he began making his way into the jungle.</p>
+<hr>
+<h3>A Strange Sound</h3>
+<p>Deep inside the jungle, Shambhu suddenly stopped. Somewhere nearby, leaves seemed to be rustling. He looked around. Then the sound came again.</p>
+<p class="big">Rustle... rustle...</p>
+<p>Shambhu thought it must be some animal. He crept a little closer. Just then, a huge gorilla stepped out and stood before him.</p>
+<p>Shambhu's heart pounded. He took a step back.</p>
+<p class="q">—"Er... I haven't come to hurt you, I promise!"</p>
+<p>The gorilla stared back at him, unmoving. Shambhu took yet another step back. Just then, from behind the gorilla, a girl's voice spoke—</p>
+<p class="q">—"Don't be afraid."</p>
+<p>Shambhu started. He peered past the gorilla and saw a girl standing there — dressed in makeshift jungle clothes, barefoot, with a strange calm in her eyes.</p>
+<p>Astonished, Shambhu said—</p>
+<p class="q">—"Are you... a person?"</p>
+<p>The girl smiled faintly.</p>
+<p class="q">—"Yes."</p>
+<p class="q">—"How are you here?"</p>
+<p>She was quiet for a moment. Then she said—</p>
+<p class="q">—"My name is Khona."</p>
+<p>Shambhu introduced himself in turn—</p>
+<p class="q">—"I'm Shambhu."</p>
+<p>Khona studied him.</p>
+<p class="q">—"Are you alone here?"</p>
+<p>Shambhu sighed.</p>
+<p class="q">—"The people who brought me here left without me."</p>
+<p>Surprise flickered in Khona's eyes.</p>
+<p class="q">—"They left you behind?"</p>
+<p class="q">—"Yes. I was up a tree picking coconuts for them. Then they saw big waves coming and took off in the launch."</p>
+<p>Khona said nothing for a while. Then she said—</p>
+<p class="q">—"So now you're alone."</p>
+<p>Shambhu smiled.</p>
+<p class="q">—"I don't feel so alone anymore, actually."</p>
+<p>For the first time, Khona smiled too, just a little.</p>
+<hr>
+<h3>Khona's Story</h3>
+<p>Shambhu asked—</p>
+<p class="q">—"How long have you been here?"</p>
+<p>Khona looked out toward the sea.</p>
+<p class="q">—"Five years."</p>
+<p>Shambhu was stunned.</p>
+<p class="q">—"Five years!"</p>
+<p>Khona nodded. Then, slowly, she told him her story — how she had been on a launch with her parents, how a fire had broken out, how they had strapped a life jacket on her and lowered her into the sea. What happened after that, she did not know. She had woken up on this island.</p>
+<p>Shambhu listened quietly. Then he said—</p>
+<p class="q">—"What about your parents?"</p>
+<p>Tears rose in Khona's eyes.</p>
+<p class="q">—"I don't know."</p>
+<p>She looked at the gorilla.</p>
+<p class="q">—"If she hadn't been there, I wouldn't have survived."</p>
+<p>Shambhu turned to the gorilla and bowed his head.</p>
+<p class="q">—"Then she really is your mother."</p>
+<p>Khona smiled softly.</p>
+<p class="q">—"Yes. My mother."</p>
+<p>The gorilla stood there beside them both.</p>
+<p>Three utterly different lives — a lost boy, a lost girl, and a wild creature who, without ever knowing the meaning of human love, had sheltered a child like her own.</p>
+<p>From that day, Shambhu was no longer alone. But still waiting ahead of them was—</p>
+<p class="big">the island's greatest secret.</p>
+<p>Somewhere deeper in the jungle, something lay hidden that they had not yet discovered.</p>
+  </article>
+
+  <section id="porbo4" class="story-head part-gap">
+    <h2>Part 4</h2>
+    <p>Deep in the Jungle</p>
+  </section>
+  <article class="story">
+<p>After Shambhu and Khona met, a friendship slowly began to grow between them.</p>
+<p>Shambhu had been alone for so long that, finding someone to talk to at last, his heart felt lighter than it had in a long while.</p>
+<p>Khona was glad too. In five years on this island, she had not spoken to another human being. Talking with Shambhu brought back memories of the world she once knew.</p>
+<p>Even so, the closest companion in Khona's life remained her gorilla mother.</p>
+<p>Shambhu had noticed from the very start that the gorilla never let Khona out of her sight, not for a moment. One day he said—</p>
+<p class="q">—"Your mother loves you a great deal."</p>
+<p>Khona smiled.</p>
+<p class="q">—"I love her a great deal too."</p>
+<hr>
+<h3>The Call of the Unknown Jungle</h3>
+<p>Several days passed. Shambhu had explored much of the island by now. But one part of the jungle remained unknown to him.</p>
+<p>That part was denser, darker. The branches of the great trees tangled so closely together that even in daylight, hardly any sun reached the ground.</p>
+<p>One day, gazing toward that stretch of jungle, Shambhu said—</p>
+<p class="q">—"Khona, have you ever been that way?"</p>
+<p>Khona shook her head.</p>
+<p class="q">—"No."</p>
+<p class="q">—"Why not?"</p>
+<p class="q">—"The jungle runs very deep there. Fierce animals live in it."</p>
+<p>Curiosity lit up Shambhu's eyes.</p>
+<p class="q">—"Then let's go there one day."</p>
+<p>Khona looked at him in surprise.</p>
+<p class="q">—"Why do you always want to go looking for danger?"</p>
+<p>Shambhu laughed.</p>
+<p class="q">—"I don't know. I just want to see what's out there, unknown."</p>
+<p>Khona was quiet for a while. Then she looked at her gorilla mother, who seemed to understand everything at once and stepped forward. Khona said—</p>
+<p class="q">—"All right. But Mother comes with us."</p>
+<p>Shambhu grinned.</p>
+<p class="q">—"Then I'm not afraid at all."</p>
+<hr>
+<h3>Into the Deep Jungle</h3>
+<p>The next morning, the three of them set out — the gorilla in the lead, Khona behind her, and Shambhu bringing up the rear.</p>
+<p>The deeper the jungle grew, the harder the path became. Here a thicket of thorns, there jagged rocks, and elsewhere roots rising up out of the earth. Every so often, Shambhu muttered—</p>
+<p class="q">—"This isn't a path — it's a maze nature built just to test us!"</p>
+<p>Khona laughed.</p>
+<p class="q">—"You can still turn back, if you like."</p>
+<p class="q">—"No, why would I turn back after coming this far?"</p>
+<p>Suddenly the gorilla ahead of them stopped, ears pricked, listening. Khona stopped too. Shambhu whispered—</p>
+<p class="q">—"What is it?"</p>
+<p>Before Khona could answer, a terrifying roar sounded in the distance. Then another. Then several more. It was as though many creatures were moving through the jungle at once.</p>
+<p>The gorilla turned back to them at once and began leading them off in another direction. Shambhu understood — danger was very close.</p>
+<hr>
+<h3>Shelter in a Cave</h3>
+<p>A little further on, they came upon a wall of rock, and beneath it, the dark mouth of a cave. The gorilla signalled them inside, and the three of them hurried in.</p>
+<p>Inside, it was dark. Outside, wild roars continued. Shambhu whispered—</p>
+<p class="q">—"Are we safe here?"</p>
+<p>Khona said—</p>
+<p class="q">—"Mother's with us. There's nothing to fear."</p>
+<p>The gorilla sat facing the mouth of the cave. After a while, a few wild beasts rushed past outside — their footsteps could be heard even from within.</p>
+<p>Shambhu held his breath. After a while, everything fell quiet again.</p>
+<hr>
+<h3>Glittering Stones</h3>
+<p>Once the danger had passed, Shambhu began looking around the cave. Suddenly his eye caught something glittering on the ground.</p>
+<p class="q">—"Khona, look at this!"</p>
+<p>Khona came over and crouched beside him. Half-buried in the ground were small stones — but not ordinary ones. Even in the cave's darkness, they gave off a faint shimmer.</p>
+<p>Khona picked one up. Dirt still clung to it.</p>
+<p class="q">—"What are these?"</p>
+<p>Shambhu said—</p>
+<p class="q">—"I don't know. But they're very shiny."</p>
+<p>Khona picked up a few more. Shambhu said—</p>
+<p class="q">—"Let's take them with us."</p>
+<p class="q">—"Why?"</p>
+<p>Shambhu thought for a moment.</p>
+<p class="q">—"They might come in useful, who knows."</p>
+<p>They gathered a handful of the stones, then left the cave together with the gorilla.</p>
+<hr>
+<h3>Wiping Away the Dirt</h3>
+<p>Back at their shelter, Shambhu and Khona began cleaning the stones. The gorilla sat nearby, watching them.</p>
+<p>The moment the dirt came off the first stone, a bright glow shone out from within it. Khona gasped—</p>
+<p class="q">—"Shambhu!"</p>
+<p>Shambhu took it and held it up to the light.</p>
+<p class="q">—"This is..."</p>
+<p>Then they cleaned the second stone. The third. The fourth. Every single one gave off the same strange brilliance.</p>
+<p>Some were clear. Some reddish. Some tinged with green. In some, tiny threads of light seemed to be trapped inside.</p>
+<p>Khona said—</p>
+<p class="q">—"These aren't ordinary stones."</p>
+<p>Shambhu said slowly—</p>
+<p class="q">—"That's what I'm thinking too."</p>
+<p class="q">—"Then what are they?"</p>
+<p>Shambhu stared at the stone in his hand.</p>
+<p class="q">—"Maybe... gems."</p>
+<p>Khona started.</p>
+<p class="q">—"Gems?"</p>
+<p>Shambhu nodded.</p>
+<p class="q">—"Maybe."</p>
+<p>The two of them looked at each other. But neither of them yet knew—</p>
+<p class="big">that these few glittering stones were only the first sign of an immense natural treasure.</p>
+<p>Countless natural processes, over the long ages the island had taken shape, had scattered precious minerals and stones — risen from the depths of the sea — beneath its soil. And it was one small cave that had thrown open the door to this secret.</p>
+<p>Khona looked at the stones.</p>
+<p class="q">—"Should we tell anyone about this?"</p>
+<p>Shambhu was silent for a moment. Then he said—</p>
+<p class="q">—"Not now."</p>
+<p>The gorilla was still sitting beside them. Khona stroked her head gently.</p>
+<p>No one could have known what might happen, one day, if word of this treasure ever reached the world of men.</p>
+<p>And Shambhu did not yet know—</p>
+<p class="big">that this discovery would one day bring him face to face with the biggest decision of his life.</p>
+  </article>
+
+  <section id="porbo5" class="story-head part-gap">
+    <h2>Part 5</h2>
+    <p>Three Months of Life</p>
+  </section>
+  <article class="story">
+<p>Once Shambhu found Khona, life on the unknown island changed a great deal for him.</p>
+<p>Until then he had been alone — what to eat, where to sleep, which way to go, everything he'd had to work out for himself. Now Khona was by his side. And with Khona came her gorilla mother.</p>
+<p>At first, Shambhu had no idea how to survive in this jungle. One morning he said—</p>
+<p class="q">—"Khona, what am I going to eat today?"</p>
+<p>Khona laughed.</p>
+<p class="q">—"We'll have to go find some."</p>
+<p class="q">—"Where?"</p>
+<p class="q">—"Come on."</p>
+<p>She led him to a part of the jungle full of fruit trees, picking a few here and there with a practised eye.</p>
+<p class="q">—"You can eat these."</p>
+<p>Shambhu took one in his hand.</p>
+<p class="q">—"How do you know this one's safe to eat?"</p>
+<p>Khona said—</p>
+<p class="q">—"Mother taught me."</p>
+<p>The gorilla stood a little way off, watching them. Shambhu grinned.</p>
+<p class="q">—"Your mother's quite the teacher!"</p>
+<p>Khona laughed.</p>
+<hr>
+<h3>Shambhu's New Life</h3>
+<p>Every morning, Shambhu and Khona went out foraging — sometimes for fruit, sometimes coconuts, sometimes water from a spring, sometimes whatever edible thing lay scattered beneath the trees.</p>
+<p>Shambhu slowly learned the jungle's rules — which fruits to avoid, where snakes might be hiding, where a careless step would land on thorns, and when a certain sound meant he ought to stop and listen.</p>
+<p>One day, Shambhu picked up an unfamiliar fruit and was about to bite into it. Khona grabbed his hand just in time.</p>
+<p class="q">—"No! Don't eat that."</p>
+<p class="q">—"Why not?"</p>
+<p class="q">—"I don't know what it is. That's exactly why not."</p>
+<p>Shambhu put it down.</p>
+<p class="q">—"You just saved my life!"</p>
+<p>Khona laughed.</p>
+<p class="q">—"You can't just put everything in your mouth."</p>
+<p>Shambhu nodded.</p>
+<p class="q">—"I really should've known that already."</p>
+<hr>
+<h3>Shelter at Night</h3>
+<p>At night, the island transformed completely. The familiar jungle of daytime became, in the dark, a different world altogether. Strange calls sounded in the distance, leaves rustled somewhere nearby, and now and then a branch would snap unexpectedly.</p>
+<p>For his first few nights, Shambhu could barely sleep — he kept jolting awake. One night he whispered—</p>
+<p class="q">—"Khona, are you asleep?"</p>
+<p class="q">—"No."</p>
+<p class="q">—"What's that sound?"</p>
+<p>Khona listened for a moment.</p>
+<p class="q">—"Just something passing far off. Don't be afraid."</p>
+<p>Shambhu said—</p>
+<p class="q">—"How are you so calm about it?"</p>
+<p>Khona smiled faintly.</p>
+<p class="q">—"I've been here five years, remember."</p>
+<p>Shambhu said nothing more.</p>
+<p>The gorilla always lay close beside them, and any unusual sound would have her sitting up at once. Little by little, Shambhu's fear eased too.</p>
+<hr>
+<h3>A Rainy Night</h3>
+<p>One night, a heavy rain suddenly broke out. Staying dry in the jungle became impossible. Soaked through, Shambhu said—</p>
+<p class="q">—"At this rate, we're going to turn into fish!"</p>
+<p>Khona laughed.</p>
+<p class="q">—"Come on, quit talking and follow me."</p>
+<p>The gorilla led them beneath the roots of a great tree, a relatively dry spot, and the three of them spent the night there.</p>
+<p>When the rain stopped at dawn, Shambhu said—</p>
+<p class="q">—"Last night I finally understood just how important a roof over your head really is!"</p>
+<p>Khona said, still laughing—</p>
+<p class="q">—"Do you miss home a lot?"</p>
+<p>Shambhu was quiet for a moment.</p>
+<p class="q">—"Yes."</p>
+<p>Then, slowly, he added—</p>
+<p class="q">—"But now I have you two."</p>
+<p>Khona said nothing. She only smiled quietly and looked at him.</p>
+<hr>
+<h3>Friendship</h3>
+<p>As the days passed, their friendship deepened. Shambhu would talk sometimes about his old neighbourhood — how everyone had always given him the work to do, how he always went along with what others said, and how, that day, they had left him up a tree and sailed off without him.</p>
+<p>Khona listened closely. One day she asked—</p>
+<p class="q">—"Doesn't that make you angry?"</p>
+<p>Shambhu said—</p>
+<p class="q">—"Of course it does."</p>
+<p class="q">—"Then?"</p>
+<p class="q">—"What good would being angry do? I'm stuck here either way."</p>
+<p>Khona said—</p>
+<p class="q">—"You're a strange one."</p>
+<p>Shambhu laughed.</p>
+<p class="q">—"Everyone says that about me."</p>
+<hr>
+<h3>The Matter of the Stones</h3>
+<p>They had not forgotten the stones from the cave, of course. One day Shambhu opened the little bundle and took them out. Khona glanced at them and said—</p>
+<p class="q">—"Don't throw them away."</p>
+<p class="q">—"Why not?"</p>
+<p class="q">—"When I was little, I saw many kinds of gems at my father's — some of these could be valuable."</p>
+<p>Shambhu said—</p>
+<p class="q">—"Are you sure?"</p>
+<p class="q">—"No. But I don't think they're ordinary stones."</p>
+<p>Shambhu wrapped the stones back in their cloth.</p>
+<p class="q">—"All right. I'll keep them with me."</p>
+<p>Khona said—</p>
+<p class="q">—"They might be useful someday."</p>
+<p>Neither of them yet knew just how much the stones in that small bundle were truly worth.</p>
+<hr>
+<h3>Three Months</h3>
+<p>The days went by like this. A week. Two weeks. Then a month. Then another.</p>
+<p>Shambhu had long since lost track of how much time had passed — he'd stopped counting the days altogether. But one thought never left his mind—</p>
+<p class="big">Was anyone even looking for him?</p>
+<p>Every morning he would look out at the sea. Sometimes a launch would pass in the distance. Khona would wave, and Shambhu would run down to the shore. But the launches always sailed on, too far away, and no one ever saw them.</p>
+<p>Sometimes a helicopter would fly overhead. Both of them would stand out in the open, waving their arms, but the tiny speck in the sky always vanished beyond the horizon in the end.</p>
+<p>Still, they kept waiting.</p>
+<hr>
+<h3>At Last</h3>
+<p>One morning, the gorilla suddenly went still, staring out at the sea, ears pricked. Then Shambhu heard it too.</p>
+<p class="big">Putt... putt... putt...</p>
+<p>He leapt to his feet.</p>
+<p class="q">—"A launch!"</p>
+<p>Khona ran toward the water. Sure enough, a launch was visible near the horizon. Shambhu tore off his shirt and waved it over his head.</p>
+<p class="q">—"Hey! Over here!"</p>
+<p class="q">—"We're here!"</p>
+<p>This time, the launch was turning toward the island, slowing down. Tears of joy filled Shambhu's eyes. Three months of waiting were finally about to end.</p>
+<p>But Khona turned back. The gorilla stood there in silence. Khona ran to her and threw her arms around her.</p>
+<p class="q">—"Mother..."</p>
+<p>Her voice trembled.</p>
+<p class="q">—"I have to go."</p>
+<p>The gorilla held her tight. Wiping her eyes, Khona said—</p>
+<p class="q">—"I'll never forget you."</p>
+<p>Then, slowly, she walked toward the launch with Shambhu.</p>
+<p>Tucked inside Shambhu's shirt was still the small bundle, its handful of glittering stones. They had no idea — these stones were not merely a memento of their rescue.</p>
+<p class="big">Very soon, they would throw open the door to the greatest mystery of their lives.</p>
+  </article>
+
+  <section id="porbo6" class="story-head part-gap">
+    <h2>Part 6</h2>
+    <p>The Man Who Returned</p>
+  </section>
+  <article class="story">
+<p>The launch slowly came to a stop at the island's shore.</p>
+<p>Shambhu stood still for a moment.</p>
+<p>The thought that he would see human faces again, after all this time, felt almost impossible to believe.</p>
+<p>A few men climbed down quickly from the launch.</p>
+<p>Shambhu recognized one or two of them at once.</p>
+<p>These were the very people who had left him behind on this island three months ago.</p>
+<p>One of them stepped forward.</p>
+<p class="q">—"Shambhu! You're alive!"</p>
+<p>Shambhu said calmly—</p>
+<p class="q">—"Yes. I'm alive."</p>
+<p>The man started to say something, then stopped.</p>
+<p>There was no anger in Shambhu's eyes.</p>
+<p class="big">Only a deep, deep weariness.</p>
+<hr>
+<h3>Meeting Khona</h3>
+<p>Their eyes now turned to Khona.</p>
+<p>Someone asked, astonished—</p>
+<p class="q">—"Who is this girl?"</p>
+<p>Shambhu said—</p>
+<p class="q">—"Her name is Khona. She's lived on this island for a very long time."</p>
+<p class="q">—"Here?"</p>
+<p class="q">—"Yes."</p>
+<p>Everyone stared in disbelief.</p>
+<p>Khona stood there in silence.</p>
+<p>Again and again, her eyes drifted back toward the jungle behind her.</p>
+<p>The gorilla stood there.</p>
+<p>A little way off.</p>
+<p>Silent.</p>
+<p>Khona could not hold herself back any longer.</p>
+<p>She ran back and threw her arms around the gorilla once more.</p>
+<p class="q">—"Mother, I'll come back."</p>
+<p>The gorilla rested a hand on her head.</p>
+<p>Weeping, Khona said—</p>
+<p class="q">—"If it weren't for you, I wouldn't have survived."</p>
+<p>Then, slowly, she pulled away.</p>
+<p>Shambhu, too, looked at the gorilla one last time.</p>
+<p>Then he bowed his head to her, in respect.</p>
+<hr>
+<h3>One Last Look at the Island</h3>
+<p>Before the launch set off, Shambhu looked around once more.</p>
+<p>He had come to this island alone.</p>
+<p>Here, he had learned how to survive on very little.</p>
+<p>How to recognise the sounds of the jungle.</p>
+<p>How to keep his courage through the dark of night.</p>
+<p>And, most of all—</p>
+<p class="big">here, he had come to know Khona.</p>
+<p>The launch slowly pulled away from the shore.</p>
+<p>Khona kept looking back.</p>
+<p>The gorilla still stood on the shore.</p>
+<p>The further the launch travelled, the smaller she grew.</p>
+<p>At last, she could no longer be seen at all.</p>
+<p>Tears streamed down Khona's face.</p>
+<hr>
+<h3>Across the Sea</h3>
+<p>Everyone on the launch now wanted to hear Shambhu's story.</p>
+<p class="q">—"How did you survive all this time?"</p>
+<p>Shambhu said—</p>
+<p class="q">—"I was alone at first. Later I met Khona."</p>
+<p class="q">—"How long has she been here?"</p>
+<p>Khona said—</p>
+<p class="q">—"I don't know."</p>
+<p>Everyone turned to look at her.</p>
+<p>Khona said calmly—</p>
+<p class="q">—"I was twelve when I came here. I stopped counting the years after that."</p>
+<p>Shambhu said—</p>
+<p class="q">—"Her parents were lost at sea in an accident. A gorilla saved her life."</p>
+<p>Everyone on the launch fell utterly silent.</p>
+<hr>
+<h3>An Old Question</h3>
+<p>After a while, someone asked—</p>
+<p class="q">—"Khona, where's your home?"</p>
+<p>Khona was quiet for a moment.</p>
+<p class="q">—"I know the name of the city."</p>
+<p class="q">—"What is it?"</p>
+<p>Khona named it.</p>
+<p>Shambhu looked at her in surprise.</p>
+<p class="q">—"You remembered all this?"</p>
+<p>Khona said—</p>
+<p class="q">—"Not everything. But I remember home. I remember my father. I remember my mother."</p>
+<p>Then she looked out the window.</p>
+<p class="q">—"I don't know if they're even alive."</p>
+<p>No one had an answer for her.</p>
+<hr>
+<h3>Shambhu's Hidden Bundle</h3>
+<p>Once the launch had travelled a good distance, Shambhu reached inside his shirt.</p>
+<p>The little cloth bundle was still there.</p>
+<p>He did not take it out.</p>
+<p>He only touched it once with his hand.</p>
+<p>Khona noticed and said—</p>
+<p class="q">—"Are the stones still there?"</p>
+<p class="q">—"They are."</p>
+<p class="q">—"Keep them safe."</p>
+<p class="q">—"I will."</p>
+<p>Khona smiled a little.</p>
+<p class="q">—"If my father sees these, he might recognize what they are."</p>
+<p>Shambhu said—</p>
+<p class="q">—"Then we'll simply have to find him."</p>
+<p>Khona kept gazing out the window.</p>
+<p class="big">A spark of hope lit up in her eyes once more.</p>
+<hr>
+<h3>Toward the City</h3>
+<p>At last, the launch headed toward the mainland.</p>
+<p>City lights glimmered in the distance.</p>
+<p>Khona was returning to the world of men after so many years.</p>
+<p>Shambhu, too, was returning to his old life.</p>
+<p>But neither of them knew—</p>
+<p class="big">that a far greater mystery awaited them once they reached the city.</p>
+<p class="big">Were Khona's parents really still alive?</p>
+<p class="big">Were they still searching for her?</p>
+<p class="big">And just how valuable were the stones hidden in Shambhu's shirt, really?</p>
+<p>And most of all—</p>
+<p class="big">what connection could there possibly be between Khona's father's gem business and the natural treasure buried on that unknown island?</p>
+<p>The launch was already approaching the city dock.</p>
+<p>And after so many years—</p>
+<p class="big">a lost girl was about to set foot on the soil of her own city once more.</p>
+  </article>
+
+  <section id="porbo7" class="story-head part-gap">
+    <h2>Part 7</h2>
+    <p>The Thread That Led Home</p>
+  </section>
+  <article class="story">
+<p>The launch came to a stop at the city dock.</p>
+<p>The moment his feet touched the shore, Shambhu felt as though he had returned, after so long, to a world he once knew. Crowds of people, the noise of cars, the shopfronts all around — everything felt both strange and familiar at once.</p>
+<p>Khona stood there in silence.</p>
+<p>Returning to the human world after so long, only one question filled her mind—</p>
+<p class="big">Did her parents still remember her?</p>
+<p>After they disembarked, everyone was taken to the police station.</p>
+<p>Shambhu's former companions were brought in for questioning.</p>
+<p>This time, no one could spin the same excuses in front of the police.</p>
+<p>One of them said—</p>
+<p class="q">—"We thought he might have fallen into the water."</p>
+<p>Another said—</p>
+<p class="q">—"Someone said a crocodile must have taken him... so that's what we told people."</p>
+<p>The officer said sternly—</p>
+<p class="q">—"So you knew the truth, and still you left a man behind on that island?"</p>
+<p>No one answered.</p>
+<p>Shambhu said nothing at all.</p>
+<p>He only said—</p>
+<p class="q">—"I survived. And I found Khona."</p>
+<hr>
+<h3>Khona's Identity</h3>
+<p>The police now turned their attention to Khona.</p>
+<p class="q">—"What's your full name?"</p>
+<p>Khona gave her name.</p>
+<p>Then her parents' names.</p>
+<p>One of the officers suddenly went still.</p>
+<p class="q">—"Sir, this name's in an old missing-persons case."</p>
+<p>They pulled out the old records.</p>
+<p>Nearly five years ago, there had been a fire on a launch at sea.</p>
+<p>A couple had been rescued.</p>
+<p>But their twelve-year-old daughter had gone missing.</p>
+<p>Her name—</p>
+<p class="big">Khona.</p>
+<p>Khona stared at the file in silence.</p>
+<p>Her own name.</p>
+<p>Official proof of her own lost life.</p>
+<p>The police told her that her parents had searched for her for a long time. Search operations had covered stretches of the sea, but when nothing turned up, the search had eventually been called off.</p>
+<p>In a low voice, Khona said—</p>
+<p class="q">—"So... they really did look for me?"</p>
+<p class="q">—"Yes."</p>
+<p>Khona's eyes filled with tears.</p>
+<p>Shambhu stood quietly beside her.</p>
+<hr>
+<h3>The Address</h3>
+<p>Digging through the old documents, they found her family's current address too.</p>
+<p class="big">Right here, in this city.</p>
+<p>The officer said—</p>
+<p class="q">—"Your parents still live right here, in this very city."</p>
+<p>For a moment, Khona could not find any words.</p>
+<p>Then she said, slowly—</p>
+<p class="q">—"Can I go there today?"</p>
+<p class="q">—"Of course."</p>
+<p>Shambhu stood beside her.</p>
+<p>But before they left, he reached for the bundle inside his shirt.</p>
+<p>The stones were still there, safe.</p>
+<p>Khona whispered—</p>
+<p class="q">—"Don't show them to anyone."</p>
+<p class="q">—"No one."</p>
+<p class="q">—"We'll show my father first."</p>
+<p>Shambhu nodded.</p>
+<p>They kept the matter of the gems a secret from the police.</p>
+<p>Because if word of the island spread, crowds might descend on it — and Khona's gorilla mother, to whom they owed so much, was still there.</p>
+<p>Soon after, they set off for Khona's home.</p>
+<p>Behind them lay the mystery of the unknown island.</p>
+<p class="big">And ahead of them waited the final chapter of a bond left unfinished five years ago.</p>
+  </article>
+
+  <section id="porbo8" class="story-head part-gap">
+    <h2>Part 8</h2>
+    <p>Five Years Later</p>
+  </section>
+  <article class="story">
+<p>The car pulled up in front of a large house.</p>
+<p>Khona stared at the house through the window.</p>
+<p>The sight of the old tree by the gate stirred something suddenly in her chest.</p>
+<p>She remembered — as a little girl, she used to stand beneath that very tree, waiting for her father's car.</p>
+<p>Shambhu said—</p>
+<p class="q">—"Let's go."</p>
+<p>Khona walked forward, slowly.</p>
+<p>At the knock, a woman opened the door.</p>
+<p>She looked first at Shambhu.</p>
+<p>Then at Khona.</p>
+<p>Her face suddenly went pale.</p>
+<p>In a trembling voice, she said—</p>
+<p class="q">—"Khona?"</p>
+<p>Khona's lips trembled.</p>
+<p class="q">—"Mama..."</p>
+<p class="big">In the next instant, mother and daughter embraced, and five years of distance fell away.</p>
+<hr>
+<h3>Father</h3>
+<p>Khona's father came rushing out from inside.</p>
+<p>He stood in the doorway, staring at his daughter.</p>
+<p>For a moment, he could not speak at all.</p>
+<p>Then he stepped forward and rested a hand on Khona's head.</p>
+<p class="q">—"Is it... really you, my Khona?"</p>
+<p>Khona threw her arms around him.</p>
+<p class="q">—"Papa!"</p>
+<p>Her father could no longer hold back his tears.</p>
+<p class="q">—"We searched everywhere for you, my dear!"</p>
+<p>Weeping, Khona said—</p>
+<p class="q">—"I didn't know..."</p>
+<p class="q">—"How could you have known? We didn't even know where you were."</p>
+<p>The room filled once more with the sound of weeping.</p>
+<p>Shambhu stood a little way off.</p>
+<hr>
+<h3>Shambhu Is Introduced</h3>
+<p>After a while, Khona's father turned to Shambhu.</p>
+<p class="q">—"You're Shambhu?"</p>
+<p class="q">—"Yes, sir."</p>
+<p>Khona said—</p>
+<p class="q">—"Papa, if it weren't for him, I never could have made it back here."</p>
+<p>Shambhu spoke up at once—</p>
+<p class="q">—"Khona handled everything herself. And if it weren't for her mother..."</p>
+<p>He stopped.</p>
+<p>Her father understood at once.</p>
+<p class="q">—"The gorilla?"</p>
+<p>Khona nodded.</p>
+<p class="q">—"She's kept me alive since I was a child."</p>
+<p>Wiping her eyes, Khona's mother said—</p>
+<p class="q">—"God must have sent her to you."</p>
+<hr>
+<h3>The Bundle of Stones</h3>
+<p>After a while, Shambhu took the cloth bundle out from inside his shirt.</p>
+<p class="q">—"I brought these to show you, sir."</p>
+<p>As he opened it, several glittering stones spilled out onto the table.</p>
+<p>Khona's father picked one up.</p>
+<p>He held it up to the light.</p>
+<p>Then another.</p>
+<p>His expression slowly began to change.</p>
+<p class="q">—"Where did you find these?"</p>
+<p>Shambhu said—</p>
+<p class="q">—"In a cave, on that island."</p>
+<p>Khona's father fell silent.</p>
+<p>He examined the stones again.</p>
+<p class="q">—"I've spent years searching for gems exactly like these."</p>
+<p>Shambhu and Khona exchanged a glance.</p>
+<p class="q">—"Are they valuable?"</p>
+<p>Her father said—</p>
+<p class="q">—"They very well could be. We won't know for certain without testing them. But these are no ordinary stones."</p>
+<p>There was astonishment in his eyes.</p>
+<p class="q">—"Do you have any idea how many islands I've searched, looking for gems like these?"</p>
+<p>Shambhu said—</p>
+<p class="q">—"There are many more on that island."</p>
+<p>At these words, everyone in the room fell silent.</p>
+<hr>
+<h3>A Question, Before Greed</h3>
+<p>Khona's father thought for a while.</p>
+<p class="q">—"We have to go back there."</p>
+<p>Khona was startled.</p>
+<p class="q">—"Why?"</p>
+<p class="q">—"To find out where these gems really came from."</p>
+<p>Just then, Khona's mother spoke, calm and steady—</p>
+<p class="q">—"But before we go, think about something first."</p>
+<p>Everyone turned to her.</p>
+<p class="q">—"Should we be greedy for more than God has already given us?"</p>
+<p>She looked at Khona.</p>
+<p class="q">—"Are we going to forget the creature on that island who kept my daughter safe, like her own child, for five whole years?"</p>
+<p>The room went silent.</p>
+<p>She continued—</p>
+<p class="q">—"If word of the gems gets out, people will flock there. The jungle will be destroyed. And her life could be in danger too."</p>
+<p>Khona's father gazed at the stones for a long while.</p>
+<p>Then, slowly, he gathered them back into the bundle.</p>
+<p class="q">—"You're right."</p>
+<p>He looked at Shambhu.</p>
+<p class="q">—"We won't put Khona's mother in danger for the sake of these gems."</p>
+<p>Relief spread across Shambhu's face.</p>
+  </article>
+
+  <section id="porbo9" class="story-head part-gap">
+    <h2>Final Part</h2>
+    <p>The Debt That Can Never Be Repaid</p>
+  </section>
+  <article class="story">
+<p>Over the days that followed, new life seemed to return to Khona's family.</p>
+<p>Father and daughter shared old stories together.</p>
+<p>Khona told them about her years on the island.</p>
+<p>How she had learned to identify jungle fruit, where to find water, how her gorilla mother had shielded her from danger — her parents listened to it all, marvelling.</p>
+<p>And Shambhu?</p>
+<p>He had become, in every way, one of the family.</p>
+<p>One day, Khona's father called him into his office.</p>
+<p>Some papers lay on the desk.</p>
+<p class="q">—"Shambhu, I want to talk to you about something."</p>
+<p>Shambhu sat down.</p>
+<p class="q">—"Please, go on."</p>
+<p class="q">—"You've spent your whole life fending for yourself. From now on, you won't have to be alone anymore."</p>
+<p>Shambhu said nothing.</p>
+<p class="q">—"I want you to come work with me, in my business."</p>
+<p class="q">—"Me?"</p>
+<p class="q">—"Yes. And not merely as an employee."</p>
+<p>He slid the papers across to Shambhu.</p>
+<p class="q">—"You'll be my business partner."</p>
+<p>Shambhu was dumbstruck.</p>
+<p class="q">—"But I don't know the first thing about business!"</p>
+<p>Khona's father laughed.</p>
+<p class="q">—"You'll learn. Recognizing a gem is a skill anyone can pick up. But honesty can't be taught — and that, you already have."</p>
+<p>Tears welled in Shambhu's eyes.</p>
+<hr>
+<h3>A New Room</h3>
+<p>He also arranged a place for Shambhu to live.</p>
+<p>A beautiful room.</p>
+<p>His, to make his own.</p>
+<p>That first night, lying in his new bed, Shambhu could not fall asleep.</p>
+<p>He kept remembering his first night on the island.</p>
+<p>The damp earth.</p>
+<p>The dark jungle.</p>
+<p>The hunger.</p>
+<p>The fear.</p>
+<p>And then, meeting Khona.</p>
+<p>Without quite meaning to, he smiled.</p>
+<p class="big">How strangely a life can turn around!</p>
+<hr>
+<h3>One Thing Left Undone</h3>
+<p>But something still weighed on Khona's mind.</p>
+<p class="q">—"Papa."</p>
+<p class="q">—"Yes?"</p>
+<p class="q">—"Aren't we going back to see Mother?"</p>
+<p>Her father was quiet for a moment.</p>
+<p>Then he said—</p>
+<p class="q">—"We will."</p>
+<p>Her mother spoke up at once—</p>
+<p class="q">—"Then we can't go empty-handed."</p>
+<p>Shambhu grinned.</p>
+<p class="q">—"Shall we bring gems?"</p>
+<p>Khona's mother smiled gently.</p>
+<p class="q">—"No. We'll bring fruit. Bananas. And some sweets."</p>
+<p>Khona burst out laughing.</p>
+<p class="q">—"Will Mother even eat sweets?"</p>
+<p class="q">—"I don't know. But there's no harm in bringing them with love."</p>
+<hr>
+<h3>Back Across the Sea</h3>
+<p>A few days later, the four of them boarded a launch once more.</p>
+<p>Khona.</p>
+<p>Her father.</p>
+<p>Her mother.</p>
+<p>And Shambhu.</p>
+<p>They carried large baskets brimming with fruit, bananas, and sweets.</p>
+<p>As the launch drew near the island, Khona's heart began to race.</p>
+<p>Even from a distance, her eyes were fixed on the jungle.</p>
+<p>The moment she stepped ashore, she ran.</p>
+<p class="q">—"Mother!"</p>
+<p>For a while, there was no answer.</p>
+<p>Then came the sound of leaves rustling in the jungle.</p>
+<p>A great gorilla emerged, slowly.</p>
+<p>Khona could hold herself back no longer.</p>
+<p>She ran and threw her arms around the gorilla.</p>
+<p>Her gorilla mother pulled her close in turn.</p>
+<hr>
+<h3>Gratitude</h3>
+<p>Khona's father stepped forward, slowly.</p>
+<p>There were no gems in his hands.</p>
+<p>Only a basket.</p>
+<p>He set it down on the ground.</p>
+<p>He laid out the bananas, the fruit, the sweets before her.</p>
+<p>Then, looking at the gorilla, he said—</p>
+<p class="q">—"You kept my daughter alive. I owe you a debt I can never repay."</p>
+<p>Whether the gorilla understood human speech, no one could say.</p>
+<p>But she simply looked at him, calm and steady.</p>
+<p>Khona's mother stepped forward and said—</p>
+<p class="q">—"You have been a mother to my daughter. We will never forget you."</p>
+<p>Shambhu stood a little way off, smiling.</p>
+<hr>
+<h3>Not to the Gems, but to a Mother</h3>
+<p>Once, Khona's father looked toward the deep jungle.</p>
+<p>Somewhere in there lay that cave.</p>
+<p>Inside it, more unknown gems.</p>
+<p>He could have gone and gathered them, if he wished.</p>
+<p>But he did not go.</p>
+<p>He only said—</p>
+<p class="q">—"Let this island stay just as it is."</p>
+<p>Shambhu nodded.</p>
+<p>Khona stood holding her mother's hand.</p>
+<p>That day, the four of them came to understand—</p>
+<p class="big">not every treasure needs to be carried home. Sometimes the greatest treasure is leaving one exactly where it belongs.</p>
+<hr>
+<h3>Farewell</h3>
+<p>As they prepared to leave, Khona embraced the gorilla and said—</p>
+<p class="q">—"I'll come back again."</p>
+<p>Shambhu said—</p>
+<p class="q">—"So will I."</p>
+<p>The gorilla watched them.</p>
+<p>The launch slowly pulled away from the shore.</p>
+<p>Khona kept looking back for a long time.</p>
+<p>The island grew smaller and smaller, until at last it disappeared into the horizon.</p>
+<p>But that jungle would remain in her heart forever.</p>
+<p>That cave.</p>
+<p>That strange, hidden treasure.</p>
+<p>And, most of all—</p>
+<p class="big">her nameless gorilla mother.</p>
+<p>Shambhu — once looked down upon, once sent up a tree and forgotten — stepped now into a brand new life.</p>
+<p>And Khona had her parents back.</p>
+<p>And yet the greatest lesson of their lives remained tied to that unknown island—</p>
+<p class="big">Gems may lie buried beneath the earth, but a person's true worth lies within the heart.</p>
+<p class="big">The End.</p>
+  </article>
+
+  <div class="next"><b>The story is complete</b><br>Thank you for reading to the end.</div>
+</main>
+<footer>The Unknown Island · A complete story in nine parts</footer>
+
+<script>
+(function(){
+  var ps=[].slice.call(document.querySelectorAll('.story p')),KEY='ajana-dwip-en-bookmark',THEME='ajana-dwip-en-theme';
+  var goMark=document.getElementById('goMark'),msg=document.getElementById('vmsg');
+  function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  function set(k,v){try{v===null?localStorage.removeItem(k):localStorage.setItem(k,v)}catch(e){}}
+  var t=get(THEME);if(t)document.documentElement.setAttribute('data-theme',t);
+  document.getElementById('theme').onclick=function(){
+    var dark=document.documentElement.getAttribute('data-theme')==='dark'||(!document.documentElement.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme:dark)').matches);
+    var n=dark?'light':'dark';document.documentElement.setAttribute('data-theme',n);set(THEME,n)};
+
+  /* Bookmark */
+  function showMark(){
+    ps.forEach(function(p){p.classList.remove('mark')});
+    var i=parseInt(get(KEY),10);
+    if(!isNaN(i)&&ps[i]){ps[i].classList.add('mark');goMark.hidden=false}else goMark.hidden=true}
+  ps.forEach(function(p,i){p.addEventListener('click',function(){
+    if(parseInt(get(KEY),10)===i)set(KEY,null);else set(KEY,String(i));showMark()})});
+  goMark.onclick=function(){var i=parseInt(get(KEY),10);if(ps[i])ps[i].scrollIntoView({behavior:'smooth',block:'center'})};
+  showMark();
+
+  /* English voice */
+  var synth=window.speechSynthesis,cur=-1,playing=false,voice=null;
+  var playBtn=document.getElementById('play');
+  function pickVoice(){if(!synth)return;var v=synth.getVoices();
+    voice=v.filter(function(x){return /^en-in/i.test(x.lang)})[0]||v.filter(function(x){return /^en/i.test(x.lang)})[0]||null}
+  if(synth){pickVoice();synth.onvoiceschanged=pickVoice}
+  function clear(){ps.forEach(function(p){p.classList.remove('reading')})}
+  function speak(i){
+    if(i>=ps.length){stop();return}
+    cur=i;clear();ps[i].classList.add('reading');
+    ps[i].scrollIntoView({behavior:'smooth',block:'center'});
+    var u=new SpeechSynthesisUtterance(ps[i].textContent);
+    u.lang=voice?voice.lang:'en-US';if(voice)u.voice=voice;u.rate=parseFloat(document.getElementById('rate').value);
+    u.onend=function(){if(playing&&cur===i)speak(i+1)};
+    u.onerror=function(){if(playing&&cur===i)speak(i+1)};
+    synth.speak(u)}
+  function stop(){playing=false;cur=-1;if(synth)synth.cancel();clear();playBtn.textContent='🔊 Listen';playBtn.classList.remove('act')}
+  playBtn.onclick=function(){
+    if(!synth){msg.textContent='This browser does not support voice playback';return}
+    if(!voice)pickVoice();
+    if(!voice)msg.textContent='No English voice found — please enable English text-to-speech in your device settings';else msg.textContent='';
+    if(playing){playing=false;synth.cancel();playBtn.textContent='▶ Resume';playBtn.classList.remove('act');return}
+    playing=true;playBtn.textContent='⏸ Pause';playBtn.classList.add('act');
+    var start=cur>=0?cur:(parseInt(get(KEY),10)||0);speak(start)};
+  document.getElementById('stop').onclick=stop;
+  document.getElementById('rate').onchange=function(){if(playing){synth.cancel();speak(cur)}};
+  window.addEventListener('beforeunload',function(){if(synth)synth.cancel()});
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Punishment of Exile | Surajit Roy</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+<style>
+  :root{
+    --navy-deep:#0a0f1f;
+    --navy:#0f1830;
+    --navy-light:#16213f;
+    --navy-card:#131c38;
+    --gold:#d4af6a;
+    --gold-bright:#f0cd85;
+    --gold-dim:#8a6f3a;
+    --text:#e8e6df;
+    --text-dim:#a9adc4;
+    --border:rgba(212,175,106,0.18);
+    --shadow:0 10px 30px rgba(0,0,0,0.45);
+  }
+.home-btn{
+  position:absolute;left:14px;top:calc(14px + env(safe-area-inset-top,0px));
+  width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;
+  background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.35);color:var(--gold-soft);
+  text-decoration:none;font-size:1.05rem;
+}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth; scroll-padding-top:70px;}
+  body{
+    margin:0;
+    background:var(--navy-deep);
+    color:var(--text);
+    font-family:'Georgia','Times New Roman',system-ui,serif;
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+
+  #progress-bar{
+    position:fixed; top:0; left:0; height:3px; width:0%;
+    background:linear-gradient(90deg,var(--gold-dim),var(--gold-bright));
+    z-index:999; transition:width 0.1s linear;
+  }
+
+  header.site-nav{
+    position:sticky; top:0; z-index:60;
+    background:rgba(10,15,31,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border);
+    padding:12px 18px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .site-nav .brand{
+    font-size:15px; letter-spacing:0.5px; color:var(--gold-bright); font-weight:600;
+  }
+  .site-nav .brand small{display:block; font-size:11px; color:var(--text-dim); font-weight:400;}
+  .nav-toc-btn{
+    background:none; border:1px solid var(--border); color:var(--gold);
+    padding:7px 14px; border-radius:20px; font-size:13px; cursor:pointer;
+  }
+
+  .hero{
+    position:relative;
+    min-height:56vh;
+    display:flex; align-items:flex-end;
+    overflow:hidden;
+    background:var(--navy);
+  }
+  .hero img{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+    opacity:0.55;
+  }
+  .hero::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(to bottom, rgba(10,15,31,0.15) 0%, rgba(10,15,31,0.55) 55%, var(--navy-deep) 100%);
+  }
+  .hero-content{ position:relative; z-index:2; padding:36px 22px 30px; max-width:760px; margin:0 auto; width:100%; }
+  .hero-eyebrow{ color:var(--gold); font-size:13px; letter-spacing:2px; text-transform:uppercase; margin-bottom:10px; }
+  .hero h1{
+    font-size:clamp(28px,7vw,44px); margin:0 0 14px; color:var(--text);
+    line-height:1.3; font-weight:700;
+    text-shadow:0 2px 18px rgba(0,0,0,0.6);
+  }
+  .hero p{ color:var(--text-dim); font-size:15px; max-width:600px; margin:0 0 18px; }
+  .hero-meta{ display:flex; gap:16px; flex-wrap:wrap; color:var(--gold-dim); font-size:13px; }
+
+  .continue-banner{
+    display:none;
+    max-width:760px; margin:18px auto 0; padding:14px 18px;
+    background:var(--navy-card); border:1px solid var(--border); border-radius:12px;
+    align-items:center; justify-content:space-between; gap:12px;
+    box-shadow:var(--shadow);
+  }
+  .continue-banner.show{ display:flex; }
+  .continue-banner .cb-text{ font-size:14px; color:var(--text-dim); }
+  .continue-banner .cb-text b{ color:var(--gold-bright); display:block; font-size:15px; margin-bottom:2px;}
+  .continue-banner a{
+    background:linear-gradient(135deg,var(--gold-dim),var(--gold));
+    color:var(--navy-deep); font-weight:700; font-size:13px;
+    padding:9px 16px; border-radius:20px; white-space:nowrap;
+  }
+
+  .wrap{ max-width:760px; margin:0 auto; padding:0 20px; }
+
+  .toc-section{ padding:40px 0 10px; }
+  .toc-section h2{ color:var(--gold-bright); font-size:20px; margin:0 0 18px; text-align:center; letter-spacing:0.5px; }
+  .toc-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; }
+  .toc-item .toc-link{
+    display:flex; align-items:center; gap:14px;
+    background:var(--navy-card); border:1px solid var(--border); border-radius:12px;
+    padding:14px 16px; transition:border-color 0.2s, transform 0.15s;
+  }
+  .toc-item .toc-link:hover{ border-color:var(--gold-dim); transform:translateX(2px); }
+  .toc-num{
+    flex:0 0 auto; color:var(--gold); font-size:12px; font-weight:700;
+    border:1px solid var(--gold-dim); border-radius:16px; padding:4px 10px;
+  }
+  .toc-title{ font-size:15px; color:var(--text); }
+  .toc-item.read .toc-link{ opacity:0.6; }
+  .toc-item.read .toc-num::after{ content:" ✓"; color:var(--gold-bright); }
+
+  .episode{ padding:46px 0 10px; border-top:1px solid var(--border); scroll-margin-top:70px; }
+  .episode-head{ display:flex; align-items:center; flex-wrap:wrap; gap:10px 14px; margin-bottom:22px; }
+  .episode-num{ color:var(--gold); font-size:12px; font-weight:700; letter-spacing:1px; }
+  .episode-title{ flex:1 1 auto; font-size:clamp(20px,5vw,26px); color:var(--gold-bright); margin:2px 0; line-height:1.4; }
+  .listen-btn{
+    display:flex; align-items:center; gap:6px;
+    background:var(--navy-light); border:1px solid var(--gold-dim); color:var(--gold-bright);
+    padding:8px 14px; border-radius:22px; font-size:13px; cursor:pointer;
+    font-family:inherit;
+  }
+  .listen-btn.playing{ background:linear-gradient(135deg,var(--gold-dim),var(--gold)); color:var(--navy-deep); border-color:transparent; }
+  .listen-btn.playing .icon-play{ display:none; }
+  .listen-btn.playing::before{ content:"⏸"; font-size:14px; }
+  .listen-btn:not(.playing)::before{ content:none; }
+
+  .episode-body p{ margin:0 0 20px; font-size:16.5px; color:var(--text); }
+  .episode-body p:first-of-type::first-letter{
+    font-size:2.6em; float:left; line-height:0.85; padding:6px 8px 0 0; color:var(--gold);
+    font-weight:700;
+  }
+  .episode-body strong{ color:var(--gold-bright); }
+  .episode-body em{ color:var(--text-dim); font-style:italic; }
+
+  figure.story-img{ margin:28px 0; border-radius:14px; overflow:hidden; border:1px solid var(--border); box-shadow:var(--shadow); }
+  figure.story-img img{ width:100%; height:auto; display:block; }
+
+  .end-mark{ text-align:center; padding:40px 0 70px; color:var(--gold-dim); font-size:14px; letter-spacing:2px; }
+  .author-credit{ text-align:center; color:var(--text-dim); font-size:13px; padding-bottom:100px; }
+
+  .player-bar{
+    position:fixed; left:0; right:0; bottom:0; z-index:80;
+    background:rgba(10,15,31,0.96); backdrop-filter:blur(10px);
+    border-top:1px solid var(--border);
+    padding:10px 16px; display:none; align-items:center; gap:12px;
+    box-shadow:0 -8px 24px rgba(0,0,0,0.5);
+  }
+  .player-bar.active{ display:flex; }
+  .player-bar .p-info{ flex:1 1 auto; min-width:0; }
+  .player-bar .p-title{ font-size:13px; color:var(--gold-bright); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .player-bar .p-sub{ font-size:11px; color:var(--text-dim); }
+  .player-controls{ display:flex; align-items:center; gap:10px; flex:0 0 auto; }
+  .player-controls button{
+    background:var(--navy-light); border:1px solid var(--border); color:var(--gold);
+    width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    cursor:pointer; font-size:14px;
+  }
+  .player-controls button.p-play{
+    background:linear-gradient(135deg,var(--gold-dim),var(--gold)); color:var(--navy-deep); border:none;
+    width:42px; height:42px;
+  }
+
+  .voice-warning{
+    display:none; position:fixed; inset:0; z-index:120;
+    background:rgba(6,9,18,0.72); align-items:center; justify-content:center; padding:20px;
+  }
+  .voice-warning.show{ display:flex; }
+  .vw-box{
+    background:var(--navy-card); border:1px solid var(--gold-dim); border-radius:14px;
+    max-width:420px; width:100%; padding:22px; box-shadow:var(--shadow);
+  }
+  .vw-title{ color:var(--gold-bright); font-size:16px; font-weight:700; margin-bottom:10px; }
+  .vw-text{ color:var(--text-dim); font-size:13.5px; margin-bottom:10px; }
+  .vw-list{ margin:0 0 16px; padding-left:18px; color:var(--text); font-size:13.5px; line-height:1.7; }
+  .vw-list li{ margin-bottom:8px; }
+  .vw-close{
+    width:100%; background:linear-gradient(135deg,var(--gold-dim),var(--gold)); color:var(--navy-deep);
+    border:none; padding:10px; border-radius:22px; font-weight:700; font-size:14px; cursor:pointer;
+  }
+
+  @media(max-width:480px){
+    .hero{ min-height:48vh; }
+    .episode{ padding-top:38px; }
+    .episode-body p{ font-size:16px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<header class="site-nav">
+  <div class="brand">The Punishment of Exile<small>Surajit Roy</small></div>
+
+  <a href="#toc" class="nav-toc-btn">Contents</a>
+
+</header>
+
+<section class="hero">
+  <img src="images/hero1.png" alt="The Punishment of Exile">
+  <div class="hero-content">
+    <div class="hero-eyebrow">A Literary Series</div>
+    <h1>The Punishment of Exile</h1>
+    <p>Khokon, the arrogant son of a wealthy businessman, humiliates and injures an old beggar—and is forced to leave behind his privileged life and live as a beggar in an unfamiliar city. What begins as a punishment becomes a journey through hunger, humiliation, compassion, love, and ultimately, the discovery of what it truly means to be human.</p>
+    <div class="hero-meta">
+      <span>Complete in 9 parts</span>
+      <span>Author: Surajit Roy</span>
+    </div>
+  </div>
+    <a class="home-btn" href="index.html" aria-label="Home">🏠</a>
+
+</section>
+
+
+<div class="wrap">
+  <div id="continue-banner" class="continue-banner">
+    <div class="cb-text"><b id="cb-title"></b>Continue reading where you left off</div>
+    <a href="#" id="cb-link">Continue</a>
+  </div>
+</div>
+
+<div class="wrap toc-section" id="toc">
+  <h2>Contents</h2>
+  <ul class="toc-list" id="toc-list">
+      <li class="toc-item">
+        <a href="#ep1" class="toc-link" data-ep="1">
+          <span class="toc-num">Part 1</span>
+          <span class="toc-title">The Punishment of Exile</span>
+        </a>
+      </li>
+      <li class="toc-item">
+        <a href="#ep2" class="toc-link" data-ep="2">
+          <span class="toc-num">Part 2</span>
+          <span class="toc-title">The First Day: An Empty Begging Bowl</span>
+        </a>
+      </li>
+      <li class="toc-item">
+        <a href="#ep3" class="toc-link" data-ep="3">
+          <span class="toc-num">Part 3</span>
+          <span class="toc-title">First Lessons and the Shadow of the Past</span>
+        </a>
+      </li>
+      <li class="toc-item">
+        <a href="#ep4" class="toc-link" data-ep="4">
+          <span class="toc-num">Part 4</span>
+          <span class="toc-title">The Girl from the Photograph</span>
+        </a>
+      </li>
+      <li class="toc-item">
+        <a href="#ep5" class="toc-link" data-ep="5">
+          <span class="toc-num">Part 5</span>
+          <span class="toc-title">Behind a Borrowed Name</span>
+        </a>
+      </li>
+      <li class="toc-item">
+        <a href="#ep6" class="toc-link" data-ep="6">
+          <span class="toc-num">Part 6</span>
+          <span class="toc-title">Trust, Broken</span>
+        </a>
+      </li>
+      <li class="toc-item">
+        <a href="#ep7" class="toc-link" data-ep="7">
+          <span class="toc-num">Part 7</span>
+          <span class="toc-title">The Identity Behind the Photograph</span>
+        </a>
+      </li>
+      <li class="toc-item">
+        <a href="#ep8" class="toc-link" data-ep="8">
+          <span class="toc-num">Part 8</span>
+          <span class="toc-title">The Test of Five Thousand Rupees</span>
+        </a>
+      </li>
+      <li class="toc-item">
+        <a href="#ep9" class="toc-link" data-ep="9">
+          <span class="toc-num">Part 9</span>
+          <span class="toc-title">Behind It All: A New Dawn</span>
+        </a>
+      </li>
+  </ul>
+</div>
+
+<div class="wrap">
+    <section class="episode" id="ep1" data-ep="1">
+      <div class="episode-head">
+        <span class="episode-num">Part 1</span>
+        <h2 class="episode-title">The Punishment of Exile</h2>
+        <button class="listen-btn" data-ep="1" aria-label="Listen">
+          <svg class="icon-play" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+          <span class="listen-label">Listen</span>
+        </button>
+      </div>
+      <div class="episode-body">
+        <p>Khokon was not yet twenty-five. He was the only child of one of the city's wealthiest businessmen. Endless money, a palatial mansion, a fleet of expensive cars — nothing was ever missing from his life. Yet standing in that ocean of plenty, his father carried a deep, quiet sorrow. Night after night sleep would not come to him, worrying over the future of his only son, Khokon.</p>
+<p>A flock of opportunistic friends always surrounded Khokon. In the crowd of that hollow friendship, money was thrown around like water, day after day. To him money was nothing but paper that passed from hand to hand. Adda sessions, extravagance at expensive restaurants, an endless hunger for new luxuries — he had gone blind with it. And it wasn't only that; day by day the edge in his behaviour and the roughness of his speech kept growing. Whoever stood before him — old or young, rich or poor — he no longer cared; speaking rudely to anyone had become his habit.</p>
+<p>Yet his father was cut from an entirely different cloth. He had built this vast business empire on the back of hard struggle and honesty. At heart he was deeply humble and full of respect for others. He had pulled his son close many times and tried to make him understand,</p>
+<p>—"Khokon, money can buy rice, but it cannot buy character. Never let money kill the human being inside your chest."</p>
+<p>But that fatherly counsel went in one of Khokon's ears and straight out the other.</p>
+<p>One blazing afternoon, an old beggar came and stood before the gates of the mansion. He wore ragged, tattered clothes, his body bent under the weight of age, and in his wounded hand he held an old begging bowl. Looking at Khokon with a trembling voice, the old man said,</p>
+<p>—"Son, I haven't had a bite in two days. Help me a little, so I can buy something to eat."</p>
+<p>Khokon was standing at the gate scrolling through his phone. His face twisted with irritation. Scrunching up his eyes, he shouted,</p>
+<p>—"Get away from here! Everyone comes to bother me right when I'm busy!"</p>
+<p>The old man folded his hands and said gently,</p>
+<p>—"Don't be angry, son. Just a little charity would be a great help."</p>
+<p>That mild protest from the old man struck Khokon's pride like a poisoned arrow. Losing his temper, he kicked the old man hard in the chest. The elderly man, well past eighty, was knocked flying to the ground. But Khokon's fury did not stop there; he began grinding the old man's fallen hand under his leather shoe. The courtyard rang with screams, and in an instant fresh red blood spread across the paved floor.</p>
+<p>Right at that moment Khokon's father had come to stand at the door. He froze at the sight. Stunned, speechless, he stood there for a moment. Something inside his chest shattered in that instant.</p>
+<p>Looking at his son, he asked in a trembling voice,</p>
+<p>—"You… what have you done, Khokon?"</p>
+<p>Khokon looked at his father with frightened eyes, but no sound came out of his mouth.</p>
+<p>His father did not wait another moment; he rushed to the old man's side. Without a thought for his own expensive kurta, he knelt down and took the bleeding old man's hands into his own. In a choked voice he said,</p>
+<p>—"Forgive me, brother. I gave him birth, but I failed to make him a human being. This sin is mine."</p>
+<p>The old man said nothing, only silently let his tears fall.</p>
+<p>Khokon's father now stood up. He looked at his son. There was no longer only anger in those eyes — there was an ocean-deep despair and contempt. He said,</p>
+<p>—"I wanted to give you a vast empire, but before that I wanted to make you a human being of flesh and blood. I have failed utterly."</p>
+<p>Khokon, now frightened, stepped forward,</p>
+<p>—"Father! It was a mistake! I'll never do this again, I swear!"</p>
+<p>But the wheel of his father's decision had already turned. He went inside the house, and after some time came back out and made a hard announcement,</p>
+<p>—"From this very moment, you no longer have any right over the wealth I have earned."</p>
+<p>Khokon stood as if struck by lightning,</p>
+<p>—"F-Father! What are you saying?"</p>
+<p>His father's eyes were now hard as stone. In a calm but unwavering voice he said,</p>
+<p>—"This entire estate, this business, this bank balance — all of it, I am signing over to this humiliated old beggar."</p>
+<p>—"Father! I'm begging at your feet, don't do this to ruin me! Give me one chance!" — Khokon shouted, trying to fall at his father's feet. But his father pulled away. The family lawyer was summoned at once and all the papers were prepared. No amount of pleading from Khokon could soften his father even a little. In the lawyer's presence a trust was formed, and the old beggar's name was recorded as its principal beneficiary.</p>
+<p>In a single moment, Khokon went from prince to pauper on the street.</p>
+<p>After the papers were signed, the old beggar slowly rose to his feet. Looking at Khokon's devastated face, he said calmly,</p>
+<p>—"Look, Khokon — I may be a beggar, but I have no greed for another man's wealth. I will not touch a single coin of your father's trust."</p>
+<p>Khokon stood with his head hung low, like a guilty man.</p>
+<p>The old man spoke again,</p>
+<p>—"But for the injury you did to my body, for crushing my self-respect — you must still be punished for that."</p>
+<p>Khokon raised his eyes and asked,</p>
+<p>—"What punishment?"</p>
+<p>The old man said,</p>
+<p>—"You will have to go to another, unfamiliar city for some months. There you will have to survive by begging. Begging will be your livelihood. From that begging you must save five thousand rupees. When you bring that money to me, your life as a beggar will end. Until you can earn that money, you must keep begging."</p>
+<p>Something inside Khokon's chest went cold,</p>
+<p>—"I… I will have to beg?"</p>
+<p>—"Yes, you. And listen," the old man added, "during these days, no one must ever learn who you really are. Remember — you cannot earn money any other way. If you do any other work, it must be done for no pay at all. I will send someone to watch over your movements; they will keep an eye on you from a distance."</p>
+<p>Khokon stood in stunned silence.</p>
+<p>The old man laid down his harsh conditions,</p>
+<p>—"Every morning you will go out onto the street empty-handed. You may not carry any money or valuables. Whatever you earn by holding out your hand all day is what you will live on. Under no circumstances may you spend the previous day's begging money.</p>
+<p>—"You must save five thousand rupees through this begging alone. Until that five thousand is complete, your punishment will not end. This way you will come to understand what it truly means to beg door to door, and what a single mouthful of food is really worth."</p>
+<p>Pausing a moment, the old man gave his final word,</p>
+<p>—"If you can earn five thousand rupees honestly, without any trickery, and complete this punishment, then I give you my word — I will return every bit of your father's property to you, untouched."</p>
+<p>Khokon stood utterly still. There was no second path open to him now. On one side lay a vast, lost kingdom — which in the eyes of the law now belonged to a beggar — and on the other, an uncertain, humiliating life of begging for who knew how long.</p>
+<p>Khokon did not know where the dust-covered roads of this unfamiliar city would lead him. He understood only this —</p>
+<p><strong>He had no idea how many days lay ahead in which he would have to surrender his own pride and live as a true beggar.</strong></p>
+<p>And hidden at the end of this brutal trial by fire lay the greatest lesson of his life — the lesson of becoming human.</p>
+      </div>
+    </section>
+    <section class="episode" id="ep2" data-ep="2">
+      <div class="episode-head">
+        <span class="episode-num">Part 2</span>
+        <h2 class="episode-title">The First Day: An Empty Begging Bowl</h2>
+        <button class="listen-btn" data-ep="2" aria-label="Listen">
+          <svg class="icon-play" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+          <span class="listen-label">Listen</span>
+        </button>
+      </div>
+      <div class="episode-body">
+        <p>Before the light of dawn had even broken the next day, Khokon's difficult months-long journey of punishment began.</p>
+<p>The boy who had never once set foot outside without an expensive luxury car, whose pocket had always carried a crisp bundle of notes, now had nothing in his hands. No money, no phone, no social standing of any kind. He wore nothing but a plain old set of clothes, and in his hand he carried an empty begging bowl.</p>
+<figure class="story-img"><img src="images/bagger1.png" alt="Khokon standing with a begging bowl on his first day" loading="lazy"></figure>
+<p>The city's streets, its whole atmosphere — all of it was completely unknown, unfamiliar to him.</p>
+<p>Before leaving the house, the old beggar's final words still rang in his ears —</p>
+<p>—"Remember — no one must ever learn your true identity. You will tell no one who you are. You are a human being of flesh and blood, and it is as one that you must survive these hard months."</p>
+<p>Khokon nodded silently and set out alone onto the streets of the city.</p>
+<p>The morning had barely begun when he stood at the roadside and, for the first time, held out his hand to a passer-by. His throat had gone dry with shame and hesitation. It felt as if he couldn't draw a breath. Still, he managed to stammer out,</p>
+<p>—"Sir… could you help me a little?"</p>
+<p>The man paused a moment, looked him up and down, and said with contempt,</p>
+<p>—"Look at you, young and able-bodied! Can't you work for a living? Cheap begging, that's what this is!"</p>
+<p>Khokon stood there with his head bowed like a guilty man. The man strode off.</p>
+<p>Walking a little further, he held out his hand to an older woman,</p>
+<p>—"Mother, could you spare a couple of rupees? I haven't eaten anything…"</p>
+<p>The woman turned her face away in annoyance and said,</p>
+<p>—"A young, healthy fellow like you, not ashamed to beg? Such an act!"</p>
+<p>The words struck Khokon's chest like a burning whip. Unable to bear the humiliation, he stood there in silence.</p>
+<p>A little later he stood before another passer-by, and the man looked at him with such fierce eyes, as if Khokon had committed some grave sin. He snarled,</p>
+<p>—"Get out of here! Don't you dare stand in front of me!"</p>
+<p>Khokon stepped back. But he couldn't afford to keep stepping back. Today he had to earn his food by holding out his hand, or else fasting would be his fate.</p>
+<p>By midday the heat of the sun had grown fiercer still. A blazing sun overhead, and the fire of hunger in his belly. Starvation seemed to be gnawing at his stomach. His throat was cracking with thirst. Seeing no other way, he went and stood before a roadside tea stall,</p>
+<p>—"Brother, could you help me a little? I'm terribly hungry…"</p>
+<p>The stall owner glared at him with irritation,</p>
+<p>—"I've been watching you circle this square since morning. Get lost from here! Don't drive my customers crazy!"</p>
+<p>Khokon held out his hand again, pleading,</p>
+<p>—"You needn't give me money, brother… if you could just give me a little food, it would help enormously…"</p>
+<p>Before he could even finish the sentence, the shopkeeper, boiling with rage, hurled the cup of boiling tea in his hand straight at Khokon.</p>
+<p>The scalding tea splashed across Khokon's shirt and skin. He recoiled, shuddering in pain. His skin turned red and burned. The shopkeeper shouted,</p>
+<p>—"Come here to put on a show? Get out of here, or I'll pour boiling water on you next!"</p>
+<p>Khokon stood there, stunned. An unwilling stream of tears slid down the corner of his eyes. But he held back the sob that had lodged in his throat. Khokon, who had never once endured even the slightest disrespect, learned that day just how heavy and painful humiliation could be.</p>
+<p>The afternoon wore on. He had lost count of how many hundreds of people he had held out his hand to that day, how many times he had begged, "Please help me a little" — there was no keeping track. But his clay bowl still sat pitifully empty. Not a single coin had fallen into it.</p>
+<p>Khokon stared at the bowl, unblinking. He thought of his father's palatial house, where the dining table would once be laid with hundreds of dishes, the fridge stocked full of expensive snacks. One phone call and food would arrive from a restaurant. And today? For one piece of dry bread he had to endure the powdered faces and bitter words of hundreds of strangers!</p>
+<p>His head spun with the burning of hunger. He thought —</p>
+<p>"Can I really do this? How much longer can I bear it like this?"</p>
+<p>But there was no one to answer.</p>
+<p>Just as evening approached, Khokon was standing exhausted at the mouth of a lane when suddenly, from behind, a self-important sort of man grabbed his collar and yanked hard.</p>
+<p>—"You scoundrel! Wasn't it you who lifted the money from my pocket?"</p>
+<p>Khokon flinched and said in a frightened voice,</p>
+<p>—"No… no! I haven't taken anything! Believe me!"</p>
+<p>The man shouted and gathered a crowd around them,</p>
+<p>—"A total liar! I saw you sneaking around behind me just a moment ago!"</p>
+<p>—"I was only asking for alms, brother, I'm not a pickpocket!"</p>
+<p>—"Shut up, thief!"</p>
+<p>In an instant four or five men surrounded Khokon. Someone from the crowd shoved him hard, someone else slapped him hard across the face. One man shouted,</p>
+<p>—"These beggar types pick pockets the moment they get the chance! Beat him!"</p>
+<p>Weeping helplessly, Khokon folded his hands and cried,</p>
+<p>—"I beg you, I am not a pickpocket! I haven't taken any money!"</p>
+<p>But does a frenzied mob ever listen to the truth? One man raised his hand to strike him again.</p>
+<p>Right at that moment, another beggar sitting on the pavement struggled to his feet. He wasn't very old, but his body was worn thin. His left arm hung uselessly, paralysed, at his side. Somehow he pushed through the crowd and stood forward, raising his one good hand,</p>
+<p>—"Don't hit him, sirs! He's no pickpocket, he hasn't done anything wrong!"</p>
+<p>The people turned on him angrily,</p>
+<p>—"Why are you pleading for him? Do you know him or something?"</p>
+<p>The beggar spoke calmly but firmly,</p>
+<p>—"I've been sitting in one spot since morning, watching him. The boy was only crying and holding out his hand to people, he never once touched anyone's pocket."</p>
+<p>Someone else said suspiciously,</p>
+<p>—"How can you guarantee that so confidently?"</p>
+<p>The beggar smiled a little,</p>
+<p>—"Because it's plain to see he's not the type for this racket. He's far from picking pockets — he doesn't even know how to beg properly."</p>
+<p>Hearing this, Khokon looked at the beggar with tear-filled eyes. After some more arguing, the men left, still muttering curses.</p>
+<p>His strength gone, Khokon sank down onto the roadside. Tears kept streaming from his eyes without pause.</p>
+<p>The one-armed beggar came slowly and sat beside him. Placing a hand on Khokon's shoulder, he said gently,</p>
+<p>—"You're very hungry, aren't you?"</p>
+<p>Khokon wiped his eyes and only nodded silently.</p>
+<p>The beggar pulled out from his bundle a bit of bread and a small piece of jaggery, wrapped in a cloth. Holding it out to Khokon, he said,</p>
+<p>—"Here, eat. Crying won't stop with an empty stomach."</p>
+<p>Khokon looked at him, astonished,</p>
+<p>—"And… and you? Won't you eat?"</p>
+<p>The man gave a faint, weary smile at the corner of his lips,</p>
+<p>—"I'm used to it, brother. Even without food some days, I get by somehow or other. You haven't put a single grain in your stomach all day, I've seen it. Eat."</p>
+<p>With trembling hands, Khokon took the food. The moment the first mouthful touched his lips, his cheeks were flooded with tears. After all the beatings of the day, the burn of the hot tea, the humiliation and neglect — this small piece of dry bread from an unknown beggar felt to him like nectar from heaven.</p>
+<p>When the meal was done, Khokon asked quietly,</p>
+<p>—"What's your name?"</p>
+<p>The man let out a breath and said,</p>
+<p>—"What good would knowing a name do, brother? The people of this city don't know us by name. We have only one name — beggar."</p>
+<p>Khokon fell silent. A deep sigh escaped from his chest.</p>
+<p>Evening had settled all around. Darkness was gathering on the streets. The beggar looked at Khokon and asked,</p>
+<p>—"Do you have anywhere to sleep tonight?"</p>
+<p>Khokon shook his head and said meekly,</p>
+<p>—"No, I have no one…"</p>
+<p>The man looked at Khokon's face for a moment. Perhaps he sensed the helplessness inside him. He said,</p>
+<p>—"Come with me. You'll stay at my place tonight."</p>
+<p>Khokon clutched at it like a drowning man grasping a straw. He began following the man.</p>
+<p>A little way down the road, past the noise of the city, they reached a broken culvert. The space beneath it was damp and dank. Several other destitute people were preparing to spend the night there. Some had a torn blanket over them, others had old newspapers spread beneath them.</p>
+<p>The beggar spread an old, worn sheet on the ground and said to Khokon,</p>
+<p>—"Lie down here. Get through tonight somehow. Tomorrow's worries can wait for tomorrow."</p>
+<p>Khokon looked around at the wretched surroundings. This was his palace tonight, this his new shelter!</p>
+<p>The boy who had always slept on a soft bed in an air-conditioned room now spent his night on the hard ground, beneath a filthy roadside culvert.</p>
+<p>He lay down quietly on the ground. But sleep would not come.</p>
+<p>Staring up at the sky and closing his eyes, images kept rising before him — his father's stern face, the enormous gates of the house, the roar of expensive cars, the tally of money thrown away with friends.</p>
+<p>Then he remembered today — the scalding tea at the shop, the bitter words of strangers, the accusation of theft, the slap across his face…</p>
+<p>And last of all — the sight of a one-armed, unknown beggar sharing the food from his own mouth.</p>
+<p>On this, his very first day, Khokon realised the greatest truth of his life —</p>
+<p><strong>Even someone with no worldly wealth at all may still carry an ocean of heart to give. Humanity does not live in expensive clothes; it lives in the human soul.</strong></p>
+<p>Lying beneath the culvert, breathing in the smell of mosquitoes and damp earth, the first day of Khokon's punishment came to an end.</p>
+<p>But he knew — this was only the first watch of the night. He could not even imagine how much more humiliation, hunger, testing, and darkness awaited him in the days to come.</p>
+      </div>
+    </section>
+    <section class="episode" id="ep3" data-ep="3">
+      <div class="episode-head">
+        <span class="episode-num">Part 3</span>
+        <h2 class="episode-title">First Lessons and the Shadow of the Past</h2>
+        <button class="listen-btn" data-ep="3" aria-label="Listen">
+          <svg class="icon-play" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+          <span class="listen-label">Listen</span>
+        </button>
+      </div>
+      <div class="episode-body">
+        <p>The next day, the moment the first light of dawn broke, Khokon's sleep was broken by his beggar friend's call.</p>
+<p>—"Get up, brother. From today, just holding out your hand won't be enough — you need to learn the real craft of begging."</p>
+<p>Khokon sat up and rubbed his eyes in the dark corner of the worn-out culvert. The beggar looked at him deeply and said,</p>
+<p>—"Asking people for alms seems simple, but it isn't, really. Just holding out your hand on the street won't make people reach for their pockets. There's a grammar to earning pity, too."</p>
+<p>Khokon listened attentively, in silence.</p>
+<p>—"First rule — never annoy anyone. Someone might be rushing to urgent work, heading to the office or the market — don't follow them then. Don't block anyone's path and shout at them again and again. Bother a busy person and you'll get scorn instead of kindness."</p>
+<p>Khokon hesitated a little before asking,</p>
+<p>—"Then when should I hold out my hand?"</p>
+<p>The beggar answered with a faint smile,</p>
+<p>—"When people are heading home after a full day's work. A tired person's heart is a little softer then, their mood a little lighter. That's when you say, humbly, in a calm voice — 'Sir, could you help me a little?' or 'Mother, please show some kindness.'"</p>
+<p>Pausing a moment, he spoke again,</p>
+<p>—"And remember this for the rest of your life. You can never force anyone to give you money. Whoever gives even a single coin of their own free will — wish them well from your heart. Give them a blessing."</p>
+<p>Then the beggar himself folded his hands and demonstrated, reciting in a low voice,</p>
+<p>—"Say — 'May God bless you.'"</p>
+<p>Without realising it, Khokon murmured the phrase to himself a few times,</p>
+<p>—"May God bless you…"</p>
+<p>The beggar, satisfied, said,</p>
+<p>—"Yes, exactly like that. Let there be no artifice in that blessing — only pure humanity. Whoever is giving to you is neither greater nor lesser than you — don't ever think that way. They are a human being, and so are you."</p>
+<p>Then he pulled some clothes out from an old, worn bundle set to one side and held them out to Khokon,</p>
+<p>—"Put these on."</p>
+<p>Khokon reached out and looked at the clothes. The colour had faded, patched and stitched in places.</p>
+<p>The beggar said,</p>
+<p>—"These are my own old clothes. If you go out to beg wearing your fine clothes, people will think you're a fraud and grow suspicious. From today, these clothes are your new identity."</p>
+<p>Without any argument, Khokon slowly put the clothes on. There was no mirror nearby, so he caught his reflection in the murky river flowing beside the culvert, and froze. This seemed like another Khokon altogether — one with no pride, no vanity about his looks, no trace of royal bearing.</p>
+<p>In the morning the beggar friend took Khokon to one edge of the city, near the riverbank ghat. The place was fairly quiet. All day, people came and went along the riverside for various errands.</p>
+<p>He put a hand on Khokon's shoulder and said,</p>
+<p>—"Today you'll sit here by the river all day. Don't force yourself on anyone. If someone gives nothing, don't say a single bitter word. Just sit patiently and wait."</p>
+<p>Khokon sat quietly on the paved platform by the river. The first few hours seemed as if they would never pass. His chest trembled with shame. So many people walked by — some never even glanced at him, others turned their faces away in disgust.</p>
+<p>But as noon wore on, Khokon began putting his friend's teachings into practice. In a slow, humble voice, he said,</p>
+<p>—"Sir, could you help me a little?"</p>
+<p>A middle-aged man, walking past, dropped a two-rupee coin into his bowl. Khokon immediately bowed his head and said humbly,</p>
+<p>—"May God bless you."</p>
+<p>A little later, an elderly woman left a few rupees in the bowl as she passed. Khokon spontaneously said,</p>
+<p>—"Mother, may God bless you."</p>
+<p>By the end of the day, sitting on the riverbank, Khokon came to understand a strange truth — begging is not simply holding out your hand. It demands crushing all your pride, anger, and shame, and enduring a test of boundless patience. How much harder it is to earn people's sympathy and trust than to earn their money!</p>
+<p>It was on this very riverbank that Khokon met a traffic policeman every single day. The man had a solid, sturdy build. Every day, after finishing duty, he would come to the riverbank ghat to bathe. Before going in to bathe, he would leave his bag, his clothes, and his mobile phone in the care of an old beggar sitting a little way off. After bathing, he would regularly slip that beggar a crisp five-rupee note.</p>
+<p>The same traffic policeman noticed Khokon too, every day. He may well have noticed the sorrowful eyes and quiet manner of this newly arrived young beggar, but he never once dropped a single coin into Khokon's bowl. And Khokon, in turn, would silently watch him from a distance, finishing his bath and walking away.</p>
+<p><strong>A few days earlier —</strong></p>
+<p>Back then, Khokon's life had been entirely different. A palatial house, boundless wealth, a reckless life. In that time, Khokon's mother spent her days in deep anxiety, watching her son's ways. She thought to herself — if her son could be tied down to family life, perhaps under the influence of a good girl, Khokon's stubbornness and pride might lessen. Perhaps with the responsibility of a household on his shoulders, the boy would finally grow up.</p>
+<p>Holding onto this hope, she one day sent word to an experienced matchmaker. The matchmaker arrived with photographs of girls from several respectable, well-off families. Khokon's mother looked through picture after picture, but none of them satisfied her.</p>
+<p>Suddenly, her eyes caught on one photograph.</p>
+<p>The girl's name was <strong>Pompa</strong>. No grandeur, no artificial adornment — an entirely ordinary appearance. But within that plain face there was a strange gentleness and self-assurance.</p>
+<p>The matchmaker introduced Pompa, saying,</p>
+<p>—"This girl has more virtue than beauty, dear lady. She's standing on her own two feet, fighting her own battles. After finishing her studies, she started a small handicrafts shop through her own effort. Both her parents died in a road accident; she now lives with her aunt. The girl has no excessive demands at all."</p>
+<p>Khokon's mother stared at the photograph in silence for a while before saying,</p>
+<p>—"The girl looks ordinary, but she seems very hardworking and refined. This is the girl who could set my wayward son straight."</p>
+<p>That evening, Khokon's mother took the photograph and went to Khokon's room,</p>
+<p>—"Khokon, I've taken quite a liking to a girl. Won't you at least look at her picture, son…"</p>
+<p>Khokon was on the phone talking to his friends at the time. Annoyed, he snatched the photograph from his mother's hand. He looked at it for a few seconds and then, with utter carelessness — <strong>tore the photograph in two and threw it to the floor!</strong></p>
+<p>Khokon's mother cried out in shock,</p>
+<p>—"What have you done, Khokon!"</p>
+<p>Khokon shouted back harshly,</p>
+<p>—"I'm not doing any of this pointless marriage business! Stop pestering me about it!"</p>
+<p>His mother, deeply hurt, wiped her eyes and left the room. The marriage talk stalled right there.</p>
+<p>But the matchmaker had already given a photograph of Khokon to Pompa's aunt's household beforehand. Pompa's aunt never returned that photograph. But since no further contact came from Khokon's side, the matter was quietly buried there.</p>
+<p>No one had the faintest idea back then — that this incomplete, rejected connection would one day return with new drama, at some unforeseen turn of the future.</p>
+<p>And now… that same arrogant Khokon faces the harshest trial by fire of his life. Sitting in the dust by the riverbank, he holds out his hand to passers-by for a rupee or two. Every day hundreds of people walk past him — some looking on with pity, others simply looking away.</p>
+<p>Staring at the river water, Khokon could only feel the change taking place within him. He was coming to understand — how many hundred times harder it is to earn a little human sympathy and trust than to possess all the riches of a palace!</p>
+      </div>
+    </section>
+    <section class="episode" id="ep4" data-ep="4">
+      <div class="episode-head">
+        <span class="episode-num">Part 4</span>
+        <h2 class="episode-title">The Girl from the Photograph</h2>
+        <button class="listen-btn" data-ep="4" aria-label="Listen">
+          <svg class="icon-play" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+          <span class="listen-label">Listen</span>
+        </button>
+      </div>
+      <div class="episode-body">
+        <p>That evening, having finished his work by the riverside, Khokon was slowly walking along the city streets. Despite the exhaustion and weariness of the whole day, thoughts of his palatial home no longer flooded his mind at every single moment as before. This unfamiliar city's alleys, its paved roads, and even its unfamiliar air were slowly becoming part of his life. Where to sit so that people's hearts soften, at what time to hold out a hand for alms to come, and where to stand and wait quietly without sacrificing one's own dignity — he was gradually mastering these skills.</p>
+<p>As he walked, Khokon's thoughts were suddenly broken by the sound of some young men laughing crudely at a street corner.</p>
+<p>Looking a little ahead, he saw a plain but graceful young woman walking along, carrying a wrapped package in her hands. The package was tied up in pretty coloured paper, with 'Happy Birthday' written on it in bold letters. The girl was likely on her way to deliver a customer's birthday gift.</p>
+<p>But four or five ruffians had blocked her path and were harassing her.</p>
+<p>—"Hey there, beautiful, where are you rushing off to at this hour?"</p>
+<p>—"Come chat with us for a bit, what's the hurry?"</p>
+<p>The girl stepped back a little in fear, trying desperately to avoid them,</p>
+<p>—"Please let me pass. I need to deliver this on time, I'm running late."</p>
+<p>But the ruffians had no intention of moving aside. One of them stepped forward, reaching out as if to snatch the gift package,</p>
+<p>—"Let's see, let's see, what expensive thing are you hiding in there?"</p>
+<p>The girl clutched the package tightly to her chest and stepped back,</p>
+<p>—"No! This belongs to a customer's order. Please, don't touch me!"</p>
+<p>At that sight, something inside Khokon stirred awake. The daring to protest injustice had always been in his blood; and since evening had fallen and he was still in his good clothes, without a moment's thought he stepped forward and said in a firm, steady voice,</p>
+<p>—"Let her go."</p>
+<p>The ruffians turned, startled. Even though Khokon wore old clothes, there was a bearing in the way he stood and a look in his eyes that most ordinary people didn't carry.</p>
+<p>One of the ruffians sneered,</p>
+<p>—"Who do you think you are, brother? Playing the hero?"</p>
+<p>Khokon replied in a calm but hard voice,</p>
+<p>—"Who I am isn't the point. Why are you harassing a girl who's alone? Let her pass."</p>
+<p>Faced with Khokon's steady gaze and fearless manner, the ruffians seemed to lose their nerve. Sensing the situation was not in their favour, they muttered curses for a few moments and then slipped off into a dark alley.</p>
+<p>Pompa let out a deep breath of relief. Then, looking at Khokon, she said very humbly,</p>
+<p>—"Thank you so much. If you hadn't come, I don't know what would have happened today!"</p>
+<p>Khokon smiled faintly and said politely,</p>
+<p>—"No need to thank me. Are you all right?"</p>
+<p>—"Yes, I'm fine." — Pompa straightened the package in her hands a little and said, — "I was really frightened seeing them."</p>
+<p>Khokon said,</p>
+<p>—"There's nothing to be afraid of now. Go on and deliver your parcel safely."</p>
+<p>Pompa looked at Khokon's face. Even beneath his worn clothes, this young man's refined manner touched her heart. She smiled and asked,</p>
+<p>—"Do you live around here?"</p>
+<p>Hearing the question, Khokon hesitated a moment. Standing between honesty and reality, he answered briefly,</p>
+<p>—"Yes, I live in this city."</p>
+<p>The girl introduced herself,</p>
+<p>—"My name is Pompa."</p>
+<p>'Pompa' — the moment he heard the name, something inside Khokon's chest lurched violently! Time seemed to stop for an instant. In a flash, a memory surfaced from an evening months ago —</p>
+<p>His mother sitting in the room. A photograph in her hand. His mother saying, with utmost tenderness —</p>
+<p><em>"Khokon, I've taken quite a liking to this girl. Won't you at least look at her picture, son… This girl is very ordinary but hardworking. Perhaps this girl could set you on the right path one day."</em></p>
+<p>And in response, the arrogant Khokon had snatched the photograph from his mother's hand and torn it apart, throwing it into the dust on the floor!</p>
+<p>Khokon stood frozen, staring at Pompa's face. Could this be that same Pompa? The one whose photograph he had carelessly destroyed — today the flesh-and-blood person from that photograph stood before him!</p>
+<p>Steadying the storm within himself, Khokon took a slow step forward and asked quietly,</p>
+<p>—"Your… your parents…?"</p>
+<p>Pompa's cheerful face suddenly grew a little dim. She lowered her eyes and said,</p>
+<p>—"Neither of my parents is alive. Both died in a terrible road accident. I live with my aunt now."</p>
+<p>Something inside Khokon's chest grew heavy. The exact same story he had heard from his mother! Every single detail matched precisely.</p>
+<p>Pompa spoke again on her own,</p>
+<p>—"I finished my studies, but instead of waiting around hoping for a job, I opened a small handicrafts shop of my own. I'm trying to stand on my own feet, that's all."</p>
+<p>Looking at the package, she smiled sweetly and said,</p>
+<p>—"This is also something I made with my own hands. A customer ordered it for their friend's birthday, and I'm on my way to deliver it."</p>
+<p>Khokon stood there like a wooden doll. How strangely fate places people in the dock! The girl he had once rejected with disdain in his arrogance over wealth — today, in the depths of destitution, he stood before that very same girl as a man in her debt. Yet Pompa had not the faintest idea that this young man was that same arrogant Khokon!</p>
+<p>Pompa asked, curious,</p>
+<p>—"I don't think I got your name?"</p>
+<p>Khokon hesitated slightly before saying,</p>
+<p>—"Khokon."</p>
+<p>Pompa smiled naturally at the name, since there could be many people named Khokon in this city. She said,</p>
+<p>—"Oh, what a lovely name. Well, you saved me from real trouble — if you give me your phone number… I could reach you if I ever need to."</p>
+<p>Khokon fell silent for a few moments. He thought of the damp floor beneath the culvert where he spent his nights. That could hardly serve as an address! And with not a single coin in his pocket, where would a phone even come from?</p>
+<p>He said in a low voice,</p>
+<p>—"I don't use a phone, I have no need for one. There's another number you could use" — and he gave her his beggar friend's number instead.</p>
+<p>Pompa said, a little surprised,</p>
+<p>—"No phone? These days?"</p>
+<p>—"No."</p>
+<p>Pompa looked at him for a while with curiosity and a touch of tenderness in her eyes. Seeing Khokon's honesty and sorrowful eyes, a strange sense of respect grew in her heart. She sensed that some deep wound or story of struggle might be hidden in this young man's life.</p>
+<p>Pompa said humbly,</p>
+<p>—"So how will I see you again?"</p>
+<p>Khokon gave a faint, weary smile and said,</p>
+<p>—"If fate wills it, perhaps we'll meet again."</p>
+<p>Pompa smiled gently too and said,</p>
+<p>—"Perhaps. My shop is right at the head of that corner, in the lane to the right. A small shop — 'Pompa's Handiwork'. Do come by sometime, if you get the chance."</p>
+<p>Thanking him, Pompa walked off towards her destination.</p>
+<p>Khokon stood frozen at that street corner for a long while. Before his eyes floated his mother's tear-streaked face — the very photograph he had once burned in the fire of his pride; today the person in that photograph had shown him an entirely new side of himself.</p>
+<p>Slowly, Khokon walked towards the lane Pompa had pointed to. From a distance he could see a small, lit-up shop, its signboard reading 'Pompa's Handiwork'. Inside, Pompa was busy arranging her handicraft items.</p>
+<p>Khokon did not go to the shop's door. He kept himself away from the circle of Pompa's light, folded into the shadows of the night. Watching her hardworking figure from a distance, he murmured to himself,</p>
+<p>—"Mother… you were exactly right. The fault was mine…"</p>
+<p>An unfamiliar ache in his chest was catching his breath. His mother's fateful words echoed again and again in his ears — <em>"This girl might be able to set you on the right path one day."</em></p>
+<p>But Khokon did not yet know what transformation and what trial by fire this new acquaintance, and his quietly growing affection for Pompa, would push his months of harsh punishment toward!</p>
+      </div>
+    </section>
+    <section class="episode" id="ep5" data-ep="5">
+      <div class="episode-head">
+        <span class="episode-num">Part 5</span>
+        <h2 class="episode-title">Behind a Borrowed Name</h2>
+        <button class="listen-btn" data-ep="5" aria-label="Listen">
+          <svg class="icon-play" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+          <span class="listen-label">Listen</span>
+        </button>
+      </div>
+      <div class="episode-body">
+        <p>After that chance meeting with Pompa that evening, their seeing each other slowly began to turn into a regular habit.</p>
+<p>The reputation of Pompa's little handicrafts shop was spreading to various corners of the city. Orders kept increasing, but she had no delivery boy to bring things to customers' homes. One day, with her own hard-earned savings and her aunt's help, she bought an old scooter from a friend.</p>
+<p>The scooter was quite old, its age plain in the body and engine. Even the papers weren't entirely in order. Still, to Pompa this old vehicle was one more step toward standing on her own feet. Whether it was a handmade birthday gift, a lovely piece of home décor, or a custom handicraft — whenever an order came in, she would eagerly ride off on the scooter to deliver it.</p>
+<p>On one such quiet afternoon, Pompa saw Khokon and stopped the scooter,</p>
+<p>—"Will you come with me for a bit today, Khokon-da? There's a delivery across the river, the road there is quite deserted."</p>
+<p>Khokon hesitated inwardly. He still wore his usual plain, old clothes. Still, unable to refuse Pompa's earnest request, he agreed.</p>
+<p>Pompa drove the scooter, and Khokon sat quietly behind her. In their hurry, neither of them was wearing a helmet.</p>
+<p>Just as they rounded a busy junction in the city, a traffic policeman standing grimly in the middle of the road suddenly raised his hand, signalling the scooter to stop.</p>
+<p>Khokon's heart lurched in an instant!</p>
+<p>It was that same police officer! The man who came every day after his duty ended to bathe at the river ghat. Before going in to bathe, he would leave his expensive bag, his clothes, and his mobile phone in the care of that one-armed old beggar. After bathing, he would regularly hand him a crisp five-rupee note.</p>
+<p>And Khokon? How many days had he stood silently before that very traffic policeman, bowl in hand! But the man had never once dropped a single coin into Khokon's bowl. Today that same familiar man stood before them with a stern face.</p>
+<p>The policeman came up to the scooter and said harshly,</p>
+<p>—"Where's your helmet? Show me your driving licence and the vehicle papers."</p>
+<p>Pompa began searching through her handbag with frightened hands for the papers. But she didn't have the old scooter's required registration book or insurance papers.</p>
+<p>Seeing Pompa flustered, the officer barked,</p>
+<p>—"What's the matter? Where are the vehicle papers?"</p>
+<p>Pompa, her face pale, said pleadingly,</p>
+<p>—"Sir… actually I bought this scooter from a friend just a few days ago. It's old, so the paperwork hasn't been sorted out yet."</p>
+<p>—"No papers? And no helmet either!" — the officer said, reaching into his pocket for his memo book, — "The law is the same for everyone. You'll have to pay a fine for driving without a licence and papers."</p>
+<p>Pompa's eyes filled with tears. Folding her hands humbly, she pleaded,</p>
+<p>—"Sir, please let it go just this once! I'm on my way to deliver a birthday gift, if I'm late it'll be a real problem."</p>
+<p>But the officer was unmoved,</p>
+<p>—"Rules are rules. If people don't follow them, the roads won't function."</p>
+<p>Pompa stood helplessly with her head bowed, like a guilty criminal.</p>
+<p>Watching the scene, Khokon could not stay still any longer. He got off the scooter and walked slowly toward the officer,</p>
+<p>—"Sir, could I speak with you separately for a moment?"</p>
+<p>The officer raised an eyebrow, looking at Khokon's clothes,</p>
+<p>—"What is it?"</p>
+<p>Khokon walked a little way off and called the officer aside. The officer followed him, curious and a little annoyed.</p>
+<p>Khokon spoke in a low but clear voice,</p>
+<p>—"Sir, you won't recognise me, but I know you very well indeed."</p>
+<p>The officer raised his eyebrows,</p>
+<p>—"What riddle are you playing at? I don't recall ever having seen you before!"</p>
+<p>Khokon smiled slightly,</p>
+<p>—"You go to bathe at the river ghat every day after your duty, don't you, sir?"</p>
+<p>Surprise flickered across the officer's face. Changing his tone, he said,</p>
+<p>—"How do you know that?"</p>
+<p>—"Because, sir, I sit begging on that paved bank of the river ghat." — Khokon said calmly.</p>
+<p>The officer went completely still!</p>
+<p>Khokon continued,</p>
+<p>—"Before going in to bathe, you leave your expensive phone, your bag and your clothes with the one-armed beggar on that paved platform. After bathing, you regularly give him five rupees every day."</p>
+<p>The officer now looked very carefully into Khokon's eyes.</p>
+<p>Khokon let out a breath and said,</p>
+<p>—"I too have held out my bowl before you so many times, sir… but you never once gave me a single coin."</p>
+<p>The officer stared at Khokon in stunned silence for a while. Then, suddenly lightening the heavy mood, he burst out laughing,</p>
+<p>—"Well now! You're that new beggar from the riverbank! With your face and clothes changed, I didn't recognise you at first!"</p>
+<p>Khokon nodded calmly, like a man admitting guilt,</p>
+<p>—"Yes, sir."</p>
+<p>The officer glanced over at Pompa standing at a distance, then put a hand on Khokon's shoulder and said teasingly,</p>
+<p>—"Well, isn't this something, brother! Here I am in the police, working my back off day and night — and to this day I haven't found myself a good woman! And you, a beggar, have landed a beauty like that? What magic spell did you learn, brother?"</p>
+<p>Khokon lowered his head in embarrassment and gave no answer.</p>
+<p>The officer clapped Khokon on the back, laughing,</p>
+<p>—"All right, all right! No need to be so shy. I won't embarrass you further in front of your lady. Off you go with your girlfriend!"</p>
+<p>Then, looking Khokon in the eye, he added in a slightly more serious tone,</p>
+<p>—"But listen — from tomorrow you'd better wear a helmet. And get those vehicle papers sorted from your friend. This rule business is no joke."</p>
+<p>Khokon bowed his head humbly and said,</p>
+<p>—"Yes sir, thank you so much. It won't happen again."</p>
+<p>The officer waved a hand, allowing them to leave.</p>
+<p>As Khokon returned to the scooter, Pompa asked, stunned,</p>
+<p>—"What happened, Khokon? The officer let us off so easily? What did you tell him?"</p>
+<p>Khokon was silent for a few moments before saying,</p>
+<p>—"I just made up a version of the truth for him, that's all, that's why he let us go."</p>
+<p>Pompa looked at Khokon in wonder,</p>
+<p>—"But Khokon… what exactly is it that you do for a living?"</p>
+<p>Khokon could not give a direct answer to this question. He looked away, toward the distant road. Pompa did not press him further either. She thought — perhaps Khokon did some kind of ordinary or manual labour, something he felt shy or uncomfortable talking about.</p>
+<p>Pompa thought to herself, what does it matter whether work is small or grand? What matters is earning your living through effort. She herself was building her own way through fierce struggle. Khokon, surely, was finding some way to live with dignity.</p>
+<p><strong>At the Rice-Ceremony Pandal</strong></p>
+<p>A few days after this, a grand rice-eating ceremony was being celebrated in the wealthiest part of the city. The street was lined with an enormous, colourful pandal, chandeliers glittering, the scent of fresh flowers, guests arriving from home and abroad, and the air thick with the aroma of delicious, lavish cooking.</p>
+<p>Khokon's beggar friend rushed over to him the moment he heard the news,</p>
+<p>—"There's a grand rice-ceremony for the local big man's grandson today! Do you know how many dishes they've arranged? At least we'll get to eat well for once. Come with me!"</p>
+<p>Khokon hesitated a little,</p>
+<p>—"But no one has invited us, brother… would it be right to just show up uninvited?"</p>
+<p>The beggar smiled and replied,</p>
+<p>—"Oh, you fool! Do rich people's celebrations send separate written invitations to beggars? The smell of the food is our invitation!"</p>
+<p>Under his friend's insistence and the pull of his own hunger, Khokon could not refuse in the end. On the way there, though, he spent a few rupees at a roadside hawker's stall to buy a small plastic toy — at least to offer his good wishes for the child.</p>
+<p>At one edge of the pandal, where the guests' eyes rarely fell, the two of them sat down quietly. The servers came and gave them banana leaves and plates as well.</p>
+<p>One delicious dish after another was served onto the plate. Sitting before such a royal feast after so long, Khokon's mind, for a moment, flew back to the past — his father's house, its endless abundance, the vast dining table…</p>
+<p>But the memory shattered in an instant!</p>
+<p>From the other end of the pandal, a woman of high standing suddenly shrieked,</p>
+<p>—"Wait! I know that crippled man! Isn't that the beggar from the square?"</p>
+<p>In an instant the whole celebration erupted. The host's people and security guards rushed over,</p>
+<p>—"How did these low-caste beggars get in here?"</p>
+<p>—"Have you no shame? How dare you come in here uninvited?"</p>
+<p>—"Get out of here! You've made this whole place filthy!"</p>
+<p>Khokon's beggar friend folded his hands like a guilty man, pleading for mercy. But the organisers would hear none of it, shoving him hard and dragging him away from the plate. One security guard grabbed the beggar's crippled arm and yanked it roughly.</p>
+<p>Watching the scene, something twisted inside Khokon's chest with humiliation and rage! Just a while ago, perhaps, he himself would have chased away some destitute soul just like this. But today he was a different Khokon — one who knew that beggars, too, have self-respect and a soul.</p>
+<p>He left his food and stood straight up. In a firm voice he said,</p>
+<p>—"Come, brother, we shouldn't stay here another moment."</p>
+<p>Humiliated, the beggar friend tried to leave with his head bowed. Just then, some self-important man in the pandal sneered and shouted,</p>
+<p>—"Yes, yes, get out of here! But don't you dare waste the pandal's food, don't put on a show of walking away with a full plate!"</p>
+<p>Khokon stopped walking. He slowly turned to face the man. There was no fear or inferiority in his eyes then — only the light of an absolute truth.</p>
+<p>He said, in a clear, distinct voice,</p>
+<p>—"He isn't wasting any food. And there's no need for any more of this humiliation… I too am a beggar!"</p>
+<p>In an instant, all the noise and commotion of the entire pandal seemed to fall silent. Even the lights and chandeliers around them seemed to freeze.</p>
+<p>At that very moment — a girl standing in a corner of the pandal, upon hearing Khokon's final words, froze like ice!</p>
+<p>The girl was none other than — Pompa!</p>
+<p>She had come to deliver some handicraft items that the wealthy family had ordered. In her hands she still held a beautifully wrapped gift box.</p>
+<p>The moment the words 'I too am a beggar', spoken in Khokon's own voice, reached Pompa's ears through the air, the bag in her hand went slack. The gentle smile on her face vanished into emptiness in an instant.</p>
+<p>She could not believe her own eyes and ears. Stunned, trembling all over, she began walking toward Khokon,</p>
+<p>—"Khokon…? You… what did you just say?"</p>
+<p>Khokon was still standing at the edge of the pandal, holding his beggar friend's hand, about to walk out. Hearing Pompa's voice, he flinched and looked up.</p>
+<p>Their eyes met.</p>
+<p>Time seemed to stop in the middle of the pandal. In Pompa's eyes overflowed a bottomless astonishment, deep disbelief, and an unspeakable pain. And in Khokon's eyes was reflected the fierce shame of being caught, and the shadow of his own pitiful reality.</p>
+<p>Pompa took another step forward and asked in a broken voice,</p>
+<p>—"Khokon… you… are you really a beggar?"</p>
+<p>Khokon could give no answer. In one hand he held that small plastic toy, and in Pompa's hand was the gift made of her own blood and sweat.</p>
+<p>The silence between them grew heavier than a thousand words. Khokon understood — the disguise he had guarded so carefully all this time, fate had, in a single moment, stripped bare before every glittering eye!</p>
+      </div>
+    </section>
+    <section class="episode" id="ep6" data-ep="6">
+      <div class="episode-head">
+        <span class="episode-num">Part 6</span>
+        <h2 class="episode-title">Trust, Broken</h2>
+        <button class="listen-btn" data-ep="6" aria-label="Listen">
+          <svg class="icon-play" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+          <span class="listen-label">Listen</span>
+        </button>
+      </div>
+      <div class="episode-body">
+        <p>Ever since returning home from the rice-ceremony pandal that day, Pompa's mind had been in complete turmoil. An unseen, unknown sorrow had settled over her heart.</p>
+<p>Khokon's calm yet deeply searching face kept rising before her eyes, again and again.</p>
+<p>That young man — who, though a complete stranger, had once saved her from a gang of ruffians through sheer force of character. Who could speak fluent, flawless English without the slightest stammer. Who had stood at that street corner with utter courage, facing down a traffic policeman with unshakeable reasoning and freeing her from trouble. And who always dodged the question whenever asked about his own identity or work…</p>
+<p>That same Khokon had stood today, in front of hundreds of people, and declared with his chest held high — <em>"I too am a beggar!"</em></p>
+<p>Pompa simply could not accept this cruel truth. Her rational mind could not reconcile these two opposing images.</p>
+<p>Returning home that night, she sat on her bed and told her aunt everything about this strange turn her life had taken. Her aunt listened silently for a long while, drawing on her years of experience. Then, wanting to know more about Khokon, she looked Pompa in the eye and said,</p>
+<p>—"Exactly how long have you known this boy, Pompa?"</p>
+<p>—"A little while… we've been seeing each other for some time." — Pompa said in a low voice.</p>
+<p>—"What do you actually know about his family background, his home, his past?"</p>
+<p>Pompa fell silent, like someone at fault. It was true — she knew nothing about Khokon's past!</p>
+<p>Her aunt now spoke in a harder, more practical tone,</p>
+<p>—"Who can you trust based on sweet words and a good appearance, Pompa? The world isn't that simple. You don't know how many masks people wear behind their faces."</p>
+<p>Pompa said pleadingly,</p>
+<p>—"But Auntie, he saved me from such a huge danger, selflessly!"</p>
+<p>—"That too could well be some perfectly staged drama, meant to win your trust!"</p>
+<p>Pompa looked at her aunt in disbelief.</p>
+<p>Her aunt continued, explaining calmly,</p>
+<p>—"You have your own handicrafts shop, fighting alone in this city. You have no parents. Through countless hardships, through your own effort, you've built this business up. Now what if some opportunist has come to you with some purpose, having his eye on what you've achieved?"</p>
+<p>Pompa could say nothing; her heart was pounding.</p>
+<p>Her aunt voiced her fear in a slow, grave tone,</p>
+<p>—"My instinct tells me the boy is staging a romance to trick you into marrying him."</p>
+<p>—"What are you saying, Auntie! No, no, he couldn't possibly be like that!" — Pompa shook her head, trying to protest.</p>
+<p>—"Yes, you foolish girl! Your shop is doing well now, your earnings are growing. If he manages to reel you in somehow, he'll gain a legal claim over all your property, your earnings, in an instant. Perhaps it's out of greed for that money and shelter that he's misled you and drawn you close."</p>
+<p>Pompa kept shaking her head,</p>
+<p>—"No, Auntie… he can't be greedy, at least. I can't believe this!"</p>
+<p>Her aunt let out a deep sigh and said,</p>
+<p>—"You're a simple girl, that's why you still make the mistake of trusting him. But life is a hard place, Pompa; time gives people the chance to truly know someone, sooner or later."</p>
+<p>That night, not a wink of sleep came to Pompa's eyes. Staring at the darkness descending from the ceiling, she searched for answers all night long.</p>
+<p>So who was Khokon, really? Was he truly just an ordinary, destitute beggar? Or had he been forced into such a disguise by some special circumstance?</p>
+<p>Could his flawless pronunciation, his refined, almost royal manner of moving, his fluent way of speaking — could all of that really belong to some aimless beggar?</p>
+<p>Suddenly, another thrilling thought rose in Pompa's mind. Perhaps Khokon was doing some secret, mysterious work! Perhaps he was an undercover detective, disguised to catch some major criminal ring! Perhaps he had hidden his true name and identity from everyone purely for security reasons!</p>
+<p>That fanciful thought lit a new flame of hope in Pompa's dimmed heart. Comforting herself, she murmured — <em>"No, Khokon simply cannot be so low and deceitful. There must surely be some great truth hidden behind all this."</em></p>
+<p><strong>The Day of the Rain</strong></p>
+<p>Quite a few days passed after this. Pompa did not try to meet Khokon. But that stubborn question, buried deep in her mind, kept nagging at her like a splinter.</p>
+<p>One afternoon, dark storm clouds of a nor'wester came rolling in, blackening the sky. Before long, torrential rain came pouring down over the city.</p>
+<p>Pompa, having bought some necessary supplies for her shop from the market, was walking quickly homeward under an umbrella. The streets had grown nearly empty by then, under the force of the storm wind and rain.</p>
+<p>As she walked, Pompa's gaze suddenly froze on the other side of the road!</p>
+<p>Beside the drain, cutting through the driving sheets of rain, a figure was walking slowly toward her.</p>
+<p>He wore torn, soaked clothes down to the knee. Streams of water ran continuously down his hair and onto his face. His feet were in worn, mud-caked sandals, and he had no umbrella at all to shield himself from the pouring rain.</p>
+<p>As the man drew closer, Pompa's chest trembled with dread.</p>
+<p>— Khokon!</p>
+<p>Pompa stood frozen like ice, umbrella still in hand.</p>
+<p>Khokon came to a stop, face to face with Pompa. Then, offering no excuse, no drama at all — he slowly folded both hands and stood before her.</p>
+<p>No sound came from his mouth. Only, in his rain-soaked eyes, shone an ocean-deep sense of guilt and an innocent remorse.</p>
+<p>Pompa stared at him for a while, unblinking. It was as if she wanted to shatter the fantasy she had built in her own mind and face the harsh reality one last time.</p>
+<p>She asked in a trembling voice,</p>
+<p>—"You… are you really a beggar, Khokon?"</p>
+<p>Khokon lowered his head. He denied nothing, invented no lies.</p>
+<p>Pompa, clutching the last trembling raft of her hope, asked again,</p>
+<p>—"Are you some kind of detective? On some secret mission?"</p>
+<p>Khokon slowly shook his head, side to side.</p>
+<p>— 'No.'</p>
+<p>In a single moment, the last light of hope in Pompa's chest was extinguished to ash by a merciless storm!</p>
+<p>She stood staring, stunned, at Khokon's rain-soaked, motionless face. The rain pouring from the sky above Khokon's head, and the hot tears streaming down Pompa's cheeks — the two seemed to merge into one, in the midst of this deluge.</p>
+<p>Khokon still stood there with his hands folded, head bowed like a guilty man. There was no false story in his face to defend his position, no fabricated excuse. There was only a humble, silent plea for forgiveness.</p>
+<p>Pompa stepped back and said, her voice breaking with a heart full of pain,</p>
+<p>—"So… so Auntie was right all along."</p>
+<p>Khokon stared at the ground; not a single sound escaped his chest.</p>
+<p>The threads of building resentment and sorrow now wound into Pompa's voice,</p>
+<p>—"What did you think of me all this time, Khokon? Some foolish girl?"</p>
+<p>Khokon lifted his tear-brimmed eyes to look at Pompa once, but immediately lowered his gaze again.</p>
+<p>—"I trusted you with all my heart…" — Pompa said, wiping her eyes, — "I thought you were different from ten ordinary people, that you were my friend in times of danger. But today… today I understand, you truly are a beggar. You have no identity beyond surviving on others' charity."</p>
+<p>Khokon folded his hands again, acknowledging his own helplessness.</p>
+<p>Pompa now turned her face away in utter revulsion. Then she said in an ice-cold voice,</p>
+<p>—"You know, Khokon, there is one kind of person in this world I despise from the bottom of my heart."</p>
+<p>Khokon stood as still as a stone statue.</p>
+<p>—"Those who have every ability to work with their own hands and body, yet out of laziness and low self-worth choose to live off others' hands instead of earning their food! Those who are a burden on society!"</p>
+<p>Pausing a moment, Pompa poured her final venom into her voice,</p>
+<p>—"You… you are exactly one of those despicable people!"</p>
+<p>Khokon's head seemed to want to sink into the ground with shame and humiliation.</p>
+<p>Pompa turned to look at Khokon one last time; there was no more tenderness in her eyes then — only a hard wall. In an ice-cold voice she delivered her final decision,</p>
+<p><strong>—"From today, you and I have no relationship of any kind, ever again. Never come before me again!"</strong></p>
+<p>The moment she said this, Pompa turned and strode away. She quickly vanished into the blurred curtain of the pouring rain.</p>
+<p>Khokon stood frozen right where he was. His hands were still folded in the empty air.</p>
+<p>No cry escaped his throat, only his tears and the rainwater merged together, turning to mud and ice. He simply stared, unblinking, at Pompa's receding figure… until she disappeared completely behind the blurred curtain of water.</p>
+<p>Even long after Pompa had gone, Khokon remained standing motionless in the same spot.</p>
+<p>In his ears, only Pompa's final, merciless sentence kept striking again and again — <em>"From today, you and I have no relationship of any kind…"</em></p>
+<p>For the first time in his life, Khokon realised that day —</p>
+<p><strong>The bite of hunger can be endured; the inhuman beatings of passers-by, even the burn of scalding tea, can be borne… but the sorrowful agony of being exposed as a fraud before someone dear, before you could reveal the truth of yourself, and losing them forever — that is a thousand times more terrifying than all the physical suffering in the world!</strong></p>
+<p>Standing alone, soaked in the falling rain, Khokon slowly lowered his folded hands.</p>
+<p>Then, with heavy steps, he began walking once more down that mud-caked, dark road — the road on which the rest of his long and painful life of begging still waited for him.</p>
+      </div>
+    </section>
+    <section class="episode" id="ep7" data-ep="7">
+      <div class="episode-head">
+        <span class="episode-num">Part 7</span>
+        <h2 class="episode-title">The Identity Behind the Photograph</h2>
+        <button class="listen-btn" data-ep="7" aria-label="Listen">
+          <svg class="icon-play" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+          <span class="listen-label">Listen</span>
+        </button>
+      </div>
+      <div class="episode-body">
+        <p>After cutting off her relationship with Khokon and walking away, the following days passed like heavy stones for Pompa. She kept trying to convince her own turbulent mind — <em>"A man who could work with his own hands and body but instead chooses to live off idleness, begging from others, who has no self-respect of his own — a hard-working girl like me can have no connection with such a fraud of a beggar!"</em></p>
+<p>But does the heart ever easily accept harsh logic or rules?</p>
+<p>Sometimes, sitting at her shop doing her handiwork, Khokon's calm, innocent face would suddenly rise before her. She would remember that evening — when, without a thought for his own safety, Khokon had stood like a wall before those brutes to protect her dignity. She remembered the way he had stood, humble yet full of honesty, before that traffic policeman. She remembered how skilfully he had always dodged questions about his past and his identity…</p>
+<p>Pompa would wipe her tears and harden her heart to stone again.</p>
+<p>Then one morning, while cleaning her room, that unbelievable incident happened.</p>
+<p>Pompa was changing and cleaning her bedsheet. Pulling one side of the sheet, reaching her hand into the fold of the mattress, her fingers touched something stiff, like paper. Curious, she reached in and pulled it out.</p>
+<p>An old, slightly faded photograph!</p>
+<p>The moment she looked at the front of the photograph, Pompa's breath caught in her chest. The person in the photograph was none other than — Khokon! But it was as if this were an entirely different Khokon! Finely dressed in expensive clothes, neatly styled hair, and in his eyes a regal, aristocratic gleam.</p>
+<p>As she studied the photograph, Pompa's eye caught on some faint handwriting on the back. She hurriedly flipped the photo over. On the back, written clearly in ink —</p>
+<p><strong>Khokon Roy</strong></p>
+<p><em>Roy Enterprises</em></p>
+<p>(Only Son and Heir)</p>
+<p><em>Address: 84/B, Roy Palace, Park Avenue.</em></p>
+<p>Reading this, Pompa's hands began to tremble,</p>
+<p>—"Roy Enterprises…?"</p>
+<p>She looked at the front of the photograph again, then read the writing on the back once more. Her head began to spin. She ran and held the photograph out before her aunt. Her aunt looked at it, adjusted her glasses, and said, wide-eyed,</p>
+<p>—"Wait! This is the photograph of that boy! The one the matchmaker brought a marriage proposal for, remember? Didn't I tell you, Pompa — the boy's mother, despite being extremely wealthy, was looking for an ordinary, middle-class, virtuous girl? She liked your photo very much. But then no further contact ever came from their side. I'd heard they'd sold off their entire estate and moved away somewhere! Is this the same Khokon, the only son of the Roy family? What are you saying! This can't possibly be true!"</p>
+<p>A storm of confusion swept through Pompa's mind! She could not believe her own ears.</p>
+<p>The same Khokon who, for the past several months, had stood in plain, worn clothes on the city's dusty streets, holding out his hand to people for a rupee or two… could he really be the sole heir of the immensely wealthy 'Roy Enterprises' of North Kolkata?</p>
+<p>Then what had she really been seeing all this time? Was Khokon really truly a beggar? Or was there some deep, tragic mystery hidden behind all of this?</p>
+<p>Suddenly Pompa remembered Khokon's fluent English pronunciation, his ease speaking with foreigners, his mysterious familiarity with the traffic policeman, and the invisible touch of nobility in his manner…</p>
+<p>Every foggy piece of the puzzle seemed to clear away from before her eyes at once, taking on new meaning. Pompa did not waste another moment. Clutching the photograph tightly in her fist, she rushed out of the house like a madwoman, without even an umbrella.</p>
+<p><strong>Roy Enterprises</strong></p>
+<p>A little while later, Pompa arrived at the address given on the photograph. Before her stood a vast, palatial mansion. On the enormous iron gate, engraved in large letters on a brass plate, was written — <strong>'Roy Enterprises'</strong>.</p>
+<p>Pompa stood frozen for a while before the gate of that vast palace. Her chest was pounding with unease. If the man she had spent all this time despising and insulting as a worthless, wretched beggar actually had a house that was such a vast empire — then what terrible catastrophe had struck Khokon's life?</p>
+<p>She went inside and began asking around. But Khokon was nowhere in that vast mansion. A strange stillness and shadow of sorrow hung over the surrounding air. Pompa went to an old employee and asked anxiously about Khokon; the man looked at her suspiciously and said,</p>
+<p>—"Who are you, looking for Khokon-babu?"</p>
+<p>Pompa did not give her own name. She only said, her voice trembling,</p>
+<p>—"I know Khokon. Can you tell me… where he is?"</p>
+<p>The employee let out a deep sigh and said,</p>
+<p>—"Khokon-babu doesn't live here anymore. Even his father has left this house. This vast property, the shares of Roy Enterprises, this palace — the Roy family no longer has any claim over any of it. Everything was transferred away in one difficult incident."</p>
+<p>Pompa asked, speechless,</p>
+<p>—"Transferred? To whom?"</p>
+<p>The employee said in a low voice,</p>
+<p>—"To an old beggar."</p>
+<p>—"An old… beggar?" — Pompa's eyes went wide with astonishment.</p>
+<p>Pompa did not waste another moment. Taking the address from the employee, she went straight to that old beggar's shelter.</p>
+<p>The old man was sitting quietly in a silent courtyard. Though his clothes were worn, there was a strange gravity and detachment in his face.</p>
+<p>Pompa rushed up and stood before him. Gasping for breath, she said,</p>
+<p>—"Do you know Khokon Roy?"</p>
+<p>The old man looked at Pompa slowly. After a moment of silence, he said calmly,</p>
+<p>—"I know him. I know him very well."</p>
+<p>Pompa held the photograph out before the old man with trembling hands,</p>
+<p>—"I found this photograph. Is that Khokon who begs on the footpath really this Roy family's prince from the photo?"</p>
+<p>The old man looked at the photograph and gave a faint, sorrowful smile at the corner of his lips,</p>
+<p>—"Yes, dear. This is our Khokon. The only child of the Roy family."</p>
+<p>Pompa's voice caught in her throat,</p>
+<p>—"But… he's a beggar on the street now! Why is he going around holding out his hand on the streets?"</p>
+<p>The old man let out a sigh. Then, with tears in his eyes, he slowly said,</p>
+<p>—"Because Khokon's own father sentenced him to this punishment of becoming a beggar, with his own hands."</p>
+<p>Pompa froze like ice,</p>
+<p>—"Punishment…?"</p>
+<p>The old man began telling her everything, from the very beginning. He told her of Khokon's father's boundless honesty and hard struggle, of Khokon's arrogant, reckless life, of the stories of money thrown away with friends… and of that cursed afternoon!</p>
+<p>The old man said in a low voice,</p>
+<p>—"The day I went, starving, and stood before their mansion, Khokon, in his pride, kicked me down hard. And not only that — he ground my hand under his expensive leather shoe until it bled…"</p>
+<p>It felt as if all the blood drained from Pompa's face in an instant. Her face went pale.</p>
+<p>The old man continued,</p>
+<p>—"Khokon's father witnessed this brutality with his own eyes. In utter despair and remorse, he took my bloodied hand and begged my forgiveness. Then… that very day, he called the family lawyer and signed over his entire fortune, his bank balances, all of it, into my name!"</p>
+<p>Pompa said in a broken whisper,</p>
+<p>—"His entire fortune… into the name of a stranger, a beggar?"</p>
+<p>—"Yes, dear, everything." — the old man continued, — "But Khokon's father did not wish to destroy his son entirely; he wished to make him a human being. So I gave Khokon one final chance. He must go to another, unfamiliar city for some months, hide his own identity, and live entirely by begging. Every day he must go out onto the street empty-handed, and by my condition, he must beg and save five thousand rupees. Not a single coin may involve any deceit."</p>
+<p>By this point tears were pouring like a flood from Pompa's eyes.</p>
+<p>The old man continued,</p>
+<p>—"If he successfully passes this trial by fire of honesty and poverty, then I will return his father's entire fortune to him, untouched. Khokon is undergoing that very trial right now, my dear."</p>
+<p>Pompa could no longer stand still in her place. In her mind, scene after scene struck like lightning —</p>
+<p>Khokon's torn clothes, soaked in the pouring rain…</p>
+<p>His two helpless hands, folded, standing in the middle of the road…</p>
+<p>And those merciless words she herself had spoken — <em>"I despise a certain class of people who beg from others instead of working… from today, you and I have no relationship of any kind!"</em></p>
+<p>Something inside Pompa's chest twisted with fierce pain. Her soul seemed to burn to ash in the fire of remorse.</p>
+<p>Wiping her tears, she said in a trembling voice,</p>
+<p>—"So… he wasn't playing some game or staging some romance with me, then?"</p>
+<p>The old man said calmly,</p>
+<p>—"No, my dear. He was only atoning for his own sin."</p>
+<p>—"Then… then why didn't he tell me his real identity? Why did he let me misunderstand him so badly?"</p>
+<p>The old man smiled sorrowfully and said,</p>
+<p>—"Because he was under a strict condition to keep his true identity hidden, my dear! He never broke that condition, even when it meant being humiliated before you — he silently carried the weight of his own guilt."</p>
+<p>Pompa sank down onto the road, hands on her knees. She broke into sobs.</p>
+<p>She remembered — on the day he had left, Khokon had smiled humbly and told her, <em>"If fate wills it, perhaps we'll meet again…"</em></p>
+<p>Pompa had not understood, that day, how much boundless pain and how great a truth lay hidden behind that smile! Today she understood it all, but by then, everything had already turned upside down.</p>
+<p>Pompa pressed Khokon's photograph tightly against her chest.</p>
+<p>Taking leave of the old man, Pompa did not stand there another moment. She rushed out onto the street like someone blind, running.</p>
+<p>For the first time in her life, Pompa realised — she had committed a grave wrong. She had pushed away a remorseful man, thinking him less than human.</p>
+<p>The rainwater and her tears mingled and streamed down her cheeks together. In her mind, Pompa kept repeating one single thing over and over — <strong>"Khokon… forgive me! I'm coming… at the final turn of your long, painful road, I will be waiting for you!"</strong></p>
+<p>But Pompa did not know — in this lonely, solitary city, where Khokon was now begging, and what new confluence the final chapter of their broken story would bring them to!</p>
+      </div>
+    </section>
+    <section class="episode" id="ep8" data-ep="8">
+      <div class="episode-head">
+        <span class="episode-num">Part 8</span>
+        <h2 class="episode-title">The Test of Five Thousand Rupees</h2>
+        <button class="listen-btn" data-ep="8" aria-label="Listen">
+          <svg class="icon-play" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+          <span class="listen-label">Listen</span>
+        </button>
+      </div>
+      <div class="episode-body">
+        <p>Even after learning every painful, harsh truth of Khokon's past life, Pompa did not let a single soul know a thing about it. Not her elderly aunt, not Khokon, not even Khokon's old beggar patron. She had come to understand, very deeply, that Khokon was now walking a hard path of atonement and self-purification. In this trial by fire, no outward pity or charity — only granting Khokon's self-respect its full dignity — would be her real duty.</p>
+<figure class="story-img"><img src="images/bagger3.png" alt="Pompa and Khokon out begging together" loading="lazy"></figure>
+<p>That very evening, Pompa rushed to the city square and sought out Khokon's one-armed beggar friend. She walked slowly up to the man and said,</p>
+<p>—"Brother, where is Khokon now? Where does he live?"</p>
+<p>The man looked at Pompa with curiosity and some surprise,</p>
+<p>—"You? What business do you have with Khokon?"</p>
+<p>—"I had something very urgent to discuss with him." — Pompa said, impatient.</p>
+<p>The beggar looked at Pompa's tearful eyes for a while, unblinking, and gave a faint smile,</p>
+<p>—"He lives right under that worn-out culvert at the edge of the city. But… the Khokon of before and the Khokon of now are not the same person, sister. Through all this suffering, the boy has become an entirely different man."</p>
+<p>Pompa asked quietly,</p>
+<p>—"Can you tell me how much he's saved toward his punishment's target?"</p>
+<p>The beggar smiled kindly,</p>
+<p>—"I'm the one keeping his savings for him. Counting even the five-dollar note some foreign tourists gave him the other day — altogether, it comes to about four thousand five hundred and fifty rupees."</p>
+<p>Pompa's eyes shone with the light of hope,</p>
+<p>—"Four thousand five hundred and fifty rupees! He's saved that much?"</p>
+<p>—"Yes. He doesn't spend a single coin on himself."</p>
+<p>Pompa did the math in her head. Only about five hundred rupees remained to reach the five-thousand-rupee goal!</p>
+<p>A tide of hope surged through Pompa's chest. She thought to herself — <em>'Just five hundred rupees left! If the two of us beg together, Khokon's hellish ordeal and punishment could end in just a single day!'</em></p>
+<p>Without wasting another moment, she walked straight toward that gloomy culvert at the edge of the city.</p>
+<p><strong>Beneath the Culvert</strong></p>
+<p>Evening was fading into the dark of night. Weary beyond measure from the day's toil, Khokon sat with his head bowed on the damp ground beside the culvert.</p>
+<p>Suddenly, at the sound of familiar footsteps, he looked up and froze.</p>
+<p>Standing before him was Pompa!</p>
+<p>Khokon started up, standing. His eyes held a light of disbelief,</p>
+<p>—"You… you're here?"</p>
+<p>Pompa slowly came and stood before Khokon. For a while, the two of them stood silently, looking at each other. Only the sound of their breathing filled the air.</p>
+<p>At last Pompa broke the silence, her voice choked,</p>
+<p>—"Will you… will you forgive me, Khokon?"</p>
+<p>No words came from Khokon's mouth. He only stared, aching, at Pompa's remorseful face.</p>
+<p>Pompa wiped her eyes and said,</p>
+<p>—"That rainy night, I said such bitter things to you… I hurt you terribly. It was my mistake."</p>
+<p>Khokon lowered his head and said humbly,</p>
+<p>—"No, Pompa, not a single word you said was wrong. Begging from others without working really is a shameful crime. I don't deserve forgiveness."</p>
+<p>—"No, Khokon, I was wrong!" — Pompa said firmly.</p>
+<p>Khokon raised his eyes in surprise. Pompa looked directly into his eyes and said calmly,</p>
+<p>—"I didn't know the real truth behind you that day. I know everything now."</p>
+<p>In an instant the blood seemed to drain from Khokon's face, turning it white! A sharp fear gripped his chest. Had Pompa learned all the hidden secrets of his father's property, of the old beggar's judgment and punishment? He asked in a frightened voice,</p>
+<p>—"Who… who told you all this?"</p>
+<p>Pompa looked at his frightened, sorrowful face and gave a tender, faint smile at the corner of her lips,</p>
+<p>—"Not every truth needs to be spoken aloud, Khokon — some truths simply need to be felt."</p>
+<p>Khokon fell utterly silent.</p>
+<p>Pompa said gently,</p>
+<p>—"I understand — there must surely be some overwhelming obligation or harsh reason in your life that forced you to choose this path today."</p>
+<p>Khokon's eyes welled with tears. He lowered his gaze, like a guilty man.</p>
+<p>Pompa asked, in a tender voice,</p>
+<p>—"How much more do you need to reach five thousand?"</p>
+<p>Khokon hesitated a moment before answering, in a low voice,</p>
+<p>—"About five hundred rupees."</p>
+<p>Pompa tied her shawl firmly and said with a sweet smile,</p>
+<p>—"Then why wait any longer? Come, tomorrow morning the two of us will go out together. Together we'll get through that final test of your five hundred rupees."</p>
+<p>Khokon stared at her, speechless,</p>
+<p>—"You… you'll beg with me?"</p>
+<p>—"Yes, I will. In your solitary struggle, I'll stand right beside you."</p>
+<figure class="story-img"><img src="images/bagger2.png" alt="Pompa and Khokon out begging together" loading="lazy">
+<p><strong>Begging Together</strong></p>
+<p>The next day, as the first sun of dawn rose, the two of them set out on a new journey. In Pompa's hand was an old clay bowl, and in Khokon's the other.</p>
+<p>Both of them wore plain, patched clothes. They walked through the city, in full view of everyone. Some didn't recognise them even from close by in their tattered clothes; some dropped a rusted two-rupee coin into the bowl, others gave five rupees.</p>
+<p>So many people passed by with scorn, so many turned their faces away in disgust!</p>
+<p>But today there was no self-loathing left inside Khokon to cause him pain. Today an infinite strength had filled his heart. Because, on this road of humiliation and disgrace, he was not alone today — Pompa stood beside him!</p>
+<p>When the harsh midday sun was overhead, an expensive car pulled up at a street corner. A man rolled down the window and, with contempt, held out a piece of dry, stale bread toward Khokon and Pompa, saying,</p>
+<p>—"Here, you beggars, eat up!"</p>
+<p>The bread landed in Pompa's hand. Her stomach burning with hunger under the harsh sun, she was about to bring it to her mouth.</p>
+<p>Khokon quickly stepped forward and caught her hand,</p>
+<p>—"Wait, Pompa! Give me the bread first, let me have a bit of it."</p>
+<p>Pompa asked, surprised,</p>
+<p>—"Why, Khokon?"</p>
+<p>Khokon took the bread, sniffed it, and said with a bitter smile,</p>
+<p>—"It's very old bread, it's gone stale by the smell. It could have something toxic in it."</p>
+<p>Pompa said,</p>
+<p>—"So what if it does?"</p>
+<p>Khokon smiled a faint, sorrowful smile,</p>
+<p>—"Does anyone ever give beggars good bread, Pompa? They only ever give what's thrown away."</p>
+<p>Saying this, Khokon unhesitatingly broke off a large piece of the stale bread and put it in his own mouth, so that Pompa wouldn't have to eat it.</p>
+<p>Pompa stood staring at Khokon, stunned. Then, without a moment's thought, she snatched the rest of the bread from Khokon's hand and put it into her own mouth!</p>
+<p>Khokon started, saying,</p>
+<p>—"Pompa! That's stale, why did you eat it?"</p>
+<p>Pompa looked at Khokon with hard eyes, swallowing, and said,</p>
+<p>—"If you can bear to eat stale food for my sake, can't I share that same food with you? Is love and compassion only your right to give?"</p>
+<p>An unwilling tear rolled down the corner of Khokon's eye.</p>
+```html
+<p>A single, unwilling tear rolled down from the corner of Khokon’s eye.</p>
+
+<p>Since Pompa looked beautiful and gentle by nature, many people placed money in her hands as alms. As a result, the money in Pompa’s hands began to accumulate a little faster than in Khokon’s.</p>
+
+<p>They continued asking people for help throughout the day. But that day, they understood even more clearly that earning money by begging from people was not easy at all.</p>
+
+<p>Many people stopped when they saw them. Some took out their mobile phones and took pictures, some looked at them sympathetically, and some said a few words. But taking pictures and actually helping someone are not the same thing. Many simply took pictures and walked away without giving them even a single coin. Others said, “I don’t have anything today. I’ll give you something later.”</p>
+
+<p>When they counted their earnings in the evening, they found that despite all their efforts throughout the day, they had managed to collect only <strong>150 rupees</strong>.</p>
+
+<p>Khokon looked at the money and said,</p>
+
+<p>—“We still need another 350 rupees.”</p>
+
+<p>Pompa sighed and said,</p>
+
+<p>—“But we have to eat today too.”</p>
+
+<p>Even a very simple meal for the two of them would cost at least <strong>100 rupees</strong>. After spending that money, only <strong>50 rupees</strong> would remain. That meant they were still 500 rupees short of reaching five thousand rupees, while only 50 rupees from that day’s earnings could be saved.</p>
+
+<p>There was only one thought going round and round in Pompa’s mind—<strong>“If we continue like this, we will have to beg for many more days.”</strong></p>
+
+<p>After remaining silent for a while, a sudden idea came to Pompa.</p>
+
+<p>She looked at Khokon and said,</p>
+
+<p>—“Tomorrow, we will try something different.”</p>
+
+<p>Khokon looked surprised and asked,</p>
+
+<p>—“How?”</p>
+
+<p>Pompa said,</p>
+
+<p>—“Today we sat like ordinary beggars and managed to collect only 150 rupees. Tomorrow, we will dress as a Vaishnav and a Vaishnavi and ask people for help. I think people may be more willing to help us that way.”</p>
+
+<p>Khokon remained silent for a moment. Then he said,</p>
+
+<p>—“But we will need clothes for that.”</p>
+
+<p>Pompa replied,</p>
+
+<p>—“We don’t have to buy them. Let’s see if we can rent them.”</p>
+
+<p>According to the beggar’s condition, the money they had already saved could not be spent.</p>
+
+<p>They calculated that out of the 150 rupees earned that day, only 50 rupees would have to be kept for food. The remaining <strong>100 rupees</strong> would not be added to their savings that day. Instead, that <strong>100 rupees</strong> would be used to arrange rented Vaishnav-Vaishnavi clothes for the following day.</p>
+
+<p>Pompa said,</p>
+
+<p>—“Even if we spend 100 rupees on the clothes, if we can collect more money tomorrow, we will recover that expense. And we will also be able to complete the remaining amount more quickly.”</p>
+
+<p>Khokon looked at Pompa for a while and smiled faintly.</p>
+
+<p>—“You really don’t know how to give up, do you?”</p>
+
+<p>Pompa replied,</p>
+
+<p>—“If we give up, we will never be able to complete the five thousand rupees.”</p>
+
+<p>The next day, they rented <strong>Vaishnav and Vaishnavi clothes for 100 rupees</strong> from a nearby shop.</p>
+
+<p>Both of them secretly hoped that, dressed differently and presenting themselves in a new way, perhaps they would receive a little more help from people the next day.</p>
+
+<p>But they had no idea how much people’s sympathy might change when they saw the clothes.</p>
+
+<p><strong>The next day’s test was therefore waiting to bring them another new experience.</strong></p>
+
+<p>That night, Pompa could not sleep at all under the culvert. The exhaustion of the whole day, hunger, and thoughts about the future kept sleep far away from her eyes. Yet she did not complain.</p>
+
+<p>In the darkness, she kept looking at Khokon, who was lying beside her. The boy whom she had once thought was someone completely different was now going through such a difficult life, and Pompa was witnessing it with her own eyes.</p>
+
+<p>Forgetting her own suffering, she thought only one thing—<strong>“Khokon must complete this test.”</strong></p>
+
+<p>After staying awake for a long time, Pompa slowly closed her eyes in that uncomfortable shelter.</p>
+<figure class="story-img"><img src="images/boisnob.png" alt="We still need another 500 rupees." loading="lazy"></figure>
+
+<p>Within a few hours, by around three in the afternoon, the two of them had managed to collect more than the five hundred rupees they needed—nearly <strong>730 rupees</strong>—by begging.</p>
+
+<p>Pompa counted the money and looked happily at Khokon.</p>
+
+<p>—“Look, Khokon, we have collected more than the five hundred rupees we needed. We even have some extra money now.”</p>
+
+
+
+<p><strong>That Tea Stall</strong></p>
+<p>As the afternoon wore on into a walk around the city, they arrived in front of that notorious tea stall — the one where the shopkeeper had once hurled a cup of boiling tea at Khokon for merely asking for a little help, burning his chest!</p>
+<p>Pompa recognised the man the moment she saw him. A spark of fury lit up in her eyes.</p>
+<p>Khokon pulled at Pompa's hand and said,</p>
+<p>—"Come, Pompa, let's leave. There's no need."</p>
+<p>But Pompa was not one to be stopped today. She let go of Khokon's hand and walked straight into the shop.</p>
+<p>The shopkeeper looked at Pompa and said harshly,</p>
+<p>—"What do you want here? Is this some beggars' fair?"</p>
+<p>Pompa gave no answer. Her face was ablaze with fury.</p>
+<p>She picked up two expensive glass tea cups from the table and smashed them hard onto the floor!</p>
+<p>With a shattering crash, the two cups broke apart and scattered in all directions.</p>
+<p>The shopkeeper shouted, leaping up,</p>
+<p>—"Hey, girl! What are you doing? Have you lost your mind?"</p>
+<p>With one shove, Pompa knocked the glass display board and jars off the table onto the floor! Broken glass and tea leaves scattered across the floor.</p>
+<p>Enraged, the shopkeeper lunged as if to strike her,</p>
+<p>—"Why are you wrecking my shop, you devil?"</p>
+<p>Pompa raised burning eyes to his and shouted,</p>
+<p>—"Do you remember, a few days ago, throwing boiling hot tea at a helpless man? You burned his skin just because he asked for a mouthful of food!"</p>
+<p>The shopkeeper turned, startled, and looked at Khokon standing in the doorway. Khokon stood with his head bowed, like a guilty man.</p>
+<p>Pompa roared,</p>
+<p>—"Being a beggar or destitute doesn't give anyone — not even your own father — the right to humiliate or hurt a person like an animal! Now understand what humiliation and loss really feel like!"</p>
+<p>Saying this, Pompa grabbed Khokon's hand and stormed out of the shop.</p>
+<p>But in her fury while wrecking the shop, Pompa hadn't noticed — a large, sharp shard of broken glass had cut deep into the palm of her right hand!</p>
+<p>A short distance from the shop, fresh blood suddenly began gushing from Pompa's hand.</p>
+<p>Seeing this, Khokon cried out in panic,</p>
+<p>—"Pompa! Your hand is bleeding! What have you done to yourself!"</p>
+<p>Pompa covered the wound and laughed,</p>
+<p>—"It's nothing, Khokon, just a small cut."</p>
+<p>But the flow of blood would not stop. Pompa's face was growing pale. Without wasting another moment, Khokon caught hold of her and ran to a nearby private nursing home.</p>
+<p><strong>Five Thousand Rupees</strong></p>
+<p>In the emergency ward, the doctor examined Pompa's hand and said gravely,</p>
+<p>—"A piece of glass has gone deep into the flesh and cut a vein! If we don't operate and stitch it immediately, the hand could be permanently disabled. Excessive blood loss could also be seriously dangerous."</p>
+<p>Khokon said, his voice full of fear,</p>
+<p>—"Doctor, please start the treatment! Tell me how much it will cost."</p>
+<p>The doctor checked the counter's chart and said,</p>
+<p>—"With the operation, medicine, and blood tests combined, it will cost around five thousand rupees."</p>
+<p>Khokon stood as if struck by lightning.</p>
+<p>Looking at their worn clothes, the doctor said with contempt,</p>
+<p>—"Given your condition, five thousand rupees is far beyond you — I doubt you even have five hundred in your pocket! Here's what we'll do — I'll bandage it to stop the bleeding, and you take her to a government hospital."</p>
+<p>Pompa was writhing in pain, blood dripping steadily from her hand onto the floor. Khokon looked once at Pompa's pale, fading face, and once at the bundle of savings tucked away in his bag.</p>
+<p>Five thousand rupees…!</p>
+<p>The money he had spent months earning under the burning sun, going hungry night after night beneath the culvert, enduring inhuman abuse, beatings, and humiliation from people every single day!</p>
+<p>Today that final key to his freedom — the last condition to reclaim his father's boundless fortune — sat bundled in the pouch in his hand! Just a little more time and his hellish ordeal would have been over!</p>
+<p>But… today Pompa's life was in danger!</p>
+<p>Khokon did not hesitate for even a moment. He walked slowly toward the counter. Then he opened the bundle of five-thousand-plus rupees, kept with such care, and poured it out onto the counter before the doctor!</p>
+<p>Even in her pain, Pompa cried out,</p>
+<p>—"No! Khokon, no! That's… that's every rupee you've saved your whole life! Don't give it away!"</p>
+<p>Khokon did not even turn around. He said firmly to the cashier at the counter,</p>
+<p>—"Here's five thousand rupees. Start her treatment right now. There must not be a single moment's delay!"</p>
+<p>Pompa broke into tears, saying,</p>
+<p>—"What have you done, Khokon? Your months of penance, your entire future… all of it is gone now!"</p>
+<p>Khokon came close to Pompa. His eyes then shone with a strange, serene, almost divine light. Placing a hand on her head, he said with utmost tenderness,</p>
+<p>—"Money can always be earned again by holding out one's hand, Pompa… but if you lose someone you love, can you ever get them back?"</p>
+<p>Pompa could say nothing more. She rested her head on Khokon's chest and wept without restraint.</p>
+<p><strong>Another Trial</strong></p>
+<p>But fate's game was not yet over.</p>
+<p>The tea stall owner had reported Khokon and Pompa to the police station, accusing them of vandalising his shop and causing major financial damage. Furious, the shopkeeper had called the police and filed a case.</p>
+<p>The emergency police, searching for Pompa, arrived at the hospital. But since Pompa was undergoing serious surgery at the time, the police did not arrest her; instead they summoned her to the station for questioning and began an investigation.</p>
+<p>Khokon stood alone in the silent corridor outside the doctor's room.</p>
+<p>His pocket was now completely empty. His dream, his tally toward ending his punishment — all of it had been reduced to dust in an instant. The five thousand rupees that would have carried him back to his palace now sat in the hospital's cash counter.</p>
+<p>Ahead of him lay no boundless fortune, no inheritance. There was only a fresh, destitute life of begging about to begin all over again. And to that was now added the new danger of a legal case against Pompa.</p>
+<p>Khokon looked out through the hospital's glass window at the pitch-dark, moonless sky.</p>
+<p>There was no despair at the corner of his lips that day, only a smile of absolute triumph. He murmured to himself —</p>
+<p><em>"So I'll have to start from zero again? Let it be so! At least today I'm not alone… I have my person with me, I have my love."</em></p>
+<p>Khokon knew — he had truly lost the kingdom worth millions in his palace, but through these months of begging he had earned a pure soul and true love. And before that achievement, all the kingdoms of the world today were utterly trivial!</p>
+      </div>
+    </section>
+    <section class="episode" id="ep9" data-ep="9">
+      <div class="episode-head">
+        <span class="episode-num">Part 9</span>
+        <h2 class="episode-title">Behind It All: A New Dawn</h2>
+        <button class="listen-btn" data-ep="9" aria-label="Listen">
+          <svg class="icon-play" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+          <span class="listen-label">Listen</span>
+        </button>
+      </div>
+      <div class="episode-body">
+        <p>A crowd of curious passers-by had gathered before the main gate of the police station.</p>
+<p>Standing beside the complaining shopkeeper, the officer in charge was speaking gravely, addressing Pompa,</p>
+<p>—"The shop has suffered significant financial damage. A written complaint has been filed, so as per procedure, the matter has to be investigated."</p>
+<p>Pompa stood silently, without answering, like someone guilty. Her bandaged hand still throbbed faintly with pain, but what pained her far more was looking at Khokon's helpless face.</p>
+<p>Khokon could not restrain himself any longer. He walked up to the police officer, folded both hands, and said in a choked voice,</p>
+<p>—"Sir, please! Let Pompa go. She is completely innocent!"</p>
+<p>The officer frowned and said,</p>
+<p>—"You step aside for a moment. I'll deal with you next."</p>
+<p>Khokon took a step forward, bowed his head before the officer, and said,</p>
+<p>—"Sir, she went into that shop only to protest an injustice done to me. Whatever she did, she did entirely for my sake. If anyone is to blame, the full responsibility is mine. Don't punish her — do whatever needs doing to me instead."</p>
+<p>The officer looked at Khokon, a little surprised,</p>
+<p>—"She did it for you? So you're behind this incident? Then you'll have to come to the station with us too. You'll need to answer some questions."</p>
+<p>Khokon did not protest even slightly. He only glanced once at Pompa. Tears of remorse were flowing from Pompa's eyes.</p>
+<p>The police took hold of Khokon's arm to lead him away.</p>
+<p>Just then, a grand, luxurious car came around the corner and screeched to a halt in front of the police station. The car door opened and a dignified, refined elderly gentleman stepped out quickly. Right behind him stepped an elegant, well-mannered lady.</p>
+<p>Khokon froze like ice the moment he saw them! His eyes went wide with disbelief.</p>
+<p>— His father and mother!</p>
+<p>Khokon's father walked straight up and spoke with the police officer. He called the tea-stall owner over and arranged to pay double the amount of his losses, having the written complaint withdrawn.</p>
+<p>Once the matter was settled there, he walked slowly and stood before his own son. The son whom he had pushed away with such harsh severity all this time — today his eyes overflowed with utmost tenderness! He spread his arms and pulled his son into a tight embrace.</p>
+<p>His mother, too, rushed forward and, cupping her son's wet face in both hands, broke into tears,</p>
+<p>—"Khokon… my darling boy…"</p>
+<p>After so long, feeling his mother's desperate voice and tender touch again, every hard barrier inside Khokon shattered in an instant. The mountain of pain he had carried inside his chest all this time poured out as tears.</p>
+<p>He said in a trembling voice,</p>
+<p>—"Father… Mother… you're here? How…?"</p>
+<p>His father said only, in a choked voice,</p>
+<p>—"Come, son, let's go home. You don't have to bear this suffering anymore. Your trial is over."</p>
+<p>Khokon still stood as though in a bewildered fog. The father he had all this time thought merciless, the father he had believed had disowned him and stripped him of his inheritance — that same father now stood shielding him in his own shadow with utmost tenderness!</p>
+<p>Just then, Khokon's eyes fell upon his one-armed beggar friend, standing quietly a little way off.</p>
+<p>Khokon asked, astonished,</p>
+<p>—"Brother! You… you're here too?"</p>
+<p>The man simply stood there with a warm, deeply affectionate smile at the corner of his lips.</p>
+<p>A whirlwind of questions and astonishment rose one after another in Khokon's mind. Was there some other deep truth hidden behind this storm that had swept through his life all this time?</p>
+<p><strong>The Real Truth</strong></p>
+<p>Khokon's father let out a deep breath and began speaking calmly,</p>
+<p>—"The day you treated that frail old man with such cruel injustice, Khokon… that very day I understood that scolding you or keeping you locked in a corner of the house would never make you a human being. The arrogance and pride inside you were leading you straight toward destruction."</p>
+<p>Khokon stood with his head bowed in remorse.</p>
+<p>His father continued,</p>
+<p>—"That day, after locking you in the house in my anger, I came outside and knelt before that old man, and spoke with him at length."</p>
+<p>Khokon looked up at his father, startled.</p>
+<p>His father smiled faintly and said,</p>
+<p>—"I've known him — not just from that day, but for many years."</p>
+<p>Khokon's eyes widened in astonishment,</p>
+<p>—"You knew him before, already?"</p>
+<p>His father nodded in agreement,</p>
+<p>—"Yes. Your mother and I used to go to that river ghat to bathe and offer prayers for many years. We've long known the honesty and principles of the man who sits on that paved platform by the riverbank."</p>
+<p>His mother wiped her tears and said,</p>
+<p>—"You were very young then, Khokon, so you never knew about him or about our visits there."</p>
+<p>His father spoke again,</p>
+<p>—"After your cruel behaviour that day, I fell at his feet and asked his forgiveness. Then the two of us together made a plan for a new future in your life."</p>
+<p>Khokon asked, speechless,</p>
+<p>—"What plan, Father?"</p>
+<p>His father touched Khokon's chin and said,</p>
+<p>—"A plan to make you a true 'human being'!"</p>
+<p>The commotion all around seemed to fall silent for a moment.</p>
+<p>Then his father slowly revealed the truth,</p>
+<p>—"The papers you were shown, the ones drawn up by the lawyer transferring the property — those were never actually legal transfer documents at all. They were nothing but a piece of false paper!"</p>
+<p>Khokon stared at his father in disbelief,</p>
+<p>—"What… do you mean?"</p>
+<p>His father smiled gently and said,</p>
+<p>—"It was all arranged to force you to confront a harsh, real experience. Our purpose was never to punish you — the real goal was to teach you life. You grew up surrounded by endless wealth from birth, so you never once understood the true value of money. You never understood the suffering of people who work hard for their living. You never felt how a person survives, burning in the fire of scarcity."</p>
+<p>Pausing a moment, he continued in a deep voice,</p>
+<p>—"I wanted you to see with your own eyes what scarcity really is, what hunger means, and how poisonous even a drop of neglect can be to another person. I wanted you to understand how immense even the smallest act of human kindness can seem to someone with nothing!"</p>
+<p>The old beggar now stepped forward slowly, placed a hand on Khokon's shoulder, and said calmly,</p>
+<p>—"And I wanted you to realise in your very soul, Khokon — the day you kicked me, you insulted not just a beggar, but a soul. Whatever their clothing, every single person walking this earth carries their own share of dignity and feeling."</p>
+<p>Khokon's tears now streamed down his cheeks like a flood. He bowed his head in silence.</p>
+<p><strong>The Beggar Friend Was Part of the Plan Too</strong></p>
+<p>Khokon now turned his wet eyes toward his deeply respected beggar friend,</p>
+<p>—"So, brother… you too?"</p>
+<p>The man smiled warmly,</p>
+<p>—"Yes, little brother, I knew everything too. From the very first day."</p>
+<p>Khokon said, speechless,</p>
+<p>—"You knew me from the very first day? Then why did you stay beside me all this time, disguised as an ordinary beggar? Why did you help me so much?"</p>
+<p>The man answered, his eyes moist,</p>
+<p>—"Your father asked me not to leave you alone in an unfamiliar city. He gave me the responsibility of watching over you, so that you would truly feel every hard lesson of life, yet never be left completely alone if you fell into serious danger."</p>
+<p>Before Khokon's eyes rose that first sorrowful night beneath the culvert… when his stomach burned with hunger, and this very man had placed his own meagre food into his hands. He had brought him worn clothes, taught him how to survive humbly through the neglect of passers-by. Every evening, with utmost care, he had kept account of his earnings.</p>
+<p>The man Khokon had all this time thought of as just an ordinary beggar's helpless sympathy — today he learned that this man had been a guardian shadow sent by his own father!</p>
+<p><strong>The Truth Before Pompa</strong></p>
+<p>Pompa had been standing to one side all this while, listening in stunned silence. Her heart was breaking, sobs rising in her throat, and one by one, all her mistaken assumptions were shattering like glass.</p>
+<p>She understood — Khokon had never once deceived or performed for her. He had felt no attraction toward her hard-earned shop. His life on the streets had been a difficult vow to purify his own soul!</p>
+<p>Pompa's eyes overflowed with tears of remorse.</p>
+<p>Khokon's father now placed a hand on his son's shoulder and asked,</p>
+<p>—"Were you able to gather that five thousand rupees, the condition of your test, Khokon?"</p>
+<p>Khokon bowed his head and said humbly,</p>
+<p>—"Yes, Father… I managed it."</p>
+<p>—"How much had you saved?"</p>
+<p>Khokon was quiet for a moment before saying, his voice choked,</p>
+<p>—"I had saved five thousand rupees, Father."</p>
+<p>His father asked tenderly,</p>
+<p>—"Then where is that saved money now, Khokon?"</p>
+<p>Khokon glanced once, guiltily, at Pompa standing beside him. Then he said,</p>
+<p>—"A piece of broken glass at the tea stall cut deep into Pompa's hand, Father… I gave all my savings to the hospital for her emergency treatment."</p>
+<p>The moment he heard this, Khokon's father stood staring at his son in silence for a while. Then, slowly, his grave face lit up with a pure glow of satisfaction and pride! Tears came to his eyes.</p>
+<p>He cupped his son's face in both hands and said,</p>
+<p><strong>—"Then you've passed the test with full marks, Khokon!"</strong></p>
+<p>Khokon looked at his father, astonished,</p>
+<p>—"What do you mean, Father?"</p>
+<p>His father smiled through tear-filled eyes,</p>
+<p>—"The boy who once, in utter arrogance, kicked a starving beggar and drove him away — that same boy has today, without a moment's hesitation, given away the very last savings of his hard penance to save another ordinary person's life! What greater victory could there be than this?"</p>
+<p>He pulled his son into his chest again and said,</p>
+<p>—"My fortune of millions was always meant for you, son! I only wanted my son never to be blinded by the pride of money, but to learn to love the human soul. Today you have truly become a 'human being'!"</p>
+<p>Khokon buried his face in his father's chest and wept like a child.</p>
+<p>A little way off, Pompa covered her face with the end of her shawl and wept without restraint. The man she had once thought of as a wretched beggar and had scorned and rebuked so much — that same man now stood as a towering figure in the sky of her consciousness!</p>
+<p>In Pompa's mind, one desperate question kept echoing again and again — <em>'Will Khokon ever be able to forgive this injustice, this misunderstanding of mine?'</em></p>
+<p><strong>A New Dawn (Epilogue)</strong></p>
+<p>Pompa did not have to wait long for the answer to that question.</p>
+<p>Once his term of punishment and trial was successfully completed, Khokon, prince of the Roy household, returned once more to his old palace. But he was no longer that same arrogant Khokon — within him now lived a humble, compassionate, and noble soul.</p>
+<p>The first thing Khokon did upon returning home was go, with his father, straight to Pompa's little handicrafts shop.</p>
+<p>Pompa, overcome with remorse, could not bring herself to face Khokon. But Khokon himself came and stood before her, smiling sweetly,</p>
+<p>—"Pompa, throughout my life of begging, you were the name of my greatest strength. Today I have truly returned to my own identity, but without you, this life of mine is utterly incomplete. Will you become my life partner and bless this life of mine?"</p>
+<p>Pompa's tears would no longer hold back. With tearful eyes, she nodded her consent.</p>
+<p>A few days later, the grand wedding celebration of Khokon and Pompa was held with great splendour in the heart of the city. But this wedding was unlike any other rich man's wedding. By Khokon and Pompa's special wish, the most honoured guests at that wedding were the elderly beggar from the river ghat, Khokon's beggar friend from beneath the culvert, and all the homeless people of the city!</p>
+<p>Khokon's father kept his word and his promise in full. He had a vast housing complex built in a pleasant part of the city, where permanent shelter was arranged for all the homeless and helpless beggars of the city.</p>
+<p>They did not stop at merely providing shelter; Pompa took on the responsibility of making all these people self-reliant through her own handicraft skills. Funded by the Roy family, a large cottage-industry training centre was built, where former beggars began making various craft goods with their own hands and earning their living with dignity.</p>
+<p>The people society had once considered a 'burden' were, through Khokon and Pompa's efforts, now self-respecting artisans!</p>
+<p>One evening after the wedding, Khokon and Pompa came and stood by the riverbank.</p>
+<p>The crimson light of the setting sun shimmered on the river's water. Pompa took Khokon's hand in her own and said,</p>
+<p>—"You know, Khokon, if I hadn't made the mistake of thinking you a beggar that day, perhaps I would never have witnessed this transformation of a human being."</p>
+<p>Khokon looked at Pompa and smiled a smile of absolute peace,</p>
+<p>—"What the dust of the road taught me, Pompa, no palace or school could ever have taught me. Pride blinds a person, and the experience of poverty teaches a person to become 'human'."</p>
+<p>Looking toward the distant culvert, Khokon let out a long, deep breath. That dark chapter of his life of begging was over now, but that path had given him one absolute truth to carry forward — <strong>a human being's worth is far greater than money, and love is the greatest wealth in all the world!</strong></p>
+<p><strong>The End</strong></p>
+      </div>
+    </section>
+  <div class="end-mark">— THE END —</div>
+  <div class="author-credit">Author: Surajit Roy</div>
+</div>
+
+<div class="voice-warning" id="voice-warning">
+  <div class="vw-box">
+    <div class="vw-title">No English Voice Found on This Browser/Device</div>
+    <div class="vw-text">To have the story read aloud, your device needs an English text-to-speech voice installed. Here's what to do:</div>
+    <ul class="vw-list">
+      <li><b>Android:</b> Settings → System → Languages &amp; input → Text-to-speech output → Google Text-to-speech engine → Install voice data → download an English voice</li>
+      <li><b>Computer/laptop:</b> Open this page in Google Chrome with an internet connection — Chrome will use its online English voices automatically</li>
+    </ul>
+    <button class="vw-close" id="vw-close">Got it</button>
+  </div>
+</div>
+
+<div class="player-bar" id="player-bar">
+  <div class="player-controls">
+    <button id="p-prev" aria-label="Previous part">⏮</button>
+    <button id="p-play" class="p-play" aria-label="Play/Pause">⏸</button>
+    <button id="p-next" aria-label="Next part">⏭</button>
+  </div>
+  <div class="p-info">
+    <div class="p-title" id="p-title">—</div>
+    <div class="p-sub" id="p-sub">Playing…</div>
+  </div>
+
+</div>
+
+<script>
+const EPISODES = [
+{"id":"ep1","num":1,"title":"The Punishment of Exile","speech":"Khokon was not yet twenty-five. He was the only child of one of the city's wealthiest businessmen. Endless money, a palatial mansion, a fleet of expensive cars — nothing was ever missing from his life. Yet standing in that ocean of plenty, his father carried a deep, quiet sorrow. Night after night sleep would not come to him, worrying over the future of his only son, Khokon. A flock of opportunistic friends always surrounded Khokon. In the crowd of that hollow friendship, money was thrown around like water, day after day. To him money was nothing but paper that passed from hand to hand. He had gone blind with adda sessions, extravagance at expensive restaurants, an endless hunger for new luxuries. And day by day the edge in his behaviour and the roughness of his speech kept growing. Whoever stood before him, old or young, rich or poor, he no longer cared; speaking rudely to anyone had become his habit. Yet his father was cut from an entirely different cloth. He had built this vast business empire on hard struggle and honesty. He had pulled his son close many times and tried to make him understand: Khokon, money can buy rice, but it cannot buy character. Never let money kill the human being inside your chest. But that counsel went in one ear and straight out the other. One blazing afternoon, an old beggar came and stood before the gates of the mansion, in ragged clothes, his body bent with age, holding an old begging bowl. Trembling, he said, Son, I haven't had a bite in two days. Help me a little, so I can buy something to eat. Khokon was scrolling through his phone. His face twisted with irritation. He shouted, Get away from here! The old man folded his hands and said gently, Don't be angry, son. Just a little charity would help. That mild protest struck Khokon's pride like a poisoned arrow. Losing his temper, he kicked the old man hard in the chest, knocking the elderly man to the ground, then ground his fallen hand under his leather shoe until blood spread across the floor. Right then Khokon's father arrived at the door and froze at the sight, stunned into silence. Looking at his son, he asked in a trembling voice, You — what have you done, Khokon? Khokon looked at him with frightened eyes but said nothing. His father rushed to the old man, knelt down without a thought for his own clothes, and took the bleeding hands into his own, saying in a choked voice, Forgive me, brother. I gave him birth but failed to make him a human being. This sin is mine. The old man said nothing, only wept silently. Khokon's father stood and looked at his son with an ocean-deep despair. He said, I wanted to give you an empire, but before that I wanted to make you a human being of flesh and blood. I have failed utterly. Khokon, frightened now, stepped forward: Father, it was a mistake, I'll never do this again! But his father's decision had already turned. He went inside and returned with a hard announcement: From this moment, you have no right over the wealth I have earned. Khokon stood as if struck by lightning: Father, what are you saying? His father's eyes were hard as stone. This entire estate, this business, this bank balance — all of it I am signing over to this humiliated old beggar. Khokon begged at his father's feet, but his father pulled away. The family lawyer was summoned and the papers prepared. A trust was formed, and the old beggar's name was recorded as its principal beneficiary. In a single moment, Khokon went from prince to pauper. After the papers were signed, the old beggar rose slowly and said, Look, Khokon, I may be a beggar, but I have no greed for another man's wealth. I will not touch a single coin of your father's trust. Khokon stood with his head bowed. The old man added, But for the injury you did to my body, for crushing my self-respect, you must still be punished. Khokon asked, What punishment? The old man said, You will go to another, unfamiliar city for some months and survive by begging. Begging will be your livelihood. From it you must save five thousand rupees, and when you bring that to me, your life as a beggar will end. Until then you must keep begging. Khokon's chest went cold: I... I will have to beg? Yes, you. And listen, the old man added, during these days, no one must ever learn who you really are. You cannot earn money any other way — any other work must be done for no pay at all. I will send someone to watch over you from a distance. Khokon stood in stunned silence. The old man laid down harsh conditions: every morning you go out empty-handed, no money or valuables, and you live only on what you earn that day. You must never spend the previous day's earnings. You must save five thousand rupees this way; until that is complete, your punishment does not end. This way you will understand what it means to beg door to door, and what a mouthful of food is truly worth. Pausing, the old man gave his final word: if you can earn five thousand rupees honestly, without any trickery, I give you my word — I will return your father's property to you untouched. Khokon stood utterly still. There was no second path open to him. On one side a lost kingdom that now belonged, in law, to a beggar; on the other, an uncertain, humiliating life of begging. Khokon did not know where the dusty roads of this unfamiliar city would lead him. He understood only that he had no idea how many days lay ahead in which he must surrender his own pride and live as a true beggar. And hidden at the end of this trial by fire lay the greatest lesson of his life — the lesson of becoming human."},
+{"id":"ep2","num":2,"title":"The First Day: An Empty Begging Bowl","speech":"Before dawn had even broken, Khokon's hard months of punishment began. The boy who had never once stepped outside without a luxury car, whose pocket always carried a bundle of notes, now had nothing — no money, no phone, no social standing. He wore plain old clothes and carried an empty begging bowl. The city's streets were entirely unknown to him. Before leaving, the old beggar's final words rang in his ears: remember, no one must ever learn your true identity; you are a human being of flesh and blood, and it is as one that you must survive these hard months. Khokon set out alone. That morning he held out his hand to a passer-by for the first time, his throat dry with shame, and stammered, Sir, could you help me a little? The man looked him up and down and said with contempt, Look at you, young and able-bodied — can't you work? Cheap begging! Khokon stood with his head bowed. Further on, he asked an older woman for a couple of rupees; she turned away, saying, A healthy young man, not ashamed to beg? Another man snarled at him to get out of his way. By midday, the heat was fierce and hunger gnawed at his stomach. He went to a tea stall and begged for help; the shopkeeper shouted at him to leave, then, when Khokon pleaded for just a little food, hurled a cup of boiling tea at him. The scalding tea burned his shirt and skin. The shopkeeper shouted that he'd pour hot water on him next if he didn't leave. Khokon stood stunned, tears sliding down his face, but held back his sobs. That evening, exhausted, a man suddenly grabbed his collar, accusing him of picking his pocket. A crowd gathered; someone slapped him, someone shoved him, shouting that beggars like him steal the moment they get the chance. Khokon wept, pleading that he was no pickpocket. Just then, another beggar — a man with a paralysed left arm — pushed through the crowd and defended him, saying he had watched Khokon all morning and the boy had only begged, never touched anyone's pocket. The crowd eventually left, still muttering curses. Khokon collapsed onto the roadside in tears. The one-armed beggar sat beside him, gave him a bit of bread and jaggery from his bundle, and told him to eat, saying he'd seen Khokon hadn't eaten all day. Khokon ate with trembling hands, tears streaming — after all the day's abuse, this small piece of bread from a stranger felt like nectar from heaven. Afterwards Khokon asked his name; the man said names mean nothing here, they have only one name — beggar. As evening fell, the beggar asked if Khokon had anywhere to sleep. Khokon admitted he had no one, and the man invited him to stay the night in his shelter. They walked to a broken culvert on the edge of the city, damp beneath it, where several destitute people were settling in for the night. The beggar spread an old sheet for Khokon and told him to get through the night; tomorrow's worries could wait. Khokon lay on the hard ground, unable to sleep, images of his old life flooding back — his father's stern face, the mansion gates, the roar of cars, the money wasted with friends — followed by the memory of today's abuse, and finally the image of a one-armed stranger sharing his own food. On this first day, Khokon realised the greatest truth of his life: even someone with no worldly wealth may carry an ocean of heart to give — humanity does not live in expensive clothes, it lives in the human soul. Lying beneath the culvert, amid mosquitoes and the smell of damp earth, the first day of his punishment ended. But he knew this was only the first watch of the night; he could not imagine how much more humiliation, hunger, and darkness awaited him."},
+{"id":"ep3","num":3,"title":"First Lessons and the Shadow of the Past","speech":"The next morning, Khokon's sleep was broken by his beggar friend's call to learn the real craft of begging. The man explained: never annoy anyone, especially someone rushing to work; don't block anyone's path. Beg when people are heading home tired after a day's work, their hearts a little softer then. Speak humbly — Sir, could you help me a little, or Mother, please show some kindness. And remember, you can never force anyone to give; whoever gives even a coin freely, wish them well — say, May God bless you. The beggar then gave Khokon a set of his own old, patched clothes, saying fine clothes would make people suspicious; from today these clothes were his new identity. Khokon put them on and, catching his reflection in the murky river beside the culvert, saw a different man — no pride, no vanity, no royal bearing. In the morning his friend took him to a quiet spot by the river ghat and told him to sit patiently all day without forcing himself on anyone. The first hours were agonising with shame, as people walked past, some ignoring him, some turning away in disgust. But by afternoon he began applying what he'd learned, asking humbly for help, and when a middle-aged man dropped a two-rupee coin in his bowl, Khokon bowed and blessed him. An elderly woman left a few rupees too, and he blessed her as well. By day's end, sitting by the river, Khokon understood a strange truth — begging is not simply holding out a hand; it demands crushing all pride, anger and shame, and testing one's patience without limit. It is far harder to earn sympathy and trust than money. At this very ghat, Khokon saw a traffic policeman every day who bathed there after duty, always entrusting his bag, clothes and phone to another old beggar and tipping him five rupees afterward — though he never once gave Khokon anything. A few days earlier, Khokon's life had been entirely different — a palatial house, boundless wealth, a reckless life. His anxious mother had hoped marriage might settle her wayward son, and sent for a matchmaker, who brought photographs of eligible girls. One photograph caught her eye — a girl named Pompa, plain in appearance but with a striking gentleness and self-assurance. The matchmaker explained that Pompa, whose parents had died in a road accident, ran a small handicrafts shop and lived with her aunt, with no excessive demands. Khokon's mother, taken with the photo, brought it to Khokon's room that evening, hoping he'd consider it. Khokon, annoyed and distracted by his phone, snatched the photo, glanced at it, and tore it in two, throwing it to the floor. His mother, devastated, left the room in tears, and the marriage talk died there — though the matchmaker had already left a photo of Khokon with Pompa's aunt, who never returned it; with no further contact, the matter was quietly buried, with no one imagining it would return with new drama one day. And now, that same arrogant Khokon sits in the dust by the riverbank, holding out his hand for a rupee or two, coming to understand how much harder it is to earn a little human sympathy and trust than to possess all the riches of a palace."},
+{"id":"ep4","num":4,"title":"The Girl from the Photograph","speech":"That evening, walking the city streets after his day's work by the river, Khokon was gradually growing used to this unfamiliar life, learning where to sit, when to beg, and how to wait with dignity. His thoughts were broken by rowdy laughter at a street corner, where he saw a plain but graceful young woman carrying a wrapped birthday gift, being harassed by four or five ruffians who blocked her path and tried to snatch the package. Something in Khokon stirred; without hesitation he stepped forward and told them to let her go. The ruffians mocked him at first, but faced with his calm, fearless manner, they eventually slipped away cursing. The girl thanked him with relief, and Khokon reassured her she was safe. She asked if he lived nearby, and he answered simply that he lived in the city. She introduced herself as Pompa. The name struck Khokon like a jolt — he suddenly recalled an evening months earlier, his mother holding a photograph, saying this girl might set him on the right path — and how he had torn that very photograph apart in his arrogance. Stunned, Khokon asked about her parents; Pompa said both had died in a road accident and she now lived with her aunt — the exact story his mother had told him. Pompa explained she ran a small handicrafts shop after finishing her studies, trying to stand on her own feet, and that the gift she carried was her own handmade work for a customer's order. Khokon stood frozen, struck by the strange irony of fate — the girl he had once rejected in his pride now stood before him, and he, in utter destitution, owed her a debt of gratitude, while she had no idea he was that same arrogant Khokon. Pompa asked his name; he said, Khokon, and she smiled, since many people share that name. She asked for his phone number, but Khokon, having none, gave her his beggar friend's number instead, explaining he didn't use a phone. Pompa, moved by his honesty and sorrowful eyes, sensed some deep struggle in his life, and asked how they might meet again. Khokon said, with a faint smile, that fate might bring them together again, and Pompa told him the location of her shop, Pompa's Handiwork, before walking off. Khokon stood long at that corner, his mother's tearful face floating before him, realising she had been right all along, and the fault had been his. Walking to the lane Pompa had mentioned, he watched her from the shadows, unable to approach, murmuring to himself that his mother's words — that this girl might set him right one day — echoed painfully now. He did not yet know what transformation and trial this new bond, and his quiet feelings for Pompa, would bring."},
+{"id":"ep5","num":5,"title":"Behind a Borrowed Name","speech":"After that chance meeting, Khokon and Pompa began seeing each other regularly. Pompa's handicrafts shop grew popular, and needing a way to deliver orders, she bought an old scooter with her savings and her aunt's help. One quiet afternoon she asked Khokon to accompany her on a delivery across the river. Neither wore a helmet in their hurry. At a busy junction, a traffic policeman signalled them to stop — the very officer who bathed daily at the river ghat, entrusting his belongings to the one-armed beggar and tipping him five rupees, yet never once giving Khokon anything. The officer demanded her licence and papers, which Pompa, having recently bought the old scooter, did not have in order. He threatened a fine. Pompa pleaded, explaining she was rushing a birthday delivery, but the officer remained firm about the rules. Khokon, unable to stay silent, asked to speak with the officer privately, and revealed that he was the beggar who sat at the river ghat, who had watched the officer leave his belongings with another beggar every day and tip him five rupees — while never once giving Khokon anything himself. The officer, stunned, then burst out laughing upon recognising him, teasing Khokon good-naturedly about landing such a lovely companion despite being a beggar, and let them go with a warning to get a helmet and sort the papers. Pompa was astonished at how easily the officer let them off, and Khokon simply said he'd told him a version of the truth. She asked what work he actually did, but Khokon avoided the question, and Pompa, assuming it was work he felt embarrassed about, let it go, reasoning that work is work, and everyone survives however they can. Some days later, a grand rice-ceremony was held in the wealthiest part of the city. Khokon's beggar friend urged him to come along for the food, since the smell alone was invitation enough for beggars. Khokon reluctantly agreed, buying a small toy for the child along the way. They sat quietly at the edge of the pandal and were served food, but a woman suddenly recognised the beggar friend and raised an alarm, and security guards rushed to throw them out, roughly grabbing the crippled man's arm. Khokon, no longer the man who might once have done the same to someone destitute, stood up and insisted they leave with dignity. As they left, a mocking man taunted them about wasting food, and Khokon, without fear, declared clearly that he too was a beggar. The pandal fell silent. At that moment, Pompa, who had come to deliver an order, heard his words and froze in shock, her gift box slipping from her grasp. She approached him, disbelieving, and asked if he had really said he was a beggar. Khokon, caught, could offer no defence. The silence between them grew unbearably heavy, as Khokon realised that fate had, in a single moment, stripped away the disguise he had guarded so carefully."},
+{"id":"ep6","num":6,"title":"Trust, Broken","speech":"After that evening at the pandal, Pompa's mind was in turmoil, unable to reconcile the honourable, courageous young man she knew with his shocking declaration of being a beggar. That night she confided in her aunt, who questioned how well Pompa really knew this boy, warning that his rescue of her might have been a calculated act to win her trust, and that as a girl running her own successful business alone, she could easily be a target for someone seeking to control her earnings through marriage. Pompa resisted the suspicion but could not shake her aunt's warning, lying awake all night wondering who Khokon truly was — perhaps even fancying he might be an undercover detective hiding his identity for safety, a fantasy that offered her fragile comfort. Several days passed without her seeking him out, the unanswered question gnawing at her. Then one stormy afternoon, walking home in heavy rain, she saw a drenched, ragged figure approaching — it was Khokon. She froze. He stood before her, offering no excuse, only a silent, folded-hand plea, his rain-soaked eyes full of guilt. She asked, trembling, if he was truly a beggar; he did not deny it. She asked if he might be a detective on a secret mission; he shook his head — no. Her last hope extinguished, she stared at him in the pouring rain, then said bitterly that her aunt had been right. She accused him of thinking her a fool, of betraying her trust, declaring that she despised people who, though capable of work, chose to live off others' charity — and that he was exactly such a person. In an ice-cold voice, she severed all ties with him, telling him never to come before her again, then walked away into the rain. Khokon stood motionless, her final words echoing in his ears, realising that no physical suffering — not hunger, not beatings, not scalding tea — could compare to the agony of losing someone dear after being exposed as a fraud in their eyes. He walked on into the dark, muddy road that awaited the rest of his painful life of begging."},
+{"id":"ep7","num":7,"title":"The Identity Behind the Photograph","speech":"After ending things with Khokon, Pompa's days passed heavily, as she tried to convince herself he deserved no place in her life, yet couldn't stop remembering his courage and honesty. One morning, while cleaning her bedsheet, she discovered an old photograph hidden in the mattress — a photograph of Khokon, but dressed in fine clothes with a regal bearing, utterly unlike the man she knew. On the back was written his name, Khokon Roy, of Roy Enterprises, sole heir, with an address. Her aunt recognised it immediately as the boy from the old marriage proposal, whose family, she recalled, had supposedly sold everything and vanished. Stunned, Pompa realised the pieces — his fluent English, his ease with foreigners, his mysterious familiarity with the police officer — all suddenly made sense. She rushed, without an umbrella, to the address on the photograph, finding a vast mansion under the Roy Enterprises name. An old employee told her that Khokon and his father no longer lived there, that the entire property had been transferred to an old beggar. Astonished, Pompa found that same old beggar, who confirmed that the man in the photograph was indeed Khokon, and revealed the full story — how Khokon's father, devastated by his son's cruelty toward an old beggar, had signed over his entire fortune to that very beggar, and how the beggar, not wishing to destroy Khokon but to reform him, had sent him to live in an unfamiliar city, hiding his identity, begging honestly to earn five thousand rupees as proof of his transformation, with the promise that his father's fortune would be returned intact if he succeeded. Pompa wept as the pieces of memory crashed over her — Khokon's soaked clothes in the rain, his folded, helpless hands, and her own cruel words severing their bond. Overcome with remorse, she asked the old man if Khokon had truly never deceived her, and he explained that Khokon had simply been atoning for his sin, bound by a strict condition never to reveal his true identity, silently bearing the humiliation rather than break his word. Pompa broke down, recalling Khokon's parting words that fate might bring them together again, only now understanding the pain behind that smile. She rushed out into the streets, realising for the first time in her life that she had gravely wronged a remorseful man by mistaking him for something less than human, vowing silently that she would find him and wait for him at the end of his long, painful road."},
+{"id":"ep8","num":8,"title":"The Test of Five Thousand Rupees","speech":"Having learned the truth, Pompa told no one — not her aunt, not Khokon, not even his beggar patron — understanding that Khokon was walking a hard path of atonement, and that her duty now was to honour his self-respect rather than offer pity. That evening she found Khokon's one-armed beggar friend and asked where Khokon lived and how much he had saved toward his punishment. The man told her Khokon lived beneath a culvert at the edge of the city, and that he had saved about four thousand five hundred and fifty rupees — meaning only about five hundred rupees remained. Overjoyed, Pompa rushed to the culvert, where she found Khokon exhausted on the damp ground. He looked up, disbelieving, as she stood before him. After a long silence, she asked for his forgiveness, admitting her harsh words that rainy night had been wrong. Khokon insisted she had spoken the truth, that he deserved no forgiveness for living off others' charity, but Pompa firmly disagreed, saying she now knew the truth behind him. Terrified she had learned his father's secret, Khokon asked who had told her, but she said simply that some truths need to be felt rather than spoken. She told him she understood he must have had some overwhelming reason for this path, and asked how much more he needed to reach five thousand rupees. When he said about five hundred, she declared she would beg alongside him the next morning to finish his trial together. The next day they set out together with their bowls, enduring scorn and the occasional coin, but Khokon no longer felt the sting of shame, for Pompa stood beside him. At midday, a passing motorist tossed them stale bread with contempt; Khokon, suspecting it might be spoiled, tried to eat it himself so Pompa wouldn't have to, but she snatched the rest from him and ate it too, declaring that love and compassion weren't his alone to give. Later that afternoon, they arrived at the very tea stall where the owner had once scalded Khokon with boiling tea. Recognising the man, Pompa's fury ignited; despite Khokon's attempt to leave, she stormed inside, smashed cups and a display case, and confronted the shopkeeper about his cruelty, declaring that being a beggar gave no one the right to be treated like an animal. Storming out, she didn't realise a shard of glass had cut deep into her hand, and soon blood was pouring freely. Khokon rushed her to a nearby nursing home, where the doctor said an urgent operation costing about five thousand rupees was needed, or she risked permanent damage or worse. Faced with losing either his life's savings — the very money meant to end his punishment — or Pompa's wellbeing, Khokon didn't hesitate for a moment, handing over his entire saved sum to the hospital counter despite Pompa's tearful protests. He told her that money could always be earned again, but losing someone you love could never be undone. But fate wasn't finished — the furious tea-stall owner filed a police complaint over the vandalism, and though Pompa wasn't arrested due to her surgery, she was summoned for questioning. Standing alone in the hospital corridor, his pockets empty and his dream of reclaiming his father's fortune dashed, Khokon looked out at the dark sky and smiled with quiet triumph, murmuring that starting from zero again was fine, since today he wasn't alone — he had his love, his person, beside him, and that achievement was worth more than any kingdom."},
+{"id":"ep9","num":9,"title":"Behind It All: A New Dawn","speech":"A crowd gathered outside the police station, where the officer in charge told Pompa gravely that the shop's damages required investigation, given the written complaint. Pompa stood silently, guilt-ridden, more pained by Khokon's helpless expression than her own throbbing hand. Khokon stepped forward, pleading for Pompa's release, insisting the fault was entirely his and he alone should bear any punishment. The officer, surprised, decided Khokon himself would need to come in for questioning. Just then, a luxurious car pulled up, and a dignified older couple emerged — Khokon's parents. Stunned, Khokon watched as his father settled the matter, paying the shopkeeper double his losses and withdrawing the complaint, then turned to embrace his son with overwhelming tenderness. His mother rushed to cup his face, weeping, calling him her darling boy. Overwhelmed, Khokon broke down, asking how they were here. His father told him gently that his trial was over and he need suffer no longer. Just then Khokon noticed his one-armed beggar friend standing nearby, and asked in astonishment if he too was involved. His father then revealed the truth — that the entire property transfer had never been a real legal document at all, but a device to force Khokon to confront a harsh, real experience, since he had grown up surrounded by wealth and never understood the value of money or the suffering of ordinary people. He explained that he and Khokon's mother had known the old beggar for years, from visits to the river ghat, and together they had devised this plan to make Khokon truly human, not merely to punish him. The old beggar added that Khokon needed to feel, in his very soul, that kicking him that day had meant insulting not just a beggar but a human soul, since every person, however dressed, carries their own dignity. Khokon wept freely, and turned to his beggar friend, realising the man had known his identity from the very first day, sent by his father to watch over him and ensure he was never left entirely alone in danger while learning life's hardest lessons. Pompa, listening in stunned silence nearby, realised that Khokon had never deceived her, that his life on the street had been a genuine act of atonement, and her eyes filled with remorse. Khokon's father then asked if he had managed to save the required five thousand rupees; Khokon admitted he had, but when asked where the money was now, he confessed that he had given it all to the hospital to save Pompa after she was injured at the tea stall. His father, stunned into silence for a moment, then beamed with pride and told him that this was exactly how he had passed the test with full marks — for a boy who once kicked a starving beggar out of pure arrogance had, this time, given away his last savings without hesitation to save another person's life, and there could be no greater victory than that. He embraced his son again, telling him that his fortune had always been meant for him, and that he had only ever wanted his son to love the human soul rather than be blinded by money's pride — and that today, he had truly become a human being. Khokon wept like a child in his father's arms, while Pompa, standing a little apart, wept behind her shawl, realising that the man she had once scorned as a worthless beggar had now become, in her eyes, an extraordinary human being, wondering only whether he could ever forgive her injustice and misunderstanding. She did not have to wait long for her answer. Once his punishment and trial were successfully completed, Khokon returned to his old palace, no longer the arrogant boy he had once been, but someone humble, compassionate, and noble at heart. The first thing he did upon returning was go straight to Pompa's little shop with his father. Though racked with remorse, Pompa could barely face him, but Khokon came to her with a gentle smile and told her that throughout his life of begging, she had been the name of his greatest strength, and that though he had returned to his true identity, his life would remain incomplete without her, and he asked her to become his life partner. Overcome, Pompa nodded through her tears. Days later, a grand wedding was celebrated in the city, unlike any other wealthy family's wedding — for by Khokon and Pompa's own wish, the guests of highest honour were the old beggar from the river ghat, Khokon's friend from beneath the culvert, and all the homeless people of the city. Khokon's father kept his word in full, building a large housing complex where the city's homeless were given permanent shelter, while Pompa took charge of making them self-reliant through handicraft training, funded by the Roy family, so that those once dismissed as a burden on society became dignified, self-respecting artisans. One evening after the wedding, standing together by the riverbank as the sun set, Pompa told Khokon that had she not mistaken him for a beggar that day, she might never have witnessed this transformation. Khokon smiled with perfect peace and told her that what the dust of the road had taught him, no palace or school ever could have — that pride blinds a person, while the experience of poverty teaches one to become truly human. Looking toward the distant culvert, he let out a long breath: that dark chapter of his life was over now, but it had left him with one absolute truth to carry forward — that a human being's worth is far greater than money, and that love is the greatest wealth in all the world. The End."}
+];
+
+/* ---------- progress bar ---------- */
+const progressBar = document.getElementById('progress-bar');
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+  progressBar.style.width = scrolled + '%';
+});
+
+/* ---------- bookmark (localStorage) ---------- */
+const STORAGE_KEY = 'punishment-of-exile-bookmark-en';
+function saveBookmark(epId){
+  try{ localStorage.setItem(STORAGE_KEY, epId); }catch(e){}
+}
+function loadBookmark(){
+  try{ return localStorage.getItem(STORAGE_KEY); }catch(e){ return null; }
+}
+function initBookmark(){
+  const last = loadBookmark();
+  if(!last) return;
+  const ep = EPISODES.find(e => e.id === last);
+  if(!ep) return;
+  const banner = document.getElementById('continue-banner');
+  document.getElementById('cb-title').textContent = 'Part ' + ep.num + ': ' + ep.title;
+  document.getElementById('cb-link').href = '#' + ep.id;
+  banner.classList.add('show');
+}
+initBookmark();
+
+/* mark read + bookmark via IntersectionObserver */
+const tocItemsMap = {};
+document.querySelectorAll('.toc-link').forEach(a=>{
+  tocItemsMap[a.dataset.ep] = a.closest('.toc-item');
+});
+const sections = document.querySelectorAll('.episode');
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting && entry.intersectionRatio > 0.35){
+      const epNum = entry.target.dataset.ep;
+      const epId = 'ep' + epNum;
+      saveBookmark(epId);
+      const tocItem = tocItemsMap[epNum];
+      if(tocItem) tocItem.classList.add('read');
+    }
+  });
+}, { threshold:[0.35] });
+sections.forEach(s=>io.observe(s));
+
+/* ---------- English voice narration (Web Speech API) ---------- */
+let voices = [];
+function loadVoices(){
+  voices = window.speechSynthesis ? window.speechSynthesis.getVoices() : [];
+}
+if('speechSynthesis' in window){
+  loadVoices();
+  window.speechSynthesis.onvoiceschanged = loadVoices;
+}
+function pickEnglishVoice(){
+  if(!voices || !voices.length) return null;
+  return voices.find(v => v.lang && v.lang.toLowerCase() === 'en-us')
+      || voices.find(v => v.lang && v.lang.toLowerCase() === 'en-gb')
+      || voices.find(v => v.lang && v.lang.toLowerCase().startsWith('en'))
+      || null;
+}
+function hasAnyEnglishVoice(){
+  loadVoices();
+  return !!pickEnglishVoice();
+}
+const voiceWarning = document.getElementById('voice-warning');
+document.getElementById('vw-close').addEventListener('click', () => {
+  voiceWarning.classList.remove('show');
+});
+
+let currentUtterance = null;
+let currentEpId = null;
+let isPaused = false;
+
+const playerBar = document.getElementById('player-bar');
+const pTitle = document.getElementById('p-title');
+const pSub = document.getElementById('p-sub');
+const pPlayBtn = document.getElementById('p-play');
+
+function setListenBtnState(epId, playing){
+  document.querySelectorAll('.listen-btn').forEach(btn=>{
+    if(btn.dataset.ep === epId.replace('ep','')){
+      btn.classList.toggle('playing', playing);
+      btn.querySelector('.listen-label').textContent = playing ? 'Stop' : 'Listen';
+    } else {
+      btn.classList.remove('playing');
+      btn.querySelector('.listen-label').textContent = 'Listen';
+    }
+  });
+}
+
+function speakEpisode(epId, retry){
+  retry = retry || 0;
+  if(!('speechSynthesis' in window)){
+    voiceWarning.classList.add('show');
+    return;
+  }
+  const ep = EPISODES.find(e => e.id === epId);
+  if(!ep) return;
+
+  window.speechSynthesis.cancel();
+  loadVoices();
+
+  let v = pickEnglishVoice();
+  if(!v && voices.length === 0 && retry < 5){
+    setTimeout(() => speakEpisode(epId, retry + 1), 300);
+    return;
+  }
+  if(!v){
+    voiceWarning.classList.add('show');
+    return;
+  }
+
+  const utter = new SpeechSynthesisUtterance(ep.speech);
+  utter.lang = v.lang || 'en-US';
+  utter.voice = v;
+  utter.rate = 0.98;
+  utter.pitch = 1;
+
+  utter.onend = () => {
+    setListenBtnState(epId, false);
+    playerBar.classList.remove('active');
+    currentEpId = null;
+    currentUtterance = null;
+    const idx = EPISODES.findIndex(e=>e.id===epId);
+    if(idx > -1 && idx < EPISODES.length - 1){
+      const next = EPISODES[idx+1];
+      setTimeout(()=>{
+        document.getElementById(next.id).scrollIntoView({behavior:'smooth', block:'start'});
+        speakEpisode(next.id);
+      }, 500);
+    }
+  };
+  utter.onerror = () => {
+    setListenBtnState(epId, false);
+    playerBar.classList.remove('active');
+  };
+
+  currentUtterance = utter;
+  currentEpId = epId;
+  isPaused = false;
+  window.speechSynthesis.speak(utter);
+
+  setListenBtnState(epId, true);
+  playerBar.classList.add('active');
+  pTitle.textContent = 'Part ' + ep.num + ': ' + ep.title;
+  pSub.textContent = 'Playing…';
+  pPlayBtn.textContent = '⏸';
+  saveBookmark(epId);
+}
+
+function stopSpeaking(){
+  if('speechSynthesis' in window) window.speechSynthesis.cancel();
+  if(currentEpId) setListenBtnState(currentEpId, false);
+  playerBar.classList.remove('active');
+  currentEpId = null;
+  currentUtterance = null;
+  isPaused = false;
+}
+
+document.querySelectorAll('.listen-btn').forEach(btn=>{
+  btn.addEventListener('click', () => {
+    const epId = 'ep' + btn.dataset.ep;
+    if(currentEpId === epId && !isPaused){
+      stopSpeaking();
+    } else {
+      speakEpisode(epId);
+    }
+  });
+});
+
+/* player bar controls */
+pPlayBtn.addEventListener('click', () => {
+  if(!('speechSynthesis' in window) || !currentEpId) return;
+  if(window.speechSynthesis.speaking && !window.speechSynthesis.paused){
+    window.speechSynthesis.pause();
+    isPaused = true;
+    pPlayBtn.textContent = '▶';
+    pSub.textContent = 'Paused';
+  } else if(window.speechSynthesis.paused){
+    window.speechSynthesis.resume();
+    isPaused = false;
+    pPlayBtn.textContent = '⏸';
+    pSub.textContent = 'Playing…';
+  }
+});
+document.getElementById('p-prev').addEventListener('click', () => {
+  if(!currentEpId) return;
+  const idx = EPISODES.findIndex(e=>e.id===currentEpId);
+  if(idx > 0){
+    const prev = EPISODES[idx-1];
+    document.getElementById(prev.id).scrollIntoView({behavior:'smooth', block:'start'});
+    speakEpisode(prev.id);
+  }
+});
+document.getElementById('p-next').addEventListener('click', () => {
+  if(!currentEpId) return;
+  const idx = EPISODES.findIndex(e=>e.id===currentEpId);
+  if(idx > -1 && idx < EPISODES.length-1){
+    const next = EPISODES[idx+1];
+    document.getElementById(next.id).scrollIntoView({behavior:'smooth', block:'start'});
+    speakEpisode(next.id);
+  }
+});
+</script>
+</body>
+</html>

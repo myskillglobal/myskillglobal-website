@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Right Key to Life's Lock — A Story</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Tiro+Bangla&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf6ef;
+    --bg-panel: #fffdfa;
+    --ink: #2b241c;
+    --ink-soft: #5c5346;
+    --accent: #8a4a2f;
+    --accent-soft: #c98a5e;
+    --line: #e4d8c4;
+    --gold: #b08236;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1b1712;
+      --bg-panel: #24201a;
+      --ink: #f1e9db;
+      --ink-soft: #c9bea9;
+      --accent: #dba076;
+      --accent-soft: #e8bd94;
+      --line: #3a3226;
+      --gold: #d9ae5f;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1b1712;
+    --bg-panel: #24201a;
+    --ink: #f1e9db;
+    --ink-soft: #c9bea9;
+    --accent: #dba076;
+    --accent-soft: #e8bd94;
+    --line: #3a3226;
+    --gold: #d9ae5f;
+  }
+  html { scroll-padding-top: env(safe-area-inset-top, 24px); scroll-behavior: smooth; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Hind Siliguri', sans-serif;
+    line-height: 1.9;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 20px 80px; }
+
+  header.hero {
+    padding: 70px 20px 50px;
+    text-align: center;
+    background:
+      radial-gradient(ellipse at top, rgba(176,130,54,0.12), transparent 60%),
+      var(--bg);
+    border-bottom: 1px solid var(--line);
+  }
+  header.hero .eyebrow {
+    letter-spacing: 0.25em;
+    font-size: 0.75rem;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  header.hero h1 {
+    font-family: 'Tiro Bangla', serif;
+    font-size: 3rem;
+    margin: 0 0 14px;
+    color: var(--accent);
+  }
+  header.hero p.subtitle {
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  .ornament {
+    margin: 22px auto 0;
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+  header.hero .hero-image {
+    margin: 30px auto 0;
+    max-width: 480px;
+  }
+  header.hero .hero-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 16px;
+    box-shadow: 0 14px 34px rgba(0,0,0,0.12);
+    border: 1px solid var(--line);
+  }
+
+  nav.toc {
+    background: var(--bg-panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    margin: -30px 0 50px;
+    padding: 22px 26px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  }
+  nav.toc h2 {
+    font-size: 0.95rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0 0 14px;
+  }
+  nav.toc ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 6px;
+  }
+  nav.toc a {
+    color: var(--ink);
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 7px 4px;
+    border-bottom: 1px dashed var(--line);
+    font-size: 0.98rem;
+  }
+  nav.toc a:hover { color: var(--accent); }
+  nav.toc span.num { color: var(--accent-soft); margin-right: 10px; font-weight: 600; }
+
+  section.chapter {
+    padding: 46px 0;
+    border-bottom: 1px solid var(--line);
+    scroll-margin-top: 20px;
+  }
+  section.chapter:last-of-type { border-bottom: none; }
+  .chapter-tag {
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+section.chapter {
+  padding-left: 20px;
+  padding-right: 20px;
+  box-sizing: border-box;
+}
+  section.chapter h2 {
+    font-family: 'Tiro Bangla', serif;
+    font-size: 1.7rem;
+    color: var(--accent);
+    margin: 0 0 6px;
+  }
+  section.chapter h3.skill {
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--ink-soft);
+    margin: 0 0 20px;
+  }
+  section.chapter p {
+    margin: 0 0 16px;
+    font-size: 1.06rem;
+  }
+  section.chapter p.quote {
+    border-left: 3px solid var(--gold);
+    padding: 4px 0 4px 18px;
+    color: var(--accent);
+    font-style: normal;
+    background: rgba(176,130,54,0.06);
+    border-radius: 0 8px 8px 0;
+  }
+
+  .frame {
+    background: var(--bg-panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 34px 28px;
+  }
+
+  footer.closing {
+    text-align: center;
+    padding: 60px 20px 20px;
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+  }
+
+  .backtotop {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 0.85rem;
+    color: var(--accent-soft);
+    text-decoration: none;
+  }
+
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-thumb { background: var(--line); border-radius: 8px; }
+
+  .topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 16px;background:var(--bg-panel);border-bottom:1px solid var(--line);backdrop-filter:blur(6px)}
+  .topbar button{background:none;border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:6px 10px;font-size:0.85rem;cursor:pointer;font-family:inherit;white-space:nowrap}
+  .topbar button:hover{border-color:var(--accent)}
+  .topbar .tb-right{display:flex;gap:8px}
+  .chapter-tools{display:flex;gap:8px;margin:6px 0 22px;flex-wrap:wrap}
+  .chapter-tools button{background:var(--bg-panel);border:1px solid var(--line);color:var(--ink-soft);border-radius:20px;padding:6px 14px;font-size:0.85rem;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:6px}
+  .chapter-tools button.playing{color:var(--accent);border-color:var(--accent)}
+  .chapter-tools button.bookmarked{color:var(--gold);border-color:var(--gold)}
+  nav.toc a.done::after{content:" \2605";color:var(--gold)}
+  section.author{background:var(--bg-panel);border:1px solid var(--line);border-radius:14px;padding:32px 28px;margin-top:44px}
+  section.author h2{font-family:'Tiro Bangla',serif;color:var(--accent);font-size:1.4rem;margin:0 0 12px}
+  section.author p{font-size:0.98rem;color:var(--ink-soft);margin:0 0 10px}
+  @media (max-width:480px){
+    header.hero h1{font-size:2.05rem}
+    header.hero{padding:48px 16px 36px}
+    header.hero p.subtitle{font-size:0.95rem}
+    .wrap{padding:0 14px 60px}
+    nav.toc{margin:-22px 0 36px;padding:18px 16px}
+    section.chapter{padding:34px 0;padding-left:14px;padding-right:14px}
+    section.chapter p{font-size:1rem}
+    section.chapter h2{font-size:1.45rem}
+    .topbar{padding:8px 10px}
+    .topbar button{padding:5px 8px;font-size:0.78rem}
+    section.author{padding:24px 18px}
+  }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <button id="homeBtn" title="Return to home">🏠 Home</button>
+  <div class="tb-right">
+    <button id="themeBtn" title="Change theme">🌓 Theme</button>
+  </div>
+</div>
+
+
+<header class="hero" id="top">
+  <div class="eyebrow">A Serial Story</div>
+  <h1>The Right Key to Life's Lock</h1>
+  <p class="subtitle">Fifteen friends, fifteen paths, and the story of some lost keys</p>
+  <div class="ornament"></div>
+  <div class="hero-image">
+    <img src="images/chobi.png" alt="The Right Key to Life's Lock — story cover image">
+  </div>
+</header>
+
+<div class="wrap">
+
+  <nav class="toc" aria-label="Table of Contents">
+    <h2>Table of Contents</h2>
+    <ol>
+      <li><a href="#prologue"><span><span class="num">0.</span>School Days and the Reunion</span></a></li>
+      <li><a href="#arun"><span><span class="num">1.</span>Arun — Patterns in Stone</span></a></li>
+      <li><a href="#biplob"><span><span class="num">2.</span>Biplob — Patterns in Wood</span></a></li>
+      <li><a href="#suman"><span><span class="num">3.</span>Suman — The Mason</span></a></li>
+      <li><a href="#haripada"><span><span class="num">4.</span>Haripada — Farming</span></a></li>
+      <li><a href="#gautam"><span><span class="num">5.</span>Gautam — Nursery and Grafting</span></a></li>
+      <li><a href="#ratan"><span><span class="num">6.</span>Ratan — Herbal Knowledge</span></a></li>
+      <li><a href="#sanjay"><span><span class="num">7.</span>Sanjay — The Family Business</span></a></li>
+      <li><a href="#debashis"><span><span class="num">8.</span>Debashis — The Legal Profession</span></a></li>
+      <li><a href="#tanmoy"><span><span class="num">9.</span>Tanmoy — Who Had Nothing in Hand</span></a></li>
+      <li><a href="#mamoni"><span><span class="num">10.</span>Mamoni — Singing</span></a></li>
+      <li><a href="#rupa"><span><span class="num">11.</span>Rupa — Painting and Needlework</span></a></li>
+      <li><a href="#anirban"><span><span class="num">12.</span>Anirban — The Musical Instrument</span></a></li>
+      <li><a href="#bikash"><span><span class="num">13.</span>Bikash — Clay Dolls</span></a></li>
+      <li><a href="#jhuma"><span><span class="num">14.</span>Jhuma — Dance</span></a></li>
+      <li><a href="#kartik"><span><span class="num">15.</span>Kartik — Weaving</span></a></li>
+      <li><a href="#epilogue"><span><span class="num">16.</span>Coming Back</span></a></li>
+    </ol>
+  </nav>
+
+  <section class="chapter frame" id="prologue">
+    <div class="chapter-tag">Chapter One</div>
+    <h2>School Days and the Reunion</h2><div class="chapter-tools"><button class="listenBtn" data-chapter="prologue">🔊 Listen</button><button class="bookmarkBtn" data-chapter="prologue">☆ Bookmark</button></div>
+    <p>They were all ten or eleven then, students of class five. The same primary school, the same field, the same teacher, crammed together on the same long wooden bench — Arun, Biplob, Suman, Haripada, Gautam, Ratan, Sanjay, Debashis, Tanmoy, Mamoni, Rupa, Anirban, Bikash, Jhuma, Kartik. Fifteen of them.</p>
+    <p>During tiffin breaks, Arun would draw flower patterns on the bench with chalk, the same strokes his father had taught him. Biplob would run his hand along the classroom wall, searching for the grain in the wood. At lunchtime, Suman would talk about going to construction sites with his father, then stop, embarrassed. Haripada's clothes always carried the smell of earth. Gautam brought little saplings in his tiffin box, meaning to plant them in the school garden. Ratan would point out leaves to his friends — which one stopped bleeding, which one was poison. Sanjay always had toffees from his father's shop. Debashis pored over law books, old journals smuggled out of his father's chamber. Tanmoy studied hardest of all, because he had nothing else to rely on. Mamoni hummed the moment the tiffin bell rang. Rupa drew flowers and vines on her slate, just like her mother's embroidery. Anirban mimicked flute tunes with his mouth. Bikash shaped little figures out of the mud on the playground. Jhuma kept rhythm with her feet even at the tiffin bell. No one knew then how different their lives would become twenty years later.</p>
+    <p>Twenty years later, all of them stood at the threshold of their thirties, gathered again at a reunion festival on the grounds of that same school. A stage had been set up, old students had been sent letters and called back. One by one they came through the gate — some with grey in their hair, some carrying children, some still holding onto something that looked like an old school bag.</p>
+    <p class="quote">"Aren't you Arun?"<br>"You recognized me! You've changed completely, Biplob."<br>"Suman! When did you get so heavy?"<br>"And look at you, so thin, Tanmoy! Are you eating properly?"<br>"Mamoni, I heard you still sing?"</p>
+    <p>Laughter, hugs, old memories came rushing back. Someone laughed and said to Biplob, "Your father used to do woodwork, didn't he? The one who carved the birds on the prayer-room door?"</p>
+    <p class="quote">"Yes. I didn't realize back then how skilled that was," Biplob laughed.</p>
+    <p>That one sentence seemed to break a dam. Slowly, everyone began to understand — fifteen children who had once sat on the same bench now had fifteen completely different stories.</p>
+    <p>One by one, everyone's news came out. Arun works at a stone quarry, Biplob has his own small woodworking workshop, Suman is still a laborer at a construction site, Haripada is busy with a new agricultural venture, Gautam runs a nursery alongside his job, Ratan has carefully kept his father's book of herbal remedies, Sanjay is now learning to understand his father's shop anew, Debashis has returned to his father's chamber, Mamoni teaches the neighborhood children to sing, Rupa has her own small boutique, Anirban has had his grandfather's flute repaired, Bikash teaches drawing at school and sits with clay on weekends, Jhuma teaches folk dance at her daughter's school, Kartik is learning to sit at the loom again. And Tanmoy — still looking for a job, yet listening to everyone's stories with a smile. Some in government jobs, some in private ones, some in business, some still struggling — no single path is called "the right path" in this story.</p>
+  </section>
+
+  <section class="chapter" id="arun">
+    <div class="chapter-tag">Chapter Two</div>
+    <h2>Arun</h2>
+    <h3 class="skill">Patterns in Stone</h3><div class="chapter-tools"><button class="listenBtn" data-chapter="arun">🔊 Listen</button><button class="bookmarkBtn" data-chapter="arun">☆ Bookmark</button></div>
+    <p>Arun's father used to carve flowers, vines, temple ornamentation, and door frames into stone by hand. Little Arun would sit beside him, watching, listening to the sound of the hammer and chisel, watching how a plain block of stone slowly bloomed into a flower. His mother would sometimes call from the kitchen, "Don't keep him sitting in all that dust, he's coughing all day." His father would just laugh, say nothing, and place a small chisel in Arun's hand.</p>
+    <p class="quote">"If this line goes wrong, the whole pattern will be ruined," his father would say. Arun would answer, "I won't do this work, father. I'm going to get a job."</p>
+    <p>His father never insisted. Arun once overheard him telling his mother, "Let the boy go his own way, no harm in that. But I want this handiwork to stay inside him somewhere, that much I want." Arun didn't understand what that meant at the time. He studied, sat for one job exam after another, none of them worked out. In the end he had to take a job as an ordinary laborer at a stone quarry — on his first day, lifting stone with gloves on, he remembered he had never once seen gloves on his father's hands; his father turned stone into flowers with bare hands.</p>
+    <p>One day at the quarry he saw another worker cutting, on a machine, the exact pattern his father used to carve by hand. By then his father was old, his eyes no longer good, his hand trembling around the chisel. That evening Arun went home and took out his father's old chisels and mallets — rusted, but the edge still recognizable. The craft hadn't been lost. It had only been lost from his own family. He's still a laborer at the quarry, but now and then he sits beside his father, trying to draw out the old patterns.</p>
+    <p>Standing to one side of the field, Biplob liked hearing this — a piece of his own childhood seemed to come back to him too.</p>
+  </section>
+
+  <section class="chapter" id="biplob">
+    <div class="chapter-tag">Chapter Three</div>
+    <h2>Biplob</h2>
+    <h3 class="skill">Patterns in Wood</h3><div class="chapter-tools"><button class="listenBtn" data-chapter="biplob">🔊 Listen</button><button class="bookmarkBtn" data-chapter="biplob">☆ Bookmark</button></div>
+    <p>Biplob's father carved flowers, birds, and mythological figures into wood. The two birds on the door of the prayer room had been his father's birthday gift to Biplob's grandmother. To Biplob it all seemed old and outdated. When his friends talked about the newest machines, Biplob felt embarrassed to admit that his father still cut wood by hand with a chisel.</p>
+    <p>He studied and tried for jobs, none of it worked out, and eventually he joined a furniture factory as an ordinary worker — just lifting and carrying wood, nowhere near the design work.</p>
+    <p>One day he saw the pattern being cut on the factory's CNC machine and stopped in his tracks — it was the exact pattern from his father's old notebook. His heart began pounding. That night, going home, he asked his father, "Do you still have your notebooks?" His father looked at him, surprised, then smiled and said, "I do. I thought you'd never want them again."</p>
+    <p class="quote">"If I'd learned my father's handiwork, today, standing beside the machine, I wouldn't just be doing labor — I could have put the machine itself to work."</p>
+    <p>That night he went home and began learning to hold the chisel again under his father's guidance. The first few pieces came out badly. Then he started combining hand-carved patterns with the factory's digital CNC designs to make new work. It was this realization that set Biplob going through his father's old notebooks again on his days off, learning woodworking little by little after office hours. His wife was worried at first, then began helping him sell small carved pieces in the market herself. A few years later, though the job never came, Biplob built up his own small workshop — where his father's handcraft and the machine's speed now work side by side.</p>
+    <p>Hearing about Biplob's workshop, Suman smiled a little — his own path hadn't been quite that smooth.</p>
+  </section>
+
+  <section class="chapter" id="suman">
+    <div class="chapter-tag">Chapter Four</div>
+    <h2>Suman</h2>
+    <h3 class="skill">The Mason's Craft</h3><div class="chapter-tools"><button class="listenBtn" data-chapter="suman">🔊 Listen</button><button class="bookmarkBtn" data-chapter="suman">☆ Bookmark</button></div>
+    <p>Suman's father was the most skilled mason in the area. People called him from far away to build their walls, because his walls, they said, never cracked. But Suman felt embarrassed working alongside his father — once his schoolmates spotted him carrying bricks with his father, and after that he never went to a job site during the daytime again. His father said nothing, just sat quietly that evening, washing his hands, for a long time.</p>
+    <p>Suman put his mind to his studies instead. No job came through, and eventually he had to take work in construction himself — the very work he'd once been ashamed of. He went to the sites with his father, but not to learn. He held the bucket, passed bricks, hauled sand — he never watched how his father took measurements, pulled the string line, kept a wall straight.</p>
+    <p>But he isn't a mason, he's a laborer. Because at the age when the skill should have been learned, he didn't learn it. His father still knows exactly where a wall will take strain, which brick needs a gap so the wall won't settle. Suman only knows, "Sir, where should I put the sand down?" One day, during work, his father came over, pointed at a corner of the wall and said, "This has gone a bit crooked here," and it struck Suman that a whole childhood's worth of learning was contained in that single line.</p>
+    <p>Hearing Suman's words, Haripada thought — his own connection to the soil had once been severed too.</p>
+  </section>
+
+  <section class="chapter" id="haripada">
+    <div class="chapter-tag">Chapter Five</div>
+    <h2>Haripada</h2>
+    <h3 class="skill">Farming</h3><div class="chapter-tools"><button class="listenBtn" data-chapter="haripada">🔊 Listen</button><button class="bookmarkBtn" data-chapter="haripada">☆ Bookmark</button></div>
+    <p>Haripada's father could tell, just from looking at the soil, when to sow seeds — he never needed a calendar. From the color of the earth, from pressing it in his hand, he could tell how many days off the rains were. His son thought of farming as a lowly trade and drifted away, going to the city to look for other work.</p>
+    <p>A few years later, as the climate was changing and the market was changing too, an opportunity came his way to start a small agricultural venture combining soil testing, weather data, improved seeds, and direct marketing. One monsoon morning, Haripada came back and stood in the field. The farmers in the neighboring fields were unsure which variety of rice to sow that season. Haripada picked up a handful of soil and stood quietly for a while.</p>
+    <p class="quote">"Don't just look at the soil, learn to recognize its smell too" — his father's old words suddenly came back to him.</p>
+    <p>That day Haripada understood for the first time that his father hadn't learned this from any book — he had learned it by talking with the land, year after year. Now Haripada combines soil-test reports, weather data, and market prices on his phone to make his plans — his father's old experience and modern technology are no longer two separate worlds to him, but two tools working together.</p>
+    <p>Hearing about Haripada's agricultural venture, Gautam said that his own nursery's story was much the same — a story of coming back.</p>
+  </section>
+
+  <section class="chapter" id="gautam">
+    <div class="chapter-tag">Chapter Six</div>
+    <h2>Gautam</h2>
+    <h3 class="skill">Nursery and Grafting</h3><div class="chapter-tools"><button class="listenBtn" data-chapter="gautam">🔊 Listen</button><button class="bookmarkBtn" data-chapter="gautam">☆ Bookmark</button></div>
+    <p>Gautam's father's nursery didn't just sell plants — his father knew which branch could be grafted to grow a new plant, when to graft which tree, how to prepare the right soil mixture, how to care for both native and foreign flowers. Little Gautam had learned the work at his father's side at first, but slowly drifted away under the pressure of studies and jobs.</p>
+    <p>Gautam got a job too, and moved to the city. Many years later, when he came back, his father was gone. Seeing an old rose bush in one corner of the nursery, almost dried up, he stopped short:</p>
+    <p class="quote">"Just watering a plant isn't enough to raise it. You have to understand it."</p>
+    <p>Gautam didn't quit his job, but he restarted the nursery on his days off, relearning what he had only half-learned as a boy, and he began selling plants online, giving his father's business a modern shape.</p>
+    <p>From the talk of the nursery, the conversation turned to Ratan — he too knew plants, only in a different way.</p>
+  </section>
+
+  <section class="chapter" id="ratan">
+    <div class="chapter-tag">Chapter Seven</div>
+    <h2>Ratan</h2>
+    <h3 class="skill">Herbal Knowledge</h3><div class="chapter-tools"><button class="listenBtn" data-chapter="ratan">🔊 Listen</button><button class="bookmarkBtn" data-chapter="ratan">☆ Bookmark</button></div>
+    <p>Ratan's father walked the field paths every morning, watching the bushes closely — which leaf, cut, would stop bleeding; which root, ground up, would bring a fever down; which one shouldn't even be touched. Little Ratan walked behind his father, gathering leaves into a bag. His schoolmates sometimes teased him, calling him "the herb boy," and Ratan, embarrassed, would hide the bag away.</p>
+    <p>"That's old-fashioned stuff," Ratan said, and drifted away. He put his mind to his studies, sat for job exams year after year. In the end he landed work as a salesman for a pesticide company — going village to village selling chemicals, the exact opposite world from the plants his father had taught him.</p>
+    <p>A few years after his father's death, an old man came to Ratan one day and asked, "Where can I find, these days, the plant whose leaves your father used to give me?" Ratan stopped short — he didn't even know the plant's name. The old man said, "Your father always said he'd teach you everything one day."</p>
+    <p class="quote">"Did this knowledge, this bond with my father, end with my father?"</p>
+    <p>Ratan realized the answer to that question wasn't his alone — this vanishing knowledge hadn't belonged only to his father, it was woven into the lives of many other people too. From that day he began going to the elders of the village, writing down the names of plants and their local uses, checking with a doctor at the health center to see which ones truly worked and which were mere belief. Ratan didn't leave his job, but on his days off he sits with the village children, slowly teaching them the knowledge he has gathered.</p>
+    <p>Ratan's story of preservation left Sanjay quiet — his own struggle wasn't about preserving something, but about getting it back.</p>
+  </section>
+
+  <section class="chapter" id="sanjay">
+    <div class="chapter-tag">Chapter Eight</div>
+    <h2>Sanjay</h2>
+    <h3 class="skill">The Family Business</h3><div class="chapter-tools"><button class="listenBtn" data-chapter="sanjay">🔊 Listen</button><button class="bookmarkBtn" data-chapter="sanjay">☆ Bookmark</button></div>
+    <p>Sanjay's father had a small grocery shop at the village crossroads — rice, lentils, soap, biscuits, and an old ledger holding everyone's name and address by heart, a record of who had taken how much on credit. His father never once touched a calculator, doing all the adding and subtracting in his head. As a boy Sanjay would sit in the shop in the afternoons, but if his schoolmates rode by on their bicycles and spotted him, he'd stop weighing out rice and hide his face behind the ledger.</p>
+    <p>"I won't run the shop, I'll get a job," Sanjay had said many times. After finishing his studies he went to the city and sat for job exams year after year. Meanwhile his father grew older, his eyesight weakened, and customers drifted little by little to the bigger shops, where there was no haggling, where every price was fixed.</p>
+    <p>The job never came. The shop isn't what it used to be either. Now Sanjay is trying to save it — but he doesn't know if he'll manage to, in the end. Sitting in the shop, he finds he understands nothing of the ledger, doesn't know who is a trustworthy customer and who isn't, can't add totals in his head the way his father could. When he asks, "Father, whose name is this?" his father laughs and says, "Oh, that's the sister-in-law, she's owed forty-two rupees for five years now. Never asked for it, and never will."</p>
+    <p class="quote">"The shop isn't only a place to buy and sell things, is it, father — it's a place to know people, too," Sanjay says, understanding for the first time.</p>
+    <p>He stands between two worlds, belonging fully to neither — but now, at least, he has picked up the ledger, learning slowly at his father's side, even though he doesn't know whether the shop will survive in the end.</p>
+    <p>Hearing Sanjay's uncertainty, Debashis nodded — his own return hadn't been that easy either.</p>
+  </section>
+
+  <section class="chapter" id="debashis">
+    <div class="chapter-tag">Chapter Nine</div>
+    <h2>Debashis</h2>
+    <h3 class="skill">The Legal Profession</h3><div class="chapter-tools"><button class="listenBtn" data-chapter="debashis">🔊 Listen</button><button class="bookmarkBtn" data-chapter="debashis">☆ Bookmark</button></div>
+    <p>Debashis's father had practiced law for many years at the subdivisional court. As a boy, Debashis would sit in his father's chamber and watch clients arrive with worried faces and leave a little lighter. Once, an old farmer had broken down in tears over a land dispute case, and his father had taken the man's hand and said, "Don't worry, I'll look into it." The scene stayed etched in Debashis's memory.</p>
+    <p>But his father himself used to say, "Don't become a lawyer like me. In this profession, money doesn't come for years, and respect comes even later than that. Do something else, something safe." His son took his father's advice and chose a different path — he studied engineering, and tried for jobs year after year.</p>
+    <p>The job never came. Eventually Debashis decided to return to his father's chamber. But once back, he realized that simply sitting in his father's chamber wasn't enough — he had to remake himself too. He began the legal training and study he needed, and slowly started preparing himself to enter the profession.</p>
+    <p>One day he went to his father's chamber and found that his father had retired. Rust had gathered on the lock of the door. And yet some of the old clients still came looking for him. One day the son of that same farmer came and asked, "Where is the lawyer, sir? I have a case."</p>
+    <p class="quote">"A profession isn't only knowledge, it's an inheritance of trust too," Debashis understood that day.</p>
+    <p>After that he dusted off his father's old books and began reading them anew. His father sometimes comes and sits in the chamber. He says nothing, just watches which section his son is marking in the books.</p>
+    <p>Listening to Debashis's story of his father's chamber, Tanmoy sat quietly — he had no such chamber, no place to go back to.</p>
+  </section>
+
+  <section class="chapter" id="tanmoy">
+    <div class="chapter-tag">Chapter Ten</div>
+    <h2>Tanmoy</h2>
+    <h3 class="skill">The One Who Had No Family Trade to Fall Back On</h3><div class="chapter-tools"><button class="listenBtn" data-chapter="tanmoy">🔊 Listen</button><button class="bookmarkBtn" data-chapter="tanmoy">☆ Bookmark</button></div>
+    <p>Tanmoy's father drove a rickshaw; the household ran hand to mouth. As a child, when his classmates said things like "my father will teach me this, teach me that," Tanmoy would just stay quiet. There was nothing in his house to hand down — no workshop, no shop, no land. There was only his father's one line — "Studies are your only road. Do what I couldn't."</p>
+    <p>There was no family skill or business at all in Tanmoy's household. His only path was studying and looking for a job. He has been trying for many years, and he is still unemployed. To scrape together exam fees, he has sometimes driven his father's rickshaw for a few hours, hiding his embarrassment.</p>
+    <p>Tanmoy's story reminds his friends — not everyone has a family inheritance to lose. Only those who have one have ever lost that opportunity; Tanmoy's struggle is something else entirely, and just as important. In the middle of the reunion crowd, he says once, laughing, "All of you had something to learn from your fathers. I didn't. So all I could do was chase after job exams."</p>
+    <p class="quote">"But you know what I learned? Not giving up. That's a skill too, isn't it?" Tanmoy laughs, and no one else laughs at his words — everyone just goes quiet, because it's true.</p>
+    <p>After Tanmoy's words, everyone falls silent for a moment, then Mamoni softly begins to hum, trying to lighten the mood.</p>
+  </section>
+
+  <section class="chapter" id="mamoni">
+    <div class="chapter-tag">Chapter Eleven</div>
+    <h2>Mamoni</h2>
+    <h3 class="skill">Singing</h3><div class="chapter-tools"><button class="listenBtn" data-chapter="mamoni">🔊 Listen</button><button class="bookmarkBtn" data-chapter="mamoni">☆ Bookmark</button></div>
+    <p>Mamoni's mother knew Rabindra Sangeet, folk songs, bhatiyali — all of it, in her own voice. In the evenings she would sit down to practice, calling her daughter, "Come sit with me a while and learn."</p>
+    <p class="quote">"What's the use of learning to sing, mother? Let me study first," Mamoni used to say.</p>
+    <p>Later she chased after job exams, year after year. No job came. One day, at a neighborhood event, an old woman began singing an old folk song. Mamoni suddenly froze — she had heard the second line of that song from her mother as a child, but no matter how hard she tried, she couldn't remember the third. Going home and reaching to call her mother, she remembered — her mother was no longer there.</p>
+    <p class="quote">"A song taught mouth to mouth, if it isn't written down, is lost one day" — her mother's old words felt true to her for the first time that day.</p>
+    <p>From the next day, Mamoni began going to the elderly women of the neighborhood to find the rest of the song. A few weeks later she understood — the song wasn't only her mother's memory, it had gone on living in the voices of many other mothers in the village too. From that day she began teaching the neighborhood children to sing — not as a profession, but to keep the recovered tune alive.</p>
+    <p>Hearing about Mamoni's singing, Rupa laughed and said she too had a thread of her own that had come back this way.</p>
+  </section>
+
+  <section class="chapter" id="rupa">
+    <div class="chapter-tag">Chapter Twelve</div>
+    <h2>Rupa</h2>
+    <h3 class="skill">Painting and Needlework</h3><div class="chapter-tools"><button class="listenBtn" data-chapter="rupa">🔊 Listen</button><button class="bookmarkBtn" data-chapter="rupa">☆ Bookmark</button></div>
+    <p>In the evenings, Rupa's mother would sit by the window light and work the needle — bringing flowers, birds, and vines to life in thread on a kantha quilt. Rupa would sit beside her, watching, and sometimes her mother would put the needle and thread in her hand, "Try this stitch here." Rupa's stitches would come out crooked, and her mother would laugh and fix them. "Learn these things, you never know when they'll come in handy," her mother would say. Rupa thought back then that this was work for mothers and grandmothers, that she would do something else — study at art college, get a job in a big city.</p>
+    <p>She studied, was admitted to art college, learned to paint there — but at the time she never thought of her mother's needlework as a separate art form. It was only later, comparing her own designs with her mother's work, that her thinking changed. But she grew frustrated seeing how little design work was valued in the job market. For years she had to run her household on small freelance jobs; her own paintings barely sold at all.</p>
+    <p>One day Rupa was about to go out wearing one of her mother's old saris. Standing in front of the mirror, she suddenly noticed the pattern on the border — every flower's line was different, none an exact copy of another. She asked the old tailor next door, "Who made this pattern?" The tailor, surprised, said, "Your mother. With her own hands."</p>
+    <p class="quote">"Mother, what you actually used to do — I was trying to do the very same thing, just in a different language," Rupa understood that day.</p>
+    <p>Laying the sari out, for the first time she saw her mother's work not merely as stitching — she understood it was design. Instead of bringing that skill back exactly as it had been, she began building a small handicraft brand by blending her own art with modern design — keeping her mother's patterns alive in new fabrics, new colors.</p>
+    <p>After Rupa's story about her boutique, Anirban picked up his flute once more, wondering whether his own melody might ever come back this way too.</p>
+  </section>
+
+  <section class="chapter" id="anirban">
+    <div class="chapter-tag">Chapter Thirteen</div>
+    <h2>Anirban</h2>
+    <h3 class="skill">The Musical Instrument</h3><div class="chapter-tools"><button class="listenBtn" data-chapter="anirban">🔊 Listen</button><button class="bookmarkBtn" data-chapter="anirban">☆ Bookmark</button></div>
+    <p>Anirban's grandfather played the flute. He was called on for village festivals, weddings, even funeral processions. As evening fell, his grandfather would sit in a corner of the courtyard, and little Anirban would sit close beside him, listening. "You have to hold the breath, only then does the tune survive," his grandfather would say, placing the flute in Anirban's hands. When he blew into it, only the sound of air came out, no tune. His grandfather would laugh, "It'll take time."</p>
+    <p>One day a teacher at school joked, "Playing the flute won't get you a job." The words lodged themselves in his ear. "Can this run a household?" — that single question alone was enough to pull Anirban away from the instrument. He buried himself in his studies.</p>
+    <p>The night before the reunion, at a friend's house, Anirban suddenly heard the sound of a flute — someone was sitting in the courtyard, playing. Hearing that tune reach his ears after so many years, it struck him that he hadn't forgotten how to play the flute — he had simply stopped playing it.</p>
+    <p class="quote">"I didn't lose the instrument. I only stopped playing it," Anirban realized that day.</p>
+    <p>The next day he took his old flute down from the corner of the shelf and lifted it to his lips. No tune came out at first — only the sound of air, just like when he was a child. The instrument can be repaired, but the rhythm, the melody his grandfather knew, has no written form — getting that back isn't so easy.</p>
+    <p>Anirban's story is a little different from the others: here the object can be recovered, but the experience inside it doesn't fully return. Still, he doesn't give up — every evening he sits for a while and blows into it, hoping that someday his breath will turn into melody again.</p>
+    <p>Hearing Anirban's unfinished tune, Bikash smiled faintly — his own work with clay hadn't fully come back either, and yet his hand had never stopped.</p>
+  </section>
+
+  <section class="chapter" id="bikash">
+    <div class="chapter-tag">Chapter Fourteen</div>
+    <h2>Bikash</h2>
+    <h3 class="skill">Clay Dolls</h3><div class="chapter-tools"><button class="listenBtn" data-chapter="bikash">🔊 Listen</button><button class="bookmarkBtn" data-chapter="bikash">☆ Bookmark</button></div>
+    <p>Bikash's father made clay dolls — from gathering the clay, to preparing it, shaping it, drying it, firing it, painting it, then selling it in the market. One day little Bikash made a small elephant with his own hands and showed it to his father. Its trunk had come out crooked. His father laughed and said, "Even a crooked trunk has its own story. Keep it, don't throw it away."</p>
+    <p>But growing up, Bikash thought, "What future is there in this?" Plastic dolls were flooding the market, and buyers for his father's handmade figures were dwindling too. He didn't finish learning the craft, put his mind to his studies instead. In the end he became a school teacher. Working with clay never became his profession.</p>
+    <p>Many years later, one day his own son picked up some clay and asked, "Father, how do I make this?"</p>
+    <p>Bikash took the clay in his hand. His fingers seemed to move on their own, in the old, familiar way. He slowly began showing his son how to press, turn, and gradually shape the clay.</p>
+    <p>Recently, at a shop in the city, he saw "handmade" dolls being sold for a thousand rupees — exactly what his father used to make with his own hands, at a fraction of the price. Bikash stood there in silence for a long while.</p>
+    <p>One Sunday, Bikash's son sat down with some clay and said, "Father, how do I make this?" Bikash took the clay in his hand, and his fingers began moving on their own, in the old familiar way. He shaped a little elephant, its trunk just slightly crooked, just as it had been in his own childhood.</p>
+    <p class="quote">"You know how to do this?" his son asked, astonished. Bikash was quiet for a moment, then said, "My father taught me once. I never finished learning it." His son said, "Then teach me."</p>
+    <p>Bikash never became an artist — he teaches drawing at school. But since that day, he sits with his son on weekends working with clay — he has come to understand that some inheritances don't live in objects, but in the memory held in a pair of hands.</p>
+    <p>Hearing about Bikash's son, Jhuma spoke up about her own daughter — an old dance had come back at her daughter's school in much the same way.</p>
+  </section>
+
+  <section class="chapter" id="jhuma">
+    <div class="chapter-tag">Chapter Fifteen</div>
+    <h2>Jhuma</h2>
+    <h3 class="skill">Dance</h3><div class="chapter-tools"><button class="listenBtn" data-chapter="jhuma">🔊 Listen</button><button class="bookmarkBtn" data-chapter="jhuma">☆ Bookmark</button></div>
+    <p>Jhuma's grandmother used to dance in a folk-dance troupe; she was called to perform at village festivals and celebrations. In the evenings, her grandmother would tie her aanchal around her waist in the courtyard and show off the dance postures, and little Jhuma would follow along step by step. "Don't stamp your feet hard on the ground — set them down as if you're honoring the earth," her grandmother would say.</p>
+    <p>At a school event, when Jhuma performed a folk dance, a few of her classmates laughed and said, "That's an old woman's dance — why don't you do a new song instead?" Embarrassed, Jhuma never performed that dance in front of anyone again. Under the pressure of school and college, it faded away too, little by little. "What's the use of learning this now," she had thought. One day her grandmother passed away, and it felt to Jhuma as though the dance postures had gone with her too.</p>
+    <p>One day, at her daughter's school event, a teacher was struggling to teach a folk dance, and Jhuma, without even realizing it, showed her the steps herself — her body hadn't forgotten, only her mind had. Her daughter asked, astonished, "Mother, you know this?"</p>
+    <p class="quote">"I learned it from your grandmother. I thought I'd forgotten," Jhuma says, holding her daughter's hand.</p>
+    <p>From that day she began learning again, late as it was — now, once a week, she goes to the school and teaches the girls, bringing back her grandmother's dance postures one by one.</p>
+    <p>The echo of Jhuma's dance story hadn't even faded when Kartik spoke up, saying his own weaving story was very much a tale of a late return too.</p>
+  </section>
+
+  <section class="chapter" id="kartik">
+    <div class="chapter-tag">Chapter Fifteen</div>
+    <h2>Kartik</h2>
+    <h3 class="skill">Weaving</h3><div class="chapter-tools"><button class="listenBtn" data-chapter="kartik">🔊 Listen</button><button class="bookmarkBtn" data-chapter="kartik">☆ Bookmark</button></div>
+    <p>For many generations, Kartik's family had woven cloth on a handloom. At dawn, the wooden clatter of the loom would rise — thok... thok... thok... — to Kartik that sound was part of the house itself, like a bell that woke him from sleep. As a child, his father had taught him to hold the shuttle, "Keep the thread taut — if it's loose, the pattern will come out crooked." Kartik's first woven piece of cloth came out with a warped pattern; his father didn't throw it away, he kept it in the cupboard.</p>
+    <p>But the price of handwoven cloth was falling in the market, machine-woven cloth was flooding it cheaply. Kartik thought, the market for handloom cloth is shrinking anyway, what's the use. He went to the city to look for a job, and found one.</p>
+    <p>He got the job, but a few years later the company shut down. Coming back, Kartik found the loom room locked up for a long time, dust gathered on the shuttle. His father was still alive, his hands still worked, but his eyes no longer had their old sharpness. One day Kartik sat down quietly in front of the loom and said, "Father, will you teach me again?"</p>
+    <p class="quote">"Not from the beginning. Start from wherever you left off," his father said, placing the shuttle in his son's hand.</p>
+    <p>Kartik slowly began sitting in front of the loom again — late, yes, but not from zero, under his father's guidance. He doesn't want to bring the old patterns back exactly as they were; he's trying to find a market by blending in new colors and new designs — the path is still being made, it isn't finished yet.</p>
+  </section>
+
+  <section class="chapter frame" id="epilogue">
+    <div class="chapter-tag">Chapter Sixteen</div>
+    <h2>Coming Back</h2><div class="chapter-tools"><button class="listenBtn" data-chapter="epilogue">🔊 Listen</button><button class="bookmarkBtn" data-chapter="epilogue">☆ Bookmark</button></div>
+    <p>The afternoon wears on. In the crowd, suddenly, a familiar face — their old primary-school teacher, still coming to the festival even now. He looks at each of them, one by one, then says, "I told you all, back then — learn to recognize your own strength. Do you remember?" Everyone falls silent; some remember, some don't. The teacher smiles, "Seeing your lives today, I understand — each of you has understood that in your own way." He passes no judgment, he simply understands.</p>
+    <p>On the school field, the conversation turns to their own children. "My son wants to be a doctor," says one. "My daughter is learning to sing," says Mamoni. "My son comes with me to the nursery," adds Gautam. Just then, at the edge of the field, a father walks past with his twelve-year-old son — the boy walks along, watching the toolbox in his father's hand. Arun watches that for a long while.</p>
+    <p class="quote">"What he becomes, let him decide that. All we can do is give him as many keys as possible."</p>
+    <p>A profession can be an inheritance, but not an obligation. But a skill — if there's ever a chance to learn it — losing it is also its own kind of waste. If you've learned it, every door stays a little open: a job, a business, a craft, becoming an entrepreneur, or changing profession altogether if you need to.</p>
+    <p class="quote">No one knows which door life will close, or when. So before you choose a door, it's good to keep at least a few keys of your own.</p>
+    <p>The festival ends. The school gate is locked. A friend looks back over his shoulder — a closed door doesn't mean the road has ended. If you still have the key, it can be opened again.</p>
+  </section>
+
+
+  <section class="author" id="about-author">
+    <h2>About the Author</h2>
+    <p>Surajit Roy is a vocational teacher at Dhanicha High School (H.S.) in Chakdaha, Nadia. Alongside his profession, he is the founder and creator of "MySkillGame," a free, offline-friendly educational platform for children and teenagers.</p>
+    <p>His writing brings out the everyday struggles of ordinary people, family relationships, vanishing skills, and various aspects of culture and values. Through small characters and the stories of their lives, he seeks to encourage the new generation to think about self-confidence, humanity, and connection to their own roots.</p>
+  </section>
+
+</div>
+
+<footer class="closing">
+  <div>— THE END —</div>
+
+  <div class="author-info">
+    <a href="#about-author">About the Author</a>
+  </div>
+
+  <div class="copyright">
+    © 2026 Surajit Roy. All Rights Reserved.
+  </div>
+
+<a class="backtotop" href="#top">Back to top ↑</a>
+
+</footer>
+
+<script>
+(function(){
+  var STORE_KEY = 'chabi-bookmarks';
+  var THEME_KEY = 'chabi-theme';
+
+  // ---- Home button ----
+  document.getElementById('homeBtn').addEventListener('click', function(){
+    document.getElementById('top').scrollIntoView({behavior:'smooth'});
+  });
+
+  // ---- Theme toggle ----
+  var root = document.documentElement;
+  function applyTheme(t){
+    if(t){ root.setAttribute('data-theme', t); } else { root.removeAttribute('data-theme'); }
+  }
+  try {
+    var savedTheme = localStorage.getItem(THEME_KEY);
+    if(savedTheme) applyTheme(savedTheme);
+  } catch(e){}
+  document.getElementById('themeBtn').addEventListener('click', function(){
+    var cur = root.getAttribute('data-theme');
+    var next = cur === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+    try{ localStorage.setItem(THEME_KEY, next); }catch(e){}
+  });
+
+  // ---- Bookmarks ----
+  function getBookmarks(){
+    try{ return JSON.parse(localStorage.getItem(STORE_KEY) || '[]'); }catch(e){ return []; }
+  }
+  function saveBookmarks(arr){
+    try{ localStorage.setItem(STORE_KEY, JSON.stringify(arr)); }catch(e){}
+  }
+  function refreshBookmarkUI(){
+    var marks = getBookmarks();
+    document.querySelectorAll('.bookmarkBtn').forEach(function(btn){
+      var id = btn.getAttribute('data-chapter');
+      var on = marks.indexOf(id) !== -1;
+      btn.classList.toggle('bookmarked', on);
+      btn.textContent = on ? '★ Bookmarked' : '☆ Bookmark';
+    });
+    document.querySelectorAll('nav.toc a').forEach(function(a){
+      var id = (a.getAttribute('href')||'').replace('#','');
+      a.classList.toggle('done', marks.indexOf(id) !== -1);
+    });
+  }
+  document.querySelectorAll('.bookmarkBtn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var id = btn.getAttribute('data-chapter');
+      var marks = getBookmarks();
+      var i = marks.indexOf(id);
+      if(i === -1) marks.push(id); else marks.splice(i,1);
+      saveBookmarks(marks);
+      refreshBookmarkUI();
+    });
+  });
+  refreshBookmarkUI();
+
+  // ---- Voice narration (per chapter, English) ----
+  var synth = window.speechSynthesis;
+  var currentBtn = null;
+  var currentUtterance = null; // kept in outer scope so Chrome doesn't garbage-collect it mid-speech
+  var keepAliveTimer = null;
+  var enVoice = null;
+  var voicesReady = false;
+  function pickVoice(){
+    if(!synth) return;
+    var voices = synth.getVoices();
+    if(voices.length) voicesReady = true;
+    enVoice = voices.find(function(v){ return /en-US|en_US/i.test(v.lang); }) ||
+              voices.find(function(v){ return /^en/i.test(v.lang); }) || null;
+  }
+  if(synth){
+    pickVoice();
+    synth.onvoiceschanged = pickVoice;
+  }
+  function chapterText(section){
+    var parts = [];
+    section.querySelectorAll('h2, h3.skill, p').forEach(function(el){
+      if(el.closest('.chapter-tools')) return;
+      parts.push(el.textContent.trim());
+    });
+    return parts.join('. ');
+  }
+  function clearKeepAlive(){
+    if(keepAliveTimer){ clearInterval(keepAliveTimer); keepAliveTimer = null; }
+  }
+  function stopAll(){
+    clearKeepAlive();
+    if(synth) synth.cancel();
+    if(currentBtn){ currentBtn.classList.remove('playing'); currentBtn.textContent = '🔊 Listen'; }
+    currentBtn = null;
+    currentUtterance = null;
+  }
+  document.querySelectorAll('.listenBtn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      if(!synth){ alert('Voice playback is not supported in this browser. Please try a different browser or an updated version of Chrome.'); return; }
+      var wasPlaying = (btn === currentBtn);
+      stopAll();
+      if(wasPlaying) return;
+      pickVoice(); // refresh right before speaking in case voice list loaded late
+      var id = btn.getAttribute('data-chapter');
+      var section = document.getElementById(id);
+      if(!section) return;
+      var text = chapterText(section);
+      var utter = new SpeechSynthesisUtterance(text);
+      utter.lang = 'en-US';
+      if(enVoice) utter.voice = enVoice;
+      utter.rate = 0.95;
+      utter.onend = stopAll;
+      utter.onerror = stopAll;
+      currentUtterance = utter; // hold a reference so Chrome can't drop it early
+      currentBtn = btn;
+      btn.classList.add('playing');
+      btn.textContent = '⏸ Pause';
+      synth.cancel(); // clear any stuck queue before starting fresh (common Chrome fix)
+      synth.speak(utter);
+      // Chrome sometimes auto-pauses speech after ~15s of continuous speaking; nudge it awake
+      clearKeepAlive();
+      keepAliveTimer = setInterval(function(){
+        if(!synth.speaking){ clearKeepAlive(); return; }
+        synth.pause();
+        synth.resume();
+      }, 9000);
+      if(!enVoice){
+        console.warn('No English (en-US) voice found on this browser/device — falling back to the default voice.');
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>

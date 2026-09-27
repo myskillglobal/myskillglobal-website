@@ -482,227 +482,6 @@ img { pointer-events: none; -webkit-user-drag: none; }
   .opinion-card .story-image-multi { flex-direction: column; }
   .opinion-card .story-image-multi img { max-width: 100%; }
 }
-
-/* =========================================
-   OPINION TOPICS – COMPACT CLICKABLE CARD
-========================================= */
-
-.opinion-topics {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-
-  background: var(--paper-warm);
-  border: 2px solid var(--sky);
-  border-radius: 14px;
-
-  padding: 16px 18px;
-  margin: 20px 0;
-
-  box-shadow: 4px 4px 0 rgba(46, 134, 171, 0.18);
-
-  /* Full card is clickable */
-  text-decoration: none;
-  color: inherit;
-  cursor: pointer;
-
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    border-color 0.2s ease;
-}
-
-
-/* Hover */
-.opinion-topics:hover {
-  transform: translateY(-2px);
-  border-color: var(--sky);
-  box-shadow: 6px 6px 0 rgba(46, 134, 171, 0.24);
-}
-
-
-/* Icon */
-.topics-icon {
-  flex: 0 0 auto;
-
-  width: 40px;
-  height: 40px;
-
-  border-radius: 50%;
-
-  background: var(--card);
-  border: 2px solid var(--sky);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 20px;
-}
-
-
-/* Content */
-.topics-content {
-  flex: 1;
-  min-width: 0;
-}
-
-
-/* Heading */
-.topics-heading {
-  margin-bottom: 10px;
-}
-
-.topics-heading strong {
-  font-family: 'Baloo 2', sans-serif;
-
-  display: block;
-
-  font-size: 16px;
-  line-height: 1.25;
-
-  color: var(--ink);
-
-  margin-bottom: 2px;
-}
-
-.topics-heading span {
-  display: block;
-
-  font-size: 0.78rem;
-  line-height: 1.45;
-
-  color: var(--muted);
-}
-
-
-/* Topic list */
-.topic-list {
-  display: flex;
-  flex-wrap: wrap;
-
-  gap: 6px;
-
-  margin-bottom: 10px;
-}
-
-.topic-list span {
-  font-size: 0.70rem;
-  font-weight: 600;
-
-  color: var(--ink);
-
-  background: var(--card);
-
-  border: 1px solid rgba(34, 51, 59, 0.12);
-
-  border-radius: 999px;
-
-  padding: 4px 9px;
-
-  white-space: nowrap;
-}
-
-
-/* Bottom note */
-.topics-note {
-  font-size: 0.72rem;
-  line-height: 1.4;
-
-  color: var(--muted);
-
-  font-style: italic;
-
-  margin-bottom: 9px;
-}
-
-
-/* Button / CTA */
-.topics-button {
-  display: inline-block;
-
-  font-family: 'Baloo 2', sans-serif;
-
-  font-size: 0.76rem;
-  font-weight: 700;
-
-  color: var(--ink);
-
-  background: var(--marigold);
-
-  border-radius: 999px;
-
-  padding: 7px 14px;
-
-  text-decoration: none;
-
-  transition:
-    background 0.2s ease,
-    transform 0.2s ease;
-}
-
-.topics-button:hover {
-  background: var(--marigold-light);
-  transform: translateY(-1px);
-}
-
-
-/* =========================================
-   MOBILE
-========================================= */
-
-@media (max-width: 600px) {
-
-  .opinion-topics {
-    gap: 10px;
-
-    padding: 13px 14px;
-    margin: 16px 0;
-
-    border-radius: 12px;
-  }
-
-  .topics-icon {
-    width: 36px;
-    height: 36px;
-
-    font-size: 18px;
-
-    border-width: 1.5px;
-  }
-
-  .topics-heading {
-    margin-bottom: 8px;
-  }
-
-  .topics-heading strong {
-    font-size: 14px;
-  }
-
-  .topics-heading span {
-    font-size: 0.70rem;
-  }
-
-  .topic-list {
-    gap: 5px;
-    margin-bottom: 8px;
-  }
-
-  .topic-list span {
-    font-size: 0.63rem;
-    padding: 3px 7px;
-  }
-
-  .topics-note {
-    font-size: 0.65rem;
-    margin-bottom: 7px;
-  }
-
-  .topics-button {
-    font-size: 0.68rem;
-    padding: 6px 11px;
-  }
-}
 .stories-grid{
   display:grid !important;
   grid-template-columns:repeat(3,minmax(0,1fr)) !important;
@@ -1323,47 +1102,17 @@ img { pointer-events: none; -webkit-user-drag: none; }
     
 <a href="four-piece-index.html" class="story-card-link"><div class="story-card reveal"><div class="story-image"><img src="images/cover.jpg" alt="The Four-Piece Treasure Map"></div><div class="story-card-content"><h3>The Four-Piece Treasure Map</h3><p>An old ancestral house. A mysterious letter. And a century-old map divided into four missing pieces. When Kanchan follows clues left behind by his great-grandfather Harinarayan, he discovers that every corner of the house hides a secret.</p><p>With Supriya by his side, he uncovers hidden clues, a strange mark beneath a Shiva lingam, a mysterious mirror, and a secret passage leading to an underground chamber. But someone else has been searching for the same treasure for years—and his connection to Kanchan's family may change everything.</p><p>Is the treasure really gold, or something far more valuable? The final secret awaits in the darkness...</p><div class="story-meta"><span>📖 Fiction</span><span>🗺️ Adventure</span><span>🔍 Mystery</span><span>💎 Treasure</span></div><span class="story-read-btn">Read Full Story →</span></div></div></a>
 
-<a href="ajana-dwip-en.html" class="story-card-link"><div class="story-card reveal"><div class="story-image"><img src="images/ratna-deep.png" alt="The Unknown Island"></div><div class="story-card-content"><h3>The Unknown Island</h3><p>A group of neighbours sets out on a sea trip and accidentally reaches an unknown island. While exploring the island, they discover coconut trees and ask Shambhu, a simple and hardworking young man, to climb them and collect coconuts.</p><p>Shambhu willingly works for everyone, filling the launch with coconuts. But when huge waves suddenly approach the island, the frightened group rushes back to the launch, completely forgetting Shambhu, who is still high in the tree.</p><p>Left alone on the unfamiliar island, Shambhu realizes that the people he trusted have abandoned him. 🌊🥥🏝️</p><div class="story-meta"><span>📖 Fiction</span><span>🌊 Adventure</span><span>🥥 Sacrifice</span><span>💔 Betrayal</span></div><span class="story-read-btn">Read Full Story →</span></div></div></a>
-<a href="the-bracelet-of-truth.html" class="story-card-link"><div class="story-card reveal"><div class="story-image"><img src="images/the-baslate-truth.png" alt="The Bracelet of Truth"></div><div class="story-card-content"><h3>The Bracelet of Truth</h3><p>When Ananya loses her grandmother's gold bracelet, teacher Meera Roy refuses to accuse anyone and instead accepts responsibility for failing to teach the right values. Moved by her compassion, Riya confesses that she found the bracelet but was afraid to speak. A touching lesson about honesty, forgiveness, conscience, and true education.</p><div class="story-meta"><span>📖 Fiction</span><span>❤️ Compassion</span><span>🤝 Honesty</span><span>🌱 Values</span></div><span class="story-read-btn">Read Full Story →</span></div></div></a>
-<a href="the-right-key-to-lifes-lock.html" class="story-card-link">
-  <div class="story-card reveal">
-
-    <div class="story-image">
-      <img src="images/chobi.png" alt="The Right Key to Life's Lock">
-    </div>
-
-    <div class="story-card-content">
-      <h3>The Right Key to Life's Lock</h3>
-
-      <p>Fifteen friends who studied together in the same primary school once stood before countless possibilities. Their families possessed different skills and traditions—stone carving, woodwork, masonry, farming, nursery work, weaving, pottery, music, dance, painting and handicrafts.</p>
-
-      <p>Some ignored those skills, some chose different paths, while others returned to their roots many years later. Twenty years after leaving school, a reunion brings their different journeys together—successes, failures, lost opportunities and second chances.</p>
-
-      <p>The story reminds us that getting or not getting a job is not the end of life. Recognising our abilities, keeping the willingness to learn, and having the courage to begin again may be the most important keys to opening the doors of life.</p>
-
-      <div class="story-meta">
-        <span>📖 Life Story</span>
-        <span>🔑 Inspiration</span>
-        <span>🏫 Childhood</span>
-        <span>🌱 Skills &amp; Heritage</span>
-        <span class="story-read-btn">Read the Full Story →</span>
-      </div>
-    </div>
-
-  </div>
-</a>
+<a href="umbrella-story-index.html" class="story-card-link"><div class="story-card reveal"><div class="story-image"><img src="images/umbrella.png" alt="Sukumar Chatterjee's Lost Umbrella"></div><div class="story-card-content"><h3>Sukumar Chatterjee's Lost Umbrella</h3><p>A simple black umbrella, marked with two small carved letters, is accidentally left behind by retired Sukumar Chatterjee at a tea stall on a rainy afternoon. From that moment, it begins an unexpected journey—from one stranger to another, across towns and through countless lives.</p><p>It is bought, lost, sold, and sometimes given up by people facing difficult circumstances. Along the way, it witnesses kindness, poverty, love, sacrifice, and unforgettable human moments. Years pass, its colour fades, and its iron ribs grow old—but the mysterious letters remain.</p><p>Then, after passing through many hands, the umbrella comes face-to-face with someone from its past. <strong>Will it finally find its way back to Sukumar Babu?</strong> ☔</p><div class="story-meta"><span>📖 Fiction</span><span>☔ Mystery</span><span>❤️ Humanity</span><span>🌱 Life Journey</span></div><span class="story-read-btn">Read Full Story →</span></div></div></a>
 
 <a href="index-time-story-en.html" class="story-card-link"><div class="story-card reveal"><div class="story-image"><img src="time1.png" alt="This Life, Once Gone, Never Returns"></div><div class="story-card-content"><h3>This Life, Once Gone, Never Returns</h3><p>We often tell ourselves, "There's still plenty of time." But what if the time we keep postponing never comes back? This six-chapter story follows a life shaped by missed opportunities—from school days lost to phones and distractions, to college years spent dreaming of tomorrow, and adulthood filled with regret as others move ahead.</p><p>With every passing year, one painful truth becomes clearer: time may feel endless, but it is the most precious wealth we possess. As birthdays arrive and years disappear, a simple question begins to haunt the mind: <strong>Are we growing older, or simply losing another year of our lives?</strong></p><p>The past cannot return—but the present is still ours. ⏳</p><div class="story-meta"><span>📖 Fiction</span><span>⏳ Time</span><span>🌱 Life Lesson</span><span>💡 Inspiration</span></div><span class="story-read-btn">Read Full Story →</span></div></div></a>
+
+<a href="signature_story.html" class="story-card-link"><div class="story-card reveal"><div class="story-image"><img src="images/signature.png" alt="The Value of a Signature"></div><div class="story-card-content"><h3>The Value of a Signature</h3><p>A government employee's signature may look like nothing more than a stroke of ink—but what if it can change the lives of thousands? Bikash Babu, an experienced government employee, explains to Anik and Dipanwita why a public servant's signature is not personal property, but a symbol of the people's trust.</p><p>From birth certificates and education to land, employment, marriage, business, law, and courts, countless lives depend on official signatures. But when that signature is sold for money, corruption spreads far beyond one document.</p><p>Before handing his pen to Anik, Bikash leaves him with a powerful question: <strong>When power comes to you, will you sell its price—or accept its responsibility?</strong> ✍️⚖️</p><div class="story-meta"><span>📖 Fiction</span><span>⚖️ Justice</span><span>✍️ Responsibility</span><span>🏛️ Public Service</span></div><span class="story-read-btn">Read Full Story →</span></div></div></a>
 
 <a href="rahim-miah-rickshaw.html" class="story-card-link"><div class="story-card reveal"><div class="story-image"><img src="images/pic-1.png" alt="Rahim Miah and the Rickshaw Worth a Fortune"></div><div class="story-card-content"><h3>Rahim Miah and the Rickshaw Worth a Fortune.</h3><p>Rahim Miah, a poor rickshaw puller, spends almost his entire life believing that one lottery ticket will change his destiny. Then, one unbelievable day, he wins a crore taka. Suddenly, he has a luxury car, a magnificent house, generous friends, and endless demands for money.</p><p>But within four years, his fortune disappears. The people who once surrounded him vanish, and Rahim finds himself back on his old rickshaw. With his last ten taka in hand, he faces the lottery shop once again.</p><p>This time, however, Rahim must make the most important choice of his life: trust luck—or finally learn the value of financial wisdom. 💰🚲</p><div class="story-meta"><span>📖 Fiction</span><span>💰 Money</span><span>🧠 Wisdom</span><span>🌱 Life Lesson</span></div><span class="story-read-btn">Read Full Story →</span></div></div></a>
 
 <a href="the-discipline-of-love.html" class="story-card-link"><div class="story-card reveal"><div class="story-image"><img src="images/love-discipline.png" alt="The Discipline of Love"></div><div class="story-card-content"><h3>The Discipline of Love</h3><p>Suchorita loves her daughter Titli more than anything in the world. Whenever Titli makes a mistake, her mother protects her, comforts her, and refuses to believe she could be wrong. Slowly, however, this unconditional protection teaches Titli a dangerous lesson—she never needs to accept her mistakes.</p><p>As conflicts grow at school and in the neighbourhood, Suchorita finally begins to understand that love without boundaries can sometimes harm the person we love most. Guided by her own mother and shaken by painful consequences, she faces a difficult truth.</p><p><strong>True love does not always say "yes." Sometimes, the greatest act of love is having the courage to say "no."</strong> ❤️</p><div class="story-meta"><span>📖 Fiction</span><span>❤️ Love</span><span>👩‍👧 Parenting</span><span>🌱 Life Lesson</span></div><span class="story-read-btn">Read Full Story →</span></div></div></a>
-<a href="signature_story.html" class="story-card-link"><div class="story-card reveal"><div class="story-image"><img src="images/signature.png" alt="The Value of a Signature"></div><div class="story-card-content"><h3>The Value of a Signature</h3><p>A government employee's signature may look like nothing more than a stroke of ink—but what if it can change the lives of thousands? Bikash Babu, an experienced government employee, explains to Anik and Dipanwita why a public servant's signature is not personal property, but a symbol of the people's trust.</p><p>From birth certificates and education to land, employment, marriage, business, law, and courts, countless lives depend on official signatures. But when that signature is sold for money, corruption spreads far beyond one document.</p><p>Before handing his pen to Anik, Bikash leaves him with a powerful question: <strong>When power comes to you, will you sell its price—or accept its responsibility?</strong> ✍️⚖️</p><div class="story-meta"><span>📖 Fiction</span><span>⚖️ Justice</span><span>✍️ Responsibility</span><span>🏛️ Public Service</span></div><span class="story-read-btn">Read Full Story →</span></div></div></a>
-
-<a href="the-language-of-silence.html" class="story-card-link"><div class="story-card reveal"><div class="story-image"><img src="images/nirobota.png" alt="The Language of Silence"></div><div class="story-card-content"><h3>The Language of Silence</h3><p>Sarala was beautiful, educated, compassionate, and deeply loving—but she had never been able to speak. Again and again, marriage proposals failed when people discovered her condition.</p><p>At last, her parents found Arindam, an educated and humane young man. Fearing that the truth would end the relationship, they hid Sarala's condition and arranged the marriage without telling him.</p><p>On their wedding night, Arindam was heartbroken by the deception. But Sarala's diary revealed her fears, dreams, and one simple wish—to find someone who could hear her silence. Arindam must now decide whether to punish her for a truth she never chose to hide. 🤐❤️</p><div class="story-meta"><span>📖 Fiction</span><span>❤️ Love</span><span>🤐 Silence</span><span>⚖️ Truth</span></div><span class="story-read-btn">Read Full Story →</span></div></div></a>
 
 <a href="the-brahmin-on-yamas-throne.html" class="story-card-link"><article class="story-card reveal"><div class="story-image"><img src="images/yamraj.png" alt="The Brahmin on Yama's Throne"></div><div class="story-card-content"><h3>The Brahmin on Yama's Throne</h3><p>A Brahmin sleeps on his rooftop—and wakes mid-air, carried away by Death's messenger. Thinking quickly, he forges a letter claiming to be Vishnu's envoy. Terrified of offending the gods, Yamaraj seats him on his own throne.</p><p>Drunk on borrowed power, the Brahmin begins sending sinners straight to heaven—until heaven overflows and Vishnu himself must intervene. Sent back to earth for what he believes is two days, he returns twelve years later, invisible, to watch his own family divide his wealth and forget his name.</p><p>What he does next—<strong>revenge or release</strong>—will decide whether power can ever truly change a man's soul.</p><div class="story-meta"><span>📖 Fiction</span><span>⚖️ Karma</span><span>👑 Power</span><span>🌱 Wisdom</span></div><span class="story-read-btn">Read Full Story →</span></div></article></a>
-<a href="umbrella-story-index.html" class="story-card-link"><div class="story-card reveal"><div class="story-image"><img src="images/umbrella.png" alt="Sukumar Chatterjee's Lost Umbrella"></div><div class="story-card-content"><h3>Sukumar Chatterjee's Lost Umbrella</h3><p>A simple black umbrella, marked with two small carved letters, is accidentally left behind by retired Sukumar Chatterjee at a tea stall on a rainy afternoon. From that moment, it begins an unexpected journey—from one stranger to another, across towns and through countless lives.</p><p>It is bought, lost, sold, and sometimes given up by people facing difficult circumstances. Along the way, it witnesses kindness, poverty, love, sacrifice, and unforgettable human moments. Years pass, its colour fades, and its iron ribs grow old—but the mysterious letters remain.</p><p>Then, after passing through many hands, the umbrella comes face-to-face with someone from its past. <strong>Will it finally find its way back to Sukumar Babu?</strong> ☔</p><div class="story-meta"><span>📖 Fiction</span><span>☔ Mystery</span><span>❤️ Humanity</span><span>🌱 Life Journey</span></div><span class="story-read-btn">Read Full Story →</span></div></div></a>
 
 <div class="stories-library">
   <div class="stories-header">
@@ -1391,35 +1140,13 @@ img { pointer-events: none; -webkit-user-drag: none; }
 
 <a href="The_Road_That_Changed_His_Destiny.html" class="story-card-link"><div class="story-card reveal"><div class="story-image"><img src="images/the-road.png" alt="The Road That Changed His Destiny"></div><div class="story-card-content"><h3>The Road That Changed His Destiny</h3><p>After repeated job rejections and losing the woman he loves, Arjun escapes to the mountains. An old monk helps him discover his hidden talent for cooking. Starting with a tiny roadside tent, Arjun builds a successful chain of mountain cafés and creates jobs for hundreds. His journey proves that failure can lead to a better destination.</p><div class="story-meta"><span>📖 Fiction</span><span>🌱 Inspiration</span><span>🍲 Talent</span><span>💪 Success</span></div><span class="story-read-btn">Read Full Story →</span></div></div></a>
 
-<a href="father-too-wanted-to-live-in-laughter-and-joy.html" class="story-card-link">
-  <div class="story-card reveal">
+<a href="the-bracelet-of-truth.html" class="story-card-link"><div class="story-card reveal"><div class="story-image"><img src="images/the-baslate-truth.png" alt="The Bracelet of Truth"></div><div class="story-card-content"><h3>The Bracelet of Truth</h3><p>When Ananya loses her grandmother's gold bracelet, teacher Meera Roy refuses to accuse anyone and instead accepts responsibility for failing to teach the right values. Moved by her compassion, Riya confesses that she found the bracelet but was afraid to speak. A touching lesson about honesty, forgiveness, conscience, and true education.</p><div class="story-meta"><span>📖 Fiction</span><span>❤️ Compassion</span><span>🤝 Honesty</span><span>🌱 Values</span></div><span class="story-read-btn">Read Full Story →</span></div></div></a>
 
-    <div class="story-image">
-      <img src="images/baba.png" alt="Father Wanted to Live with Joy Too">
-    </div>
-
-    <div class="story-card-content">
-      <h3>Father Wanted to Live with Joy Too</h3>
-
-      <p>All his life, Haripada had quietly sacrificed his own wishes, comforts and happiness for his children. One day, lying alone at home in poor health, memories of his wife, his children and the old days return to him—especially the simple joy of sitting with his beloved ektara.</p>
-
-      <p>His children had done many things for him, but perhaps they had missed what he needed most—time, a little conversation, a cup of tea and someone to sit beside him. After his death, an old notebook and the sound of the ektara reveal a painful truth.</p>
-
-      <p>This story reminds us that parents are not merely responsibilities. They are human beings with dreams, emotions, wishes and a desire to enjoy life. Along with caring for them, give them your time, your words and your presence.</p>
-
-      <div class="story-meta">
-        <span>📖 Life Story</span>
-        <span>❤️ Family</span>
-        <span>🎵 Ektara</span>
-        <span>🌿 Humanity</span>
-        <span class="story-read-btn">Read the Full Story →</span>
-      </div>
-    </div>
-  </div>
-</a>
 
 <a href="ekta-iter-tukro.html" class="story-card-link"><div class="story-card reveal"><div class="story-image"><img src="images/brick.png" alt="When a Courier Receives a Piece of Brick Instead of a Watch"></div><div class="story-card-content"><h3>When a Courier Receives a Piece of Brick Instead of a Watch!</h3><p>A young man with an M.A. degree takes a job as a delivery boy to earn a living. One day, instead of an expensive smartwatch, he receives a piece of brick. What follows is a terrifying struggle involving humiliation, violence, conspiracy, and a desperate fight to escape. But along that dark journey, a story of love, truth, and a new life begins to unfold.</p><div class="story-meta"><span>📖 Serial Fiction</span><span>❤️ Love</span><span>⚖️ Truth</span><span>🌱 Humanity</span></div><span class="story-read-btn">Read Full Story →</span></div></div></a>
+
 </div>
+
 <div class="stories-more-row">
   <p class="story-exam-note">
     Love stories that make you think, feel and discover something new?
@@ -1537,7 +1264,7 @@ img { pointer-events: none; -webkit-user-drag: none; }
 
     </div>
 
-    <div class="story-card opinion-card">
+    <div class="story-card reveal opinion-card">
 
       <div class="story-image story-image-multi">
         <img
@@ -1583,7 +1310,35 @@ img { pointer-events: none; -webkit-user-drag: none; }
     life-skill resource.
   </p>
 
-   <p>
+  <div class="voice-actions">
+
+    <div class="voice-action">
+      <span>💡</span>
+      <strong>Suggest an Idea</strong>
+      <small>Share a new topic or useful resource.</small>
+    </div>
+
+    <div class="voice-action">
+      <span>📝</span>
+      <strong>Report a Mistake</strong>
+      <small>Tell us about errors or outdated information.</small>
+    </div>
+
+    <div class="voice-action">
+      <span>❓</span>
+      <strong>Ask a Question</strong>
+      <small>Ask about any guide or learning topic.</small>
+    </div>
+
+    <div class="voice-action">
+      <span>🌱</span>
+      <strong>Help Us Grow</strong>
+      <small>Share your experience and suggestions.</small>
+    </div>
+
+  </div>
+
+  <p>
     If you notice a broken link, unclear explanation or anything that does
     not work as expected, please let us know. Your feedback helps us improve
     the quality, accuracy and usefulness of our resources for everyone.
@@ -1616,51 +1371,7 @@ img { pointer-events: none; -webkit-user-drag: none; }
     <span>📝 Report a Mistake</span>
     <span>❓ Ask a Question</span>
   </div>
-<a href="feedback-opinion-index.html#catGrid" class="opinion-topics">
 
-  <div class="topics-icon">💬</div>
-
-  <div class="topics-content">
-
-    <div class="topics-heading">
-      <strong>20 Topics — Your Opinion Matters</strong>
-      <span>We'd love to hear what you think about these guides and topics.</span>
-    </div>
-
-    <div class="topic-list">
-      <span>🏠 Building Value & Responsibility</span>
-      <span>🎓 Education & Results</span>
-      <span>👨‍👩‍👧 Family & Safety</span>
-      <span>🏠 Property & Family Values</span>
-      <span>🩺 Health & Wellness</span>
-      <span>🧵 Jute & Rural Industry</span>
-      <span>🦗 Nature & Science</span>
-      <span>📱 Technology</span>
-      <span>👨‍👩‍👦 Parenting & Child Success</span>
-      <span>🔬 Science & The Unknown</span>
-      <span>📻 AkashVoice One</span>
-      <span>🐟 Fishery & Rural Life</span>
-      <span>🛡️ Substance Harm Recovery</span>
-      <span>🚶 Life & Personal Growth</span>
-      <span>♻️ Waste Management</span>
-      <span>💰 Affordable Market</span>
-      <span>🌾 Agriculture & Farming</span>
-      <span>🌿 Botanical & Farm</span>
-      <span>🌱 Environment</span>
-      <span>🏛️ Heritage & Culture</span>
-    </div>
-
-    <div class="topics-note">
-      Read any topic and share your thoughts, suggestions or rating.
-    </div>
-
-    <div class="topics-button">
-      Explore Topics & Share Your Opinion →
-    </div>
-
-  </div>
-
-</a>
   <div class="story-cta-row">
 
     <a
@@ -1669,158 +1380,22 @@ img { pointer-events: none; -webkit-user-drag: none; }
     >
       Share Your Opinion →
     </a>
-  </div></div></div></div>
+
+    <a
+      class="story-read-btn outline"
+      href="feedback-opinion-index.html#catGrid"
+    >
+      Rate a Specific Guide →
+    </a>
+
+  </div>
+
+</div>    </div>
+  </div>
 </section>
-
-<div class="story-card">
-
-  <div class="story-image">
-    <img src="images/advertise.png" alt="Advertise With Us">
-  </div>
-
-  <div class="story-card-content">
-
-    <h3>📢 Advertise With Us</h3>
-
-    <p>
-      📧 To advertise on our page, please contact us by email —
-      <strong>myskillglobal@gmail.com</strong> /
-      <strong>myskillgame26@gmail.com</strong>
-    </p>
-
-    <!-- Investment in West Bengal -->
-    <div style="
-      margin-top:15px;
-      padding:14px 16px;
-      background:#f3f8ff;
-      border:1px solid #c9ddf5;
-      border-radius:10px;
-      line-height:1.85;
-    ">
-
-      <p style="margin:0 0 10px;">
-        🌏 <strong>Invest in West Bengal — Grow with Skilled People</strong>
-      </p>
-
-      <p style="margin:0 0 10px;">
-        West Bengal has a large pool of skilled, technically trained,
-        educated and hardworking students and young people who are eager
-        to use their knowledge, skills and abilities to build a better future.
-      </p>
-
-      <p style="margin:0 0 10px;">
-        Creating good and dignified employment opportunities for them
-        at the local level can make a meaningful difference not only
-        to individual families, but also to the wider community and
-        local economy.
-      </p>
-
-      <p style="margin:0 0 10px;">
-        🏭 We therefore sincerely invite domestic and international
-        investors, industries, technology companies and entrepreneurs
-        to <strong>consider the investment opportunities in West Bengal.</strong>
-      </p>
-
-      <p style="margin:0 0 10px;">
-        💼 New opportunities in industry, technology, services,
-        manufacturing, training and employment can help skilled and
-        hardworking local people find meaningful ways to use their
-        knowledge and abilities.
-      </p>
-
-      <p style="margin:0 0 10px;">
-        🇮🇳 Investment and business activities in West Bengal are subject
-        to applicable government policies, approvals and regulations.
-        Investors are encouraged to contact the relevant government
-        departments and verify the latest requirements, procedures
-        and approvals before proceeding.
-      </p>
-
-      <p style="margin:0 0 10px;">
-        <strong>
-          Create opportunities for skilled people in West Bengal.
-          Create employment. Support skills and entrepreneurship.
-        </strong>
-      </p>
-
-      <p style="margin:0 0 10px;">
-        🌱 <strong>
-          Investment is not only about business —
-          it can also be an opportunity to unlock human potential.
-        </strong>
-        Your business can grow together with the skilled and
-        hardworking generation of West Bengal.
-      </p>
-
-    </div>
-
-    <!-- Government Information & Links -->
-    <div style="
-      margin-top:12px;
-      padding-top:10px;
-      border-top:1px dashed #c9ddf5;
-    ">
-
-      <p style="margin:0 0 8px;">
-        🔗 <strong>
-          For official information, approvals and application-related services:
-        </strong>
-      </p>
-
-      <ul style="
-        margin:0;
-        padding-left:20px;
-        line-height:1.7;
-      ">
-
-        <li>
-          <strong>West Bengal Industrial Development Corporation (WBIDC):</strong>
-          <a
-            href="https://www.wbidc.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            style="color:#1a5c8a;font-weight:600;"
-          >
-            wbidc.com
-          </a>
-        </li>
-
-        <li>
-          <strong>Industrial Approval & Services Portal (Silpa Sathi):</strong>
-          <a
-            href="https://silpasathi.wb.gov.in/"
-            target="_blank"
-            rel="noopener noreferrer"
-            style="color:#1a5c8a;font-weight:600;"
-          >
-            silpasathi.wb.gov.in
-          </a>
-        </li>
-
-      </ul>
-
-      <p style="
-        margin:8px 0 0;
-        font-size:.78rem;
-        color:#666;
-      ">
-        ℹ️ These links are provided for information and convenience only.
-        Our website is not a government organisation, and providing these
-        links should not be interpreted as any government approval,
-        partnership or endorsement. Investors are advised to verify the
-        latest information and applicable approvals directly with the
-        relevant government portals and authorities before making
-        investment or business decisions.
-      </p>
-
-    </div>
-
-  </div>
-
-</div>
-
-
 <div class="portal-grid">
+
+
 <div class="portal-card reveal">
   <span class="portal-icon">🎮</span>
 
@@ -2139,7 +1714,6 @@ img { pointer-events: none; -webkit-user-drag: none; }
 
   </div>
 </div>
-
 <!-- ══════════════════════════════════════════
      DEVELOPER INFORMATION
 ══════════════════════════════════════════ -->
@@ -2204,34 +1778,24 @@ img { pointer-events: none; -webkit-user-drag: none; }
 
 
         <p class="founder-text">
-          MySkill Global is an independently developed digital initiative
-          created and maintained by <strong>Surajit Roy</strong>, a teacher
-          and vocational education professional with a long-standing interest
-          in computer applications, technology, educational content and
-          student skill development.
+          MySkill Global is independently developed and maintained by
+          <strong>Surajit Roy</strong>, drawing on experience in vocational
+          education, computer applications, educational content and student
+          skill development.
         </p>
 
 
         <p class="founder-text">
           The platform brings together educational games, learning resources,
-          language-learning tools, assessments, certificates, stories and
-          practical digital applications under the MySkill name, with a focus
-          on making useful knowledge and technology easier to explore and use.
+          language tools, assessments, certificates, stories and practical
+          digital applications under the MySkill name.
         </p>
 
 
         <p class="founder-text">
-          The aim is to create practical, accessible and engaging digital
-          resources that can support students, teachers, families and everyday
-          users in learning, developing useful skills and discovering
-          meaningful knowledge.
-        </p>
-
-
-        <p class="founder-text">
-          MySkill Global is developed independently, with new ideas,
-          educational resources and digital tools being added and improved
-          over time according to learning needs and user feedback.
+          The aim is to create useful, accessible and engaging digital
+          resources that can support students, families, teachers and everyday
+          users in learning, practising skills and exploring useful knowledge.
         </p>
 
 
@@ -2245,117 +1809,21 @@ img { pointer-events: none; -webkit-user-drag: none; }
 
 
         <div class="founder-tags">
-
-          <span class="founder-tag">TEACHER</span>
-          <span class="founder-tag">VOCATIONAL EDUCATION</span>
-          <span class="founder-tag">EDTECH DEVELOPER</span>
-          <span class="founder-tag">EDUCATIONAL GAMES</span>
-          <span class="founder-tag">INDIA</span>
-
+  <span class="founder-tag">TEACHER</span>
+  <span class="founder-tag">VOCATIONAL EDUCATION</span>
+  <span class="founder-tag">EDTECH DEVELOPER</span>
+  <span class="founder-tag">EDUCATIONAL GAMES</span>
+  <span class="founder-tag">INDIA</span>
         </div>
-
-
-        <!-- ══════════════════════════════════════════
-             PURPOSE & CULTURAL LEARNING
-        ══════════════════════════════════════════ -->
-
-        <div class="founder-text">
-
-          <h3>
-            🌱 Our Purpose — Learning Beyond the Classroom
-          </h3>
-
-
-          <p class="founder-text">
-            The primary purpose of these stories and creative resources is
-            to bring lost or lesser-known aspects of our culture, traditions
-            and heritage to the attention of the younger generation.
-          </p>
-
-
-          <p class="founder-text">
-            Another important aim is to encourage children to develop
-            self-confidence, human values, awareness, creativity and a
-            positive connection with their cultural roots.
-          </p>
-
-
-          <p class="founder-text">
-            We also believe that learning is not limited to textbooks or
-            classrooms. Stories, traditions, everyday experiences and the
-            knowledge passed down through generations can also become
-            meaningful sources of learning.
-          </p>
-
-
-          <p class="founder-text">
-            Our efforts therefore seek to connect cultural understanding
-            with curiosity, creativity and practical learning, while
-            presenting content in a simple and engaging form that younger
-            readers can understand and enjoy.
-          </p>
-
-
-          <ul class="founder-projects">
-
-            <li>
-              To introduce younger readers to our cultural traditions
-              and heritage.
-            </li>
-
-            <li>
-              To encourage self-confidence, creativity and human values
-              among children.
-            </li>
-
-            <li>
-              To preserve and present cultural memories in a form that
-              younger readers can enjoy and understand.
-            </li>
-
-            <li>
-              To encourage curiosity, meaningful learning and a positive
-              connection between younger generations and their cultural
-              roots.
-            </li>
-
-          </ul>
-
-
-          <p class="founder-text">
-            Keeping children connected with healthy cultural values and
-            meaningful learning is not always easy in a rapidly changing
-            world. The author hopes that these efforts will contribute,
-            in a small way, to that purpose.
-          </p>
-
-
-          <p class="founder-text">
-            Readers, parents, teachers and well-wishers are warmly
-            encouraged to support and share this positive effort.
-          </p>
-
-
-          <p class="founder-text">
-            <strong>— Thank you for your support.</strong>
-          </p>
-
-        </div>
-
-
         <a
           class="founder-contact-btn"
           href="mailto:myskillglobal@gmail.com"
         >
           ✉️ Contact Developer →
         </a>
-
       </div>
-
     </div>
-
   </div>
-
 </section>
 <!-- ══════════════════════════════════════════
      FAQ

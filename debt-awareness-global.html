@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>There's a Debt, and There's a Way | A Global Awareness Story</title>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyDfxtOP-YCrCXtQxZrrFNC1uXucvbW0K78",
+    authDomain: "my-skill-global.firebaseapp.com",
+    projectId: "my-skill-global",
+    storageBucket: "my-skill-global.firebasestorage.app",
+    messagingSenderId: "978471914749",
+    appId: "1:978471914749:web:595750b5d90738933f4294",
+    measurementId: "G-8D9BPY8HJ0"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+<meta name="description" content="A global awareness story about family debt, financial pressure, practical problem-solving, support, and hope. Debt is a problem to solve—not a measure of a person’s worth.">
+<meta name="theme-color" content="#080d18">
+<meta property="og:type" content="article">
+<meta property="og:title" content="There's a Debt, and There's a Way">
+<meta property="og:description" content="A global awareness story about debt, family, financial pressure, practical problem-solving, support, and hope.">
+<meta property="og:image" content="images/hero-1.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="There's a Debt, and There's a Way">
+<meta name="twitter:description" content="Debt is a financial problem to solve—not a measure of a person's worth.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-deep:#080d18;
+    --navy:#0b1220;
+    --navy-panel:#111b30;
+    --navy-panel-2:#141f38;
+    --line:#233252;
+    --gold:#e8b94f;
+    --gold-soft:#f4d99a;
+    --ember:#c9784a;
+    --ink:#f3eee4;
+    --ink-dim:#b9c0d1;
+    --ink-faint:#8590a8;
+    --serif:'Playfair Display', Georgia, 'Times New Roman', serif;
+    --sans:'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:var(--navy);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-weight:400;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  ::selection{ background:var(--gold); color:var(--navy-deep); }
+  a{ color:var(--gold); }
+
+  .wrap{ max-width:720px; margin:0 auto; padding:0 24px; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    overflow:hidden;
+    background:var(--navy-deep);
+    border-bottom:1px solid var(--line);
+  }
+  .hero__img{
+    display:block;
+    width:100%;
+    height:auto;
+    max-height:62vh;
+    object-fit:cover;
+  }
+  .hero__content{
+    position:relative;
+    padding:36px 24px 44px;
+    text-align:center;
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:12px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:18px;
+  }
+  .eyebrow::before, .eyebrow::after{
+    content:""; width:22px; height:1px; background:var(--gold); opacity:.6;
+  }
+  h1{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:clamp(2rem, 7vw, 3.1rem);
+    line-height:1.14;
+    margin:0 0 14px;
+    letter-spacing:-0.01em;
+  }
+  .hero__sub{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:500;
+    font-size:1.1rem;
+    color:var(--ink-dim);
+    margin:0 auto 30px;
+    max-width:46ch;
+  }
+
+  /* ---------- Voice control ---------- */
+  .voice-bar{ display:flex; align-items:center; justify-content:center; gap:12px; flex-wrap:wrap; }
+  .voice-btn{
+    display:inline-flex; align-items:center; gap:10px;
+    background:var(--gold); color:var(--navy-deep); border:none;
+    font-weight:600; font-size:14.5px; letter-spacing:.01em;
+    padding:13px 22px; border-radius:999px; cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+    box-shadow:0 8px 24px -8px rgba(232,185,79,.5);
+  }
+  .voice-btn:hover{ transform:translateY(-1px); box-shadow:0 10px 28px -6px rgba(232,185,79,.6); }
+  .voice-btn:active{ transform:translateY(0); }
+  .voice-btn[data-state="playing"]{ background:var(--navy-panel-2); color:var(--gold); border:1px solid var(--gold); }
+  .voice-btn .ico{ display:inline-flex; width:16px; height:16px; }
+  .voice-note{ font-size:12.5px; color:var(--ink-faint); max-width:280px; text-align:center; }
+
+  .voice-sticky{
+    position:fixed; left:50%; transform:translate(-50%, 120%); bottom:20px; z-index:40;
+    display:flex; align-items:center; gap:10px;
+    background:var(--navy-panel-2); border:1px solid var(--line);
+    padding:10px 14px 10px 10px; border-radius:999px;
+    box-shadow:0 14px 34px -12px rgba(0,0,0,.6);
+    transition:transform .35s ease;
+  }
+  .voice-sticky.show{ transform:translate(-50%, 0); }
+  .voice-sticky button{
+    width:36px; height:36px; border-radius:50%; border:none; background:var(--gold); color:var(--navy-deep);
+    display:flex; align-items:center; justify-content:center; cursor:pointer; flex:0 0 auto;
+  }
+  .voice-sticky span{ font-size:13px; color:var(--ink-dim); white-space:nowrap; }
+
+  /* ---------- Article ---------- */
+  main{ padding:56px 0 20px; }
+
+  .lede{ font-family:var(--serif); font-size:1.2rem; line-height:1.65; color:var(--ink); }
+
+  .story p{ margin:0 0 22px; font-size:1.02rem; color:var(--ink); }
+  .story p.tts-active{ color:var(--gold-soft); }
+
+  .line{
+    display:block; margin:30px 0; padding:6px 0 6px 20px;
+    border-left:2px solid var(--gold);
+    font-family:var(--serif); font-style:italic; font-size:1.12rem; color:var(--gold-soft);
+  }
+  .line small{
+    display:block; font-family:var(--sans); font-style:normal; font-size:11px;
+    letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); margin-top:6px;
+  }
+
+  .divider{ display:flex; align-items:center; gap:14px; margin:56px 0 30px; }
+  .divider::before, .divider::after{ content:""; flex:1; height:1px; background:var(--line); }
+  .divider span{ font-family:var(--serif); font-style:italic; color:var(--gold); font-size:.95rem; white-space:nowrap; }
+
+  h3{
+    font-weight:600; font-size:.78rem; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--gold); margin:44px 0 16px;
+  }
+
+  .panel{ background:var(--navy-panel); border:1px solid var(--line); border-radius:14px; padding:26px 24px; margin-bottom:20px; }
+
+  ul.points{ list-style:none; margin:0; padding:0; }
+  ul.points li{ position:relative; padding-left:22px; margin-bottom:14px; color:var(--ink-dim); font-size:.98rem; }
+  ul.points li:last-child{ margin-bottom:0; }
+  ul.points li::before{
+    content:""; position:absolute; left:0; top:.62em; width:7px; height:7px; border-radius:50%; background:var(--ember);
+  }
+  ul.points li strong{ color:var(--ink); }
+
+  .equation{
+    text-align:center; font-family:var(--serif); font-style:italic; font-size:1.05rem; line-height:2;
+    color:var(--ink-dim); margin:26px 0; padding:26px 20px;
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  }
+  .equation strong{ display:block; color:var(--gold-soft); font-weight:600; font-style:normal; }
+
+  .closing{
+    margin-top:50px; padding:34px 26px; text-align:center;
+    background:linear-gradient(180deg, var(--navy-panel), var(--navy-panel-2));
+    border:1px solid var(--line); border-radius:16px;
+  }
+  .closing p{ font-family:var(--serif); font-size:1.15rem; line-height:1.6; color:var(--ink); margin:0 0 18px; }
+  .closing p:last-child{ margin-bottom:0; }
+  .closing .final{ color:var(--gold-soft); font-style:italic; }
+  .closing .road{
+    display:block; margin-top:10px; padding-top:18px; border-top:1px dashed var(--line);
+    font-size:1.02rem; color:var(--ink-dim); font-style:normal;
+  }
+
+  footer{ margin-top:60px; padding:34px 0 60px; border-top:1px solid var(--line); }
+  .care-box{ background:var(--navy-deep); border:1px solid var(--line); border-radius:14px; padding:22px 22px; }
+  .care-box h4{
+    font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); margin:0 0 10px;
+  }
+  .care-box p{ font-size:.92rem; color:var(--ink-dim); margin:0 0 14px; }
+  .helplines{ list-style:none; margin:0; padding:0; display:grid; gap:8px; }
+  .helplines li{
+    font-size:.9rem; color:var(--ink); display:flex; justify-content:space-between; gap:12px;
+    padding:8px 0; border-bottom:1px dashed var(--line);
+  }
+  .helplines li:last-child{ border-bottom:none; }
+  .helplines .num{ color:var(--gold-soft); font-weight:600; white-space:nowrap; }
+
+  .credit{ text-align:center; margin-top:30px; font-size:12px; color:var(--ink-faint); }
+
+  @media (min-width: 640px){
+    .hero__content{ padding:52px 24px 60px; }
+    main{ padding:72px 0 20px; }
+    .panel{ padding:32px 34px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <img class="hero__img" src="images/hero-1.svg" alt="Mountains at dawn with a winding path leading toward the light, symbolizing a way forward.">
+  <div class="hero__content wrap">
+    <span class="eyebrow">A Global Awareness Story</span>
+    <h1>There's a Debt,<br>and There's a Way</h1>
+    <p class="hero__sub">A story about family, financial pressure, and why debt is a problem to solve — not a measure of a person’s worth.</p>
+
+    <div class="voice-bar">
+      <button class="voice-btn" id="playBtn" data-state="idle" aria-pressed="false">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" id="playIcon"><path d="M8 5v14l11-7L8 5z" fill="currentColor"/></svg>
+        <span id="playLabel">Listen to the Story</span>
+      </button>
+    </div>
+    <p class="voice-note" id="voiceNote">Read aloud using your browser's built-in voice.</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <article class="story" id="storyText">
+
+    <p class="lede tts-p">In a busy part of the city lived Samir's family. Samir ran a small business. His wife Mita, his son Arnab, and his daughter Tuli made up their household.</p>
+
+    <p class="tts-p">For a while, the business did quite well. Hoping for an even better future, Samir kept taking one loan after another to expand it.</p>
+
+    <p class="tts-p">At first, everything went smoothly. But then the business suffered a major loss.</p>
+
+    <p class="tts-p">On one side, the business's money got stuck. On the other, month after month, the loan repayments piled up. The interest kept growing. The phone calls started. Creditors began pressuring him to return the money.</p>
+
+    <p class="tts-p">Samir slowly began to break down. The man who once laughed and joked with his family now sat silently.</p>
+
+    <span class="line tts-p">"What's wrong with you?"<small>Mita</small></span>
+    <span class="line tts-p">"Everything is over. How will I ever repay so much money?"<small>Samir</small></span>
+    <span class="line tts-p">"Nothing is over. The money is gone, but we are still here."<small>Mita, calmly</small></span>
+
+    <p class="tts-p">Samir said nothing in reply.</p>
+  </article>
+
+  <div class="divider"><span>The Pressure Kept Growing</span></div>
+
+  <article class="story">
+    <p class="tts-p">In the weeks that followed, things grew harder still. Someone would call demanding payment; someone would come to the house asking for money. Samir grew afraid to even step outside.</p>
+
+    <span class="line tts-p">"How will I show my face to people?"<small>Samir, to himself</small></span>
+
+    <p class="tts-p">One day his son Arnab said to him, "Dad, why are you worrying so much?"</p>
+
+    <p class="tts-p">Samir didn't want to say anything at first. Then he said, "I've taken on a great deal of debt."</p>
+
+    <p class="tts-p">Arnab said, "Then we'll all figure something out together."</p>
+
+    <p class="tts-p">Samir looked at his son, startled. "What will you figure out?"</p>
+
+    <p class="tts-p">Arnab said, "I don't know. But why does anyone have to bear everything alone?"</p>
+
+    <p class="tts-p">Those words left a mark on Samir's heart.</p>
+  </article>
+
+  <div class="divider"><span>A Mistaken Belief</span></div>
+
+  <section class="panel">
+    <p class="tts-p">Samir had believed, all this time, that debt meant the end of dignity. That debt meant failure. That debt meant there was no way forward.</p>
+    <p class="tts-p" style="margin-bottom:0;">But reality was different. <strong>Debt is a financial problem — it is not the end of a life.</strong></p>
+  </section>
+
+  <article class="story">
+    <p class="tts-p">The next day, Mita took him to see a lawyer and a financial advisor they knew. They wrote out every debt, in full — where money was owed, how much, at what interest, which repayment needed attention first, where more time could be requested. Everything was laid out and organized.</p>
+
+    <span class="line tts-p">"Your problem is a big one. But a big problem doesn't mean an unsolvable one."<small>the advisor</small></span>
+
+    <p class="tts-p">Samir listened quietly.</p>
+  </article>
+
+  <div class="divider"><span>The Creditors' Pressure</span></div>
+
+  <article class="story">
+    <p class="tts-p">Not every creditor spoke the same way, of course. Some agreed to give more time. Some agreed to work out a repayment plan. And some tried, without cause, to intimidate him.</p>
+
+    <p class="tts-p">This time, Samir made no decision alone. Wherever it was needed, he corresponded in writing. He gathered the necessary documents. He sought legal advice.</p>
+
+    <p class="tts-p">He came to understand — facing a problem laid out clearly on paper is far more effective than running from the pressure of it.</p>
+  </article>
+
+  <div class="divider"><span>The Family's Strength</span></div>
+
+  <article class="story">
+    <p class="tts-p">One night, the four of them sat together.</p>
+
+    <span class="line tts-p">"We may not be able to live the way we used to."<small>Mita</small></span>
+    <span class="line tts-p">"So what if we can't?"<small>Arnab</small></span>
+    <span class="line tts-p">"Dad, we still have you."<small>Tuli, smiling</small></span>
+
+    <p class="tts-p">Tears came to Samir's eyes. He realized that, all this time, he had only been looking at the arithmetic of his debt — and had forgotten to see the four lives, the four relationships, and the one future standing right in front of him.</p>
+  </article>
+
+  <div class="divider"><span>A Few Years Later</span></div>
+
+  <article class="story">
+    <p class="tts-p">Time moves forward, however slowly. Samir closed part of the business. He cut unnecessary expenses. The whole family sat down together and planned anew.</p>
+
+    <p class="tts-p">Some assets had to be sold. Life became far simpler. But the family stayed together.</p>
+
+    <p class="tts-p">It took time for the debt to be fully cleared. But one day, Samir opened his old ledger and looked at it. The number that had once looked like a mountain to him had, by now, shrunk considerably.</p>
+
+    <span class="line tts-p">"You know, if we had broken down that day, we would never have seen a day like today."<small>Samir</small></span>
+    <span class="line tts-p">"Money lost can be earned again. A life lost cannot."<small>Mita</small></span>
+  </article>
+
+  <div class="divider"><span>The Lesson of the Story</span></div>
+
+  <section class="panel">
+    <p class="tts-p">Debt is never a small problem. A large debt can push a person into fear, shame, anxiety, and despair. But it helps to remember:</p>
+    <p class="tts-p" style="margin-bottom:0; text-align:center; font-family:var(--serif); font-style:italic; color:var(--gold-soft); font-size:1.1rem;">Debt is a problem — not a life sentence.</p>
+  </section>
+
+  <h3>If Debt Is Weighing on You or Someone You Love</h3>
+  <div class="panel">
+    <ul class="points">
+      <li>Talk to someone in the family you trust — <strong>don't carry it alone</strong>.</li>
+      <li>Write down every debt, in full: what's owed, to whom, and at what interest.</li>
+      <li>Contact your lender or creditor and ask whether a realistic repayment schedule or restructuring option is available.</li>
+      <li>Seek advice from a qualified lawyer, debt adviser, or financial professional where appropriate.</li>
+      <li>If you face harassment, threats, or unlawful pressure, seek help from an appropriate local authority or legal professional.</li>
+      <li>If you feel unable to cope or you are worried about your immediate safety, tell someone you trust and contact a qualified mental-health professional or your local emergency/crisis service.</li>
+    </ul>
+  </div>
+
+  <div class="equation">
+    A creditor may ask for money.<br>
+    A lender may ask for a scheduled repayment.<br>
+    A business may suffer a loss.<br>
+    Assets may have to be sold.<br>
+    A life may have to become simpler.<br>
+    <strong>But no amount of debt determines the worth of a person's life.</strong>
+  </div>
+
+  <p class="tts-p">A debt that feels like a mountain today can become more manageable with time, a clear plan, appropriate guidance, and patience.</p>
+
+  <div class="closing">
+    <p class="final">"There's a debt — so there's a problem.<br>But there's a debt — that doesn't mean life is over.<br>The road may be hard, but there is a road."</p>
+    <p class="road">Keep life going, and look for the way through the problem. Because money can be earned again — a life cannot.</p>
+  </div>
+
+</main>
+
+<footer class="wrap">
+  <p style="font-size:.82rem;color:var(--ink-faint);text-align:center;margin:0 0 18px;">
+    <strong style="color:var(--ink-dim);">A global resource note:</strong>
+    Laws, lending practices, debt-relief options, and emergency services differ by country.
+    Use trusted local services and qualified professionals for advice specific to your situation.
+  </p>
+
+  <div class="care-box">
+    <h4>If This Story Feels Close to Home</h4>
+    <p>This is a sensitive topic. If debt or money worries are weighing heavily on you, support can help with both the practical and emotional sides. You do not have to carry the burden alone.</p>
+    <ul class="helplines">
+      <li><span>Local legal-aid service</span><span class="num">Find your local service</span></li>
+      <li><span>Local mental-health or crisis service</span><span class="num">Available in your region</span></li>
+      <li><span>Emergency assistance</span><span class="num">Use your local emergency number</span></li>
+    </ul>
+  </div>
+  <p class="credit">There's a Debt, and There's a Way — a global awareness story</p>
+</footer>
+
+<div class="voice-sticky" id="voiceSticky">
+  <button id="stickyBtn" aria-label="Play or pause reading">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" id="stickyIcon"><path d="M8 5v14l11-7L8 5z" fill="currentColor"/></svg>
+  </button>
+  <span>Listening to the story…</span>
+</div>
+
+<script>
+(function(){
+  var supported = 'speechSynthesis' in window;
+  var playBtn = document.getElementById('playBtn');
+  var playLabel = document.getElementById('playLabel');
+  var playIcon = document.getElementById('playIcon');
+  var voiceNote = document.getElementById('voiceNote');
+  var sticky = document.getElementById('voiceSticky');
+  var stickyBtn = document.getElementById('stickyBtn');
+  var stickyIcon = document.getElementById('stickyIcon');
+  var hero = document.querySelector('.hero');
+
+  var ICON_PLAY = '<path d="M8 5v14l11-7L8 5z" fill="currentColor"/>';
+  var ICON_PAUSE = '<path d="M7 5h4v14H7zM13 5h4v14h-4z" fill="currentColor"/>';
+
+  if(!supported){
+    voiceNote.textContent = "Read-aloud isn't supported in this browser — the story reads fine below.";
+    playBtn.disabled = true;
+    playBtn.style.opacity = 0.5;
+    playBtn.style.cursor = 'not-allowed';
+  } else {
+    var paragraphs = Array.prototype.slice.call(document.querySelectorAll('.tts-p'));
+    var utterances = paragraphs.map(function(p){
+      var u = new SpeechSynthesisUtterance(p.textContent.trim());
+      u.rate = 0.95;
+      u.pitch = 1;
+      u.onstart = function(){
+        paragraphs.forEach(function(el){ el.classList.remove('tts-active'); });
+        p.classList.add('tts-active');
+        p.scrollIntoView({ behavior:'smooth', block:'center' });
+      };
+      return u;
+    });
+    if(utterances.length){
+      utterances[utterances.length-1].onend = function(){ stopAll(); };
+    }
+
+    var playing = false;
+
+    function setState(state){
+      playBtn.setAttribute('data-state', state);
+      if(state === 'playing'){
+        playBtn.setAttribute('aria-pressed','true');
+        playLabel.textContent = 'Pause the Story';
+        playIcon.innerHTML = ICON_PAUSE;
+        stickyIcon.innerHTML = ICON_PAUSE;
+      } else {
+        playBtn.setAttribute('aria-pressed','false');
+        playLabel.textContent = state === 'paused' ? 'Resume the Story' : 'Listen to the Story';
+        playIcon.innerHTML = ICON_PLAY;
+        stickyIcon.innerHTML = ICON_PLAY;
+      }
+    }
+
+    function startAll(){
+      window.speechSynthesis.cancel();
+      utterances.forEach(function(u){ window.speechSynthesis.speak(u); });
+      playing = true;
+      setState('playing');
+    }
+    function stopAll(){
+      window.speechSynthesis.cancel();
+      playing = false;
+      paragraphs.forEach(function(el){ el.classList.remove('tts-active'); });
+      setState('idle');
+    }
+    function toggle(){
+      if(!playing){
+        startAll();
+      } else if(window.speechSynthesis.paused){
+        window.speechSynthesis.resume();
+        setState('playing');
+      } else {
+        window.speechSynthesis.pause();
+        setState('paused');
+      }
+    }
+
+    playBtn.addEventListener('click', toggle);
+    stickyBtn.addEventListener('click', toggle);
+
+    window.addEventListener('beforeunload', function(){ window.speechSynthesis.cancel(); });
+
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(!entry.isIntersecting && playing){
+          sticky.classList.add('show');
+        } else {
+          sticky.classList.remove('show');
+        }
+      });
+    }, { threshold: 0 });
+    io.observe(hero);
+  }
+})();
+</script>
+
+</body>
+</html>

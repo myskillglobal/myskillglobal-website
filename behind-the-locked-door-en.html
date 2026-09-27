@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Behind the Locked Door — School Safety</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0f1e; --bg2:#0f1830; --panel:#121b34;
+    --gold:#d4af6a; --gold-soft:#e8cd9a; --ink:#eef1fb; --ink-dim:#aab3cf;
+    --line:rgba(212,175,106,.18);
+  }
+.home-btn{
+  position:absolute;left:14px;top:calc(14px + env(safe-area-inset-top,0px));
+  width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;
+  background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.35);color:var(--gold-soft);
+  text-decoration:none;font-size:1.05rem;
+}
+  *{box-sizing:border-box;}
+  html{scroll-padding-top:env(safe-area-inset-top,0px);}
+  body{
+    margin:0; background:radial-gradient(ellipse at top, var(--bg2), var(--bg) 60%);
+    color:var(--ink); font-family:'Cormorant Garamond', serif; font-size:19px; line-height:1.8;
+    padding-top:env(safe-area-inset-top,0px); padding-bottom:calc(40px + env(safe-area-inset-bottom,0px));
+  }
+  .wrap{max-width:760px; margin:0 auto; padding:0 24px;}
+  header.hero{
+    text-align:center; padding:70px 24px 46px; border-bottom:1px solid var(--line);
+    background:linear-gradient(180deg, rgba(212,175,106,.06), transparent);
+  }
+  .door{font-size:44px; filter:drop-shadow(0 0 18px rgba(212,175,106,.35));}
+  .kicker{font-family:'Inter',sans-serif; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); font-size:12px; margin:14px 0 6px;}
+  h1{font-family:'Playfair Display', serif; font-weight:800; font-size:clamp(30px,5.2vw,46px); margin:8px 0 14px; color:var(--ink); letter-spacing:.01em;}
+  .tags{font-family:'Inter',sans-serif; font-size:13px; color:var(--ink-dim); letter-spacing:.03em;}
+  .tags span{color:var(--gold-soft);}
+  nav.listen-bar{
+    display:flex; justify-content:center; gap:10px; padding:16px 24px; position:sticky; top:0; z-index:5;
+    background:rgba(10,15,30,.85); backdrop-filter:blur(6px); border-bottom:1px solid var(--line);
+  }
+  button.listen{
+    font-family:'Inter',sans-serif; font-size:13px; letter-spacing:.03em; color:var(--gold-soft);
+    background:transparent; border:1px solid var(--line); padding:9px 18px; border-radius:30px; cursor:pointer;
+    transition:.2s;
+  }
+  button.listen:hover{border-color:var(--gold); background:rgba(212,175,106,.08);}
+  button.listen.playing{background:var(--gold); color:#1a1305; border-color:var(--gold);}
+  main{padding:48px 24px 10px;}
+  section.beat{margin-bottom:44px;}
+  h2{font-family:'Playfair Display', serif; font-weight:700; font-size:22px; color:var(--gold-soft); margin:0 0 14px; letter-spacing:.01em;}
+  p{margin:0 0 16px; color:var(--ink);}
+  .drop::first-letter{
+    font-family:'Playfair Display', serif; font-size:58px; float:left; line-height:.8; padding:6px 10px 0 0;
+    color:var(--gold); font-weight:800;
+  }
+  .rule{width:64px; height:1px; background:var(--line); margin:44px auto;}
+  .takeaways{
+    background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:36px 30px; margin:20px 0 60px;
+  }
+  .takeaways h2{text-align:center; margin-bottom:24px;}
+  .tk{display:flex; gap:14px; padding:14px 0; border-top:1px solid var(--line);}
+  .tk:first-of-type{border-top:none;}
+  .tk .ic{font-size:22px; flex:0 0 auto;}
+  .tk p{margin:0; font-size:18px; color:var(--ink-dim);}
+  footer{text-align:center; font-family:'Inter',sans-serif; font-size:12px; color:var(--ink-dim); opacity:.6; padding:20px 24px;}
+  @media (max-width:520px){ body{font-size:18px;} h1{font-size:30px;} .takeaways{padding:26px 18px;} }
+</style>
+<a class="home-btn" href="index.html" aria-label="Home">🏠</a>
+
+</head>
+<body>
+
+<header class="hero">
+  <div class="door">🚪</div>
+  <div class="kicker">School Safety</div>
+  <h1>Behind the Locked Door</h1>
+  <p class="tags"><span>Carelessness</span> · <span>Responsibility</span> · <span>School Safety Procedures</span></p>
+</header>
+
+<nav class="listen-bar">
+  <button class="listen" id="playAll">▶ Listen to the story</button>
+  <button class="listen" id="stopAll" style="display:none;">■ Stop</button>
+</nav>
+
+<main class="wrap">
+
+<section class="beat" data-read="It was the last day before summer vacation at a high school in a small town. The whole school was buzzing with excitement — a full month of holidays was about to begin, and students were happily preparing to head home. Ninth-grader Sneha was laughing with her friends on her way out when she suddenly said, Wait for me, I'm just going. But she didn't tell anyone exactly where she was going. Her friends assumed she would be back in a few minutes.">
+  <p class="drop">It was the last day before summer vacation at a high school in a small town. The whole school was buzzing with excitement — a full month of holidays was about to begin, and students were happily preparing to head home.</p>
+  <p>Ninth-grader Sneha was laughing with her friends on her way out when she suddenly said, "Wait for me, I'm just going." But she didn't tell anyone exactly where she was going. Her friends assumed she would be back in a few minutes.</p>
+</section>
+
+<section class="beat" data-read="An Empty School. Meanwhile, the school day ended. One by one, teachers, staff, and students left for home. The watchman began locking up the rooms as he did every day, and finally locked the iron gate of the washroom too — without knowing that Sneha was still inside. Hearing the door lock, Sneha rushed to it. She pounded on the door and shouted, Is anyone there? Please let me out! But the school was nearly empty by then. The washroom was far from the main building, and her voice never reached anyone.">
+  <h2>An Empty School</h2>
+  <p>Meanwhile, the school day ended. One by one, teachers, staff, and students left for home. The watchman began locking up the rooms as he did every day, and finally locked the iron gate of the washroom too — without knowing that Sneha was still inside.</p>
+  <p>Hearing the door lock, Sneha rushed to it. She pounded on the door and shouted, "Is anyone there? Please let me out!" But the school was nearly empty by then. The washroom was far from the main building, and her voice never reached anyone.</p>
+</section>
+
+<section class="beat" data-read="A Long Search. Evening came. Sneha didn't return home. Her worried parents went to the school. The watchman said, Everyone left a long time ago. They asked him to look once more, but unfortunately, the school was not searched thoroughly again. The next day, a missing-person report was filed. Her photo appeared in newspapers. News spread on social media — and along with it, baseless rumors. Some said she had been abducted; others claimed she might be near a bridge under construction. Many people chased these rumors, even though there was no evidence for them, while the one place that actually mattered — the school itself — was never searched in full detail again.">
+  <h2>A Long Search</h2>
+  <p>Evening came. Sneha didn't return home. Her worried parents went to the school. The watchman said, "Everyone left a long time ago." They asked him to look once more, but unfortunately, the school was not searched thoroughly again.</p>
+  <p>The next day, a missing-person report was filed. Her photo appeared in newspapers. News spread on social media — and along with it, baseless rumors. Some said she had been abducted; others claimed she might be near a bridge under construction. Many people chased these rumors, even though there was no evidence for them, while the one place that actually mattered — the school itself — was never searched in full detail again.</p>
+</section>
+
+<section class="beat" data-read="The Discovery. Days passed. A week, two weeks, then nearly a month. The day before vacation ended, a staff member cleaning the school noticed a strong smell near the washroom. When the lock was opened, everyone's hearts sank. Sneha's body was found inside. The whole town was stunned with grief. The investigation revealed that Sneha had been locked inside without anyone realizing it, and that a thorough search of the entire school building — every room and every washroom — at the time she went missing might have prevented this tragedy.">
+  <h2>The Discovery</h2>
+  <p>Days passed. A week, two weeks, then nearly a month. The day before vacation ended, a staff member cleaning the school noticed a strong smell near the washroom. When the lock was opened, everyone's hearts sank. Sneha's body was found inside. The whole town was stunned with grief.</p>
+  <p>The investigation revealed that Sneha had been locked inside without anyone realizing it, and that a thorough search of the entire school building — every room and every washroom — at the time she went missing might have prevented this tragedy.</p>
+</section>
+
+<div class="rule"></div>
+
+<section class="beat" data-read="A New Policy. After the tragedy, the district introduced new school safety measures: every room, washroom, and building must be checked carefully before locking up; attendance must be cross-verified before the campus is declared empty; more than one staff member must confirm a building is empty before it is locked; and wherever appropriate, schools were encouraged to consider safer locking arrangements or emergency-release options instead of relying only on an outside lock. Students were also taught to always tell a teacher or friend exactly where they are going if they step away alone. Years later, the bell still rings at the end of each day at that school — and the teachers still walk through every washroom, classroom, and corner once more before they leave, because they know that one small moment of carelessness can change a family's life forever.">
+  <h2>A New Policy</h2>
+  <p>After the tragedy, the district introduced new school safety measures: every room, washroom, and building must be checked carefully before locking up; attendance must be cross-verified before the campus is declared empty; more than one staff member must confirm a building is empty before it is locked; and wherever appropriate, schools were encouraged to consider safer locking arrangements or emergency-release options instead of relying only on an outside lock. Students were also taught to always tell a teacher or friend exactly where they are going if they step away alone.</p>
+  <p>Years later, the bell still rings at the end of each day at that school — and the teachers still walk through every washroom, classroom, and corner once more before they leave, because they know that one small moment of carelessness can change a family's life forever.</p>
+</section>
+
+<div class="takeaways">
+  <h2>Key Takeaways</h2>
+  <div class="tk"><div class="ic">🏫</div><p>Before locking up for the day or for a holiday, schools should carefully check that every classroom, washroom, and room is completely empty.</p></div>
+  <div class="tk"><div class="ic">👥</div><p>If a student goes missing, the first and most important step is a thorough search of the place they were last seen — including the entire institution itself.</p></div>
+  <div class="tk"><div class="ic">⚠️</div><p>Unverified rumors can mislead a search and waste critical time. Evidence-based investigation matters most.</p></div>
+  <div class="tk"><div class="ic">❤️</div><p>Responsibility, attentiveness, and proper safety procedures can protect a life that can never be replaced.</p></div>
+</div>
+
+</main>
+
+<footer>A story on school safety, awareness, and responsibility.</footer>
+
+<script>
+(function(){
+  const synth = window.speechSynthesis;
+  const playBtn = document.getElementById('playAll');
+  const stopBtn = document.getElementById('stopAll');
+  const sections = Array.from(document.querySelectorAll('.beat'));
+  let queue = [], idx = 0, speaking = false;
+
+  function pickVoice(){
+    const voices = synth.getVoices();
+    return voices.find(v => v.lang === 'en-IN') || voices.find(v => v.lang && v.lang.startsWith('en')) || null;
+  }
+
+  function speakNext(){
+    if(idx >= queue.length){ finish(); return; }
+    const sec = queue[idx];
+    sec.classList.add('playing-section');
+    const u = new SpeechSynthesisUtterance(sec.dataset.read);
+    u.lang = 'en-IN'; u.rate = 0.95; u.pitch = 1;
+    const v = pickVoice(); if(v) u.voice = v;
+    u.onend = () => { sec.classList.remove('playing-section'); idx++; speakNext(); };
+    u.onerror = () => { sec.classList.remove('playing-section'); idx++; speakNext(); };
+    synth.speak(u);
+  }
+
+  function finish(){
+    speaking = false;
+    playBtn.style.display = 'inline-block';
+    stopBtn.style.display = 'none';
+    playBtn.classList.remove('playing');
+  }
+
+  playBtn.addEventListener('click', () => {
+    if(!synth){ alert('Voice playback is not supported on this browser.'); return; }
+    synth.cancel();
+    queue = sections; idx = 0; speaking = true;
+    playBtn.style.display = 'none';
+    stopBtn.style.display = 'inline-block';
+    speakNext();
+  });
+
+  stopBtn.addEventListener('click', () => {
+    synth.cancel();
+    finish();
+  });
+})();
+</script>
+</body>
+</html>
