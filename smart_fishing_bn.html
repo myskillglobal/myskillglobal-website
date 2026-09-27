@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>অ্যাকোয়াকেয়ার – ইলিশ ও টেকসই মৎস্যচাষ</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --cyan: #06b6d4;
+    --cyan-dim: #0e7490;
+    --bg: #050a0f;
+    --surface: rgba(255,255,255,0.03);
+    --border: rgba(255,255,255,0.07);
+    --text: #e2e8f0;
+    --text-muted: #94a3b8;
+    --red: #ef4444;
+    --green: #10b981;
+    --blue: #3b82f6;
+    --gold: #f59e0b;
+  }
+
+  html, body {
+    width: 100%; height: 100%;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  #app {
+    width: 100%;
+    min-height: 100vh;
+    max-width: 440px;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ambient {
+    position: fixed; top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 100%; max-width: 440px;
+    height: 100vh; pointer-events: none; z-index: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(6,182,212,0.1) 0%, transparent 60%);
+  }
+
+  /* ===== HEADER ===== */
+  .header {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(5,10,15,0.95);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(6,182,212,0.14);
+    padding: 12px 16px 10px;
+    flex-shrink: 0;
+  }
+  .header-top {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 12px;
+  }
+  .header-logo {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: linear-gradient(135deg, #06b6d4, #0891b2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; box-shadow: 0 0 16px rgba(6,182,212,0.3); flex-shrink: 0;
+  }
+  .header-title { font-family: 'Lora', serif; font-size: 18px; color: #f0f9ff; }
+  .header-sub { font-size: 10px; color: var(--cyan-dim); letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* SOUND TOGGLE */
+  #sound-btn {
+    margin-left: auto;
+    background: rgba(6,182,212,0.1); border: 1px solid rgba(6,182,212,0.3);
+    border-radius: 20px; padding: 5px 10px;
+    color: var(--cyan); font-size: 12px; cursor: pointer;
+    display: flex; align-items: center; gap: 4px;
+  }
+
+  /* BACK BUTTON */
+  #global-back {
+    display: none;
+    align-items: center; gap: 6px;
+    background: none; border: none;
+    color: var(--cyan); font-size: 13px;
+    cursor: pointer; padding: 0 0 10px;
+    font-family: inherit;
+  }
+  #global-back.visible { display: flex; }
+
+  /* TABS */
+  .tabs { display: flex; gap: 4px; }
+  .tab-btn {
+    flex: 1; padding: 7px 2px; border-radius: 9px;
+    border: 1px solid var(--border); background: var(--surface);
+    color: #64748b; font-size: 10px; font-family: inherit;
+    cursor: pointer; transition: all 0.2s;
+    display: flex; flex-direction: column; align-items: center; gap: 2px;
+  }
+  .tab-btn.active {
+    border-color: rgba(6,182,212,0.5);
+    background: rgba(6,182,212,0.1); color: var(--cyan);
+  }
+  .tab-btn .tab-icon { font-size: 15px; }
+
+  /* CONTENT */
+  .content {
+    position: relative; z-index: 1;
+    padding: 14px 14px 30px;
+    flex: 1;
+  }
+  .page { display: none; }
+  .page.active { display: block; }
+  .page-title {
+    font-family: 'Lora', serif; font-size: 20px;
+    color: #f0f9ff; margin-bottom: 4px;
+  }
+  .page-sub {
+    font-size: 12px; color: var(--text-muted);
+    margin-bottom: 16px; line-height: 1.5;
+  }
+
+  /* ALERT BANNER */
+  .safety-banner {
+    background: rgba(239,68,68,0.08);
+    border: 1px solid rgba(239,68,68,0.25);
+    border-radius: 10px; padding: 10px 13px;
+    margin-bottom: 14px;
+    display: flex; align-items: flex-start; gap: 9px;
+  }
+  .safety-icon { font-size: 17px; margin-top: 1px; }
+  .safety-text { font-size: 11px; color: #fca5a5; line-height: 1.5; }
+
+  /* HILSA BANNER */
+  .hilsa-banner {
+    background: linear-gradient(135deg, rgba(245,158,11,0.12), rgba(6,182,212,0.08));
+    border: 1px solid rgba(245,158,11,0.3);
+    border-radius: 14px; padding: 14px;
+    margin-bottom: 14px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .hilsa-banner .hb-icon { font-size: 36px; }
+  .hilsa-banner .hb-text h3 { font-size: 14px; color: var(--gold); margin-bottom: 3px; }
+  .hilsa-banner .hb-text p { font-size: 11px; color: var(--text-muted); line-height: 1.5; }
+
+  /* FISH CARDS */
+  .fish-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 15px; padding: 14px; cursor: pointer;
+    transition: all 0.2s;
+    display: flex; align-items: center; gap: 13px;
+    margin-bottom: 11px; width: 100%; text-align: left;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .fish-card:active { transform: scale(0.98); background: rgba(6,182,212,0.05); }
+  .fish-icon {
+    width: 52px; height: 52px; border-radius: 13px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px; flex-shrink: 0;
+  }
+  .fish-name { font-size: 16px; font-weight: 500; color: #f0f9ff; margin-bottom: 2px; }
+  .fish-type { font-size: 11px; color: var(--text-muted); }
+  .fish-tag {
+    font-size: 9px; padding: 2px 7px; border-radius: 20px;
+    background: rgba(16,185,129,0.1); color: #34d399;
+    border: 1px solid rgba(16,185,129,0.2);
+    margin-top: 5px; display: inline-block;
+  }
+  .fish-tag.gold {
+    background: rgba(245,158,11,0.1); color: #fbbf24;
+    border-color: rgba(245,158,11,0.2);
+  }
+
+  /* DETAIL VIEW */
+  .hero-box {
+    border-radius: 16px; padding: 18px;
+    margin-bottom: 14px;
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+  .hero-top { display: flex; align-items: center; gap: 13px; margin-bottom: 13px; }
+  .hero-emoji { font-size: 44px; }
+  .hero-title { font-family: 'Lora', serif; font-size: 22px; color: #fff; }
+
+  .section-tabs {
+    display: flex; gap: 5px; margin-bottom: 14px;
+    overflow-x: auto; padding-bottom: 3px;
+    scrollbar-width: none;
+  }
+  .section-tabs::-webkit-scrollbar { display: none; }
+  .sec-btn {
+    flex-shrink: 0; padding: 7px 12px; border-radius: 8px;
+    font-size: 11px; border: 1px solid var(--border);
+    background: var(--surface); color: var(--text-muted);
+    cursor: pointer; font-family: inherit;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .sec-btn.active {
+    border-color: var(--cyan);
+    background: rgba(6,182,212,0.15); color: var(--cyan);
+  }
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  /* INFO BOXES */
+  .info-box {
+    padding: 13px; border-radius: 12px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    margin-bottom: 11px; font-size: 13px; line-height: 1.7;
+  }
+  .danger-box {
+    padding: 13px; border-radius: 12px;
+    background: rgba(239,68,68,0.05);
+    border: 1px solid rgba(239,68,68,0.2);
+    margin-bottom: 11px;
+  }
+  .danger-item {
+    font-size: 12px; color: #fca5a5;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(239,68,68,0.1);
+    display: flex; gap: 7px;
+  }
+  .safe-box {
+    padding: 13px; border-radius: 12px;
+    background: rgba(16,185,129,0.05);
+    border: 1px solid rgba(16,185,129,0.2);
+    margin-bottom: 11px;
+  }
+  .safe-item {
+    font-size: 12px; color: #6ee7b7;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(16,185,129,0.1);
+    display: flex; gap: 7px;
+  }
+  .gold-box {
+    padding: 13px; border-radius: 12px;
+    background: rgba(245,158,11,0.06);
+    border: 1px solid rgba(245,158,11,0.25);
+    margin-bottom: 11px; font-size: 13px; line-height: 1.7;
+  }
+  .two-col { display: flex; gap: 9px; margin-bottom: 11px; }
+  .two-col .info-box { flex: 1; margin: 0; }
+
+  /* SUS CARDS */
+  .sus-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 13px; padding: 14px; margin-bottom: 11px;
+  }
+  .sus-header {
+    display: flex; align-items: center; gap: 9px;
+    margin-bottom: 7px; font-weight: 500; color: var(--cyan);
+    font-size: 14px;
+  }
+  .sus-text { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+
+  /* LAW BADGE */
+  .law-badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3);
+    border-radius: 20px; padding: 3px 10px;
+    font-size: 10px; color: #fca5a5; margin-bottom: 10px;
+  }
+
+  /* QUIZ MINI */
+  .quiz-wrap { margin-top: 6px; }
+  .quiz-q { font-size: 14px; font-weight: 500; margin-bottom: 10px; color: var(--text); }
+  .quiz-opts { display: flex; flex-direction: column; gap: 7px; }
+  .quiz-opt {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 11px 13px;
+    font-size: 13px; cursor: pointer; text-align: left;
+    color: var(--text); font-family: inherit;
+    transition: all 0.18s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .quiz-opt:active { transform: scale(0.98); }
+  .quiz-opt.correct { border-color: var(--green); background: rgba(16,185,129,0.12); color: #6ee7b7; }
+  .quiz-opt.wrong { border-color: var(--red); background: rgba(239,68,68,0.1); color: #fca5a5; }
+  .quiz-result {
+    margin-top: 10px; padding: 12px; border-radius: 10px;
+    font-size: 12px; line-height: 1.6; display: none;
+  }
+  .quiz-result.show { display: block; }
+  .quiz-result.good { background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); color: #6ee7b7; }
+  .quiz-result.bad { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); color: #fca5a5; }
+  .next-q-btn {
+    margin-top: 9px; width: 100%;
+    background: linear-gradient(135deg, var(--cyan), #0891b2);
+    border: none; border-radius: 10px; padding: 11px;
+    font-size: 14px; font-weight: 600; color: #050a0f;
+    cursor: pointer; display: none; font-family: inherit;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .next-q-btn.show { display: block; }
+  .score-bar {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 11px 14px;
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 12px; font-size: 13px;
+  }
+  .score-val { color: var(--gold); font-weight: 700; font-size: 16px; }
+</style>
+</head>
+<body>
+<div class="ambient"></div>
+<div id="app">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-top">
+      <div class="header-logo">🐟</div>
+      <div>
+        <div class="header-title">স্মার্ট মৎস্যচাষ</div>
+        <div class="header-sub">টেকসই মৎস্যচাষ ও অ্যাকোয়াকালচার অভিযান</div>
+      </div>
+      <button id="sound-btn" onclick="toggleSound()">🔊 শব্দ</button>
+    </div>
+    <div class="tabs">
+      <button class="tab-btn active" id="tab-library" onclick="switchTab('library',this)">
+        <span class="tab-icon">🐠</span><span>প্রজাতি</span>
+      </button>
+      <button class="tab-btn" id="tab-calendar" onclick="switchTab('calendar',this)">
+        <span class="tab-icon">📅</span><span>ক্যালেন্ডার</span>
+      </button>
+      <button class="tab-btn" id="tab-eco" onclick="switchTab('eco',this)">
+        <span class="tab-icon">🌊</span><span>বাস্তুতন্ত্র</span>
+      </button>
+      <button class="tab-btn" id="tab-quiz" onclick="switchTab('quiz',this)">
+        <span class="tab-icon">❓</span><span>কুইজ</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- GLOBAL BACK -->
+    <button id="global-back" onclick="handleBack()">← তালিকায় ফিরুন</button>
+
+    <!-- LIBRARY -->
+    <div id="page-library" class="page active">
+      <p class="page-title">মৎস্য লাইব্রেরি</p>
+      <p class="page-sub">বিজ্ঞানভিত্তিক টেকসই মৎস্য ব্যবস্থাপনা</p>
+      <div class="safety-banner">
+        <span class="safety-icon">🚫</span>
+        <span class="safety-text"><strong>শূন্য বিষাক্ততা নীতি:</strong> মাছ সংরক্ষণে ফরমালিন, ক্ষতিকর অ্যান্টিবায়োটিক ও বেআইনি রাসায়নিক সব নির্দেশিকায় কঠোরভাবে নিষিদ্ধ।</span>
+      </div>
+      <div class="hilsa-banner">
+        <div class="hb-icon">🐟</div>
+        <div class="hb-text">
+<h3>★ ইলিশ – বঙ্গোপসাগরের ঐতিহ্যবাহী মাছ</h3>
+<p>
+ভারত ও বাংলাদেশে ইলিশ সংরক্ষণ ও প্রজনন সংক্রান্ত গবেষণা চলছে।
+টেকসই মৎস্যচাষের জন্য জাটকা রক্ষা এবং আইনসম্মত জাল ব্যবহার অত্যন্ত জরুরি।
+</p>
+        </div>
+      </div>
+      <div id="species-container"></div>
+    </div>
+
+    <!-- DETAIL VIEW (inside library tab) -->
+    <div id="page-detail" class="page">
+      <div id="detail-content"></div>
+    </div>
+
+    <!-- CALENDAR -->
+    <div id="page-calendar" class="page">
+      <p class="page-title">মৎস্যচাষ ক্যালেন্ডার</p>
+      <p class="page-sub">ইলিশ ও মিষ্টি জলের মাছের জন্য মরশুমভিত্তিক কার্যক্রম নির্দেশিকা</p>
+      <div id="calendar-content"></div>
+    </div>
+
+    <!-- ECO -->
+    <div id="page-eco" class="page">
+      <p class="page-title">সামুদ্রিক সংরক্ষণ</p>
+      <p class="page-sub">ইলিশ ও নদীর জীববৈচিত্র্য সুরক্ষা</p>
+      <div id="eco-content"></div>
+    </div>
+
+    <!-- QUIZ -->
+    <div id="page-quiz" class="page">
+      <p class="page-title">জ্ঞান যাচাই কুইজ</p>
+      <p class="page-sub">ইলিশ ও মৎস্য সংরক্ষণ সম্পর্কে আপনার জ্ঞান যাচাই করুন!</p>
+      <div class="score-bar">
+        <span>আপনার স্কোর</span>
+        <span class="score-val">🏆 <span id="quiz-score">0</span> পয়েন্ট</span>
+      </div>
+      <div id="quiz-container"></div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ===========================
+// SOUND ENGINE (Web Audio API)
+// ===========================
+let soundEnabled = true;
+let audioCtx = null;
+
+function initAudio() {
+  if (!audioCtx) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+  if (audioCtx.state === 'suspended') {
+    audioCtx.resume();
+  }
+}
+
+function playTone(freq, type, dur, vol) {
+  if (!soundEnabled) return;
+  try {
+    initAudio();
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.type = type || 'sine';
+    osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+    gain.gain.setValueAtTime(vol || 0.25, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + dur);
+    osc.start(audioCtx.currentTime);
+    osc.stop(audioCtx.currentTime + dur);
+  } catch(e) { console.log('Audio error:', e); }
+}
+
+function sndClick()   { playTone(520, 'sine', 0.08, 0.2); }
+function sndCorrect() { playTone(660,'sine',0.12,0.25); setTimeout(()=>playTone(880,'sine',0.18,0.25),100); }
+function sndWrong()   { playTone(220,'sawtooth',0.25,0.2); }
+function sndOpen()    { playTone(440,'triangle',0.1,0.15); setTimeout(()=>playTone(550,'triangle',0.12,0.15),80); }
+function sndWin()     { [440,550,660,880].forEach((f,i)=>setTimeout(()=>playTone(f,'sine',0.2,0.25),i*90)); }
+
+function toggleSound() {
+  initAudio();
+  soundEnabled = !soundEnabled;
+  document.getElementById('sound-btn').textContent = soundEnabled ? '🔊 শব্দ' : '🔇 নিঃশব্দ';
+  if (soundEnabled) sndClick();
+}
+
+// Unlock audio on first touch
+document.addEventListener('touchstart', function unlockAudio() {
+  initAudio();
+  document.removeEventListener('touchstart', unlockAudio);
+}, { once: true });
+document.addEventListener('click', function unlockAudio() {
+  initAudio();
+  document.removeEventListener('click', unlockAudio);
+}, { once: true });
+
+// ===========================
+// STATE
+// ===========================
+let currentTab = 'library';
+let prevPage = null;
+let quizIndex = 0;
+let quizScore = 0;
+
+// ===========================
+// SPECIES DATA
+// ===========================
+const species = [
+  {
+    id: 1,
+    name: "ইলিশ",
+    emoji: "🐟",
+    type: "অ্যানাড্রোমাস – নদী ও সমুদ্রগামী পরিযায়ী",
+    color: "#f59e0b",
+    tagText: "★ জাতীয় মাছ – সংরক্ষিত",
+    tagClass: "gold",
+    breed: "Tenualosa ilisha",
+    cycle: "মরশুমভিত্তিক – অক্টোবর প্রজনন নিষেধাজ্ঞা",
+    feed: "ইলিশ একটি ফিল্টার-ফিডার মাছ, যা ফাইটোপ্ল্যাঙ্কটন ও জুপ্ল্যাঙ্কটন খায়। এদের বাণিজ্যিক পিলেট খাওয়ানো যায় না। বাংলাদেশে (বিএফআরআই) ও ভারতে (সিফরি) সফল বন্দি-প্রজনন পরীক্ষা চলছে। গবেষকরা নদীর ঘেরে ও নিয়ন্ত্রিত হ্যাচারিতে হরমোন-প্ররোচিত প্রজনন পরীক্ষা করছেন।",
+    health: "ইলিশ ধরার সময়কার চাপে অত্যন্ত স্পর্শকাতর। ঠান্ডা, অক্সিজেনযুক্ত প্রবাহিত জলে না রাখলে আবদ্ধ স্থানে ধরার কয়েক মিনিটের মধ্যেই এরা মারা যায়। রোগ ব্যবস্থাপনা কেবল প্রতিরোধের মাধ্যমেই সম্ভব: পরিষ্কার নদীর জল, ধরার এলাকার কাছে কোনো রাসায়নিক নিঃসরণ নয়। বন্দি-প্রজনন পুকুরে কঠোর জলমান পর্যবেক্ষণ প্রয়োজন (pH ৭.৫–৮.০, দ্রবীভূত অক্সিজেন >৫mg/L)।",
+    forbidden: [
+      "মাছের শরীরে ফরমালিন ইনজেকশন (ক্যান্সার সৃষ্টিকারী রাসায়নিক)",
+      "সংরক্ষণের জন্য কার্বাইড বা ক্যালসিয়াম কার্বাইড গ্যাস",
+      "সূক্ষ্ম ফাঁসের মশারি জাল (<৪৫mm) দিয়ে জাটকা (কিশোর ইলিশ) ধরা",
+      "খাদ্য মাছের জন্য অননুমোদিত কোনো অ্যান্টিবায়োটিক বা হরমোন",
+      "রং/চেহারা ভালো দেখাতে রাসায়নিক রঞ্জক"
+    ],
+    alternatives: [
+      "গুঁড়ো বরফ (১:১ অনুপাত) – স্বাভাবিকভাবে ৪৮ ঘণ্টা পর্যন্ত সতেজ রাখে",
+      "পরিবহনের জন্য পরিষ্কার বরফসহ ইনসুলেটেড স্টাইরোফোম বাক্স",
+      "জ্যান্ত মাছ রাখার নৌকার ট্যাঙ্কের জন্য ঠান্ডা সমুদ্রজল (০-২°C)",
+      "সাইট্রিক অ্যাসিড ওয়াশ (খাদ্য-গ্রেড) – স্বাভাবিকভাবে সংরক্ষণকাল বাড়ায়",
+      "রপ্তানির জন্য ০°C তাপমাত্রায় ভ্যাকুয়াম সিলিং"
+    ],
+    tips: [
+      "প্রজননের জন্য ইলিশ জুলাই–অক্টোবরে সমুদ্র থেকে নদীতে পরিযায়ন করে — এটাই মূল মরশুম",
+      "অক্টোবরের ২২ দিনের নিষেধাজ্ঞা (বাংলাদেশ) আইনত বলবৎ — এই সময়ে মাছ ধরা ফৌজদারি অপরাধ",
+      "জাটকা (২৫cm-এর কম কিশোর ইলিশ) কখনও ধরা যাবে না — এরাই ভবিষ্যৎ প্রজন্ম",
+      "নদীর গভীরতা, জলপ্রবাহ ও লবণাক্ততার তারতম্য পরিযায়ন পথ নির্ধারণ করে — এই করিডোরগুলি রক্ষা করুন",
+      "ইলিশ প্রজনন পরীক্ষা: বিএফআরআই চাঁদপুর কেন্দ্রে হরমোন-প্রয়োগকৃত মা মাছে ২০২৪ সালে ৬০% সাফল্যের হার দেখা যাচ্ছে"
+    ]
+  },
+  {
+    id: 2,
+    name: "রুই / কাতলা (কার্প)",
+    emoji: "🎣",
+    type: "মিষ্টি জল – উপরিতল/স্তম্ভভোজী",
+    color: "#06b6d4",
+    tagText: "জৈব পদ্ধতি",
+    tagClass: "",
+    breed: "Labeo rohita / Catla catla",
+    cycle: "৮–১২ মাস",
+    feed: "জৈব সারে সমৃদ্ধ প্রাকৃতিক প্ল্যাঙ্কটন। সহায়ক খাদ্য: রাইস ব্রান + সরিষার খোল (১:১)। পুকুরের জল দূষণকারী ইউরিয়া-প্রধান বাণিজ্যিক পিলেট এড়িয়ে চলুন।",
+    health: "আরগুলাস (উকুন) প্রতিরোধ: ঝুলন্ত বাঁশের মাদুর ব্যবহার করুন। গিল রট: প্রতি একরে ২০০kg কৃষি চুন (CaCO₃) প্রয়োগে চিকিৎসা করুন। নিয়মিত বৃদ্ধির জন্য নিষিদ্ধ অ্যান্টিবায়োটিক কখনও ব্যবহার করবেন না।",
+    forbidden: [
+      "ক্লোরামফেনিকল (মানুষের অস্থিমজ্জা বিকল করে)",
+      "নাইট্রোফিউরান (WHO দ্বারা ক্যান্সার সৃষ্টিকারী হিসেবে চিহ্নিত)",
+      "জলে বা সরাসরি মাছে যোগ করা ফরমালিন",
+      "ম্যালাকাইট গ্রিন (বেআইনি ছত্রাকনাশক – ক্যান্সার সৃষ্টি করে)"
+    ],
+    alternatives: [
+      "কলা গাছের রস – স্বাভাবিকভাবে পুকুরের pH নিয়ন্ত্রণ করে",
+      "নিম পাতার নির্যাস – প্রাকৃতিক বিস্তৃত-বর্ণালী জীবাণুনাশক",
+      "হলুদ গুঁড়ো – ছত্রাকনাশক ও ক্ষত সারায়",
+      "কৃষি চুন – নিরাপদ জল জীবাণুমুক্তকারী"
+    ],
+    tips: [
+      "সর্বোত্তম বৃদ্ধির জন্য জলের গভীরতা ৫–৬ ফুট বজায় রাখুন",
+      "সর্বোত্তম খাদ্যগ্রহণ আচরণের জন্য pH ৭.৫–৮.৫-এর মধ্যে রাখুন",
+      "ওজন ১kg-এর বেশি হলেই সর্বোত্তম বাজার মূল্যের জন্য সংগ্রহ করুন",
+      "৪০% ভালো ফলনের জন্য বহুচাষ পদ্ধতি (রুই + কাতলা + মৃগেল) ব্যবহার করুন"
+    ]
+  },
+  {
+    id: 3,
+    name: "চিংড়ি",
+    emoji: "🦐",
+    type: "লোনা/মিষ্টি জল",
+    color: "#f43f5e",
+    tagText: "রপ্তানি মান – শূন্য অবশিষ্টাংশ",
+    tagClass: "",
+    breed: "গলদা (মিষ্টি জল) / বাগদা (টাইগার প্রন)",
+    cycle: "৫–৭ মাস",
+    feed: "প্রত্যয়িত 'অ্যান্টিবায়োটিক-মুক্ত' লেবেলযুক্ত উচ্চমানের ডুবন্ত পিলেট। কেনার আগে প্রতিটি বাণিজ্যিক খাদ্যের ব্যাগে অবশিষ্টাংশ প্রত্যয়নপত্র যাচাই করুন।",
+    health: "হোয়াইট স্পট সিনড্রোম ভাইরাস (WSSV) — কোনো রাসায়নিক নিরাময় নেই, শুধু জৈব-নিরাপত্তাই কাজ করে। মজুতের আগে PCR টেস্ট দিয়ে বীজ পরীক্ষা করুন। 'প্রতিরোধমূলক' ব্যবস্থা হিসেবে কখনও অ্যান্টিবায়োটিক ব্যবহার করবেন না — এতে প্রতিরোধ ক্ষমতা তৈরি হয়।",
+    forbidden: [
+      "নাইট্রোফিউরান (বিশ্বব্যাপী সব রপ্তানি চিংড়িতে নিষিদ্ধ)",
+      "পশুচিকিৎসকের প্রেসক্রিপশন ছাড়া এনরোফ্লক্সাসিন",
+      "মাংসের চেহারা ভালো দেখাতে রং বা রঞ্জক",
+      "সংগ্রহের সময়ের কাছাকাছি টেস্টোস্টেরন বা বৃদ্ধির হরমোন"
+    ],
+    alternatives: [
+      "অ্যালোভেরা নির্যাস — স্বাভাবিকভাবে পরিপাকতন্ত্রের স্বাস্থ্য উন্নত করে",
+      "গাঁজানো রাইস ব্রান — উপকারী ব্যাকটেরিয়া তৈরি করে",
+      "কঠোর জৈব-নিরাপত্তা: পুকুরের উপর পাখি-জাল",
+      "জলের গুণমানের জন্য প্রোবায়োটিক (EM দ্রবণ)"
+    ],
+    tips: [
+      "চিংড়ি তলার পলির প্রতি অত্যন্ত স্পর্শকাতর — নিয়মিত পুকুরের তলা পরিষ্কার করুন",
+      "বাগদা টাইগার প্রনের জন্য লবণাক্ততা ১৫–২৫ ppt বজায় রাখুন",
+      "সেরা মানের জন্য ঠান্ডা সময়ে (ভোর বা রাতে) সংগ্রহ করুন",
+      "সংগ্রহের পর অবিলম্বে ০°C-এ ঠান্ডা করুন — কখনও দেরি করবেন না"
+    ]
+  }
+];
+
+// ===========================
+// QUIZ DATA (Hilsa-focused)
+// ===========================
+const quizData = [
+  {
+    q: "বাংলাদেশ ও ভারতে কিশোর ইলিশ (জাটকা) ধরা কেন বেআইনি?",
+    opts: ["এগুলোর স্বাদ তেতো", "এরাই ভবিষ্যতের পূর্ণবয়স্ক মাছ — এদের ধরলে পরের মরশুমের জনসংখ্যা ধ্বংস হয়", "সরকার সরবরাহ কমাতে চায়", "এদের রোগ থাকে"],
+    correct: 1,
+    good: "সঠিক! জাটকা হল ২৫cm-এর কম বয়সী ইলিশ। এদের রক্ষা করলে পরের মরশুমে বিপুল পরিমাণ পূর্ণবয়স্ক ইলিশের নিশ্চয়তা মেলে।",
+    bad: "জাটকা হল কিশোর ইলিশ। এদের ধরলে পরবর্তী প্রজন্ম নিশ্চিহ্ন হয়ে যায় — তাই এটি ফৌজদারি অপরাধ।"
+  },
+  {
+    q: "কিশোর মাছ রক্ষার জন্য নদীর মাছ ধরার জালের ন্যূনতম বৈধ ফাঁসের মাপ কত?",
+    opts: ["১০mm", "২৫mm", "৪৫mm বা তার বেশি", "যেকোনো মাপ চলবে"],
+    correct: 2,
+    good: "সঠিক! ৪৫mm-এর কম ফাঁসের জাল কিশোর মাছ ধরে এবং তা বেআইনি। নদীতে সূক্ষ্ম ফাঁসের 'মশারি জাল' একটি বড় অপরাধ।",
+    bad: "বৈধ ফাঁসের মাপ ৪৫mm বা তার বেশি। সূক্ষ্ম ফাঁসের জাল কিশোর ইলিশ (জাটকা) ধরে এবং আইনত নিষিদ্ধ।"
+  },
+  {
+    q: "বাংলাদেশ কোন মাসে ইলিশ প্রজনন সুরক্ষা নিষেধাজ্ঞা কার্যকর করে?",
+    opts: ["জানুয়ারি", "জুলাই", "অক্টোবর (২২ দিনের নিষেধাজ্ঞা)", "মার্চ"],
+    correct: 2,
+    good: "সঠিক! অক্টোবরের ২২ দিনের নিষেধাজ্ঞা মূল ডিম ছাড়ার সময় ইলিশকে রক্ষা করে। এই নিষেধাজ্ঞা লঙ্ঘন করলে কঠোর আইনি শাস্তি হয়।",
+    bad: "অক্টোবর ইলিশের মূল ডিম ছাড়ার মরশুম। মা মাছ রক্ষার জন্য অক্টোবরের ২২ দিনের নিষেধাজ্ঞা আইনত কার্যকর করা হয়।"
+  },
+  {
+    q: "বাংলাদেশে কোন সংস্থা ইলিশের বন্দি-প্রজনন পরীক্ষা চালাচ্ছে?",
+    opts: ["বিএফআরআই (বাংলাদেশ মৎস্য গবেষণা ইনস্টিটিউট)", "নাসা", "ডব্লিউএইচও", "শুধু এফএও"],
+    correct: 0,
+    good: "সঠিক! বিএফআরআই-এর চাঁদপুর কেন্দ্র নিয়ন্ত্রিত পরিবেশে হরমোন-প্ররোচিত ইলিশ প্রজননে ৬০% পর্যন্ত সাফল্য অর্জন করছে।",
+    bad: "বিএফআরআই (বাংলাদেশ মৎস্য গবেষণা ইনস্টিটিউট) চাঁদপুর ও অন্যান্য নদী এলাকায় ইলিশের বন্দি-প্রজনন পরীক্ষার নেতৃত্ব দিচ্ছে।"
+  },
+  {
+    q: "ধরার পর তাজা ইলিশ সংরক্ষণের সবচেয়ে নিরাপদ উপায় কী?",
+    opts: ["শক্ত রাখতে ফরমালিন ইনজেকশন দেওয়া", "কার্বাইড গ্যাস ব্যবহার করা", "ইনসুলেটেড বাক্সে গুঁড়ো বরফে (১:১ অনুপাত) প্যাক করা", "কয়েকদিন নদীর জলে রাখা"],
+    correct: 2,
+    good: "সঠিক! ১:১ অনুপাতে গুঁড়ো বরফ কোনো রাসায়নিক ছাড়াই ইলিশকে ৪৮ ঘণ্টা পর্যন্ত স্বাভাবিকভাবে তাজা রাখে।",
+    bad: "ইনসুলেটেড বাক্সে শুধু গুঁড়ো বরফ (১:১) নিরাপদ। ফরমালিন ক্যান্সার সৃষ্টি করে এবং খাদ্য পরিচালনায় এটি গুরুতর অপরাধ।"
+  },
+  {
+    q: "প্রতি বছর ইলিশ সমুদ্র থেকে নদীতে কেন পরিযায়ন করে?",
+    opts: ["শিকারী থেকে বাঁচতে", "মিষ্টি জলে প্রজনন/ডিম ছাড়ার জন্য", "খাবার খুঁজতে", "পথ হারিয়ে ফেলে"],
+    correct: 1,
+    good: "সঠিক! ইলিশ অ্যানাড্রোমাস মাছ — এরা নদীতে ডিম ছাড়ে এবং পূর্ণবয়স্ক জীবন সমুদ্রে কাটায়। নদীর পরিযায়ন পথ রক্ষা করা অত্যন্ত গুরুত্বপূর্ণ।",
+    bad: "ইলিশ অ্যানাড্রোমাস মাছ — এরা নির্দিষ্টভাবে ডিম ছাড়ার জন্য সমুদ্র থেকে নদীতে পরিযায়ন করে। নদী করিডোর সুরক্ষা অত্যাবশ্যক।"
+  },
+  {
+    q: "ইলিশ মাছের ক্ষেত্রে 'অ্যানাড্রোমাস' শব্দের অর্থ কী?",
+    opts: ["শুধু পুকুরে বাস করে", "প্রজননের জন্য সমুদ্র থেকে নদীতে পরিযায়ন করে", "কখনও মিষ্টি জল ছাড়ে না", "শুধু পোকামাকড় খায়"],
+    correct: 1,
+    good: "সঠিক! অ্যানাড্রোমাস মানে হল, ডিম ছাড়ার জন্য মাছটি লোনা জল থেকে মিষ্টি জলের নদীতে পরিযায়ন করে — যেমন ইলিশ ও স্যামন।",
+    bad: "অ্যানাড্রোমাস মানে প্রজননের জন্য সমুদ্র থেকে নদীতে পরিযায়ন। ইলিশ ও স্যামন বিশ্বের সবচেয়ে পরিচিত অ্যানাড্রোমাস মাছ।"
+  },
+  {
+    q: "ইলিশের বন্দি-প্রজনন পরীক্ষায় ডিম ছাড়াতে কোন পদ্ধতি ব্যবহার করা হয়?",
+    opts: ["জোর করে পিলেট খাওয়ানো", "হরমোন ইনজেকশন (পিটুইটারি নির্যাস)", "বৈদ্যুতিক শক", "পুকুরের কাছে জোরে গান বাজানো"],
+    correct: 1,
+    good: "সঠিক! পিটুইটারি হরমোন নির্যাস ইনজেকশন বন্দি ইলিশ মা মাছে ডিম ছাড়া শুরু করায় — এটি অ্যাকোয়াকালচার বিজ্ঞানের একটি বড় সাফল্য।",
+    bad: "বন্দি ইলিশে ডিম ছাড়া শুরু করাতে হরমোন (পিটুইটারি নির্যাস) ইনজেকশন ব্যবহার করা হয় — সফল প্রজননের এটাই মূল চাবিকাঠি।"
+  }
+];
+
+// ===========================
+// SUSTAINABILITY DATA
+// ===========================
+const ecoData = [
+  { icon: "🚫", title: "সূক্ষ্ম-ফাঁসের জাল (মশারি জাল) নিষিদ্ধ করুন", text: "নদীতে ৪৫mm-এর কম ফাঁসের জাল ব্যবহার বেআইনি। এই জালগুলো প্রতি টানে হাজার হাজার জাটকা (কিশোর ইলিশ) ধরে ফেলে, যা জনসংখ্যা ধ্বংস করে দেয়। বেআইনি জাল ব্যবহার দেখলে সঙ্গে সঙ্গে মৎস্য কর্তৃপক্ষকে জানান।" },
+  { icon: "📅", title: "অক্টোবরের ইলিশ নিষেধাজ্ঞা মেনে চলুন", text: "অক্টোবরে ইলিশের প্রধান ডিম ছাড়ার সময় বাংলাদেশ ও ভারত ২২ দিনের মাছ ধরা নিষেধাজ্ঞা কার্যকর করে। এই একটি পদক্ষেপ গত দশকে ইলিশ উৎপাদন ৮০%-এরও বেশি বাড়িয়েছে। লঙ্ঘনে কঠোর জরিমানা ও কারাদণ্ড হয়।" },
+  { icon: "🧪", title: "ইলিশের বন্দি-প্রজনন গবেষণা", text: "বিএফআরআই (বাংলাদেশ), সিফরি (ভারত) এবং একাধিক বিশ্ববিদ্যালয় নিয়ন্ত্রিত নদীর ঘেরে সফলভাবে ইলিশের প্রজনন ঘটাচ্ছে। হরমোন-প্ররোচিত প্রজননে ৬০% সাফল্য মিলছে। এটি প্রাকৃতিক জনসংখ্যা না কমিয়েই ইলিশ সরবরাহে বৈপ্লবিক পরিবর্তন আনতে পারে।" },
+  { icon: "🌊", title: "নদীর পরিযায়ন করিডোর রক্ষা করুন", text: "ইলিশ বঙ্গোপসাগর থেকে পদ্মা, যমুনা ও মেঘনার মতো নদীতে শত শত কিলোমিটার পাড়ি দেয়। শিল্প দূষণ, বাঁধ নির্মাণ ও জল উত্তোলন এই পথগুলো আটকে দেয় — যেকোনো মূল্যে এগুলো রক্ষা করতে হবে।" },
+  { icon: "⚓", title: "কারিগরি জেলেদের পাশে থাকুন", text: "বড়শি, সুতো ও বৈধ জাল ব্যবহারকারী ঐতিহ্যবাহী জেলেরাই টেকসই ইলিশ মৎস্যচাষের মূল ভিত্তি। সূক্ষ্ম জালযুক্ত শিল্প ট্রলার বাস্তুতন্ত্র ধ্বংস করে। স্থানীয় জেলে সম্প্রদায় ও ন্যায্য বাণিজ্য শংসাপত্রকে সমর্থন করুন।" },
+  { icon: "🏭", title: "নদী দূষণ বন্ধ করুন", text: "শিল্প বর্জ্য, প্লাস্টিক আবর্জনা ও সার-জাত জল ইলিশের খাদ্য ফাইটোপ্ল্যাঙ্কটনকে মেরে ফেলে। ইলিশের দীর্ঘমেয়াদি টিকে থাকার জন্য বড় নদীর কাছে শূন্য-নিঃসরণ শিল্প অঞ্চল অত্যাবশ্যক।" }
+];
+
+// ===========================
+// CALENDAR DATA
+// ===========================
+const calData = [
+  {
+    season: "🌸 প্রাক-বর্ষা (মার্চ – মে)",
+    color: "#10b981",
+    tasks: [
+      "কার্প ও চিংড়ি খামারের জন্য পুকুর খনন, শুকানো, চুন প্রয়োগ",
+      "প্রত্যয়িত, রোগমুক্ত মাছের চারা অর্ডার করুন",
+      "মাছ ধরার নৌকা ও বৈধ জাল মেরামত করুন (ফাঁসের মাপ ≥৪৫mm যাচাই করুন)",
+      "ইলিশ: সমুদ্র-নদী লবণাক্ততার তারতম্য পর্যবেক্ষণ শুরু করুন"
+    ]
+  },
+  {
+    season: "🌧️ বর্ষা – প্রধান ইলিশ মরশুম (জুন – সেপ্টেম্বর)",
+    color: "#06b6d4",
+    tasks: [
+      "প্রধান ইলিশ মৎস্যচাষ মরশুম — শুধু বৈধ জাল ব্যবহার করুন",
+      "কার্প/চিংড়ি পুকুর মজুত করুন — বন্যার ঝুঁকির জন্য জলস্তর পর্যবেক্ষণ করুন",
+      "ইলিশ পরিবহন: ধরার পরপরই বরফ দিন, কোনো রাসায়নিক নয়",
+      "জাটকার পরিযায়নের দিকে নজর রাখুন — জাটকা অঞ্চলে মাছ ধরবেন না"
+    ]
+  },
+  {
+    season: "🍂 প্রজনন নিষেধাজ্ঞা সময়কাল (অক্টোবর – ২২ দিন)",
+    color: "#ef4444",
+    tasks: [
+      "⛔ ইলিশের জন্য সম্পূর্ণ মাছ ধরা নিষিদ্ধ — আইনি বাধ্যবাধকতা",
+      "সব ইলিশ জাল সংরক্ষণ করতে হবে — নদী টহল সক্রিয়",
+      "নিষেধাজ্ঞার সময় জেলেরা সরকারি ক্ষতিপূরণ পান",
+      "বিএফআরআই বন্দি-প্রজনন: মা মাছে হরমোন ইনজেকশন"
+    ]
+  },
+  {
+    season: "❄️ বর্ষা-পরবর্তী ও শীতকাল (নভেম্বর – ফেব্রুয়ারি)",
+    color: "#f59e0b",
+    tasks: [
+      "ইলিশ সমুদ্রে ফিরে যায় — সীমিত কিন্তু বৈধ মাছ ধরা শুরু হয়",
+      "কার্প পুকুর: বৃদ্ধি যাচাই, বড় মাছের আংশিক সংগ্রহ",
+      "চিংড়ি সংগ্রহ (গলদা) — অবিলম্বে ০°C-এ ঠান্ডা করুন",
+      "ঠান্ডা জলের পুকুরে রোগ পর্যবেক্ষণ (এপিজুটিক-এর দিকে নজর রাখুন)"
+    ]
+  }
+];
+
+// ===========================
+// BUILD FUNCTIONS
+// ===========================
+function buildLibrary() {
+  document.getElementById('species-container').innerHTML = species.map(f => `
+    <button class="fish-card" onclick="showDetail(${f.id})">
+      <div class="fish-icon" style="background:linear-gradient(135deg,${f.color}22,${f.color}08);border:1px solid ${f.color}30">${f.emoji}</div>
+      <div style="flex:1">
+        <div class="fish-name">${f.name}</div>
+        <div class="fish-type">${f.type}</div>
+        <div class="fish-tag ${f.tagClass}">${f.tagText}</div>
+      </div>
+      <div style="color:var(--cyan);font-size:18px">›</div>
+    </button>
+  `).join('');
+}
+
+function showDetail(id) {
+  sndOpen();
+  const f = species.find(x => x.id === id);
+  // Switch to detail page
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-detail').classList.add('active');
+  document.getElementById('global-back').classList.add('visible');
+
+  document.getElementById('detail-content').innerHTML = `
+    <div class="hero-box" style="background:linear-gradient(135deg,${f.color}12,transparent);border-color:${f.color}25">
+      <div class="hero-top">
+        <div class="hero-emoji">${f.emoji}</div>
+        <div>
+          <div class="hero-title">${f.name}</div>
+          <div class="fish-type">${f.breed}</div>
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="info-box"><strong>চক্র</strong><br>${f.cycle}</div>
+        <div class="info-box"><strong>লক্ষ্য</strong><br>রাসায়নিকমুক্ত</div>
+      </div>
+    </div>
+
+    <div class="section-tabs">
+      <button class="sec-btn active" onclick="switchSec('feed',this)">🌿 খাদ্য</button>
+      <button class="sec-btn" onclick="switchSec('health',this)">🏥 স্বাস্থ্য</button>
+      <button class="sec-btn" onclick="switchSec('safety',this)">🛡️ নিরাপত্তা</button>
+      <button class="sec-btn" onclick="switchSec('tips',this)">💡 পরামর্শ</button>
+    </div>
+
+    <div id="sec-feed" class="panel active">
+      <div class="info-box">${f.feed}</div>
+    </div>
+    <div id="sec-health" class="panel">
+      <div class="info-box">${f.health}</div>
+    </div>
+    <div id="sec-safety" class="panel">
+      <div class="law-badge">⚖️ আইনি বাধ্যবাধকতা</div>
+      <div class="danger-box">
+        <div style="color:#ef4444;font-size:12px;font-weight:600;margin-bottom:8px">🚫 নিষিদ্ধ</div>
+        ${f.forbidden.map(i=>`<div class="danger-item"><span>✗</span><span>${i}</span></div>`).join('')}
+      </div>
+      <div class="safe-box">
+        <div style="color:#10b981;font-size:12px;font-weight:600;margin-bottom:8px">✅ নিরাপদ প্রাকৃতিক বিকল্প</div>
+        ${f.alternatives.map(i=>`<div class="safe-item"><span>✓</span><span>${i}</span></div>`).join('')}
+      </div>
+    </div>
+    <div id="sec-tips" class="panel">
+      ${f.tips.map(t=>`<div class="info-box">💡 ${t}</div>`).join('')}
+    </div>
+  `;
+
+  // Push history state for Android back button
+  history.pushState({ page: 'detail', fishId: id }, '', '#detail');
+}
+
+function switchSec(id, btn) {
+  sndClick();
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.sec-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('sec-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+
+function buildEco() {
+  document.getElementById('eco-content').innerHTML = ecoData.map(e=>`
+    <div class="sus-card">
+      <div class="sus-header">${e.icon} ${e.title}</div>
+      <div class="sus-text">${e.text}</div>
+    </div>
+  `).join('');
+}
+
+function buildCalendar() {
+  document.getElementById('calendar-content').innerHTML = calData.map(c=>`
+    <div class="sus-card" style="border-left:3px solid ${c.color}">
+      <div class="sus-header" style="color:${c.color}">${c.season}</div>
+      <ul style="padding-left:16px">
+        ${c.tasks.map(t=>`<li style="font-size:12px;color:var(--text-muted);margin-bottom:6px;line-height:1.5">${t}</li>`).join('')}
+      </ul>
+    </div>
+  `).join('');
+}
+
+// ===========================
+// QUIZ ENGINE
+// ===========================
+function buildQuiz() {
+  quizIndex = 0; quizScore = 0;
+  document.getElementById('quiz-score').textContent = '0';
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const container = document.getElementById('quiz-container');
+  if (quizIndex >= quizData.length) {
+    sndWin();
+    container.innerHTML = `
+      <div class="safe-box" style="text-align:center;padding:24px">
+        <div style="font-size:48px;margin-bottom:10px">🏆</div>
+        <div style="font-size:20px;font-weight:700;color:#6ee7b7;margin-bottom:8px">কুইজ সম্পন্ন!</div>
+        <div style="font-size:28px;font-weight:900;color:var(--gold)">${quizScore} / ${quizData.length * 10} পয়েন্ট</div>
+        <div style="font-size:13px;color:var(--text-muted);margin-top:10px">
+          ${quizScore >= 60 ? '🌟 চমৎকার! আপনি একজন ইলিশ সংরক্ষণ বিশেষজ্ঞ!' :
+            quizScore >= 40 ? '👍 ভালো চেষ্টা! আরও জানতে বাস্তুতন্ত্র ট্যাবটি দেখুন।' :
+            '📚 শিখতে থাকুন — প্রজাতি ও বাস্তুতন্ত্র ট্যাব দেখুন!'}
+        </div>
+        <button class="next-q-btn show" style="margin-top:16px" onclick="buildQuiz()">🔄 আবার খেলুন</button>
+      </div>
+    `;
+    return;
+  }
+  const q = quizData[quizIndex];
+  container.innerHTML = `
+    <div class="sus-card">
+      <div class="quiz-q">প্রশ্ন ${quizIndex+1}/${quizData.length}: ${q.q}</div>
+      <div class="quiz-opts">
+        ${q.opts.map((opt,i)=>`
+          <button class="quiz-opt" onclick="answerQuiz(${i},this)">${opt}</button>
+        `).join('')}
+      </div>
+      <div class="quiz-result" id="quiz-result"></div>
+      <button class="next-q-btn" id="quiz-next" onclick="nextQ()">পরবর্তী প্রশ্ন →</button>
+    </div>
+  `;
+}
+
+function answerQuiz(chosen, btn) {
+  const q = quizData[quizIndex];
+  const opts = document.querySelectorAll('.quiz-opt');
+  opts.forEach(o => o.disabled = true);
+  const result = document.getElementById('quiz-result');
+  const nextBtn = document.getElementById('quiz-next');
+
+  if (chosen === q.correct) {
+    sndCorrect();
+    btn.classList.add('correct');
+    result.className = 'quiz-result good show';
+    result.innerHTML = '✅ ' + q.good;
+    quizScore += 10;
+    document.getElementById('quiz-score').textContent = quizScore;
+  } else {
+    sndWrong();
+    btn.classList.add('wrong');
+    opts[q.correct].classList.add('correct');
+    result.className = 'quiz-result bad show';
+    result.innerHTML = '❌ ' + q.bad;
+  }
+  nextBtn.classList.add('show');
+  nextBtn.textContent = quizIndex < quizData.length - 1 ? 'পরবর্তী প্রশ্ন →' : 'ফলাফল দেখুন 🏆';
+}
+
+function nextQ() {
+  sndClick();
+  quizIndex++;
+  renderQuestion();
+}
+
+// ===========================
+// NAVIGATION
+// ===========================
+function switchTab(tab, btn) {
+  sndClick();
+  initAudio();
+  currentTab = tab;
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('page-' + tab).classList.add('active');
+  btn.classList.add('active');
+  document.getElementById('global-back').classList.remove('visible');
+
+  if (tab === 'quiz') buildQuiz();
+  // Clear history state when switching tabs
+  history.replaceState({ page: tab }, '', '#' + tab);
+}
+
+function handleBack() {
+  sndClick();
+  if (currentTab === 'library') {
+    // Go back to library list from detail
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-library').classList.add('active');
+    document.getElementById('global-back').classList.remove('visible');
+    history.replaceState({ page: 'library' }, '', '#library');
+  }
+}
+
+// ===========================
+// HARDWARE BACK BUTTON (Android)
+// ===========================
+window.addEventListener('popstate', function(e) {
+  const state = e.state;
+  if (!state) return;
+
+  if (state.page === 'detail') {
+    // Already on detail — go back to library
+    handleBack();
+  } else if (document.getElementById('page-detail').classList.contains('active')) {
+    handleBack();
+    history.pushState({ page: 'library' }, '', '#library');
+  } else {
+    // On any tab — go back to library tab
+    const libBtn = document.getElementById('tab-library');
+    switchTab('library', libBtn);
+  }
+});
+
+// Push initial state
+history.replaceState({ page: 'library' }, '', '#library');
+
+// Prevent double-tap zoom
+let lastTouch = 0;
+document.addEventListener('touchend', function(e) {
+  const now = Date.now();
+  if (now - lastTouch < 300) e.preventDefault();
+  lastTouch = now;
+}, { passive: false });
+
+// ===========================
+// INIT
+// ===========================
+buildLibrary();
+buildEco();
+buildCalendar();
+</script>
+</body>
+</html>

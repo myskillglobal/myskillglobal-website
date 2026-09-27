@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+
+<html lang="bn">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Surajit Roy" name="author"/>
+<meta content="© Surajit Roy" name="copyright"/>
+<meta content="index,follow" name="robots"/>
+<title>বর্জ্য থেকে সম্পদ – MySkillGame কর্মসংস্থান গাইড</title>
+<meta content="MySkillGame থেকে বর্জ্য ব্যবস্থাপনা, স্বনির্ভরতা ও কর্মসংস্থানের ব্যবহারিক দিকনির্দেশনা।" name="description"/>
+<!-- Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+<link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700;900&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0e1a0f;--bg2:#122014;--bg3:#16281a;--card:#1b3020;--card2:#1f3826;
+  --border:rgba(255,255,255,0.08);
+  --green:#4caf50;--lime:#aeea00;--amber:#ffb300;--orange:#ff6d00;
+  --red:#e53935;--sky:#00bcd4;--pink:#e91e8c;--teal:#00bfa5;
+  --cream:#f5f0e8;--text:#e8f5e9;--text2:#a5c8aa;--text3:#5a8c62;
+  --gold:#ffd54f;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  background:var(--bg);color:var(--text);
+  min-height:100vh;padding-bottom:80px;user-select:none;
+}
+
+/* ══ HERO ══ */
+.hero{
+  background:linear-gradient(160deg,#0a1f0b 0%,#1b3a1e 40%,#0e2e10 100%);
+  padding:40px 16px 30px;text-align:center;position:relative;overflow:hidden;
+  border-bottom:2px solid var(--lime);
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 70% 50% at 20% 0%,rgba(174,234,0,0.12),transparent),
+    radial-gradient(ellipse 50% 40% at 80% 100%,rgba(255,179,0,0.1),transparent);
+  pointer-events:none;
+}
+.hero-emoji-row{
+  display:flex;justify-content:center;gap:10px;margin-bottom:14px;
+  flex-wrap:wrap;
+}
+.he{font-size:32px;animation:bounce 2s ease-in-out infinite;display:inline-block}
+.he:nth-child(1){animation-delay:0s}
+.he:nth-child(2){animation-delay:.15s}
+.he:nth-child(3){animation-delay:.3s}
+.he:nth-child(4){animation-delay:.45s}
+.he:nth-child(5){animation-delay:.6s}
+.he:nth-child(6){animation-delay:.75s}
+.he:nth-child(7){animation-delay:.9s}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+.hero-eyebrow{
+  font-size:11px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--lime);font-weight:700;margin-bottom:10px;position:relative;
+}
+.hero h1{
+  font-family:'Fraunces',serif;font-size:clamp(26px,6vw,46px);
+  color:#fff;font-weight:900;line-height:1.1;position:relative;
+  text-shadow:0 2px 20px rgba(0,0,0,0.5);
+}
+.hero h1 em{color:var(--lime);font-style:normal}
+.hero-sub{
+  font-size:13.5px;color:rgba(255,255,255,0.65);
+  margin:10px auto 0;max-width:560px;line-height:1.7;position:relative;
+}
+.hero-message{
+  background:linear-gradient(135deg,rgba(174,234,0,0.12),rgba(255,179,0,0.1));
+  border:1px solid rgba(174,234,0,0.3);border-radius:12px;
+  padding:14px 18px;margin:18px auto 0;max-width:620px;
+  font-size:13px;color:var(--cream);line-height:1.75;position:relative;
+  text-align:left;
+}
+.hero-message strong{color:var(--lime)}
+.myskill-tag{
+  background:rgba(255,213,79,0.12);border:1px solid rgba(255,213,79,0.3);
+  border-radius:10px;padding:10px 16px;font-size:11.5px;color:var(--gold);
+  max-width:620px;margin:14px auto 0;position:relative;line-height:1.6;
+}
+
+/* ══ MATERIAL SELECTOR ══ */
+.material-nav{
+  display:flex;overflow-x:auto;gap:0;
+  background:linear-gradient(180deg,#0a1a0c,#0e2010);
+  border-bottom:1px solid var(--border);
+  position:sticky;top:0;z-index:50;scrollbar-width:none;
+}
+.material-nav::-webkit-scrollbar{display:none}
+.mat-btn{
+  flex:0 0 auto;padding:11px 13px;border:none;background:transparent;
+  font-size:11px;font-weight:700;cursor:pointer;
+  color:rgba(255,255,255,0.4);border-bottom:3px solid transparent;
+  transition:all 0.2s;white-space:nowrap;text-align:center;
+  font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:0.3px;
+}
+.mat-btn i{display:block;font-size:18px;margin-bottom:3px}
+.mat-btn.active{color:#fff;border-bottom-color:var(--lime)}
+.mat-btn:hover{color:rgba(255,255,255,0.75);background:rgba(255,255,255,0.04)}
+
+/* ══ CONTENT ══ */
+.content{max-width:800px;margin:0 auto;padding:22px 14px}
+.msection{display:none;animation:fadeUp 0.3s ease}
+.msection.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* ══ SECTION HEADS ══ */
+.sec-head{
+  font-family:'Fraunces',serif;font-size:19px;font-weight:700;color:#fff;
+  margin:24px 0 14px;display:flex;align-items:center;gap:10px;
+}
+.sec-head i{font-size:22px;color:var(--lime)}
+.sh-line{flex:1;height:1px;background:linear-gradient(90deg,var(--lime),transparent)}
+
+/* ══ MATERIAL HERO BANNER ══ */
+.mat-hero{
+  border-radius:16px;padding:20px 20px 16px;margin-bottom:18px;
+  position:relative;overflow:hidden;
+}
+.mat-hero-emoji{font-size:48px;float:right;margin:-5px 0 10px 15px;opacity:0.9;
+  animation:floatEmoji 3s ease-in-out infinite}
+@keyframes floatEmoji{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg) translateY(-5px)}}
+.mat-hero h2{font-family:'Fraunces',serif;font-size:22px;font-weight:900;color:#fff;line-height:1.2}
+.mat-hero p{font-size:12.5px;color:rgba(255,255,255,0.7);margin-top:6px;line-height:1.65;clear:both}
+.mat-hero-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.mht{
+  background:rgba(255,255,255,0.12);border-radius:20px;
+  padding:4px 11px;font-size:11px;color:#fff;font-weight:600;
+}
+
+/* colour schemes per material */
+.mh-coir    {background:linear-gradient(135deg,#3e2600,#7c4a00)}
+.mh-banana  {background:linear-gradient(135deg,#1a3300,#3d6b00)}
+.mh-jute    {background:linear-gradient(135deg,#2d2400,#5c4a00)}
+.mh-paper   {background:linear-gradient(135deg,#002244,#004488)}
+.mh-plastic {background:linear-gradient(135deg,#330022,#660044)}
+.mh-sawdust {background:linear-gradient(135deg,#1a0e00,#4a2800)}
+.mh-husk    {background:linear-gradient(135deg,#1a2200,#3d4d00)}
+
+/* ══ CARDS GRID ══ */
+.cg{display:grid;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));gap:14px;margin-bottom:16px}
+.card{
+  border-radius:14px;padding:16px 18px;border:1px solid var(--border);
+  transition:transform 0.2s,box-shadow 0.2s;
+}
+.card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,0,0,0.35)}
+.ct1{background:linear-gradient(135deg,#1e3a00,#2e5500)}
+.ct2{background:linear-gradient(135deg,#3a2000,#5e3500)}
+.ct3{background:linear-gradient(135deg,#001e3a,#003060)}
+.ct4{background:linear-gradient(135deg,#2a001a,#500033)}
+.ct5{background:linear-gradient(135deg,#1a1a00,#3a3a00)}
+.ct6{background:linear-gradient(135deg,#00302e,#005550)}
+.ct7{background:linear-gradient(135deg,#1a0030,#350060)}
+.ct8{background:linear-gradient(135deg,#301000,#5e2400)}
+.ct9{background:linear-gradient(135deg,#003020,#005a3a)}
+
+.card-title{font-size:14px;font-weight:700;color:#fff;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.card-title i{font-size:19px}
+
+/* ══ BADGES ══ */
+.badge{display:inline-block;font-size:10.5px;padding:3px 11px;border-radius:20px;margin-bottom:10px;font-weight:700;letter-spacing:0.3px}
+.bl{background:rgba(174,234,0,0.18);color:var(--lime);border:1px solid rgba(174,234,0,0.4)}
+.ba{background:rgba(255,179,0,0.18);color:var(--amber);border:1px solid rgba(255,179,0,0.4)}
+.bo{background:rgba(255,109,0,0.18);color:#ffab70;border:1px solid rgba(255,109,0,0.4)}
+.bp{background:rgba(233,30,140,0.18);color:#f48fb1;border:1px solid rgba(233,30,140,0.4)}
+.bs{background:rgba(0,188,212,0.18);color:#80deea;border:1px solid rgba(0,188,212,0.4)}
+.bt{background:rgba(0,191,165,0.18);color:#80cbc4;border:1px solid rgba(0,191,165,0.4)}
+.bg2{background:rgba(76,175,80,0.18);color:#a5d6a7;border:1px solid rgba(76,175,80,0.4)}
+.bv{background:rgba(156,39,176,0.18);color:#ce93d8;border:1px solid rgba(156,39,176,0.4)}
+
+/* ══ TIPS ══ */
+.tip{
+  font-size:12.5px;color:var(--text2);line-height:1.7;
+  padding:5px 0;border-bottom:1px solid var(--border);
+  display:flex;gap:8px;
+}
+.tip:last-child{border-bottom:none;padding-bottom:0}
+.tip::before{content:"›";color:var(--lime);font-size:17px;line-height:1.3;min-width:10px;font-weight:700}
+
+/* ══ PRODUCT GRID ══ */
+.pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:10px;margin-bottom:16px}
+.pc{
+  background:var(--card2);border:1px solid var(--border);border-radius:12px;
+  padding:14px 12px;text-align:center;transition:all 0.2s;cursor:default;
+}
+.pc:hover{border-color:var(--lime);box-shadow:0 0 16px rgba(174,234,0,0.15)}
+.pc-icon{font-size:28px;display:block;margin-bottom:6px}
+.pc-name{font-size:12px;font-weight:700;color:#fff;line-height:1.4}
+.pc-val{font-size:11px;color:var(--lime);margin-top:3px;font-weight:600}
+
+/* ══ INCOME LEVELS ══ */
+.income-ladder{margin-bottom:18px}
+.il-item{
+  display:flex;gap:14px;align-items:flex-start;padding:14px;
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  margin-bottom:10px;
+}
+.il-num{
+  min-width:36px;height:36px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Fraunces',serif;font-size:16px;font-weight:900;
+  color:#fff;flex-shrink:0;margin-top:1px;
+}
+.ln1{background:linear-gradient(135deg,#4caf50,#1b5e20)}
+.ln2{background:linear-gradient(135deg,#ffb300,#7c5000)}
+.ln3{background:linear-gradient(135deg,#ff6d00,#5c1a00)}
+.ln4{background:linear-gradient(135deg,#e91e8c,#5c0030)}
+.il-title{font-size:13.5px;font-weight:700;color:#fff;margin-bottom:4px}
+.il-earn{font-size:12px;color:var(--lime);font-weight:700;margin-bottom:4px}
+.il-desc{font-size:12px;color:var(--text2);line-height:1.65}
+
+/* ══ EXPORT MARKET BARS ══ */
+.mkt-item{margin-bottom:14px}
+.mkt-label{display:flex;justify-content:space-between;margin-bottom:5px}
+.mkt-country{font-size:13px;font-weight:600;color:#fff;display:flex;align-items:center;gap:7px}
+.mkt-flag{font-size:18px}
+.mkt-pct{font-size:12px;font-weight:700;color:var(--lime)}
+.mkt-bar-bg{background:rgba(255,255,255,0.08);border-radius:10px;height:8px;overflow:hidden}
+.mkt-bar-fill{height:100%;border-radius:10px;transition:width 0.9s ease}
+.mb-green{background:linear-gradient(90deg,#4caf50,var(--lime))}
+.mb-amber{background:linear-gradient(90deg,var(--amber),#ffe082)}
+.mb-orange{background:linear-gradient(90deg,var(--orange),#ffab70)}
+.mb-sky{background:linear-gradient(90deg,var(--sky),#80deea)}
+.mb-pink{background:linear-gradient(90deg,var(--pink),#f48fb1)}
+
+/* ══ STEPS ══ */
+.steps{counter-reset:st;margin-bottom:16px}
+.step{
+  display:flex;gap:14px;align-items:flex-start;
+  padding:13px 15px;background:var(--card);
+  border:1px solid var(--border);border-radius:12px;margin-bottom:10px;
+}
+.step::before{
+  content:counter(st);counter-increment:st;
+  min-width:30px;height:30px;border-radius:50%;
+  background:linear-gradient(135deg,var(--lime),#2a6000);
+  color:#0e1a0f;font-weight:900;font-size:13px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Fraunces',serif;flex-shrink:0;margin-top:2px;
+}
+.step-t{font-size:13.5px;font-weight:700;color:#fff;margin-bottom:4px}
+.step-d{font-size:12px;color:var(--text2);line-height:1.65}
+
+/* ══ ALERT BOX ══ */
+.ab{border-radius:12px;padding:12px 16px;margin-bottom:16px;font-size:13px;line-height:1.7;display:flex;gap:10px;align-items:flex-start}
+.ab i{font-size:21px;min-width:20px;margin-top:1px}
+.ab-green{background:rgba(174,234,0,0.1);border:1px solid rgba(174,234,0,0.3);color:rgba(200,255,100,0.9)}
+.ab-amber{background:rgba(255,179,0,0.1);border:1px solid rgba(255,179,0,0.3);color:rgba(255,213,100,0.9)}
+.ab-orange{background:rgba(255,109,0,0.1);border:1px solid rgba(255,109,0,0.3);color:rgba(255,175,100,0.9)}
+.ab-sky{background:rgba(0,188,212,0.1);border:1px solid rgba(0,188,212,0.3);color:rgba(100,220,240,0.9)}
+.ab-pink{background:rgba(233,30,140,0.1);border:1px solid rgba(233,30,140,0.3);color:rgba(250,150,200,0.9)}
+.ab-gold{background:rgba(255,213,79,0.1);border:1px solid rgba(255,213,79,0.3);color:var(--gold)}
+
+/* ══ STAT ROW ══ */
+.sr{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:16px}
+.sc{
+  background:var(--card2);border:1px solid var(--border);border-radius:12px;
+  padding:14px 12px;text-align:center;transition:transform 0.2s;
+}
+.sc:hover{transform:translateY(-2px)}
+.sc-num{font-family:'Fraunces',serif;font-size:22px;font-weight:900;color:var(--lime);line-height:1}
+.sc-lbl{font-size:11px;color:var(--text3);margin-top:5px;line-height:1.4}
+
+/* ══ SCHEME TABLE ══ */
+.stbl{width:100%;border-collapse:collapse;margin-bottom:16px;font-size:12.5px}
+.stbl th{background:linear-gradient(90deg,#1e3a00,#002244);color:var(--lime);padding:10px 12px;text-align:left;font-weight:700;border:1px solid var(--border);font-size:11.5px;letter-spacing:0.4px}
+.stbl td{padding:9px 12px;border:1px solid var(--border);color:var(--text2);background:var(--card);vertical-align:top;line-height:1.6}
+.stbl tr:nth-child(even) td{background:var(--card2)}
+.stbl tr:hover td{background:#1e3820}
+
+/* ══ MOTIVATIONAL BOX ══ */
+.motiv{
+  background:linear-gradient(135deg,#1e3820,#2a1a00);
+  border:2px solid rgba(174,234,0,0.25);border-radius:16px;
+  padding:22px 20px;margin-bottom:20px;position:relative;overflow:hidden;
+}
+.motiv::after{
+  content:'"';font-family:'Fraunces',serif;font-size:120px;
+  color:rgba(174,234,0,0.07);position:absolute;right:10px;top:-20px;
+  line-height:1;pointer-events:none;
+}
+.motiv-title{font-family:'Fraunces',serif;font-size:16px;color:var(--lime);font-weight:900;margin-bottom:10px}
+.motiv p{font-size:13px;color:var(--text2);line-height:1.8;margin-bottom:8px}
+.motiv p:last-child{margin-bottom:0}
+.motiv strong{color:#fff}
+
+/* ══ MYSKILLGAME FOOTER ══ */
+.msg-footer{
+  background:linear-gradient(135deg,#0a1f0c,#1a0e00);
+  border:2px solid rgba(174,234,0,0.3);border-radius:16px;
+  padding:22px 20px;margin-top:24px;text-align:center;
+}
+.msg-footer h3{font-family:'Fraunces',serif;font-size:22px;color:#fff;margin-bottom:8px}
+.msg-footer h3 span{color:var(--lime)}
+.msg-footer p{font-size:12.5px;color:var(--text2);line-height:1.7;max-width:580px;margin:0 auto 14px}
+.msg-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;margin-bottom:14px}
+.msp{background:rgba(174,234,0,0.1);border:1px solid rgba(174,234,0,0.28);border-radius:20px;padding:5px 12px;font-size:11.5px;color:rgba(200,255,100,0.9);font-weight:600}
+.msg-footer .tagline{font-size:11px;color:var(--gold);font-style:italic;border-top:1px solid var(--border);padding-top:12px;margin-top:4px}
+
+/* ══ CHECKLIST ══ */
+.chk-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);cursor:pointer;user-select:none}
+.chk-item:last-child{border-bottom:none}
+.chk-box{width:19px;height:19px;min-width:19px;border:1.5px solid rgba(255,255,255,0.25);border-radius:5px;display:flex;align-items:center;justify-content:center;transition:all 0.15s;margin-top:1px}
+.chk-box.done{background:var(--lime);border-color:var(--lime)}
+.chk-box.done i{color:#0e1a0f;font-size:12px}
+.chk-text{font-size:12.5px;color:var(--text2);line-height:1.6}
+.chk-text.done{text-decoration:line-through;color:var(--text3)}
+
+/* ══ PROGRESS ══ */
+.prog-wrap{margin-bottom:16px}
+.prog-label{font-size:11.5px;color:var(--text3);margin-bottom:5px;display:flex;justify-content:space-between}
+.prog-bg{background:rgba(255,255,255,0.08);border-radius:20px;height:7px;overflow:hidden}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--lime),var(--amber));border-radius:20px;transition:width 0.35s}
+
+/* ══ RESPONSIVE ══ */
+@media(max-width:500px){
+  .cg{grid-template-columns:1fr}
+  .pg{grid-template-columns:repeat(2,1fr)}
+  .sr{grid-template-columns:repeat(2,1fr)}
+  .mat-btn{padding:10px 10px;font-size:10.5px}
+  .hero h1{font-size:24px}
+}
+</style>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1034022057999423"></script><link href="https://myskillgame.netlify.app/11-7-26 website/waste_to_wealth_guide.html" rel="canonical"/></head>
+<body>
+<!-- ══ HERO ══ -->
+<div class="hero">
+<div class="hero-emoji-row">
+<span class="he">🥥</span><span class="he">🍌</span><span class="he">🌾</span>
+<span class="he">📰</span><span class="he">♻️</span><span class="he">🪵</span><span class="he">🌿</span>
+</div>
+<div class="hero-eyebrow">MySkillGame · বর্জ্য থেকে সম্পদ সিরিজ</div>
+<h1><em>বর্জ্যকে</em> বদলে ফেলুন<br/>আপনার সম্পদে</h1>
+<p class="hero-sub">৭টি সাধারণ বর্জ্য উপাদান · ৫০+ পণ্য · প্রকৃত কর্মসংস্থান · রপ্তানির সুযোগ<br/>যারা কঠোর পরিশ্রম করে কিছু বাস্তব গড়ে তুলতে প্রস্তুত, তাদের জন্য</p>
+<div class="hero-message">
+<strong>🎯 প্রতিটি তরুণের উদ্দেশ্যে একটি বার্তা:</strong><br/>
+    সম্পদের কোনো শর্টকাট নেই। দীর্ঘমেয়াদী সাফল্য গড়ে ওঠে দক্ষতা, অধ্যবসায়, সৃজনশীলতা এবং ধারাবাহিক পরিশ্রমের মাধ্যমে। কিন্তু <strong>দক্ষতা, পরিশ্রম আর অধ্যবসায়</strong> — যদি প্রতিদিন আপনার চারপাশে থাকা বর্জ্যে প্রয়োগ করেন — তাহলে একটি প্রকৃত জীবিকা গড়ে তোলা সম্ভব। এই গাইডের উপাদানগুলো <strong>বিনামূল্যে বা প্রায় বিনামূল্যে</strong> পাওয়া যায়। বাজার <strong>বিশ্বব্যাপী</strong>। সুযোগটি <strong>আপনার</strong>। একমাত্র প্রশ্ন হলো: আপনি কি শিখতে ও পরিশ্রম করতে প্রস্তুত?
+  </div>
+<div class="myskill-tag">
+    🎓 <strong>MySkillGame-এর জন্য তৈরি</strong> – বৃত্তিমূলক শিক্ষা, উদ্যোক্তা, আর্থিক সাক্ষরতা, পরিবেশ সচেতনতা ও টেকসই জীবিকার সুযোগ প্রচারে নিবেদিত।
+  </div>
+</div>
+<!-- ══ MATERIAL NAVIGATION ══ -->
+<div class="material-nav" role="tablist">
+<button class="mat-btn active" onclick="switchMat('coir',this)"><i class="ti ti-circle-dot"></i>নারকেলের ছোবড়া</button>
+<button class="mat-btn" onclick="switchMat('banana',this)"><i class="ti ti-leaf"></i>কলাগাছ</button>
+<button class="mat-btn" onclick="switchMat('jute',this)"><i class="ti ti-plant-2"></i>পাট</button>
+<button class="mat-btn" onclick="switchMat('paper',this)"><i class="ti ti-file-text"></i>খবরের কাগজ</button>
+<button class="mat-btn" onclick="switchMat('plastic',this)"><i class="ti ti-recycle"></i>প্লাস্টিক</button>
+<button class="mat-btn" onclick="switchMat('sawdust',this)"><i class="ti ti-trees"></i>করাত-গুঁড়া</button>
+<button class="mat-btn" onclick="switchMat('husk',this)"><i class="ti ti-grain"></i>ধানের তুষ</button>
+<button class="mat-btn" onclick="switchMat('export',this)"><i class="ti ti-world"></i>রপ্তানি</button>
+<button class="mat-btn" onclick="switchMat('learn',this)"><i class="ti ti-school"></i>শেখা</button>
+<button class="mat-btn" onclick="switchMat('motiv',this)"><i class="ti ti-rocket"></i>মানসিকতা</button>
+<button class="mat-btn" onclick="switchMat('myskill',this)"><i class="ti ti-star"></i>MySkillGame</button>
+</div>
+<div class="content">
+<!-- ══════════════════════════════════════════════
+     1. COCONUT COIR
+══════════════════════════════════════════════ -->
+<div class="msection active" id="mat-coir">
+<div class="mat-hero mh-coir">
+<span class="mat-hero-emoji" style="float:right">🥥</span>
+<h2>নারকেলের ছোবড়া (কয়ার তন্তু)</h2>
+<p>নারকেলের বাইরের রুক্ষ খোসা — ভারতে প্রতি বছর কোটি কোটি ফেলে দেওয়া হয়। কয়ার বিশ্বের অন্যতম শক্তিশালী প্রাকৃতিক তন্তু, পচনরোধী, জৈব-অবক্ষয়যোগ্য এবং বিশ্বব্যাপী বিপুল চাহিদাসম্পন্ন। ভারত বিশ্বের ৮০% কয়ার সরবরাহ করে — তবুও গ্রামস্তরে বেশিরভাগ কাঁচা ছোবড়া নষ্ট হয়ে যায়।</p>
+<div class="mat-hero-tags">
+<span class="mht">🇮🇳 ভারত বিশ্বের #১ রপ্তানিকারক</span>
+<span class="mht">💧 জলরোধী</span>
+<span class="mht">♻️ ১০০% জৈব-অবক্ষয়যোগ্য</span>
+<span class="mht">🌱 পরিবেশবান্ধব</span>
+</div>
+</div>
+<div class="ab ab-green"><i class="ti ti-info-circle"></i><span>ভারত প্রতি বছর ₹৩,৫০০+ কোটি টাকার কয়ার পণ্য রপ্তানি করে। কেরালা, তামিলনাড়ু, কর্ণাটক এবং পশ্চিমবঙ্গ প্রধান উৎপাদক রাজ্য। আপনি যে নারকেল দেখেন, তার ছোবড়ার মধ্যেই লুকিয়ে আছে মূল্য।</span></div>
+<div class="sr">
+<div class="sc"><div class="sc-num">₹৩,৫০০ কোটি</div><div class="sc-lbl">ভারতের বার্ষিক কয়ার রপ্তানি মূল্য</div></div>
+<div class="sc"><div class="sc-num">৭ লাখ</div><div class="sc-lbl">কয়ার শিল্পে নিযুক্ত শ্রমিক</div></div>
+<div class="sc"><div class="sc-num">১০০+</div><div class="sc-lbl">ভারতীয় কয়ার আমদানিকারী দেশ</div></div>
+<div class="sc"><div class="sc-num">₹১৫–৮০/কেজি</div><div class="sc-lbl">কাঁচা থেকে প্রক্রিয়াজাত কয়ারের দামের পরিসর</div></div>
+</div>
+<div class="sec-head"><i class="ti ti-package"></i>যেসব পণ্য তৈরি করতে পারেন <span class="sh-line"></span></div>
+<div class="pg">
+<div class="pc"><span class="pc-icon">🪢</span><div class="pc-name">কয়ার দড়ি</div><div class="pc-val">₹৩০–৬০/কেজি</div></div>
+<div class="pc"><span class="pc-icon">🪑</span><div class="pc-name">কয়ার তোশক</div><div class="pc-val">₹২০০–৮০০ প্রতিটি</div></div>
+<div class="pc"><span class="pc-icon">🚪</span><div class="pc-name">দরজার মাদুর</div><div class="pc-val">₹৮০–২৫০ প্রতিটি</div></div>
+<div class="pc"><span class="pc-icon">🌱</span><div class="pc-name">কোকো পিট (গ্রো ব্যাগ)</div><div class="pc-val">₹৫–১২/কেজি</div></div>
+<div class="pc"><span class="pc-icon">🌿</span><div class="pc-name">ঝুলন্ত ঝুড়ি</div><div class="pc-val">₹৬০–৩০০ প্রতিটি</div></div>
+<div class="pc"><span class="pc-icon">🏗️</span><div class="pc-name">জিও-টেক্সটাইল</div><div class="pc-val">রপ্তানি মানের</div></div>
+<div class="pc"><span class="pc-icon">🛋️</span><div class="pc-name">আপহোলস্ট্রি ফাইবার</div><div class="pc-val">₹২৫–৫৫/কেজি</div></div>
+<div class="pc"><span class="pc-icon">🛡️</span><div class="pc-name">ভূমিক্ষয় প্রতিরোধক মাদুর</div><div class="pc-val">উচ্চ রপ্তানি চাহিদা</div></div>
+</div>
+<div class="sec-head"><i class="ti ti-coin"></i>আয়ের সুযোগ <span class="sh-line"></span></div>
+<div class="income-ladder">
+<div class="il-item"><div class="il-num ln1">1</div><div><div class="il-title">ছোবড়া সংগ্রাহক / বাছাইকারী</div><div class="il-earn">₹৪,০০০–৭,০০০/মাস</div><div class="il-desc">নারকেল বিক্রেতা, মন্দির, রেস্তোরাঁ থেকে ছোবড়া সংগ্রহ করুন। শুকিয়ে কয়ার ইউনিটে বিক্রি করুন। কোনো বিনিয়োগ লাগে না — শুধু পরিশ্রম আর ধারাবাহিকতা দরকার।</div></div></div>
+<div class="il-item"><div class="il-num ln2">2</div><div><div class="il-title">দরজার মাদুর ও দড়ি প্রস্তুতকারক (স্বনির্ভর গোষ্ঠী)</div><div class="il-earn">₹৮,০০০–১৮,০০০/মাস</div><div class="il-desc">প্রাথমিক রেটিং ও কাটার যন্ত্র দিয়ে হাতে দড়ি পাকান এবং মাদুর বোনেন। NABARD-এর সহায়তায় স্বনির্ভর গোষ্ঠী ₹১৫,০০০–৩০,০০০ যন্ত্রপাতি দিয়ে শুরু করতে পারে।</div></div></div>
+<div class="il-item"><div class="il-num ln3">3</div><div><div class="il-title">কোকো পিট উৎপাদক</div><div class="il-earn">₹২০,০০০–৫০,০০০/মাস</div><div class="il-desc">কয়ার পিথ (তন্তু নিষ্কাশনের উপজাত) প্রক্রিয়াজাত করে কোকো পিট ব্রিক তৈরি করুন। ইউরোপের হাইড্রোপনিক ও গ্রিনহাউস চাষিরা ভালো দাম দেন।</div></div></div>
+<div class="il-item"><div class="il-num ln4">4</div><div><div class="il-title">জিও-টেক্সটাইল রপ্তানি ব্যবসা</div><div class="il-earn">₹২–১৫ লক্ষ/মাস</div><div class="il-desc">রাস্তা ও ঢাল সুরক্ষার জন্য কয়ার জিও-টেক্সটাইল তৈরি করুন। সরকারি ক্রয় + ইইউ/মার্কিন রপ্তানি। CCPC (কয়ার বোর্ড)-এ নিবন্ধন করুন।</div></div></div>
+</div>
+<div class="sec-head"><i class="ti ti-certificate"></i>সরকারি প্রকল্প <span class="sh-line"></span></div>
+<table class="stbl">
+<thead><tr><th>প্রকল্প</th><th>সুবিধা</th></tr></thead>
+<tbody>
+<tr><td><strong>কয়ার বিকাশ যোজনা</strong></td><td>কয়ার প্রক্রিয়াজাতকরণ যন্ত্রপাতিতে ৪০% পর্যন্ত ভর্তুকি; কয়ার বোর্ড ইন্ডিয়া দ্বারা পরিচালিত</td></tr>
+<tr><td><strong>পিএমইজিপি (PMEGP)</strong></td><td>২৫–৩৫% মার্জিন মানি ভর্তুকি; কয়ার পণ্য ইউনিটের জন্য ₹২৫ লক্ষ পর্যন্ত ঋণ</td></tr>
+<tr><td><strong>কয়ার বোর্ড প্রশিক্ষণ</strong></td><td>বোর্ড কেন্দ্রে কয়ার কাটা, বোনা, মাদুর তৈরিতে বিনামূল্যে ৩–৬ মাসের প্রশিক্ষণ</td></tr>
+<tr><td><strong>NABARD স্বনির্ভর গোষ্ঠী ঋণ</strong></td><td>মহিলাদের কয়ার প্রক্রিয়াজাতকরণ সমবায়ের জন্য স্বল্প সুদের গোষ্ঠী ঋণ</td></tr>
+</tbody>
+</table>
+</div>
+<!-- ══════════════════════════════════════════════
+     2. BANANA FIBRE
+══════════════════════════════════════════════ -->
+<div class="msection" id="mat-banana">
+<div class="mat-hero mh-banana">
+<span class="mat-hero-emoji">🍌</span>
+<h2>কলাগাছের তন্তু</h2>
+<p>কলা সংগ্রহের পর পুরো ছদ্ম-কাণ্ড ও পাতার খোল বর্জ্য হিসেবে ফেলে দেওয়া হয় — প্রতিটি কলা উৎপাদক জেলায় মাসে হাজার হাজার টন। কলাগাছের তন্তু তুলার চেয়েও মজবুত, জৈব-অবক্ষয়যোগ্য, এবং এখন বিলাসবহুল বস্ত্র, কাগজ ও প্যাকেজিং-এর জন্য বিশ্বব্যাপী রপ্তানি হয়।</p>
+<div class="mat-hero-tags">
+<span class="mht">💪 তুলার চেয়ে মজবুত</span><span class="mht">🌿 কোনো রাসায়নিক প্রয়োজন নেই</span>
+<span class="mht">🇯🇵 জাপান বেশি দাম দেয়</span><span class="mht">📦 জৈব-অবক্ষয়যোগ্য প্যাকেজিং</span>
+</div>
+</div>
+<div class="ab ab-green"><i class="ti ti-bulb"></i><span>ভারত প্রতি বছর ৩ কোটি টন কলা উৎপাদন করে। প্রতিটি গাছ ৬০–৭০ কেজি তন্তুসমৃদ্ধ ছদ্ম-কাণ্ড ফেলে দেয়। এটি প্রতিটি কৃষকের জমিতে পড়ে থাকা <strong>বিনামূল্যের কাঁচামাল</strong>।</span></div>
+<div class="pg">
+<div class="pc"><span class="pc-icon">👜</span><div class="pc-name">ইকো ব্যাগ ও টোট</div><div class="pc-val">₹৮০–৪০০ প্রতিটি</div></div>
+<div class="pc"><span class="pc-icon">🧣</span><div class="pc-name">কলা সুতা / থ্রেড</div><div class="pc-val">₹৫০০–২,০০০/কেজি</div></div>
+<div class="pc"><span class="pc-icon">📄</span><div class="pc-name">হাতে তৈরি কাগজ</div><div class="pc-val">₹২০–৮০/শিট</div></div>
+<div class="pc"><span class="pc-icon">🎁</span><div class="pc-name">উপহার মোড়ক / প্যাকেজিং</div><div class="pc-val">রপ্তানি চাহিদা</div></div>
+<div class="pc"><span class="pc-icon">🛋️</span><div class="pc-name">বোনা প্লেসম্যাট</div><div class="pc-val">₹৬০–২০০ প্রতিটি</div></div>
+<div class="pc"><span class="pc-icon">👒</span><div class="pc-name">টুপি ও ঝুড়ি</div><div class="pc-val">₹১০০–৫০০ প্রতিটি</div></div>
+<div class="pc"><span class="pc-icon">🧴</span><div class="pc-name">কলার কাণ্ডের রস</div><div class="pc-val">স্বাস্থ্য পণ্য</div></div>
+<div class="pc"><span class="pc-icon">🌱</span><div class="pc-name">তন্তু কম্পোস্ট / মালচ</div><div class="pc-val">₹৫–১৫/কেজি</div></div>
+</div>
+<div class="sec-head"><i class="ti ti-coin"></i>আয়ের সুযোগ <span class="sh-line"></span></div>
+<div class="income-ladder">
+<div class="il-item"><div class="il-num ln1">1</div><div><div class="il-title">তন্তু নিষ্কাশনকারী</div><div class="il-earn">₹৫,০০০–১০,০০০/মাস</div><div class="il-desc">কৃষকদের কাছ থেকে কলার ছদ্ম-কাণ্ড সংগ্রহ করুন (প্রায়ই বিনামূল্যে), হাতে বা যন্ত্রের সাহায্যে তন্তু বের করুন, শুকিয়ে তাঁতি ও কাগজ প্রস্তুতকারকদের কাছে বিক্রি করুন।</div></div></div>
+<div class="il-item"><div class="il-num ln2">2</div><div><div class="il-title">কলা কাগজ প্রস্তুতকারক</div><div class="il-earn">₹১২,০০০–২৫,০০০/মাস</div><div class="il-desc">কলার তন্তুর মণ্ডকে হাতে তৈরি কাগজ শিট, নোটবুক, কার্ডে রূপান্তরিত করুন। স্টেশনারি দোকান, উপহার দোকানে বিক্রি করুন এবং ইউরোপের কারুশিল্প বাজারে রপ্তানি করুন।</div></div></div>
+<div class="il-item"><div class="il-num ln3">3</div><div><div class="il-title">ইকো-ব্যাগ / বস্ত্র তাঁতি</div><div class="il-earn">₹২০,০০০–৪৫,০০০/মাস</div><div class="il-desc">কলা সুতা বুনে ব্যাগ, প্লেসম্যাট, টেবিল রানার তৈরি করুন। জাপানি ও ইউরোপীয় ক্রেতারা বিশেষভাবে ভারত থেকে কলাগাছের তন্তুর হস্তশিল্প খোঁজেন।</div></div></div>
+<div class="il-item"><div class="il-num ln4">4</div><div><div class="il-title">রপ্তানি ইউনিটের মালিক</div><div class="il-earn">₹১–৮ লক্ষ/মাস</div><div class="il-desc">১০–২০ জন কর্মী নিয়ে ছোট নিষ্কাশন + তাঁত ইউনিট প্রতিষ্ঠা করুন। ইইউ, জাপান, মার্কিন যুক্তরাষ্ট্রে ইকো-ফ্যাশন ও স্টেশনারি পণ্য রপ্তানি করুন।</div></div></div>
+</div>
+</div>
+<!-- ══════════════════════════════════════════════
+     3. JUTE WASTE
+══════════════════════════════════════════════ -->
+<div class="msection" id="mat-jute">
+<div class="mat-hero mh-jute">
+<span class="mat-hero-emoji">🌾</span>
+<h2>পাট বর্জ্য</h2>
+<p>পশ্চিমবঙ্গ বিশ্ব পাট উৎপাদনের প্রাণকেন্দ্র — এবং পাট বর্জ্য (কাটিং, ব্যাচিং তেলের অবশিষ্টাংশ, পাটের ধুলো) বিপুল পরিমাণে থাকে। পাট বর্জ্যকে পুনরায় সুতায় রূপান্তরিত করা, কম্পোস্ট করা, পার্টিকেল বোর্ডে পরিণত করা বা জিওটেক্সটাইলে ব্যবহার করা যায়। এটি বিশেষভাবে বিষ্ণুপুর অঞ্চলের জন্য প্রাসঙ্গিক।</p>
+<div class="mat-hero-tags">
+<span class="mht">🏠 পশ্চিমবঙ্গ প্রাণকেন্দ্র</span><span class="mht">🌍 "সোনালী তন্তু"</span>
+<span class="mht">♻️ চক্রাকার মূল্য শৃঙ্খল</span><span class="mht">💼 স্বনির্ভর গোষ্ঠী উপযোগী</span>
+</div>
+</div>
+<div class="ab ab-amber"><i class="ti ti-map-pin"></i><span>বিষ্ণুপুর (বাঁকুড়া, পশ্চিমবঙ্গ) হুগলি ও মুর্শিদাবাদের পাট উৎপাদক অঞ্চলের কাছাকাছি। পাটকলগুলিতে পাট বর্জ্য <strong>বিনামূল্যে পাওয়া যায়</strong>। আপনি একটি সোনার খনির পাশে বসে আছেন।</span></div>
+<div class="sr">
+<div class="sc"><div class="sc-num">₹১২,০০০ কোটি</div><div class="sc-lbl">ভারতের বার্ষিক পাট রপ্তানি মূল্য</div></div>
+<div class="sc"><div class="sc-num">৪০ লক্ষ</div><div class="sc-lbl">ভারতে পাট চাষি</div></div>
+<div class="sc"><div class="sc-num">৭০%</div><div class="sc-lbl">বিশ্বের পাট পশ্চিমবঙ্গ ও বাংলাদেশ থেকে</div></div>
+<div class="sc"><div class="sc-num">₹৬০–১২০/কেজি</div><div class="sc-lbl">পাট বর্জ্য থেকে পুনর্নির্মিত সুতার দাম</div></div>
+</div>
+<div class="pg">
+<div class="pc"><span class="pc-icon">👜</span><div class="pc-name">পাটের শপিং ব্যাগ</div><div class="pc-val">₹৩০–১৫০ প্রতিটি</div></div>
+<div class="pc"><span class="pc-icon">🪑</span><div class="pc-name">পাটের আসবাবপত্র ফ্যাব্রিক</div><div class="pc-val">₹৮০–২০০/মিটার</div></div>
+<div class="pc"><span class="pc-icon">🌿</span><div class="pc-name">পাটের জিও-টেক্সটাইল</div><div class="pc-val">রপ্তানি মানের</div></div>
+<div class="pc"><span class="pc-icon">🖼️</span><div class="pc-name">দেয়াল সজ্জা / ডেকর</div><div class="pc-val">₹১৫০–৮০০ প্রতিটি</div></div>
+<div class="pc"><span class="pc-icon">📦</span><div class="pc-name">পাটের প্যাকেজিং</div><div class="pc-val">পাইকারি অর্ডার</div></div>
+<div class="pc"><span class="pc-icon">🌱</span><div class="pc-name">পাট কম্পোস্ট</div><div class="pc-val">জৈব চাষ</div></div>
+<div class="pc"><span class="pc-icon">🏗️</span><div class="pc-name">কম্পোজিট বোর্ড</div><div class="pc-val">নির্মাণ কাজে ব্যবহার</div></div>
+<div class="pc"><span class="pc-icon">🎀</span><div class="pc-name">পাটের উপহার সামগ্রী</div><div class="pc-val">₹১০০–৫০০ প্রতিটি</div></div>
+</div>
+<div class="ab ab-green" style="margin-top:8px"><i class="ti ti-building"></i><span>মূল প্রকল্প: <strong>NJDC (জাতীয় পাট উন্নয়ন কর্পোরেশন)</strong> ভর্তুকিমূল্যে কাঁচামাল সরবরাহ করে। <strong>JCI (জুট কর্পোরেশন অফ ইন্ডিয়া)</strong> ন্যূনতম সহায়ক মূল্যে ক্রয় প্রদান করে। হুগলিতে পশ্চিমবঙ্গের <strong>জুট-এমএসএমই ক্লাস্টার</strong> বিনামূল্যে প্রশিক্ষণ দেয়।</span></div>
+</div>
+<!-- ══════════════════════════════════════════════
+     4. OLD NEWSPAPER
+══════════════════════════════════════════════ -->
+<div class="msection" id="mat-paper">
+<div class="mat-hero mh-paper">
+<span class="mat-hero-emoji">📰</span>
+<h2>পুরনো খবরের কাগজ ও কাগজ বর্জ্য</h2>
+<p>প্রতিটি বাড়ি, অফিস এবং বাজারে প্রতিদিন কাগজ বর্জ্য তৈরি হয়। পুরনো খবরের কাগজ, কার্ডবোর্ড এবং কাগজের প্যাকেজিংকে ন্যূনতম যন্ত্রপাতি দিয়ে ইকো-পণ্য, শিল্প সামগ্রী, আসবাবের যন্ত্রাংশ এবং ইনসুলেশন উপাদানে রূপান্তরিত করা যায়।</p>
+<div class="mat-hero-tags">
+<span class="mht">🏠 সর্বত্র পাওয়া যায়</span><span class="mht">💰 ₹১০–১৫/কেজিতে কেনা যায়</span>
+<span class="mht">♻️ ১০০% পুনর্ব্যবহারযোগ্য</span><span class="mht">🎨 কারুশিল্প + শিল্প</span>
+</div>
+</div>
+<div class="pg">
+<div class="pc"><span class="pc-icon">🛍️</span><div class="pc-name">কাগজের ক্যারি ব্যাগ</div><div class="pc-val">₹৩–১৫ প্রতিটি</div></div>
+<div class="pc"><span class="pc-icon">📦</span><div class="pc-name">পেপার-মাশে পণ্য</div><div class="pc-val">₹৫০–৫০০ প্রতিটি</div></div>
+<div class="pc"><span class="pc-icon">🌸</span><div class="pc-name">কাগজের ফুল / সজ্জা</div><div class="pc-val">₹২০–২০০/সেট</div></div>
+<div class="pc"><span class="pc-icon">🥣</span><div class="pc-name">চারার টব (কাগজের)</div><div class="pc-val">নার্সারিগুলো এটি পছন্দ করে</div></div>
+<div class="pc"><span class="pc-icon">🧱</span><div class="pc-name">কাগজের ইট (ইনসুলেশন)</div><div class="pc-val">নির্মাণ কাজ</div></div>
+<div class="pc"><span class="pc-icon">🎁</span><div class="pc-name">উপহারের মোড়ক কাগজ</div><div class="pc-val">খুচরা ও অনুষ্ঠান</div></div>
+<div class="pc"><span class="pc-icon">🏺</span><div class="pc-name">পেপার ক্লে ভাস্কর্য</div><div class="pc-val">শিল্প রপ্তানি</div></div>
+<div class="pc"><span class="pc-icon">📋</span><div class="pc-name">পুনর্ব্যবহৃত নোটবুক</div><div class="pc-val">স্কুল ও অফিস</div></div>
+</div>
+<div class="sec-head"><i class="ti ti-coin"></i>আয়ের সুযোগ <span class="sh-line"></span></div>
+<div class="income-ladder">
+<div class="il-item"><div class="il-num ln1">1</div><div><div class="il-title">বর্জ্য কাগজ সংগ্রাহক / কাবারিওয়ালা অংশীদার</div><div class="il-earn">₹৫,০০০–১২,০০০/মাস</div><div class="il-desc">অফিস, স্কুল ও হাউজিং সোসাইটির সাথে সম্পর্ক গড়ে তুলুন। বর্জ্য কাগজ সংগ্রহ করুন, গ্রেড অনুযায়ী বাছাই করুন এবং রিসাইক্লিং মিলে ₹১০–১৮/কেজি দরে বিক্রি করুন।</div></div></div>
+<div class="il-item"><div class="il-num ln2">2</div><div><div class="il-title">কাগজের ব্যাগ প্রস্তুতকারক</div><div class="il-earn">₹১০,০০০–২২,০০০/মাস</div><div class="il-desc">ভারতে প্লাস্টিক ব্যাগ নিষিদ্ধ হওয়ায়, কাগজের ব্যাগের চাহিদা দ্রুত বাড়ছে। একটি যন্ত্র (~₹৪০,০০০) প্রতি ঘণ্টায় ৩০০–৫০০টি ব্যাগ তৈরি করে। দোকান, রেস্তোরাঁ, বেকারিতে বিক্রি করুন।</div></div></div>
+<div class="il-item"><div class="il-num ln3">3</div><div><div class="il-title">পেপার-মাশে / কারুশিল্প পণ্য</div><div class="il-earn">₹১৫,০০০–৩৫,০০০/মাস</div><div class="il-desc">সাজসজ্জার সামগ্রী, খেলনা, উৎসবের সজ্জা তৈরি করুন। কাশ্মীর ও বাংলার পেপার-মাশে পণ্য ইউরোপীয় কারুশিল্প বাজারে রপ্তানি হয় এবং ভালো দাম পায়।</div></div></div>
+</div>
+</div>
+<!-- ══════════════════════════════════════════════
+     5. PLASTIC WASTE
+══════════════════════════════════════════════ -->
+<div class="msection" id="mat-plastic">
+<div class="mat-hero mh-plastic">
+<span class="mat-hero-emoji">♻️</span>
+<h2>প্লাস্টিক বর্জ্য পুনর্ব্যবহার</h2>
+<p>ভারত প্রতি বছর ৩৪ লক্ষ টন প্লাস্টিক বর্জ্য উৎপন্ন করে — এবং মাত্র ৬০% পুনর্ব্যবহার হয়। বাকি বর্জ্য একটি বিশাল ব্যবসায়িক সুযোগ। ভারতের একবার ব্যবহারযোগ্য প্লাস্টিক নিষেধাজ্ঞা এবং বর্ধিত উৎপাদক দায়িত্ব (EPR) বিধির কারণে, প্লাস্টিক বর্জ্য সংগ্রাহক ও পুনর্ব্যবহারকারীদের চাহিদা ব্যাপক।</p>
+<div class="mat-hero-tags">
+<span class="mht">⚖️ EPR নীতি চাহিদা তৈরি করে</span><span class="mht">💰 নিশ্চিত ক্রেতা</span>
+<span class="mht">🏗️ নির্মাণ কাজে ব্যবহার</span><span class="mht">🌍 বিশ্ব সংকট = সুযোগ</span>
+</div>
+</div>
+<div class="ab ab-orange"><i class="ti ti-alert-circle"></i><span>গুরুত্বপূর্ণ: সবসময় নিরাপদ, অ-বিষাক্ত প্লাস্টিক (PET, HDPE, PP) নিয়ে কাজ করুন। প্লাস্টিক পোড়ানো এড়িয়ে চলুন — এটি বেআইনি ও ক্ষতিকর। শুধুমাত্র যান্ত্রিক পুনর্ব্যবহার করুন।</span></div>
+<div class="pg">
+<div class="pc"><span class="pc-icon">🧵</span><div class="pc-name">পুনর্ব্যবহৃত পিইটি সুতা</div><div class="pc-val">₹৪০–৮০/কেজি</div></div>
+<div class="pc"><span class="pc-icon">🧱</span><div class="pc-name">ইকো প্লাস্টিক ইট</div><div class="pc-val">নির্মাণ কাজ</div></div>
+<div class="pc"><span class="pc-icon">🪑</span><div class="pc-name">পুনর্ব্যবহৃত আসবাবপত্র</div><div class="pc-val">ক্রমবর্ধমান বাজার</div></div>
+<div class="pc"><span class="pc-icon">🛣️</span><div class="pc-name">রাস্তা নির্মাণ মিশ্রণ</div><div class="pc-val">সরকারি ক্রয়</div></div>
+<div class="pc"><span class="pc-icon">📦</span><div class="pc-name">পুনর্ব্যবহৃত প্যাকেজিং</div><div class="pc-val">EPR চাহিদা</div></div>
+<div class="pc"><span class="pc-icon">🌱</span><div class="pc-name">প্লাস্টিক কাঠ (লাম্বার)</div><div class="pc-val">কাঠের বিকল্প</div></div>
+</div>
+<div class="sec-head"><i class="ti ti-coin"></i>আয়ের সুযোগ <span class="sh-line"></span></div>
+<div class="income-ladder">
+<div class="il-item"><div class="il-num ln1">1</div><div><div class="il-title">বর্জ্য প্লাস্টিক বাছাইকারী</div><div class="il-earn">₹৬,০০০–১৪,০০০/মাস</div><div class="il-desc">PET বোতল, HDPE কন্টেইনার, PP জিনিসপত্র সংগ্রহ ও বাছাই করুন। পুনর্ব্যবহার ইউনিটে ₹১৫–৩৫/কেজি দরে বিক্রি করুন। একজন দক্ষ বাছাইকারী ৬ ঘণ্টায় ১০০–২০০ কেজি সংগ্রহ করতে পারেন।</div></div></div>
+<div class="il-item"><div class="il-num ln2">2</div><div><div class="il-title">প্লাস্টিক শ্রেডার / পেলেট প্রস্তুতকারক</div><div class="il-earn">₹২০,০০০–৫০,০০০/মাস</div><div class="il-desc">একটি শ্রেডার + পেলেটাইজার (₹১.৫–৩ লক্ষ) কিনুন। বাছাই করা প্লাস্টিককে পেলেটে রূপান্তরিত করে প্রস্তুতকারকদের কাছে বিক্রি করুন। ব্র্যান্ডগুলির সাথে EPR কমপ্লায়েন্স অংশীদার হিসেবে নিবন্ধন করুন।</div></div></div>
+<div class="il-item"><div class="il-num ln3">3</div><div><div class="il-title">ইকো-ব্রিক / টাইল প্রস্তুতকারক</div><div class="il-earn">₹২৫,০০০–৬০,০০০/মাস</div><div class="il-desc">মিশ্র নিম্নমানের প্লাস্টিককে নির্মাণ কাজের জন্য ইন্টারলকিং ইকো-ব্রিকে রূপান্তরিত করুন। স্বচ্ছ ভারতের আওতায় ভারতের পৌরসংস্থাগুলি সক্রিয়ভাবে এগুলি কিনছে।</div></div></div>
+</div>
+</div>
+<!-- ══════════════════════════════════════════════
+     6. SAWDUST / WOOD WASTE
+══════════════════════════════════════════════ -->
+<div class="msection" id="mat-sawdust">
+<div class="mat-hero mh-sawdust">
+<span class="mat-hero-emoji">🪵</span>
+<h2>করাত-গুঁড়া ও কাঠ বর্জ্য</h2>
+<p>প্রতিটি করাতকল, আসবাব কর্মশালা এবং ছুতোরের ইউনিট প্রচুর পরিমাণে করাত-গুঁড়া, কাঠের ছাল ও অতিরিক্ত কাঠ উৎপন্ন করে — যা সাধারণত পুড়িয়ে ফেলা হয় বা ফেলে দেওয়া হয়। এই বর্জ্য একসাথে জ্বালানি, নির্মাণ সামগ্রী, শিল্পের মাধ্যম এবং কৃষি উপকরণ।</p>
+<div class="mat-hero-tags">
+<span class="mht">🔥 জৈববস্তু শক্তি</span><span class="mht">🏗️ নির্মাণ কাজে ব্যবহার</span>
+<span class="mht">🌱 কৃষি ব্যবহার</span><span class="mht">🎨 কারুশিল্পের সম্ভাবনা</span>
+</div>
+</div>
+<div class="pg">
+<div class="pc"><span class="pc-icon">🧱</span><div class="pc-name">কাঠের ব্রিকেট / পেলেট</div><div class="pc-val">₹৮–১৫/কেজি</div></div>
+<div class="pc"><span class="pc-icon">🏗️</span><div class="pc-name">পার্টিকেল বোর্ড / এমডিএফ</div><div class="pc-val">শিল্প ব্যবহার</div></div>
+<div class="pc"><span class="pc-icon">🍄</span><div class="pc-name">মাশরুম চাষের মাধ্যম</div><div class="pc-val">₹৮০–২০০/কেজি</div></div>
+<div class="pc"><span class="pc-icon">🪨</span><div class="pc-name">কাঠ-সিমেন্ট ব্লক</div><div class="pc-val">নির্মাণ কাজ</div></div>
+<div class="pc"><span class="pc-icon">🌿</span><div class="pc-name">কম্পোস্ট / মাটি সংশোধক</div><div class="pc-val">জৈব খামার</div></div>
+<div class="pc"><span class="pc-icon">🎨</span><div class="pc-name">কাঠের শিল্প / কারুকাজ</div><div class="pc-val">হস্তশিল্প রপ্তানি</div></div>
+<div class="pc"><span class="pc-icon">🐔</span><div class="pc-name">পোল্ট্রি বিছানা</div><div class="pc-val">গবাদি পশু ব্যবহার</div></div>
+<div class="pc"><span class="pc-icon">🔥</span><div class="pc-name">জৈববস্তু জ্বালানি</div><div class="pc-val">শিল্পগুলো কেনে</div></div>
+</div>
+<div class="sec-head"><i class="ti ti-star"></i>বিশেষ সুযোগ: মাশরুম চাষ <span class="sh-line"></span></div>
+<div class="ab ab-green"><i class="ti ti-mushroom"></i><span><strong>করাত-গুঁড়ার উপর জন্মানো ওয়েস্টার মাশরুম</strong> ভারতের দ্রুততম বর্ধনশীল খাদ্য ব্যবসাগুলির একটি। ₹১৫,০০০ বিনিয়োগ সহ ১০×১০ ফুট একটি ঘর মাসে ৮০–১২০ কেজি মাশরুম উৎপাদন করতে পারে, যা থেকে আয় হয় ₹১২,০০০–২৪,০০০। ওড়িশা ও পশ্চিমবঙ্গের মহিলা স্বনির্ভর গোষ্ঠীগুলি মাশরুম চাষ ইউনিট থেকে ₹১৫,০০০–৩০,০০০/মাস আয় করছে।</span></div>
+<div class="sec-head"><i class="ti ti-coin"></i>আয়ের সুযোগ <span class="sh-line"></span></div>
+<div class="income-ladder">
+<div class="il-item"><div class="il-num ln1">1</div><div><div class="il-title">করাত-গুঁড়া সংগ্রাহক / সরবরাহকারী</div><div class="il-earn">₹৪,০০০–৯,০০০/মাস</div><div class="il-desc">ছুতোরের দোকান, করাতকল, আসবাব কারখানা থেকে সংগ্রহ করুন — সাধারণত বিনামূল্যে। ব্যাগে ভরে, ওজন করে মাশরুম চাষি, ব্রিকেট প্রস্তুতকারক, খামারে বিক্রি করুন।</div></div></div>
+<div class="il-item"><div class="il-num ln2">2</div><div><div class="il-title">মাশরুম চাষি</div><div class="il-earn">₹১২,০০০–৩০,০০০/মাস</div><div class="il-desc">ওয়েস্টার/বাটন মাশরুমের জন্য করাত-গুঁড়াকে চাষের মাধ্যম হিসেবে ব্যবহার করুন। কম জায়গা লাগে (একটি ঘরেই শুরু করা যায়)। ICAR/KVK কেন্দ্র থেকে বিনামূল্যে প্রশিক্ষণ পাওয়া যায়।</div></div></div>
+<div class="il-item"><div class="il-num ln3">3</div><div><div class="il-title">জৈববস্তু ব্রিকেট প্রস্তুতকারক</div><div class="il-earn">₹১৮,০০০–৪৫,০০০/মাস</div><div class="il-desc">ব্রিকেট প্রেস (₹৫০,০০০–১ লক্ষ) ব্যবহার করে করাত-গুঁড়া থেকে ব্রিকেট তৈরি করুন। কয়লার বিকল্প হিসেবে বয়লার শিল্প, হোটেল, ইটভাটায় বিক্রি করুন।</div></div></div>
+</div>
+</div>
+<!-- ══════════════════════════════════════════════
+     7. RICE HUSK
+══════════════════════════════════════════════ -->
+<div class="msection" id="mat-husk">
+<div class="mat-hero mh-husk">
+<span class="mat-hero-emoji">🌾</span>
+<h2>ধানের তুষ (চালের কুঁড়া)</h2>
+<p>পশ্চিমবঙ্গ ভারতের বৃহত্তম ধান উৎপাদক রাজ্য। ধানের তুষ — মিলিং-এর সময় সরানো বাইরের খোসা — ধানের ওজনের ২০% এবং এই অঞ্চলে ব্যাপকভাবে প্রচুর পরিমাণে পাওয়া যায়। এতে সিলিকা থাকে (সেমিকন্ডাক্টরে ব্যবহৃত হয়!), উচ্চ ক্যালরিফিক মান রয়েছে এবং এটি একটি চমৎকার ইনসুলেশন উপাদান।</p>
+<div class="mat-hero-tags">
+<span class="mht">🏆 পশ্চিমবঙ্গ #১ ধান উৎপাদক</span><span class="mht">💡 সিলিকন রয়েছে</span>
+<span class="mht">🔋 জৈববস্তু শক্তি</span><span class="mht">🌱 মাটি উন্নয়নকারী</span>
+</div>
+</div>
+<div class="ab ab-amber"><i class="ti ti-bulb"></i><span>ভারত প্রতি বছর <strong>২.৪ কোটি টন</strong> ধানের তুষ উৎপন্ন করে। শুধু পশ্চিমবঙ্গ ৪০ লক্ষ টনেরও বেশি উৎপাদন করে। ধানের তুষের ছাই (RHA)-এ ৯০%+ সিলিকা থাকে — যা বিশ্বব্যাপী সিমেন্ট, সিলিকন ও ইলেকট্রনিক্স শিল্পে মূল্যবান।</span></div>
+<div class="sr">
+<div class="sc"><div class="sc-num">২.৪ কোটি টন</div><div class="sc-lbl">ভারতে বার্ষিক ধানের তুষ উৎপাদন</div></div>
+<div class="sc"><div class="sc-num">৯০%</div><div class="sc-lbl">ধানের তুষের ছাইয়ে সিলিকার পরিমাণ</div></div>
+<div class="sc"><div class="sc-num">₹২–৮/কেজি</div><div class="sc-lbl">ধানের তুষের দাম (কাঁচা)</div></div>
+<div class="sc"><div class="sc-num">₹৪০–১২০/কেজি</div><div class="sc-lbl">প্রক্রিয়াজাত তুষ পণ্যের দাম</div></div>
+</div>
+<div class="pg">
+<div class="pc"><span class="pc-icon">🏗️</span><div class="pc-name">ধানের তুষের বোর্ড</div><div class="pc-val">নির্মাণ সামগ্রী</div></div>
+<div class="pc"><span class="pc-icon">🔥</span><div class="pc-name">জৈববস্তু জ্বালানি</div><div class="pc-val">₹৩–৮/কেজি</div></div>
+<div class="pc"><span class="pc-icon">⚗️</span><div class="pc-name">ধানের তুষের ছাই (RHA)</div><div class="pc-val">₹১৫–৪০/কেজি</div></div>
+<div class="pc"><span class="pc-icon">🧱</span><div class="pc-name">RHA সিমেন্ট সংযোজক</div><div class="pc-val">বাল্ক শিল্প ব্যবহার</div></div>
+<div class="pc"><span class="pc-icon">🌱</span><div class="pc-name">মাটি সংশোধক</div><div class="pc-val">জৈব চাষ</div></div>
+<div class="pc"><span class="pc-icon">🍄</span><div class="pc-name">মাশরুম চাষের মাধ্যম</div><div class="pc-val">₹১২–২৫/কেজি</div></div>
+<div class="pc"><span class="pc-icon">💡</span><div class="pc-name">ইলেকট্রনিক্সের জন্য সিলিকা</div><div class="pc-val">উচ্চ রপ্তানি মূল্য</div></div>
+<div class="pc"><span class="pc-icon">🐟</span><div class="pc-name">পুকুরের জল পরিশোধক</div><div class="pc-val">মৎস্য চাষে ব্যবহার</div></div>
+</div>
+<div class="sec-head"><i class="ti ti-coin"></i>আয়ের সুযোগ <span class="sh-line"></span></div>
+<div class="income-ladder">
+<div class="il-item"><div class="il-num ln1">1</div><div><div class="il-title">রাইস মিল তুষ সংগ্রাহক</div><div class="il-earn">₹৬,০০০–১২,০০০/মাস</div><div class="il-desc">তুষ সরবরাহের জন্য রাইস মিলের সাথে আলোচনা করুন। ব্যাগে ভরে ইটভাটা (জ্বালানি), খামার (মাটি উন্নয়ন) এবং তুষ বোর্ড প্রস্তুতকারকদের কাছে পুনরায় বিক্রি করুন। লজিস্টিকসই মূল দক্ষতা।</div></div></div>
+<div class="il-item"><div class="il-num ln2">2</div><div><div class="il-title">RHA (ধানের তুষের ছাই) উৎপাদক</div><div class="il-earn">₹১৫,০০০–৩৫,০০০/মাস</div><div class="il-desc">ভাটিতে নিয়ন্ত্রিতভাবে ধানের তুষ পুড়িয়ে ৯০% সিলিকাযুক্ত ছাই তৈরি করুন। সিমেন্ট প্ল্যান্ট, রিফ্র্যাক্টরি কোম্পানি এবং সিলিকা সরবরাহকারীদের কাছে ₹১৫–৪০/কেজি দরে বিক্রি করুন।</div></div></div>
+<div class="il-item"><div class="il-num ln3">3</div><div><div class="il-title">তুষ বোর্ড / ইনসুলেশন প্রস্তুতকারক</div><div class="il-earn">₹২৫,০০০–৬০,০০০/মাস</div><div class="il-desc">বাইন্ডারের সাথে ধানের তুষ মিশিয়ে কম খরচের নির্মাণ বোর্ড ও সিলিং টাইলস তৈরি করুন। নির্মাণ খাতে ব্যাপক চাহিদা। PMEGP তহবিল উপলব্ধ।</div></div></div>
+<div class="il-item"><div class="il-num ln4">4</div><div><div class="il-title">ন্যানো-সিলিকা রপ্তানিকারক</div><div class="il-earn">₹২–২০ লক্ষ/মাস</div><div class="il-desc">RHA-কে ন্যানো-সিলিকা পাউডারে প্রক্রিয়াজাত করুন — যা বিশ্বব্যাপী ইলেকট্রনিক্স, রাবার ও নির্মাণ শিল্পে ব্যবহৃত হয়। জাপান, জার্মানি, মার্কিন যুক্তরাষ্ট্রে রপ্তানি করুন। ল্যাব-গ্রেড প্রক্রিয়াকরণ ইউনিট প্রয়োজন।</div></div></div>
+</div>
+</div>
+<!-- ══════════════════════════════════════════════
+     8. EXPORT GUIDE (ALL MATERIALS)
+══════════════════════════════════════════════ -->
+<div class="msection" id="mat-export">
+<div class="ab ab-sky"><i class="ti ti-world"></i><span>এই গাইডের সবক'টি ৭টি উপাদানেরই আন্তর্জাতিক রপ্তানি বাজার প্রতিষ্ঠিত রয়েছে। ভারতের কাঁচামালের প্রাপ্যতা, কম শ্রম খরচ এবং দক্ষ কারুশিল্প ঐতিহ্যে প্রাকৃতিক সুবিধা রয়েছে। <strong>বিশ্ব বাজার আপনার জন্য অপেক্ষা করছে।</strong></span></div>
+<div class="sec-head"><i class="ti ti-chart-bar"></i>উপাদান অনুযায়ী শীর্ষ রপ্তানি বাজার <span class="sh-line"></span></div>
+<div class="cg">
+<div class="card ct3">
+<div class="card-title"><i class="ti ti-world"></i>কয়ার পণ্য</div>
+<span class="badge bs">শীর্ষ ক্রেতা</span>
+<div class="mkt-item"><div class="mkt-label"><span class="mkt-country"><span class="mkt-flag">🇺🇸</span>মার্কিন যুক্তরাষ্ট্র</span><span class="mkt-pct">৩২%</span></div><div class="mkt-bar-bg"><div class="mkt-bar-fill mb-green" data-w="90%"></div></div></div>
+<div class="mkt-item"><div class="mkt-label"><span class="mkt-country"><span class="mkt-flag">🇩🇪</span>জার্মানি</span><span class="mkt-pct">১৮%</span></div><div class="mkt-bar-bg"><div class="mkt-bar-fill mb-amber" data-w="55%"></div></div></div>
+<div class="mkt-item"><div class="mkt-label"><span class="mkt-country"><span class="mkt-flag">🇳🇱</span>নেদারল্যান্ডস</span><span class="mkt-pct">১২%</span></div><div class="mkt-bar-bg"><div class="mkt-bar-fill mb-sky" data-w="40%"></div></div></div>
+</div>
+<div class="card ct1">
+<div class="card-title"><i class="ti ti-leaf"></i>কলাগাছের তন্তু ও পাট</div>
+<span class="badge bl">দ্রুত বৃদ্ধি পাচ্ছে</span>
+<div class="mkt-item"><div class="mkt-label"><span class="mkt-country"><span class="mkt-flag">🇯🇵</span>জাপান</span><span class="mkt-pct">২৮%</span></div><div class="mkt-bar-bg"><div class="mkt-bar-fill mb-green" data-w="85%"></div></div></div>
+<div class="mkt-item"><div class="mkt-label"><span class="mkt-country"><span class="mkt-flag">🇫🇷</span>ফ্রান্স</span><span class="mkt-pct">১৫%</span></div><div class="mkt-bar-bg"><div class="mkt-bar-fill mb-amber" data-w="48%"></div></div></div>
+<div class="mkt-item"><div class="mkt-label"><span class="mkt-country"><span class="mkt-flag">🇬🇧</span>যুক্তরাজ্য</span><span class="mkt-pct">১৩%</span></div><div class="mkt-bar-bg"><div class="mkt-bar-fill mb-sky" data-w="40%"></div></div></div>
+</div>
+<div class="card ct7">
+<div class="card-title"><i class="ti ti-grain"></i>ধানের তুষ / RHA</div>
+<span class="badge bv">উচ্চ মূল্য</span>
+<div class="mkt-item"><div class="mkt-label"><span class="mkt-country"><span class="mkt-flag">🇨🇳</span>চীন</span><span class="mkt-pct">৩৫%</span></div><div class="mkt-bar-bg"><div class="mkt-bar-fill mb-pink" data-w="92%"></div></div></div>
+<div class="mkt-item"><div class="mkt-label"><span class="mkt-country"><span class="mkt-flag">🇰🇷</span>দক্ষিণ কোরিয়া</span><span class="mkt-pct">২০%</span></div><div class="mkt-bar-bg"><div class="mkt-bar-fill mb-orange" data-w="60%"></div></div></div>
+<div class="mkt-item"><div class="mkt-label"><span class="mkt-country"><span class="mkt-flag">🇩🇪</span>জার্মানি</span><span class="mkt-pct">১৪%</span></div><div class="mkt-bar-bg"><div class="mkt-bar-fill mb-amber" data-w="44%"></div></div></div>
+</div>
+</div>
+<div class="sec-head"><i class="ti ti-certificate"></i>রপ্তানি কীভাবে শুরু করবেন <span class="sh-line"></span></div>
+<div class="steps">
+<div class="step"><div><div class="step-t">IEC কোড নিন (বিনামূল্যে — ২ দিন)</div><div class="step-d">dgft.gov.in-এ নিবন্ধন করুন। IEC (আমদানিকারক রপ্তানিকারক কোড) বাধ্যতামূলক। আধার + প্যান + ব্যাংক বিবরণ দিয়ে অনলাইনে আবেদন করুন। ২০২১ থেকে কোনো ফি লাগে না।</div></div></div>
+<div class="step"><div><div class="step-t">MSME (উদ্যম)-এ নিবন্ধন করুন</div><div class="step-d">udyamregistration.gov.in-এ বিনামূল্যে নিবন্ধন। এটি আপনাকে রপ্তানি প্রচার প্রকল্প, ক্রেডিট গ্যারান্টি তহবিল এবং সরকারি দরপত্রের সুযোগ দেয়।</div></div></div>
+<div class="step"><div><div class="step-t">গুণমান প্রত্যয়ন</div><div class="step-d">প্রাকৃতিক তন্তু পণ্যের জন্য: GOTS (জৈব বস্ত্র) বা OEKO-TEX সার্টিফিকেশন প্রিমিয়াম ইউরোপীয় বাজার খুলে দেয়। খাদ্য-সংশ্লিষ্ট পণ্যের জন্য: FSSAI + ISO 22000।</div></div></div>
+<div class="step"><div><div class="step-t">B2B প্ল্যাটফর্মে তালিকাভুক্ত করুন</div><div class="step-d">আলিবাবা, ইন্ডিয়ামার্ট এক্সপোর্ট এবং EC21-এ যাচাইকৃত বিক্রেতা প্রোফাইল তৈরি করুন। মাত্রা, ওজন, সার্টিফিকেশন এবং MOQ (ন্যূনতম অর্ডার পরিমাণ) সহ পেশাদার পণ্যের ছবি আপলোড করুন।</div></div></div>
+<div class="step"><div><div class="step-t">ক্রয় এজেন্টদের সাথে যোগাযোগ করুন</div><div class="step-d">FIEO (ভারতীয় রপ্তানি সংস্থা ফেডারেশন)-এর একটি ক্রেতা-বিক্রেতা মিলন পরিষেবা রয়েছে। APEDA-র পোর্টাল আপনাকে আন্তর্জাতিক খাদ্য/কৃষি ক্রেতাদের সাথে সংযুক্ত করে। দুটোই ব্যবহার করা বিনামূল্যে।</div></div></div>
+<div class="step"><div><div class="step-t">রপ্তানি প্রণোদনার জন্য আবেদন করুন</div><div class="step-d">RoDTEP প্রকল্প: রপ্তানিতে প্রোথিত করের ফেরত দেয়। MEIS/RODTEP FOB মূল্যের ২–৫% ক্রেডিট হিসেবে দেয়। এই সুবিধাগুলো দাবি করতে DGFT পোর্টালে নিবন্ধন করুন।</div></div></div>
+</div>
+<div class="sec-head"><i class="ti ti-clipboard-list"></i>রপ্তানি প্রস্তুতির চেকলিস্ট <span class="sh-line"></span></div>
+<div class="prog-wrap">
+<div class="prog-label"><span id="exp-prog-lbl">১০টির মধ্যে ০টি ধাপ সম্পন্ন</span><span id="exp-prog-pct">0%</span></div>
+<div class="prog-bg"><div class="prog-fill" id="exp-prog-fill" style="width:0%"></div></div>
+</div>
+<div class="card ct1" id="exp-checklist"></div>
+</div>
+<!-- ══════════════════════════════════════════════
+     9. LEARNING RESOURCES
+══════════════════════════════════════════════ -->
+<div class="msection" id="mat-learn">
+<div class="ab ab-sky"><i class="ti ti-school"></i><span>এই গাইডে উল্লিখিত প্রতিটি দক্ষতা <strong>বিনামূল্যে বা খুব কম খরচে</strong> শেখা যায়। ইন্টারনেট, সরকারি পোর্টাল এবং স্থানীয় প্রশিক্ষণ কেন্দ্রগুলিতে প্রচুর সম্পদ রয়েছে। <strong>জ্ঞানই প্রথম বিনিয়োগ।</strong></span></div>
+<div class="sec-head"><i class="ti ti-device-laptop"></i>বিনামূল্যে অনলাইন শিক্ষা <span class="sh-line"></span></div>
+<div class="cg">
+<div class="card ct3">
+<div class="card-title"><i class="ti ti-brand-youtube"></i>ইউটিউব চ্যানেল (হিন্দি/বাংলা)</div>
+<span class="badge bs">বিনামূল্যে</span>
+<div class="tip">ICAR অফিসিয়াল ইউটিউব — মাটি, তুষ, কম্পোস্টিং, মাশরুম নিয়ে হিন্দিতে ভিডিও</div>
+<div class="tip">KVIC ইন্ডিয়া — কয়ার, পাট, কাগজ, গ্রাম শিল্পের প্রশিক্ষণ ভিডিও</div>
+<div class="tip">কৃষি জাগরণ — কৃষি বর্জ্য রূপান্তর, উদ্যোক্তা কাহিনি</div>
+<div class="tip">স্কিল ইন্ডিয়া — এখানে উল্লিখিত সব ৭টি উপাদানের বৃত্তিমূলক প্রশিক্ষণ ভিডিও</div>
+<div class="tip">"coir making tutorial", "jute bag making" খুঁজুন — শত শত বিনামূল্যের ধাপে ধাপে ভিডিও</div>
+</div>
+<div class="card ct1">
+<div class="card-title"><i class="ti ti-world-www"></i>সরকারি পোর্টাল</div>
+<span class="badge bl">সরকারি ও বিনামূল্যে</span>
+<div class="tip">skillindia.gov.in — ৫০০+ বৃত্তিমূলক কোর্স, অনেকগুলোতে চাকরির ব্যবস্থাও রয়েছে</div>
+<div class="tip">pmkvyofficial.org — হস্তশিল্প সহ ৩০০+ পেশায় PMKVY বিনামূল্যে দক্ষতা সার্টিফিকেশন</div>
+<div class="tip">diksha.gov.in — উদ্যোক্তাদের জন্য NCERT-মানের ডিজিটাল শিক্ষা</div>
+<div class="tip">swayam.gov.in — সার্টিফিকেট সহ বিনামূল্যে বিশ্ববিদ্যালয়-স্তরের কোর্স</div>
+<div class="tip">msme.gov.in — ব্যবসা ও উদ্যোক্তা প্রশিক্ষণ মডিউল</div>
+</div>
+<div class="card ct5">
+<div class="card-title"><i class="ti ti-building"></i>প্রশিক্ষণ কেন্দ্র (বিনামূল্যে/ভর্তুকিযুক্ত)</div>
+<span class="badge ba">আপনার কাছাকাছি</span>
+<div class="tip">কয়ার বোর্ড ইন্ডিয়া কেন্দ্র — বিনামূল্যে ৩ মাসের কয়ার তৈরি ও ডিজাইন প্রশিক্ষণ</div>
+<div class="tip">KVK (কৃষি বিজ্ঞান কেন্দ্র) — প্রতিটি জেলায় একটি আছে; বিনামূল্যে মাশরুম, কম্পোস্টিং, বর্জ্য ব্যবস্থাপনা প্রশিক্ষণ</div>
+<div class="tip">ITI (ইন্ডাস্ট্রিয়াল ট্রেনিং ইনস্টিটিউট) — উৎপাদন, কাঠের কাজ, প্লাস্টিক প্রক্রিয়াকরণে ৬–২৪ মাসের কোর্স</div>
+<div class="tip">RSETI (গ্রামীণ স্বনির্ভর প্রশিক্ষণ ইনস্টিটিউট) — ব্যাংক-সংযুক্ত, বিনামূল্যে ১৪–২১ দিনের উদ্যোক্তা প্রশিক্ষণ</div>
+<div class="tip">NIMSME হায়দ্রাবাদ — গ্রামীণ উদ্যোক্তাদের জন্য অনলাইন ও আবাসিক কোর্স</div>
+</div>
+<div class="card ct6">
+<div class="card-title"><i class="ti ti-certificate"></i>যেসব সার্টিফিকেশন লক্ষ্য করবেন</div>
+<span class="badge bt">কর্মজীবনের উন্নতি</span>
+<div class="tip">NSQF লেভেল ৩–৫ সার্টিফিকেট (স্কিল ইন্ডিয়া) — নিয়োগকর্তা ও ব্যাংকের ঋণের জন্য স্বীকৃত</div>
+<div class="tip">PMKVY সার্টিফিকেট — সরকার-স্বীকৃত, বিনামূল্যে প্রশিক্ষণ + অনেক পেশার জন্য ₹৮,০০০ উপবৃত্তি</div>
+<div class="tip">ISO সচেতনতা সার্টিফিকেট (BIS) — বড় ক্রেতাদের কাছে যাওয়ার সময় বিশ্বাসযোগ্যতা বাড়ায়</div>
+<div class="tip">FSSAI FoSCoS সার্টিফিকেট — খাদ্য-সংশ্লিষ্ট যেকোনো বর্জ্য পণ্যের ব্যবসার জন্য অত্যাবশ্যক</div>
+<div class="tip">উদ্যম MSME নিবন্ধন — সার্টিফিকেট নয় কিন্তু প্রতিটি সরকারি সুবিধার দরজা খোলে</div>
+</div>
+</div>
+<div class="sec-head"><i class="ti ti-map-pin"></i>পশ্চিমবঙ্গ / বিষ্ণুপুর অঞ্চলের যোগাযোগ কেন্দ্র <span class="sh-line"></span></div>
+<table class="stbl">
+<thead><tr><th>সংস্থা</th><th>তারা কীভাবে সাহায্য করে</th><th>যোগাযোগ</th></tr></thead>
+<tbody>
+<tr><td><strong>KVK বাঁকুড়া</strong></td><td>মাশরুম, কম্পোস্টিং, ধানের তুষ ব্যবহারে বিনামূল্যে প্রশিক্ষণ</td><td>বিষ্ণুপুর KVK কেন্দ্রে যান</td></tr>
+<tr><td><strong>WBSIDC</strong></td><td>পশ্চিমবঙ্গ ক্ষুদ্র শিল্প উন্নয়ন — যন্ত্রপাতি ঋণ, ক্লাস্টার সহায়তা</td><td>wbsidc.in</td></tr>
+<tr><td><strong>জেলা শিল্প কেন্দ্র, বাঁকুড়া</strong></td><td>PMEGP আবেদন, EDP প্রশিক্ষণ, MSME নিবন্ধনে সহায়তা</td><td>বাঁকুড়া DIC অফিস</td></tr>
+<tr><td><strong>RSETI বাঁকুড়া</strong></td><td>ব্যাংক-সংযুক্ত বিনামূল্যে ১৪–২১ দিনের উদ্যোক্তা দক্ষতা প্রশিক্ষণ</td><td>নিকটতম SBI গ্রামীণ শাখা</td></tr>
+<tr><td><strong>কয়ার বোর্ড আঞ্চলিক অফিস</strong></td><td>কয়ার যন্ত্রপাতির ভর্তুকি, ডিজাইন প্রশিক্ষণ</td><td>কয়ার বোর্ড কলকাতা অফিস</td></tr>
+<tr><td><strong>NABARD বাঁকুড়া</strong></td><td>স্বনির্ভর গোষ্ঠী ঋণ, FPO গঠন, প্রযুক্তিগত পরামর্শ</td><td>nabard.org</td></tr>
+</tbody>
+</table>
+</div>
+<!-- ══════════════════════════════════════════════
+     10. MINDSET — MOTIVATIONAL
+══════════════════════════════════════════════ -->
+<div class="msection" id="mat-motiv">
+<div class="motiv">
+<div class="motiv-title">🎯 শর্টকাটের মিথ — এটি প্রথমে পড়ুন</div>
+<p>প্রতি সপ্তাহে, হাজার হাজার তরুণ "ভাইরাল হওয়া" বা "রিলস থেকে ধনী হওয়ার" ধারণার পিছনে ছুটে সম্ভাবনাময় বৃত্তিমূলক সুযোগ ছেড়ে দেয়। সোশ্যাল মিডিয়া আপনাকে সাফল্যের <strong>হাইলাইট রিল</strong> দেখায় — তার আগের ৩ বছরের ব্যর্থতা দেখায় না।</p>
+<p>সত্যিটা সহজ: <strong>যারা রিলস থেকে টাকা আয় করছেন তারা বছরের পর বছর তাদের শিল্প নিয়ে অধ্যয়ন করেছেন, প্রকৃত দক্ষতা গড়ে তুলেছেন এবং ১২ ঘণ্টা কাজ করেছেন</strong>। তাদের সাফল্য তাৎক্ষণিক মনে হয় — কিন্তু তা ছিল না।</p>
+<p>এদিকে, এই গাইডের বর্জ্য উপাদানগুলো আপনার চারপাশের প্রতিটি বাজার, প্রতিটি খামার, প্রতিটি করাতকলে বিনামূল্যে পড়ে আছে। বিশ্ব বাজার এই প্রক্রিয়াজাত উপাদানগুলোর জন্য হাজার হাজার কোটি টাকা দিচ্ছে। <strong>সুযোগ আপনার ফোনে নেই — এটি আপনার দরজার বাইরে।</strong></p>
+</div>
+<div class="sec-head"><i class="ti ti-flame"></i>ভবিষ্যৎ গড়ে তোলার সত্যতা <span class="sh-line"></span></div>
+<div class="cg">
+<div class="card ct2">
+<div class="card-title"><i class="ti ti-clock"></i>আসলে যেখানে সময় লাগে</div>
+<span class="badge ba">সৎ বাস্তবতা</span>
+<div class="tip">একটি কারুশিল্প শেখা: বিক্রয়যোগ্য মান তৈরি করতে ৩–৬ মাসের ধারাবাহিক দৈনিক অনুশীলন লাগে</div>
+<div class="tip">গ্রাহক ভিত্তি তৈরি করা: প্রথম ৬ মাস সবচেয়ে কঠিন; ১ বছর পর অর্ডার নিয়মিত হয়ে যায়</div>
+<div class="tip">ব্যাংক ঋণ পাওয়া: সঠিক নথিপত্র সহ ২–৪ মাস লাগে; অপেক্ষার প্রতিটি দিন সার্থক</div>
+<div class="tip">প্রথম রপ্তানি অর্ডার: সাধারণত শুরু করার ৬–১২ মাস পর আসে; ধৈর্যই একটি অতিমানবীয় গুণ</div>
+<div class="tip">₹২০,০০০+ স্থিতিশীল মাসিক আয়: মনোযোগী পরিশ্রমের ১২–১৮ মাসের মধ্যে বাস্তবসম্মত</div>
+</div>
+<div class="card ct9">
+<div class="card-title"><i class="ti ti-bolt"></i>আগামীকাল আপনি যা করতে পারেন</div>
+<span class="badge bl">এখনই শুরু করুন</span>
+<div class="tip">আপনার নিকটতম মাছের বাজার, করাতকল, রাইস মিল বা নারকেল বিক্রেতার কাছে যান — বর্জ্য সম্পর্কে জিজ্ঞাসা করুন</div>
+<div class="tip">আজই ইউটিউবে যান এবং এই গাইডের যেকোনো একটি উপাদান নিয়ে ৩টি ভিডিও দেখুন</div>
+<div class="tip">উদ্যম পোর্টালে বিনামূল্যে নিবন্ধন করুন — ১০ মিনিট, শূন্য খরচ, প্রতিটি সরকারি দরজা খুলে দেয়</div>
+<div class="tip">আপনার স্থানীয় KVK কেন্দ্র খুঁজুন এবং জিজ্ঞাসা করুন পরের মাসে কোন বিনামূল্যের প্রশিক্ষণ শুরু হচ্ছে</div>
+<div class="tip">একটি স্বনির্ভর গোষ্ঠীতে যোগ দিন বা ৫ জন বন্ধু নিয়ে একটি দল গঠন করুন — একসাথে আপনারা বড় ঋণ পেতে পারেন</div>
+</div>
+</div>
+<div class="sec-head"><i class="ti ti-users"></i>আপনার কর্মসংস্থান কেন আমাদের সবার জন্য গুরুত্বপূর্ণ <span class="sh-line"></span></div>
+<div class="motiv" style="background:linear-gradient(135deg,#001a1a,#002a2a);border-color:rgba(0,188,212,0.25)">
+<div class="motiv-title" style="color:var(--sky)">🌍 কর্মসংস্থানপ্রাপ্ত মানুষ উন্নত সমাজ গড়ে</div>
+<p><strong>অপরাধ আসে হতাশা থেকে, চরিত্র থেকে নয়।</strong> একজন তরুণের যখন দক্ষতা, আয় এবং উদ্দেশ্যের অনুভূতি থাকে — তখন অপরাধের মাধ্যমে শর্টকাট নেওয়ার প্রলোভন অদৃশ্য হয়ে যায়। যে কেউ একটি বৈধ জীবিকা গড়ে তোলেন, তিনি তার সম্পূর্ণ প্রতিবেশীকে আরও নিরাপদ করে তোলেন।</p>
+<p>আপনি যখন একটি বর্জ্য-প্রক্রিয়াকরণ ইউনিট শুরু করেন, তখন আপনি শুধু টাকা আয় করেন না। আপনি <strong>আপনার প্রতিবেশীদের কর্মসংস্থান দেন</strong>, আপনার শহরের দূষণ কমান, স্থানীয় কৃষকদের সম্পদ সরবরাহ করেন, এবং "মেড ইন ইন্ডিয়া" লেবেল সহ পণ্য বিশ্বে পাঠান।</p>
+<p><strong>আপনার সাফল্য আপনার সম্প্রদায়ের সাফল্য। আপনার কর্মসংস্থান ভারতের উন্নয়ন।</strong> এটি অতিরঞ্জন নয় — এটি অর্থনীতি।</p>
+</div>
+<div class="sec-head"><i class="ti ti-heart"></i>সফল বর্জ্য উদ্যোক্তাদের ৫টি অভ্যাস <span class="sh-line"></span></div>
+<div class="cg">
+<div class="card ct1">
+<div class="card-title"><i class="ti ti-book"></i>১. প্রতিদিন শিখুন</div>
+<div class="tip">প্রতিদিন ৩০ মিনিট টিউটোরিয়াল দেখুন, আপনার উপাদান নিয়ে পড়ুন, প্রতিদ্বন্দ্বীদের অধ্যয়ন করুন</div>
+<div class="tip">কয়ার প্রস্তুতকারক, পাট তাঁতি, কোকো পিট রপ্তানিকারকদের হোয়াটসঅ্যাপ গ্রুপে যোগ দিন — জ্ঞান বিনামূল্যে ভাগ করা হয়</div>
+<div class="tip">"আমি প্রতিদিন নতুন কিছু শিখি" — এটাই সফল উদ্যোক্তাদের হাল ছেড়ে দেওয়া মানুষদের থেকে আলাদা করে</div>
+</div>
+<div class="card ct6">
+<div class="card-title"><i class="ti ti-eye"></i>২. গুণমানে মনোযোগী থাকুন</div>
+<div class="tip">আন্তর্জাতিক ক্রেতারা একটি মানের ত্রুটির জন্য পুরো চালান প্রত্যাখ্যান করেন — গুণমান আপোষযোগ্য নয়</div>
+<div class="tip">বিক্রির আগে প্রতিটি ব্যাচ পরীক্ষা করুন। একটি খারাপ ডেলিভারি এক বছরের সম্পর্ক গড়ার প্রচেষ্টা নষ্ট করে দেয়</div>
+<div class="tip">প্যাকেজিং-এ ₹৫০,০০০ খরচ করার আগে ল্যাব পরীক্ষায় ₹৫০০ খরচ করুন — প্রথমে যাচাই করুন</div>
+</div>
+<div class="card ct8">
+<div class="card-title"><i class="ti ti-handshake"></i>৩. সম্পর্ক গড়ে তুলুন</div>
+<div class="tip">কাঁচামাল সরবরাহকারীদের সাথে সম্মানের সাথে আচরণ করুন — তারা আপনাকে ভালো দাম ও প্রথম সুযোগ দেবে</div>
+<div class="tip">২৪ ঘণ্টার মধ্যে ক্রেতাদের অনুসন্ধানের জবাব দিন — বিশ্ব বাণিজ্যে ধীর সাড়া মানে হারানো অর্ডার</div>
+<div class="tip">আপনার স্থানীয় MSME ক্লাস্টার বা বাণিজ্য সংস্থায় যোগ দিন — নেটওয়ার্কই আপনার সবচেয়ে বড় সম্পদ</div>
+</div>
+</div>
+</div>
+<!-- ══════════════════════════════════════════════
+     11. MYSKILLGAME HUB
+══════════════════════════════════════════════ -->
+<div class="msection" id="mat-myskill">
+<div class="msg-footer">
+<h3>🎓 <span>MySkillGame</span></h3>
+<p>MySkillGame বিশ্বাস করে যে প্রতিটি তরুণের মধ্যে উন্মোচিত হওয়ার অপেক্ষায় থাকা সম্ভাবনা রয়েছে। আমরা বৃত্তিমূলক জ্ঞানকে প্রকৃত বাজারের সুযোগের সাথে সংযুক্ত করি — আপনার চারপাশের সাধারণ বর্জ্যকে অসাধারণ জীবিকায় রূপান্তরিত করি।</p>
+<div class="msg-pills">
+<span class="msp">📚 বৃত্তিমূলক শিক্ষা</span>
+<span class="msp">💼 স্ব-কর্মসংস্থান</span>
+<span class="msp">💡 স্টার্টআপ আইডিয়া</span>
+<span class="msp">👩 নারী ক্ষমতায়ন</span>
+<span class="msp">🤝 স্বনির্ভর গোষ্ঠীর সুযোগ</span>
+<span class="msp">🌱 পরিবেশ সচেতনতা</span>
+<span class="msp">♻️ বৃত্তাকার অর্থনীতি</span>
+<span class="msp">💰 আর্থিক সাক্ষরতা</span>
+</div>
+<div class="tagline">"MySkillGame-এর জন্য তৈরি – বৃত্তিমূলক শিক্ষা, উদ্যোক্তা, আর্থিক সাক্ষরতা, পরিবেশ সচেতনতা ও টেকসই জীবিকার সুযোগ প্রচারে নিবেদিত।"</div>
+</div>
+<div class="sec-head"><i class="ti ti-chart-bar"></i>এক নজরে সবক'টি ৭টি উপাদান <span class="sh-line"></span></div>
+<table class="stbl">
+<thead><tr><th>উপাদান</th><th>সেরা পণ্য</th><th>শুরুর বিনিয়োগ</th><th>মাসিক আয়ের সম্ভাবনা</th><th>রপ্তানি বাজার</th></tr></thead>
+<tbody>
+<tr><td>🥥 নারকেলের ছোবড়া</td><td>মাদুর, দড়ি, কোকো পিট</td><td>₹৫,০০০–৩০,০০০</td><td>₹৮,০০০–২,০০,০০০</td><td>মার্কিন যুক্তরাষ্ট্র, জার্মানি, নেদারল্যান্ডস</td></tr>
+<tr><td>🍌 কলাগাছের তন্তু</td><td>কাগজ, ব্যাগ, সুতা</td><td>₹৩,০০০–৫০,০০০</td><td>₹১০,০০০–১,০০,০০০</td><td>জাপান, ফ্রান্স, যুক্তরাজ্য</td></tr>
+<tr><td>🌾 পাট বর্জ্য</td><td>ব্যাগ, জিও-টেক্সটাইল, ডেকর</td><td>₹১০,০০০–১,০০,০০০</td><td>₹১৫,০০০–৩,০০,০০০</td><td>ইইউ, মার্কিন যুক্তরাষ্ট্র, মধ্যপ্রাচ্য</td></tr>
+<tr><td>📰 খবরের কাগজ</td><td>কাগজের ব্যাগ, কারুশিল্প</td><td>₹৫,০০০–৫০,০০০</td><td>₹৮,০০০–৩৫,০০০</td><td>ইইউ কারুশিল্প বাজার</td></tr>
+<tr><td>♻️ প্লাস্টিক বর্জ্য</td><td>পেলেট, ইকো-ব্রিক</td><td>₹২০,০০০–৩,০০,০০০</td><td>₹২০,০০০–১,৫০,০০০</td><td>EPR অভ্যন্তরীণ ক্রেতা</td></tr>
+<tr><td>🪵 করাত-গুঁড়া</td><td>মাশরুম, ব্রিকেট</td><td>₹১৫,০০০–১,০০,০০০</td><td>₹১২,০০০–৬০,০০০</td><td>জৈববস্তু রপ্তানি</td></tr>
+<tr><td>🌿 ধানের তুষ</td><td>RHA, বোর্ড, জ্বালানি</td><td>₹৫,০০০–৫,০০,০০০</td><td>₹১০,০০০–৫,০০,০০০</td><td>চীন, দক্ষিণ কোরিয়া, জার্মানি</td></tr>
+</tbody>
+</table>
+<div class="sec-head"><i class="ti ti-phone"></i>মূল হেল্পলাইন ও যোগাযোগ <span class="sh-line"></span></div>
+<div class="cg">
+<div class="card ct3">
+<div class="card-title"><i class="ti ti-phone-call"></i>জাতীয় হেল্পলাইন</div>
+<span class="badge bs">বিনামূল্যে কল</span>
+<div class="tip">MSME হেল্পলাইন: 1800-180-6763 (টোল-ফ্রি) — প্রকল্প নির্দেশনা, ঋণ সহায়তা</div>
+<div class="tip">স্কিল ইন্ডিয়া: 088000-55555 — আপনার কাছাকাছি প্রশিক্ষণ কেন্দ্র</div>
+<div class="tip">NABARD: 022-26539895 — স্বনির্ভর গোষ্ঠী ও গ্রামীণ উদ্যোগ অর্থায়ন</div>
+<div class="tip">কয়ার বোর্ড: 0484-2351807 — কয়ার প্রশিক্ষণ, ভর্তুকি, রপ্তানি সহায়তা</div>
+<div class="tip">KVIC: 022-26714573 — পাট, কাগজ, গ্রাম শিল্প সহায়তা</div>
+</div>
+<div class="card ct1">
+<div class="card-title"><i class="ti ti-world-www"></i>মূল ওয়েবসাইট</div>
+<span class="badge bl">এগুলো বুকমার্ক করুন</span>
+<div class="tip">udyamregistration.gov.in — বিনামূল্যে MSME নিবন্ধন</div>
+<div class="tip">pmegp.kvic.org.in — PMEGP ঋণের আবেদন</div>
+<div class="tip">skillindia.gov.in — আপনার কাছাকাছি বিনামূল্যে দক্ষতা কোর্স</div>
+<div class="tip">dgft.gov.in — বিনামূল্যে IEC রপ্তানি কোড নিবন্ধন</div>
+<div class="tip">coirboard.gov.in — কয়ার প্রকল্প ও প্রশিক্ষণ</div>
+<div class="tip">apeda.gov.in — কৃষি রপ্তানি প্রচার</div>
+</div>
+</div>
+<div class="ab ab-gold" style="margin-top:16px">
+<i class="ti ti-rocket"></i>
+<span><strong>আপনার ভবিষ্যৎ একটি সিদ্ধান্ত দিয়ে শুরু হয়:</strong> শর্টকাটের বদলে দক্ষতা বেছে নিন। আশার বদলে কঠোর পরিশ্রম বেছে নিন। বিশ্ব যে বর্জ্য ফেলে দেয় তা থেকে বাস্তব কিছু গড়ে তোলা বেছে নিন। <strong>উপাদান বিনামূল্যে। বাজার বিশ্বব্যাপী। সুযোগটি ঠিক আপনার দরজার বাইরে।</strong> 🌱💪</span>
+</div>
+</div>
+<footer class="site-footer">
+   © ২০২৬ MySkillGame • শিক্ষামূলক গেম ও সচেতনতা প্রকল্প
+</footer></div><!-- /content -->
+<script>
+// ── Tab Switch ──
+function switchMat(name, btn) {
+  document.querySelectorAll('.msection').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.mat-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('mat-' + name).classList.add('active');
+  btn.classList.add('active');
+  btn.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
+  // animate market bars
+  setTimeout(animateBars, 100);
+}
+
+// ── Market Bar Animation ──
+function animateBars() {
+  document.querySelectorAll('.mkt-bar-fill').forEach(bar => {
+    const w = bar.dataset.w || bar.style.width;
+    if (w) { bar.style.width = '0%'; setTimeout(() => bar.style.width = w, 80); }
+  });
+}
+
+// ── Export Checklist ──
+const expItems = [
+  "উদ্যম MSME নিবন্ধন সম্পন্ন হয়েছে (udyamregistration.gov.in)",
+  "DGFT থেকে IEC কোড পাওয়া গেছে (dgft.gov.in) — বিনামূল্যে",
+  "ব্যবসার নামে চলতি ব্যাংক অ্যাকাউন্ট খোলা হয়েছে",
+  "পণ্যের নমুনা তৈরি ও পেশাদারভাবে ছবি তোলা হয়েছে",
+  "আপনার পণ্যের জন্য NABL ল্যাব পরীক্ষার রিপোর্ট পাওয়া গেছে",
+  "আলিবাবা / ইন্ডিয়ামার্ট রপ্তানি প্রোফাইল তৈরি ও যাচাই করা হয়েছে",
+  "ক্রেতা-বিক্রেতা পরিচয়ের জন্য FIEO সদস্যপদের আবেদন করা হয়েছে",
+  "রপ্তানি লেবেলিং সহ প্রথম পণ্যের প্যাকেজিং ডিজাইন করা হয়েছে",
+  "RoDTEP / MEIS রপ্তানি প্রণোদনা প্রকল্পে নিবন্ধন করা হয়েছে",
+  "একজন ক্রেতার কাছে ৫০–১০০ কেজির প্রথম ট্রায়াল চালান পাঠানো হয়েছে"
+];
+let expStates = expItems.map(() => false);
+
+function renderExpChecklist() {
+  const c = document.getElementById('exp-checklist');
+  if (!c) return;
+  const done = expStates.filter(Boolean).length;
+  const pct = Math.round(done / expItems.length * 100);
+  document.getElementById('exp-prog-fill').style.width = pct + '%';
+  document.getElementById('exp-prog-lbl').textContent = `${expItems.length}টির মধ্যে ${done}টি ধাপ সম্পন্ন`;
+  document.getElementById('exp-prog-pct').textContent = pct + '%';
+  c.innerHTML = expItems.map((t, i) => `
+    <div class="chk-item" onclick="toggleExp(${i})">
+      <div class="chk-box ${expStates[i] ? 'done' : ''}">
+        ${expStates[i] ? '<i class="ti ti-check"></i>' : ''}
+      </div>
+      <span class="chk-text ${expStates[i] ? 'done' : ''}">${t}</span>
+    </div>
+  `).join('');
+}
+function toggleExp(i) { expStates[i] = !expStates[i]; renderExpChecklist(); }
+renderExpChecklist();
+
+// ── Initial bar set ──
+document.querySelectorAll('.mkt-bar-fill[data-w]').forEach(bar => {
+  bar.style.width = '0%';
+  setTimeout(() => bar.style.width = bar.dataset.w, 400);
+});
+</script>
+<script src="security.js"></script>
+
+<footer class="footer">
+<div style="margin-bottom:18px;">
+<a href="about.html">আমাদের সম্পর্কে</a> |
+<a href="privacy.html">গোপনীয়তা নীতি</a> |
+<a href="terms.html">শর্তাবলী</a> |
+<a href="contact.html">যোগাযোগ</a> |
+<a href="disclaimer.html">দাবিত্যাগ</a>
+</div>
+<div class="footer-name">MYSKILLGAME</div>
+<div class="footer-copy">© ২০২৬ MySkillGame • তৈরি করেছেন Surajit Roy</div>
+</footer>
+</body>
+</html>

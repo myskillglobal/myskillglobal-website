@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>সুকুমার চ্যাটার্জ্জীর ছাতা হারানোর গল্প</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla&family=Baloo+Da+2:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink: #1c232d;
+    --indigo: #232c3d;
+    --indigo-deep: #171e29;
+    --paper: #f4f1ea;
+    --brass: #c98a3e;
+    --brass-soft: #e0b374;
+    --line: #cfd3ce;
+    --max-w: 640px;
+  }
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Tiro Bangla', serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position: relative;
+    min-height: 92vh;
+    display:flex;
+    flex-direction: column;
+    justify-content:flex-end;
+    overflow:hidden;
+    background: var(--indigo-deep);
+  }
+  .hero-img{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit: cover;
+    object-position: center 30%;
+    opacity: .8;
+    filter: saturate(.85) contrast(1.05);
+  }
+  .hero-scrim{
+    position:absolute; inset:0;
+    background:
+      linear-gradient(180deg, rgba(23,30,41,.25) 0%, rgba(23,30,41,.55) 55%, var(--paper) 100%);
+  }
+  .rain{
+    position:absolute; inset:0; pointer-events:none;
+    overflow:hidden;
+  }
+  .drop{
+    position:absolute; top:-10%;
+    width:1px; height:70px;
+    background: linear-gradient(180deg, rgba(224,179,116,0) 0%, rgba(224,179,116,.55) 100%);
+    animation: fall linear infinite;
+  }
+  @keyframes fall{ to{ transform: translateY(120vh); } }
+  @media (prefers-reduced-motion: reduce){
+    .drop{ animation: none; display:none; }
+    html{ scroll-behavior: auto; }
+  }
+
+  .hero-content{
+    position: relative;
+    padding: 40px 24px 60px;
+    max-width: var(--max-w);
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+  }
+  .kicker{
+    font-family: 'Baloo Da 2', sans-serif;
+    font-weight: 500;
+    font-size: .95rem;
+    letter-spacing: .02em;
+    color: var(--brass-soft);
+    margin: 0 0 12px;
+  }
+  .hero-title{
+    font-family: 'Baloo Da 2', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2rem, 7vw, 3.1rem);
+    line-height: 1.22;
+    margin: 0 0 18px;
+    text-shadow: 0 2px 18px rgba(0,0,0,.4);
+  }
+  .hero-question{
+    font-family: 'Tiro Bangla', serif;
+    font-style: normal;
+    font-size: 1.18rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,.92);
+    margin: 0 0 30px;
+    text-shadow: 0 1px 10px rgba(0,0,0,.4);
+  }
+  .start-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background: var(--brass);
+    color: var(--indigo-deep);
+    text-decoration:none;
+    font-family: 'Baloo Da 2', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 13px 26px;
+    border-radius: 999px;
+    transition: transform .15s ease, background .15s ease;
+  }
+  .start-btn:hover{ background: var(--brass-soft); transform: translateY(-1px); }
+  .start-btn:focus-visible{ outline: 2px solid #fff; outline-offset: 3px; }
+
+  /* ---------- intro ---------- */
+  main{
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 56px 24px 20px;
+  }
+  .intro p{
+    font-size: 1.12rem;
+    line-height: 2;
+    margin: 0 0 24px;
+  }
+  .intro p.pull{
+    text-align:center;
+    font-family: 'Baloo Da 2', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--indigo);
+    line-height: 1.6;
+    margin: 36px 0;
+  }
+
+  /* ---------- chapter path ---------- */
+  .path{
+    padding: 20px 0 8px;
+  }
+  .path-heading{
+    font-family: 'Baloo Da 2', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--brass);
+    text-align:center;
+    margin: 0 0 8px;
+  }
+  .path-sub{
+    text-align:center;
+    color:#6b7178;
+    font-size: .95rem;
+    margin: 0 0 40px;
+  }
+
+  .chapters{
+    display:flex;
+    flex-direction:column;
+    gap: 0;
+    border-top: 1px solid var(--line);
+  }
+  .chapter{
+    display:block;
+    text-decoration:none;
+    color: inherit;
+    padding: 26px 4px;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+  }
+  .chapter-row{
+    display:flex;
+    align-items:baseline;
+    gap: 16px;
+  }
+  .chapter-num{
+    font-family: 'Baloo Da 2', sans-serif;
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--line);
+    min-width: 34px;
+    transition: color .15s ease;
+  }
+  .chapter:hover .chapter-num{ color: var(--brass); }
+  .chapter-body{ flex: 1; }
+  .chapter-title{
+    font-family: 'Baloo Da 2', sans-serif;
+    font-weight: 700;
+    font-size: 1.12rem;
+    color: var(--indigo);
+    margin: 0 0 6px;
+  }
+  .chapter-teaser{
+    font-size: 1rem;
+    line-height: 1.75;
+    color: #52585f;
+    margin: 0;
+  }
+  .chapter-arrow{
+    font-family: 'Baloo Da 2', sans-serif;
+    color: var(--line);
+    font-size: 1.1rem;
+    align-self:center;
+    transition: transform .15s ease, color .15s ease;
+  }
+  .chapter:hover .chapter-arrow{ color: var(--brass); transform: translateX(3px); }
+  .chapter.locked .chapter-title{ color: #8a9097; }
+  .chapter.locked .chapter-teaser{ font-style: normal; }
+
+  footer{
+    border-top: 1px solid var(--line);
+    padding: 30px 24px 40px;
+    text-align:center;
+    color:#8a9097;
+    font-family: 'Baloo Da 2', sans-serif;
+    font-size: .82rem;
+  }
+
+  @media (max-width: 420px){
+    .hero{ min-height: 78vh; }
+    .chapter-num{ font-size: 1.3rem; min-width: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <img class="hero-img" src="images/umbrella.png" alt="বৃষ্টিতে হাতল ধরে দাঁড়ানো এক বৃদ্ধ মানুষ, চারপাশে ছাতাটির যাত্রার নানা মুহূর্ত">
+  <div class="hero-scrim"></div>
+  <div class="rain" id="rain"></div>
+  <div class="hero-content">
+    <p class="kicker">একটি ছাতার নিজের জবানিতে বলা গল্প</p>
+    <h1 class="hero-title">সুকুমার চ্যাটার্জ্জীর<br>ছাতা হারানোর গল্প</h1>
+    <p class="hero-question">এক ছাতা, বহু মালিক — কিন্তু শেষ পর্যন্ত সে কার কাছে ফিরে গেল?</p>
+    <a class="start-btn" href="umbrella-bengali-part1bn.html">পড়া শুরু করুন ☔</a>
+  </div>
+</section>
+
+<main>
+  <div class="intro">
+    <p>একটা কালো ছাতা। আটটা লোহার শিক, একটা বাঁকা কাঠের হাতল — আর হাতলের গায়ে খোদাই করা দুটো ছোট্ট অক্ষর।</p>
+
+    <p>বাজারের এক চায়ের দোকানে তাকে ভুল করে ফেলে যান তার প্রথম মালিক, অবসরপ্রাপ্ত সুকুমার চ্যাটার্জ্জী। তারপর থেকে শুরু হয় তার একলা যাত্রা — এক হাত থেকে আরেক হাতে, এক শহর থেকে আরেক অলিগলিতে।</p>
+
+    <p class="pull">কেউ তাকে কুড়িয়ে নেয়। কেউ কিনে নেয়। কেউ প্রয়োজনের মুখে ছেড়ে দিতে বাধ্য হয়।</p>
+
+    <p>প্রতিবার নতুন একটা হাত, নতুন একটা ছাদ, নতুন একটা গল্প। আর প্রতিবার সেই একই প্রশ্ন তার ভেতরে জেগে ওঠে — সুকুমারবাবু কি এখনও তাকে মনে রেখেছেন? নাকি এতদিনে সব ভুলে গেছেন?</p>
+
+    <p>বছরের পর বছর কেটে যায়। ছাতাটির গায়ের রং চটে যায়, শিকগুলো পুরোনো হয় — কিন্তু হাতলের সেই খোদাই করা অক্ষর দুটো মোছে না।</p>
+  </div>
+
+  <div class="path">
+    <p class="path-heading">চারটি পর্বের যাত্রা</p>
+    <p class="path-sub">পর্ব ধরে ধরে পড়ুন, নাকি সরাসরি শেষে যাবেন? সিদ্ধান্ত আপনার — তবে গল্পটা তৈরি হয়েছে ধীরে ধীরে পড়ার জন্যই।</p>
+
+    <div class="chapters">
+      <a class="chapter" href="umbrella-bengali-part1bn.html">
+        <div class="chapter-row">
+          <span class="chapter-num">১</span>
+          <div class="chapter-body">
+            <p class="chapter-title">হারিয়ে যাওয়া</p>
+            <p class="chapter-teaser">বৃষ্টির দুপুরে এক চায়ের দোকানে রেখে যাওয়া একটা ছাতা — আর তাকে তুলে নেওয়া এক অচেনা হাত।</p>
+          </div>
+          <span class="chapter-arrow">→</span>
+        </div>
+      </a>
+
+      <a class="chapter" href="umbrella-bengali-part2bn.html">
+        <div class="chapter-row">
+          <span class="chapter-num">২</span>
+          <div class="chapter-body">
+            <p class="chapter-title">এক হাত থেকে অন্য হাতে</p>
+            <p class="chapter-teaser">কুড়ি টাকায় বিক্রি হওয়া একটা স্মৃতি, একটা কলেজপড়ুয়া ছেলে, আর এক ঝড়ের রাতে হঠাৎ ছিটকে যাওয়া।</p>
+          </div>
+          <span class="chapter-arrow">→</span>
+        </div>
+      </a>
+
+      <a class="chapter" href="umbrella-bengali-part3bn.html">
+        <div class="chapter-row">
+          <span class="chapter-num">৩</span>
+          <div class="chapter-body">
+            <p class="chapter-title">মানুষের জীবনের সঙ্গে</p>
+            <p class="chapter-teaser">একটা অসুস্থ মেয়ে, একজন ডাক্তার, আর এক বাবার কঠিন সিদ্ধান্ত। তারপর হাত ঘুরতে ঘুরতে হঠাৎ এক চেনা মুখ।</p>
+          </div>
+          <span class="chapter-arrow">→</span>
+        </div>
+      </a>
+
+      <a class="chapter locked" href="umbrella-bengali-part4bn.html">
+        <div class="chapter-row">
+          <span class="chapter-num">৪</span>
+          <div class="chapter-body">
+            <p class="chapter-title">তুই আবার ফিরে এলি?</p>
+            <p class="chapter-teaser">এতদিন পর কি সত্যিই সুকুমারবাবুর সঙ্গে দেখা হলো? উত্তরটা লুকিয়ে আছে শেষ পর্বে।</p>
+          </div>
+          <span class="chapter-arrow">→</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</main>
+
+<footer>সুকুমার চ্যাটার্জ্জীর ছাতা হারানোর গল্প · ৪ পর্বের সিরিজ</footer>
+
+<script>
+  (function(){
+    var rain = document.getElementById('rain');
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var count = window.innerWidth < 480 ? 24 : 44;
+    for (var i=0;i<count;i++){
+      var d = document.createElement('div');
+      d.className = 'drop';
+      d.style.left = Math.random()*100 + '%';
+      d.style.animationDuration = (0.7 + Math.random()*0.9) + 's';
+      d.style.animationDelay = (Math.random()*2) + 's';
+      d.style.opacity = 0.3 + Math.random()*0.5;
+      rain.appendChild(d);
+    }
+  })();
+</script>
+
+</body>
+</html>

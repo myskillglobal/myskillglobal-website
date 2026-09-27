@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="bn-IN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>নীরব ঘাতক — সাপের কামড় সচেতনতা</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Baloo+Da+2:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0f1e; --bg2:#0f1830; --panel:#121b34;
+    --gold:#d4af6a; --gold-soft:#e8cd9a; --ink:#eef1fb; --ink-dim:#aab3cf;
+    --line:rgba(212,175,106,.18); --red:#e2685f; --red-line:rgba(226,104,95,.25); --red-bg:rgba(226,104,95,.07);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-padding-top:env(safe-area-inset-top,0px);}
+  body{
+    margin:0; background:radial-gradient(ellipse at top, var(--bg2), var(--bg) 60%);
+    color:var(--ink); font-family:'Hind Siliguri', sans-serif; font-size:19px; line-height:1.95;
+    padding-top:env(safe-area-inset-top,0px); padding-bottom:calc(40px + env(safe-area-inset-bottom,0px));
+  }
+  .wrap{max-width:760px; margin:0 auto; padding:0 24px;}
+  header.hero{
+    text-align:center; padding:70px 24px 46px; border-bottom:1px solid var(--line);
+    background:linear-gradient(180deg, rgba(212,175,106,.06), transparent);
+  }
+  .icon{font-size:44px; filter:drop-shadow(0 0 18px rgba(212,175,106,.35));}
+  .kicker{font-family:'Inter',sans-serif; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); font-size:12px; margin:14px 0 6px;}
+  h1{font-family:'Baloo Da 2', sans-serif; font-weight:800; font-size:clamp(28px,5.2vw,42px); margin:8px 0 14px; color:var(--ink);}
+  .tags{font-family:'Hind Siliguri',sans-serif; font-size:14px; color:var(--ink-dim);}
+  .tags span{color:var(--gold-soft);}
+  nav.listen-bar{
+    display:flex; justify-content:center; gap:10px; padding:16px 24px; position:sticky; top:0; z-index:5;
+    background:rgba(10,15,30,.85); backdrop-filter:blur(6px); border-bottom:1px solid var(--line);
+  }
+  button.listen{
+    font-family:'Hind Siliguri',sans-serif; font-size:14px; color:var(--gold-soft);
+    background:transparent; border:1px solid var(--line); padding:9px 18px; border-radius:30px; cursor:pointer;
+    transition:.2s;
+  }
+  button.listen:hover{border-color:var(--gold); background:rgba(212,175,106,.08);}
+  main{padding:48px 24px 10px;}
+  section.beat{margin-bottom:44px;}
+  h2{font-family:'Baloo Da 2', sans-serif; font-weight:700; font-size:22px; color:var(--gold-soft); margin:0 0 14px;}
+  p{margin:0 0 16px; color:var(--ink);}
+  .drop::first-letter{
+    font-family:'Baloo Da 2', sans-serif; font-size:46px; float:left; line-height:.85; padding:4px 10px 0 0;
+    color:var(--gold); font-weight:800;
+  }
+  blockquote{
+    margin:0 0 16px; padding:18px 22px; border-left:3px solid var(--gold); background:rgba(212,175,106,.06);
+    border-radius:0 10px 10px 0; font-style:italic; color:var(--gold-soft);
+  }
+  .rule{width:64px; height:1px; background:var(--line); margin:44px auto;}
+  .danger{
+    background:var(--red-bg); border:1px solid var(--red-line); border-radius:16px; padding:30px 30px; margin:20px 0 40px;
+  }
+  .danger h2{color:var(--red); text-align:center; margin-bottom:20px;}
+  .dg{display:flex; align-items:center; gap:12px; padding:10px 0; border-top:1px solid var(--red-line); font-size:18px;}
+  .dg:first-of-type{border-top:none;}
+  .dg .ic{font-size:14px; flex:0 0 auto;}
+  .takeaways{
+    background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:36px 30px; margin:20px 0 60px;
+  }
+  .takeaways h2{text-align:center; margin-bottom:24px;}
+  .tk{display:flex; gap:14px; padding:14px 0; border-top:1px solid var(--line);}
+  .tk:first-of-type{border-top:none;}
+  .tk .ic{font-size:22px; flex:0 0 auto;}
+  .tk p{margin:0; font-size:18px; color:var(--ink-dim);}
+  footer{text-align:center; font-family:'Inter',sans-serif; font-size:12px; color:var(--ink-dim); opacity:.6; padding:20px 24px;}
+  @media (max-width:520px){ body{font-size:18px;} h1{font-size:28px;} .takeaways,.danger{padding:24px 18px;} }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="icon">🐍</div>
+  <div class="kicker">সাপের কামড় সচেতনতা</div>
+  <h1>নীরব ঘাতক</h1>
+  <p class="tags"><span>সাপের কামড় সচেতনতা</span> · <span>কালাচ সাপ</span> · <span>সময়মতো চিকিৎসা</span></p>
+</header>
+
+<nav class="listen-bar">
+  <button class="listen" id="playAll">▶ গল্পটি শুনুন</button>
+  <button class="listen" id="stopAll" style="display:none;">■ থামান</button>
+</nav>
+
+<main class="wrap">
+
+<section class="beat" data-read="সৌরভ ছিল গ্রামের এক মেধাবী অষ্টম শ্রেণীর ছাত্র। প্রতি সন্ধ্যায় সে পড়াশোনা করত, পরিবারের সঙ্গে রাতের খাবার খেত, আর তাদের মাটির বাড়িতে নিজের বিছানায় ঘুমিয়ে পড়ত। তখন ছিল বর্ষাকাল — ঝোপঝাড় ঘন হয়ে উঠেছিল আর ইঁদুরের সংখ্যা বেড়ে গিয়েছিল। এক রাতে, খাবারের খোঁজে একটি কালাচ সাপ বাড়িতে ঢুকে পড়ে আর ঘুমন্ত সৌরভের কাছে চলে আসে। হঠাৎ সে তাকে কামড়ে দেয়। আশ্চর্যের বিষয় হলো — সৌরভ প্রায় কোনো ব্যথাই অনুভব করেনি। সে ভেবেছিল হয়তো কোনো পোকা কামড়েছে, আর আবার ঘুমিয়ে পড়ে।">
+  <p class="drop">সৌরভ ছিল গ্রামের এক মেধাবী অষ্টম শ্রেণীর ছাত্র। প্রতি সন্ধ্যায় সে পড়াশোনা করত, পরিবারের সঙ্গে রাতের খাবার খেত, আর তাদের মাটির বাড়িতে নিজের বিছানায় ঘুমিয়ে পড়ত।</p>
+  <p>তখন ছিল বর্ষাকাল — ঝোপঝাড় ঘন হয়ে উঠেছিল আর ইঁদুরের সংখ্যা বেড়ে গিয়েছিল। এক রাতে, খাবারের খোঁজে একটি কালাচ সাপ (Common Krait) বাড়িতে ঢুকে পড়ে আর ঘুমন্ত সৌরভের কাছে চলে আসে। হঠাৎ সে তাকে কামড়ে দেয়।</p>
+  <p>আশ্চর্যের বিষয় হলো — সৌরভ প্রায় কোনো ব্যথাই অনুভব করেনি। সে ভেবেছিল হয়তো কোনো পোকা কামড়েছে, আর আবার ঘুমিয়ে পড়ে।</p>
+</section>
+
+<section class="beat" data-read="সতর্কতার লক্ষণ দেখা দেয়। ভোরের দিকে তার কথা জড়িয়ে যেতে থাকে। তার চোখের পাতা ভারী হয়ে আসে। হাত-পায়ের শক্তি চলে যায়। শ্বাস নিতে কষ্ট হতে থাকে। পরিবার প্রথমে ভেবেছিল সে হয়তো শুধু অসুস্থ — তারা স্থানীয় ওঝাকে ডেকে পাঠায়। মূল্যবান সময় নষ্ট হয়ে যায়। যখন তাকে হাসপাতালে নিয়ে যাওয়া হলো, ততক্ষণে অনেক দেরি হয়ে গিয়েছিল। ডাক্তারদের সর্বাত্মক চেষ্টা সত্ত্বেও সৌরভকে বাঁচানো গেল না। পুরো গ্রাম শোকে স্তব্ধ হয়ে গেল।">
+  <h2>সতর্কতার লক্ষণ দেখা দেয়</h2>
+  <p>ভোরের দিকে তার কথা জড়িয়ে যেতে থাকে। তার চোখের পাতা ভারী হয়ে আসে। হাত-পায়ের শক্তি চলে যায়। শ্বাস নিতে কষ্ট হতে থাকে। পরিবার প্রথমে ভেবেছিল সে হয়তো শুধু অসুস্থ — তারা স্থানীয় ওঝাকে ডেকে পাঠায়। মূল্যবান সময় নষ্ট হয়ে যায়।</p>
+  <p>যখন তাকে হাসপাতালে নিয়ে যাওয়া হলো, ততক্ষণে অনেক দেরি হয়ে গিয়েছিল। ডাক্তারদের সর্বাত্মক চেষ্টা সত্ত্বেও সৌরভকে বাঁচানো গেল না। পুরো গ্রাম শোকে স্তব্ধ হয়ে গেল।</p>
+</section>
+
+<section class="beat" data-read="ডাক্তারের সচেতনতামূলক সেশন। কয়েকদিন পর, একজন স্বাস্থ্যকেন্দ্রের ডাক্তার গ্রামের স্কুলে গিয়ে সবাইকে বুঝিয়ে বললেন। কালাচ সাপের কামড় প্রায়ই ব্যথাহীন হয়। সেজন্যই মানুষ বুঝতে পারে না। কিন্তু এটি অত্যন্ত বিষাক্ত। চোখের পাতা ঝুলে পড়া, কথা জড়িয়ে যাওয়া, গিলতে অসুবিধা, বা শ্বাস নিতে কষ্ট — এই লক্ষণগুলো দেখা দিলে কোনো দেরি না করে সঙ্গে সঙ্গে হাসপাতালে যান। ওঝা বা গুণিনের কাছে সময় নষ্ট করলে তা প্রাণঘাতী হতে পারে।">
+  <h2>ডাক্তারের সচেতনতামূলক সেশন</h2>
+  <p>কয়েকদিন পর, একজন স্বাস্থ্যকেন্দ্রের ডাক্তার গ্রামের স্কুলে গিয়ে সবাইকে বুঝিয়ে বললেন:</p>
+  <blockquote>"কালাচ সাপের কামড় প্রায়ই ব্যথাহীন হয়। সেজন্যই মানুষ বুঝতে পারে না। কিন্তু এটি অত্যন্ত বিষাক্ত। চোখের পাতা ঝুলে পড়া, কথা জড়িয়ে যাওয়া, গিলতে অসুবিধা, বা শ্বাস নিতে কষ্ট — এই লক্ষণগুলো দেখা দিলে কোনো দেরি না করে সঙ্গে সঙ্গে হাসপাতালে যান। ওঝা বা গুণিনের কাছে সময় নষ্ট করলে তা প্রাণঘাতী হতে পারে।"</blockquote>
+</section>
+
+<div class="rule"></div>
+
+<div class="danger">
+  <h2>⚠️ বিপদ সংকেত — সঙ্গে সঙ্গে হাসপাতালে যান</h2>
+  <div class="dg"><span class="ic">🔴</span><span>চোখের পাতা ঝুলে পড়া বা চোখ খোলা রাখতে কষ্ট হওয়া</span></div>
+  <div class="dg"><span class="ic">🔴</span><span>কথা জড়িয়ে যাওয়া বা কথা বলতে অসুবিধা</span></div>
+  <div class="dg"><span class="ic">🔴</span><span>গিলতে অসুবিধা</span></div>
+  <div class="dg"><span class="ic">🔴</span><span>হাত-পায়ে দুর্বলতা</span></div>
+  <div class="dg"><span class="ic">🔴</span><span>শ্বাস নিতে কষ্ট</span></div>
+</div>
+
+<div class="takeaways">
+  <h2>মূল শিক্ষা</h2>
+  <div class="tk"><div class="ic">🐍</div><p>কালাচ সাপের কামড় প্রায়ই ব্যথাহীন হয় — ব্যথা নেই বলে লক্ষণগুলো উপেক্ষা করবেন না।</p></div>
+  <div class="tk"><div class="ic">🚑</div><p>সাপে কামড়ানোর পর যত দ্রুত সম্ভব নিকটবর্তী হাসপাতালে যান। সময়মতো দিলে অ্যান্টিভেনম ও চিকিৎসা প্রাণ বাঁচাতে পারে।</p></div>
+  <div class="tk"><div class="ic">❌</div><p>ওঝা, গুণিন বা ঘরোয়া টোটকায় মূল্যবান সময় নষ্ট করবেন না। ক্ষতস্থান কাটবেন না, বিষ চুষে বের করার চেষ্টা করবেন না, শক্ত করে বাঁধবেন না।</p></div>
+  <div class="tk"><div class="ic">🛏️</div><p>রাতে মশারি ব্যবহার করুন, ঘর পরিষ্কার রাখুন, আর ইঁদুরের উপদ্রব কমান — এতে বাড়িতে সাপ ঢোকার সম্ভাবনা কমে।</p></div>
+  <div class="tk"><div class="ic">✅</div><p>সচেতনতা আর দ্রুত চিকিৎসাই সাপের কামড়ে মৃত্যু ঠেকানোর সবচেয়ে শক্তিশালী উপায়।</p></div>
+</div>
+
+</main>
+
+<footer>সাপের কামড় সচেতনতা, প্রাথমিক প্রতিক্রিয়া ও সময়মতো চিকিৎসা নিয়ে একটি গল্প।</footer>
+
+<script>
+(function(){
+  const synth = window.speechSynthesis;
+  const playBtn = document.getElementById('playAll');
+  const stopBtn = document.getElementById('stopAll');
+  const sections = Array.from(document.querySelectorAll('.beat'));
+  let queue = [], idx = 0;
+
+  function pickVoice(){
+    const voices = synth.getVoices();
+    return voices.find(v => v.lang === 'bn-IN') || voices.find(v => v.lang && v.lang.startsWith('bn')) || null;
+  }
+
+  function speakNext(){
+    if(idx >= queue.length){ finish(); return; }
+    const sec = queue[idx];
+    const u = new SpeechSynthesisUtterance(sec.dataset.read);
+    u.lang = 'bn-IN'; u.rate = 0.95; u.pitch = 1;
+    const v = pickVoice(); if(v) u.voice = v;
+    u.onend = () => { idx++; speakNext(); };
+    u.onerror = () => { idx++; speakNext(); };
+    synth.speak(u);
+  }
+
+  function finish(){
+    playBtn.style.display = 'inline-block';
+    stopBtn.style.display = 'none';
+  }
+
+  playBtn.addEventListener('click', () => {
+    if(!synth){ alert('এই ব্রাউজারে ভয়েস প্লেব্যাক সমর্থিত নয়।'); return; }
+    synth.cancel();
+    queue = sections; idx = 0;
+    playBtn.style.display = 'none';
+    stopBtn.style.display = 'inline-block';
+    speakNext();
+  });
+
+  stopBtn.addEventListener('click', () => {
+    synth.cancel();
+    finish();
+  });
+})();
+</script>
+</body>
+</html>

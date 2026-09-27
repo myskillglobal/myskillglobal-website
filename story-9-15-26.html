@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>গাছের ভিতরের দেশ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;500;600;700&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-deep:#070d1f;
+    --navy:#0d1830;
+    --navy-soft:#132445;
+    --gold:#cda44d;
+    --gold-bright:#e8c777;
+    --root:#3a2b1a;
+    --ink:#e9e4d6;
+    --ink-dim:#a9b0c4;
+    --line: rgba(205,164,77,0.22);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{background:var(--navy-deep);}
+  body{
+    font-family:'Noto Serif Bengali', serif;
+    color:var(--ink);
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:76px;
+  }
+  h1,h2,h3,.label{font-family:'Hind Siliguri', sans-serif;}
+
+  /* background texture: faint root veins */
+  .bg-roots{
+    position:fixed; inset:0; z-index:0; pointer-events:none; opacity:0.5;
+    background:
+      radial-gradient(ellipse at 20% -10%, rgba(205,164,77,0.08), transparent 45%),
+      radial-gradient(ellipse at 90% 110%, rgba(205,164,77,0.06), transparent 40%);
+  }
+
+  .wrap{position:relative; z-index:1; max-width:640px; margin:0 auto; padding:0 20px;}
+
+  /* HERO */
+  .hero-image{
+    width:100%; height:270px; overflow:hidden; position:relative;
+  }
+  .hero-image img{
+    width:100%; height:100%; object-fit:cover; display:block;
+    filter:saturate(0.92) brightness(0.82);
+  }
+  .hero-image::after{
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(7,13,31,0) 35%, var(--navy-deep) 96%);
+  }
+  header.hero{
+    padding:28px 20px 40px;
+    text-align:center;
+    border-bottom:1px solid var(--line);
+    position:relative; z-index:1;
+    margin-top:-56px;
+  }
+  .hero-emoji{font-size:2.2rem; display:block; margin-bottom:14px; filter:drop-shadow(0 0 10px rgba(205,164,77,0.35));}
+  header.hero h1{
+    font-size:2rem; font-weight:700; color:var(--gold-bright);
+    letter-spacing:0.5px;
+  }
+  header.hero p.tagline{
+    margin-top:14px; color:var(--ink-dim); font-size:1rem; max-width:420px;
+    margin-left:auto; margin-right:auto;
+  }
+
+  /* CONTINUE / BOOKMARK BANNER */
+  #continueBanner{
+    display:none;
+    margin:22px 20px 0; padding:14px 16px;
+    background:var(--navy-soft);
+    border:1px solid var(--line);
+    border-radius:10px;
+    align-items:center; justify-content:space-between; gap:12px;
+  }
+  #continueBanner.show{display:flex;}
+  #continueBanner .txt{font-family:'Hind Siliguri',sans-serif; font-size:0.92rem; color:var(--ink-dim);}
+  #continueBanner .txt b{color:var(--gold-bright); font-weight:600;}
+  #continueBanner button{
+    font-family:'Hind Siliguri',sans-serif; font-weight:600; font-size:0.88rem;
+    background:var(--gold); color:var(--navy-deep); border:none;
+    padding:9px 16px; border-radius:7px; white-space:nowrap; cursor:pointer;
+  }
+
+  /* TOC */
+  nav.toc{padding:28px 20px 8px;}
+  nav.toc .section-label{
+    font-family:'Hind Siliguri',sans-serif; font-size:0.8rem; letter-spacing:1px;
+    color:var(--gold); opacity:0.85; margin-bottom:14px;
+  }
+  .ep-card{
+    position:relative;
+    border:1px solid var(--line);
+    border-left:3px solid var(--gold);
+    background:linear-gradient(180deg, var(--navy-soft), var(--navy));
+    border-radius:4px 10px 10px 4px;
+    padding:16px 16px 16px 18px;
+    margin-bottom:14px;
+    cursor:pointer;
+    transition:border-color .2s ease, transform .15s ease;
+  }
+  .ep-card:active{transform:scale(0.99);}
+  .ep-card.bookmarked{border-left-color:var(--gold-bright); box-shadow:0 0 0 1px rgba(232,199,119,0.25) inset;}
+  .ep-card .ep-top{display:flex; align-items:baseline; justify-content:space-between; gap:10px;}
+  .ep-card .ep-num{font-family:'Hind Siliguri',sans-serif; font-size:0.78rem; color:var(--gold); letter-spacing:0.5px;}
+  .ep-card .ep-mark{font-size:0.95rem; color:var(--gold-bright);}
+  .ep-card h3{font-size:1.12rem; color:var(--ink); margin-top:4px; font-weight:600;}
+  .ep-card p.desc{color:var(--ink-dim); font-size:0.92rem; margin-top:8px; line-height:1.7;}
+
+  /* EPISODE VIEW */
+  main.episode{display:none; padding:30px 20px 20px; position:relative; z-index:1;}
+  main.episode.active{display:block;}
+  .back-link{
+    display:inline-flex; align-items:center; gap:6px;
+    font-family:'Hind Siliguri',sans-serif; font-size:0.88rem; color:var(--gold);
+    background:none; border:none; cursor:pointer; padding:6px 0; margin-bottom:18px;
+  }
+  .ep-header{margin-bottom:22px;}
+  .ep-header .section-label{font-family:'Hind Siliguri',sans-serif; font-size:0.78rem; color:var(--gold); letter-spacing:1px;}
+  .ep-header h2{font-size:1.5rem; color:var(--gold-bright); margin-top:6px; font-weight:700;}
+
+  .listen-btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Hind Siliguri',sans-serif; font-weight:600; font-size:0.92rem;
+    background:transparent; color:var(--gold-bright);
+    border:1px solid var(--gold); padding:9px 16px; border-radius:20px;
+    margin:16px 0 24px; cursor:pointer;
+  }
+  .listen-btn .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);}
+  .listen-btn.speaking .dot{animation:pulse 1s infinite ease-in-out;}
+  @keyframes pulse{0%,100%{opacity:.4;}50%{opacity:1;}}
+
+  .story-text p{margin-bottom:16px; font-size:1.06rem;}
+  .story-text .sfx{color:var(--gold-bright); font-weight:600;}
+  .story-text .divider{
+    text-align:center; color:var(--root); opacity:0.7; margin:26px 0; font-size:0.85rem;
+  }
+  .story-text .end-mark{
+    text-align:center; margin-top:32px; font-family:'Hind Siliguri',sans-serif;
+    color:var(--gold); letter-spacing:2px; font-size:0.95rem;
+  }
+
+  /* PLAYER BAR */
+  .player-bar{
+    position:fixed; left:0; right:0; bottom:0; z-index:5;
+    background:rgba(7,13,31,0.96);
+    backdrop-filter:blur(6px);
+    border-top:1px solid var(--line);
+    display:none;
+    align-items:center; justify-content:space-between;
+    padding:10px 16px; padding-bottom:calc(10px + env(safe-area-inset-bottom));
+  }
+  .player-bar.show{display:flex;}
+  .player-bar button{
+    font-family:'Hind Siliguri',sans-serif; font-size:0.85rem; font-weight:600;
+    background:none; border:none; color:var(--ink-dim); padding:8px 10px; cursor:pointer;
+  }
+  .player-bar button.enabled{color:var(--gold-bright);}
+  .player-bar button:disabled{opacity:0.3; cursor:default;}
+  .player-bar .center{font-family:'Hind Siliguri',sans-serif; font-size:0.82rem; color:var(--gold); text-align:center;}
+
+  footer{text-align:center; padding:30px 20px 10px; color:var(--ink-dim); font-size:0.8rem; font-family:'Hind Siliguri',sans-serif; opacity:0.6; position:relative; z-index:1;}
+</style>
+</head>
+<body>
+
+<div class="bg-roots"></div>
+
+<div class="hero-image">
+  <img src="images/banion.png" alt="বিশাল বটগাছের শিকড়ের নিচে বসে আছে অমল">
+</div>
+
+<header class="hero">
+  <span class="hero-emoji">🌳⚡</span>
+  <h1>গাছের ভিতরের দেশ</h1>
+  <p class="tagline">এক দুপুরে এক বটগাছ, আর তার শিকড়ের নিচে লুকানো এক আস্ত পৃথিবী।</p>
+</header>
+
+<div id="continueBanner">
+  <div class="txt">আপনি পড়া থামিয়েছিলেন <b id="continueEpTitle"></b>-এ</div>
+  <button onclick="continueReading()">চালিয়ে যান</button>
+</div>
+
+<nav class="toc" id="tocView">
+  <div class="section-label">সূচিপত্র</div>
+  <div id="epCards"></div>
+</nav>
+
+<footer>৪টি পর্বে সম্পূর্ণ</footer>
+
+<!-- EPISODE 1 -->
+<main class="episode" id="ep-1">
+  <button class="back-link" onclick="showTOC()">← সূচিপত্রে ফিরুন</button>
+  <div class="ep-header">
+    <div class="section-label">পর্ব ১</div>
+    <h2>এক মুহূর্তে অদৃশ্য</h2>
+  </div>
+  <button class="listen-btn" onclick="toggleSpeak(1)"><span class="dot"></span><span class="listen-label">শুনুন</span></button>
+  <div class="story-text">
+    <p>দুপুরের রোদে গ্রামের পথ প্রায় ফাঁকা। মাঠ পেরিয়ে বাড়ি ফিরছিল অমল। প্রচণ্ড গরমে হাঁটতে হাঁটতে সে গ্রামের শেষ প্রান্তের সেই বিশাল বটগাছটির নিচে এসে দাঁড়াল।</p>
+    <p>ছায়াটা এত ঘন যে বাইরে থেকে মনে হচ্ছিল, গাছটির নিচে যেন আলাদা একটা অন্ধকার পৃথিবী।</p>
+    <p>অমল একটু দাঁড়িয়ে জিরিয়ে নেওয়ার কথা ভাবল।</p>
+    <p>ঠিক তখনই—</p>
+    <p><span class="sfx">ধড়াম!</span></p>
+    <p>গাছের কাণ্ডের ভিতর থেকে এমন একটা শব্দ হলো যে অমল চমকে পিছিয়ে গেল।</p>
+    <p>“কী হলো?”</p>
+    <p>উত্তর আসার আগেই মাটির নিচে প্রচণ্ড কম্পন শুরু হলো।</p>
+    <p>ধুলো উড়ে উঠল। বটগাছের ঝুরিগুলো হঠাৎ দুলতে লাগল।</p>
+    <p>অমল সামলে ওঠার আগেই তার পায়ের নিচের মাটি যেন হঠাৎ দেবে গেল।</p>
+    <p>“আরে—!”</p>
+    <p>এক ঝটকায় একটি মোটা শিকড় তার কোমর জড়িয়ে ফেলল।</p>
+    <p>অমল হাত দিয়ে শিকড়টি সরাতে গেল। কিন্তু ততক্ষণে আরেকটি শিকড় তার শরীর পেঁচিয়ে ফেলেছে।</p>
+    <p>তার সামনে গাছের কাণ্ড খুলে তৈরি হয়েছে এক বিশাল কালো ফাঁক।</p>
+    <p>অমল চিৎকার করার আগেই—হুড়মুড় করে তাকে ভিতরে টেনে নিল গাছ।</p>
+    <p>মাত্র কয়েক সেকেন্ড। বাইরে পড়ে রইল তার গামছা। আর বটগাছটি আবার আগের মতো স্থির হয়ে দাঁড়িয়ে রইল।</p>
+    <div class="divider">✦</div>
+    <p>অমলের মনে হলো, সে যেন অন্ধকারের মধ্যে প্রচণ্ড গতিতে নিচের দিকে পড়ছে। চারপাশে বাতাসের শোঁ শোঁ শব্দ।</p>
+    <p>তারপর হঠাৎ—<span class="sfx">ধপাস!</span></p>
+    <p>সে শক্ত মাটির ওপর পড়ল। কিছুক্ষণ নিঃশব্দে পড়ে থেকে অমল উঠে বসল।</p>
+    <p>তার সামনে যা দেখল, তাতে তার মুখ থেকে কোনো কথা বেরোল না।</p>
+    <p>একটি বিশাল প্রাচীন নগর। ইটের তৈরি বাড়ি। সরু রাস্তা। অদ্ভুত নকশার পাত্র। দূরে উঁচু প্রাচীর।</p>
+    <p>আর সেই রাস্তায় ছুটে বেড়াচ্ছে অসংখ্য মানুষ—কিন্তু তারা সবাই অমলের হাঁটুর থেকেও ছোট।</p>
+    <p>একজন ছোট্ট সৈনিক অমলকে দেখেই আঁতকে উঠে চেঁচিয়ে উঠল, “দৈত্য! দৈত্য এসেছে!”</p>
+    <p>মুহূর্তের মধ্যে চারদিক থেকে সৈন্যরা ছুটে এল।</p>
+    <p>অমল হাত তুলে বলল, “দাঁড়াও! আমি কাউকে—”</p>
+    <p>কথা শেষ করার আগেই তার চোখ পড়ল শহরের অন্য প্রান্তে। সেখানে একটি ছোট্ট মেয়েকে কয়েকজন সৈনিক টেনে নিয়ে যাচ্ছে।</p>
+    <p>মেয়েটি অমলের দিকে তাকিয়ে গলা ফাটিয়ে ডাকল—“আমাকে বাঁচান!”</p>
+    <p>অমল আর এক মুহূর্তও দাঁড়িয়ে রইল না। সে ছুটে গেল সেই দিকে।</p>
+    <p class="end-mark">চলবে...</p>
+  </div>
+</main>
+
+<!-- EPISODE 2 -->
+<main class="episode" id="ep-2">
+  <button class="back-link" onclick="showTOC()">← সূচিপত্রে ফিরুন</button>
+  <div class="ep-header">
+    <div class="section-label">পর্ব ২</div>
+    <h2>দৈত্যের আগমন</h2>
+  </div>
+  <button class="listen-btn" onclick="toggleSpeak(2)"><span class="dot"></span><span class="listen-label">শুনুন</span></button>
+  <div class="story-text">
+    <p>“আমাকে বাঁচান!”</p>
+    <p>মেয়েটির চিৎকারে অমল আর এক মুহূর্তও ভাবল না।</p>
+    <p>সে বিশাল পা ফেলে ছুটে গেল শহরের দিকে। তার প্রতিটি পদক্ষেপে ছোট ছোট ইটের রাস্তা কেঁপে উঠতে লাগল।</p>
+    <p>“ওকে ছেড়ে দাও!”</p>
+    <p>অমলের গর্জনে মেয়েটিকে ধরে থাকা সৈন্যরা ভয়ে থমকে গেল। তাদের কাছে অমল যেন জীবন্ত পাহাড়।</p>
+    <p>একজন সৈন্য তলোয়ার উঁচিয়ে হুংকার দিল, “তুমি কে? আমাদের নগরে কেন এসেছ?”</p>
+    <p>অমল উত্তর দেওয়ার আগেই সৈন্যদের একটি দল তার দিকে ছুটে এল।</p>
+    <p>অমল হাত বাড়িয়ে তাদের অস্ত্র সরিয়ে দিল। কাউকে আঘাত না করে সে মেয়েটিকে নিজের পিছনে নিয়ে দাঁড়াল।</p>
+    <p>“ভয় পেও না। আমি তোমাকে কিছু হতে দেব না।”</p>
+    <p>মেয়েটি কাঁপছিল। “আমার নাম মীরা। ওরা আমাকে রাজপ্রাসাদে নিয়ে যাচ্ছিল।”</p>
+    <p>“কেন?”</p>
+    <p>মীরা উত্তর দেওয়ার আগেই চারদিক থেকে যুদ্ধের ঢোল বেজে উঠল। <span class="sfx">ঢুম! ঢুম! ঢুম!</span></p>
+    <p>শহরের প্রধান ফটক খুলে গেল। বাইরে দাঁড়িয়ে আছে অসংখ্য সশস্ত্র সৈন্য।</p>
+    <p>মীরার মুখ ফ্যাকাশে হয়ে গেল। “ওরা আবার এসেছে!”</p>
+    <p>অমল জিজ্ঞেস করল, “কারা?”</p>
+    <p>মীরা বলল, “পশ্চিমের রাজ্যের সৈন্য। বহুদিন ধরে আমাদের শহর দখল করার চেষ্টা করছে।”</p>
+    <p>সেই মুহূর্তেই একটি তীর ছুটে এসে অমলের পাশের পাথরের দেয়ালে গিয়ে বিধল।</p>
+    <p>অমল রেগে গেল। সে সামনে এগিয়ে গিয়ে দুই হাত দিয়ে শহরের বিশাল ফটকটি ধরে ফেলল।</p>
+    <p>তারপর এক ঝটকায়—<span class="sfx">ধড়াম!</span>—ফটকটি বন্ধ হয়ে গেল।</p>
+    <p>ছোট সৈন্যরা বিস্ময়ে অমলের দিকে তাকিয়ে রইল। মীরাও বিশ্বাস করতে পারছিল না।</p>
+    <p>“তুমি... তুমি আমাদের হয়ে যুদ্ধ করবে?”</p>
+    <p>অমল মাথা নাড়ল। “না। আমি যুদ্ধ করতে আসিনি।”</p>
+    <p>সে শহরের দুই পক্ষের মাঝখানে দাঁড়িয়ে উচ্চস্বরে বলল, “এই লড়াই বন্ধ করো! তোমরা সবাই একই মাটির মানুষ। একটা মেয়েকে বন্দি করে বা একটা শহর দখল করে কেউ জয়ী হয় না।”</p>
+    <p>কিছুক্ষণের জন্য চারদিক নিস্তব্ধ হয়ে গেল।</p>
+    <p>তারপর শত্রুপক্ষের সেনাপতি সামনে এগিয়ে এল। “তুমি বাইরের পৃথিবীর মানুষ। আমাদের নিয়ম তুমি জানো না।”</p>
+    <p>অমল বলল, “নিয়ম যদি অন্যায় হয়, সেটা বদলাতে হয়।”</p>
+    <p>মীরা এবার অমলের পাশে এসে দাঁড়াল। তার কণ্ঠে আর ভয় নেই। “আমি সাক্ষ্য দেব। যুদ্ধের আসল কারণ সবাইকে জানাব।”</p>
+    <p>শহরের মানুষ একে একে তাদের পাশে এসে দাঁড়াতে লাগল। দুই পক্ষের সৈন্যদের অস্ত্র ধীরে ধীরে নিচে নেমে গেল।</p>
+    <p>মনে হলো, বহু বছরের যুদ্ধ আজ সত্যিই থেমে যাবে।</p>
+    <p>কিন্তু হঠাৎ করেই—দূর থেকে ভেসে এল এক অদ্ভুত শব্দ।</p>
+    <p><span class="sfx">গর্জন...</span></p>
+    <p>মাটি কেঁপে উঠল। মীরা আতঙ্কিত হয়ে আকাশের দিকে তাকাল। “এটা যুদ্ধের শব্দ নয়...”</p>
+    <p>অমলও ঘুরে তাকাল। দিগন্তের ওপারে ধূসর কুয়াশার মতো কিছু এগিয়ে আসছে।</p>
+    <p>কিন্তু সেটা কুয়াশা নয়। জল।</p>
+    <p>অসংখ্য বছরের জমে থাকা নদীর জল যেন বাঁধ ভেঙে পুরো শহরের দিকে ধেয়ে আসছে।</p>
+    <p>এক সৈন্য গলা ফাটিয়ে হাঁক দিল—“বন্যা! সবাই উঁচু জায়গায় যাও!”</p>
+    <p>অমল মীরার হাত ধরে বলল, “দৌড়াও!”</p>
+    <p>কিন্তু জল ইতিমধ্যেই শহরের প্রথম বাড়িগুলো ছুঁয়ে ফেলেছে...</p>
+    <p class="end-mark">চলবে...</p>
+  </div>
+</main>
+
+<!-- EPISODE 3 -->
+<main class="episode" id="ep-3">
+  <button class="back-link" onclick="showTOC()">← সূচিপত্রে ফিরুন</button>
+  <div class="ep-header">
+    <div class="section-label">পর্ব ৩</div>
+    <h2>বন্যার মুখে</h2>
+  </div>
+  <button class="listen-btn" onclick="toggleSpeak(3)"><span class="dot"></span><span class="listen-label">শুনুন</span></button>
+  <div class="story-text">
+    <p>জল আর কয়েক মুহূর্তের মধ্যেই শহরটাকে গ্রাস করবে।</p>
+    <p>অমল মীরার হাত ধরে দৌড়াতে শুরু করল।</p>
+    <p>চারদিকে তখন হাহাকার। ছোট ছোট ঘর থেকে মানুষ বেরিয়ে এসে উঁচু জায়গার দিকে ছুটছে। কেউ শিশুদের কোলে তুলে নিয়েছে, কেউ বৃদ্ধদের ধরে টেনে নিয়ে যাচ্ছে।</p>
+    <p>মীরা গলা তুলে বলল, “ওদিকে! পাহাড়ের মতো যে উঁচু জায়গাটা দেখছ, সেখানে যেতে হবে!”</p>
+    <p>অমল তাকিয়ে দেখল, শহরের মাঝখানে একটি বিশাল পাথরের মঞ্চ। সেখানে পৌঁছাতে হলে বাজারের মধ্য দিয়ে যেতে হবে।</p>
+    <p>কিন্তু বাজারের রাস্তা ইতিমধ্যেই হাঁটুসমান জলে ডুবে গেছে।</p>
+    <p>অমল মীরাকে তুলে নিজের কাঁধে বসিয়ে নিল। “শক্ত করে ধরে থাকো!”</p>
+    <p>সে জলের মধ্যে পা বাড়াল।</p>
+    <p>ছোট্ট মানুষগুলোর কাছে যে জল কোমরসমান, অমলের কাছে তা হাঁটুর কাছাকাছি। কিন্তু স্রোত ছিল ভয়ংকর।</p>
+    <p>হঠাৎ ভেসে আসা একটি কাঠের দরজা মীরার দিকে ছুটে এল।</p>
+    <p>অমল হাত বাড়িয়ে সেটি আটকে দিল। “সাবধান!”</p>
+    <p>মীরা কাঁপতে কাঁপতে বলল, “ওটা আমাদের বাড়ির দরজা...”</p>
+    <p>অমল কিছু বলল না।</p>
+    <p>আরও কিছুটা এগোতেই একটি ছোট ছেলে জলের স্রোতে ভেসে যেতে শুরু করল।</p>
+    <p>“ওই যে!”</p>
+    <p>অমল এক লাফে তাকে ধরে ফেলল।</p>
+    <p>ছেলেটিকে মায়ের হাতে তুলে দিয়ে আবার মীরাকে নিয়ে এগিয়ে চলল।</p>
+    <p>এমন সময় মীরা দূরে তাকিয়ে আঁতকে উঠল, “অমল! দেখো!”</p>
+    <p>শহরের সবচেয়ে পুরোনো মন্দিরটির সামনে জলের স্রোত আটকে গেছে। বিশাল পাথরের স্তম্ভগুলো একে অপরের সঙ্গে আটকে একটি বাঁধের মতো তৈরি হয়েছে।</p>
+    <p>মীরা বলল, “ওটা ভেঙে গেলে পুরো জল একসঙ্গে শহরে ঢুকে যাবে!”</p>
+    <p>অমল বুঝতে পারল, আর সময় নেই।</p>
+    <p>সে মীরাকে নিরাপদ জায়গায় নামিয়ে দিয়ে মন্দিরের দিকে ছুটল।</p>
+    <p>তার বিশাল শরীরের ধাক্কায় পাথরগুলো কেঁপে উঠল।</p>
+    <p>একবার... দুবার... তৃতীয়বার প্রচণ্ড শক্তিতে ধাক্কা দিতেই—<span class="sfx">ধড়াম!</span></p>
+    <p>আটকে থাকা পাথর সরে গেল।</p>
+    <p>কিন্তু তার সঙ্গে সঙ্গে জমে থাকা জল প্রচণ্ড গতিতে বেরিয়ে এল।</p>
+    <p>অমল ভারসাম্য হারিয়ে স্রোতে পড়ে গেল।</p>
+    <p>“অমল!”</p>
+    <p>মীরা ছুটে এল।</p>
+    <p>অমল হাত বাড়িয়ে একটি পাথর আঁকড়ে ধরল। কিন্তু স্রোত তাকে টেনে নিয়ে যাচ্ছে।</p>
+    <p>মীরা তার হাত ধরতে চেষ্টা করল।</p>
+    <p>আর ঠিক সেই সময়—দূরে আকাশ কালো হয়ে গেল।</p>
+    <p>বৃষ্টির মতো নয়, যেন পুরো আকাশটাই জল হয়ে নেমে আসছে।</p>
+    <p>অমল মীরার হাত শক্ত করে ধরল। “ছাড়বে না!”</p>
+    <p>মীরা চিৎকার করল, “কখনও না!”</p>
+    <p>এক বিশাল ঢেউ তাদের দুজনকে ঢেকে ফেলল।</p>
+    <p>অমলের চোখের সামনে সবকিছু ঝাপসা হয়ে গেল।</p>
+    <p>শহর... মানুষ... মীরা...</p>
+    <p>সবকিছু জলের নিচে হারিয়ে যেতে লাগল।</p>
+    <p>তারপর অন্ধকার। সম্পূর্ণ অন্ধকার।</p>
+    <p>অমল শেষবার শুধু শুনতে পেল—“অমল... উঠো...”</p>
+    <p>কে ডাকছে? মীরার কণ্ঠ? নাকি অন্য কেউ?</p>
+    <p>আবার সেই শব্দ—“অমল, ওঠ!”</p>
+    <p>তারপর হঠাৎ তার মুখে প্রচণ্ড ঠান্ডা জল এসে পড়ল।</p>
+    <p><span class="sfx">ছপাৎ!</span></p>
+    <p>অমলের চোখ খুলে গেল...</p>
+    <p class="end-mark">চলবে...</p>
+  </div>
+</main>
+
+<!-- EPISODE 4 -->
+<main class="episode" id="ep-4">
+  <button class="back-link" onclick="showTOC()">← সূচিপত্রে ফিরুন</button>
+  <div class="ep-header">
+    <div class="section-label">পর্ব ৪</div>
+    <h2>চোখ খুলতেই</h2>
+  </div>
+  <button class="listen-btn" onclick="toggleSpeak(4)"><span class="dot"></span><span class="listen-label">শুনুন</span></button>
+  <div class="story-text">
+    <p><span class="sfx">ছপাৎ!</span></p>
+    <p>ঠান্ডা জল মুখে পড়তেই অমল হঠাৎ চোখ খুলে উঠে বসল।</p>
+    <p>কয়েক মুহূর্ত সে কিছুই বুঝতে পারল না।</p>
+    <p>মীরা কোথায়? সেই প্রাচীন শহর কোথায়? বন্যার জল কোথায়?</p>
+    <p>অমল হাঁপাতে হাঁপাতে চারদিকে তাকাল।</p>
+    <p>তার সামনে দাঁড়িয়ে আছে তার বাবা। বাবার হাতে একটি খালি বালতি।</p>
+    <p>“এই অমল! কতবার ডাকলাম, শুনতে পাচ্ছিস না? দুপুরবেলা গাছের নিচে শুয়ে ঘুমিয়ে পড়েছিস!”</p>
+    <p>অমল নিজের শরীরের দিকে তাকাল। জামাকাপড় ভিজে একাকার।</p>
+    <p>সে হাত দিয়ে মুখ মুছে বলল, “জল... তুমি ঢেলেছ?”</p>
+    <p>বাবা বললেন, “হ্যাঁ। এক বালতি জল ঢেলেও যখন উঠলি না, তখন ভাবলাম আরেক বালতি আনব!”</p>
+    <p>অমল ধীরে ধীরে উঠে বসল। তার চোখ চলে গেল সেই বিশাল বটগাছটির দিকে।</p>
+    <p>গাছটা একেবারে শান্ত।</p>
+    <p>কোনো দরজা নেই। কোনো শিকড় নড়ছে না। কোনো প্রাচীন শহর নেই।</p>
+    <p>অমল বুঝতে পারল—সবটাই স্বপ্ন ছিল।</p>
+    <p>সে বাবাকে বলল, “বাবা, আমি এমন একটা স্বপ্ন দেখলাম... আমি একটা গাছের ভিতরে ঢুকে গিয়েছিলাম। সেখানে একটা ছোট্ট শহর ছিল। সবাই খুব ছোট। একটা মেয়েকে আমি বাঁচিয়েছিলাম। তারপর বন্যা এল...”</p>
+    <p>বাবা হেসে বললেন, “তাই নাকি? দুপুরের ঘুমে তোকে দেখলাম হাত-পা ছুড়ছিস আর কী সব বলছিস—‘মীরাকে ধরো’, ‘সবাই পালাও’! তাই জল ঢেলে জাগালাম।”</p>
+    <p>অমল লজ্জা পেয়ে হেসে ফেলল। “তাহলে মীরাও স্বপ্নের মানুষ?”</p>
+    <p>“অবশ্যই।”</p>
+    <p>অমল উঠে দাঁড়াল। একবার গাছটির দিকে তাকিয়ে মৃদু হেসে বলল, “অদ্ভুত স্বপ্ন!”</p>
+    <p>তারপর বাবার সঙ্গে বাড়ির পথে হাঁটতে শুরু করল।</p>
+    <p>পেছনে পড়ে রইল সেই পুরোনো বটগাছ।</p>
+    <p>অমল আর একবারও ফিরে তাকাল না।</p>
+    <p>তার কাছে ঘটনাটি সেদিনের একটি অদ্ভুত স্বপ্ন হয়েই রইল।</p>
+    <p class="end-mark">সমাপ্ত</p>
+  </div>
+</main>
+
+<div class="player-bar" id="playerBar">
+  <button id="prevBtn" onclick="navEp(-1)">← আগের পর্ব</button>
+  <div class="center" id="playerLabel">পর্ব ১</div>
+  <button id="nextBtn" onclick="navEp(1)">পরের পর্ব →</button>
+</div>
+
+<script>
+const episodes = [
+  {id:1, title:"এক মুহূর্তে অদৃশ্য", desc:"এক বটগাছ, এক অন্ধকার টান — অমল হারিয়ে গেল এক ক্ষুদ্র প্রাচীন নগরে।"},
+  {id:2, title:"দৈত্যের আগমন", desc:"অমল মীরাকে বাঁচাল, দুই রাজ্যের যুদ্ধ থামাল — কিন্তু হঠাৎ নেমে এল অন্য এক বিপদ।"},
+  {id:3, title:"বন্যার মুখে", desc:"জলের স্রোতে ডুবে যাচ্ছে শহর। অমল বাঁধ ভাঙল, তারপর নিজেই হারিয়ে গেল অন্ধকারে।"},
+  {id:4, title:"চোখ খুলতেই", desc:"এক বালতি ঠান্ডা জল, আর অমল ফিরে এল বাস্তবে — নাকি সত্যিই সবটা স্বপ্ন ছিল?"}
+];
+
+const STORAGE_KEY = "gachDesh_bookmark";
+let currentEp = null;
+let utter = null;
+let speakingEp = null;
+
+function renderTOC(){
+  const wrap = document.getElementById('epCards');
+  wrap.innerHTML = '';
+  const bookmarked = getBookmark();
+  episodes.forEach(ep=>{
+    const card = document.createElement('div');
+    card.className = 'ep-card' + (bookmarked===ep.id ? ' bookmarked' : '');
+    card.onclick = ()=>openEp(ep.id);
+    card.innerHTML = `
+      <div class="ep-top">
+        <span class="ep-num">পর্ব ${bnNum(ep.id)}</span>
+        ${bookmarked===ep.id ? '<span class="ep-mark">🔖 বুকমার্ক করা</span>' : ''}
+      </div>
+      <h3>${ep.title}</h3>
+      <p class="desc">${ep.desc}</p>
+    `;
+    wrap.appendChild(card);
+  });
+}
+
+function bnNum(n){
+  const d = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+  return String(n).split('').map(c=>d[c]).join('');
+}
+
+function getBookmark(){
+  const v = localStorage.getItem(STORAGE_KEY);
+  return v ? parseInt(v,10) : null;
+}
+function setBookmark(id){
+  localStorage.setItem(STORAGE_KEY, id);
+}
+
+function checkContinueBanner(){
+  const b = getBookmark();
+  const banner = document.getElementById('continueBanner');
+  if(b && episodes.find(e=>e.id===b)){
+    document.getElementById('continueEpTitle').textContent = 'পর্ব ' + bnNum(b) + ': ' + episodes.find(e=>e.id===b).title;
+    banner.classList.add('show');
+  } else {
+    banner.classList.remove('show');
+  }
+}
+
+function continueReading(){
+  const b = getBookmark();
+  if(b) openEp(b);
+}
+
+function showTOC(){
+  stopSpeak();
+  document.querySelectorAll('main.episode').forEach(el=>el.classList.remove('active'));
+  document.getElementById('tocView').style.display = 'block';
+  document.getElementById('playerBar').classList.remove('show');
+  currentEp = null;
+  renderTOC();
+  checkContinueBanner();
+  window.scrollTo(0,0);
+}
+
+function openEp(id){
+  stopSpeak();
+  document.getElementById('tocView').style.display = 'none';
+  document.getElementById('continueBanner').classList.remove('show');
+  document.querySelectorAll('main.episode').forEach(el=>el.classList.remove('active'));
+  document.getElementById('ep-'+id).classList.add('active');
+  currentEp = id;
+  setBookmark(id);
+  updatePlayerBar();
+  document.getElementById('playerBar').classList.add('show');
+  window.scrollTo(0,0);
+}
+
+function navEp(dir){
+  const next = currentEp + dir;
+  if(next>=1 && next<=episodes.length){
+    openEp(next);
+  }
+}
+
+function updatePlayerBar(){
+  document.getElementById('playerLabel').textContent = 'পর্ব ' + bnNum(currentEp) + ' / ' + bnNum(episodes.length);
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  prevBtn.disabled = currentEp<=1;
+  nextBtn.disabled = currentEp>=episodes.length;
+  prevBtn.className = currentEp<=1 ? '' : 'enabled';
+  nextBtn.className = currentEp>=episodes.length ? '' : 'enabled';
+}
+
+function getEpisodeText(id){
+  const node = document.querySelector('#ep-'+id+' .story-text');
+  return Array.from(node.querySelectorAll('p')).map(p=>p.textContent).join(' ');
+}
+
+function toggleSpeak(id){
+  if(speakingEp===id){
+    stopSpeak();
+    return;
+  }
+  stopSpeak();
+  if(!('speechSynthesis' in window)){
+    alert('এই ব্রাউজারে ভয়েস পড়ে শোনানোর সুবিধা নেই।');
+    return;
+  }
+  const text = getEpisodeText(id);
+  utter = new SpeechSynthesisUtterance(text);
+  utter.lang = 'bn-IN';
+  utter.rate = 0.95;
+  const voices = speechSynthesis.getVoices();
+  const bnVoice = voices.find(v=>v.lang==='bn-IN') || voices.find(v=>v.lang && v.lang.startsWith('bn'));
+  if(bnVoice) utter.voice = bnVoice;
+  utter.onend = ()=>{ setSpeakingUI(id,false); speakingEp=null; };
+  utter.onerror = ()=>{ setSpeakingUI(id,false); speakingEp=null; };
+  speechSynthesis.speak(utter);
+  speakingEp = id;
+  setSpeakingUI(id,true);
+}
+
+function stopSpeak(){
+  if('speechSynthesis' in window) speechSynthesis.cancel();
+  if(speakingEp!==null) setSpeakingUI(speakingEp,false);
+  speakingEp = null;
+}
+
+function setSpeakingUI(id,on){
+  const btn = document.querySelector('#ep-'+id+' .listen-btn');
+  if(!btn) return;
+  btn.classList.toggle('speaking',on);
+  btn.querySelector('.listen-label').textContent = on ? 'থামান' : 'শুনুন';
+}
+
+if('speechSynthesis' in window){
+  speechSynthesis.onvoiceschanged = ()=>{};
+}
+
+renderTOC();
+checkContinueBanner();
+</script>
+
+</body>
+</html>

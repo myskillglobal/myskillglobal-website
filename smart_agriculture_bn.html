@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>FarmGuide – স্মার্ট কৃষি সহায়ক</title>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Serif+4:wght@300;400;600&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --green: #4ade80;
+    --green-dim: #6aaa6a;
+    --bg: #0a0f0a;
+    --surface: rgba(255,255,255,0.03);
+    --border: rgba(255,255,255,0.08);
+    --text: #e8f0e8;
+    --text-muted: #a0c0a0;
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans Bengali', 'Source Serif 4', Georgia, serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+  }
+  #app {
+    width: 100%;
+    max-width: 420px;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+  }
+  .ambient {
+    position: fixed;
+    top: 0; left: 50%; transform: translateX(-50%);
+    width: 420px; height: 100vh;
+    pointer-events: none; z-index: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(74,222,128,0.06) 0%, transparent 60%);
+  }
+
+  /* HEADER */
+  .header {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(10,15,10,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(74,222,128,0.12);
+    padding: 16px 20px 12px;
+  }
+  .header-top {
+    display: flex; align-items: center; gap: 10; margin-bottom: 14px;
+  }
+  .header-logo {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: linear-gradient(135deg, #4ade80, #16a34a);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; box-shadow: 0 0 16px rgba(74,222,128,0.4);
+    flex-shrink: 0;
+  }
+  .header-title { font-family: 'Playfair Display', serif; font-size: 18px; color: #f0faf0; }
+  .header-sub { font-size: 11px; color: var(--green-dim); letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* TABS */
+  .tabs { display: flex; gap: 6px; }
+  .tab-btn {
+    flex: 1; padding: 8px 4px; border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: #7a9a7a; font-size: 11px; font-family: inherit;
+    cursor: pointer; transition: all 0.2s;
+    display: flex; flex-direction: column; align-items: center; gap: 2px;
+    letter-spacing: 0.05em;
+  }
+  .tab-btn.active {
+    border-color: rgba(74,222,128,0.5);
+    background: rgba(74,222,128,0.12);
+    color: var(--green);
+  }
+  .tab-btn .tab-icon { font-size: 16px; }
+
+  /* CONTENT */
+  .content { position: relative; z-index: 1; padding: 16px 16px 100px; }
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* SECTION HEADERS */
+  .page-title { font-family: 'Playfair Display', serif; font-size: 20px; color: #f0faf0; margin-bottom: 4px; }
+  .page-sub { font-size: 13px; color: var(--green-dim); margin-bottom: 16px; }
+
+  /* CROP CARDS */
+  .crop-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+    padding: 16px; cursor: pointer; transition: all 0.2s;
+    display: flex; align-items: center; gap: 14px;
+    position: relative; overflow: hidden; margin-bottom: 12px;
+    width: 100%;
+  }
+  .crop-card:hover { border-color: rgba(74,222,128,0.3); background: rgba(74,222,128,0.05); }
+  .crop-card-glow {
+    position: absolute; right: -20px; top: -20px;
+    width: 80px; height: 80px; border-radius: 50%;
+  }
+  .crop-icon {
+    width: 56px; height: 56px; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px; flex-shrink: 0;
+  }
+  .crop-name { font-size: 17px; font-weight: bold; color: #f0faf0; margin-bottom: 3px; }
+  .crop-season { font-size: 12px; color: var(--green-dim); margin-bottom: 6px; }
+  .crop-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .tag-sow {
+    font-size: 10px; padding: 2px 8px; border-radius: 20px;
+    background: rgba(74,222,128,0.1); color: var(--green);
+    border: 1px solid rgba(74,222,128,0.2);
+  }
+  .tag-harvest {
+    font-size: 10px; padding: 2px 8px; border-radius: 20px;
+    background: rgba(96,165,250,0.1); color: #60a5fa;
+    border: 1px solid rgba(96,165,250,0.2);
+  }
+  .crop-arrow { color: var(--green); font-size: 20px; margin-left: auto; }
+
+  /* DETAIL VIEW */
+  #detail-view { display: none; }
+  #detail-view.active { display: block; }
+  .back-btn {
+    background: none; border: none; color: var(--green);
+    font-size: 14px; cursor: pointer; font-family: inherit;
+    padding: 0 0 16px; display: flex; align-items: center; gap: 6px;
+  }
+  .detail-hero {
+    border-radius: 18px; padding: 20px; margin-bottom: 16px;
+  }
+  .detail-hero-top {
+    display: flex; align-items: center; gap: 14px; margin-bottom: 12px;
+  }
+  .detail-emoji { font-size: 48px; }
+  .detail-name { font-family: 'Playfair Display', serif; font-size: 24px; color: #f0faf0; }
+  .detail-season { font-size: 13px; color: var(--green-dim); }
+  .detail-info-row { display: flex; gap: 8px; }
+  .detail-info-card {
+    flex: 1; min-width: 120px; padding: 10px 14px; border-radius: 12px;
+    background: rgba(0,0,0,0.3); border: 1px solid var(--border);
+  }
+  .detail-info-label { font-size: 11px; color: var(--green-dim); margin-bottom: 3px; }
+  .detail-info-val { font-size: 13px; color: #f0faf0; font-weight: 500; }
+
+  /* SECTION TABS */
+  .section-tabs { display: flex; gap: 6px; margin-bottom: 16px; }
+  .sec-btn {
+    flex: 1; padding: 7px 2px; border-radius: 8px; font-size: 10px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: #7a9a7a; cursor: pointer; font-family: inherit;
+    transition: all 0.2s;
+  }
+  .sec-btn.active {
+    border-color: rgba(74,222,128,0.5);
+    background: rgba(74,222,128,0.12);
+    color: var(--green);
+  }
+  .section-panel { display: none; }
+  .section-panel.active { display: block; }
+  .sec-title { font-size: 15px; font-weight: bold; color: #f0faf0; margin-bottom: 12px; }
+
+  /* SCHEDULE */
+  .schedule-item {
+    display: flex; gap: 12px; align-items: flex-start;
+    padding: 12px 14px; border-radius: 12px; margin-bottom: 8px;
+  }
+  .sched-icon {
+    width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center; font-size: 16px;
+  }
+  .sched-week { font-size: 12px; margin-bottom: 2px; }
+  .sched-task { font-size: 13px; color: #e8f0e8; }
+
+  /* FERTILIZER / PEST */
+  .info-box { padding: 16px; border-radius: 14px; margin-bottom: 12px; }
+  .info-box-icon { font-size: 24px; margin-bottom: 10px; }
+  .info-box-text { font-size: 14px; color: #e8f0e8; line-height: 1.7; }
+  .note-box { padding: 14px; border-radius: 14px; }
+  .note-label { font-size: 12px; font-weight: bold; margin-bottom: 6px; }
+  .note-text { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+
+  /* TIPS */
+  .tip-item {
+    display: flex; gap: 12px; align-items: flex-start;
+    padding: 12px 14px; border-radius: 12px; margin-bottom: 10px;
+    background: var(--surface); border: 1px solid var(--border);
+  }
+  .tip-num {
+    width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+    background: rgba(74,222,128,0.15); border: 1px solid rgba(74,222,128,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; color: var(--green); font-weight: bold;
+  }
+  .tip-text { font-size: 13px; color: var(--text-muted); line-height: 1.6; padding-top: 4px; }
+
+  /* CALENDAR */
+  .cal-card { margin-bottom: 12px; border-radius: 16px; overflow: hidden; }
+  .cal-head {
+    padding: 12px 16px;
+    display: flex; align-items: center; gap: 10;
+    border-bottom-width: 1px; border-bottom-style: solid;
+  }
+  .cal-head-icon { font-size: 22px; }
+  .cal-month { font-size: 15px; font-weight: bold; color: #f0faf0; }
+  .cal-season { font-size: 11px; }
+  .cal-body { padding: 12px 16px; }
+  .cal-section-label {
+    font-size: 11px; color: var(--green-dim); margin-bottom: 6px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .crop-pill {
+    font-size: 11px; padding: 3px 10px; border-radius: 20px;
+    display: inline-block; margin: 3px 3px 3px 0;
+  }
+  .cal-activities { margin-top: 10px; }
+  .cal-activity {
+    font-size: 12px; color: #c0d8c0; padding: 4px 0;
+    display: flex; align-items: center; gap: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .cal-activity:last-child { border-bottom: none; }
+
+  /* WEATHER */
+  .weather-card {
+    padding: 16px; border-radius: 14px; margin-bottom: 10px;
+    background: var(--surface); border: 1px solid var(--border);
+    display: flex; gap: 14px; align-items: flex-start;
+  }
+  .weather-icon { font-size: 32px; }
+  .weather-title { font-size: 14px; font-weight: bold; color: #f0faf0; margin-bottom: 4px; }
+  .weather-tip { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+  .rules-box {
+    border-radius: 16px; padding: 18px;
+    background: rgba(74,222,128,0.05); border: 1px solid rgba(74,222,128,0.15);
+    margin-top: 16px;
+  }
+  .rules-title { font-size: 15px; font-weight: bold; color: var(--green); margin-bottom: 14px; }
+  .rule-item {
+    display: flex; gap: 10px; padding: 8px 0;
+    border-bottom: 1px solid rgba(74,222,128,0.1);
+    font-size: 13px; color: var(--text-muted); line-height: 1.5;
+  }
+  .rule-item:last-child { border-bottom: none; }
+  .rule-check { color: var(--green); font-size: 16px; flex-shrink: 0; }
+</style>
+</head>
+<body>
+<div class="ambient"></div>
+<div id="app">
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-top">
+      <div class="header-logo">🌿</div>
+      <div>
+        <div class="header-title">FarmGuide</div>
+        <div class="header-sub">স্মার্ট কৃষি সহায়ক</div>
+      </div>
+    </div>
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('crops',this)">
+        <span class="tab-icon">🌱</span><span>শস্য</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('calendar',this)">
+        <span class="tab-icon">📅</span><span>ক্যালেন্ডার</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('weather',this)">
+        <span class="tab-icon">🌤️</span><span>আবহাওয়া</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="content">
+    <!-- CROPS PAGE -->
+    <div id="page-crops" class="page active">
+      <div id="crop-list">
+        <p class="page-title">শস্য গ্রন্থাগার</p>
+        <p class="page-sub">বিস্তারিত চাষ পদ্ধতির জন্য একটি শস্য নির্বাচন করুন</p>
+        <div id="crops-container"></div>
+      </div>
+      <div id="detail-view">
+        <button class="back-btn" onclick="showCropList()">‹ শস্য তালিকায় ফিরুন</button>
+        <div id="detail-content"></div>
+      </div>
+    </div>
+
+    <!-- CALENDAR PAGE -->
+    <div id="page-calendar" class="page">
+      <p class="page-title">মরশুমি ক্যালেন্ডার</p>
+      <p class="page-sub">মাসিক বপন ও কার্যক্রম পরিকল্পনা</p>
+      <div id="calendar-content"></div>
+    </div>
+
+    <!-- WEATHER PAGE -->
+    <div id="page-weather" class="page">
+      <p class="page-title">আবহাওয়া পরামর্শ</p>
+      <p class="page-sub">আবহাওয়ার অবস্থা অনুযায়ী চাষের পরামর্শ</p>
+      <div id="weather-content"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const crops = [
+  {
+    id:1, name:"ধান", emoji:"🌾", season:"খরিফ (জুন–নভেম্বর)", color:"#e8c547",
+    sowingTime:"জুন – জুলাই", harvest:"অক্টোবর – নভেম্বর",
+    fertilizer:"বপনের সময় এনপিকে (২০:২০:২০) প্রয়োগ করুন। কুশি অবস্থায় (রোপণের ২৫–৩০ দিন পরে) ইউরিয়া উপরি প্রয়োগ করুন। পাতার রং ফ্যাকাশে হলে পটাশ পার্শ্ব প্রয়োগ করুন।",
+    pesticide:"রোপণের সময় কারবোফিউরান দানা স্প্রে করুন। ৩০ দিন পর কাণ্ড ছিদ্রকারী পোকার জন্য মনোক্রোটোফস ব্যবহার করুন। প্রতি সপ্তাহে বাদামি গাছ ফড়িং পর্যবেক্ষণ করুন।",
+    tips:["কুশি অবস্থায় ২–৫ সেমি দাঁড়ানো জল বজায় রাখুন","ফসল তোলার ১০ দিন আগে জমির জল সরিয়ে দিন","২০% বেশি ফলনের জন্য প্রত্যয়িত বীজ ব্যবহার করুন"],
+    schedule:[
+      {week:"সপ্তাহ ১–২",task:"বীজতলা তৈরি ও নার্সারি বপন",type:"sow"},
+      {week:"সপ্তাহ ৩–৪",task:"জমি কাদা করা ও চারা রোপণ",type:"sow"},
+      {week:"সপ্তাহ ৫–৬",task:"মূল সার প্রয়োগ (ডিএপি + ইউরিয়া)",type:"fertilizer"},
+      {week:"সপ্তাহ ৭–৮",task:"প্রথম নিড়ানি, কাণ্ড ছিদ্রকারী পোকা পরীক্ষা",type:"pest"},
+      {week:"সপ্তাহ ৯–১০",task:"ইউরিয়া উপরি প্রয়োগ, প্রয়োজনে কীটনাশক প্রয়োগ",type:"fertilizer"},
+      {week:"সপ্তাহ ১৪–১৬",task:"৮০% দানা সোনালী হলে ফসল কাটুন",type:"harvest"},
+    ]
+  },
+  {
+    id:2, name:"গম", emoji:"🌿", season:"রবি (নভেম্বর–এপ্রিল)", color:"#f4a259",
+    sowingTime:"নভেম্বর – ডিসেম্বর", harvest:"মার্চ – এপ্রিল",
+    fertilizer:"মূল মাত্রা: এনপিকে ৬০:৪০:৪০ কেজি/হেক্টর। ক্রাউন রুট অবস্থায় (২১ দিন) ৬০ কেজি নাইট্রোজেন/হেক্টর উপরি প্রয়োগ করুন। ঘাটতি দেখা দিলে সালফার প্রয়োগ করুন।",
+    pesticide:"মরিচা রোগের জন্য প্রোপিকোনাজল ব্যবহার করুন। বপনের সময় উইপোকার জন্য ক্লোরপাইরিফস প্রয়োগ করুন। ফুল আসার সময় জাব পোকা পর্যবেক্ষণ করুন।",
+    tips:["৫–৬ সেমি সর্বোত্তম গভীরতায় বপন করুন","ক্রাউন রুট অবস্থায় প্রথম সেচ অত্যন্ত গুরুত্বপূর্ণ","জল জমা এড়িয়ে চলুন — ভালো নিষ্কাশনযুক্ত জমি অপরিহার্য"],
+    schedule:[
+      {week:"সপ্তাহ ১",task:"জমি তৈরি ও ছত্রাকনাশক দিয়ে বীজ শোধন",type:"sow"},
+      {week:"সপ্তাহ ২",task:"বপন — ২০ সেমি ব্যবধানে সারি বপন পছন্দনীয়",type:"sow"},
+      {week:"সপ্তাহ ৩",task:"প্রথম সেচ (ক্রাউন রুট সূচনা)",type:"sow"},
+      {week:"সপ্তাহ ৪–৫",task:"সেচের পরে ইউরিয়া উপরি প্রয়োগ করুন",type:"fertilizer"},
+      {week:"সপ্তাহ ৬–৮",task:"হলুদ মরিচা পর্যবেক্ষণ করুন, প্রয়োজনে ছত্রাকনাশক স্প্রে করুন",type:"pest"},
+      {week:"সপ্তাহ ১৮–২০",task:"ফসল সোনালী হলুদ হলে কাটুন",type:"harvest"},
+    ]
+  },
+  {
+    id:3, name:"টমেটো", emoji:"🍅", season:"সারা বছর (সেরা অক্টোবর–ফেব্রুয়ারি)", color:"#e85d42",
+    sowingTime:"সেপ্টেম্বর – অক্টোবর", harvest:"ডিসেম্বর – ফেব্রুয়ারি",
+    fertilizer:"রোপণের আগে ২৫ টন/হেক্টর গোবর সার। এনপিকে ১২০:৬০:৬০ কেজি/হেক্টর। ফুল আসার সময় পাতায় অণুপুষ্টি স্প্রে করুন। ব্লসম এন্ড রট প্রতিরোধে ক্যালসিয়াম নাইট্রেট প্রয়োগ করুন।",
+    pesticide:"সাদা মাছির জন্য ইমিডাক্লোপ্রিড ব্যবহার করুন। আর্লি ব্লাইটের জন্য কপার ছত্রাকনাশক। ফল ছিদ্রকারী পোকার জন্য স্পিনোস্যাড। পাতা কোঁকড়ানো ভাইরাস পর্যবেক্ষণ করুন।",
+    tips:["৩০–৪০ সেমি উচ্চতায় গাছে খুঁটি দিন, তাতে ফলন ভালো হয়","সবল বৃদ্ধির জন্য নিয়মিত অতিরিক্ত ডাল (সাকার) সরান","ড্রিপ সেচে ৪০% জল সাশ্রয় হয়"],
+    schedule:[
+      {week:"সপ্তাহ ১–২",task:"নার্সারি তৈরি, ট্রেতে বীজ বপন",type:"sow"},
+      {week:"সপ্তাহ ৪–৫",task:"চারা রোপণ (২৫–৩০ দিন বয়সী)",type:"sow"},
+      {week:"সপ্তাহ ৬",task:"মূল সার প্রয়োগ, খুঁটি/মাচা স্থাপন",type:"fertilizer"},
+      {week:"সপ্তাহ ৭–৮",task:"প্রথম নিড়ানি, সাদা মাছি ও জাব পোকা পরীক্ষা",type:"pest"},
+      {week:"সপ্তাহ ৯–১০",task:"প্রথম ফুল আসার সময় পাতায় অণুপুষ্টি স্প্রে",type:"fertilizer"},
+      {week:"সপ্তাহ ১২–১৬",task:"ফল লাল/কমলা হলে তোলা শুরু করুন",type:"harvest"},
+    ]
+  },
+  {
+    id:4, name:"ভুট্টা", emoji:"🌽", season:"খরিফ / বসন্ত", color:"#7bbf5e",
+    sowingTime:"জুন – জুলাই (খরিফ), ফেব্রুয়ারি – মার্চ (বসন্ত)", harvest:"সেপ্টেম্বর – অক্টোবর",
+    fertilizer:"১৫০:৬০:৬০ কেজি এনপিকে/হেক্টর প্রয়োগ করুন। নাইট্রোজেন ৩টি মাত্রায় ভাগ করুন: বপন, ৩০ দিন, ৬০ দিন। ঘাটতি দেখা দিলে জিঙ্ক সালফেট ২৫ কেজি/হেক্টর প্রয়োগ করুন।",
+    pesticide:"ফল আর্মিওয়ার্ম: হুইর্ল অবস্থায় স্পিনেটোরাম স্প্রে করুন। কাণ্ড ছিদ্রকারী পোকা: কারটাপ হাইড্রোক্লোরাইড দানা। মেইজ স্ট্রিক ভাইরাস পর্যবেক্ষণ করুন।",
+    tips:["সর্বোত্তম গাছের সংখ্যা: ৬৫,০০০–৭৫,০০০/হেক্টর","হাঁটু-সমান অবস্থায় মাটি তোলা গাছ হেলে পড়া রোধ করে","সংরক্ষণের জন্য ৩০–৩৫% আর্দ্রতায় ফসল তুলুন"],
+    schedule:[
+      {week:"সপ্তাহ ১",task:"জমি তৈরি, মাটি পরীক্ষা, গোবর সার প্রয়োগ",type:"sow"},
+      {week:"সপ্তাহ ২",task:"বীজ শোধন ও ৬০×২০ সেমি ব্যবধানে বপন",type:"sow"},
+      {week:"সপ্তাহ ৩–৪",task:"মূল এনপিকে সার প্রয়োগ",type:"fertilizer"},
+      {week:"সপ্তাহ ৫–৬",task:"প্রতি গর্তে ১টি গাছ রেখে পাতলা করা, প্রথম নিড়ানি",type:"sow"},
+      {week:"সপ্তাহ ৭–৮",task:"মাটি তোলা, ফল আর্মিওয়ার্ম পর্যবেক্ষণ",type:"pest"},
+      {week:"সপ্তাহ ১৬–১৮",task:"শারীরবৃত্তীয় পরিপক্কতায় ফসল তোলা",type:"harvest"},
+    ]
+  }
+];
+
+const typeConfig = {
+  sow:      {color:"#4ade80", bg:"rgba(5,46,22,0.6)",    icon:"🌱"},
+  fertilizer:{color:"#fbbf24", bg:"rgba(28,20,0,0.6)",   icon:"🧪"},
+  pest:     {color:"#f87171", bg:"rgba(45,5,5,0.6)",     icon:"🛡️"},
+  harvest:  {color:"#60a5fa", bg:"rgba(12,26,46,0.6)",   icon:"🌾"},
+};
+
+const calendarData = [
+  {months:"জানুয়ারি – ফেব্রুয়ারি",season:"শীতকাল",color:"#93c5fd",icon:"🥶",
+   crops:["আলু","সরিষা","মটরশুঁটি"],
+   activities:["রবি শস্য তোলা","ফলে পটাশ প্রয়োগ","বাগান ছাঁটাই"]},
+  {months:"মার্চ – মে",season:"গ্রীষ্ম / বসন্ত",color:"#fde68a",icon:"☀️",
+   crops:["সূর্যমুখী","শসা","করলা"],
+   activities:["গ্রীষ্মকালীন বপন","সেচ ব্যবস্থাপনা","মালচিং অপরিহার্য"]},
+  {months:"জুন – আগস্ট",season:"খরিফ মরশুম",color:"#6ee7b7",icon:"🌧️",
+   crops:["ধান","ভুট্টা","তুলা","সয়াবিন"],
+   activities:["প্রধান মরশুমের বপন","রোপণের সময় সার প্রয়োগ","পোকামাকড় পর্যবেক্ষণ"]},
+  {months:"সেপ্টেম্বর – অক্টোবর",season:"খরিফ-উত্তর",color:"#fca5a5",icon:"🍂",
+   crops:["টমেটো","ফুলকপি","পালং শাক"],
+   activities:["খরিফ শস্য তোলা","রবি জমি তৈরি","নার্সারি বপন"]},
+  {months:"নভেম্বর – ডিসেম্বর",season:"রবি মরশুম",color:"#c4b5fd",icon:"❄️",
+   crops:["গম","যব","পেঁয়াজ"],
+   activities:["রবি বপন শুরু","মূল সার প্রয়োগ","হালকা সেচ"]},
+];
+
+const weatherData = [
+  {icon:"☀️",condition:"গরম ও শুষ্ক",tip:"খুব সকালে বা সন্ধ্যায় সেচ দিন। আর্দ্রতা ধরে রাখতে মালচিং করুন। তীব্র গরমে সার প্রয়োগ এড়িয়ে চলুন।"},
+  {icon:"🌧️",condition:"ভারী বৃষ্টি",tip:"নিষ্কাশন নালা খোলা রয়েছে তা নিশ্চিত করুন। ভারী বৃষ্টির পর ৪৮ ঘণ্টা কীটনাশক প্রয়োগ পিছিয়ে দিন।"},
+  {icon:"🌫️",condition:"আর্দ্র",tip:"ছত্রাকনাশক প্রয়োগে সতর্কতা বাড়ান। ঘন ফসলে বাতাস চলাচল উন্নত করুন। প্রতিদিন ছত্রাকজনিত রোগ পর্যবেক্ষণ করুন।"},
+  {icon:"❄️",condition:"শৈত্যপ্রবাহ",tip:"নার্সারি পলিথিন দিয়ে ঢেকে দিন। উষ্ণ মরশুমের ফসল রোপণ পিছিয়ে দিন। ঠান্ডা প্রতিরোধ বাড়াতে পটাশ প্রয়োগ করুন।"},
+];
+
+const goldenRules = [
+  "বৃষ্টির সম্ভাবনা থাকলে কখনও কীটনাশক স্প্রে করবেন না",
+  "তীব্র গ্রীষ্মে সন্ধ্যায় জমিতে সেচ দিন",
+  "মাটিতে পর্যাপ্ত আর্দ্রতা থাকলে সার প্রয়োগ করুন",
+  "ক্ষতি এড়াতে বর্ষা আসার আগে ফসল তুলুন",
+  "বর্ষা মরশুমের আগে নিষ্কাশন নালা পরিষ্কার রাখুন",
+];
+
+// ——— BUILD CROP LIST ———
+function buildCropList() {
+  const c = document.getElementById('crops-container');
+  c.innerHTML = crops.map(crop => `
+    <button class="crop-card" onclick="showDetail(${crop.id})">
+      <div class="crop-card-glow" style="background:${crop.color}15"></div>
+      <div class="crop-icon" style="background:linear-gradient(135deg,${crop.color}30,${crop.color}10);border:1px solid ${crop.color}40">${crop.emoji}</div>
+      <div style="flex:1">
+        <div class="crop-name">${crop.name}</div>
+        <div class="crop-season">${crop.season}</div>
+        <div class="crop-tags">
+          <span class="tag-sow">🌱 বপন: ${crop.sowingTime.split('–')[0].trim()}</span>
+          <span class="tag-harvest">🌾 ${crop.harvest.split('–')[0].trim()}</span>
+        </div>
+      </div>
+      <div class="crop-arrow">›</div>
+    </button>
+  `).join('');
+}
+
+// ——— SHOW DETAIL ———
+function showDetail(id) {
+  const crop = crops.find(c => c.id === id);
+  document.getElementById('crop-list').style.display = 'none';
+  const dv = document.getElementById('detail-view');
+  dv.classList.add('active');
+
+  const schedHTML = crop.schedule.map(s => {
+    const cfg = typeConfig[s.type];
+    return `<div class="schedule-item" style="background:${cfg.bg};border:1px solid ${cfg.color}25">
+      <div class="sched-icon" style="background:${cfg.color}20;border:1px solid ${cfg.color}40">${cfg.icon}</div>
+      <div>
+        <div class="sched-week" style="color:${cfg.color}">${s.week}</div>
+        <div class="sched-task">${s.task}</div>
+      </div>
+    </div>`;
+  }).join('');
+
+  const tipsHTML = crop.tips.map((t,i) => `
+    <div class="tip-item">
+      <div class="tip-num">${i+1}</div>
+      <div class="tip-text">${t}</div>
+    </div>
+  `).join('');
+
+  document.getElementById('detail-content').innerHTML = `
+    <div class="detail-hero" style="background:linear-gradient(135deg,${crop.color}18,rgba(255,255,255,0.02));border:1px solid ${crop.color}30">
+      <div class="detail-hero-top">
+        <div class="detail-emoji">${crop.emoji}</div>
+        <div>
+          <div class="detail-name">${crop.name}</div>
+          <div class="detail-season">${crop.season}</div>
+        </div>
+      </div>
+      <div class="detail-info-row">
+        <div class="detail-info-card">
+          <div class="detail-info-label">🌱 বপনের সময়</div>
+          <div class="detail-info-val">${crop.sowingTime}</div>
+        </div>
+        <div class="detail-info-card">
+          <div class="detail-info-label">🌾 ফসল তোলার সময়</div>
+          <div class="detail-info-val">${crop.harvest}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-tabs">
+      <button class="sec-btn active" onclick="switchSection('schedule',this)">📋 সময়সূচি</button>
+      <button class="sec-btn" onclick="switchSection('fertilizer',this)">🧪 সার</button>
+      <button class="sec-btn" onclick="switchSection('pest',this)">🛡️ পোকামাকড়</button>
+      <button class="sec-btn" onclick="switchSection('tips',this)">💡 পরামর্শ</button>
+    </div>
+
+    <div id="sec-schedule" class="section-panel active">
+      <div class="sec-title">চাষের সময়সূচি</div>
+      ${schedHTML}
+    </div>
+
+    <div id="sec-fertilizer" class="section-panel">
+      <div class="sec-title">সারের নির্দেশিকা</div>
+      <div class="info-box" style="background:rgba(251,191,36,0.06);border:1px solid rgba(251,191,36,0.2)">
+        <div class="info-box-icon">🧪</div>
+        <div class="info-box-text">${crop.fertilizer}</div>
+      </div>
+      <div class="note-box" style="background:rgba(74,222,128,0.05);border:1px solid rgba(74,222,128,0.15)">
+        <div class="note-label" style="color:#4ade80">⚠️ গুরুত্বপূর্ণ তথ্য</div>
+        <div class="note-text">সার প্রয়োগের আগে সবসময় মাটি পরীক্ষা করুন। অতিরিক্ত সার প্রয়োগে পুষ্টি পোড়া (nutrient burn) ও জল দূষণ হতে পারে।</div>
+      </div>
+    </div>
+
+    <div id="sec-pest" class="section-panel">
+      <div class="sec-title">পোকামাকড় ও রোগ নিয়ন্ত্রণ</div>
+      <div class="info-box" style="background:rgba(248,113,113,0.06);border:1px solid rgba(248,113,113,0.2)">
+        <div class="info-box-icon">🛡️</div>
+        <div class="info-box-text">${crop.pesticide}</div>
+      </div>
+      <div class="note-box" style="background:rgba(96,165,250,0.05);border:1px solid rgba(96,165,250,0.15)">
+        <div class="note-label" style="color:#60a5fa">🌿 আইপিএম (IPM) নীতি</div>
+        <div class="note-text">সমন্বিত কীটপতঙ্গ ব্যবস্থাপনা (IPM) অনুসরণ করুন। রাসায়নিক কীটনাশক শুধুমাত্র শেষ উপায় হিসেবে ব্যবহার করুন। জৈব-কীটনাশক ও প্রাকৃতিক শত্রু পোকাকে প্রাধান্য দিন।</div>
+      </div>
+    </div>
+
+    <div id="sec-tips" class="section-panel">
+      <div class="sec-title">বিশেষজ্ঞ পরামর্শ</div>
+      ${tipsHTML}
+    </div>
+  `;
+}
+
+function showCropList() {
+  document.getElementById('crop-list').style.display = 'block';
+  document.getElementById('detail-view').classList.remove('active');
+  document.getElementById('detail-content').innerHTML = '';
+}
+
+function switchSection(id, btn) {
+  document.querySelectorAll('.section-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.sec-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('sec-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ——— BUILD CALENDAR ———
+function buildCalendar() {
+  document.getElementById('calendar-content').innerHTML = calendarData.map(row => `
+    <div class="cal-card" style="border:1px solid ${row.color}25;background:linear-gradient(135deg,${row.color}08,rgba(255,255,255,0.02))">
+      <div class="cal-head" style="background:${row.color}12;border-bottom-color:${row.color}20">
+        <span class="cal-head-icon">${row.icon}</span>
+        <div>
+          <div class="cal-month">${row.months}</div>
+          <div class="cal-season" style="color:${row.color}">${row.season}</div>
+        </div>
+      </div>
+      <div class="cal-body">
+        <div class="cal-section-label">প্রস্তাবিত শস্য</div>
+        <div>${row.crops.map(c => `<span class="crop-pill" style="background:${row.color}15;color:${row.color};border:1px solid ${row.color}30">${c}</span>`).join('')}</div>
+        <div class="cal-activities">
+          <div class="cal-section-label" style="margin-top:10px">প্রধান কার্যক্রম</div>
+          ${row.activities.map(a => `<div class="cal-activity"><span style="color:${row.color};font-size:10px">●</span> ${a}</div>`).join('')}
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ——— BUILD WEATHER ———
+function buildWeather() {
+  const cards = weatherData.map(w => `
+    <div class="weather-card">
+      <span class="weather-icon">${w.icon}</span>
+      <div>
+        <div class="weather-title">${w.condition}</div>
+        <div class="weather-tip">${w.tip}</div>
+      </div>
+    </div>
+  `).join('');
+
+  const rules = goldenRules.map(r => `
+    <div class="rule-item"><span class="rule-check">✓</span><span>${r}</span></div>
+  `).join('');
+
+  document.getElementById('weather-content').innerHTML = cards + `
+    <div class="rules-box">
+      <div class="rules-title">🌿 কৃষকদের জন্য সোনালী নিয়ম</div>
+      ${rules}
+    </div>
+  `;
+}
+
+// ——— TAB SWITCHING ———
+function switchTab(tab, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('page-' + tab).classList.add('active');
+  btn.classList.add('active');
+  if (tab === 'crops') showCropList();
+}
+
+// ——— INIT ———
+buildCropList();
+buildCalendar();
+buildWeather();
+</script>
+</body>
+</html>

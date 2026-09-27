@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>যমরাজের সিংহাসনে ব্রাহ্মণ</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;500;600;700&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-deep:#080c16;
+    --navy:#0e1526;
+    --navy-panel:#141d33;
+    --navy-line:#243156;
+    --gold:#d3ab55;
+    --gold-bright:#f0cd82;
+    --gold-dim:#8a723f;
+    --ink:#e9e4d6;
+    --ink-muted:#a8a9b8;
+    --wine:#7a2b2b;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--navy-deep);
+    color:var(--ink);
+    font-family:'Hind Siliguri',sans-serif;
+    line-height:1.7;
+    padding-bottom:78px;
+  }
+  h1,h2,h3,.serif{font-family:'Noto Serif Bengali',serif;}
+  a{color:inherit;}
+  .wrap{max-width:720px;margin:0 auto;padding:0 22px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    overflow:hidden;
+    background:
+      radial-gradient(circle at 50% 18%, rgba(211,171,85,0.14), transparent 55%),
+      linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 78%);
+    padding:56px 22px 40px;
+    text-align:center;
+    border-bottom:1px solid var(--navy-line);
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+      radial-gradient(circle, rgba(211,171,85,0.35) 1px, transparent 1px);
+    background-size:26px 26px;
+    opacity:0.12;
+    pointer-events:none;
+  }
+  .hero-eyebrow{
+    position:relative;
+    font-size:13px;
+    letter-spacing:0.04em;
+    color:var(--gold);
+    margin-bottom:18px;
+  }
+  .hero-art{
+    position:relative;
+    width:min(92%, 480px);
+    margin:0 auto 22px;
+  }
+  .hero-art svg{width:100%;height:auto;display:block;}
+  .hero-art img{
+    width:100%;
+    height:auto;
+    display:block;
+    border-radius:8px;
+    border:1px solid var(--gold-dim);
+    box-shadow:0 12px 40px rgba(0,0,0,0.55), 0 0 0 1px rgba(211,171,85,0.15);
+  }
+  .hero h1{
+    position:relative;
+    font-size:clamp(30px,7vw,44px);
+    font-weight:700;
+    color:var(--gold-bright);
+    line-height:1.3;
+    margin-bottom:14px;
+    text-shadow:0 0 30px rgba(211,171,85,0.18);
+  }
+  .hero p.tagline{
+    position:relative;
+    font-family:'Noto Serif Bengali',serif;
+    font-size:17px;
+    color:var(--ink-muted);
+    max-width:480px;
+    margin:0 auto 28px;
+  }
+  .hero-cta{
+    position:relative;
+    display:inline-flex;
+    gap:12px;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:12px 22px;
+    border-radius:3px;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    border:1px solid transparent;
+    text-decoration:none;
+    transition:transform .15s ease, background .2s ease;
+    font-family:'Hind Siliguri',sans-serif;
+  }
+  .btn:active{transform:scale(0.97);}
+  .btn-gold{background:var(--gold);color:#181206;}
+  .btn-gold:hover{background:var(--gold-bright);}
+  .btn-outline{border-color:var(--gold-dim);color:var(--gold);background:transparent;}
+  .btn-outline:hover{background:rgba(211,171,85,0.08);}
+
+  /* ---------- TOC ---------- */
+  .toc{
+    padding:44px 22px 8px;
+  }
+  .toc h2{
+    font-size:22px;
+    color:var(--gold-bright);
+    margin-bottom:6px;
+  }
+  .toc .sub{
+    color:var(--ink-muted);
+    font-size:14px;
+    margin-bottom:22px;
+  }
+  .toc-list{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .toc-item{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    background:var(--navy-panel);
+    border:1px solid var(--navy-line);
+    border-radius:4px;
+    padding:14px 16px;
+    text-decoration:none;
+    color:var(--ink);
+    transition:border-color .2s ease, background .2s ease;
+  }
+  .toc-item:hover{border-color:var(--gold-dim);background:#182140;}
+  .toc-num{
+    font-family:'Noto Serif Bengali',serif;
+    color:var(--gold);
+    font-size:14px;
+    min-width:34px;
+  }
+  .toc-title{flex:1;font-size:15px;font-weight:500;}
+  .toc-play{
+    width:30px;height:30px;border-radius:50%;
+    background:rgba(211,171,85,0.12);
+    border:1px solid var(--gold-dim);
+    color:var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    font-size:12px;
+    flex-shrink:0;
+  }
+
+  /* ---------- EPISODE ---------- */
+  .episode{
+    padding:52px 22px 8px;
+    border-top:1px solid var(--navy-line);
+  }
+  .episode-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:16px;
+    margin-bottom:26px;
+  }
+  .episode-tag{
+    color:var(--gold);
+    font-family:'Noto Serif Bengali',serif;
+    font-size:14px;
+    margin-bottom:6px;
+    display:block;
+  }
+  .episode h2{
+    font-size:24px;
+    color:var(--ink);
+    font-weight:600;
+    line-height:1.4;
+  }
+  .listen-btn{
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    gap:7px;
+    background:transparent;
+    border:1px solid var(--gold-dim);
+    color:var(--gold);
+    border-radius:3px;
+    padding:9px 14px;
+    font-size:13px;
+    font-family:'Hind Siliguri',sans-serif;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .listen-btn.playing{background:var(--gold);color:#181206;}
+  .story-text p{
+    font-family:'Noto Serif Bengali',serif;
+    font-size:16.5px;
+    color:var(--ink);
+    margin-bottom:16px;
+    max-width:66ch;
+  }
+  .story-text p.dialogue{
+    padding-left:16px;
+    border-left:2px solid var(--gold-dim);
+    color:var(--gold-bright);
+    font-style:italic;
+  }
+  .story-text p.beat{
+    color:var(--ink-muted);
+    font-size:15px;
+  }
+  .divider{
+    width:40px;height:1px;background:var(--gold-dim);
+    margin:34px auto;
+    opacity:0.7;
+  }
+  .divider.center{margin-left:0;}
+
+  /* ---------- CLOSING ---------- */
+  .closing{
+    padding:50px 22px 70px;
+    text-align:center;
+    border-top:1px solid var(--navy-line);
+  }
+  .closing p{
+    font-family:'Noto Serif Bengali',serif;
+    color:var(--ink-muted);
+    font-size:15px;
+    max-width:460px;
+    margin:0 auto 8px;
+  }
+  .closing .leaf{color:var(--gold);font-size:20px;margin-bottom:16px;}
+
+  /* ---------- PLAYER BAR ---------- */
+  .player-bar{
+    position:fixed;
+    left:0;right:0;bottom:0;
+    background:var(--navy-panel);
+    border-top:1px solid var(--gold-dim);
+    padding:10px 16px;
+    display:none;
+    align-items:center;
+    gap:12px;
+    z-index:50;
+    box-shadow:0 -6px 24px rgba(0,0,0,0.4);
+  }
+  .player-bar.active{display:flex;}
+  .player-bar .p-info{flex:1;min-width:0;}
+  .player-bar .p-title{
+    font-size:13px;
+    color:var(--gold-bright);
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    font-family:'Noto Serif Bengali',serif;
+  }
+  .player-bar .p-status{
+    font-size:11px;
+    color:var(--ink-muted);
+  }
+  .p-controls{display:flex;align-items:center;gap:6px;}
+  .p-btn{
+    width:36px;height:36px;
+    border-radius:50%;
+    background:transparent;
+    border:1px solid var(--navy-line);
+    color:var(--ink);
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;
+    font-size:14px;
+  }
+  .p-btn.main{
+    background:var(--gold);
+    color:#181206;
+    border-color:var(--gold);
+    width:40px;height:40px;
+    font-size:15px;
+  }
+  .p-btn:active{transform:scale(0.94);}
+  .p-close{background:transparent;border:none;color:var(--ink-muted);font-size:18px;cursor:pointer;padding:0 4px;}
+
+  @media(min-width:600px){
+    .wrap{padding:0 32px;}
+    .hero{padding:76px 32px 56px;}
+    .toc,.episode,.closing{padding-left:32px;padding-right:32px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="hero-eyebrow">একটি আধুনিক সমাজ ও ক্ষমতার ব্যঙ্গকথা</div>
+  <div class="hero-art">
+    <img src="images/yamraj.png" alt="যমরাজের সিংহাসনে ব্রাহ্মণ — ছয় পর্বের অলঙ্করণ" loading="eager">
+  </div>
+  <h1>যমরাজের সিংহাসনে ব্রাহ্মণ</h1>
+  <p class="tagline">একটি হাতি, একটি চিঠি, আর একদিনের রাজত্ব — ক্ষমতা মানুষকে কতটা বদলে দেয়, তারই এক ব্যঙ্গ-কাহিনি।</p>
+  <div class="hero-cta">
+    <a href="#toc" class="btn btn-gold">গল্প শুরু করুন</a>
+    <button class="btn btn-outline" id="hero-listen">🔊 সম্পূর্ণ গল্প শুনুন</button>
+  </div>
+</header>
+
+<!-- ================= TOC ================= -->
+<section class="toc" id="toc">
+  <div class="wrap">
+    <h2>সূচিপত্র</h2>
+    <div class="sub">৬টি পর্ব · পড়ুন অথবা শুনুন</div>
+    <ul class="toc-list">
+      <li><a class="toc-item" href="#ep1"><span class="toc-num">পর্ব ১</span><span class="toc-title">হাতির শিকল</span><span class="toc-play">▶</span></a></li>
+      <li><a class="toc-item" href="#ep2"><span class="toc-num">পর্ব ২</span><span class="toc-title">যমালয়ে জীবন্ত মানুষ</span><span class="toc-play">▶</span></a></li>
+      <li><a class="toc-item" href="#ep3"><span class="toc-num">পর্ব ৩</span><span class="toc-title">এক চেয়ারে বদলে গেল বিচার</span><span class="toc-play">▶</span></a></li>
+      <li><a class="toc-item" href="#ep4"><span class="toc-num">পর্ব ৪</span><span class="toc-title">ব্রাহ্মণের একদিনের রাজত্ব</span><span class="toc-play">▶</span></a></li>
+      <li><a class="toc-item" href="#ep5"><span class="toc-num">পর্ব ৫</span><span class="toc-title">পৃথিবীতে ১২ বছর</span><span class="toc-play">▶</span></a></li>
+      <li><a class="toc-item" href="#ep6"><span class="toc-num">পর্ব ৬</span><span class="toc-title">প্রতিশোধ নয়, মুক্তি</span><span class="toc-play">▶</span></a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= EPISODE 1 ================= -->
+<section class="episode" id="ep1" data-ep="0">
+  <div class="wrap">
+    <div class="episode-head">
+      <div><span class="episode-tag">পর্ব ১</span><h2>হাতির শিকল</h2></div>
+      <button class="listen-btn" data-listen="0">🔊 শুনুন</button>
+    </div>
+    <div class="story-text">
+      <p>যমালয়ে সেদিন যমরাজের দরবার বসেছে। একের পর এক মৃত আত্মা আসছে, আর যমরাজ তাদের জীবনের হিসাব শুনছেন।</p>
+      <p class="beat">এমন সময় এক বিশাল হাতিকে যমদূত নিয়ে এল।</p>
+      <p class="dialogue">যমরাজ হাতিটির দিকে তাকিয়ে বললেন — "হ্যাঁ রে! তোকে এত বড় একটা প্রকাণ্ড শরীর দিয়ে পৃথিবীতে পাঠানো হলো, আর তুই মানুষের বশ হলি কী করে? তোর একটা পায়ের সমান মানুষ, সেই ছোট্ট মানুষটা তোকে নিজের ইচ্ছেমতো চালাত?"</p>
+      <p class="beat">হাতি কিছুক্ষণ চুপ করে রইল। তারপর বলল —</p>
+      <p class="dialogue">"মহারাজ, আমার শরীর বড় হলেও আমার গল্পটা ছোটবেলা থেকেই শুরু।"</p>
+      <p class="dialogue">যমরাজ বললেন — "শোনাই।"</p>
+      <p class="dialogue">হাতি বলল — "আমি যখন ছোট ছিলাম, তখন মানুষ আমাকে ফাঁদ পেতে ধরেছিল। মাটিতে গভীর গর্ত খুঁড়ে তার ওপর পাতা দিয়ে ঢেকে রেখেছিল। আমি বুঝতে পারিনি। পা পড়তেই গর্তে পড়ে গেলাম।"</p>
+      <p class="dialogue">"তারপর আমাকে নিয়ে যাওয়া হলো। দড়ি দিয়ে বাঁধা হলো, শিকল পরানো হলো। পালাতে চাইলে মার খেতে হতো। আমি ছোট ছিলাম। শিকল ছিঁড়তে পারতাম না।"</p>
+      <p class="dialogue">যমরাজ জিজ্ঞেস করলেন — "তারপর মাহুত?"</p>
+      <p class="dialogue">হাতি বলল — "হ্যাঁ। মাহুত প্রথমে আমাকে অত্যাচার করত। কিন্তু পরে সে আমার কাছে খাবার আনত, জল দিত, মাথায় হাত বুলিয়ে দিত। অসুস্থ হলে দেখাশোনা করত। আমি ভাবলাম, এই মানুষটাই আমাকে ভালোবাসে।"</p>
+      <p class="beat">হাতি একটু থামল।</p>
+      <p class="dialogue">"কিন্তু মহারাজ, ভালোবাসার সঙ্গে তার হাতে ছিল নিয়ন্ত্রণের লাঠিও। আমি বড় হতে লাগলাম। একদিন বুঝলাম, ছোটবেলায় যে শিকল দিয়ে আমাকে বাঁধা হতো, এখন আমি চাইলে এক টানেই সেটা ছিঁড়ে ফেলতে পারি।"</p>
+      <p class="dialogue">যমরাজ অবাক হয়ে বললেন — "তাহলে ছিঁড়িসনি কেন?"</p>
+      <p class="beat">হাতি মাথা নিচু করল।</p>
+      <p class="dialogue">"কারণ তখন শিকলটা আমার পায়ে ছিল না।"</p>
+      <p class="dialogue">যমরাজ বললেন — "তাহলে কোথায় ছিল?"</p>
+      <p class="dialogue">হাতি ধীরে ধীরে বলল — "আমার মনে।"</p>
+      <p class="beat">দরবার নিস্তব্ধ।</p>
+      <p class="dialogue">হাতি বলল — "মহারাজ, মানুষ আমার শরীরকে নয়, আমার বিশ্বাসকে বশ করেছিল। আর মানুষ শুধু হাতিকে নয়। মানুষের মধ্যেও অনেককে ছোটবেলার ভয়, অভ্যাস, লোভ আর সামাজিক শিকল দিয়ে বেঁধে রাখে।"</p>
+      <p class="beat">যমরাজ দীর্ঘশ্বাস ফেললেন।</p>
+      <p class="dialogue">হাতি মুচকি হেসে বলল — "আপনার এখানে তো সব মানুষ মরে আসে। একবার একটা জীবন্ত মানুষকে এনে দেখুন। বুঝবেন মানুষ কত সাংঘাতিক।"</p>
+      <p class="dialogue">যমরাজ সঙ্গে সঙ্গে যমদূতকে আদেশ দিলেন — "যা। পৃথিবী থেকে একজন জীবন্ত মানুষ নিয়ে আয়।"</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EPISODE 2 ================= -->
+<section class="episode" id="ep2" data-ep="1">
+  <div class="wrap">
+    <div class="episode-head">
+      <div><span class="episode-tag">পর্ব ২</span><h2>যমালয়ে জীবন্ত মানুষ</h2></div>
+      <button class="listen-btn" data-listen="1">🔊 শুনুন</button>
+    </div>
+    <div class="story-text">
+      <p>যমদূত পৃথিবীতে নেমে এল। অনেক খোঁজার পর এক গরমের রাতে একটি বাড়ির ছাদে সে একজন ব্রাহ্মণকে খাটে ঘুমিয়ে থাকতে দেখল। যমদূত খাটসহ ব্রাহ্মণকে তুলে নিল।</p>
+      <p>মাঝপথে ব্রাহ্মণের ঘুম ভেঙে গেল। সে চোখ মেলে দেখল — সে আকাশে উড়ছে! খাট কাঁধে নিয়ে এক অদ্ভুত চেহারার লোক তাকে নিয়ে যাচ্ছে। ব্রাহ্মণ বুঝল — এ যমদূত। কিন্তু সে চিৎকার করল না।</p>
+      <p class="dialogue">সে ভাবল — "এখন চেঁচালে যদি খাট থেকে পড়ে যাই, তাহলে যমালয়ে পৌঁছানোর আগেই আমার কাজ শেষ।"</p>
+      <p>সে পকেট থেকে কাগজ-কলম বের করল। খচখচ করে কিছু লিখল। তারপর কাগজটি পকেটে রেখে আবার চোখ বন্ধ করে শুয়ে পড়ল। যমদূত কিছুই বুঝতে পারল না।</p>
+      <p>ভোরে তারা যমালয়ে পৌঁছল। যমদূত খাট নামিয়ে দিল। ব্রাহ্মণ উঠে দাঁড়িয়ে পকেট থেকে একটি চিঠি বের করল।</p>
+      <p class="dialogue">"এটা ধর্মরাজকে দিন।"</p>
+      <p>যমরাজ চিঠিটি খুললেন। তাতে লেখা —</p>
+      <p class="dialogue">"প্রিয় ধর্মরাজ, এই পত্রবাহক আমার বিশেষ প্রতিনিধি। আপনার প্রশাসনিক কাজে তাকে সহযোগিতা করবেন এবং তার নির্দেশ পালন করবেন। — বিষ্ণু"</p>
+      <p>যমরাজ চিঠি পড়ে থমকে গেলেন। বিষ্ণুর নাম! তিনি তাড়াতাড়ি সিংহাসন থেকে উঠে দাঁড়িয়ে বললেন —</p>
+      <p class="dialogue">"আসুন মহাশয়! আপনি সিংহাসনে বসুন।"</p>
+      <p>ব্রাহ্মণ ধীরে ধীরে সিংহাসনে গিয়ে বসল। হাতি দূর থেকে সব দেখছিল। সে মনে মনে বলল —</p>
+      <p class="dialogue">"মানুষ সত্যিই সাংঘাতিক!"</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EPISODE 3 ================= -->
+<section class="episode" id="ep3" data-ep="2">
+  <div class="wrap">
+    <div class="episode-head">
+      <div><span class="episode-tag">পর্ব ৩</span><h2>এক চেয়ারে বদলে গেল বিচার</h2></div>
+      <button class="listen-btn" data-listen="2">🔊 শুনুন</button>
+    </div>
+    <div class="story-text">
+      <p>যমদূত একজন ডাকাতকে নিয়ে এল।</p>
+      <p class="dialogue">"মহারাজ, বহু মানুষকে লুট করেছে, কয়েকজনকে হত্যা করেছে।"</p>
+      <p class="dialogue">ব্রাহ্মণ বলল — "স্বর্গে পাঠিয়ে দাও।"</p>
+      <p class="dialogue">যমদূত থমকে গেল — "স্বর্গে?"</p>
+      <p class="dialogue">"হ্যাঁ। পরের জন।"</p>
+      <p>এবার এল ভেজাল দুধ বিক্রেতা — "বহু মানুষকে অসুস্থ করেছে।" "স্বর্গে পাঠিয়ে দাও।"</p>
+      <p>এল মিথ্যা সাক্ষী — "বহু নিরপরাধ মানুষকে ফাঁসিয়েছে।" "স্বর্গে পাঠিয়ে দাও।"</p>
+      <p>দুর্নীতিবাজ কর্মকর্তা — "স্বর্গ।" ঘুষখোর — "স্বর্গ।" অত্যাচারী জমিদার — "স্বর্গ।" মানুষ ঠকানো ব্যবসায়ী — "স্বর্গ।"</p>
+      <p>যমদূত শেষে আর কিছু জিজ্ঞাসাই করল না। শুধু ফাইল আনছে। আর ব্রাহ্মণ বলছে — "স্বর্গে পাঠিয়ে দাও।"</p>
+      <p class="beat">যমরাজ অসহায়ভাবে দাঁড়িয়ে। কারণ চিঠিতে তো বিষ্ণুর নির্দেশ!</p>
+      <p>এদিকে স্বর্গের দরজায় লাইন লেগে গেল। দেবতারা অবাক। নারদ দৌড়ে এসে বিষ্ণুকে বললেন —</p>
+      <p class="dialogue">"প্রভু! স্বর্গে এমন ভিড় কখনো দেখিনি!"</p>
+      <p class="dialogue">বিষ্ণু বললেন — "কারা আসছে?"</p>
+      <p class="dialogue">নারদ বললেন — "যাদের সাধারণত স্বর্গে আসার কথা নয়।"</p>
+      <p class="dialogue">বিষ্ণু অবাক — "কোথা থেকে?"</p>
+      <p class="dialogue">"যমালয় থেকে।"</p>
+      <p class="dialogue">বিষ্ণু বললেন — "এবার আমাকে নিজেই যেতে হবে।"</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EPISODE 4 ================= -->
+<section class="episode" id="ep4" data-ep="3">
+  <div class="wrap">
+    <div class="episode-head">
+      <div><span class="episode-tag">পর্ব ৪</span><h2>ব্রাহ্মণের একদিনের রাজত্ব</h2></div>
+      <button class="listen-btn" data-listen="3">🔊 শুনুন</button>
+    </div>
+    <div class="story-text">
+      <p>বিষ্ণু যমালয়ে এসে দেখলেন, যমরাজ দাঁড়িয়ে আর এক ব্রাহ্মণ তাঁর সিংহাসনে বসে।</p>
+      <p class="dialogue">বিষ্ণু বললেন — "ধর্মরাজ, এ কী হচ্ছে?"</p>
+      <p class="dialogue">যমরাজ বললেন — "প্রভু, আমি কিছু করছি না। আপনার পাঠানো লোক সব সিদ্ধান্ত নিচ্ছে।"</p>
+      <p class="dialogue">বিষ্ণু ব্রাহ্মণের দিকে তাকিয়ে বললেন — "আমি তোমাকে কবে পাঠালাম?"</p>
+      <p class="dialogue">ব্রাহ্মণ বলল — "প্রভু, আপনার ইচ্ছা ছাড়া কি আমি এখানে আসতে পারি?"</p>
+      <p class="dialogue">বিষ্ণু বললেন — "কিন্তু এই চিঠি আমি লিখিনি।"</p>
+      <p class="dialogue">ব্রাহ্মণ বলল — "চিঠিতে আপনার নাম আছে। আপনি না চাইলে তো আপনার নাম ব্যবহার করে কোনো কাজ হওয়ার কথা নয়!"</p>
+      <p class="dialogue">বিষ্ণু মৃদু হেসে বললেন — "তুমি সবাইকে স্বর্গে পাঠাচ্ছ কেন?"</p>
+      <p class="dialogue">ব্রাহ্মণ বলল — "কারণ আমার হাতে ক্ষমতা এসেছে।"</p>
+      <p class="dialogue">"ক্ষমতা মানেই সবাইকে ছেড়ে দেওয়া?"</p>
+      <p class="dialogue">"না। কিন্তু ক্ষমতা অল্পদিনের জন্য পাওয়া গেলে আমি সেটা দিয়ে কাউকে দুঃখ দেওয়ার বদলে কাউকে ভালো করতে চাই।"</p>
+      <p class="beat">বিষ্ণু চুপ করে রইলেন।</p>
+      <p class="dialogue">ব্রাহ্মণ বলল — "পৃথিবীতে মানুষ চেয়ারে বসার আগে বলে — 'আমি সেবা করব।' চেয়ারে বসার পর বলে — 'আমার অনুমতি ছাড়া কিছু হবে না।' আর চেয়ার চলে গেলে বলে — 'আমাকে কেউ সুযোগ দিল না।'"</p>
+      <p class="beat">হাতি হেসে উঠল। যমরাজও মুখ লুকিয়ে হাসলেন।</p>
+      <p class="dialogue">বিষ্ণু বললেন — "তোমাকে পৃথিবীতে ফিরতে হবে।"</p>
+      <p class="dialogue">ব্রাহ্মণ বলল — "কতদিন?"</p>
+      <p class="dialogue">বিষ্ণু বললেন — "স্বর্গের দুই দিন।"</p>
+      <p class="dialogue">ব্রাহ্মণ বলল — "তারপর?"</p>
+      <p class="dialogue">বিষ্ণু বললেন — "তুমি পৃথিবীতে ফিরে যাবে।"</p>
+      <p class="beat">কিন্তু বিষ্ণু তখনও তাকে বলেননি — স্বর্গের দুই দিন পৃথিবীর বারো বছর।</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EPISODE 5 ================= -->
+<section class="episode" id="ep5" data-ep="4">
+  <div class="wrap">
+    <div class="episode-head">
+      <div><span class="episode-tag">পর্ব ৫</span><h2>পৃথিবীতে ১২ বছর</h2></div>
+      <button class="listen-btn" data-listen="4">🔊 শুনুন</button>
+    </div>
+    <div class="story-text">
+      <p>স্বর্গে দ্বিতীয় দিন শেষ হলো। বিষ্ণু ব্রাহ্মণকে অদৃশ্য করে পৃথিবীতে পাঠালেন। পৃথিবীতে তখন কেটে গেছে ১২ বছর।</p>
+      <p>ব্রাহ্মণ নিজের বাড়িতে গেল। কেউ তাকে দেখতে পাচ্ছে না। প্রথমে সে দেখল, পরিবার তাকে নিয়ে কাঁদছে। কিন্তু কিছুক্ষণ পরই সেই কান্নার আড়ালে অন্য আলোচনা শুরু হলো।</p>
+      <p class="dialogue">ছেলে বলল — "বাবার আলমারিটা খুলতে হবে।"</p>
+      <p class="dialogue">বৌমা বলল — "টাকা-পয়সা কত আছে দেখে নেওয়া দরকার।"</p>
+      <p class="dialogue">মেয়ে বলল — "গয়নাগুলোও তো ভাগ হবে।"</p>
+      <p class="beat">ব্রাহ্মণ স্তব্ধ হয়ে গেলেন।</p>
+      <p>তারপর দেখলেন — আলমারির তালা ভাঙা হচ্ছে। টাকা বের হচ্ছে। সোনার গয়না বের হচ্ছে। পুরনো কাগজপত্র ছড়িয়ে পড়ছে। যে মানুষটি তাদের জন্য জীবনভর সঞ্চয় করেছিলেন, তাঁর অনুপস্থিতিতেই তাঁর সম্পত্তির ভাগাভাগি শুরু হয়ে গেছে।</p>
+      <p>কিন্তু বাইরে প্রতিবেশীদের সামনে — ছেলের চোখে জল। বৌমার মুখে কান্না।</p>
+      <p class="dialogue">মেয়ে বলছে — "বাবা কোথায় গেলেন জানি না! শুধু চাই, বাবা একবার ফিরে আসুন।"</p>
+      <p class="beat">ব্রাহ্মণ সব শুনছেন। কিন্তু কেউ জানে না, বাবা ঠিক তাদের পাশেই দাঁড়িয়ে আছেন।</p>
+      <p class="dialogue">তারপর একদিন ছেলে বলল — "এই পুরনো বাড়ি রেখে কী হবে? প্রোমোটারের সঙ্গে কথা বলেছি।"</p>
+      <p class="dialogue">ব্রাহ্মণ চমকে উঠলেন — "আমার বাড়ি?"</p>
+      <p>বাড়ি ভেঙে ফেলা হলো। যে ঘরে তাঁর সন্তানরা বড় হয়েছিল, সেটি মাটির সঙ্গে মিশে গেল। তার জায়গায় উঠল বহুতল। তারপর ফ্ল্যাট বিক্রি হলো। টাকা ভাগ হলো। বছর কেটে গেল।</p>
+      <p class="dialogue">একদিন ব্রাহ্মণ শুনলেন তাঁর নাতি জিজ্ঞেস করছে — "বাবা, আমাদের দাদু কেমন ছিলেন?"</p>
+      <p class="dialogue">ছেলে কিছুক্ষণ চুপ করে বলল — "ওসব পুরনো কথা। এখন এসব মনে রেখে কী হবে?"</p>
+      <p class="beat">ব্রাহ্মণ বুঝলেন — মানুষ তাকে ভুলে গেছে। শুধু তাঁর সম্পত্তি ভুলেনি।</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EPISODE 6 ================= -->
+<section class="episode" id="ep6" data-ep="5">
+  <div class="wrap">
+    <div class="episode-head">
+      <div><span class="episode-tag">পর্ব ৬</span><h2>প্রতিশোধ নয়, মুক্তি</h2></div>
+      <button class="listen-btn" data-listen="5">🔊 শুনুন</button>
+    </div>
+    <div class="story-text">
+      <p>অদৃশ্য ব্রাহ্মণের হাতে তখন এক অদ্ভুত শক্তি। সে চাইলে ঘরের দরজা বন্ধ করতে পারে। আলমারি খুলে দিতে পারে। টাকা ছড়িয়ে দিতে পারে। রাতে পরিবারের স্বপ্নে গিয়ে ভয় দেখাতে পারে। চাইলে তাদের জীবন ওলটপালট করে দিতে পারে।</p>
+      <p>এক রাতে সে ছেলের সামনে দাঁড়াল। ছেলে টেবিলে বসে টাকা গুনছে। ব্রাহ্মণ হাত বাড়াল।</p>
+      <p class="dialogue">এক মুহূর্তের জন্য তার মনে হলো — "সব টাকা ছড়িয়ে দিই।"</p>
+      <p>তারপর হাত সরিয়ে নিল।</p>
+      <p class="dialogue">মনে হলো — "আমি যদি প্রতিশোধ নিই, তাহলে ওদের থেকে আমার পার্থক্য কোথায়?"</p>
+      <p class="dialogue">সে আকাশের দিকে তাকিয়ে বলল — "ভগবান বিষ্ণু!"</p>
+      <p>বিষ্ণু আবির্ভূত হলেন।</p>
+      <p class="dialogue">"ফিরে এসো।"</p>
+      <p class="dialogue">ব্রাহ্মণ বললেন — "আমি প্রস্তুত।"</p>
+      <p>যমালয়ে ফিরে বিষ্ণু বললেন —</p>
+      <p class="dialogue">"এবার তোমাকে একটি নতুন শরীর দিতে পারি। আবার পৃথিবীতে জন্ম নিতে পারো।"</p>
+      <p class="dialogue">ব্রাহ্মণ মাথা নাড়লেন — "না প্রভু।"</p>
+      <p class="dialogue">"কেন?"</p>
+      <p class="dialogue">"শরীর নিয়ে পৃথিবীতে গিয়েছিলাম। শরীর ছাড়ার পর বুঝলাম, মানুষ আমাকে ছাড়াই বাঁচতে পারে। আবার শরীর নিয়ে ফিরে গিয়ে কী হবে?"</p>
+      <p class="dialogue">বিষ্ণু বললেন — "তুমি কি তোমার পরিবারকে ক্ষমা করেছ?"</p>
+      <p class="dialogue">ব্রাহ্মণ বললেন — "ক্ষমা করেছি কিনা জানি না। কিন্তু তাদের জন্য আর কোনো অমঙ্গল চাই না।"</p>
+      <p class="dialogue">বিষ্ণু মৃদু হেসে বললেন — "তাহলে তুমি সত্যিই বদলেছ।"</p>
+      <p class="dialogue">হাতি পাশে দাঁড়িয়ে বলল — "মহারাজ, এবার আমার কথাটা বুঝলেন তো?"</p>
+      <p class="dialogue">যমরাজ বললেন — "কোন কথা?"</p>
+      <p class="dialogue">হাতি বলল — "আমার পায়ের শিকল ছিল বাইরে। পরে সেটা মনে চলে গিয়েছিল। আর এই ব্রাহ্মণের শিকল ছিল পরিবার, সম্পত্তি আর প্রতিশোধের মধ্যে। কিন্তু সে শেষ পর্যন্ত সব শিকল ছিঁড়ে ফেলেছে।"</p>
+      <p class="dialogue">বিষ্ণু বললেন — "শরীরের শক্তি বড় নয়। নিজের লোভ, রাগ আর প্রতিশোধকে জয় করার শক্তিই আসল শক্তি।"</p>
+      <p>ব্রাহ্মণ পৃথিবীর দিকে শেষবার তাকালেন। সেখানে তাঁর পুরনো বাড়ি নেই। ছবি নেই। আলমারি নেই। টাকা নেই। গয়না নেই। এমনকি তাঁর নামও প্রায় নেই। কিন্তু এবার তাঁর মনে কোনো কষ্ট রইল না।</p>
+      <p class="dialogue">তিনি বললেন — "যা কিছু আমার ছিল, সবই তো সাময়িক ছিল। এখন আমি শুধু চাই — যত জীব আছে, তাদের মঙ্গল হোক।"</p>
+      <p class="dialogue">বিষ্ণু তাঁর দিকে তাকিয়ে বললেন — "সর্বভূতহিতে রতঃ — এই কথাটাই তুমি শেষ পর্যন্ত বুঝেছ।"</p>
+      <p class="dialogue">দূরে হাতি মৃদু হেসে বলল — "মহারাজ, এবার কি আমি স্বর্গে যাব?"</p>
+      <p class="dialogue">যমরাজ বললেন — "তুই তো অনেক আগেই স্বর্গের যোগ্য ছিলি!"</p>
+      <p class="dialogue">হাতি বলল — "তাহলে মানুষের ওপর আর রাগ নেই?"</p>
+      <p class="dialogue">যমরাজ হেসে বললেন — "না। তবে জীবন্ত মানুষকে আর কখনো এখানে এনে পরীক্ষা করব না!"</p>
+      <p class="beat">সবাই হেসে উঠল। আর বিষ্ণুর সঙ্গে ব্রাহ্মণ ধীরে ধীরে আলোর দিকে এগিয়ে গেলেন।</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CLOSING ================= -->
+<div class="closing">
+  <div class="leaf">🌿</div>
+  <p>পৃথিবীতে তার বাড়ি হারিয়েছিল। কিন্তু শেষ পর্যন্ত সে নিজের মনটাকে হারাতে দেয়নি। সেটাই ছিল তার সবচেয়ে বড় জয়।</p>
+</div>
+
+<!-- ================= PLAYER BAR ================= -->
+<div class="player-bar" id="playerBar">
+  <div class="p-info">
+    <div class="p-title" id="pTitle">—</div>
+    <div class="p-status" id="pStatus">প্রস্তুত</div>
+  </div>
+  <div class="p-controls">
+    <button class="p-btn" id="pPrev" title="আগের পর্ব">⏮</button>
+    <button class="p-btn main" id="pPlayPause" title="চালু/বিরতি">▶</button>
+    <button class="p-btn" id="pNext" title="পরের পর্ব">⏭</button>
+    <button class="p-close" id="pClose" title="বন্ধ করুন">✕</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var episodeTitles = [
+    "পর্ব ১ — হাতির শিকল",
+    "পর্ব ২ — যমালয়ে জীবন্ত মানুষ",
+    "পর্ব ৩ — এক চেয়ারে বদলে গেল বিচার",
+    "পর্ব ৪ — ব্রাহ্মণের একদিনের রাজত্ব",
+    "পর্ব ৫ — পৃথিবীতে ১২ বছর",
+    "পর্ব ৬ — প্রতিশোধ নয়, মুক্তি"
+  ];
+
+  var episodeSections = document.querySelectorAll('.episode');
+  var playerBar = document.getElementById('playerBar');
+  var pTitle = document.getElementById('pTitle');
+  var pStatus = document.getElementById('pStatus');
+  var pPlayPause = document.getElementById('pPlayPause');
+  var pPrev = document.getElementById('pPrev');
+  var pNext = document.getElementById('pNext');
+  var pClose = document.getElementById('pClose');
+  var listenBtns = document.querySelectorAll('.listen-btn');
+  var heroListen = document.getElementById('hero-listen');
+
+  var synth = window.speechSynthesis;
+  var bnVoice = null;
+  var currentEp = -1;
+  var queue = [];
+  var queueIdx = 0;
+  var isPaused = false;
+  var playingAll = false; // hero "listen to full story"
+
+  function pickVoice(){
+    if(!synth) return;
+    var voices = synth.getVoices();
+    bnVoice = voices.find(function(v){ return v.lang && v.lang.toLowerCase().indexOf('bn') === 0; }) || null;
+  }
+  if(synth){
+    pickVoice();
+    synth.onvoiceschanged = pickVoice;
+  }
+
+  function getParagraphs(epIndex){
+    var section = episodeSections[epIndex];
+    var ps = section.querySelectorAll('.story-text p');
+    var arr = [];
+    ps.forEach(function(p){ arr.push(p.textContent.trim()); });
+    return arr;
+  }
+
+  function setListenBtnState(epIndex, playing){
+    listenBtns.forEach(function(btn){
+      var idx = parseInt(btn.getAttribute('data-listen'), 10);
+      if(idx === epIndex){
+        btn.classList.toggle('playing', playing);
+        btn.textContent = playing ? '⏸ চলছে' : '🔊 শুনুন';
+      } else {
+        btn.classList.remove('playing');
+        btn.textContent = '🔊 শুনুন';
+      }
+    });
+  }
+
+  function speakNextParagraph(){
+    if(queueIdx >= queue.length){
+      if(playingAll && currentEp < episodeSections.length - 1){
+        startEpisode(currentEp + 1, true);
+      } else {
+        stopPlayback();
+      }
+      return;
+    }
+    var text = queue[queueIdx];
+    var utter = new SpeechSynthesisUtterance(text);
+    if(bnVoice) utter.voice = bnVoice;
+    utter.lang = 'bn-IN';
+    utter.rate = 0.95;
+    utter.onend = function(){
+      queueIdx++;
+      speakNextParagraph();
+    };
+    utter.onerror = function(){
+      queueIdx++;
+      speakNextParagraph();
+    };
+    synth.speak(utter);
+  }
+
+  function startEpisode(epIndex, continuing){
+    if(!synth){
+      alert('আপনার ব্রাউজার ভয়েস পড়া সমর্থন করে না।');
+      return;
+    }
+    synth.cancel();
+    currentEp = epIndex;
+    playingAll = !!continuing || playingAll;
+    queue = getParagraphs(epIndex);
+    queueIdx = 0;
+    isPaused = false;
+
+    playerBar.classList.add('active');
+    pTitle.textContent = episodeTitles[epIndex];
+    pStatus.textContent = 'চলছে…';
+    pPlayPause.textContent = '⏸';
+    setListenBtnState(epIndex, true);
+
+    speakNextParagraph();
+  }
+
+  function togglePause(){
+    if(!synth) return;
+    if(isPaused){
+      synth.resume();
+      isPaused = false;
+      pPlayPause.textContent = '⏸';
+      pStatus.textContent = 'চলছে…';
+      setListenBtnState(currentEp, true);
+    } else {
+      synth.pause();
+      isPaused = true;
+      pPlayPause.textContent = '▶';
+      pStatus.textContent = 'বিরতি';
+      setListenBtnState(currentEp, false);
+    }
+  }
+
+  function stopPlayback(){
+    if(synth) synth.cancel();
+    playingAll = false;
+    isPaused = false;
+    setListenBtnState(-1, false);
+    playerBar.classList.remove('active');
+    currentEp = -1;
+  }
+
+  listenBtns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var idx = parseInt(btn.getAttribute('data-listen'), 10);
+      if(currentEp === idx && !isPaused && synth && synth.speaking){
+        togglePause();
+      } else {
+        playingAll = false;
+        startEpisode(idx, false);
+      }
+    });
+  });
+
+  heroListen.addEventListener('click', function(){
+    playingAll = true;
+    startEpisode(0, true);
+    document.getElementById('toc').scrollIntoView({behavior:'smooth'});
+  });
+
+  pPlayPause.addEventListener('click', togglePause);
+  pPrev.addEventListener('click', function(){
+    if(currentEp > 0) startEpisode(currentEp - 1, playingAll);
+  });
+  pNext.addEventListener('click', function(){
+    if(currentEp < episodeSections.length - 1) startEpisode(currentEp + 1, playingAll);
+  });
+  pClose.addEventListener('click', stopPlayback);
+
+})();
+</script>
+
+</body>
+</html>
