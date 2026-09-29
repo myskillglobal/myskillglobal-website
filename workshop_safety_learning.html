@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Workshop Safety Master</title>
+<!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1034022057999423" crossorigin="anonymous"></script>
+
+  <!-- Firebase Analytics -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-analytics.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDfxtOP-YCrCXtQxZrrFNC1uXucvbW0K78",
+      authDomain: "my-skill-global.firebaseapp.com",
+      projectId: "my-skill-global",
+      storageBucket: "my-skill-global.firebasestorage.app",
+      messagingSenderId: "978471914749",
+      appId: "1:978471914749:web:595750b5d90738933f4294",
+      measurementId: "G-8D9BPY8HJ0"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:Georgia,'Times New Roman',serif;background:#F0F4F8;min-height:100vh;}
+
+#wsg{
+  padding:12px 10px 90px;
+  width:100%;
+  max-width:480px;
+  margin:0 auto;
+  user-select:none;
+}
+.ws-nav{
+  display:flex;
+  gap:8px;
+  justify-content:center;
+  margin-bottom:80px;
+}
+/* HEADER - fully redesigned, large and clear */
+.ws-hdr{
+  border-radius:16px;
+  padding:18px 16px;
+  margin-bottom:12px;
+  background:linear-gradient(135deg,#1565C0 0%,#0D47A1 60%,#0A3880 100%);
+  box-shadow:0 4px 18px rgba(13,71,161,0.35);
+  position:relative;
+  overflow:hidden;
+}
+.ws-hdr::before{
+  content:'';position:absolute;top:-30px;right:-30px;
+  width:120px;height:120px;border-radius:50%;
+  background:rgba(255,255,255,0.08);
+}
+.ws-hdr::after{
+  content:'';position:absolute;bottom:-40px;left:30%;
+  width:90px;height:90px;border-radius:50%;
+  background:rgba(255,255,255,0.05);
+}
+.ws-hdr-row{display:flex;align-items:center;gap:12px;position:relative;}
+.ws-hdr-icon{
+  width:52px;height:52px;border-radius:14px;
+  background:rgba(255,255,255,0.18);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.8rem;flex-shrink:0;
+  border:1.5px solid rgba(255,255,255,0.25);
+}
+.ws-hdr-text{}
+.ws-hdr-title{
+  font-size:18px;font-weight:700;color:#FFFFFF;
+  margin-bottom:4px;letter-spacing:0.2px;
+  font-family:Georgia,serif;
+}
+.ws-hdr-sub{
+  font-size:13px;color:#90CAF9;
+  letter-spacing:0.3px;line-height:1.4;
+}
+
+/* WHY BANNER */
+.ws-why-banner{
+  background:#F1F8E9;border:1.5px solid #7CB342;
+  border-radius:12px;padding:14px;margin-bottom:12px;
+  font-size:13.5px;color:#33691E;line-height:1.7;
+}
+.ws-why-title{
+  font-weight:700;font-size:15px;margin-bottom:6px;
+  display:flex;align-items:center;gap:6px;color:#2E7D32;
+}
+
+/* SCORE BAR */
+.ws-scorebar{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:10px;}
+.ws-sc{
+  border-radius:12px;padding:10px 8px;text-align:center;
+  box-shadow:0 2px 8px rgba(0,0,0,0.08);
+}
+.ws-sc.blue{background:#E3F2FD;border:1.5px solid #64B5F6;}
+.ws-sc.green{background:#E8F5E9;border:1.5px solid #81C784;}
+.ws-sc.amber{background:#FFF8E1;border:1.5px solid #FFD54F;}
+.ws-sc.coral{background:#FBE9E7;border:1.5px solid #FF8A65;}
+.ws-sc-val{font-size:22px;font-weight:700;}
+.ws-sc.blue .ws-sc-val{color:#0D47A1;}
+.ws-sc.green .ws-sc-val{color:#1B5E20;}
+.ws-sc.amber .ws-sc-val{color:#E65100;}
+.ws-sc.coral .ws-sc-val{color:#BF360C;}
+.ws-sc-lbl{font-size:12px;margin-top:2px;font-weight:500;}
+.ws-sc.blue .ws-sc-lbl{color:#1565C0;}
+.ws-sc.green .ws-sc-lbl{color:#2E7D32;}
+.ws-sc.amber .ws-sc-lbl{color:#E65100;}
+.ws-sc.coral .ws-sc-lbl{color:#BF360C;}
+
+/* PROGRESS */
+.ws-prog-wrap{margin-bottom:12px;}
+.ws-prog-label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#455A64;margin-bottom:4px;}
+.ws-prog{height:10px;background:#CFD8DC;border-radius:8px;overflow:hidden;}
+.ws-prog-fill{height:100%;border-radius:8px;transition:width 0.5s ease;}
+
+/* TABS */
+.ws-cat-tabs{display:flex;gap:6px;margin-bottom:12px;overflow-x:auto;padding-bottom:4px;}
+.ws-cat-tabs::-webkit-scrollbar{display:none;}
+.ws-tab{
+  font-size:13px;padding:8px 14px;border-radius:22px;
+  border:1.5px solid #B0BEC5;background:#FFFFFF;
+  color:#546E7A;cursor:pointer;white-space:nowrap;
+  font-weight:600;display:flex;align-items:center;gap:5px;
+  box-shadow:0 1px 4px rgba(0,0,0,0.08);
+  transition:all 0.15s;
+}
+.ws-tab.active-all{color:#1B5E20;background:#C8E6C9;border-color:#43A047;}
+.ws-tab.active-electric{color:#0D47A1;background:#BBDEFB;border-color:#1976D2;}
+.ws-tab.active-weld{color:#BF360C;background:#FFCCBC;border-color:#E64A19;}
+.ws-tab.active-carp{color:#E65100;background:#FFE0B2;border-color:#FB8C00;}
+
+/* WHY BOX */
+.ws-why-box{
+  border-radius:12px;padding:14px;font-size:14px;
+  line-height:1.65;margin-bottom:12px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.07);
+}
+.ws-why-box.electric{background:#E3F2FD;border:1.5px solid #64B5F6;color:#0D47A1;}
+.ws-why-box.weld{background:#FBE9E7;border:1.5px solid #FF8A65;color:#BF360C;}
+.ws-why-box.carp{background:#FFF8E1;border:1.5px solid #FFD54F;color:#E65100;}
+.ws-why-box-h{font-weight:700;font-size:15px;margin-bottom:5px;}
+
+/* QUESTION CARD */
+.ws-qcard{
+  border-radius:14px;padding:16px;margin-bottom:12px;
+  box-shadow:0 2px 12px rgba(0,0,0,0.1);
+}
+.ws-qcard.cat-electric{background:#E3F2FD;border:1.5px solid #64B5F6;}
+.ws-qcard.cat-weld{background:#FBE9E7;border:1.5px solid #FF8A65;}
+.ws-qcard.cat-carp{background:#FFF8E1;border:1.5px solid #FFD54F;}
+.ws-qnum{font-size:13px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+.ws-qnum.electric{color:#1565C0;}
+.ws-qnum.weld{color:#D84315;}
+.ws-qnum.carp{color:#E65100;}
+.ws-qtxt{font-size:16px;font-weight:600;line-height:1.6;}
+.ws-qtxt.electric{color:#0D47A1;}
+.ws-qtxt.weld{color:#BF360C;}
+.ws-qtxt.carp{color:#E65100;}
+
+/* OPTIONS */
+.ws-opts{display:flex;flex-direction:column;gap:9px;margin-bottom:12px;}
+.ws-opt{
+  background:#FFFFFF;border:1.5px solid #CFD8DC;
+  border-radius:12px;padding:13px 14px;
+  font-size:14.5px;color:#263238;cursor:pointer;
+  display:flex;align-items:flex-start;gap:10px;
+  transition:all 0.12s;line-height:1.5;
+  box-shadow:0 1px 5px rgba(0,0,0,0.07);
+}
+.ws-opt:active{transform:scale(0.97);}
+.ws-opt-badge{
+  font-size:13px;font-weight:700;padding:3px 8px;
+  border-radius:8px;background:#ECEFF1;color:#546E7A;
+  flex-shrink:0;min-width:28px;text-align:center;
+}
+.ws-opt.correct{background:#E8F5E9;border:2px solid #43A047;}
+.ws-opt.correct .ws-opt-badge{background:#43A047;color:#FFFFFF;}
+.ws-opt.correct .ws-opt-text{color:#1B5E20;font-weight:600;}
+.ws-opt.wrong{background:#FFEBEE;border:2px solid #EF5350;}
+.ws-opt.wrong .ws-opt-badge{background:#EF5350;color:#FFFFFF;}
+.ws-opt.wrong .ws-opt-text{color:#B71C1C;font-weight:600;}
+.ws-opt.disabled{pointer-events:none;}
+.ws-opt-text{flex:1;}
+
+/* FEEDBACK */
+.ws-feedback{
+  border-radius:12px;padding:14px;margin-bottom:12px;
+  font-size:13.5px;line-height:1.65;display:none;
+  box-shadow:0 2px 10px rgba(0,0,0,0.08);
+}
+.ws-feedback.show{display:block;}
+.ws-feedback.ok{background:#E8F5E9;border:1.5px solid #66BB6A;}
+.ws-feedback.bad{background:#FFEBEE;border:1.5px solid #EF9A9A;}
+.ws-fb-top{font-weight:700;font-size:15.5px;margin-bottom:6px;display:flex;align-items:center;gap:6px;}
+.ws-fb-ok-h{color:#1B5E20;}
+.ws-fb-bad-h{color:#B71C1C;}
+.ws-fb-tip{color:#37474F;font-size:13.5px;margin-bottom:8px;}
+.ws-why-inline{margin-top:8px;padding:10px 12px;border-radius:10px;background:rgba(255,255,255,0.65);border:1px solid rgba(0,0,0,0.08);}
+.ws-why-inline-h{font-size:12.5px;font-weight:700;color:#546E7A;margin-bottom:3px;}
+.ws-why-inline-b{font-size:13px;color:#455A64;line-height:1.6;}
+
+/* NAV BUTTONS */
+.ws-nav{display:flex;gap:8px;justify-content:center;}
+.ws-btn{
+  font-size:14px;padding:12px 20px;border-radius:12px;
+  border:none;cursor:pointer;font-weight:700;
+  min-height:44px;transition:all 0.12s;
+  box-shadow:0 3px 10px rgba(0,0,0,0.15);
+  letter-spacing:0.3px;
+}
+.ws-btn:active{transform:scale(0.96);}
+.ws-btn.primary{background:#1565C0;color:#FFFFFF;}
+.ws-btn.green{background:#2E7D32;color:#FFFFFF;}
+.ws-btn.amber{background:#E65100;color:#FFFFFF;}
+.ws-btn.coral{background:#C62828;color:#FFFFFF;}
+
+/* RESULT */
+.ws-result{
+  background:#FFFFFF;border:1.5px solid #CFD8DC;
+  border-radius:16px;padding:20px;text-align:center;
+  margin-bottom:12px;box-shadow:0 4px 18px rgba(0,0,0,0.1);
+}
+.ws-result-icon{font-size:3.2rem;margin-bottom:10px;}
+.ws-result-h{font-size:20px;font-weight:700;color:#212121;margin-bottom:6px;}
+.ws-result-s{font-size:14px;color:#546E7A;margin-bottom:16px;line-height:1.75;}
+.ws-badge-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px;}
+.ws-badge{border-radius:12px;padding:10px 6px;font-size:13px;text-align:center;box-shadow:0 2px 6px rgba(0,0,0,0.08);}
+.ws-badge.b1{background:#E3F2FD;}
+.ws-badge.b2{background:#E8F5E9;}
+.ws-badge.b3{background:#FFF8E1;}
+.ws-badge b{display:block;font-size:19px;font-weight:700;margin-bottom:2px;}
+.ws-badge.b1 b{color:#0D47A1;}
+.ws-badge.b2 b{color:#1B5E20;}
+.ws-badge.b3 b{color:#E65100;}
+.ws-badge.b1{color:#1565C0;}
+.ws-badge.b2{color:#2E7D32;}
+.ws-badge.b3{color:#E65100;}
+.ws-rules{
+  background:#FFF8E1;border:1.5px solid #FFB300;
+  border-radius:12px;padding:14px;font-size:13.5px;
+  color:#37474F;margin-bottom:16px;text-align:left;line-height:1.7;
+}
+.ws-rules-h{font-weight:700;margin-bottom:8px;font-size:15px;color:#E65100;}
+.ws-rule-row{display:flex;align-items:flex-start;gap:8px;margin-bottom:6px;}
+.ws-rule-dot{
+  width:20px;height:20px;border-radius:50%;
+  background:#FFB300;display:flex;align-items:center;
+  justify-content:center;font-size:11px;font-weight:700;
+  color:#37474F;flex-shrink:0;margin-top:1px;
+}
+
+/* SOUND BUTTON */
+.ws-sound-btn{
+  position:fixed;bottom:18px;right:14px;
+  width:44px;height:44px;border-radius:50%;
+  background:#1565C0;color:#fff;border:none;
+  font-size:18px;cursor:pointer;
+  box-shadow:0 3px 12px rgba(21,101,192,0.4);
+  display:flex;align-items:center;justify-content:center;
+  z-index:100;
+}
+</style>
+</head>
+<body>
+
+<div id="wsg">
+  <div class="ws-hdr">
+    <div class="ws-hdr-row">
+      <div class="ws-hdr-icon">🏭</div>
+      <div class="ws-hdr-text">
+        <div class="ws-hdr-title">Workshop Safety Master</div>
+        <div class="ws-hdr-sub">⚡ Electrical &nbsp;·&nbsp; 🔥 Welding &nbsp;·&nbsp; 🪚 Carpentry</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ws-why-banner">
+    <div class="ws-why-title">🛡️ Why workshop safety matters</div>
+    Every year, hundreds of students are injured in workshops due to preventable accidents. Knowing the correct safety rules protects <strong>you</strong>, your classmates, and your teacher — and builds the habits that keep you safe in real jobs too.
+  </div>
+
+  <div class="ws-scorebar">
+    <div class="ws-sc blue"><div class="ws-sc-val" id="ws-score">0</div><div class="ws-sc-lbl">Score</div></div>
+    <div class="ws-sc green"><div class="ws-sc-val" id="ws-streak">0</div><div class="ws-sc-lbl">Streak 🔥</div></div>
+    <div class="ws-sc coral"><div class="ws-sc-val" id="ws-lives">3</div><div class="ws-sc-lbl">Lives ❤️</div></div>
+    <div class="ws-sc amber"><div class="ws-sc-val" id="ws-qnum">1/15</div><div class="ws-sc-lbl">Progress</div></div>
+  </div>
+
+  <div class="ws-prog-wrap">
+    <div class="ws-prog-label">
+      <span id="ws-prog-cat">All topics</span>
+      <span id="ws-prog-pct">0%</span>
+    </div>
+    <div class="ws-prog"><div class="ws-prog-fill" id="ws-pf" style="width:0%;background:#1565C0;"></div></div>
+  </div>
+
+  <div class="ws-cat-tabs" id="ws-tabs"></div>
+  <div id="ws-main"></div>
+</div>
+
+<!-- Floating sound toggle button -->
+<button class="ws-sound-btn" id="soundBtn" title="Toggle sound" onclick="toggleSound()">🔊</button>
+
+<script>
+var soundOn = true;
+
+function toggleSound() {
+  soundOn = !soundOn;
+  document.getElementById('soundBtn').textContent = soundOn ? '🔊' : '🔇';
+}
+
+// Unlock AudioContext on first user interaction
+var audioCtx = null;
+var audioUnlocked = false;
+
+function unlockAudio() {
+  if (audioUnlocked) return;
+  try {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    // Play a silent buffer to unlock
+    var buf = audioCtx.createBuffer(1, 1, 22050);
+    var src = audioCtx.createBufferSource();
+    src.buffer = buf;
+    src.connect(audioCtx.destination);
+    src.start(0);
+    audioUnlocked = true;
+  } catch(e) {}
+}
+
+document.addEventListener('touchstart', unlockAudio, {once: true});
+document.addEventListener('click', unlockAudio, {once: true});
+
+function playTone(freq, dur, type, vol) {
+  if (!soundOn) return;
+  try {
+    if (!audioCtx) {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    if (audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
+    var o = audioCtx.createOscillator();
+    var g = audioCtx.createGain();
+    o.type = type || 'sine';
+    o.frequency.setValueAtTime(freq, audioCtx.currentTime);
+    g.gain.setValueAtTime(vol || 0.3, audioCtx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + dur);
+    o.connect(g);
+    g.connect(audioCtx.destination);
+    o.start();
+    o.stop(audioCtx.currentTime + dur + 0.05);
+  } catch(e) {}
+}
+
+function playCorrect() {
+  playTone(523, 0.12, 'sine', 0.35);
+  setTimeout(function(){ playTone(659, 0.12, 'sine', 0.35); }, 120);
+  setTimeout(function(){ playTone(784, 0.22, 'sine', 0.35); }, 240);
+}
+function playWrong() {
+  playTone(220, 0.15, 'sawtooth', 0.28);
+  setTimeout(function(){ playTone(180, 0.25, 'sawtooth', 0.22); }, 150);
+}
+function playComplete() {
+  [523,587,659,698,784].forEach(function(f,i){
+    setTimeout(function(){ playTone(f, 0.18, 'sine', 0.28); }, i * 110);
+  });
+}
+function playGameOver() {
+  [400,350,300,250].forEach(function(f,i){
+    setTimeout(function(){ playTone(f, 0.2, 'sawtooth', 0.22); }, i * 120);
+  });
+}
+
+var CATS = [
+  {id:'electric', label:'⚡ Electrical', color:'#1565C0', bg:'#E3F2FD', tc:'#0D47A1', prog:'#1976D2',
+   why:'Electrical hazards are among the most common workshop dangers. Even low voltages can cause serious injury or death. Learning lockout procedures, PPE selection, and emergency response can save lives.'},
+  {id:'weld', label:'🔥 Welding', color:'#D84315', bg:'#FBE9E7', tc:'#BF360C', prog:'#E64A19',
+   why:'Welding produces extreme heat, toxic fumes, and intense UV radiation. Without proper knowledge, welders risk burns, lung damage, eye injury, and fires. These rules protect your body for life.'},
+  {id:'carp', label:'🪚 Carpentry', color:'#E65100', bg:'#FFF8E1', tc:'#E65100', prog:'#FB8C00',
+   why:'Carpentry tools are sharp and powerful. A single moment of distraction can cause cuts, eye injuries, or falls. Proper technique and PPE make the difference between a safe workshop and a hospital visit.'},
+];
+
+var QS = [
+  {cat:'electric',q:'What should you ALWAYS do before working on any electrical equipment?',opts:['Switch off and lock out the power','Wear rubber boots only','Work faster to finish quickly','Use a wooden stick to check wires'],ans:0,tip:'Lockout/Tagout (LOTO) ensures power is completely off before you start. Never assume power is off — always verify with a tester!',why:'This prevents electrocution — the leading cause of workshop electrical deaths.'},
+  {cat:'electric',q:'Which PPE is most important when handling live electrical components?',opts:['Safety goggles','Insulated rubber gloves','Hard hat','Ear plugs'],ans:1,tip:'Insulated rubber gloves protect against electric shock. Always use gloves rated for the voltage you are working with.',why:'Your skin has resistance, but not enough. Insulated gloves break the circuit so current cannot flow through your body.'},
+  {cat:'electric',q:'You see a frayed wire on the workshop floor. What should you do?',opts:['Step over it carefully','Report it to the teacher immediately','Cover it with a rug','Tape it with regular tape'],ans:1,tip:'A frayed wire is a serious hazard. Report it immediately — do NOT attempt to fix it yourself without supervision.',why:'A frayed wire can arc, spark, or deliver a fatal shock. Regular tape is not insulating enough for electrical repairs.'},
+  {cat:'electric',q:'Why should wet hands never touch electrical switches?',opts:['Switches stop working','Water increases risk of electric shock','Hands become dirty','Nothing happens'],ans:1,tip:'Water conducts electricity and increases shock risk.',why:'Wet skin lowers resistance allowing more current through the body.'},
+  {cat:'electric',q:'Which tool is safest for electrical repair?',opts:['Metal ruler','Insulated screwdriver','Kitchen knife','Wood stick'],ans:1,tip:'Use insulated tools designed for electrical work.',why:'Insulated handles reduce accidental current flow.'},
+  {cat:'electric',q:'What colour is usually used for earth wire?',opts:['Red','Green','Blue','Yellow'],ans:1,tip:'Green or green-yellow indicates earth connection.',why:'Earth wires safely carry fault current away.'},
+  {cat:'electric',q:'What should you do before replacing a fuse?',opts:['Switch off power','Touch the fuse','Pour water','Use bare hands'],ans:0,tip:'Always disconnect power first.',why:'Live fuse replacement can cause fatal shock.'},
+  {cat:'electric',q:'Why are overloaded sockets dangerous?',opts:['They look ugly','They can overheat and catch fire','They waste money','Nothing happens'],ans:1,tip:'Too many devices can overheat wiring.',why:'Electrical fires often start from overloaded sockets.'},
+  {cat:'electric',q:'What should you wear near electrical panels?',opts:['Metal jewellery','Rubber-soled shoes','Loose chains','Wet gloves'],ans:1,tip:'Rubber soles reduce shock risk.',why:'They provide insulation from the ground.'},
+  {cat:'electric',q:'Which sign warns about electrical danger?',opts:['⚡','🔥','🪚','💧'],ans:0,tip:'Lightning symbol means electrical hazard.',why:'Hazard symbols help prevent accidents.'},
+  {cat:'electric',q:'Why should damaged plugs be replaced?',opts:['They look old','They can expose live wires','Teachers dislike them','They become heavy'],ans:1,tip:'Broken plugs expose dangerous live parts.',why:'Exposed wires increase shock and fire risk.'},
+  {cat:'electric',q:'What should you do during electrical fire?',opts:['Throw water','Use CO₂ extinguisher','Touch wires','Run through smoke'],ans:1,tip:'Use proper fire extinguisher only.',why:'Water conducts electricity and worsens danger.'},
+  {cat:'electric',q:'Why should cables be kept organised?',opts:['For decoration','To prevent tripping and damage','To waste time','No reason'],ans:1,tip:'Organised cables improve safety.',why:'Loose cables cause falls and wire damage.'},
+  {cat:'electric',q:'What is a safe distance from high-voltage equipment?',opts:['As close as possible','At least 1 metre','Touch it to check if hot','Depends on your mood'],ans:1,tip:'Always maintain at least 1 metre distance from high-voltage equipment.',why:'High voltage can arc through air. Keeping distance ensures you are outside the danger zone.'},
+  {cat:'electric',q:'If someone receives an electric shock, what is the FIRST thing to do?',opts:['Touch them to check','Turn off the power source immediately','Throw water on them','Run away'],ans:1,tip:'Never touch a person in contact with live electricity — you could get shocked too. Cut the power first.',why:'You become part of the circuit if you touch someone being electrocuted. Always disconnect power first.'},
+  {cat:'weld',q:'Why should long sleeves be worn while welding?',opts:['For fashion','To protect skin from sparks','To stay warm','No reason'],ans:1,tip:'Sparks can burn exposed skin.',why:'Welding sparks reach extremely high temperatures.'},
+  {cat:'weld',q:'What gas can build up dangerously while welding indoors?',opts:['Oxygen','Toxic fumes','Steam','Perfume'],ans:1,tip:'Ventilation removes dangerous fumes.',why:'Fumes damage lungs and brain.'},
+  {cat:'weld',q:'Why should cylinders be kept upright?',opts:['Looks better','Prevents leaks and explosions','Saves space','No reason'],ans:1,tip:'Secure cylinders vertically.',why:'Falling cylinders can become deadly missiles.'},
+  {cat:'weld',q:'What should be nearby during welding?',opts:['Fire extinguisher','Water balloons','Curtains','Paper'],ans:0,tip:'Always keep extinguisher ready.',why:'Sparks can start fires instantly.'},
+  {cat:'weld',q:'Why must welding cables be checked?',opts:['For colour','For damage and cracks','For decoration','No reason'],ans:1,tip:'Damaged cables are hazardous.',why:'Cracked insulation causes shocks.'},
+  {cat:'weld',q:'What protects feet during welding?',opts:['Leather safety boots','Sandals','Barefoot','Plastic slippers'],ans:0,tip:'Safety boots protect from sparks.',why:'Hot metal can severely burn feet.'},
+  {cat:'weld',q:'Why avoid synthetic clothes while welding?',opts:['Too expensive','They melt easily','Too colourful','No reason'],ans:1,tip:'Synthetic fabric melts on skin.',why:'Molten fabric causes severe burns.'},
+  {cat:'weld',q:'What should be done after welding?',opts:['Leave equipment on','Switch off machine safely','Throw cables','Ignore tools'],ans:1,tip:'Proper shutdown prevents accidents.',why:'Unused live equipment can overheat.'},
+  {cat:'weld',q:'Why use welding curtains?',opts:['Decoration','Protect others from arc flash','Hide tools','Reduce noise'],ans:1,tip:'Curtains shield nearby people.',why:'Arc flash damages unprotected eyes.'},
+  {cat:'weld',q:'What should never be touched after welding?',opts:['Cold water','Hot electrode','Helmet','Table'],ans:1,tip:'Electrodes remain hot after use.',why:'Contact causes burns instantly.'},
+  {cat:'weld',q:'What eye protection must you wear when welding?',opts:['Sunglasses','Welding helmet with correct shade lens','Safety goggles only','No protection needed'],ans:1,tip:'A proper welding helmet with the correct shade (usually shade 10-12) protects your eyes and face.',why:'Arc flash can permanently blind you in seconds. Ordinary goggles do not block the UV intensity.'},
+  {cat:'weld',q:'Why should you NEVER weld in a closed room without ventilation?',opts:['It makes the metal dirty','Welding fumes are toxic and cause serious lung damage','It wastes electricity','The sparks look bad'],ans:1,tip:'Welding fumes contain metal oxides and toxic gases. Always weld in a well-ventilated area.',why:'Long-term fume exposure causes lung disease. Even short exposure can be fatal in confined spaces.'},
+  {cat:'weld',q:'Before welding, what should you check about your work area?',opts:['That music is playing','That no flammable materials are nearby','That your phone is charged','That the room is dark'],ans:1,tip:'Welding sparks can travel up to 10 metres. Clear the area of wood, paper, cloth, and chemicals.',why:'Workshop fires from welding sparks are a leading cause of injuries in vocational schools.'},
+  {cat:'weld',q:'What should you do with hot metal after welding?',opts:['Pick it up with bare hands','Throw it in the bin','Mark it as HOT and let it cool completely','Put it in water right away'],ans:2,tip:'Hot metal looks identical to cold metal! Always mark freshly welded pieces as HOT.',why:'Hot metal causes severe burns instantly. Many injuries happen because people assume metal has cooled.'},
+  {cat:'weld',q:'Which gloves are correct for welding work?',opts:['Thin latex gloves','Heavy-duty leather welding gloves','Cotton gardening gloves','No gloves needed'],ans:1,tip:'Heavy-duty leather welding gloves protect against sparks, heat, and UV radiation.',why:'Welding temperatures reach over 3,000°C. Only proper leather welding gloves can withstand the heat.'},
+  {cat:'carp',q:'Why should wood be clamped before cutting?',opts:['For decoration','To prevent slipping','To waste time','No reason'],ans:1,tip:'Secure wood before cutting.',why:'Moving wood causes tool accidents.'},
+  {cat:'carp',q:'Which tool smooths wood surfaces?',opts:['Hammer','Sander','Pliers','Wrench'],ans:1,tip:'Sanders smooth rough wood.',why:'Smooth wood prevents splinters.'},
+  {cat:'carp',q:'Why wear goggles during sanding?',opts:['Fashion','Protect eyes from dust','Teachers like it','No reason'],ans:1,tip:'Dust can damage eyes.',why:'Fine particles irritate eyes.'},
+  {cat:'carp',q:'What should you check before using a ladder?',opts:['Its colour','Its stability','Its price','Its brand'],ans:1,tip:'Stable ladders prevent falls.',why:'Falls are major workshop injuries.'},
+  {cat:'carp',q:'Why keep tools organised?',opts:['Looks neat','Prevents accidents','No reason','Saves paint'],ans:1,tip:'Organised tools improve safety.',why:'Loose tools create trip hazards.'},
+  {cat:'carp',q:'What should you do with blunt blades?',opts:['Use more force','Replace or sharpen them','Ignore them','Break them'],ans:1,tip:'Sharp blades are safer.',why:'Blunt blades slip more easily.'},
+  {cat:'carp',q:'Why avoid loose clothing in the workshop?',opts:['Too expensive','Can get caught in machines','Too colourful','No reason'],ans:1,tip:'Loose clothes are dangerous.',why:'Rotating tools can pull clothing in.'},
+  {cat:'carp',q:'What should be removed before machine work?',opts:['Jewellery','Shoes','Helmet','Notebook'],ans:0,tip:'Jewellery can catch in machines.',why:'Rings and chains cause serious injuries.'},
+  {cat:'carp',q:'Why use the correct tool for each job?',opts:['To impress friends','For safer accurate work','No reason','To waste time'],ans:1,tip:'Wrong tools increase accidents.',why:'Correct tools improve control and safety.'},
+  {cat:'carp',q:'What should you do after workshop work?',opts:['Leave tools out','Clean and store tools safely','Kick tools aside','Ignore mess'],ans:1,tip:'Clean workshops are safer.',why:'Proper storage prevents accidents and damage.'},
+  {cat:'carp',q:'When using a hand saw, in which direction should you cut safely?',opts:['Towards your body','Away from your body','Sideways','It does not matter'],ans:1,tip:'Always cut away from your body.',why:'Hand injuries from saws account for the majority of carpentry injuries.'},
+  {cat:'carp',q:'Which PPE is essential when using a power saw or sander?',opts:['Only gloves','Safety goggles and dust mask','Just a hard hat','No PPE needed'],ans:1,tip:'Sawdust can damage your eyes and lungs. Always wear safety goggles and a dust mask.',why:'Fine wood dust causes eye irritation, respiratory illness, and some wood dusts are carcinogenic.'},
+  {cat:'carp',q:'Before using an electric drill, what should you check?',opts:['That it has a nice colour','That the bit is secured and guard is in place','That nobody is watching','That it is the most expensive model'],ans:1,tip:'A loose drill bit can fly off at high speed. Always secure the bit and check guards.',why:'A loose drill bit can fly at over 100 km/h. Guards prevent contact with moving parts.'},
+  {cat:'carp',q:'Where should your fingers be when using a chisel?',opts:['In front of the blade','Wrapped around the blade','Behind the blade away from cutting direction','Holding the wood being cut'],ans:2,tip:'Your fingers must always be behind the cutting edge.',why:'Chisel injuries to fingers are extremely common. Proper hand position is the single best prevention.'},
+  {cat:'carp',q:'What should you do with wood shavings and sawdust on the floor?',opts:['Leave them — they look nice','Clean them up immediately to prevent slipping','Kick them under the bench','Blow them at friends'],ans:1,tip:'Sawdust and shavings create a serious slip hazard and are also flammable.',why:'Slipping on sawdust while holding a tool is a major cause of serious workshop injuries.'},
+];
+
+var score=0, streak=0, lives=3, cur=0, answered=false, wrong=0, catFilter='all';
+var shuffled=[];
+
+function shuffle(a) {
+  var arr = a.slice();
+  for (var i=arr.length-1; i>0; i--) {
+    var j = Math.floor(Math.random()*(i+1));
+    var t = arr[i]; arr[i]=arr[j]; arr[j]=t;
+  }
+  return arr;
+}
+
+function initGame() {
+  score=0; streak=0; lives=3; cur=0; answered=false; wrong=0;
+  shuffled = shuffle(QS.slice());
+  renderTabs(); renderQ(); updateStats();
+}
+
+function getCatInfo(id) {
+  return CATS.find(function(c){return c.id===id;}) || CATS[0];
+}
+function getCatLabel(id) {
+  if(id==='all') return 'All topics';
+  var c = CATS.find(function(x){return x.id===id;});
+  return c ? c.label : id;
+}
+
+function renderTabs() {
+  var el = document.getElementById('ws-tabs');
+  el.innerHTML = '';
+  var all = document.createElement('button');
+  all.className = 'ws-tab' + (catFilter==='all' ? ' active-all' : '');
+  all.textContent = 'All';
+  all.onclick = function(){ catFilter='all'; cur=0; renderTabs(); renderQ(); updateStats(); };
+  el.appendChild(all);
+  CATS.forEach(function(c) {
+    var b = document.createElement('button');
+    b.className = 'ws-tab' + (catFilter===c.id ? ' active-'+c.id : '');
+    b.textContent = c.label;
+    b.onclick = function(){ catFilter=c.id; cur=0; renderTabs(); renderQ(); updateStats(); };
+    el.appendChild(b);
+  });
+}
+
+function getFilteredQ() {
+  if (catFilter==='all') return shuffled;
+  return shuffled.filter(function(q){ return q.cat===catFilter; });
+}
+
+function updateStats() {
+  var qs = getFilteredQ();
+  var total = qs.length || 1;
+  document.getElementById('ws-score').textContent = score;
+  document.getElementById('ws-streak').textContent = streak;
+  document.getElementById('ws-lives').textContent = lives;
+  document.getElementById('ws-qnum').textContent = (cur+1)+'/'+total;
+  var pct = Math.round((cur/total)*100);
+  document.getElementById('ws-pf').style.width = pct+'%';
+  document.getElementById('ws-prog-pct').textContent = pct+'%';
+  document.getElementById('ws-prog-cat').textContent = getCatLabel(catFilter);
+  var q2 = qs[cur];
+  var ci2 = q2 ? getCatInfo(q2.cat) : null;
+  document.getElementById('ws-pf').style.background = ci2 ? ci2.prog : '#1565C0';
+}
+
+function renderQ() {
+  var qs = getFilteredQ();
+  if (!qs.length) {
+    document.getElementById('ws-main').innerHTML = '<div style="background:#FFEBEE;border:1.5px solid #EF9A9A;border-radius:12px;padding:14px;font-size:14px;color:#B71C1C;">No questions in this category. Switch to "All" to continue.</div>';
+    return;
+  }
+  if (cur >= qs.length) { showResult(); return; }
+  var q = qs[cur];
+  var ci = getCatInfo(q.cat);
+  answered = false;
+
+  var html = '<div class="ws-why-box '+q.cat+'">';
+  html += '<div class="ws-why-box-h">💡 Why learn this?</div>';
+  html += ci.why + '</div>';
+
+  html += '<div class="ws-qcard cat-'+q.cat+'">';
+  html += '<div class="ws-qnum '+q.cat+'">'+ci.label+' &nbsp;·&nbsp; Question '+(cur+1)+' of '+qs.length+'</div>';
+  html += '<div class="ws-qtxt '+q.cat+'">'+q.q+'</div></div>';
+
+  html += '<div class="ws-opts">';
+  var letters = ['A','B','C','D'];
+  q.opts.forEach(function(opt,i){
+    html += '<div class="ws-opt" id="opt-'+i+'" onclick="pick('+i+')">';
+    html += '<span class="ws-opt-badge">'+letters[i]+'</span>';
+    html += '<span class="ws-opt-text">'+opt+'</span></div>';
+  });
+  html += '</div>';
+  html += '<div class="ws-feedback" id="ws-fb"></div>';
+  html += '<div class="ws-nav" id="ws-nav"></div>';
+  document.getElementById('ws-main').innerHTML = html;
+  updateStats();
+}
+
+function pick(i) {
+  if (answered) return;
+  unlockAudio(); // ensure audio unlocked on interaction
+  answered = true;
+  var qs = getFilteredQ();
+  var q = qs[cur];
+  var correct = (i === q.ans);
+
+  for (var j=0; j<q.opts.length; j++) {
+    var el = document.getElementById('opt-'+j);
+    el.classList.add('disabled');
+    if (j===q.ans) el.classList.add('correct');
+    else if (j===i && !correct) el.classList.add('wrong');
+  }
+
+  var fb = document.getElementById('ws-fb');
+  if (correct) {
+    playCorrect();
+   if ('vibrate' in navigator) {
+   navigator.vibrate(60);
+}
+    score += (streak >= 3 ? 20 : 10);
+    streak++;
+    fb.className = 'ws-feedback show ok';
+    fb.innerHTML = '<div class="ws-fb-top ws-fb-ok-h">✅ Correct!'
+      + (streak>=3 ? ' &nbsp;<span style="background:#2E7D32;color:#fff;font-size:11px;padding:2px 8px;border-radius:6px;font-weight:700;">+20 streak bonus!</span>' : '')
+      + '</div><div class="ws-fb-tip">'+q.tip+'</div>'
+      + '<div class="ws-why-inline"><div class="ws-why-inline-h">💡 Why this rule exists</div>'
+      + '<div class="ws-why-inline-b">'+q.why+'</div></div>';
+  } else {
+    playWrong();
+    if (navigator.vibrate) navigator.vibrate([80,40,80]);
+    wrong++; streak=0; lives--;
+    fb.className = 'ws-feedback show bad';
+    fb.innerHTML = '<div class="ws-fb-top ws-fb-bad-h">❌ Not quite!</div>'
+      + '<div class="ws-fb-tip">'+q.tip+'</div>'
+      + '<div class="ws-why-inline"><div class="ws-why-inline-h">💡 Why this rule exists</div>'
+      + '<div class="ws-why-inline-b">'+q.why+'</div></div>';
+  }
+
+  var nav = document.getElementById('ws-nav');
+  if (lives <= 0) {
+    nav.innerHTML = '<button class="ws-btn coral" style="width:100%" onclick="showGameOver()">💔 See Results</button>';
+    setTimeout(function(){ playGameOver(); showGameOver(); }, 1500);
+  } else {
+    var isLast = cur >= getFilteredQ().length - 1;
+    if (isLast) {
+      nav.innerHTML = '<button class="ws-btn green" style="width:100%" onclick="showResult()">🏆 See My Score</button>';
+    } else {
+      nav.innerHTML = '<button class="ws-btn primary" style="width:100%" onclick="nextQ()">Next Question →</button>';
+    }
+  }
+  updateStats();
+}
+
+function nextQ() { cur++; renderQ(); }
+
+function showResult() {
+  playComplete();
+  var qs = getFilteredQ();
+  var total = qs.length;
+  var pct = Math.round(((total-wrong)/total)*100);
+  var icon = pct>=80 ? '🏆' : pct>=50 ? '👍' : '📚';
+  var grade = pct>=80
+    ? 'Excellent work! You are a safety star! Keep these habits for life.'
+    : pct>=50
+    ? 'Good effort! Review the tips and try again to improve.'
+    : 'Safety knowledge needs practice — read the tips carefully and try again!';
+
+  var html = '<div class="ws-result">';
+  html += '<div class="ws-result-icon">'+icon+'</div>';
+  html += '<div class="ws-result-h">Quiz Complete!</div>';
+  html += '<div class="ws-result-s">'+grade+'</div>';
+  html += '<div class="ws-badge-row">';
+  html += '<div class="ws-badge b1"><b>'+score+'</b>Total score</div>';
+  html += '<div class="ws-badge b2"><b>'+(total-wrong)+'/'+total+'</b>Correct</div>';
+  html += '<div class="ws-badge b3"><b>'+pct+'%</b>Accuracy</div>';
+  html += '</div>';
+  html += '<div class="ws-rules"><div class="ws-rules-h">🛡️ Golden safety rules to always remember</div>';
+  var rules = [
+    'Always wear the correct PPE for the task',
+    'Switch off and lock out power before any electrical work',
+    'Weld only in ventilated areas with a proper helmet',
+    'Cut away from your body — always',
+    'If unsure, stop and ask your teacher first'
+  ];
+  rules.forEach(function(r,i){
+    html += '<div class="ws-rule-row"><div class="ws-rule-dot">'+(i+1)+'</div><span>'+r+'</span></div>';
+  });
+  html += '</div>';
+  html += '<button class="ws-btn green" style="width:100%;margin-top:4px;" onclick="initGame()">🔄 Play Again</button>';
+  html += '</div>';
+  document.getElementById('ws-main').innerHTML = html;
+  document.getElementById('ws-pf').style.width = '100%';
+}
+
+function showGameOver() {
+  playGameOver();
+  var html = '<div class="ws-result">';
+  html += '<div class="ws-result-icon">💔</div>';
+  html += '<div class="ws-result-h">No lives left!</div>';
+  html += '<div class="ws-result-s">You scored <strong>'+score+'</strong> points before running out of lives.<br>Read the safety tips carefully and try again!</div>';
+  html += '<div class="ws-badge-row">';
+  html += '<div class="ws-badge b1"><b>'+score+'</b>Score</div>';
+  html += '<div class="ws-badge b3"><b>'+cur+'/'+getFilteredQ().length+'</b>Answered</div>';
+  html += '<div class="ws-badge b2"><b>'+(3-lives)+'</b>Lives lost</div>';
+  html += '</div>';
+  html += '<button class="ws-btn green" style="width:100%" onclick="initGame()">🔄 Try Again</button>';
+  html += '</div>';
+  document.getElementById('ws-main').innerHTML = html;
+}
+
+initGame();
+</script>
+</body>
+</html>

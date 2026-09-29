@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Base Calculator</title>
+<!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1034022057999423" crossorigin="anonymous"></script>
+
+  <!-- Firebase Analytics -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-analytics.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDfxtOP-YCrCXtQxZrrFNC1uXucvbW0K78",
+      authDomain: "my-skill-global.firebaseapp.com",
+      projectId: "my-skill-global",
+      storageBucket: "my-skill-global.firebasestorage.app",
+      messagingSenderId: "978471914749",
+      appId: "1:978471914749:web:595750b5d90738933f4294",
+      measurementId: "G-8D9BPY8HJ0"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700;800&family=Oxanium:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #080c10;
+  --panel: #0d1117;
+  --panel2: #111820;
+  --border: #1e2d3d;
+  --border2: #243444;
+  --cyan: #00e5ff;
+  --cyan-dim: rgba(0,229,255,0.12);
+  --cyan-glow: rgba(0,229,255,0.25);
+  --green: #39ff14;
+  --green-dim: rgba(57,255,20,0.1);
+  --amber: #ffaa00;
+  --amber-dim: rgba(255,170,0,0.1);
+  --red: #ff4444;
+  --red-dim: rgba(255,68,68,0.1);
+  --text: #c9d8e8;
+  --muted: #EEF9F1;
+  --mono: 'JetBrains Mono', monospace;
+  --display: 'Oxanium', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--mono);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,229,255,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,229,255,0.015) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at 20% 20%, rgba(0,229,255,0.04) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 80%, rgba(57,255,20,0.03) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#root { position: relative; z-index: 1; }
+
+.app {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 16px;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  min-height: 100vh;
+  gap: 12px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0 4px;
+}
+
+.logo {
+  font-family: var(--display);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--cyan);
+  letter-spacing: 2px;
+  text-shadow: 0 0 20px var(--cyan-glow);
+}
+
+.logo span { color: var(--green); }
+
+.tagline {
+  font-size: 10px;
+  color:#E6E8A2 ;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* Sound toggle button */
+.sound-btn {
+  background: var(--panel2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--muted);
+  padding: 6px 12px;
+  font-family: var(--mono);
+  font-size: 11px;
+  cursor: pointer;
+  letter-spacing: 0.1em;
+  transition: all 0.2s;
+  user-select: none;
+}
+.sound-btn:hover { border-color: var(--border2); color: var(--text); }
+.sound-btn.on { color: var(--cyan); border-color: rgba(0,229,255,0.3); background: var(--cyan-dim); }
+
+.main-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 12px;
+  align-items: start;
+}
+
+@media (max-width: 700px) {
+  .main-grid { grid-template-columns: 1fr; }
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.panel-header .dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 8px var(--cyan);
+  flex-shrink: 0;
+}
+
+.panel-header .dot.g { background: var(--green); box-shadow: 0 0 8px var(--green); }
+.panel-header .dot.a { background: var(--amber); box-shadow: 0 0 8px var(--amber); }
+
+.base-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.base-tab {
+  padding: 10px 4px;
+  text-align: center;
+  cursor: pointer;
+  font-family: var(--display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: rgba(255,230,0,0.55);
+  border-right: 1px solid var(--border);
+  transition: all 0.2s;
+  user-select: none;
+}
+
+.base-tab:last-child { border-right: none; }
+.base-tab:hover { color: #ffe600; background: rgba(255,255,255,0.03); }
+.base-tab.active {
+  color: var(--cyan);
+  background: var(--cyan-dim);
+  text-shadow: 0 0 12px var(--cyan-glow);
+}
+
+.base-tab .sub {
+  display: block;
+  font-size: 9px;
+  font-weight: 400;
+  font-family: var(--mono);
+  letter-spacing: 0;
+  opacity: 0.6;
+  margin-top: 2px;
+}
+
+.display-area { padding: 14px; }
+
+.display-main {
+  background: #060a0e;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  min-height: 64px;
+  position: relative;
+}
+
+.display-expr {
+  font-size: 11px;
+  color: var(--muted);
+  font-family: var(--mono);
+  min-height: 16px;
+  margin-bottom: 4px;
+  word-break: break-all;
+}
+
+.display-value {
+  font-family: var(--display);
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--cyan);
+  text-shadow: 0 0 20px var(--cyan-glow);
+  word-break: break-all;
+  line-height: 1.1;
+  letter-spacing: 2px;
+}
+
+.display-base-badge {
+  position: absolute;
+  top: 8px; right: 10px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: var(--cyan-dim);
+  color: var(--cyan);
+  border: 1px solid rgba(0,229,255,0.2);
+}
+
+.display-error { color: var(--red); text-shadow: 0 0 12px rgba(255,68,68,0.4); }
+
+.conv-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.conv-item {
+  background: #060a0e;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 7px 8px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.conv-item:hover { border-color: var(--border2); background: rgba(255,255,255,0.02); }
+.conv-item.active { border-color: rgba(0,229,255,0.3); background: var(--cyan-dim); }
+
+.conv-label {
+  font-size: 9px;
+  color: var(--muted);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 3px;
+}
+
+.conv-val {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text);
+  word-break: break-all;
+  line-height: 1.3;
+}
+
+.conv-item.active .conv-val { color: var(--cyan); }
+
+.keypad {
+  padding: 10px 14px 14px;
+  display: grid;
+  gap: 6px;
+}
+
+.key-row {
+  display: grid;
+  gap: 6px;
+}
+
+.key {
+  padding: 13px 6px;
+  border-radius: 8px;
+  border: 2px solid var(--border);
+  background: var(--panel2);
+  color: var(--text);
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.1s;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  letter-spacing: 0.05em;
+}
+
+.key:hover { border-color: var(--border2); background: #182535; transform: translateY(-1px); }
+.key:active { transform: scale(0.95) translateY(0); background: #1a2d40; }
+
+.key.disabled { opacity: 0.2; pointer-events: none; }
+
+.key.op {
+  background: rgba(0,229,255,0.06);
+  border-color: rgba(0,229,255,0.2);
+  color: var(--cyan);
+}
+.key.op:hover { background: rgba(0,229,255,0.14); }
+
+.key.eq {
+  background: var(--cyan);
+  border-color: var(--cyan);
+  color: #000;
+  font-size: 18px;
+  text-shadow: none;
+  box-shadow: 0 0 20px var(--cyan-glow);
+}
+.key.eq:hover { background: #33eeff; box-shadow: 0 0 30px rgba(0,229,255,0.5); }
+
+.key.clear {
+  background: rgba(255,68,68,0.08);
+  border-color: rgba(255,68,68,0.25);
+  color: var(--red);
+}
+.key.clear:hover { background: rgba(255,68,68,0.18); }
+
+.key.back {
+  background: rgba(255,170,0,0.08);
+  border-color: rgba(255,170,0,0.2);
+  color: var(--amber);
+  font-size: 17px;
+}
+.key.back:hover { background: rgba(255,170,0,0.15); }
+
+.key.fn {
+  background: rgba(57,255,20,0.06);
+  border-color: rgba(57,255,20,0.2);
+  color: var(--green);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
+.key.fn:hover { background: rgba(57,255,20,0.14); }
+
+.key.hex-key {
+  background: rgba(255,170,0,0.05);
+  border-color: rgba(255,170,0,0.15);
+  color: var(--amber);
+}
+.key.hex-key:hover { background: rgba(255,170,0,0.12); }
+.key.hex-key.disabled { opacity: 0.15; pointer-events: none; }
+
+.op-indicator {
+  display: flex;
+  gap: 6px;
+  padding: 8px 14px;
+  border-top: 1px solid var(--border);
+  font-size: 10px;
+  color: var(--muted);
+  align-items: center;
+}
+
+.op-badge {
+  padding: 3px 10px;
+  border-radius: 4px;
+  background: var(--cyan-dim);
+  color: var(--cyan);
+  font-size: 13px;
+  font-weight: 700;
+  border: 1px solid rgba(0,229,255,0.2);
+  min-width: 28px;
+  text-align: center;
+  display: none;
+}
+
+.op-badge.show { display: block; }
+
+.history-panel { max-height: 600px; display: flex; flex-direction: column; }
+
+.history-list {
+  overflow-y: auto;
+  flex: 1;
+  padding: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border2) transparent;
+}
+
+.history-list::-webkit-scrollbar { width: 4px; }
+.history-list::-webkit-scrollbar-track { background: transparent; }
+.history-list::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+
+.history-empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 2;
+}
+
+.history-item {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  margin-bottom: 6px;
+  cursor: pointer;
+  transition: all 0.15s;
+  background: #060a0e;
+  animation: flash-in 0.2s ease;
+}
+
+.history-item:hover { border-color: var(--border2); background: rgba(255,255,255,0.02); }
+
+.history-expr { font-size: 11px; color: var(--muted); margin-bottom: 4px; word-break: break-all; }
+
+.history-result {
+  font-family: var(--display);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--cyan);
+  letter-spacing: 1px;
+  word-break: break-all;
+}
+
+.history-bases { margin-top: 5px; display: flex; flex-wrap: wrap; gap: 4px; }
+
+.hb-pill {
+  font-size: 9px;
+  padding: 2px 7px;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-family: var(--mono);
+}
+
+.history-footer {
+  padding: 8px 12px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.clear-hist {
+  font-size: 10px;
+  color: var(--red);
+  cursor: pointer;
+  opacity: 0.7;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  background: none;
+  border: none;
+  font-family: var(--mono);
+}
+.clear-hist:hover { opacity: 1; }
+
+.hist-count { font-size: 10px; color: rgba(255,230,0,0.45); }
+
+.mode-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--border);
+}
+
+.mode-tab {
+  padding: 9px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,230,0,0.55);
+  border-right: 1px solid var(--border);
+  transition: all 0.2s;
+}
+
+.mode-tab:last-child { border-right: none; }
+.mode-tab.active { color: var(--green); background: var(--green-dim); }
+
+.convert-area { padding: 14px; display: none; }
+.convert-area.show { display: block; }
+.calc-area { display: block; }
+.calc-area.hide { display: none; }
+
+.conv-input-group { margin-bottom: 10px; }
+
+.conv-input-label {
+  font-size: 9px;
+  color: var(--muted);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.conv-input-field {
+  width: 100%;
+  background: #060a0e;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--cyan);
+  outline: none;
+  letter-spacing: 2px;
+  transition: border-color 0.2s;
+}
+
+.conv-input-field:focus { border-color: rgba(0,229,255,0.4); }
+.conv-input-field.err { border-color: rgba(255,68,68,0.4); color: var(--red); }
+
+.conv-results {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.conv-result-box {
+  background: #060a0e;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.conv-result-box .label {
+  font-size: 9px;
+  color: var(--muted);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.conv-result-box .val {
+  font-family: var(--display);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  word-break: break-all;
+  letter-spacing: 1px;
+}
+
+.base-select {
+  background: #060a0e;
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-family: var(--mono);
+  font-size: 12px;
+  outline: none;
+  cursor: pointer;
+}
+
+@media (max-width: 480px) {
+  .display-value { font-size: 24px; }
+  .key { padding: 11px 4px; font-size: 14px; }
+  .conv-strip { grid-template-columns: repeat(2, 1fr); }
+}
+
+@keyframes flash-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+<div id="root">
+<div class="app">
+
+  <header>
+    <div>
+      <div class="logo">BASE<span>CALC</span></div>
+      <div class="tagline">Binary · Octal · Decimal · Hexadecimal</div>
+    </div>
+    <button class="sound-btn on" id="sound-btn" onclick="toggleSound()">🔊 SOUND</button>
+  </header>
+
+  <div class="main-grid">
+
+    <!-- Left: Calculator -->
+    <div class="panel">
+      <div class="mode-tabs">
+        <div class="mode-tab active" id="tab-calc" onclick="setMode('calc')">⊞ CALCULATOR</div>
+        <div class="mode-tab" id="tab-conv" onclick="setMode('conv')">⇄ CONVERTER</div>
+      </div>
+
+      <div class="base-tabs">
+        <div class="base-tab" id="btab-bin" onclick="setBase(2)">BIN<span class="sub">Base 2</span></div>
+        <div class="base-tab" id="btab-oct" onclick="setBase(8)">OCT<span class="sub">Base 8</span></div>
+        <div class="base-tab" id="btab-dec" onclick="setBase(10)">DEC<span class="sub">Base 10</span></div>
+        <div class="base-tab active" id="btab-hex" onclick="setBase(16)">HEX<span class="sub">Base 16</span></div>
+      </div>
+
+      <!-- CALCULATOR MODE -->
+      <div class="calc-area" id="calc-area">
+        <div class="display-area">
+          <div class="display-main">
+            <div class="display-expr" id="expr"></div>
+            <div class="display-value" id="disp">0</div>
+            <div class="display-base-badge" id="base-badge">HEX</div>
+          </div>
+
+          <div class="conv-strip">
+            <div class="conv-item" id="cs-bin" onclick="setBase(2)">
+              <div class="conv-label">BIN</div>
+              <div class="conv-val" id="cv-bin">0</div>
+            </div>
+            <div class="conv-item" id="cs-oct" onclick="setBase(8)">
+              <div class="conv-label">OCT</div>
+              <div class="conv-val" id="cv-oct">0</div>
+            </div>
+            <div class="conv-item" id="cs-dec" onclick="setBase(10)">
+              <div class="conv-label">DEC</div>
+              <div class="conv-val" id="cv-dec">0</div>
+            </div>
+            <div class="conv-item active" id="cs-hex" onclick="setBase(16)">
+              <div class="conv-label">HEX</div>
+              <div class="conv-val" id="cv-hex">0</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="op-indicator">
+          <span>OPERATOR:</span>
+          <span class="op-badge" id="op-badge"></span>
+          <span id="op-hint" style="margin-left:4px"></span>
+        </div>
+
+        <div class="keypad">
+          <!-- Hex A–F -->
+          <div class="key-row" style="grid-template-columns:repeat(6,1fr)">
+            <div class="key hex-key" id="k-A" onclick="pressKey('A')">A</div>
+            <div class="key hex-key" id="k-B" onclick="pressKey('B')">B</div>
+            <div class="key hex-key" id="k-C" onclick="pressKey('C')">C</div>
+            <div class="key hex-key" id="k-D" onclick="pressKey('D')">D</div>
+            <div class="key hex-key" id="k-E" onclick="pressKey('E')">E</div>
+            <div class="key hex-key" id="k-F" onclick="pressKey('F')">F</div>
+          </div>
+          <!-- Fn + ops row -->
+          <div class="key-row" style="grid-template-columns:repeat(5,1fr)">
+            <div class="key clear" onclick="pressKey('AC')">AC</div>
+            <div class="key back"  onclick="pressKey('BACK')">⌫</div>
+            <div class="key fn"   onclick="pressKey('NEG')">+/−</div>
+            <div class="key op"   onclick="pressKey('MOD')">MOD</div>
+            <div class="key op"   onclick="pressKey('/')">÷</div>
+          </div>
+          <!-- 7 8 9 -->
+          <div class="key-row" style="grid-template-columns:repeat(5,1fr)">
+            <div class="key" id="k-7" onclick="pressKey('7')">7</div>
+            <div class="key" id="k-8" onclick="pressKey('8')">8</div>
+            <div class="key" id="k-9" onclick="pressKey('9')">9</div>
+            <div class="key fn" onclick="pressKey('NOT')">NOT</div>
+            <div class="key op" onclick="pressKey('*')">×</div>
+          </div>
+          <!-- 4 5 6 -->
+          <div class="key-row" style="grid-template-columns:repeat(5,1fr)">
+            <div class="key" id="k-4" onclick="pressKey('4')">4</div>
+            <div class="key" id="k-5" onclick="pressKey('5')">5</div>
+            <div class="key" id="k-6" onclick="pressKey('6')">6</div>
+            <div class="key fn" onclick="pressKey('AND')">AND</div>
+            <div class="key op" onclick="pressKey('-')">−</div>
+          </div>
+          <!-- 1 2 3 -->
+          <div class="key-row" style="grid-template-columns:repeat(5,1fr)">
+            <div class="key" id="k-1" onclick="pressKey('1')">1</div>
+            <div class="key" id="k-2" onclick="pressKey('2')">2</div>
+            <div class="key" id="k-3" onclick="pressKey('3')">3</div>
+            <div class="key fn" onclick="pressKey('OR')">OR</div>
+            <div class="key op" onclick="pressKey('+')">+</div>
+          </div>
+          <!-- 0 row -->
+          <div class="key-row" style="grid-template-columns:2fr 1fr 1fr 1fr">
+            <div class="key" id="k-0" onclick="pressKey('0')">0</div>
+            <div class="key fn" onclick="pressKey('XOR')">XOR</div>
+            <div class="key fn" onclick="pressKey('SHR')">SHR</div>
+            <div class="key eq" onclick="pressKey('=')">=</div>
+          </div>
+        </div>
+      </div><!-- end calc-area -->
+
+      <!-- CONVERTER MODE -->
+      <div class="convert-area" id="conv-area">
+        <div class="conv-input-group">
+          <div class="conv-input-label">
+            Input Value
+            <select class="base-select" id="conv-from" onchange="doConvert()">
+              <option value="2">BIN (Base 2)</option>
+              <option value="8">OCT (Base 8)</option>
+              <option value="10">DEC (Base 10)</option>
+              <option value="16" selected>HEX (Base 16)</option>
+            </select>
+          </div>
+          <input class="conv-input-field" id="conv-input" type="text"
+                 placeholder="Enter value..." oninput="doConvert()"
+                 autocomplete="off" spellcheck="false">
+        </div>
+        <div class="conv-results">
+          <div class="conv-result-box"><div class="label">BINARY (Base 2)</div><div class="val" id="cr-bin">—</div></div>
+          <div class="conv-result-box"><div class="label">OCTAL (Base 8)</div><div class="val" id="cr-oct">—</div></div>
+          <div class="conv-result-box"><div class="label">DECIMAL (Base 10)</div><div class="val" id="cr-dec">—</div></div>
+          <div class="conv-result-box"><div class="label">HEXADECIMAL</div><div class="val" id="cr-hex">—</div></div>
+        </div>
+      </div>
+    </div><!-- end left panel -->
+
+    <!-- Right: History -->
+    <div class="panel history-panel">
+      <div class="panel-header"><span class="dot a"></span> HISTORY</div>
+      <div class="history-list" id="history-list">
+        <div class="history-empty" id="hist-empty">
+          No calculations yet<br>
+          <span style="font-size:9px;opacity:0.5">Results appear here</span>
+        </div>
+      </div>
+      <div class="history-footer">
+        <span class="hist-count" id="hist-count">0 entries</span>
+        <button class="clear-hist" onclick="clearHistory()">Clear All</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<script>
+// ── Audio ─────────────────────────────────────────────────────────
+let audioCtx = null;
+let soundEnabled = true;
+
+function getAudioCtx() {
+  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  return audioCtx;
+}
+
+function playSound(type) {
+  if (!soundEnabled) return;
+  try {
+    const ctx = getAudioCtx();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+
+    if (type === 'digit') {
+      osc.frequency.setValueAtTime(880, ctx.currentTime);
+      osc.type = 'sine';
+      gain.gain.setValueAtTime(0.04, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.06);
+      osc.start(ctx.currentTime);
+      osc.stop(ctx.currentTime + 0.06);
+    } else if (type === 'op') {
+      osc.frequency.setValueAtTime(660, ctx.currentTime);
+      osc.frequency.setValueAtTime(880, ctx.currentTime + 0.04);
+      osc.type = 'square';
+      gain.gain.setValueAtTime(0.03, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.1);
+      osc.start(ctx.currentTime);
+      osc.stop(ctx.currentTime + 0.1);
+    } else if (type === 'equals') {
+      // Two-tone success chime
+      [0, 0.08].forEach((delay, i) => {
+        const o2 = ctx.createOscillator();
+        const g2 = ctx.createGain();
+        o2.connect(g2);
+        g2.connect(ctx.destination);
+        o2.frequency.setValueAtTime(i === 0 ? 880 : 1320, ctx.currentTime + delay);
+        o2.type = 'sine';
+        g2.gain.setValueAtTime(0.05, ctx.currentTime + delay);
+        g2.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + delay + 0.15);
+        o2.start(ctx.currentTime + delay);
+        o2.stop(ctx.currentTime + delay + 0.15);
+      });
+      return;
+    } else if (type === 'clear') {
+      osc.frequency.setValueAtTime(440, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(220, ctx.currentTime + 0.12);
+      osc.type = 'sawtooth';
+      gain.gain.setValueAtTime(0.04, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.12);
+      osc.start(ctx.currentTime);
+      osc.stop(ctx.currentTime + 0.12);
+    } else if (type === 'error') {
+      osc.frequency.setValueAtTime(200, ctx.currentTime);
+      osc.type = 'sawtooth';
+      gain.gain.setValueAtTime(0.06, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.2);
+      osc.start(ctx.currentTime);
+      osc.stop(ctx.currentTime + 0.2);
+    }
+  } catch(e) {}
+}
+
+function toggleSound() {
+  soundEnabled = !soundEnabled;
+  const btn = document.getElementById('sound-btn');
+  btn.textContent = soundEnabled ? '🔊 SOUND' : '🔇 SOUND';
+  btn.classList.toggle('on', soundEnabled);
+}
+
+// ── State ─────────────────────────────────────────────────────────
+let currentBase = 16;  // BUG FIX: default HEX
+let displayStr  = '0';
+let operand1    = null;
+let operator    = null;
+let justEvaled  = false;
+let mode        = 'calc';
+let history     = [];
+const MAX_HIST  = 50;
+
+const BASE_NAMES = { 2:'BIN', 8:'OCT', 10:'DEC', 16:'HEX' };
+const BASE_IDS   = { 2:'bin', 8:'oct', 10:'dec', 16:'hex' };
+
+// ── Base switching ────────────────────────────────────────────────
+function setBase(b) {
+  const decVal = parseCurrentToDecimal();
+  currentBase = b;
+  displayStr = (decVal !== null) ? toBase(decVal, b) : '0';
+  updateBaseTabs();
+  updateDisplay();
+  updateKeypad();
+}
+
+function updateBaseTabs() {
+  ['bin','oct','dec','hex'].forEach(id => {
+    document.getElementById('btab-' + id).classList.remove('active');
+    document.getElementById('cs-'   + id).classList.remove('active');
+  });
+  document.getElementById('btab-' + BASE_IDS[currentBase]).classList.add('active');
+  document.getElementById('cs-'   + BASE_IDS[currentBase]).classList.add('active');
+  document.getElementById('base-badge').textContent = BASE_NAMES[currentBase];
+}
+
+function updateKeypad() {
+  const allowed = allowedDigits(currentBase);
+  ['0','1','2','3','4','5','6','7','8','9'].forEach(d => {
+    const el = document.getElementById('k-' + d);
+    if (el) el.classList.toggle('disabled', !allowed.includes(d));
+  });
+  ['A','B','C','D','E','F'].forEach(d => {
+    const el = document.getElementById('k-' + d);
+    if (el) el.classList.toggle('disabled', currentBase < 16);
+  });
+}
+
+function allowedDigits(base) {
+  return ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'].slice(0, base);
+}
+
+// ── Parsing ───────────────────────────────────────────────────────
+function parseToDecimal(str, base) {
+  if (!str || str === '' || str === '-') return null;
+  const neg = str.startsWith('-');
+  const abs = neg ? str.slice(1) : str;
+  if (!/^[0-9A-Fa-f]+$/.test(abs)) return null;
+  const val = parseInt(abs, base);
+  if (isNaN(val)) return null;
+  return neg ? -val : val;
+}
+
+function parseCurrentToDecimal() {
+  return parseToDecimal(displayStr, currentBase);
+}
+
+function toBase(dec, base) {
+  if (dec === null || dec === undefined || isNaN(dec)) return '0';
+  const neg = dec < 0;
+  const abs = Math.abs(Math.trunc(dec));
+  return (neg ? '-' : '') + abs.toString(base).toUpperCase();
+}
+
+// ── Display ───────────────────────────────────────────────────────
+function updateDisplay(error) {
+  const dv = document.getElementById('disp');
+  dv.textContent = displayStr || '0';
+  dv.className = 'display-value' + (error ? ' display-error' : '');
+
+  const dec = parseCurrentToDecimal();
+  const safe = (dec !== null) ? dec : 0;
+  document.getElementById('cv-bin').textContent = toBase(safe, 2);
+  document.getElementById('cv-oct').textContent = toBase(safe, 8);
+  document.getElementById('cv-dec').textContent = toBase(safe, 10);
+  document.getElementById('cv-hex').textContent = toBase(safe, 16);
+}
+
+function setExpr(str) {
+  document.getElementById('expr').textContent = str || '';
+}
+
+// ── Key press ─────────────────────────────────────────────────────
+function pressKey(k) {
+  const allowed = allowedDigits(currentBase);
+
+  // Digit input
+  if (allowed.includes(k)) {
+    playSound('digit');
+    if (justEvaled) { displayStr = '0'; justEvaled = false; }
+    if (displayStr === '0' && k !== '.') displayStr = k;
+    else if (displayStr === '-0') displayStr = '-' + k;
+    else displayStr += k;
+    updateDisplay();
+    return;
+  }
+
+  switch (k) {
+    case 'AC':
+      playSound('clear');
+      displayStr  = '0';
+      operand1    = null;
+      operator    = null;
+      justEvaled  = false;
+      setExpr('');
+      showOpBadge(null);
+      updateDisplay();
+      break;
+
+    case 'BACK':
+      if (justEvaled) break;
+      playSound('digit');
+      if (displayStr.length <= 1 || displayStr === '-0') displayStr = '0';
+      else if (displayStr === '-') displayStr = '0';
+      else displayStr = displayStr.slice(0, -1);
+      updateDisplay();
+      break;
+
+    case 'NEG':
+      if (displayStr === '0') break;
+      playSound('op');
+      displayStr = displayStr.startsWith('-') ? displayStr.slice(1) : '-' + displayStr;
+      updateDisplay();
+      break;
+
+    case '+': case '-': case '*': case '/': case 'MOD':
+      playSound('op');
+      if (operator !== null && !justEvaled) {
+        // Chain evaluation
+        const res = compute(operand1, operator, parseCurrentToDecimal());
+        if (res === null) {
+          playSound('error');
+          displayStr = 'ERROR';
+          updateDisplay(true);
+          operator = null;
+          operand1 = null;
+          return;
+        }
+        operand1  = res;
+        displayStr = toBase(res, currentBase);
+      } else {
+        operand1 = parseCurrentToDecimal();
+      }
+      operator   = k;
+      justEvaled = false;
+      setExpr(displayStr + ' ' + opSymbol(k));
+      showOpBadge(opSymbol(k));
+      displayStr = '0';
+      updateDisplay();
+      break;
+
+    case 'NOT': {
+      const notVal = parseCurrentToDecimal();
+      if (notVal === null) break;
+      playSound('op');
+      const notRes = ~notVal;
+      addHistory('NOT ' + displayStr, notRes);
+      displayStr = toBase(notRes, currentBase);
+      setExpr('NOT → ' + displayStr);
+      updateDisplay();
+      break;
+    }
+
+    case 'AND': case 'OR': case 'XOR': case 'SHR':
+      playSound('op');
+      if (operator !== null && !justEvaled) {
+        const res = compute(operand1, operator, parseCurrentToDecimal());
+        if (res === null) {
+          playSound('error');
+          displayStr = 'ERROR';
+          updateDisplay(true);
+          return;
+        }
+        operand1  = res;
+        displayStr = toBase(res, currentBase);
+      } else {
+        operand1 = parseCurrentToDecimal();
+      }
+      operator   = k;
+      justEvaled = false;
+      setExpr(displayStr + ' ' + k);
+      showOpBadge(k);
+      displayStr = '0';
+      updateDisplay();
+      break;
+
+    case '=': {
+      if (operator === null) break;
+      const a    = operand1;
+      const b    = parseCurrentToDecimal();
+      const expr = toBase(a, currentBase) + ' ' + opSymbol(operator) + ' ' + displayStr;
+      const result = compute(a, operator, b);
+      if (result === null) {
+        playSound('error');
+        displayStr = 'ERROR';
+        setExpr(expr + ' = ERROR');
+        updateDisplay(true);
+      } else {
+        playSound('equals');
+        addHistory(expr, result);
+        displayStr = toBase(result, currentBase);
+        setExpr(expr + ' = ' + displayStr);
+        updateDisplay();
+      }
+      operator   = null;
+      operand1   = null;
+      justEvaled = true;
+      showOpBadge(null);
+      break;
+    }
+  }
+}
+
+function opSymbol(op) {
+  return { '+':'+', '-':'−', '*':'×', '/':'÷', 'MOD':'%',
+           'AND':'AND', 'OR':'OR', 'XOR':'XOR', 'SHR':'SHR' }[op] || op;
+}
+
+// ── BUG FIX: compute() — division case was missing its case label ──
+function compute(a, op, b) {
+  if (a === null || b === null) return null;
+  a = Math.trunc(a);
+  b = Math.trunc(b);
+  switch (op) {
+    case '+':   return a + b;
+    case '-':   return a - b;
+    case '*':   return a * b;
+    case '/':   return b === 0 ? null : Math.trunc(a / b);   // ← was missing case label
+    case 'MOD': return b === 0 ? null : a % b;
+    case 'AND': return a & b;
+    case 'OR':  return a | b;
+    case 'XOR': return a ^ b;
+    case 'SHR': return a >> b;
+    default:    return null;
+  }
+}
+
+function showOpBadge(sym) {
+  const el   = document.getElementById('op-badge');
+  const hint = document.getElementById('op-hint');
+  if (sym) {
+    el.textContent = sym;
+    el.classList.add('show');
+    hint.textContent = 'pending...';
+  } else {
+    el.classList.remove('show');
+    hint.textContent = '';
+  }
+}
+
+// ── History ───────────────────────────────────────────────────────
+function saveHistory() {
+  try { localStorage.setItem('basecalc_hist', JSON.stringify(history)); } catch(e) {}
+}
+
+function addHistory(expr, result) {
+  const dec = Math.trunc(result);
+  history.unshift({ expr, result: dec, base: currentBase, ts: Date.now() });
+  if (history.length > MAX_HIST) history.pop();
+  saveHistory();          // BUG FIX: save after mutation, not at load time
+  renderHistory();
+}
+
+function renderHistory() {
+  const list  = document.getElementById('history-list');
+  const empty = document.getElementById('hist-empty');
+  const count = document.getElementById('hist-count');
+
+  count.textContent = history.length + ' entr' + (history.length === 1 ? 'y' : 'ies');
+
+  list.querySelectorAll('.history-item').forEach(e => e.remove());
+
+  if (history.length === 0) {
+    empty.style.display = 'block';
+    return;
+  }
+  empty.style.display = 'none';
+
+  history.forEach(entry => {
+    const item = document.createElement('div');
+    item.className = 'history-item';
+    item.onclick   = () => recallHistory(entry);
+    const bname    = BASE_NAMES[entry.base] || 'DEC';
+    const dec      = entry.result;
+    item.innerHTML = `
+      <div class="history-expr">${entry.expr} [${bname}]</div>
+      <div class="history-result">${toBase(dec, entry.base)}</div>
+      <div class="history-bases">
+        <span class="hb-pill">BIN: ${toBase(dec,2)}</span>
+        <span class="hb-pill">OCT: ${toBase(dec,8)}</span>
+        <span class="hb-pill">DEC: ${dec}</span>
+        <span class="hb-pill">HEX: ${toBase(dec,16)}</span>
+      </div>`;
+    list.appendChild(item);
+  });
+}
+
+function recallHistory(entry) {
+  displayStr = toBase(entry.result, currentBase);
+  operator   = null;
+  operand1   = null;
+  justEvaled = true;
+  setExpr('← ' + entry.expr);
+  showOpBadge(null);
+  updateDisplay();
+}
+
+function clearHistory() {
+  history = [];
+  saveHistory();
+  renderHistory();
+}
+
+// ── Mode ──────────────────────────────────────────────────────────
+function setMode(m) {
+  mode = m;
+  document.getElementById('tab-calc').classList.toggle('active', m === 'calc');
+  document.getElementById('tab-conv').classList.toggle('active', m === 'conv');
+  document.getElementById('calc-area').classList.toggle('hide',  m !== 'calc');
+  document.getElementById('conv-area').classList.toggle('show',  m === 'conv');
+}
+
+// ── Converter ─────────────────────────────────────────────────────
+function doConvert() {
+  const inp      = document.getElementById('conv-input').value.trim().toUpperCase();
+  const fromBase = parseInt(document.getElementById('conv-from').value);
+  const field    = document.getElementById('conv-input');
+
+  if (!inp) {
+    ['bin','oct','dec','hex'].forEach(b => document.getElementById('cr-'+b).textContent = '—');
+    field.classList.remove('err');
+    return;
+  }
+
+  const dec = parseToDecimal(inp, fromBase);
+  if (dec === null || isNaN(dec)) {
+    field.classList.add('err');
+    ['bin','oct','dec','hex'].forEach(b => document.getElementById('cr-'+b).textContent = 'Invalid');
+    return;
+  }
+
+  field.classList.remove('err');
+  document.getElementById('cr-bin').textContent = toBase(dec, 2);
+  document.getElementById('cr-oct').textContent = toBase(dec, 8);
+  document.getElementById('cr-dec').textContent = dec.toString();
+  document.getElementById('cr-hex').textContent = toBase(dec, 16);
+}
+
+// ── Keyboard ──────────────────────────────────────────────────────
+// BUG FIX: removed broken bare `if` with no condition, fixed key routing
+document.addEventListener('keydown', e => {
+  if (mode !== 'calc') return;
+
+  const key     = e.key.toUpperCase();
+  const allowed = allowedDigits(currentBase);
+
+  // Hex letters A–F
+  if ('ABCDEF'.includes(key) && allowed.includes(key)) {
+    e.preventDefault();
+    pressKey(key);
+    return;
+  }
+
+  // Digits 0–9
+  if (e.key >= '0' && e.key <= '9' && allowed.includes(e.key)) {
+    pressKey(e.key);
+    return;
+  }
+
+  // Operators & control keys
+  const map = {
+    'Enter': '=', '=': '=',
+    '+': '+', '-': '-', '*': '*', '/': '/',
+    'Backspace': 'BACK',
+    'Escape': 'AC', 'Delete': 'AC',
+    '%': 'MOD'
+  };
+  if (map[e.key]) {
+    e.preventDefault();
+    pressKey(map[e.key]);
+  }
+});
+
+// ── Init ──────────────────────────────────────────────────────────
+// BUG FIX: load history first, then render; don't save at load time
+try { history = JSON.parse(localStorage.getItem('basecalc_hist') || '[]'); } catch(e) { history = []; }
+
+updateBaseTabs();
+updateDisplay();
+updateKeypad();
+renderHistory();
+</script>
+</body>
+</html>
+
+
+</body>
+</html>

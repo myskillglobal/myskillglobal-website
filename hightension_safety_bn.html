@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Surajit Roy">
+<meta name="copyright" content="© Surajit Roy">
+<meta name="robots" content="index,follow">
+<title>উপরে টাওয়ার, নীচে বিপদ — হাই টেনশন লাইনের নিরাপত্তা</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0A0A0A;
+    --charcoal: #1A1A1A;
+    --steel: #2C2C2C;
+    --amber: #F5A623;
+    --danger: #E8280B;
+    --safe: #2ECC71;
+    --light: #F0EDE8;
+    --muted: #888;
+    --white: #FFFFFF;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--black);
+    color: var(--light);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;user-select:none;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    overflow: hidden;
+  }
+
+  .hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    filter: brightness(0.35) saturate(0.6);
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(10,10,10,0.2) 0%,
+      rgba(10,10,10,0.5) 50%,
+      rgba(10,10,10,0.95) 100%
+    );
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 3rem 2rem 2.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 2rem;
+    height: 2px;
+    background: var(--amber);
+  }
+
+  .hero-headline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(3.5rem, 10vw, 7rem);
+    font-weight: 900;
+    line-height: 0.92;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-headline span {
+    color: var(--danger);
+    display: block;
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: rgba(240,237,232,0.75);
+    max-width: 520px;
+    line-height: 1.7;
+    border-left: 3px solid var(--amber);
+    padding-left: 1.2rem;
+  }
+
+  /* voltage badge */
+  .voltage-badge {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    z-index: 3;
+    background: var(--danger);
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+
+  /* ── STAT STRIP ── */
+  .stat-strip {
+    background: var(--danger);
+    padding: 1.25rem 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .stat-item {
+    text-align: center;
+    color: var(--white);
+  }
+
+  .stat-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    line-height: 1;
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.05;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+  }
+
+  /* ── SCENE DESCRIPTION ── */
+  .scene-box {
+    background: var(--charcoal);
+    border-left: 4px solid var(--amber);
+    padding: 1.75rem 2rem;
+    border-radius: 0 4px 4px 0;
+    margin-bottom: 2rem;
+  }
+
+  .scene-box p {
+    color: rgba(240,237,232,0.85);
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+
+  /* ── HAZARD GRID ── */
+  .hazard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1px;
+    background: var(--steel);
+    border: 1px solid var(--steel);
+    margin-top: 2rem;
+  }
+
+  .hazard-card {
+    background: var(--charcoal);
+    padding: 1.75rem 1.5rem;
+    transition: background 0.2s;
+  }
+
+  .hazard-card:hover { background: #222; }
+
+  .hazard-icon {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  .hazard-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+
+  .hazard-desc {
+    font-size: 0.875rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* ── VOLTAGE EXPLAINER ── */
+  .voltage-section {
+    background: var(--charcoal);
+    padding: 4rem 2rem;
+  }
+
+  .voltage-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .voltage-scale {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+
+  .volt-row {
+    display: grid;
+    grid-template-columns: 100px 1fr auto;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .volt-kv {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .volt-bar-wrap {
+    background: var(--steel);
+    height: 10px;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .volt-bar {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 0.6s ease;
+  }
+
+  .volt-note {
+    font-size: 0.72rem;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  /* ── MONSOON SECTION ── */
+  .monsoon-section {
+    padding: 4rem 2rem;
+    background: var(--black);
+  }
+
+  .monsoon-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .monsoon-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .monsoon-card {
+    background: var(--charcoal);
+    border-top: 3px solid var(--danger);
+    padding: 1.5rem;
+    border-radius: 0 0 4px 4px;
+  }
+
+  .monsoon-card h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+
+  .monsoon-card p {
+    font-size: 0.875rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* ── STEP VOLTAGE EXPLAINER ── */
+  .step-voltage-box {
+    background: linear-gradient(135deg, #1a0800, #1a0e00);
+    border: 1px solid rgba(245,166,35,0.3);
+    padding: 2rem;
+    border-radius: 4px;
+    margin-top: 2.5rem;
+  }
+
+  .step-voltage-box h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 1rem;
+  }
+
+  .step-voltage-box p {
+    font-size: 0.9rem;
+    color: rgba(240,237,232,0.8);
+    line-height: 1.8;
+    margin-bottom: 0.75rem;
+  }
+
+  /* ── DO / DON'T ── */
+  .rules-section {
+    background: var(--charcoal);
+    padding: 4rem 2rem;
+  }
+
+  .rules-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .rules-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .rules-col h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid;
+  }
+
+  .rules-col.dont h3 { color: var(--danger); border-color: var(--danger); }
+  .rules-col.do h3 { color: var(--safe); border-color: var(--safe); }
+
+  .rule-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    font-size: 0.9rem;
+    color: rgba(240,237,232,0.8);
+    line-height: 1.5;
+  }
+
+  .rule-item:last-child { border-bottom: none; }
+
+  .rule-icon { flex-shrink: 0; font-size: 1rem; margin-top: 0.1rem; }
+
+  /* ── EMERGENCY STRIP ── */
+  .emergency-strip {
+    background: var(--danger);
+    padding: 2.5rem 2rem;
+    text-align: center;
+  }
+
+  .emergency-strip h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 1rem;
+    line-height: 1.1;
+  }
+
+  .emergency-numbers {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 1.25rem;
+  }
+
+  .emergency-num {
+    background: rgba(0,0,0,0.2);
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    text-align: center;
+  }
+
+  .emergency-num .num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--white);
+    display: block;
+    line-height: 1;
+  }
+
+  .emergency-num .label {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    border-top: 1px solid var(--steel);
+  }
+
+  footer p {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  footer strong {
+    color: var(--amber);
+  }
+
+  /* ── DIVIDER ── */
+  hr.section-divider {
+    border: none;
+    border-top: 1px solid var(--steel);
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 600px) {
+    .hero-content { padding: 2rem 1.25rem 2rem; }
+    .monsoon-grid, .rules-cols { grid-template-columns: 1fr; }
+    .stat-strip { gap: 1.5rem; }
+    .volt-row { grid-template-columns: 80px 1fr; }
+    .volt-note { display: none; }
+    .voltage-badge { top: 1rem; right: 1rem; font-size: 0.8rem; }
+  }
+
+  /* ── Bengali typography overrides ── */
+  *, *::before, *::after { font-family: 'Hind Siliguri','Noto Sans Bengali','Vrinda',sans-serif !important; letter-spacing: 0 !important; text-transform: none !important; }
+  body { line-height: 1.75; }
+  .hero-headline { font-size: clamp(2.6rem, 8vw, 5.2rem); line-height: 1.25; font-weight: 700; }
+  .section-title { line-height: 1.35; font-weight: 700; }
+  .hazard-title, .emergency-strip h2 { line-height: 1.4; }
+</style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="voltage-badge">⚡ বিপজ্জনক এলাকা</div>
+
+  <!-- Replace src with your actual photo -->
+  <img
+    class="hero-img"
+    src="images/hightension.png"
+    alt="হাই টেনশন ট্রান্সমিশন টাওয়ারের ঠিক নীচে কাঠগোলা — বিষ্ণুপুর, পশ্চিমবঙ্গ"
+  />
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">জনসুরক্ষা সচেতনতা</p>
+    <h1 class="hero-headline">
+      উপরে টাওয়ার<br><span>নীচে বিপদ</span>
+    </h1>
+    <p class="hero-sub">
+      এই ছবিতে এমন একটি বিপজ্জনক পরিস্থিতি ধরা পড়েছে, যেখানে মানুষ হাই ভোল্টেজ ট্রান্সমিশন করিডরের একেবারে গা ঘেঁষে থাকেন ও কাজ করেন — গ্রামীণ ও আধা-শহুরে ভারতের হাজার হাজার জনবসতির এটাই বাস্তব ছবি।
+    </p>
+  </div>
+</section>
+<section>
+<h2>হাই ভোল্টেজ লাইন ছিঁড়ে পড়লে</h2>
+
+• ঘটনাস্থলের দিকে কখনও দৌড়ে যাবেন না।
+
+• কমপক্ষে ৩০ মিটার দূরে থাকুন।
+
+• কাছাকাছি বেড়া, গাড়ি, টিনের চাল বা ভেজা জিনিস ছোঁবেন না।
+
+• অন্যদের সঙ্গে সঙ্গে সতর্ক করুন।
+
+• জরুরি পরিষেবা ও বিদ্যুৎ দপ্তরে ফোন করুন।
+
+মনে রাখবেন: শুধু তারই বিপদ নয়।
+মাটিও বিদ্যুৎবাহী হয়ে উঠতে পারে।
+</section>
+<!-- ── STAT STRIP ── -->
+<div class="stat-strip">
+  <div class="stat-item">
+    <span class="stat-num">≥220</span>
+    <span class="stat-label">kV — লাইনের আনুমানিক ভোল্টেজ</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">3×</span>
+    <span class="stat-label">বর্ষাকালে ঝুঁকি বেশি</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">⚠️</span>
+    <span class="stat-label">নিরাপদ দূরত্ব বজায় রাখা আবশ্যক</span>
+  </div>
+</div>
+
+<!-- ── ALERT BANNER ── -->
+<div style="background:#1a0e00; border-top:3px solid var(--amber); border-bottom:3px solid var(--amber); padding:1.25rem 2rem; text-align:center;">
+  <p style="color:rgba(245,166,35,0.9); font-size:0.88rem; max-width:760px; margin:0 auto; line-height:1.75;">
+    <strong style="color:var(--amber);">⚠️ জনসুরক্ষা বিজ্ঞপ্তি:</strong>
+    ভারতের বিদ্যুৎ বিধি অনুযায়ী হাই ভোল্টেজ ট্রান্সমিশন করিডরের চারপাশে নির্দিষ্ট নিরাপদ দূরত্ব বজায় রাখা বাধ্যতামূলক। ট্রান্সমিশন লাইনের খুব কাছে বসবাস করা, কাজ করা, মালপত্র মজুত রাখা বা নির্মাণ করলে গুরুতর দুর্ঘটনার ঝুঁকি অনেকটাই বেড়ে যায়, এবং তা কেন্দ্রীয় বিদ্যুৎ কর্তৃপক্ষের (CEA) নিরাপত্তা বিধির পরিপন্থীও হতে পারে।
+  </p>
+</div>
+
+<!-- ── WHAT WE SEE ── -->
+<div class="section">
+  <p class="section-label">দৃশ্যটি</p>
+  <h2 class="section-title">ছবিটিতে কী দেখা যাচ্ছে</h2>
+
+  <div class="scene-box">
+    <p>
+      বিশাল এক হাই ভোল্টেজ ট্রান্সমিশন টাওয়ার — সম্ভবত 220 kV বা 400 kV লাইনের — দাঁড়িয়ে আছে চালু একটি কাঠগোলার ঠিক উপরে। পরিবাহী তারের একেবারে নীচে খোলা জমিতে ভারী কাঠের গুঁড়ি স্তূপ করে রাখা। টাওয়ারের পায়ের নীচের সেই সংকীর্ণ জায়গাতেই রয়েছে ছাউনি দেওয়া শেড, টিনের চালের বসতবাড়ি, গাড়ি আর মানুষজন। পৃথিবীর বহু জনবসতিতেই হাই ভোল্টেজ করিডরের গা ঘেঁষে মানুষ বাস ও কাজ করেন, এমন পরিস্থিতি দেখা যায়।
+    </p>
+  </div>
+
+  <div class="hazard-grid">
+    <div class="hazard-card">
+      <span class="hazard-icon">🪵</span>
+      <div class="hazard-title">চালু লাইনের নীচে কাঠগোলা</div>
+      <p class="hazard-desc">শুকনো ও সদ্য কাটা কাঠ খুব সহজেই আগুন ধরে। একটিমাত্র বৈদ্যুতিক আর্ক বা স্ফুলিঙ্গ থেকেই ভয়াবহ আগুন লেগে যেতে পারে, আর পালানোর কোনও নিরাপদ পথ থাকে না।</p>
+    </div>
+    <div class="hazard-card">
+      <span class="hazard-icon">🏠</span>
+      <div class="hazard-title">আশপাশে বসতবাড়ি</div>
+      <p class="hazard-desc">টিনের চাল বিদ্যুৎ পরিবহন করে। লাইনে গোলযোগ হলে তারের সঙ্গে সরাসরি ছোঁয়া না লাগলেও টিনের চাল প্রাণঘাতী হয়ে উঠতে পারে।</p>
+    </div>
+    <div class="hazard-card">
+      <span class="hazard-icon">🚒</span>
+      <div class="hazard-title">জরুরি সাহায্য পৌঁছনোর পথ বন্ধ</div>
+      <p class="hazard-desc">চালু টাওয়ারের নীচে ঠাসাঠাসি মালপত্র থাকলে দমকলকর্মী ও উদ্ধারকারীদের ঢোকা ভীষণ কঠিন হয়ে যায়, ফলে বিপদের সময় সাহায্য পৌঁছতে দেরি হয়।</p>
+    </div>
+    <div class="hazard-card">
+      <span class="hazard-icon">👶</span>
+      <div class="hazard-title">শিশু ও পথচারী</div>
+      <p class="hazard-desc">শিশুরা খেলে, শ্রমিকরা হেঁটে যান, রোজকার যাতায়াতকারীরাও এই এলাকা দিয়েই যান — অনেকেই জানেন না, তাঁদের মাথার মাত্র কয়েক মিটার উপর দিয়ে কত ভোল্টেজের লাইন গিয়েছে।</p>
+    </div>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<!-- ── VOLTAGE EXPLAINER ── -->
+<div class="voltage-section">
+  <div class="voltage-inner">
+    <p class="section-label">মাত্রাটা বুঝে নিন</p>
+    <h2 class="section-title">ভোল্টেজটা ঠিক কতখানি?</h2>
+    <p style="color:var(--muted); font-size:0.9rem; max-width:560px;">
+      ভারতের ট্রান্সমিশন নেটওয়ার্কে যে ভোল্টেজ বয়ে যায়, বাড়ি বা অফিসের ভোল্টেজ তার তুলনায় নস্যি। একটিমাত্র গোলযোগ মুহূর্তে, নিঃশব্দে বিপুল শক্তি ছেড়ে দিতে পারে।
+    </p>
+
+    <div class="voltage-scale">
+      <div class="volt-row">
+        <span class="volt-kv">0.23 kV</span>
+        <div class="volt-bar-wrap"><div class="volt-bar" style="width:2%; background:#888;"></div></div>
+        <span class="volt-note">বাড়ির সরবরাহ (230 V)</span>
+      </div>
+      <div class="volt-row">
+        <span class="volt-kv">11 kV</span>
+        <div class="volt-bar-wrap"><div class="volt-bar" style="width:8%; background:#c0892a;"></div></div>
+        <span class="volt-note">স্থানীয় বিতরণ লাইন</span>
+      </div>
+      <div class="volt-row">
+        <span class="volt-kv">132 kV</span>
+        <div class="volt-bar-wrap"><div class="volt-bar" style="width:40%; background:#d9610a;"></div></div>
+        <span class="volt-note">সাব-ট্রান্সমিশন টাওয়ার</span>
+      </div>
+      <div class="volt-row">
+        <span class="volt-kv">220 kV</span>
+        <div class="volt-bar-wrap"><div class="volt-bar" style="width:65%; background:#e8280b;"></div></div>
+        <span class="volt-note">সম্ভাব্য ট্রান্সমিশন শ্রেণি</span>
+      </div>
+      <div class="volt-row">
+        <span class="volt-kv">400 kV</span>
+        <div class="volt-bar-wrap"><div class="volt-bar" style="width:85%; background:#c0000b;"></div></div>
+        <span class="volt-note">আন্তঃরাজ্য গ্রিড লাইন</span>
+      </div>
+      <div class="volt-row">
+        <span class="volt-kv">765 kV</span>
+        <div class="volt-bar-wrap"><div class="volt-bar" style="width:100%; background:#8b0000;"></div></div>
+        <span class="volt-note">অতি-উচ্চ ভোল্টেজ করিডর</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── MONSOON RISK ── -->
+<div class="monsoon-section">
+  <div class="monsoon-inner">
+    <p class="section-label">মরসুমি বিপদ</p>
+    <h2 class="section-title">বর্ষায় ঝুঁকি কেন বহুগুণ বাড়ে</h2>
+    <p style="color:var(--muted); font-size:0.9rem; max-width:560px;">
+      দক্ষিণ এশিয়া জুড়ে প্রবল বর্ষণ বৈদ্যুতিক বিপদের ঝুঁকি নাটকীয়ভাবে বাড়িয়ে দিতে পারে।
+    </p>
+
+    <div class="monsoon-grid">
+      <div class="monsoon-card">
+        <h4>ভেজা মাটি বিদ্যুৎ পরিবহন করে</h4>
+        <p>জল জমে থাকা মাটিতে বিদ্যুৎ পরিবহনের ক্ষমতা অনেক বেড়ে যায়। ছিঁড়ে পড়া বা ত্রুটিপূর্ণ লাইনের ফাঁকা কারেন্ট জলে ভেজা মাটির বিশাল এলাকায় ছড়িয়ে পড়তে পারে।</p>
+      </div>
+      <div class="monsoon-card">
+        <h4>জমা জল</h4>
+        <p>হাই ভোল্টেজ তার জলমগ্ন উঠোন, পুকুর বা নর্দমার মধ্যে বা কাছে পড়লে সেগুলি মুহূর্তে প্রাণঘাতী হয়ে ওঠে।</p>
+      </div>
+      <div class="monsoon-card">
+        <h4>ঝড়ো হাওয়া ও ভাঙা জিনিস</h4>
+        <p>বর্ষার ঝড়ে গাছ, টিনের পাত, বাঁশ বা ভারা উড়ে বা ভেঙে চালু তারের উপর গিয়ে পড়তে পারে। টাওয়ারের নিরাপদ দূরত্বের এলাকায় এমন কিছু পড়ার মতো কোনও ফাঁক থাকে না।</p>
+      </div>
+      <div class="monsoon-card">
+        <h4>বজ্রপাতের ঝুঁকি</h4>
+        <p>ট্রান্সমিশন টাওয়ার বজ্রপাতের অন্যতম প্রধান লক্ষ্য। ঝড়ের সময় বাজ পড়লে হঠাৎ গোলযোগ হয়ে গোটা করিডর জুড়ে শক্তি ছড়িয়ে পড়তে পারে।</p>
+      </div>
+    </div>
+
+    <div class="step-voltage-box">
+      <h3>⚡ নীরব ঘাতক: স্টেপ ভোল্টেজ ও টাচ ভোল্টেজ</h3>
+      <p>
+        অধিকাংশ মানুষ ভাবেন, বিদ্যুতের শক লাগতে হলে তারে সরাসরি হাত দিতে হয়। হাই ভোল্টেজের গোলযোগ কিন্তু এভাবে কাজ করে না।
+      </p>
+      <p>
+        <strong style="color:var(--amber);">স্টেপ ভোল্টেজ:</strong> কোনও তার ভেজা মাটি ছুঁলে বিপজ্জনক বৈদ্যুতিক বিভব বৃত্তাকারে চারদিকে ছড়িয়ে পড়ে। তখন আশপাশে কোনও তার চোখে না পড়লেও ওই এলাকা দিয়ে হাঁটলে এক পা থেকে অন্য পায়ের মধ্য দিয়ে আপনার শরীরেই বিদ্যুতের বর্তনী সম্পূর্ণ হয়ে যেতে পারে।
+      </p>
+      <p>
+        <strong style="color:var(--amber);">টাচ ভোল্টেজ:</strong> গোলযোগের জায়গার কাছে যে-কোনও ধাতব বস্তু — বেড়ার খুঁটি, কাঠ তোলার ফ্রেম, গাড়ি — প্রাণঘাতী চার্জ বহন করতে পারে। সেটি ছুঁলেই বর্তনী সম্পূর্ণ হয়ে যায়।
+      </p>
+      <p style="color:rgba(240,237,232,0.6);">
+        দুই ক্ষেত্রেই তারে হাত দেওয়ার দরকার পড়ে না। বিদ্যুৎ নিজেই আপনাকে খুঁজে নেয়।
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ── TREE HAZARD ── -->
+<div style="background:var(--black); padding:4rem 2rem;">
+  <div style="max-width:900px; margin:0 auto;">
+    <p class="section-label">লুকোনো বিপদ</p>
+    <h2 class="section-title">🌳 গাছ আর হাই ভোল্টেজ লাইন একসঙ্গে চলে না</h2>
+    <p style="color:var(--muted); font-size:0.9rem; max-width:580px; margin-bottom:2rem;">
+      হাই টেনশন করিডরের কাছে গাছ থাকা নিজে থেকে বিপদ নয় — ঝড় এলে, কিংবা কেউ করাত হাতে নিলেই সেটা বিপদ হয়ে দাঁড়ায়।
+    </p>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;">
+      <div style="background:var(--charcoal); border-top:3px solid #5a8a3a; padding:1.5rem; border-radius:0 0 4px 4px;">
+        <h4 style="font-family:'Barlow Condensed',sans-serif; font-size:1.1rem; font-weight:700; text-transform:uppercase; color:#7bc44a; margin-bottom:0.5rem;">উঁচু গাছ কেন ঝুঁকির</h4>
+        <p style="font-size:0.875rem; color:var(--muted); line-height:1.65;">ঝড়ের সময় ডালপালা দুলে চালু তারের গায়ে গিয়ে লাগতে পারে। ভেজা কাঠ ও সবুজ পাতা বিদ্যুৎ চলাচলের পথ তৈরি করে দেয়। হাই ভোল্টেজ লাইনে আর্ক হতে পারে — অর্থাৎ সরাসরি ছোঁয়া ছাড়াই আর্দ্র বাতাস, ভেজা ছাল বা ঝুঁকে পড়া ডালের মধ্য দিয়ে বিদ্যুৎ পাশের বস্তুতে লাফিয়ে যেতে পারে।</p>
+      </div>
+      <div style="background:var(--charcoal); border-top:3px solid var(--danger); padding:1.5rem; border-radius:0 0 4px 4px;">
+        <h4 style="font-family:'Barlow Condensed',sans-serif; font-size:1.1rem; font-weight:700; text-transform:uppercase; color:#ff6b4a; margin-bottom:0.5rem;">গাছ কাটাও কেন ঝুঁকির</h4>
+        <p style="font-size:0.875rem; color:var(--muted); line-height:1.65;">হাই টেনশন লাইনের নীচে বা পাশের কোনও গাছ নিজে থেকে কখনও কাটবেন না। পড়ন্ত ডাল বা গুঁড়ি চালু তারে ঠেকে যেতে পারে। কয়েক মিটার দূর থেকেও আর্ক হতে পারে। এই কাজ কেবল প্রশিক্ষিত কর্মীরাই, বিদ্যুৎ দপ্তরের আগাম অনুমতি নিয়ে করবেন।</p>
+      </div>
+    </div>
+
+    <div style="background:linear-gradient(135deg,#0a1a00,#0a1200); border:1px solid rgba(123,196,74,0.25); padding:1.75rem 2rem; border-radius:4px; margin-top:1.5rem;">
+      <p style="font-size:0.9rem; color:rgba(240,237,232,0.85); line-height:1.8; margin-bottom:0.75rem;">
+        <strong style="color:#7bc44a;">একটি প্রচলিত ভুল ধারণা:</strong> অনেকে মনে করেন বিদ্যুৎ কেবল সরাসরি ছোঁয়ার মাধ্যমেই চলে। কিন্তু খুব উচ্চ ভোল্টেজে কোনও বস্তু, ডালপালা, যন্ত্রপাতি বা গাছপালা চালু তারের বিপজ্জনক কাছাকাছি এলেই আর্ক হতে পারে, বিশেষত আর্দ্র বা ভেজা আবহাওয়ায়।
+      </p>
+      <p style="font-size:0.875rem; color:var(--muted); line-height:1.7;">
+        করিডরের মধ্যে বা কাছে উঁচু গাছ লাগাবেন না। হাই টেনশন লাইনের নীচে বাঁশ, লম্বা লোহার পাইপ, ক্রেন বা উঁচু যন্ত্রপাতি ব্যবহার করবেন না। একটু ভুল কোণে ধরলেই বিদ্যুৎ আপনার শরীর দিয়ে পথ খুঁজে নেবে।
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ── DO & DON'T ── -->
+<div class="rules-section">
+  <div class="rules-inner">
+    <p class="section-label">নিরাপত্তা বিধি</p>
+    <h2 class="section-title">হাই টেনশন টাওয়ারের নীচে</h2>
+
+    <div class="rules-cols">
+      <div class="rules-col dont">
+        <h3>⛔ কখনও এটা করবেন না</h3>
+        <div class="rule-item"><span class="rule-icon">✗</span><span>কাঠগোলা, জ্বালানির গুদাম বা যে-কোনও দাহ্য পদার্থের গুদাম তৈরি বা চালু করবেন না</span></div>
+        <div class="rule-item"><span class="rule-icon">✗</span><span>নিরাপত্তা করিডরের মধ্যে বাড়ি, দোকান বা কোনও স্থায়ী কাঠামো বানাবেন না</span></div>
+        <div class="rule-item"><span class="rule-icon">✗</span><span>কাঠের গুঁড়ি, বাঁশ বা ভারা এমনভাবে স্তূপ করবেন না যা তারের দিকে ভেঙে পড়তে পারে</span></div>
+        <div class="rule-item"><span class="rule-icon">✗</span><span>তারের কাছে উঁচু গাছ লাগাবেন না বা বড় গাছ বাড়তে দেবেন না</span></div>
+        <div class="rule-item"><span class="rule-icon">✗</span><span>সরকারি অনুমতি ও প্রশিক্ষিত কর্মী ছাড়া চালু লাইনের নীচে বা পাশে গাছ কাটবেন না</span></div>
+        <div class="rule-item"><span class="rule-icon">✗</span><span>লম্বা লোহার পাইপ, বাঁশ, ক্রেন বা উঁচু যন্ত্রপাতি উপরে তুলবেন না</span></div>
+        <div class="rule-item"><span class="rule-icon">✗</span><span>এই এলাকায় শিশুদের খেলতে, ঘুড়ি ওড়াতে বা কাঠামোয় চড়তে দেবেন না</span></div>
+        <div class="rule-item"><span class="rule-icon">✗</span><span>ছিঁড়ে পড়া তারের বা তার ছুঁয়ে থাকা কোনও কিছুর কাছে যাবেন না</span></div>
+        <div class="rule-item"><span class="rule-icon">✗</span><span>ঝড়ের সময় বা পরে টাওয়ারের গোড়ার কাছে জল-জমা এলাকায় ঢুকবেন না</span></div>
+      </div>
+
+      <div class="rules-col do">
+        <h3>✅ সবসময় এটা করবেন</h3>
+        <div class="rule-item"><span class="rule-icon">✓</span><span>বিদ্যুৎ কর্তৃপক্ষের নির্ধারিত নিরাপদ দূরত্ব মেনে চলুন</span></div>
+        <div class="rule-item"><span class="rule-icon">✓</span><span>ভাঙা ইনসুলেটর, ঝুলে পড়া লাইন বা অস্বাভাবিক স্ফুলিঙ্গ দেখলে সঙ্গে সঙ্গে জানান</span></div>
+        <div class="rule-item"><span class="rule-icon">✓</span><span>টাওয়ারের গোড়া আগাছা, জঞ্জাল ও মজুত মাল থেকে মুক্ত রাখুন</span></div>
+        <div class="rule-item"><span class="rule-icon">✓</span><span>তার ছিঁড়ে পড়লে এলাকা খালি করে দিন এবং জরুরি পরিষেবায় ফোন করুন</span></div>
+        <div class="rule-item"><span class="rule-icon">✓</span><span>প্রতিবেশীদের জানান — সচেতনতা ছড়ালে প্রাণ বাঁচে</span></div>
+        <div class="rule-item"><span class="rule-icon">✓</span><span>বিপজ্জনক দখলদারির খবর স্থানীয় বিদ্যুৎ দপ্তরকে জানান</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── EMERGENCY ── -->
+<div class="emergency-strip">
+  <h2>লাইন ছিঁড়ে পড়লে বা গোলযোগ হলে —<br>কাছে যাবেন না। এখনই ফোন করুন।</h2>
+  <p style="color:rgba(255,255,255,0.8); font-size:0.9rem;">কমপক্ষে ৩০ মিটার দূরে থাকুন। অন্যদের সতর্ক করুন। সঙ্গে সঙ্গে ফোন করুন।</p>
+  <div class="emergency-numbers">
+    <div class="emergency-num">
+      <span class="num">112</span>
+      <span class="label">জাতীয় জরুরি পরিষেবা</span>
+    </div>
+    <div class="emergency-num">
+      <span class="num">101</span>
+      <span class="label">দমকল</span>
+    </div>
+    <div class="emergency-num">
+      <span class="num">1912</span>
+      <span class="label">স্থানীয় বিদ্যুৎ সংস্থা</span>
+    </div>
+    <div class="emergency-num">
+      <span class="label">স্থানীয় বিদ্যুৎ সংস্থা</span>
+    </div>
+  </div>
+</div>
+<section class="final-message">
+
+<h2>উপরে টাওয়ার। নীচে বিপদ।</h2>
+<p>
+বিদ্যুৎ ঘরবাড়ি, কলকারখানা ও উন্নতিকে সচল রাখে। কিন্তু হাই ভোল্টেজ ট্রান্সমিশন করিডর বাড়িঘর, কাঠগোলা, উঁচু গাছ বা অসাবধান কাজকর্মের জায়গা নয়। আজকের নিরাপদ দূরত্বই আগামীকাল একটি প্রাণ বাঁচাতে পারে।
+</p>
+</section>
+<!-- ── FOOTER ── -->
+<footer>
+  <p>
+    <strong>বিদ্যুৎ উন্নয়নের চালিকাশক্তি। কিন্তু প্রাণের চেয়ে মূল্যবান আর কিছুই নয়।</strong><br>
+    এই পাতাটি জনসুরক্ষা সচেতনতার একটি উদ্যোগ। সমস্ত তথ্য ভারতে প্রযোজ্য সাধারণ বৈদ্যুতিক নিরাপত্তা নির্দেশিকার উপর ভিত্তি করে তৈরি।<br>
+    সরকারি নিরাপদ দূরত্বের মানদণ্ডের জন্য দেখুন <strong>কেন্দ্রীয় বিদ্যুৎ কর্তৃপক্ষ (CEA)</strong>-এর বিধি এবং <strong>স্থানীয় বিদ্যুৎ কর্তৃপক্ষ</strong>-এর নির্দেশিকা।
+<br>"বিপদ শুধু তার ছোঁয়াতেই নয়। বিপদ শুরু হয় তখনই, যখন আমরা ভুলে যাই আমাদের মাথার উপর দিয়ে কত শক্তি বয়ে যাচ্ছে। তার ছিঁড়ে পড়লে দূরে থাকুন। মাটিও বিদ্যুৎবাহী হয়ে উঠতে পারে।"
+  </p>
+</footer>
+<footer class="site-footer">
+   © 2026 MySkillGame • শিক্ষামূলক গেম ও সচেতনতা প্রকল্প
+</footer>
+
+<script src="security.js"></script>
+</body>
+</html>

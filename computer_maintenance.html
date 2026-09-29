@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>PC Care Hero 🖥️</title>
+<!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1034022057999423" crossorigin="anonymous"></script>
+
+  <!-- Firebase Analytics -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-analytics.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDfxtOP-YCrCXtQxZrrFNC1uXucvbW0K78",
+      authDomain: "my-skill-global.firebaseapp.com",
+      projectId: "my-skill-global",
+      storageBucket: "my-skill-global.firebasestorage.app",
+      messagingSenderId: "978471914749",
+      appId: "1:978471914749:web:595750b5d90738933f4294",
+      measurementId: "G-8D9BPY8HJ0"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Exo+2:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* ── RESET ── */
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+
+/* ── TOKENS ── */
+:root{
+  --bg:#0a0e1a;
+  --card:#111827;
+  --card2:#1a2235;
+  --border:#1e3a5f;
+  --text:#e2f0ff;
+  --muted:#7ba3cc;
+  --accent:#00d4ff;
+  --accent2:#ff6b35;
+  --accent3:#7fff6b;
+  --accent4:#ffcc00;
+  --danger:#ff4757;
+  --glow:0 0 20px rgba(0,212,255,0.4);
+  --glow2:0 0 20px rgba(255,107,53,0.4);
+  --shadow:0 8px 32px rgba(0,0,0,0.6);
+  --rad:18px;
+  font-size:16px;
+}
+
+html,body{
+  width:100%;min-height:100dvh;
+  background:var(--bg);color:var(--text);
+  font-family:'Exo 2',sans-serif;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  padding-left:env(safe-area-inset-left,0px);
+  padding-right:env(safe-area-inset-right,0px);
+  overflow-x:hidden;
+}
+
+/* ── ANIMATED BG ── */
+body::before{
+  content:'';position:fixed;inset:0;
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 20%,rgba(0,80,160,0.18) 0%,transparent 70%),
+    radial-gradient(ellipse 60% 40% at 80% 80%,rgba(0,212,255,0.10) 0%,transparent 60%);
+  pointer-events:none;z-index:0;
+}
+
+/* ── SCREENS ── */
+.screen{
+  display:none;position:relative;z-index:1;
+  min-height:100dvh;padding:16px;
+}
+.screen.active{display:flex;flex-direction:column;}
+
+/* ════════════════════════
+   HOME SCREEN
+════════════════════════ */
+#home{align-items:center;justify-content:center;text-align:center;gap:10px;}
+
+.logo-wrap{margin-bottom:8px;}
+.pc-icon{font-size:72px;display:block;animation:float 3s ease-in-out infinite;}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+.game-title{
+  font-family:'Orbitron',monospace;font-size:26px;font-weight:900;
+  background:linear-gradient(135deg,var(--accent),#0090cc,var(--accent));
+  background-size:200%;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  animation:shimmer 3s linear infinite;letter-spacing:1px;
+}
+@keyframes shimmer{0%{background-position:0%}100%{background-position:200%}}
+
+.game-sub{font-size:13px;color:var(--muted);margin-top:4px;letter-spacing:0.5px;}
+
+.health-bar-wrap{width:100%;max-width:320px;margin:10px auto 4px;}
+.hb-label{font-size:11px;color:var(--muted);display:flex;justify-content:space-between;margin-bottom:5px;}
+.hb-track{height:14px;background:rgba(255,255,255,0.08);border-radius:99px;overflow:hidden;border:1px solid var(--border);}
+.hb-fill{height:100%;border-radius:99px;transition:width 0.6s ease;
+  background:linear-gradient(90deg,#ff4757,#ffcc00,#7fff6b);}
+
+.pc-score{font-family:'Orbitron',monospace;font-size:32px;font-weight:900;color:var(--accent4);
+  text-shadow:0 0 20px rgba(255,204,0,0.5);margin:4px 0;}
+.score-label{font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;}
+
+/* Task grid */
+.tasks-title{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;
+  letter-spacing:1px;margin:12px 0 8px;width:100%;}
+.tasks-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;width:100%;}
+
+.task-card{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--rad);
+  padding:14px 12px;cursor:pointer;transition:transform 0.18s,box-shadow 0.18s,border-color 0.18s;
+  position:relative;overflow:hidden;
+}
+.task-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,0.03),transparent);
+  pointer-events:none;
+}
+.task-card:active{transform:scale(0.95);}
+.task-card.done{border-color:var(--accent3);opacity:0.55;}
+.task-card.done::after{
+  content:'✓ Done';position:absolute;top:7px;right:9px;
+  font-size:10px;font-weight:700;color:var(--accent3);letter-spacing:0.5px;
+}
+.task-card:not(.done):hover{box-shadow:var(--glow);border-color:var(--accent);}
+
+.tc-emoji{font-size:30px;display:block;margin-bottom:6px;}
+.tc-name{font-size:13px;font-weight:700;color:var(--text);line-height:1.3;}
+.tc-pts{font-size:11px;color:var(--accent4);margin-top:3px;font-weight:600;}
+.tc-freq{font-size:10px;color:var(--muted);margin-top:1px;}
+
+/* bottom btns */
+.home-btns{display:flex;gap:10px;width:100%;margin-top:12px;}
+.btn{
+  flex:1;padding:13px 10px;border:none;border-radius:13px;
+  font-size:13px;font-weight:700;cursor:pointer;
+  font-family:'Exo 2',sans-serif;transition:transform 0.15s,box-shadow 0.18s;
+  display:flex;align-items:center;justify-content:center;gap:6px;
+}
+.btn:active{transform:scale(0.95);}
+.btn-cyan{background:linear-gradient(135deg,#0090cc,var(--accent));color:#000;box-shadow:var(--glow);}
+.btn-orange{background:linear-gradient(135deg,var(--accent2),#ff4500);color:#fff;box-shadow:var(--glow2);}
+.btn-dark{background:var(--card2);color:var(--text);border:1px solid var(--border);}
+.btn-green{background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff;}
+.btn-yellow{background:linear-gradient(135deg,#ffcc00,#f59e0b);color:#000;}
+
+/* ════════════════════════
+   TASK DETAIL SCREEN
+════════════════════════ */
+#detail{padding:16px;gap:12px;}
+
+.back-bar{display:flex;align-items:center;gap:10px;margin-bottom:4px;}
+.back-btn{
+  background:var(--card2);border:1px solid var(--border);border-radius:10px;
+  padding:8px 14px;font-size:13px;font-weight:700;color:var(--text);
+  cursor:pointer;font-family:'Exo 2',sans-serif;
+  display:flex;align-items:center;gap:6px;
+}
+.back-btn:active{transform:scale(0.95);}
+.screen-title{font-family:'Orbitron',monospace;font-size:16px;color:var(--accent);}
+
+.detail-hero{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--rad);
+  padding:22px 18px;text-align:center;
+}
+.detail-emoji{font-size:56px;display:block;margin-bottom:8px;animation:float 3s ease-in-out infinite;}
+.detail-name{font-family:'Orbitron',monospace;font-size:18px;font-weight:900;color:var(--text);margin-bottom:4px;}
+.detail-pts{font-size:13px;color:var(--accent4);font-weight:700;}
+.detail-freq-badge{
+  display:inline-block;margin-top:8px;padding:4px 14px;border-radius:99px;
+  font-size:11px;font-weight:700;letter-spacing:0.5px;
+}
+
+.why-card{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--rad);padding:16px;
+}
+.why-title{font-size:12px;font-weight:700;color:var(--accent);text-transform:uppercase;
+  letter-spacing:1px;margin-bottom:10px;}
+.why-text{font-size:14px;color:var(--muted);line-height:1.7;}
+
+.steps-card{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--rad);padding:16px;
+}
+.steps-title{font-size:12px;font-weight:700;color:var(--accent2);text-transform:uppercase;
+  letter-spacing:1px;margin-bottom:12px;}
+.step-item{
+  display:flex;gap:12px;align-items:flex-start;margin-bottom:12px;
+  padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.05);
+}
+.step-item:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none;}
+.step-num{
+  min-width:28px;height:28px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:900;flex-shrink:0;
+  font-family:'Orbitron',monospace;
+}
+.step-text{font-size:13px;color:var(--text);line-height:1.6;}
+
+.warning-card{
+  background:rgba(255,71,87,0.08);border:1px solid rgba(255,71,87,0.3);
+  border-radius:var(--rad);padding:14px 16px;
+}
+.warning-title{font-size:12px;font-weight:700;color:var(--danger);
+  text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.warning-text{font-size:13px;color:#ffaaaa;line-height:1.6;}
+
+.do-btn{
+  width:100%;padding:16px;border:none;border-radius:14px;
+  font-size:15px;font-weight:900;cursor:pointer;
+  font-family:'Orbitron',monospace;letter-spacing:0.5px;
+  background:linear-gradient(135deg,var(--accent3),#22c55e);
+  color:#000;transition:transform 0.15s,box-shadow 0.18s;
+  box-shadow:0 0 20px rgba(127,255,107,0.35);
+}
+.do-btn:active{transform:scale(0.97);}
+.do-btn.already{background:var(--card2);color:var(--muted);
+  border:1px solid var(--border);box-shadow:none;cursor:default;}
+
+/* ════════════════════════
+   QUIZ SCREEN
+════════════════════════ */
+#quiz{gap:12px;}
+
+.quiz-header{display:flex;align-items:center;justify-content:space-between;}
+.quiz-progress{font-size:12px;color:var(--muted);font-weight:700;}
+.quiz-pts-badge{
+  background:var(--card2);border:1px solid var(--border);border-radius:99px;
+  padding:4px 12px;font-size:12px;font-weight:700;color:var(--accent4);
+  font-family:'Orbitron',monospace;
+}
+
+.progress-bar{height:6px;background:rgba(255,255,255,0.08);border-radius:99px;overflow:hidden;}
+.pb-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--accent),var(--accent3));
+  transition:width 0.4s ease;}
+
+.q-card{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--rad);
+  padding:20px 16px;flex:1;
+}
+.q-emoji{font-size:40px;display:block;margin-bottom:10px;text-align:center;}
+.q-text{font-size:15px;font-weight:700;color:var(--text);line-height:1.6;text-align:center;}
+
+.options-list{display:flex;flex-direction:column;gap:9px;}
+.opt-btn{
+  width:100%;padding:14px 16px;border-radius:13px;border:2px solid var(--border);
+  background:var(--card2);color:var(--text);font-size:14px;font-weight:600;
+  cursor:pointer;font-family:'Exo 2',sans-serif;text-align:left;
+  transition:border-color 0.2s,background 0.2s,transform 0.15s;
+  line-height:1.4;
+}
+.opt-btn:active{transform:scale(0.98);}
+.opt-btn.correct{border-color:var(--accent3);background:rgba(127,255,107,0.12);color:var(--accent3);}
+.opt-btn.wrong{border-color:var(--danger);background:rgba(255,71,87,0.12);color:var(--danger);}
+.opt-btn.reveal{border-color:var(--accent3);background:rgba(127,255,107,0.07);color:var(--muted);}
+.opt-btn:disabled{cursor:default;}
+
+.q-feedback{
+  background:var(--card);border-radius:13px;padding:13px 15px;
+  font-size:13px;color:var(--muted);line-height:1.6;
+  border-left:3px solid var(--accent);display:none;
+}
+.q-feedback.show{display:block;}
+
+/* ════════════════════════
+   RESULT SCREEN
+════════════════════════ */
+#result{align-items:center;justify-content:center;text-align:center;gap:14px;}
+.result-emoji{font-size:80px;animation:float 2s ease-in-out infinite;}
+.result-title{font-family:'Orbitron',monospace;font-size:22px;font-weight:900;color:var(--accent);}
+.result-score{font-family:'Orbitron',monospace;font-size:44px;font-weight:900;color:var(--accent4);
+  text-shadow:0 0 24px rgba(255,204,0,0.5);}
+.result-max{font-size:14px;color:var(--muted);}
+.result-msg{font-size:14px;color:var(--text);line-height:1.7;
+  background:var(--card);border:1px solid var(--border);border-radius:var(--rad);
+  padding:16px;max-width:340px;}
+.result-btns{display:flex;gap:10px;width:100%;max-width:340px;}
+
+/* ════════════════════════
+   TIPS SCREEN
+════════════════════════ */
+#tips{gap:12px;}
+.tip-card{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--rad);
+  padding:16px;display:flex;gap:12px;align-items:flex-start;
+}
+.tip-icon{font-size:28px;flex-shrink:0;margin-top:2px;}
+.tip-content{}
+.tip-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px;}
+.tip-body{font-size:13px;color:var(--muted);line-height:1.6;}
+
+/* ════════════════════════
+   TOAST
+════════════════════════ */
+.toast{
+  position:fixed;bottom:calc(24px + env(safe-area-inset-bottom,0px));
+  left:50%;transform:translateX(-50%) translateY(80px);
+  background:#1e293b;color:white;padding:10px 22px;border-radius:20px;
+  font-size:13px;font-weight:700;z-index:9999;transition:transform 0.3s;
+  box-shadow:0 4px 20px rgba(0,0,0,0.5);white-space:nowrap;
+  font-family:'Exo 2',sans-serif;
+}
+.toast.show{transform:translateX(-50%) translateY(0);}
+
+/* ════════════════════════
+   PARTICLES
+════════════════════════ */
+#particles{position:fixed;inset:0;pointer-events:none;z-index:9998;overflow:hidden;}
+.particle{position:absolute;top:-10px;border-radius:3px;animation:pfail linear forwards;}
+@keyframes pfail{to{transform:translateY(110vh) rotate(720deg);opacity:0}}
+</style>
+</head>
+<body>
+<div id="particles"></div>
+<div class="toast" id="toast"></div>
+
+<!-- ════ HOME ════ -->
+<div class="screen active" id="home">
+  <div class="logo-wrap">
+    <span class="pc-icon">🖥️</span>
+  </div>
+  <div class="game-title">PC CARE HERO</div>
+  <div class="game-sub">Keep your computer healthy & fast!</div>
+
+  <div class="health-bar-wrap">
+    <div class="hb-label"><span>PC Health</span><span id="healthPct">100%</span></div>
+    <div class="hb-track"><div class="hb-fill" id="healthBar" style="width:100%"></div></div>
+  </div>
+
+  <div class="pc-score" id="scoreDisplay">0</div>
+  <div class="score-label">⚡ Maintenance Points</div>
+
+  <div class="tasks-title">🔧 Today's Maintenance Tasks</div>
+  <div class="tasks-grid" id="tasksGrid"></div>
+
+  <div class="home-btns">
+    <button class="btn btn-cyan" onclick="goQuiz()">🧠 Quiz</button>
+    <button class="btn btn-orange" onclick="goTips()">💡 Pro Tips</button>
+  </div>
+  <div class="home-btns" style="margin-top:0;">
+    <button class="btn btn-dark" onclick="resetGame()">🔄 Reset</button>
+  </div>
+</div>
+
+<!-- ════ DETAIL ════ -->
+<div class="screen" id="detail">
+  <div class="back-bar">
+    <button class="back-btn" onclick="goBack()">← Back</button>
+    <span class="screen-title" id="detailScreenTitle">Task</span>
+  </div>
+  <div class="detail-hero">
+    <span class="detail-emoji" id="dEmoji"></span>
+    <div class="detail-name" id="dName"></div>
+    <div class="detail-pts" id="dPts"></div>
+    <span class="detail-freq-badge" id="dFreq"></span>
+  </div>
+  <div class="why-card">
+    <div class="why-title">🔍 Why This Matters</div>
+    <div class="why-text" id="dWhy"></div>
+  </div>
+  <div class="steps-card">
+    <div class="steps-title">📋 Step-by-Step Guide</div>
+    <div id="dSteps"></div>
+  </div>
+  <div class="warning-card" id="dWarnCard">
+    <div class="warning-title">⚠️ Warning</div>
+    <div class="warning-text" id="dWarn"></div>
+  </div>
+  <button class="do-btn" id="doBtn" onclick="completeTask()">✅ MARK AS DONE (+<span id="doBtnPts"></span> pts)</button>
+</div>
+
+<!-- ════ QUIZ ════ -->
+<div class="screen" id="quiz">
+  <div class="quiz-header">
+    <button class="back-btn" onclick="goBack()">← Back</button>
+    <span class="quiz-pts-badge" id="quizPtsDisplay">0 pts</span>
+  </div>
+  <div class="progress-bar"><div class="pb-fill" id="pbFill" style="width:0%"></div></div>
+  <div class="quiz-progress" id="qProgress">Question 1 of 10</div>
+  <div class="q-card">
+    <span class="q-emoji" id="qEmoji"></span>
+    <div class="q-text" id="qText"></div>
+  </div>
+  <div class="options-list" id="optionsList"></div>
+  <div class="q-feedback" id="qFeedback"></div>
+  <button class="btn btn-cyan" id="nextBtn" style="display:none" onclick="nextQuestion()">Next Question →</button>
+</div>
+
+<!-- ════ RESULT ════ -->
+<div class="screen" id="result">
+  <span class="result-emoji" id="resultEmoji">🏆</span>
+  <div class="result-title">Quiz Complete!</div>
+  <div class="result-score" id="resultScore">0</div>
+  <div class="result-max" id="resultMax">out of 100 points</div>
+  <div class="result-msg" id="resultMsg"></div>
+  <div class="result-btns">
+    <button class="btn btn-cyan" onclick="goQuiz()">🔄 Try Again</button>
+    <button class="btn btn-dark" onclick="showScreen('home')">🏠 Home</button>
+  </div>
+</div>
+
+<!-- ════ TIPS ════ -->
+<div class="screen" id="tips">
+  <div class="back-bar">
+    <button class="back-btn" onclick="goBack()">← Back</button>
+    <span class="screen-title">Pro Tips</span>
+  </div>
+  <div id="tipsList"></div>
+</div>
+
+<script>
+/* ═══════════════════════════
+   DATA
+═══════════════════════════ */
+const TASKS = [
+  {
+    id:'cache',emoji:'🧹',name:'Clear Cache Files',pts:15,freq:'Weekly',
+    freqColor:'#00d4ff',
+    why:'Cache files are temporary data stored by your OS, browsers and apps. Over time they grow large, slow down your system and can even cause errors or crashes.',
+    steps:[
+      {n:1,color:'#00d4ff',text:'Press Win+R, type %temp% and press Enter. Select all files (Ctrl+A) and delete them.'},
+      {n:2,color:'#7fff6b',text:'Open your browser settings → Privacy → Clear Browsing Data → Cached images and files.'},
+      {n:3,color:'#ffcc00',text:'Run Disk Cleanup: search "Disk Cleanup" in Start, select C: drive, check Temporary files and click OK.'},
+      {n:4,color:'#ff6b35',text:'Restart your PC to apply all changes and let the system rebuild fresh cache.'},
+    ],
+    warn:'Do NOT delete System Restore points or Windows Update files during Disk Cleanup unless you are sure you do not need them.'
+  },
+  {
+    id:'defrag',emoji:'💿',name:'Defragment HDD',pts:20,freq:'Monthly',
+    freqColor:'#ffcc00',
+    why:'On traditional hard disk drives (HDD), files get split into fragments across the disk over time. Defragmentation reorganizes these fragments so the read/write head moves less, making file access faster.',
+    steps:[
+      {n:1,color:'#00d4ff',text:'Search "Defragment and Optimize Drives" in the Start menu and open it.'},
+      {n:2,color:'#7fff6b',text:'Select your HDD (usually C:) and click "Analyze" first to see how fragmented it is.'},
+      {n:3,color:'#ffcc00',text:'If fragmentation is above 10%, click "Optimize" and wait for the process to complete.'},
+      {n:4,color:'#ff6b35',text:'Schedule automatic optimization: click "Change settings" and set it to run monthly.'},
+    ],
+    warn:'⚡ NEVER defragment an SSD! SSDs work differently — defragmentation actually wears out SSD cells and shortens its life. Windows automatically detects SSDs and skips defrag for them.'
+  },
+  {
+    id:'errors',emoji:'🔍',name:'Check Disk Errors',pts:25,freq:'Monthly',
+    freqColor:'#ffcc00',
+    why:'Disk errors (bad sectors, file system corruption) can cause data loss, system crashes, and sluggish performance. Running CHKDSK catches and fixes these issues early.',
+    steps:[
+      {n:1,color:'#00d4ff',text:'Right-click on C: drive in File Explorer → Properties → Tools tab → "Check" under Error Checking.'},
+      {n:2,color:'#7fff6b',text:'Alternatively, open Command Prompt as Administrator and type: chkdsk C: /f /r'},
+      {n:3,color:'#ffcc00',text:'If prompted to schedule on next restart, type Y and press Enter, then restart your PC.'},
+      {n:4,color:'#ff6b35',text:'After the scan, review the results. If many bad sectors are found, back up your data immediately!'},
+    ],
+    warn:'CHKDSK with /r flag can take 1–4 hours on large drives. Run it overnight or when you do not need your PC for a while.'
+  },
+  {
+    id:'dust',emoji:'🌬️',name:'Clean Dust & Vents',pts:30,freq:'Every 3 Months',
+    freqColor:'#ff6b35',
+    why:'Dust accumulates inside your PC blocking airflow. This causes overheating, which throttles CPU/GPU performance, shortens component life, and can cause sudden shutdowns or permanent hardware damage.',
+    steps:[
+      {n:1,color:'#00d4ff',text:'Power off the PC completely and unplug the power cable. Press the power button once to discharge static.'},
+      {n:2,color:'#7fff6b',text:'Use compressed air (canned air) to blow dust out of vents, fans, heatsinks and the PSU.'},
+      {n:3,color:'#ffcc00',text:'Use a soft anti-static brush to gently clean stubborn dust. Never use a regular vacuum — it creates static.'},
+      {n:4,color:'#ff6b35',text:'Clean the exterior with a dry microfiber cloth. Ensure vents are not blocked by walls or objects.'},
+    ],
+    warn:'Work in a static-safe environment. Never use a household vacuum cleaner inside the case — it can zap components with static electricity. Compressed air only!'
+  },
+  {
+    id:'earthing',emoji:'⚡',name:'Check Earthing / Grounding',pts:35,freq:'Every 6 Months',
+    freqColor:'#7fff6b',
+    why:'Improper electrical earthing is one of the most overlooked causes of PC damage. Without proper grounding, stray voltage can build up and permanently fry your motherboard, PSU, or other components.',
+    steps:[
+      {n:1,color:'#00d4ff',text:'Use a plug tester (socket tester) — plug it into your wall socket. All three lights should glow correctly.'},
+      {n:2,color:'#7fff6b',text:'Check your power strip/UPS has a ground wire (3-pin plug). Never use a 2-pin adapter for your PC.'},
+      {n:3,color:'#ffcc00',text:'Ensure your UPS or surge protector has earthing/grounding functionality. Check manufacturer specs.'},
+      {n:4,color:'#ff6b35',text:'If in doubt, have a licensed electrician check and repair the earthing in your home/office socket.'},
+    ],
+    warn:'Never open or tamper with wall sockets yourself. Always call a licensed electrician for earthing/wiring repairs. Electric shock can be fatal.'
+  },
+  {
+    id:'startup',emoji:'🚀',name:'Manage Startup Programs',pts:15,freq:'Monthly',
+    freqColor:'#ffcc00',
+    why:'Too many programs launching at startup slow your boot time significantly and consume RAM in the background even when you do not use them.',
+    steps:[
+      {n:1,color:'#00d4ff',text:'Press Ctrl+Shift+Esc to open Task Manager, then click the "Startup" tab.'},
+      {n:2,color:'#7fff6b',text:'Look at the "Startup impact" column. Right-click programs with "High" impact that you do not need at startup.'},
+      {n:3,color:'#ffcc00',text:'Click "Disable" for unnecessary apps like Spotify, Discord, Teams, OneDrive (if not needed).'},
+      {n:4,color:'#ff6b35',text:'Restart your PC and notice the improved boot speed. Re-enable anything you actually need.'},
+    ],
+    warn:'Do NOT disable antivirus programs, Windows Security, or drivers from startup. Only disable user-installed apps you recognize.'
+  },
+  {
+    id:'updates',emoji:'🔄',name:'Install System Updates',pts:20,freq:'Weekly',
+    freqColor:'#00d4ff',
+    why:'Windows and driver updates fix security vulnerabilities, patch bugs, and improve performance. Running an outdated system is the #1 cause of malware infection and instability.',
+    steps:[
+      {n:1,color:'#00d4ff',text:'Go to Settings → Windows Update → Check for updates. Install all available updates.'},
+      {n:2,color:'#7fff6b',text:'Update your drivers: Device Manager → right-click each device → Update driver.'},
+      {n:3,color:'#ffcc00',text:'Update your applications: use the Microsoft Store or each app\'s built-in updater.'},
+      {n:4,color:'#ff6b35',text:'Restart when prompted. Schedule updates for off-hours so they do not interrupt your work.'},
+    ],
+    warn:'Never download Windows updates from unofficial websites. Only use Settings → Windows Update or official manufacturer sites for drivers.'
+  },
+  {
+    id:'backup',emoji:'💾',name:'Backup Important Data',pts:30,freq:'Weekly',
+    freqColor:'#00d4ff',
+    why:'Hard drives fail without warning. Ransomware can encrypt all your files. The only protection is a recent backup. The 3-2-1 rule: 3 copies, 2 different media, 1 offsite.',
+    steps:[
+      {n:1,color:'#00d4ff',text:'Identify critical files: Documents, Photos, Desktop, Downloads — anything irreplaceable.'},
+      {n:2,color:'#7fff6b',text:'Copy them to an external hard drive or USB drive regularly. Or use Windows Backup in Settings.'},
+      {n:3,color:'#ffcc00',text:'Enable cloud backup: OneDrive, Google Drive, or Backblaze for automatic offsite backup.'},
+      {n:4,color:'#ff6b35',text:'Test your backup occasionally by restoring a file. A backup you have never tested is not reliable!'},
+    ],
+    warn:'An external drive connected to your PC 24/7 will also be encrypted if you get ransomware. Always keep at least one backup disconnected or in the cloud.'
+  },
+];
+
+const QUIZ = [
+  {emoji:'🧹',q:'How often should you clear browser cache for best performance?',
+   opts:['Every 10 years','Weekly or bi-weekly','Never — it auto-clears','Once when you buy the PC'],
+   ans:1,exp:'Browser cache grows steadily. Clearing it weekly or bi-weekly keeps your browser fast and prevents stale data issues.'},
+  {emoji:'💿',q:'What happens if you defragment an SSD?',
+   opts:['It gets faster','Nothing happens','It shortens the SSD\'s lifespan','It becomes an HDD'],
+   ans:2,exp:'SSDs use flash memory with a limited number of write cycles. Defragmenting writes data repeatedly, wearing out cells faster. Windows automatically skips defrag on SSDs.'},
+  {emoji:'⚡',q:'What is "earthing" (grounding) in electrical terms?',
+   opts:['Burying your PC underground','A safety path for stray electricity','A type of battery backup','Connecting to WiFi'],
+   ans:1,exp:'Earthing provides a safe path for fault current to flow to ground, protecting both your equipment and you from electric shocks and voltage surges.'},
+  {emoji:'🌡️',q:'What is the biggest cause of premature PC hardware failure?',
+   opts:['Using too many browser tabs','Overheating due to dust buildup','Playing games','Working at night'],
+   ans:1,exp:'Dust clogs fans and heatsinks, causing temperatures to rise. Sustained high heat degrades components, causes thermal throttling, and eventually leads to permanent failure.'},
+  {emoji:'🔍',q:'What does the CHKDSK command do?',
+   opts:['Checks disk space used','Scans and fixes file system errors and bad sectors','Formats your hard drive','Increases disk speed'],
+   ans:1,exp:'CHKDSK (Check Disk) scans your drive for file system errors, cross-linked files, and bad sectors. It can repair many issues automatically with the /f flag.'},
+  {emoji:'🚀',q:'Which of these should you KEEP enabled in startup programs?',
+   opts:['Spotify','Discord','Windows Security / Antivirus','Adobe Updater'],
+   ans:2,exp:'Your antivirus and Windows Security must run from startup to protect your system. Entertainment apps like Spotify and Discord can safely be disabled to speed up boot time.'},
+  {emoji:'💾',q:'What is the "3-2-1 backup rule"?',
+   opts:['3 PCs, 2 monitors, 1 keyboard','3 copies of data, on 2 different media, with 1 offsite','Backup 3 times a year','Save files in 3 folders'],
+   ans:1,exp:'The 3-2-1 rule: keep 3 copies of your data, stored on 2 different types of media (e.g. hard drive + cloud), with 1 copy stored offsite or in the cloud for disaster recovery.'},
+  {emoji:'🌬️',q:'What tool should you use to clean dust inside your PC?',
+   opts:['Household vacuum cleaner','Wet cloth','Compressed/canned air','Hair dryer on hot setting'],
+   ans:2,exp:'Compressed air safely blows dust away without creating static electricity. A household vacuum generates static that can damage sensitive components. Never use wet cloths inside the PC.'},
+  {emoji:'🔄',q:'Why are Windows updates important for PC health?',
+   opts:['They add decorative wallpapers','They fix security holes, bugs and improve stability','They make the PC louder','They are not important'],
+   ans:1,exp:'Updates patch security vulnerabilities (used by malware), fix driver bugs, improve system stability, and sometimes boost performance. An unpatched system is a major security risk.'},
+  {emoji:'🔌',q:'Which type of power adapter should you use for a desktop PC?',
+   opts:['A 2-pin adapter is fine','Any adapter from a drawer','A proper 3-pin grounded plug with a UPS/surge protector','The thinnest cable you can find'],
+   ans:2,exp:'A 3-pin grounded plug ensures proper earthing. A UPS (Uninterruptible Power Supply) with surge protection prevents damage from power spikes, surges, and sudden outages.'},
+];
+
+const TIPS = [
+  {icon:'🌡️',title:'Monitor PC Temperature',body:'Use free tools like HWMonitor or Core Temp. CPU should stay under 80°C under load. GPU under 85°C. Higher temps mean poor ventilation or dried thermal paste.'},
+  {icon:'🧲',title:'Keep Magnets Away',body:'Strong magnets can corrupt data on HDDs. Keep speakers, phone magnets, and magnetic accessories away from hard drives and credit cards stored near your PC.'},
+  {icon:'⚡',title:'Always Use a UPS',body:'A UPS (Uninterruptible Power Supply) protects against power surges, brownouts, and sudden outages. Sudden power cuts are a top cause of HDD corruption and data loss.'},
+  {icon:'💧',title:'No Liquids Near PC',body:'Keep drinks, plants, and any liquids well away from your PC. Even small spills on a keyboard can short-circuit components. Use lidded bottles at your desk.'},
+  {icon:'🌬️',title:'Ensure Good Airflow',body:'Do not place your PC tower flat on the floor next to a wall. Leave at least 10cm of clearance on all sides. A well-ventilated case runs 10–15°C cooler.'},
+  {icon:'🦠',title:'Run Antivirus Weekly',body:'Run a full scan weekly with Windows Defender or trusted antivirus software. Malware often runs silently in the background, slowing your PC and stealing data.'},
+  {icon:'📦',title:'Uninstall Unused Programs',body:'Bloatware and unused programs waste disk space, slow startup, and sometimes run background services. Go to Settings → Apps and remove anything you have not used in months.'},
+  {icon:'🔋',title:'Laptop Battery Care',body:'Keep laptop battery between 20–80% when possible. Avoid charging to 100% and draining to 0% daily. Heat is the biggest battery killer — do not block laptop vents.'},
+  {icon:'🛡️',title:'Enable Firewall',body:'Windows Firewall should always be on. It blocks unauthorized network access. Check Settings → Windows Security → Firewall. Never disable it unless a trusted program requires it temporarily.'},
+  {icon:'🔐',title:'Strong Passwords + 2FA',body:'Use unique, strong passwords for every account. Enable Two-Factor Authentication (2FA) on email and important accounts. A password manager like Bitwarden makes this easy.'},
+];
+
+/* ═══════════════════════════
+   STATE
+═══════════════════════════ */
+let state = {
+  score: 0,
+  health: 100,
+  doneTasks: [],
+  currentTask: null,
+  quizIdx: 0,
+  quizScore: 0,
+};
+let history = ['home'];
+let currentScreen = 'home';
+
+function loadState(){
+  try{
+    const s = localStorage.getItem('pccare_state');
+    if(s){ const p = JSON.parse(s); Object.assign(state,p); }
+  }catch(e){}
+}
+function saveState(){ try{localStorage.setItem('pccare_state',JSON.stringify(state));}catch(e){} }
+loadState();
+
+/* ═══════════════════════════
+   NAVIGATION
+═══════════════════════════ */
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  currentScreen = id;
+  window.scrollTo(0,0);
+}
+function goBack(){
+  if(history.length>1){ history.pop(); showScreen(history[history.length-1]); }
+  else showScreen('home');
+}
+function navigate(id){
+  history.push(id);
+  showScreen(id);
+}
+
+// Android back button support
+window.addEventListener('popstate', function(e){
+  if(currentScreen !== 'home'){ goBack(); history.pushState(null,'',window.location.href); }
+});
+window.history.pushState(null,'',window.location.href);
+
+/* ═══════════════════════════
+   TOAST
+═══════════════════════════ */
+function toast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2400);
+}
+
+/* ═══════════════════════════
+   CONFETTI
+═══════════════════════════ */
+function confetti(n){
+  const layer=document.getElementById('particles');
+  const cols=['#00d4ff','#7fff6b','#ffcc00','#ff6b35','#ff4757','#a855f7','#ec4899'];
+  for(let i=0;i<n;i++){
+    const d=document.createElement('div');d.className='particle';
+    const sz=5+Math.random()*9;
+    d.style.cssText=`left:${Math.random()*100}%;width:${sz}px;height:${sz}px;background:${cols[i%cols.length]};animation-duration:${0.8+Math.random()*1}s;animation-delay:${Math.random()*0.4}s;border-radius:${Math.random()>.5?'50%':'3px'};`;
+    layer.appendChild(d);
+    d.addEventListener('animationend',()=>d.remove());
+  }
+}
+
+/* ═══════════════════════════
+   HOME / TASKS
+═══════════════════════════ */
+function renderHome(){
+  // Health calc
+  const maxPts = TASKS.reduce((a,t)=>a+t.pts,0);
+  const earnedPts = TASKS.filter(t=>state.doneTasks.includes(t.id)).reduce((a,t)=>a+t.pts,0);
+  state.health = Math.round(40 + (earnedPts/maxPts)*60);
+  document.getElementById('healthBar').style.width = state.health+'%';
+  document.getElementById('healthPct').textContent = state.health+'%';
+  document.getElementById('scoreDisplay').textContent = state.score;
+
+  const grid = document.getElementById('tasksGrid');
+  grid.innerHTML='';
+  TASKS.forEach(t=>{
+    const done = state.doneTasks.includes(t.id);
+    const d = document.createElement('div');
+    d.className='task-card'+(done?' done':'');
+    d.innerHTML=`
+      <span class="tc-emoji">${t.emoji}</span>
+      <div class="tc-name">${t.name}</div>
+      <div class="tc-pts">+${t.pts} pts</div>
+      <div class="tc-freq">${t.freq}</div>`;
+    d.onclick=()=>openTask(t);
+    grid.appendChild(d);
+  });
+}
+
+function openTask(t){
+  state.currentTask = t;
+  document.getElementById('detailScreenTitle').textContent = t.name;
+  document.getElementById('dEmoji').textContent = t.emoji;
+  document.getElementById('dName').textContent = t.name;
+  document.getElementById('dPts').textContent = '+'+t.pts+' Maintenance Points';
+  const fb = document.getElementById('dFreq');
+  fb.textContent = '🕐 '+t.freq;
+  fb.style.background = t.freqColor+'22';
+  fb.style.color = t.freqColor;
+  fb.style.border = '1px solid '+t.freqColor+'55';
+  document.getElementById('dWhy').textContent = t.why;
+
+  const stepsEl = document.getElementById('dSteps');
+  stepsEl.innerHTML = t.steps.map(s=>`
+    <div class="step-item">
+      <div class="step-num" style="background:${s.color}22;color:${s.color};border:1.5px solid ${s.color}55">${s.n}</div>
+      <div class="step-text">${s.text}</div>
+    </div>`).join('');
+
+  const warnCard = document.getElementById('dWarnCard');
+  const warnText = document.getElementById('dWarn');
+  if(t.warn){warnCard.style.display='block';warnText.textContent=t.warn;}
+  else warnCard.style.display='none';
+
+  const doBtn = document.getElementById('doBtn');
+  document.getElementById('doBtnPts').textContent = t.pts;
+  if(state.doneTasks.includes(t.id)){
+    doBtn.className='do-btn already';doBtn.textContent='✅ Already Completed Today!';
+  } else {
+    doBtn.className='do-btn';
+    doBtn.innerHTML='✅ MARK AS DONE (+<span id="doBtnPts">'+t.pts+'</span> pts)';
+  }
+  navigate('detail');
+}
+
+function completeTask(){
+  const t = state.currentTask;
+  if(!t || state.doneTasks.includes(t.id)) return;
+  state.doneTasks.push(t.id);
+  state.score += t.pts;
+  saveState();
+  confetti(40);
+  toast('🎉 +'+t.pts+' pts earned!');
+  const doBtn = document.getElementById('doBtn');
+  doBtn.className='do-btn already';doBtn.textContent='✅ Already Completed Today!';
+  renderHome();
+}
+
+function resetGame(){
+  if(!confirm('Reset all progress?')) return;
+  state.score=0;state.health=100;state.doneTasks=[];
+  saveState();renderHome();toast('🔄 Progress reset!');
+}
+
+/* ═══════════════════════════
+   QUIZ
+═══════════════════════════ */
+let shuffledQuiz=[];
+function goQuiz(){
+  shuffledQuiz=[...QUIZ].sort(()=>Math.random()-0.5);
+  state.quizIdx=0;state.quizScore=0;
+  navigate('quiz');renderQuestion();
+}
+function renderQuestion(){
+  const q=shuffledQuiz[state.quizIdx];
+  const total=shuffledQuiz.length;
+  document.getElementById('qProgress').textContent=`Question ${state.quizIdx+1} of ${total}`;
+  document.getElementById('pbFill').style.width=((state.quizIdx/total)*100)+'%';
+  document.getElementById('quizPtsDisplay').textContent=state.quizScore+' pts';
+  document.getElementById('qEmoji').textContent=q.emoji;
+  document.getElementById('qText').textContent=q.q;
+  document.getElementById('qFeedback').className='q-feedback';
+  document.getElementById('qFeedback').textContent='';
+  document.getElementById('nextBtn').style.display='none';
+
+  const list=document.getElementById('optionsList');
+  list.innerHTML='';
+  q.opts.forEach((o,i)=>{
+    const b=document.createElement('button');
+    b.className='opt-btn';b.textContent=o;
+    b.onclick=()=>answerQuiz(i,b);
+    list.appendChild(b);
+  });
+}
+function answerQuiz(idx,btn){
+  const q=shuffledQuiz[state.quizIdx];
+  const btns=document.querySelectorAll('.opt-btn');
+  btns.forEach(b=>b.disabled=true);
+  const pts=10;
+  if(idx===q.ans){
+    btn.classList.add('correct');
+    state.quizScore+=pts;
+    document.getElementById('quizPtsDisplay').textContent=state.quizScore+' pts';
+    confetti(25);toast('✅ Correct! +'+pts+' pts');
+  } else {
+    btn.classList.add('wrong');
+    btns[q.ans].classList.add('reveal');
+    toast('❌ Wrong! Check the explanation below.');
+  }
+  const fb=document.getElementById('qFeedback');
+  fb.textContent='💡 '+q.exp;
+  fb.classList.add('show');
+  document.getElementById('nextBtn').style.display='flex';
+}
+function nextQuestion(){
+  state.quizIdx++;
+  if(state.quizIdx>=shuffledQuiz.length){ showResult(); return; }
+  renderQuestion();
+}
+function showResult(){
+  const total=shuffledQuiz.length*10;
+  const pct=Math.round((state.quizScore/total)*100);
+  state.score+=state.quizScore;
+  saveState();
+  document.getElementById('resultScore').textContent=state.quizScore;
+  document.getElementById('resultMax').textContent='out of '+total+' points';
+  let emoji='🌟',msg='';
+  if(pct>=90){emoji='🏆';msg='Outstanding! You are a true PC Care Hero. Your computer is in excellent hands. You have earned '+state.quizScore+' bonus points!';}
+  else if(pct>=70){emoji='🎖️';msg='Great work! You know your PC maintenance well. A few areas to review, but your computer is in good hands. +'+state.quizScore+' bonus points!';}
+  else if(pct>=50){emoji='📚';msg='Good effort! You know the basics but there is room to learn more. Review the Pro Tips and try again to boost your score. +'+state.quizScore+' points!';}
+  else{emoji='💪';msg='Keep learning! PC maintenance takes practice. Read the task guides and Pro Tips, then try the quiz again. You earned '+state.quizScore+' points!';}
+  document.getElementById('resultEmoji').textContent=emoji;
+  document.getElementById('resultMsg').textContent=msg;
+  if(pct>=70) confetti(60);
+  renderHome();
+  navigate('result');
+}
+
+/* ═══════════════════════════
+   TIPS
+═══════════════════════════ */
+function goTips(){
+  const list=document.getElementById('tipsList');
+  list.innerHTML=TIPS.map(t=>`
+    <div class="tip-card">
+      <span class="tip-icon">${t.icon}</span>
+      <div class="tip-content">
+        <div class="tip-title">${t.title}</div>
+        <div class="tip-body">${t.body}</div>
+      </div>
+    </div>`).join('');
+  navigate('tips');
+}
+
+/* ═══════════════════════════
+   INIT
+═══════════════════════════ */
+renderHome();
+</script>
+</body>
+</html>

@@ -1,0 +1,2106 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>সোহাগের শাসন | সুরজিৎ রায়</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;500;600;700&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#1b120e;
+    --bg-soft:#221712;
+    --panel:#2a1e17;
+    --panel-line:#4a3a2c;
+    --gold:#c9a15c;
+    --gold-soft:#8a713f;
+    --rose:#c07a78;
+    --rose-deep:#9c4f4f;
+    --ink:#f1e6d6;
+    --ink-muted:#b7a790;
+    --ink-faint:#7d6c58;
+    --shadow: 0 18px 40px rgba(0,0,0,.45);
+    --serif: 'Noto Serif Bengali', 'Palatino Linotype', serif;
+    --sans: 'Hind Siliguri', system-ui, sans-serif;
+  }
+.home-btn{
+  position:absolute;left:14px;top:calc(14px + env(safe-area-inset-top,0px));
+  width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;
+  background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.35);color:var(--gold-soft);
+  text-decoration:none;font-size:1.05rem;
+}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.8;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:.01ms !important; transition-duration:.01ms !important;}
+  }
+
+  a{color:inherit;}
+  ::selection{background:var(--rose-deep); color:#fff;}
+
+  /* ---------- progress bar ---------- */
+  #progress-bar{
+    position:fixed; top:0; left:0; height:3px; width:0%;
+    background:linear-gradient(90deg, var(--gold), var(--rose));
+    z-index:120; transition:width .1s linear;
+  }
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    position:sticky; top:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    gap:.75rem;
+    padding:.7rem 1.1rem;
+    background:rgba(27,18,14,.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--panel-line);
+  }
+  .topbar-title{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:1.05rem;
+    letter-spacing:.02em;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .topbar-title small{
+    display:block;
+    font-family:var(--sans);
+    font-size:.68rem;
+    color:var(--ink-faint);
+    font-weight:400;
+    letter-spacing:.04em;
+  }
+  .topbar-actions{display:flex; align-items:center; gap:.5rem; flex-shrink:0;}
+  .icon-btn{
+    display:inline-flex; align-items:center; gap:.4rem;
+    background:transparent; border:1px solid var(--panel-line);
+    color:var(--ink); border-radius:999px;
+    padding:.45rem .85rem;
+    font-family:var(--sans); font-size:.82rem;
+    cursor:pointer;
+  }
+  .icon-btn:hover{border-color:var(--gold-soft); color:var(--gold);}
+  .icon-btn svg{width:15px; height:15px; flex-shrink:0;}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    min-height:78vh;
+    display:flex; align-items:flex-end;
+    overflow:hidden;
+  }
+  .hero img{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit:cover;
+    object-position:center 20%;
+  }
+  .hero::after{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      linear-gradient(180deg, rgba(20,13,10,.15) 0%, rgba(20,13,10,.35) 45%, var(--bg) 96%),
+      linear-gradient(90deg, rgba(20,13,10,.55) 0%, rgba(20,13,10,.05) 55%);
+  }
+  .hero-content{
+    position:relative; z-index:2;
+    padding:3.4rem 1.4rem 3rem;
+    max-width:760px;
+    margin:0 auto;
+    width:100%;
+  }
+  .hero-kicker{
+    font-family:var(--sans);
+    font-size:.78rem;
+    letter-spacing:.08em;
+    color:var(--rose);
+    margin:0 0 .9rem;
+  }
+  .hero h1{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:clamp(2.4rem, 8vw, 4.2rem);
+    line-height:1.08;
+    margin:0 0 .9rem;
+    color:var(--ink);
+    text-shadow:0 4px 24px rgba(0,0,0,.4);
+  }
+  .hero p.tagline{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:clamp(1.05rem, 3vw, 1.3rem);
+    color:var(--ink-muted);
+    max-width:34ch;
+    margin:0 0 1.6rem;
+  }
+  .hero-meta{
+    display:flex; flex-wrap:wrap; gap:1.4rem;
+    font-size:.88rem; color:var(--ink-muted);
+  }
+  .hero-meta strong{color:var(--gold); font-weight:600;}
+
+  /* ---------- resume banner ---------- */
+  #resume-banner{
+    display:none;
+    max-width:760px; margin:1.5rem auto 0; padding:0 1.4rem;
+  }
+  #resume-banner.show{display:block;}
+  .resume-card{
+    background:var(--panel);
+    border:1px solid var(--panel-line);
+    border-radius:14px;
+    padding:1rem 1.2rem;
+    display:flex; align-items:center; justify-content:space-between;
+    gap:1rem; flex-wrap:wrap;
+    box-shadow:var(--shadow);
+  }
+  .resume-text{font-size:.92rem; color:var(--ink-muted);}
+  .resume-text b{color:var(--ink); font-weight:600;}
+  .resume-actions{display:flex; gap:.6rem; flex-shrink:0;}
+  .btn-primary{
+    background:linear-gradient(135deg, var(--gold), var(--rose-deep));
+    color:#1b120e; border:none; border-radius:999px;
+    padding:.5rem 1.1rem; font-family:var(--sans); font-weight:600;
+    font-size:.85rem; cursor:pointer;
+  }
+  .btn-ghost{
+    background:transparent; color:var(--ink-faint); border:1px solid var(--panel-line);
+    border-radius:999px; padding:.5rem 1rem; font-size:.85rem; cursor:pointer;
+    font-family:var(--sans);
+  }
+
+  /* ---------- table of contents ---------- */
+  #toc{
+    max-width:760px; margin:3.2rem auto 0; padding:0 1.4rem;
+    scroll-margin-top:5rem;
+  }
+  .toc-head{
+    display:flex; align-items:baseline; justify-content:space-between;
+    border-bottom:1px solid var(--panel-line);
+    padding-bottom:.9rem; margin-bottom:1.1rem;
+  }
+  .toc-head h2{
+    font-family:var(--serif); font-size:1.5rem; font-weight:600; margin:0;
+  }
+  .toc-head span{font-size:.78rem; color:var(--ink-faint);}
+  .toc-list{list-style:none; margin:0; padding:0;}
+  .toc-list li{border-bottom:1px solid rgba(74,58,44,.5);}
+  .toc-link{
+    display:flex; align-items:center; gap:1rem;
+    padding:.95rem .2rem;
+    text-decoration:none;
+  }
+  .toc-num{
+    font-family:var(--serif); color:var(--gold-soft);
+    font-size:.85rem; width:1.6rem; flex-shrink:0;
+  }
+  .toc-title{
+    font-family:var(--sans); font-size:.98rem; color:var(--ink);
+    flex:1;
+  }
+  .toc-link:hover .toc-title{color:var(--gold);}
+  .toc-mark{
+    width:9px; height:9px; border-radius:50%;
+    border:1px solid var(--panel-line);
+    flex-shrink:0;
+  }
+  .toc-mark.visited{background:var(--gold); border-color:var(--gold);}
+  .toc-mark.bookmarked{background:var(--rose); border-color:var(--rose);}
+
+  /* ---------- reading content ---------- */
+  main{max-width:760px; margin:0 auto; padding:0 1.4rem 6rem;}
+
+  .part{padding-top:4.2rem; scroll-margin-top:4.6rem;}
+  .part-head{margin-bottom:1.6rem;}
+  .part-eyebrow{
+    display:inline-block;
+    font-family:var(--sans); font-size:.76rem;
+    color:var(--rose); letter-spacing:.06em;
+    margin-bottom:.5rem;
+  }
+  .part-head h2{
+    font-family:var(--serif); font-weight:600;
+    font-size:clamp(1.5rem, 4.4vw, 2rem);
+    margin:0; color:var(--ink);
+    border-bottom:1px solid var(--panel-line);
+    padding-bottom:1.1rem;
+  }
+
+  .part-body{font-size:1.06rem;}
+  .part-body p{margin:0 0 1.15rem; color:var(--ink);}
+  .part-body h3{
+    font-family:var(--serif); font-weight:600; font-size:1.22rem;
+    color:var(--gold); margin:2.2rem 0 1.1rem;
+  }
+  .part-body p.dialogue{
+    color:var(--rose);
+    margin:0 0 1.15rem;
+    padding-left:1rem;
+    border-left:2px solid var(--rose-deep);
+  }
+  .part-body p.pullquote{
+    font-family:var(--serif); font-style:italic; font-size:1.15rem;
+    color:var(--gold); text-align:center;
+    margin:2rem auto; max-width:44ch;
+    line-height:1.65;
+  }
+  .part-body strong{color:var(--ink); font-weight:600;}
+  .divider{
+    display:flex; justify-content:center; margin:2.4rem 0;
+  }
+  .divider span{
+    width:64px; height:1px;
+    background:linear-gradient(90deg, transparent, var(--panel-line), transparent);
+  }
+
+  .part-foot{margin-top:2rem; padding-top:1.4rem; border-top:1px dashed var(--panel-line); display:flex; justify-content:flex-end;}
+  .bookmark-btn{
+    display:inline-flex; align-items:center; gap:.5rem;
+    background:transparent; border:1px solid var(--panel-line);
+    color:var(--ink-muted); border-radius:999px;
+    padding:.5rem 1rem; font-family:var(--sans); font-size:.84rem;
+    cursor:pointer;
+  }
+  .bookmark-btn .bm-icon{width:14px; height:14px; fill:none; stroke:currentColor; stroke-width:1.6;}
+  .bookmark-btn:hover{border-color:var(--rose); color:var(--rose);}
+  .bookmark-btn[aria-pressed="true"]{border-color:var(--rose); color:var(--rose);}
+  .bookmark-btn[aria-pressed="true"] .bm-icon{fill:var(--rose); stroke:var(--rose);}
+
+  /* ---------- ending note ---------- */
+  .colophon{
+    max-width:760px; margin:2rem auto 0; padding:2.6rem 1.4rem 0;
+    border-top:1px solid var(--panel-line);
+    text-align:center;
+  }
+  .colophon p{
+    font-family:var(--serif); font-style:italic; color:var(--ink-muted);
+    font-size:1.05rem; margin:0 0 .6rem;
+  }
+  .colophon .author{font-family:var(--sans); font-style:normal; font-size:.85rem; color:var(--ink-faint);}
+
+  /* ---------- toc drawer ---------- */
+  #drawer-overlay{
+    position:fixed; inset:0; background:rgba(10,7,5,.6);
+    opacity:0; pointer-events:none; transition:opacity .25s ease;
+    z-index:140;
+  }
+  #drawer-overlay.open{opacity:1; pointer-events:auto;}
+  #drawer{
+    position:fixed; top:0; right:0; height:100%;
+    width:min(360px, 88vw);
+    background:var(--bg-soft);
+    border-left:1px solid var(--panel-line);
+    transform:translateX(100%);
+    transition:transform .3s ease;
+    z-index:150;
+    display:flex; flex-direction:column;
+  }
+  #drawer.open{transform:translateX(0);}
+  .drawer-head{
+    padding:1.2rem 1.3rem; border-bottom:1px solid var(--panel-line);
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .drawer-head h3{font-family:var(--serif); font-size:1.15rem; margin:0;}
+  .drawer-close{background:none; border:none; color:var(--ink-muted); font-size:1.4rem; cursor:pointer; line-height:1;}
+  .drawer-body{overflow-y:auto; padding:.6rem 1.1rem 2rem;}
+  .drawer-body .toc-list li{border-bottom:1px solid rgba(74,58,44,.4);}
+  .drawer-body .toc-link{padding:.85rem .2rem;}
+  .drawer-current .toc-title{color:var(--gold); font-weight:600;}
+
+  /* ---------- back to top ---------- */
+  #to-top{
+    position:fixed; bottom:1.3rem; right:1.3rem; z-index:90;
+    width:46px; height:46px; border-radius:50%;
+    background:var(--panel); border:1px solid var(--panel-line);
+    color:var(--gold); display:flex; align-items:center; justify-content:center;
+    cursor:pointer; opacity:0; pointer-events:none; transition:opacity .25s ease;
+    box-shadow:var(--shadow);
+  }
+  #to-top.show{opacity:1; pointer-events:auto;}
+  #to-top svg{width:18px; height:18px;}
+
+  @media (max-width:560px){
+    .hero{min-height:64vh;}
+    .part{padding-top:3rem;}
+    .topbar-title small{display:none;}
+  }
+</style>
+
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<header class="topbar">
+  <div class="topbar-title">সোহাগের শাসন<small>সুরজিৎ রায়</small></div>
+  <div class="topbar-actions">
+    <button class="icon-btn" id="toc-toggle" aria-haspopup="true" aria-controls="drawer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="14" y2="18"/></svg>
+      সূচিপত্র
+    </button>
+  </div>
+</header>
+
+<section class="hero">
+  <img src="images/love-discipline.png" alt="সোহাগের শাসন - একটি পরিবারের গল্প">
+  <div class="hero-content">
+    <p class="hero-kicker">ধারাবাহিক উপন্যাস · সম্পূর্ণ</p>
+    <h1>সোহাগের শাসন</h1>
+    <p class="tagline">অতিরিক্ত ভালোবাসা আর প্রয়োজনীয় শাসনের মাঝের সেই পথ, যেখানে হারিয়ে যায় একটি পরিবার — আবার ফিরেও আসে।</p>
+    <div class="hero-meta">
+      <span>লেখক — <strong>সুরজিৎ রায়</strong></span>
+      <span><strong>৮</strong>টি পর্ব</span>
+      <span>পড়ার সময় আনুমানিক <strong>৪৫</strong> মিনিট</span>
+ <a class="home-btn" href="index.html" aria-label="Home">🏠</a>
+
+    </div>
+  </div>
+</section>
+
+<div id="resume-banner">
+  <div class="resume-card">
+    <p class="resume-text">আপনি আগে <b id="resume-part-name">একটি পর্বে</b> পড়া থামিয়েছিলেন।</p>
+    <div class="resume-actions">
+      <button class="btn-primary" id="resume-go">সেখান থেকে পড়ি</button>
+      <button class="btn-ghost" id="resume-dismiss">না থাক</button>
+    </div>
+  </div>
+</div>
+
+<nav id="toc">
+  <div class="toc-head">
+    <h2>সূচিপত্র</h2>
+    <span>যেকোনো পর্বে সরাসরি যেতে ক্লিক করুন</span>
+  </div>
+  <ul class="toc-list">
+          <li>
+            <a href="#part-1" class="toc-link" data-slug="part-1">
+              <span class="toc-num">01</span>
+              <span class="toc-title">পর্ব–১ : মায়ের আঁচল</span>
+              <span class="toc-mark" data-mark="part-1" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#part-2" class="toc-link" data-slug="part-2">
+              <span class="toc-num">02</span>
+              <span class="toc-title">পর্ব–২ : সোহাগের আড়ালে</span>
+              <span class="toc-mark" data-mark="part-2" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#part-3" class="toc-link" data-slug="part-3">
+              <span class="toc-num">03</span>
+              <span class="toc-title">পর্ব–৪ : একই নামে দুই মানুষ</span>
+              <span class="toc-mark" data-mark="part-3" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#part-4" class="toc-link" data-slug="part-4">
+              <span class="toc-num">04</span>
+              <span class="toc-title">পর্ব–৫ : বাবার মনে সন্দেহ</span>
+              <span class="toc-mark" data-mark="part-4" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#part-5" class="toc-link" data-slug="part-5">
+              <span class="toc-num">05</span>
+              <span class="toc-title">পর্ব–৬ : সন্দেহের ছায়া</span>
+              <span class="toc-mark" data-mark="part-5" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#part-6" class="toc-link" data-slug="part-6">
+              <span class="toc-num">06</span>
+              <span class="toc-title">পর্ব–৭ : অজানা পথে</span>
+              <span class="toc-mark" data-mark="part-6" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#part-7" class="toc-link" data-slug="part-7">
+              <span class="toc-num">07</span>
+              <span class="toc-title">পর্ব–৮ : অচেনা শহরে পরিচিত মুখ</span>
+              <span class="toc-mark" data-mark="part-7" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#part-8" class="toc-link" data-slug="part-8">
+              <span class="toc-num">08</span>
+              <span class="toc-title">শেষ পর্ব : সোহাগের সঙ্গে শাসন</span>
+              <span class="toc-mark" data-mark="part-8" aria-hidden="true"></span>
+            </a>
+          </li>
+  </ul>
+</nav>
+
+<main>
+      <section class="part" id="part-1" data-slug="part-1" data-title="পর্ব–১ : মায়ের আঁচল" aria-labelledby="part-1-h">
+        <div class="part-head">
+          <span class="part-eyebrow">পর্ব 01</span>
+          <h2 id="part-1-h">মায়ের আঁচল</h2>
+        </div>
+        <div class="part-body">
+<p>সুব্রতবাবুর সংসারটা খুব বড় ছিল না। শহরের এক শান্ত পাড়ায় ছোট্ট একটি বাড়ি—সামনে কয়েকটি ফুলের গাছ, উঠোনের এক পাশে তুলসী মঞ্চ, আর ভেতরে তিনজন মানুষের হাসি-কান্নায় ভরা একটি পৃথিবী।</p>
+<p>সুব্রতবাবু, তাঁর স্ত্রী <strong>অনন্যা</strong> এবং তাঁদের ছয় বছরের মেয়ে <strong>তিতলি</strong>।</p>
+<p>তিতলি ছিল তাঁদের চোখের মণি।</p>
+<p>তার সকাল শুরু হতো মাকে দিয়ে, আর স্কুলে যাওয়ার আগে বাবাকে ঘিরে থাকত তার হাজার প্রশ্ন।</p>
+<p class="dialogue"><strong>“বাবা, আজ তুমি আমাকে নিতে আসবে?”</strong></p>
+<p>সুব্রত হেসে বলতেন,</p>
+<p class="dialogue"><strong>“অবশ্যই আসব।”</strong></p>
+<p>এই দুটো কথাই যেন তিতলির কাছে সারাদিনের নিশ্চয়তা ছিল।</p>
+<p>তার পৃথিবীটা ছিল খুব ছোট—<strong>বাবা আর মা।</strong></p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌧️ হঠাৎ সব বদলে গেল</h3>
+<p>একদিন অনন্যা অসুস্থ হয়ে পড়লেন।</p>
+<p>প্রথমে তেমন গুরুত্ব দেওয়া হয়নি। কিন্তু অসুখ বাড়তে থাকল। ডাক্তার দেখানো হলো, একের পর এক পরীক্ষা হলো।</p>
+<p>একদিন রিপোর্ট হাতে নিয়ে হাসপাতালের করিডরে দাঁড়িয়ে রইলেন সুব্রতবাবু।</p>
+<p>ডাক্তারের মুখের একটি শব্দ তাঁর পুরো পৃথিবীটাকে যেন থামিয়ে দিল—</p>
+<p><strong>ক্যান্সার।</strong></p>
+<p>সেদিন বাড়ি ফিরে মেয়ের সামনে স্বাভাবিক থাকার চেষ্টা করেছিলেন তিনি।</p>
+<p>তিতলি দৌড়ে এসে জিজ্ঞেস করেছিল,</p>
+<p class="dialogue"><strong>“বাবা, মা কবে বাড়ি আসবে?”</strong></p>
+<p>সুব্রত মেয়েকে বুকে টেনে বলেছিলেন,</p>
+<p class="dialogue"><strong>“খুব তাড়াতাড়ি।”</strong></p>
+<p>কিন্তু সেই ‘তাড়াতাড়ি’ আর এল না।</p>
+<p>চিকিৎসা চলল। অনন্যা দিন দিন দুর্বল হয়ে পড়লেন।</p>
+<p>একদিন হাসপাতালের বিছানায় শুয়ে তিনি তিতলিকে কাছে ডাকলেন।</p>
+<p class="dialogue"><strong>“মা, কাছে আয়।”</strong></p>
+<p>তিতলি মায়ের হাত ধরে বলল,</p>
+<p class="dialogue">“তুমি কবে বাড়ি যাবে?”</p>
+<p>অনন্যা মৃদু হাসলেন।</p>
+<p class="dialogue"><strong>“তুই বাবার কথা শুনবি তো?”</strong></p>
+<p class="dialogue">“হ্যাঁ।”</p>
+<p class="dialogue"><strong>“ভালো করে পড়াশোনা করবি?”</strong></p>
+<p class="dialogue">“হ্যাঁ।”</p>
+<p>কিছুক্ষণ চুপ করে থেকে অনন্যা মেয়ের মাথায় হাত বুলিয়ে বললেন,</p>
+<p class="dialogue"><strong>“আর কোনোদিন ভাববি না যে তুই একা।”</strong></p>
+<p>তিতলি কথাটার অর্থ বুঝতে পারেনি।</p>
+<p>সে শুধু বলেছিল,</p>
+<p class="dialogue"><strong>“তুমি বাড়ি গিয়ে আমার পাশে ঘুমাবে তো?”</strong></p>
+<p>অনন্যার চোখ ভিজে উঠেছিল।</p>
+<p>তিনি মেয়েকে বুকের কাছে টেনে নিয়েছিলেন।</p>
+<p>কয়েকদিন পর সেই বুকটাই চিরদিনের জন্য খালি হয়ে গেল।</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🕯️ মায়ের শূন্যতা</h3>
+<p>মায়ের মৃত্যুর পর তিতলির পৃথিবীটা যেন হঠাৎ নিস্তব্ধ হয়ে গেল।</p>
+<p>সে মায়ের ঘরে গিয়ে বসে থাকত। মায়ের শাড়ি বুকে জড়িয়ে ঘুমিয়ে পড়ত।</p>
+<p>কখনো বাবাকে জিজ্ঞেস করত—</p>
+<p class="dialogue"><strong>“বাবা, মা কি আর আসবে না?”</strong></p>
+<p>সুব্রতবাবু উত্তর দিতে পারতেন না।</p>
+<p>শুধু মেয়ের মাথায় হাত রেখে বলতেন,</p>
+<p class="dialogue"><strong>“মা সবসময় আমাদের আশীর্বাদ করবে।”</strong></p>
+<p>কিন্তু ছয় বছরের শিশুর কাছে ‘আশীর্বাদ’ শব্দটির চেয়ে মায়ের কোলে মাথা রাখাটাই ছিল বেশি প্রয়োজন।</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌷 সুচরিতার আগমন</h3>
+<p>সময় যত এগোতে লাগল, সুব্রতবাবুর সামনে একটি কঠিন বাস্তবতা দাঁড়াল।</p>
+<p>চাকরি আছে, সংসার আছে। কিন্তু ছোট্ট তিতলিকে একা রেখে প্রতিদিন কাজে যাওয়া তাঁর পক্ষে সম্ভব হচ্ছিল না।</p>
+<p>আত্মীয়রা বললেন,</p>
+<p class="dialogue">“তিতলির জন্য হলেও তোমাকে আবার সংসার করতে হবে।”</p>
+<p>সুব্রত দীর্ঘদিন রাজি হননি।</p>
+<p>তাঁর ভয় ছিল একটাই—</p>
+<p><strong>“নতুন কেউ কি আমার তিতলিকে নিজের সন্তানের মতো ভালোবাসবে?”</strong></p>
+<p>অবশেষে অনেক ভেবেচিন্তে তিনি বিয়ে করলেন <strong>সুচরিতাকে</strong>।</p>
+<p>সুচরিতা যখন প্রথম এই বাড়িতে এলেন, তিতলি তাঁকে দূর থেকে দেখছিল।</p>
+<p>সুচরিতা কাছে গিয়ে বললেন না—</p>
+<p><strong>“আমাকে মা বলো।”</strong></p>
+<p>বরং শান্ত গলায় বললেন,</p>
+<p class="dialogue"><strong>“তুমি চাইলে আমাকে সুচরিতা বলে ডাকতে পারো।”</strong></p>
+<p>তিতলি কিছু বলল না।</p>
+<p>সুচরিতা বুঝেছিলেন, এই শিশুর হৃদয়ে যে জায়গাটি খালি হয়েছে, সেখানে নিজের জায়গা তৈরি করতে <strong>সময় লাগবে।</strong></p>
+<p>তিনি অপেক্ষা করলেন।</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>❤️ সেই রাত</h3>
+<p>একদিন তিতলির জ্বর হলো।</p>
+<p>সুব্রত কাজে ছিলেন।</p>
+<p>সারাদিন সুচরিতা মেয়েটির পাশে থাকলেন। রাতে জ্বর আরও বেড়ে গেল।</p>
+<p>সুচরিতা তার কপালে জলপট্টি দিতে দিতে বসে রইলেন।</p>
+<p>রাতের শেষ প্রহরে তিতলি আধো ঘুমে সুচরিতার হাত আঁকড়ে ধরে বলল—</p>
+<p class="dialogue"><strong>“মা... তুমি আছ তো?”</strong></p>
+<p>সুচরিতার হাত থেমে গেল।</p>
+<p>চোখের কোণে জল জমল।</p>
+<p>তিনি ধীরে মেয়েটির মাথায় হাত রেখে বললেন—</p>
+<p class="dialogue"><strong>“হ্যাঁ মা, আমি আছি।”</strong></p>
+<p>সেই রাতেই যেন তাঁদের সম্পর্কের মধ্যে অদৃশ্য একটি সেতু তৈরি হলো।</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<p>কয়েকদিন পর সকালে স্কুলের পোশাক পরে দরজার কাছে দাঁড়িয়ে তিতলি বলল—</p>
+<p class="dialogue"><strong>“মা, আমার টিফিনটা দাও।”</strong></p>
+<p>সুচরিতা কিছুক্ষণ মেয়েটির দিকে তাকিয়ে রইলেন।</p>
+<p>তারপর হাসতে হাসতে টিফিনের বাক্সটা এগিয়ে দিলেন।</p>
+<p>তিতলি চলে গেল।</p>
+<p>আর সুচরিতা একা দাঁড়িয়ে চোখ মুছলেন।</p>
+<p>মনে মনে বললেন—</p>
+<p><strong>“তোর জন্ম আমি দিইনি। কিন্তু তোকে ভালোবাসতে আমার কোনোদিন কমতি হবে না।”</strong></p>
+<p>সেই দিন থেকে সুচরিতা তিতলিকে শুধু সুব্রতের মেয়ে হিসেবে দেখলেন না।</p>
+<p><strong>তিতলি হয়ে উঠল তাঁর নিজের মেয়ে।</strong></p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌱 ভালোবাসার সঙ্গে যে ভুলটা শুরু হলো</h3>
+<p>সুচরিতার ভালোবাসার কোনো সীমা ছিল না।</p>
+<p>তিতলি একটু কষ্ট পেলেই তাঁর মন খারাপ হয়ে যেত।</p>
+<p>তিতলি কোনো ভুল করলে তিনি ভাবতেন,</p>
+<p><strong>“ও তো ছোটবেলা থেকেই এত কষ্ট পেয়েছে।”</strong></p>
+<p>একদিন তিতলি খেলতে গিয়ে ঘরের একটি ফুলদানি ভেঙে ফেলল।</p>
+<p>সুব্রতবাবু অফিস থেকে ফিরে ভাঙা ফুলদানিটা দেখে বললেন,</p>
+<p class="dialogue">“কে ভেঙেছে?”</p>
+<p>তিতলি চুপ করে রইল।</p>
+<p>সুচরিতা সঙ্গে সঙ্গে বললেন,</p>
+<p class="dialogue"><strong>“ও ভুল করে ফেলেছে। ওকে বকো না।”</strong></p>
+<p>সুব্রত মেয়ের দিকে তাকিয়ে শান্ত গলায় বললেন,</p>
+<p class="dialogue">“ভুল করলে বকা নয়, কিন্তু ভুলটা বুঝতে শেখানো দরকার।”</p>
+<p>সুচরিতা মৃদু হেসে বললেন,</p>
+<p class="dialogue"><strong>“আমি ওকে বুঝিয়ে দেব।”</strong></p>
+<p>কিন্তু তিতলি তখন মায়ের আঁচলের আড়ালে দাঁড়িয়ে বুঝে গিয়েছিল—</p>
+<p><strong>সে ভুল করলেও সুচরিতা তাকে রক্ষা করবেন।</strong></p>
+<p>সুব্রত মাঝে মাঝে সতর্ক করতেন,</p>
+<p class="dialogue">“ওকে ভালোবাসো, অবশ্যই। কিন্তু ওর ভুলগুলোও বুঝিয়ে দিও।”</p>
+<p>সুচরিতা হেসে বলতেন,</p>
+<p class="dialogue"><strong>“আমি ওকে সামলে নেব।”</strong></p>
+<p>তিনি তখনও জানতেন না—</p>
+<p><strong>একজন সন্তানকে শুধু ভালোবাসা নয়, প্রয়োজনমতো শাসন করাও ভালোবাসারই একটি অংশ।</strong></p>
+<p>আর সেই শাসনের অভাবই একদিন তিতলির জীবনে বড় ঝড় ডেকে আনবে।</p>
+<p>যে ঝড় শুধু তিতলিকে নয়, <strong>সুব্রত ও সুচরিতার সংসারকেও বদলে দেবে।</strong></p>
+<p>আর বহু বছর পরে সেই পুরোনো ভুলের ছায়া ফিরে আসবে এক অদ্ভুত ভুল বোঝাবুঝির রূপ নিয়ে।</p>
+<p><strong>চলবে...</strong> 🌿</p>
+        </div>
+        <div class="part-foot">
+          <button class="bookmark-btn" data-slug="part-1" aria-pressed="false">
+            <svg viewBox="0 0 24 24" class="bm-icon" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+            <span class="bm-label">এই পর্বটি বুকমার্ক করুন</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="part" id="part-2" data-slug="part-2" data-title="পর্ব–২ : সোহাগের আড়ালে" aria-labelledby="part-2-h">
+        <div class="part-head">
+          <span class="part-eyebrow">পর্ব 02</span>
+          <h2 id="part-2-h">সোহাগের আড়ালে</h2>
+        </div>
+        <div class="part-body">
+<p>মায়ের মৃত্যুর পর যে ছোট্ট মেয়েটি একদিন <strong>সুচরিতার</strong> হাত আঁকড়ে ধরে বলেছিল, <strong>“মা, তুমি আছ তো?”</strong>, সেই তিতলি ধীরে ধীরে বড় হতে লাগল।</p>
+<p>সুচরিতা তাকে শুধু নিজের মেয়ের মতো ভালোবাসতেন না—অনেক সময় তার থেকেও বেশি আগলে রাখতেন।</p>
+<p>তাঁর মনে সবসময় একটা ভয় কাজ করত—</p>
+<p><strong>“তিতলি যেন কোনোদিন মনে না করে, আমি ওর নিজের মা নই।”</strong></p>
+<p>এই ভয় থেকেই হয়তো সুচরিতার ভালোবাসা ধীরে ধীরে <strong>সোহাগ থেকে প্রশ্রয়ে</strong> পরিণত হতে লাগল।</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌱 প্রথম ছোট্ট ভুল</h3>
+<p>তিতলির বয়স তখন আট বছর।</p>
+<p>একদিন খেলতে গিয়ে সে পাশের বাড়ির রিয়ার পুতুলটি ভেঙে ফেলল।</p>
+<p>রিয়া কাঁদতে কাঁদতে তার মায়ের কাছে গিয়ে অভিযোগ করল।</p>
+<p>কিছুক্ষণ পর রিয়ার মা তিতলিকে নিয়ে সুচরিতার কাছে এলেন।</p>
+<p class="dialogue">“সুচরিতা, তিতলি আমার মেয়ের পুতুলটা ভেঙে দিয়েছে।”</p>
+<p>সুচরিতা তিতলির দিকে তাকালেন।</p>
+<p class="dialogue">“সত্যি?”</p>
+<p>তিতলি মাথা নিচু করে দাঁড়িয়ে রইল।</p>
+<p>কিছুক্ষণ পর বলল,</p>
+<p class="dialogue">“আমি ইচ্ছে করে ভাঙিনি।”</p>
+<p>সুচরিতা মেয়ের মুখের দিকে তাকিয়ে নরম হয়ে গেলেন।</p>
+<p class="dialogue"><strong>“আচ্ছা, ইচ্ছে করে যখন ভাঙেনি, তাহলে আর কী করা যাবে?”</strong></p>
+<p>রিয়ার মা একটু বিরক্ত হয়ে বললেন,</p>
+<p class="dialogue">“ভুল তো ভুলই। অন্তত একটা ‘দুঃখিত’ বলুক।”</p>
+<p>সুচরিতা তিতলির দিকে তাকিয়ে বললেন,</p>
+<p class="dialogue">“বলো মা, দুঃখিত।”</p>
+<p>তিতলি অনিচ্ছাভাবে বলল,</p>
+<p class="dialogue">“দুঃখিত।”</p>
+<p>বিষয়টি সেদিনের মতো শেষ হয়ে গেল।</p>
+<p>কিন্তু তিতলি একটা জিনিস শিখে গেল—</p>
+<p><strong>ভুল করলেও মা শেষ পর্যন্ত তাকে রক্ষা করবেন।</strong></p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>📚 স্কুলের অভিযোগ</h3>
+<p>কয়েক বছর পর তিতলি স্কুলে পড়াশোনায় ভালোই ছিল। কিন্তু তার স্বভাবের মধ্যে জেদ ঢুকতে শুরু করেছিল।</p>
+<p>একদিন স্কুল থেকে ফিরে মুখ ভার করে বসে রইল।</p>
+<p>সুচরিতা জিজ্ঞেস করলেন,</p>
+<p class="dialogue">“কী হয়েছে মা?”</p>
+<p>তিতলি বলল,</p>
+<p class="dialogue">“আজ স্যার আমাকে সবার সামনে বকেছেন।”</p>
+<p>সুচরিতা চিন্তিত হয়ে বললেন,</p>
+<p class="dialogue">“কেন?”</p>
+<p class="dialogue">“আমি নাকি ক্লাসে কথা বলছিলাম।”</p>
+<p>সুচরিতা মেয়ের মাথায় হাত রেখে বললেন,</p>
+<p class="dialogue">“তুই কথা বলছিলি?”</p>
+<p>তিতলি একটু থেমে বলল,</p>
+<p class="dialogue">“হয়তো একটু।”</p>
+<p>সুচরিতা হেসে বললেন,</p>
+<p class="dialogue"><strong>“তোর স্যার হয়তো একটু বেশি রাগ করেছেন।”</strong></p>
+<p>সুব্রত পাশ থেকে কথাটা শুনছিলেন।</p>
+<p>তিনি বললেন,</p>
+<p class="dialogue">“তিতলি, স্যার যদি বকেন, নিশ্চয়ই কোনো কারণ ছিল। আগে নিজের ভুলটা দেখ।”</p>
+<p>তিতলি মুখ গোমড়া করে ঘরে চলে গেল।</p>
+<p>সুচরিতা স্বামীর দিকে তাকিয়ে বললেন,</p>
+<p class="dialogue">“ওকে আর বকো না।”</p>
+<p>সুব্রত দীর্ঘশ্বাস ফেললেন।</p>
+<p class="dialogue"><strong>“সুচরিতা, ওকে ভুল স্বীকার করতে শেখাতে হবে।”</strong></p>
+<p>সুচরিতা চুপ করে রইলেন।</p>
+<p>কিন্তু মেয়ের মন খারাপ দেখে শেষ পর্যন্ত তিনিই তিতলির ঘরে গিয়ে তাকে আদর করলেন।</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌸 সোহাগ আরও বাড়ল</h3>
+<p>সময় চলে গেল।</p>
+<p>তিতলি কিশোরী হলো।</p>
+<p>তার মধ্যে আত্মবিশ্বাস ছিল, বুদ্ধি ছিল, প্রাণচাঞ্চল্য ছিল। কিন্তু সেই সঙ্গে একটা জেদও তৈরি হয়েছিল।</p>
+<p>কেউ তার মতের বিরোধিতা করলে সে সহজে মেনে নিত না।</p>
+<p>বন্ধুর সঙ্গে সামান্য কথা কাটাকাটি হলে তিতলি রেগে যেত।</p>
+<p>পাড়ার কারও সঙ্গে ঝামেলা হলে সুচরিতা প্রথমে মেয়ের কথাই বিশ্বাস করতেন।</p>
+<p class="dialogue"><strong>“তুই নিশ্চয়ই কিছু করিসনি।”</strong></p>
+<p>তিতলি জানত—</p>
+<p><strong>মায়ের কাছে তার কথাই শেষ কথা।</strong></p>
+<p>ধীরে ধীরে সে নিজের ভুলের দায় অন্যের ওপর চাপাতে শুরু করল।</p>
+<p>আর সুচরিতা বুঝতেই পারলেন না, তাঁর অতি ভালোবাসা মেয়ের মধ্যে কী তৈরি করছে।</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>⚡ একদিন বড় ঘটনা</h3>
+<p>এক বিকেলে পাড়ার কয়েকজন মেয়ের সঙ্গে তিতলির তুমুল ঝগড়া হলো।</p>
+<p>বিষয়টি সামান্য হলেও তিতলি রেগে গিয়ে অনেক কথা বলে ফেলল।</p>
+<p>একজন প্রতিবেশী সুচরিতাকে বললেন,</p>
+<p class="dialogue">“তিতলিকে একটু বোঝান। ও আজকাল কাউকেই সম্মান করে কথা বলে না।”</p>
+<p>সুচরিতা প্রথমে মেয়েকে জিজ্ঞেস করলেন,</p>
+<p class="dialogue">“তুই কি ওদের সঙ্গে ঝগড়া করেছিস?”</p>
+<p>তিতলি সঙ্গে সঙ্গে বলল,</p>
+<p class="dialogue"><strong>“ওরাই আগে আমাকে অপমান করেছে।”</strong></p>
+<p>সুচরিতা আর কিছু বললেন না।</p>
+<p>তিতলিকে নিজের কাছে টেনে নিলেন।</p>
+<p class="dialogue"><strong>“ঠিক আছে মা। তুই কাঁদিস না।”</strong></p>
+<p>দূরে দাঁড়িয়ে সুব্রত সব দেখছিলেন।</p>
+<p>তিনি এবার সত্যিই চিন্তিত হলেন।</p>
+<p>রাতে স্ত্রীকে বললেন,</p>
+<p class="dialogue">“তিতলিকে এবার একটু কঠিনভাবে বোঝাও।”</p>
+<p>সুচরিতা বললেন,</p>
+<p class="dialogue">“আমি তো ওকে বুঝিয়েছি।”</p>
+<p>সুব্রত মাথা নেড়ে বললেন,</p>
+<p class="dialogue"><strong>“না। তুমি ওকে বোঝাওনি। তুমি ওকে সান্ত্বনা দিয়েছ।”</strong></p>
+<p>সুচরিতা কিছুক্ষণ চুপ করে থাকলেন।</p>
+<p>কথাটা তাঁর মনে গভীরভাবে লাগল।</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌿 পরিবর্তনের শুরু</h3>
+<p>কয়েকদিন পর সুচরিতার মা তাঁদের বাড়িতে এলেন।</p>
+<p>বয়সের সঙ্গে তাঁর অভিজ্ঞতা অনেক বেড়েছে।</p>
+<p>তিনি তিতলিকে কয়েকদিন লক্ষ্য করলেন।</p>
+<p>মেয়েটি খারাপ নয়—এটা তিনি বুঝলেন।</p>
+<p>কিন্তু তিতলি নিজের ভুল বুঝতে শেখেনি।</p>
+<p>একদিন তিতলি আবার কারও সঙ্গে ঝগড়া করে বাড়ি ফিরল।</p>
+<p>সুচরিতা আগের মতোই মেয়েকে কাছে টানতে যাচ্ছিলেন।</p>
+<p>ঠিক তখন তাঁর মা বললেন,</p>
+<p class="dialogue"><strong>“থাম, সুচরিতা।”</strong></p>
+<p>সুচরিতা অবাক হয়ে তাকালেন।</p>
+<p class="dialogue">“কী হলো?”</p>
+<p>তিনি শান্তভাবে বললেন,</p>
+<p class="dialogue"><strong>“তুই ওকে খুব ভালোবাসিস। কিন্তু শুধু সোহাগ দিয়ে মানুষকে ভালো করা যায় না।”</strong></p>
+<p>সুচরিতা চুপ করে গেলেন।</p>
+<p class="dialogue"><strong>“যে সন্তান ভুল করে, তাকে ভুলটা বুঝিয়ে দিতে হয়। প্রয়োজন হলে বকতেও হয়। শাসন মানে ভালোবাসার অভাব নয়।”</strong></p>
+<p>সুচরিতার চোখে জল এসে গেল।</p>
+<p>তিনি ধীরে বললেন,</p>
+<p class="dialogue">“কিন্তু ও যদি ভাবে আমি ওকে আর ভালোবাসি না?”</p>
+<p>সুচরিতার মা মেয়ের মাথায় হাত রেখে বললেন—</p>
+<p class="pullquote"><strong>“সত্যিকারের ভালোবাসা কখনো কখনো ‘না’ বলতে শেখায়।</strong></p>
+<p class="pullquote"><strong>শুধু সোহাগ করলে সন্তান খুশি হতে পারে,</strong></p>
+<p class="pullquote"><strong>কিন্তু সঠিক শাসন তাকে মানুষ হতে শেখায়।”</strong></p>
+<p>সুচরিতা অনেকক্ষণ কোনো কথা বললেন না।</p>
+<p>সেদিন রাতে তিতলি ঘুমিয়ে পড়ার পর তিনি মেয়ের পাশে বসে রইলেন।</p>
+<p>মেয়ের কপালে হাত রেখে মনে মনে বললেন—</p>
+<p><strong>“এবার থেকে তোকে শুধু ভালোবাসব না, ভুল করলে থামাবও।”</strong></p>
+<p>তিনি জানতেন না, এই সিদ্ধান্ত তাঁর নিজের কাছেই কত কঠিন হতে চলেছে।</p>
+<p>কারণ এতদিন যে মা তিতলির প্রতিটি কান্নায় নরম হয়ে গেছেন, সেই মাকেই এবার নিজের আদরের মেয়ের চোখের জল উপেক্ষা করে <strong>ভুলের বিরুদ্ধে দাঁড়াতে হবে।</strong></p>
+<p>আর সেই কঠিন শিক্ষার প্রথম বাক্যটি খুব শিগগিরই তাঁর জীবনে সত্যি হয়ে উঠবে—</p>
+<p><strong>“শাসন করা তারই সাজে, সোহাগ করে যে।”</strong></p>
+<p><strong>চলবে...</strong> 🌸</p>
+<p>🌸 সোহাগের শাসন পর্ব–৩ : প্রথম শাসন</p>
+<p>পর্ব–২-এর সেই রাতের পর সুচরিতা সত্যিই বদলে গেলেন।</p>
+<p>তিতলির প্রতি তাঁর ভালোবাসায় কোনো কমতি এল না, কিন্তু একটি জায়গায় তিনি আর আগের মতো থাকলেন না।</p>
+<p>তিতলি ভুল করলে তিনি আর চুপ করে থাকবেন না।</p>
+<p>তবে প্রথম কয়েকদিন তেমন কোনো বড় ঘটনা ঘটল না।</p>
+<p>তিতলিও বুঝতে পারছিল না, মায়ের এই নতুন কঠোরতা কতদিন থাকবে।</p>
+<p>তারপর একদিন স্কুল থেকেই সবকিছু বদলে গেল।</p>
+<p>⚡ স্কুলে বড় ঝামেলা</p>
+<p>তিতলির বয়স তখন সতেরো।</p>
+<p>পড়াশোনায় সে ভালো। কথা বলতে জানে, নিজের মতামত স্পষ্ট করে বলতে পারে, আর বন্ধুদের মধ্যেও তার বেশ প্রভাব।</p>
+<p>কিন্তু নিজের সম্মান নিয়ে সে অত্যন্ত সংবেদনশীল।</p>
+<p>সেদিন টিফিনের সময় এক সহপাঠিনীর সঙ্গে তার কথা কাটাকাটি শুরু হয়।</p>
+<p>প্রথমে বিষয়টি ছিল সামান্য।</p>
+<p>কিন্তু কয়েকটি কথার পর তিতলি রেগে যায়।</p>
+<p>রাগের মাথায় সে এমন কিছু কথা বলে ফেলে, যাতে মেয়েটি সবার সামনে অপমানিত হয়ে কেঁদে ফেলে।</p>
+<p>বিষয়টি শিক্ষক পর্যন্ত পৌঁছে যায়।</p>
+<p>তিতলিকে ডেকে শিক্ষক কঠিন গলায় বললেন,</p>
+<p class="dialogue">“তুমি ভালো ছাত্রী। কিন্তু রাগের সময় নিজের কথার ওপর নিয়ন্ত্রণ হারালে তোমার মেধার কোনো মূল্য থাকবে না।”</p>
+<p>তিতলি মুখ নিচু করে দাঁড়িয়ে থাকলেও মনে মনে তখনও নিজেকেই ঠিক মনে করছিল।</p>
+<p>🏠 বাড়ি ফিরে</p>
+<p>বাড়ি ফিরেই তিতলি ব্যাগটা সোফার ওপর ছুড়ে ফেলল।</p>
+<p>সুচরিতা রান্নাঘর থেকে বেরিয়ে এসে জিজ্ঞেস করলেন,</p>
+<p class="dialogue">“কী হয়েছে?”</p>
+<p>তিতলি বিরক্ত গলায় বলল,</p>
+<p class="dialogue">“স্কুলে সবাই আমার বিরুদ্ধে!”</p>
+<p class="dialogue">“কেন?”</p>
+<p class="dialogue">“ওই মেয়েটা আগে আমাকে অপমান করেছে। আমি শুধু জবাব দিয়েছি।”</p>
+<p>সুচরিতা মেয়ের দিকে তাকিয়ে রইলেন।</p>
+<p>পর্ব–২-এর সেই রাতের কথা তাঁর মনে পড়ল।</p>
+<p>কিন্তু এবার তাঁকে নতুন করে কিছু ভাবতে হলো না।</p>
+<p>তিনি শুধু বললেন,</p>
+<p class="dialogue">“তুই ওকে কী বলেছিস?”</p>
+<p>তিতলি একটু থেমে বলল,</p>
+<p class="dialogue">“যা বলার বলেছি।”</p>
+<p class="dialogue">“কী বলেছিস?”</p>
+<p class="dialogue">“মা, তুমি কি এখন আমাকে জেরা করবে?”</p>
+<p>সুচরিতার গলায় কোনো রাগ ছিল না।</p>
+<p class="dialogue">“জেরা করছি না। সত্যিটা জানতে চাইছি।”</p>
+<p>তিতলি চুপ করে গেল।</p>
+<p>কিছুক্ষণ পর ধীরে ধীরে সে স্বীকার করল,</p>
+<p class="dialogue">“হ্যাঁ, আমি কিছু খারাপ কথা বলেছি।”</p>
+<p class="dialogue">“তুই জানিস কথাগুলো ওকে কষ্ট দিয়েছে?”</p>
+<p>তিতলি মুখ ঘুরিয়ে বলল,</p>
+<p class="dialogue">“কিন্তু ও আগে শুরু করেছিল।”</p>
+<p>সুচরিতা এবার দৃঢ় গলায় বললেন,</p>
+<p class="dialogue">“কেউ তোকে কষ্ট দিলে তার জবাব অন্য কাউকে কষ্ট দিয়ে দিতে হয় না।”</p>
+<p>তিতলি সঙ্গে সঙ্গে বলল,</p>
+<p class="dialogue">“তাহলে আমি কী করতাম?”</p>
+<p class="dialogue">“নিজেকে সামলাতিস।”</p>
+<p>কথাটা তিতলির ভালো লাগল না।</p>
+<p>💔 মায়ের প্রথম কঠিন সিদ্ধান্ত</p>
+<p>সুচরিতা বললেন,</p>
+<p class="dialogue">“কাল স্কুলে গিয়ে ওর কাছে ক্ষমা চাইবি।”</p>
+<p>তিতলি যেন আঁতকে উঠল।</p>
+<p class="dialogue">“আমি? আমি ক্ষমা চাইব?”</p>
+<p class="dialogue">“হ্যাঁ।”</p>
+<p class="dialogue">“কিন্তু ভুল তো শুধু আমার ছিল না!”</p>
+<p class="dialogue">“ওর ভুলের বিচার স্কুল করবে। তোর ভুলের দায়িত্ব তুই নেবি।”</p>
+<p>তিতলি এবার রেগে গেল।</p>
+<p class="dialogue">“তুমি সবসময় আমার বিরুদ্ধেই যাচ্ছ!”</p>
+<p>সুচরিতা শান্তভাবে বললেন,</p>
+<p class="dialogue">“আমি তোর বিরুদ্ধে যাচ্ছি না, তিতলি। আমি চাইছি তুই নিজের ভুলের সামনে দাঁড়াস।”</p>
+<p>তিতলি আর কথা বলল না।</p>
+<p>সে নিজের ঘরে গিয়ে দরজা বন্ধ করে দিল।</p>
+<p>🌧️ কয়েকটি নীরব দিন</p>
+<p>পরের কয়েকদিন তিতলি মায়ের সঙ্গে ঠিকমতো কথা বলল না।</p>
+<p>খাবার টেবিলে প্রয়োজনীয় কথার বেশি কিছু বলত না।</p>
+<p>স্কুল থেকে ফিরে সরাসরি নিজের ঘরে চলে যেত।</p>
+<p>আগের মতো—</p>
+<p>“মা, আজ কী রান্না হয়েছে?”</p>
+<p>“মা, আমার জামাটা কোথায়?”</p>
+<p>“মা, আজ আমার সঙ্গে স্কুলে কী হয়েছে জানো?”</p>
+<p class="dialogue">এসব আর শোনা যেত না।</p>
+<p>সুচরিতা দূর থেকে মেয়েকে দেখতেন।</p>
+<p>মন খারাপ হতো।</p>
+<p>কিন্তু এবার তিনি তিতলিকে খুশি করার জন্য নিজের সিদ্ধান্ত বদলালেন না।</p>
+<p>🌱 একটি ছোট্ট পরিবর্তন</p>
+<p>তিন দিন পর বিকেলে তিতলি নিজেই সুচরিতার কাছে এসে দাঁড়াল।</p>
+<p>সুচরিতা তখন কাপড় গুছাচ্ছিলেন।</p>
+<p>তিতলি কিছুক্ষণ চুপ করে থেকে বলল,</p>
+<p class="dialogue">“মা...”</p>
+<p>সুচরিতা তাকালেন।</p>
+<p class="dialogue">“কী হয়েছে?”</p>
+<p>তিতলি নিচু গলায় বলল,</p>
+<p class="dialogue">“আমি কাল ওর কাছে গিয়ে কথা বলেছি।”</p>
+<p>সুচরিতা কিছু বললেন না।</p>
+<p class="dialogue">“আমি বলেছি, রাগের মাথায় আমার ওই কথাগুলো বলা ঠিক হয়নি।”</p>
+<p>সুচরিতার মুখে মৃদু হাসি ফুটল।</p>
+<p class="dialogue">“ও কী বলেছে?”</p>
+<p class="dialogue">“ও-ও বলেছে, ওর কথাও বলা ঠিক হয়নি।”</p>
+<p>সুচরিতা মেয়ের মাথায় হাত রাখলেন।</p>
+<p class="dialogue">“তাহলে ব্যাপারটা এখানেই শেষ করে দে।”</p>
+<p>তিতলি মায়ের দিকে তাকাল।</p>
+<p class="dialogue">“তুমি আমার ওপর রাগ করো নি?”</p>
+<p>সুচরিতা হেসে বললেন,</p>
+<p class="dialogue">“ভুল করলে রাগ হতে পারে। কিন্তু ভুল বুঝে ঠিক করে নিলে রাগ ধরে রাখার কোনো কারণ নেই।”</p>
+<p>তিতলি এবার মায়ের কাঁধে মাথা রাখল।</p>
+<p>সুচরিতা তাকে জড়িয়ে ধরলেন।</p>
+<p>তবে তিনি জানতেন না—এই ছোট্ট ঘটনাটাই তিতলির জীবনে শেষ বড় ভুল নয়।</p>
+<p>বরং সামনে অপেক্ষা করছে এমন এক সময়, যখন ভালোবাসা, স্বাধীনতা আর জেদের সংঘাত অনেক বেশি কঠিন হয়ে উঠবে।</p>
+<p>🎓 কলেজের নতুন পৃথিবী</p>
+<p>সময় দ্রুত এগিয়ে গেল।</p>
+<p>তিতলি কলেজে ভর্তি হলো।</p>
+<p>নতুন পরিবেশ, নতুন বন্ধু, নতুন স্বাধীনতা—সবকিছুই তার কাছে exciting হয়ে উঠল।</p>
+<p>সুচরিতা মেয়েকে আগের মতোই ভালোবাসতেন, তবে এবার তিনি জানতেন—</p>
+<p>তিতলিকে নিজের সিদ্ধান্ত নিজেকেই নিতে শেখাতে হবে।</p>
+<p>কলেজেই তিতলির সঙ্গে পরিচয় হলো এক শান্ত স্বভাবের ছেলের।</p>
+<p>নাম—সবুজ।</p>
+<p>সবুজ খুব বেশি কথা বলত না।</p>
+<p>ক্লাসে মন দিয়ে পড়ত, প্রয়োজন ছাড়া কারও সঙ্গে ঝামেলায় জড়াত না।</p>
+<p>তিতলির কোনো বিষয়ে সমস্যা হলে সে শান্তভাবে সাহায্য করত।</p>
+<p>প্রথমে তাদের সম্পর্ক ছিল নিছক বন্ধুত্ব।</p>
+<p>কিন্তু ধীরে ধীরে সেই বন্ধুত্বের মধ্যে অন্যরকম একটা টান তৈরি হতে লাগল।</p>
+<p>তিতলি নিজেও বুঝতে পারছিল না—</p>
+<p>কখন বন্ধুত্বটা ভালোবাসায় বদলে যাচ্ছে।</p>
+<p>⚠️ আরেকজন সবুজ</p>
+<p>কিন্তু কলেজে আরও একজন ছেলে ছিল।</p>
+<p>সবাই তাকে ডাকত কালু নামে।</p>
+<p>তার আসল নামও—সবুজ।</p>
+<p>স্বভাবের দিক থেকে সে প্রথম সবুজের সম্পূর্ণ বিপরীত।</p>
+<p>চতুর, মুখে মিষ্টি কথা, কিন্তু অন্যের ব্যক্তিগত বিষয় নিয়ে গল্প করতে তার খুব ভালো লাগত।</p>
+<p>তিতলি তাকে বিশেষ পাত্তা দিত না।</p>
+<p>এই ব্যাপারটাই কালুর ভালো লাগত না।</p>
+<p>একদিন সে তিতলিকে নিয়ে কয়েকজন বন্ধুর সামনে মজা করে বলল,</p>
+<p class="dialogue">“দেখিস, একদিন এই মেয়েটাই আমার সঙ্গে ঘুরবে।”</p>
+<p>বন্ধুরা হেসে উঠল।</p>
+<p>কেউ বিষয়টাকে গুরুত্ব দিল না।</p>
+<p>কিন্তু কালুর মাথায় তখন অন্য একটা পরিকল্পনা জন্ম নিচ্ছিল।</p>
+<p>সে জানত না, তার বলা কয়েকটি মিথ্যে কথা একদিন এমন পরিস্থিতি তৈরি করবে, যেখানে—</p>
+<p>একজন সবুজ হয়ে উঠবে তিতলির সত্যিকারের ভালোবাসা, আর অন্য সবুজ হয়ে উঠবে দুই পরিবারের ভুল বোঝাবুঝির কেন্দ্রবিন্দু।</p>
+<p>তিতলির জীবনে তখনও সবকিছু স্বাভাবিক।</p>
+<p>সে জানত না—</p>
+<p>তার সবচেয়ে বড় সিদ্ধান্তের সময় খুব কাছে চলে এসেছে।</p>
+<p>চলবে... 🌿</p>
+        </div>
+        <div class="part-foot">
+          <button class="bookmark-btn" data-slug="part-2" aria-pressed="false">
+            <svg viewBox="0 0 24 24" class="bm-icon" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+            <span class="bm-label">এই পর্বটি বুকমার্ক করুন</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="part" id="part-3" data-slug="part-3" data-title="পর্ব–৪ : একই নামে দুই মানুষ" aria-labelledby="part-3-h">
+        <div class="part-head">
+          <span class="part-eyebrow">পর্ব 03</span>
+          <h2 id="part-3-h">একই নামে দুই মানুষ</h2>
+        </div>
+        <div class="part-body">
+<p>তিতলির কলেজজীবন তখন প্রায় শেষের দিকে।</p>
+<p>চার বছর ধরে তার সঙ্গে <strong>সবুজ রায়ের</strong> সম্পর্ক।</p>
+<p>সবুজ শান্ত, ভদ্র ও দায়িত্বশীল ছেলে। তিতলির প্রতি তার ভালোবাসার মধ্যে কোনো বাড়াবাড়ি ছিল না। বরং সে সবসময় তিতলিকে পড়াশোনা শেষ করে নিজের পায়ে দাঁড়ানোর কথা বলত।</p>
+<p>তিতলিও জানত, একদিন না একদিন এই সম্পর্কের কথা বাবা-মাকে জানাতেই হবে।</p>
+<p>কিন্তু সেই দিনটা এখনও আসেনি।</p>
+<p>সুব্রতবাবু জানতেন না, তাঁর মেয়ের জীবনে একজন সবুজ আছে।</p>
+<p>আর তিনি জানতেন না, খুব শিগগিরই <strong>আরেকজন সবুজ</strong> তাঁর জীবনে এমনভাবে প্রবেশ করবে, যার ফলে সত্য আর মিথ্যার মধ্যে পার্থক্য করা কঠিন হয়ে যাবে।</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🚲 হঠাৎ দেখা</h3>
+<p>এক বিকেলে অফিস থেকে সাইকেলে করে বাড়ি ফিরছিলেন সুব্রতবাবু।</p>
+<p>রাস্তার একটি মোড়ে হঠাৎ সামনে থেকে একজন যুবক রাস্তা পার হতে গিয়ে সাইকেলের সামনে পড়ে গেল।</p>
+<p>সুব্রতবাবু দ্রুত ব্রেক করলেও ধাক্কাটা এড়াতে পারলেন না।</p>
+<p>যুবকটি রাস্তায় পড়ে গেল।</p>
+<p>সুব্রত তাড়াতাড়ি সাইকেল নামিয়ে ছুটে গেলেন।</p>
+<p class="dialogue">“বাবা! খুব লেগেছে?”</p>
+<p>যুবকটি উঠে বসে হাঁটুতে হাত বুলিয়ে হেসে বলল,</p>
+<p class="dialogue">“না না, তেমন কিছু হয়নি।”</p>
+<p>সুব্রত চিন্তিত হয়ে বললেন,</p>
+<p class="dialogue">“আমি ঠিকমতো দেখতে পাইনি। তোমাকে ডাক্তার দেখানো দরকার হলে আমি নিয়ে যাব।”</p>
+<p>যুবকটি উঠে দাঁড়িয়ে জামার ধুলো ঝাড়তে ঝাড়তে বলল,</p>
+<p class="dialogue">“সত্যিই কিছু হয়নি। আপনি চিন্তা করবেন না।”</p>
+<p>সুব্রত এবার ভালো করে ছেলেটির দিকে তাকালেন।</p>
+<p>চোখেমুখে অদ্ভুত শান্ত ভাব।</p>
+<p>কথাবার্তাতেও ভদ্রতা।</p>
+<p>তিনি বললেন,</p>
+<p class="dialogue">“তোমার নাম কী?”</p>
+<p>ছেলেটি হেসে বলল,</p>
+<p class="dialogue"><strong>“সবুজ রায়।”</strong></p>
+<p>নামটা শুনে সুব্রত মাথা নাড়লেন।</p>
+<p class="dialogue">“কোথায় থাকো?”</p>
+<p>সবুজ এলাকার নাম বলল।</p>
+<p>কিছুক্ষণ কথা বলার পর সুব্রতের মনে হলো, ছেলেটি বেশ ভালো স্বভাবের।</p>
+<p>ধাক্কা লাগার পরও একবারও রাগ করল না।</p>
+<p>বরং উল্টো তাঁকেই বলল—</p>
+<p class="dialogue">“আপনার সাইকেলের কিছু হয়নি তো?”</p>
+<p>সুব্রত অবাক হয়ে হেসে ফেললেন।</p>
+<p class="dialogue">“তোমারই তো পড়ে যাওয়ার অবস্থা হলো, আর তুমি আমার সাইকেলের কথা ভাবছ?”</p>
+<p>সবুজও হেসে বলল,</p>
+<p class="dialogue">“সামান্য ব্যাপার। এগুলো নিয়ে রাগ করে কী লাভ?”</p>
+<p>কথাটা সুব্রতের মনে দাগ কেটে গেল।</p>
+<p>বিদায় নেওয়ার সময় তিনি বললেন,</p>
+<p class="dialogue">“সাবধানে যেও।”</p>
+<p>সবুজ মাথা নেড়ে চলে গেল।</p>
+<p>সুব্রত অনেকক্ষণ তার চলে যাওয়ার দিকে তাকিয়ে রইলেন।</p>
+<p>মনে মনে ভাবলেন—</p>
+<p><strong>“ছেলেটা বেশ ভালো।”</strong></p>
+<p>তিনি জানতেন না, এই অচেনা ছেলেটিই একদিন তাঁর মেয়ের জীবনের সবচেয়ে গুরুত্বপূর্ণ মানুষ হয়ে উঠবে।</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌿 বাবার মনে ভালো লাগা</h3>
+<p>বাড়ি ফিরে সুব্রত ঘটনাটা সুচরিতাকে বললেন।</p>
+<p class="dialogue">“আজ একটা ছেলের সঙ্গে দেখা হলো।”</p>
+<p>সুচরিতা হেসে বললেন,</p>
+<p class="dialogue">“কী হলো?”</p>
+<p class="dialogue">“আমার সাইকেলের ধাক্কায় পড়ে গেল। অথচ একটুও রাগ করল না।”</p>
+<p class="dialogue">“তাই নাকি?”</p>
+<p class="dialogue">“হ্যাঁ। বেশ ভদ্র ছেলে। নাম সবুজ রায়।”</p>
+<p>সুচরিতা কথাটা শুনে বিশেষ কিছু ভাবলেন না।</p>
+<p>সুব্রতও জানতেন না, কয়েকদিন পর এই নামটাই তাঁদের সংসারে অন্য এক অর্থ নিয়ে ফিরে আসবে।</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>⚠️ অন্যদিকে অন্য এক মানুষ</h3>
+<p>কয়েকদিন পর এক বিকেলে সুব্রতবাবু বাজার থেকে ফিরছিলেন।</p>
+<p>রাস্তার পাশে দাঁড়িয়ে একজন যুবক তাঁকে ডাকল।</p>
+<p class="dialogue">“সুব্রতবাবু!”</p>
+<p>সুব্রত থেমে গেলেন।</p>
+<p>ছেলেটিকে তিনি চিনতেন।</p>
+<p>পাড়ার পরিচিত ছেলে।</p>
+<p>ছেলেটি কাছে এসে বলল,</p>
+<p class="dialogue">“আপনার সঙ্গে একটু কথা ছিল।”</p>
+<p class="dialogue">“বলো।”</p>
+<p>সে চারপাশে তাকিয়ে একটু নিচু গলায় বলল,</p>
+<p class="dialogue"><strong>“তিতলির সঙ্গে আমার অনেক দিনের সম্পর্ক।”</strong></p>
+<p>সুব্রত অবাক হয়ে তার দিকে তাকালেন।</p>
+<p class="dialogue">“তিতলির সঙ্গে?”</p>
+<p>ছেলেটি মাথা নাড়ল।</p>
+<p class="dialogue">“হ্যাঁ। আমরা একে অপরকে ভালোবাসি।”</p>
+<p>সুব্রতের মুখটা গম্ভীর হয়ে গেল।</p>
+<p class="dialogue">“তিতলি কি এসব জানে?”</p>
+<p>ছেলেটি সঙ্গে সঙ্গে বলল,</p>
+<p class="dialogue"><strong>“অবশ্যই জানে। আমাদের সম্পর্ক প্রায় চার বছরের।”</strong></p>
+<p>সুব্রতের মনে অস্বস্তি তৈরি হলো।</p>
+<p>তিনি কিছুক্ষণ চুপ করে রইলেন।</p>
+<p>তারপর জিজ্ঞেস করলেন,</p>
+<p class="dialogue">“তোমার নাম কী?”</p>
+<p>ছেলেটি উত্তর দিল,</p>
+<p class="dialogue"><strong>“সবুজ সাহা।”</strong></p>
+<p>সুব্রত নামটা শুনে একটু থমকে গেলেন।</p>
+<p><strong>সবুজ।</strong></p>
+<p>কয়েকদিন আগেই তিনি আরেকজন ছেলের সঙ্গে পরিচিত হয়েছেন—<strong>সবুজ রায়</strong>।</p>
+<p>কিন্তু তখনও তিনি বুঝতে পারেননি, একই নামের এই দুই যুবক সম্পূর্ণ আলাদা মানুষ।</p>
+<p>সবুজ সাহা আবার বলল,</p>
+<p class="dialogue">“আমি তিতলিকে বিয়ে করতে চাই। ও-ও আমাকে ভালোবাসে।”</p>
+<p>সুব্রত এবার আরও চিন্তিত হয়ে পড়লেন।</p>
+<p>কিন্তু মেয়েকে নিয়ে কোনো কথা না বাড়িয়ে শুধু বললেন,</p>
+<p class="dialogue">“এখন এসব নিয়ে বাড়িতে কিছু বলো না। আগে আমাকে সবকিছু বুঝতে দাও।”</p>
+<p>ছেলেটি মাথা নেড়ে চলে গেল।</p>
+<p>সুব্রত অনেকক্ষণ রাস্তার পাশে দাঁড়িয়ে রইলেন।</p>
+<p>তাঁর মনে একটা প্রশ্ন ঘুরছিল—</p>
+<p><strong>“তিতলি কি সত্যিই এতদিন ধরে এই ছেলেটির সঙ্গে সম্পর্ক রেখেছে?”</strong></p>
+<p>কিন্তু তিনি মেয়েকে তখনই কিছু জিজ্ঞেস করলেন না।</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🚌 একই দিনে</h3>
+<p>সেদিনই সন্ধ্যার দিকে কলেজ থেকে বাসে করে বাড়ি ফিরছিল তিতলি।</p>
+<p>বাসটি রাস্তার মোড়ে আসতেই তার চোখ হঠাৎ বাইরে আটকে গেল।</p>
+<p>সে দেখল—</p>
+<p><strong>তার বাবা একজন পরিচিত ছেলের সঙ্গে দাঁড়িয়ে কথা বলছেন।</strong></p>
+<p>তিতলি ছেলেটিকে চিনত।</p>
+<p>ছেলেটি তাকে অনেকবার বিরক্ত করেছে।</p>
+<p>সে জানত না, ছেলেটির আসল নাম কী।</p>
+<p>বাসটা এগিয়ে যাওয়ার সময় তিতলি দেখল, বাবা বেশ গম্ভীরভাবে তার সঙ্গে কথা বলছেন।</p>
+<p>তার বুকের ভেতরটা কেমন যেন ধক করে উঠল।</p>
+<p>সে মনে মনে ভাবল—</p>
+<p><strong>“বাবা ওর সঙ্গে কী কথা বলছে?”</strong></p>
+<p>কিন্তু বাস থামল না।</p>
+<p>তিতলি জানালার পাশে বসে রইল।</p>
+<p>তার মনে তখন অদ্ভুত একটা অস্বস্তি।</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🏠 সন্ধ্যার পর</h3>
+<p>বাড়ি ফিরে তিতলি দেখল, সুব্রত বেশ স্বাভাবিক মেজাজে আছেন।</p>
+<p>খাওয়ার সময় হঠাৎ তিনি বললেন,</p>
+<p class="dialogue">“আজকাল একটা ছেলেকে দেখলাম। খুব ভালো ছেলে।”</p>
+<p>তিতলি চুপ করে রইল।</p>
+<p>সুব্রত বললেন,</p>
+<p class="dialogue"><strong>“ভদ্র, শান্ত, কথাবার্তাও সুন্দর। নাম সবুজ রায়।”</strong></p>
+<p>তিতলির হাত থেমে গেল।</p>
+<p><strong>সবুজ!</strong></p>
+<p>তার মনে সঙ্গে সঙ্গে বাসের দৃশ্যটা ফিরে এল।</p>
+<p>বাবা যে ছেলেটির সঙ্গে কথা বলছিলেন, সেই ছেলেটিও তো—</p>
+<p><strong>সবুজ!</strong></p>
+<p>তিতলি কিছু না বুঝেই মনে মনে ধরে নিল—</p>
+<p><strong>বাবা সেই ছেলেটিরই প্রশংসা করছেন।</strong></p>
+<p>সে মুখ ভার করে বলল,</p>
+<p class="dialogue"><strong>“তোমার যাকে-তাকে ভালো লাগে!”</strong></p>
+<p>সুব্রত অবাক হয়ে মেয়ের দিকে তাকালেন।</p>
+<p class="dialogue">“কী বললি?”</p>
+<p>তিতলি আর কিছু বলল না।</p>
+<p>সুচরিতা মেয়ের মুখের দিকে তাকালেন।</p>
+<p class="dialogue">“কী হয়েছে তোর?”</p>
+<p>তিতলি উঠে দাঁড়িয়ে বলল,</p>
+<p class="dialogue">“কিছু হয়নি।”</p>
+<p>তারপর নিজের ঘরে চলে গেল।</p>
+<p>সুব্রত আর সুচরিতা একে অপরের দিকে তাকিয়ে রইলেন।</p>
+<p>কেউ বুঝতে পারলেন না, <strong>একটি নাম কীভাবে একই মুহূর্তে দুটি সম্পূর্ণ আলাদা মানুষকে এক সুতোয় বেঁধে ফেলেছে।</strong></p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌑 ভুলের বীজ</h3>
+<p>নিজের ঘরে গিয়ে তিতলি জানালার পাশে দাঁড়িয়ে রইল।</p>
+<p>তার মনে শুধু একটাই কথা—</p>
+<p><strong>“বাবা ওর সঙ্গে কথা বলছে... আবার ওরই প্রশংসা করছে!”</strong></p>
+<p>অন্যদিকে সুব্রত নিজের ঘরে বসে ভাবছিলেন—</p>
+<p><strong>“তিতলি কি সত্যিই সবুজ সাহার সঙ্গে এতদিন ধরে সম্পর্ক রেখেছে?”</strong></p>
+<p>আর শহরের অন্য প্রান্তে <strong>সবুজ রায়</strong> তখনও জানতেন না, তাঁর নামকে ঘিরে একটি ভুল বোঝাবুঝি ইতিমধ্যেই তিতলির পরিবারে জন্ম নিয়েছে।</p>
+<p>তিনজনের তিনটি আলাদা সত্য—</p>
+<p><strong>তিতলির সত্যিকারের ভালোবাসা — সবুজ রায়।</strong></p>
+<p><strong>সুব্রতের কাছে নতুন পরিচিত ছেলে — সবুজ সাহা।</strong></p>
+<p><strong>আর দুজনের নামই — সবুজ।</strong></p>
+<p>এই একই নামই খুব শিগগির তাঁদের জীবনে এমন এক ঝড় তুলবে, যার অভিঘাতে ভালোবাসা, বিশ্বাস আর পারিবারিক সম্পর্ক—সবকিছুই কঠিন পরীক্ষার মুখে পড়বে।</p>
+<p><strong>চলবে...</strong> 🌿</p>
+        </div>
+        <div class="part-foot">
+          <button class="bookmark-btn" data-slug="part-3" aria-pressed="false">
+            <svg viewBox="0 0 24 24" class="bm-icon" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+            <span class="bm-label">এই পর্বটি বুকমার্ক করুন</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="part" id="part-4" data-slug="part-4" data-title="পর্ব–৫ : বাবার মনে সন্দেহ" aria-labelledby="part-4-h">
+        <div class="part-head">
+          <span class="part-eyebrow">পর্ব 04</span>
+          <h2 id="part-4-h">বাবার মনে সন্দেহ</h2>
+        </div>
+        <div class="part-body">
+<p>সেদিন সন্ধ্যার পর থেকে সুব্রতবাবুর মনটা আর শান্ত হলো না।</p>
+<p>একদিকে কয়েকদিন আগে রাস্তার ধারে দেখা সেই ভদ্র যুবক—<strong>সবুজ রায়</strong>।</p>
+<p>অন্যদিকে আজকের সেই ছেলে—<strong>সবুজ সাহা</strong>।</p>
+<p>দুজনের নাম একই।</p>
+<p>কিন্তু দুজনের আচরণ সম্পূর্ণ আলাদা।</p>
+<p>সবুজ রায়কে দেখে তাঁর মনে হয়েছিল—</p>
+<p><strong>“ছেলেটার মধ্যে একটা ভালোত্ব আছে।”</strong></p>
+<p>আর আজ সবুজ সাহার মুখে তিতলির সঙ্গে সম্পর্কের কথা শুনে তাঁর মনে তৈরি হয়েছে অন্যরকম অস্বস্তি।</p>
+<p>তবু মেয়েকে তিনি কিছু বললেন না।</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌧️ বাবার নীরবতা</h3>
+<p>রাতে খাওয়ার টেবিলে তিতলি স্বাভাবিক থাকার চেষ্টা করছিল।</p>
+<p>সুব্রতও চুপচাপ খাচ্ছিলেন।</p>
+<p>সুচরিতা দুজনের মুখের দিকে তাকিয়ে বুঝতে পারছিলেন, কিছু একটা হয়েছে।</p>
+<p>তিনি জিজ্ঞেস করলেন,</p>
+<p class="dialogue">“কী হলো? দুজনেই এত চুপ কেন?”</p>
+<p>তিতলি সঙ্গে সঙ্গে বলল,</p>
+<p class="dialogue">“কিছু হয়নি মা।”</p>
+<p>সুব্রতও বললেন,</p>
+<p class="dialogue">“হ্যাঁ, কিছু হয়নি।”</p>
+<p>কিন্তু কথাটা বলার সময় তাঁর চোখে যে চিন্তা ফুটে উঠেছিল, সুচরিতার চোখ এড়াল না।</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🕯️ স্বামী-স্ত্রীর কথা</h3>
+<p>তিতলি নিজের ঘরে চলে যাওয়ার পর সুচরিতা ধীরে ধীরে স্বামীর কাছে এসে বসলেন।</p>
+<p class="dialogue">“এবার বলো। কী হয়েছে?”</p>
+<p>সুব্রত কিছুক্ষণ চুপ করে থেকে বললেন,</p>
+<p class="dialogue">“আজ একটা ছেলে আমার সঙ্গে দেখা করতে এসেছিল।”</p>
+<p class="dialogue">“কোন ছেলে?”</p>
+<p class="dialogue">“সবুজ সাহা।”</p>
+<p>সুচরিতা একটু অবাক হলেন।</p>
+<p class="dialogue">“কেন?”</p>
+<p>সুব্রত দীর্ঘশ্বাস ফেললেন।</p>
+<p class="dialogue"><strong>“সে বলল, তিতলির সঙ্গে নাকি তার অনেক দিনের সম্পর্ক।”</strong></p>
+<p>সুচরিতা কিছুক্ষণ চুপ করে রইলেন।</p>
+<p>তারপর বললেন,</p>
+<p class="dialogue">“তিতলি তো অন্য কথা বলছে।”</p>
+<p class="dialogue">“জানি।”</p>
+<p class="dialogue">“তাহলে?”</p>
+<p>সুব্রত জানালার দিকে তাকিয়ে বললেন,</p>
+<p class="dialogue"><strong>“আমি বুঝতে পারছি না, আসল সত্যিটা কী।”</strong></p>
+<p>সুচরিতা স্বামীর হাতের ওপর হাত রাখলেন।</p>
+<p class="dialogue">“তিতলিকে জিজ্ঞেস করেছ?”</p>
+<p class="dialogue">“না।”</p>
+<p class="dialogue">“কেন?”</p>
+<p>সুব্রত মৃদু গলায় বললেন,</p>
+<p class="dialogue"><strong>“মেয়েটা যদি সত্যিই কাউকে ভালোবেসে থাকে, তাহলে হঠাৎ জেরা করলে আরও জেদ করবে।”</strong></p>
+<p>সুচরিতা চুপ করে গেলেন।</p>
+<p>সুব্রত আবার বললেন,</p>
+<p class="dialogue"><strong>“কিন্তু একটা কথা আমাকে ভাবাচ্ছে।”</strong></p>
+<p class="dialogue">“কী?”</p>
+<p class="dialogue">“ছেলেটা বলল, তাদের সম্পর্ক প্রায় চার বছরের।”</p>
+<p>সুচরিতা এবার স্বামীর দিকে তাকালেন।</p>
+<p class="dialogue">“চার বছর?”</p>
+<p class="dialogue">“হ্যাঁ।”</p>
+<p>কিছুক্ষণ দুজনেই নীরব।</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌿 তিতলির অজানা সত্য</h3>
+<p>নিজের ঘরে বসে তিতলি তখন সত্যিকারের সবুজকে ফোন করার কথা ভাবছিল।</p>
+<p>কিন্তু বাবার আচরণ দেখে তার মনটা কেমন অস্থির হয়ে উঠেছিল।</p>
+<p>কয়েকদিন আগে বাবা একজন ছেলের সঙ্গে কথা বলেছিলেন।</p>
+<p>আজও সেই ছেলেটিকে তিনি কোথাও দেখেছেন কি না, তিতলি জানে না।</p>
+<p>সে শুধু জানে—</p>
+<p><strong>বাবা কিছু একটা নিয়ে চিন্তিত।</strong></p>
+<p>তিতলি নিজের মনেই বলল,</p>
+<p><strong>“বাবা যদি সবুজের কথা জেনে যান, তাহলে কি আমাদের সম্পর্ক মেনে নেবেন?”</strong></p>
+<p>সে জানত না, বাবার চিন্তার কেন্দ্রে থাকা <strong>সবুজ</strong> আসলে তার পরিচিত সেই সবুজ নয়।</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🚲 কয়েকদিন আগের স্মৃতি</h3>
+<p>অন্যদিকে সুব্রতের মনে বারবার ফিরে আসছিল সেই বিকেলের কথা।</p>
+<p>সাইকেলের ধাক্কায় পড়ে যাওয়া যুবকটির কথা।</p>
+<p><strong>সবুজ রায়।</strong></p>
+<p>ছেলেটি রাগ করেনি।</p>
+<p>উল্টো তাঁকেই আশ্বস্ত করেছিল।</p>
+<p>সুব্রতের মনে হয়েছিল, এমন শান্ত স্বভাবের ছেলে আজকাল খুব বেশি দেখা যায় না।</p>
+<p>তিনি সুচরিতাকে বললেন,</p>
+<p class="dialogue"><strong>“জানো, কয়েকদিন আগে যে ছেলেটার কথা তোমাকে বলেছিলাম, সেই সবুজ রায়—ছেলেটা সত্যিই ভালো।”</strong></p>
+<p>সুচরিতা মৃদু হেসে বললেন,</p>
+<p class="dialogue">“তুমি তো ছেলেটাকে মাত্র একদিন দেখেছ।”</p>
+<p class="dialogue">“একদিনেই অনেক কিছু বোঝা যায়।”</p>
+<p class="dialogue">“তাহলে এত প্রশংসা কেন?”</p>
+<p>সুব্রত হেসে বললেন,</p>
+<p class="dialogue">“ধাক্কা খেয়েও যে মানুষ রাগ না করে হাসতে পারে, তার মনটা খারাপ হওয়ার কথা নয়।”</p>
+<p>সুচরিতা আর কিছু বললেন না।</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🚌 তিতলির চোখে অন্য ছবি</h3>
+<p>পরদিন বিকেলে কলেজ থেকে বাসে ফিরছিল তিতলি।</p>
+<p>বাসটি যখন বাজারের মোড় পেরোচ্ছিল, তখন হঠাৎ তার চোখ রাস্তার পাশে আটকে গেল।</p>
+<p>সে দেখল—</p>
+<p><strong>বাবা একজন যুবকের সঙ্গে দাঁড়িয়ে কথা বলছেন।</strong></p>
+<p>তিতলি ছেলেটিকে চিনল।</p>
+<p>কয়েকদিন আগে যে ছেলে তাকে রাস্তার ধারে দাঁড় করিয়ে নিজের ভালোবাসার কথা বলেছিল, সেই ছেলেই।</p>
+<p>তিতলির বুকের ভেতরটা কেঁপে উঠল।</p>
+<p><strong>“বাবা ওর সঙ্গে কী কথা বলছে?”</strong></p>
+<p>বাস এগিয়ে গেল।</p>
+<p>তিতলি পিছনের জানালা দিয়ে যতক্ষণ সম্ভব তাকিয়ে রইল।</p>
+<p>কিন্তু বাবার সঙ্গে ছেলেটির কথোপকথন শুনতে পেল না।</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌧️ বাড়িতে ফিরে</h3>
+<p>সন্ধ্যায় তিতলি বাড়ি ফিরতেই সুব্রত বেশ স্বাভাবিকভাবে বসে ছিলেন।</p>
+<p>তিতলি জুতো খুলে ঘরে ঢুকল।</p>
+<p>সুব্রত হঠাৎ বললেন,</p>
+<p class="dialogue">“আজ একটা ছেলের কথা মনে পড়ছিল।”</p>
+<p>তিতলি থেমে গেল।</p>
+<p class="dialogue">“কার কথা?”</p>
+<p class="dialogue"><strong>“সবুজের।”</strong></p>
+<p>তিতলির বুক ধক করে উঠল।</p>
+<p>সুব্রত বলতে লাগলেন,</p>
+<p class="dialogue">“ছেলেটাকে সেদিন রাস্তায় দেখেছিলাম। খুব ভদ্র। আজকাল এমন ব্যবহার খুব কম ছেলের মধ্যে দেখা যায়।”</p>
+<p>তিতলি চুপ করে দাঁড়িয়ে রইল।</p>
+<p>তার মনে সঙ্গে সঙ্গে বাসের দৃশ্যটা ফিরে এল।</p>
+<p><strong>বাবা আজও সেই ছেলেটির সঙ্গে কথা বলছিলেন।</strong></p>
+<p>আর এখন তারই প্রশংসা করছেন!</p>
+<p>তিতলি ঠান্ডা গলায় বলল,</p>
+<p class="dialogue"><strong>“তোমার যাকে-তাকে ভালো লাগে।”</strong></p>
+<p>সুব্রত অবাক হয়ে মেয়ের দিকে তাকালেন।</p>
+<p class="dialogue">“কী বললি?”</p>
+<p>তিতলি মুখ ঘুরিয়ে বলল,</p>
+<p class="dialogue">“কিছু না।”</p>
+<p class="dialogue">“না, কিছু তো বললি।”</p>
+<p class="dialogue">“বললাম, তোমার যাকে-তাকে ভালো লাগে।”</p>
+<p>সুব্রত মেয়ের কথার অর্থ বুঝতে পারলেন না।</p>
+<p>তিনি বললেন,</p>
+<p class="dialogue">“আমি তো একটা ছেলের কথা বলছিলাম।”</p>
+<p>তিতলি তৎক্ষণাৎ উত্তর দিল,</p>
+<p class="dialogue"><strong>“আমি জানি।”</strong></p>
+<p>তারপর নিজের ঘরে চলে গেল।</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>💔 দুই ঘরে দুই ভুল</h3>
+<p>তিতলি দরজা বন্ধ করে বিছানায় বসে পড়ল।</p>
+<p>তার মনে একটাই কথা—</p>
+<p><strong>“বাবা ওর কথা এত প্রশংসা করে বলছে কেন?”</strong></p>
+<p>অন্যদিকে সুব্রত স্ত্রীর দিকে তাকিয়ে বললেন,</p>
+<p class="dialogue">“মেয়েটার আচরণটা আজকাল বুঝতে পারছি না।”</p>
+<p>সুচরিতা শান্তভাবে বললেন,</p>
+<p class="dialogue">“ও হয়তো কিছু ভুল বুঝেছে।”</p>
+<p class="dialogue">“কী?”</p>
+<p>সুচরিতা কিছু বললেন না।</p>
+<p>তিনি বুঝতে পারছিলেন, একই নামের কারণে কোথাও একটা গোলমাল হচ্ছে।</p>
+<p>কিন্তু এখনও তিনিও জানেন না, সেই গোলমালটা কতটা গভীর।</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌙 সেই রাতের সিদ্ধান্ত</h3>
+<p>রাতে সুব্রত অনেকক্ষণ ঘুমোতে পারলেন না।</p>
+<p>তাঁর মনে একের পর এক প্রশ্ন আসতে লাগল।</p>
+<p><strong>তিতলি যে সবুজের কথা বলছে, সে কে?</strong></p>
+<p><strong>সবুজ সাহা কি সত্যিই তিতলির জীবনে আছে?</strong></p>
+<p><strong>আর সেই শান্ত স্বভাবের সবুজ রায়ই বা কে?</strong></p>
+<p>তিনি সিদ্ধান্ত নিলেন—</p>
+<p><strong>তিতলিকে এখনই চাপ দেবেন না।</strong></p>
+<p>আগে তিনি সত্যিটা নিজে বুঝতে চান।</p>
+<p>তিনি সুচরিতাকে বললেন,</p>
+<p class="dialogue"><strong>“আমি তিতলিকে কিছু বলব না। আগে পুরো ব্যাপারটা বুঝে নিই।”</strong></p>
+<p>সুচরিতা মাথা নেড়ে বললেন,</p>
+<p class="dialogue">“সেটাই ভালো।”</p>
+<p>কিন্তু তাঁরা দুজনেই জানতেন না—</p>
+<p>সত্যিটা তাঁদের চোখের সামনেই ছিল।</p>
+<p>শুধু <strong>একটি নাম</strong> সেই সত্যিটাকে আড়াল করে রেখেছিল।</p>
+<p>আর সেই নাম—</p>
+<p><strong>সবুজ।</strong></p>
+<p>একজন <strong>সবুজ রায়</strong>—যাকে সুব্রত ভালো ছেলে হিসেবে পছন্দ করতে শুরু করেছেন।</p>
+<p>অন্যজন <strong>সবুজ সাহা</strong>—যে নিজের মিথ্যা কথায় এই পরিবারের মধ্যে সন্দেহের বীজ বুনে দিয়েছে।</p>
+<p>আর তিতলি?</p>
+<p>সে এখনও জানে না, তার বাবা যে সবুজের প্রশংসা করছেন, তিনি তার ভালোবাসার <strong>সত্যিকারের সবুজ</strong>।</p>
+<p><strong>চলবে...</strong> 🌿</p>
+        </div>
+        <div class="part-foot">
+          <button class="bookmark-btn" data-slug="part-4" aria-pressed="false">
+            <svg viewBox="0 0 24 24" class="bm-icon" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+            <span class="bm-label">এই পর্বটি বুকমার্ক করুন</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="part" id="part-5" data-slug="part-5" data-title="পর্ব–৬ : সন্দেহের ছায়া" aria-labelledby="part-5-h">
+        <div class="part-head">
+          <span class="part-eyebrow">পর্ব 05</span>
+          <h2 id="part-5-h">সন্দেহের ছায়া</h2>
+        </div>
+        <div class="part-body">
+<p>পরদিন সকালটা অন্য দিনের মতোই শুরু হয়েছিল।</p>
+<p>কিন্তু সুব্রতবাবুর মনে যেন একটা অদৃশ্য ভার জমে ছিল।</p>
+<p>গত কয়েকদিনের ঘটনাগুলো তিনি বারবার মনে করার চেষ্টা করছিলেন।</p>
+<p>একদিকে সেই শান্ত, ভদ্র ছেলেটি—<strong>সবুজ রায়</strong>।</p>
+<p>অন্যদিকে তিতলির জীবনের সঙ্গে নিজের সম্পর্কের দাবি করা আরেক যুবক—<strong>সবুজ সাহা</strong>।</p>
+<p>দুজনের নাম এক।</p>
+<p>কিন্তু মানুষ দুজন সম্পূর্ণ আলাদা।</p>
+<p>এই অদ্ভুত মিলটাই সুব্রতকে সবচেয়ে বেশি ভাবাচ্ছিল।</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌿 একটি অপ্রত্যাশিত দেখা</h3>
+<p>সেদিন অফিস থেকে বেরিয়ে সুব্রতবাবু রাস্তার পাশে একটি চায়ের দোকানে দাঁড়িয়েছিলেন।</p>
+<p>হঠাৎ পিছন থেকে পরিচিত কণ্ঠস্বর—</p>
+<p class="dialogue">“সুব্রতবাবু!”</p>
+<p>তিনি ঘুরে তাকালেন।</p>
+<p><strong>সবুজ রায়।</strong></p>
+<p>সুব্রতের মুখে সঙ্গে সঙ্গে হাসি ফুটে উঠল।</p>
+<p class="dialogue">“আরে, তুমি!”</p>
+<p>সবুজ এগিয়ে এসে বলল,</p>
+<p class="dialogue">“সেদিনের জন্য আবারও বলছি, আপনি এত চিন্তা করেছিলেন—আসলে আমার কিছুই হয়নি।”</p>
+<p>সুব্রত হেসে বললেন,</p>
+<p class="dialogue">“তুমি সেদিন পড়ে গিয়েও আমাকে এমনভাবে সান্ত্বনা দিয়েছিলে যে, উল্টো আমারই লজ্জা হয়েছিল।”</p>
+<p>সবুজ হেসে বলল,</p>
+<p class="dialogue">“দুর্ঘটনা তো দুর্ঘটনাই। এসব নিয়ে মন খারাপ করে কী লাভ?”</p>
+<p>সুব্রত কিছুক্ষণ ছেলেটির দিকে তাকিয়ে রইলেন।</p>
+<p>তারপর বললেন,</p>
+<p class="dialogue">“তুমি কী করো?”</p>
+<p>সবুজ তার চাকরির কথা বলল। জানাল, খুব শিগগিরই তাকে অন্য রাজ্যে কাজে যোগ দিতে যেতে হবে।</p>
+<p>সুব্রত বললেন,</p>
+<p class="dialogue">“বাড়ির সবাইকে ছেড়ে দূরে যাবে?”</p>
+<p class="dialogue">“হ্যাঁ। কাজের জন্য কিছুদিন তো যেতেই হবে।”</p>
+<p class="dialogue">“বিয়ে-থা করেছ?”</p>
+<p>সবুজ একটু হেসে মাথা নাড়ল।</p>
+<p class="dialogue">“না।”</p>
+<p>কথাটা শুনে সুব্রত অকারণেই যেন স্বস্তি পেলেন।</p>
+<p>তিনি বললেন,</p>
+<p class="dialogue">“ভালোভাবে জীবনটা গুছিয়ে নিও।”</p>
+<p>সবুজ সম্মান দিয়ে বলল,</p>
+<p class="dialogue">“আপনার আশীর্বাদ থাকলে চেষ্টা করব।”</p>
+<p>কথাটা সুব্রতের মনে আরও ভালো লাগল।</p>
+<p>বিদায় নেওয়ার আগে সবুজ বলল,</p>
+<p class="dialogue">“আচ্ছা সুব্রতবাবু, আমি চলি।”</p>
+<p>সুব্রত বললেন,</p>
+<p class="dialogue">“হ্যাঁ, ভালো থেকো।”</p>
+<p>সবুজ চলে গেল।</p>
+<p>সুব্রত তার দিকে তাকিয়ে মনে মনে ভাবলেন—</p>
+<p><strong>“ছেলেটাকে যত দেখি, ততই ভালো লাগে।”</strong></p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🕯️ বাড়িতে ফিরে</h3>
+<p>সন্ধ্যায় বাড়ি ফিরে সুব্রত সুচরিতাকে বললেন,</p>
+<p class="dialogue">“আজ আবার সেই ছেলেটার সঙ্গে দেখা হলো।”</p>
+<p>সুচরিতা জিজ্ঞেস করলেন,</p>
+<p class="dialogue">“কোন ছেলেটা?”</p>
+<p class="dialogue">“সবুজ রায়।”</p>
+<p class="dialogue">“ওহ্, সেই ছেলেটা!”</p>
+<p>সুব্রত হেসে বললেন,</p>
+<p class="dialogue"><strong>“ছেলেটার মধ্যে সত্যিই একটা ভালো ব্যবহার আছে। কথা বললেই বোঝা যায়।”</strong></p>
+<p>সুচরিতা স্বামীর মুখের দিকে তাকালেন।</p>
+<p class="dialogue">“তোমার বেশ পছন্দ হয়েছে দেখছি।”</p>
+<p class="dialogue">“ভালো ছেলে হলে ভালো লাগবেই।”</p>
+<p>কথাটা বলেই সুব্রত চুপ করে গেলেন।</p>
+<p>কারণ তাঁর মনে হঠাৎ অন্য একটা প্রশ্ন জেগে উঠল।</p>
+<p><strong>তিতলির জীবনে যে সবুজ এসেছে, সে কি এই ছেলেটি?</strong></p>
+<p>কিন্তু পরক্ষণেই তিনি নিজেকে থামালেন।</p>
+<p>না।</p>
+<p>এটা শুধু অনুমান।</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌧️ মেয়েকে জিজ্ঞেস করবেন?</h3>
+<p>রাতে তিতলি পড়ার টেবিলে বসেছিল।</p>
+<p>সুব্রত কয়েকবার মেয়ের ঘরের সামনে গিয়ে থামলেন।</p>
+<p>একবার মনে হলো, সরাসরি জিজ্ঞেস করবেন—</p>
+<p><strong>“তোর সবুজ কে?”</strong></p>
+<p>কিন্তু তিনি তা করলেন না।</p>
+<p>তিতলির সঙ্গে আগের কিছুদিনের কথাবার্তা তাঁর মনে ছিল।</p>
+<p>মেয়েটা এখন খুব সংবেদনশীল হয়ে উঠেছে।</p>
+<p>হঠাৎ প্রশ্ন করলে হয়তো আবার ঝগড়া হবে।</p>
+<p>তাই তিনি ফিরে এলেন।</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌸 সুচরিতার সঙ্গে আলোচনা</h3>
+<p>সুব্রত বিছানায় বসে সুচরিতাকে বললেন,</p>
+<p class="dialogue">“আমি একটা কথা ভাবছি।”</p>
+<p class="dialogue">“কী?”</p>
+<p class="dialogue">“তিতলির যে সবুজের কথা, সে কি সবুজ রায় হতে পারে?”</p>
+<p>সুচরিতা কিছুক্ষণ চুপ করে রইলেন।</p>
+<p class="dialogue">“তিতলি তো বলেছে, তার সবুজ অন্য মানুষ।”</p>
+<p class="dialogue">“জানি।”</p>
+<p class="dialogue">“তাহলে?”</p>
+<p>সুব্রত বললেন,</p>
+<p class="dialogue"><strong>“আমি শুধু মিলটা ভাবছি। দুজনের নামই সবুজ।”</strong></p>
+<p>সুচরিতা শান্তভাবে বললেন,</p>
+<p class="dialogue">“শুধু নাম এক হলেই তো মানুষ এক হয় না।”</p>
+<p>সুব্রত দীর্ঘশ্বাস ফেললেন।</p>
+<p class="dialogue">“সেটাই তো সমস্যা। আমি বুঝতে পারছি না, কোন কথাটা সত্যি।”</p>
+<p>সুচরিতা এবার দৃঢ় গলায় বললেন,</p>
+<p class="dialogue"><strong>“তিতলি যদি সত্যিই চার বছর ধরে কাউকে ভালোবেসে থাকে, তাহলে একদিন না একদিন সেই ছেলেকে সামনে আনতেই হবে।”</strong></p>
+<p>সুব্রত চুপ করে গেলেন।</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>📱 তিতলির ফোন</h3>
+<p>সেই রাতেই তিতলি সবুজ রায়কে ফোন করল।</p>
+<p class="dialogue">“আজ বাবা আবার তোমার কথা বলেছে।”</p>
+<p>সবুজ অবাক হয়ে বলল,</p>
+<p class="dialogue">“আমার কথা?”</p>
+<p class="dialogue">“হ্যাঁ। বাবা বলেছে, তুমি নাকি খুব ভালো ছেলে।”</p>
+<p>সবুজ কিছুক্ষণ চুপ করে থেকে হেসে বলল,</p>
+<p class="dialogue">“তোমার বাবা আমাকে পছন্দ করেছেন?”</p>
+<p>তিতলি মৃদু হেসে বলল,</p>
+<p class="dialogue">“তুমি তো জানো না, উনি তোমাকে কতটা পছন্দ করেন।”</p>
+<p>তারপর হঠাৎ তিতলির গলা ভারী হয়ে গেল।</p>
+<p class="dialogue">“কিন্তু উনি এখনও আমাদের সম্পর্কটা জানেন না।”</p>
+<p>সবুজ বলল,</p>
+<p class="dialogue">“তাহলে এবার জানিয়ে দাও।”</p>
+<p class="dialogue">“ভয় করছে।”</p>
+<p class="dialogue">“আমি আছি।”</p>
+<p>তিতলি কিছুক্ষণ চুপ করে রইল।</p>
+<p>তারপর বলল,</p>
+<p class="dialogue"><strong>“তুমি কি বাবার সঙ্গে দেখা করবে?”</strong></p>
+<p>সবুজ উত্তর দিল,</p>
+<p class="dialogue">“অবশ্যই।”</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>⚠️ কিন্তু অন্যদিকে...</h3>
+<p>সেই রাতেই সবুজ সাহা নিজের মতো করে আরেকটি চাল দিল।</p>
+<p>সে সুব্রতকে ফোন করল।</p>
+<p class="dialogue">“সুব্রতবাবু, আমি একটা কথা বলতে চেয়েছিলাম।”</p>
+<p class="dialogue">“বলো।”</p>
+<p class="dialogue"><strong>“তিতলি আমার সঙ্গে কথা বলছে না। কিন্তু আমি ওকে সত্যিই ভালোবাসি।”</strong></p>
+<p>সুব্রতের মুখ গম্ভীর হয়ে গেল।</p>
+<p class="dialogue">“তোমার আর তিতলির সম্পর্কের ব্যাপারে আমি এখনই কোনো সিদ্ধান্ত দিতে পারব না।”</p>
+<p class="dialogue">“আমি বুঝতে পারছি।”</p>
+<p class="dialogue">“তবে একটা কথা মনে রেখো—তিতলির ইচ্ছার বিরুদ্ধে আমি কিছু করব না।”</p>
+<p>সবুজ সাহা একটু থেমে বলল,</p>
+<p class="dialogue"><strong>“ও আমাকে ভালোবাসে। শুধু এখন পরিবারের চাপে সেটা অস্বীকার করছে।”</strong></p>
+<p>সুব্রত কিছু বললেন না।</p>
+<p>ফোন কেটে যাওয়ার পর তাঁর মনে সন্দেহ আরও গভীর হলো।</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌑 সন্দেহের ছায়া</h3>
+<p>রাত অনেক হয়ে গেছে।</p>
+<p>সুব্রত জানালার পাশে দাঁড়িয়ে ছিলেন।</p>
+<p>তাঁর মনে এখন তিনটি প্রশ্ন—</p>
+<p><strong>তিতলি কাকে ভালোবাসে?</strong></p>
+<p><strong>সবুজ রায় কি সেই মানুষ?</strong></p>
+<p><strong>নাকি সবুজ সাহাই সত্যি বলছে?</strong></p>
+<p>তিনি কোনো উত্তর পেলেন না।</p>
+<p>শুধু একটা বিষয় ক্রমশ পরিষ্কার হচ্ছিল—</p>
+<p><strong>এই গল্পে “সবুজ” নামটাই যেন সবচেয়ে বড় রহস্য হয়ে দাঁড়িয়েছে।</strong></p>
+<p>আর সেই রহস্যের সমাধান করার একমাত্র উপায়—</p>
+<p><strong>তিতলির সেই সবুজকে একদিন নিজের চোখে দেখা।</strong></p>
+<p>সুব্রত জানতেন না, সেই দেখা আর খুব দূরে নয়।</p>
+<p>কারণ পরদিনই তিতলি এমন একটি সিদ্ধান্ত নিতে চলেছে, যা প্রথমবারের মতো <strong>সত্যিকারের সবুজ রায়কে সুব্রতের সামনে এনে দাঁড় করাবে।</strong></p>
+<p>কিন্তু সেই সাক্ষাৎ কি ভুল বোঝাবুঝি ভাঙবে?</p>
+<p>নাকি একই নামের এই রহস্য আরও বড় বিপদ ডেকে আনবে?</p>
+<p><strong>চলবে...</strong> 🌿</p>
+        </div>
+        <div class="part-foot">
+          <button class="bookmark-btn" data-slug="part-5" aria-pressed="false">
+            <svg viewBox="0 0 24 24" class="bm-icon" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+            <span class="bm-label">এই পর্বটি বুকমার্ক করুন</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="part" id="part-6" data-slug="part-6" data-title="পর্ব–৭ : অজানা পথে" aria-labelledby="part-6-h">
+        <div class="part-head">
+          <span class="part-eyebrow">পর্ব 06</span>
+          <h2 id="part-6-h">অজানা পথে</h2>
+        </div>
+        <div class="part-body">
+<p>তিতলি বুঝে গিয়েছিল, পরিস্থিতি আর আগের জায়গায় নেই।</p>
+<p>বাবার মনে সন্দেহ তৈরি হয়েছে, কিন্তু সেই সন্দেহের সমাধান করার মতো সুযোগ এখনও আসেনি। অন্যদিকে সবুজ রায়ের চাকরিতে যোগ দেওয়ার সময়ও ঘনিয়ে এসেছে।</p>
+<p>দুজনের সামনে এখন কঠিন একটি সিদ্ধান্ত।</p>
+<p><strong>অপেক্ষা করবে, নাকি নিজেদের ভবিষ্যতের জন্য নতুন পথে পা বাড়াবে?</strong></p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌙 শেষ রাতের সিদ্ধান্ত</h3>
+<p>সেদিন গভীর রাতে তিতলি নিজের ঘরে একা বসে ছিল।</p>
+<p>টেবিলের ওপর রাখা ছিল মায়ের পুরোনো একটি ছবি।</p>
+<p>ছবিটার দিকে তাকিয়ে তার মনে পড়ছিল শৈশবের কত কথা—মায়ের অসুস্থতার সময় পাশে বসে থাকা, স্কুলে যাওয়ার আগে চুল বেঁধে দেওয়া, আর ছোট্ট ছোট্ট ভুলের পরও তাকে বুকের মধ্যে টেনে নেওয়া।</p>
+<p>সুচরিতা শুধু সৎমা ছিলেন না।</p>
+<p>তিতলির কাছে তিনি ছিলেন <strong>মা</strong>।</p>
+<p>তাই বাড়ি ছেড়ে যাওয়ার চিন্তাটাই তাকে ভেতর থেকে কাঁপিয়ে দিচ্ছিল।</p>
+<p>ঠিক তখন ফোনে সবুজের মেসেজ এল—</p>
+<p><strong>“সিদ্ধান্ত তোমার। আমি তোমাকে কোনো চাপ দেব না।”</strong></p>
+<p>তিতলি অনেকক্ষণ মেসেজটির দিকে তাকিয়ে রইল।</p>
+<p>তারপর উত্তর দিল—</p>
+<p><strong>“আমি তোমার সঙ্গে যাব। কিন্তু মাকে কোনোদিন ভুলব না।”</strong></p>
+<p>সবুজ লিখল—</p>
+<p><strong>“তোমার মা তোমার মা-ই থাকবেন। দূরত্ব সম্পর্ক বদলায় না।”</strong></p>
+<p>তিতলির চোখ ভিজে উঠল।</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🚪 বিদায়ের মুহূর্ত</h3>
+<p>ভোর হওয়ার আগেই তিতলি প্রয়োজনীয় কিছু জিনিস একটি ছোট ব্যাগে গুছিয়ে নিল।</p>
+<p>বাড়ির প্রতিটি ঘরের দিকে শেষবারের মতো তাকাল।</p>
+<p>এই বাড়ির সঙ্গে তার শৈশব জড়িয়ে।</p>
+<p>এই উঠোনে তার প্রথম হাঁটা, এই ঘরে তার প্রথম স্কুলের পোশাক, আর এই মানুষগুলোর সঙ্গেই তার বড় হয়ে ওঠা।</p>
+<p>দরজা খুলতে গিয়ে তার হাত কেঁপে উঠল।</p>
+<p>কিন্তু শেষ পর্যন্ত সে বেরিয়ে এল।</p>
+<p>বাড়ির সামনের রাস্তায় সবুজ অপেক্ষা করছিল।</p>
+<p>তিতলিকে দেখে সে এগিয়ে এল।</p>
+<p class="dialogue">“চলো?”</p>
+<p>তিতলি একবার পিছনে তাকাল।</p>
+<p class="dialogue"><strong>“হ্যাঁ।”</strong></p>
+<p>তার কণ্ঠে দৃঢ়তা ছিল, কিন্তু চোখে জল।</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>💍 নতুন জীবনের শুরু</h3>
+<p>কয়েকদিনের মধ্যেই দুজন আইনসম্মতভাবে বিয়ে করল।</p>
+<p>বিয়েটা ছিল খুব সাধারণ।</p>
+<p>না ছিল বড় আয়োজন, না ছিল আত্মীয়স্বজনের ভিড়।</p>
+<p>ছিল শুধু দুজন মানুষের সিদ্ধান্ত—<strong>একসঙ্গে জীবন কাটানোর সিদ্ধান্ত।</strong></p>
+<p>বিয়ের পর সবুজ বলল,</p>
+<p class="dialogue">“তুমি চাইলে এখনই তোমার মাকে ফোন করতে পারো।”</p>
+<p>তিতলি কিছুক্ষণ চুপ করে রইল।</p>
+<p class="dialogue">“মাকে খুব মনে পড়ছে।”</p>
+<p class="dialogue">“তাহলে ফোন করো।”</p>
+<p>তিতলি ফোনটা হাতে নিল।</p>
+<p>সুচরিতার নম্বর স্ক্রিনে ভেসে উঠল।</p>
+<p>আঙুলটা কলের ওপর থেমে গেল।</p>
+<p>তারপর সে ফোনটা নামিয়ে রাখল।</p>
+<p class="dialogue">“আজ নয়।”</p>
+<p>সবুজ আর কিছু বলল না।</p>
+<p>সে বুঝেছিল, কিছু সম্পর্কের কাছে পৌঁছতে কখনো কখনো সময় লাগে।</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🚆 নতুন রাজ্যের পথে</h3>
+<p>ট্রেন যখন ধীরে ধীরে পরিচিত শহর পেরিয়ে অচেনা পথের দিকে এগোচ্ছিল, তিতলি জানালার পাশে বসে ছিল।</p>
+<p>সবুজ বলল,</p>
+<p class="dialogue">“ভয় লাগছে?”</p>
+<p>তিতলি মৃদু হেসে বলল,</p>
+<p class="dialogue">“নতুন জায়গা বলে একটু।”</p>
+<p class="dialogue">“আমার ওপর ভরসা আছে?”</p>
+<p class="dialogue"><strong>“তোমার ওপর আছে। কিন্তু নিজের মনকে বোঝাতে সময় লাগবে।”</strong></p>
+<p>সবুজ তার হাত ধরল।</p>
+<p class="dialogue">“সময় নাও।”</p>
+<p>তিতলি বাইরে তাকিয়ে রইল।</p>
+<p>তার চোখের সামনে ধীরে ধীরে পরিচিত শহরটা হারিয়ে গেল।</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🏠 নতুন সংসার</h3>
+<p>অন্য রাজ্যের ছোট্ট শহরে তারা নতুন জীবন শুরু করল।</p>
+<p>সবুজ চাকরিতে যোগ দিল।</p>
+<p>তিতলিও নিজের মতো করে নতুন পরিবেশে মানিয়ে নিতে শুরু করল।</p>
+<p>প্রথমদিকে সবকিছুই অচেনা লাগত।</p>
+<p>নতুন রাস্তা, নতুন প্রতিবেশী, নতুন সংসার।</p>
+<p>কিন্তু সন্ধ্যায় সবুজ বাড়ি ফিরলে তিতলির মুখে হাসি ফুটত।</p>
+<p>একদিন রান্নাঘরে দাঁড়িয়ে তিতলি বলল,</p>
+<p class="dialogue">“জানো, একটা কথা বুঝেছি।”</p>
+<p class="dialogue">“কী?”</p>
+<p class="dialogue"><strong>“সংসার শুধু ভালোবাসা দিয়ে হয় না। দায়িত্বও নিতে হয়।”</strong></p>
+<p>সবুজ হেসে বলল,</p>
+<p class="dialogue">“তুমি এতদিনে বড় হয়ে গেছ।”</p>
+<p>তিতলি মৃদু হেসে বলল,</p>
+<p class="dialogue">“হয়তো।”</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>⏳ কয়েক বছর পরে</h3>
+<p>সময় নিজের নিয়মে এগিয়ে গেল।</p>
+<p>নতুন শহরে তাদের জীবন ধীরে ধীরে স্থির হলো।</p>
+<p>তিতলি আর সবুজ নিজেদের সংসার গুছিয়ে নিল।</p>
+<p>কাজের ব্যস্ততা, সংসারের দায়িত্ব—সবকিছুর মাঝেও তিতলির মনে একটি জায়গা কখনো খালি রইল।</p>
+<p><strong>সুচরিতা।</strong></p>
+<p>কখনো কোনো শিশুকে মায়ের হাত ধরে হাঁটতে দেখলে তার মনে পড়ে যেত নিজের মা-কে।</p>
+<p>কখনো রান্না করতে গিয়ে মনে পড়ত—</p>
+<p><strong>“মা হলে এটা কীভাবে রান্না করত?”</strong></p>
+<p>কখনো গভীর রাতে ফোনটা হাতে নিয়ে সুচরিতার নম্বর খুঁজত।</p>
+<p>কিন্তু কল করার সাহস হতো না।</p>
+<p>অভিমান আর অপরাধবোধ—দুটোই তাকে থামিয়ে দিত।</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌱 নতুন অতিথি</h3>
+<p>আরও কিছুদিন পর তাদের সংসারে এল এক নতুন প্রাণ।</p>
+<p>তিতলি মা হলো।</p>
+<p>ছোট্ট ছেলেটিকে প্রথমবার কোলে নিয়ে সে স্তব্ধ হয়ে বসে রইল।</p>
+<p>শিশুটির মুখের দিকে তাকিয়ে তার চোখ ভিজে গেল।</p>
+<p>সে আস্তে বলল—</p>
+<p class="dialogue"><strong>“মা হলে বুঝি এত ভয় হয়!”</strong></p>
+<p>সবুজ পাশে দাঁড়িয়ে মৃদু হেসে বলল,</p>
+<p class="dialogue">“কীসের ভয়?”</p>
+<p>তিতলি শিশুটিকে আরও শক্ত করে বুকে জড়িয়ে ধরল।</p>
+<p class="dialogue"><strong>“ওকে যেন কোনোদিন কষ্ট না দিই।”</strong></p>
+<p>তারপর কিছুক্ষণ চুপ করে থেকে বলল,</p>
+<p class="dialogue">“আমার মা আমাকে কতটা ভালোবাসতেন, সেটা এখন আরও ভালো বুঝতে পারছি।”</p>
+<p>এই প্রথম বহুদিন পর তিতলি মনে মনে সুচরিতার কাছে ফিরে গেল।</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌧️ অন্যদিকে...</h3>
+<p>সুব্রতবাবু ও সুচরিতার জীবনও থেমে থাকেনি।</p>
+<p>কাজ, সংসার—সব চলছিল।</p>
+<p>কিন্তু মেয়ের জায়গাটা ফাঁকাই রয়ে গেল।</p>
+<p>সুচরিতা মাঝে মাঝে তিতলির পুরোনো ঘরে গিয়ে দাঁড়াতেন।</p>
+<p>ঘরটি তিনি বদলাননি।</p>
+<p>একদিন সুব্রত বললেন,</p>
+<p class="dialogue">“এত বছর পরও ঘরটা একইভাবে রেখে দিয়েছ?”</p>
+<p>সুচরিতা মৃদু গলায় বললেন,</p>
+<p class="dialogue"><strong>“মেয়ে যদি কোনোদিন ফিরে আসে?”</strong></p>
+<p>সুব্রত কোনো উত্তর দিলেন না।</p>
+<p>জানালার বাইরে তাকিয়ে শুধু দীর্ঘশ্বাস ফেললেন।</p>
+<p>তাঁর নিজের মনেও তখন একটি প্রশ্ন বহুদিন ধরে ঘুরছিল—</p>
+<p><strong>সেদিনের সিদ্ধান্তটা কি সত্যিই ঠিক ছিল?</strong></p>
+<p>কিন্তু উত্তর খুঁজে পাওয়ার কোনো পথ তাঁর হাতে ছিল না।</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🛣️ বহু বছর পরে</h3>
+<p>সময়ের স্রোতে আরও কয়েকটি বছর কেটে গেল।</p>
+<p>একদিন সুব্রত ও সুচরিতা একটি আত্মীয়ের বাড়িতে যাওয়ার জন্য অন্য রাজ্যের একটি শহরে এলেন।</p>
+<p>সেখানে তাঁদের থাকার ব্যবস্থা হয়েছিল এক পরিচিত পরিবারের মাধ্যমে।</p>
+<p>সন্ধ্যায় সেই পরিবারের এক পরিচিত যুবকের সঙ্গে সুব্রতের আলাপ হলো।</p>
+<p>কথায় কথায় যুবকটি জানাল,</p>
+<p class="dialogue">“আমি এখানেই থাকি। চাকরির জন্য বহু বছর আগে এসেছিলাম।”</p>
+<p>সুব্রত সাধারণভাবেই জিজ্ঞেস করলেন,</p>
+<p class="dialogue">“পরিবার?”</p>
+<p>যুবকটি হেসে বলল,</p>
+<p class="dialogue"><strong>“সংসার আছে। স্ত্রী আছে, একটা ছোট ছেলে আছে।”</strong></p>
+<p>কথাটা শুনে সুব্রত আর বিশেষ কিছু ভাবলেন না।</p>
+<p>কিন্তু যুবকটি যখন বলল,</p>
+<p class="dialogue"><strong>“চলুন, আপনাদের আমার বাড়িতে নিয়ে যাই।”</strong></p>
+<p>তখন সুচরিতার মনে অকারণেই এক অদ্ভুত অনুভূতি হলো।</p>
+<p>কেন যেন তাঁর বুকের ভেতরটা হঠাৎ কেঁপে উঠল।</p>
+<p>তাঁরা জানতেন না—</p>
+<p>সামনের সেই বাড়ির দরজা খুললেই তাঁদের জীবনের বহু বছরের সবচেয়ে বড় ভুলের সামনে দাঁড়াতে হবে।</p>
+<p>আর সেই দরজার ওপারে অপেক্ষা করছে—</p>
+<p><strong>তিতলি।</strong></p>
+<p><strong>চলবে...</strong> 🌿</p>
+        </div>
+        <div class="part-foot">
+          <button class="bookmark-btn" data-slug="part-6" aria-pressed="false">
+            <svg viewBox="0 0 24 24" class="bm-icon" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+            <span class="bm-label">এই পর্বটি বুকমার্ক করুন</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="part" id="part-7" data-slug="part-7" data-title="পর্ব–৮ : অচেনা শহরে পরিচিত মুখ" aria-labelledby="part-7-h">
+        <div class="part-head">
+          <span class="part-eyebrow">পর্ব 07</span>
+          <h2 id="part-7-h">অচেনা শহরে পরিচিত মুখ</h2>
+        </div>
+        <div class="part-body">
+<p>বহু বছর কেটে গেছে।</p>
+<p>তিতলির জীবন এখন অন্য শহরে। সংসার, স্বামী আর ছেলেকে নিয়ে তার দিন কাটে ব্যস্ততায়। পুরোনো জীবনের অনেক স্মৃতি সময়ের আড়ালে চাপা পড়েছে, কিন্তু <strong>সুচরিতার মুখটা</strong> কখনো তার মন থেকে মুছে যায়নি।</p>
+<p>মাঝে মাঝে ছেলেকে ঘুম পাড়াতে গিয়ে তার মনে হতো—</p>
+<p><strong>“মা এখন কেমন আছে?”</strong></p>
+<p>ফোন করার কথা ভেবেও সে শেষ পর্যন্ত পারেনি।</p>
+<p>অন্যদিকে সুব্রত ও সুচরিতার জীবনও নিজেদের ছন্দে চলছিল। তিতলির সঙ্গে যোগাযোগ নেই বহু বছর, কিন্তু মেয়ের কথা তাঁদের সংসারে এখনও নীরব উপস্থিতির মতো রয়ে গেছে।</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🚆 অন্য শহরে</h3>
+<p>সুব্রত অবসর নেওয়ার পর সুচরিতাকে নিয়ে কয়েকদিনের জন্য এই শহরে এসেছেন।</p>
+<p>এক আত্মীয়ের বাড়িতে ওঠার পর সেদিন বিকেলে তাঁরা শহরের একটি বাজারে বেরিয়েছিলেন।</p>
+<p>রাস্তার পাশে দাঁড়িয়ে সুচরিতা হঠাৎ বললেন,</p>
+<p class="dialogue">“এখানে বেশ শান্ত পরিবেশ।”</p>
+<p>সুব্রত হেসে বললেন,</p>
+<p class="dialogue">“শান্ত তো বটেই। তবে কয়েকদিন পর আমাদের ফিরতে হবে।”</p>
+<p>সুচরিতা কিছু বললেন না।</p>
+<p>তাঁর চোখ চলে গেল রাস্তার ওপারে।</p>
+<p>হঠাৎ পিছন থেকে পরিচিত কণ্ঠস্বর—</p>
+<p class="dialogue"><strong>“সুব্রতবাবু!”</strong></p>
+<p>সুব্রত ঘুরে দাঁড়ালেন।</p>
+<p>এক মুহূর্তের জন্য তিনি যেন বিশ্বাস করতে পারলেন না।</p>
+<p class="dialogue"><strong>“সবুজ!”</strong></p>
+<p>সামনে দাঁড়িয়ে <strong>সবুজ রায়</strong>।</p>
+<p>বছরগুলো তার চেহারায় কিছু পরিবর্তন এনেছে, কিন্তু হাসিটা একই রকম।</p>
+<p>সবুজ এগিয়ে এসে বলল,</p>
+<p class="dialogue">“আপনি এখানে?”</p>
+<p>সুব্রত হেসে বললেন,</p>
+<p class="dialogue">“কয়েকদিনের জন্য এসেছি। তুমি?”</p>
+<p class="dialogue">“আমি তো এখানেই থাকি।”</p>
+<p>সুচরিতাও এগিয়ে এলেন।</p>
+<p class="dialogue">“কতদিন হলো এখানে?”</p>
+<p class="dialogue">“অনেক বছর।”</p>
+<p>কথা বলতে বলতে পুরোনো পরিচয়ের উষ্ণতা ফিরে এল।</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>☕ কিছুক্ষণ গল্প</h3>
+<p>রাস্তার পাশের একটি দোকানে তাঁরা বসে চা খেলেন।</p>
+<p>সবুজ তার কাজের কথা বলল। জানাল, এখন এখানেই তার স্থায়ীভাবে থাকা।</p>
+<p>সুব্রত আগ্রহ নিয়ে শুনছিলেন।</p>
+<p class="dialogue">“সংসার কেমন চলছে?”</p>
+<p>সবুজের মুখে হাসি ফুটল।</p>
+<p class="dialogue">“ভালোই। বিয়ে করেছি।”</p>
+<p>সুচরিতা বললেন,</p>
+<p class="dialogue">“বেশ তো! সন্তান আছে?”</p>
+<p class="dialogue">“হ্যাঁ, একটা ছেলে। স্কুলে পড়ে।”</p>
+<p>সুব্রত হেসে বললেন,</p>
+<p class="dialogue">“তাহলে তো বেশ বড় হয়ে গেছে।”</p>
+<p>সবুজও হেসে ফেলল।</p>
+<p>কথা বলতে বলতে সে হঠাৎ বলল,</p>
+<p class="dialogue"><strong>“আপনারা আজ আমার বাড়িতে চলুন। এত বছর পর দেখা হয়েছে, শুধু রাস্তায় দাঁড়িয়ে তো বিদায় দেওয়া যায় না।”</strong></p>
+<p>সুচরিতা বললেন,</p>
+<p class="dialogue">“তোমার স্ত্রীও নিশ্চয়ই অবাক হবে।”</p>
+<p>সবুজ হেসে বলল,</p>
+<p class="dialogue">“হবে। তবে আপনাদের দেখে খুশিই হবে।”</p>
+<p>সুব্রত রাজি হয়ে গেলেন।</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🏠 পরিচিত পথের শেষে</h3>
+<p>সবুজ তাঁদের নিয়ে নিজের বাড়ির দিকে এগিয়ে চলল।</p>
+<p>পথে সে নিজের ছেলের স্কুল, কাজ আর সংসারের নানা কথা বলছিল।</p>
+<p>সুচরিতা মন দিয়ে শুনছিলেন।</p>
+<p>হঠাৎ তিনি জিজ্ঞেস করলেন,</p>
+<p class="dialogue">“তোমার স্ত্রী কোথায় থাকেন?”</p>
+<p class="dialogue">“বাড়িতেই। আজ ছেলের স্কুলের কাজ নিয়ে ব্যস্ত।”</p>
+<p>সুব্রত মৃদু হেসে বললেন,</p>
+<p class="dialogue">“তোমাদের সংসারটা দেখতে ইচ্ছে করছে।”</p>
+<p>সবুজ বলল,</p>
+<p class="dialogue">“আজ দেখেই যাবেন।”</p>
+<p>বাড়ির সামনে এসে সে দরজা খুলল।</p>
+<p>ভেতর থেকে ছুটে এল একটি ছোট্ট ছেলে।</p>
+<p class="dialogue"><strong>“বাবা!”</strong></p>
+<p>সবুজ ছেলেকে কোলে তুলে নিল।</p>
+<p class="dialogue">“এই যে, অতিথি এসেছে।”</p>
+<p>ছেলেটি কৌতূহলী চোখে সুব্রত ও সুচরিতার দিকে তাকাল।</p>
+<p>সুচরিতা হেসে তার মাথায় হাত রাখলেন।</p>
+<p class="dialogue">“কী নাম তোমার?”</p>
+<p>ছেলেটি নাম বলল।</p>
+<p>সুব্রত স্নেহভরে তার সঙ্গে দু-একটি কথা বললেন।</p>
+<p>ঘরের ভেতর তখনও তিতলি তাঁদের দেখতে পায়নি।</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🚪 সেই মুহূর্ত</h3>
+<p>সবুজ ঘুরে ঘরের ভেতরের দিকে তাকিয়ে ডাকল—</p>
+<p class="dialogue"><strong>“তিতলি, একটু এসো তো।”</strong></p>
+<p>রান্নাঘর থেকে একটি কণ্ঠ ভেসে এল—</p>
+<p class="dialogue">“আসছি।”</p>
+<p>সুচরিতা হঠাৎ থেমে গেলেন।</p>
+<p>কণ্ঠটা খুব পরিচিত।</p>
+<p>অসম্ভব পরিচিত।</p>
+<p>কিন্তু এত বছর পর স্মৃতির সঙ্গে বাস্তবের মিল খুঁজে পাওয়া সহজ নয়।</p>
+<p>তিনি সুব্রতের দিকে তাকালেন।</p>
+<p>সুব্রতও যেন কিছু একটা অনুভব করলেন।</p>
+<p>কয়েক সেকেন্ড পর ঘরের ভেতর থেকে তিতলি বেরিয়ে এল।</p>
+<p>হাতে একটি ছোট কাপড়।</p>
+<p>চোখ প্রথমে পড়ল সবুজের ওপর।</p>
+<p>তারপর অতিথিদের দিকে।</p>
+<p>তিতলির পা যেন মাটিতে আটকে গেল।</p>
+<p>কাপড়টা তার হাত থেকে পড়ে গেল।</p>
+<p>ঠোঁট কেঁপে উঠল।</p>
+<p class="dialogue"><strong>“বাবা...”</strong></p>
+<p>সুব্রত কোনো উত্তর দিলেন না।</p>
+<p>তিনি শুধু তাকিয়ে রইলেন।</p>
+<p>তারপর তাঁর মুখ থেকে একটি শব্দ বের হলো—</p>
+<p class="dialogue"><strong>“তিতলি!”</strong></p>
+<p>সুচরিতা আর নিজেকে ধরে রাখতে পারলেন না।</p>
+<p>তিনি এগিয়ে গিয়ে মেয়েকে জড়িয়ে ধরলেন।</p>
+<p class="dialogue"><strong>“মা...”</strong></p>
+<p>তিতলি মায়ের বুকের মধ্যে মুখ লুকিয়ে কেঁদে ফেলল।</p>
+<p>বহু বছর ধরে জমে থাকা অভিমান, কষ্ট আর অপেক্ষা—সব যেন এক মুহূর্তে ভেঙে পড়ল।</p>
+<p>সুচরিতা শুধু বললেন,</p>
+<p class="dialogue"><strong>“তুই এত দূরে আছিস, আর আমরা জানতামই না!”</strong></p>
+<p>তিতলি কোনো উত্তর দিতে পারল না।</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>😶 সবুজের স্তব্ধতা</h3>
+<p>সবুজ এতক্ষণ নির্বাক দাঁড়িয়ে ছিল।</p>
+<p>তার চোখে বিস্ময়।</p>
+<p>সে ধীরে সুব্রতের দিকে তাকাল।</p>
+<p class="dialogue">“আপনি... তিতলির বাবা?”</p>
+<p>সুব্রত এবার সবুজের দিকে তাকালেন।</p>
+<p>কণ্ঠ ভারী হয়ে এল।</p>
+<p class="dialogue"><strong>“হ্যাঁ।”</strong></p>
+<p>সবুজের মুখের ভাব বদলে গেল।</p>
+<p>তারপর সে তিতলির দিকে তাকাল।</p>
+<p>তিতলি চোখের জল মুছে স্বামীর দিকে তাকাল।</p>
+<p>কেউ কিছু বলল না।</p>
+<p>কথা বলার মতো এত বছর জমে ছিল।</p>
+<p>সুচরিতা তিতলির মুখ দুহাতের মধ্যে নিয়ে শুধু বললেন,</p>
+<p class="dialogue"><strong>“তুই ভালো আছিস তো, মা?”</strong></p>
+<p>তিতলি মাথা নাড়ল।</p>
+<p class="dialogue">“হ্যাঁ।”</p>
+<p>সুচরিতার চোখ আবার ভিজে গেল।</p>
+<p class="dialogue">“তাহলে এতদিন আমাদের একটা খবরও দিলি না?”</p>
+<p>তিতলি চোখ নামিয়ে ফেলল।</p>
+<p>এই প্রশ্নের উত্তর তার কাছে ছিল।</p>
+<p>কিন্তু সেই উত্তর দেওয়ার সাহস এখনও হয়নি।</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌧️ পুরোনো কথা ফিরে এল</h3>
+<p>সুব্রত এতক্ষণ চুপ ছিলেন।</p>
+<p>তিনি ঘরের চারপাশে তাকালেন।</p>
+<p>এক কোণে তিতলির ছেলের বই।</p>
+<p>দেয়ালে পরিবারের একটি ছবি।</p>
+<p>ছবিতে তিতলি, সবুজ আর তাদের ছেলে।</p>
+<p>হঠাৎ তাঁর চোখ ছবির ওপর স্থির হয়ে গেল।</p>
+<p>তিনি বুঝলেন—</p>
+<p><strong>যে জীবন থেকে তিনি এত বছর দূরে ছিলেন, সেই জীবনটিই এতদিন ধরে তাঁর মেয়ের পৃথিবী।</strong></p>
+<p>সবুজ ধীরে এসে তাঁর সামনে দাঁড়াল।</p>
+<p class="dialogue">“সুব্রতবাবু... আমি সত্যিই জানতাম না।”</p>
+<p>সুব্রত হাত তুলে তাকে থামিয়ে দিলেন।</p>
+<p class="dialogue"><strong>“আজ কোনো ব্যাখ্যা দিতে হবে না।”</strong></p>
+<p>সবুজ চুপ করে গেল।</p>
+<p>সুব্রত তিতলির দিকে তাকালেন।</p>
+<p>অনেক কথা বলতে চেয়েও তিনি শুধু বললেন—</p>
+<p class="dialogue"><strong>“তুই ভালো আছিস, এটাই আজ সবচেয়ে বড় কথা।”</strong></p>
+<p>তিতলির চোখ আবার ভিজে উঠল।</p>
+<p>কিন্তু সুচরিতা বুঝলেন—</p>
+<p><strong>আজ শুধু দেখা হয়েছে।</strong></p>
+<p>পুরোনো ক্ষত এখনও শুকোয়নি।</p>
+<p>অনেক প্রশ্নের উত্তর এখনও বাকি।</p>
+<p>আর সেই উত্তরগুলো আজ নয়—</p>
+<p><strong>সময়ের সঙ্গে ধীরে ধীরে বেরিয়ে আসবে।</strong></p>
+<p>সেদিন রাতে একই ছাদের নিচে বহু বছর পর চারজন মানুষ বসেছিল।</p>
+<p>কেউ কাউকে হারাতে চায়নি।</p>
+<p>কিন্তু প্রত্যেকের বুকের ভেতরেই ছিল কিছু না-বলা কথা।</p>
+<p>আর সেই না-বলা কথাগুলোর মধ্যেই লুকিয়ে ছিল—</p>
+<p><strong>একটি ভুল সিদ্ধান্তের পুরো সত্য।</strong></p>
+<p><strong>চলবে...</strong> 🌿</p>
+        </div>
+        <div class="part-foot">
+          <button class="bookmark-btn" data-slug="part-7" aria-pressed="false">
+            <svg viewBox="0 0 24 24" class="bm-icon" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+            <span class="bm-label">এই পর্বটি বুকমার্ক করুন</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="part" id="part-8" data-slug="part-8" data-title="শেষ পর্ব : সোহাগের সঙ্গে শাসন" aria-labelledby="part-8-h">
+        <div class="part-head">
+          <span class="part-eyebrow">শেষ পর্ব</span>
+          <h2 id="part-8-h">সোহাগের সঙ্গে শাসন</h2>
+        </div>
+        <div class="part-body">
+<p>দরজার সামনে দাঁড়িয়ে থাকা মানুষগুলো যেন কয়েক মুহূর্তের জন্য সময়ের বাইরে চলে গিয়েছিল।</p>
+<p>সুব্রতবাবু তাকিয়ে আছেন তিতলির দিকে। সুচরিতার চোখে অঝোর জল। তিতলির ঠোঁট কাঁপছে। আর সবুজ স্তব্ধ হয়ে দাঁড়িয়ে আছে।</p>
+<p>বহু বছরের ব্যবধান যেন হঠাৎ কয়েক মুহূর্তে মুছে গেল।</p>
+<p>তিতলিই প্রথম এগিয়ে এল।</p>
+<p class="dialogue"><strong>“বাবা...”</strong></p>
+<p>সুব্রতবাবু আর নিজেকে সামলাতে পারলেন না।</p>
+<p>তিনি মেয়েকে বুকে টেনে নিলেন।</p>
+<p>তিতলি বাবার বুকে মুখ লুকিয়ে কাঁদতে লাগল।</p>
+<p class="dialogue"><strong>“বাবা, আমি তোমাকে ছেড়ে যেতে চাইনি...”</strong></p>
+<p>সুব্রতবাবু মেয়ের মাথায় হাত রাখলেন।</p>
+<p class="dialogue">“জানি মা। এতদিনে বুঝতে পেরেছি।”</p>
+<p>পাশে দাঁড়িয়ে থাকা সুচরিতা এগিয়ে এসে তিতলিকে জড়িয়ে ধরলেন।</p>
+<p class="dialogue"><strong>“তুই কেমন করে এত বছর একা একা থাকলি রে?”</strong></p>
+<p>তিতলি মায়ের বুকের মধ্যে মুখ লুকিয়ে বলল,</p>
+<p class="dialogue">“মা, তোমাকে খুব মনে পড়ত।”</p>
+<p>সুচরিতা চোখের জল মুছে বললেন,</p>
+<p class="dialogue"><strong>“আমারও তোকে প্রতিদিন মনে পড়ত।”</strong></p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>💔 যে কথাগুলো এতদিন বলা হয়নি</h3>
+<p>কিছুক্ষণ পর সবাই ঘরের ভেতর বসল।</p>
+<p>ছোট্ট ছেলেটি কৌতূহলী চোখে দাদু-দিদার দিকে তাকিয়ে আছে।</p>
+<p>সবুজ ধীরে ধীরে সুব্রতবাবুর সামনে এসে দাঁড়াল।</p>
+<p class="dialogue">“সুব্রতবাবু...”</p>
+<p>সুব্রত তাঁর দিকে তাকালেন।</p>
+<p>সবুজ বলল,</p>
+<p class="dialogue"><strong>“আমি সত্যিই জানতাম না, আপনি তিতলির বাবা।”</strong></p>
+<p>সুব্রত মৃদু হেসে বললেন,</p>
+<p class="dialogue">“আর আমি জানতাম না, যাকে এতদিন একজন ভালো ছেলে হিসেবে চিনতাম, সেই তুই আমার মেয়ের জীবনের মানুষ।”</p>
+<p>সবুজের চোখ নেমে গেল।</p>
+<p class="dialogue">“সেদিন যদি আমরা দুজনেই নিজেদের পরিচয়টা জানতাম...”</p>
+<p>সুব্রত কথাটা শেষ করতে দিলেন না।</p>
+<p class="dialogue"><strong>“তাহলে হয়তো এতগুলো বছর আমাদের হারাতে হতো না।”</strong></p>
+<p>ঘরে নীরবতা নেমে এল।</p>
+<p>তিতলি বাবার দিকে তাকিয়ে বলল,</p>
+<p class="dialogue">“বাবা, তখন আমি অনেক চেষ্টা করেছিলাম তোমাকে বোঝাতে।”</p>
+<p>সুব্রত মাথা নিচু করলেন।</p>
+<p class="dialogue"><strong>“হ্যাঁ মা। তখন তুই সত্যি বলেছিলি। কিন্তু আমি আমার ধারণাটাকেই সত্যি ভেবে নিয়েছিলাম।”</strong></p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌿 ভুলের দায়</h3>
+<p>সুচরিতা শান্ত গলায় বললেন,</p>
+<p class="dialogue">“শুধু তোর বাবার ভুল ছিল না, তিতলি।”</p>
+<p>তিতলি মায়ের দিকে তাকাল।</p>
+<p class="dialogue">“তাহলে?”</p>
+<p class="dialogue"><strong>“তুইও তখন খুব তাড়াহুড়ো করে সিদ্ধান্ত নিয়েছিলি।”</strong></p>
+<p>তিতলি চুপ করে রইল।</p>
+<p>সুচরিতা বললেন,</p>
+<p class="dialogue">“তুই যদি আর একটু সময় নিতে পারতিস, যদি আমাদের সঙ্গে আরও কথা বলতিস, হয়তো ঘটনাটা অন্যভাবে শেষ হতে পারত।”</p>
+<p>তিতলি ধীরে বলল,</p>
+<p class="dialogue"><strong>“জানি মা। তখন মনে হয়েছিল, কেউ আমাকে বুঝছে না।”</strong></p>
+<p>সুচরিতা মেয়ের হাত ধরলেন।</p>
+<p class="dialogue">“কখনো কখনো অভিমান মানুষকে এমন সিদ্ধান্ত নিতে বাধ্য করে, যার ফল পরে অনেক দিন বয়ে বেড়াতে হয়।”</p>
+<p>তিতলি মায়ের হাত চেপে ধরল।</p>
+<p class="dialogue">“আমি ভুল করেছি।”</p>
+<p>সুচরিতা মাথা নেড়ে বললেন,</p>
+<p class="dialogue"><strong>“ভুল মানুষই করে। কিন্তু ভুল বুঝতে পারাটাই বড় কথা।”</strong></p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌸 সুচরিতার নিজের ভুল</h3>
+<p>হঠাৎ সুব্রতবাবু সুচরিতার দিকে তাকালেন।</p>
+<p class="dialogue">“তোমারও তো একটা কথা বলা উচিত।”</p>
+<p>সুচরিতা একটু মৃদু হাসলেন।</p>
+<p class="dialogue">“হ্যাঁ। আমারও অনেক কিছু শেখার ছিল।”</p>
+<p>তিনি তিতলির দিকে তাকালেন।</p>
+<p class="dialogue"><strong>“তুই যখন ছোট ছিলি, তোকে হারানোর ভয়েই আমি অনেক সময় তোর ভুলকে ভুল বলিনি।”</strong></p>
+<p>তিতলি অবাক হয়ে মায়ের দিকে তাকাল।</p>
+<p>সুচরিতা বললেন,</p>
+<p class="dialogue">“ভাবতাম, তোকে একটু বকলে তুই হয়তো ভাববি আমি তোকে নিজের মেয়ে মনে করি না।”</p>
+<p>তিতলি মায়ের হাত ধরে বলল,</p>
+<p class="dialogue">“আমি তো কখনো তা ভাবিনি।”</p>
+<p>সুচরিতা মৃদু হেসে বললেন,</p>
+<p class="dialogue"><strong>“কিন্তু সেই ভয় থেকেই আমি তোকে অনেক সময় প্রয়োজনীয় শাসন করতে পারিনি।”</strong></p>
+<p>তিনি একটু থামলেন।</p>
+<p class="dialogue">“পরে বুঝেছি, সন্তানকে ভালোবাসা মানে তার প্রতিটি কাজ মেনে নেওয়া নয়। ভুল করলে তাকে থামানোও ভালোবাসারই অংশ।”</p>
+<p>তিতলির চোখ ভিজে উঠল।</p>
+<p class="dialogue"><strong>“তখন তোমার ওপর রাগ করতাম। এখন বুঝি, তুমি আমার ভালো চেয়েছিলে।”</strong></p>
+<p>সুচরিতা মেয়েকে কাছে টেনে নিলেন।</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>👦 নতুন সম্পর্ক</h3>
+<p>ছোট্ট ছেলেটি এবার ধীরে ধীরে সুব্রতবাবুর কাছে এসে দাঁড়াল।</p>
+<p class="dialogue">“দাদু...”</p>
+<p>সুব্রত চমকে তাকালেন।</p>
+<p>ছেলেটি বলল,</p>
+<p class="dialogue"><strong>“তুমি কি সত্যিই আমার দাদু?”</strong></p>
+<p>সুব্রতর চোখ আবার ভিজে গেল।</p>
+<p>তিনি ছেলেটিকে কোলে তুলে নিলেন।</p>
+<p class="dialogue">“হ্যাঁ রে। অনেক দেরিতে হলেও আজ তোকে পেলাম।”</p>
+<p>ছেলেটি হেসে বলল,</p>
+<p class="dialogue">“তাহলে তুমি আমাকে গল্প শোনাবে?”</p>
+<p>সুব্রত হেসে ফেললেন।</p>
+<p class="dialogue"><strong>“অনেক গল্প শোনাব।”</strong></p>
+<p>সুচরিতা পাশে দাঁড়িয়ে সেই দৃশ্য দেখছিলেন।</p>
+<p>তাঁর মনে হচ্ছিল, এত বছরের শূন্যতার মধ্যে যেন এক মুহূর্তে আলো এসে পড়েছে।</p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>❤️ একটি অসম্পূর্ণ সম্পর্কের পূর্ণতা</h3>
+<p>রাতের খাবারের পর সবাই একসঙ্গে বসেছিল।</p>
+<p>তিতলি রান্নাঘর থেকে বেরিয়ে এসে দেখল, সুব্রতবাবু সবুজের সঙ্গে গল্প করছেন।</p>
+<p>সুব্রত বলছেন,</p>
+<p class="dialogue">“তুই এত বছর ধরে ওকে ভালো রেখেছিস?”</p>
+<p>সবুজ হেসে বলল,</p>
+<p class="dialogue">“চেষ্টা করেছি।”</p>
+<p class="dialogue">“চেষ্টা নয়। আজ তিতলির মুখ দেখে বুঝতে পারছি, তুই পেরেছিস।”</p>
+<p>তিতলি দূর থেকে শুনে মৃদু হাসল।</p>
+<p>তার মনে হলো—</p>
+<p><strong>যে স্বীকৃতির জন্য এত বছর আগে সে কেঁদেছিল, আজ সেটাই যেন নিজে থেকেই ফিরে এসেছে।</strong></p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌅 পরদিন সকাল</h3>
+<p>পরদিন সকালে সুব্রতবাবু উঠোনে বসে ছিলেন।</p>
+<p>তিতলি চা নিয়ে এসে বাবার পাশে বসল।</p>
+<p>কিছুক্ষণ দুজনেই চুপ।</p>
+<p>তারপর তিতলি বলল,</p>
+<p class="dialogue">“বাবা, তুমি কি আমাকে এখনও আগের মতো ভালোবাসো?”</p>
+<p>সুব্রত অবাক হয়ে মেয়ের দিকে তাকালেন।</p>
+<p class="dialogue"><strong>“এই প্রশ্নটা আবার করতে হয়?”</strong></p>
+<p>তিতলি মৃদু হেসে বলল,</p>
+<p class="dialogue">“অনেক বছর তো তোমার কাছ থেকে দূরে ছিলাম।”</p>
+<p>সুব্রত মেয়ের মাথায় হাত রাখলেন।</p>
+<p class="dialogue">“দূরত্বে ভালোবাসা কমে না মা। শুধু মানুষ সেটা প্রকাশ করার সুযোগ হারায়।”</p>
+<p>তিতলির চোখে জল এসে গেল।</p>
+<p class="dialogue">“তাহলে আর আমাকে দূরে পাঠাবে না তো?”</p>
+<p>সুব্রত হেসে বললেন,</p>
+<p class="dialogue"><strong>“এবার তুই যেখানে থাকিস, আমাদের হৃদয় সেখানেই থাকবে।”</strong></p>
+<div class="divider" aria-hidden="true"><span></span></div>
+<h3>🌺 শেষ শিক্ষা</h3>
+<p>সুচরিতা কিছুটা দূরে দাঁড়িয়ে বাবা-মেয়ের কথাগুলো শুনছিলেন।</p>
+<p>তিনি বুঝতে পারলেন, তাঁদের জীবনের সবচেয়ে বড় শিক্ষা কোনো একটি ভুলের মধ্যে নেই।</p>
+<p>বরং শিক্ষা রয়েছে <strong>ভালোবাসার ভারসাম্যে</strong>।</p>
+<p>অতিরিক্ত সোহাগ যেমন সন্তানের ভুলকে আড়াল করতে পারে, তেমনি অতিরিক্ত কঠোরতা তাকে আপনজনের কাছ থেকেও দূরে ঠেলে দিতে পারে।</p>
+<p>সন্তানকে ভালোবাসতে হবে।</p>
+<p>ভুল করলে বোঝাতে হবে।</p>
+<p>প্রয়োজনে শাসন করতে হবে।</p>
+<p>কিন্তু তার সঙ্গে থাকতে হবে <strong>বিশ্বাস, ধৈর্য আর খোলামেলা কথা বলার সুযোগ</strong>।</p>
+<p>সুব্রতবাবু তিতলির দিকে তাকিয়ে মৃদুস্বরে বললেন,</p>
+<p class="pullquote">**“সোহাগ মানুষকে কাছে রাখে, শাসন তাকে পথ দেখায়।</p>
+<p class="pullquote">কিন্তু দুটোর মাঝখানে বিশ্বাস না থাকলে পথ হারিয়ে যেতে হয়।”**</p>
+<p>সুচরিতা ধীরে ধীরে পাশে এসে দাঁড়ালেন।</p>
+<p>তিতলি মায়ের এক হাত আর বাবার এক হাত ধরে নিল।</p>
+<p>সবুজ দূরে দাঁড়িয়ে সেই দৃশ্য দেখছিল।</p>
+<p>ছোট্ট ছেলেটি দৌড়ে এসে সবাইকে একসঙ্গে জড়িয়ে ধরল।</p>
+<p>বহু বছরের দূরত্বের শেষে একটি পরিবার আবার পূর্ণ হলো।</p>
+<p>কেউ অতীত ফিরিয়ে আনতে পারল না।</p>
+<p>হারিয়ে যাওয়া বছরগুলোও ফিরে এল না।</p>
+<p>কিন্তু ফিরে এল মানুষগুলো।</p>
+<p>আর কখনো কখনো—</p>
+<p><strong>সেটাই জীবনের সবচেয়ে বড় পাওয়া।</strong></p>
+<h3>🌸 সমাপ্ত 🌸</h3>
+        </div>
+        <div class="part-foot">
+          <button class="bookmark-btn" data-slug="part-8" aria-pressed="false">
+            <svg viewBox="0 0 24 24" class="bm-icon" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+            <span class="bm-label">এই পর্বটি বুকমার্ক করুন</span>
+          </button>
+        </div>
+      </section>
+</main>
+
+<div class="colophon">
+  <p>"সোহাগ মানুষকে কাছে রাখে, শাসন তাকে পথ দেখায়। কিন্তু দুটোর মাঝখানে বিশ্বাস না থাকলে পথ হারিয়ে যেতে হয়।"</p>
+  <p class="author">— সমাপ্ত · সুরজিৎ রায়</p>
+</div>
+
+<div id="drawer-overlay"></div>
+<aside id="drawer" aria-label="সূচিপত্র">
+  <div class="drawer-head">
+    <h3>সূচিপত্র</h3>
+    <button class="drawer-close" id="drawer-close" aria-label="বন্ধ করুন">&times;</button>
+  </div>
+  <div class="drawer-body">
+    <ul class="toc-list" id="drawer-list">
+          <li>
+            <a href="#part-1" class="toc-link" data-slug="part-1">
+              <span class="toc-num">01</span>
+              <span class="toc-title">পর্ব–১ : মায়ের আঁচল</span>
+              <span class="toc-mark" data-mark="part-1" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#part-2" class="toc-link" data-slug="part-2">
+              <span class="toc-num">02</span>
+              <span class="toc-title">পর্ব–২ : সোহাগের আড়ালে</span>
+              <span class="toc-mark" data-mark="part-2" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#part-3" class="toc-link" data-slug="part-3">
+              <span class="toc-num">03</span>
+              <span class="toc-title">পর্ব–৪ : একই নামে দুই মানুষ</span>
+              <span class="toc-mark" data-mark="part-3" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#part-4" class="toc-link" data-slug="part-4">
+              <span class="toc-num">04</span>
+              <span class="toc-title">পর্ব–৫ : বাবার মনে সন্দেহ</span>
+              <span class="toc-mark" data-mark="part-4" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#part-5" class="toc-link" data-slug="part-5">
+              <span class="toc-num">05</span>
+              <span class="toc-title">পর্ব–৬ : সন্দেহের ছায়া</span>
+              <span class="toc-mark" data-mark="part-5" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#part-6" class="toc-link" data-slug="part-6">
+              <span class="toc-num">06</span>
+              <span class="toc-title">পর্ব–৭ : অজানা পথে</span>
+              <span class="toc-mark" data-mark="part-6" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#part-7" class="toc-link" data-slug="part-7">
+              <span class="toc-num">07</span>
+              <span class="toc-title">পর্ব–৮ : অচেনা শহরে পরিচিত মুখ</span>
+              <span class="toc-mark" data-mark="part-7" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#part-8" class="toc-link" data-slug="part-8">
+              <span class="toc-num">08</span>
+              <span class="toc-title">শেষ পর্ব : সোহাগের সঙ্গে শাসন</span>
+              <span class="toc-mark" data-mark="part-8" aria-hidden="true"></span>
+            </a>
+          </li>
+    </ul>
+  </div>
+</aside>
+
+<button id="to-top" aria-label="উপরে ফিরুন">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+</button>
+
+<script>
+(function(){
+  const STORAGE_KEY = "sohagerShasonProgress";
+
+  function loadState(){
+    try{
+      return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {bookmarks:[], visited:[], lastSlug:null, lastY:0};
+    }catch(e){ return {bookmarks:[], visited:[], lastSlug:null, lastY:0}; }
+  }
+  function saveState(state){
+    try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }catch(e){}
+  }
+  let state = loadState();
+
+  const parts = Array.from(document.querySelectorAll(".part"));
+  const partTitles = {};
+  parts.forEach(p => partTitles[p.dataset.slug] = p.dataset.title);
+
+  /* ---------- progress bar ---------- */
+  const progressBar = document.getElementById("progress-bar");
+  function updateProgress(){
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = pct + "%";
+  }
+
+  /* ---------- back to top ---------- */
+  const toTop = document.getElementById("to-top");
+  function updateToTop(){
+    if(window.scrollY > 600){ toTop.classList.add("show"); }
+    else{ toTop.classList.remove("show"); }
+  }
+  toTop.addEventListener("click", () => window.scrollTo({top:0, behavior:"smooth"}));
+
+  /* ---------- save reading position (throttled) ---------- */
+  let saveTimer = null;
+  function schedulePositionSave(){
+    if(saveTimer) return;
+    saveTimer = setTimeout(() => {
+      saveTimer = null;
+      const current = getCurrentPart();
+      if(current){
+        state.lastSlug = current;
+        state.lastY = window.scrollY;
+        if(!state.visited.includes(current)) state.visited.push(current);
+        saveState(state);
+        markVisitedInUI();
+      }
+    }, 700);
+  }
+
+  function getCurrentPart(){
+    let current = null;
+    const offset = 140;
+    for(const p of parts){
+      const rect = p.getBoundingClientRect();
+      if(rect.top - offset <= 0){ current = p.dataset.slug; }
+    }
+    return current || (parts[0] && parts[0].dataset.slug);
+  }
+
+  window.addEventListener("scroll", () => {
+    updateProgress();
+    updateToTop();
+    schedulePositionSave();
+    updateDrawerCurrent();
+  }, {passive:true});
+
+  /* ---------- resume banner ---------- */
+  const resumeBanner = document.getElementById("resume-banner");
+  const resumePartName = document.getElementById("resume-part-name");
+  const resumeGo = document.getElementById("resume-go");
+  const resumeDismiss = document.getElementById("resume-dismiss");
+
+  if(state.lastSlug && partTitles[state.lastSlug] && state.lastY > 300){
+    resumePartName.textContent = partTitles[state.lastSlug];
+    resumeBanner.classList.add("show");
+  }
+  resumeGo.addEventListener("click", () => {
+    resumeBanner.classList.remove("show");
+    window.scrollTo({top: state.lastY, behavior:"smooth"});
+  });
+  resumeDismiss.addEventListener("click", () => {
+    resumeBanner.classList.remove("show");
+  });
+
+  /* ---------- bookmarks ---------- */
+  function markVisitedInUI(){
+    document.querySelectorAll(".toc-mark").forEach(mark => {
+      const slug = mark.dataset.mark;
+      mark.classList.toggle("visited", state.visited.includes(slug));
+      mark.classList.toggle("bookmarked", state.bookmarks.includes(slug));
+    });
+  }
+  function markBookmarkButtons(){
+    document.querySelectorAll(".bookmark-btn").forEach(btn => {
+      const slug = btn.dataset.slug;
+      const on = state.bookmarks.includes(slug);
+      btn.setAttribute("aria-pressed", on ? "true" : "false");
+      btn.querySelector(".bm-label").textContent = on ? "বুকমার্ক করা হয়েছে" : "এই পর্বটি বুকমার্ক করুন";
+    });
+  }
+  document.querySelectorAll(".bookmark-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const slug = btn.dataset.slug;
+      const idx = state.bookmarks.indexOf(slug);
+      if(idx === -1){ state.bookmarks.push(slug); }
+      else{ state.bookmarks.splice(idx, 1); }
+      saveState(state);
+      markBookmarkButtons();
+      markVisitedInUI();
+    });
+  });
+  markBookmarkButtons();
+  markVisitedInUI();
+
+  /* ---------- TOC drawer ---------- */
+  const tocToggle = document.getElementById("toc-toggle");
+  const drawer = document.getElementById("drawer");
+  const drawerOverlay = document.getElementById("drawer-overlay");
+  const drawerClose = document.getElementById("drawer-close");
+
+  function openDrawer(){
+    drawer.classList.add("open");
+    drawerOverlay.classList.add("open");
+  }
+  function closeDrawer(){
+    drawer.classList.remove("open");
+    drawerOverlay.classList.remove("open");
+  }
+  tocToggle.addEventListener("click", openDrawer);
+  drawerClose.addEventListener("click", closeDrawer);
+  drawerOverlay.addEventListener("click", closeDrawer);
+  document.querySelectorAll("#drawer .toc-link").forEach(link => {
+    link.addEventListener("click", closeDrawer);
+  });
+
+  function updateDrawerCurrent(){
+    const current = getCurrentPart();
+    document.querySelectorAll("#drawer .toc-link").forEach(link => {
+      link.parentElement.classList.toggle("drawer-current", link.dataset.slug === current);
+    });
+  }
+
+  updateProgress();
+  updateToTop();
+  markVisitedInUI();
+  updateDrawerCurrent();
+})();
+</script>
+</body>
+</html>

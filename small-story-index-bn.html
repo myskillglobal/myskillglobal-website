@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ছোট গল্প — মাইস্কিল গ্লোবাল</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+<meta name="description"
+content="মাইস্কিল গ্লোবালের রহস্য, মানবিকতা, অ্যাডভেঞ্চার, দায়িত্ববোধ, সাহস, সততা, প্রকৃতি ও জীবনের শিক্ষামূলক ছোট গল্প আবিষ্কার করুন।">
+<style>
+  :root{
+    --night:#121a2e;
+    --night-deep:#0c1122;
+    --card:#1c2740;
+    --card-edge:#34426a;
+    --gold:#e8a33d;
+    --gold-soft:#f2c07a;
+    --teal:#4fa9a0;
+    --paper:#f4efe4;
+    --paper-dim:#b9c0d6;
+  }
+.home-btn{
+  position:absolute;left:14px;top:calc(14px + env(safe-area-inset-top,0px));
+  width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;
+  background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.35);color:var(--gold-soft);
+  text-decoration:none;font-size:1.05rem;
+}
+
+  *{
+    box-sizing:border-box;
+  }
+
+  html{
+    scroll-behavior:smooth;
+  }
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(
+        ellipse at 50% -10%,
+        #1a2544 0%,
+        var(--night) 55%,
+        var(--night-deep) 100%
+      );
+    color:var(--paper);
+    font-family:
+      Georgia,
+      "Iowan Old Style",
+      "Palatino Linotype",
+      Palatino,
+      serif;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* Faint stars */
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background-image:
+      radial-gradient(
+        1px 1px at 10% 20%,
+        rgba(244,239,228,.35),
+        transparent
+      ),
+      radial-gradient(
+        1px 1px at 80% 10%,
+        rgba(244,239,228,.25),
+        transparent
+      ),
+      radial-gradient(
+        1px 1px at 60% 35%,
+        rgba(244,239,228,.3),
+        transparent
+      ),
+      radial-gradient(
+        1px 1px at 25% 60%,
+        rgba(244,239,228,.2),
+        transparent
+      ),
+      radial-gradient(
+        1px 1px at 90% 70%,
+        rgba(244,239,228,.25),
+        transparent
+      ),
+      radial-gradient(
+        1px 1px at 40% 85%,
+        rgba(244,239,228,.2),
+        transparent
+      );
+    pointer-events:none;
+    z-index:0;
+  }
+
+  /* =========================
+     HEADER
+  ========================= */
+
+  header{
+    position:relative;
+    text-align:center;
+    padding:72px 24px 48px;
+    z-index:1;
+  }
+
+  .eyebrow{
+    font-family:"Courier New",monospace;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    font-size:12px;
+    color:var(--teal);
+    margin:0 0 18px;
+  }
+
+  h1{
+    font-size:clamp(34px,6vw,58px);
+    margin:0 0 14px;
+    font-weight:400;
+    letter-spacing:.01em;
+    color:var(--paper);
+  }
+
+  h1 em{
+    color:var(--gold-soft);
+    font-style:italic;
+  }
+
+  header p{
+    max-width:560px;
+    margin:0 auto;
+    color:var(--paper-dim);
+    font-size:16px;
+    line-height:1.7;
+    font-family:Georgia,serif;
+  }
+
+  .count{
+    display:inline-block;
+    margin-top:22px;
+    font-family:"Courier New",monospace;
+    font-size:12px;
+    letter-spacing:.12em;
+    color:var(--gold);
+    border:1px solid rgba(232,163,61,.35);
+    border-radius:100px;
+    padding:6px 16px;
+  }
+
+  /* =========================
+     STORY PATH
+  ========================= */
+
+  main{
+    position:relative;
+    max-width:900px;
+    margin:0 auto;
+    padding:20px 24px 100px;
+    z-index:1;
+  }
+
+  main::before{
+    content:"";
+    position:absolute;
+    top:14px;
+    bottom:60px;
+    left:50%;
+    width:1px;
+    background:
+      repeating-linear-gradient(
+        to bottom,
+        rgba(232,163,61,.55) 0 6px,
+        transparent 6px 14px
+      );
+    transform:translateX(-50%);
+  }
+
+  .trail{
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+
+  .stop{
+    position:relative;
+    display:flex;
+    margin:0 0 52px;
+  }
+
+  .stop:nth-child(odd){
+    justify-content:flex-start;
+  }
+
+  .stop:nth-child(even){
+    justify-content:flex-end;
+  }
+
+  /* =========================
+     LANTERN
+  ========================= */
+
+  .lantern{
+    position:absolute;
+    top:38px;
+    left:50%;
+    transform:translateX(-50%);
+    width:11px;
+    height:11px;
+    border-radius:50%;
+    background:var(--gold);
+    box-shadow:
+      0 0 0 4px rgba(232,163,61,.12),
+      0 0 14px 3px rgba(232,163,61,.55);
+    animation:flicker 3.2s ease-in-out infinite;
+    z-index:2;
+  }
+
+  .stop:nth-child(3n) .lantern{
+    animation-delay:.4s;
+    background:var(--teal);
+    box-shadow:
+      0 0 0 4px rgba(79,169,160,.14),
+      0 0 14px 3px rgba(79,169,160,.55);
+  }
+
+  .stop:nth-child(5n) .lantern{
+    animation-delay:1.1s;
+  }
+
+  .stop:nth-child(7n) .lantern{
+    animation-delay:1.7s;
+    background:var(--teal);
+    box-shadow:
+      0 0 0 4px rgba(79,169,160,.14),
+      0 0 14px 3px rgba(79,169,160,.55);
+  }
+
+  @keyframes flicker{
+    0%,100%{opacity:1;}
+    45%{opacity:.65;}
+    55%{opacity:1;}
+    72%{opacity:.8;}
+  }
+
+  /* =========================
+     STORY CARD
+  ========================= */
+
+  a.card{
+    width:calc(50% - 34px);
+    background:
+      linear-gradient(
+        180deg,
+        var(--card),
+        #182238
+      );
+    border:1px solid var(--card-edge);
+    border-radius:12px;
+    padding:16px;
+    text-decoration:none;
+    color:inherit;
+    display:block;
+
+    transition:
+      transform .18s ease,
+      border-color .18s ease,
+      box-shadow .18s ease;
+  }
+
+  a.card:hover,
+  a.card:focus-visible{
+    transform:translateY(-4px);
+    border-color:var(--gold);
+    box-shadow:
+      0 12px 28px -12px rgba(0,0,0,.65);
+    outline:none;
+  }
+
+  a.card:focus-visible{
+    outline:2px solid var(--gold-soft);
+    outline-offset:2px;
+  }
+
+  /* =========================
+     STORY IMAGE
+  ========================= */
+
+.story-image{
+  width:100%;
+  height:150px;
+  border-radius:8px;
+  overflow:hidden;
+  background:#111a2e;
+  margin-bottom:14px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.story-image img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+  transition:transform .3s ease;
+}
+  a.card:hover .story-image img{
+    transform:scale(1.04);
+  }
+
+  /* =========================
+     TAG
+  ========================= */
+
+  .tag{
+    display:inline-block;
+    font-family:"Courier New",monospace;
+    font-size:10.5px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--night);
+    background:var(--gold-soft);
+    border-radius:4px;
+    padding:3px 8px;
+    margin-bottom:9px;
+  }
+
+  .stop:nth-child(3n) .tag{
+    background:var(--teal);
+    color:var(--night);
+  }
+
+  .title{
+    display:block;
+    font-size:19px;
+    line-height:1.35;
+    color:var(--paper);
+  }
+
+  .no{
+    font-family:"Courier New",monospace;
+    font-size:11px;
+    color:var(--paper-dim);
+    display:block;
+    margin-top:10px;
+  }
+
+  /* =========================
+     MOBILE
+  ========================= */
+
+  @media(max-width:600px){
+
+    header{
+      padding:58px 20px 38px;
+    }
+
+    main{
+      padding:20px 18px 80px;
+    }
+
+    main::before{
+      left:18px;
+    }
+
+    .stop,
+    .stop:nth-child(odd),
+    .stop:nth-child(even){
+      justify-content:flex-start;
+      padding-left:40px;
+    }
+
+    .lantern{
+      left:18px;
+    }
+
+    a.card{
+      width:100%;
+    }
+
+    .story-image{
+      height:175px;
+    }
+
+    .title{
+      font-size:18px;
+    }
+  }
+
+  /* =========================
+     FOOTER
+  ========================= */
+
+  footer{
+    position:relative;
+    text-align:center;
+    padding:36px 24px 44px;
+    color:var(--paper-dim);
+    font-family:"Courier New",monospace;
+    font-size:12px;
+    letter-spacing:.04em;
+    border-top:1px solid rgba(244,239,228,.08);
+    z-index:1;
+  }
+
+  footer a{
+    color:var(--gold-soft);
+    text-decoration:none;
+  }
+
+  footer a:hover{
+    text-decoration:underline;
+  }
+</style>
+</head>
+<body>
+
+<header>
+<a class="home-btn" href="bengali-index.html" aria-label="হোম">🏠</a>
+
+  <p class="eyebrow">
+    মাইস্কিল গ্লোবাল · গল্পের পথ
+  </p>
+<a class="eyebrow" href="stories-novels-index-bn.html">← মাই স্কিল : গল্প-উপন্যাস পাতায় ফিরে যান</a>
+
+  <h1>
+    ছোট গল্প, <em>বড় শিক্ষা</em>
+  </h1>
+
+  <p>
+    রহস্য, মানবিকতা, সাহস, দায়িত্ববোধ, সততা,
+    প্রকৃতি ও জীবনের গল্প। প্রতিটি গল্প কয়েক মুহূর্তের
+    পাঠ এবং মনে রাখার মতো একটি শিক্ষা দেয়।
+  </p>
+
+  <span class="count">
+    ১১টি গল্প : আরো গল্প শিঘ্রই আসছে-
+  </span>
+
+</header>
+
+
+<main>
+
+<ul class="trail">
+
+
+
+  <!-- 09 -->
+  <li class="stop">
+    <div class="lantern"></div>
+
+    <a class="card"
+       href="adbhut_stone.html">
+
+      <div class="story-image">
+        <img src="images/ratna-lathi-cover.jpg"
+          alt="চোখ বন্ধ করলে সামনে পড়ে থাকা রত্নও পাথর মনে হয় "
+          loading="lazy"
+        >
+      </div>
+
+      <span class="tag">কল্পনা</span>
+
+      <span class="title">
+        চোখ বন্ধ করলে সামনে পড়ে থাকা রত্নও পাথর মনে হয়
+      </span>
+
+      <span class="no">01</span>
+
+    </a>
+  </li>
+
+  <!-- 10 -->
+  <li class="stop">
+    <div class="lantern"></div>
+
+    <a class="card"
+       href="rabi-index.html">
+
+       <span class="tag">নবজাগরণ</span>
+
+      <span class="title">
+       এক অভিশপ্ত কারখানা, অরিন্দম সেনের সততার লড়াই, আর একটি স্বপ্নভাঙা শিল্পনগরীর নতুন করে জেগে ওঠার গল্প।
+      </span>
+
+      <span class="no">02</span>
+
+    </a>
+  </li>
+
+  <!-- 17 -->
+  <li class="stop">
+    <div class="lantern"></div>
+
+    <a class="card"
+       href="sleep-bengali-index.html">
+
+      <div class="story-image">
+        <img
+          src="images/sleep.jpg"
+          alt="অর্ণব ও অসম্ভবের অঙ্ক"
+          loading="lazy"
+        >
+      </div>
+
+      <span class="tag">শিক্ষা</span>
+
+      <span class="title">
+      অসম্ভবকে অসম্ভব না ভাবার গল্প
+      </span>
+
+      <span class="no">03</span>
+
+    </a>
+  </li>
+
+  <!-- 13 -->
+  <li class="stop">
+    <div class="lantern"></div>
+
+    <a class="card"
+       href="adorsho-chele.html">
+
+      <div class="story-image">
+        <img
+          src="images/adarsha-chele.png"
+          alt="আদর্শ ছেলে"
+          loading="lazy"
+        >
+      </div>
+      <span class="tag">আদর্শ ছেলে</span>
+      <span class="title">
+        আদর্শ ছেলে
+      </span>
+      <span class="no">04</span>
+    </a>
+  </li>
+
+<!-- 14 -->
+<li class="stop">
+  <div class="lantern"></div>
+
+  <a class="card"
+     href="katla-macher-hirer-angti-bengali.html">
+
+    <div class="story-image">
+      <img
+        src="front.png"
+        alt="কাতলা মাছের হীরের আংটি"
+        loading="lazy"
+      >
+    </div>
+
+    <span class="tag">
+      কাতলা মাছের হীরের আংটি
+    </span>
+
+    <span class="title">
+      কাতলা মাছের হীরের আংটি
+    </span>
+
+    <span class="no">05</span>
+
+  </a>
+</li>
+<!-- 15 -->
+<li class="stop">
+  <div class="lantern"></div>
+
+  <a class="card"
+     href="naren-je-cheleti-prashno-korte-janto.html">
+
+    <div class="story-image">
+      <img
+        src="images/swamiji.png"
+        alt="নরেন: যে ছেলে প্রশ্ন করতে জানত"
+        loading="lazy"
+      >
+    </div>
+
+    <span class="tag">
+      নরেন: যে ছেলে প্রশ্ন করতে জানত
+    </span>
+
+    <span class="title">
+      নরেন: যে ছেলে প্রশ্ন করতে জানত
+    </span>
+
+    <span class="no">06</span>
+
+  </a>
+</li>
+<!-- 16 -->
+<li class="stop">
+  <div class="lantern"></div>
+
+  <a class="card"
+     href="sada-than-theke-lal-shari.html">
+
+    <div class="story-image">
+      <img
+        src="images/jyotsna.png"
+        alt="আমার কি খিদে পায় না? — এক ছোট্ট মেয়ের প্রশ্ন যা সমাজকে নাড়িয়ে দিয়েছিল"
+        loading="lazy"
+      >
+    </div>
+
+    <span class="tag">
+      আমার কি খিদে পায় না?
+    </span>
+
+    <span class="title">
+      এক ছোট্ট মেয়ের প্রশ্ন যা সমাজকে নাড়িয়ে দিয়েছিল
+    </span>
+
+    <span class="no">07</span>
+
+  </a>
+</li>
+  <!-- 01 -->
+  <li class="stop">
+    <div class="lantern"></div>
+
+    <a class="card" href="cycle-bengali.html">
+
+      <div class="story-image">
+        <img
+          src="images/cycle.png"
+          alt="কুয়াশাচ্ছন্ন রাতে প্রদীপ"
+          loading="lazy"
+        >
+      </div>
+
+      <span class="tag">নিরাপত্তা</span>
+
+      <span class="title">
+        কুয়াশাচ্ছন্ন রাতে প্রদীপ
+      </span>
+
+      <span class="no">08</span>
+
+    </a>
+  </li>
+
+
+ 
+<!-- 17 -->
+<li class="stop">
+  <div class="lantern"></div>
+
+  <a class="card"
+     href="je_technology_ekdin_chilo.html">
+
+    <div class="story-image">
+      <img
+        src="images/technology.png"
+        alt="যে প্রযুক্তি একদিন আমাদের জীবন ছিল"
+        loading="lazy"
+      >
+    </div>
+
+    <span class="tag">
+      যে প্রযুক্তি একদিন আমাদের জীবন ছিল
+    </span>
+
+    <span class="title">
+      যে প্রযুক্তি একদিন আমাদের জীবন ছিল
+    </span>
+
+    <span class="no">09</span>
+
+  </a>
+</li>
+<!-- 18 -->
+<li class="stop">
+  <div class="lantern"></div>
+
+  <a class="card"
+     href="porichoyer-bhar-7.html">
+
+    <div class="story-image">
+      <img
+        src="images/weight-of-identity.png"
+        alt="আমি কি সত্যিই নিজের পরিচয়ে বাঁচতে পারি?"
+        loading="lazy"
+      >
+    </div>
+
+    <span class="tag">
+      আমি কি সত্যিই নিজের পরিচয়ে বাঁচতে পারি?
+    </span>
+
+    <span class="title">
+      আমি কি সত্যিই নিজের পরিচয়ে বাঁচতে পারি?
+    </span>
+
+    <span class="no">10</span>
+
+  </a>
+</li>
+
+<!-- 19 -->
+<li class="stop">
+  <div class="lantern"></div>
+
+  <a class="card"
+     href="nirab-ghatak-bn.html">
+
+    <div class="story-image">
+      <span style="font-size:64px; display:flex; align-items:center; justify-content:center; height:100%;">
+        🐍
+      </span>
+    </div>
+
+    <span class="tag">
+      নীরব ঘাতক
+    </span>
+
+    <span class="title">
+      নীরব ঘাতক
+    </span>
+
+    <span class="no">11</span>
+
+  </a>
+</li>
+</ul>
+</main>
+
+
+<footer>
+  মাইস্কিল গ্লোবাল · ছোট গল্প সংকলন ·
+  নির্মাতা <a href="#">সুরজিৎ রায়</a>
+</footer>
+
+</body>
+</html>

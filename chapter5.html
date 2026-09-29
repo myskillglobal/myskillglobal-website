@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>অধ্যায় ৫ : অভিযোগের খাতা | নবজাগরণ</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+
+<meta name="description" content="নবজাগরণ, অধ্যায় ৫ : অভিযোগের খাতা — পর্ব ১৭-২০। প্রথম ফ্রিজ, সাধারণ এক ক্রেতা, সার্ভিস সেন্টারের আসল ছবি ও সুচিত্রার সফর।">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@500;600;700;800&family=Tiro+Bangla&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#0a131a;
+    --panel:#162430;
+    --panel-raised:#1d3040;
+    --rivet:#081118;
+    --line: rgba(198,151,73,0.22);
+    --brass:#c69749;
+    --brass-bright:#e8b96b;
+    --amber:#e2a33b;
+    --ink:#ece3d2;
+    --ink-dim:#93a5b1;
+    --teal:#4f8c82;
+    --teal-bright:#6fb3a7;
+    --danger:#a75b45;
+    --shadow: 0 18px 40px rgba(0,0,0,0.45);
+    --radius: 4px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{animation-duration:.001ms !important; transition-duration:.001ms !important;} }
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at top, rgba(198,151,73,0.05), transparent 55%),
+      repeating-linear-gradient(180deg, rgba(255,255,255,0.012) 0px, rgba(255,255,255,0.012) 1px, transparent 1px, transparent 3px),
+      var(--bg-deep);
+    color:var(--ink);
+    font-family:'Hind Siliguri', sans-serif;
+    line-height:1.7;
+  }
+  .display{font-family:'Baloo Da 2', 'Hind Siliguri', sans-serif;}
+  a{color:inherit; text-decoration:none;}
+  button{font-family:inherit;}
+  :focus-visible{outline:2px solid var(--amber); outline-offset:2px;}
+
+  .chapter-head{ max-width:760px; margin:0 auto; padding:38px 20px 24px; border-bottom:1px solid var(--line); }
+  .crumb{ font-size:13px; color:var(--ink-dim); margin-bottom:18px; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  .crumb a{ color:var(--teal-bright); }
+  .crumb a:hover{ color:var(--brass-bright); }
+  .part-range-tag{ display:inline-block; font-size:12px; color:var(--teal-bright); border:1px solid rgba(111,179,167,0.35); padding:2px 10px; border-radius:12px; margin-bottom:12px; }
+  h1.chapter-title{ font-size:clamp(28px,5vw,44px); margin:0 0 6px; color:var(--brass-bright); font-weight:800; }
+  .chapter-sub{ font-size:14.5px; color:var(--ink-dim); margin:0; }
+
+  .chapter-nav{ max-width:760px; margin:18px auto 0; padding:0 20px; display:flex; justify-content:space-between; gap:12px; font-size:13.5px; }
+  .chapter-nav .nav-btn{ padding:8px 14px; border:1px solid var(--line); border-radius:var(--radius); background:var(--panel); color:var(--ink-dim); }
+  .chapter-nav .nav-btn.disabled{ opacity:0.4; cursor:not-allowed; }
+  .chapter-nav .nav-btn:not(.disabled):hover{ color:var(--brass-bright); border-color:var(--brass); }
+
+  .toolbar{ position:sticky; top:0; z-index:40; background:rgba(16,27,36,0.94); backdrop-filter: blur(8px); border-bottom:1px solid var(--line); padding:10px 16px; }
+  .toolbar-inner{ max-width:760px; margin:0 auto; display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+  .tb-group{ display:flex; align-items:center; gap:8px; background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:6px 10px; }
+  .tb-label{ font-size:12px; color:var(--ink-dim); white-space:nowrap; }
+  select{ background:var(--panel-raised); color:var(--ink); border:1px solid var(--line); border-radius:3px; padding:6px 10px; font-size:13px; max-width:140px; }
+  input[type="range"]{ width:90px; accent-color: var(--amber); }
+  .icon-btn{ background:var(--panel-raised); color:var(--ink); border:1px solid var(--line); border-radius:3px; padding:7px 12px; font-size:13.5px; cursor:pointer; font-weight:600; display:inline-flex; align-items:center; gap:6px; }
+  .icon-btn.play{ color:var(--teal-bright); border-color: rgba(111,179,167,0.35); }
+  .icon-btn.stop{ color:var(--danger); border-color: rgba(167,91,69,0.35); }
+  .icon-btn.mark{ color:var(--amber); border-color: rgba(226,163,59,0.4); margin-left:auto; }
+
+  .part-jump{ max-width:760px; margin:0 auto; padding:14px 20px 0; display:flex; gap:8px; flex-wrap:wrap; }
+  .part-jump a{ font-size:12.5px; padding:5px 12px; border-radius:14px; border:1px solid var(--line); color:var(--ink-dim); background:var(--panel); }
+  .part-jump a.active{ color:var(--amber); border-color:var(--amber); }
+
+  main{ max-width:760px; margin:0 auto; padding:30px 20px 100px; }
+
+  .part-section{
+    position:relative; padding:28px 26px 24px; margin-bottom:34px;
+    background:linear-gradient(180deg, var(--panel-raised), var(--panel));
+    border:1px solid var(--line); border-radius:var(--radius);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), var(--shadow);
+    scroll-margin-top:150px;
+  }
+  .part-section::before, .part-section::after{
+    content:""; position:absolute; width:7px; height:7px; border-radius:50%;
+    background: radial-gradient(circle at 35% 30%, #6b5327, var(--rivet) 70%);
+    box-shadow: 0 1px 1px rgba(0,0,0,0.6); top:10px;
+  }
+  .part-section::before{ left:10px; } .part-section::after{ right:10px; }
+
+  .part-head{ display:flex; align-items:flex-start; justify-content:space-between; gap:14px; margin-bottom:18px; }
+  .part-num{ font-size:12.5px; color:var(--teal-bright); letter-spacing:0.06em; }
+  .part-section h2{ margin:4px 0 0; font-size:clamp(20px,3vw,25px); color:var(--ink); }
+  .part-listen{ flex:none; width:38px; height:38px; border-radius:50%; border:1px solid var(--line); background:transparent; color:var(--ink-dim); display:flex; align-items:center; justify-content:center; cursor:pointer; }
+  .part-listen svg{ width:17px; height:17px; }
+  .part-listen.speaking{ color:var(--teal-bright); border-color:var(--teal-bright); }
+
+  .part-text{ font-family:'Tiro Bangla', serif; font-size:17px; color:var(--ink); }
+  .part-text p{ margin:0 0 16px; }
+  .part-text p.dialogue{ margin:0 0 12px; padding-left:14px; border-left:2px solid var(--brass); color:var(--brass-bright); }
+  .part-text p.notice{ display:inline-block; color:var(--danger); border:1px solid rgba(167,91,69,0.4); padding:6px 14px; border-radius:3px; font-family:'Hind Siliguri'; font-size:14px; font-weight:600; }
+  .part-text p.letter{ display:block; margin:14px 0; padding:14px 18px; border-left:3px solid var(--brass); background:rgba(198,151,73,0.08); font-style:italic; color:var(--brass-bright); border-radius:2px; }
+  .part-text ol.diary{ margin:0 0 16px; padding-left:22px; color:var(--ink-dim); }
+  .part-text ol.diary li{ margin-bottom:6px; }
+  .part-text p.reveal{ text-align:center; font-family:'Baloo Da 2'; font-weight:700; font-size:30px; color:var(--amber); letter-spacing:0.05em; margin:22px 0; }
+  .part-text p.tobecontinued{ text-align:center; color:var(--ink-dim); font-family:'Hind Siliguri'; font-size:13.5px; letter-spacing:0.08em; margin-top:22px; }
+
+  footer{ text-align:center; padding:36px 20px 50px; color:var(--ink-dim); font-size:12.5px; border-top:1px solid var(--line); }
+  footer .brand{ color:var(--brass); font-weight:600; }
+
+  @media (max-width:560px){
+    .toolbar-inner{ justify-content:center; }
+    .icon-btn.mark{ margin-left:0; width:100%; justify-content:center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="chapter-head">
+  <div class="crumb">
+    <a href="rabi-index.html">নবজাগরণ</a> <span>▸</span> <span>অধ্যায় ৫</span>
+  </div>
+  <span class="part-range-tag">পর্ব ১৭ – ২০</span>
+  <h1 class="chapter-title display">অভিযোগের খাতা</h1>
+  <p class="chapter-sub">গ্রাহকসেবার মান উন্নয়নে "অভিযোগের খাতা" চালু করা — অরিন্দম ও সুচিত্রা দেবীর ছদ্মবেশে সাধারণ ক্রেতা সেজে সরেজমিনে পরিদর্শন।</p>
+</div>
+
+<div class="chapter-nav">
+  <a class="nav-btn" href="chapter4.html">← অধ্যায় ৪</span>
+  <a class="nav-btn" href="chapter6.html">অধ্যায় ৬ →</span>
+</div>
+
+<div class="toolbar">
+  <div class="toolbar-inner">
+    <div class="tb-group">
+      <span class="tb-label">কণ্ঠ</span>
+      <select id="voiceSelect" aria-label="কণ্ঠ নির্বাচন করুন"></select>
+    </div>
+    <div class="tb-group">
+      <span class="tb-label">গতি</span>
+      <input type="range" id="rateRange" min="0.6" max="1.8" step="0.1" value="1" aria-label="পড়ার গতি">
+      <span class="tb-label" id="rateValue">১.০×</span>
+    </div>
+    <button class="icon-btn play" id="playAllBtn">▶ সম্পূর্ণ অধ্যায় শুনুন</button>
+    <button class="icon-btn stop" id="stopAllBtn">■ থামান</button>
+    <button class="icon-btn mark" id="markHereBtn">🔖 এই স্থানে বুকমার্ক করুন</button>
+  </div>
+</div>
+
+<nav class="part-jump" id="partJump">
+  <a href="#part-17" data-part="17">পর্ব ১৭ · প্রথম ফ্রিজ</a>
+  <a href="#part-18" data-part="18">পর্ব ১৮ · সাধারণ এক ক্রেতা</a>
+  <a href="#part-19" data-part="19">পর্ব ১৯ · সার্ভিস সেন্টারের আসল ছবি</a>
+  <a href="#part-20" data-part="20">পর্ব ২০ · সুচিত্রার সফর</a>
+</nav>
+
+<main>
+
+  <section class="part-section" id="part-17" data-part="17">
+    <div class="part-head">
+      <div><span class="part-num">পর্ব ১৭</span><h2 class="display">প্রথম ফ্রিজ</h2></div>
+      <button class="part-listen" aria-label="পর্ব ১৭ শুনুন" title="পর্ব ১৭ শুনুন">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>
+      </button>
+    </div>
+    <div class="part-text">
+      <p>সকাল আটটা।</p>
+      <p>কারখানার প্রধান উৎপাদন বিভাগে (Production Block) আজ এক উৎসবমুখর পরিবেশ। অ্যাসেম্বলি লাইনের দীর্ঘ কনভেয়ার বেল্টের দুই পাশে সারিবদ্ধভাবে দাঁড়িয়ে আছেন শতাধিক প্রকৌশলী ও দক্ষ কর্মী। সবার চোখেমুখে তীব্র উত্তেজনা আর দীর্ঘদিনের প্রতীক্ষার অবসান।</p>
+      <p>বহু বছর বন্ধ থাকার পর আজ এই কারখানায় আবার নতুন করে উৎপাদন শুরু হতে যাচ্ছে।</p>
+      <p>অরিন্দম সেন সবার দিকে তাকিয়ে খুব ধীর ও স্পষ্ট কণ্ঠে বললেন—</p>
+      <p class="dialogue">— "আজ আমরা বাজারের জন্য হাজারটা ফ্রিজ বানাতে আসিনি। আজ আমরা মানুষের হারিয়ে যাওয়া সেই অটুট বিশ্বাসটা নতুন করে তৈরি করতে এসেছি।"</p>
+      <p>কথা শেষ হতেই মূল কন্ট্রোল রুম থেকে সবুজ সংকেত জ্বলল। হাঁসফাঁস করে প্রথম বিশাল প্রসেসিং মেশিনটি চালু হয়ে গেল। ধীর গতিতে কনভেয়ার বেল্ট চলতে শুরু করল। একটার পর একটা খাঁটি কপার পাইপ, সার্কিট আর বডি ফ্রেমে মূল যন্ত্রাংশ জোড়া লাগতে লাগল।</p>
+      <p>কেউ দক্ষতা নিয়ে নতুন কম্প্রেসর বসাচ্ছেন, কেউ ফ্রিজের দরজা লাগাচ্ছেন, আর কেউ বৈদ্যুতিক নিরাপত্তা ও ওয়্যারিং পরীক্ষা করছেন।</p>
+      <p>প্রায় দুই ঘণ্টার অক্লান্ত চেষ্টার পর কনভেয়ার বেল্টের শেষ প্রান্তে এসে থামল নবজাগরণ ইলেকট্রনিক্স-এর তৈরি প্রথম চকচকে ফ্রিজটি! আনন্দে উপস্থিত সব শ্রমিক হাততালি দিয়ে উল্লাস করে উঠলেন!</p>
+      <p>কিন্তু অরিন্দম সেনের মুখে কোনো বাড়তি উচ্ছ্বাস দেখা গেল না। তিনি শান্ত ভঙ্গিতে এক টেস্ট ইঞ্জিনিয়ারকে ডেকে বললেন—</p>
+      <p class="dialogue">— "এটিকে অবিলম্বে টেস্ট ল্যাবরেটরিতে নিয়ে চলুন।"</p>
+      <p>ফ্রিজটি বিশেষ কোয়ালিটি টেস্টিং ল্যাবে নেওয়া হলো। প্রথমে উচ্চ ভোল্টেজের বিদ্যুৎ সংযোগ দেওয়া হলো। কম্প্রেসর চালু হতেই ল্যাবের টেস্ট ডিসপ্লে সচল হয়ে উঠল।</p>
+      <p>পাঁচ মিনিট... দশ মিনিট... প্রাথমিকভাবে সবকিছু স্বাভাবিক বলেই মনে হচ্ছিল।</p>
+      <p>হঠাৎ এক তরুণ মান-নিয়ন্ত্রণ (Quality Control) প্রকৌশলী থার্মাল মিটার পরীক্ষা করে বলে উঠলেন—</p>
+      <p class="dialogue">— "স্যার, দরজার চৌকাঠের রবার ম্যাগনেটিক সিলিংটা এক কোণায় ঠিকমতো এয়ারটাইট বন্ধ হচ্ছে না।"</p>
+      <p>পাশে থাকা প্রবীণ ইঞ্জিনিয়ার ডিজিটাল থার্মোমিটারের দিকে তাকিয়ে যোগ করলেন—</p>
+      <p class="dialogue">— "ভেতরের ফ্রিজিং চেম্বারের তাপমাত্রাও স্ট্যান্ডার্ড মানদণ্ডে পৌঁছাতে স্বাভাবিকের চেয়ে চার মিনিট বেশি সময় নিচ্ছে।"</p>
+      <p>ল্যাবরেটরির ভেতরে মুহূর্তেই এক বিষাদময় নীরবতা নেমে এল। উৎপাদন বিভাগের এক ম্যানেজার কিছুটা ইতস্তত করে এগিয়ে এসে বললেন—</p>
+      <p class="dialogue">— "স্যার, এতটুকু ছোটখাটো ত্রুটি তো প্রায় সব ব্র্যাণ্ডের প্রথম চালানেই থাকে! আপাতত এগুলি বাজারে ডিস্ট্রিবিউট করে দেওয়া যাক। পরে না হয় সার্ভিসিং টিম গিয়ে ঠিক করে দিয়ে আসবে।"</p>
+      <p>অরিন্দম বরফের মতো ঠান্ডা চোখে ম্যানেজারের দিকে তাকালেন—</p>
+      <p class="dialogue">— "আজকে মোট কতগুলো ফ্রিজ অ্যাসেম্বল করা হয়েছে?"</p>
+      <p class="dialogue">— "স্যার, প্রথম দিনে মোট ৫০টি ইউনিট প্রস্তুত করা হয়েছে।"</p>
+      <p class="dialogue">— "একটি ইউনিটও আজকে কারখানার বাইরে যাবে না।"</p>
+      <p>অরিন্দমের গলায় কঠোর সিদ্ধান্ত। ম্যানেজার চোখ কপালে তুলে বিস্ময়ে বললেন—</p>
+      <p class="dialogue">— "কিন্তু স্যার! এতে তো আজকের শত শ্রমিকের পুরো কষ্ট আর হাজার হাজার টাকার উৎপাদন খরচ এক লহমায় নষ্ট হয়ে যাবে!"</p>
+      <p>অরিন্দম ধীর পায়ে ফ্রিজটির গায়ে হাত রেখে অত্যন্ত দৃঢ়তার সাথে বললেন—</p>
+      <p class="dialogue">— "একজন সাধারণ মানুষ তাঁর রক্ত জল করা উপার্জনের টাকা জমিয়ে এই ফ্রিজটা কিনবেন। তাঁর ঘরে গিয়ে যদি প্রথম দিনেই এই সামান্য দরজার ফাটল বা ঠাণ্ডা কম হওয়ার সমস্যা দেখা দেয়, তবে তিনি শুধু এই ইলেকট্রনিক সামগ্রীটিকেই ফেরাবেন না... জীবনে কোনোদিন আমাদের এই 'নবজাগরণ' নামের ওপর আর বিশ্বাস রাখবেন না!"</p>
+      <p>তিনি পুরো প্রোডাকশন টিমের দিকে ঘুরে দাঁড়িয়ে নির্দেশ দিলেন—</p>
+      <p class="dialogue">— "সবকটি পঞ্চাশটি ইউনিট অ্যাসেম্বলি লাইন থেকে নামিয়ে আবার এক এক করে খুলে পার্টস পরীক্ষা করা হবে। ত্রুটি সংশোধন না হওয়া পর্যন্ত কোনো মাল বের হবে না।"</p>
+      <p>মালিকের এই অভূতপূর্ব পেশাদারিত্ব ও ক্রেতার প্রতি দায়িত্ববোধ দেখে কেউ কোনো আপত্তি জানানোর সাহস পেল না।</p>
+      <p>সেদিন রাত আটটা পর্যন্ত পুরো ইঞ্জিনিয়ারিং টিম নাওয়া-খাওয়া ভুলে ল্যাবে কাজ করে গেল। যে যন্ত্রাংশ সরবরাহকারী প্রতিষ্ঠান রবার সিল সরবরাহ করেছিল, তাদের ডেকে পাঠানো হলো। সিলিংয়ের নতুন নিখুঁত নকশা প্রস্তুত করা হলো। প্রকৌশলীরা পুনরায় সমস্ত ডায়াগনস্টিক টেস্ট সম্পন্ন করলেন।</p>
+      <p>রাত সাড়ে দশটায় প্রথম সংশোধন করা ফ্রিজটি আবার ল্যাবে চালু করা হলো। এইবার... টানা দেড় ঘণ্টা বিভিন্ন উচ্চ ও নিম্ন ভোল্টেজে চালিয়েও একটিও খুঁত বা ত্রুটি ধরা পড়ল না!</p>
+      <p>ল্যাবরেটরির প্রধান হাসিমুখে অরিন্দমের দিকে তাকিয়ে বললেন—</p>
+      <p class="dialogue">— "অসাধারণ স্যার! এবার এই ইউনিটগুলো বাজারের যেকোনো গ্লোবাল ব্র্যান্ডের সাথে প্রতিযোগিতায় নামতে শতভাগ প্রস্তুত!"</p>
+      <p>এতক্ষণে প্রথমবার অরিন্দমের মুখে এক চিলতে নিশ্চিন্ত ও স্বস্তির হাসি ফুটল।</p>
+      <p>পরদিন সকাল। কারখানার বিশাল গুদাম থেকে বাজারে বিক্রির জন্য মাত্র পঞ্চাশটি নির্বাচিত ফ্রিজ ট্রাকে করে পাঠানো হলো।</p>
+      <p>শহরের এক বড় পরিবেশক বা ডিলার ট্রাকের সাইজ দেখে অবাক হয়ে বললেন—</p>
+      <p class="dialogue">— "এত বড় আন্তর্জাতিক মানের কারখানা, আর আপনারা বাজারে বিক্রির জন্য প্রথম চালানে পাঠালেন মাত্র পঞ্চাশটা ফ্রিজ?"</p>
+      <p>অরিন্দম সেন সেখানে উপস্থিত ছিলেন, তিনি মিটিমিটি হেসে উত্তর দিলেন—</p>
+      <p class="dialogue">— "সংখ্যা বেশি দেখিয়ে কোনো ব্র্যান্ড রাতারাতি বড় হতে পারে না মি. শর্মা, পণ্যের গুণমান আর মানুষের নিখাদ বিশ্বাস দিয়েই কোম্পানি বড় হয়।"</p>
+      <p>বিকেলের দিকে অরিন্দম কাউকে কিছু না জানিয়ে একদম সাধারণ পোশাকে কারখানা থেকে বেরিয়ে পড়লেন। পরণে সাধারণ সুতির শার্ট আর সাধারণ প্যান্ট। চোখে দামি রোদচশমা নেই, মুখে নেই কর্পোরেট মালিকের অহংকার। সঙ্গে কেবল একটি সাধারণ পুরোনো মডেলের গাড়ি।</p>
+      <p>তিনি গাড়ির চালককে বললেন—</p>
+      <p class="dialogue">— "সোজা চলো, শহরের সবচেয়ে বড় যে ইলেকট্রনিক্স মল বা মার্কেটটা আছে, সেখানে।"</p>
+      <p>ড্রাইভার পেছনের আয়নায় তাকিয়ে অবাক হয়ে জিজ্ঞেস করল—</p>
+      <p class="dialogue">— "স্যার, মল কর্তৃপক্ষকে কি আগে থেকে আপনার আসার খবর জানিয়ে সিকিউরিটি পাঠাতে বলবো?"</p>
+      <p>অরিন্দম মৃদু হেসে মাথা নাড়লেন—</p>
+      <p class="dialogue">— "একদম না! আজ আমি কোনো কারখানার কোটিপতি মালিক সেজে যাচ্ছি না... আজ আমি একজন সাধারণ ক্রেতা হয়ে আসল মানুষের অভিজ্ঞতা দেখতে যাচ্ছি।"</p>
+      <p>গাড়িটি ধীর গতিতে শহরের জনাকীর্ণ বিপণিবিতানের দিকে এগিয়ে চলল।</p>
+      <p>অরিন্দম তখনও ঘুণাক্ষরেও জানতেন না—সাধারণ ক্রেতার ছদ্মবেশে করা সেদিনের সেই আকস্মিক সফরটি তাঁর কোম্পানির ভবিষ্যৎকে পুরোপুরি এক নতুন ঐতিহাসিক মোড়ে দাঁড় করিয়ে দেবে!</p>
+      <p class="tobecontinued">(চলবে...)</p>
+    </div>
+  </section>
+
+  <section class="part-section" id="part-18" data-part="18">
+    <div class="part-head">
+      <div><span class="part-num">পর্ব ১৮</span><h2 class="display">সাধারণ এক ক্রেতা</h2></div>
+      <button class="part-listen" aria-label="পর্ব ১৮ শুনুন" title="পর্ব ১৮ শুনুন">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>
+      </button>
+    </div>
+    <div class="part-text">
+      <p>শহরের সবচেয়ে বড় ও বিলাসবহুল ইলেকট্রনিক্স শপিং মল।</p>
+      <p>সপ্তাহান্ত বা উইকেন্ড হওয়ায় পুরো মলে উপচে পড়া ভিড়, কেনাকাটা করার মানুষের পা ফেলার জায়গা নেই। কেউ নতুন মডেলের ফ্রিজ দেখছেন, কেউ ওয়াশিং মেশিন, কেউ আবার এয়ার কন্ডিশনার ট্রায়াল দিচ্ছেন।</p>
+      <p>অরিন্দম সেন সাধারণ একটি সুতির শার্ট, ব্লু জিন্স আর মাথায় একটি সাধারণ স্পোর্টস ক্যাপ পরে মলে ঢুকলেন। তাঁকে দেখে সাধারণ কোনো ক্রেতা ছাড়া আর কিছুই মনে হচ্ছিল না। কেউ ঘুণাক্ষরেও কল্পনা করতে পারল না, এই মানুষটিই শত কোটি টাকার একটি বিশাল শিল্পপ্রতিষ্ঠানের প্রতিষ্ঠাতা ও মালিক!</p>
+      <p>তিনি ধীর পায়ে মলের বিশাল ইলেকট্রনিক্স সেকশনে বিভিন্ন ব্র্যান্ডের সারিবদ্ধ ফ্রিজগুলোর সামনে ঘুরতে লাগলেন।</p>
+      <p>ঠিক তখনই মলের একজন চটপটে সেলস এক্সিকিউটিভ বা বিক্রয়কর্মী এগিয়ে এল—</p>
+      <p class="dialogue">— "নমস্কার স্যার! বলুন, কোন ব্র্যান্ডের বা কত লিটারের ফ্রিজ দেখতে চান?"</p>
+      <p>অরিন্দম আলতো হেসে উত্তর দিলেন—</p>
+      <p class="dialogue">— "যেটা আপনার ব্যক্তিগত বিচারে বাজারের সবচেয়ে ভালো আর ভরসাযোগ্য পণ্য, সেটাই দেখান।"</p>
+      <p>বিক্রয়কর্মী সঙ্গে সঙ্গে তাঁকে একটি প্রখ্যাত বিদেশি মাল্টিন্যাশনাল ব্র্যান্ডের শোরুম কর্নারে নিয়ে গেল—</p>
+      <p class="dialogue">— "স্যার, এই প্রোডাক্টটা দেখতে পারেন। বাজারে এখন এটা আমাদের সবচেয়ে বেশি সেল হচ্ছে।"</p>
+      <p>অরিন্দম একটু ঘুরে দাঁড়িয়ে পাশেই সদ্য সারিবদ্ধভাবে রাখা 'নবজাগরণ ইলেকট্রনিক্স'-এর চকচকে ফ্রিজটার দিকে আঙুল তুলে জিজ্ঞেস করলেন—</p>
+      <p class="dialogue">— "আর এই নতুন স্বদেশী ব্র্যান্ডের ফ্রিজটা কেমন? এটার পারফরম্যান্স কেমন শুনছেন?"</p>
+      <p>বিক্রয়কর্মী একটু ম্লান হেসে উত্তর দিল—</p>
+      <p class="dialogue">— "ওটা তো একদম নতুন বাজারে এসেছে স্যার। দেখতে অবশ্য চমৎকার, বিল্ড কোয়ালিটিও ভালো। তবে বাজারে তো যেকোনো নতুন কোম্পানিকে সবাই একটু দেখে-শুনে আর হিসেব করে কেনে, তাই না?"</p>
+      <p>অরিন্দম সেন ধীরে ধীরে মাথা নাড়লেন—</p>
+      <p class="dialogue">— "হুম। এটার দাম কেমন রেখেছে কোম্পানি?"</p>
+      <p class="dialogue">— "একই ফিচারের বিদেশি ব্র্যান্ডগুলোর তুলনায় প্রায় দশ থেকে পনেরো শতাংশ কম স্যার।"</p>
+      <p class="dialogue">— "তাহলে ক্রেতারা কী বলছেন? কেউ কি কিনেছেন?"</p>
+      <p>অরিন্দমের গলায় গভীর ব্যাকুলতা। বিক্রয়কর্মী একটু ভেবে জবাব দিল—</p>
+      <p class="dialogue">— "এখন পর্যন্ত যারা কিনেছেন, উনাদের লটে কেউ কোনো খারাপ ফিডব্যাক দেননি। তবে একটা বড় সমস্যা রয়ে গেছে স্যার..."</p>
+      <p>অরিন্দম আগ্রহ নিয়ে ঝুঁকে পড়ে বললেন—</p>
+      <p class="dialogue">— "কী সমস্যা?"</p>
+      <p class="dialogue">— "কোম্পানিটা নতুন তো! কাল যদি ফ্রিজে কোনো টেকনিক্যাল প্রবলেম হয়, সার্ভিসিং কেমন পাব বা স্পেয়ার পার্টস সহজে মিলবে কি না—সেটা নিয়ে সাধারণ কাস্টমারদের মধ্যে একটা বড় সংশয় আর সন্দেহ আছে।"</p>
+      <p>অরিন্দম কিছুক্ষণ একদম নিঃশব্দ হয়ে চুপ করে দাঁড়িয়ে রইলেন। সেলসম্যানের মুখ থেকে বের হওয়া এই একটিমাত্র কথাই তাঁর মাথায় ঘুরতে লাগল—"কোয়ালিটি যত ভালোই হোক না কেন, সাধারণ মানুষ শুধু কাঁচামাল কেনে না... মানুষ পণ্যের আগে বিক্রয়োত্তর ভরসা কেনে!"</p>
+      <p>ঠিক তখনই তাঁর পাশে দাঁড়িয়ে থাকা এক মধ্যবিত্ত দম্পতির চাপা কথাবার্তা অরিন্দমের কানে এল। স্ত্রী ফ্রিজটি স্পর্শ করে ভালো করে দেখে স্বামীকে বলছেন—</p>
+      <p class="dialogue">— "এই 'নবজাগরণ'-এর ফ্রিজটা দেখতে তো খুব সুন্দর গো! ভেতরের স্পেসটাও তো অনেক বড়!"</p>
+      <p>স্বামী দীর্ঘশ্বাস ফেলে উত্তর দিলেন—</p>
+      <p class="dialogue">— "সুন্দর হলে কী হবে বলো? নতুন কোম্পানি তো! কদিন পর নষ্ট হলে কে ঠিক করে দিতে আসবে? পার্টস যদি না পাওয়া যায়, তবে সব টাকা তো জলে ভেসে যাবে!"</p>
+      <p>কথাটা শুনে অরিন্দম আর সেখানে এক মুহূর্তও দাঁড়ালেন না। তিনি ধীর পায়ে শপিং মল থেকে বের হয়ে নিজের সাধারণ গাড়িতে এসে উঠলেন।</p>
+      <p>গাড়ির পেছনের সিটে বসেই পকেট থেকে নিজের ব্যক্তিগত ডায়েরি ও কলম বের করলেন। দ্রুত হাতে কয়েকটি বুলেট পয়েন্ট নোট করতে লাগলেন—</p>
+      <ol class="diary">
+        <li>দ্রুত শহর ও মফস্বলে নিজস্ব সার্ভিস সেন্টারের নেটওয়ার্ক বাড়াতে হবে।</li>
+        <li>২৪ ঘণ্টার মধ্যে গ্রাহকের অভিযোগ গ্রহণ ও টেকনিশিয়ান পাঠানোর ব্যবস্থা নিশ্চিত করতে হবে।</li>
+        <li>পর্যাপ্ত পরিমাণ জেনুইন স্পেয়ার পার্টস বা খুচরা যন্ত্রাংশ সবসময় ডিলারের কাছে মজুত রাখতে হবে।</li>
+        <li>যেকোনো মূল্যে গ্রাহকের মনে 'পরপর সার্ভিস পাওয়ার' নিশ্চিন্ত ভরসা তৈরি করতে হবে।</li>
+      </ol>
+      <p>গাড়ির ড্রাইভার পেছনের আয়নায় মালিকের ডায়েরি লেখার ব্যস্ততা দেখে অবাক হয়ে বলল—</p>
+      <p class="dialogue">— "স্যার! মাত্র একটা শপিং মল ঘুরে এসেই এত নতুন হিসাব বুঝে গেলেন?"</p>
+      <p>অরিন্দম সেন মুখের কোণে এক চিলতে আত্মবিশ্বাসের মিষ্টি হাসি ফুটিয়ে বললেন—</p>
+      <p class="dialogue">— "কর্পোরেট অফিসে আর এসি রুমে বসে এক মাসেও যে খাঁটি সত্যটা শেখা যায় না রে ড্রাইভার, সাধারণ ক্রেতার ভিড়ে মিশে দাঁড়ালে সেটা মাত্র এক ঘণ্টাতেই শিখে নেওয়া যায়।"</p>
+      <p>গাড়িটি দ্রুত গতিতে আবার কারখানার পথের দিকে ফিরে চলল। অরিন্দমের মাথায় তখন নতুন বিপণন বা সার্ভিসিং নেটওয়ার্ক পুনর্গঠনের পরিকল্পনা কিলবিল করছে। তিনি মনে মনে ঠিক করলেন—পরের সপ্তাহেই তিনি ছদ্মবেশে কোনো বড় অনুমোদিত সার্ভিস সেন্টারে ঝটিকা সফরে যাবেন।</p>
+      <p>কিন্তু অরিন্দম সেন ঘুণাক্ষরেও জানতেন না—সেই সার্ভিস সেন্টারে তাঁর জন্য কেমন চমক অপেক্ষা করছে! সেখানেই সরাসরি তাঁর সামনে খুলে যাবে এমন একজন প্রবীণ কর্মকর্তার কুৎসিত মুখোশ, যাকে গোটা ম্যানেজমেন্ট এতোদিন ধরে কারখানার 'সেরা ও সবচেয়ে সৎ কর্মী' বলে সম্মান করে এসেছে!</p>
+      <p class="tobecontinued">(চলবে...)</p>
+    </div>
+  </section>
+
+  <section class="part-section" id="part-19" data-part="19">
+    <div class="part-head">
+      <div><span class="part-num">পর্ব ১৯</span><h2 class="display">সার্ভিস সেন্টারের আসল ছবি</h2></div>
+      <button class="part-listen" aria-label="পর্ব ১৯ শুনুন" title="পর্ব ১৯ শুনুন">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>
+      </button>
+    </div>
+    <div class="part-text">
+      <p>এক সপ্তাহ পরের কথা।</p>
+      <p>শনিবার সকাল। অরিন্দম সেন অফিসে বা কাউকে কিছু না জানিয়ে একদম সাধারণ পোশাকে শহরের তিন নম্বর অনুমোদিত সার্ভিস সেন্টারের সামনে গিয়ে দাঁড়ালেন।</p>
+      <p>পরণে সুতির সাধারণ জামা, হাতে একটি পুরোনো ফাইল। সঙ্গে কোম্পানির তৈরি একটি ছোট টেবিল-ফ্রিজ—যার পেছনের একটি স্ক্রু তিনি নিজে ইচ্ছে করেই আলগা করে রেখেছেন। তিনি ব্যক্তিগতভাবে পরখ করতে চান, সার্ভিস সেন্টারের টেকনিশিয়ানরা কি সত্যিই সততার সাথে সমস্যা খুঁজে বের করে, নাকি অজুহাত বানিয়ে গ্রাহকদের পকেট কাটে!</p>
+      <p>সার্ভিস সেন্টারের রিসেপশনের সামনে ইতিমধ্যেই অনেক গ্রাহকের ভিড়। লাইনে দাঁড়িয়ে আছেন এক প্রবীণ বৃদ্ধা, কাছেই দাঁড়িয়ে একটি ছোট হোটেলের মালিক, একজন স্কুলশিক্ষক এবং আরও বেশ কয়েকজন সাধারণ গ্রাহক। সবাই অধৈর্য হয়ে নিজেদের যন্ত্রাংশের সমস্যার কথা বলছেন। অরিন্দম সেনও নিঃশব্দে তাঁদের পেছনে লাইনে গিয়ে দাঁড়ালেন।</p>
+      <p>হঠাৎ তিনি শুনতে পেলেন, পাশের কাউন্টারে বসে এক কর্মচারী এক দরিদ্র গ্রাহককে বেশ রুক্ষ গলায় বলছে—</p>
+      <p class="dialogue">— "এতে তো বড় ধরনের ফল্ট আছে মশাই! সোজা কম্প্রেসর বদলাতে হবে, খরচ অনেক পড়বে।"</p>
+      <p>গ্রাহক অবাক ও অসহায় হয়ে বললেন—</p>
+      <p class="dialogue">— "বলেন কী ভাই! কিন্তু ফ্রিজটা তো মাত্র আট মাস আগে কেনা! এখনো তো ওয়ারেন্টি পিরিয়ড শেষ হয়নি!"</p>
+      <p>কর্মচারীটি বিরক্তির সাথে কাঁধ ঝাঁকিয়ে বলল—</p>
+      <p class="dialogue">— "আমরা যা বলছি তাই করতে হবে। করালে কাজ জমা দিন, না হলে ফ্রিজ নিয়ে যান!"</p>
+      <p>হতাশ ও ক্ষুব্ধ মুখে লোকটি মাথা নিচু করে বাইরে চলে গেল। অরিন্দম সবকিছু নীরব দর্শকের মতো গভীরভাবে পর্যবেক্ষণ করছিলেন।</p>
+      <p>অবশেষে অরিন্দমের ডাক পড়ল। তিনি ছোট ফ্রিজটি কাউন্টারের ওপর রাখলেন। কাউন্টারের কর্মচারীটি ফ্রিজটির প্যানেল একবার স্পর্শ বা পরীক্ষা না করেই আলসেমি ভরে বলল—</p>
+      <p class="dialogue">— "এটা এখানে রেখে যান। তিন-চার দিন পরে এসে খোঁজ নেবেন।"</p>
+      <p>অরিন্দম খুব বিনীতভাবে জিজ্ঞেস করলেন—</p>
+      <p class="dialogue">— "একটু কাইন্ডলি এখনই দেখে বলা যায় না ভাই? দূর থেকে এসেছি..."</p>
+      <p>লোকটি বিরক্ত হয়ে চোখ মুখ খিঁচে উত্তর দিল—</p>
+      <p class="dialogue">— "এক কথা কতবার বলব? এত সময় আমাদের নেই! সাইডে সরুন, পরেরজন আসুন!"</p>
+      <p>ঠিক তখনই পাশের টেবিলে কাজ করতে থাকা এক নবীন তরুণ টেকনিশিয়ান এগিয়ে এসে বলল—</p>
+      <p class="dialogue">— "স্যার, আপনার আপত্তি না থাকলে আমি কি একবার জাস্ট পেছনের প্যানেলটা চেক করে দেখতে পারি?"</p>
+      <p>অরিন্দম সসম্মানে মাথা নাড়লেন। ছেলেটি পকেট থেকে স্ক্রু-ড্রাইভার বের করে পেছনের কভারটি খুলল। দুই মিনিটও লাগল না! হালকা মুচকি হাসি দিয়ে সে বলল—</p>
+      <p class="dialogue">— "আরে স্যার! সমস্যা তো একদমই বড় কিছু নয়! পেছনের আর্টিং লাইনের এই স্ক্রুটা আলগা হয়ে গিয়েছিল, তাই পাওয়ার পাচ্ছিল না।"</p>
+      <p>সে স্ক্রুটা শক্ত করে এঁটে দিল। তারপর সকেটে প্লাগ লাগিয়ে ফ্রিজ চালিয়ে দেখাল—চকচকে আলো জ্বলে উঠল এবং ঠান্ডা হতে শুরু করল!</p>
+      <p>অরিন্দম প্রীত হয়ে জিজ্ঞেস করলেন—</p>
+      <p class="dialogue">— "কত টাকা দিতে হবে ভাই?"</p>
+      <p>তরুণটি বিনয়ের সাথে বলল—</p>
+      <p class="dialogue">— "এক টাকাও দিতে হবে না স্যার। এটা তো একদম সাধারণ বিষয়, আর ফ্রিজটি এখনও কোম্পানির নিখরচায় সেবা পাওয়ার মেয়াদের (Warranty) মধ্যেই পড়ে।"</p>
+      <p>অরিন্দম সেন ছেলেটির শার্টে সাঁটানো আইডি ব্যাজের দিকে তাকালেন। নাম লেখা—"ড্যানিয়েল"। তিনি আর কথা না বাড়িয়ে ড্যানিয়েলকে আন্তরিক ধন্যবাদ জানিয়ে সেখান থেকে বেরিয়ে এলেন।</p>
+      <p>বিকেলের দিকে কারখানায় ফিরেই অরিন্দম কাস্টমার সার্ভিস বিভাগের সেন্ট্রাল হেডকে নিজ কেবিনে ডেকে পাঠালেন—</p>
+      <p class="dialogue">— "আজ সকালে আমি ছদ্মবেশে শহরের তিন নম্বর সার্ভিস সেন্টারে গিয়েছিলাম।"</p>
+      <p>কথাটি শোনামাত্রই সেন্ট্রাল ম্যানেজারের মুখের গায়ের রং ফ্যাকাশে হয়ে গেল!</p>
+      <p>অরিন্দম শান্ত কিন্তু সুদৃঢ় গলায় সকালে ঘটে যাওয়া পুরো ঘটনার বিবরণ দিলেন। শেষে তিনি বরফের মতো শীতল গলায় বললেন—</p>
+      <p class="dialogue">— "যে কর্মচারী না দেখে গ্রাহককে ধমকে কম্প্রেসর বদলানোর কথা বলে ভয় দেখাচ্ছিল, তাকে এখনই কাজ থেকে বরখাস্ত করার দরকার নেই।"</p>
+      <p>ম্যানেজার অত্যন্ত অবাক হয়ে জিজ্ঞেস করলেন—</p>
+      <p class="dialogue">— "বরখাস্ত করবেন না স্যার?"</p>
+      <p class="dialogue">— "না। আগে অভ্যন্তরীণ আইনি তদন্ত করুন। সে যদি উদ্দেশ্যপ্রণোদিতভাবে কমিশন খাওয়ার জন্য বা গ্রাহকদের ঠকানোর জন্য ভুয়া বিল বানাত, তবে তাকে আইনের হাতে তুলে দিন। আর যদি তার সঠিক মেকানিকাল ট্রেইনিংয়ের অভাব থাকে, তবে তাকে আবার ট্রেনিংয়ে পাঠান।"</p>
+      <p>একটু থেমে অরিন্দম যোগ করলেন—</p>
+      <p class="dialogue">— "আর ওই তরুণ সার্ভিস ম্যান ড্যানিয়েলকে আগামী সোমবার সকাল দশটায় সরাসরি আমার অফিসে পাঠাবেন।"</p>
+      <p>সোমবার সকাল। ড্যানিয়েল চরম ভয় আর উৎকণ্ঠা নিয়ে অরিন্দম সেনের এসি কেবিনে ঢুকল। সে ভেবেছিল, হয়তো না জেনে কোনো ভুল করে ফেলার কারণে তাকে বড় সাহেবের মুখোমুখি হতে হচ্ছে।</p>
+      <p>অরিন্দম সেন নিজের চেয়ার ছেড়ে উঠে দাঁড়িয়ে হাসিমুখে ড্যানিয়েলের দিকে হাত বাড়িয়ে দিলেন—</p>
+      <p class="dialogue">— "তুমি কি জানো ড্যানিয়েল, শনিবার তোমার টেবিলে একটা আলগা স্ক্রু-ওয়ালা ফ্রিজ নিয়ে যে সাধারণ কাস্টমার এসেছিল, সে আসলে কে ছিল?"</p>
+      <p>ড্যানিয়েল বিভ্রান্ত হয়ে মাথা নাড়ল—</p>
+      <p class="dialogue">— "না স্যার... কোনো ভিআইপি ছিলেন বুঝি?"</p>
+      <p>অরিন্দম মিষ্টি হেসে বললেন—</p>
+      <p class="dialogue">— "সে ছিল তোমার কোম্পানির ফাউন্ডার অ্যান্ড ওনার!"</p>
+      <p>ড্যানিয়েল মুহূর্তে হতবম্ভ ও বাক্যহারা হয়ে গেল!</p>
+      <p>অরিন্দম ড্রয়ার থেকে একটি সিল করা খাম বের করে তার হাতে দিলেন—</p>
+      <p class="dialogue">— "এটা কোম্পানির পক্ষ থেকে তোমার সততার ছোট একটা উপহার।"</p>
+      <p>খামের ভেতরে ছিল—একটি বিশেষ প্রশংসাপত্র, এক মাসের আগাম বোনাসের চেক, এবং অরিন্দমের নিজ হাতে লেখা একটি চিঠি। চিঠিতে লেখা ছিল:</p>
+      <p class="letter">"যে কর্মী নিজের সততা দিয়ে গ্রাহকের কষ্টার্জিত টাকা বাঁচায়, সে শুধু একটি যন্ত্র বা ফ্রিজই সারায় না... সে কোম্পানির কোটি টাকার মূলধন ও সুনামও রক্ষা করে।"</p>
+      <p>ড্যানিয়েলের চোখ খুশির জলে ভরে উঠল।</p>
+      <p>সেদিনই অরিন্দমের নির্দেশে কোম্পানির সবকটি সার্ভিস সেন্টারে একটি যুগান্তকারী নতুন নিয়ম চালু করা হলো:</p>
+      <p class="notice">"যেকোনো যন্ত্রাংশ বদলানোর আগে তার অকাট্য কারণ লিখিতভাবে নথিভুক্ত করতে হবে এবং খোলা পুরোনো অংশটি বাধ্যতামূলকভাবে গ্রাহককে ফেরত ও প্রমাণ হিসেবে দেখাতে হবে।"</p>
+      <p>কোম্পানির এই গ্রাহকবান্ধব পরিবর্তনের খবর খুব দ্রুত বাজারে দাবানলের মতো ছড়িয়ে পড়ল। বাজারে ক্রেতারা স্বস্তির নিঃশ্বাস ফেলে বলাবলি করতে শুরু করলেন—</p>
+      <p class="dialogue">— "আর সব ব্র্যান্ড যাই হোক, এই 'নবজাগরণ' কোম্পানিটা একটু সত্যিই আলাদা... এরা মানুষের বিশ্বাসের মর্যাদা দেয়!"</p>
+      <p>কিন্তু ঠিক সেই সময়েই...</p>
+      <p>অরিন্দমের স্ত্রী সুচিত্রা সেন অরিন্দমকে চা দিতে এসে দৃঢ় গলায় বললেন—</p>
+      <p class="dialogue">— "শুধু শহরের গুটিকয়েক চকচকে শোরুম ঘুরে তো আসল চিত্র বোঝা যাবে না অরিন্দম। এবার আমি নিজে সাধারণ পোশাকে গ্রামাঞ্চলের সার্ভিস সেন্টারগুলো সরজমিনে দেখে আসতে চাই।"</p>
+      <p>অরিন্দম স্ত্রীর দিকে তাকিয়ে হেসে বললেন—</p>
+      <p class="dialogue">— "গ্রামে কিন্তু অনেক কষ্ট, আর সেখানে কোনো সিকিউরিটি থাকবে না... কেউ তোমাকে চিনবেও না।"</p>
+      <p>সুচিত্রা সেন মৃদু ও আত্মবিশ্বাসের হাসি হেসে উত্তর দিলেন—</p>
+      <p class="dialogue">— "সেটাই তো চাই অরিন্দম! সততার আসল পরীক্ষা তো লাইটের নিচে নয়, অন্ধকারের আড়ালেই হয়!"</p>
+      <p class="tobecontinued">(চলবে...)</p>
+    </div>
+  </section>
+
+  <section class="part-section" id="part-20" data-part="20">
+    <div class="part-head">
+      <div><span class="part-num">পর্ব ২০</span><h2 class="display">সুচিত্রার সফর</h2></div>
+      <button class="part-listen" aria-label="পর্ব ২০ শুনুন" title="পর্ব ২০ শুনুন">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>
+      </button>
+    </div>
+    <div class="part-text">
+      <p>পরের সোমবার সকাল।</p>
+      <p>সুচিত্রা সেন নিজের শিল্পপতি-বধূর পরিচয় সম্পূর্ণ গোপন রাখতে পরলেন খুব সাধারণ একটি সুতির শাড়ি। হাতে একটি সাধারণ কাপড়ের ব্যাগ, আর চোখে সাধারণ প্লাস্টিক ফ্রেমের চশমা।</p>
+      <p>বাড়ির ব্যক্তিগত ড্রাইভারকে ডেকে তিনি বললেন—</p>
+      <p class="dialogue">— "আজ কোনো কোম্পানির চকমকে বিলাসবহুল গাড়ি নয়। একটা সাধারণ ভাড়ার গাড়ি ডেকে নাও।"</p>
+      <p>প্রায় দুই ঘণ্টা জার্নি করে তিনি শহর ছাড়িয়ে অনেক দূরের এক মফস্বল বা গ্রামের ছোট্ট বাজারে পৌঁছালেন। সেখানে 'নবজাগরণ ইলেকট্রনিক্স'-এর একটি নতুন অনুমোদিত ডিলারশিপ ও সার্ভিস সেন্টার খোলা হয়েছে।</p>
+      <p>সাধারণ ক্রেতা সেজে সুচিত্রা দোকানে ঢুকতেই একজন চটপটে তরুণ বিক্রয়কর্মী এগিয়ে এল—</p>
+      <p class="dialogue">— "নমস্কার ম্যাডাম! কী দেখবেন বলুন?"</p>
+      <p>সুচিত্রা মুখে মিষ্টি হাসি ফুটিয়ে বললেন—</p>
+      <p class="dialogue">— "আমার মেয়ের বিয়ে বাবা। একটা টেকসই ফ্রিজ কিনতে চাই।"</p>
+      <p>বিক্রয়কর্মীটি বেশ উৎসাহ নিয়ে তাঁকে কয়েকটি আধুনিক মডেল দেখাতে লাগল। সুচিত্রা একজন সাধারণ অনভিজ্ঞ কাস্টমারের মতো একের পর এক প্রশ্ন করতে লাগলেন—</p>
+      <p class="dialogue">— "এটাতে আবার বিদ্যুৎ বেশি টানবে না তো ভাই?"</p>
+      <p class="dialogue">— "নষ্ট হলে কত দিনে তোমাদের লোক এসে ঠিক করে দিয়ে যাবে?"</p>
+      <p class="dialogue">— "আমাদের বাড়ি একদম গাঁয়ের ভেতর। সেখানেও কি সার্ভিস দিতে লোক পাঠাবে?"</p>
+      <p>ছেলেটি বেশ ধৈর্য ধরে সুচিত্রার সব প্রশ্নের উত্তর দিল। কিন্তু ঠিক তখনই পাশে দাঁড়িয়ে থাকা আরেকজন প্রবীণ বিক্রেতা একটু নিরুৎসাহী গলায় বলে উঠল—</p>
+      <p class="dialogue">— "ম্যাডাম, আপনার যদি মফস্বল বা একদম ভেতরের গ্রামে বাড়ি হয়, তবে কিন্তু টেকনিশিয়ান সার্ভিস পেতে একটু সময় লাগবে।"</p>
+      <p>সুচিত্রা প্রশ্ন করলেন—</p>
+      <p class="dialogue">— "কত দিন সময় লাগতে পারে?"</p>
+      <p class="dialogue">— "ওই ধরুন তিন থেকে চার দিন তো বটেই!"</p>
+      <p>সুচিত্রা মুখে কিছু বললেন না, কিন্তু কথাটা নিজের ডায়েরিতে লেখার জন্য মনে মনে টুকে রাখলেন।</p>
+      <p>দোকান থেকে বেরিয়ে তিনি বাজারের মেঠো রাস্তার পাশের এক মাটির চায়ের দোকানে গিয়ে বসলেন। সেখানে কয়েকজন সাধারণ মানুষ চায়ের কাপে তুফান তুলে আড্ডা দিচ্ছিলেন।</p>
+      <p>একজন প্রবীণ কৃষক বললেন—</p>
+      <p class="dialogue">— "আরে ওই 'নবজাগরণ' কোম্পানির জিনিসপত্র মোটেও খারাপ না ভাই! খাঁটি স্বদেশী মাল।"</p>
+      <p>পাশের একজন মেকানিক যোগ করলেন—</p>
+      <p class="dialogue">— "আমার দোকানের ফ্রিজে সেদিন ফিউজ উড়েছিল, কল করার পরদিনই লোক এসে সারিয়ে দিয়ে গেছে।"</p>
+      <p>ঠিক তখনই তৃতীয় ব্যক্তি হালকা হেসে চায়ের কাপে চুমুক দিয়ে বললেন—</p>
+      <p class="dialogue">— "ঠিক করে দিয়ে গেছে তো বুঝলাম ভাই, কিন্তু আমার বাড়ি তো আরও তিন ক্রোশ ভেতরে! সেখানে লোক পৌঁছাতে পৌঁছাতে তিন দিন পার! ততদিনে তো আমার দোকানের হাজার টাকার আইসক্রিম গলে জল হয়ে একাকার!"</p>
+      <p>সুচিত্রা চুপচাপ মাটির ভাঁড়ে চা খেতে খেতে সাধারণ আমজনতার মনের এই তাজা খোরাকগুলো সংগ্রহ করলেন।</p>
+      <p>ফেরার পথে সুচিত্রা গাড়ির ড্রাইভারকে বললেন—</p>
+      <p class="dialogue">— "আর একটা নির্দিষ্ট জায়গায় যাব। গাড়ির গতি একটু কমাও।"</p>
+      <p>গাড়িটি গিয়ে থামল এক ছায়াঘেরা ছোট্ট গ্রামের সাধারণ একবাড়ির সামনে। বারান্দায় 'নবজাগরণ ইলেকট্রনিক্স'-এর একটি ব্র্যান্ড নিউ ফ্রিজ রাখা আছে।</p>
+      <p>সুচিত্রা ধীর পায়ে গিয়ে দরজায় কড়া নাড়লেন। একজন গৃহবধূ দরজা খুলতেই সুচিত্রা বিনয়ের সাথে নিজের পরিচয় গোপন রেখে বললেন—</p>
+      <p class="dialogue">— "বাছা, আমি মেয়ের বিয়ের জন্য একটা ফ্রিজ কিনব ভাবছি। তোমাদের বারান্দায় দেখলাম... তাই একটু অভিজ্ঞতা জানতে এলাম।"</p>
+      <p>মহিলা আপ্যায়ন করে হাসলেন—</p>
+      <p class="dialogue">— "ওমা! ভেতরে আসুন না মাসিমা! বসে কথা বলুন।"</p>
+      <p>ঘরের এক কোণে নিশ্চুপে ফ্রিজটি চলছিল। মহিলা উৎসাহের সাথে বললেন—</p>
+      <p class="dialogue">— "ফ্রিজটা কিন্তু আসলেও খুব ভালো মাসিমা! অনেক ফলমূল আর শাকসবজি রাখা যায়, আর কারেন্টের বিলও একদম কম আসে।"</p>
+      <p>সুচিত্রা মৃদু হেসে জিজ্ঞেস করলেন—</p>
+      <p class="dialogue">— "কোনো অসুবিধা বা ঝামেলার মুখোমুখি হতে হয়নি তো?"</p>
+      <p>মহিলা একটু ভেবে লজ্জা পেয়ে বললেন—</p>
+      <p class="dialogue">— "অসুবিধা বলতে একটাই মাসিমা..."</p>
+      <p class="dialogue">— "কী অসুবিধা বাছা?"</p>
+      <p class="dialogue">— "ফ্রিজের সাথে একটা মোটা ব্যবহারের বই (User Manual) দিয়েছে তো! সেটা ইংরেজি আর ভারী ভারী কারিগরি ভাষায় লেখা! আমি তো অত ইংরেজি বুঝি না, তাই কোনটা কী বোতাম বা কীভাবে বরফ পরিষ্কার করতে হয়, তা বুঝতে আমার বড্ড কষ্ট হয়েছিল।"</p>
+      <p>ঠিক তখনই ঘর থেকে মহিলার সাত-আট বছরের ছোট ছেলে দৌড়ে বেরিয়ে এল। সে এক লাফে ফ্রিজের দরজা খুলে ভেতর থেকে কনকনে ঠান্ডা জল বের করে এক ঢোক খেয়ে বলল—</p>
+      <p class="dialogue">— "মা! এই ফ্রিজের জলটা কিন্তু দারুণ ঠান্ডা!"</p>
+      <p>সবাই ওর কথায় হেসে উঠল।</p>
+      <p>কিন্তু সুচিত্রা আবার সেই গুরুত্বপূর্ণ কথাটা মনে মনে টুকে নিলেন—"সাধারণ ক্রেতার জন্য ব্যবহারের নির্দেশিকা কঠিন নয়, সহজ বাংলা ভাষায় লেখা হতে হবে।"</p>
+      <p>সন্ধ্যায় কারখানায় ফিরে সুচিত্রা সরাসরি অরিন্দমের কেবিনে গিয়ে তাঁর টেবিলে একটি ছোট নোটবুক রাখলেন। অরিন্দম ডায়েরিটা খুলে দেখলেন—তাতে কোনো দীর্ঘ বা জটিল করপোরেট রিপোর্ট নেই। মাত্র চারটি স্পষ্ট বুলেট পয়েন্ট লেখা:</p>
+      <ol class="diary">
+        <li>গ্রামাঞ্চলে সার্ভিস ভ্যান বা টেকনিশিয়ান আরও দ্রুত পাঠাতে হবে।</li>
+        <li>প্যাকের ভেতরের 'ইউজার ম্যানুয়াল' সহজ ও স্থানীয় বাংলা ভাষায় লিখতে হবে।</li>
+        <li>ফ্রিজের গায়ে টোল-ফ্রি হেল্পলাইন নম্বরটি আরও বড় হরফে ছাপাতে হবে।</li>
+        <li>ডিলার শোরুমের সেলসম্যানদের নিয়মিত ট্রেনিং দিতে হবে।</li>
+      </ol>
+      <p>অরিন্দম নোটবুকটি বন্ধ করে স্ত্রীর দিকে তাকিয়ে একচিলতে মিষ্টি হাসলেন—</p>
+      <p class="dialogue">— "আজকে কয়টা বিশাল শোরুম পরিদর্শন করলে সুচিত্রা দেবী?"</p>
+      <p>সুচিত্রা চায়ের কাপটি অরিন্দমের দিকে বাড়িয়ে দিয়ে মুচকি হেসে বললেন—</p>
+      <p class="dialogue">— "তিনটে খুচরো দোকান... একটা মেঠো চায়ের দোকান... আর একটা সাধারণ কাস্টমারের মাটির ঘর!"</p>
+      <p>অরিন্দম গম্ভীর ও শ্রদ্ধাভরা গলায় বললেন—</p>
+      <p class="dialogue">— "আমাদের এই কোটি টাকার কোম্পানির সবচেয়ে বড় কনসালটেন্ট বা পরামর্শদাতা কে জানো সুচিত্রা?"</p>
+      <p class="dialogue">— "কে?"</p>
+      <p class="dialogue">— "যে সাধারণ মানুষটা নিজের ঘাম ঝরানো রক্ত-জল করা টাকায় আমাদের এই সার্ভিসটা কেনে!"</p>
+      <p>সুচিত্রাও সহমর্মিতার সাথে মাথা নাড়লেন।</p>
+      <p>ঠিক তখনই অরিন্দমের ডেস্কের ল্যান্ডলাইন ফোনটি বেজে উঠল। ওপাশ থেকে মানবসম্পদ বা এইচআর (HR) প্রধান বললেন—</p>
+      <p class="dialogue">— "স্যার, আগামী সপ্তাহ থেকে আমাদের কারখানার সিকিউরিটি বা নতুন নিরাপত্তাকর্মী নিয়োগ শুরু হচ্ছে।"</p>
+      <p>অরিন্দম সুদৃঢ় গলায় উত্তর দিলেন—</p>
+      <p class="dialogue">— "খুব ভালো। তবে এবার আমাদের এমন কিছু সৎ মানুষ চাই, যারা শুধু কারখানার গেট পাহারা দেবে না... আমাদের নীতি আর দায়িত্বকেও পাহারা দেবে।"</p>
+      <p>আর সেই সিকিউরিটি গার্ডের নিয়োগের জন্য সারিবদ্ধ লাইনে আবেদনপত্র হাতে দাঁড়িয়ে থাকবে এক অভাবী কিন্তু অসম্ভব সৎ তরুণ যুবক...</p>
+      <p class="reveal">রামু!</p>
+      <p class="tobecontinued">(চলবে...)</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span class="brand">MySkillGame Learning Portal</span> · বিনামূল্যে, বিজ্ঞাপনহীন, অফলাইন-বান্ধব বাংলা পাঠ ও শিক্ষা প্ল্যাটফর্ম<br>
+  বুকমার্ক ও পছন্দ শুধু আপনার ব্রাউজারে (localStorage) সংরক্ষিত থাকে — কোনো তথ্য সংগ্রহ করা হয় না।
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var CHAPTER_NUM = 5;
+  var BOOKMARK_KEY = "nabajagaran_bookmark";
+  var VOICE_KEY = "nabajagaran_voice_pref";
+  var RATE_KEY = "nabajagaran_rate_pref";
+
+  var synth = window.speechSynthesis;
+  var speakQueue = [];
+  var activeBtn = null;
+
+  var voiceSelect = document.getElementById("voiceSelect");
+  var rateRange = document.getElementById("rateRange");
+  var rateValue = document.getElementById("rateValue");
+
+  function populateVoices(){
+    var voices = synth ? synth.getVoices() : [];
+    if (!voices.length){ voiceSelect.innerHTML = '<option value="">কণ্ঠ পাওয়া যায়নি</option>'; return; }
+    var bn = voices.filter(function(v){ return /^bn/i.test(v.lang); });
+    var others = voices.filter(function(v){ return !/^bn/i.test(v.lang); });
+    var ordered = bn.concat(others);
+    var saved = localStorage.getItem(VOICE_KEY);
+    voiceSelect.innerHTML = ordered.map(function(v, i){
+      return '<option value="'+i+'">'+v.name+' ('+v.lang+')'+(bn.indexOf(v)>-1?' — বাংলা':'')+'</option>';
+    }).join("");
+    voiceSelect._voices = ordered;
+    if (saved !== null){
+      var idx = ordered.findIndex(function(v){ return v.name === saved; });
+      if (idx > -1) voiceSelect.value = idx;
+    }
+  }
+  if (synth){ populateVoices(); synth.onvoiceschanged = populateVoices; }
+  else { voiceSelect.innerHTML = '<option value="">এই ব্রাউজারে ভয়েস সমর্থিত নয়</option>'; }
+
+  voiceSelect.addEventListener("change", function(){
+    var v = voiceSelect._voices && voiceSelect._voices[voiceSelect.value];
+    if (v) localStorage.setItem(VOICE_KEY, v.name);
+  });
+
+  var savedRate = parseFloat(localStorage.getItem(RATE_KEY));
+  if (!isNaN(savedRate)) rateRange.value = savedRate;
+  function updateRateLabel(){ rateValue.textContent = parseFloat(rateRange.value).toFixed(1) + "×"; }
+  updateRateLabel();
+  rateRange.addEventListener("input", function(){ updateRateLabel(); localStorage.setItem(RATE_KEY, rateRange.value); });
+
+  function splitIntoChunks(text){
+    return text.replace(/\s+/g, " ").trim().split(/(?<=[।!?])\s+/).filter(function(s){ return s.trim().length > 0; });
+  }
+  function speakChunks(chunks, btn){
+    stopSpeaking();
+    if (!synth || !chunks.length) return;
+    speakQueue = chunks.slice();
+    activeBtn = btn;
+    if (btn) btn.classList.add("speaking");
+    speakNext();
+  }
+  function speakNext(){
+    if (!speakQueue.length){ finishSpeaking(); return; }
+    var text = speakQueue.shift();
+    var utter = new SpeechSynthesisUtterance(text);
+    var v = voiceSelect._voices && voiceSelect._voices[voiceSelect.value];
+    if (v) utter.voice = v;
+    utter.rate = parseFloat(rateRange.value) || 1;
+    utter.lang = (v && v.lang) || "bn-IN";
+    utter.onend = speakNext;
+    utter.onerror = finishSpeaking;
+    synth.speak(utter);
+  }
+  function finishSpeaking(){
+    if (activeBtn) activeBtn.classList.remove("speaking");
+    activeBtn = null;
+    speakQueue = [];
+  }
+  function stopSpeaking(){ if (synth) synth.cancel(); finishSpeaking(); }
+  document.getElementById("stopAllBtn").addEventListener("click", stopSpeaking);
+
+  document.querySelectorAll(".part-listen").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var section = btn.closest(".part-section");
+      if (btn.classList.contains("speaking")){ stopSpeaking(); return; }
+      var text = section.querySelector(".part-text").textContent;
+      speakChunks(splitIntoChunks(text), btn);
+    });
+  });
+
+  document.getElementById("playAllBtn").addEventListener("click", function(){
+    if (synth && synth.speaking){ stopSpeaking(); return; }
+    var full = Array.prototype.map.call(document.querySelectorAll(".part-text"), function(el){ return el.textContent; }).join(" ");
+    speakChunks(splitIntoChunks(full), null);
+  });
+
+  function readBookmark(){
+    var raw = localStorage.getItem(BOOKMARK_KEY);
+    if (!raw) return null;
+    try { var parsed = JSON.parse(raw); if (parsed && typeof parsed === "object") return parsed; } catch(e){}
+    var n = parseInt(raw, 10);
+    return isNaN(n) ? null : { chapter:n, part:1 };
+  }
+  function writeBookmark(chapter, part){
+    localStorage.setItem(BOOKMARK_KEY, JSON.stringify({ chapter:chapter, part:part }));
+  }
+
+  document.getElementById("markHereBtn").addEventListener("click", function(){
+    var visible = getCurrentPart();
+    writeBookmark(CHAPTER_NUM, visible);
+    var btn = document.getElementById("markHereBtn");
+    var original = btn.textContent;
+    btn.textContent = "✓ বুকমার্ক হয়েছে — পর্ব " + visible;
+    setTimeout(function(){ btn.textContent = original; }, 1800);
+  });
+
+  (function jumpToBookmarkIfRelevant(){
+    if (window.location.hash) return;
+    var bm = readBookmark();
+    if (bm && bm.chapter === CHAPTER_NUM && bm.part > 17){
+      var target = document.getElementById("part-" + bm.part);
+      if (target) setTimeout(function(){ target.scrollIntoView({ behavior:"auto", block:"start" }); }, 50);
+    }
+  })();
+
+  var jumpLinks = document.querySelectorAll("#partJump a");
+  function getCurrentPart(){
+    var sections = document.querySelectorAll(".part-section");
+    var current = 17;
+    sections.forEach(function(sec){
+      var rect = sec.getBoundingClientRect();
+      if (rect.top < 200) current = parseInt(sec.getAttribute("data-part"), 10);
+    });
+    return current;
+  }
+  function updateActiveChip(){
+    var current = getCurrentPart();
+    jumpLinks.forEach(function(a){ a.classList.toggle("active", parseInt(a.getAttribute("data-part"),10) === current); });
+  }
+  document.addEventListener("scroll", function(){ window.requestAnimationFrame(updateActiveChip); }, { passive:true });
+  updateActiveChip();
+
+  window.addEventListener("beforeunload", stopSpeaking);
+})();
+</script>
+</body>
+</html>

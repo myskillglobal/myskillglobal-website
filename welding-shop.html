@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>ওয়েল্ডিং শপ (Welding Shop) — সম্পূর্ণ পাঠ | MySkillGame</title>
+<meta name="description" content="Vocational Education - Welding Shop Workshop সম্পূর্ণ গাইড, ওয়েল্ডিং-এর প্রকারভেদ, ইলেক্ট্রোড, যন্ত্রপাতি, সেফটি ও কুইজ">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+
+<style>
+  :root{
+    --w-bg-1:#1a0f0a;
+    --w-bg-2:#241309;
+    --w-panel:#2b160d;
+    --w-panel-2:#341c10;
+    --w-border:#5a3420;
+    --w-gold:#ff8c2b;
+    --w-gold-light:#ffb066;
+    --w-green:#7fd858;
+    --w-text:#fbeee1;
+    --w-text-dim:#d8b79e;
+    --w-red:#ef4b3a;
+    --w-card-shadow: 0 6px 18px rgba(0,0,0,0.45);
+    --radius:14px;
+    --safe-top: env(safe-area-inset-top,0px);
+    --safe-bottom: env(safe-area-inset-bottom,0px);
+    --safe-left: env(safe-area-inset-left,0px);
+    --safe-right: env(safe-area-inset-right,0px);
+  }
+  body.light{
+    --w-bg-1:#fdf6f0;
+    --w-bg-2:#fbeadb;
+    --w-panel:#ffffff;
+    --w-panel-2:#fff3e6;
+    --w-border:#ecd2b6;
+    --w-gold:#b85c00;
+    --w-gold-light:#8a4200;
+    --w-green:#1f8a44;
+    --w-text:#2a1608;
+    --w-text-dim:#7a5334;
+    --w-red:#b5271f;
+    --w-card-shadow: 0 4px 14px rgba(90,50,20,0.15);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:"Noto Sans Bengali","Segoe UI",Arial,sans-serif;
+    background: radial-gradient(circle at 20% 0%, var(--w-bg-2), var(--w-bg-1) 60%);
+    color:var(--w-text);
+    padding-top:var(--safe-top);
+    padding-bottom:var(--safe-bottom);
+    padding-left:var(--safe-left);
+    padding-right:var(--safe-right);
+    min-height:100vh;
+    transition: background .3s, color .3s;
+    overflow-x:hidden;
+  }
+  a{color:var(--w-gold-light);text-decoration:none;}
+
+  /* HEADER */
+  header.top{
+    position:sticky;top:0;z-index:50;
+    background:linear-gradient(180deg, rgba(20,10,6,0.97), rgba(20,10,6,0.9));
+    border-bottom:2px solid var(--w-gold);
+    padding:10px 14px;
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+    backdrop-filter: blur(6px);
+  }
+  body.light header.top{background:linear-gradient(180deg, rgba(255,250,245,0.97), rgba(255,250,245,0.9));}
+  .brand{display:flex;align-items:center;gap:10px;}
+  .brand .logo{font-size:26px;}
+  .brand h1{font-size:15px;margin:0;color:var(--w-gold-light);line-height:1.2;}
+  .brand span.sub{display:block;font-size:11px;color:var(--w-text-dim);font-weight:normal;}
+  .top-actions{display:flex;gap:8px;align-items:center;}
+  .icon-btn{
+    background:var(--w-panel-2);
+    border:1px solid var(--w-border);
+    color:var(--w-text);
+    border-radius:10px;
+    padding:8px 10px;
+    font-size:14px;
+    cursor:pointer;
+  }
+  .icon-btn:active{transform:scale(0.96);}
+
+  /* HERO */
+  .hero{
+    padding:26px 16px 20px;
+    text-align:center;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.05)),
+      repeating-linear-gradient(100deg, #33190c 0px, #33190c 18px, #3d200f 18px, #3d200f 36px);
+    border-bottom:3px solid var(--w-gold);
+  }
+  body.light .hero{
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.3), rgba(255,255,255,0.05)),
+      repeating-linear-gradient(100deg, #fbe3ca 0px, #fbe3ca 18px, #fdf0e2 18px, #fdf0e2 36px);
+  }
+  .hero h2{font-size:22px;margin:0 0 6px;color:var(--w-gold-light);}
+  .hero p{margin:0;color:var(--w-text-dim);font-size:13.5px;max-width:640px;margin:0 auto;}
+  .hero .badges{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:14px;}
+  .badge{
+    background:var(--w-panel);
+    border:1px solid var(--w-gold);
+    color:var(--w-gold-light);
+    font-size:11.5px;
+    padding:5px 10px;
+    border-radius:20px;
+  }
+
+  /* SEARCH */
+  .search-wrap{padding:14px 16px 4px;}
+  .search-box{display:flex;gap:8px;max-width:640px;margin:0 auto;}
+  .search-box input{
+    flex:1;
+    background:var(--w-panel);
+    border:1px solid var(--w-border);
+    color:var(--w-text);
+    padding:10px 14px;
+    border-radius:24px;
+    font-size:14px;
+  }
+  .search-box input:focus{outline:none;border-color:var(--w-gold);}
+
+  /* LAYOUT */
+  .layout{
+    display:flex;
+    max-width:1200px;
+    margin:0 auto;
+    gap:16px;
+    padding:16px;
+    align-items:flex-start;
+  }
+  nav.sidebar{
+    position:sticky;top:70px;
+    width:220px;
+    flex-shrink:0;
+    background:var(--w-panel);
+    border:1px solid var(--w-border);
+    border-radius:var(--radius);
+    padding:10px;
+    max-height:calc(100vh - 90px);
+    overflow-y:auto;
+  }
+  nav.sidebar a{
+    display:flex;align-items:center;gap:8px;
+    padding:8px 10px;
+    font-size:13px;
+    color:var(--w-text-dim);
+    border-radius:8px;
+    margin-bottom:2px;
+  }
+  nav.sidebar a.active, nav.sidebar a:hover{
+    background:var(--w-panel-2);
+    color:var(--w-gold-light);
+  }
+  main{flex:1;min-width:0;}
+
+  .progress-wrap{
+    background:var(--w-panel);
+    border:1px solid var(--w-border);
+    border-radius:10px;
+    padding:8px 12px;
+    margin-bottom:14px;
+    font-size:12px;
+    color:var(--w-text-dim);
+    display:flex;align-items:center;gap:10px;
+  }
+  .progress-bar-bg{flex:1;background:var(--w-bg-2);border-radius:6px;height:8px;overflow:hidden;}
+  .progress-bar-fill{height:100%;background:linear-gradient(90deg,var(--w-gold),var(--w-green));width:0%;transition:width .4s;}
+
+  section.chapter{
+    background:var(--w-panel);
+    border:1px solid var(--w-border);
+    border-radius:var(--radius);
+    padding:18px 18px 20px;
+    margin-bottom:16px;
+    box-shadow:var(--w-card-shadow);
+    scroll-margin-top:70px;
+  }
+  section.chapter h2{
+    margin:0 0 10px;
+    font-size:18px;
+    color:var(--w-gold-light);
+    display:flex;align-items:center;gap:8px;
+    border-bottom:1px solid var(--w-border);
+    padding-bottom:8px;
+  }
+  section.chapter h3{font-size:15px;color:var(--w-green);margin:16px 0 6px;}
+  section.chapter p{font-size:14px;line-height:1.7;color:var(--w-text);margin:6px 0;}
+  section.chapter ul{margin:6px 0 6px 18px;padding:0;font-size:14px;line-height:1.75;}
+  section.chapter li{margin-bottom:3px;}
+  .mark-btn{
+    margin-top:10px;
+    background:var(--w-panel-2);
+    border:1px solid var(--w-gold);
+    color:var(--w-gold-light);
+    padding:6px 14px;
+    border-radius:20px;
+    font-size:12px;
+    cursor:pointer;
+  }
+  .mark-btn.done{background:var(--w-green);border-color:var(--w-green);color:#07230f;}
+
+  .card-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:10px;
+    margin-top:8px;
+  }
+  .w-card{
+    background:var(--w-panel-2);
+    border:1px solid var(--w-border);
+    border-radius:10px;
+    padding:10px;
+    text-align:center;
+    font-size:13px;
+  }
+  .w-card .emoji{font-size:26px;display:block;margin-bottom:4px;}
+  .w-card b{color:var(--w-gold-light);font-size:13.5px;}
+  .w-card small{display:block;color:var(--w-text-dim);font-size:11px;margin-top:3px;}
+
+  table{width:100%;border-collapse:collapse;margin-top:8px;font-size:13px;}
+  th,td{border:1px solid var(--w-border);padding:8px 10px;text-align:left;}
+  th{background:var(--w-panel-2);color:var(--w-gold-light);}
+  tr:nth-child(even){background:rgba(255,255,255,0.02);}
+  body.light tr:nth-child(even){background:rgba(0,0,0,0.02);}
+
+  .joint-grid, .tool-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+    gap:10px;
+    margin-top:8px;
+  }
+  .joint-item, .tool-item{
+    background:var(--w-panel-2);
+    border:1px solid var(--w-border);
+    border-radius:10px;
+    padding:12px 8px;
+    text-align:center;
+    font-size:12.5px;
+  }
+  .joint-item .ic, .tool-item .ic{font-size:22px;display:block;margin-bottom:4px;}
+
+  .safety-grid{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;}
+  .safety-chip{
+    background:rgba(127,216,88,0.15);
+    border:1px solid var(--w-green);
+    color:var(--w-green);
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:12.5px;
+  }
+
+  .glossary-grid{margin-top:8px;}
+
+  /* Quiz */
+  .quiz-box{
+    background:var(--w-panel-2);
+    border:1px solid var(--w-border);
+    border-radius:12px;
+    padding:14px;
+    margin-top:10px;
+  }
+  .quiz-q{font-size:14px;color:var(--w-gold-light);margin-bottom:10px;font-weight:bold;}
+  .quiz-opts{display:flex;flex-direction:column;gap:6px;}
+  .quiz-opt{
+    background:var(--w-panel);
+    border:1px solid var(--w-border);
+    color:var(--w-text);
+    padding:9px 12px;
+    border-radius:8px;
+    font-size:13px;
+    text-align:left;
+    cursor:pointer;
+  }
+  .quiz-opt.correct{background:rgba(127,216,88,0.25);border-color:var(--w-green);}
+  .quiz-opt.wrong{background:rgba(239,75,58,0.25);border-color:var(--w-red);}
+  .quiz-footer{
+    display:flex;justify-content:space-between;align-items:center;
+    margin-top:12px;font-size:12.5px;color:var(--w-text-dim);
+  }
+  .quiz-nav-btn{
+    background:var(--w-gold);color:#241309;border:none;
+    padding:8px 16px;border-radius:20px;font-size:13px;cursor:pointer;font-weight:bold;
+  }
+  .quiz-score{text-align:center;padding:20px;font-size:16px;color:var(--w-gold-light);}
+
+  .project-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+    gap:10px;margin-top:8px;
+  }
+  .project-item{
+    background:var(--w-panel-2);
+    border:1px solid var(--w-border);
+    border-radius:10px;
+    padding:12px 8px;text-align:center;font-size:13px;
+  }
+  .project-item .ic{font-size:26px;display:block;margin-bottom:4px;}
+
+  footer{
+    text-align:center;
+    padding:24px 16px calc(24px + var(--safe-bottom));
+    font-size:12px;
+    color:var(--w-text-dim);
+    border-top:1px solid var(--w-border);
+    margin-top:20px;
+  }
+
+  .hidden{display:none !important;}
+
+  @media print{
+    header.top, .search-wrap, nav.sidebar, .top-actions, .mark-btn, .quiz-box, footer .no-print{display:none !important;}
+    body{background:#fff;color:#000;}
+    section.chapter{border:none;box-shadow:none;page-break-inside:avoid;}
+  }
+
+  @media (max-width:820px){
+    nav.sidebar{
+      position:fixed;
+      top:0;left:0;bottom:0;
+      width:78%;
+      max-width:280px;
+      z-index:100;
+      transform:translateX(-105%);
+      transition:transform .25s;
+      border-radius:0;
+      max-height:100vh;
+      padding-top:calc(16px + var(--safe-top));
+    }
+    nav.sidebar.open{transform:translateX(0);}
+    .layout{flex-direction:column;padding:10px;}
+    .overlay{
+      position:fixed;inset:0;background:rgba(0,0,0,0.5);
+      z-index:90;display:none;
+    }
+    .overlay.show{display:block;}
+  }
+</style>
+</head>
+<body>
+
+<div class="overlay" id="overlay"></div>
+
+<header class="top">
+  <div class="brand">
+    <button class="icon-btn" id="menuBtn" style="display:none;">☰</button>
+    <span class="logo">🔥</span>
+    <div>
+      <h1>ওয়েল্ডিং শপ — Welding Shop
+        <span class="sub">Vocational Education | MySkillGame</span>
+      </h1>
+    </div>
+  </div>
+  <div class="top-actions">
+    <button class="icon-btn" id="themeBtn" title="থিম পরিবর্তন">🌙</button>
+    <button class="icon-btn" id="printBtn" title="প্রিন্ট করুন">🖨️</button>
+  </div>
+</header>
+
+<section class="hero">
+  <h2>🔥 ওয়েল্ডিং শপ — সম্পূর্ণ ওয়ার্কশপ গাইড</h2>
+  <p>এই পেজে থাকছে ওয়েল্ডিং-এর মৌলিক ধারণা, প্রকারভেদ, ইলেক্ট্রোড, যন্ত্রপাতি, জয়েন্ট, সেফটি ও কুইজ — সবকিছু একসাথে, ছাত্র-ছাত্রীদের সম্পূর্ণ ধারণা দেওয়ার জন্য।</p>
+  <div class="badges">
+    <span class="badge">📖 ২৫টি অধ্যায়</span>
+    <span class="badge">📝 MCQ কুইজ</span>
+    <span class="badge">🎓 ৫০টি Viva প্রশ্ন</span>
+    <span class="badge">🛠️ ৬টি প্রজেক্ট আইডিয়া</span>
+    <span class="badge">📱 মোবাইল ফ্রেন্ডলি</span>
+  </div>
+</section>
+
+<div class="search-wrap">
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="🔍 বিষয় খুঁজুন... যেমন: আর্ক, ইলেক্ট্রোড, গ্যাস কাটিং, সেফটি">
+  </div>
+</div>
+
+<div class="layout">
+
+  <nav class="sidebar" id="sidebar">
+    <a href="#intro" class="navlink">🔥 পরিচিতি</a>
+    <a href="#basics" class="navlink">⚙️ মৌলিক ধারণা</a>
+    <a href="#types" class="navlink">🔀 ওয়েল্ডিং-এর প্রকারভেদ</a>
+    <a href="#arcwelding" class="navlink">⚡ আর্ক ওয়েল্ডিং</a>
+    <a href="#gaswelding" class="navlink">🔥 গ্যাস ওয়েল্ডিং</a>
+    <a href="#tigmig" class="navlink">🌀 TIG ও MIG ওয়েল্ডিং</a>
+    <a href="#electrodes" class="navlink">🪄 ইলেক্ট্রোড</a>
+    <a href="#equipment" class="navlink">🧰 যন্ত্রপাতি</a>
+    <a href="#handtools" class="navlink">🛠️ হ্যান্ড টুলস</a>
+    <a href="#gascutting" class="navlink">✂️ গ্যাস কাটিং</a>
+    <a href="#joints" class="navlink">🔗 জয়েন্টের প্রকারভেদ</a>
+    <a href="#positions" class="navlink">📐 ওয়েল্ডিং পজিশন</a>
+    <a href="#symbols" class="navlink">🔣 ওয়েল্ডিং সিম্বল</a>
+    <a href="#defects" class="navlink">⚠️ ওয়েল্ডিং ত্রুটি</a>
+    <a href="#testing" class="navlink">🔍 পরীক্ষা পদ্ধতি</a>
+    <a href="#safety" class="navlink">🦺 সেফটি (PPE)</a>
+    <a href="#workshoprules" class="navlink">📋 Workshop Rules</a>
+    <a href="#firstaid" class="navlink">🚑 প্রাথমিক চিকিৎসা</a>
+    <a href="#units" class="navlink">📐 মাপের একক</a>
+    <a href="#environment" class="navlink">🌍 পরিবেশ ও সাশ্রয়</a>
+    <a href="#glossary" class="navlink">📖 পরিভাষা</a>
+    <a href="#syllabus" class="navlink">📚 WBSCVT/NCVT পাঠ্যসূচি</a>
+    <a href="#viva" class="navlink">❓ Viva প্রশ্ন</a>
+    <a href="#quiz" class="navlink">📝 MCQ কুইজ</a>
+    <a href="#projects" class="navlink">🏆 মিনি প্রজেক্ট</a>
+  </nav>
+
+  <main>
+    <div class="progress-wrap">
+      <span>📊 পঠন অগ্রগতি:</span>
+      <div class="progress-bar-bg"><div class="progress-bar-fill" id="progressFill"></div></div>
+      <span id="progressText">0%</span>
+    </div>
+
+    <section class="chapter" id="intro" data-title="পরিচিতি ইতিহাস কর্মসংস্থান ওয়েল্ডার">
+      <h2>🔥 ওয়েল্ডিং শপ (Welding Shop) পরিচিতি</h2>
+      <h3>ওয়েল্ডিং শপ কী?</h3>
+      <p>ওয়েল্ডিং শপ বা ঝালাই কর্মশালা হল সেই স্থান, যেখানে তাপ ও চাপ প্রয়োগ করে দুই বা ততোধিক ধাতব খণ্ডকে জোড়া লাগানোর ব্যবহারিক কাজ শেখানো হয় — যেমন আর্ক ওয়েল্ডিং, গ্যাস ওয়েল্ডিং, কাটিং এবং নিরাপদে যন্ত্রপাতি ব্যবহারের কৌশল রপ্ত করা।</p>
+      <h3>ইতিহাস</h3>
+      <p>ঊনবিংশ শতাব্দীর শেষ দিকে বৈদ্যুতিক আর্ক ও অক্সি-এসিটিলিন শিখা আবিষ্কারের পর থেকে ধাতু জোড়া লাগানোর পদ্ধতি হিসেবে ওয়েল্ডিং দ্রুত জনপ্রিয় হয়ে ওঠে। বিংশ শতাব্দীতে শিল্পায়নের সাথে সাথে জাহাজ নির্মাণ, রেল, সেতু ও কলকারখানায় ওয়েল্ডিং অপরিহার্য প্রযুক্তি হয়ে দাঁড়ায়।</p>
+      <h3>বর্তমান যুগে গুরুত্ব</h3>
+      <p>আজকের দিনে নির্মাণ শিল্প, গাড়ি তৈরির কারখানা, জাহাজ নির্মাণ, ফার্নিচার, পাইপলাইন থেকে শুরু করে ছোট মেরামতির দোকান পর্যন্ত সব জায়গাতেই দক্ষ ওয়েল্ডারের চাহিদা রয়েছে। এটি একটি নিরাপদ প্রশিক্ষণের মাধ্যমে শেখা প্রয়োজন এমন গুরুত্বপূর্ণ কারিগরি পেশা।</p>
+      <h3>কর্মসংস্থানের সুযোগ</h3>
+      <ul>
+        <li>কারখানা ও নির্মাণ শিল্পের ওয়েল্ডার</li>
+        <li>ফ্যাব্রিকেশন ও স্ট্রাকচারাল ওয়েল্ডার</li>
+        <li>গাড়ি ও যন্ত্রাংশ মেরামত ওয়েল্ডার</li>
+        <li>জাহাজ নির্মাণ শিল্পের ওয়েল্ডার</li>
+        <li>পাইপলাইন ও গ্যাস কাটিং টেকনিশিয়ান</li>
+        <li>নিজস্ব ফ্যাব্রিকেশন ও ওয়েল্ডিং ওয়ার্কশপ ব্যবসা</li>
+      </ul>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="basics" data-title="মৌলিক ধারণা তাপ চাপ ধাতু জোড়া">
+      <h2>⚙️ ওয়েল্ডিং-এর মৌলিক ধারণা</h2>
+      <p>ওয়েল্ডিং হল এমন একটি প্রক্রিয়া, যেখানে তাপ, চাপ অথবা উভয় প্রয়োগ করে দুটি ধাতব অংশের সংযোগস্থল গলিয়ে বা নরম করে স্থায়ীভাবে জোড়া লাগানো হয়, প্রয়োজনে অতিরিক্ত ফিলার মেটাল যোগ করে।</p>
+      <div class="card-grid">
+        <div class="w-card"><span class="emoji">🔥</span><b>তাপ (Heat)</b><small>ধাতু গলাতে ব্যবহৃত হয়</small></div>
+        <div class="w-card"><span class="emoji">🧲</span><b>চাপ (Pressure)</b><small>কিছু পদ্ধতিতে জোড়া মজবুত করতে</small></div>
+        <div class="w-card"><span class="emoji">🪄</span><b>ফিলার মেটাল</b><small>জোড়ে অতিরিক্ত ধাতু যোগ করে</small></div>
+        <div class="w-card"><span class="emoji">🛡️</span><b>ফ্লাক্স/গ্যাস শিল্ড</b><small>জোড়াস্থলকে অক্সিডেশন থেকে রক্ষা করে</small></div>
+      </div>
+      <p>💡 ওয়েল্ডিং মূলত তিন ভাগে ভাগ করা যায় — Fusion Welding (গলিয়ে জোড়া), Pressure Welding (চাপ দিয়ে জোড়া) এবং Brazing/Soldering (নিম্ন তাপমাত্রায় জোড়া)।</p>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="types" data-title="ওয়েল্ডিং প্রকারভেদ arc gas mig tig spot resistance">
+      <h2>🔀 ওয়েল্ডিং-এর প্রধান প্রকারভেদ</h2>
+      <div class="card-grid">
+        <div class="w-card"><span class="emoji">⚡</span><b>Arc Welding</b><small>বৈদ্যুতিক আর্কের তাপে ধাতু গলানো</small></div>
+        <div class="w-card"><span class="emoji">🔥</span><b>Gas Welding</b><small>অক্সি-এসিটিলিন শিখার তাপে</small></div>
+        <div class="w-card"><span class="emoji">🌀</span><b>MIG Welding</b><small>স্বয়ংক্রিয় তার ইলেক্ট্রোড ও গ্যাস শিল্ড</small></div>
+        <div class="w-card"><span class="emoji">🧊</span><b>TIG Welding</b><small>টাংস্টেন ইলেক্ট্রোড, নিখুঁত কাজে</small></div>
+        <div class="w-card"><span class="emoji">🔘</span><b>Spot Welding</b><small>দুই পাত চাপ দিয়ে বিন্দুতে জোড়া</small></div>
+        <div class="w-card"><span class="emoji">🔲</span><b>Resistance Welding</b><small>বৈদ্যুতিক রোধজনিত তাপে জোড়া</small></div>
+      </div>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="arcwelding" data-title="আর্ক ওয়েল্ডিং smaw electrode holder">
+      <h2>⚡ আর্ক ওয়েল্ডিং (Arc Welding / SMAW)</h2>
+      <p>আর্ক ওয়েল্ডিং-এ ইলেক্ট্রোড ও কাজের ধাতুর মধ্যে বৈদ্যুতিক আর্ক তৈরি করে প্রচণ্ড তাপ (প্রায় ৩৫০০°C পর্যন্ত) উৎপন্ন করা হয়, যা দিয়ে ধাতু গলিয়ে জোড়া লাগানো হয়। একে Shielded Metal Arc Welding (SMAW) বা Stick Welding-ও বলা হয়।</p>
+      <h3>প্রধান অংশ</h3>
+      <ul>
+        <li>Welding Transformer/Rectifier — বিদ্যুৎ সরবরাহ ও নিয়ন্ত্রণ করে</li>
+        <li>Electrode Holder — ইলেক্ট্রোড ধরে রাখে</li>
+        <li>Earth Clamp — কাজের ধাতুর সাথে সংযোগ করে</li>
+        <li>Welding Cable — বিদ্যুৎ প্রবাহের জন্য</li>
+      </ul>
+      <p>💡 আর্ক ওয়েল্ডিং সহজ, খরচে সাশ্রয়ী এবং কাঠামোগত (structural) কাজে সবচেয়ে বেশি ব্যবহৃত হয়।</p>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="gaswelding" data-title="গ্যাস ওয়েল্ডিং অক্সি এসিটিলিন oxy acetylene">
+      <h2>🔥 গ্যাস ওয়েল্ডিং (Oxy-Acetylene Welding)</h2>
+      <p>গ্যাস ওয়েল্ডিং-এ অক্সিজেন ও এসিটিলিন গ্যাস মিশিয়ে একটি শিখা তৈরি করা হয়, যার তাপমাত্রা প্রায় ৩২০০°C পর্যন্ত হতে পারে। এই শিখা দিয়ে পাতলা ধাতব পাত জোড়া লাগানো ও কাটার কাজ করা হয়।</p>
+      <h3>প্রধান সরঞ্জাম</h3>
+      <ul>
+        <li>Oxygen Cylinder (কালো/নীল রঙে চিহ্নিত)</li>
+        <li>Acetylene Cylinder (মেরুন রঙে চিহ্নিত)</li>
+        <li>Pressure Regulator — গ্যাসের চাপ নিয়ন্ত্রণ করে</li>
+        <li>Welding Torch — গ্যাস মিশিয়ে শিখা তৈরি করে</li>
+        <li>Rubber Hose Pipe — গ্যাস বহনের জন্য</li>
+      </ul>
+      <p>💡 গ্যাস ওয়েল্ডিং পাতলা পাত জোড়া, মেরামত এবং ব্রেজিং-এর কাজে বেশি ব্যবহৃত হয়, কারণ এতে তাপ ধীরে ও নিয়ন্ত্রিতভাবে প্রয়োগ করা যায়।</p>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="tigmig" data-title="tig mig welding টাংস্টেন গ্যাস শিল্ড">
+      <h2>🌀 TIG ও MIG ওয়েল্ডিং</h2>
+      <table>
+        <tr><th>বৈশিষ্ট্য</th><th>TIG Welding</th><th>MIG Welding</th></tr>
+        <tr><td>পূর্ণরূপ</td><td>Tungsten Inert Gas</td><td>Metal Inert Gas</td></tr>
+        <tr><td>ইলেক্ট্রোড</td><td>অগলনীয় টাংস্টেন</td><td>ক্রমাগত সরবরাহকৃত তার</td></tr>
+        <tr><td>নির্ভুলতা</td><td>খুবই নিখুঁত, পাতলা ধাতুতে ভালো</td><td>দ্রুত ও উৎপাদনমুখী কাজে ভালো</td></tr>
+        <tr><td>ব্যবহার</td><td>স্টেইনলেস স্টিল, অ্যালুমিনিয়াম</td><td>শিট মেটাল, অটোমোবাইল শিল্প</td></tr>
+      </table>
+      <p>💡 উভয় পদ্ধতিতেই একটি নিষ্ক্রিয় গ্যাস (Argon/CO₂) ব্যবহার করে জোড়াস্থলকে বাতাসের অক্সিজেন থেকে রক্ষা করা হয়, যা জোড়াকে পরিষ্কার ও মজবুত রাখে।</p>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="electrodes" data-title="ইলেক্ট্রোড প্রকারভেদ কোটেড bare">
+      <h2>🪄 ইলেক্ট্রোড (Electrode)</h2>
+      <p>ইলেক্ট্রোড হল সেই ধাতব রড, যার মধ্য দিয়ে বিদ্যুৎ প্রবাহিত হয়ে আর্ক তৈরি হয় এবং যা গলে গিয়ে জোড়ার ধাতু হিসেবে কাজ করে।</p>
+      <div class="card-grid">
+        <div class="w-card"><span class="emoji">🪄</span><b>Coated Electrode</b><small>ফ্লাক্স আবরণযুক্ত, সাধারণ আর্ক ওয়েল্ডিং-এ</small></div>
+        <div class="w-card"><span class="emoji">➖</span><b>Bare Electrode</b><small>আবরণহীন, বিশেষ কাজে ব্যবহৃত</small></div>
+        <div class="w-card"><span class="emoji">🧊</span><b>Tungsten Electrode</b><small>TIG ওয়েল্ডিং-এ, অগলনীয়</small></div>
+        <div class="w-card"><span class="emoji">🌀</span><b>Wire Electrode</b><small>MIG ওয়েল্ডিং-এ ক্রমাগত সরবরাহ</small></div>
+      </div>
+      <p>💡 ইলেক্ট্রোডের ব্যাস (diameter) কাজের ধাতুর পুরুত্ব অনুযায়ী বেছে নিতে হয় — পাতলা পাতে সরু ইলেক্ট্রোড, মোটা পাতে মোটা ইলেক্ট্রোড।</p>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="equipment" data-title="যন্ত্রপাতি ট্রান্সফরমার রেক্টিফায়ার হোল্ডার">
+      <h2>🧰 ওয়েল্ডিং যন্ত্রপাতি</h2>
+      <div class="tool-grid">
+        <div class="tool-item"><span class="ic">🔌</span>Welding Transformer</div>
+        <div class="tool-item"><span class="ic">🔋</span>Welding Rectifier</div>
+        <div class="tool-item"><span class="ic">🖐️</span>Electrode Holder</div>
+        <div class="tool-item"><span class="ic">🧷</span>Earth Clamp</div>
+        <div class="tool-item"><span class="ic">🎭</span>Welding Helmet/Shield</div>
+        <div class="tool-item"><span class="ic">🧤</span>Leather Gloves</div>
+        <div class="tool-item"><span class="ic">🧵</span>Welding Cable</div>
+        <div class="tool-item"><span class="ic">🛢️</span>Gas Cylinder ও Regulator</div>
+      </div>
+      <p>💡 <b>Welding Rectifier</b> AC কারেন্টকে DC-তে রূপান্তরিত করে, যা আর্ক আরও স্থিতিশীল ও মসৃণ করে তোলে।</p>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="handtools" data-title="হ্যান্ড টুলস চিপিং হ্যামার ওয়্যার ব্রাশ ক্ল্যাম্প">
+      <h2>🛠️ হ্যান্ড টুলস</h2>
+      <div class="tool-grid">
+        <div class="tool-item"><span class="ic">🔨</span>Chipping Hammer</div>
+        <div class="tool-item"><span class="ic">🧹</span>Wire Brush</div>
+        <div class="tool-item"><span class="ic">🗜️</span>C-Clamp</div>
+        <div class="tool-item"><span class="ic">📏</span>Measuring Tape</div>
+        <div class="tool-item"><span class="ic">✏️</span>Chalk/Marker</div>
+        <div class="tool-item"><span class="ic">🪓</span>Cold Chisel</div>
+        <div class="tool-item"><span class="ic">🔩</span>Vice</div>
+        <div class="tool-item"><span class="ic">🧲</span>Magnetic Square</div>
+      </div>
+      <p><b>Chipping Hammer</b> দিয়ে ওয়েল্ডিং-এর পর জোড়ার উপরিভাগের slag (স্ল্যাগ) সরানো হয়, এরপর <b>Wire Brush</b> দিয়ে জোড়াটি পরিষ্কার করা হয়।</p>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="gascutting" data-title="গ্যাস কাটিং oxy fuel cutting torch">
+      <h2>✂️ গ্যাস কাটিং (Oxy-Fuel Cutting)</h2>
+      <p>গ্যাস কাটিং-এ অক্সিজেন ও জ্বালানি গ্যাস (এসিটিলিন) ব্যবহার করে ধাতুকে প্রথমে উত্তপ্ত করা হয়, তারপর উচ্চচাপের বিশুদ্ধ অক্সিজেন প্রবাহিত করে ধাতুটি কেটে ফেলা হয়। এটি মূলত মোটা লোহা ও ইস্পাত পাত কাটতে ব্যবহৃত হয়।</p>
+      <ul>
+        <li>Cutting Torch — বিশেষ নজল-যুক্ত টর্চ, কাটার জন্য</li>
+        <li>শুধুমাত্র লোহাজাতীয় (ferrous) ধাতু এই পদ্ধতিতে ভালোভাবে কাটা যায়</li>
+        <li>স্টেইনলেস স্টিল বা অ্যালুমিনিয়াম কাটতে Plasma Cutting বেশি উপযোগী</li>
+      </ul>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="joints" data-title="ওয়েল্ডিং জয়েন্ট butt lap corner tee edge">
+      <h2>🔗 ওয়েল্ডিং জয়েন্টের প্রকারভেদ</h2>
+      <div class="joint-grid">
+        <div class="joint-item"><span class="ic">➖</span>Butt Joint</div>
+        <div class="joint-item"><span class="ic">🔲</span>Lap Joint</div>
+        <div class="joint-item"><span class="ic">📐</span>Corner Joint</div>
+        <div class="joint-item"><span class="ic">✝️</span>Tee Joint</div>
+        <div class="joint-item"><span class="ic">📏</span>Edge Joint</div>
+      </div>
+      <p style="margin-top:10px;">💡 <b>Butt Joint</b> এ দুটি পাত একই সমতলে পাশাপাশি জোড়া হয়, যা পাইপ ও পাত জোড়ায় সবচেয়ে বেশি ব্যবহৃত হয়। <b>Tee Joint</b> এ একটি পাত অন্যটির সাথে সমকোণে (90°) জোড়া হয়, যা কাঠামোগত (structural) কাজে দেখা যায়।</p>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="positions" data-title="ওয়েল্ডিং পজিশন flat horizontal vertical overhead">
+      <h2>📐 ওয়েল্ডিং পজিশন (Welding Position)</h2>
+      <table>
+        <tr><th>পজিশন</th><th>বর্ণনা</th></tr>
+        <tr><td>Flat (1G/1F)</td><td>জোড়াটি সমতল, সবচেয়ে সহজ পজিশন</td></tr>
+        <tr><td>Horizontal (2G/2F)</td><td>জোড়াটি অনুভূমিক অবস্থানে</td></tr>
+        <tr><td>Vertical (3G/3F)</td><td>জোড়াটি খাড়া অবস্থানে, উপরে বা নিচে</td></tr>
+        <tr><td>Overhead (4G/4F)</td><td>জোড়াটি মাথার উপরে, সবচেয়ে কঠিন পজিশন</td></tr>
+      </table>
+      <p>💡 নতুন শিক্ষার্থীদের সাধারণত Flat Position দিয়ে অনুশীলন শুরু করা উচিত, কারণ এতে ধাতু গলিত অবস্থায় নিয়ন্ত্রণ করা সবচেয়ে সহজ।</p>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="symbols" data-title="ওয়েল্ডিং সিম্বল প্রতীক fillet butt">
+      <h2>🔣 ওয়েল্ডিং সিম্বল (Symbols)</h2>
+      <div class="card-grid">
+        <div class="w-card"><span class="emoji">〰️</span><b>Fillet Weld</b></div>
+        <div class="w-card"><span class="emoji">▬</span><b>Square Butt Weld</b></div>
+        <div class="w-card"><span class="emoji">▽</span><b>V-Groove Weld</b></div>
+        <div class="w-card"><span class="emoji">⭕</span><b>Spot Weld</b></div>
+        <div class="w-card"><span class="emoji">🔲</span><b>Plug Weld</b></div>
+      </div>
+      <p>💡 ইঞ্জিনিয়ারিং ড্রয়িং-এ প্রমিত (standard) ওয়েল্ডিং সিম্বল ব্যবহার করলে জোড়ার ধরন, আকার ও অবস্থান সহজে বোঝানো যায়।</p>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="defects" data-title="ওয়েল্ডিং ত্রুটি porosity undercut crack spatter">
+      <h2>⚠️ সাধারণ ওয়েল্ডিং ত্রুটি (Defects)</h2>
+      <div class="card-grid">
+        <div class="w-card"><span class="emoji">🫧</span><b>Porosity</b><small>জোড়ার ভেতরে গ্যাসের ছোট ছোট গর্ত</small></div>
+        <div class="w-card"><span class="emoji">✂️</span><b>Undercut</b><small>জোড়ার পাশে ধাতু ক্ষয়ে খাঁজ তৈরি</small></div>
+        <div class="w-card"><span class="emoji">💥</span><b>Crack</b><small>জোড়ায় ফাটল, দুর্বল জোড়ার লক্ষণ</small></div>
+        <div class="w-card"><span class="emoji">💦</span><b>Spatter</b><small>গলিত ধাতুর কণা ছিটকে পড়া</small></div>
+        <div class="w-card"><span class="emoji">🌀</span><b>Distortion</b><small>অতিরিক্ত তাপে ধাতুর বিকৃতি</small></div>
+      </div>
+      <p>💡 সঠিক কারেন্ট, সঠিক ইলেক্ট্রোড এবং স্থির হাত দিয়ে কাজ করলে অধিকাংশ ওয়েল্ডিং ত্রুটি এড়ানো যায়।</p>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="testing" data-title="পরীক্ষা পদ্ধতি visual inspection পরিদর্শন">
+      <h2>🔍 জোড়ার মান পরীক্ষা পদ্ধতি</h2>
+      <ul>
+        <li><b>Visual Inspection</b> — চোখে দেখে জোড়ার আকার, ফাটল বা ত্রুটি পরীক্ষা করা</li>
+        <li><b>Dye Penetrant Test</b> — বিশেষ রং প্রয়োগ করে পৃষ্ঠতলের ফাটল শনাক্ত করা</li>
+        <li><b>Bend Test</b> — জোড়াকে বাঁকিয়ে তার মজবুতি পরীক্ষা করা</li>
+      </ul>
+      <p>💡 শিল্পক্ষেত্রে গুরুত্বপূর্ণ কাঠামোর ক্ষেত্রে X-Ray বা Ultrasonic-এর মতো উন্নত পরীক্ষা পদ্ধতিও ব্যবহৃত হয়, যা বিশেষজ্ঞ ল্যাবে করা হয়।</p>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="safety" data-title="সেফটি ppe হেলমেট গ্লাভস এপ্রন">
+      <h2>🦺 Workshop Safety — Personal Protective Equipment (PPE)</h2>
+      <div class="safety-grid">
+        <span class="safety-chip">✅ Welding Helmet/Shield</span>
+        <span class="safety-chip">✅ Leather Hand Gloves</span>
+        <span class="safety-chip">✅ Leather Apron</span>
+        <span class="safety-chip">✅ Safety Goggles</span>
+        <span class="safety-chip">✅ Safety Shoes</span>
+        <span class="safety-chip">✅ Fire-Resistant Clothing</span>
+      </div>
+      <p style="margin-top:10px;">ওয়েল্ডিং-এর সময় তীব্র আলো (UV/IR Radiation), তাপ, স্পার্ক ও ধোঁয়ার কারণে যথাযথ PPE ব্যবহার অত্যন্ত গুরুত্বপূর্ণ। খালি চোখে আর্কের দিকে কখনো তাকানো উচিত নয়, কারণ এতে চোখের স্থায়ী ক্ষতি হতে পারে (Arc Eye)। কর্মক্ষেত্রে পর্যাপ্ত বাতাস চলাচলের ব্যবস্থাও থাকা প্রয়োজন।</p>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="workshoprules" data-title="workshop rules dos donts নিয়মকানুন">
+      <h2>📋 Workshop Rules (Do's &amp; Don'ts)</h2>
+      <h3>✅ যা করবেন (Do's)</h3>
+      <ul>
+        <li>কাজ শুরুর আগে সবসময় হেলমেট, গ্লাভস ও এপ্রন পরুন</li>
+        <li>কাজের জায়গা দাহ্য পদার্থ থেকে মুক্ত রাখুন</li>
+        <li>গ্যাস সিলিন্ডার সোজা রেখে ভালোভাবে বেঁধে রাখুন</li>
+        <li>কাজ শেষে সব যন্ত্রপাতি ও গ্যাস সরবরাহ বন্ধ করুন</li>
+        <li>কর্মক্ষেত্রে অগ্নিনির্বাপক যন্ত্র (Fire Extinguisher) রাখুন</li>
+      </ul>
+      <h3>❌ যা করবেন না (Don'ts)</h3>
+      <ul>
+        <li>সুরক্ষা চশমা ছাড়া আর্কের দিকে তাকাবেন না</li>
+        <li>ভেজা বা তৈলাক্ত হাতে কাজ করবেন না</li>
+        <li>দাহ্য পদার্থের কাছে ওয়েল্ডিং করবেন না</li>
+        <li>ত্রুটিপূর্ণ কেবল বা হোল্ডার ব্যবহার করবেন না</li>
+        <li>শিক্ষকের অনুমতি ছাড়া মেশিন চালু করবেন না</li>
+      </ul>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="firstaid" data-title="প্রাথমিক চিকিৎসা পোড়া শক আর্ক আই burns">
+      <h2>🚑 পোড়া ও দুর্ঘটনায় প্রাথমিক চিকিৎসা</h2>
+      <h3>সাধারণ কারণ</h3>
+      <ul>
+        <li>গরম ধাতু বা স্পার্কের স্পর্শে পুড়ে যাওয়া</li>
+        <li>সুরক্ষা ছাড়া আর্কের দিকে তাকানোয় চোখে জ্বালা (Arc Eye)</li>
+        <li>বৈদ্যুতিক তার ত্রুটির কারণে শক লাগা</li>
+      </ul>
+      <h3>প্রাথমিক চিকিৎসা</h3>
+      <ul>
+        <li>ছোট পোড়া স্থানে ঠান্ডা পরিষ্কার জল ঢালুন এবং পরিষ্কার কাপড় দিয়ে ঢেকে দিন</li>
+        <li>চোখে জ্বালা করলে দ্রুত চোখ পরিষ্কার জল দিয়ে ধুয়ে ফেলুন এবং বিশ্রাম দিন</li>
+        <li>বিদ্যুৎ শক লাগলে প্রথমে মেইন সুইচ বন্ধ করুন, খালি হাতে ব্যক্তিকে স্পর্শ করবেন না</li>
+        <li>গুরুতর আঘাতে দ্রুত নিকটস্থ হাসপাতাল বা চিকিৎসকের কাছে নিয়ে যান</li>
+        <li>প্রতিটি ওয়ার্কশপে একটি প্রাথমিক চিকিৎসা বক্স রাখা আবশ্যক</li>
+      </ul>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="units" data-title="মাপের একক অ্যাম্পিয়ার ভোল্টেজ পুরুত্ব">
+      <h2>📐 ওয়েল্ডিং-এ ব্যবহৃত মাপের একক</h2>
+      <ul>
+        <li>Ampere (A) — ওয়েল্ডিং কারেন্টের একক</li>
+        <li>Volt (V) — ওয়েল্ডিং ভোল্টেজের একক</li>
+        <li>mm — ইলেক্ট্রোড ব্যাস ও পাতের পুরুত্ব মাপার একক</li>
+        <li>°C — গলনাঙ্ক ও আর্কের তাপমাত্রা মাপার একক</li>
+      </ul>
+      <p>💡 সাধারণত পাতের পুরুত্ব অনুযায়ী ওয়েল্ডিং কারেন্ট (Ampere) নির্ধারণ করা হয় — পাতলা পাতে কম কারেন্ট, মোটা পাতে বেশি কারেন্ট প্রয়োজন হয়।</p>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="environment" data-title="পরিবেশ সাশ্রয় ধোঁয়া বায়ুচলাচল ventilation">
+      <h2>🌍 পরিবেশ ও শক্তি সাশ্রয়</h2>
+      <ul>
+        <li>কর্মক্ষেত্রে পর্যাপ্ত বায়ুচলাচলের (Ventilation) ব্যবস্থা রাখুন, যাতে ধোঁয়া জমে না থাকে</li>
+        <li>অপ্রয়োজনে মেশিন চালু রাখবেন না, বিদ্যুৎ সাশ্রয় করুন</li>
+        <li>ধাতব বর্জ্য (scrap) আলাদাভাবে সংগ্রহ করে পুনর্ব্যবহারযোগ্য করুন</li>
+        <li>গ্যাস সিলিন্ডার সঠিকভাবে সংরক্ষণ করে অপচয় রোধ করুন</li>
+      </ul>
+      <p>ওয়েল্ডিং-এর ধোঁয়া ও ধাতব কণা শ্বাসযন্ত্রের জন্য ক্ষতিকর হতে পারে, তাই পরিবেশ ও স্বাস্থ্য দুটোর প্রতিই সচেতন থাকা জরুরি।</p>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="glossary" data-title="পরিভাষা আর্ক ইলেক্ট্রোড ফ্লাক্স স্ল্যাগ">
+      <h2>📖 সাধারণ Welding Shop Terms</h2>
+      <table>
+        <tr><th>English</th><th>বাংলা</th></tr>
+        <tr><td>Arc</td><td>বৈদ্যুতিক আর্ক (স্ফুলিঙ্গ)</td></tr>
+        <tr><td>Electrode</td><td>ইলেক্ট্রোড</td></tr>
+        <tr><td>Flux</td><td>ফ্লাক্স (আবরণ)</td></tr>
+        <tr><td>Slag</td><td>স্ল্যাগ (গলিত বর্জ্য আবরণ)</td></tr>
+        <tr><td>Filler Metal</td><td>ফিলার ধাতু</td></tr>
+        <tr><td>Joint</td><td>জোড়া</td></tr>
+        <tr><td>Weld Pool</td><td>গলিত ধাতুর পুকুর</td></tr>
+        <tr><td>Spatter</td><td>ছিটকে পড়া গলিত কণা</td></tr>
+        <tr><td>Distortion</td><td>বিকৃতি</td></tr>
+        <tr><td>Base Metal</td><td>মূল ধাতু</td></tr>
+        <tr><td>Fusion</td><td>সংমিশ্রণ/গলন</td></tr>
+        <tr><td>Bead</td><td>ওয়েল্ড বিড (জোড়ার রেখা)</td></tr>
+      </table>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="syllabus" data-title="wbscvt ncvt পাঠ্যসূচি vocational education welder">
+      <h2>📚 WBSCVT / NCVT অনুযায়ী পাঠ্যবিষয় (নির্দেশিকা)</h2>
+      <p>West Bengal State Council of Vocational Training (WBSCVT) এবং National Council for Vocational Training (NCVT)-এর ওয়েল্ডার ট্রেডের সাধারণ পাঠ্যক্রমের সাথে মিল রেখে এই পেজের বিষয়বস্তু সাজানো হয়েছে, যেমন:</p>
+      <ul>
+        <li>ওয়ার্কশপ সেফটি ও শৃঙ্খলা</li>
+        <li>ওয়েল্ডিং-এর মৌলিক ধারণা ও প্রকারভেদ</li>
+        <li>ইলেক্ট্রোড, যন্ত্রপাতি ও হ্যান্ড টুলস</li>
+        <li>জয়েন্টের প্রকারভেদ ও ওয়েল্ডিং পজিশন</li>
+        <li>ওয়েল্ডিং ত্রুটি ও মান পরীক্ষা পদ্ধতি</li>
+        <li>গ্যাস কাটিং ও প্রাথমিক চিকিৎসা</li>
+      </ul>
+      <p style="font-size:12.5px;color:var(--w-text-dim);">📌 দ্রষ্টব্য: এটি একটি সাধারণ নির্দেশিকা মাত্র। সম্পূর্ণ ও হালনাগাদ সিলেবাসের জন্য সংশ্লিষ্ট প্রতিষ্ঠানের অফিসিয়াল WBSCVT/NCVT ওয়েবসাইট দেখে নেওয়ার পরামর্শ দেওয়া হচ্ছে।</p>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="viva" data-title="viva questions গুরুত্বপূর্ণ প্রশ্ন পঞ্চাশ">
+      <h2>❓ গুরুত্বপূর্ণ Viva Questions (৫০টি)</h2>
+      <h3>মৌলিক ধারণা</h3>
+      <ul>
+        <li>ওয়েল্ডিং কাকে বলে?</li>
+        <li>Fusion Welding ও Pressure Welding-এর পার্থক্য কী?</li>
+        <li>ওয়েল্ডিং-এর প্রধান প্রকারভেদ কী কী?</li>
+        <li>আর্ক ওয়েল্ডিং কীভাবে কাজ করে?</li>
+        <li>গ্যাস ওয়েল্ডিং-এ কোন কোন গ্যাস ব্যবহৃত হয়?</li>
+        <li>SMAW বলতে কী বোঝায়?</li>
+        <li>TIG ও MIG ওয়েল্ডিং-এর পার্থক্য কী?</li>
+        <li>ব্রেজিং ও ওয়েল্ডিং-এর পার্থক্য কী?</li>
+        <li>Filler Metal কী কাজ করে?</li>
+        <li>Flux ব্যবহারের উদ্দেশ্য কী?</li>
+      </ul>
+      <h3>ইলেক্ট্রোড ও যন্ত্রপাতি</h3>
+      <ul>
+        <li>Coated ও Bare Electrode-এর পার্থক্য কী?</li>
+        <li>Tungsten Electrode কোথায় ব্যবহৃত হয়?</li>
+        <li>Welding Transformer ও Rectifier-এর পার্থক্য কী?</li>
+        <li>Electrode Holder-এর কাজ কী?</li>
+        <li>Earth Clamp কেন প্রয়োজন?</li>
+        <li>Chipping Hammer-এর ব্যবহার কী?</li>
+        <li>Wire Brush দিয়ে কী কাজ করা হয়?</li>
+        <li>Pressure Regulator-এর কাজ কী?</li>
+        <li>Cutting Torch কোথায় ব্যবহৃত হয়?</li>
+        <li>ইলেক্ট্রোড ব্যাস কীভাবে নির্বাচন করা হয়?</li>
+      </ul>
+      <h3>জয়েন্ট ও পজিশন</h3>
+      <ul>
+        <li>Butt Joint ও Lap Joint-এর পার্থক্য কী?</li>
+        <li>Tee Joint কোথায় ব্যবহৃত হয়?</li>
+        <li>Flat Position কেন সবচেয়ে সহজ?</li>
+        <li>Overhead Position কেন কঠিন?</li>
+        <li>Corner Joint ও Edge Joint-এর পার্থক্য কী?</li>
+      </ul>
+      <h3>ত্রুটি ও পরীক্ষা</h3>
+      <ul>
+        <li>Porosity কেন হয়?</li>
+        <li>Undercut কী?</li>
+        <li>Spatter কীভাবে কমানো যায়?</li>
+        <li>Visual Inspection কী?</li>
+        <li>Bend Test-এর উদ্দেশ্য কী?</li>
+      </ul>
+      <h3>সেফটি ও পরিবেশ</h3>
+      <ul>
+        <li>Arc Eye কী এবং এটি কীভাবে হয়?</li>
+        <li>ওয়েল্ডিং-এর সময় কোন কোন PPE ব্যবহার করা উচিত?</li>
+        <li>দাহ্য পদার্থের কাছে ওয়েল্ডিং কেন বিপজ্জনক?</li>
+        <li>কর্মক্ষেত্রে বায়ুচলাচল কেন প্রয়োজন?</li>
+        <li>ওয়েল্ডিং ধোঁয়া কেন ক্ষতিকর?</li>
+        <li>গ্যাস সিলিন্ডার সংরক্ষণের নিয়ম কী?</li>
+        <li>পোড়া স্থানে প্রাথমিক চিকিৎসা কী?</li>
+        <li>বৈদ্যুতিক শক লাগলে প্রথম করণীয় কী?</li>
+        <li>Fire Extinguisher কেন রাখা প্রয়োজন?</li>
+        <li>ওয়ার্কশপে শিক্ষকের অনুমতি ছাড়া মেশিন না চালানোর কারণ কী?</li>
+      </ul>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="quiz" data-title="mcq quiz প্রশ্নোত্তর পরীক্ষা">
+      <h2>📝 MCQ Quiz — নিজেকে যাচাই করুন</h2>
+      <div id="quizArea"></div>
+    </section>
+
+    <section class="chapter" id="projects" data-title="মিনি প্রজেক্ট ব্র্যাকেট স্ট্যান্ড ফ্রেম">
+      <h2>🏆 Mini Projects (হাতে-কলমে তৈরি করার আইডিয়া)</h2>
+      <div class="project-grid">
+        <div class="project-item"><span class="ic">🗄️</span>ছোট লোহার স্ট্যান্ড</div>
+        <div class="project-item"><span class="ic">🖼️</span>মেটাল ফ্রেম তৈরি</div>
+        <div class="project-item"><span class="ic">🪝</span>ওয়াল ব্র্যাকেট</div>
+        <div class="project-item"><span class="ic">🪑</span>মিনি টুল তৈরি</div>
+        <div class="project-item"><span class="ic">🚪</span>গেট হিঞ্জ মেরামত</div>
+        <div class="project-item"><span class="ic">🧰</span>টুল বক্স তৈরি</div>
+      </div>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <p>🔥 <b>ওয়েল্ডিং শপ — Welding Shop Workshop</b> | Vocational Education</p>
+  <p>Developed by MySkillGame Learning Portal</p>
+  <p class="no-print">📘 Educational Content for Vocational Education Students | বিনামূল্যে, অফলাইন, নিরাপদ শিক্ষামূলক প্ল্যাটফর্ম</p>
+</footer>
+
+<script>
+  // ---- Back button handling (Android WebView) ----
+  history.pushState({page:1}, "welding-shop");
+  window.addEventListener('popstate', function(){
+    var sb = document.getElementById('sidebar');
+    if(sb.classList.contains('open')){
+      closeSidebar();
+      history.pushState({page:1}, "welding-shop");
+    }
+  });
+
+  // ---- Mobile sidebar toggle ----
+  var sidebar = document.getElementById('sidebar');
+  var overlay = document.getElementById('overlay');
+  var menuBtn = document.getElementById('menuBtn');
+
+  function isMobile(){ return window.innerWidth <= 820; }
+  function updateMenuBtn(){ menuBtn.style.display = isMobile() ? 'inline-block' : 'none'; }
+  updateMenuBtn();
+  window.addEventListener('resize', updateMenuBtn);
+
+  function openSidebar(){
+    sidebar.classList.add('open');
+    overlay.classList.add('show');
+  }
+  function closeSidebar(){
+    sidebar.classList.remove('open');
+    overlay.classList.remove('show');
+  }
+  menuBtn.addEventListener('click', function(){
+    sidebar.classList.contains('open') ? closeSidebar() : openSidebar();
+  });
+  overlay.addEventListener('click', closeSidebar);
+  document.querySelectorAll('.navlink').forEach(function(a){
+    a.addEventListener('click', function(){ if(isMobile()) closeSidebar(); });
+  });
+
+  // ---- Theme toggle ----
+  var themeBtn = document.getElementById('themeBtn');
+  function applyTheme(t){
+    if(t === 'light'){ document.body.classList.add('light'); themeBtn.textContent = '☀️'; }
+    else { document.body.classList.remove('light'); themeBtn.textContent = '🌙'; }
+  }
+  try{
+    var savedTheme = localStorage.getItem('ws_theme') || 'dark';
+    applyTheme(savedTheme);
+  }catch(e){}
+  themeBtn.addEventListener('click', function(){
+    var next = document.body.classList.contains('light') ? 'dark' : 'light';
+    applyTheme(next);
+    try{ localStorage.setItem('ws_theme', next); }catch(e){}
+  });
+
+  // ---- Print ----
+  document.getElementById('printBtn').addEventListener('click', function(){ window.print(); });
+
+  // ---- Search filter ----
+  var searchInput = document.getElementById('searchInput');
+  var chapters = document.querySelectorAll('section.chapter');
+  searchInput.addEventListener('input', function(){
+    var q = this.value.trim().toLowerCase();
+    chapters.forEach(function(sec){
+      var hay = (sec.getAttribute('data-title') + ' ' + sec.innerText).toLowerCase();
+      sec.style.display = (q === '' || hay.indexOf(q) !== -1) ? '' : 'none';
+    });
+  });
+
+  // ---- Progress tracker ----
+  var PROGRESS_KEY = 'ws_progress_v1';
+  var markButtons = document.querySelectorAll('.mark-btn');
+  var totalChapters = markButtons.length;
+
+  function loadProgress(){
+    try{ return JSON.parse(localStorage.getItem(PROGRESS_KEY) || '{}'); }catch(e){ return {}; }
+  }
+  function saveProgress(p){
+    try{ localStorage.setItem(PROGRESS_KEY, JSON.stringify(p)); }catch(e){}
+  }
+  function updateProgressUI(){
+    var p = loadProgress();
+    var count = Object.keys(p).filter(function(k){ return p[k]; }).length;
+    var pct = Math.round((count/totalChapters)*100);
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressText').textContent = pct + '%';
+  }
+  markButtons.forEach(function(btn, idx){
+    var sec = btn.closest('section.chapter');
+    var key = sec.id;
+    var p = loadProgress();
+    if(p[key]){ btn.classList.add('done'); btn.textContent = '✔️ পড়া হয়েছে'; }
+    btn.addEventListener('click', function(){
+      var prog = loadProgress();
+      prog[key] = !prog[key];
+      saveProgress(prog);
+      if(prog[key]){ btn.classList.add('done'); btn.textContent = '✔️ পড়া হয়েছে'; }
+      else { btn.classList.remove('done'); btn.textContent = '✅ পড়া শেষ করলাম'; }
+      updateProgressUI();
+    });
+  });
+  updateProgressUI();
+
+  // ---- Active nav highlight on scroll ----
+  var navlinks = document.querySelectorAll('.navlink');
+  function onScroll(){
+    var scrollPos = window.scrollY + 100;
+    var current = null;
+    chapters.forEach(function(sec){
+      if(sec.offsetTop <= scrollPos) current = sec.id;
+    });
+    navlinks.forEach(function(a){
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  }
+  window.addEventListener('scroll', onScroll);
+  onScroll();
+
+  // ---- MCQ Quiz ----
+  var quizData = [
+    {q:"ওয়েল্ডিং কাকে বলে?", opts:["ধাতু কাটা","দুটি ধাতুকে জোড়া লাগানো","ধাতু রং করা","ধাতু গলিয়ে ফেলা"], correct:1},
+    {q:"SMAW-এর পূর্ণরূপ কী?", opts:["Shielded Metal Arc Welding","Steel Metal Arc Welding","Simple Metal Arc Welding","Solid Metal Arc Welding"], correct:0},
+    {q:"গ্যাস ওয়েল্ডিং-এ সাধারণত কোন দুটি গ্যাস ব্যবহৃত হয়?", opts:["হাইড্রোজেন ও নাইট্রোজেন","অক্সিজেন ও এসিটিলিন","কার্বন ডাই-অক্সাইড ও আর্গন","হিলিয়াম ও নিয়ন"], correct:1},
+    {q:"TIG ওয়েল্ডিং-এ কোন ধাতুর ইলেক্ট্রোড ব্যবহৃত হয়?", opts:["তামা","টাংস্টেন","লোহা","অ্যালুমিনিয়াম"], correct:1},
+    {q:"MIG-এর পূর্ণরূপ কী?", opts:["Metal Inert Gas","Manual Iron Gas","Molten Iron Gauge","Metal Insulated Gas"], correct:0},
+    {q:"Chipping Hammer দিয়ে কী সরানো হয়?", opts:["স্ল্যাগ","গ্যাস","জল","তেল"], correct:0},
+    {q:"Earth Clamp কেন ব্যবহার করা হয়?", opts:["সার্কিট সম্পূর্ণ করতে","তার কাটতে","ধাতু ঠান্ডা করতে","রং করতে"], correct:0},
+    {q:"নিচের কোনটি ওয়েল্ডিং জয়েন্টের প্রকার নয়?", opts:["Butt Joint","Lap Joint","Tee Joint","Screw Joint"], correct:3},
+    {q:"সবচেয়ে কঠিন ওয়েল্ডিং পজিশন কোনটি?", opts:["Flat","Horizontal","Vertical","Overhead"], correct:3},
+    {q:"Porosity ত্রুটি কীসের কারণে হয়?", opts:["অতিরিক্ত চাপ","গ্যাসের বুদবুদ আটকে যাওয়া","কম তাপ","বেশি ইলেক্ট্রোড"], correct:1},
+    {q:"Arc Eye কীসের কারণে হয়?", opts:["ধোঁয়ায়","সুরক্ষা ছাড়া আর্কের দিকে তাকানোয়","গরম জলে","ধাতুর গন্ধে"], correct:1},
+    {q:"ওয়েল্ডিং-এর সময় কোনটি অবশ্যই পরা উচিত?", opts:["সুতির জামা","চামড়ার এপ্রন ও গ্লাভস","স্যান্ডেল","প্লাস্টিকের গ্লাভস"], correct:1},
+    {q:"Oxygen Cylinder সাধারণত কোন রঙে চিহ্নিত থাকে?", opts:["লাল","কালো/নীল","সবুজ","হলুদ"], correct:1},
+    {q:"Acetylene Cylinder সাধারণত কোন রঙে চিহ্নিত থাকে?", opts:["মেরুন","সাদা","নীল","কমলা"], correct:0},
+    {q:"Welding Rectifier-এর কাজ কী?", opts:["AC-কে DC-তে রূপান্তর করা","জল সরবরাহ করা","তাপ কমানো","গ্যাস তৈরি করা"], correct:0},
+    {q:"পাতলা ধাতব পাত জোড়া লাগাতে সাধারণত কোনটি বেশি উপযোগী?", opts:["আর্ক ওয়েল্ডিং","গ্যাস ওয়েল্ডিং","স্পট ওয়েল্ডিং","রেজিস্ট্যান্স ওয়েল্ডিং"], correct:1},
+    {q:"Spatter বলতে কী বোঝায়?", opts:["জোড়ার ফাটল","ছিটকে পড়া গলিত ধাতুর কণা","গ্যাসের গর্ত","ধাতুর বিকৃতি"], correct:1},
+    {q:"Butt Joint সাধারণত কোথায় বেশি ব্যবহৃত হয়?", opts:["পাইপ ও পাত জোড়ায়","কাঠের কাজে","প্লাস্টিকের কাজে","রং করার কাজে"], correct:0},
+    {q:"Visual Inspection কী দিয়ে করা হয়?", opts:["মাইক্রোস্কোপ দিয়ে","চোখ দিয়ে দেখে","এক্স-রে দিয়ে","শব্দ দিয়ে"], correct:1},
+    {q:"ওয়েল্ডিং কর্মক্ষেত্রে বায়ুচলাচল কেন প্রয়োজন?", opts:["ঠান্ডা রাখতে","ধোঁয়া জমতে না দিতে","আলো বাড়াতে","শব্দ কমাতে"], correct:1},
+    {q:"Fire Extinguisher ওয়ার্কশপে রাখার কারণ কী?", opts:["সাজসজ্জার জন্য","আগুন নেভানোর জন্য","ধোঁয়া তৈরি করতে","তাপ বাড়াতে"], correct:1},
+    {q:"Brazing ও Welding-এর মূল পার্থক্য কী?", opts:["ব্রেজিং-এ মূল ধাতু গলে না","ব্রেজিং-এ কোনো তাপ লাগে না","ব্রেজিং শুধু কাঠে হয়","কোনো পার্থক্য নেই"], correct:0},
+    {q:"Cutting Torch দিয়ে সাধারণত কোন ধাতু ভালোভাবে কাটা যায়?", opts:["অ্যালুমিনিয়াম","স্টেইনলেস স্টিল","লোহাজাতীয় (ferrous) ধাতু","প্লাস্টিক"], correct:2}
+  ];
+  var qIndex = 0, score = 0, answered = false;
+  var quizArea = document.getElementById('quizArea');
+
+  function renderQuiz(){
+    if(qIndex >= quizData.length){
+      quizArea.innerHTML = '<div class="quiz-score">🎉 কুইজ সম্পন্ন হয়েছে!<br>আপনার স্কোর: ' + score + ' / ' + quizData.length + '</div>' +
+        '<div style="text-align:center;"><button class="quiz-nav-btn" id="restartQuiz">🔄 আবার শুরু করুন</button></div>';
+      document.getElementById('restartQuiz').addEventListener('click', function(){
+        qIndex = 0; score = 0; renderQuiz();
+      });
+      return;
+    }
+    answered = false;
+    var item = quizData[qIndex];
+    var html = '<div class="quiz-box">' +
+      '<div class="quiz-q">প্রশ্ন ' + (qIndex+1) + ' / ' + quizData.length + ': ' + item.q + '</div>' +
+      '<div class="quiz-opts">';
+    item.opts.forEach(function(opt, i){
+      html += '<button class="quiz-opt" data-i="' + i + '">' + opt + '</button>';
+    });
+    html += '</div>' +
+      '<div class="quiz-footer"><span>স্কোর: ' + score + '</span>' +
+      '<button class="quiz-nav-btn" id="nextQ" style="visibility:hidden;">পরের প্রশ্ন ➡️</button></div>' +
+      '</div>';
+    quizArea.innerHTML = html;
+
+    var optBtns = quizArea.querySelectorAll('.quiz-opt');
+    optBtns.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if(answered) return;
+        answered = true;
+        var chosen = parseInt(this.getAttribute('data-i'));
+        optBtns.forEach(function(b, i){
+          if(i === item.correct) b.classList.add('correct');
+          else if(i === chosen) b.classList.add('wrong');
+        });
+        if(chosen === item.correct) score++;
+        document.getElementById('nextQ').style.visibility = 'visible';
+        quizArea.querySelector('.quiz-footer span').textContent = 'স্কোর: ' + score;
+      });
+    });
+    document.getElementById('nextQ').addEventListener('click', function(){
+      qIndex++; renderQuiz();
+    });
+  }
+  renderQuiz();
+</script>
+
+</body>
+</html>

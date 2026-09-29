@@ -18,7 +18,7 @@
 <style>
 :root{
   --navy:#0A0F1E; --navy2:#111A33;
-  --gold:#c9a84c; --gold-light:#e8c97a;
+  --gold:#c9a84c; --gold-light:#e8c97a; --gold-soft:#e8c97a;
   --bg:#dff3fc; --card:#ffffff; --text:#1a1c23; --sub:#666b78;
   --accent:#2b7cff; --accent2:#47c9ff; --ok:#22c55e; --err:#ef4444; --border:#d6e9f4; --lock:#c7c9d1;
   --shadow:0 10px 30px rgba(0,0,0,0.12);
@@ -102,9 +102,10 @@ button.act:disabled{opacity:.45; cursor:not-allowed;}
 .fail-box .icon{font-size:2.8rem;}
 footer{text-align:center; font-size:.75rem; color:var(--sub); margin-top:20px;}
 </style>
-<a class="home-btn" href="index.html" aria-label="Home">🏠</a>
 </head>
 <body>
+
+<a class="home-btn" href="index.html" aria-label="Home">🏠</a>
 
 <header>
   <nav class="certificate-nav" aria-label="Certificate navigation">
@@ -183,7 +184,7 @@ footer{text-align:center; font-size:.75rem; color:var(--sub); margin-top:20px;}
       <input type="text" id="districtInput" class="name-input" placeholder="District" maxlength="50">
       <input type="text" id="countryInput" class="name-input" placeholder="Country" maxlength="50">
       <button class="primary-btn" id="genCertBtn">Generate Certificate 🏅</button>
-      <button class="ghost-btn" id="tryAnotherBtn">Try Another Sentence</button>
+      <button class="ghost-btn" id="tryAnotherBtn">↺ Retake Final Examination</button>
     </div>
   </div>
 
@@ -381,7 +382,7 @@ function renderLevels(){
   if(examMode){
     const info = document.createElement('div');
     info.style.cssText = 'text-align:center; font-weight:700; color:var(--navy2); padding:6px 0;';
-    info.textContent = `🏁 Final Examination — Complete to Earn Certificate`;
+    info.textContent = `🏁 Final Examination ${finalExamIndex + 1} of ${FINAL_EXAMS.length} — Complete all to Earn Certificate`;
     el.appendChild(info);
     return;
   }
@@ -412,8 +413,10 @@ function enterExamMode(){
   examMode = true;
   testLevel = FINAL_EXAM_LEVEL;
 
+  /* Always start a fresh set of 4 exams with an empty result list */
   finalExamIndex = 0;
   finalExamResults = [];
+  lastResult = null;
 
   showScreen('screen-test');
   initTest();
@@ -574,12 +577,15 @@ document.getElementById('testInput').addEventListener('input', (e)=>{
 
     if(examMode){
 
-      finalExamResults.push({
+      /* Store by position (0..3) so the list can never grow past 4 entries.
+         Previously .push() was used, and every retry added an extra entry,
+         which made totals such as 93 / 60. */
+      finalExamResults[finalExamIndex] = {
         exam: currentTest.name,
         score: score,
         wpm: s.wpm,
         acc: s.acc
-      });
+      };
 
 
       /* More exams remaining */
@@ -650,26 +656,30 @@ function initTest(){
 
 function finishAllFinalExams(){
 
-  const totalScore =
-    finalExamResults.reduce(
-      function(sum, item){
-
-        return sum + Number(item.score || 0);
-
-      },
-      0
-    );
-
-
   const totalMarks =
     FINAL_EXAMS.length * FINAL_EXAM_SCORE;
 
+  /* Only the 4 official exams count; every score is capped at 15 */
+  const official = [];
+  for(let i = 0; i < FINAL_EXAMS.length; i++){
+    const item = finalExamResults[i] || {score: 0, wpm: 0, acc: 0, exam: FINAL_EXAMS[i]};
+    item.score = Math.max(0, Math.min(FINAL_EXAM_SCORE, Number(item.score) || 0));
+    official.push(item);
+  }
+
+  const totalScore = Math.min(
+    totalMarks,
+    official.reduce(function(sum, item){ return sum + item.score; }, 0)
+  );
 
   const percentage =
     Math.round(
       (totalScore / totalMarks) * 100
     );
 
+  /* Average speed / accuracy of the 4 exams (shown on the certificate) */
+  const avgWpm = Math.round(official.reduce(function(a, x){ return a + (Number(x.wpm) || 0); }, 0) / official.length);
+  const avgAcc = Math.round(official.reduce(function(a, x){ return a + (Number(x.acc) || 0); }, 0) / official.length);
 
   lastResult = {
 
@@ -679,7 +689,11 @@ function finishAllFinalExams(){
 
     percentage: percentage,
 
-    exams: finalExamResults
+    wpm: avgWpm,
+
+    acc: avgAcc,
+
+    exams: official
 
   };
 
@@ -696,22 +710,22 @@ function finishAllFinalExams(){
 
     <div>
       📝 Exam 1:
-      <b>${finalExamResults[0].score} / 15</b>
+      <b>${official[0].score} / 15</b>
     </div>
 
     <div>
       📝 Exam 2:
-      <b>${finalExamResults[1].score} / 15</b>
+      <b>${official[1].score} / 15</b>
     </div>
 
     <div>
       📝 Exam 3:
-      <b>${finalExamResults[2].score} / 15</b>
+      <b>${official[2].score} / 15</b>
     </div>
 
     <div>
       📝 Exam 4:
-      <b>${finalExamResults[3].score} / 15</b>
+      <b>${official[3].score} / 15</b>
     </div>
 
     <hr>
@@ -767,7 +781,14 @@ function finishTest(){
     showScreen('screen-fail');
   }
 }
-document.getElementById('tryAnotherBtn').onclick = ()=>{ showScreen('screen-test'); pickTestDrill(); };
+
+/* Retaking the Final Examination restarts ALL 4 exams from the beginning
+   with a clean result list (it used to re-run only the last exam and add
+   an extra result, which pushed the total above 60). */
+document.getElementById('tryAnotherBtn').onclick = ()=>{
+  if(examMode){ enterExamMode(); }
+  else { showScreen('screen-test'); pickTestDrill(); }
+};
 document.getElementById('retakeBtn').onclick = ()=>{ showScreen('screen-test'); resetTest(); };
 document.getElementById('backLessonsBtn').onclick = enterPracticeMode;
 
@@ -786,9 +807,11 @@ async function generateCertificate(){
   if (!school) { schoolInput.focus(); return; }
   if (!district) { districtInput.focus(); return; }
   if (!country) { countryInput.focus(); return; }
+  if (!lastResult) { return; }
 
-  const score = Number(lastResult.score);
-  const total = MAX_SCORE;
+  /* Final safety net: the score can never be below 0 or above the total */
+  const total = Number(lastResult.total) || MAX_SCORE;
+  const score = Math.max(0, Math.min(Number(lastResult.score) || 0, total));
   const percentage = Math.min(100, Math.round((score/total)*100));
 
   /* Same student ID used across every My Skill Global system */

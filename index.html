@@ -916,6 +916,8 @@ img { pointer-events: none; -webkit-user-drag: none; }
 <body>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="images/favicon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
 <link rel="apple-touch-icon" href="images/favicon.png">
 <!-- ── NAV ── -->
 <nav class="nav">
@@ -924,6 +926,7 @@ img { pointer-events: none; -webkit-user-drag: none; }
 <a href="#about">About</a>
 <a class="active" href="exam-index.html">All Exam</a>
 <a href="typing-tutor-fixed.html">Typing Tutor</a>
+<a href="bengali-index.html">বাংলা পেজ</a>
 <a href="#leaderboard">🏆 Leaderboard</a>
 <a href="feedback-opinion-index.html">We Would Like to Hear Your Opinion</a>
 <a href="language-index.html">Languages</a>
@@ -1124,7 +1127,7 @@ img { pointer-events: none; -webkit-user-drag: none; }
      wrapper so the fixed-height image box applies consistently. -->
 <div class="story-cards-wrap">
 
-<a href="punishment-of-work.html" class="story-card-link">
+<a href="punishment-of-exile-english.html" class="story-card-link">
   <div class="story-card reveal">
     <div class="story-image">
       <img src="images/bragger.png" alt="The Punishment of Exile">
@@ -1418,7 +1421,7 @@ img { pointer-events: none; -webkit-user-drag: none; }
   </div>
 </a>
 
-<a href="ekta-iter-tukro.html" class="story-card-link"><div class="story-card reveal"><div class="story-image"><img src="images/brick.png" alt="When a Courier Receives a Piece of Brick Instead of a Watch"></div><div class="story-card-content"><h3>When a Courier Receives a Piece of Brick Instead of a Watch!</h3><p>A young man with an M.A. degree takes a job as a delivery boy to earn a living. One day, instead of an expensive smartwatch, he receives a piece of brick. What follows is a terrifying struggle involving humiliation, violence, conspiracy, and a desperate fight to escape. But along that dark journey, a story of love, truth, and a new life begins to unfold.</p><div class="story-meta"><span>📖 Serial Fiction</span><span>❤️ Love</span><span>⚖️ Truth</span><span>🌱 Humanity</span></div><span class="story-read-btn">Read Full Story →</span></div></div></a>
+<a href="a-piece-of-brick-en.html" class="story-card-link"><div class="story-card reveal"><div class="story-image"><img src="images/brick.png" alt="When a Courier Receives a Piece of Brick Instead of a Watch"></div><div class="story-card-content"><h3>When a Courier Receives a Piece of Brick Instead of a Watch!</h3><p>A young man with an M.A. degree takes a job as a delivery boy to earn a living. One day, instead of an expensive smartwatch, he receives a piece of brick. What follows is a terrifying struggle involving humiliation, violence, conspiracy, and a desperate fight to escape. But along that dark journey, a story of love, truth, and a new life begins to unfold.</p><div class="story-meta"><span>📖 Serial Fiction</span><span>❤️ Love</span><span>⚖️ Truth</span><span>🌱 Humanity</span></div><span class="story-read-btn">Read Full Story →</span></div></div></a>
 </div>
 <div class="stories-more-row">
   <p class="story-exam-note">
@@ -1687,7 +1690,14 @@ img { pointer-events: none; -webkit-user-drag: none; }
       <strong>myskillglobal@gmail.com</strong> /
       <strong>myskillgame26@gmail.com</strong>
     </p>
+<a
+      class="story-read-btn"
+      href="advertise.html"
+    >📢 View Advertising Details →</a>
 
+  </div>
+
+</div>
     <!-- Investment in West Bengal -->
     <div style="
       margin-top:15px;
@@ -1965,8 +1975,8 @@ img { pointer-events: none; -webkit-user-drag: none; }
           <option value="">🏆 All Exams</option>
           <option value="story">📖 Story &amp; Novel</option>
           <option value="language">🌐 Language Test</option>
-	  <option value="typing">⌨️ Typing Test</option>
-          <option value="miscellaneous">🧩 Miscellaneous</option>
+<option value="typing-global">⌨️ Typing Global
+</option>          <option value="miscellaneous">🧩 Miscellaneous</option>
         </select>
 
         <!-- SUB EXAM -->
@@ -1981,10 +1991,11 @@ img { pointer-events: none; -webkit-user-drag: none; }
         <button
           type="button"
           class="leaderboard-refresh"
-          onclick="loadLeaderboard()"
+          onclick="loadLeaderboard(true)"
         >
           🔄 Refresh</button>
       </div>
+      <p id="leaderboardCount" class="leaderboard-note" style="margin:0 0 12px;"></p>
       <!-- TABLE -->
       <div class="leaderboard-table-wrap">
         <table class="leaderboard-table">
@@ -2524,32 +2535,22 @@ img { pointer-events: none; -webkit-user-drag: none; }
 </footer>
 
 <script>
-  /* =========================================================
-     1. ANIMATION / REVEAL OBSERVER
-     ========================================================= */
-  const revealEls = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((e) => {
-      if (e.isIntersecting) {
-        const siblings = Array.from(e.target.parentElement.querySelectorAll('.reveal'));
-        setTimeout(() => e.target.classList.add('in-view', 'visible'), siblings.indexOf(e.target) * 80);
-        observer.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.12 });
-  revealEls.forEach(el => observer.observe(el));
-
-  /* =========================================================
-     2. PUBLIC LEADERBOARD CONFIG & API
-     ========================================================= */
-  const LEADERBOARD_API = "https://script.google.com/macros/s/AKfycbw6RCPloCBvzyM_quGnBgekRwAVZUVCjcATSetNwoNuhknnJah_5DJaGPtwEkqh7aY/exec";
-
 /* =========================================================
-   UNIVERSAL COUNTRY FLAG (real images via flag-icons library,
-   not emoji — emoji flags don't render on many systems,
-   especially Windows, and fall back to plain letter codes)
+   PUBLIC LEADERBOARD  (wrapped in a function so it can never
+   clash with names declared in script.js, e.g. LEADERBOARD_API)
    ========================================================= */
+(function () {
+  "use strict";
 
+  const LEADERBOARD_API = "https://script.google.com/macros/s/AKfycbw6RCPloCBvzyM_quGnBgekRwAVZUVCjcATSetNwoNuhknnJah_5DJaGPtwEkqh7aY/exec";
+  const PAGE_SIZE = 100;          // rows shown at a time
+  const CACHE_MS  = 60 * 1000;    // reuse downloaded data for 60 s
+
+  const $ = function (id) { return document.getElementById(id); };
+
+  /* -------------------------------------------------------
+     COUNTRY -> ISO CODE (for flags)
+     ------------------------------------------------------- */
 const COUNTRY_ISO = {
   "afghanistan": "AF", "albania": "AL", "algeria": "DZ", "andorra": "AD",
   "angola": "AO", "antigua and barbuda": "AG", "argentina": "AR", "armenia": "AM",
@@ -2609,441 +2610,403 @@ const COUNTRY_ISO = {
   "zimbabwe": "ZW", "hong kong": "HK", "macau": "MO", "puerto rico": "PR"
 };
 
-function getCountryCode(country) {
-  const name = String(country || "").trim().toLowerCase();
-  return COUNTRY_ISO[name] || null;
-}
+  /* Different spellings that must count as ONE country in filters.
+     Add more lines here if you find new variants in your sheet. */
+  const COUNTRY_ALIAS = {
+    "usa": "united states", "us": "united states", "america": "united states",
+    "united states of america": "united states",
+    "uk": "united kingdom", "great britain": "united kingdom",
+    "britain": "united kingdom", "england": "united kingdom",
+    "uae": "united arab emirates",
+    "dr congo": "democratic republic of the congo",
+    "czechia": "czech republic", "burma": "myanmar", "swaziland": "eswatini",
+    "east timor": "timor-leste", "ivory coast": "cote d'ivoire",
+    "korea": "south korea", "holland": "netherlands",
+    "bharat": "india", "republic of india": "india"
+  };
 
-function escapeHtml(str) {
-  return String(str || "")
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;");
-}
-
-/* Real flag image (use inside table cells / anywhere HTML is allowed) */
-function getCountryFlagHTML(country) {
-  const code = getCountryCode(country);
-  const safeName = escapeHtml(country);
-  if (!code) {
-    return `🌍 ${safeName}`;
+  /* -------------------------------------------------------
+     HELPERS
+     ------------------------------------------------------- */
+  function escapeHtml(str) {
+    return String(str == null ? "" : str)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   }
-  return `<span class="fi fi-${code.toLowerCase()}"></span>${safeName}`;
-}
 
-/* Plain text label (use for <select><option> — options can't show
-   images in any browser, so we show the ISO code as text) */
-function getCountryLabel(country) {
-  const code = getCountryCode(country);
-  return code ? `${code} ${country}` : `🌍 ${country}`;
-}
+  /* trim + collapse spaces + lower-case + remove Latin accents */
+  function norm(value) {
+    return String(value == null ? "" : value)
+      .normalize("NFKD").replace(/[\u0300-\u036f]/g, "")
+      .replace(/[\u2018\u2019`]/g, "'")
+      .replace(/\s+/g, " ").trim().toLowerCase();
+  }
 
+  function countryKey(value) {
+    const k = norm(value).replace(/[.,]/g, "").replace(/^the /, "");
+    return COUNTRY_ALIAS[k] || k;
+  }
+
+  function getCountryCode(country) {
+    const name = norm(country);
+    return COUNTRY_ISO[name] || COUNTRY_ISO[countryKey(country)] || null;
+  }
+
+  function getCountryFlagHTML(country) {
+    const code = getCountryCode(country);
+    const safeName = escapeHtml(country);
+    if (!code) return "🌍 " + safeName;
+    return '<span class="fi fi-' + code.toLowerCase() + '"></span>' + safeName;
+  }
+
+  function getCountryLabel(country) {
+    const code = getCountryCode(country);
+    return code ? code + " " + country : "🌍 " + country;
+  }
+
+  window.getCountryFlagHTML = getCountryFlagHTML;
+  window.getCountryLabel = getCountryLabel;
 
   function leaderboardMedal(rank) {
     const r = Number(rank);
     return r === 1 ? "🥇" : r === 2 ? "🥈" : r === 3 ? "🥉" : r;
   }
 
-  /* =========================================================
-     IDENTIFY MAIN EXAM
-     ========================================================= */
+  /* -------------------------------------------------------
+     MAIN EXAM (Story / Language / Typing / Misc)
+     ------------------------------------------------------- */
+  const MISC_EXAMS = [
+    "Atmasamman", "Bengali", "Farm Safety", "Jute Revival",
+    "Mobile Smart Guide", "Nabajagaran", "One Mobile Three Lives"
+  ].map(norm);
+
   function getMainExam(examName) {
-  const exam = String(examName || "").trim();
-  const lower = exam.toLowerCase();
-
-  /* =====================================================
-     TYPING
-     ===================================================== */
-  if (
-    lower.includes("typing") ||
-    lower.includes("typing tutor")
-  ) {
-    return "typing";
+    const lower = norm(examName);
+    if (lower.includes("typing")) return "typing-global";
+    if (lower.includes("language test")) return "language";
+    if (MISC_EXAMS.indexOf(lower) !== -1) return "miscellaneous";
+    return "story";   // everything else
   }
 
-  /* =====================================================
-     LANGUAGE
-     ===================================================== */
-  if (
-    lower.startsWith("language test") ||
-    lower.includes("language test")
-  ) {
-    return "language";
+  /* -------------------------------------------------------
+     DATA  (downloaded ONCE, then filtered in the browser)
+     ------------------------------------------------------- */
+  let DATA = [];
+  let loadedAt = 0;
+  let inflight = null;
+  let countriesBuiltFor = -1;
+  let visibleCount = PAGE_SIZE;
+  let token = 0;
+
+  function prepare(item) {
+    const score = Number(item.highScore) || 0;
+    const total = Number(item.totalMarks) || 0;
+    const country = String(item.country || "").trim();
+    const examName = String(item.examName || "").trim();
+    return {
+      name: String(item.name || "").trim(),
+      school: String(item.school || "").trim(),
+      country: country,
+      countryLabel: country,
+      examName: examName,
+      score: score,
+      total: total,
+      attempts: item.attempts || 1,
+      pct: total > 0 ? score / total : 0,
+      cKey: countryKey(country),
+      sKey: norm(item.school),
+      eKey: norm(examName),
+      main: getMainExam(examName)
+    };
   }
 
-  /* =====================================================
-     MISCELLANEOUS
-     ===================================================== */
-  const miscellaneousExams = [
-    "Atmasamman",
-    "Bengali",
-    "Farm Safety",
-    "Jute Revival",
-    "Mobile Smart Guide",
-    "Nabajagaran",
-    "One Mobile Three Lives"
-  ];
-
-  if (
-    miscellaneousExams.some(function(item) {
-      return item.toLowerCase() === lower;
-    })
-  ) {
-    return "miscellaneous";
+  /* Group rows by a normalised key; label = most common spelling */
+  function buildGroups(rows, keyName, labelName) {
+    const map = new Map();
+    rows.forEach(function (r) {
+      const k = r[keyName];
+      if (!k) return;
+      let g = map.get(k);
+      if (!g) { g = { key: k, counts: new Map() }; map.set(k, g); }
+      const l = r[labelName];
+      g.counts.set(l, (g.counts.get(l) || 0) + 1);
+    });
+    return Array.from(map.values()).map(function (g) {
+      let best = "", n = -1;
+      g.counts.forEach(function (c, l) { if (c > n) { best = l; n = c; } });
+      return { key: g.key, label: best };
+    }).sort(function (a, b) { return a.label.localeCompare(b.label); });
   }
 
-  /* =====================================================
-     EVERYTHING ELSE
-     ===================================================== */
-  return "story";
-}
+  function ensureData(force) {
+    if (!force && loadedAt && Date.now() - loadedAt < CACHE_MS) {
+      return Promise.resolve(DATA);
+    }
+    if (inflight) return inflight;
 
-  /* =========================================================
-     3. LOAD LEADERBOARD DATA FROM GOOGLE SHEETS
-     ========================================================= */
-  async function loadLeaderboard() {
-    const tbody = document.getElementById("leaderboardBody");
-    const examSelect = document.getElementById("leaderboardExam");
-    const subSelect = document.getElementById("leaderboardSubExam");
-    const countrySelect = document.getElementById("leaderboardCountry");
-    const schoolSelect = document.getElementById("leaderboardSchool");
+    inflight = fetch(LEADERBOARD_API, { method: "GET", cache: "no-store" })
+      .then(function (res) {
+        if (!res.ok) throw new Error("Leaderboard request failed.");
+        return res.json();
+      })
+      .then(function (json) {
+        if (!Array.isArray(json)) throw new Error("Unexpected response.");
+        /* Drop corrupt records such as 93 / 60 (score above total marks) */
+        const all = json.map(prepare);
+        DATA = all.filter(function (r) {
+          return r.total > 0 && r.score >= 0 && r.score <= r.total;
+        });
+        if (DATA.length !== all.length) {
+          console.warn((all.length - DATA.length) + " invalid leaderboard record(s) hidden (score > total marks).");
+        }
 
-    if (!tbody) return;
+        const labels = new Map();
+        buildGroups(DATA, "cKey", "country").forEach(function (g) {
+          labels.set(g.key, g.label);
+        });
+        DATA.forEach(function (r) {
+          r.countryLabel = labels.get(r.cKey) || r.country;
+        });
 
-    tbody.innerHTML = `
-      <tr>
-        <td colspan="7" class="leaderboard-loading">
-          ⏳ Loading leaderboard...
-        </td>
-      </tr>
-    `;
+        loadedAt = Date.now();
+        return DATA;
+      })
+      .finally(function () { inflight = null; });
 
-    try {
-      const selectedExam = examSelect ? examSelect.value.trim() : "";
-      const selectedSubExam = subSelect ? subSelect.value.trim() : "";
-      const selectedCountry = countrySelect ? countrySelect.value.trim() : "";
-      const selectedSchool = schoolSelect ? schoolSelect.value.trim() : "";
+    return inflight;
+  }
 
-      const response = await fetch(LEADERBOARD_API, {
-        method: "GET",
-        cache: "no-store"
-      });
+  /* -------------------------------------------------------
+     DROPDOWNS
+     ------------------------------------------------------- */
+  function setOptions(select, firstHtml, groups, labelFn) {
+    if (!select) return;
+    const prev = select.value;
+    select.innerHTML = firstHtml;
+    const frag = document.createDocumentFragment();
+    groups.forEach(function (g) {
+      const opt = document.createElement("option");
+      opt.value = g.key;
+      opt.textContent = labelFn(g.label);
+      frag.appendChild(opt);
+    });
+    select.appendChild(frag);
+    const stillThere = prev && groups.some(function (g) { return g.key === prev; });
+    select.value = stillThere ? prev : "";
+  }
 
-      if (!response.ok) {
-        throw new Error("Leaderboard request failed.");
-      }
+  function rebuildOptions() {
+    const cSel = $("leaderboardCountry");
+    const sSel = $("leaderboardSchool");
+    const eSel = $("leaderboardExam");
+    const subSel = $("leaderboardSubExam");
 
-     const data = await response.json();
+    /* Countries: only when fresh data arrived */
+    if (cSel && countriesBuiltFor !== loadedAt) {
+      setOptions(cSel, '<option value="">🌍 All Countries</option>',
+        buildGroups(DATA, "cKey", "country"), getCountryLabel);
+      countriesBuiltFor = loadedAt;
+    }
+    const country = cSel ? cSel.value : "";
 
-     let filteredData = Array.isArray(data) ? data.slice() : [];
+    /* Schools of the chosen country */
+    if (sSel) {
+      const rows = country ? DATA.filter(function (r) { return r.cKey === country; }) : [];
+      setOptions(sSel, '<option value="">🏫 All Schools</option>',
+        buildGroups(rows, "sKey", "school"), function (l) { return l; });
+      sSel.disabled = !country;
+    }
+    const school = sSel ? sSel.value : "";
 
-// =====================================================
-// COUNTRY FILTER
-// =====================================================
-
-if (selectedCountry) {
-  filteredData = filteredData.filter(function(item) {
-    return String(item.country || "").trim() === selectedCountry;
-  });
-}
-
-// =====================================================
-// SCHOOL FILTER
-// =====================================================
-
-if (selectedSchool) {
-  filteredData = filteredData.filter(function(item) {
-    return String(item.school || "").trim() === selectedSchool;
-  });
-}
-
-// =====================================================
-// MAIN EXAM FILTER
-// =====================================================
-
-if (selectedExam) {
-  filteredData = filteredData.filter(function(item) {
-    return getMainExam(item.examName) === selectedExam;
-  });
-}
-
-// =====================================================
-// SUB EXAM FILTER
-// =====================================================
-
-if (selectedSubExam) {
-  filteredData = filteredData.filter(function(item) {
-    return String(item.examName || "").trim() === selectedSubExam;
-  });
-}
-
-// =====================================================
-// SORT BY BEST SCORE / RANK
-// =====================================================
-
-filteredData.sort(function(a, b) {
-  const scoreA = Number(a.highScore || 0);
-  const scoreB = Number(b.highScore || 0);
-
-  return scoreB - scoreA;
-});
-
-// =====================================================
-// SHOW TOP 100 ONLY
-// =====================================================
-
-const displayData = filteredData.slice(0, 100);
-
-// =====================================================
-// RENDER LEADERBOARD
-// =====================================================
-
-renderLeaderboard(displayData);
-
-    } catch (error) {
-      console.error("Leaderboard error:", error);
-      tbody.innerHTML = `
-        <tr>
-          <td colspan="7" class="leaderboard-empty" style="color: #ff6b6b;">
-            ⚠️ Unable to load leaderboard. Please try again.
-          </td>
-        </tr>
-      `;
+    /* Sub-exams of the chosen main exam (limited to chosen country/school) */
+    if (subSel) {
+      const main = eSel ? eSel.value : "";
+      const rows = main ? DATA.filter(function (r) {
+        return r.main === main &&
+          (!country || r.cKey === country) &&
+          (!school || r.sKey === school);
+      }) : [];
+      setOptions(subSel, '<option value="">All Sub-Exams</option>',
+        buildGroups(rows, "eKey", "examName"), function (l) { return l; });
+      subSel.disabled = !main;
     }
   }
 
-  /* =========================================================
-     4. RENDER LEADERBOARD ROWS
-     ========================================================= */
-  function renderLeaderboard(data) {
-    const tbody = document.getElementById("leaderboardBody");
-    if (!tbody) return;
+  /* -------------------------------------------------------
+     FILTER + RANK
+     ------------------------------------------------------- */
+  function getRankedRows() {
+    const val = function (id) { const el = $(id); return el ? el.value : ""; };
+    const fCountry = val("leaderboardCountry");
+    const fSchool = val("leaderboardSchool");
+    const fExam = val("leaderboardExam");
+    const fSub = val("leaderboardSubExam");
 
-    tbody.innerHTML = "";
+    const rows = DATA.filter(function (r) {
+      return (!fCountry || r.cKey === fCountry) &&
+             (!fSchool || r.sKey === fSchool) &&
+             (!fExam || r.main === fExam) &&
+             (!fSub || r.eKey === fSub);
+    });
 
-    if (!Array.isArray(data) || data.length === 0) {
-      tbody.innerHTML = `
-        <tr>
-          <td colspan="7" class="leaderboard-empty">
-            🏆 No scores available yet.
-          </td>
-        </tr>
-      `;
-      return;
-    }
+    rows.sort(function (a, b) {
+      if (b.pct !== a.pct) return b.pct - a.pct;
+      if (b.score !== a.score) return b.score - a.score;
+      return a.name.localeCompare(b.name);
+    });
 
-    data.forEach(function(item, index) {
-      const row = document.createElement("tr");
-
-      /* Rank */
-      const rankCell = document.createElement("td");
-      rankCell.className = "rank-cell";
-      const displayRank = item.rank || (index + 1);
-      rankCell.innerHTML = `<span class="rank-medal">${leaderboardMedal(displayRank)}</span>`;
-      row.appendChild(rankCell);
-
-      /* Name */
-      const nameCell = document.createElement("td");
-      nameCell.textContent = item.name || "—";
-      row.appendChild(nameCell);
-
-      /* School */
-      const schoolCell = document.createElement("td");
-      schoolCell.textContent = item.school || "—";
-      row.appendChild(schoolCell);
-
-      /* Country */
-      const countryCell = document.createElement("td");
-      countryCell.innerHTML = item.country
-        ? getCountryFlagHTML(item.country)
-        : "—";
-      row.appendChild(countryCell);
-
-      /* Exam */
-      const examCell = document.createElement("td");
-      examCell.textContent = item.examName || "—";
-      row.appendChild(examCell);
-
-      /* Score */
-      const scoreCell = document.createElement("td");
-      scoreCell.style.fontWeight = "bold";
-      scoreCell.style.color = "var(--gold-light)";
-      scoreCell.textContent = (item.highScore || 0) + " / " + (item.totalMarks || 0);
-      row.appendChild(scoreCell);
-
-      /* Attempts */
-      const attemptsCell = document.createElement("td");
-      attemptsCell.textContent = item.attempts || 1;
-      row.appendChild(attemptsCell);
-
-      tbody.appendChild(row);
+    /* Rank is re-calculated for the FILTERED list; equal results share a rank */
+    let rank = 0, prev = null;
+    return rows.map(function (r, i) {
+      if (!prev || r.pct !== prev.pct || r.score !== prev.score) rank = i + 1;
+      prev = r;
+      return { row: r, rank: rank };
     });
   }
 
-  /* =========================================================
-     5. DYNAMICALLY FILL COUNTRY DROPDOWN FROM GOOGLE SHEETS
-     ========================================================= */
-  async function loadCountryOptions() {
-    const countrySelect = document.getElementById("leaderboardCountry");
-    if (!countrySelect) return;
-
-    try {
-      const response = await fetch(LEADERBOARD_API, {
-        method: "GET",
-        cache: "no-store"
-      });
-
-      if (!response.ok) return;
-
-      const data = await response.json();
-      if (!Array.isArray(data)) return;
-
-      const countries = [...new Set(
-        data.map(item => String(item.country || "").trim()).filter(Boolean)
-      )];
-
-      countries.sort((a, b) => a.localeCompare(b));
-
-      countries.forEach(function(country) {
-        const option = document.createElement("option");
-        option.value = country;
-        option.textContent = getCountryLabel(country);
-        countrySelect.appendChild(option);
-      });
-
-    } catch (error) {
-      console.error("Country list error:", error);
-    }
+  /* -------------------------------------------------------
+     RENDER
+     ------------------------------------------------------- */
+  function messageRow(html, cls, extraStyle) {
+    const tbody = $("leaderboardBody");
+    if (!tbody) return;
+    tbody.innerHTML = '<tr><td colspan="7" class="' + cls + '"' +
+      (extraStyle ? ' style="' + extraStyle + '"' : "") + ">" + html + "</td></tr>";
   }
 
-  /* =========================================================
-     5b. DYNAMICALLY FILL SCHOOL DROPDOWN BASED ON COUNTRY
-     ========================================================= */
-  async function updateSchoolOptions() {
-    const countrySelect = document.getElementById("leaderboardCountry");
-    const schoolSelect = document.getElementById("leaderboardSchool");
+  function setCount(text) {
+    const el = $("leaderboardCount");
+    if (el) el.textContent = text;
+  }
 
-    if (!countrySelect || !schoolSelect) return;
+  function render() {
+    const tbody = $("leaderboardBody");
+    if (!tbody) return;
 
-    const selectedCountry = countrySelect.value;
+    const ranked = getRankedRows();
 
-    schoolSelect.innerHTML = `<option value="">🏫 All Schools</option>`;
-    schoolSelect.disabled = !selectedCountry;
-
-    if (!selectedCountry) {
-      loadLeaderboard();
+    if (ranked.length === 0) {
+      setCount("");
+      messageRow("🏆 No scores available for this selection.", "leaderboard-empty");
       return;
     }
 
-    try {
-      const response = await fetch(LEADERBOARD_API, {
-        method: "GET",
-        cache: "no-store"
+    const slice = ranked.slice(0, visibleCount);
+    setCount("Showing " + slice.length + " of " + ranked.length + " results");
+
+    const frag = document.createDocumentFragment();
+
+    slice.forEach(function (entry) {
+      const r = entry.row;
+      const tr = document.createElement("tr");
+
+      const rankTd = document.createElement("td");
+      rankTd.className = "rank-cell";
+      const medal = document.createElement("span");
+      medal.className = "rank-medal";
+      medal.textContent = leaderboardMedal(entry.rank);
+      rankTd.appendChild(medal);
+      tr.appendChild(rankTd);
+
+      const nameTd = document.createElement("td");
+      nameTd.textContent = r.name || "—";
+      tr.appendChild(nameTd);
+
+      const schoolTd = document.createElement("td");
+      schoolTd.textContent = r.school || "—";
+      tr.appendChild(schoolTd);
+
+      const countryTd = document.createElement("td");
+      if (r.country) countryTd.innerHTML = getCountryFlagHTML(r.countryLabel);
+      else countryTd.textContent = "—";
+      tr.appendChild(countryTd);
+
+      const examTd = document.createElement("td");
+      examTd.textContent = r.examName || "—";
+      tr.appendChild(examTd);
+
+      const scoreTd = document.createElement("td");
+      scoreTd.style.fontWeight = "bold";
+      scoreTd.style.color = "var(--gold-light)";
+      scoreTd.textContent = r.score + " / " + r.total;
+      tr.appendChild(scoreTd);
+
+      const attTd = document.createElement("td");
+      attTd.textContent = r.attempts;
+      tr.appendChild(attTd);
+
+      frag.appendChild(tr);
+    });
+
+    if (ranked.length > slice.length) {
+      const tr = document.createElement("tr");
+      const td = document.createElement("td");
+      td.colSpan = 7;
+      td.style.textAlign = "center";
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "leaderboard-refresh";
+      btn.textContent = "⬇️ Show more (" + (ranked.length - slice.length) + " remaining)";
+      btn.addEventListener("click", function () {
+        visibleCount += PAGE_SIZE;
+        render();
       });
-
-      if (!response.ok) {
-        throw new Error("Unable to load data");
-      }
-
-      const data = await response.json();
-      if (!Array.isArray(data)) return;
-
-      const schools = [...new Set(
-        data
-          .filter(item => String(item.country || "").trim() === selectedCountry)
-          .map(item => String(item.school || "").trim())
-          .filter(Boolean)
-      )];
-
-      schools.sort((a, b) => a.localeCompare(b));
-
-      schools.forEach(function(school) {
-        const option = document.createElement("option");
-        option.value = school;
-        option.textContent = school;
-        schoolSelect.appendChild(option);
-      });
-
-      schoolSelect.disabled = false;
-
-      loadLeaderboard();
-
-    } catch (error) {
-      console.error("School loading error:", error);
-      loadLeaderboard();
+      td.appendChild(btn);
+      tr.appendChild(td);
+      frag.appendChild(tr);
     }
+
+    tbody.innerHTML = "";
+    tbody.appendChild(frag);
   }
 
-  /* =========================================================
-     6. UPDATE SUB-EXAM DROPDOWN BASED ON MAIN EXAM
-     ========================================================= */
-  async function updateSubExamOptions() {
-    const examSelect = document.getElementById("leaderboardExam");
-    const subSelect = document.getElementById("leaderboardSubExam");
+  /* -------------------------------------------------------
+     MAIN ENTRY  (called by the dropdowns and Refresh button)
+     ------------------------------------------------------- */
+  async function loadLeaderboard(force) {
+    const my = ++token;
+    const refetch = force === true;
+    visibleCount = PAGE_SIZE;
 
-    if (!examSelect || !subSelect) return;
+    if (refetch || !loadedAt) {
+      messageRow("⏳ Loading leaderboard...", "leaderboard-loading");
+    }
 
-    const selectedExam = examSelect.value;
-
-    subSelect.innerHTML = `<option value="">All Sub-Exams</option>`;
-    subSelect.disabled = !selectedExam;
-
-    if (!selectedExam) {
-      loadLeaderboard();
+    try {
+      await ensureData(refetch);
+    } catch (err) {
+      console.error("Leaderboard error:", err);
+      if (my !== token) return;
+      messageRow("⚠️ Unable to load leaderboard. Please press Refresh.",
+        "leaderboard-empty", "color:#ff6b6b;");
       return;
     }
 
-    try {
-      const response = await fetch(LEADERBOARD_API, {
-        method: "GET",
-        cache: "no-store"
-      });
-
-      if (!response.ok) {
-        throw new Error("Unable to load exams");
-      }
-
-      const data = await response.json();
-      if (!Array.isArray(data)) return;
-
-      const subExams = [];
-
-      data.forEach(function(item) {
-        const examName = String(item.examName || "").trim();
-        if (!examName) return;
-        if (getMainExam(examName) !== selectedExam) return;
-        if (!subExams.includes(examName)) {
-          subExams.push(examName);
-        }
-      });
-
-      subExams.sort((a, b) => a.localeCompare(b));
-
-      subExams.forEach(function(examName) {
-        const option = document.createElement("option");
-        option.value = examName;
-        option.textContent = examName;
-        subSelect.appendChild(option);
-      });
-
-      subSelect.disabled = false;
-
-      loadLeaderboard();
-
-    } catch (error) {
-      console.error("Sub-exam loading error:", error);
-      loadLeaderboard();
-    }
+    if (my !== token) return;   // a newer selection has already started
+    rebuildOptions();
+    render();
   }
 
-  /* =========================================================
-     7. INITIAL LOAD
-     ========================================================= */
-  document.addEventListener("DOMContentLoaded", function() {
-    loadCountryOptions();
-    loadLeaderboard();
-  });
+  /* Names used by the onchange / onclick attributes in the HTML */
+  window.loadLeaderboard = loadLeaderboard;
+  window.updateSchoolOptions = function () { return loadLeaderboard(false); };
+  window.updateSubExamOptions = function () { return loadLeaderboard(false); };
+
+  /* Console helper: shows which main group every exam name falls into */
+  window.lbDebugExams = function () {
+    const seen = {};
+    DATA.forEach(function (r) { seen[r.examName] = r.main; });
+    console.table(seen);
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", function () { loadLeaderboard(true); });
+  } else {
+    loadLeaderboard(true);
+  }
+})();
 </script>
+
 <script src="script.js"></script>
 </body>
 </html>

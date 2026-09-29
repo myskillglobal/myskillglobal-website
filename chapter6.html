@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>অধ্যায় ৬ : রামুর আগমন | নবজাগরণ</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+
+<meta name="description" content="নবজাগরণ, অধ্যায় ৬ : রামুর আগমন — পর্ব ২১-২৪। সৎ নিরাপত্তারক্ষী রামু দাসের নিয়োগ, দায়িত্বের প্রথম পরীক্ষা এবং তার অদ্ভুত কাকতালীয় স্বপ্নের সূচনার গল্প।">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@500;600;700;800&family=Tiro+Bangla&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#0a131a;
+    --panel:#162430;
+    --panel-raised:#1d3040;
+    --rivet:#081118;
+    --line: rgba(198,151,73,0.22);
+    --brass:#c69749;
+    --brass-bright:#e8b96b;
+    --amber:#e2a33b;
+    --ink:#ece3d2;
+    --ink-dim:#93a5b1;
+    --teal:#4f8c82;
+    --teal-bright:#6fb3a7;
+    --danger:#a75b45;
+    --shadow: 0 18px 40px rgba(0,0,0,0.45);
+    --radius: 4px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{animation-duration:.001ms !important; transition-duration:.001ms !important;} }
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at top, rgba(198,151,73,0.05), transparent 55%),
+      repeating-linear-gradient(180deg, rgba(255,255,255,0.012) 0px, rgba(255,255,255,0.012) 1px, transparent 1px, transparent 3px),
+      var(--bg-deep);
+    color:var(--ink);
+    font-family:'Hind Siliguri', sans-serif;
+    line-height:1.7;
+  }
+  .display{font-family:'Baloo Da 2', 'Hind Siliguri', sans-serif;}
+  a{color:inherit; text-decoration:none;}
+  button{font-family:inherit;}
+  :focus-visible{outline:2px solid var(--amber); outline-offset:2px;}
+
+  /* breadcrumb / chapter head */
+  .chapter-head{
+    max-width:760px; margin:0 auto; padding:38px 20px 24px;
+    border-bottom:1px solid var(--line);
+  }
+  .crumb{
+    font-size:13px; color:var(--ink-dim); margin-bottom:18px;
+    display:flex; align-items:center; gap:8px; flex-wrap:wrap;
+  }
+  .crumb a{ color:var(--teal-bright); }
+  .crumb a:hover{ color:var(--brass-bright); }
+  .part-range-tag{
+    display:inline-block; font-size:12px; color:var(--teal-bright);
+    border:1px solid rgba(111,179,167,0.35); padding:2px 10px; border-radius:12px; margin-bottom:12px;
+  }
+  h1.chapter-title{
+    font-size:clamp(28px,5vw,44px); margin:0 0 6px; color:var(--brass-bright); font-weight:800;
+  }
+  .chapter-sub{ font-size:14.5px; color:var(--ink-dim); margin:0; }
+
+  .chapter-nav{
+    max-width:760px; margin:18px auto 0; padding:0 20px;
+    display:flex; justify-content:space-between; gap:12px; font-size:13.5px;
+  }
+  .chapter-nav .nav-btn{
+    padding:8px 14px; border:1px solid var(--line); border-radius:var(--radius);
+    background:var(--panel); color:var(--ink-dim);
+  }
+  .chapter-nav .nav-btn.disabled{ opacity:0.4; cursor:not-allowed; }
+  .chapter-nav .nav-btn:not(.disabled):hover{ color:var(--brass-bright); border-color:var(--brass); }
+
+  /* toolbar */
+  .toolbar{
+    position:sticky; top:0; z-index:40;
+    background:rgba(16,27,36,0.94); backdrop-filter: blur(8px);
+    border-bottom:1px solid var(--line);
+    padding:10px 16px;
+  }
+  .toolbar-inner{
+    max-width:760px; margin:0 auto; display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+  }
+  .tb-group{ display:flex; align-items:center; gap:8px; background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:6px 10px; }
+  .tb-label{ font-size:12px; color:var(--ink-dim); white-space:nowrap; }
+  select{ background:var(--panel-raised); color:var(--ink); border:1px solid var(--line); border-radius:3px; padding:6px 10px; font-size:13px; max-width:140px; }
+  input[type="range"]{ width:90px; accent-color: var(--amber); }
+  .icon-btn{
+    background:var(--panel-raised); color:var(--ink); border:1px solid var(--line); border-radius:3px;
+    padding:7px 12px; font-size:13.5px; cursor:pointer; font-weight:600; display:inline-flex; align-items:center; gap:6px;
+  }
+  .icon-btn.play{ color:var(--teal-bright); border-color: rgba(111,179,167,0.35); }
+  .icon-btn.stop{ color:var(--danger); border-color: rgba(167,91,69,0.35); }
+  .icon-btn.mark{ color:var(--amber); border-color: rgba(226,163,59,0.4); margin-left:auto; }
+
+  /* part quick-jump chips */
+  .part-jump{
+    max-width:760px; margin:0 auto; padding:14px 20px 0;
+    display:flex; gap:8px; flex-wrap:wrap;
+  }
+  .part-jump a{
+    font-size:12.5px; padding:5px 12px; border-radius:14px; border:1px solid var(--line);
+    color:var(--ink-dim); background:var(--panel);
+  }
+  .part-jump a.active{ color:var(--amber); border-color:var(--amber); }
+
+  main{ max-width:760px; margin:0 auto; padding:30px 20px 100px; }
+
+  .part-section{
+    position:relative;
+    padding:28px 26px 24px;
+    margin-bottom:34px;
+    background:linear-gradient(180deg, var(--panel-raised), var(--panel));
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), var(--shadow);
+    scroll-margin-top:150px;
+  }
+  .part-section::before, .part-section::after{
+    content:""; position:absolute; width:7px; height:7px; border-radius:50%;
+    background: radial-gradient(circle at 35% 30%, #6b5327, var(--rivet) 70%);
+    box-shadow: 0 1px 1px rgba(0,0,0,0.6); top:10px;
+  }
+  .part-section::before{ left:10px; } .part-section::after{ right:10px; }
+
+  .part-head{ display:flex; align-items:flex-start; justify-content:space-between; gap:14px; margin-bottom:18px; }
+  .part-num{ font-size:12.5px; color:var(--teal-bright); letter-spacing:0.06em; }
+  .part-section h2{ margin:4px 0 0; font-size:clamp(20px,3vw,25px); color:var(--ink); }
+  .part-listen{
+    flex:none; width:38px; height:38px; border-radius:50%;
+    border:1px solid var(--line); background:transparent; color:var(--ink-dim);
+    display:flex; align-items:center; justify-content:center; cursor:pointer;
+  }
+  .part-listen svg{ width:17px; height:17px; }
+  .part-listen.speaking{ color:var(--teal-bright); border-color:var(--teal-bright); }
+
+  .part-text{ font-family:'Tiro Bangla', serif; font-size:17px; color:var(--ink); }
+  .part-text p{ margin:0 0 16px; }
+  .part-text p.dialogue{
+    margin:0 0 12px; padding-left:14px; border-left:2px solid var(--brass);
+    color:var(--brass-bright); font-style:normal;
+  }
+  .part-text p.notice{
+    display:inline-block; color:var(--danger); border:1px solid rgba(167,91,69,0.4);
+    padding:6px 14px; border-radius:3px; font-family:'Hind Siliguri'; font-size:14px; font-weight:600;
+  }
+  .part-text p.tobecontinued{
+    text-align:center; color:var(--ink-dim); font-family:'Hind Siliguri'; font-size:13.5px;
+    letter-spacing:0.08em; margin-top:22px;
+  }
+  .part-text ul.evidence-list{
+    margin:0 0 16px; padding-left:0; list-style:none;
+  }
+  .part-text ul.evidence-list li{
+    margin:0 0 8px; padding-left:18px; position:relative;
+  }
+  .part-text ul.evidence-list li::before{
+    content:"•"; position:absolute; left:0; color:var(--amber);
+  }
+
+  footer{ text-align:center; padding:36px 20px 50px; color:var(--ink-dim); font-size:12.5px; border-top:1px solid var(--line); }
+  footer .brand{ color:var(--brass); font-weight:600; }
+
+  @media (max-width:560px){
+    .toolbar-inner{ justify-content:center; }
+    .icon-btn.mark{ margin-left:0; width:100%; justify-content:center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="chapter-head">
+  <div class="crumb">
+    <a href="rabi-index.html">নবজাগরণ</a> <span>▸</span> <span>অধ্যায় ৬</span>
+  </div>
+  <span class="part-range-tag">পর্ব ২১ – ২৪</span>
+  <h1 class="chapter-title display">রামুর আগমন</h1>
+  <p class="chapter-sub">একজন সাধারণ, সৎ নিরাপত্তারক্ষী রামু দাসের নিয়োগ থেকে শুরু করে দায়িত্বের প্রথম কঠিন পরীক্ষা আর তার অদ্ভুত কাকতালীয় স্বপ্নের সূচনা—এক নতুন রহস্যের সূত্রপাত।</p>
+</div>
+
+<div class="chapter-nav">
+  <a class="nav-btn" href="chapter5.html">← অধ্যায় ৫</a>
+  <a class="nav-btn" href="rabi-index.html">🏠 হোম</a>
+  <a class="nav-btn" href="chapter7.html">অধ্যায় ৭ →</a>
+</div>
+
+<div class="toolbar">
+  <div class="toolbar-inner">
+    <div class="tb-group">
+      <span class="tb-label">কণ্ঠ</span>
+      <select id="voiceSelect" aria-label="কণ্ঠ নির্বাচন করুন"></select>
+    </div>
+    <div class="tb-group">
+      <span class="tb-label">গতি</span>
+      <input type="range" id="rateRange" min="0.6" max="1.8" step="0.1" value="1" aria-label="পড়ার গতি">
+      <span class="tb-label" id="rateValue">১.০×</span>
+    </div>
+    <button class="icon-btn play" id="playAllBtn">▶ সম্পূর্ণ অধ্যায় শুনুন</button>
+    <button class="icon-btn stop" id="stopAllBtn">■ থামান</button>
+    <button class="icon-btn mark" id="markHereBtn">🔖 এই স্থানে বুকমার্ক করুন</button>
+  </div>
+</div>
+
+<nav class="part-jump" id="partJump">
+  <a href="#part-21" data-part="21">পর্ব ২১ · রামুর আগমন</a>
+  <a href="#part-22" data-part="22">পর্ব ২২ · দায়িত্বের প্রথম দিন</a>
+  <a href="#part-23" data-part="23">পর্ব ২৩ · অদ্ভুত কাকতালীয় ঘটনা</a>
+  <a href="#part-24" data-part="24">পর্ব ২৪ · বিশ্বাসের মূল্য</a>
+</nav>
+
+<main>
+
+  <section class="part-section" id="part-21" data-part="21">
+    <div class="part-head">
+      <div><span class="part-num">পর্ব ২১</span><h2 class="display">রামুর আগমন</h2></div>
+      <button class="part-listen" aria-label="পর্ব ২১ শুনুন" title="পর্ব ২১ শুনুন">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>
+      </button>
+    </div>
+    <div class="part-text">
+      <p>কারখানার নতুন নিরাপত্তারক্ষী নিয়োগের বিজ্ঞপ্তি প্রকাশ হতেই হাজার হাজার আবেদনপত্র জমা পড়ল।</p>
+      <p>ইঞ্জিনিয়ার, অভিজ্ঞ টেকনিশিয়ান, দক্ষ অফিস কর্মী এবং সেই সঙ্গে একঝাঁক নিরাপত্তারক্ষী পদের আবেদনকারী। সব আবেদনপত্রের বিশাল স্তূপের মধ্যে একটি ফাইল ছিল খুবই সাধারণ, সাদা মাটা।</p>
+      <ul class="evidence-list">
+        <li>পাতার কোণে একটি ছোট পাসপোর্ট সাইজ ছবি।</li>
+        <li>নাম—রামু দাস।</li>
+        <li>বয়স—ত্রিশ।</li>
+        <li>শিক্ষাগত যোগ্যতা—উচ্চমাধ্যমিক।</li>
+        <li>পেশাগত অভিজ্ঞতা—ছয় বছর একটি পুরোনো গুদামে নিরাপত্তারক্ষীর কাজ।</li>
+        <li>বিশেষ দক্ষতা—কোনো বাড়তি উল্লেখ নেই।</li>
+      </ul>
+      <p>মানবসম্পদ বা এইচআর বিভাগের একজন কর্মকর্তা আবেদনপত্রটি উল্টেপাল্টে দেখে নিচু স্বরে বললেন—</p>
+      <p class="dialogue">— "একদম সাধারণ ক্যান্ডিডেট। তেমন কোনো বিশেষ ব্যাকগ্রাউন্ড নেই।"</p>
+      <p>ফাইলটি সাধারণ প্রাক-বাছাই করা অন্যান্য ফাইলের সঙ্গে রেখে দেওয়া হলো।</p>
+      <p>অবশেষে বহুল প্রতীক্ষিত ইন্টারভিউয়ের দিন।</p>
+      <p>এক এক করে প্রার্থীরা বোর্ডের ভেতরে ঢুকছে। কেউ নিজের পুরনো অভিজ্ঞতার ফুলঝুরি ফোটাচ্ছে, কেউ আগের চাকরির ভূয়সী প্রশংসা করছে, কেউ আবার বাড়িয়ে বলছে যে সে একাই দশজনের কাজ নিখুঁতভাবে করে দিতে পারে।</p>
+      <p>দুপুরের দিকে রামুর নাম ধরে ডাক পড়ল।</p>
+      <p>সে ধীর ও সংযত পায়ে ইন্টারভিউ কক্ষে প্রবেশ করল। পরনে আয়রন করা পরিষ্কার সাদা শার্ট, পুরোনো হলেও সুন্দরভাবে পালিশ করা কালো জুতো। তার চোখে কৃত্রিম আত্মবিশ্বাসের চেয়ে সাধারণ মানুষের ভদ্রতা ও নম্রতা বেশি স্পষ্ট।</p>
+      <p>অরিন্দম সেন তার ফাইলের দিকে চোখ বুলিয়ে প্রশ্ন করলেন—</p>
+      <p class="dialogue">— "তোমার আগের সিকিউরিটির চাকরিটা কেন ছাড়লে রামু?"</p>
+      <p>রামু এক মুহূর্ত চুপ থেকে বিনয়ের সাথে বলল—</p>
+      <p class="dialogue">— "চাকরি আমি নিজে থেকে ছাড়িনি স্যার। যে গুদামে কাজ করতাম, সেটাই হঠাৎ বন্ধ হয়ে গেছে।"</p>
+      <p class="dialogue">— "যদি তুমি এখানে কাজ পাও, তবে তোমার সবচেয়ে প্রধান দায়িত্ব কী হবে বলে তুমি মনে করো?"</p>
+      <p>রামু এক মুহূর্তও ইতস্তত না করে সোজা চোখের দিকে তাকিয়ে উত্তর দিল—</p>
+      <p class="dialogue">— "আমাকে যে গেটেই ডিউটি দেওয়া হোক না কেন স্যার, সেটাকে নিজের ঘরের দরজার মতো কড়া নজরদারিতে পাহারা দেব।"</p>
+      <p>অরিন্দম সেন একটু ঝুঁকে প্রশ্ন করলেন—</p>
+      <p class="dialogue">— "আর যদি তোমার খুব পরিচিত বা প্রভাবশালী কেউ নিয়ম ভেঙে বেআইনিভাবে ভেতরে ঢুকতে চায়?"</p>
+      <p>রামু দ্বিধাহীনভাবে মাথা নাড়ল—</p>
+      <p class="dialogue">— "নিয়ম তো সবার জন্য এক স্যার। নিয়মের বাইরে কেউ আমার পরিচিত হতে পারে না।"</p>
+      <p>বোর্ডে বসে থাকা কর্মকর্তারা একে অপরের মুখের দিকে তাকালেন। গত কয়েক ঘণ্টায় এমন সোজাসাপ্টা ও সৎ উত্তর তাঁরা আর কারও মুখে শোনেননি।</p>
+      <p>ইন্টারভিউ শেষ করে দেওয়ার মুহূর্তে অরিন্দম হঠাৎ জিজ্ঞেস করলেন—</p>
+      <p class="dialogue">— "তোমার কি আমাদের কাছে কোনো প্রশ্ন আছে রামু?"</p>
+      <p>সাধারণত বেশিরভাগ প্রার্থী যেখানে বেতন, অতিরিক্ত ডিউটির টাকা কিংবা ছুটির হিসেব জিজ্ঞেস করে, সেখানে রামু হাত দুটি জোড় করে বলল—</p>
+      <p class="dialogue">— "আমার একটা কথা জানার ছিল স্যার।"</p>
+      <p class="dialogue">— "হ্যাঁ, বলো।"</p>
+      <p class="dialogue">— "এখানে কি আমাদের মতো নিরাপত্তাকর্মীদেরও আধুনিক প্রশিক্ষণ বা ট্রেইনিং দেওয়া হবে?"</p>
+      <p>অরিন্দম কিছুটা অবাক হলেন—</p>
+      <p class="dialogue">— "কেন জানতে চাইছ বলো তো?"</p>
+      <p>রামু শান্ত গলায় উত্তর দিল—</p>
+      <p class="dialogue">— "শুধু চোর-ডাকাত ধরাই তো নিরাপত্তার শেষ কথা নয় স্যার! কারখানায় হঠাৎ আগুন লাগলে কী করতে হবে, বড় কোনো দুর্ঘটনা ঘটলে কীভাবে দ্রুত লোক বাঁচানো যাবে—সেসব জরুরি বিষয়ও তো আমাদের শেখা দরকার।"</p>
+      <p>অরিন্দমের ঠোঁটের কোণে মিষ্টি প্রশান্তির হাসি ফুটে উঠল—</p>
+      <p class="dialogue">— "হ্যাঁ রামু, নবজাগরণে প্রতিটি কর্মীকে সুরক্ষার প্রশিক্ষণ দেওয়া হয়।"</p>
+      <p>রামু সসম্মানে উঠে দাঁড়িয়ে বিনীত ভঙ্গিতে বলল—</p>
+      <p class="dialogue">— "তাহলে আমি মন দিয়ে সেই কাজ শিখতে চাই স্যার।"</p>
+      <p>সে নমস্কার জানিয়ে শান্ত পায়ে ঘর থেকে বেরিয়ে গেল।</p>
+      <p>রামু বেরিয়ে যেতেই এইচআর প্রধান মুচকি হেসে বললেন—</p>
+      <p class="dialogue">— "স্যার, ছেলেটি তো দেখতে খুবই সাধারণ। পোশাক-আশাকেও তেমন কোনো স্মার্টনেস নেই।"</p>
+      <p>অরিন্দম সেন কেবিনের জানালার বাইরে দূর আকাশের দিকে তাকিয়ে শান্তভাবে উত্তর দিলেন—</p>
+      <p class="dialogue">— "অনেক সময় আমাদের চারপাশে সবচেয়ে অসাধারণ মানুষগুলোকে দেখতেই কিন্তু সবচেয়ে সাধারণ মনে হয়!"</p>
+      <p>কয়েক দিন পরে চূড়ান্তভাবে নির্বাচিত প্রার্থীদের তালিকা নোটিশ বোর্ডে টাঙানো হলো। সেই তালিকার ওপরের দিকেই স্বমহিমায় জ্বলজ্বল করছিল—রামু দাস।</p>
+      <p>নিয়োগের চিঠি বা অ্যাপয়েন্টমেন্ট লেটার হাতে নিয়ে রামু যখন নিজের ছোট ঘরে ফিরল, তখন তার বৃদ্ধা মা খুশির অজস্র জলে চোখ ভাসিয়ে দিলেন—</p>
+      <p class="dialogue">— "ওরে বাবা রামু! এতদিনে কি আমাদের এই চরম অভাবের দিনগুলো সত্যিই ফিরবে?"</p>
+      <p>রামু মায়ের শক্ত হয়ে যাওয়া হাত দুটি নিজের হাতের মুঠোয় চেপে ধরে শুধু বলল—</p>
+      <p class="dialogue">— "আমি নিজের সর্বোচ্চ সততা দিয়ে চেষ্টা করব মা..."</p>
+      <p>সে দিন রামু ঘুণাক্ষরেও জানত না—</p>
+      <p>এই কারখানার গেট পাহারা দেওয়ার কাজ থেকেই শুরু করে একদিন সে এমন এক সাহসী ভূমিকা নেবে, যা শুধু তার নিজের পরিবারকেই নয়... পুরো 'নবজাগরণ ইলেকট্রনিক্স'-এর ইতিহাসকে এক চরম বিপর্যয়ের হাত থেকে চিরতরে রক্ষা করবে!</p>
+      <p class="tobecontinued">(চলবে...)</p>
+    </div>
+  </section>
+
+  <section class="part-section" id="part-22" data-part="22">
+    <div class="part-head">
+      <div><span class="part-num">পর্ব ২২</span><h2 class="display">দায়িত্বের প্রথম দিন</h2></div>
+      <button class="part-listen" aria-label="পর্ব ২২ শুনুন" title="পর্ব ২২ শুনুন">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>
+      </button>
+    </div>
+    <div class="part-text">
+      <p>সোমবার সকাল সাতটা।</p>
+      <p>রামু নতুন গাঢ় নীল রঙের ইউনিফর্ম পরে আয়নার সামনে গিয়ে দাঁড়াল। ইউনিফর্ম কাপড়ের দিক থেকে হয়তো খুব বেশি দামি নয়, কিন্তু রামুর কাছে এই পোশাকটিই যেন জীবনের সবচেয়ে বড় অর্জন আর সম্মান।</p>
+      <p>বৃদ্ধা মা তার কপালে হাত রেখে আশীর্বাদ করে বললেন—</p>
+      <p class="dialogue">— "সৎভাবে নিজের কাজ করিস বাবা। পেটে ক্ষিধে থাকলেও মানুষের বিশ্বাস আর নীতি যেন কোনোদিন না হারাস।"</p>
+      <p>রামু মায়ের পায়ে হাত দিয়ে প্রণাম করে দায়িত্বের উদ্দেশ্যে বেরিয়ে পড়ল।</p>
+      <p>কারখানার প্রধান গেটে আজ নতুন নিরাপত্তারক্ষীদের বিশেষ প্রশিক্ষণ। নিরাপত্তা প্রধান মি. অ্যান্ডারসন সব নতুন নিরাপত্তারক্ষীকে এক সারিতে দাঁড় করিয়ে কড়া গলায় বললেন—</p>
+      <p class="dialogue">— "তোমাদের কাজ কেবল গেটে দাঁড়িয়ে সালাম দেওয়া কিংবা গেট খুলে দেওয়া নয়! এই কারখানার প্রতিটি কর্মী, প্রতিটি মূল্যবান যন্ত্র, এমনকি প্রতিটি ফাইল বা নথির নিরাপত্তাও তোমাদের ওপর নির্ভর করছে।"</p>
+      <p>এরপর তিনি কারখানার মূল নিরাপত্তা বিধিমালা স্পষ্ট করে পড়ে শোনালেন:</p>
+      <ul class="evidence-list">
+        <li>ছবিযুক্ত সঠিক পরিচয়পত্র ছাড়া কাউকে ভেতরে প্রবেশ করতে দেওয়া যাবে না।</li>
+        <li>কারখানায় প্রবেশ করা ও বের হওয়া প্রতিটি গাড়ির নম্বর ও সময় খাতায় নথিভুক্ত করতে হবে।</li>
+        <li>কারখানা থেকে বের হওয়া সব মালামাল অনুমোদিত গেট পাস দেখে হুবহু মিলিয়ে নিতে হবে।</li>
+        <li>সামান্যতম সন্দেহ হলে সঙ্গে সঙ্গে ঊর্ধ্বতন কর্মকর্তা বা কন্ট্রোল রুমকে জানাতে হবে।</li>
+      </ul>
+      <p>সবাই মাথা নাড়ল। রামু ছোট নোটবুক বের করে প্রতিটা নিয়ম মন দিয়ে খাতায় লিখে নিল।</p>
+      <p>প্রশিক্ষণ শেষে প্রত্যেককে আলাদা আলাদা ব্লকে ডিউটি দেওয়া হলো। আর রামুকে প্রথম দিনেই দায়িত্ব দেওয়া হলো সবচেয়ে গুরুত্বপূর্ণ 'প্রধান গেট'-এর!</p>
+      <p>ঘটনা দেখে অনেকেই অবাক হয়ে গেল। এক নতুন কর্মীকে প্রথম দিনেই এত গুরুত্বপূর্ণ গেটের দায়িত্ব?</p>
+      <p>নিরাপত্তা প্রধান অ্যান্ডারসন মুচকি হেসে সহকারীদের উদ্দেশ্যে শুধু বললেন—</p>
+      <p class="dialogue">— "আমি মানুষ চিনতে কোনোদিন ভুল করি না।"</p>
+      <p>দুপুরের দিকে একটি চকচকে দামি গাড়ি এসে প্রধান গেটের ঠিক সামনে সশব্দে থামল। গাড়ির পেছনের সিটে বসে আছেন শহরের এক নামজাদা ও প্রভাবশালী ব্যবসায়ী।</p>
+      <p>তিনি কাচ নামিয়ে অহংকারের সাথে বললেন—</p>
+      <p class="dialogue">— "আমি অরিন্দম সেনের ব্যক্তিগত বন্ধু। তাড়াতাড়ি গেট খোলো!"</p>
+      <p>রামু অতি বিনয়ের সাথে হাত জোর করে বলল—</p>
+      <p class="dialogue">— "আপনার অফিসিয়াল পরিচয়পত্র বা অ্যাপয়েন্টমেন্টের অনুমতিপত্রটি একটু দেখাবেন, স্যার?"</p>
+      <p>লোকটি মুহূর্তেই চরম বিরক্ত ও ক্ষুব্ধ হয়ে উঠলেন—</p>
+      <p class="dialogue">— "কী বললে? তুমি আমাকে চেনো না? আমার মুখ দেখে চিনতে পারছ না?"</p>
+      <p class="dialogue">— "দুঃখিত স্যার, আমি এখানে নতুন। আপনাকে চিনি না।"</p>
+      <p class="dialogue">— "ফালতু কথা বোলো না! ভেতরে রিসেপশনে ফোন করো!"</p>
+      <p>রামু নিয়ম মেনে সঙ্গে সঙ্গে ইন্টারকমে প্রধান কেবিনে ফোন করল। কয়েক মুহূর্ত পর রিসেপশন থেকে উত্তর এল—</p>
+      <p class="dialogue">"আজকে স্যার খুব ব্যস্ত, আর কারও সাথেই কোনো পূর্বনির্ধারিত সাক্ষাতের সময় (Appointment) দেওয়া নেই।"</p>
+      <p>রামু গাড়ির কাছে ফিরে এসে বিনীতভাবে বলল—</p>
+      <p class="dialogue">— "দুঃখিত স্যার, ভেতরের অনুমতি ছাড়া আমি আপনাকে ভেতরে প্রবেশের জন্য গেট খুলতে পারব না।"</p>
+      <p>ব্যবসায়ীটি চরম রাগে ফোঁস ফোঁস করতে করতে গাড়ি ঘুরিয়ে দ্রুত গতিতে চলে গেলেন।</p>
+      <p>পাশে দাঁড়িয়ে থাকা এক প্রবীণ নিরাপত্তারক্ষী ভয়ে ফিসফিস করে বলল—</p>
+      <p class="dialogue">— "ওরে রামু! চাকরির প্রথম দিনেই এত বড় প্রভাবশালী লোককে তাড়িয়ে দিলি! তোর চাকরিটা নির্ঘাত গেল!"</p>
+      <p>রামু খুব শান্ত ভঙ্গিতে উত্তর দিল—</p>
+      <p class="dialogue">— "নিয়ম যদি দায়িত্বের প্রথম দিনেই নিজের হাতে ভাঙি দাদা, তাহলে কাল থেকে আর এই কারখানায় কোনো নিয়মই থাকবে না।"</p>
+      <p>বিকেলের দিকে অরিন্দম সেন নিজের ব্যক্তিগত গাড়িতে করে কারখানা থেকে বের হচ্ছিলেন। তিনি দূর থেকেই দুপুরের পুরো ঘটনাটি প্রত্যক্ষ করেছিলেন।</p>
+      <p>তিনি গেটের কাছে গাড়ি থামিয়ে রামুকে ডেকে পাঠালেন।</p>
+      <p>রামু ভয় পেয়ে গেল। মনে হলো, হয়তো কোনো অজানা ভুল করে ফেলেছে, আর হয়তো প্রথম দিনেই চাকরিটা খোয়াতে হবে!</p>
+      <p>অরিন্দম শান্ত গলায় জিজ্ঞেস করলেন—</p>
+      <p class="dialogue">— "আজ দুপুরে কি একজন বিশেষ অতিথিকে তুমি ভেতরে ঢুকতে দাওনি রামু?"</p>
+      <p>রামু মাথা নিচু করে বিনীতভাবে বলল—</p>
+      <p class="dialogue">— "জি স্যার। যদি কোনো নিয়ম না বুঝে অন্যায় করে থাকি, তবে আমাকে ক্ষমা করে দেবেন স্যার।"</p>
+      <p>অরিন্দম সেন মৃদু হেসে বললেন—</p>
+      <p class="dialogue">— "অন্যায় করার জন্য ক্ষমা কেন চাইবে রামু?"</p>
+      <p>রামু চমকে উঠে অরিন্দমের দিকে তাকাল।</p>
+      <p>অরিন্দম গাড়ি থেকে নেমে রামুর কাঁধে হাত রেখে সুদৃঢ় গলায় বললেন—</p>
+      <p class="dialogue">— "তিনি সত্যিই আমার পুরোনো পরিচিত একজন ব্যবসায়ী ছিলেন। কিন্তু আমার কোনো আগাম অনুমতি ছিল না। তুমি কোনো ভুল করোনি, শতভাগ সঠিক কাজ করেছ।"</p>
+      <p>তিনি রামুর চোখে চোখ রেখে যোগ করলেন—</p>
+      <p class="dialogue">— "এই অটল দায়িত্ববোধ আর কঠোর নিয়মটাই যেন কোনো পরিস্থিতির চাপেই কোনোদিন না বদলায়!"</p>
+      <p>রামুর মনের ভেতরের সব মেঘ কেটে গিয়ে এক প্রশান্তির হাসি ফুটে উঠল।</p>
+      <p>সেদিন সন্ধ্যায় বাড়ি ফিরে রামু মাকে দুপুরের সব ঘটনা খুলে বলল।</p>
+      <p>বৃদ্ধা মা তৃপ্তির হাসি হেসে বললেন—</p>
+      <p class="dialogue">— "সত্য ও সঠিক পথে চললে প্রথমে মানুষ একটু রাগ করে ঠিকই বাবা, কিন্তু শেষপর্যন্ত সেই মানুষই তোকে সবচেয়ে বেশি সম্মান করবে।"</p>
+      <p>রামু মায়ের কথায় মুচকি হাসল।</p>
+      <p>কিন্তু সে ঘুণাক্ষরেও জানত না...</p>
+      <p>তার জীবনের সবচেয়ে রহস্যময় ও অদ্ভুত ঘটনার সূত্রপাত ঠিক সেই রাত থেকেই হতে চলেছে! কারণ সেই রাত থেকে সে স্বপ্নে এমন কিছু অপ্রত্যাশিত বিষয় দেখতে শুরু করবে, যা প্রথমে কেউ বিশ্বাসই করতে চাইবে না!</p>
+      <p class="tobecontinued">(চলবে...)</p>
+    </div>
+  </section>
+
+  <section class="part-section" id="part-23" data-part="23">
+    <div class="part-head">
+      <div><span class="part-num">পর্ব ২৩</span><h2 class="display">অদ্ভুত কাকতালীয় ঘটনা</h2></div>
+      <button class="part-listen" aria-label="পর্ব ২৩ শুনুন" title="পর্ব ২৩ শুনুন">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>
+      </button>
+    </div>
+    <div class="part-text">
+      <p>রামু চাকরিতে যোগ দেওয়ার প্রায় এক মাস কেটে গেছে।</p>
+      <p>অল্প সময়ের মধ্যেই নিজের বিনয়ী আচরণ ও সততা দিয়ে সে কারখানার সবার প্রিয় পাত্র হয়ে উঠেছে। সে সবসময় নিখুঁত সময়ে ডিউটিতে আসে, কাজের সময় অকারণে মোবাইল নিয়ে ব্যস্ত থাকে না এবং গেটে দাঁড়িয়ে প্রতিটি কর্মীকে হাসিমুখে অভিনন্দন জানায়। কারখানার পরিচ্ছন্নতাকর্মী থেকে শুরু করে মালিক অরিন্দম সেন—সবার প্রতিই তার শ্রদ্ধাবোধ ও ব্যবহার একদম একরকম।</p>
+      <p>একদিন দুপুরে সেন্ট্রাল ক্যান্টিনে দুপুরের খাবার খাওয়ার সময় একজন সহকর্মী মজা করে বলল—</p>
+      <p class="dialogue">— "আচ্ছা রামু, তোর মুখে তো কোনদিন রাগ বা বিরক্তি দেখলাম না রে ভাই!"</p>
+      <p>রামু এক গাল হেসে উত্তর দিল—</p>
+      <p class="dialogue">— "গেটে দাঁড়িয়ে রাগ দেখালে তো মানুষ ভয় পাবে দাদা! হাসিমুখে কথা বললে অন্যের মনটাও ভালো থাকে, আর কাজটাও সহজ হয়ে যায়।"</p>
+      <p>টেবিলে বসা সবাই রামুর কথায় হেসে উঠল।</p>
+      <p>সেদিন বিকেলের দিকে হঠাৎ কারখানার কেন্দ্রীয় স্টোর বিভাগ থেকে বড় খবর এল।</p>
+      <p>উৎপাদন লাইনের একটি অত্যন্ত দামি যন্ত্রাংশ খুঁজে পাওয়া যাচ্ছে না! কর্মকর্তারা হন্তদন্ত হয়ে ছুটোছুটি করতে লাগলেন। গুদামের প্রতিটি তাক, প্রতিটি আলমারি তন্ন তন্ন করে খুঁজেও যন্ত্রাংশটার হদিশ মিলল না।</p>
+      <p>অবশেষে নিরাপত্তা কক্ষে গিয়ে সিসিটিভি ফুটেজ খতিয়ে দেখা হলো। দেখা গেল, তাড়াহুড়ো করার সময় একজন টেকনিশিয়ান ভুল করে যন্ত্রাংশটি মূল বাক্সে না রেখে পাশের এক উঁচু তাকে রেখে দিয়েছিলেন। সবাই স্বস্তির নিঃশ্বাস ফেলল।</p>
+      <p>কিন্তু রামু হালকা হেসে তার পাশের সহকর্মীকে ফিসফিস করে বলল—</p>
+      <p class="dialogue">— "আমি সকালেই ভেবেছিলাম জিনিসটা মোটেও চুরি হয়নি, কোথাও ভুল জায়গায় ঢাকা পড়ে আছে।"</p>
+      <p>সহকর্মী অবাক হয়ে জিজ্ঞেস করল—</p>
+      <p class="dialogue">— "তুই কী করে বুঝলি রে?"</p>
+      <p>রামু একটু লজ্জা পেয়ে মাথা চুলকে বলল—</p>
+      <p class="dialogue">— "আসলে... গত রাতে স্বপ্নে দেখেছিলাম সবাই একটা বাক্স হন্যে হয়ে খুঁজছে। পরে দেখা যাচ্ছে সেটা একটা উঁচু তাকের পেছনেই ধুলো মেখে পড়ে আছে!"</p>
+      <p>কথাটা শুনে আশেপাশে দাঁড়িয়ে থাকা সহকর্মীরা হো হো করে হেসে উঠল—</p>
+      <p class="dialogue">— "তাহলে তুই এখন রাতে স্বপ্ন দেখে দিনে কারখানার হারিয়ে যাওয়া জিনিস খুঁজে বের করবি নাকি রে রামু?"</p>
+      <p>রামুও বোকা বোকা হাসি হেসে বলল—</p>
+      <p class="dialogue">— "আরে না না দাদা, ওসব তো স্রেফ কাকতালীয় ঘটনা!"</p>
+      <p>কিন্তু ঘটনা সেখানেই থামল না, দু'দিন পর আবার এক অদ্ভুত কাণ্ড ঘটল!</p>
+      <p>কারখানার একটি বড় ট্রাক সকালে শহরের দূরবর্তী শোরুমে ফ্রিজ ও অন্যান্য যন্ত্রাংশ পৌঁছে দেওয়ার কথা। গাড়ি ছাড়ার ঠিক আগে রামু ড্রাইভারের কাছে গিয়ে খুব ইতস্তত করে বলল—</p>
+      <p class="dialogue">— "ড্রাইভার দাদা, আজ যদি সম্ভব হয় গাড়িটা ছাড়ার আগে ব্রেক আর চাকা দুটো একটু ভালো করে গ্যারেজে নিয়ে পরীক্ষা করিয়ে নেবেন?"</p>
+      <p>ড্রাইভার অবাক ও কিছুটা বিরক্ত হয়ে বলল—</p>
+      <p class="dialogue">— "কেন রে রামু? গাড়ির আবার কী হলো?"</p>
+      <p>রামু আমতা আমতা করে বলল—</p>
+      <p class="dialogue">— "আসলে... কাল রাতে স্বপ্নে দেখলাম, আমাদের ট্রাকটা নির্জন রাস্তার মাঝখানে গিয়ে দাঁড়িয়ে আছে আর ভীষণ ধোঁয়া বের হচ্ছে!"</p>
+      <p>সবাই আবার রামুর কথা শুনে হাসাহাসি শুরু করল। তবুও ড্রাইভার কেবল কৌতূহলবশত গাড়িটি কারখানার নিজস্ব ওয়ার্কশপে নিয়ে গিয়ে ব্রেক পরীক্ষা করাল।</p>
+      <p>মেকানিক ব্রেক ড্রাম খুলতেই চোখ কপালে তুলে চমকে উঠল! ব্রেক লাইনের মূল অয়েল পাইপটি ক্ষয়ে গিয়ে প্রায় ছিঁড়ে যাওয়ার মতো অবস্থা! আর একটু হলেই মাঝরাস্তায় হাইড্রোলিক ব্রেক ফেল করে বিরাট দুর্ঘটনা ঘটতে পারত!</p>
+      <p>ঘটনাটা মুহূর্তের মধ্যে পুরো কারখানায় ছড়িয়ে পড়ল। এবার কিন্তু আর কেউ রামুর কথা শুনে হাসল না।</p>
+      <p>এর ঠিক দিন চারেক পরের কথা।</p>
+      <p>এক কাজের ফাঁকে শ্রম কল্যাণ তহবিলের উদ্যোগে কারখানার খোলা প্রাঙ্গণে বিশাল সাদা পর্দা টাঙিয়ে কর্মচারীদের বিনোদনের জন্য সিনেমা দেখার আয়োজন করা হয়েছিল। প্রজেক্টরের আলোয় চারপাশ অন্ধকার।</p>
+      <p>রামু একদম সামনের সারিতে মাটিতে বসে খুব মন দিয়ে সিনেমা দেখছিল। সিনেমার এক উত্তেজনাকর দৃশ্য—অন্ধকার এক রোমাঞ্চকর গভীর জঙ্গল, আর ব্যাকগ্রাউন্ডে গা ছমছমে সংগীত! হঠাৎ প্রজেক্টরের স্ক্রিনে বিশাল এক ভয়ংকর ফণাতোলা বিষধর সাপ ফণা তুলে ধীরে ধীরে দর্শকদের দিকে অর্থাৎ সামনের দিকে এগিয়ে আসতে লাগল!</p>
+      <p>দৃশ্যটা দেখেই সামনের সারিতে বসা রামু চোখ দুটো ছানাবড়া করে এক লাফে উঠে দাঁড়াল! তারপর হড়বড় করে পেছনের সারির দিকে পালাতে লাগল!</p>
+      <p>ঘটনা দেখে আশেপাশের সব সহকর্মীরা হাসিতে ফেটে পড়ল। একজন হেসে গড়িয়ে পড়ে বলল—</p>
+      <p class="dialogue">— "আরে রামু! তুই তো ভারী অদ্ভুত লোক রে ভাই! ওটা তো কাপড়ের পর্দায় সিনেমার সাপ! তোকে কামড়াতে আসবে নাকি?"</p>
+      <p>রামু পেছনের সারিতে গিয়ে হাঁপাতে হাঁপাতে মারাত্মক গাম্ভীর্য নিয়ে উত্তর দিল—</p>
+      <p class="dialogue">— "আরে দাদা! পর্দা যে নকল, সেটা তো তুমি বুঝলে আর আমি বুঝলাম... কিন্তু ওই বিষধর সাপটা কি জানে যে সে সিনেমাতে আছে? সে যদি সত্যিসত্যি পর্দা থেকে বেরিয়ে আসে?"</p>
+      <p>কথাটা বলেই রামু ভয়ে আর এক মুহূর্ত না দাঁড়িয়ে সিনেমা দেখার মায়া ত্যাগ করে একছুটে সেখান থেকে পালিয়ে গেল!</p>
+      <p>ওর এই কাণ্ড দেখে পুরো ময়দানে উপস্থিত শয়ে শয়ে কর্মী হাসির হররা তুলল।</p>
+      <p>তবে রামুর এই সরলতার পাশাপাশি পরদিনই আবার সেই অদ্ভুত কাণ্ড ঘটল।</p>
+      <p>সকালে ডিউটিতে এসে রামু আকাশ পরিষ্কার থাকা সত্ত্বেও হঠাৎ বলল—</p>
+      <p class="dialogue">— "আজ বিকেল চারটের সময় খুব ভারী বৃষ্টি নামবে।"</p>
+      <p>তখন রোদে চারপাশ ঝলমল করছে, আকাশে একফোঁটা মেঘের চিহ্নও নেই। কেউ তার কথা বিশ্বাস করল না। কিন্তু ঠিক বিকেল চারটে বাজতেই কোত্থেকে কালবোশেখী মেঘ এসে মুষলধারে ঝুম বৃষ্টি নামাল!</p>
+      <p>একজন সহকর্মী মজা করে হাত ধরে বলল—</p>
+      <p class="dialogue">— "কী রে রামু! তুই কি আগে আবহাওয়া দপ্তরে চাকরি করতিস নাকি?"</p>
+      <p>রামু বিনীত হেসে বলল—</p>
+      <p class="dialogue">— "না রে ভাই, আমি নিজেই এসবের কোনো বৈজ্ঞানিক হিসাব বুঝি না।"</p>
+      <p>এভাবে একের পর এক ছোট ছোট অদ্ভুত ঘটনা ঘটতে লাগল। সবই হয়তো খুব সাধারণ, কিংবা স্রেফ কাকতালীয়।</p>
+      <p>কারখানার কেউ বলল— "রামুর ভাগ্যটা খুব ভালো।"</p>
+      <p>কেউ বলল— "ওর অনুমান ক্ষমতা আর পর্যবেক্ষণ শক্তি অন্যদের চেয়ে অনেক বেশি।"</p>
+      <p>আবার কেউ কেউ ফিসফিস করে বলতে লাগল— "ছেলেটা যা যা স্বপ্নে দেখে... মাঝেমধ্যে সত্যিই হুবহু মিলে যায়!"</p>
+      <p>রামু নিজে অবশ্য এসব নিয়ে কখনও কোনো অহংকার বা বড়াই করত না। বরং কেউ বেশি চাপাচাপি করলে একটাই কথা বলত—</p>
+      <p class="dialogue">— "স্বপ্নের ভরসায় আসল জীবন চলে না দাদা, ঘাম ঝরিয়ে কাজ করাটাই আসল।"</p>
+      <p>অরিন্দম সেনও অফিসে বসে এসব গুজবের কথা শুনেছিলেন। তিনি শুধু মৃদু হেসে কর্মকর্তাদের বলেছিলেন—</p>
+      <p class="dialogue">— "মনগড়া গল্প আর গুজব নিয়ে কেউ নিজের মূল্যবান সময় নষ্ট করবেন না। সবাই নিজ নিজ দায়িত্বে মন দিন।"</p>
+      <p>তখনও কিন্তু কারখানার কোনো কর্মকর্তা বা কর্মচারীর সামান্যতম ধারণা ছিল না—</p>
+      <p>রামুর এই ছোট ছোট হাস্যকর ও কাকতালীয় ঘটনাগুলো আসলে এমন এক বিভীষিকাময় ও রক্তহিম করা ষড়যন্ত্রের দিকে ইঙ্গিত করছে, যা খুব শীঘ্রই এই কারখানার অস্তিত্বকে চিরতরে ধ্বংস করে দেওয়ার হুমকি হয়ে দাঁড়াবে!</p>
+      <p class="tobecontinued">(চলবে...)</p>
+    </div>
+  </section>
+
+  <section class="part-section" id="part-24" data-part="24">
+    <div class="part-head">
+      <div><span class="part-num">পর্ব ২৪</span><h2 class="display">বিশ্বাসের মূল্য</h2></div>
+      <button class="part-listen" aria-label="পর্ব ২৪ শুনুন" title="পর্ব ২৪ শুনুন">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>
+      </button>
+    </div>
+    <div class="part-text">
+      <p>রামুর সেই অদ্ভুত স্বপ্ন ও কাকতালীয় ঘটনার কথা এখন কারখানার ছোট-বড় অনেকের মুখেই ঘোরে। কেউ ওসব গভীরভাবে বিশ্বাস করে, কেউ আবার স্রেফ হেসে উড়িয়ে দেয়।</p>
+      <p>কিন্তু রামু নিজে এসব নিয়ে কখনও কোনো আলোচনা বা বাড়াবাড়ি করে না। সে আগের মতোই একদম সময়মতো ইউনিফর্ম পরে ডিউটিতে আসে, সতর্ক চোখে মূল গেট পাহারা দেয় এবং খাতায় নিবিষ্ট মনে প্রতিটি গাড়ির নম্বর আর সময় নথিভুক্ত করে।</p>
+      <p>একদিন দুপুরের কড়া রোদ। অরিন্দম সেন কোনো এক বিশেষ কাজে কারখানা থেকে গাড়ি নিয়ে বাইরে বের হচ্ছিলেন।</p>
+      <p>ঠিক তখনই মূল গেটের বাইরে আট-নয় বছরের একটি ছোট ছেলেকে কাঁদতে দেখা গেল। ছেলেটি কাঁদতে কাঁদতে গেটের গ্রিল ধরে দাঁড়িয়ে আছে।</p>
+      <p>ডিউটিতে থাকা রামু ছেলেটির কাছে গিয়ে হাঁটু গেড়ে বসল। খুব পরম মমতায় তার চোখ মুছে জিজ্ঞেস করল—</p>
+      <p class="dialogue">— "কী হয়েছে রে বাবা? কাঁদছিস কেন? তোর বাড়ি কোথায়?"</p>
+      <p>ছেলেটি ফুঁপিয়ে ফুঁপিয়ে উত্তর দিল—</p>
+      <p class="dialogue">— "আমার বাবা এই কারখানার ভেতরে কাজ করেন। আমি স্কুল ছুটি হওয়ার পর বাবার সাথে বাড়ি যাব বলে এসেছিলাম, কিন্তু ভেতরে তো কাউকেই খুঁজে পাচ্ছি না!"</p>
+      <p>রামু এক মুহূর্ত দেরি না করে ছেলেটির হাত ধরে সিকিউরিটি কেবিনে নিয়ে গেল। পাখা চালিয়ে তাকে বসাল, তারপর ইন্টারকমে মেইন প্রসেসিং ব্লকে খোঁজ নিয়ে জানতে পারল—ছেলেটির বাবা ওভারটাইমে অতিরিক্ত কাজ করছেন, তাই বের হতে দেরি হচ্ছে।</p>
+      <p>রামু নিজে হেঁটে গিয়ে সেন্ট্রাল ক্যান্টিন থেকে ছেলেটির জন্য খাবার আর ঠান্ডা শরবত নিয়ে এল। পরম যত্নে তাকে খাইয়ে দিল। তারপর ওর বাবাকে খবর দিয়ে ডেকে পাঠাল।</p>
+      <p>পুরো ঘটনাটি গেটের কিছুটা দূরে গাড়িতে বসে নীরবে প্রত্যক্ষ করছিলেন সুচিত্রা সেন। তিনি মুখে একটা শব্দও বললেন না, কিন্তু তাঁর চোখ দুটো এক অদ্ভুত তৃপ্তিতে ভরে উঠল। তিনি মনে মনে ভাবলেন—</p>
+      <p class="dialogue">"মানুষ বেছে নিতে আমার স্বামী যে ভুল করেননি, এই রামু তার প্রতিটা পদক্ষেপে তা প্রমাণ করছে!"</p>
+      <p>সেদিন বিকেলের দিকে এক প্রবীণ বৃদ্ধ দম্পতি দুশ্চিন্তাগ্রস্ত মুখে কারখানায় এলেন।</p>
+      <p>তাঁদের বহু কষ্টে কেনা একটি পুরোনো ফ্রিজের সার্ভিসিং আর ওয়ারেন্টি নিয়ে কিছুটা জটিলতা তৈরি হয়েছে। রিসেপশনে নতুন কাস্টমারদের ভিড় থাকায় বৃদ্ধ দম্পতি কোথায় যাবেন, কার সাথে কথা বলবেন তা বুঝতে না পেরে বেশ বিভ্রান্ত হয়ে পড়েছিলেন।</p>
+      <p>ঠিক তখনই রামুর চার ঘণ্টার শিফটের ডিউটি শেষ হয়েছিল। সে ইউনিফর্ম চেঞ্জ করে বাড়ি ফেরার প্রস্তুতি নিচ্ছিল। কিন্তু ওই অসহায় বৃদ্ধ দম্পতিকে দেখে সে পিছপা হলো না।</p>
+      <p>রামু নিজে উদ্যোগী হয়ে তাঁদের সার্ভিস সেকশনের ম্যানেজারের ঘর পর্যন্ত নিয়ে গেল। নিজে দাঁড়িয়ে থেকে সার্ভিস কর্মকর্তাদের সাথে কথা বলে সব কাগজপত্র বুঝিয়ে দিল।</p>
+      <p>কাজ শেষ হওয়ার পর বৃদ্ধ লোকটি বেশ আবেগপ্লুত হয়ে রামুর মাথায় হাত রেখে বললেন—</p>
+      <p class="dialogue">— "বাবা! তোমার তো কতক্ষণ আগেই কাজের ডিউটি শেষ হয়ে গিয়েছে। আমাদের পেছনে অযথা এতটা সময় নষ্ট করলে?"</p>
+      <p>রামু এক গাল নিষ্পাপ হাসি হেসে উত্তর দিল—</p>
+      <p class="dialogue">— "আপনার কাজটা যতক্ষণ না শেষ হচ্ছে জ্যাঠামশাই, ততক্ষণ আমার দায়িত্ব কীভাবে শেষ হয় বলুন?"</p>
+      <p>এই ছোট ছোট সাধারণ ঘটনাগুলো ধীরে ধীরে কারখানার অন্যান্য শ্রমিক ও কর্মচারীদের মানসিকতায় এক ইতিবাচক পরিবর্তন আনতে শুরু করল।</p>
+      <p>সবাই বুঝতে পারল—গেটে দাঁড়িয়ে থাকা এই সাধারণ নীল শার্টের মানুষটি কেবল এক বেতনভুক্ত নিরাপত্তারক্ষী নয়... সে যেন এই গোটা প্রতিষ্ঠানের সবচেয়ে বিশ্বস্ত ও প্রথম উষ্ণ অভ্যর্থনাকারী!</p>
+      <p>এমনকি দূর-দূরান্ত থেকে আসা বহু ক্রেতা শোরুম বা কারখানা থেকে বের হওয়ার সময় ম্যানেজমেন্টকে বলে যেতেন—</p>
+      <p class="dialogue">— "আপনাদের কারখানার গেটের ওই ছেলেটা সত্যি বড্ড ভালো মানুষ! ওর ব্যবহারে মনটা জুড়িয়ে যায়।"</p>
+      <p>এই খবর একদিন ঘুরেফিরে অরিন্দম সেনের সেন্ট্রাল কেবিনেও পৌঁছাল।</p>
+      <p>তিনি সিকিউরিটি চিফ অ্যান্ডারসনকে ডেকে খুব কড়া গলায় নির্দেশ দিলেন—</p>
+      <p class="dialogue">— "রামুকে ভুলভূলেও কোনোদিন জানতে দেবেন না যে, আমি ওর এই সব ভালো কাজের খবর রাখি বা প্রশংসার কথা শুনেছি।"</p>
+      <p>অ্যান্ডারসন সাহেব অবাক হয়ে জিজ্ঞেস করলেন—</p>
+      <p class="dialogue">— "কেন স্যার? ভালো কাজের জন্য তো ওর একটা আনুষ্ঠানিক প্রশংসা পাওয়া উচিত!"</p>
+      <p>অরিন্দম শান্ত কিন্তু প্রাজ্ঞের মতো উত্তর দিলেন—</p>
+      <p class="dialogue">— "ভালো কাজ যদি কেবল কারো কাছে প্রশংসা বা পুরষ্কার পাওয়ার উদ্দেশ্যে করা হয় অ্যান্ডারসন, তবে সুযোগ বা নজরদারি কমে গেলে সেই ভালো কাজ একদিন থেমে যায়। আমি দেখতে চাই রামুর এই সততা কতটা স্বতঃস্ফূর্ত।"</p>
+      <p>সন্ধ্যায় বাড়িতে গিয়ে সুচিত্রা সেন চায়ের কাপ হাতে অরিন্দমকে বললেন—</p>
+      <p class="dialogue">— "রামুর মতো এমন এক নিষ্ঠাবান ছেলের জন্য কোম্পানির পক্ষ থেকে স্পেশাল কিছু করা উচিত অরিন্দম।"</p>
+      <p>অরিন্দম জানালার বাইরে রাতের শহরের দিকে তাকিয়ে ধীর ও সুদৃঢ় গলায় বললেন—</p>
+      <p class="dialogue">— "উপযুক্ত সময় এলে নিশ্চয়ই করব সুচিত্রা।"</p>
+      <p>সুচিত্রা একটু অবাক হয়ে জিজ্ঞেস করলেন—</p>
+      <p class="dialogue">— "উপযুক্ত সময় মানে? ও তো প্রতিদিন নিজেকে প্রমাণ করছে!"</p>
+      <p>অরিন্দম সেন দীর্ঘশ্বাস ফেলে বললেন—</p>
+      <p class="dialogue">— "একজন মানুষের খাঁটি চরিত্র বোঝার জন্য কেবল ভালো বা স্বাভাবিক সময়টা যথেষ্ট নয় সুচিত্রা... চরম কঠিন আর সংকটের সময় সে কীভাবে নিজের নীতিতে টিকে থাকে, সেটাই আসল পরীক্ষা!"</p>
+      <p>সুচিত্রা আর কথা বাড়ালেন না।</p>
+      <p>দূরে কারখানার বিশাল আলোকোজ্জ্বল প্রধান গেটে তখন রামু তার নৈশকালীন (Night Shift) ডিউটিতে যোগ দিচ্ছে।</p>
+      <p>রামু তখন ঘুণাক্ষরেও জানত না—</p>
+      <p>আর মাত্র কয়েক মাস পরেই এক অভিশপ্ত রাতে একটি ভয়ংকর স্পষ্ট স্বপ্ন তার পুরো জীবনকে ওলটপালট করে দেবে! আর সেই স্বপ্নের জন্য এবং কোম্পানিকে বাঁচাতে গিয়ে তাকে নিজের প্রাণপ্রিয় চাকরিটাও হয়তো হারাতে হবে...</p>
+      <p>তবে চাকরি হারালেও, সে কোনোদিন হারাবে না সাধারণ মানুষের অটুট ভালোবাসা আর বিশ্বাস!</p>
+      <p class="tobecontinued">(চলবে...)</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span class="brand">MySkillGame Learning Portal</span> · বিনামূল্যে, বিজ্ঞাপনহীন, অফলাইন-বান্ধব বাংলা পাঠ ও শিক্ষা প্ল্যাটফর্ম<br>
+  বুকমার্ক ও পছন্দ শুধু আপনার ব্রাউজারে (localStorage) সংরক্ষিত থাকে — কোনো তথ্য সংগ্রহ করা হয় না।
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var CHAPTER_NUM = 6;
+  var BOOKMARK_KEY = "nabajagaran_bookmark";
+  var VOICE_KEY = "nabajagaran_voice_pref";
+  var RATE_KEY = "nabajagaran_rate_pref";
+
+  var synth = window.speechSynthesis;
+  var speakQueue = [];
+  var activeBtn = null;
+
+  /* ---------------- voices ---------------- */
+  var voiceSelect = document.getElementById("voiceSelect");
+  var rateRange = document.getElementById("rateRange");
+  var rateValue = document.getElementById("rateValue");
+
+  function populateVoices(){
+    var voices = synth ? synth.getVoices() : [];
+    if (!voices.length){ voiceSelect.innerHTML = '<option value="">কণ্ঠ পাওয়া যায়নি</option>'; return; }
+    var bn = voices.filter(function(v){ return /^bn/i.test(v.lang); });
+    var others = voices.filter(function(v){ return !/^bn/i.test(v.lang); });
+    var ordered = bn.concat(others);
+    var saved = localStorage.getItem(VOICE_KEY);
+    voiceSelect.innerHTML = ordered.map(function(v, i){
+      return '<option value="'+i+'">'+v.name+' ('+v.lang+')'+(bn.indexOf(v)>-1?' — বাংলা':'')+'</option>';
+    }).join("");
+    voiceSelect._voices = ordered;
+    if (saved !== null){
+      var idx = ordered.findIndex(function(v){ return v.name === saved; });
+      if (idx > -1) voiceSelect.value = idx;
+    }
+  }
+  if (synth){ populateVoices(); synth.onvoiceschanged = populateVoices; }
+  else { voiceSelect.innerHTML = '<option value="">এই ব্রাউজারে ভয়েস সমর্থিত নয়</option>'; }
+
+  voiceSelect.addEventListener("change", function(){
+    var v = voiceSelect._voices && voiceSelect._voices[voiceSelect.value];
+    if (v) localStorage.setItem(VOICE_KEY, v.name);
+  });
+
+  var savedRate = parseFloat(localStorage.getItem(RATE_KEY));
+  if (!isNaN(savedRate)) rateRange.value = savedRate;
+  function updateRateLabel(){ rateValue.textContent = parseFloat(rateRange.value).toFixed(1) + "×"; }
+  updateRateLabel();
+  rateRange.addEventListener("input", function(){ updateRateLabel(); localStorage.setItem(RATE_KEY, rateRange.value); });
+
+  /* ---------------- speech queue ---------------- */
+  function splitIntoChunks(text){
+    return text
+      .replace(/\s+/g, " ")
+      .trim()
+      .split(/(?<=[।!?])\s+/)
+      .filter(function(s){ return s.trim().length > 0; });
+  }
+
+  function speakChunks(chunks, btn){
+    stopSpeaking();
+    if (!synth || !chunks.length) return;
+    speakQueue = chunks.slice();
+    activeBtn = btn;
+    if (btn) btn.classList.add("speaking");
+    speakNext();
+  }
+  function speakNext(){
+    if (!speakQueue.length){ finishSpeaking(); return; }
+    var text = speakQueue.shift();
+    var utter = new SpeechSynthesisUtterance(text);
+    var v = voiceSelect._voices && voiceSelect._voices[voiceSelect.value];
+    if (v) utter.voice = v;
+    utter.rate = parseFloat(rateRange.value) || 1;
+    utter.lang = (v && v.lang) || "bn-IN";
+    utter.onend = speakNext;
+    utter.onerror = finishSpeaking;
+    synth.speak(utter);
+  }
+  function finishSpeaking(){
+    if (activeBtn) activeBtn.classList.remove("speaking");
+    activeBtn = null;
+    speakQueue = [];
+  }
+  function stopSpeaking(){
+    if (synth) synth.cancel();
+    finishSpeaking();
+  }
+  document.getElementById("stopAllBtn").addEventListener("click", stopSpeaking);
+
+  document.querySelectorAll(".part-listen").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var section = btn.closest(".part-section");
+      if (btn.classList.contains("speaking")){ stopSpeaking(); return; }
+      var text = section.querySelector(".part-text").textContent;
+      speakChunks(splitIntoChunks(text), btn);
+    });
+  });
+
+  document.getElementById("playAllBtn").addEventListener("click", function(){
+    var btn = document.getElementById("playAllBtn");
+    if (synth && synth.speaking){ stopSpeaking(); return; }
+    var full = Array.prototype.map.call(
+      document.querySelectorAll(".part-text"),
+      function(el){ return el.textContent; }
+    ).join(" ");
+    speakChunks(splitIntoChunks(full), null);
+  });
+
+  /* ---------------- bookmark ---------------- */
+  function readBookmark(){
+    var raw = localStorage.getItem(BOOKMARK_KEY);
+    if (!raw) return null;
+    try {
+      var parsed = JSON.parse(raw);
+      if (parsed && typeof parsed === "object") return parsed;
+    } catch(e){}
+    var n = parseInt(raw, 10);
+    return isNaN(n) ? null : { chapter:n, part:1 };
+  }
+  function writeBookmark(chapter, part){
+    localStorage.setItem(BOOKMARK_KEY, JSON.stringify({ chapter:chapter, part:part }));
+  }
+
+  document.getElementById("markHereBtn").addEventListener("click", function(){
+    var visible = getCurrentPart();
+    writeBookmark(CHAPTER_NUM, visible);
+    var btn = document.getElementById("markHereBtn");
+    var original = btn.textContent;
+    btn.textContent = "✓ বুকমার্ক হয়েছে — পর্ব " + visible;
+    setTimeout(function(){ btn.textContent = original; }, 1800);
+  });
+
+  /* jump to bookmarked part on load if it belongs to this chapter and no hash given */
+  (function jumpToBookmarkIfRelevant(){
+    if (window.location.hash) return;
+    var bm = readBookmark();
+    if (bm && bm.chapter === CHAPTER_NUM && bm.part > 21){
+      var target = document.getElementById("part-" + bm.part);
+      if (target) setTimeout(function(){ target.scrollIntoView({ behavior:"auto", block:"start" }); }, 50);
+    }
+  })();
+
+  /* ---------------- scrollspy for part-jump chips ---------------- */
+  var jumpLinks = document.querySelectorAll("#partJump a");
+  function getCurrentPart(){
+    var sections = document.querySelectorAll(".part-section");
+    var current = 21;
+    sections.forEach(function(sec){
+      var rect = sec.getBoundingClientRect();
+      if (rect.top < 200) current = parseInt(sec.getAttribute("data-part"), 10);
+    });
+    return current;
+  }
+  function updateActiveChip(){
+    var current = getCurrentPart();
+    jumpLinks.forEach(function(a){
+      a.classList.toggle("active", parseInt(a.getAttribute("data-part"),10) === current);
+    });
+  }
+  document.addEventListener("scroll", function(){
+    window.requestAnimationFrame(updateActiveChip);
+  }, { passive:true });
+  updateActiveChip();
+
+  window.addEventListener("beforeunload", stopSpeaking);
+})();
+</script>
+</body>
+</html>

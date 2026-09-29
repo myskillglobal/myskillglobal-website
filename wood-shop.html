@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>কাঠের কাজ শপ (Wood Work Shop) — সম্পূর্ণ পাঠ | MySkillGame</title>
+<!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1034022057999423" crossorigin="anonymous"></script>
+
+  <!-- Firebase Analytics -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-analytics.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDfxtOP-YCrCXtQxZrrFNC1uXucvbW0K78",
+      authDomain: "my-skill-global.firebaseapp.com",
+      projectId: "my-skill-global",
+      storageBucket: "my-skill-global.firebasestorage.app",
+      messagingSenderId: "978471914749",
+      appId: "1:978471914749:web:595750b5d90738933f4294",
+      measurementId: "G-8D9BPY8HJ0"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
+<meta name="description" content="Vocational Education - Wood Work Shop সম্পূর্ণ গাইড, কাঠের প্রকারভেদ, টুলস, জোড়, ফিনিশিং, সেফটি ও কুইজ">
+
+<style>
+  :root{
+    --w-bg-1:#1c130c;
+    --w-bg-2:#2a1c10;
+    --w-panel:#3a281a;
+    --w-panel-2:#463022;
+    --w-border:#6b4a30;
+    --w-gold:#e0a458;
+    --w-gold-light:#f3c98a;
+    --w-green:#8fbf6f;
+    --w-text:#f8ecdd;
+    --w-text-dim:#d3b79a;
+    --w-red:#e2543a;
+    --w-card-shadow: 0 6px 18px rgba(0,0,0,0.45);
+    --radius:14px;
+    --safe-top: env(safe-area-inset-top,0px);
+    --safe-bottom: env(safe-area-inset-bottom,0px);
+    --safe-left: env(safe-area-inset-left,0px);
+    --safe-right: env(safe-area-inset-right,0px);
+  }
+  body.light{
+    --w-bg-1:#fbf3e8;
+    --w-bg-2:#f4e6d2;
+    --w-panel:#ffffff;
+    --w-panel-2:#fbf1e4;
+    --w-border:#e0c8a5;
+    --w-gold:#a5651c;
+    --w-gold-light:#7d4b12;
+    --w-green:#3e7d33;
+    --w-text:#332210;
+    --w-text-dim:#6b533a;
+    --w-red:#b5391f;
+    --w-card-shadow: 0 4px 14px rgba(90,60,20,0.15);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:"Noto Sans Bengali","Segoe UI",Arial,sans-serif;
+    background: radial-gradient(circle at 20% 0%, var(--w-bg-2), var(--w-bg-1) 60%);
+    color:var(--w-text);
+    padding-top:var(--safe-top);
+    padding-bottom:var(--safe-bottom);
+    padding-left:var(--safe-left);
+    padding-right:var(--safe-right);
+    min-height:100vh;
+    transition: background .3s, color .3s;
+    overflow-x:hidden;
+  }
+  a{color:var(--w-gold-light);text-decoration:none;}
+
+  header.top{
+    position:sticky;top:0;z-index:50;
+    background:linear-gradient(180deg, rgba(20,13,8,0.97), rgba(20,13,8,0.9));
+    border-bottom:2px solid var(--w-gold);
+    padding:10px 14px;
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+    backdrop-filter: blur(6px);
+  }
+  body.light header.top{background:linear-gradient(180deg, rgba(255,250,242,0.97), rgba(255,250,242,0.9));}
+  .brand{display:flex;align-items:center;gap:10px;}
+  .brand .logo{font-size:26px;}
+  .brand h1{font-size:15px;margin:0;color:var(--w-gold-light);line-height:1.2;}
+  .brand span.sub{display:block;font-size:11px;color:var(--w-text-dim);font-weight:normal;}
+  .top-actions{display:flex;gap:8px;align-items:center;}
+  .icon-btn{
+    background:var(--w-panel-2);
+    border:1px solid var(--w-border);
+    color:var(--w-text);
+    border-radius:10px;
+    padding:8px 10px;
+    font-size:14px;
+    cursor:pointer;
+  }
+  .icon-btn:active{transform:scale(0.96);}
+
+  .hero{
+    padding:26px 16px 20px;
+    text-align:center;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.05)),
+      repeating-linear-gradient(100deg, #3a281a 0px, #3a281a 18px, #46311f 18px, #46311f 36px);
+    border-bottom:3px solid var(--w-gold);
+  }
+  body.light .hero{
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.3), rgba(255,255,255,0.05)),
+      repeating-linear-gradient(100deg, #f0dfc4 0px, #f0dfc4 18px, #f7ecd8 18px, #f7ecd8 36px);
+  }
+  .hero h2{font-size:22px;margin:0 0 6px;color:var(--w-gold-light);}
+  .hero p{margin:0;color:var(--w-text-dim);font-size:13.5px;max-width:640px;margin:0 auto;}
+  .hero .badges{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:14px;}
+  .badge{
+    background:var(--w-panel);
+    border:1px solid var(--w-gold);
+    color:var(--w-gold-light);
+    font-size:11.5px;
+    padding:5px 10px;
+    border-radius:20px;
+  }
+
+  .search-wrap{padding:14px 16px 4px;}
+  .search-box{display:flex;gap:8px;max-width:640px;margin:0 auto;}
+  .search-box input{
+    flex:1;
+    background:var(--w-panel);
+    border:1px solid var(--w-border);
+    color:var(--w-text);
+    padding:10px 14px;
+    border-radius:24px;
+    font-size:14px;
+  }
+  .search-box input:focus{outline:none;border-color:var(--w-gold);}
+
+  .layout{
+    display:flex;
+    max-width:1200px;
+    margin:0 auto;
+    gap:16px;
+    padding:16px;
+    align-items:flex-start;
+  }
+  nav.sidebar{
+    position:sticky;top:70px;
+    width:220px;
+    flex-shrink:0;
+    background:var(--w-panel);
+    border:1px solid var(--w-border);
+    border-radius:var(--radius);
+    padding:10px;
+    max-height:calc(100vh - 90px);
+    overflow-y:auto;
+  }
+  nav.sidebar a{
+    display:flex;align-items:center;gap:8px;
+    padding:8px 10px;
+    font-size:13px;
+    color:var(--w-text-dim);
+    border-radius:8px;
+    margin-bottom:2px;
+  }
+  nav.sidebar a.active, nav.sidebar a:hover{
+    background:var(--w-panel-2);
+    color:var(--w-gold-light);
+  }
+  main{flex:1;min-width:0;}
+
+  .progress-wrap{
+    background:var(--w-panel);
+    border:1px solid var(--w-border);
+    border-radius:10px;
+    padding:8px 12px;
+    margin-bottom:14px;
+    font-size:12px;
+    color:var(--w-text-dim);
+    display:flex;align-items:center;gap:10px;
+  }
+  .progress-bar-bg{flex:1;background:var(--w-bg-2);border-radius:6px;height:8px;overflow:hidden;}
+  .progress-bar-fill{height:100%;background:linear-gradient(90deg,var(--w-gold),var(--w-green));width:0%;transition:width .4s;}
+
+  section.chapter{
+    background:var(--w-panel);
+    border:1px solid var(--w-border);
+    border-radius:var(--radius);
+    padding:18px 18px 20px;
+    margin-bottom:16px;
+    box-shadow:var(--w-card-shadow);
+    scroll-margin-top:70px;
+  }
+  section.chapter h2{
+    margin:0 0 10px;
+    font-size:18px;
+    color:var(--w-gold-light);
+    display:flex;align-items:center;gap:8px;
+    border-bottom:1px solid var(--w-border);
+    padding-bottom:8px;
+  }
+  section.chapter h3{font-size:15px;color:var(--w-green);margin:16px 0 6px;}
+  section.chapter p{font-size:14px;line-height:1.7;color:var(--w-text);margin:6px 0;}
+  section.chapter ul{margin:6px 0 6px 18px;padding:0;font-size:14px;line-height:1.75;}
+  section.chapter li{margin-bottom:3px;}
+  .mark-btn{
+    margin-top:10px;
+    background:var(--w-panel-2);
+    border:1px solid var(--w-gold);
+    color:var(--w-gold-light);
+    padding:6px 14px;
+    border-radius:20px;
+    font-size:12px;
+    cursor:pointer;
+  }
+  .mark-btn.done{background:var(--w-green);border-color:var(--w-green);color:#0c1f07;}
+
+  .card-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:10px;
+    margin-top:8px;
+  }
+  .w-card{
+    background:var(--w-panel-2);
+    border:1px solid var(--w-border);
+    border-radius:10px;
+    padding:10px;
+    text-align:center;
+    font-size:13px;
+  }
+  .w-card .emoji{font-size:26px;display:block;margin-bottom:4px;}
+  .w-card b{color:var(--w-gold-light);font-size:13.5px;}
+  .w-card small{display:block;color:var(--w-text-dim);font-size:11px;margin-top:3px;}
+
+  table{width:100%;border-collapse:collapse;margin-top:8px;font-size:13px;}
+  th,td{border:1px solid var(--w-border);padding:8px 10px;text-align:left;}
+  th{background:var(--w-panel-2);color:var(--w-gold-light);}
+  tr:nth-child(even){background:rgba(255,255,255,0.02);}
+  body.light tr:nth-child(even){background:rgba(0,0,0,0.02);}
+
+  .joint-grid, .tool-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+    gap:10px;
+    margin-top:8px;
+  }
+  .joint-item, .tool-item{
+    background:var(--w-panel-2);
+    border:1px solid var(--w-border);
+    border-radius:10px;
+    padding:12px 8px;
+    text-align:center;
+    font-size:12.5px;
+  }
+  .joint-item .ic, .tool-item .ic{font-size:22px;display:block;margin-bottom:4px;}
+
+  .safety-grid{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;}
+  .safety-chip{
+    background:rgba(143,191,111,0.15);
+    border:1px solid var(--w-green);
+    color:var(--w-green);
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:12.5px;
+  }
+
+  .glossary-grid{margin-top:8px;}
+
+  .quiz-box{
+    background:var(--w-panel-2);
+    border:1px solid var(--w-border);
+    border-radius:12px;
+    padding:14px;
+    margin-top:10px;
+  }
+  .quiz-q{font-size:14px;color:var(--w-gold-light);margin-bottom:10px;font-weight:bold;}
+  .quiz-opts{display:flex;flex-direction:column;gap:6px;}
+  .quiz-opt{
+    background:var(--w-panel);
+    border:1px solid var(--w-border);
+    color:var(--w-text);
+    padding:9px 12px;
+    border-radius:8px;
+    font-size:13px;
+    text-align:left;
+    cursor:pointer;
+  }
+  .quiz-opt.correct{background:rgba(143,191,111,0.25);border-color:var(--w-green);}
+  .quiz-opt.wrong{background:rgba(226,84,58,0.25);border-color:var(--w-red);}
+  .quiz-footer{
+    display:flex;justify-content:space-between;align-items:center;
+    margin-top:12px;font-size:12.5px;color:var(--w-text-dim);
+  }
+  .quiz-nav-btn{
+    background:var(--w-gold);color:#2a1c10;border:none;
+    padding:8px 16px;border-radius:20px;font-size:13px;cursor:pointer;font-weight:bold;
+  }
+  .quiz-score{text-align:center;padding:20px;font-size:16px;color:var(--w-gold-light);}
+
+  .project-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+    gap:10px;margin-top:8px;
+  }
+  .project-item{
+    background:var(--w-panel-2);
+    border:1px solid var(--w-border);
+    border-radius:10px;
+    padding:12px 8px;text-align:center;font-size:13px;
+  }
+  .project-item .ic{font-size:26px;display:block;margin-bottom:4px;}
+
+  footer{
+    text-align:center;
+    padding:24px 16px calc(24px + var(--safe-bottom));
+    font-size:12px;
+    color:var(--w-text-dim);
+    border-top:1px solid var(--w-border);
+    margin-top:20px;
+  }
+
+  .hidden{display:none !important;}
+
+  @media print{
+    header.top, .search-wrap, nav.sidebar, .top-actions, .mark-btn, .quiz-box, footer .no-print{display:none !important;}
+    body{background:#fff;color:#000;}
+    section.chapter{border:none;box-shadow:none;page-break-inside:avoid;}
+  }
+
+  @media (max-width:820px){
+    nav.sidebar{
+      position:fixed;
+      top:0;left:0;bottom:0;
+      width:78%;
+      max-width:280px;
+      z-index:100;
+      transform:translateX(-105%);
+      transition:transform .25s;
+      border-radius:0;
+      max-height:100vh;
+      padding-top:calc(16px + var(--safe-top));
+    }
+    nav.sidebar.open{transform:translateX(0);}
+    .layout{flex-direction:column;padding:10px;}
+    .overlay{
+      position:fixed;inset:0;background:rgba(0,0,0,0.5);
+      z-index:90;display:none;
+    }
+    .overlay.show{display:block;}
+  }
+</style>
+</head>
+<body>
+
+<div class="overlay" id="overlay"></div>
+
+<header class="top">
+  <div class="brand">
+    <button class="icon-btn" id="menuBtn" style="display:none;">☰</button>
+    <span class="logo">🪵</span>
+    <div>
+      <h1>কাঠের কাজ শপ — Wood Work Shop
+        <span class="sub">Vocational Education | MySkillGame</span>
+      </h1>
+    </div>
+  </div>
+  <div class="top-actions">
+    <button class="icon-btn" id="themeBtn" title="থিম পরিবর্তন">🌙</button>
+    <button class="icon-btn" id="printBtn" title="প্রিন্ট করুন">🖨️</button>
+  </div>
+</header>
+
+<section class="hero">
+  <h2>🪵 কাঠের কাজ শপ — সম্পূর্ণ ওয়ার্কশপ গাইড</h2>
+  <p>কাঠের প্রকারভেদ, হ্যান্ড ও পাওয়ার টুলস, জোড় তৈরির কৌশল, ফিনিশিং, সেফটি ও ব্যবহারিক দক্ষতা — Vocational Education Wood Work Shop-এর সম্পূর্ণ পাঠ।</p>
+  <div class="badges">
+    <span class="badge">🪚 হ্যান্ড টুলস</span>
+    <span class="badge">🔩 জোড় ও ফিটিংস</span>
+    <span class="badge">🎨 ফিনিশিং</span>
+    <span class="badge">🦺 সেফটি</span>
+    <span class="badge">📝 MCQ কুইজ</span>
+  </div>
+</section>
+
+<div class="search-wrap">
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="🔍 বিষয় খুঁজুন... যেমন: করাত, প্লেন, জোড়, বার্নিশ">
+  </div>
+</div>
+
+<div class="layout">
+
+  <nav class="sidebar" id="sidebar">
+    <a href="#intro" class="navlink">🪵 পরিচিতি</a>
+    <a href="#woodtypes" class="navlink">🌳 কাঠের প্রকারভেদ</a>
+    <a href="#identify" class="navlink">🔍 কাঠ চেনার উপায়</a>
+    <a href="#defects" class="navlink">⚠️ কাঠের ত্রুটি</a>
+    <a href="#seasoning" class="navlink">☀️ কাঠ শুকানো (Seasoning)</a>
+    <a href="#markingtools" class="navlink">📏 মাপার ও চিহ্নিতকরণ যন্ত্র</a>
+    <a href="#handtools" class="navlink">🛠️ হ্যান্ড টুলস</a>
+    <a href="#sawtypes" class="navlink">🪚 করাতের প্রকারভেদ</a>
+    <a href="#planetools" class="navlink">🪛 প্লেন ও শেপিং টুলস</a>
+    <a href="#powertools" class="navlink">⚡ পাওয়ার টুলস</a>
+    <a href="#joints" class="navlink">🔗 কাঠের জোড় (Joints)</a>
+    <a href="#fasteners" class="navlink">🔩 আঠা, পেরেক ও ফিটিংস</a>
+    <a href="#hardware" class="navlink">🚪 হার্ডওয়্যার</a>
+    <a href="#finishing" class="navlink">🎨 ফিনিশিং</a>
+    <a href="#sandpaper" class="navlink">📄 স্যান্ডপেপার গ্রেড</a>
+    <a href="#drawing" class="navlink">📐 নকশা পাঠ (Drawing Reading)</a>
+    <a href="#furniture" class="navlink">🪑 আসবাবপত্র তৈরি</a>
+    <a href="#symbols" class="navlink">🔣 প্রতীক ও চিহ্ন</a>
+    <a href="#safety" class="navlink">🦺 সেফটি</a>
+    <a href="#workshoprules" class="navlink">📋 Workshop Rules</a>
+    <a href="#firstaid" class="navlink">⚠️ দুর্ঘটনা ও প্রাথমিক চিকিৎসা</a>
+    <a href="#units" class="navlink">📐 মাপের একক</a>
+    <a href="#costcalc" class="navlink">📐 খরচ হিসাব উদাহরণ</a>
+    <a href="#environment" class="navlink">🌍 পরিবেশ ও কাঠ সংরক্ষণ</a>
+    <a href="#glossary" class="navlink">📖 পরিভাষা</a>
+    <a href="#syllabus" class="navlink">📚 WBSCVT/NCVT পাঠ্যসূচি</a>
+    <a href="#viva" class="navlink">❓ Viva প্রশ্ন</a>
+    <a href="#quiz" class="navlink">📝 MCQ কুইজ</a>
+    <a href="#projects" class="navlink">🏆 মিনি প্রজেক্ট</a>
+  </nav>
+
+  <main>
+    <div class="progress-wrap">
+      <span>📊 পঠন অগ্রগতি:</span>
+      <div class="progress-bar-bg"><div class="progress-bar-fill" id="progressFill"></div></div>
+      <span id="progressText">0%</span>
+    </div>
+
+    <section class="chapter" id="intro" data-title="পরিচিতি ইতিহাস কর্মসংস্থান কাঠমিস্ত্রি সূত্রধর">
+      <h2>🪵 কাঠের কাজ শপ (Wood Work Shop) পরিচিতি</h2>
+      <h3>কাঠের কাজ শপ কী?</h3>
+      <p>কাঠের কাজ শপ বা কাষ্ঠ কর্মশালা হল সেই স্থান, যেখানে কাঠ চেরাই, মাপজোখ, কাটা, জোড়া লাগানো ও ফিনিশিং করে আসবাবপত্র, দরজা-জানালা ও অন্যান্য কাঠের সামগ্রী তৈরির ব্যবহারিক দক্ষতা শেখানো হয়।</p>
+      <h3>ইতিহাস</h3>
+      <p>মানুষের ইতিহাসে কাঠের ব্যবহার সবচেয়ে প্রাচীন কারিগরি দক্ষতাগুলির একটি। ঘরবাড়ি, নৌকা, লাঙল থেকে শুরু করে আধুনিক আসবাবপত্র পর্যন্ত — সূত্রধর বা কাঠমিস্ত্রির দক্ষতা যুগে যুগে সমাজের গুরুত্বপূর্ণ অংশ হয়ে থেকেছে।</p>
+      <h3>বর্তমান যুগে গুরুত্ব</h3>
+      <p>আজকের দিনে বাড়ির আসবাবপত্র, ইন্টেরিয়র ডিজাইন, নির্মাণকাজ ও কারুশিল্পে দক্ষ কাঠমিস্ত্রির চাহিদা রয়েছে। সঠিক প্রশিক্ষণ ও নিরাপত্তা মেনে কাজ শেখা এই পেশায় সাফল্যের মূল চাবিকাঠি।</p>
+      <h3>কর্মসংস্থানের সুযোগ</h3>
+      <ul>
+        <li>আসবাবপত্র প্রস্তুতকারক (Furniture Maker)</li>
+        <li>দরজা-জানালা নির্মাণ কারিগর</li>
+        <li>ইন্টেরিয়র কাঠের কাজ (Carpentry Interior Work)</li>
+        <li>নির্মাণ সাইটে শাটারিং কারিগর</li>
+        <li>কাঠের হস্তশিল্প ও কারুকাজ</li>
+        <li>নিজস্ব কাঠের কাজের কর্মশালা/ব্যবসা</li>
+      </ul>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="woodtypes" data-title="কাঠের প্রকারভেদ হার্ডউড সফটউড প্লাইউড এমডিএফ ভিনিয়ার">
+      <h2>🌳 কাঠের প্রকারভেদ</h2>
+      <div class="card-grid">
+        <div class="w-card"><span class="emoji">🌲</span><b>হার্ডউড (Hardwood)</b><small>শাল, সেগুন, মেহগনি — শক্ত ও টেকসই</small></div>
+        <div class="w-card"><span class="emoji">🌱</span><b>সফটউড (Softwood)</b><small>দেবদারু, পাইন — হালকা, সহজে কাটা যায়</small></div>
+        <div class="w-card"><span class="emoji">📚</span><b>প্লাইউড (Plywood)</b><small>পাতলা স্তর জোড়া তক্তা</small></div>
+        <div class="w-card"><span class="emoji">🧱</span><b>MDF Board</b><small>কাঠের গুঁড়ো চাপ দিয়ে তৈরি বোর্ড</small></div>
+        <div class="w-card"><span class="emoji">🎨</span><b>ভিনিয়ার (Veneer)</b><small>সুন্দর কাঠের পাতলা আবরণ</small></div>
+        <div class="w-card"><span class="emoji">🟫</span><b>পার্টিকেল বোর্ড</b><small>সস্তা, হালকা আসবাবে ব্যবহৃত</small></div>
+      </div>
+      <p>💡 <b>সেগুন কাঠ</b> সবচেয়ে টেকসই ও জল-প্রতিরোধী বলে আসবাবপত্র ও দরজা-জানালায় বেশি ব্যবহৃত হয়, তবে দামে তুলনামূলক বেশি।</p>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="identify" data-title="কাঠ চেনার উপায় রং গন্ধ দানা ওজন">
+      <h2>🔍 ভালো কাঠ চেনার উপায়</h2>
+      <ul>
+        <li>কাঠের <b>দানা (Grain)</b> সোজা ও সমান হওয়া উচিত</li>
+        <li>ভালো কাঠে <b>গিঁট (Knot)</b> কম থাকে</li>
+        <li>শুকনো কাঠ হাতে নিলে ওজনে হালকা কিন্তু মজবুত অনুভূত হয়</li>
+        <li>ঠুকলে স্পষ্ট ও ভারী শব্দ হয়, ফাঁপা শব্দ নয়</li>
+        <li>কাঠের রং ও গন্ধ প্রজাতি অনুযায়ী নির্দিষ্ট হয়</li>
+      </ul>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="defects" data-title="কাঠের ত্রুটি গিঁট ফাটল বাঁক পোকা">
+      <h2>⚠️ কাঠের সাধারণ ত্রুটি (Defects)</h2>
+      <div class="card-grid">
+        <div class="w-card"><span class="emoji">🕳️</span><b>গিঁট (Knot)</b><small>শাখার গোড়ার কঠিন অংশ</small></div>
+        <div class="w-card"><span class="emoji">〰️</span><b>ফাটল (Crack/Shake)</b><small>কাঠের গায়ে চিড়</small></div>
+        <div class="w-card"><span class="emoji">🌀</span><b>বাঁক (Warping)</b><small>শুকানোর সময় বেঁকে যাওয়া</small></div>
+        <div class="w-card"><span class="emoji">🐛</span><b>পোকার আক্রমণ</b><small>ঘুণ পোকা কাঠ ফুটো করে দেয়</small></div>
+        <div class="w-card"><span class="emoji">🍂</span><b>পচন (Decay)</b><small>আর্দ্রতায় কাঠ নরম হয়ে যাওয়া</small></div>
+      </div>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="seasoning" data-title="কাঠ শুকানো seasoning প্রাকৃতিক কৃত্রিম">
+      <h2>☀️ কাঠ শুকানো (Seasoning)</h2>
+      <p>নতুন কাটা কাঠে প্রচুর আর্দ্রতা থাকে, যা কমিয়ে কাঠকে ব্যবহারযোগ্য করে তোলার প্রক্রিয়াকে Seasoning বলা হয়। এতে কাঠের বাঁকা হওয়া, ফাটল ও পোকার আক্রমণ কমে।</p>
+      <table>
+        <tr><th>পদ্ধতি</th><th>বিবরণ</th></tr>
+        <tr><td>প্রাকৃতিক শুকানো (Natural Seasoning)</td><td>খোলা হাওয়া ও ছায়ায় কয়েক মাস থেকে বছর ধরে শুকানো</td></tr>
+        <tr><td>কৃত্রিম শুকানো (Kiln Seasoning)</td><td>বিশেষ চেম্বারে তাপ দিয়ে দ্রুত শুকানো</td></tr>
+      </table>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="markingtools" data-title="মাপার চিহ্নিতকরণ যন্ত্র স্কেল ট্রাই স্কয়ার মার্কিং গজ">
+      <h2>📏 মাপার ও চিহ্নিতকরণ যন্ত্র</h2>
+      <div class="tool-grid">
+        <div class="tool-item"><span class="ic">📏</span>Steel Rule</div>
+        <div class="tool-item"><span class="ic">📐</span>Try Square</div>
+        <div class="tool-item"><span class="ic">✏️</span>Marking Gauge</div>
+        <div class="tool-item"><span class="ic">🖊️</span>Marking Knife</div>
+        <div class="tool-item"><span class="ic">📐</span>Bevel Gauge</div>
+        <div class="tool-item"><span class="ic">🧵</span>Chalk Line</div>
+        <div class="tool-item"><span class="ic">📐</span>Measuring Tape</div>
+        <div class="tool-item"><span class="ic">🔺</span>Mitre Square</div>
+      </div>
+      <p>💡 কাঠের কাজে প্রবাদ আছে — <b>"মাপো দুবার, কাটো একবার"</b> — অর্থাৎ কাটার আগে মাপ দুবার যাচাই করা উচিত।</p>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="handtools" data-title="হ্যান্ড টুলস হাতুড়ি ছেনি স্ক্রু ড্রাইভার">
+      <h2>🛠️ সাধারণ হ্যান্ড টুলস</h2>
+      <div class="tool-grid">
+        <div class="tool-item"><span class="ic">🔨</span>Claw Hammer</div>
+        <div class="tool-item"><span class="ic">🔨</span>Mallet</div>
+        <div class="tool-item"><span class="ic">🪓</span>Chisel (ছেনি)</div>
+        <div class="tool-item"><span class="ic">🪛</span>Screwdriver</div>
+        <div class="tool-item"><span class="ic">🗜️</span>C-Clamp</div>
+        <div class="tool-item"><span class="ic">🪚</span>Hand Saw</div>
+        <div class="tool-item"><span class="ic">🧲</span>Nail Puller</div>
+        <div class="tool-item"><span class="ic">🔧</span>Bench Vice</div>
+      </div>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="sawtypes" data-title="করাতের প্রকারভেদ রিপ ক্রসকাট টেনন হ্যাকস">
+      <h2>🪚 করাতের প্রকারভেদ (Types of Saw)</h2>
+      <table>
+        <tr><th>করাত</th><th>ব্যবহার</th></tr>
+        <tr><td>Rip Saw</td><td>কাঠের দানা বরাবর লম্বালম্বি কাটতে</td></tr>
+        <tr><td>Cross Cut Saw</td><td>কাঠ আড়াআড়ি কাটতে</td></tr>
+        <tr><td>Tenon Saw</td><td>সূক্ষ্ম ও নিখুঁত জোড় কাটতে</td></tr>
+        <tr><td>Coping Saw</td><td>বাঁকা ও নকশাদার কাটার জন্য</td></tr>
+        <tr><td>Hacksaw</td><td>ধাতু ও পাতলা কাঠ কাটতে</td></tr>
+      </table>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="planetools" data-title="প্লেন শেপিং টুলস তল মসৃণ করা">
+      <h2>🪛 প্লেন ও শেপিং টুলস</h2>
+      <div class="card-grid">
+        <div class="w-card"><span class="emoji">📦</span><b>Jack Plane</b><small>কাঠের তল মসৃণ ও সমান করতে</small></div>
+        <div class="w-card"><span class="emoji">📏</span><b>Smoothing Plane</b><small>শেষ পালিশের জন্য মিহি প্লেনিং</small></div>
+        <div class="w-card"><span class="emoji">🗡️</span><b>Spokeshave</b><small>বাঁকা তল মসৃণ করতে</small></div>
+        <div class="w-card"><span class="emoji">🔩</span><b>Rasp / File</b><small>কাঠ ঘষে আকার দিতে</small></div>
+      </div>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="powertools" data-title="পাওয়ার টুলস ড্রিল জিগস রাউটার স্যান্ডার">
+      <h2>⚡ পাওয়ার টুলস</h2>
+      <div class="tool-grid">
+        <div class="tool-item"><span class="ic">🔌</span>Electric Drill</div>
+        <div class="tool-item"><span class="ic">🪚</span>Circular Saw</div>
+        <div class="tool-item"><span class="ic">🪚</span>Jigsaw</div>
+        <div class="tool-item"><span class="ic">🌀</span>Router</div>
+        <div class="tool-item"><span class="ic">🌪️</span>Orbital Sander</div>
+        <div class="tool-item"><span class="ic">🪚</span>Table Saw</div>
+        <div class="tool-item"><span class="ic">🎯</span>Wood Lathe</div>
+        <div class="tool-item"><span class="ic">🔧</span>Planer Machine</div>
+      </div>
+      <p>💡 পাওয়ার টুল ব্যবহারের আগে সবসময় সেফটি গার্ড, চোখের সুরক্ষা ও সঠিক গ্রিপ নিশ্চিত করতে হবে।</p>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="joints" data-title="কাঠের জোড় মর্টিস টেনন ডাভটেল ল্যাপ">
+      <h2>🔗 কাঠের জোড়ের প্রকারভেদ (Wood Joints)</h2>
+      <div class="joint-grid">
+        <div class="joint-item"><span class="ic">▭</span>Butt Joint</div>
+        <div class="joint-item"><span class="ic">🔲</span>Mortise & Tenon</div>
+        <div class="joint-item"><span class="ic">🪶</span>Dovetail Joint</div>
+        <div class="joint-item"><span class="ic">📏</span>Lap Joint</div>
+        <div class="joint-item"><span class="ic">📐</span>Mitre Joint</div>
+        <div class="joint-item"><span class="ic">🔗</span>Dowel Joint</div>
+        <div class="joint-item"><span class="ic">〰️</span>Tongue & Groove</div>
+        <div class="joint-item"><span class="ic">✂️</span>Housing Joint</div>
+      </div>
+      <p><b>Mortise & Tenon Joint</b> সবচেয়ে মজবুত জোড়গুলির একটি, যা দরজা-জানালার ফ্রেম ও আসবাবপত্রে বহুল ব্যবহৃত হয়।</p>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="fasteners" data-title="আঠা পেরেক স্ক্রু ফিটিংস গঁদ">
+      <h2>🔩 আঠা, পেরেক ও ফিটিংস</h2>
+      <div class="card-grid">
+        <div class="w-card"><span class="emoji">🧴</span><b>কাঠের আঠা (Wood Glue)</b><small>জোড় মজবুত করতে</small></div>
+        <div class="w-card"><span class="emoji">📌</span><b>পেরেক (Nail)</b><small>দ্রুত জোড়া লাগাতে</small></div>
+        <div class="w-card"><span class="emoji">🔩</span><b>স্ক্রু (Screw)</b><small>শক্ত ও খোলা যায় এমন জোড়ে</small></div>
+        <div class="w-card"><span class="emoji">🪝</span><b>ডাওয়েল (Dowel)</b><small>কাঠের গোল কাঠি দিয়ে জোড়া</small></div>
+        <div class="w-card"><span class="emoji">🔗</span><b>বোল্ট ও নাট</b><small>ভারী আসবাবপত্রে</small></div>
+      </div>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="hardware" data-title="হার্ডওয়্যার কব্জা হাতল লক">
+      <h2>🚪 আসবাবপত্রের হার্ডওয়্যার</h2>
+      <div class="card-grid">
+        <div class="w-card"><span class="emoji">🔗</span><b>কব্জা (Hinge)</b><small>দরজা/পাল্লা খোলা-বন্ধ করতে</small></div>
+        <div class="w-card"><span class="emoji">🖐️</span><b>হাতল (Handle/Knob)</b><small>ড্রয়ার ও পাল্লা টানতে</small></div>
+        <div class="w-card"><span class="emoji">🔒</span><b>তালা/লক</b><small>নিরাপত্তার জন্য</small></div>
+        <div class="w-card"><span class="emoji">🎚️</span><b>স্লাইডার (Drawer Slide)</b><small>ড্রয়ার মসৃণভাবে চালাতে</small></div>
+      </div>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="finishing" data-title="ফিনিশিং পলিশ বার্নিশ রং লাক্কার">
+      <h2>🎨 কাঠের ফিনিশিং</h2>
+      <table>
+        <tr><th>ফিনিশিং</th><th>বিবরণ</th></tr>
+        <tr><td>বার্নিশ (Varnish)</td><td>স্বচ্ছ প্রলেপ, কাঠের দানা দৃশ্যমান রাখে</td></tr>
+        <tr><td>পলিশ (French Polish)</td><td>উজ্জ্বল ও মসৃণ চকচকে আস্তরণ</td></tr>
+        <tr><td>রং (Paint)</td><td>রঙিন ও অস্বচ্ছ আস্তরণ</td></tr>
+        <tr><td>লাক্কার (Lacquer)</td><td>দ্রুত শুকানো, টেকসই আস্তরণ</td></tr>
+        <tr><td>তেল ফিনিশ (Oil Finish)</td><td>প্রাকৃতিক লুক, নিয়মিত রক্ষণাবেক্ষণ প্রয়োজন</td></tr>
+      </table>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="sandpaper" data-title="স্যান্ডপেপার গ্রেড মিহি মোটা ঘষা">
+      <h2>📄 স্যান্ডপেপার গ্রেড</h2>
+      <p>স্যান্ডপেপারের নম্বর যত বেশি, দানা তত মিহি। কাজের ধাপ অনুযায়ী মোটা থেকে মিহি গ্রেডে ঘষা হয়।</p>
+      <table>
+        <tr><th>গ্রেড</th><th>ব্যবহার</th></tr>
+        <tr><td>৪০–৬০ (মোটা)</td><td>রুক্ষ তল মসৃণ করা, পুরনো রং তোলা</td></tr>
+        <tr><td>৮০–১২০ (মাঝারি)</td><td>সাধারণ ফিনিশিং কাজ</td></tr>
+        <tr><td>১৫০–২২০ (মিহি)</td><td>পালিশের আগে চূড়ান্ত মসৃণতা</td></tr>
+      </table>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="drawing" data-title="নকশা পাঠ drawing ড্রয়িং স্কেল সাইড ভিউ">
+      <h2>📐 নকশা পাঠ (Working Drawing Reading)</h2>
+      <p>আসবাবপত্র তৈরির আগে নকশা (Working Drawing) থেকে দৈর্ঘ্য, প্রস্থ, উচ্চতা ও জোড়ের অবস্থান সঠিকভাবে বোঝা জরুরি। সাধারণত <b>Front View, Side View ও Top View</b> — এই তিনটি দৃশ্য থেকে সম্পূর্ণ কাঠামো বোঝা যায়।</p>
+      <p>💡 নকশায় দেওয়া স্কেল (যেমন 1:10) অনুযায়ী প্রকৃত মাপ হিসাব করে কাটা উচিত।</p>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="furniture" data-title="আসবাবপত্র তৈরি চেয়ার টেবিল আলমারি">
+      <h2>🪑 সাধারণ আসবাবপত্র তৈরির ধাপ</h2>
+      <ul>
+        <li>নকশা অনুযায়ী মাপ নেওয়া ও কাঠ নির্বাচন</li>
+        <li>কাঠ চেরাই ও প্রাথমিক কাটা (Rough Cutting)</li>
+        <li>প্লেনিং করে তল মসৃণ করা</li>
+        <li>মাপ অনুযায়ী চূড়ান্ত কাটা ও জোড়ের অংশ তৈরি (Marking & Joinery)</li>
+        <li>জোড়া লাগানো ও ক্ল্যাম্প দিয়ে চেপে রাখা</li>
+        <li>স্যান্ডপেপার দিয়ে ঘষে মসৃণ করা</li>
+        <li>ফিনিশিং (পলিশ/বার্নিশ/রং) করা</li>
+        <li>হার্ডওয়্যার (কব্জা, হাতল) লাগানো</li>
+      </ul>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="symbols" data-title="প্রতীক চিহ্ন দানা জোড় নকশা">
+      <h2>🔣 কাঠের কাজে ব্যবহৃত সাধারণ চিহ্ন</h2>
+      <div class="card-grid">
+        <div class="w-card"><span class="emoji">↗️</span><b>দানার দিক</b><small>তীর চিহ্নে কাঠের দানার অভিমুখ দেখানো হয়</small></div>
+        <div class="w-card"><span class="emoji">✖️</span><b>কাটার রেখা</b><small>যেখানে করাত চালানো হবে</small></div>
+        <div class="w-card"><span class="emoji">⭘</span><b>ছিদ্র চিহ্ন</b><small>ড্রিল করার স্থান</small></div>
+      </div>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="safety" data-title="সেফটি নিরাপত্তা গগলস গ্লাভস মাস্ক">
+      <h2>🦺 কর্মশালায় সেফটি</h2>
+      <div class="safety-grid">
+        <span class="safety-chip">🥽 সেফটি গগলস পরুন</span>
+        <span class="safety-chip">🧤 গ্লাভস ব্যবহার করুন</span>
+        <span class="safety-chip">😷 ডাস্ট মাস্ক পরুন</span>
+        <span class="safety-chip">👕 আঁটসাঁট পোশাক পরুন</span>
+        <span class="safety-chip">🦻 কানের সুরক্ষা (পাওয়ার টুলে)</span>
+        <span class="safety-chip">🧹 কাজের জায়গা পরিষ্কার রাখুন</span>
+        <span class="safety-chip">🔌 টুল বন্ধ রেখে ব্লেড পরিবর্তন করুন</span>
+        <span class="safety-chip">🚫 আলগা গয়না/ঝুলন্ত কাপড় নয়</span>
+      </div>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="workshoprules" data-title="workshop rules নিয়মাবলী কর্মশালা">
+      <h2>📋 Workshop Rules</h2>
+      <ul>
+        <li>কর্মশালায় ঢোকার আগে ও কাজ শেষে টুলস গুনে রাখুন</li>
+        <li>শিক্ষকের নির্দেশ ছাড়া কোনো পাওয়ার টুল চালাবেন না</li>
+        <li>ধারালো টুলস নির্দিষ্ট স্থানে সংরক্ষণ করুন</li>
+        <li>কাঠের গুঁড়ো ও বর্জ্য নিয়মিত পরিষ্কার করুন</li>
+        <li>প্রথম সাহায্যের বাক্স (First Aid Box) সহজলভ্য রাখুন</li>
+        <li>আগুন নেভানোর যন্ত্র (Fire Extinguisher) সম্পর্কে জেনে রাখুন</li>
+      </ul>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="firstaid" data-title="দুর্ঘটনা প্রাথমিক চিকিৎসা কাটা ক্ষত">
+      <h2>⚠️ দুর্ঘটনা ও প্রাথমিক চিকিৎসা</h2>
+      <p>কাটা বা ছোট আঘাত লাগলে প্রথমে ক্ষতস্থান পরিষ্কার জল দিয়ে ধুয়ে জীবাণুনাশক লাগিয়ে ব্যান্ডেজ করুন। রক্তপাত বেশি হলে বা গভীর ক্ষত হলে দ্রুত ডাক্তার বা হাসপাতালে যোগাযোগ করুন। চোখে কাঠের গুঁড়ো গেলে ঘষবেন না, পরিষ্কার জল দিয়ে ধুয়ে চিকিৎসকের পরামর্শ নিন।</p>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="units" data-title="মাপের একক ইঞ্চি ফুট মিলিমিটার">
+      <h2>📐 মাপের একক</h2>
+      <table>
+        <tr><th>একক</th><th>রূপান্তর</th></tr>
+        <tr><td>১ ইঞ্চি (inch)</td><td>২৫.৪ মিলিমিটার (mm)</td></tr>
+        <tr><td>১ ফুট (foot)</td><td>১২ ইঞ্চি = ৩০৪.৮ মিমি</td></tr>
+        <tr><td>১ ঘনফুট কাঠ (CFT)</td><td>কাঠের পরিমাণ মাপার প্রচলিত একক</td></tr>
+      </table>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="costcalc" data-title="খরচ হিসাব উদাহরণ সিএফটি দাম">
+      <h2>📐 খরচ হিসাব উদাহরণ</h2>
+      <p><b>উদাহরণ:</b> একটি তক্তার মাপ দৈর্ঘ্য ১০ ফুট × প্রস্থ ১ ফুট × পুরুত্ব ১ ইঞ্চি হলে, ঘনফুট (CFT) = (১০ × ১২ × ১) ÷ ১৪৪ = <b>০.৮৩ CFT</b>। প্রতি CFT দাম ১৫০০ টাকা হলে, মোট দাম = ০.৮৩ × ১৫০০ ≈ <b>১২৫০ টাকা</b>।</p>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="environment" data-title="পরিবেশ কাঠ সংরক্ষণ গাছ লাগানো">
+      <h2>🌍 পরিবেশ ও কাঠ সংরক্ষণ</h2>
+      <ul>
+        <li>কাঠের অপচয় কমাতে সঠিক মাপ নিয়ে কাটুন</li>
+        <li>কাঠের ছোট টুকরো পুনর্ব্যবহার (Reuse) করুন</li>
+        <li>প্রতিটি কাঠ ব্যবহারের বিপরীতে গাছ লাগানোর অভ্যাস তৈরি করুন</li>
+        <li>বৈধ ও টেকসই উৎস থেকে কাঠ সংগ্রহ করুন</li>
+      </ul>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="glossary" data-title="পরিভাষা শব্দকোষ গ্লোসারি">
+      <h2>📖 পরিভাষা (Glossary)</h2>
+      <div class="glossary-grid">
+        <table>
+          <tr><th>শব্দ</th><th>অর্থ</th></tr>
+          <tr><td>Grain</td><td>কাঠের দানার গঠন</td></tr>
+          <tr><td>Rough Cutting</td><td>প্রাথমিক মোটা কাটা</td></tr>
+          <tr><td>Planing</td><td>তল মসৃণ করা</td></tr>
+          <tr><td>Joinery</td><td>জোড় তৈরির কৌশল</td></tr>
+          <tr><td>Clamp</td><td>জোড়া চেপে ধরে রাখার যন্ত্র</td></tr>
+          <tr><td>Veneer</td><td>কাঠের পাতলা সাজসজ্জার আবরণ</td></tr>
+        </table>
+      </div>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="syllabus" data-title="wbscvt ncvt পাঠ্যসূচি সিলেবাস">
+      <h2>📚 WBSCVT/NCVT পাঠ্যসূচি সংক্ষেপ</h2>
+      <p>Wood Work Shop বিষয়ের ভোকেশনাল পাঠ্যক্রমে সাধারণত কাঠ শনাক্তকরণ, টুলস পরিচিতি, জোড় তৈরি, ফিনিশিং কৌশল ও কর্মশালা সেফটি অন্তর্ভুক্ত থাকে, যা ব্যবহারিক পরীক্ষা ও প্রজেক্ট ওয়ার্কের মাধ্যমে মূল্যায়ন করা হয়।</p>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="viva" data-title="viva প্রশ্ন মৌখিক পরীক্ষা">
+      <h2>❓ Viva প্রশ্ন (নমুনা)</h2>
+      <ul>
+        <li>হার্ডউড ও সফটউডের মধ্যে পার্থক্য কী?</li>
+        <li>Mortise & Tenon Joint কোথায় ব্যবহৃত হয়?</li>
+        <li>কাঠ Seasoning করার প্রয়োজন কেন?</li>
+        <li>স্যান্ডপেপারের নম্বর বেশি মানে কী বোঝায়?</li>
+        <li>কর্মশালায় পাওয়ার টুল ব্যবহারে কী কী সতর্কতা প্রয়োজন?</li>
+      </ul>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+    <section class="chapter" id="quiz" data-title="mcq কুইজ পরীক্ষা">
+      <h2>📝 MCQ কুইজ</h2>
+      <div id="quizArea"></div>
+    </section>
+
+    <section class="chapter" id="projects" data-title="মিনি প্রজেক্ট প্রজেক্ট আইডিয়া">
+      <h2>🏆 মিনি প্রজেক্ট আইডিয়া</h2>
+      <div class="project-grid">
+        <div class="project-item"><span class="ic">📖</span>বুক স্ট্যান্ড</div>
+        <div class="project-item"><span class="ic">🕯️</span>ক্যান্ডেল হোল্ডার</div>
+        <div class="project-item"><span class="ic">🪑</span>ছোট টুল/স্টুল</div>
+        <div class="project-item"><span class="ic">📦</span>কাঠের বাক্স</div>
+        <div class="project-item"><span class="ic">🖼️</span>ফটো ফ্রেম</div>
+        <div class="project-item"><span class="ic">🐦</span>বার্ড হাউস</div>
+      </div>
+      <button class="mark-btn">✅ পড়া শেষ করলাম</button>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <p>🪵 <b>কাঠের কাজ শপ — Wood Work Shop</b> | Vocational Education</p>
+  <p>Developed by MySkillGame Learning Portal</p>
+  <p class="no-print">📘 Educational Content for Vocational Education Students | বিনামূল্যে, অফলাইন, নিরাপদ শিক্ষামূলক প্ল্যাটফর্ম</p>
+</footer>
+
+<script>
+  history.pushState({page:1}, "wood-shop");
+  window.addEventListener('popstate', function(){
+    var sb = document.getElementById('sidebar');
+    if(sb.classList.contains('open')){
+      closeSidebar();
+      history.pushState({page:1}, "wood-shop");
+    }
+  });
+
+  var sidebar = document.getElementById('sidebar');
+  var overlay = document.getElementById('overlay');
+  var menuBtn = document.getElementById('menuBtn');
+
+  function isMobile(){ return window.innerWidth <= 820; }
+  function updateMenuBtn(){ menuBtn.style.display = isMobile() ? 'inline-block' : 'none'; }
+  updateMenuBtn();
+  window.addEventListener('resize', updateMenuBtn);
+
+  function openSidebar(){
+    sidebar.classList.add('open');
+    overlay.classList.add('show');
+  }
+  function closeSidebar(){
+    sidebar.classList.remove('open');
+    overlay.classList.remove('show');
+  }
+  menuBtn.addEventListener('click', function(){
+    sidebar.classList.contains('open') ? closeSidebar() : openSidebar();
+  });
+  overlay.addEventListener('click', closeSidebar);
+  document.querySelectorAll('.navlink').forEach(function(a){
+    a.addEventListener('click', function(){ if(isMobile()) closeSidebar(); });
+  });
+
+  var themeBtn = document.getElementById('themeBtn');
+  function applyTheme(t){
+    if(t === 'light'){ document.body.classList.add('light'); themeBtn.textContent = '☀️'; }
+    else { document.body.classList.remove('light'); themeBtn.textContent = '🌙'; }
+  }
+  try{
+    var savedTheme = localStorage.getItem('ws_theme') || 'dark';
+    applyTheme(savedTheme);
+  }catch(e){}
+  themeBtn.addEventListener('click', function(){
+    var next = document.body.classList.contains('light') ? 'dark' : 'light';
+    applyTheme(next);
+    try{ localStorage.setItem('ws_theme', next); }catch(e){}
+  });
+
+  document.getElementById('printBtn').addEventListener('click', function(){ window.print(); });
+
+  var searchInput = document.getElementById('searchInput');
+  var chapters = document.querySelectorAll('section.chapter');
+  searchInput.addEventListener('input', function(){
+    var q = this.value.trim().toLowerCase();
+    chapters.forEach(function(sec){
+      var hay = (sec.getAttribute('data-title') + ' ' + sec.innerText).toLowerCase();
+      sec.style.display = (q === '' || hay.indexOf(q) !== -1) ? '' : 'none';
+    });
+  });
+
+  var PROGRESS_KEY = 'ws_progress_v1';
+  var markButtons = document.querySelectorAll('.mark-btn');
+  var totalChapters = markButtons.length;
+
+  function loadProgress(){
+    try{ return JSON.parse(localStorage.getItem(PROGRESS_KEY) || '{}'); }catch(e){ return {}; }
+  }
+  function saveProgress(p){
+    try{ localStorage.setItem(PROGRESS_KEY, JSON.stringify(p)); }catch(e){}
+  }
+  function updateProgressUI(){
+    var p = loadProgress();
+    var count = Object.keys(p).filter(function(k){ return p[k]; }).length;
+    var pct = Math.round((count/totalChapters)*100);
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressText').textContent = pct + '%';
+  }
+  markButtons.forEach(function(btn, idx){
+    var sec = btn.closest('section.chapter');
+    var key = sec.id;
+    var p = loadProgress();
+    if(p[key]){ btn.classList.add('done'); btn.textContent = '✔️ পড়া হয়েছে'; }
+    btn.addEventListener('click', function(){
+      var prog = loadProgress();
+      prog[key] = !prog[key];
+      saveProgress(prog);
+      if(prog[key]){ btn.classList.add('done'); btn.textContent = '✔️ পড়া হয়েছে'; }
+      else { btn.classList.remove('done'); btn.textContent = '✅ পড়া শেষ করলাম'; }
+      updateProgressUI();
+    });
+  });
+  updateProgressUI();
+
+  var navlinks = document.querySelectorAll('.navlink');
+  function onScroll(){
+    var scrollPos = window.scrollY + 100;
+    var current = null;
+    chapters.forEach(function(sec){
+      if(sec.offsetTop <= scrollPos) current = sec.id;
+    });
+    navlinks.forEach(function(a){
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  }
+  window.addEventListener('scroll', onScroll);
+  onScroll();
+
+  var quizData = [
+    {q:"সবচেয়ে বেশি জল-প্রতিরোধী ও টেকসই কাঠ কোনটি?", opts:["পাইন","সেগুন","দেবদারু","প্লাইউড"], correct:1},
+    {q:"Mortise & Tenon Joint প্রধানত কোথায় ব্যবহৃত হয়?", opts:["দরজা-জানালার ফ্রেমে","কার্পেটে","রঙে","পেরেকে"], correct:0},
+    {q:"কাঠ শুকানোর প্রক্রিয়াকে কী বলে?", opts:["Polishing","Seasoning","Joinery","Sanding"], correct:1},
+    {q:"নিচের কোনটি হ্যান্ড টুল?", opts:["Router","Chisel","Table Saw","Orbital Sander"], correct:1},
+    {q:"স্যান্ডপেপারের নম্বর বেশি হলে দানা কেমন হয়?", opts:["মোটা","মিহি","পরিবর্তন হয় না","কোনোটিই নয়"], correct:1},
+    {q:"কাঠের দানা বরাবর লম্বালম্বি কাটতে কোন করাত ব্যবহৃত হয়?", opts:["Rip Saw","Cross Cut Saw","Coping Saw","Hacksaw"], correct:0},
+    {q:"MDF Board কী দিয়ে তৈরি হয়?", opts:["কঠিন কাঠের টুকরো","কাঠের গুঁড়ো চাপ দিয়ে","প্লাস্টিক দিয়ে","ধাতু দিয়ে"], correct:1},
+    {q:"Try Square কী কাজে ব্যবহৃত হয়?", opts:["কাটা কাঠ পালিশ করতে","সমকোণ যাচাই করতে","জোড়া আঠা লাগাতে","রং করতে"], correct:1},
+    {q:"French Polish কী ধরনের ফিনিশিং?", opts:["রঙিন ও অস্বচ্ছ","উজ্জ্বল মসৃণ চকচকে","রুক্ষ ও মোটা","শুধু বাইরের কাজে"], correct:1},
+    {q:"গিঁট (Knot) কাঠের কী ধরনের বৈশিষ্ট্য?", opts:["ভালো গুণ","একটি ত্রুটি","ফিনিশিং কৌশল","জোড় তৈরির অংশ"], correct:1},
+    {q:"Dovetail Joint সাধারণত কোথায় ব্যবহৃত হয়?", opts:["ড্রয়ারের কোণে","জানালার কাচে","মেঝেতে","ছাদে"], correct:0},
+    {q:"১ ফুট সমান কত ইঞ্চি?", opts:["১০","১২","১৪","১৬"], correct:1},
+    {q:"পাওয়ার টুল ব্যবহারের সময় প্রধান সেফটি সরঞ্জাম কোনটি?", opts:["সেফটি গগলস","টুপি","জুতার ফিতা","রুমাল"], correct:0},
+    {q:"Wood Glue প্রধানত কী কাজে লাগে?", opts:["রং করতে","জোড় মজবুত করতে","মাপতে","পালিশ করতে"], correct:1},
+    {q:"Veneer বলতে কী বোঝায়?", opts:["পুরু শক্ত কাঠ","কাঠের পাতলা সাজসজ্জার আবরণ","একটি হাতিয়ার","একটি জোড়"], correct:1},
+    {q:"কর্মশালায় কাজ শুরুর আগে সবচেয়ে গুরুত্বপূর্ণ অভ্যাস কী?", opts:["গান শোনা","মাপ যাচাই ও সেফটি চেক করা","দ্রুত কাজ শুরু করা","টুলস এলোমেলো রাখা"], correct:1},
+    {q:"Circular Saw কোন ধরনের টুল?", opts:["হ্যান্ড টুল","পাওয়ার টুল","মাপার যন্ত্র","ফিনিশিং উপকরণ"], correct:1},
+    {q:"কাঠের গায়ে চিড় ধরাকে কী বলে?", opts:["Warping","Crack/Shake","Seasoning","Grain"], correct:1},
+    {q:"Bench Vice কী কাজে ব্যবহৃত হয়?", opts:["কাঠ পরিমাপ করতে","কাঠ শক্তভাবে ধরে রাখতে","রং করতে","পালিশ করতে"], correct:1},
+    {q:"পরিবেশ সংরক্ষণে কাঠের কাজে কোনটি উচিত?", opts:["কাঠ অপচয় করা","কাঠের টুকরো পুনর্ব্যবহার করা","গাছ কাটা বন্ধ না করা","কোনো সতর্কতা না নেওয়া"], correct:1}
+  ];
+  var qIndex = 0, score = 0, answered = false;
+  var quizArea = document.getElementById('quizArea');
+
+  function renderQuiz(){
+    if(qIndex >= quizData.length){
+      quizArea.innerHTML = '<div class="quiz-score">🎉 কুইজ সম্পন্ন হয়েছে!<br>আপনার স্কোর: ' + score + ' / ' + quizData.length + '</div>' +
+        '<div style="text-align:center;"><button class="quiz-nav-btn" id="restartQuiz">🔄 আবার শুরু করুন</button></div>';
+      document.getElementById('restartQuiz').addEventListener('click', function(){
+        qIndex = 0; score = 0; renderQuiz();
+      });
+      return;
+    }
+    answered = false;
+    var item = quizData[qIndex];
+    var html = '<div class="quiz-box">' +
+      '<div class="quiz-q">প্রশ্ন ' + (qIndex+1) + ' / ' + quizData.length + ': ' + item.q + '</div>' +
+      '<div class="quiz-opts">';
+    item.opts.forEach(function(opt, i){
+      html += '<button class="quiz-opt" data-i="' + i + '">' + opt + '</button>';
+    });
+    html += '</div>' +
+      '<div class="quiz-footer"><span>স্কোর: ' + score + '</span>' +
+      '<button class="quiz-nav-btn" id="nextQ" style="visibility:hidden;">পরের প্রশ্ন ➡️</button></div>' +
+      '</div>';
+    quizArea.innerHTML = html;
+
+    var optBtns = quizArea.querySelectorAll('.quiz-opt');
+    optBtns.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if(answered) return;
+        answered = true;
+        var chosen = parseInt(this.getAttribute('data-i'));
+        optBtns.forEach(function(b, i){
+          if(i === item.correct) b.classList.add('correct');
+          else if(i === chosen) b.classList.add('wrong');
+        });
+        if(chosen === item.correct) score++;
+        document.getElementById('nextQ').style.visibility = 'visible';
+        quizArea.querySelector('.quiz-footer span').textContent = 'স্কোর: ' + score;
+      });
+    });
+    document.getElementById('nextQ').addEventListener('click', function(){
+      qIndex++; renderQuiz();
+    });
+  }
+  renderQuiz();
+</script>
+
+</body>
+</html>

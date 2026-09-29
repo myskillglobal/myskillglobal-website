@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ফ্ল্যাট কিনবেন, নাকি জমি?</title>
+<!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1034022057999423" crossorigin="anonymous"></script>
+
+  <!-- Firebase Analytics -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-analytics.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDfxtOP-YCrCXtQxZrrFNC1uXucvbW0K78",
+      authDomain: "my-skill-global.firebaseapp.com",
+      projectId: "my-skill-global",
+      storageBucket: "my-skill-global.firebasestorage.app",
+      messagingSenderId: "978471914749",
+      appId: "1:978471914749:web:595750b5d90738933f4294",
+      measurementId: "G-8D9BPY8HJ0"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla:ital@0;1&family=Hind+Siliguri:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EDE8DA;
+    --paper-2:#E4DDC8;
+    --ink:#2A2721;
+    --ink-soft:#5B5548;
+    --line:#C9BFA4;
+    --brick:#A6432E;
+    --brick-deep:#7E3122;
+    --soil:#4C6B45;
+    --soil-deep:#38502F;
+    --brass:#A9862F;
+    --panel:#F6F2E6;
+    --shadow: 0 1px 0 rgba(42,39,33,0.06);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(1200px 600px at 10% -10%, rgba(169,134,47,0.10), transparent 60%),
+      radial-gradient(1000px 700px at 100% 0%, rgba(76,107,69,0.08), transparent 55%),
+      var(--paper);
+    color:var(--ink);
+    font-family:'Hind Siliguri', sans-serif;
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  /* Grain / ledger paper texture */
+  .grain{
+    position:fixed; inset:0; pointer-events:none; z-index:1; opacity:0.05; mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  a{color:var(--brick-deep);}
+
+  .wrap{max-width:760px; margin:0 auto; padding:0 24px; position:relative; z-index:2;}
+
+  /* ===== Header / masthead ===== */
+  header.masthead{
+    padding:56px 24px 0;
+    max-width:760px; margin:0 auto; position:relative; z-index:2;
+  }
+  .stamp{
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:'JetBrains Mono', monospace; font-size:11.5px; letter-spacing:.14em;
+    color:var(--ink-soft); text-transform:uppercase; border:1px solid var(--line);
+    padding:6px 12px; border-radius:2px; background:var(--panel);
+  }
+  .stamp .dot{width:6px;height:6px;border-radius:50%; background:var(--brick);}
+  h1.title{
+    font-family:'Tiro Bangla', serif;
+    font-weight:400;
+    font-size:clamp(34px, 6vw, 58px);
+    line-height:1.18;
+    margin:22px 0 10px;
+    letter-spacing:-0.01em;
+  }
+  h1.title em{
+    font-style:normal;
+    background:linear-gradient(180deg, transparent 62%, rgba(166,67,46,0.22) 62%);
+  }
+  p.deck{
+    font-size:clamp(16px, 2.4vw, 19px);
+    color:var(--ink-soft);
+    max-width:56ch;
+    margin:0 0 34px;
+  }
+  .rule{
+    height:1px; background:repeating-linear-gradient(90deg, var(--line) 0 6px, transparent 6px 10px);
+    margin:0 0 40px;
+  }
+
+  /* ===== Signature: 20-year aging comparator ===== */
+  .comparator{
+    max-width:760px; margin:0 auto 56px; padding:0 24px; position:relative; z-index:2;
+  }
+  .comp-frame{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:26px 22px 22px;
+    box-shadow: var(--shadow);
+  }
+  .comp-head{
+    display:flex; justify-content:space-between; align-items:baseline; gap:16px; flex-wrap:wrap;
+    margin-bottom:14px;
+  }
+  .comp-head h2{
+    font-family:'Tiro Bangla', serif; font-weight:400; font-size:19px; margin:0;
+  }
+  .year-badge{
+    font-family:'JetBrains Mono', monospace; font-size:13px; color:var(--brick-deep);
+    background:rgba(166,67,46,0.08); border:1px solid rgba(166,67,46,0.25);
+    padding:3px 10px; border-radius:999px; white-space:nowrap;
+  }
+  .panels{
+    display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:10px;
+  }
+  @media (max-width:520px){ .panels{grid-template-columns:1fr;} }
+  .panel{
+    border:1px solid var(--line); border-radius:3px; background:#fff;
+    overflow:hidden; position:relative;
+  }
+  .panel .label{
+    display:flex; justify-content:space-between; align-items:center;
+    font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.06em;
+    padding:8px 10px; text-transform:uppercase;
+  }
+  .panel.flat .label{ background:rgba(166,67,46,0.09); color:var(--brick-deep); }
+  .panel.land .label{ background:rgba(76,107,69,0.10); color:var(--soil-deep); }
+  .panel svg{display:block; width:100%; height:auto;}
+  .panel .caption{
+    font-size:13.5px; color:var(--ink-soft); padding:9px 12px 12px; min-height:38px;
+  }
+  .slider-row{
+    margin-top:18px; display:flex; align-items:center; gap:14px;
+  }
+  input[type=range]{
+    -webkit-appearance:none; appearance:none; width:100%; height:4px;
+    background:linear-gradient(90deg, var(--brass), var(--line));
+    border-radius:2px; outline:none;
+  }
+  input[type=range]::-webkit-slider-thumb{
+    -webkit-appearance:none; width:18px; height:18px; border-radius:50%;
+    background:var(--panel); border:2px solid var(--brass); cursor:pointer;
+    box-shadow:0 1px 3px rgba(0,0,0,0.25);
+  }
+  input[type=range]::-moz-range-thumb{
+    width:18px; height:18px; border-radius:50%;
+    background:var(--panel); border:2px solid var(--brass); cursor:pointer;
+  }
+  .slider-hint{
+    font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--ink-soft); white-space:nowrap;
+  }
+  .comp-foot{
+    margin-top:16px; font-size:13.5px; color:var(--ink-soft); border-top:1px dashed var(--line); padding-top:14px;
+  }
+
+  /* ===== Article body ===== */
+  main{max-width:760px; margin:0 auto; padding:0 24px 40px; position:relative; z-index:2;}
+  section.chapter{ margin-bottom:52px; }
+  .chapter-mark{
+    display:flex; align-items:center; gap:12px; margin-bottom:14px;
+  }
+  .glyph{
+    width:38px; height:38px; flex:0 0 auto;
+    border-radius:3px; border:1px solid var(--line); background:var(--panel);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .glyph svg{ width:20px; height:20px; }
+  h2.h{
+    font-family:'Tiro Bangla', serif; font-weight:400;
+    font-size:clamp(22px, 3.4vw, 27px);
+    margin:0;
+  }
+  .chapter p{ margin:0 0 16px; font-size:16.5px; }
+  .chapter p.lede{
+    font-size:18px; color:var(--ink); 
+  }
+  .pull{
+    font-family:'Tiro Bangla', serif; font-style:italic; font-size:20px;
+    color:var(--brick-deep); border-right:3px solid var(--brick); padding-right:16px;
+    margin:22px 0; text-align:right; direction:rtl;
+  }
+  .pull[dir="ltr-note"]{}
+
+  blockquote.q{
+    margin:24px 0; padding:18px 20px; background:var(--panel);
+    border-inline-start:3px solid var(--brass); border-radius:2px;
+    font-size:17px; color:var(--ink);
+  }
+
+  /* two-track tags used throughout: flat=brick, land=soil */
+  .tag{
+    display:inline-block; font-family:'JetBrains Mono', monospace; font-size:11px;
+    letter-spacing:.06em; padding:2px 8px; border-radius:999px; margin-inline-end:6px;
+    vertical-align:middle;
+  }
+  .tag.flat{ background:rgba(166,67,46,0.10); color:var(--brick-deep); border:1px solid rgba(166,67,46,0.28); }
+  .tag.land{ background:rgba(76,107,69,0.12); color:var(--soil-deep); border:1px solid rgba(76,107,69,0.28); }
+
+  /* table */
+  .table-wrap{ overflow-x:auto; margin:22px 0; border:1px solid var(--line); border-radius:4px; }
+  table{ width:100%; border-collapse:collapse; background:#fff; font-size:14.5px; }
+  th, td{ text-align:right; padding:11px 14px; border-bottom:1px solid var(--line); }
+  th{ font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.05em; text-transform:uppercase; background:var(--panel); color:var(--ink-soft); }
+  td:first-child, th:first-child{ text-align:right; }
+  tr:last-child td{ border-bottom:none; }
+  td.flatcol{ color:var(--brick-deep); font-weight:600; }
+  td.landcol{ color:var(--soil-deep); font-weight:600; }
+
+  /* worked example ledger */
+  .ledger{
+    background:var(--panel); border:1px solid var(--line); border-radius:4px;
+    padding:22px; margin:22px 0;
+  }
+  .ledger h3{
+    font-family:'Tiro Bangla', serif; font-weight:400; font-size:18px; margin:0 0 14px;
+  }
+  .ledger-row{
+    display:flex; justify-content:space-between; align-items:baseline;
+    padding:9px 0; border-bottom:1px dashed var(--line); font-size:15px;
+  }
+  .ledger-row:last-child{ border-bottom:none; }
+  .ledger-row .amt{ font-family:'JetBrains Mono', monospace; font-weight:600; }
+  .ledger-row.total{ padding-top:14px; margin-top:6px; border-top:1px solid var(--ink); border-bottom:none; }
+  .ledger-row.total .amt{ font-size:17px; color:var(--brick-deep); }
+  .ledger-note{ margin-top:14px; font-size:13.5px; color:var(--ink-soft); }
+
+  /* amenities grid (realistic, mofussil-town) */
+  .amenity-grid{
+    display:grid; grid-template-columns:repeat(2, 1fr); gap:10px; margin:20px 0;
+  }
+  @media (max-width:480px){ .amenity-grid{grid-template-columns:1fr;} }
+  .amenity{
+    display:flex; gap:10px; align-items:flex-start;
+    background:#fff; border:1px solid var(--line); border-radius:3px; padding:12px 13px;
+    font-size:14.5px;
+  }
+  .amenity svg{ width:18px; height:18px; flex:0 0 auto; margin-top:2px; color:var(--brick-deep); }
+
+  /* checklist */
+  .check-grid{ display:grid; grid-template-columns:1fr 1fr; gap:18px; margin:24px 0; }
+  @media (max-width:560px){ .check-grid{grid-template-columns:1fr;} }
+  .check-col{ background:#fff; border:1px solid var(--line); border-radius:4px; padding:18px; }
+  .check-col h4{ margin:0 0 12px; font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:.06em; text-transform:uppercase; }
+  .check-col.good h4{ color:var(--soil-deep); }
+  .check-col.bad h4{ color:var(--brick-deep); }
+  .check-col ul{ margin:0; padding:0; list-style:none; }
+  .check-col li{ display:flex; gap:8px; font-size:14.5px; margin-bottom:9px; }
+  .check-col li svg{ width:16px; height:16px; flex:0 0 auto; margin-top:3px; }
+  .check-col.good li svg{ color:var(--soil-deep); }
+  .check-col.bad li svg{ color:var(--brick-deep); }
+
+  /* closing */
+  .closing{
+    margin-top:8px; padding:30px 26px; border-radius:4px;
+    background:linear-gradient(180deg, var(--panel), var(--paper-2));
+    border:1px solid var(--line);
+  }
+  .closing .kicker{ font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.12em; color:var(--ink-soft); text-transform:uppercase; margin-bottom:10px; }
+  .closing p.big{ font-family:'Tiro Bangla', serif; font-size:22px; line-height:1.6; margin:0 0 16px; }
+  .closing .final-quote{
+    font-size:17px; font-weight:600; color:var(--ink); border-top:1px solid var(--line); padding-top:16px; margin-top:16px;
+  }
+
+  footer{
+    max-width:760px; margin:0 auto; padding:20px 24px 60px; position:relative; z-index:2;
+    font-size:12.5px; color:var(--ink-soft); font-family:'JetBrains Mono', monospace;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+  }
+
+  :focus-visible{ outline:2px solid var(--brass); outline-offset:2px; }
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<header class="masthead">
+  <span class="stamp"><span class="dot"></span>সম্পত্তি ও সিদ্ধান্ত — একটি খতিয়ান</span>
+  <h1 class="title">স্বপ্নের ফ্ল্যাট, <em>নাকি জমি-বাড়ি?</em></h1>
+  <p class="deck">সিদ্ধান্ত নেওয়ার আগে কিছু কঠিন সত্য জানা দরকার — চকচকে লবি আর ব্রোশিওরের বাইরে, বাস্তবের হিসাব।</p>
+  <div class="rule"></div>
+</header>
+
+<!-- ===== Signature interactive: 20-year comparator ===== -->
+<div class="comparator">
+  <div class="comp-frame">
+    <div class="comp-head">
+      <h2>একটাই প্রশ্ন — ২০ বছর পরে কী থাকবে?</h2>
+      <span class="year-badge" id="yearBadge">বছর ০০</span>
+    </div>
+    <div class="panels">
+      <div class="panel flat">
+        <div class="label"><span>ফ্ল্যাট</span><span>Ageing</span></div>
+        <svg id="flatSvg" viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="0" width="300" height="190" fill="#F6F2E6"/>
+          <rect x="30" y="150" width="240" height="4" fill="#C9BFA4"/>
+          <!-- building -->
+          <g id="flatBuilding">
+            <rect x="70" y="45" width="160" height="105" fill="#E7D9C6" stroke="#7E3122" stroke-width="1.5"/>
+            <rect x="70" y="45" width="160" height="10" fill="#A6432E"/>
+            <g id="flatWindows" fill="#7EA0C4">
+              <rect x="84" y="62" width="20" height="16"/>
+              <rect x="114" y="62" width="20" height="16"/>
+              <rect x="144" y="62" width="20" height="16"/>
+              <rect x="174" y="62" width="20" height="16"/>
+              <rect x="204" y="62" width="16" height="16"/>
+              <rect x="84" y="90" width="20" height="16"/>
+              <rect x="114" y="90" width="20" height="16"/>
+              <rect x="144" y="90" width="20" height="16"/>
+              <rect x="174" y="90" width="20" height="16"/>
+              <rect x="204" y="90" width="16" height="16"/>
+              <rect x="84" y="118" width="20" height="16"/>
+              <rect x="114" y="118" width="20" height="16"/>
+              <rect x="144" y="118" width="20" height="16"/>
+              <rect x="174" y="118" width="20" height="16"/>
+              <rect x="204" y="118" width="16" height="16"/>
+            </g>
+          </g>
+          <!-- crack overlay, opacity driven by JS -->
+          <g id="flatCracks" stroke="#5B5548" stroke-width="1" fill="none" opacity="0">
+            <path d="M110 45 L118 70 L108 95 L120 118"/>
+            <path d="M190 50 L182 75 L196 100"/>
+            <path d="M75 130 L95 148"/>
+          </g>
+          <g id="flatStain" opacity="0">
+            <ellipse cx="150" cy="150" rx="70" ry="10" fill="#8C8266" opacity="0.35"/>
+          </g>
+        </svg>
+        <div class="caption" id="flatCaption">নতুন রং, নতুন লিফট, ঝকঝকে লবি।</div>
+      </div>
+
+      <div class="panel land">
+        <div class="label"><span>জমি</span><span>Constant</span></div>
+        <svg id="landSvg" viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="0" width="300" height="190" fill="#F6F2E6"/>
+          <rect x="20" y="150" width="260" height="30" fill="#4C6B45"/>
+          <rect x="20" y="150" width="260" height="4" fill="#38502F"/>
+          <!-- boundary pegs -->
+          <g stroke="#38502F" stroke-width="2">
+            <line x1="20" y1="150" x2="20" y2="140"/>
+            <line x1="280" y1="150" x2="280" y2="140"/>
+            <line x1="150" y1="150" x2="150" y2="143"/>
+          </g>
+          <text x="150" y="168" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#F6F2E6">৫ কাঠা — আয়তন অপরিবর্তিত</text>
+          <!-- tree that simply grows -->
+          <g id="landTree" transform="translate(70,150)">
+            <rect x="-3" y="-24" width="6" height="24" fill="#5B4632"/>
+            <circle cx="0" cy="-30" r="14" fill="#5C8A52"/>
+          </g>
+          <!-- new house outline that appears late -->
+          <g id="newHouse" opacity="0" transform="translate(175,0)">
+            <rect x="0" y="108" width="80" height="42" fill="none" stroke="#38502F" stroke-width="2" stroke-dasharray="4 3"/>
+            <polygon points="-4,108 84,108 40,86" fill="none" stroke="#38502F" stroke-width="2" stroke-dasharray="4 3"/>
+          </g>
+        </svg>
+        <div class="caption" id="landCaption">সীমানা এক, জায়গাটা এক থাকে।</div>
+      </div>
+    </div>
+
+    <div class="slider-row">
+      <span class="slider-hint">০ বছর</span>
+      <input type="range" id="yearSlider" min="0" max="20" value="0" step="1" aria-label="বছর নির্বাচন করুন">
+      <span class="slider-hint">২০ বছর</span>
+    </div>
+    <div class="comp-foot" id="compFoot">
+      স্লাইডার সরিয়ে দেখুন — একই সময়ে বিল্ডিং-এর রং, দেয়াল আর লিফট বুড়ো হয়, কিন্তু জমির আয়তন আর অবস্থান একই থেকে যায়। পরে সেই জমিতে নতুন প্রয়োজন অনুযায়ী বাড়ি তোলা যায়।
+    </div>
+  </div>
+</div>
+
+<main>
+
+  <section class="chapter" id="s1">
+    <div class="chapter-mark">
+      <span class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="#7E3122" stroke-width="1.6"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"/></svg></span>
+      <h2 class="h">ছোটবেলা থেকে শোনা একটা কথা</h2>
+    </div>
+    <p class="lede">মানুষ যতই কম উপার্জন করুক, নিজের মাথার উপর একটা ছাদ থাকা উচিত — নিজের একটা বাড়ি থাকা উচিত। কথাটা ভুল নয়। নিজের একটা নিরাপদ ঠিকানা জীবনে সত্যিই গুরুত্বপূর্ণ।</p>
+    <p>কিন্তু শহর ও মফস্‌সলের জীবনে সেই “নিজের বাড়ি” বলতে আমরা এখন প্রায়ই একটা ফ্ল্যাটকেই বুঝি। ঝকঝকে বিল্ডিং, লিফট, নিরাপত্তা — একটা আধুনিক জীবনযাপনের ছবি সামনে তুলে ধরা হয়। কিন্তু প্রশ্ন হলো — আজ যে ফ্ল্যাটটা এত সুন্দর দেখাচ্ছে, ২০ বছর পর সেটা কেমন থাকবে? এই প্রশ্নটাই আমরা প্রায়ই করি না।</p>
+  </section>
+
+  <section class="chapter" id="s2">
+    <div class="chapter-mark">
+      <span class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="#7E3122" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="1"/><path d="M4 10h16M10 4v16"/></svg></span>
+      <h2 class="h">নতুন ফ্ল্যাটের সবচেয়ে বড় আকর্ষণ — তার নতুনত্ব <span class="tag flat">ফ্ল্যাট</span></h2>
+    </div>
+    <p>নতুন ফ্ল্যাট তৈরি হওয়ার সময় দেখতে অত্যন্ত সুন্দর লাগে — নতুন রং, নতুন লিফট, আধুনিক ডিজাইন। কিন্তু সময় থেমে থাকে না। ১০, ১৫, ২০ বছর পরে বিল্ডিং পুরনো হয়, নির্মাণের মানের সমস্যা দেখা দিতে পারে — দেয়ালে স্যাঁতসেঁতে ভাব, রং ওঠা, রক্ষণাবেক্ষণের সমস্যা ধীরে ধীরে সামনে আসে।</p>
+    <p>আর ফ্ল্যাটের মালিক হিসেবে আপনি ইচ্ছেমতো পুরো বিল্ডিং ভেঙে নতুন করে গড়তে পারবেন না — আপনার ছাদ অন্যের ব্যবহারের জায়গার সঙ্গে যুক্ত, আপনার দেয়াল অন্য ফ্ল্যাটের দেয়ালের অংশ, উপরে-নিচের প্রতিবেশীরও অধিকার আছে।</p>
+    <p class="pull">ফ্ল্যাট আপনার হলেও, পুরো বিল্ডিংয়ের উপর আপনার একক নিয়ন্ত্রণ নেই।</p>
+  </section>
+
+  <section class="chapter" id="s3">
+    <div class="chapter-mark">
+      <span class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="#7E3122" stroke-width="1.6"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 10h20"/></svg></span>
+      <h2 class="h">২০ বছরের EMI — একটা বড় প্রশ্ন</h2>
+    </div>
+    <p>ধরা যাক আপনি একটা ফ্ল্যাট কিনলেন, ২০ বছরের ঋণ নিলেন। প্রথম দিকে মনে হবে — “EMI দিচ্ছি, একদিন ফ্ল্যাটটা পুরোপুরি আমার হয়ে যাবে।” কিন্তু সেই দিন যখন আসবে, ফ্ল্যাটটার বয়সও প্রায় ২০ বছর হয়ে গেছে। অর্থাৎ আপনি যখন ঋণমুক্ত হলেন, সম্পত্তিটা তখন আর আগের মতো নতুন নেই।</p>
+    <p>প্রশ্ন আসে — যে সম্পত্তির জন্য এতদিন টাকা দিলেন, সেটা তখন বাজারে কতটা আকর্ষণীয় থাকবে?</p>
+  </section>
+
+  <section class="chapter" id="s4">
+    <div class="chapter-mark">
+      <span class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="#7E3122" stroke-width="1.6"><path d="M3 17l6-6 4 4 8-8M21 7v6h-6"/></svg></span>
+      <h2 class="h">পুরনো ফ্ল্যাটের চাহিদা কমতে পারে</h2>
+    </div>
+    <p>নতুন প্রজন্ম সাধারণত নতুন ডিজাইন আর আধুনিক জীবনযাপনের দিকে বেশি আকৃষ্ট হয়। আজ যা আধুনিক মনে হচ্ছে, ২০ বছর পরে সেটাই পুরনো হয়ে যেতে পারে — আর ততদিনে আশপাশে আরও নতুন প্রকল্প তৈরি হবে। নতুনের চাহিদা বাড়লে পুরনোর আকর্ষণ কমতে পারে।</p>
+    <p>তাই শুধু এই হিসাব যথেষ্ট নয় — “আজ যে দামে কিনলাম, ২০ বছর পরে নিশ্চয়ই দ্বিগুণ হবে।” সম্পত্তির দাম শুধু সময়ের সঙ্গে বাড়বে, এমন নিশ্চয়তা নেই। এলাকার উন্নয়ন, চাহিদা, নির্মাণের মান, বয়স ও বাজার পরিস্থিতি — সবই গুরুত্বপূর্ণ।</p>
+  </section>
+
+  <section class="chapter" id="s5">
+    <div class="chapter-mark">
+      <span class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="#7E3122" stroke-width="1.6"><path d="M4 20V10M10 20V4M16 20v-7M22 20v-3"/></svg></span>
+      <h2 class="h">Supply বনাম Demand</h2>
+    </div>
+    <p>যে সম্পদের জোগান সহজে বাড়ানো যায়, তার দামবৃদ্ধির গতি সবসময় সীমাহীন হয় না। একটা এলাকায় একের পর এক নতুন বিল্ডিং তৈরি করা সম্ভব — আজ যেখানে একটা আবাসন প্রকল্প, কয়েক বছর পরে তার পাশেই আরও কয়েকটা প্রকল্প উঠতে পারে। অর্থাৎ ফ্ল্যাটের জোগান বাড়তে থাকে।</p>
+    <p>জমির ক্ষেত্রে বিষয়টা আলাদা। পৃথিবীর মোট জমির পরিমাণ সীমাহীন নয়। মানুষ বাড়ছে, বসতি বাড়ছে, রাস্তা-বাজার-কর্মসংস্থানের প্রয়োজন বাড়ছে — তাই ভালো অবস্থানের জমির সীমাবদ্ধতা একটা গুরুত্বপূর্ণ বিষয়।</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>বিষয়</th><th>ফ্ল্যাট</th><th>জমি</th></tr></thead>
+        <tbody>
+          <tr><td>জোগান বাড়ানো যায় কি না</td><td class="flatcol">সহজে বাড়ে</td><td class="landcol">সীমাবদ্ধ</td></tr>
+          <tr><td>২০ বছর পরে কাঠামো</td><td class="flatcol">পুরনো হয়, ভাঙা কঠিন</td><td class="landcol">ভাঙা-গড়া নিজের হাতে</td></tr>
+          <tr><td>রক্ষণাবেক্ষণ খরচ</td><td class="flatcol">নিয়মিত আছে</td><td class="landcol">প্রায় নেই</td></tr>
+          <tr><td>একক সিদ্ধান্তের স্বাধীনতা</td><td class="flatcol">সীমিত (যৌথ ভবন)</td><td class="landcol">নিজের হাতে</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="chapter" id="s6">
+    <div class="chapter-mark">
+      <span class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="#38502F" stroke-width="1.6"><path d="M12 2v14M6 12c0 4 2.5 6 6 6s6-2 6-6c0-3-2-5-6-9-4 4-6 6-6 9z"/></svg></span>
+      <h2 class="h">জমির বিশেষত্ব কোথায়? <span class="tag land">জমি</span></h2>
+    </div>
+    <p>একটা বাড়ি ২০ বছর পরে পুরনো হতে পারে। চাইলে সেটা ভেঙে নতুন করে তোলা যায়। কিন্তু জমিটা থেকে যায়। আজ সেখানে পুরনো বাড়ি আছে, আগামী দিনে সেই বাড়ি ভেঙে নতুন বাড়ি হতে পারে — বাড়ির বয়স বাড়ে, কিন্তু জমির জায়গাটা পুরনো হয় না।</p>
+    <p>এই কারণেই পরবর্তী প্রজন্মের জন্য সম্পদ তৈরি করার ক্ষেত্রে জমির গুরুত্ব অনেক সময় বেশি হতে পারে। তবে এর মানে এই নয় যে যে-কোনো জায়গায় জমি কিনলেই নিশ্চিত লাভ হবে — জমির অবস্থান, রাস্তা, আইনি কাগজপত্র, ভবিষ্যৎ উন্নয়ন, ব্যবহারযোগ্যতা সবই গুরুত্বপূর্ণ।</p>
+  </section>
+
+  <section class="chapter" id="s7">
+    <div class="chapter-mark">
+      <span class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="#7E3122" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
+      <h2 class="h">যে সুবিধাগুলো বিজ্ঞাপনে দেখানো হয়, বাস্তবে সেগুলোই থাকে না</h2>
+    </div>
+    <p>বড় শহরের বিজ্ঞাপনে সুইমিং পুল বা ক্লাব হাউসের কথা শোনা যায় ঠিকই, কিন্তু নদিয়ার মতো জেলার ছোট শহর বা মফস্‌সলে বেশিরভাগ নতুন ফ্ল্যাটে আসলে যেগুলো থাকে, তার তালিকাটা অনেক ছোট এবং বাস্তব:</p>
+    <div class="amenity-grid">
+      <div class="amenity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6" y="2" width="12" height="20" rx="1"/><path d="M9 6h6M9 10h6M9 14h6"/></svg><span>লিফট (সব সময়ে চালু থাকে না)</span></div>
+      <div class="amenity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12h18M12 3v18"/></svg><span>জেনারেটর ব্যাক-আপ — সীমিত পাওয়ারে</span></div>
+      <div class="amenity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><span>একজন নিরাপত্তারক্ষী / গেট</span></div>
+      <div class="amenity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="10" width="18" height="9"/><path d="M3 10l9-6 9 6"/></svg><span>একটা করে খোলা/ঢাকা পার্কিং স্পেস</span></div>
+      <div class="amenity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 6h16v12H4zM4 10h16"/></svg><span>ছাদে জলের ট্যাংক, নিজস্ব বোরিং</span></div>
+      <div class="amenity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20V10l8-6 8 6v10"/></svg><span>ছাদে ওঠার সাধারণ অধিকার</span></div>
+    </div>
+    <p>এগুলোও নিঃসন্দেহে জীবনযাত্রাকে সহজ করে। কিন্তু প্রশ্ন একই থাকে — আপনি প্রতিটা কতটা ব্যবহার করবেন, আর যেটুকু ব্যবহার করেন না তারও রক্ষণাবেক্ষণ খরচ (মেনটেন্যান্স) কি আপনাকেই বইতে হচ্ছে না?</p>
+    <p>অর্থাৎ ফ্ল্যাট কেনার সময় শুধু EMI নয় — <strong>EMI + মেনটেন্যান্স + অন্যান্য খরচ = প্রকৃত মাসিক ব্যয়</strong>। এই হিসাব অনেকে ঠিকভাবে করেন না।</p>
+  </section>
+
+  <section class="chapter" id="s8">
+    <div class="chapter-mark">
+      <span class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="#7E3122" stroke-width="1.6"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></span>
+      <h2 class="h">Asset নাকি Liability?</h2>
+    </div>
+    <p>এখানেই পুরো বিষয়ের সবচেয়ে গুরুত্বপূর্ণ শিক্ষা। যে সম্পদ আপনার পকেটে টাকা আনে, সেটা Asset-এর মতো কাজ করে। যে সম্পদ নিয়মিত আপনার পকেট থেকে টাকা নিয়ে যায়, সেটা Liability-এর মতো আচরণ করে।</p>
+
+    <div class="ledger">
+      <h3>একটা বাস্তব হিসাব — মফস্‌সল শহরের একটা ফ্ল্যাট</h3>
+      <div class="ledger-row"><span>ফ্ল্যাটের দাম (ধরা যাক)</span><span class="amt">₹৩৫,০০,০০০</span></div>
+      <div class="ledger-row"><span>২০ বছরের ঋণে মাসিক EMI (আনুমানিক)</span><span class="amt">₹২৮,০০০</span></div>
+      <div class="ledger-row"><span>মেনটেন্যান্স ও অন্যান্য মাসিক খরচ</span><span class="amt">₹১,৫০০</span></div>
+      <div class="ledger-row"><span>ভাড়া দিলে সম্ভাব্য মাসিক আয় (একই এলাকায়)</span><span class="amt">₹৯,০০০ – ১১,০০০</span></div>
+      <div class="ledger-row total"><span>মাসে পকেট থেকে বাড়তি যাচ্ছে</span><span class="amt">≈ ₹১৮,৫০০ – ২০,৫০০</span></div>
+      <p class="ledger-note">ছোট শহরে ভাড়ার হার সাধারণত সম্পত্তির দামের তুলনায় কম হয় (বাৎসরিক ভাড়া-আয় দামের মোটামুটি ৩–৪ শতাংশের কাছাকাছি) — তাই EMI আর ভাড়ার মধ্যে ফারাকটা প্রায়শই বড়ই থেকে যায়। এই ফারাকটাই cash-flow-এর দিক থেকে ফ্ল্যাটটাকে liability-এর মতো আচরণ করায়, যতদিন না ঋণ শোধ হচ্ছে।</p>
+    </div>
+
+    <p>অন্যদিকে ভাড়া থেকে পাওয়া অর্থ যদি EMI ও অন্যান্য খরচের কাছাকাছি বা বেশি হয়, তাহলে সম্পত্তিটার আর্থিক অবস্থান অনেক বেশি শক্তিশালী হতে পারে। তাই শুধু “আমার একটা ফ্ল্যাট আছে” দেখলেই হবে না — প্রশ্ন করতে হবে, এই ফ্ল্যাট আমার জন্য কী তৈরি করছে?</p>
+  </section>
+
+  <section class="chapter" id="s9">
+    <div class="chapter-mark">
+      <span class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="#7E3122" stroke-width="1.6"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg></span>
+      <h2 class="h">থাকার জন্য ফ্ল্যাট আর বিনিয়োগের জন্য ফ্ল্যাট এক নয়</h2>
+    </div>
+    <p>নিজের থাকার জন্য কিনলে নিরাপত্তা, পরিবার, স্কুল, হাসপাতাল, যাতায়াত, সামাজিক পরিবেশ — এসবের মূল্য আছে। আগামী ১৫–২০ বছর সেখানে থাকার পরিকল্পনা থাকলে, আর EMI নিজের আর্থিক সামর্থ্যের মধ্যে থাকলে, ফ্ল্যাট কেনার যুক্তি থাকতে পারে।</p>
+    <p>কিন্তু বিনিয়োগের জন্য কিনলে হিসাব আলাদা — ভাড়া কত পাওয়া যাবে, EMI কত, মেনটেন্যান্স কত, ভবিষ্যতে চাহিদা কেমন হতে পারে, সম্পত্তির বয়স কত, এলাকায় নতুন জোগান কতটা আসছে, পুনরায় বিক্রি কতটা সহজ — শুধু “দাম বাড়বে” ভেবে বিনিয়োগ করা যথেষ্ট নয়।</p>
+  </section>
+
+  <section class="chapter" id="s10">
+    <div class="chapter-mark">
+      <span class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="#7E3122" stroke-width="1.6"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="8" r="3"/><path d="M2 21c0-4 3-6 6-6s6 2 6 6M13 21c0-3 2-5 5-5s5 2 5 5"/></svg></span>
+      <h2 class="h">“বাচ্চাদের জন্য কিনছি” — এই যুক্তিটাও ভাবুন</h2>
+    </div>
+    <p>অনেক বাবা-মা বলেন, “নিজের জন্য নয়, সন্তানের ভবিষ্যতের জন্য ফ্ল্যাট কিনছি।” ভাবনাটা সুন্দর। কিন্তু বাস্তব প্রশ্ন হলো — ২০ বছর পরে সন্তান কি সেই একই পুরনো ফ্ল্যাটটাই চাইবে? ততদিনে তার পছন্দ ও প্রয়োজন সম্পূর্ণ বদলে যেতে পারে।</p>
+    <p>পুরনো ফ্ল্যাট ভেঙে নতুন করে তৈরি করাও সহজ নয়, কারণ সেটা একটা যৌথ ভবনের অংশ। নিজের জমি থাকলে ভবিষ্যৎ প্রজন্ম নিজেদের প্রয়োজন অনুযায়ী নতুন বাড়ি তৈরির স্বাধীনতা পায়।</p>
+  </section>
+
+  <section class="chapter" id="s11">
+    <div class="chapter-mark">
+      <span class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="#7E3122" stroke-width="1.6"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg></span>
+      <h2 class="h">দেখনদারি নয়, আর্থিক শক্তি</h2>
+    </div>
+    <p>সহকর্মী ফ্ল্যাট কিনেছে, বন্ধু নতুন গাড়ি কিনেছে, পরিচিত কেউ বড় হাউজিং সোসাইটিতে থাকে — তখন মনে হয়, “আমারও এমন একটা থাকা উচিত।” কিন্তু আমরা জানি না তার মাথায় কত টাকার ঋণ রয়েছে। বাইরের চাকচিক্য দেখা যায়, ঋণের বোঝা দেখা যায় না।</p>
+    <p class="pull">দেখাতে বড় নয়, আর্থিকভাবে শক্তিশালী হওয়াই লক্ষ্য।</p>
+  </section>
+
+  <section class="chapter" id="s12">
+    <div class="chapter-mark">
+      <span class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="#7E3122" stroke-width="1.6"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></span>
+      <h2 class="h">তাহলে কি ফ্ল্যাট কখনও কিনবেন না?</h2>
+    </div>
+    <p>না, বিষয়টা এতটা সরল নয়। ফ্ল্যাট খারাপ — এমন কথা বলা ঠিক হবে না। বরং বলা যায়, “উদ্দেশ্য না বুঝে ফ্ল্যাট কিনবেন না।”</p>
+
+    <div class="check-grid">
+      <div class="check-col good">
+        <h4>যখন ফ্ল্যাট ভালো সিদ্ধান্ত হতে পারে</h4>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>নিজের থাকার প্রয়োজন আছে</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>নিরাপত্তা গুরুত্বপূর্ণ</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>ভালো লোকেশনে থাকতে চান</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>EMI সামলানোর সামর্থ্য আছে</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>দীর্ঘদিন থাকার পরিকল্পনা আছে</li>
+        </ul>
+      </div>
+      <div class="check-col bad">
+        <h4>যখন সিদ্ধান্ত আবার ভাবা উচিত</h4>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>শুধু লোক দেখানোর জন্য কেনা</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>অতিরিক্ত ঋণ নিয়ে কেনা</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>শুধু দাম বাড়বে ভেবে কেনা</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>মেনটেন্যান্স হিসাব না করা</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>ভাড়া ও EMI-এর ফারাক না দেখা</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="closing" id="s13">
+    <div class="kicker">শেষ কথা</div>
+    <p class="big">বাড়ি শুধু ইট-পাথরের একটা জায়গা নয় — বাড়ি মানে নিরাপত্তা, পরিবার, শান্তি। কিন্তু সম্পত্তি কেনার সময় আবেগের পাশাপাশি হিসাবও করতে হয়।</p>
+    <blockquote class="q">নতুন ফ্ল্যাটের চকচকে লবি দেখে সিদ্ধান্ত নেওয়ার আগে ভাবুন — ২০ বছর পরে কী হবে? EMI-এর পাশাপাশি ভাবুন — মেনটেন্যান্স কত হবে? দামের সম্ভাবনার পাশাপাশি ভাবুন — চাহিদা থাকবে তো? আর সবচেয়ে গুরুত্বপূর্ণ — আমি কি সম্পদ কিনছি, নাকি এমন একটা দায় কিনছি যার জন্য বছরের পর বছর টাকা দিতে হবে?</blockquote>
+    <p>ফ্ল্যাট তাই সবার জন্য খারাপ নয়। কিন্তু কেনার আগে বুঝতে হবে — আপনি সেখানে জীবন কাটাতে চাইছেন, নাকি সেটাকে বিনিয়োগ হিসেবে দেখছেন। দুটোর হিসাব এক নয়।</p>
+    <p class="final-quote">দেখনদারি নয়, আর্থিক স্বাধীনতাকে গুরুত্ব দিন। এমন সম্পদ তৈরি করুন, যা ভবিষ্যতে আপনার পকেট থেকে টাকা নেবে না — বরং আপনার পকেটে টাকা আনবে।</p>
+  </section>
+
+</main>
+
+<footer>
+  <span>খতিয়ান নং — সম্পত্তি সিদ্ধান্ত পাঠ</span>
+  <span>শুধু সাধারণ ধারণার জন্য — চূড়ান্ত সিদ্ধান্তের আগে নিজস্ব হিসাব ও পরামর্শ নিন</span>
+</footer>
+
+<script>
+(function(){
+  const slider = document.getElementById('yearSlider');
+  const yearBadge = document.getElementById('yearBadge');
+  const flatWindows = document.getElementById('flatWindows');
+  const flatBuilding = document.getElementById('flatBuilding');
+  const flatCracks = document.getElementById('flatCracks');
+  const flatStain = document.getElementById('flatStain');
+  const flatCaption = document.getElementById('flatCaption');
+  const landCaption = document.getElementById('landCaption');
+  const newHouse = document.getElementById('newHouse');
+  const landTree = document.getElementById('landTree');
+
+  const flatCaptions = [
+    [0, "নতুন রং, নতুন লিফট, ঝকঝকে লবি।"],
+    [6, "প্রথম রং চটতে শুরু করেছে, লিফটে টুকটাক সমস্যা।"],
+    [12, "দেয়ালে স্যাঁতসেঁতে ভাব, রক্ষণাবেক্ষণ খরচ বাড়ছে।"],
+    [18, "নকশা পুরনো লাগছে, পাশে নতুন প্রকল্প উঠেছে।"]
+  ];
+  const landCaptions = [
+    [0, "সীমানা এক, জায়গাটা এক থাকে।"],
+    [8, "চারপাশে বসতি বাড়ছে, গাছ বড় হচ্ছে।"],
+    [15, "প্রয়োজন বদলালে এখানেই নতুন বাড়ি তোলা যায়।"]
+  ];
+
+  function pick(list, year){
+    let val = list[0][1];
+    for (const [y, text] of list){ if (year >= y) val = text; }
+    return val;
+  }
+
+  function render(year){
+    yearBadge.textContent = 'বছর ' + String(year).padStart(2,'0');
+    const t = year / 20;
+
+    // building discoloration + crack progression
+    flatBuilding.setAttribute('filter', '');
+    flatBuilding.style.opacity = 1 - t*0.05;
+    const sat = 1 - t*0.55;
+    flatWindows.setAttribute('fill', t < 0.4 ? '#7EA0C4' : (t < 0.75 ? '#8B93A0' : '#9C9689'));
+    flatCracks.setAttribute('opacity', Math.max(0, (t-0.35)/0.65).toFixed(2));
+    flatStain.setAttribute('opacity', Math.max(0, (t-0.5)/0.5).toFixed(2));
+    flatBuilding.querySelector('rect').setAttribute('fill', t < 0.3 ? '#E7D9C6' : (t < 0.65 ? '#DACBB4' : '#C9BC9F'));
+
+    // land: near-static, new house appears late
+    newHouse.setAttribute('opacity', year >= 15 ? Math.min(1, (year-15)/5).toFixed(2) : 0);
+    const treeScale = 1 + t*0.35;
+    landTree.setAttribute('transform', 'translate(70,150) scale(' + treeScale.toFixed(2) + ') translate(0,' + (-(treeScale-1)*30).toFixed(1) + ')');
+
+    flatCaption.textContent = pick(flatCaptions, year);
+    landCaption.textContent = pick(landCaptions, year);
+  }
+
+  slider.addEventListener('input', (e) => render(parseInt(e.target.value, 10)));
+  render(0);
+})();
+</script>
+
+</body>
+</html>

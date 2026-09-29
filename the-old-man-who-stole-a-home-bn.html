@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>যে বৃদ্ধ একটা বাড়ি চুরি করেছিল</title>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyDfxtOP-YCrCXtQxZrrFNC1uXucvbW0K78",
+    authDomain: "my-skill-global.firebaseapp.com",
+    projectId: "my-skill-global",
+    storageBucket: "my-skill-global.firebasestorage.app",
+    messagingSenderId: "978471914749",
+    appId: "1:978471914749:web:595750b5d90738933f4294",
+    measurementId: "G-8D9BPY8HJ0"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+<meta name="robots" content="index,follow">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@500;600;700&family=Hind+Siguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#161311;
+    --storm:#211c17;
+    --storm-deep:#100d0a;
+    --slate:#5a4d3e;
+    --cloud:#efe9e0;
+    --cloud-2:#ddd2bf;
+    --bolt:#c98a3e;
+    --bolt-dim:#9c6a2c;
+    --charge:#8a9b6e;
+    --line:rgba(201,138,62,0.28);
+    --shadow:0 18px 44px rgba(4,6,10,0.55);
+    --serif:'Noto Serif Bengali', 'Fraunces', Georgia, serif;
+    --sans:'Hind Siguri', 'Noto Sans Bengali', 'Inter', sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--storm-deep);
+    color:var(--ink);
+    font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--bolt); color:var(--storm-deep);}
+  a{color:inherit;}
+
+  .skip-link{
+    position:absolute; left:-999px; top:0; background:var(--bolt); color:var(--storm-deep);
+    padding:10px 16px; z-index:999; font-weight:600;
+  }
+  .skip-link:focus{left:8px; top:8px;}
+
+  /* ---------- Top bar ---------- */
+  .topbar{
+    position:sticky; top:0; z-index:60;
+    display:flex; align-items:center; justify-content:space-between;
+    gap:10px; padding:10px 16px;
+    background:linear-gradient(180deg, rgba(16,13,10,0.97), rgba(16,13,10,0.86));
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar .mark{
+    font-family:var(--serif); color:var(--cloud); font-weight:600; letter-spacing:0;
+    font-size:15px; display:flex; align-items:center; gap:8px;
+  }
+  .topbar-actions{display:flex; gap:8px; align-items:center;}
+  .icon-btn{
+    appearance:none; border:1px solid var(--line); background:rgba(255,255,255,0.03);
+    color:var(--cloud); border-radius:999px; width:40px; height:40px;
+    display:flex; align-items:center; justify-content:center; cursor:pointer;
+    transition:background .15s, transform .15s, border-color .15s;
+  }
+  .icon-btn:hover{background:rgba(201,138,62,0.14); border-color:var(--bolt);}
+  .icon-btn:active{transform:scale(.94);}
+  .icon-btn.active{background:var(--bolt); border-color:var(--bolt); color:var(--storm-deep);}
+  .icon-btn svg{width:18px; height:18px;}
+
+  .progress-rail{height:3px; background:rgba(255,255,255,0.08);}
+  .progress-fill{height:100%; width:0%; background:linear-gradient(90deg, var(--charge), var(--bolt)); transition:width .15s linear;}
+
+  /* ---------- Resume banner ---------- */
+  .resume-banner{
+    display:none; align-items:center; justify-content:space-between; gap:12px;
+    max-width:760px; margin:14px auto 0; padding:12px 16px;
+    background:var(--cloud-2); border:1px solid #b7a98d; border-radius:12px;
+    color:var(--ink); font-size:14px;
+  }
+  .resume-banner.show{display:flex;}
+  .resume-banner button{
+    appearance:none; border:none; background:var(--slate); color:#fff;
+    padding:8px 14px; border-radius:8px; cursor:pointer; font-size:13px; font-weight:600; white-space:nowrap;
+  }
+  .resume-banner .dismiss{background:transparent; color:var(--slate); padding:8px 10px;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative; min-height:78vh; display:flex; align-items:flex-end;
+    overflow:hidden; color:var(--cloud);
+  }
+  .hero-img{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+    filter:saturate(1.05) contrast(1.05);
+  }
+  .hero-img.fallback{
+    background:
+      radial-gradient(ellipse at 70% 15%, rgba(201,138,62,0.18), transparent 50%),
+      linear-gradient(180deg, #211c17 0%, #191510 45%, #100d0a 100%);
+  }
+  .hero::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(16,13,10,0.18) 0%, rgba(16,13,10,0.4) 45%, rgba(16,13,10,0.97) 100%);
+  }
+  .hero-content{position:relative; z-index:2; padding:56px 20px 44px; max-width:820px; margin:0 auto; width:100%;}
+  .hero-eyebrow{
+    letter-spacing:0; color:var(--bolt);
+    font-size:14px; margin:0 0 14px; display:flex; align-items:center; gap:10px;
+  }
+  .hero-eyebrow::before{content:""; width:26px; height:1px; background:var(--bolt); display:inline-block;}
+  .hero h1{
+    font-family:var(--serif); font-weight:600; font-size:clamp(32px, 6vw, 56px);
+    line-height:1.4; margin:0 0 16px; max-width:18ch;
+  }
+  .hero p.dek{
+    font-size:17px; line-height:1.85; color:#d3cabb; max-width:54ch; margin:0 0 26px;
+  }
+  .hero-cta{display:flex; flex-wrap:wrap; gap:10px;}
+  .btn{
+    appearance:none; cursor:pointer; border-radius:999px; padding:12px 20px;
+    font-size:14px; font-weight:600; border:1px solid transparent;
+    display:inline-flex; align-items:center; gap:8px; transition:transform .15s, background .15s;
+  }
+  .btn:active{transform:scale(.97);}
+  .btn-primary{background:var(--bolt); color:var(--storm-deep);}
+  .btn-primary:hover{background:#daa25a;}
+  .btn-ghost{background:rgba(255,255,255,0.06); color:var(--cloud); border-color:rgba(255,255,255,0.22);}
+  .btn-ghost:hover{background:rgba(255,255,255,0.12);}
+
+  /* ---------- Layout ---------- */
+  .stage{ background:var(--cloud); position:relative; }
+  .stage::before{
+    content:""; position:absolute; top:-1px; left:0; right:0; height:26px;
+    background:var(--cloud);
+    clip-path:polygon(0 100%, 100% 100%, 100% 60%, 94% 90%, 88% 40%, 82% 85%, 76% 30%, 70% 80%, 64% 20%, 58% 75%, 52% 15%, 46% 70%, 40% 25%, 34% 80%, 28% 18%, 22% 72%, 16% 22%, 10% 78%, 4% 30%, 0 60%);
+  }
+  .layout{
+    max-width:980px; margin:0 auto; padding:40px 18px 100px;
+    display:grid; grid-template-columns:56px 1fr; gap:8px 22px;
+  }
+  @media (min-width:720px){ .layout{grid-template-columns:64px 1fr; gap:8px 34px;} }
+
+  .path-col{position:relative;}
+  .path-line{
+    position:absolute; left:50%; top:6px; bottom:6px; width:2px; transform:translateX(-50%);
+    background:repeating-linear-gradient(180deg, var(--bolt-dim) 0 6px, transparent 6px 12px);
+    opacity:.5;
+  }
+  .waypoint{ position:relative; z-index:1; width:100%; display:flex; justify-content:center; scroll-margin-top:80px; }
+  .waypoint .dot{
+    width:15px; height:15px; border-radius:50%;
+    background:var(--cloud); border:2px solid var(--bolt-dim);
+    display:flex; align-items:center; justify-content:center;
+    transition:background .25s, border-color .25s, transform .25s;
+  }
+  .waypoint.read .dot{background:var(--bolt-dim); border-color:var(--bolt-dim);}
+  .waypoint.active .dot{background:var(--bolt); border-color:var(--bolt); transform:scale(1.35);
+    box-shadow:0 0 0 5px rgba(201,138,62,0.22);}
+  .waypoint.reading .dot{animation:pulse 1.4s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(201,138,62,0.28);}50%{box-shadow:0 0 0 9px rgba(201,138,62,0.06);}}
+
+  .chapter{ padding:26px 0 34px; border-bottom:1px dashed #b7a98d; scroll-margin-top:74px; }
+  .chapter:last-of-type{border-bottom:none;}
+  .chapter-eyebrow{
+    font-size:14px; color:var(--slate); letter-spacing:0; margin:0 0 6px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .chapter h2{ font-family:var(--serif); line-height:1.5; font-size:clamp(21px,3vw,27px); margin:0 0 14px; color:var(--storm-deep); font-weight:600; }
+  .chapter p{ font-size:18px; line-height:2; margin:0 0 14px; color:#28221b; }
+  .chapter p.speech-active{
+    background:linear-gradient(90deg, rgba(201,138,62,0.18), transparent);
+    border-left:3px solid var(--bolt); padding-left:12px; margin-left:-15px;
+    border-radius:0 6px 6px 0;
+  }
+  .chapter .quote{
+    font-family:var(--serif); font-style:normal; font-weight:600; line-height:1.9; font-size:19px; color:var(--storm); margin:18px 0;
+    padding-left:16px; border-left:3px solid var(--bolt);
+  }
+
+  .moral-card{
+    margin-top:10px; background:var(--storm-deep); color:var(--cloud); border-radius:16px;
+    padding:30px 26px; box-shadow:var(--shadow);
+  }
+  .moral-card .chapter-eyebrow{color:var(--bolt);}
+  .moral-card h2{color:var(--cloud);}
+  .moral-card p{color:#d3cabb;}
+  .sign{
+    margin-top:20px; padding-top:18px; border-top:1px solid rgba(201,138,62,0.28);
+    font-family:var(--serif); font-style:normal; font-size:16px; color:var(--bolt);
+  }
+
+  /* ---------- Floating voice player ---------- */
+  .player{
+    position:fixed; left:50%; bottom:16px; transform:translateX(-50%);
+    z-index:80; width:min(560px, calc(100% - 24px));
+    background:var(--storm-deep); color:var(--cloud);
+    border-radius:16px; box-shadow:var(--shadow); border:1px solid rgba(201,138,62,0.22);
+    padding:12px 14px; display:none;
+  }
+  .player.open{display:block;}
+  .player-row{display:flex; align-items:center; gap:10px;}
+  .player-btn{
+    appearance:none; border:none; border-radius:50%; width:42px; height:42px; flex:none;
+    background:var(--bolt); color:var(--storm-deep); cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .player-btn.secondary{background:rgba(255,255,255,0.08); color:var(--cloud); width:36px; height:36px;}
+  .player-btn svg{width:18px; height:18px;}
+  .player-info{flex:1; min-width:0;}
+  .player-title{font-size:12.5px; color:#e6ddce; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .player-sub{font-size:11px; color:#a2988a; margin-top:2px;}
+  .player-more{
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    margin-top:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.08);
+    font-size:12px; color:#b9ae9c;
+  }
+  .rate-row{display:flex; align-items:center; gap:8px;}
+  .rate-row input[type=range]{width:100px; accent-color:var(--bolt);}
+  .voice-note{font-size:11px; color:#8c8074; margin-top:6px; line-height:1.5;}
+
+  /* ---------- Toast ---------- */
+  .toast{
+    position:fixed; left:50%; top:16px; transform:translateX(-50%) translateY(-140%);
+    background:var(--storm-deep); color:var(--cloud); font-size:13px;
+    padding:10px 16px; border-radius:10px; z-index:100; border:1px solid var(--line);
+    transition:transform .25s ease; box-shadow:var(--shadow);
+  }
+  .toast.show{transform:translateX(-50%) translateY(0);}
+
+  footer{
+    background:var(--storm-deep); color:#8c8074; text-align:center; padding:34px 18px 46px;
+    font-size:14px; line-height:1.8;
+  }
+  footer .credit{color:var(--bolt); font-family:var(--serif); font-style:normal; line-height:1.8; font-size:15px; margin-bottom:6px;}
+
+  @media (max-width:480px){
+    .hero{min-height:66vh;}
+    .layout{grid-template-columns:34px 1fr; gap:4px 12px;}
+    .waypoint .dot{width:11px; height:11px;}
+    .chapter p{font-size:16.5px;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .waypoint.reading .dot{animation:none;}
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<a href="#content" class="skip-link">মূল লেখায় যান</a>
+<div class="toast" id="toast"></div>
+
+<!-- ===== Top bar ===== -->
+<div class="topbar">
+  <div class="mark">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 21V9l8-6 8 6v12h-5v-7H9v7H4Z" stroke="#c98a3e" stroke-width="2" stroke-linejoin="round"/></svg>
+    যে বৃদ্ধ একটা বাড়ি চুরি করেছিল
+  </div>
+  <div class="topbar-actions">
+    <button class="icon-btn" id="bookmarkBtn" title="এই জায়গাটি বুকমার্ক করুন" aria-label="এই জায়গাটি বুকমার্ক করুন">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1Z"/></svg>
+    </button>
+    <button class="icon-btn" id="playToggleTop" title="গল্পটি শুনুন" aria-label="কণ্ঠপাঠ চালু করুন">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3v18l15-9L5 3Z"/></svg>
+    </button>
+  </div>
+</div>
+<div class="progress-rail"><div class="progress-fill" id="progressFill"></div></div>
+
+<div class="resume-banner" id="resumeBanner">
+  <span>আপনি <strong id="resumeChapterName">এই জায়গা</strong> পর্যন্ত পড়েছিলেন।</span>
+  <span style="display:flex; gap:8px;">
+    <button id="resumeGo">পড়া চালিয়ে যান</button>
+    <button class="dismiss" id="resumeDismiss">বন্ধ করুন</button>
+  </span>
+</div>
+
+<!-- ===== Hero ===== -->
+<header class="hero">
+  <img src="images/the-oldman.png" alt="বৃষ্টিভেজা গেটের সামনে দাঁড়ানো এক বৃদ্ধ অচেনা মানুষ" class="hero-img" id="heroImg"
+       onerror="this.classList.add('fallback'); this.removeAttribute('src');">
+  <div class="hero-content">
+    <p class="hero-eyebrow">সহানুভূতি ও সতর্কতার গল্প &middot; একটি সতর্কবার্তা</p>
+    <h1>যে বৃদ্ধ একটা বাড়ি চুরি করেছিল</h1>
+    <p class="dek">এক দয়ালু মানুষ বৃষ্টিতে ভেজা এক অচেনা মানুষের জন্য নিজের গেট খুলে দেন। বছর কয়েক পর সেই দয়াই নীরবে তাঁর সর্বস্ব অন্যের নামে লিখে দেয় — আর তা ফিরে পেতে সহানুভূতির চেয়ে অনেক বেশি সাহস লাগবে।</p>
+    <div class="hero-cta">
+      <button class="btn btn-primary" id="startReading">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+        পড়া শুরু করুন
+      </button>
+      <button class="btn btn-ghost" id="startListening">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3v18l15-9L5 3Z"/></svg>
+        শুনুন
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ===== Stage ===== -->
+<main class="stage" id="content">
+  <div class="layout">
+    <div class="path-col"><div class="path-line"></div></div>
+    <div></div>
+  </div>
+</main>
+
+<!-- ===== Floating player ===== -->
+<div class="player" id="player">
+  <div class="player-row">
+    <button class="player-btn secondary" id="prevBtn" title="আগের অংশ">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20 8 12l10-8M6 4v16"/></svg>
+    </button>
+    <button class="player-btn" id="playPauseBtn" title="চালান / থামান">
+      <svg viewBox="0 0 24 24" fill="none" id="playIcon"><path d="M5 3v18l15-9L5 3Z" fill="currentColor"/></svg>
+    </button>
+    <button class="player-btn secondary" id="nextBtn" title="পরের অংশ">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4l10 8-10 8M18 4v16"/></svg>
+    </button>
+    <div class="player-info">
+      <div class="player-title" id="playerTitle">প্রস্তুত হচ্ছে&hellip;</div>
+      <div class="player-sub" id="playerSub">কণ্ঠপাঠ</div>
+    </div>
+    <button class="player-btn secondary" id="closePlayer" title="বন্ধ করুন">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+  </div>
+  <div class="player-more">
+    <span id="voiceLabel">কণ্ঠ: খোঁজা হচ্ছে&hellip;</span>
+    <span class="rate-row">গতি
+      <input type="range" id="rateSlider" min="0.7" max="1.1" step="0.01" value="0.88">
+      <span id="rateValue">0.88x</span>
+    </span>
+  </div>
+  <div class="voice-note" id="voiceNote"></div>
+</div>
+
+<footer>
+  <div class="credit">&ldquo;দয়ালু হৃদয়কে সবসময় আগলে রাখা উচিত সতর্ক মন দিয়ে।&rdquo;</div>
+  যাঁরা কখনও দয়া করে কারও জন্য দরজা খুলে দিয়েছেন, তাঁদের সবার জন্য।
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* =========================================================
+     1. STORY DATA — each chapter becomes a waypoint + section
+     ========================================================= */
+  var chapters = [
+    {
+      id: "ch-gate", eyebrow: "শুরু",
+      title: "গেটের সামনে এক অচেনা মানুষ",
+      paras: [
+        "বৃষ্টি সবে থেমেছে, এমন সময় মিস্টার অশোক ব্যানার্জি কাজে বেরোনোর জন্য গেটের বাইরে পা রাখলেন।",
+        "সেখানে দাঁড়িয়ে ছিলেন এক বৃদ্ধ, মাথা থেকে পা পর্যন্ত ভেজা। জামাকাপড় পুরোনো, তবে পরিষ্কার। রুপোলি চুল কপালে লেপ্টে আছে, আর ক্লান্ত চোখে সেই মানুষের বিষণ্নতা, যিনি সবকিছু হারিয়ে ফেলেছেন।"
+      ],
+      quote: "মাফ করবেন, স্যার। কাল থেকে কিছু খাইনি। একটু খাবার দিতে পারবেন?",
+      paras2: [
+        "অশোক তাঁকে ভালো করে দেখলেন। \u201cআপনাকে ভিখারি বলে তো মনে হচ্ছে না।\u201d",
+        "বৃদ্ধ কষ্টের এক হাসি হাসলেন। \u201cছিলামও না।\u201d তিনি চোখ নামালেন। \u201cআমারও পরিবার ছিল... বাড়ি ছিল... দুটো ছেলে ছিল।\u201d",
+        "\u201cকী হয়েছিল?\u201d",
+        "\u201cওরা সফল হয়ে গেল।\u201d",
+        "\u201cতারপর?\u201d",
+        "\u201cওরা ঠিক করল, বুড়ো বাবাকে আর ওদের দরকার নেই।\u201d",
+        "কয়েক সেকেন্ড দুজনের কেউ কথা বললেন না। অশোকের মন নরম হয়ে গেল।",
+        "\u201cআমার স্ত্রী বহু বছর আগে মারা গেছেন,\u201d তিনি শান্ত গলায় বললেন। \u201cআমি একাই থাকি। আপনার আপত্তি না থাকলে আমার বাড়ির পাশের ছোট ঘরটায় থাকতে পারেন।\u201d",
+        "বৃদ্ধের চোখ জলে ভরে উঠল। \u201cএকজন সম্পূর্ণ অচেনা মানুষকে আপনি বিশ্বাস করবেন?\u201d"
+      ],
+      quote2: "কখনও কখনও মানবতা শুরু হয় বিশ্বাস দিয়েই।"
+    },
+    {
+      id: "ch-trust", eyebrow: "ঘনিষ্ঠতা",
+      title: "অচেনা থেকে কাকু",
+      paras: [
+        "দিন গড়িয়ে সপ্তাহ হল। সপ্তাহ গড়িয়ে মাস।",
+        "বৃদ্ধ সব রকমভাবে নিজেকে কাজের প্রমাণ করলেন। রান্না করতেন। ঘর পরিষ্কার করতেন। বাগানে জল দিতেন। অশোককে ওষুধ খেতে মনে করিয়ে দিতেন।",
+        "অচিরেই তিনি আর \u201cবুড়ো মানুষ\u201d রইলেন না। হয়ে গেলেন \u201cকাকু\u201d।",
+        "অশোক তাঁকে পুরোপুরি বিশ্বাস করতেন। তুলে দিলেন বাড়ির বাড়তি চাবি। তারপর ব্যাংকের কাগজপত্র। তারপর সম্পত্তির দলিল।"
+      ],
+      quote: "আপনি ছাড়া ভরসা করার মতো আমার আর কেউ নেই।",
+      paras2: [
+        "বৃদ্ধ শুধু মৃদু হাসতেন।"
+      ]
+    },
+    {
+      id: "ch-web", eyebrow: "নীরব ছক",
+      title: "অদৃশ্য এক জাল",
+      paras: [
+        "কিন্তু সেই নরম হাসির আড়ালে বাড়ছিল অন্য এক পরিকল্পনা। ধীরে। নিঃশব্দে। মাকড়সা যেভাবে অদৃশ্য জাল বোনে।",
+        "অশোককে যখনই কোনও সরকারি কাগজে সই করতে হত, বৃদ্ধ আসল দলিলের সঙ্গে মিশিয়ে দিতেন জাল দলিল। বছরের পর বছরের অগাধ বিশ্বাস প্রতিটি সই সহজ করে দিয়েছিল।",
+        "একটু একটু করে অশোকের সঞ্চয়, তাঁর বিনিয়োগ, এমনকি তাঁর বাড়ির মালিকানাও আইনত চলে গেল অন্য একজনের নামে।",
+        "অশোক কিছুই টের পেলেন না।"
+      ]
+    },
+    {
+      id: "ch-reveal", eyebrow: "সত্যি",
+      title: "টেবিলের ওপর ফাইল",
+      paras: [
+        "এক নিস্তব্ধ দুপুরে বৃদ্ধ অবশেষে সত্যিটা প্রকাশ করলেন। খাবার টেবিলে তিনি একটা ফাইল রাখলেন।",
+        "\u201cমনে হয়, এবার এগুলো আপনার পড়ে দেখার সময় হয়েছে।\u201d",
+        "অশোক কাগজগুলো খুললেন। তাঁর মুখ ফ্যাকাশে হয়ে গেল। প্রতিটি সম্পত্তি, প্রতিটি অ্যাকাউন্ট, প্রতিটি আইনি অধিকার এখন সেই বৃদ্ধের।",
+        "\u201cএ... এ তো হতে পারে না।\u201d",
+        "\u201cহয়ে গেছে।\u201d",
+        "অশোক অবিশ্বাসে তাকালেন। \u201cআপনি আমাকে ঠকিয়েছেন।\u201d",
+        "\u201cনা।\u201d"
+      ],
+      quote: "আপনিই আমাকে বিশ্বাস করেছিলেন।"
+    },
+    {
+      id: "ch-fear", eyebrow: "নতুন আতঙ্ক",
+      title: "ভয়ের বাড়ি",
+      paras: [
+        "কয়েক মাস পর অশোক বিয়ে করলেন নন্দিনী নামের এক দয়ালু তরুণীকে। সে ভেবেছিল সুখী এক সংসারে পা রাখছে। তার বদলে সে পেল ভয়।",
+        "বৃদ্ধ সবকিছু নিয়ন্ত্রণ করতেন। টাকা দাবি করতেন। হুকুম চালাতেন। এমনকি ঠিক করে দিতেন, তাঁরা কখন বাড়ি থেকে বেরোতে পারবেন।",
+        "এক সন্ধ্যায় নন্দিনী তাঁকে মুখের ওপর বলল। \u201cআপনি আমাদের চাকরের মতো ব্যবহার করতে পারেন না।\u201d",
+        "বৃদ্ধের চোখ সরু হয়ে এল। \u201cতোমাদের সামনে দুটো পথ।\u201d তিনি সামনে ঝুঁকলেন। \u201cআমার কথা শোনো... নয়তো আমার শ্রাদ্ধে এসো।\u201d",
+        "সে ভুরু কুঁচকে বলল। \u201cমানে কী?\u201d",
+        "\u201cআমি মরে গেলে আমার একটা চিঠি তৈরি আছে। তাতে লেখা, তোমরা দুজন আমাকে অত্যাচার করেছ। একটা তরুণ দম্পতি যদি এক বৃদ্ধকে আত্মহত্যায় প্ররোচনা দেওয়ার দায়ে অভিযুক্ত হয়, পুলিশ তাদের সঙ্গে কেমন ব্যবহার করবে, তা তো জানোই।\u201d"
+      ],
+      quote: "ভয়ই তখন তাঁর সবচেয়ে বড় অস্ত্র হয়ে দাঁড়িয়েছে।",
+      paras2: [
+        "ঘরে নেমে এল স্তব্ধতা।"
+      ]
+    },
+    {
+      id: "ch-jhumu", eyebrow: "বন্ধুর চোখ",
+      title: "সাহসী নয়, আতঙ্কিত",
+      paras: [
+        "অসহায়তার মধ্য দিয়ে দিন কাটছিল। তারপর এক দুপুরে নন্দিনীর ছেলেবেলার বান্ধবী ঝুমু দেখা করতে এল।",
+        "সব শুনে সে কিছুক্ষণ ভাবল। তারপর হেসে বলল, \u201cআমার মনে হয় না লোকটা সাহসী।\u201d",
+        "\u201cমানে?\u201d",
+        "\u201cআমার মনে হয় ও ভীষণ ভয় পায়।\u201d"
+      ],
+      quote: "যারা কথায় কথায় মরার হুমকি দেয়, তারা সাধারণত অন্য সবার চেয়ে মৃত্যুকেই বেশি ভয় পায়।",
+      paras2: [
+        "নন্দিনী অবাক হয়ে তাকাল। \u201cতুই কী ভাবছিস?\u201d",
+        "ঝুমু কানে কানে কী যেন বলল। দুজনেই হেসে উঠল।"
+      ]
+    },
+    {
+      id: "ch-sweets", eyebrow: "ফাঁদ",
+      title: "এক বাক্স মিষ্টি",
+      paras: [
+        "পরদিন দুপুরে তারা বসার ঘরে বসে এমন জোরে কথা বলছিল, যাতে বৃদ্ধ প্রতিটি শব্দ শুনতে পান।",
+        "ঝুমু টেবিলে একটা ছোট মিষ্টির বাক্স রাখল। ইচ্ছে করেই গলা চড়িয়ে বলল, \u201cআমার মামাতো দাদা ফরেনসিক মেডিসিনে কাজ করে।\u201d"
+      ],
+      quote: "সে আমাকে এমন একটা বিষ দিয়েছে, যার প্রায় কোনও চিহ্নই থাকে না।",
+      paras2: [
+        "নন্দিনী ঘাবড়ে যাওয়ার ভান করল। \u201cসত্যি বলছিস?\u201d",
+        "ঝুমু নাটকীয়ভাবে মাথা নাড়ল। \u201cএই মিষ্টিগুলোয় একটু মিশিয়ে দে। পরে কেউ প্রশ্ন তুললে... আমার দাদা তো পুলিশের বড় অফিসার। আমি সব সামলে নেব।\u201d",
+        "পাশের ঘর ভয়ংকর রকম নিস্তব্ধ হয়ে গেল।"
+      ]
+    },
+    {
+      id: "ch-gone", eyebrow: "জাল ছিঁড়ল",
+      title: "সন্ধ্যা নামার আগেই উধাও",
+      paras: [
+        "পাঁচ মিনিট পর বৃদ্ধ ঘর থেকে বেরিয়ে এলেন। তাঁর হাত কাঁপছিল। মুখ সাদা হয়ে গেছে।",
+        "তিনি জোর করে একটা আড়ষ্ট হাসি হাসলেন। \u201cখুশির খবর। আমার ছেলেরা অবশেষে আমাকে বাড়ি ফিরে যেতে বলেছে। আজই আমাকে রওনা দিতে হবে।\u201d",
+        "নন্দিনী ভদ্রভাবে হাসল। \u201cযাওয়ার আগে অন্তত একটু মিষ্টি খেয়ে যান।\u201d",
+        "বৃদ্ধ পিছিয়ে গেলেন। \u201cনা... না, মিষ্টি লাগবে না। চা-ও না।\u201d তিনি তাড়াতাড়ি নিজের ঘরে ঢুকে গেলেন।",
+        "দশ মিনিটের মধ্যেই তাঁর সুটকেস গোছানো হয়ে গেল। কুড়ি মিনিটের মধ্যে তিনি চিরতরে অদৃশ্য।"
+      ]
+    },
+    {
+      id: "ch-reclaimed", eyebrow: "তারপর",
+      title: "ফিরে পাওয়া ঘর",
+      paras: [
+        "বহু বছর পর প্রথমবার বাড়িটা শান্ত লাগল। ফাঁকা উঠোনে দাঁড়িয়ে ছিলেন অশোক, সন্ধ্যার রোদ এসে পড়েছে পুরোনো আমগাছটার গায়ে।",
+        "\u201cআমি তো প্রায় সব হারিয়েই ফেলেছিলাম।\u201d",
+        "ঝুমু হাসল। \u201cনা। আপনি হারিয়েছিলেন আপনার বিচারবুদ্ধি।\u201d"
+      ],
+      quote: "কিন্তু আজ আপনি ফিরে পেয়েছেন আপনার সাহস।",
+      paras2: [
+        "যে বাড়িটা তিনি প্রায় চিরতরে হাতছাড়া করতে বসেছিলেন, অশোক সেদিকে তাকালেন। সম্পত্তি ফিরে পেতে আইনি প্রক্রিয়া শুরু করার পর তিনি বৃদ্ধের ফেলে যাওয়া প্রতিটি জাল দলিল নীরবে পুড়িয়ে ফেললেন।",
+        "জীবনের সবচেয়ে কঠিন শিক্ষাটা তিনি শিখে নিয়েছিলেন।"
+      ]
+    }
+  ];
+
+  var moral = {
+    eyebrow: "শিক্ষা",
+    title: "দয়ালু হৃদয়, সতর্কভাবে আগলে রাখা",
+    paras: [
+      "সতর্কতাহীন সহানুভূতি বিপদকে ডেকে আনতে পারে। অচেনা মানুষকে সাহায্য করা মহৎ কাজ। কিন্তু অচেনা মানুষকে অন্ধভাবে বিশ্বাস করার মূল্য টাকার চেয়ে অনেক বেশি হতে পারে। কখনও কখনও তা একটা গোটা বাড়িও কেড়ে নিতে পারে।"
+    ],
+    quote: "দয়ালু হৃদয়কে সবসময় আগলে রাখা উচিত সতর্ক মন দিয়ে।",
+    paras2: [
+      "সহানুভূতি মানবজাতির সবচেয়ে বড় শক্তিগুলোর একটি, কিন্তু সহানুভূতিকে সবসময় পথ দেখাতে হবে প্রজ্ঞার।",
+      "কেউ অসহায় দেখাচ্ছে বলেই নিজের বিচারবুদ্ধি কখনও সমর্পণ করবেন না।"
+    ]
+  };
+
+  /* =========================================================
+     2. BUILD THE PAGE (chapters + waypoints) from the data
+     ========================================================= */
+  var layout = document.querySelector(".layout");
+  var pathCol = document.querySelector(".path-col");
+  var readCol = document.createElement("div");
+  layout.replaceChildren(pathCol, readCol);
+
+  var speechUnits = []; // {text, el, chapterIndex}
+
+  function addParas(container, list, chapterIndex){
+    if(!list) return;
+    list.forEach(function(t){
+      var p = document.createElement("p");
+      p.textContent = t;
+      container.appendChild(p);
+      speechUnits.push({text:t, el:p, chapterIndex:chapterIndex});
+    });
+  }
+  function addQuote(container, text, chapterIndex){
+    if(!text) return;
+    var p = document.createElement("p");
+    p.className = "quote";
+    p.textContent = text.replace(/\u201c|\u201d/g,"");
+    container.appendChild(p);
+    speechUnits.push({text:text.replace(/\u201c|\u201d/g,""), el:p, chapterIndex:chapterIndex});
+  }
+
+  chapters.forEach(function(ch, i){
+    var wp = document.createElement("div");
+    wp.className = "waypoint";
+    wp.id = "wp-" + ch.id;
+    wp.innerHTML = '<span class="dot"></span>';
+    wp.title = ch.title;
+    wp.style.cursor = "pointer";
+    wp.addEventListener("click", function(){
+      document.getElementById(ch.id).scrollIntoView({behavior:"smooth", block:"start"});
+    });
+    pathCol.appendChild(wp);
+
+    var section = document.createElement("section");
+    section.className = "chapter";
+    section.id = ch.id;
+    section.dataset.index = i;
+    var eyebrow = document.createElement("p");
+    eyebrow.className = "chapter-eyebrow";
+    eyebrow.textContent = ch.eyebrow;
+    var h2 = document.createElement("h2");
+    h2.textContent = ch.title;
+    section.appendChild(eyebrow);
+    section.appendChild(h2);
+    addParas(section, ch.paras, i);
+    addQuote(section, ch.quote, i);
+    addParas(section, ch.paras2, i);
+    addQuote(section, ch.quote2, i);
+    readCol.appendChild(section);
+  });
+
+  var wpMoral = document.createElement("div");
+  wpMoral.className = "waypoint";
+  wpMoral.id = "wp-moral";
+  wpMoral.innerHTML = '<span class="dot"></span>';
+  wpMoral.title = moral.title;
+  wpMoral.style.cursor = "pointer";
+  wpMoral.addEventListener("click", function(){
+    document.getElementById("ch-moral").scrollIntoView({behavior:"smooth", block:"start"});
+  });
+  pathCol.appendChild(wpMoral);
+
+  var moralSection = document.createElement("section");
+  moralSection.className = "chapter";
+  moralSection.id = "ch-moral";
+  moralSection.dataset.index = chapters.length;
+  var moralCard = document.createElement("div");
+  moralCard.className = "moral-card";
+  var me = document.createElement("p"); me.className="chapter-eyebrow"; me.textContent = moral.eyebrow;
+  var mh = document.createElement("h2"); mh.textContent = moral.title;
+  moralCard.appendChild(me); moralCard.appendChild(mh);
+  addParas(moralCard, moral.paras, chapters.length);
+  addQuote(moralCard, moral.quote, chapters.length);
+  addParas(moralCard, moral.paras2, chapters.length);
+  var sign = document.createElement("div");
+  sign.className = "sign";
+  sign.textContent = "\u2014 অশোক ব্যানার্জি";
+  moralCard.appendChild(sign);
+  moralSection.appendChild(moralCard);
+  readCol.appendChild(moralSection);
+
+  var allWaypoints = Array.prototype.slice.call(pathCol.querySelectorAll(".waypoint"));
+  var allSections = Array.prototype.slice.call(readCol.querySelectorAll(".chapter"));
+  var chapterNames = chapters.map(function(c){return c.title;}).concat([moral.title]);
+
+  /* =========================================================
+     3. TOAST helper
+     ========================================================= */
+  var toastEl = document.getElementById("toast");
+  var toastTimer;
+  function toast(msg){
+    toastEl.textContent = msg;
+    toastEl.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toastEl.classList.remove("show"); }, 2200);
+  }
+
+  /* =========================================================
+     4. SCROLL PROGRESS + ACTIVE WAYPOINT
+     ========================================================= */
+  var currentChapterIndex = 0;
+
+  function updateProgressBar(){
+    var doc = document.documentElement;
+    var scrollTop = doc.scrollTop || document.body.scrollTop;
+    var height = doc.scrollHeight - doc.clientHeight;
+    var pct = height > 0 ? (scrollTop / height) * 100 : 0;
+    document.getElementById("progressFill").style.width = pct + "%";
+  }
+  document.addEventListener("scroll", throttle(updateProgressBar, 100), {passive:true});
+  updateProgressBar();
+
+  function throttle(fn, wait){
+    var last = 0, timer=null;
+    return function(){
+      var now = Date.now();
+      if(now - last >= wait){ last = now; fn.apply(null, arguments); }
+      else { clearTimeout(timer); timer = setTimeout(function(){ last = Date.now(); fn.apply(null, arguments); }, wait - (now-last)); }
+    };
+  }
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      var idx = parseInt(entry.target.dataset.index, 10);
+      var wp = allWaypoints[idx];
+      if(!wp) return;
+      if(entry.isIntersecting){
+        currentChapterIndex = idx;
+        allWaypoints.forEach(function(w,i){
+          w.classList.toggle("active", i === idx);
+          if(i < idx) w.classList.add("read");
+        });
+        saveScrollBookmark(idx, false);
+      }
+    });
+  }, {rootMargin: "-40% 0px -50% 0px", threshold: 0});
+  allSections.forEach(function(s){ io.observe(s); });
+
+  /* =========================================================
+     5. BOOKMARK (localStorage)
+     ========================================================= */
+  var BOOKMARK_KEY = "old_man_stole_home_bookmark_bn_v1";
+  var storageOK = true;
+  try{ localStorage.setItem("__t","1"); localStorage.removeItem("__t"); } catch(e){ storageOK = false; }
+
+  function saveScrollBookmark(idx, manual){
+    if(!storageOK) return;
+    try{
+      var data = {chapterIndex: idx, chapterName: chapterNames[idx], savedAt: Date.now(), manual: !!manual};
+      localStorage.setItem(BOOKMARK_KEY, JSON.stringify(data));
+      if(manual) toast("বুকমার্ক সংরক্ষিত হয়েছে \u2014 পরে এখান থেকেই পড়া চালিয়ে যেতে পারবেন।");
+    }catch(e){}
+  }
+  function readBookmark(){
+    if(!storageOK) return null;
+    try{
+      var raw = localStorage.getItem(BOOKMARK_KEY);
+      return raw ? JSON.parse(raw) : null;
+    }catch(e){ return null; }
+  }
+  document.getElementById("bookmarkBtn").addEventListener("click", function(){
+    saveScrollBookmark(currentChapterIndex, true);
+  });
+
+  var savedBM = readBookmark();
+  if(savedBM && typeof savedBM.chapterIndex === "number" && allSections[savedBM.chapterIndex]){
+    var banner = document.getElementById("resumeBanner");
+    document.getElementById("resumeChapterName").textContent = savedBM.chapterName || chapterNames[savedBM.chapterIndex];
+    banner.classList.add("show");
+    document.getElementById("resumeGo").addEventListener("click", function(){
+      allSections[savedBM.chapterIndex].scrollIntoView({behavior:"smooth", block:"start"});
+      banner.classList.remove("show");
+    });
+    document.getElementById("resumeDismiss").addEventListener("click", function(){
+      banner.classList.remove("show");
+    });
+  }
+  if(!storageOK){
+    document.getElementById("bookmarkBtn").title = "এই ব্রাউজারে বুকমার্ক করা যাবে না";
+  }
+
+  document.getElementById("startReading").addEventListener("click", function(){
+    allSections[0].scrollIntoView({behavior:"smooth", block:"start"});
+  });
+
+  /* =========================================================
+     6. VOICE READER (Web Speech API)
+     ========================================================= */
+  var synth = window.speechSynthesis;
+  var speechSupported = !!synth;
+  var voices = [];
+  var chosenVoice = null;
+  var currentUnitIndex = -1;
+  var isPlaying = false;
+  var isPaused = false;
+  var rate = 0.88, pitch = 1.0;
+  var keepAliveTimer = null;
+
+  var player = document.getElementById("player");
+  var playIcon = document.getElementById("playIcon");
+  var playerTitle = document.getElementById("playerTitle");
+  var playerSub = document.getElementById("playerSub");
+  var voiceLabel = document.getElementById("voiceLabel");
+  var voiceNote = document.getElementById("voiceNote");
+  var rateSlider = document.getElementById("rateSlider");
+  var rateValue = document.getElementById("rateValue");
+
+  function pickVoice(list){
+    if(!list || !list.length) return null;
+    var chains = [
+      function(v){ return v.lang === "bn-IN"; },
+      function(v){ return v.lang === "bn-BD"; },
+      function(v){ return /^bn/i.test(v.lang); },
+      function(v){ return /bengali|bangla|বাংলা/i.test(v.name); },
+      function(v){ return v.default; },
+      function(){ return true; }
+    ];
+    for(var i=0;i<chains.length;i++){
+      var found = list.find(chains[i]);
+      if(found) return found;
+    }
+    return null;
+  }
+
+  function refreshVoices(){
+    voices = synth ? synth.getVoices() : [];
+    chosenVoice = pickVoice(voices);
+    if(chosenVoice){
+      voiceLabel.textContent = "কণ্ঠ: " + chosenVoice.name + " (" + chosenVoice.lang + ")";
+    } else if (voices.length === 0){
+      voiceLabel.textContent = "কণ্ঠ লোড হচ্ছে\u2026";
+    } else {
+      voiceLabel.textContent = "ডিফল্ট কণ্ঠ ব্যবহার হচ্ছে";
+    }
+  }
+
+  if(speechSupported){
+    refreshVoices();
+    if(typeof synth.onvoiceschanged !== "undefined"){ synth.onvoiceschanged = refreshVoices; }
+    var pollCount = 0;
+    var pollVoices = setInterval(function(){
+      pollCount++;
+      if(voices.length === 0 && pollCount < 10){ refreshVoices(); }
+      else { clearInterval(pollVoices); }
+    }, 500);
+  } else {
+    voiceLabel.textContent = "এই ব্রাউজারে কণ্ঠপাঠ সমর্থিত নয়";
+    voiceNote.textContent = "এই ব্রাউজার Web Speech API সমর্থন করে না, তাই গল্পটি জোরে পড়ে শোনানো যাচ্ছে না। অনুগ্রহ করে অ্যান্ড্রয়েড বা ডেস্কটপে Chrome ব্যবহার করুন।";
+  }
+
+  rateSlider.addEventListener("input", function(){
+    rate = parseFloat(rateSlider.value);
+    rateValue.textContent = rate.toFixed(2) + "x";
+    if(isPlaying){ speakUnit(currentUnitIndex, true); }
+  });
+
+  function clearHighlights(){ speechUnits.forEach(function(u){ u.el.classList.remove("speech-active"); }); }
+
+  function setPlayIcon(playingState){
+    if(playingState){
+      playIcon.innerHTML = '<rect x="5" y="4" width="5" height="16" rx="1" fill="currentColor"/><rect x="14" y="4" width="5" height="16" rx="1" fill="currentColor"/>';
+    } else {
+      playIcon.innerHTML = '<path d="M5 3v18l15-9L5 3Z" fill="currentColor"/>';
+    }
+  }
+
+  function startKeepAlive(){
+    stopKeepAlive();
+    keepAliveTimer = setInterval(function(){
+      if(synth && synth.speaking && !synth.paused){ synth.pause(); synth.resume(); }
+    }, 8000);
+  }
+  function stopKeepAlive(){ if(keepAliveTimer){ clearInterval(keepAliveTimer); keepAliveTimer = null; } }
+
+  function speakUnit(index, isRestart){
+    if(!speechSupported) return;
+    if(index < 0 || index >= speechUnits.length){
+      stopReading();
+      toast("গল্প শেষ \u2014 পড়ার জন্য ধন্যবাদ।");
+      return;
+    }
+    synth.cancel();
+    clearHighlights();
+    currentUnitIndex = index;
+    var unit = speechUnits[index];
+    unit.el.classList.add("speech-active");
+    if(!isRestart){ unit.el.scrollIntoView({behavior:"smooth", block:"center"}); }
+
+    var utt = new SpeechSynthesisUtterance(unit.text);
+    if(chosenVoice) utt.voice = chosenVoice;
+    utt.rate = rate;
+    utt.pitch = pitch;
+    utt.lang = chosenVoice ? chosenVoice.lang : "bn-IN";
+
+    utt.onend = function(){ if(isPlaying){ speakUnit(index + 1); } };
+    utt.onerror = function(){ if(isPlaying){ speakUnit(index + 1); } };
+
+    isPaused = false;
+    synth.speak(utt);
+    startKeepAlive();
+
+    var chapterIdx = unit.chapterIndex;
+    playerTitle.textContent = chapterNames[chapterIdx] || "পাঠ";
+    playerSub.textContent = "অংশ " + (index+1) + " / " + speechUnits.length;
+    saveScrollBookmark(chapterIdx, false);
+  }
+
+  function startReadingFrom(index){
+    if(!speechSupported){
+      toast("এই ব্রাউজারে কণ্ঠপাঠ চালানো যাচ্ছে না।");
+      return;
+    }
+    isPlaying = true;
+    isPaused = false;
+    player.classList.add("open");
+    setPlayIcon(true);
+    document.getElementById("playToggleTop").classList.add("active");
+    speakUnit(index);
+  }
+
+  function pauseReading(){
+    if(!speechSupported) return;
+    if(synth.speaking && !synth.paused){
+      synth.pause();
+      isPaused = true;
+      isPlaying = false;
+      setPlayIcon(false);
+      stopKeepAlive();
+    }
+  }
+
+  function resumeReading(){
+    if(!speechSupported) return;
+    if(isPaused){
+      synth.resume();
+      isPlaying = true;
+      isPaused = false;
+      setPlayIcon(true);
+      startKeepAlive();
+    } else if(currentUnitIndex >= 0){
+      isPlaying = true;
+      speakUnit(currentUnitIndex, true);
+    } else {
+      startReadingFrom(nearestUnitForChapter(currentChapterIndex));
+    }
+  }
+
+  function stopReading(){
+    isPlaying = false;
+    isPaused = false;
+    if(speechSupported) synth.cancel();
+    stopKeepAlive();
+    clearHighlights();
+    setPlayIcon(false);
+    document.getElementById("playToggleTop").classList.remove("active");
+  }
+
+  function nearestUnitForChapter(chapterIdx){
+    for(var i=0;i<speechUnits.length;i++){ if(speechUnits[i].chapterIndex === chapterIdx) return i; }
+    return 0;
+  }
+
+  document.getElementById("playPauseBtn").addEventListener("click", function(){
+    if(isPlaying){ pauseReading(); } else { resumeReading(); }
+  });
+  document.getElementById("prevBtn").addEventListener("click", function(){
+    var target = Math.max(0, currentUnitIndex - 1);
+    isPlaying = true; setPlayIcon(true);
+    speakUnit(target);
+  });
+  document.getElementById("nextBtn").addEventListener("click", function(){
+    var target = Math.min(speechUnits.length - 1, currentUnitIndex + 1);
+    isPlaying = true; setPlayIcon(true);
+    speakUnit(target);
+  });
+  document.getElementById("closePlayer").addEventListener("click", function(){
+    stopReading();
+    player.classList.remove("open");
+  });
+
+  function openAndStart(){
+    player.classList.add("open");
+    startReadingFrom(nearestUnitForChapter(currentChapterIndex));
+  }
+  document.getElementById("playToggleTop").addEventListener("click", function(){
+    if(isPlaying){ pauseReading(); player.classList.add("open"); }
+    else if(isPaused){ resumeReading(); }
+    else { openAndStart(); }
+  });
+  document.getElementById("startListening").addEventListener("click", openAndStart);
+
+  document.addEventListener("visibilitychange", function(){
+    if(document.hidden && speechSupported && synth.speaking){ pauseReading(); }
+  });
+  window.addEventListener("beforeunload", function(){ if(speechSupported) synth.cancel(); });
+
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>অধ্যায় ১ : নতুন সূচনা | নবজাগরণ</title>
+<meta name="description" content="নবজাগরণ, অধ্যায় ১ : নতুন সূচনা — পর্ব ১-৪। অভিশপ্ত কারখানা, লুকিয়ে থাকা সত্য, মধ্যরাতের গুদাম ও কালো নদীর রহস্য।">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@500;600;700;800&family=Tiro+Bangla&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#0a131a;
+    --panel:#162430;
+    --panel-raised:#1d3040;
+    --rivet:#081118;
+    --line: rgba(198,151,73,0.22);
+    --brass:#c69749;
+    --brass-bright:#e8b96b;
+    --amber:#e2a33b;
+    --ink:#ece3d2;
+    --ink-dim:#93a5b1;
+    --teal:#4f8c82;
+    --teal-bright:#6fb3a7;
+    --danger:#a75b45;
+    --shadow: 0 18px 40px rgba(0,0,0,0.45);
+    --radius: 4px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{animation-duration:.001ms !important; transition-duration:.001ms !important;} }
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at top, rgba(198,151,73,0.05), transparent 55%),
+      repeating-linear-gradient(180deg, rgba(255,255,255,0.012) 0px, rgba(255,255,255,0.012) 1px, transparent 1px, transparent 3px),
+      var(--bg-deep);
+    color:var(--ink);
+    font-family:'Hind Siliguri', sans-serif;
+    line-height:1.7;
+  }
+  .display{font-family:'Baloo Da 2', 'Hind Siliguri', sans-serif;}
+  a{color:inherit; text-decoration:none;}
+  button{font-family:inherit;}
+  :focus-visible{outline:2px solid var(--amber); outline-offset:2px;}
+
+  /* breadcrumb / chapter head */
+  .chapter-head{
+    max-width:760px; margin:0 auto; padding:38px 20px 24px;
+    border-bottom:1px solid var(--line);
+  }
+  .crumb{
+    font-size:13px; color:var(--ink-dim); margin-bottom:18px;
+    display:flex; align-items:center; gap:8px; flex-wrap:wrap;
+  }
+  .crumb a{ color:var(--teal-bright); }
+  .crumb a:hover{ color:var(--brass-bright); }
+  .part-range-tag{
+    display:inline-block; font-size:12px; color:var(--teal-bright);
+    border:1px solid rgba(111,179,167,0.35); padding:2px 10px; border-radius:12px; margin-bottom:12px;
+  }
+  h1.chapter-title{
+    font-size:clamp(28px,5vw,44px); margin:0 0 6px; color:var(--brass-bright); font-weight:800;
+  }
+  .chapter-sub{ font-size:14.5px; color:var(--ink-dim); margin:0; }
+
+  .chapter-nav{
+    max-width:760px; margin:18px auto 0; padding:0 20px;
+    display:flex; justify-content:space-between; gap:12px; font-size:13.5px;
+  }
+  .chapter-nav .nav-btn{
+    padding:8px 14px; border:1px solid var(--line); border-radius:var(--radius);
+    background:var(--panel); color:var(--ink-dim);
+  }
+  .chapter-nav .nav-btn.disabled{ opacity:0.4; cursor:not-allowed; }
+  .chapter-nav .nav-btn:not(.disabled):hover{ color:var(--brass-bright); border-color:var(--brass); }
+
+  /* toolbar */
+  .toolbar{
+    position:sticky; top:0; z-index:40;
+    background:rgba(16,27,36,0.94); backdrop-filter: blur(8px);
+    border-bottom:1px solid var(--line);
+    padding:10px 16px;
+  }
+  .toolbar-inner{
+    max-width:760px; margin:0 auto; display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+  }
+  .tb-group{ display:flex; align-items:center; gap:8px; background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:6px 10px; }
+  .tb-label{ font-size:12px; color:var(--ink-dim); white-space:nowrap; }
+  select{ background:var(--panel-raised); color:var(--ink); border:1px solid var(--line); border-radius:3px; padding:6px 10px; font-size:13px; max-width:140px; }
+  input[type="range"]{ width:90px; accent-color: var(--amber); }
+  .icon-btn{
+    background:var(--panel-raised); color:var(--ink); border:1px solid var(--line); border-radius:3px;
+    padding:7px 12px; font-size:13.5px; cursor:pointer; font-weight:600; display:inline-flex; align-items:center; gap:6px;
+  }
+  .icon-btn.play{ color:var(--teal-bright); border-color: rgba(111,179,167,0.35); }
+  .icon-btn.stop{ color:var(--danger); border-color: rgba(167,91,69,0.35); }
+  .icon-btn.mark{ color:var(--amber); border-color: rgba(226,163,59,0.4); margin-left:auto; }
+
+  /* part quick-jump chips */
+  .part-jump{
+    max-width:760px; margin:0 auto; padding:14px 20px 0;
+    display:flex; gap:8px; flex-wrap:wrap;
+  }
+  .part-jump a{
+    font-size:12.5px; padding:5px 12px; border-radius:14px; border:1px solid var(--line);
+    color:var(--ink-dim); background:var(--panel);
+  }
+  .part-jump a.active{ color:var(--amber); border-color:var(--amber); }
+
+  main{ max-width:760px; margin:0 auto; padding:30px 20px 100px; }
+
+  .part-section{
+    position:relative;
+    padding:28px 26px 24px;
+    margin-bottom:34px;
+    background:linear-gradient(180deg, var(--panel-raised), var(--panel));
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), var(--shadow);
+    scroll-margin-top:150px;
+  }
+  .part-section::before, .part-section::after{
+    content:""; position:absolute; width:7px; height:7px; border-radius:50%;
+    background: radial-gradient(circle at 35% 30%, #6b5327, var(--rivet) 70%);
+    box-shadow: 0 1px 1px rgba(0,0,0,0.6); top:10px;
+  }
+  .part-section::before{ left:10px; } .part-section::after{ right:10px; }
+
+  .part-head{ display:flex; align-items:flex-start; justify-content:space-between; gap:14px; margin-bottom:18px; }
+  .part-num{ font-size:12.5px; color:var(--teal-bright); letter-spacing:0.06em; }
+  .part-section h2{ margin:4px 0 0; font-size:clamp(20px,3vw,25px); color:var(--ink); }
+  .part-listen{
+    flex:none; width:38px; height:38px; border-radius:50%;
+    border:1px solid var(--line); background:transparent; color:var(--ink-dim);
+    display:flex; align-items:center; justify-content:center; cursor:pointer;
+  }
+  .part-listen svg{ width:17px; height:17px; }
+  .part-listen.speaking{ color:var(--teal-bright); border-color:var(--teal-bright); }
+
+  .part-text{ font-family:'Tiro Bangla', serif; font-size:17px; color:var(--ink); }
+  .part-text p{ margin:0 0 16px; }
+  .part-text p.dialogue{
+    margin:0 0 12px; padding-left:14px; border-left:2px solid var(--brass);
+    color:var(--brass-bright); font-style:normal;
+  }
+  .part-text p.notice{
+    display:inline-block; color:var(--danger); border:1px solid rgba(167,91,69,0.4);
+    padding:6px 14px; border-radius:3px; font-family:'Hind Siliguri'; font-size:14px; font-weight:600;
+  }
+  .part-text p.tobecontinued{
+    text-align:center; color:var(--ink-dim); font-family:'Hind Siliguri'; font-size:13.5px;
+    letter-spacing:0.08em; margin-top:22px;
+  }
+
+  footer{ text-align:center; padding:36px 20px 50px; color:var(--ink-dim); font-size:12.5px; border-top:1px solid var(--line); }
+  footer .brand{ color:var(--brass); font-weight:600; }
+
+  @media (max-width:560px){
+    .toolbar-inner{ justify-content:center; }
+    .icon-btn.mark{ margin-left:0; width:100%; justify-content:center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="chapter-head">
+  <div class="crumb">
+    <a href="rabi-index.html">নবজাগরণ</a> <span>▸</span> <span>অধ্যায় ১</span>
+  </div>
+  <span class="part-range-tag">পর্ব ১ – ৪</span>
+  <h1 class="chapter-title display">নতুন সূচনা</h1>
+  <p class="chapter-sub">অরিন্দম সেনের কারখানা পুনর্গঠনের প্রাথমিক লড়াই — সততা ও গুণমানের ওপর ভিত্তি করে এক নতুন যাত্রা।</p>
+</div>
+
+<div class="chapter-nav">
+  <span class="nav-btn disabled">← পূর্ববর্তী অধ্যায় নেই</span>
+  <a class="nav-btn" href="rabi-index.html">🏠 হোম</a>
+  <a class="nav-btn" href="chapter2.html">অধ্যায় ২ →</a>
+</div>
+
+<div class="toolbar">
+  <div class="toolbar-inner">
+    <div class="tb-group">
+      <span class="tb-label">কণ্ঠ</span>
+      <select id="voiceSelect" aria-label="কণ্ঠ নির্বাচন করুন"></select>
+    </div>
+    <div class="tb-group">
+      <span class="tb-label">গতি</span>
+      <input type="range" id="rateRange" min="0.6" max="1.8" step="0.1" value="1" aria-label="পড়ার গতি">
+      <span class="tb-label" id="rateValue">১.০×</span>
+    </div>
+    <button class="icon-btn play" id="playAllBtn">▶ সম্পূর্ণ অধ্যায় শুনুন</button>
+    <button class="icon-btn stop" id="stopAllBtn">■ থামান</button>
+    <button class="icon-btn mark" id="markHereBtn">🔖 এই স্থানে বুকমার্ক করুন</button>
+  </div>
+</div>
+
+<nav class="part-jump" id="partJump">
+  <a href="#part-1" data-part="1">পর্ব ১ · অভিশপ্ত কারখানা</a>
+  <a href="#part-2" data-part="2">পর্ব ২ · লুকিয়ে থাকা সত্য</a>
+  <a href="#part-3" data-part="3">পর্ব ৩ · মধ্যরাতের গুদাম</a>
+  <a href="#part-4" data-part="4">পর্ব ৪ · কালো নদীর রহস্য</a>
+</nav>
+
+<main>
+
+  <section class="part-section" id="part-1" data-part="1">
+    <div class="part-head">
+      <div><span class="part-num">পর্ব ১</span><h2 class="display">অভিশপ্ত কারখানা</h2></div>
+      <button class="part-listen" aria-label="পর্ব ১ শুনুন" title="পর্ব ১ শুনুন">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>
+      </button>
+    </div>
+    <div class="part-text">
+      <p>পাহাড়ের পাদদেশে বিস্তীর্ণ এক শিল্পনগরী।</p>
+      <p>একসময় যেখানে দিন-রাত চুল্লিতে আগুন জ্বলত, হাজার হাজার শ্রমিকের কোলাহলে মুখর থাকত চারপাশ, আজ সেখানে শুধু শ্মশানের নীরবতা। বিশাল লোহার গেটে মোটা হয়ে জমেছে মরিচা। ভাঙা কাঁচের জানালা দিয়ে বাতাস ঢুকে অদ্ভুত শিসের মতো শব্দ তৈরি করে। কারখানার উঁচু চিমনিটা এখনও আকাশ ছুঁয়ে দাঁড়িয়ে আছে, কিন্তু বহু বছর ধরে সেখান থেকে আর ধোঁয়া বের হয় না।</p>
+      <p>স্থানীয় মানুষ এই জায়গাটার নাম দিয়েছে—"অভিশপ্ত কারখানা"।</p>
+      <p>সূর্য ডুবে যাওয়ার পর কেউ আর ওই রাস্তা দিয়ে একা হাঁটতে চাইত না। কেউ বলত, মাঝরাতে বন্ধ কারখানার ভেতর থেকে নাকি মেশিন চলার গুমগুম শব্দ শোনা যায়। কেউ আবার দাবি করত, খালি গুদামের ভেতর আচমকা আলো জ্বলে ওঠে আর নিভে যায়!</p>
+      <p>এগুলো গুজব হতে পারে, কিন্তু একটা সত্যি ঘটনা নিয়ে কারও কোনো সংশয় ছিল না—কারখানা বন্ধ হওয়ার কয়েক মাস পর এক গভীর রাতে ভেতরের এক পুরোনো রাসায়নিকের ট্যাংক থেকে বিষাক্ত গ্যাস লিকেজ হয়। ঘুমন্ত মানুষ তীব্র কাশি আর শ্বাসকষ্টে ছটফট করতে করতে ঘর থেকে বেরিয়ে এসেছিল। সে রাতে অনেককে হাসপাতালে ভর্তি করতে হয়। পরদিনই প্রশাসন পুরো এলাকা ঘিরে ফেলে।</p>
+      <p>তারপর থেকেই কারখানার প্রধান গেটে ঝুলিয়ে দেওয়া হয় একটি লাল রঙের বড় বোর্ড—</p>
+      <p class="notice">"বিপজ্জনক এলাকা। অনুমতি ছাড়া প্রবেশ নিষেধ।"</p>
+      <p>বছরের পর বছর কেটে গেল। মরিচা ধরে নষ্ট হতে লাগল কোটি টাকার লোহার যন্ত্রাংশ। জঙ্গল এসে ঢেকে দিল কারখানার নিজস্ব রেললাইন। পাখিরা বাসা বাঁধল পরিত্যক্ত অফিসঘরে। যে কারখানা একসময় দশ হাজার মানুষের রুটি-রুজির জোগান দিত, তা এখন এক মৃত কঙ্কালের মতো দাঁড়িয়ে আছে।</p>
+      <p>এমনি একদিন সকালে হঠাৎ কয়েকটি কালো গাড়ি এসে থামল প্রধান ফটকের সামনে।</p>
+      <p>গাড়ি থেকে নামলেন কয়েকজন সরকারি কর্মকর্তা, সঙ্গে কজন বিদেশি লোকও। একজন কর্মকর্তা তালা খুলে ভেতরে ঢুকতেই রাস্তার পাশের উৎসুক মানুষ ফিসফিস করে বলতে লাগল—</p>
+      <p class="dialogue">— "আবার কেউ কিনতে এসেছে নাকি?"</p>
+      <p class="dialogue">— "কে কিনবে এই অভিশপ্ত কারখানা? দেউলিয়া করে ছাড়বে!"</p>
+      <p class="dialogue">— "যে-ই কিনুক না কেন, শেষ পর্যন্ত আগের মালিকের মতোই সর্বনাশ হবে।"</p>
+      <p>ঠিক তখনই সাধারণ একটি ধূসর রঙের গাড়ি ধীরে ধীরে গেটের সামনে এসে থামল। গাড়ি থেকে নেমে এলেন চল্লিশ-পঁয়তাল্লিশ বছর বয়সী এক ভদ্রলোক। পরনে সাদামাটা জামা-প্যান্ট, কিন্তু চোখে এক গভীর ও শান্ত দৃষ্টি।</p>
+      <p>তিনি কিছুক্ষণ চুপচাপ দাঁড়িয়ে সেই বিশাল কারখানাটার ধ্বংসাবশেষের দিকে তাকিয়ে রইলেন। তারপর মাটিতে জমে থাকা ধুলো থেকে একটি ছোট মরিচা ধরা নাট-বল্টু কুড়িয়ে নিয়ে হাত বুলোলেন। হালকা হেসে নিচু স্বরে বললেন—</p>
+      <p class="dialogue">— "মরে যায়নি... আসলে কেউ ওকে বাঁচানোর সত্যি চেষ্টা করেনি।"</p>
+      <p>দূরে দাঁড়িয়ে থাকা এক বৃদ্ধ লোক অবাক হয়ে লোকটির দিকে তাকিয়ে রইলেন। তিনি তখনও জানতেন না—এই মানুষটির পদধূলি শুধু একটি কারখানার নয়, অদূর ভবিষ্যতে হাজার হাজার মানুষের জীবন ও ভাগ্য বদলে দিতে চলেছে!</p>
+      <p class="tobecontinued">(চলবে...)</p>
+    </div>
+  </section>
+
+  <section class="part-section" id="part-2" data-part="2">
+    <div class="part-head">
+      <div><span class="part-num">পর্ব ২</span><h2 class="display">লুকিয়ে থাকা সত্য</h2></div>
+      <button class="part-listen" aria-label="পর্ব ২ শুনুন" title="পর্ব ২ শুনুন">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>
+      </button>
+    </div>
+    <div class="part-text">
+      <p>পরদিন সকাল থেকেই কারখানার সামনে অস্বাভাবিক ভিড়। সরকারি কর্মকর্তা, ব্যাংকের প্রতিনিধি, নিরাপত্তারক্ষী আর সংবাদমাধ্যমের প্রতিনিধি—সবার চোখেই একটাই কৌতুহলভরা প্রশ্ন:</p>
+      <p class="dialogue">"এই ভাঙা ধ্বংসস্তূপ কিনতে কোন পাগল এসেছে?"</p>
+      <p>পরিত্যক্ত অফিস ভবনের সামনে একটি অস্থায়ী বৈঠকের আয়োজন করা হয়েছে। ব্যাংকের প্রধান কর্মকর্তা মোটা একটি ফাইল খুলে গম্ভীর গলায় বললেন—</p>
+      <p class="dialogue">— "এই কারখানার মোট ঋণের পরিমাণ কয়েকশো মিলিয়ন ডলারের থেকেও বেশি! আগের মালিক একের পর এক ব্যাংক থেকে ঋণ নিয়েছিল। তারপর একদিন সুপরিকল্পিতভাবে সব টাকা বিদেশে পাচার করে নিজে চম্পট দেয়।"</p>
+      <p>পাশে বসে থাকা আরেকজন প্রবীণ কর্মকর্তা দীর্ঘশ্বাস ফেলে যোগ করলেন—</p>
+      <p class="dialogue">— "শুধু ব্যাংক নয়, হাজার হাজার ক্ষুদ্র বিনিয়োগকারী আর সাধারণ শ্রমিক এই কারখানার চক্করে পড়ে নিঃস্ব হয়ে গেছে।"</p>
+      <p>সাংবাদিকদের ক্যামেরার ফ্ল্যাশ ঘন ঘন জ্বলতে লাগল। ঠিক তখনই জনতার মধ্য থেকে সাধারণ পোশাক পরা সেই ভদ্রলোক শান্ত পায়ে সামনে এগিয়ে এলেন।</p>
+      <p>তিনি—অরিন্দম সেন।</p>
+      <p>তাঁর পরিচয় সামনে আসতেই উপস্থিত সবাই কিছুটা চমকে উঠলেন। অরিন্দম সেন ইতিমধ্যেই দেশে ছোট-বড় কয়েকটি অত্যন্ত সফল শিল্পপ্রতিষ্ঠান গড়ে তুলেছেন। কিন্তু এমন এক ডুবে যাওয়া, অভিশপ্ত প্রকল্পে তিনি কেন এত বড় ঝুঁকি নিতে যাচ্ছেন, তা কারও মাথাতেই ঢুকছিল না।</p>
+      <p>এক সাংবাদিক মাইক বাড়িয়ে প্রশ্ন করলেন—</p>
+      <p class="dialogue">— "মিস্টার সেন, যেখানে সবাই এই অভিশপ্ত কারখানার নাম শুনলেই পিছিয়ে যাচ্ছে, সেখানে আপনি কেন নিজের হাত পোড়াতে চাইছেন?"</p>
+      <p>অরিন্দম মৃদু হেসে উত্তর দিলেন—</p>
+      <p class="dialogue">— "ভাঙা ইট-পাথরের বাড়ি মেরামত করা যায়। পুরোনো অকেজো মেশিনও ঠিক করা সম্ভব। কিন্তু হাজার হাজার মানুষের হারিয়ে যাওয়া বিশ্বাস আর ভরসা ফিরিয়ে আনাটাই সবচেয়ে কঠিন কাজ। আমি মূলত সেই বিশ্বাসটাই ফিরিয়ে দিতে চাই।"</p>
+      <p>তাঁর কথায় উপস্থিত কর্মকর্তাদের মুখে কোনো হাততালি উঠল না। বরং অনেকে কটাক্ষের হাসি হেসে মাথা নাড়ল। সবার মনই বলছিল—এই লোকটিও কিছুদিন চেষ্টা করে বিপুল লোকসানের মুখ দেখে হাল ছেড়ে কেটে পড়বে।</p>
+      <p>বৈঠক শেষ হওয়ার পর অরিন্দম একাই কারখানার ভেতরের চত্বরে ঘুরে দেখতে লাগলেন। চারদিকে ধুলোর আস্তরণ আর জং ধরা লোহালক্কড়। হাঁটতে হাঁটতে হঠাৎই তাঁর চোখ আটকে গেল বিশাল এক গুদামের ওপর।</p>
+      <p>আশেপাশের সবকিছু বহু বছরের পুরোনো আর ভগ্নপ্রায় হলেও, ওই গুদামের দরজায় ঝুলছে একটি একেবারেই নতুন চকচকে তালা!</p>
+      <p>অরিন্দম বেশ অবাক হলেন। বছরের পর বছর বন্ধ থাকা একটি অভিশপ্ত কারখানার গুদামে একেবারে নতুন তালা কেন?</p>
+      <p>তিনি সঙ্গে থাকা নিরাপত্তারক্ষীকে ডেকে জিজ্ঞেস করলেন—</p>
+      <p class="dialogue">— "ওই গুদামটার ভেতর কী রাখা আছে?"</p>
+      <p>রক্ষীটি ইতস্তত করে তোতলাতে তোতলাতে বলল—</p>
+      <p class="dialogue">— "জা-জানি না স্যার... কারখানা বন্ধ হওয়ার পর থেকেই আমাদের ওদিকে যাওয়া বারণ। কখনও ভেতরে ঢুকতে দেওয়া হয়নি।"</p>
+      <p>অরিন্দম কিছু না বলে কয়েক সেকেন্ড শুধু সেই শক্ত তালাটার দিকে স্থির চোখে তাকিয়ে রইলেন। তাঁর দীর্ঘ অভিজ্ঞতা বলছিল—এই বন্ধ দেয়ালের ওপারে নির্ঘাত কোনো বড় রহস্য লুকিয়ে আছে।</p>
+      <p>ঠিক তখনই আড়াল থেকে এক প্রবীণ সাবেক কর্মচারী ধীরে ধীরে তাঁর পাশে এসে দাঁড়ালেন। চারদিকটা একবার ভালো করে দেখে নিয়ে অত্যন্ত নিচু, সতর্ক গলায় ফিসফিস করে বললেন—</p>
+      <p class="dialogue">— "স্যার... আপনি যদি সত্যিই এই কারখানা কিনে বাঁচাতে চান, তবে শুধু কাগজের হিসাব-নিকাশ দেখলে ভুল করবেন..."</p>
+      <p>অরিন্দম সামান্য অবাক হয়ে প্রশ্ন করলেন—</p>
+      <p class="dialogue">— "তাহলে আমার কী দেখা উচিত?"</p>
+      <p>বৃদ্ধের কণ্ঠস্বর ভয়ে কেঁপে উঠল—</p>
+      <p class="dialogue">— "রাতের আঁধারে এই গুদামটার ওপর নজর রাখবেন স্যার... ওখানে এমন কিছু লুকানো আছে, যা ঢাকা দেওয়ার জন্য অনেক প্রভাবশালী মানুষ কত কী যে করে গেল!"</p>
+      <p>কথাটা বলেই বৃদ্ধ লোকটি দ্রুত ভিড়ের মধ্যে মিশে গেলেন। অরিন্দম সেন এক দৃষ্টিতে সেই তালাবদ্ধ রহস্যময় গুদামটার দিকে তাকিয়ে রইলেন।</p>
+      <p>তাঁর স্পষ্ট অনুভুতি হলো—এই কারখানার আসল খেলা তো এখনও শুরুই হয়নি!</p>
+      <p class="tobecontinued">(চলবে...)</p>
+    </div>
+  </section>
+
+  <section class="part-section" id="part-3" data-part="3">
+    <div class="part-head">
+      <div><span class="part-num">পর্ব ৩</span><h2 class="display">মধ্যরাতের গুদাম</h2></div>
+      <button class="part-listen" aria-label="পর্ব ৩ শুনুন" title="পর্ব ৩ শুনুন">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>
+      </button>
+    </div>
+    <div class="part-text">
+      <p>সারাদিন কারখানার প্রতিটি কোণ ঘুরে ঘুরে দেখলেন অরিন্দম সেন।</p>
+      <p>ভাঙা মেশিন, মরিচা ধরা বিশালাকার কনভেয়ার বেল্ট, অচল হয়ে পড়ে থাকা রোবোটিক আর্ম আর ধুলোয় ঢাকা অফিসঘর—সবকিছুই যেন একসুরে বলছিল, একসময় এখানে প্রাণবন্ত জীবন ছিল।</p>
+      <p>কিন্তু সেই তালাবদ্ধ গুদামটার কথা কোনোভাবেই তাঁর মাথা থেকে বের হচ্ছিল না।</p>
+      <p>সন্ধ্যা নামতেই ব্যাংকের কর্মকর্তা ও কর্মীরা কারখানা থেকে বেরিয়ে গেল। প্রধান ফটকে মোটা শিকল তুলে তালা লাগিয়ে দেওয়া হলো। বাইরে পাহারা দিচ্ছে কয়েকজন নিরাপত্তারক্ষী। অরিন্দম সেনও গাড়ি নিয়ে চলে গেছেন—সবাই এমনটাই ভেবেছিল।</p>
+      <p>কিন্তু আসলে তিনি যাননি।</p>
+      <p>কারখানার পুরোনো অফিস ভবনের ভাঙা বারান্দায়, গভীর অন্ধকারের আড়ালে বসে তিনি সময় গুনছিলেন।</p>
+      <p>রাত তখন প্রায় সাড়ে এগারোটা। চারদিকে নিচ্ছিদ্র অন্ধকার আর গা ছমছমে নিস্তব্ধতা।</p>
+      <p>হঠাৎ... দূরে একটি ক্ষীণ আলোর রেখা দেখা গেল।</p>
+      <p>কারখানার পেছনের দিকের ছোট পকেট গেটটি খুব সাবধানে, নিঃশব্দে খুলে গেল। কাদা-মাটি মাখা একটি ছোট পিকআপ ভ্যান লাইট নেভানো অবস্থায় ভেতরে ঢুকল। অরিন্দম দ্রুত একটি ভাঙা ইটের দেয়ালের আড়ালে আত্মগোপন করলেন।</p>
+      <p>ট্রাক থেকে চারজন লোক নেমে এল। তাদের হাতে শক্তিশালী টর্চ। একজন পকেট থেকে চাবি বের করে গুদামের সেই চকচকে নতুন তালাটা খুলল।</p>
+      <p>গুদামের ভারী দরজাটা সরতেই ভেতর থেকে পুরোনো ধুলোর গন্ধ নয়, বরং নতুন চকচকে ধাতব যন্ত্রাংশ আর রাসায়নিকের তীব্র গন্ধ বেরিয়ে এল!</p>
+      <p>অরিন্দম আড়াল থেকে দেখে বিস্মিত হলেন। কারখানা তো বছরের পর বছর ধরে পুরোপুরি বন্ধ, তবে এখানে এত দামী নতুন যন্ত্রাংশ এল কোথা থেকে?</p>
+      <p>লোকগুলো তড়িঘড়ি করে কাঠের ভারী বাক্সগুলো ট্রাকে তুলতে শুরু করল। একজন হাঁপাতে হাঁপাতে বলল—</p>
+      <p class="dialogue">— "তাড়াতাড়ি হাত চালা! ভোর হওয়ার আগেই মালগুলো বর্ডার পার করে দিতে হবে।"</p>
+      <p>আরেকজন অট্টহাসি হেসে বলল—</p>
+      <p class="dialogue">— "ধুর ভাই, চাপ নিস না! কেউ কোনোদিন ঘুণাক্ষরেও জানতে পারবে না। বাইরের লোক তো ভাবে এই কারখানা ভূতের আস্তানা!"</p>
+      <p>সবাই একসঙ্গে খিলখিল করে হেসে উঠল। অরিন্দম অতি সাবধানে নিজের পকেট থেকে মোবাইল বের করে পুরো ঘটনার ভিডিও রেকর্ড করতে লাগলেন। তিনি মুহূর্তের মধ্যে বুঝতে পারলেন—কারখানা বন্ধ হলেও এর আড়ালে অবৈধ চোরচালান আর চুরির মহোৎসব কিন্তু বন্ধ হয়নি। বরং এই পরিত্যক্ত কারখানাটিকে ঢাল বানিয়ে বছরের পর বছর প্রভাবশালী কোনো চক্র অসাধু কাজ চালিয়ে যাচ্ছে।</p>
+      <p>হঠাৎ করেই অরিন্দমের অসাবধানী পায়ের চাপে নিচে পড়ে থাকা একটি শুকনো লোহার টুকরো 'কট' করে শব্দ করে উঠল!</p>
+      <p>মুহূর্তের মধ্যে চারজন লোকই চমকে উঠে টর্চের আলো ঘোরাল—</p>
+      <p class="dialogue">— "কে... কে ওখানে?!"</p>
+      <p>অন্য একজন পকেট থেকে একটি ধারালো চকচকে ছুরি বের করে ধীরে ধীরে দেয়ালটার দিকে এগোতে লাগল। অরিন্দম নিশ্বাস বন্ধ করে দেয়ালের সাথে পিঠ ঠেকিয়ে দাঁড়িয়ে রইলেন। হাত-পা ঠান্ডা হয়ে আসছে।</p>
+      <p>ঠিক তখনই... অনেক দূর থেকে পুলিশের সাইরেনের বিকট শব্দ ভেসে এল!</p>
+      <p>লোকগুলো আতঙ্কে থমকে দাঁড়াল। একে অপরের মুখের দিকে তাকিয়ে ড্রাইভার চেঁচিয়ে উঠল—</p>
+      <p class="dialogue">— "সর্বনাশ! পুলিশ এসে গেছে! পালা!"</p>
+      <p>মুহূর্তের মধ্যে চোরের দলটি ট্রাকে উঠে বিকট শব্দে গাড়ি ঘুরিয়ে পেছনের গেট দিয়ে চম্পট দিল।</p>
+      <p>দেয়ালের আড়াল থেকে বেরিয়ে অরিন্দমের ঠোঁটের কোণে হালকা স্বস্তির হাসি ফুটে উঠল। আসলে পুলিশকে তিনি ফোন করেননি। সাইরেনের ওই মৃদু শব্দটা এসেছিল বহু দূরের মহাসড়কে টহল দেওয়া একটি পুলিশের গাড়ি থেকে! কিন্তু চোরদের পাপমন ওই শব্দেই ভয় পেয়ে সব ফেলে পালিয়ে গেছে।</p>
+      <p>অরিন্দম পকেটের টর্চটি জ্বেলে ফেলে যাওয়া গুদামের ভেতরে ঢুকলেন। চারদিকে সারি সারি কাঠের বাক্স রাখা। একটি বাক্সের পেরেক আলগা করে মুখটা খুলতেই তিনি স্তব্ধ হয়ে গেলেন!</p>
+      <p>ভেতরে সুবিন্যস্তভাবে সাজানো ব্র্যান্ড নিউ মোটর, কম্প্রেসর, সার্কিট বোর্ড—সবই বিদেশি কোম্পানির অত্যন্ত মহার্ঘ্য সব যন্ত্রাংশ। প্রতিটি বাক্সের গায়ে একটি লাল রঙের সিল মারা—</p>
+      <p class="notice">"সরকারি তদন্ত ও বাজেয়াপ্তকরণের জন্য সংরক্ষিত।"</p>
+      <p>অরিন্দম ধীরে ধীরে বাক্সটির ঢাকনা বন্ধ করলেন। মনে মনে ভাবলেন—তাহলে দুর্নীতির জাল কেবল বাহ্যিক নয়, অনেক গভীরে প্রসারিত!</p>
+      <p>ঠিক সেই সময় অন্ধকার থমথমে গুদামের ভেতর থেকে আবার একটি ভারী ও রহস্যময় কণ্ঠস্বর ভেসে এল—</p>
+      <p class="dialogue">— "স্যার... আপনি যদি সত্যিই এর পেছনের বিষাক্ত সত্যটা জানতে চান... তবে কাল সকালেই নদীর ধারে যান..."</p>
+      <p>অরিন্দম চমকে উঠে দ্রুত পেছনে তাকালেন। টর্চের আলো চারদিকে ঘোরালেন, কিন্তু আশেপাশে কেউ নেই! শুধু রাতের হিমেল বাতাস আর অন্ধকারের ভেতর দুলতে থাকা ভাঙা টিনের শব্দ...</p>
+      <p class="tobecontinued">(চলবে...)</p>
+    </div>
+  </section>
+
+  <section class="part-section" id="part-4" data-part="4">
+    <div class="part-head">
+      <div><span class="part-num">পর্ব ৪</span><h2 class="display">কালো নদীর রহস্য</h2></div>
+      <button class="part-listen" aria-label="পর্ব ৪ শুনুন" title="পর্ব ৪ শুনুন">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>
+      </button>
+    </div>
+    <div class="part-text">
+      <p>পরদিন সূর্য ওঠার আগেই অরিন্দম সেন কারখানার পেছনের রাস্তা ধরে হাঁটতে শুরু করলেন।</p>
+      <p>রাতের সেই অদ্ভুত কথাটা তখনও তাঁর মাথায় ঘুরছিল—</p>
+      <p class="dialogue">"নদীর ধারে যান..."</p>
+      <p>কারখানার সীমানা পেরিয়ে একটু এগোতেই তিনি থমকে দাঁড়ালেন। সামনে একটি চওড়া নদী। মানচিত্রে এর নাম 'রিভার অ্যালডেন', কিন্তু আশপাশের গ্রামের মানুষ একে ডাকে—"কালো নদী"।</p>
+      <p>নদীর জল অস্বাভাবিক রকমের কালচে। তীরের কাছে কোথাও কোথাও রাসায়নিকের সাদা ফেনা জমে আছে। একটু দূরে কয়েকটি মৃত মাছ ভেসে উঠতে দেখা গেল। অরিন্দম হাঁটু গেড়ে বসে জলের দিকে তাকালেন। এক তীব্র, ঝাঁঝালো রাসায়নিক গন্ধ তাঁর নাকে এসে লাগল। তিনি পকেট থেকে একটি ছোট কাঁচের বোতল বের করে কিছু জল নমুনা হিসেবে ভরে ব্যাগে রেখে দিলেন।</p>
+      <p>ঠিক তখনই পেছন থেকে একটি কণ্ঠস্বর ভেসে এল—</p>
+      <p class="dialogue">— "স্যার, ওই জলে হাত দেবেন না!"</p>
+      <p>অরিন্দম ফিরে তাকালেন। সত্তরের কাছাকাছি বয়সের এক বৃদ্ধ জেলে দাঁড়িয়ে আছেন। তাঁর চোখে-মুখে গভীর ক্লান্তির ছাপ।</p>
+      <p class="dialogue">— "কেন?" অরিন্দম জিজ্ঞেস করলেন।</p>
+      <p>বৃদ্ধ দীর্ঘশ্বাস ফেলে বললেন—</p>
+      <p class="dialogue">— "আগে এই নদীতে এত মাছ ছিল যে, জাল ফেললেই ভরে যেত। এখন আর কোনো মাছ নেই... গ্রামের মানুষও আর এই জল ব্যবহার করে না।"</p>
+      <p class="dialogue">— "কবে থেকে এমন হলো?"</p>
+      <p>বৃদ্ধ নদীর ওপারে দাঁড়িয়ে থাকা কারখানার বিশাল চিমনিটার দিকে আঙুল তুলে বললেন—</p>
+      <p class="dialogue">— "ওই কারখানা যখন পুরোদমে চলত, তখন থেকেই। রাত গভীর হলেই বড় বড় পাইপ দিয়ে কারখানার বিষাক্ত কালো জল নদীতে ছাড়া হতো। গ্রামের কেউ প্রতিবাদ করতে গেলে অমনি তার চাকরি চলে যেত।"</p>
+      <p>তিনি একটু থেমে আবার বললেন—</p>
+      <p class="dialogue">— "একবার কয়েকজন সাংবাদিক এসেছিল। পরের দিন শুনলাম, তাদের নাকি আর কারখানার ভেতরে ঢুকতেই দেওয়া হয়নি। সরকারি লোকও এসেছিল, কিন্তু তারা কী দেখল আর কাগজে কী লিখল—তা আমরা সাধারণ মানুষ আজও জানতে পারলাম না।"</p>
+      <p>অরিন্দম চুপচাপ শুনছিলেন। এমন সময় নদীর পাড়ে খেলতে থাকা কয়েকজন শিশুর দিকে তাঁর চোখ গেল। হঠাৎ একটি ছোট ছেলে কাশতে কাশতে মাটিতে বসে পড়ল। তার মা দৌড়ে এসে তাকে কোলে তুলে নিলেন।</p>
+      <p>বৃদ্ধ ফিসফিস করে বললেন—</p>
+      <p class="dialogue">— "এই এলাকায় বাচ্চাদের শ্বাসকষ্টের রোগ অনেক বেড়ে গেছে, স্যার। ডাক্তাররা মুখে কিছু বলেন না, কিন্তু আমরা সবাই আসল কারণটা জানি।"</p>
+      <p>অরিন্দমের মুখ গম্ভীর হয়ে উঠল। তিনি আবার কারখানার দিকে তাকালেন। দূর থেকে বিশাল চিমনিটা যেন নিস্পৃহভাবে দাঁড়িয়ে আছে। কিন্তু সেই নীরবতার আড়ালে যে কত মানুষের কান্না আর কত বছরের অন্যায় লুকিয়ে আছে, তা তিনি এবার অনুধাবন করতে পারছেন।</p>
+      <p>ঠিক তখনই তাঁর পকেটে মোবাইল ফোনটি বেজে উঠল। স্ক্রিনে ভেসে উঠেছে একটি অচেনা নম্বর।</p>
+      <p>ফোনটি কানে তুলতেই অপর প্রান্ত থেকে ভেসে এল একটি চাপা ও সতর্ক কণ্ঠস্বর—</p>
+      <p class="dialogue">— "মিস্টার সেন... আপনি যদি সত্যিই কারখানাটা কিনতে চান, তাহলে আজ রাত আটটায় পুরোনো প্রশাসনিক ভবনে একদম একা আসবেন।"</p>
+      <p class="dialogue">— "আপনি কে?" অরিন্দম প্রশ্ন করলেন।</p>
+      <p>কয়েক সেকেন্ডের থমথমে নীরবতা। তারপর উত্তর এল—</p>
+      <p class="dialogue">— "আমি সেই মানুষ... যে এখনও বেঁচে আছে বলেই এই কারখানার সব গোপন সত্য একদিন সামনে আসবে।"</p>
+      <p>কথাটি শেষ হতেই লাইনটা কেটে গেল। অরিন্দম কিছুক্ষণ স্তব্ধ হয়ে দাঁড়িয়ে রইলেন। তিনি বুঝতে পারলেন, এই কারখানার আসল ইতিহাস এখনও কেউ পুরোটা প্রকাশ করেনি। আর সেই গোপন রহস্যের খবর রাখেন এমন কেউ এখনও কারখানার চত্বরেই রয়ে গেছেন।</p>
+      <p class="tobecontinued">(চলবে...)</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span class="brand">MySkillGame Learning Portal</span> · বিনামূল্যে, বিজ্ঞাপনহীন, অফলাইন-বান্ধব বাংলা পাঠ ও শিক্ষা প্ল্যাটফর্ম<br>
+  বুকমার্ক ও পছন্দ শুধু আপনার ব্রাউজারে (localStorage) সংরক্ষিত থাকে — কোনো তথ্য সংগ্রহ করা হয় না।
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var CHAPTER_NUM = 1;
+  var BOOKMARK_KEY = "nabajagaran_bookmark";
+  var VOICE_KEY = "nabajagaran_voice_pref";
+  var RATE_KEY = "nabajagaran_rate_pref";
+
+  var synth = window.speechSynthesis;
+  var speakQueue = [];
+  var activeBtn = null;
+
+  /* ---------------- voices ---------------- */
+  var voiceSelect = document.getElementById("voiceSelect");
+  var rateRange = document.getElementById("rateRange");
+  var rateValue = document.getElementById("rateValue");
+
+  function populateVoices(){
+    var voices = synth ? synth.getVoices() : [];
+    if (!voices.length){ voiceSelect.innerHTML = '<option value="">কণ্ঠ পাওয়া যায়নি</option>'; return; }
+    var bn = voices.filter(function(v){ return /^bn/i.test(v.lang); });
+    var others = voices.filter(function(v){ return !/^bn/i.test(v.lang); });
+    var ordered = bn.concat(others);
+    var saved = localStorage.getItem(VOICE_KEY);
+    voiceSelect.innerHTML = ordered.map(function(v, i){
+      return '<option value="'+i+'">'+v.name+' ('+v.lang+')'+(bn.indexOf(v)>-1?' — বাংলা':'')+'</option>';
+    }).join("");
+    voiceSelect._voices = ordered;
+    if (saved !== null){
+      var idx = ordered.findIndex(function(v){ return v.name === saved; });
+      if (idx > -1) voiceSelect.value = idx;
+    }
+  }
+  if (synth){ populateVoices(); synth.onvoiceschanged = populateVoices; }
+  else { voiceSelect.innerHTML = '<option value="">এই ব্রাউজারে ভয়েস সমর্থিত নয়</option>'; }
+
+  voiceSelect.addEventListener("change", function(){
+    var v = voiceSelect._voices && voiceSelect._voices[voiceSelect.value];
+    if (v) localStorage.setItem(VOICE_KEY, v.name);
+  });
+
+  var savedRate = parseFloat(localStorage.getItem(RATE_KEY));
+  if (!isNaN(savedRate)) rateRange.value = savedRate;
+  function updateRateLabel(){ rateValue.textContent = parseFloat(rateRange.value).toFixed(1) + "×"; }
+  updateRateLabel();
+  rateRange.addEventListener("input", function(){ updateRateLabel(); localStorage.setItem(RATE_KEY, rateRange.value); });
+
+  /* ---------------- speech queue ---------------- */
+  function splitIntoChunks(text){
+    return text
+      .replace(/\s+/g, " ")
+      .trim()
+      .split(/(?<=[।!?])\s+/)
+      .filter(function(s){ return s.trim().length > 0; });
+  }
+
+  function speakChunks(chunks, btn){
+    stopSpeaking();
+    if (!synth || !chunks.length) return;
+    speakQueue = chunks.slice();
+    activeBtn = btn;
+    if (btn) btn.classList.add("speaking");
+    speakNext();
+  }
+  function speakNext(){
+    if (!speakQueue.length){ finishSpeaking(); return; }
+    var text = speakQueue.shift();
+    var utter = new SpeechSynthesisUtterance(text);
+    var v = voiceSelect._voices && voiceSelect._voices[voiceSelect.value];
+    if (v) utter.voice = v;
+    utter.rate = parseFloat(rateRange.value) || 1;
+    utter.lang = (v && v.lang) || "bn-IN";
+    utter.onend = speakNext;
+    utter.onerror = finishSpeaking;
+    synth.speak(utter);
+  }
+  function finishSpeaking(){
+    if (activeBtn) activeBtn.classList.remove("speaking");
+    activeBtn = null;
+    speakQueue = [];
+  }
+  function stopSpeaking(){
+    if (synth) synth.cancel();
+    finishSpeaking();
+  }
+  document.getElementById("stopAllBtn").addEventListener("click", stopSpeaking);
+
+  document.querySelectorAll(".part-listen").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var section = btn.closest(".part-section");
+      if (btn.classList.contains("speaking")){ stopSpeaking(); return; }
+      var text = section.querySelector(".part-text").textContent;
+      speakChunks(splitIntoChunks(text), btn);
+    });
+  });
+
+  document.getElementById("playAllBtn").addEventListener("click", function(){
+    var btn = document.getElementById("playAllBtn");
+    if (synth && synth.speaking){ stopSpeaking(); return; }
+    var full = Array.prototype.map.call(
+      document.querySelectorAll(".part-text"),
+      function(el){ return el.textContent; }
+    ).join(" ");
+    speakChunks(splitIntoChunks(full), null);
+  });
+
+  /* ---------------- bookmark ---------------- */
+  function readBookmark(){
+    var raw = localStorage.getItem(BOOKMARK_KEY);
+    if (!raw) return null;
+    try {
+      var parsed = JSON.parse(raw);
+      if (parsed && typeof parsed === "object") return parsed;
+    } catch(e){}
+    var n = parseInt(raw, 10);
+    return isNaN(n) ? null : { chapter:n, part:1 };
+  }
+  function writeBookmark(chapter, part){
+    localStorage.setItem(BOOKMARK_KEY, JSON.stringify({ chapter:chapter, part:part }));
+  }
+
+  document.getElementById("markHereBtn").addEventListener("click", function(){
+    var visible = getCurrentPart();
+    writeBookmark(CHAPTER_NUM, visible);
+    var btn = document.getElementById("markHereBtn");
+    var original = btn.textContent;
+    btn.textContent = "✓ বুকমার্ক হয়েছে — পর্ব " + visible;
+    setTimeout(function(){ btn.textContent = original; }, 1800);
+  });
+
+  /* jump to bookmarked part on load if it belongs to this chapter and no hash given */
+  (function jumpToBookmarkIfRelevant(){
+    if (window.location.hash) return;
+    var bm = readBookmark();
+    if (bm && bm.chapter === CHAPTER_NUM && bm.part > 1){
+      var target = document.getElementById("part-" + bm.part);
+      if (target) setTimeout(function(){ target.scrollIntoView({ behavior:"auto", block:"start" }); }, 50);
+    }
+  })();
+
+  /* ---------------- scrollspy for part-jump chips ---------------- */
+  var jumpLinks = document.querySelectorAll("#partJump a");
+  function getCurrentPart(){
+    var sections = document.querySelectorAll(".part-section");
+    var current = 1;
+    sections.forEach(function(sec){
+      var rect = sec.getBoundingClientRect();
+      if (rect.top < 200) current = parseInt(sec.getAttribute("data-part"), 10);
+    });
+    return current;
+  }
+  function updateActiveChip(){
+    var current = getCurrentPart();
+    jumpLinks.forEach(function(a){
+      a.classList.toggle("active", parseInt(a.getAttribute("data-part"),10) === current);
+    });
+  }
+  document.addEventListener("scroll", function(){
+    window.requestAnimationFrame(updateActiveChip);
+  }, { passive:true });
+  updateActiveChip();
+
+  window.addEventListener("beforeunload", stopSpeaking);
+})();
+</script>
+</body>
+</html>

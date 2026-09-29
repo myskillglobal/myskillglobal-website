@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>সুকুমার চ্যাটার্জ্জীর ছাতা হারানোর গল্প — পর্ব ২</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla&family=Baloo+Da+2:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink: #1c232d;
+    --indigo: #232c3d;
+    --indigo-deep: #171e29;
+    --rain-grey: #e4e7e6;
+    --paper: #f4f1ea;
+    --brass: #c98a3e;
+    --brass-soft: #e0b374;
+    --line: #cfd3ce;
+    --max-w: 640px;
+  }
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Tiro Bangla', serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---------- progress bar ---------- */
+  #progress{
+    position: fixed; top:0; left:0; height:3px; width:0%;
+    background: var(--brass);
+    z-index: 60;
+    transition: width .1s linear;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position: relative;
+    min-height: 78vh;
+    display:flex;
+    flex-direction: column;
+    justify-content:flex-end;
+    overflow:hidden;
+    background: var(--indigo-deep);
+  }
+  .hero-img{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit: cover;
+    opacity: .55;
+    filter: saturate(.75) contrast(1.05);
+  }
+  .hero-scrim{
+    position:absolute; inset:0;
+    background:
+      linear-gradient(180deg, rgba(23,30,41,.35) 0%, rgba(23,30,41,.55) 55%, var(--paper) 100%);
+  }
+  .rain{
+    position:absolute; inset:0; pointer-events:none;
+    overflow:hidden;
+  }
+  .drop{
+    position:absolute; top:-10%;
+    width:1px; height:70px;
+    background: linear-gradient(180deg, rgba(224,179,116,0) 0%, rgba(224,179,116,.55) 100%);
+    animation: fall linear infinite;
+  }
+  @keyframes fall{
+    to{ transform: translateY(120vh); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .drop{ animation: none; display:none; }
+    html{ scroll-behavior: auto; }
+  }
+
+  .hero-content{
+    position: relative;
+    padding: 40px 24px 56px;
+    max-width: var(--max-w);
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+  }
+  .kicker{
+    font-family: 'Baloo Da 2', sans-serif;
+    font-weight: 500;
+    font-size: .95rem;
+    letter-spacing: .02em;
+    color: var(--brass-soft);
+    margin: 0 0 10px;
+  }
+  .hero-title{
+    font-family: 'Baloo Da 2', sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.9rem, 6vw, 2.9rem);
+    line-height: 1.25;
+    margin: 0 0 14px;
+    text-shadow: 0 2px 18px rgba(0,0,0,.35);
+  }
+  .hero-sub{
+    font-family: 'Tiro Bangla', serif;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,.82);
+    margin: 0;
+  }
+
+  /* ---------- control bar ---------- */
+  .controlbar{
+    position: sticky; top:0; z-index: 50;
+    background: rgba(244,241,234,.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+  }
+  .controlbar-inner{
+    max-width: var(--max-w);
+    margin:0 auto;
+    padding: 10px 24px;
+    display:flex;
+    align-items:center;
+    gap: 14px;
+  }
+  .listen-btn{
+    display:flex; align-items:center; gap:8px;
+    background: var(--indigo);
+    color: var(--paper);
+    border:none;
+    padding: 9px 16px;
+    border-radius: 999px;
+    font-family: 'Baloo Da 2', sans-serif;
+    font-weight: 500;
+    font-size: .92rem;
+    cursor:pointer;
+    transition: background .15s ease;
+  }
+  .listen-btn:hover{ background: var(--indigo-deep); }
+  .listen-btn:focus-visible, button:focus-visible, a:focus-visible{
+    outline: 2px solid var(--brass); outline-offset: 2px;
+  }
+  .listen-btn .dot{
+    width:7px; height:7px; border-radius:50%;
+    background: var(--brass-soft);
+  }
+  .listen-btn.playing .dot{ background: #7fd68c; }
+  .part-tag{
+    margin-left:auto;
+    font-family: 'Baloo Da 2', sans-serif;
+    font-size: .82rem;
+    color: #6b7178;
+  }
+  .prev-link{
+    font-family: 'Baloo Da 2', sans-serif;
+    font-size: .85rem;
+    color: var(--indigo);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 1px;
+    white-space: nowrap;
+  }
+  .prev-link:hover{ color: var(--brass); border-color: var(--brass); }
+
+  /* ---------- story ---------- */
+  main{
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 48px 24px 40px;
+  }
+  .chapter-mark{
+    font-family: 'Baloo Da 2', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--brass);
+    text-align:center;
+    margin: 0 0 40px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--line);
+  }
+  p{
+    font-size: 1.14rem;
+    line-height: 2.05;
+    margin: 0 0 26px;
+    color: var(--ink);
+  }
+  p.active-line{
+    background: linear-gradient(90deg, rgba(201,138,62,.14), transparent);
+    border-radius: 4px;
+    margin-left: -10px;
+    padding-left: 10px;
+  }
+  p.dialogue{
+    color: var(--indigo);
+    font-weight: 600;
+  }
+  p.emph{
+    text-align:center;
+    font-family: 'Baloo Da 2', sans-serif;
+    font-weight: 700;
+    font-size: 1.28rem;
+    color: var(--indigo);
+    margin: 40px 0;
+    line-height: 1.6;
+  }
+  p.sound{
+    text-align:center;
+    color: #6b7178;
+    font-style: normal;
+    letter-spacing: .04em;
+  }
+
+  .end-mark{
+    text-align:center;
+    margin: 56px 0 12px;
+    font-family: 'Baloo Da 2', sans-serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--brass);
+  }
+  .end-note{
+    text-align:center;
+    color:#6b7178;
+    font-size: .95rem;
+    margin: 0 0 60px;
+  }
+
+  footer{
+    border-top: 1px solid var(--line);
+    padding: 22px 24px 34px;
+    text-align:center;
+    color:#8a9097;
+    font-family: 'Baloo Da 2', sans-serif;
+    font-size: .82rem;
+  }
+
+  @media (max-width: 420px){
+    p{ font-size: 1.06rem; line-height: 1.95; }
+    .hero{ min-height: 68vh; }
+  }
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<section class="hero">
+  <img class="hero-img" src="images/umbrella.png" alt="একটি রিকশার ওপর উড়ে পড়া কালো ছাতা, বৃষ্টিভেজা শহরের গলি">
+  <div class="hero-scrim"></div>
+  <div class="rain" id="rain"></div>
+  <div class="hero-content">
+    <p class="kicker">একটি ছাতার নিজের জবানিতে বলা গল্প</p>
+    <h1 class="hero-title">সুকুমার চ্যাটার্জ্জীর<br>ছাতা হারানোর গল্প</h1>
+    <p class="hero-sub">পর্ব ২ · এক হাত থেকে অন্য হাতে</p>
+  </div>
+</section>
+
+<div class="controlbar">
+  <div class="controlbar-inner">
+    <button class="listen-btn" id="listenBtn" aria-pressed="false">
+      <span class="dot"></span>
+      <span id="listenLabel">শুনুন</span>
+    </button>
+    <a class="prev-link" href="umbrella-bengali-part1.html">পর্ব 1</a>
+    <span class="part-tag"><a class="prev-link" href="umbrella-bengali-part3.html">পর্ব 3</a>
+</span>
+  </div>
+</div>
+
+<main>
+  <p class="chapter-mark">পর্ব – ২ : এক হাত থেকে অন্য হাতে</p>
+
+  <div id="story">
+    <p>সুকুমারবাবুর হাত ছেড়ে বেরিয়ে আসার পর আমার জীবনে যেন আর কোনো স্থির ঠিকানা রইল না।</p>
+
+    <p>যে মানুষটির হাতের মুঠোয় বছরের পর বছর নিশ্চিন্তে ছিলাম, সেই হাত থেকে বেরিয়ে আমি এখন এক সম্পূর্ণ অচেনা মানুষের সঙ্গে চলেছি।</p>
+
+    <p>বাজারের ভিড় পেরিয়ে লোকটি আমাকে মাথার ওপর মেলে ধরে দ্রুত হাঁটছিল।</p>
+
+    <p>তার গায়ে পুরোনো মলিন জামা, পায়ে ছেঁড়া স্যান্ডেল। হাঁটার ভঙ্গিতে বোঝা যাচ্ছিল, শহরের অলিগলি তার বেশ পরিচিত।</p>
+
+    <p>বৃষ্টি একটু কমতেই সে আমাকে বন্ধ করে কাঁধে রাখল।</p>
+
+    <p>তারপর শহরের ভিড় ছেড়ে ঢুকে গেল এক সরু গলিতে।</p>
+
+    <p>আমি বুঝতে পারছিলাম না, আমার গন্তব্য কোথায়।</p>
+
+    <p>কিছুক্ষণ পর আমরা পৌঁছলাম শহরতলির এক পুরোনো বাজারে।</p>
+
+    <p>সেটা সাধারণ বাজার নয়।</p>
+
+    <p>এখানে নতুন জিনিসের চেয়ে পুরোনো জিনিসের সংখ্যাই বেশি। ভাঙা রেডিও, পুরোনো ঘড়ি, ব্যবহৃত ব্যাগ, মরচে ধরা লোহার জিনিস, পুরোনো বই — কী নেই সেখানে!</p>
+
+    <p>লোকটি আমাকে একটি দোকানের সামনে রেখে দোকানদারকে বলল,</p>
+
+    <p class="dialogue">"ছাতাটা নেবেন? ভালো জিনিস।"</p>
+
+    <p>দোকানদার আমাকে হাতে নিয়ে এদিক-ওদিক দেখল।</p>
+
+    <p>আমার কালো কাপড় তখনও বেশ ভালো অবস্থায় ছিল। আটটি লোহার শিকও শক্তপোক্ত।</p>
+
+    <p>সে কিছুক্ষণ দরদাম করে শেষ পর্যন্ত লোকটির হাতে কুড়ি টাকা দিল।</p>
+
+    <p>এই প্রথম বুঝলাম —</p>
+
+    <p class="emph">আমার মূল্য নির্ধারিত হয়ে গেল কুড়ি টাকা।</p>
+
+    <p>অবশ্য জিনিসের দাম দিয়ে তার স্মৃতির মূল্য কি কখনো মাপা যায়?</p>
+
+    <p>সুকুমারবাবুর সঙ্গে কাটানো সেই বছরের পর বছর কি কুড়ি টাকার সমান?</p>
+
+    <p>আমি চুপ করে রইলাম।</p>
+
+    <p>সেদিনই আমাকে কিনে নিল এক কলেজপড়ুয়া ছেলে।</p>
+
+    <p>ছেলেটি আমাকে হাতে নিয়ে বেশ খুশি।</p>
+
+    <p>দোকানদার বলল,</p>
+
+    <p class="dialogue">"ছাতাটা কিন্তু বেশ মজবুত। অনেক দিন চলবে।"</p>
+
+    <p>ছেলেটি হাসল।</p>
+
+    <p class="dialogue">"এইটাই তো চাই। নতুন ছাতা কিনলে মাসখানেকেই নষ্ট হয়ে যায়।"</p>
+
+    <p>তারপর আমাকে ব্যাগের পাশে গুঁজে নিয়ে সে চলে গেল।</p>
+
+    <p>আমার নতুন জীবন শুরু হলো কলেজে।</p>
+
+    <p>প্রতিদিন সকালে ছেলেটি আমাকে নিয়ে বের হতো।</p>
+
+    <p>বাসস্ট্যান্ড, রাস্তা, কলেজের করিডর — সব জায়গাতেই আমি তার সঙ্গে থাকতাম।</p>
+
+    <p>বৃষ্টি হলে আমাকে মাথার ওপর মেলে ধরত।</p>
+
+    <p>রোদ হলে কখনো কখনো ব্যাগের পাশে ঝুলিয়ে রাখত।</p>
+
+    <p>তার কয়েকজন বন্ধু আমাকে নিয়ে খুব মজা করত।</p>
+
+    <p>একদিন একজন বলল,</p>
+
+    <p class="dialogue">"তোর ছাতাটার বয়স তো তোর বাবার থেকেও বেশি মনে হচ্ছে!"</p>
+
+    <p>আরেকজন হেসে বলল,</p>
+
+    <p class="dialogue">"এই ছাতা দিয়ে বৃষ্টি আটকাবে, না ইতিহাস?"</p>
+
+    <p>সবাই হেসে উঠল।</p>
+
+    <p>ছেলেটিও হাসল।</p>
+
+    <p>আমি কিছু মনে করলাম না।</p>
+
+    <p>কারণ আমি জানতাম, আমার গায়ে বয়সের দাগ থাকলেও আমি এখনও শক্ত আছি।</p>
+
+    <p>তবু রাত নামলে আমার মন খারাপ হতো।</p>
+
+    <p>ছেলেটি যখন ঘুমিয়ে পড়ত, আমি ঘরের এক কোণে চুপ করে পড়ে থাকতাম।</p>
+
+    <p>তখন মনে পড়ত সুকুমারবাবুর কথা।</p>
+
+    <p>তাঁর ধীর পায়ের শব্দ।</p>
+
+    <p>আমাকে ভাঁজ করার সময় হাতের সেই পরিচিত স্পর্শ।</p>
+
+    <p>বাড়ির বারান্দার সেই কোণ।</p>
+
+    <p>আর তাঁর পকেটে রাখা লজেন্সের মিষ্টি গন্ধ।</p>
+
+    <p>কখনো কখনো মনে হতো —</p>
+
+    <p class="emph">সুকুমারবাবু কি আমাকে খুঁজেছিলেন?</p>
+
+    <p>চায়ের দোকানে ফিরে গিয়ে কি তিনি আমাকে না পেয়ে অবাক হয়েছিলেন?</p>
+
+    <p>হয়তো দোকানদারকে জিজ্ঞেস করেছিলেন —</p>
+
+    <p class="dialogue">"আমার ছাতাটা কোথায়?"</p>
+
+    <p>হয়তো কিছুক্ষণ অপেক্ষাও করেছিলেন।</p>
+
+    <p>তারপর হয়তো বাড়ি ফিরে নিজেকেই দোষ দিয়েছেন।</p>
+
+    <p>আমি জানতাম না।</p>
+
+    <p>শুধু মনে মনে চাইতাম, একদিন যদি আবার তাঁর হাতের স্পর্শ পাই!</p>
+
+    <p>কিন্তু মানুষের ইচ্ছেমতো তো জীবন চলে না।</p>
+
+    <p>কয়েক মাস কেটে গেল।</p>
+
+    <p>একদিন বিকেলে কলেজ ছুটির পর ছেলেটি বাসস্ট্যান্ডের দিকে যাচ্ছিল। আকাশ তখন পরিষ্কার ছিল। হঠাৎ দূরে কালো মেঘ জমল।</p>
+
+    <p>কিছু বুঝে ওঠার আগেই শুরু হলো প্রবল ঝড়।</p>
+
+    <p>ছেলেটি আমাকে খুলে মাথার ওপর ধরল।</p>
+
+    <p>বাতাস এত জোরে বইছিল যে আমাকে সামলানো কঠিন হয়ে পড়েছিল।</p>
+
+    <p>আমি প্রাণপণে মাটিতে থাকার চেষ্টা করছিলাম।</p>
+
+    <p>কিন্তু হঠাৎ —</p>
+
+    <p class="emph">একটা প্রচণ্ড দমকা হাওয়া!</p>
+
+    <p>আমার হুকটা ছেলেটির হাত থেকে পিছলে গেল।</p>
+
+    <p>আমি আকাশে উঠে গেলাম।</p>
+
+    <p class="sound">একবার... দুবার... তিনবার...</p>
+
+    <p>তারপর বাতাস আমাকে উড়িয়ে নিয়ে ছুড়ে ফেলল একটি চলন্ত রিকশার ওপর।</p>
+
+    <p>রিকশাওয়ালা প্রথমে কিছুই বুঝতে পারেনি।</p>
+
+    <p>কিছুদূর যাওয়ার পর সে পেছনে তাকিয়ে আমাকে দেখতে পেল।</p>
+
+    <p>রিকশা থামিয়ে আমাকে তুলে নিল।</p>
+
+    <p>আমাকে খুলে দেখে সে মৃদু হেসে বলল,</p>
+
+    <p class="dialogue">"বাহ! বেশ মজবুত তো!"</p>
+
+    <p>তারপর আমাকে রিকশার পেছনে রেখে আবার যাত্রা শুরু করল।</p>
+
+    <p>সেদিন সন্ধ্যায় সে আমাকে নিয়ে বাড়ি ফিরল।</p>
+
+    <p>তার ছোট্ট মেয়েটি আমাকে দেখে আনন্দে ছুটে এল।</p>
+
+    <p class="dialogue">"বাবা! ছাতা!"</p>
+
+    <p>রিকশাওয়ালা হেসে বলল,</p>
+
+    <p class="dialogue">"হ্যাঁ, তোর জন্য এনেছি।"</p>
+
+    <p>মেয়েটি আমাকে দুহাতে জড়িয়ে ধরল।</p>
+
+    <p>সেই মুহূর্তে অনেক দিন পর আমার মনে হলো —</p>
+
+    <p class="emph">হয়তো আবার কোনো মানুষের ঘর পেলাম।</p>
+
+    <p>কিন্তু আমি জানতাম না, এই ছোট্ট মেয়েটির সঙ্গে আমার সম্পর্কও খুব বেশিদিনের হবে না।</p>
+
+    <p>কারণ আমার জীবনের পথ তখনও অনেক লম্বা।</p>
+
+    <p>আর সামনে অপেক্ষা করছিল আরও এক অদ্ভুত মোড়...</p>
+  </div>
+
+  <p class="end-mark">চলবে... ☔</p>
+  <p class="end-note">পরবর্তী পর্বে জানা যাবে, রিকশাওয়ালার মেয়ের সঙ্গে ছাতাটির কী হলো।</p>
+</main>
+
+<footer>সুকুমার চ্যাটার্জ্জীর ছাতা হারানোর গল্প — পর্ব ২</footer>
+
+<script>
+  // ---- decorative rain in hero ----
+  (function(){
+    var rain = document.getElementById('rain');
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var count = window.innerWidth < 480 ? 22 : 40;
+    for (var i=0;i<count;i++){
+      var d = document.createElement('div');
+      d.className = 'drop';
+      d.style.left = Math.random()*100 + '%';
+      d.style.animationDuration = (0.7 + Math.random()*0.9) + 's';
+      d.style.animationDelay = (Math.random()*2) + 's';
+      d.style.opacity = 0.3 + Math.random()*0.5;
+      rain.appendChild(d);
+    }
+  })();
+
+  // ---- scroll progress ----
+  (function(){
+    var bar = document.getElementById('progress');
+    window.addEventListener('scroll', function(){
+      var h = document.documentElement;
+      var scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+      bar.style.width = scrolled + '%';
+    });
+  })();
+
+  // ---- voice reading (paragraph by paragraph, with highlight) ----
+  (function(){
+    var btn = document.getElementById('listenBtn');
+    var label = document.getElementById('listenLabel');
+    var paras = Array.prototype.slice.call(document.querySelectorAll('#story p'));
+    var idx = 0;
+    var speaking = false;
+
+    function pickVoice(){
+      var voices = window.speechSynthesis.getVoices();
+      return voices.find(function(v){ return v.lang === 'bn-IN'; })
+          || voices.find(function(v){ return v.lang && v.lang.indexOf('bn') === 0; })
+          || null;
+    }
+
+    function clearHighlight(){
+      paras.forEach(function(p){ p.classList.remove('active-line'); });
+    }
+
+    function speakNext(){
+      if (idx >= paras.length){
+        stop();
+        return;
+      }
+      clearHighlight();
+      var p = paras[idx];
+      p.classList.add('active-line');
+      p.scrollIntoView({ block: 'center', behavior: 'smooth' });
+
+      var utter = new SpeechSynthesisUtterance(p.textContent);
+      var voice = pickVoice();
+      if (voice) utter.voice = voice;
+      utter.lang = 'bn-IN';
+      utter.rate = 0.95;
+      utter.onend = function(){
+        idx++;
+        if (speaking) speakNext();
+      };
+      window.speechSynthesis.speak(utter);
+    }
+
+    function start(){
+      if (!('speechSynthesis' in window)){
+        alert('এই ব্রাউজারে ভয়েস রিডিং সমর্থিত নয়।');
+        return;
+      }
+      speaking = true;
+      btn.classList.add('playing');
+      btn.setAttribute('aria-pressed', 'true');
+      label.textContent = 'থামুন';
+      speakNext();
+    }
+
+    function stop(){
+      speaking = false;
+      window.speechSynthesis.cancel();
+      btn.classList.remove('playing');
+      btn.setAttribute('aria-pressed', 'false');
+      label.textContent = 'শুনুন';
+      clearHighlight();
+      idx = 0;
+    }
+
+    btn.addEventListener('click', function(){
+      if (speaking) stop(); else start();
+    });
+
+    window.addEventListener('beforeunload', function(){
+      window.speechSynthesis.cancel();
+    });
+  })();
+</script>
+
+</body>
+</html>

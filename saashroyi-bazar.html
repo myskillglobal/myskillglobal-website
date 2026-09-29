@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+
+<html lang="bn">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>সাশ্রয়ী বাজার — সীমিত আয়ের মানুষের জন্য</title>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-EC8BPWZDWC');
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@500;600;700;800&amp;family=Noto+Sans+Bengali:wght@400;500;600;700&amp;family=Tiro+Bangla&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --rice: #F6F1E4;
+    --rice-deep: #EDE4CE;
+    --ink: #2A2520;
+    --sabzi: #33503B;
+    --sabzi-deep: #223A29;
+    --turmeric: #D9A02A;
+    --turmeric-deep: #B87F16;
+    --brick: #8C3B2A;
+    --line: rgba(42,37,32,0.16);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--rice);
+    color:var(--ink);
+    font-family:'Noto Sans Bengali','Tiro Bangla',sans-serif;
+    line-height:1.75;
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3,.display{
+    font-family:'Noto Serif Bengali',serif;
+    font-weight:700;
+    letter-spacing:0.01em;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+
+  a{color:inherit;}
+
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- texture ---------- */
+  .grain{
+    position:fixed; inset:0; pointer-events:none; z-index:1; opacity:0.035; mix-blend-mode:multiply;
+    background-image:radial-gradient(circle at 1px 1px, #000 1px, transparent 0);
+    background-size:3px 3px;
+  }
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(246,241,228,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  header .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 24px;
+  }
+  .brand{
+    font-family:'Noto Serif Bengali',serif; font-weight:800; font-size:1.15rem;
+    color:var(--sabzi-deep); display:flex; align-items:center; gap:8px;
+  }
+  .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--turmeric);display:inline-block;}
+  nav{display:none; gap:28px; font-size:0.92rem; font-weight:500;}
+  nav a{text-decoration:none; opacity:0.75; transition:opacity 0.2s;}
+  nav a:hover{opacity:1;}
+  @media(min-width:760px){ nav{display:flex;} }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    padding:88px 0 64px;
+    background:
+      radial-gradient(circle at 85% 12%, rgba(217,160,42,0.16), transparent 55%),
+      linear-gradient(180deg, var(--rice) 0%, var(--rice-deep) 100%);
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:10px;
+    font-size:0.82rem; font-weight:600; letter-spacing:0.04em;
+    color:var(--brick); background:rgba(140,59,42,0.08);
+    padding:6px 14px; border-radius:999px; margin-bottom:22px;
+  }
+  .hero h1{
+    font-size:clamp(2.1rem, 5.4vw, 3.4rem);
+    color:var(--sabzi-deep);
+    line-height:1.28;
+    max-width:15ch;
+  }
+  .hero h1 .accent{color:var(--turmeric-deep);}
+  .hero p.lede{
+    margin-top:22px; max-width:46ch; font-size:1.08rem; color:rgba(42,37,32,0.82);
+  }
+  .hero-slogan{
+    margin-top:30px; font-family:'Noto Serif Bengali',serif; font-weight:600;
+    font-size:1.15rem; color:var(--sabzi-deep);
+    border-left:3px solid var(--turmeric); padding-left:16px;
+  }
+
+  /* ---------- signature: the scale ---------- */
+  .scale-wrap{
+    margin-top:56px; display:flex; justify-content:center;
+  }
+  .scale{
+    position:relative; width:min(560px, 92vw); padding-top:34px;
+  }
+  .scale-beam{
+    position:relative; height:6px; background:var(--sabzi-deep); border-radius:4px;
+    transform:rotate(-4deg); transform-origin:center;
+    animation:tip 4.5s ease-in-out infinite;
+  }
+  .scale-post{
+    position:absolute; left:50%; top:-30px; width:6px; height:36px;
+    background:var(--sabzi-deep); transform:translateX(-50%); border-radius:3px;
+  }
+  .scale-post::after{
+    content:''; position:absolute; left:50%; top:-8px; width:16px; height:16px;
+    background:var(--turmeric); border-radius:50%; transform:translateX(-50%);
+  }
+  @keyframes tip{
+    0%,100%{transform:rotate(-4deg);}
+    50%{transform:rotate(4deg);}
+  }
+  .pan{
+    position:absolute; top:6px; width:180px; text-align:center;
+    animation:tip 4.5s ease-in-out infinite;
+  }
+  .pan.left{left:6%; transform-origin:top center; animation-name:tipL;}
+  .pan.right{right:6%; transform-origin:top center; animation-name:tipR;}
+  @keyframes tipL{0%,100%{transform:translateY(-6px);} 50%{transform:translateY(10px);}}
+  @keyframes tipR{0%,100%{transform:translateY(10px);} 50%{transform:translateY(-6px);}}
+  .pan-plate{
+    height:8px; border-radius:50%; background:var(--sabzi);
+    box-shadow:0 10px 18px -8px rgba(0,0,0,0.35);
+  }
+  .pan-tag{
+    margin-top:14px; background:var(--ink); color:var(--rice);
+    border-radius:8px; padding:12px 10px; font-size:0.86rem; font-weight:600;
+  }
+  .pan-tag .big{
+    display:block; font-family:'Noto Serif Bengali',serif; font-size:1.3rem; font-weight:700;
+    margin-bottom:2px;
+  }
+  .pan.left .pan-tag{background:var(--brick);}
+  .pan.right .pan-tag{background:var(--sabzi-deep);}
+  .scale-caption{
+    text-align:center; margin-top:52px; font-size:0.88rem; color:rgba(42,37,32,0.6);
+  }
+  .scale-quote{
+    text-align:center; margin-top:14px; font-size:1rem; font-style:italic;
+    color:var(--brick); max-width:38ch; margin-left:auto; margin-right:auto;
+  }
+
+  /* poster */
+  .poster{background:var(--rice); border-bottom:1px solid var(--line);}
+  .poster-frame{
+    border-radius:16px; overflow:hidden; border:1px solid var(--line);
+    box-shadow:0 24px 48px -24px rgba(42,37,32,0.28);
+  }
+  .poster-frame img{width:100%; display:block;}
+  .poster-caption{
+    text-align:center; margin-top:18px; font-size:0.9rem; color:rgba(42,37,32,0.6);
+  }
+
+  /* ---------- sections ---------- */
+  section{padding:64px 0;}
+  .section-head{max-width:38ch; margin-bottom:36px;}
+  .kicker{
+    font-size:0.8rem; font-weight:700; letter-spacing:0.08em; color:var(--turmeric-deep);
+    text-transform:uppercase; margin-bottom:10px; display:block;
+  }
+  .section-head h2{font-size:clamp(1.5rem,3vw,2rem); color:var(--sabzi-deep);}
+
+  /* concept */
+  .concept{background:var(--rice-deep); border-bottom:1px solid var(--line);}
+  .concept-body{max-width:62ch; font-size:1.02rem; color:rgba(42,37,32,0.88);}
+  .concept-body p{margin-bottom:18px;}
+  .principle{
+    margin-top:30px; background:var(--ink); color:var(--rice);
+    padding:26px 28px; border-radius:14px; position:relative;
+  }
+  .principle::before{
+    content:'নীতি'; position:absolute; top:-11px; left:24px; background:var(--turmeric);
+    color:var(--ink); font-size:0.72rem; font-weight:700; padding:3px 12px; border-radius:999px;
+  }
+  .principle p{
+    font-family:'Noto Serif Bengali',serif; font-size:1.15rem; font-weight:600; line-height:1.6;
+  }
+
+  /* products */
+  .goods-grid{
+    display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:8px;
+  }
+  @media(min-width:640px){ .goods-grid{grid-template-columns:repeat(3,1fr);} }
+  .crate{
+    background:var(--rice); border:1px solid var(--line); border-radius:12px;
+    padding:22px 16px; text-align:center; transition:transform 0.25s, box-shadow 0.25s;
+  }
+  .crate:hover{transform:translateY(-4px); box-shadow:0 14px 26px -14px rgba(42,37,32,0.35);}
+  .crate .ic{font-size:1.9rem; display:block; margin-bottom:10px;}
+  .crate .lb{font-weight:600; font-size:0.95rem;}
+
+  /* objective */
+  .objective{
+    background:linear-gradient(135deg, var(--sabzi-deep), var(--sabzi));
+    color:var(--rice); border-radius:20px; padding:40px 32px; margin-top:8px;
+  }
+  .objective h3{font-size:1.3rem; margin-bottom:14px; color:var(--rice);}
+  .objective p{color:rgba(246,241,228,0.9); max-width:56ch; font-size:1.02rem;}
+
+  /* how it works */
+  .how-grid{display:grid; gap:18px; margin-top:8px;}
+  @media(min-width:760px){ .how-grid{grid-template-columns:repeat(3,1fr);} }
+  .how-card{
+    border:1px solid var(--line); border-radius:14px; padding:24px 20px; background:var(--rice);
+  }
+  .how-card .tag{
+    display:inline-block; font-size:0.78rem; font-weight:700; color:var(--brick);
+    background:rgba(140,59,42,0.08); padding:4px 10px; border-radius:999px; margin-bottom:12px;
+  }
+  .how-card h4{font-family:'Noto Serif Bengali',serif; font-size:1.08rem; margin-bottom:8px; color:var(--sabzi-deep);}
+  .how-card p{font-size:0.94rem; color:rgba(42,37,32,0.78);}
+
+  /* slogans */
+  .slogans{background:var(--rice-deep); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .slogan-strip{display:flex; flex-direction:column; gap:14px; margin-top:8px;}
+  .slogan-card{
+    background:var(--rice); border:1px dashed rgba(140,59,42,0.35); border-radius:12px;
+    padding:20px 24px; font-family:'Noto Serif Bengali',serif; font-size:1.1rem; font-weight:600;
+    color:var(--ink); position:relative;
+  }
+  .slogan-card::before{content:'“'; color:var(--turmeric-deep); font-size:1.6rem; margin-right:4px;}
+
+  /* footer */
+  footer{padding:44px 0 56px; text-align:center;}
+  footer .sign{font-size:0.88rem; color:rgba(42,37,32,0.6);}
+  footer .sign strong{color:var(--sabzi-deep);}
+
+  .fade-up{opacity:0; transform:translateY(16px); transition:opacity 0.7s ease, transform 0.7s ease;}
+  .fade-up.in{opacity:1; transform:translateY(0);}
+</style>
+<link href="https://myskillgame.netlify.app/11-7-26 website/saashroyi-bazar.html" rel="canonical"/><script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1034022057999423"></script></head>
+<body>
+<div class="grain"></div>
+<header>
+<div class="wrap">
+<div class="brand"><span class="dot"></span> সাশ্রয়ী বাজার</div>
+<nav>
+<a href="#vabna">ভাবনা</a>
+<a href="#poddo">পণ্য</a>
+<a href="#uddesh">উদ্দেশ্য</a>
+<a href="#kivabe">যেভাবে চলবে</a>
+<a href="#sadasya">সদস্যপদ</a>
+<a href="#slogan">স্লোগান</a>
+</nav>
+</div>
+</header>
+<section class="hero">
+<div class="wrap">
+<span class="eyebrow">🛒 কোনো ভর্তুকি নয় — সরাসরি বিক্রির বাজার</span>
+<h1>সীমিত আয়ের মানুষের জন্য <span class="accent">সাশ্রয়ী বাজার</span></h1>
+<p class="lede">উৎপাদক থেকে সরাসরি সংগ্রহ, অপ্রয়োজনীয় মধ্যস্বত্বভোগী বাদ, এবং কম লাভে বিক্রি — যাতে প্রতিটি পরিবার সম্মানের সঙ্গে ভালো মানের নিত্যপ্রয়োজনীয় পণ্য কিনতে পারে।</p>
+<p class="hero-slogan">"কম লাভে বিক্রি, মানুষের মুখে হাসি।"</p>
+<div class="scale-wrap">
+<div class="scale">
+<div class="scale-beam">
+<div class="scale-post"></div>
+<div class="pan left">
+<div class="pan-plate"></div>
+<div class="pan-tag"><span class="big">১,২০০ ৳</span>প্রতি কেজি মাছ</div>
+</div>
+<div class="pan right">
+<div class="pan-plate"></div>
+<div class="pan-tag"><span class="big">২০০ ৳</span>প্রতি কেজি মাছ</div>
+</div>
+</div>
+</div>
+</div>
+<p class="scale-caption">একই বাজারে দুই দামের মাছ — কিন্তু সবার সামর্থ্য সমান নয়। এই ফাঁকটুকু কমানোই লক্ষ্য।</p>
+<p class="scale-quote">"দাম শুধু বাজার নির্ধারণ করে না, মানুষের সামর্থ্যও নির্ধারণ করে সে কী কিনতে পারবে।"</p>
+</div>
+</section>
+<section class="poster" id="poster">
+<div class="wrap">
+<div class="poster-frame fade-up">
+<img 
+  alt="সাশ্রয়ী বাজার — সীমিত আয়ের মানুষের জন্য ন্যায্য দাম, সদস্যপদ ব্যবস্থা, সদস্য কার্ড ও খাতার মাধ্যমে কেনাকাটার তথ্যচিত্র"
+  src="images/cheep_market_bengali.png"
+/></div>
+<p class="poster-caption fade-up">সাশ্রয়ী বাজারের সম্পূর্ণ ধারণা — এক নজরে</p>
+</div>
+</section>
+<section class="concept" id="vabna">
+<div class="wrap">
+<div class="section-head fade-up">
+<span class="kicker">প্রেক্ষাপট</span>
+<h2>কেন এই বাজার প্রয়োজন</h2>
+</div>
+<div class="concept-body fade-up">
+<p>বাজারে গেলে অনেক সময় নিজেকে খুব অসহায় মনে হয়। বাইরে থেকে হয়তো পরিষ্কার-পরিচ্ছন্ন পোশাক পরে আছি, কিন্তু পকেটে টাকা কম। চারপাশে নানা রকম মাছ, ফল, মাংস, খেলনা বা প্রয়োজনীয় জিনিস সাজানো থাকে — সবই চোখের সামনে, অথচ সব কেনার সামর্থ্য থাকে না।</p>
+<p>সবচেয়ে কঠিন মুহূর্ত আসে যখন ছোট সন্তান কোনো জিনিসের আবদার করে। সে তো পরিবারের আয়-ব্যয়ের হিসাব বোঝে না। তার কাছে শুধু একটি ইচ্ছা — "বাবা, এটা কিনে দাও" বা "মা, ওটা চাই।" কিন্তু অনেক বাবা-মাকে নীরবে বলতে হয়, "আজ নয়।" এই কষ্ট শুধু অর্থের নয়, এটি আত্মসম্মানেরও।</p>
+<p>তাই প্রয়োজন এমন একটি সাশ্রয়ী বাজার, যেখানে সীমিত আয়ের মানুষ কম দামে ভালো মানের মাছ, সবজি, ডাল, চাল ও নিত্যপ্রয়োজনীয় পণ্য কিনতে পারবেন। এটি কোনো দয়া বা ভর্তুকির বিষয় নয় — এটি মানুষের মর্যাদা বজায় রেখে সাশ্রয়ী মূল্যে কেনাকাটার একটি সুযোগ, যা সরাসরি উৎপাদক থেকে সংগ্রহ ও অপ্রয়োজনীয় মধ্যস্বত্বভোগী কমিয়ে সম্ভব করা হবে।</p>
+<div class="principle">
+<p>"অভাব লজ্জার নয়। সবার জন্য মর্যাদাপূর্ণ ও সাশ্রয়ী বাজার গড়ে তোলাই হোক আমাদের লক্ষ্য।"</p>
+</div>
+</div>
+</div>
+</section>
+<section id="poddo">
+<div class="wrap">
+<div class="section-head fade-up">
+<span class="kicker">এখানে যা পাওয়া যাবে</span>
+<h2>নিত্যপ্রয়োজনীয় পণ্যের তালিকা</h2>
+</div>
+<div class="goods-grid fade-up">
+<div class="crate"><span class="ic">🥬</span><span class="lb">টাটকা সবজি</span></div>
+<div class="crate"><span class="ic">🐟</span><span class="lb">কম দামের মাছ</span></div>
+<div class="crate"><span class="ic">🌾</span><span class="lb">চাল, ডাল, আটা</span></div>
+<div class="crate"><span class="ic">🛢️</span><span class="lb">তেল ও মশলা</span></div>
+<div class="crate"><span class="ic">🥚</span><span class="lb">ডিম</span></div>
+<div class="crate"><span class="ic">🧺</span><span class="lb">দৈনন্দিন মুদিখানার সামগ্রী</span></div>
+</div>
+</div>
+</section>
+<section id="uddesh">
+<div class="wrap">
+<div class="objective fade-up">
+<span class="kicker" style="color:#F0C25A;">উদ্দেশ্য</span>
+<h3>সম্মানের সঙ্গে কেনাকাটার অধিকার</h3>
+<p>সীমিত আয়ের মানুষ যাতে সম্মানের সঙ্গে কম দামে ভালো মানের নিত্যপ্রয়োজনীয় পণ্য কিনতে পারেন — এটাই এই উদ্যোগের মূল লক্ষ্য। এটি দান বা ভিক্ষা নয়; এটি একটি সুষ্ঠু, সরাসরি বিক্রি-ব্যবস্থা।</p>
+</div>
+</div>
+</section>
+<section id="kivabe">
+<div class="wrap">
+<div class="section-head fade-up">
+<span class="kicker">যেভাবে এটি চলবে</span>
+<h2>ভর্তুকি নয়, একটি সুষ্ঠু সরবরাহ-শৃঙ্খল</h2>
+</div>
+<div class="how-grid fade-up">
+<div class="how-card">
+<span class="tag">সংগ্রহ</span>
+<h4>সরাসরি উৎপাদকের কাছ থেকে</h4>
+<p>কৃষক, জেলে ও প্রকৃত উৎপাদকদের কাছ থেকে সরাসরি পণ্য সংগ্রহ করা হবে, যাতে অতিরিক্ত হাতবদল এড়ানো যায়।</p>
+</div>
+<div class="how-card">
+<span class="tag">বিক্রি</span>
+<h4>কম লাভে, স্বচ্ছভাবে</h4>
+<p>কোনো সরকারি ভর্তুকি ছাড়াই, ন্যায্য ও কম মুনাফায় পণ্য বিক্রি করা হবে যাতে দাম সবার নাগালে থাকে।</p>
+</div>
+<div class="how-card">
+<span class="tag">সুবিধা</span>
+<h4>মান বজায় রেখে সাশ্রয়</h4>
+<p>দাম কম হলেও পণ্যের গুণমানে কোনো আপস করা হবে না — এটাই এই বাজারের মূল প্রতিশ্রুতি।</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sadasya">
+<div class="wrap">
+<div class="section-head fade-up">
+<span class="kicker">সদস্যপদ</span>
+<h2>অগ্রাধিকার যাদের জন্য তৈরি, তাদের কাছেই</h2>
+</div>
+<div class="concept-body fade-up" style="margin-bottom:28px;">
+<p>এই বাজারের লক্ষ্য গ্রামের সাধারণ মানুষ, দিনমজুর, কৃষিশ্রমিক, রিকশাচালক ও নিম্ন-মধ্যবিত্ত পরিবার — তাই ডিজিটাল ব্যবস্থা বাধ্যতামূলক রাখা হচ্ছে না। সহজ পদ্ধতি মানুষ সহজে গ্রহণ করে, তাই প্রবীণ, অশিক্ষিত বা কম প্রযুক্তি-পরিচিত মানুষও যাতে কোনো অসুবিধা ছাড়াই বাজারটি ব্যবহার করতে পারেন, সেভাবেই ব্যবস্থাটি সাজানো হয়েছে।</p>
+</div>
+<div class="section-head fade-up" style="margin-bottom:14px;">
+<h3 style="font-family:'Noto Serif Bengali',serif; font-size:1.15rem; color:var(--sabzi-deep);">সদস্যপদ</h3>
+</div>
+<div class="how-grid fade-up">
+<div class="how-card">
+<span class="tag">📖 নিবন্ধন</span>
+<h4>সাধারণ কাগজের নিবন্ধন খাতা</h4>
+<p>কোনো অ্যাপ বা ডিজিটাল ফর্ম নয় — একটি সাধারণ কাগজের খাতাতেই সদস্যদের নাম নিবন্ধিত হবে।</p>
+</div>
+<div class="how-card">
+<span class="tag">🪪 কার্ড</span>
+<h4>ল্যামিনেট করা সদস্য কার্ড, সাথে ছবি</h4>
+<p>প্রতিটি সদস্যকে একটি সহজ, ল্যামিনেট করা কার্ড দেওয়া হবে — তাতে থাকবে সদস্যের ছবি ও পরিবারের সদস্যসংখ্যা।</p>
+</div>
+<div class="how-card">
+<span class="tag">🛒 সীমা</span>
+<h4>সাপ্তাহিক বা মাসিক নির্দিষ্ট পরিমাণ</h4>
+<p>প্রতি সপ্তাহ বা মাসে পরিবারের আকার অনুযায়ী নির্দিষ্ট পরিমাণ পণ্য কেনার সুযোগ থাকবে।</p>
+</div>
+</div>
+<div class="section-head fade-up" style="margin:34px 0 14px;">
+<h3 style="font-family:'Noto Serif Bengali',serif; font-size:1.15rem; color:var(--sabzi-deep);">সদস্য নির্বাচন</h3>
+</div>
+<div class="how-grid fade-up">
+<div class="how-card">
+<span class="tag">🏛️ সুপারিশ</span>
+<h4>পঞ্চায়েত, ওয়ার্ড কমিটি বা সমবায়ের সুপারিশ</h4>
+<p>স্থানীয় পঞ্চায়েত, ওয়ার্ড কমিটি বা সমবায় সমিতির সুপারিশের ভিত্তিতে সদস্য বাছাই করা হবে।</p>
+</div>
+<div class="how-card">
+<span class="tag">🔍 যাচাই</span>
+<h4>স্থানীয়ভাবে যাচাই</h4>
+<p>স্থানীয় পরিচিতির ভিত্তিতেই যাচাই করে সদস্যপদ দেওয়া হবে — জটিল কোনো কাগজপত্রের প্রয়োজন নেই।</p>
+</div>
+<div class="how-card">
+<span class="tag">📅 পর্যালোচনা</span>
+<h4>বছরে একবার তালিকা পর্যালোচনা</h4>
+<p>প্রতি বছর একবার সদস্য তালিকা পর্যালোচনা করে প্রয়োজন অনুযায়ী হালনাগাদ করা হবে।</p>
+</div>
+</div>
+<div class="section-head fade-up" style="margin:34px 0 14px;">
+<h3 style="font-family:'Noto Serif Bengali',serif; font-size:1.15rem; color:var(--sabzi-deep);">কেনাকাটা</h3>
+</div>
+<div class="how-grid fade-up">
+<div class="how-card">
+<span class="tag">🪪 দেখান</span>
+<h4>কার্ড দেখিয়ে পণ্য নেওয়া</h4>
+<p>বাজারে এসে কার্ড দেখালেই নির্ধারিত পরিমাণ পণ্য কেনার সুযোগ পাবেন সদস্য।</p>
+</div>
+<div class="how-card">
+<span class="tag">✍️ হিসাব</span>
+<h4>খাতায় তারিখ ও পরিমাণ লেখা</h4>
+<p>কী পরিমাণ পণ্য কেনা হলো, তা খাতায় তারিখ দিয়ে লিখে রাখা হবে — সহজ ও স্বচ্ছ হিসাব।</p>
+</div>
+<div class="how-card">
+<span class="tag">🚫 অ্যাপ নেই</span>
+<h4>মোবাইল অ্যাপ বা QR কোডের প্রয়োজন নেই</h4>
+<p>আধুনিক প্রযুক্তির পরিবর্তে সহজ ও সবার বোধগম্য ব্যবস্থাকেই অগ্রাধিকার দেওয়া হবে।</p>
+</div>
+</div>
+<div class="principle fade-up" style="margin-top:28px;">
+<p style="font-size:1.02rem;">"এই বাজারের সমস্ত কার্যক্রম সহজ ও স্বচ্ছ পদ্ধতিতে পরিচালিত হবে। সদস্যদের একটি সাধারণ পরিচয়পত্র থাকবে। কেনাকাটার হিসাব নিবন্ধন খাতায় সংরক্ষণ করা হবে। আধুনিক প্রযুক্তির পরিবর্তে সহজ ও সবার বোধগম্য ব্যবস্থাকেই অগ্রাধিকার দেওয়া হবে।"</p>
+</div>
+</div>
+</section>
+<section class="slogans" id="slogan">
+<div class="wrap">
+<div class="section-head fade-up">
+<span class="kicker">স্লোগান</span>
+<h2>বাজারের কথা, তিনটি রূপে</h2>
+</div>
+<div class="slogan-strip fade-up">
+<div class="slogan-card">কম লাভে বিক্রি, মানুষের মুখে হাসি।</div>
+<div class="slogan-card">সীমিত আয়ের মানুষের জন্য সাশ্রয়ী বাজার।</div>
+<div class="slogan-card">সরাসরি উৎপাদকের কাছ থেকে — কম দামে আপনার ঘরে। 🌱</div>
+</div>
+</div>
+</section>
+<footer>
+<div class="wrap">
+<p class="sign">একটি সামাজিক উদ্যোগের ভাবনা — <strong>সাশ্রয়ী বাজার</strong> | ভর্তুকি নয়, ন্যায্য সরবরাহের প্রস্তাব</p>
+</div>
+</footer>
+<script>
+  const els = document.querySelectorAll('.fade-up');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); } });
+  }, {threshold:0.15});
+  els.forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

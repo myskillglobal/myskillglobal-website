@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>অধ্যায় ৪ : নবজাগরণের সূচনা | নবজাগরণ</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+<meta name="description" content="নবজাগরণ, অধ্যায় ৪ : নবজাগরণের সূচনা — পর্ব ১৩-১৬। অচেনা মহিলার ফাইল, প্রথম সিদ্ধান্ত, নতুন নিয়োগ ও কারখানার প্রথম দিনের গল্প।">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@500;600;700;800&family=Tiro+Bangla&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#0a131a;
+    --panel:#162430;
+    --panel-raised:#1d3040;
+    --rivet:#081118;
+    --line: rgba(198,151,73,0.22);
+    --brass:#c69749;
+    --brass-bright:#e8b96b;
+    --amber:#e2a33b;
+    --ink:#ece3d2;
+    --ink-dim:#93a5b1;
+    --teal:#4f8c82;
+    --teal-bright:#6fb3a7;
+    --danger:#a75b45;
+    --shadow: 0 18px 40px rgba(0,0,0,0.45);
+    --radius: 4px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{animation-duration:.001ms !important; transition-duration:.001ms !important;} }
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at top, rgba(198,151,73,0.05), transparent 55%),
+      repeating-linear-gradient(180deg, rgba(255,255,255,0.012) 0px, rgba(255,255,255,0.012) 1px, transparent 1px, transparent 3px),
+      var(--bg-deep);
+    color:var(--ink);
+    font-family:'Hind Siliguri', sans-serif;
+    line-height:1.7;
+  }
+  .display{font-family:'Baloo Da 2', 'Hind Siliguri', sans-serif;}
+  a{color:inherit; text-decoration:none;}
+  button{font-family:inherit;}
+  :focus-visible{outline:2px solid var(--amber); outline-offset:2px;}
+
+  /* breadcrumb / chapter head */
+  .chapter-head{
+    max-width:760px; margin:0 auto; padding:38px 20px 24px;
+    border-bottom:1px solid var(--line);
+  }
+  .crumb{
+    font-size:13px; color:var(--ink-dim); margin-bottom:18px;
+    display:flex; align-items:center; gap:8px; flex-wrap:wrap;
+  }
+  .crumb a{ color:var(--teal-bright); }
+  .crumb a:hover{ color:var(--brass-bright); }
+  .part-range-tag{
+    display:inline-block; font-size:12px; color:var(--teal-bright);
+    border:1px solid rgba(111,179,167,0.35); padding:2px 10px; border-radius:12px; margin-bottom:12px;
+  }
+  h1.chapter-title{
+    font-size:clamp(28px,5vw,44px); margin:0 0 6px; color:var(--brass-bright); font-weight:800;
+  }
+  .chapter-sub{ font-size:14.5px; color:var(--ink-dim); margin:0; }
+
+  .chapter-nav{
+    max-width:760px; margin:18px auto 0; padding:0 20px;
+    display:flex; justify-content:space-between; gap:12px; font-size:13.5px;
+  }
+  .chapter-nav .nav-btn{
+    padding:8px 14px; border:1px solid var(--line); border-radius:var(--radius);
+    background:var(--panel); color:var(--ink-dim);
+  }
+  .chapter-nav .nav-btn.disabled{ opacity:0.4; cursor:not-allowed; }
+  .chapter-nav .nav-btn:not(.disabled):hover{ color:var(--brass-bright); border-color:var(--brass); }
+
+  /* toolbar */
+  .toolbar{
+    position:sticky; top:0; z-index:40;
+    background:rgba(16,27,36,0.94); backdrop-filter: blur(8px);
+    border-bottom:1px solid var(--line);
+    padding:10px 16px;
+  }
+  .toolbar-inner{
+    max-width:760px; margin:0 auto; display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+  }
+  .tb-group{ display:flex; align-items:center; gap:8px; background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:6px 10px; }
+  .tb-label{ font-size:12px; color:var(--ink-dim); white-space:nowrap; }
+  select{ background:var(--panel-raised); color:var(--ink); border:1px solid var(--line); border-radius:3px; padding:6px 10px; font-size:13px; max-width:140px; }
+  input[type="range"]{ width:90px; accent-color: var(--amber); }
+  .icon-btn{
+    background:var(--panel-raised); color:var(--ink); border:1px solid var(--line); border-radius:3px;
+    padding:7px 12px; font-size:13.5px; cursor:pointer; font-weight:600; display:inline-flex; align-items:center; gap:6px;
+  }
+  .icon-btn.play{ color:var(--teal-bright); border-color: rgba(111,179,167,0.35); }
+  .icon-btn.stop{ color:var(--danger); border-color: rgba(167,91,69,0.35); }
+  .icon-btn.mark{ color:var(--amber); border-color: rgba(226,163,59,0.4); margin-left:auto; }
+
+  /* part quick-jump chips */
+  .part-jump{
+    max-width:760px; margin:0 auto; padding:14px 20px 0;
+    display:flex; gap:8px; flex-wrap:wrap;
+  }
+  .part-jump a{
+    font-size:12.5px; padding:5px 12px; border-radius:14px; border:1px solid var(--line);
+    color:var(--ink-dim); background:var(--panel);
+  }
+  .part-jump a.active{ color:var(--amber); border-color:var(--amber); }
+
+  main{ max-width:760px; margin:0 auto; padding:30px 20px 100px; }
+
+  .part-section{
+    position:relative;
+    padding:28px 26px 24px;
+    margin-bottom:34px;
+    background:linear-gradient(180deg, var(--panel-raised), var(--panel));
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), var(--shadow);
+    scroll-margin-top:150px;
+  }
+  .part-section::before, .part-section::after{
+    content:""; position:absolute; width:7px; height:7px; border-radius:50%;
+    background: radial-gradient(circle at 35% 30%, #6b5327, var(--rivet) 70%);
+    box-shadow: 0 1px 1px rgba(0,0,0,0.6); top:10px;
+  }
+  .part-section::before{ left:10px; } .part-section::after{ right:10px; }
+
+  .part-head{ display:flex; align-items:flex-start; justify-content:space-between; gap:14px; margin-bottom:18px; }
+  .part-num{ font-size:12.5px; color:var(--teal-bright); letter-spacing:0.06em; }
+  .part-section h2{ margin:4px 0 0; font-size:clamp(20px,3vw,25px); color:var(--ink); }
+  .part-listen{
+    flex:none; width:38px; height:38px; border-radius:50%;
+    border:1px solid var(--line); background:transparent; color:var(--ink-dim);
+    display:flex; align-items:center; justify-content:center; cursor:pointer;
+  }
+  .part-listen svg{ width:17px; height:17px; }
+  .part-listen.speaking{ color:var(--teal-bright); border-color:var(--teal-bright); }
+
+  .part-text{ font-family:'Tiro Bangla', serif; font-size:17px; color:var(--ink); }
+  .part-text p{ margin:0 0 16px; }
+  .part-text p.dialogue{
+    margin:0 0 12px; padding-left:14px; border-left:2px solid var(--brass);
+    color:var(--brass-bright); font-style:normal;
+  }
+  .part-text p.notice{
+    display:inline-block; color:var(--danger); border:1px solid rgba(167,91,69,0.4);
+    padding:6px 14px; border-radius:3px; font-family:'Hind Siliguri'; font-size:14px; font-weight:600;
+  }
+  .part-text p.tobecontinued{
+    text-align:center; color:var(--ink-dim); font-family:'Hind Siliguri'; font-size:13.5px;
+    letter-spacing:0.08em; margin-top:22px;
+  }
+  .part-text ul.evidence-list{
+    margin:0 0 16px; padding-left:0; list-style:none;
+  }
+  .part-text ul.evidence-list li{
+    margin:0 0 8px; padding-left:18px; position:relative;
+  }
+  .part-text ul.evidence-list li::before{
+    content:"•"; position:absolute; left:0; color:var(--amber);
+  }
+
+  footer{ text-align:center; padding:36px 20px 50px; color:var(--ink-dim); font-size:12.5px; border-top:1px solid var(--line); }
+  footer .brand{ color:var(--brass); font-weight:600; }
+
+  @media (max-width:560px){
+    .toolbar-inner{ justify-content:center; }
+    .icon-btn.mark{ margin-left:0; width:100%; justify-content:center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="chapter-head">
+  <div class="crumb">
+    <a href="rabi-index.html">নবজাগরণ</a> <span>▸</span> <span>অধ্যায় ৪</span>
+  </div>
+  <span class="part-range-tag">পর্ব ১৩ – ১৬</span>
+  <h1 class="chapter-title display">নবজাগরণের সূচনা</h1>
+  <p class="chapter-sub">অচেনা মহিলার হাতে আসা এক গোপন ফাইল থেকে শুরু করে নতুন নিয়োগ আর কারখানার প্রথম দিন—অরিন্দম সেন গড়ে তোলেন এক সততার নতুন অধ্যায়।</p>
+</div>
+
+<div class="chapter-nav">
+  <a class="nav-btn" href="chapter3.html">← অধ্যায় ৩</a>
+  <a class="nav-btn" href="rabi-index.html">🏠 হোম</a>
+  <a class="nav-btn" href="chapter5.html">অধ্যায় ৫ →</a>
+</div>
+
+<div class="toolbar">
+  <div class="toolbar-inner">
+    <div class="tb-group">
+      <span class="tb-label">কণ্ঠ</span>
+      <select id="voiceSelect" aria-label="কণ্ঠ নির্বাচন করুন"></select>
+    </div>
+    <div class="tb-group">
+      <span class="tb-label">গতি</span>
+      <input type="range" id="rateRange" min="0.6" max="1.8" step="0.1" value="1" aria-label="পড়ার গতি">
+      <span class="tb-label" id="rateValue">১.০×</span>
+    </div>
+    <button class="icon-btn play" id="playAllBtn">▶ সম্পূর্ণ অধ্যায় শুনুন</button>
+    <button class="icon-btn stop" id="stopAllBtn">■ থামান</button>
+    <button class="icon-btn mark" id="markHereBtn">🔖 এই স্থানে বুকমার্ক করুন</button>
+  </div>
+</div>
+
+<nav class="part-jump" id="partJump">
+  <a href="#part-13" data-part="13">পর্ব ১৩ · অচেনা মহিলার ফাইল</a>
+  <a href="#part-14" data-part="14">পর্ব ১৪ · প্রথম সিদ্ধান্ত</a>
+  <a href="#part-15" data-part="15">পর্ব ১৫ · নতুন নিয়োগ</a>
+  <a href="#part-16" data-part="16">পর্ব ১৬ · প্রথম দিন, প্রথম শিক্ষা</a>
+</nav>
+
+<main>
+
+  <section class="part-section" id="part-13" data-part="13">
+    <div class="part-head">
+      <div><span class="part-num">পর্ব ১৩</span><h2 class="display">অচেনা মহিলার ফাইল</h2></div>
+      <button class="part-listen" aria-label="পর্ব ১৩ শুনুন" title="পর্ব ১৩ শুনুন">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>
+      </button>
+    </div>
+    <div class="part-text">
+      <p>সকাল সাড়ে দশটা।</p>
+      <p>কারখানার প্রশাসনিক ভবনের প্রধান ফটকের সামনে একটি পুরোনো মডেলের সাদা গাড়ি এসে থামল। গাড়ি থেকে নেমে এলেন প্রায় চল্লিশ বছর বয়সী এক মহিলা। পরনে সাদামাটা পরিপাটি পোশাক, হাতে ঝুলছে একটি ভারী কালো লেদার ব্যাগ। চোখেমুখে বহু বছরের জমে থাকা ক্লান্তি, অথচ হাবভাবে স্পষ্ট আত্মবিশ্বাস।</p>
+      <p>নিরাপত্তারক্ষী সম্মানের সাথে তাঁকে দোতলার মূল সম্মেলন কক্ষে নিয়ে এল।</p>
+      <p>অরিন্দম সেন চেয়ার ছেড়ে উঠে দাঁড়িয়ে বললেন—</p>
+      <p class="dialogue">— "নমস্কার। আপনি...?"</p>
+      <p>মহিলা শান্ত গলায় নিজের পরিচয় দিলেন—</p>
+      <p class="dialogue">— "আমার নাম এমিলি কার্টার। আমি এই কারখানার তৎকালীন 'অভ্যন্তরীণ হিসাব নিরীক্ষা' (Internal Audit) বিভাগের সিনিয়র কর্মকর্তা ছিলাম।"</p>
+      <p>ঘরে উপস্থিত কর্মকর্তা ও ব্যাংকের প্রতিনিধিরা চমকে উঠে একে অপরের দিকে তাকাতে লাগলেন।</p>
+      <p>অরিন্দম তাঁকে বসতে অনুরোধ করলেন। এমিলি চেয়ারে বসে নিজের ব্যাগ থেকে মোটা একটি ফাইল বের করে টেবিলের মাঝখানে রাখলেন—</p>
+      <p class="dialogue">— "আমি আজ থেকে প্রায় নয় বছর আগে এই কারখানার চাকরি ছেড়ে দিতে বাধ্য হয়েছিলাম। স্বেচ্ছায় নয় স্যার... প্রাণের ভয়ে বাধ্য হয়ে।"</p>
+      <p class="dialogue">— "কেন? কী ঘটেছিল?" অরিন্দম প্রশ্ন করলেন।</p>
+      <p class="dialogue">— "কারণ আমি হিসাব মেলাতে গিয়ে এমন কিছু নথিপত্র আর সত্যের মুখোমুখি হয়েছিলাম, যা চিরতরে ধামাচাপা দেওয়ার জন্য আমাকে ক্রমাগত হুমকি দেওয়া হচ্ছিল।"</p>
+      <p>এমিলির ফাইলটি অরিন্দম নিজের দিকে টেনে নিলেন। ধুলোমাখা ফাইলের প্রথম পাতায় লাল কালিতে স্পষ্ট লেখা—</p>
+      <p class="notice">"গোপন অভ্যন্তরীণ অডিট রিপোর্ট — শুধুমাত্র শীর্ষ পর্ষদের জন্য"</p>
+      <p>অরিন্দম মনোযোগ দিয়ে পাতা উল্টাতে লাগলেন। রিপোর্টে স্পষ্ট ও বিস্তারিত তথ্যপ্রমাণসহ লেখা রয়েছে—</p>
+      <ul class="evidence-list">
+        <li>ভুয়া টেন্ডার আহ্বান করে কাগজ কলমে অস্তিত্বহীন কোম্পানিকে কোটি কোটি টাকার কার্যাদেশ দেওয়া হয়েছে।</li>
+        <li>আসল যন্ত্রাংশের বাজারদর বাড়িয়ে ভুয়া ভাউচারে অতিরিক্ত বিল তোলা হয়েছে।</li>
+        <li>বর্জ্য লোহা বা স্ক্র্যাপ বিক্রির আড়ালে নিয়মিত নতুন আমদানিকৃত যন্ত্রাংশ বিদেশে পাচার করা হয়েছে।</li>
+        <li>শ্রমিকের পিএফ ও কল্যাণ তহবিল থেকে নিয়মিত টাকা আত্মসাৎ করা হয়েছে।</li>
+      </ul>
+      <p>কিন্তু অডিট ফাইলের ঠিক পরের পাতাটি উল্টাতেই অরিন্দমের চোখের দৃষ্টি স্থির হয়ে গেল! সেখানে বড় অক্ষরে শিরোনাম—</p>
+      <p class="notice">"বেআইনি শিশুশ্রম ব্যবহারের তদন্ত রিপোর্ট"</p>
+      <p>তার সাথে কিছু অকাট্য প্রমাণের ছবি পিন দিয়ে আটকানো। ছবিতে স্পষ্ট দেখা যাচ্ছে—বারো-তেরো বছরের ছোট ছোট ছেলে-মেয়েরা বিপজ্জনক রাসায়নিক ও ভারী যন্ত্রাংশ পরিষ্কার করছে। কারও হাতে কোনো সুরক্ষা গ্লাভস নেই, মুখে কোনো মাস্ক বা চোখে চশমা নেই।</p>
+      <p>এমিলির কণ্ঠস্বর ভারী হয়ে আসছিল—</p>
+      <p class="dialogue">— "ওদের অনেকেরই স্কুলে যাওয়ার বয়স ছিল স্যার! কিন্তু সামান্য কয়েকটা টাকার লোভে আর অল্প খরচে কাজ করানোর জন্য ওদের কারখানার বিষাক্ত ধোঁয়ার মধ্যে খাটিয়ে নেওয়া হতো। আমি আমার রিপোর্টে এগুলো কড়া ভাষায় তুলে ধরেছিলাম।"</p>
+      <p class="dialogue">— "তারপর কী হলো?"</p>
+      <p class="dialogue">— "আমার রিপোর্ট জমা দেওয়ার পরদিনই মূল ফাইলটা তৎকালীন ম্যানেজমেন্টের হাত দিয়ে গায়েব হয়ে যায়। আর আমাকে চাকরি না ছাড়লে জীবন থেকে সরিয়ে দেওয়ার হুমকি দেওয়া হয়।"</p>
+      <p>কনফারেন্স রুমে এক থমথমে নীরবতা নেমে এল।</p>
+      <p>এমিলি এবার ব্যাগ থেকে একটি ছোট্ট জেনুইন পেনড্রাইভ বের করলেন—</p>
+      <p class="dialogue">— "এতে কিছু ডিজিটাল ফুটেজ আছে স্যার। চাকরি ছাড়ার আগের দিনগুলোতে নিজের সুরক্ষার খাতিরে গোপনে ক্যামেরা দিয়ে রেকর্ড করেছিলাম।"</p>
+      <p>পেনড্রাইভটি ল্যাপটপে যুক্ত করে প্রজেক্টরে চালিয়ে দেওয়া হলো।</p>
+      <ul class="evidence-list">
+        <li>প্রথম ভিডিওতে দেখা গেল: মাঝরাতে কারখানার পেছন দিয়ে কাদা-মাখা ট্রাকে করে কোনো শোধন ছাড়াই তরল রাসায়নিক বর্জ্য নিয়ে যাওয়া হচ্ছে।</li>
+        <li>দ্বিতীয় ভিডিওতে: কারখানার চিমনির বিষাক্ত ধোঁয়া নিয়ন্ত্রণ বা ফিল্টার করার যন্ত্রটি কর্মচারী নিজের হাতে সুইচে অফ করে দিচ্ছে।</li>
+        <li>তৃতীয় ভিডিওতে: এক উচ্চপদস্থ কর্মকর্তা ফোনে চিৎকার করে কাউকে বলছেন—"আজ রাতে সরকারি পরিবেশ পরিদর্শক আসবে না, ওকে মোটা টাকা পাঠানো হয়ে গেছে! সব পাইপ খুলে দাও, নদীতে জল খালি করে দাও!"</li>
+      </ul>
+      <p>ভিডিও শেষ হতেই ঘরের পরিবেশ বরফের মতো জমে ঠান্ডা হয়ে গেল। উপস্থিত পুলিশ কর্মকর্তারাও স্তব্ধ!</p>
+      <p>অরিন্দম সেন ধীর ও স্থির কণ্ঠে জিজ্ঞেস করলেন—</p>
+      <p class="dialogue">— "আপনি এতদিন এসব তথ্য জনসমক্ষে বা আদালতে প্রকাশ করেননি কেন এমিলিবু?"</p>
+      <p>এমিলি জানালার বাইরে দিগন্তবিস্তৃত ভাঙা কারখানার দিকে তাকিয়ে দীর্ঘশ্বাস ফেললেন—</p>
+      <p class="dialogue">— "কারণ আমি বাঁচতে চেয়েছিলাম স্যার... আমার একটা পরিবার ছিল। কিন্তু এখন কারখানাটা আপনার মতো নীতিবান মানুষের হাতে গেছে শুনে মনে হলো, এখন সত্যিটা প্রকাশ করার উপযুক্ত সময়।"</p>
+      <p>ঠিক তখনই দরজায় আকস্মিক ধাক্কা দিয়ে অরিন্দমের ব্যক্তিগত আইনি সহকারী দ্রুত ঘরে ঢুকলেন—</p>
+      <p class="dialogue">— "স্যার! এক চরম অবিশ্বাস্য ঘটনা ঘটে গেছে!"</p>
+      <p class="dialogue">— "কী হয়েছে?"</p>
+      <p>সহকারী হাতে থাকা ল্যান্ড-রেকর্ড ও জোনাল ম্যাপের ফাইল খুলে হাঁপাতে হাঁপাতে বললেন—</p>
+      <p class="dialogue">— "নিলামের মূল আইনি নথিপত্র আর স্যাটেলাইট ম্যাপ মেলানোর সময় আমরা সরকারি রেজিস্ট্রেশন রেকর্ড পরীক্ষা করছিলাম। সেখানে দেখা যাচ্ছে, নথিতে কারখানার মোট অনুমোদিত জমির পরিমাণ লেখা আছে মাত্র দুইশো একর..."</p>
+      <p>অরিন্দম ভুরু কুঁচকে বললেন—</p>
+      <p class="dialogue">— "আর বাস্তবে?"</p>
+      <p class="dialogue">— "...কিন্তু বাস্তবে সীমানা প্রাচীর দিয়ে কারখানার দখলে রাখা হয়েছে প্রায় তিনশো একর জমি! অর্থাৎ নথির বাইরে থাকা অতিরিক্ত প্রায় একশো একর সরকারি ও সাধারণ কৃষকের জমি বেআইনিভাবে দখল করে কারখানার সীমানায় ঢুকিয়ে রাখা হয়েছে! যার কোনো আইনি দলিলই অস্তিত্বে নেই!"</p>
+      <p>ঘরের সবাই চরম বিস্ময়ে একে অপরের দিকে তাকিয়ে রইল!</p>
+      <p>কারখানার দুর্নীতি আর অন্ধকার ইতিহাস যেন শেষ হওয়ার বদলে প্রতি মুহূর্তে নতুন এক মহাসাগরের রূপ নিচ্ছে!</p>
+      <p class="tobecontinued">(চলবে...)</p>
+    </div>
+  </section>
+
+  <section class="part-section" id="part-14" data-part="14">
+    <div class="part-head">
+      <div><span class="part-num">পর্ব ১৪</span><h2 class="display">প্রথম সিদ্ধান্ত</h2></div>
+      <button class="part-listen" aria-label="পর্ব ১৪ শুনুন" title="পর্ব ১৪ শুনুন">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>
+      </button>
+    </div>
+    <div class="part-text">
+      <p>কারখানার আইনি হস্তান্তর এবং নিলামের সমস্ত দাপ্তরিক প্রক্রিয়া সম্পূর্ণ হতে আরও প্রায় তিন সপ্তাহ কেটে গেল।</p>
+      <p>অবশেষে এক শুভ সকালে কারখানার প্রধান ফটক থেকে ঝুলতে থাকা সেই মরচে ধরা পুরোনো নামফলকটি স্থায়ীভাবে খুলে ফেলা হলো। তার জায়গায় শোভা পেল একটি নতুন ও সুদৃঢ় অস্থায়ী সাইনবোর্ড—</p>
+      <p class="notice">"নবজাগরণ ইলেকট্রনিক্স"</p>
+      <p>কারখানার বাইরের বিশাল খোলা মাঠে তখন কয়েকশো প্রাক্তন শ্রমিক ও কর্মচারী এসে ভিড় জমিয়েছেন। কারও হাতে বহু বছরের পুরোনো আইডি কার্ড, কারও হাতে নতুন চাকরির আবেদনপত্র। প্রবীণদের চোখে এক অনিশ্চিত সংশয়, তরুণদের চোখে নতুন আলোর আশা। সবাই চাতক পাখির মতো অপেক্ষা করছেন—কারখানার নতুন কর্ণধার অরিন্দম সেন তাঁদের উদ্দেশ্যে কী বার্তা দেন!</p>
+      <p>অরিন্দম একটি সাদামাটা তৈরি কাঠের মঞ্চে উঠলেন। হাতে তুলে নিলেন মাইক। তিনি কোনো চটকদার বা রাজকীয় ভাষণ দিলেন না। অত্যন্ত শান্ত ও স্পষ্ট গলায় বললেন—</p>
+      <p class="dialogue">— "আজ আমি এখানে দাঁড়িয়ে আপনাদের কাউকে রাতারাতি চাকরি ফিরিয়ে দেওয়ার কোনো মিথ্যা প্রতিশ্রুতি দেব না। তবে একটা স্পষ্ট অঙ্গীকার করছি—আজ থেকে এই 'নবজাগরণ ইলেকট্রনিক্স'-এর সীমানার ভেতরে কোনো ধরনের অন্যায়, দুর্নীতি বা শ্রমিকের ওপর শোষণ চলবে না।"</p>
+      <p>উপস্থিত জনসভার ভিড়ের মধ্যে চাপা গুঞ্জন ও ফিসফাস শুরু হয়ে গেল।</p>
+      <p>অরিন্দম একটু থেমে আবার বললেন—</p>
+      <p class="dialogue">— "যাঁরা আগে এখানে নিষ্ঠার সাথে কাজ করতেন, তাঁদের কাজের অভিজ্ঞতাকে আমরা সম্মান জানাই। কিন্তু আগের মতো স্বজনপ্রীতি বা ঘুষ দিয়ে নয়—সবাইকে নতুন করে দক্ষতা ও মানসিকতার বিচারে নিয়োগ দেওয়া হবে। সততাই হবে এই সংস্থায় কাজ করার প্রথম যোগ্যতা।"</p>
+      <p>সেদিনই তিনি একটি অভাবনীয় ও ব্যতিক্রমী নীতিগত সিদ্ধান্ত নিলেন।</p>
+      <p>কারখানার প্রাক্তন উচ্চপদস্থ কর্মকর্তা থেকে শুরু করে সাধারণ পরিচ্ছন্নতাকর্মী পর্যন্ত—উপস্থিত সবাইকে একটি বিশেষ গোপনীয় সমীক্ষা ফর্ম (Survey Form) দেওয়া হলো। সেই ফর্মে কোনো নাম লেখার বাধ্যবাধকতা ছিল না, শুধু তিনটি নির্দিষ্ট প্রশ্ন লেখা ছিল:</p>
+      <ul class="evidence-list">
+        <li>১. আপনার দৃষ্টিতে এই কারখানার পচনের মূল কারণ বা সবচেয়ে বড় সমস্যা কী ছিল?</li>
+        <li>২. নতুন সংস্থায় আপনি ব্যক্তিগতভাবে কী ধরনের পরিবর্তন দেখতে চান?</li>
+        <li>৩. আপনি যদি মাত্র এক দিনের জন্য এই কোম্পানির ম্যানেজিং ডিরেক্টর (MD) হন, তবে প্রথম কোন সিদ্ধান্তটি নেবেন?</li>
+      </ul>
+      <p>কর্মীদের বড় অংশই প্রথমে বুঝতে পারলেন না এই ফর্মের আসল উদ্দেশ্য কী!</p>
+      <p>এক সপ্তাহের মধ্যে প্রায় দুই হাজার পূরণ করা ফর্ম অরিন্দমের জমা হলো। অরিন্দম সেন দিনের পর দিন গভীর রাত পর্যন্ত একা বসে প্রতিটি ফর্ম মনোযোগ দিয়ে পড়তে লাগলেন।</p>
+      <p>কেউ ফর্মে লিখেছে—</p>
+      <p class="dialogue">"ম্যানেজাররা শ্রমিকের পাওনা মারত আর তাদের কথা শুনত না।"</p>
+      <p>কেউ লিখেছে—</p>
+      <p class="dialogue">"অকেজো বিপজ্জনক যন্ত্রপাতি মেরামত না করেই জোর করে আমাদের খাটিয়ে নেওয়া হতো।"</p>
+      <p>কেউ আবার লিখেছে—</p>
+      <p class="dialogue">"কারখানায় সত্য কথা বললে বা দুর্নীতির প্রতিবাদ করলে চাকরি চলে যেত।"</p>
+      <p>পড়তে পড়তে একটি নির্দিষ্ট ফর্মে গিয়ে অরিন্দমের চোখ আটকে গেল। তাতে কোনো নাম বা পদবি লেখা নেই, শুধু একটি লাইনে উত্তর লেখা রয়েছে—</p>
+      <p class="dialogue">"স্যার, এই কারখানার সবচেয়ে বড় ব্যাধি অকেজো মেশিনগুলো নয়... আসল ব্যাধি ছিল ছড়ানো ভয়ের পরিবেশ। মানুষ এখানে প্রাণ খুলে সত্যি কথা বলতে ভয় পেত।"</p>
+      <p>অরিন্দম কাগজটি অনেকক্ষণ ধরে স্তব্ধ হয়ে হাত ধরে রইলেন। তিনি উপলব্ধি করলেন, প্রতিষ্ঠান বাঁচাতে হলে আগে মানুষের মনের সেই দীর্ঘদিনের জমে থাকা ভয় দূর করতে হবে।</p>
+      <p>পরদিনই তিনি কারখানার নোটিশ বোর্ডে একটি ঐতিহাসিক নতুন নোটিশ জারি করলেন—</p>
+      <p class="notice">নবজাগরণ ইলেকট্রনিক্স — কর্মীবান্ধব নতুন নিয়মাবলি</p>
+      <ul class="evidence-list">
+        <li>১. প্রতিষ্ঠানের স্বার্থে কোনো কর্মী সত্য কথা বা দুর্নীতির তথ্য প্রকাশ করলে তাকে কোনো শাস্তি দেওয়া হবে না।</li>
+        <li>২. গোপন তথ্যদাতার পরিচয় কঠোরভাবে গোপন রাখা হবে।</li>
+        <li>৩. প্রতি মাসের নির্দিষ্ট দিনে মালিক নিজে সাধারণ কর্মীদের সঙ্গে সরাসরি উন্মুক্ত দরবারে বসবেন।</li>
+        <li>৪. কাজের মান বাড়াতে যাঁর মতামত সবচেয়ে কার্যকর হবে, তাঁকে বিশেষ আর্থিক পুরস্কার দেওয়া হবে।</li>
+      </ul>
+      <p>এই ঘোষণার পর কারখানার থমথমে পরিবেশে এক অদ্ভুত ইতিবাচক আলো দেখা দিল। বহু বছর পর প্রথমবার... কারখানার শ্রমিকদের মুখে এক চিলতে স্বস্তির হাসি ফুটল।</p>
+      <p>তবে কারখানার ভেতরে সবাই এই নতুন পরিবর্তনে খুশি হতে পারেনি।</p>
+      <p>দূরে নিজের কালো গাড়ির আড়ালে দাঁড়িয়ে দুই প্রাক্তন দুর্নীতিগ্রস্ত কর্মকর্তা সবকিছু লক্ষ্য করছিলেন। একজন চশমাটা ঠিক করে নিচু ও কুটিল গলায় বলল—</p>
+      <p class="dialogue">— "লোকটা যদি এভাবে একে একে সাধারণ শ্রমিকদের বিশ্বাস জিতে নেয়, তাহলে তো আমাদের পুরোনো সব গোপন ব্যাংক হিসাব আর জালিয়াতি চামড়া গুটিয়ে বাইরে চলে আসবে!"</p>
+      <p>অন্যজন ঠান্ডা, হিংস্র গলায় উত্তর দিল—</p>
+      <p class="dialogue">— "তাহলে... ওকে বেশিদূর এগোতে দেওয়া যাবে না। এখনই থামাতে হবে!"</p>
+      <p>কথাটি শেষ করে তারা গাড়ির কাঁচ তুলে দিয়ে চম্পট দিল।</p>
+      <p>অরিন্দম সেন নিজের টেবিলে বসে ব্লু-প্রিন্ট দেখছিলেন। তিনি ঘুণাক্ষরেও টের পাননি—কারখানা পুনর্গঠনের বাইরের লড়াই শেষ হলেও, ভেতরের আসল বিষাক্ত যুদ্ধটা মাত্র শুরু হতে যাচ্ছে!</p>
+      <p class="tobecontinued">(চলবে...)</p>
+    </div>
+  </section>
+
+  <section class="part-section" id="part-15" data-part="15">
+    <div class="part-head">
+      <div><span class="part-num">পর্ব ১৫</span><h2 class="display">নতুন নিয়োগ</h2></div>
+      <button class="part-listen" aria-label="পর্ব ১৫ শুনুন" title="পর্ব ১৫ শুনুন">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>
+      </button>
+    </div>
+    <div class="part-text">
+      <p>কারখানার সামনে সকাল থেকেই মানুষের উপচে পড়া ভিড়। শত শত মানুষ নতুন চাকরির আবেদনপত্র জমা দিতে এসেছেন।</p>
+      <p>কেউ আগে এই কারখানাতেই বছরের পর বছর ঘাম ঝরিয়েছেন, কেউ পাশের শহরের বেকার যুবক, আবার কেউ বা বহু বছর বিদেশে কাজ করে নিজ দেশে ফিরেছেন।</p>
+      <p>প্রধান গেটের সামনে বড় বড় অক্ষরে একটি সুদৃশ্য নোটিশ টাঙিয়ে দেওয়া হয়েছে—</p>
+      <p class="notice">"কোনো ধরনের সুপারিশ বা তদবির গ্রহণযোগ্য নয়। ঘুষ গ্রহণ বা প্রদান আইনত দণ্ডনীয় অপরাধ। শুধুমাত্র ব্যক্তিগত যোগ্যতা, দক্ষতা ও সততার ভিত্তিতেই নিয়োগ প্রক্রিয়া সম্পন্ন হবে।"</p>
+      <p>নোটিশটি পড়ে লাইনে দাঁড়িয়ে থাকা অনেকে মুচকি হেসে ফেলল। একজন পাশে দাঁড়িয়ে বলল—</p>
+      <p class="dialogue">— "ধুর ভাই! এগুলো শুধু মুখের কথা আর কাগজের পোস্টারে লেখা থাকে। ভেতরে নিশ্চয়ই লোক ঠিক করা আছে।"</p>
+      <p>পাশে থাকা প্রবীণ এক শ্রমিক উত্তর দিলেন—</p>
+      <p class="dialogue">— "দেখিই না কী হয়! শুনলাম নতুন মালিক নাকি নীতি মেনে কাজ করেন।"</p>
+      <p>অরিন্দম সেন নিজের এসি কেবিনে বসে জমা পড়া আবেদনপত্রগুলো খতিয়ে দেখছিলেন।</p>
+      <p>ঠিক তখনই তাঁর সহকারী হাতে একটি বেনামী খাম নিয়ে কক্ষে প্রবেশ করলেন। খামটা খুলতেই দেখা গেল ভেতরে মোটা অঙ্কের টাকার এক চেক! সঙ্গে প্রিন্ট করা একটি ছোট্ট চিরকুট—</p>
+      <p class="dialogue">"আমার ছেলেটাকে প্রোডাকশন সুপারভাইজার হিসেবে নিয়োগ দিন। ভবিষ্যতে ব্যবসায়িক ও প্রশাসনিক সমস্ত সহযোগিতা পাবেন।"</p>
+      <p>অরিন্দম চেকের ওপর লেখা সংখ্যাটার দিকে শান্ত চোখে তাকালেন, তারপর কিছু না বলে চেকটি আবার খামের ভেতর পুরে দিলেন।</p>
+      <p>সহকারীকে ডেকে ধীর গলায় বললেন—</p>
+      <p class="dialogue">— "যিনি এই খাম পাঠিয়েছেন, তাঁর ঠিকানায় এটি সম্মানজনকভাবে ফেরত পাঠাও। আর নিয়োগ বোর্ডে স্পষ্টভাবে জানিয়ে দাও, তাঁর ছেলে যেন এই জীবনের জন্য 'নবজাগরণ ইলেকট্রনিক্স'-এ আর কোনো পদে আবেদন করতে না পারে।"</p>
+      <p>সহকারী কিছুটা ভয় পেয়ে তোতলাতে তোতলাতে বললেন—</p>
+      <p class="dialogue">— "স্যার, ইনি তো শহরের খুব প্রভাবশালী রাজনৈতিক ও ব্যবসায়িক লোক! উনি চটে গেলে কিন্তু বড় সমস্যা হতে পারে..."</p>
+      <p>অরিন্দম হালকা হেসে উত্তর দিলেন—</p>
+      <p class="dialogue">— "যে মানুষটা প্রথম দিনেই অসৎ উপায়ে নিয়ম ভেঙে ভেতরে ঢুকতে চায়, তাকে সংস্থায় নিলে ভবিষ্যতে তার থেকে সমস্যা আরও হাজার গুণ বেশি হবে।"</p>
+      <p>সেদিন বিকেলেই সাক্ষাৎকার বা ইন্টারভিউ পর্ব শুরু হলো।</p>
+      <p>বোর্ডে একজন প্রার্থী এলেন। প্রাতিষ্ঠানিক যোগ্যতা বেশ ভালো, কাজের অভিজ্ঞতাও নজরকাড়া।</p>
+      <p>অরিন্দম প্রার্থীর ফাইলের ওপর হাত রেখে প্রশ্ন করলেন—</p>
+      <p class="dialogue">— "আপনার আগের কর্মস্থল বা পুরনো কারখানাটি ছাড়লেন কেন?"</p>
+      <p>লোকটি আত্মবিশ্বাসের সাথে উত্তর দিল—</p>
+      <p class="dialogue">— "সেখানে বেতন কম ছিল, আর কাজের পরিবেশ আমার মানের উপযোগী মনে হয়নি।"</p>
+      <p>অরিন্দম আর কোনো পাল্টা প্রশ্ন করলেন না, শুধু শান্তভাবে মাথা নাড়লেন।</p>
+      <p>এর কিছু পরে পরের প্রার্থী কক্ষে এলেন। তিনি একজন মধ্যবয়সী মেকানিক্যাল মেশিন অপারেটর। পরনে সাদামাটা পোশাক।</p>
+      <p>তিনি অকপটে স্বীকার করলেন—</p>
+      <p class="dialogue">— "স্যার, আমি লুকেবো না। আগের কারখানায় একটা অসাবধানতাবশত ভুলের কারণে আমাকে এক মাসের জন্য সাসপেন্ড বা বরখাস্ত করা হয়েছিল। অপরাধটা সম্পূর্ণ আমারই ছিল। পরে আমি নিজ খরচে নতুন করে টেকনিক্যাল ট্রেনিং নিয়ে কাজ শিখে নিজেকে শুধরে নিয়েছি।"</p>
+      <p>অরিন্দম প্রবীণ লোকটির চোখে তাকিয়ে একচিলতে মুচকি হাসলেন।</p>
+      <p>সাক্ষাৎকার শেষ হতেই মানবসম্পদ বা এইচআর (HR) প্রধানকে ডেকে অরিন্দম বললেন—</p>
+      <p class="dialogue">— "দ্বিতীয় ব্যক্তির ফাইলটা 'চূড়ান্ত পছন্দ'-র তালিকায় আলাদা করে রাখুন।"</p>
+      <p>এইচআর হেড কিছুটা অবাক হয়ে প্রশ্ন করলেন—</p>
+      <p class="dialogue">— "কিন্তু স্যার! প্রথম ক্যান্ডিডেটের ডিগ্রি আর কাজের এক্সপেরিয়েন্স তো অনেক বেশি ছিল!"</p>
+      <p>অরিন্দম শান্ত গলায় বুঝিয়ে বললেন—</p>
+      <p class="dialogue">— "অভিজ্ঞতা আর টেকনিক্যাল দক্ষতা ট্রেনিং দিয়ে তৈরি করে দেওয়া যায়। কিন্তু নিজের ভুল জনসমক্ষে দাঁড়িয়ে অকপটে স্বীকার করার মতো সাহসিকতা ও নৈতিক সততা মানুষকে কোনো ট্রেনিংয়ে শেখানো যায় না।"</p>
+      <p>সন্ধ্যার দিকে কারখানার গেটে একটি আবেগঘন ঘটনা ঘটল।</p>
+      <p>এক বৃদ্ধা মহিলা জরাজীর্ণ শাড়ি পরে প্রধান গেটে এসে দায়িত্বপ্রাপ্ত গেটম্যানকে বললেন—</p>
+      <p class="dialogue">— "বাবা, আমার একমাত্র ছেলেটা আগে এই কারখানায় কাজ করত। একটা দুর্ঘটনায় ও মারা যায়। ওর শেষ কয়েক মাসের পাওনা বেতন আর ক্ষতিপূরণের টাকাটা আমরা আর কখনো পাইনি..."</p>
+      <p>গেটের নিরাপত্তাকর্মী তাঁকে সসম্মানে সোজা ম্যানেজিং ডিরেক্টরের কক্ষে নিয়ে গেল।</p>
+      <p>অরিন্দম নিজে চেয়ার ছেড়ে উঠে এসে বৃদ্ধাকে বসালেন। পুরানো হিসাবের ফাইলপত্র ঘেঁটে দেখা গেল, সত্যিই অন্যায়ভাবে ওই মৃত শ্রমিকের বকেয়া পাওনা পরিশোধ করা হয়নি।</p>
+      <p>অরিন্দম সঙ্গে সঙ্গে অ্যাকাউন্টস ডিপার্টমেন্টকে নির্দেশ দিলেন—</p>
+      <p class="dialogue">— "যাবতীয় কাগজপত্র অডিট করে উনার ছেলের সমস্ত বকেয়া পাওনা টাকার সাথে নিয়মমাফিক সুদ যোগ করে কাল সকালের মধ্যে চেক হস্তান্তর করুন।"</p>
+      <p>বৃদ্ধা চোখে জল নিয়ে অরিন্দমের হাত দুটি চেপে ধরে কেঁদে ফেললেন—</p>
+      <p class="dialogue">— "আমি ভিক্ষা বা টাকা চাইতে আসিনি বাবা... শুধু জানতে চেয়েছিলাম আমার মৃত ছেলের গায়ের ঘামের পরিশ্রমটার কোনো দাম এই কারখানায় ছিল কি না!"</p>
+      <p>অরিন্দম নীরব হয়ে মাথা নত করে দাঁড়িয়ে রইলেন।</p>
+      <p>ঠিক তখনই কারখানার গেটের বাইরে বিকট শব্দে একটি দামি কালো লাক্সারি গাড়ি এসে থামল।</p>
+      <p>গাড়ি থেকে নেমে এলেন শহরের এক কুখ্যাত ও সুপরিচিত প্রতিদ্বন্দ্বী শিল্পপতি। তিনি সটান অরিন্দমের কক্ষে ঢুকে চাতুর্যের হাসি হেসে বললেন—</p>
+      <p class="dialogue">— "নমস্কার মিস্টার সেন! আপনার সাথে জরুরি কিছু ব্যক্তিগত কথা ছিল।"</p>
+      <p>অরিন্দম তাঁকে অভ্যর্থনা জানালেন। লোকটি রুমের দরজাটা সাবধানে বন্ধ করে নিচু স্বরে বললেন—</p>
+      <p class="dialogue">— "আপনি কারখানায় যে কঠিন সাধুতার পথে এগোচ্ছেন মি. সেন, আজকের এই চরম প্রতিযোগিতামূলক কর্পোরেট দুনিয়ায় এভাবে ব্যবসা চালিয়ে লাভজনক হওয়া যায় না।"</p>
+      <p>অরিন্দম অত্যন্ত শান্ত গলায় জানতে চাইলেন—</p>
+      <p class="dialogue">— "তাহলে অভিজ্ঞ ব্যবসায়ী হিসেবে আপনার পরামর্শ কী?"</p>
+      <p>শিল্পপতি বিশ্রী এক কটাক্ষের হাসি হেসে উত্তর দিলেন—</p>
+      <p class="dialogue">— "কিছু নৈতিক নিয়ম কেবল বইয়ের পাতায় পড়তে ভালো লাগে... ব্যবসার প্র্যাকটিক্যাল দুনিয়ায় নয়!"</p>
+      <p>অরিন্দম কোনো তর্কে গেলেন না, শুধু এক চিলতে রহস্যময় হাসি হাসলেন।</p>
+      <p>তিনি স্পষ্ট বুঝে গেছেন—প্রতিষ্ঠানের ভেতরের বিষাক্ত অধ্যায় শেষ হয়েছে ঠিকই, কিন্তু এবার ওপেন মার্কেটে অশুভ ক্ষমতার সাথে আসল যুদ্ধ শুরু হতে চলেছে!</p>
+      <p class="tobecontinued">(চলবে...)</p>
+    </div>
+  </section>
+
+  <section class="part-section" id="part-16" data-part="16">
+    <div class="part-head">
+      <div><span class="part-num">পর্ব ১৬</span><h2 class="display">প্রথম দিন, প্রথম শিক্ষা</h2></div>
+      <button class="part-listen" aria-label="পর্ব ১৬ শুনুন" title="পর্ব ১৬ শুনুন">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>
+      </button>
+    </div>
+    <div class="part-text">
+      <p>নতুন কর্মী নিয়োগের সম্পূর্ণ প্রক্রিয়া শেষ হতে প্রায় এক মাস কেটে গেল।</p>
+      <p>পুরোনো কর্মচারীদের মধ্যে যাদের অতীত রেকর্ড পরিষ্কার ছিল এবং কোনো অভিযোগ ছিল না, তাঁদের সম্মান ও দক্ষতার ভিত্তিতে আবার কাজে ফিরিয়ে নেওয়া হলো। পাশাপাশি একঝাঁক নবীন তরুণ প্রকৌশলী, দক্ষ টেকনিশিয়ান, আধুনিক হিসাবরক্ষক ও নতুন শ্রমিকদেরও নিয়োগ দেওয়া হলো।</p>
+      <p>নিস্তব্ধ হয়ে পড়ে থাকা 'নবজাগরণ ইলেকট্রনিক্স' কারখানাটি বহু বছর পর আবার নতুন প্রাণ পেতে শুরু করল।</p>
+      <p>একদিন শুভ সকালে কারখানার বিশাল প্রধান ফটক খুলতেই বহু বছর পর আবার কারখানার কেন্দ্রীয় জরুরি সাইরেন গর্জে উঠল— "ভোঁ-ও-ও-ও-ও..."</p>
+      <p>সেই চেনা সাইরেনের শব্দে গেটে দাঁড়িয়ে থাকা অনেক প্রবীণ শ্রমিকের চোখ খুশির জলে ভরে উঠল। এক বৃদ্ধ কর্মী হাত দিয়ে চোখের কোণ মুছে পাশে দাঁড়ানো সহকর্মীকে বললেন—</p>
+      <p class="dialogue">— "দেখেছিস ভাই? আমাদের এই অভিশপ্ত কারখানাটা আজ আবার সত্যি সত্যি বেঁচে উঠছে!"</p>
+      <p>সকাল আটটায় কারখানার সকল নবনিযুক্ত কর্মকর্তা ও শ্রমিককে মূল উৎপাদন ভবনের (Production Block) সামনের খোলা মাঠে ডাকা হলো। অরিন্দম সেন একটি সাধারণ মঞ্চে উঠলেন। কোনো কৃত্রিম বা দীর্ঘ ভাষণ না দিয়ে মাইক্রোফোনে খুব শান্ত ও স্পষ্ট গলায় বললেন—</p>
+      <p class="dialogue">— "আজ থেকে এই নবজাগরণ ইলেকট্রনিক্স-এর প্রতিটি কোণায় কেবল তিনটি মূল নিয়ম পালিত হবে।"</p>
+      <p>তিনি পেছনের বিশাল ডিজিটাল প্রজেক্টর স্ক্রিনে তিনটি বাক্য ফুটিয়ে তুললেন:</p>
+      <ul class="evidence-list">
+        <li>১. কর্মীর নিরাপত্তার সঙ্গে কোনো আপস নয়।</li>
+        <li>২. পণ্যের মানের সঙ্গে কোনো জালিয়াতি বা প্রতারণা নয়।</li>
+        <li>৩. গ্রাহকের সঙ্গে কোনো মিথ্যা প্রতিশ্রুতি নয়।</li>
+      </ul>
+      <p>পুরো প্রাঙ্গণ উপস্থিত শ্রমিকদের করতালি আর উল্লাসে মুখরিত হয়ে উঠল।</p>
+      <p>এর পরেই অরিন্দম সেন এক অভূতপূর্ব ঘোষণা দিয়ে সবাইকে অবাক করে দিলেন—</p>
+      <p class="dialogue">— "আজকে কারখানার কোনো আসল প্রোডাকশন বা মেশিন চালু করা হবে না।"</p>
+      <p>সবাই বিস্ময়ে একে অপরের দিকে তাকাতে লাগলেন। এত প্রস্তুতি, এত ঘাম ঝরানোর পর আজও উৎপাদন শুরু হবে না?</p>
+      <p>অরিন্দম ঠোঁটের কোণে হাসি ফুটিয়ে বুঝিয়ে বললেন—</p>
+      <p class="dialogue">— "আজ সারাদিন আমরা কেউ কাজ করব না, আজ সারাদিন শুধু সেফটি ট্রেইনিং আর প্রশিক্ষণ হবে।"</p>
+      <p>সেই দিন সারাদিন ধরে—</p>
+      <ul class="evidence-list">
+        <li>ফায়ার ব্রিগেডের বিশেষ দল এসে কারখানায় আগুন লাগলে কীভাবে আত্মরক্ষা করতে হয় তা দেখাল।</li>
+        <li>অভিজ্ঞ চিকিৎসকরা প্রাথমিক চিকিৎসা বা ফার্স্ট-এইড শেখালেন।</li>
+        <li>নিরাপত্তা প্রকৌশলীরা হেলমেট, গ্লাভস ও আধুনিক সুরক্ষা সরঞ্জাম ব্যবহারের নিয়ম বোঝালে।</li>
+        <li>প্রবীণ শ্রমিকদেরও নতুন ডিজিটাল প্রযুক্তির যন্ত্রপাতি চালানোর আধুনিক প্রশিক্ষণ দেওয়া হলো।</li>
+      </ul>
+      <p>দুপুরের দিকে কাজের ফাঁকে একজন তরুণ কর্মী মজা করে সহকর্মীকে বলল—</p>
+      <p class="dialogue">— "মাইরি! প্রথম দিনেই যে পরিমাণে ট্রেনিং দিচ্ছে, আসল কাজ করব কখন?"</p>
+      <p>ঠিক পাশ দিয়ে হেঁটে যাওয়া অরিন্দম সেন দাঁড়িয়ে মৃদু হেসে জবাব দিলেন—</p>
+      <p class="dialogue">— "আজকে সঠিকভাবে শেখার জন্য একটি দিন হারিয়ে দেওয়া অনেক ভালো ভাই, যাতে আগামী দশ বছরে ভুল কাজের জন্য কারখানায় কোনো শ্রমিককে নিজের জীবন না হারাতে হয়।"</p>
+      <p>কর্মীটি লজ্জায় মাথা নিচু করল, তবে অরিন্দমের এই দূরদর্শিতায় মনে মনে তাঁর প্রতি শ্রদ্ধা বহুগুণ বেড়ে গেল।</p>
+      <p>দুপুরে কারখানার সেন্ট্রাল ক্যান্টিনে সবাই একসঙ্গে দুপুরের খাবার খেতে বসেছেন।</p>
+      <p>হঠাৎ এক পরিচ্ছন্নতাকর্মী খেয়াল করলেন, সাধারণ পোশাকে এক ব্যক্তি ট্রে হাতে নিয়ে আর দশজন শ্রমিকের সাথে লাইনে দাঁড়িয়ে খাবার নিচ্ছেন। ভালো করে লক্ষ্য করতেই লোকটির চোখ ছানাবড়া!</p>
+      <p>তিনি আর কেউ নন... স্বয়ং কারখানার মালিক অরিন্দম সেন!</p>
+      <p>ক্যান্টিন ম্যানেজার তড়িঘড়ি দৌড়ে এসে বললেন—</p>
+      <p class="dialogue">— "স্যার! আপনি লাইনে কেন? আপনার তো স্পেশাল এক্সিকিউটিভ কেবিনে আলাদা করে খাবার পৌঁছে দেওয়ার ব্যবস্থা করা আছে!"</p>
+      <p>অরিন্দম সেন হেসে মাথা নাড়লেন—</p>
+      <p class="dialogue">— "যে খাবার আমার কারখানার মেহনতি শ্রমিকদের স্বাস্থ্যের জন্য ভালো, সেই খাবার আমার পেটের জন্যও ভালো। আলাদা কোনো ব্যবস্থার দরকার নেই।"</p>
+      <p>তিনি সাধারণ শ্রমিকদের টেবিলে গিয়ে তাঁদের পাশে বসে সানন্দে ডাল-ভাত খেতে লাগলেন। খাওয়ার মাঝেই তিনি হালকা মেজাজে গল্প করলেন, কাজের অভিজ্ঞতা শুনলেন, এমনকি দু-একজনের পরিবারের খবরও নিলেন।</p>
+      <p>কারখানার সাধারণ কর্মীরা প্রথমবার উপলব্ধি করলেন—এই মালিক এসি কেবিনে বসে শুধু হুকুম জারি করতে আসেননি, তিনি মন থেকে সাধারণ মানুষের কথা শুনতে এসেছেন।</p>
+      <p>বিকেলের দিকে মূল উৎপাদন ব্লক ঘুরে দেখার সময় অরিন্দমের তীক্ষ্ণ চোখে একটি বিপজ্জনক বিষয় ধরা পড়ল।</p>
+      <p>একটি পুরোনো প্রসেসিং মেশিনের গায়ে লাল হরফে ওয়ার্নিং লেখা—"ত্রুটিযুক্ত, চালনা নিষিদ্ধ।" অথচ একজন প্রবীণ সুপারভাইজার সেটিকে জোড়াতালি দিয়ে চালু করার চূড়ান্ত প্রস্তুতি নিচ্ছেন!</p>
+      <p>অরিন্দম সেন দ্রুত এগিয়ে গিয়ে কড়া গলায় জিজ্ঞেস করলেন—</p>
+      <p class="dialogue">— "যে মেশিনে লাল সতর্কবার্তা সাঁটানো রয়েছে, সেটি বন্ধ রাখতে বলা সত্ত্বেও আপনি চালু করছেন কেন?"</p>
+      <p>সুপারভাইজার হেসে বিষয়টি হালকা করার চেষ্টা করে বললেন—</p>
+      <p class="dialogue">— "আরে স্যার! ছোটখাটো ইলেকট্রিক লাইনের সমস্যা, ও একটু ঠুকে চালিয়ে নিলেই হবে। কাজের গতি কমবে না।"</p>
+      <p>অরিন্দম এক মুহূর্ত সময় নষ্ট না করে হাত বাড়িয়ে মেশিনের মূল মেইন সুইচটা নিচের দিকে নামিয়ে বন্ধ করে দিলেন!</p>
+      <p class="dialogue">— "আগে মেকানিক ডেকে এটিকে শতভাগ মেরামত করা হবে, তারপর এটি স্পর্শ করা হবে।"</p>
+      <p>সুপারভাইজারের মুখটা মুহূর্তেই গম্ভীর হয়ে গেল। তিনি প্রবীণ স্বভাববশত নিচু গলায় বললেন—</p>
+      <p class="dialogue">— "আগে তো এই কারখানায় এভাবেই জোড়াতালি দিয়ে সব চলত স্যার..."</p>
+      <p>অরিন্দম সেন তাঁর দিকে তাকিয়ে বরফের মতো বরফ-শীতল গলায় উত্তর দিলেন—</p>
+      <p class="dialogue">— "আগে কী অন্যায় হতো, সেটা অন্ধকার ইতিহাস! আর আজ থেকে এখানে কী নিয়ম মেনে হবে, সেটাই নবজাগরণের ভবিষ্যৎ!"</p>
+      <p>সুপারভাইজার নিরুত্তর হয়ে মাথা নিচু করে দাঁড়িয়ে রইলেন।</p>
+      <p>ঠিক তখনই তরুণ প্রধান প্রকৌশলী একগাল হাসি নিয়ে দৌড়ে এসে অরিন্দমকে বললেন—</p>
+      <p class="dialogue">— "স্যার! পরীক্ষামূলকভাবে প্রথম অ্যাসেম্বলি লাইনের সবকটি আধুনিক ফ্রিজ তৈরির প্রসেসিং মেশিন একদম প্রস্তুত!"</p>
+      <p>অরিন্দম সেন নিজের হাতঘড়ির দিকে তাকালেন। তারপর মিষ্টি এক চিলতে হাসি ফুটিয়ে বললেন—</p>
+      <p class="dialogue">— "তাহলে কাল সকালে... দীর্ঘ বহু বছর পর এই কারখানায় আবার প্রথম সম্পূর্ণ স্বদেশী ফ্রিজ তৈরি হবে!"</p>
+      <p>সবাই একসাথে হাততালিতে ফেটে পড়ল। 'নবজাগরণ ইলেকট্রনিক্স'-এর বাতাসে বহু বছর পর আবার নতুন স্বপ্ন আর নতুন আশার গুঞ্জন ছড়িয়ে পড়ল!</p>
+      <p class="tobecontinued">(চলবে...)</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span class="brand">MySkillGame Learning Portal</span> · বিনামূল্যে, বিজ্ঞাপনহীন, অফলাইন-বান্ধব বাংলা পাঠ ও শিক্ষা প্ল্যাটফর্ম<br>
+  বুকমার্ক ও পছন্দ শুধু আপনার ব্রাউজারে (localStorage) সংরক্ষিত থাকে — কোনো তথ্য সংগ্রহ করা হয় না।
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var CHAPTER_NUM = 4;
+  var BOOKMARK_KEY = "nabajagaran_bookmark";
+  var VOICE_KEY = "nabajagaran_voice_pref";
+  var RATE_KEY = "nabajagaran_rate_pref";
+
+  var synth = window.speechSynthesis;
+  var speakQueue = [];
+  var activeBtn = null;
+
+  /* ---------------- voices ---------------- */
+  var voiceSelect = document.getElementById("voiceSelect");
+  var rateRange = document.getElementById("rateRange");
+  var rateValue = document.getElementById("rateValue");
+
+  function populateVoices(){
+    var voices = synth ? synth.getVoices() : [];
+    if (!voices.length){ voiceSelect.innerHTML = '<option value="">কণ্ঠ পাওয়া যায়নি</option>'; return; }
+    var bn = voices.filter(function(v){ return /^bn/i.test(v.lang); });
+    var others = voices.filter(function(v){ return !/^bn/i.test(v.lang); });
+    var ordered = bn.concat(others);
+    var saved = localStorage.getItem(VOICE_KEY);
+    voiceSelect.innerHTML = ordered.map(function(v, i){
+      return '<option value="'+i+'">'+v.name+' ('+v.lang+')'+(bn.indexOf(v)>-1?' — বাংলা':'')+'</option>';
+    }).join("");
+    voiceSelect._voices = ordered;
+    if (saved !== null){
+      var idx = ordered.findIndex(function(v){ return v.name === saved; });
+      if (idx > -1) voiceSelect.value = idx;
+    }
+  }
+  if (synth){ populateVoices(); synth.onvoiceschanged = populateVoices; }
+  else { voiceSelect.innerHTML = '<option value="">এই ব্রাউজারে ভয়েস সমর্থিত নয়</option>'; }
+
+  voiceSelect.addEventListener("change", function(){
+    var v = voiceSelect._voices && voiceSelect._voices[voiceSelect.value];
+    if (v) localStorage.setItem(VOICE_KEY, v.name);
+  });
+
+  var savedRate = parseFloat(localStorage.getItem(RATE_KEY));
+  if (!isNaN(savedRate)) rateRange.value = savedRate;
+  function updateRateLabel(){ rateValue.textContent = parseFloat(rateRange.value).toFixed(1) + "×"; }
+  updateRateLabel();
+  rateRange.addEventListener("input", function(){ updateRateLabel(); localStorage.setItem(RATE_KEY, rateRange.value); });
+
+  /* ---------------- speech queue ---------------- */
+  function splitIntoChunks(text){
+    return text
+      .replace(/\s+/g, " ")
+      .trim()
+      .split(/(?<=[।!?])\s+/)
+      .filter(function(s){ return s.trim().length > 0; });
+  }
+
+  function speakChunks(chunks, btn){
+    stopSpeaking();
+    if (!synth || !chunks.length) return;
+    speakQueue = chunks.slice();
+    activeBtn = btn;
+    if (btn) btn.classList.add("speaking");
+    speakNext();
+  }
+  function speakNext(){
+    if (!speakQueue.length){ finishSpeaking(); return; }
+    var text = speakQueue.shift();
+    var utter = new SpeechSynthesisUtterance(text);
+    var v = voiceSelect._voices && voiceSelect._voices[voiceSelect.value];
+    if (v) utter.voice = v;
+    utter.rate = parseFloat(rateRange.value) || 1;
+    utter.lang = (v && v.lang) || "bn-IN";
+    utter.onend = speakNext;
+    utter.onerror = finishSpeaking;
+    synth.speak(utter);
+  }
+  function finishSpeaking(){
+    if (activeBtn) activeBtn.classList.remove("speaking");
+    activeBtn = null;
+    speakQueue = [];
+  }
+  function stopSpeaking(){
+    if (synth) synth.cancel();
+    finishSpeaking();
+  }
+  document.getElementById("stopAllBtn").addEventListener("click", stopSpeaking);
+
+  document.querySelectorAll(".part-listen").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var section = btn.closest(".part-section");
+      if (btn.classList.contains("speaking")){ stopSpeaking(); return; }
+      var text = section.querySelector(".part-text").textContent;
+      speakChunks(splitIntoChunks(text), btn);
+    });
+  });
+
+  document.getElementById("playAllBtn").addEventListener("click", function(){
+    var btn = document.getElementById("playAllBtn");
+    if (synth && synth.speaking){ stopSpeaking(); return; }
+    var full = Array.prototype.map.call(
+      document.querySelectorAll(".part-text"),
+      function(el){ return el.textContent; }
+    ).join(" ");
+    speakChunks(splitIntoChunks(full), null);
+  });
+
+  /* ---------------- bookmark ---------------- */
+  function readBookmark(){
+    var raw = localStorage.getItem(BOOKMARK_KEY);
+    if (!raw) return null;
+    try {
+      var parsed = JSON.parse(raw);
+      if (parsed && typeof parsed === "object") return parsed;
+    } catch(e){}
+    var n = parseInt(raw, 10);
+    return isNaN(n) ? null : { chapter:n, part:1 };
+  }
+  function writeBookmark(chapter, part){
+    localStorage.setItem(BOOKMARK_KEY, JSON.stringify({ chapter:chapter, part:part }));
+  }
+
+  document.getElementById("markHereBtn").addEventListener("click", function(){
+    var visible = getCurrentPart();
+    writeBookmark(CHAPTER_NUM, visible);
+    var btn = document.getElementById("markHereBtn");
+    var original = btn.textContent;
+    btn.textContent = "✓ বুকমার্ক হয়েছে — পর্ব " + visible;
+    setTimeout(function(){ btn.textContent = original; }, 1800);
+  });
+
+  /* jump to bookmarked part on load if it belongs to this chapter and no hash given */
+  (function jumpToBookmarkIfRelevant(){
+    if (window.location.hash) return;
+    var bm = readBookmark();
+    if (bm && bm.chapter === CHAPTER_NUM && bm.part > 13){
+      var target = document.getElementById("part-" + bm.part);
+      if (target) setTimeout(function(){ target.scrollIntoView({ behavior:"auto", block:"start" }); }, 50);
+    }
+  })();
+
+  /* ---------------- scrollspy for part-jump chips ---------------- */
+  var jumpLinks = document.querySelectorAll("#partJump a");
+  function getCurrentPart(){
+    var sections = document.querySelectorAll(".part-section");
+    var current = 13;
+    sections.forEach(function(sec){
+      var rect = sec.getBoundingClientRect();
+      if (rect.top < 200) current = parseInt(sec.getAttribute("data-part"), 10);
+    });
+    return current;
+  }
+  function updateActiveChip(){
+    var current = getCurrentPart();
+    jumpLinks.forEach(function(a){
+      a.classList.toggle("active", parseInt(a.getAttribute("data-part"),10) === current);
+    });
+  }
+  document.addEventListener("scroll", function(){
+    window.requestAnimationFrame(updateActiveChip);
+  }, { passive:true });
+  updateActiveChip();
+
+  window.addEventListener("beforeunload", stopSpeaking);
+})();
+</script>
+</body>
+</html>

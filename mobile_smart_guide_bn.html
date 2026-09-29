@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>মোবাইল স্মার্ট গাইড</title>
+<meta name="description" content="মোবাইল স্মার্ট গাইড - ফোন কেনা, সুরক্ষা, রেডিয়েশন, আসক্তি, রিলস ও শিশুদের স্ক্রিন টাইম নিয়ে সচেতনতা ও কুইজ">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+<style>
+/* ═══════ RESET & BASE ═══════ */
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:"Noto Sans Bengali",'Segoe UI',system-ui,sans-serif;
+  background:linear-gradient(135deg,#0f172a,#111827,#312e81);
+  min-height:100vh;
+  display:flex;justify-content:center;
+  padding:12px 12px 30px;
+  color:#fff;overflow-x:hidden;position:relative;
+}
+body::before{content:'';position:fixed;width:320px;height:320px;background:#7c3aed;top:-120px;left:-120px;border-radius:50%;filter:blur(120px);opacity:.35;z-index:-1;}
+body::after{content:'';position:fixed;width:280px;height:280px;background:#06b6d4;bottom:-100px;right:-100px;border-radius:50%;filter:blur(120px);opacity:.35;z-index:-1;}
+#app{width:100%;max-width:430px;}
+
+/* ═══════ SCREENS ═══════ */
+.screen{display:none;}
+.screen.active{display:block;animation:fadeUp .3s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
+
+/* ═══════ HEADER ═══════ */
+.header{
+  display:flex;align-items:center;gap:14px;margin-bottom:16px;
+  padding:16px;border-radius:24px;
+  background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);
+  backdrop-filter:blur(12px);
+  box-shadow:0 8px 30px rgba(0,0,0,0.35),inset 0 1px 1px rgba(255,255,255,0.1);
+}
+.header-icon{
+  width:52px;height:52px;border-radius:18px;flex-shrink:0;
+  background:linear-gradient(135deg,#8b5cf6,#6366f1);
+  display:flex;align-items:center;justify-content:center;font-size:28px;
+  box-shadow:0 5px 18px rgba(99,102,241,.45);
+}
+h1{font-size:22px;font-weight:700;color:#fff;line-height:1.3;}
+
+/* ═══════ SCORE BAR ═══════ */
+.score-bar{
+  display:flex;justify-content:space-between;align-items:center;gap:10px;
+  padding:14px 16px;margin-bottom:18px;border-radius:18px;
+  background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);
+  backdrop-filter:blur(10px);font-size:14px;color:#d1d5db;
+}
+.score-bar strong{color:#fff;}
+
+/* ═══════ SECTION DIVIDER ═══════ */
+.section-label{
+  font-size:12px;font-weight:700;letter-spacing:1.5px;
+  color:#64748b;text-transform:uppercase;
+  padding:0 4px;margin:18px 0 10px;
+}
+
+/* ═══════ QUIZ CHAPTER GRID ═══════ */
+.chapter-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:6px;}
+.chapter-btn{
+  position:relative;background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.12);border-radius:22px;
+  padding:16px;text-align:left;cursor:pointer;overflow:hidden;
+  transition:all .35s ease;backdrop-filter:blur(12px);min-height:148px;
+  box-shadow:0 8px 20px rgba(0,0,0,.25),inset 0 1px 1px rgba(255,255,255,.08);
+  width:100%;
+}
+.chapter-btn:active{transform:scale(.97);}
+.chapter-btn::before{content:'';position:absolute;width:120%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.12),transparent);top:0;left:-130%;transition:.7s;}
+.chapter-btn:hover::before{left:120%;}
+.ch-icon{
+  width:46px;height:46px;display:flex;align-items:center;justify-content:center;
+  border-radius:15px;background:linear-gradient(135deg,#8b5cf6,#6366f1);
+  margin-bottom:11px;box-shadow:0 6px 18px rgba(99,102,241,.4);font-size:24px;
+}
+.ch-title{font-size:14px;font-weight:700;line-height:1.45;color:#fff;}
+.ch-sub{font-size:12px;color:#cbd5e1;margin-top:5px;line-height:1.4;}
+.chapter-btn.done{background:rgba(16,185,129,.18);border-color:rgba(16,185,129,.35);}
+.chapter-btn.done .ch-icon{background:linear-gradient(135deg,#10b981,#059669);}
+.chapter-btn.isnew{background:rgba(139,92,246,.18);border-color:rgba(139,92,246,.35);}
+.new-tag{
+  display:inline-block;margin-left:5px;padding:2px 7px;border-radius:999px;
+  font-size:10px;font-weight:700;
+  background:linear-gradient(135deg,#f43f5e,#ec4899);color:#fff;
+  animation:pulse 1.5s infinite;
+}
+@keyframes pulse{0%{transform:scale(1);}50%{transform:scale(1.08);}100%{transform:scale(1);}}
+
+/* ═══════ AWARENESS CARDS (full-width) ═══════ */
+.aware-card{
+  display:flex;align-items:center;gap:16px;
+  background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);
+  border-radius:20px;padding:18px 16px;margin-bottom:12px;
+  cursor:pointer;transition:all .25s;
+  box-shadow:0 6px 20px rgba(0,0,0,.25);
+  backdrop-filter:blur(12px);
+}
+.aware-card:active{transform:scale(.98);}
+.aware-card.warn-c{border-left:4px solid #ef4444;}
+.aware-card.tips-c{border-left:4px solid #10b981;}
+.aware-card.reduce-c{border-left:4px solid #3b82f6;}
+.aware-card.cost-c{border-left:4px solid #f59e0b;}
+.aware-card.reels-c{border-left:4px solid #ec4899;}
+.aware-card.kids-c{border-left:4px solid #fb923c;}
+.aware-card .ac-ico{font-size:34px;flex-shrink:0;}
+.aware-card .ac-txt h3{font-size:16px;font-weight:700;color:#fff;margin-bottom:3px;}
+.aware-card .ac-txt p{font-size:13px;color:#94a3b8;line-height:1.4;}
+.aware-card .ac-arr{margin-left:auto;font-size:22px;color:#475569;flex-shrink:0;}
+
+/* ═══════ QUIZ CARD ═══════ */
+.quiz-card{
+  background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);
+  border-radius:28px;padding:22px;backdrop-filter:blur(12px);
+  box-shadow:0 10px 30px rgba(0,0,0,.35),inset 0 1px 1px rgba(255,255,255,.08);
+}
+.quiz-meta{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:#cbd5e1;margin-bottom:18px;}
+.quiz-q{font-size:18px;line-height:1.75;font-weight:700;color:#fff;margin-bottom:18px;}
+.opt-btn{
+  width:100%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);
+  border-radius:18px;padding:14px 16px;text-align:left;font-size:15px;line-height:1.6;
+  color:#fff;cursor:pointer;margin-bottom:12px;transition:all .28s ease;backdrop-filter:blur(8px);
+}
+.opt-btn:hover:not(:disabled){transform:translateY(-2px);background:rgba(255,255,255,.14);}
+.opt-btn.correct{background:rgba(16,185,129,.22);border-color:#10b981;color:#ecfdf5;}
+.opt-btn.wrong{background:rgba(239,68,68,.2);border-color:#ef4444;color:#fff1f2;}
+.explanation{
+  margin-top:18px;background:rgba(255,255,255,.08);border-left:4px solid #8b5cf6;
+  border-radius:18px;padding:14px 16px;font-size:15px;line-height:1.75;color:#e2e8f0;
+}
+.explanation strong{color:#fff;}
+.nav-row{display:flex;gap:10px;margin-top:18px;}
+.btn{flex:1;border:none;border-radius:16px;padding:13px 18px;font-size:15px;font-weight:700;cursor:pointer;transition:.3s;}
+.btn.primary{background:linear-gradient(135deg,#8b5cf6,#6366f1);color:#fff;box-shadow:0 8px 20px rgba(99,102,241,.4);}
+.btn.primary:hover{filter:brightness(1.08);}
+.btn:not(.primary){background:rgba(255,255,255,0.12);color:#fff;}
+.progress{height:10px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden;margin-bottom:18px;}
+.progress-fill{
+  height:100%;background:linear-gradient(90deg,#06b6d4,#8b5cf6,#ec4899);
+  border-radius:999px;transition:width .4s ease;
+  animation:glow 2s infinite alternate;
+}
+@keyframes glow{from{filter:brightness(1);}to{filter:brightness(1.25);}}
+
+/* ═══════ RESULT ═══════ */
+.result-box{
+  background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);
+  border-radius:28px;padding:22px;backdrop-filter:blur(12px);text-align:center;
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
+}
+.result-box h2{font-size:28px;margin:12px 0;color:#fff;}
+.result-box p{font-size:15px;line-height:1.7;color:#d1d5db;margin-bottom:20px;}
+.badge{display:inline-block;padding:8px 18px;border-radius:999px;font-size:13px;font-weight:700;}
+.badge.gold{background:linear-gradient(135deg,#fde047,#f59e0b);color:#111827;}
+.badge.silver{background:linear-gradient(135deg,#e2e8f0,#94a3b8);color:#111827;}
+.badge.bronze{background:linear-gradient(135deg,#fdba74,#ea580c);color:#111827;}
+
+/* ═══════ AWARENESS INNER PAGES ═══════ */
+.aware-page-header{
+  background:rgba(17,24,39,0.95);border-bottom:1px solid rgba(255,255,255,0.1);
+  padding:14px 16px;display:flex;align-items:center;gap:12px;
+  position:sticky;top:0;z-index:100;backdrop-filter:blur(16px);
+  border-radius:20px;
+  margin:-12px -12px 18px;
+}
+.back-btn-sm{
+  background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);
+  color:#fff;font-size:20px;width:40px;height:40px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;
+}
+.back-btn-sm:active{background:rgba(255,255,255,0.2);}
+.aware-page-header h2{font-size:17px;font-weight:700;color:#fff;}
+
+/* sign items */
+.sign-item{
+  display:flex;gap:14px;align-items:flex-start;
+  background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);
+  border-radius:18px;padding:15px 14px;margin-bottom:13px;
+  box-shadow:0 4px 14px rgba(0,0,0,.2);
+}
+.sign-item .sico{font-size:28px;flex-shrink:0;margin-top:2px;}
+.sign-item h4{font-size:16px;font-weight:700;color:#fff;margin-bottom:4px;}
+.sign-item p{font-size:15px;color:#94a3b8;line-height:1.65;}
+.intro-card{
+  background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);
+  border-radius:18px;padding:16px;margin-bottom:16px;
+}
+.intro-card p{font-size:15px;color:#94a3b8;line-height:1.75;}
+.quote-box{
+  background:linear-gradient(135deg,rgba(16,185,129,.15),rgba(6,182,212,.1));
+  border:1px solid rgba(16,185,129,.3);
+  border-radius:18px;padding:18px 16px;text-align:center;margin:8px 0 16px;
+}
+.quote-box.reels-quote{
+  background:linear-gradient(135deg,rgba(236,72,153,.15),rgba(99,102,241,.1));
+  border:1px solid rgba(236,72,153,.3);
+}
+.quote-box.reels-quote p{color:#f9a8d4;}
+.quote-box.kids-quote{
+  background:linear-gradient(135deg,rgba(251,146,60,.15),rgba(217,119,6,.1));
+  border:1px solid rgba(251,146,60,.3);
+}
+.quote-box.kids-quote p{color:#fdba74;}
+.quote-box .qico{font-size:28px;margin-bottom:8px;}
+.quote-box p{font-size:15px;color:#6ee7b7;font-style:italic;line-height:1.7;font-weight:600;}
+.page-tag{text-align:center;font-size:12px;color:#475569;padding:6px 0;}
+
+/* next button inside awareness pages */
+.aware-next-btn{
+  width:100%;border:none;border-radius:18px;padding:16px;
+  background:linear-gradient(135deg,#8b5cf6,#6366f1);
+  color:#fff;font-size:16px;font-weight:700;cursor:pointer;
+  margin-top:6px;margin-bottom:18px;
+  box-shadow:0 8px 24px rgba(99,102,241,.4);
+  transition:.25s;display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.aware-next-btn:active{filter:brightness(1.1);}
+.aware-next-btn.last-btn{background:linear-gradient(135deg,#10b981,#059669);box-shadow:0 8px 24px rgba(16,185,129,.4);}
+.aware-next-btn.reels-quiz-btn{background:linear-gradient(135deg,#ec4899,#8b5cf6);box-shadow:0 8px 24px rgba(236,72,153,.4);}
+
+/* ═══════ COST PAGE ═══════ */
+.fact-box{background:rgba(6,182,212,.1);border:1px solid rgba(6,182,212,.25);border-radius:18px;padding:16px;margin-bottom:14px;}
+.fact-box .ft{font-size:14px;font-weight:700;color:#7dd3fc;margin-bottom:6px;}
+.fact-box p{font-size:14px;color:#bae6fd;line-height:1.65;}
+.cost-intro-card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:18px;padding:16px;margin-bottom:16px;}
+.cost-intro-card p{font-size:15px;color:#94a3b8;line-height:1.75;}
+.cost-card2{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:18px;padding:16px;margin-bottom:12px;}
+.cost-card2 h4{font-size:14px;font-weight:700;color:#f59e0b;margin-bottom:10px;}
+.calc-row2{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.07);font-size:14px;}
+.calc-row2:last-child{border-bottom:none;}
+.calc-row2 .cl{color:#94a3b8;}
+.calc-row2 .cv{font-weight:700;color:#fff;}
+.cost-table2{width:100%;border-collapse:collapse;font-size:14px;}
+.cost-table2 th{background:rgba(245,158,11,.2);color:#fbbf24;padding:10px 12px;text-align:left;}
+.cost-table2 th:last-child{text-align:right;}
+.cost-table2 td{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.07);color:#94a3b8;}
+.cost-table2 td:last-child{text-align:right;font-weight:700;color:#fff;}
+.cost-table2 tr.hl td{background:rgba(16,185,129,.15);color:#6ee7b7;font-weight:700;font-size:15px;}
+.total-box2{
+  background:linear-gradient(135deg,rgba(245,158,11,.2),rgba(217,119,6,.15));
+  border:2px solid rgba(245,158,11,.5);border-radius:20px;
+  padding:20px;text-align:center;margin-bottom:14px;
+}
+.total-box2 .tl{font-size:13px;color:#fcd34d;margin-bottom:6px;}
+.total-box2 .ta{font-size:34px;font-weight:700;color:#fbbf24;letter-spacing:-1px;}
+.total-box2 .ts{font-size:12px;color:#92400e;margin-top:4px;}
+.warn-box2{background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.25);border-radius:18px;padding:16px;margin-bottom:14px;}
+.warn-box2 .wt{font-size:14px;font-weight:700;color:#fca5a5;margin-bottom:6px;}
+.warn-box2 p{font-size:14px;color:#fecaca;line-height:1.65;}
+
+/* ═══════ EDITABLE CALCULATOR ═══════ */
+.calc-edit-card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:18px;padding:18px 16px;margin-bottom:16px;}
+.calc-edit-card h3{font-size:15px;font-weight:700;color:#fff;margin-bottom:14px;}
+.inp-row{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.07);gap:10px;}
+.inp-row:last-child{border-bottom:none;}
+.inp-row label{font-size:14px;color:#94a3b8;flex:1;line-height:1.4;}
+.inp-row .inp-wrap{display:flex;align-items:center;gap:5px;flex-shrink:0;}
+.inp-wrap .cur{font-size:13px;color:#64748b;}
+.calc-inp{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:10px;color:#fff;font-size:15px;font-weight:700;padding:7px 9px;width:88px;text-align:right;outline:none;}
+.calc-inp:focus{border-color:#8b5cf6;background:rgba(139,92,246,.15);}
+.do-calc-btn{width:100%;border:none;border-radius:16px;padding:14px;background:linear-gradient(135deg,#f59e0b,#d97706);color:#111827;font-size:16px;font-weight:700;cursor:pointer;margin-bottom:18px;box-shadow:0 6px 20px rgba(245,158,11,.35);transition:.25s;}
+.do-calc-btn:active{filter:brightness(1.1);}
+.calc-results{display:none;}
+.calc-results.show{display:block;animation:fadeUp .35s ease;}
+
+/* ═══════ REELS AWARENESS PAGE ═══════ */
+.reels-banner{
+  background:linear-gradient(135deg,rgba(236,72,153,.2),rgba(99,102,241,.15));
+  border:1px solid rgba(236,72,153,.35);
+  border-radius:20px;padding:18px 16px;margin-bottom:16px;text-align:center;
+}
+.reels-banner .rb-ico{font-size:44px;margin-bottom:8px;}
+.reels-banner h3{font-size:18px;font-weight:700;color:#f9a8d4;margin-bottom:6px;}
+.reels-banner p{font-size:13px;color:#fce7f3;line-height:1.6;}
+.reels-tip{
+  display:flex;gap:14px;align-items:flex-start;
+  background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);
+  border-radius:18px;padding:15px 14px;margin-bottom:13px;
+  box-shadow:0 4px 14px rgba(0,0,0,.2);
+  border-left:3px solid rgba(236,72,153,.5);
+}
+.reels-tip .rtco{font-size:26px;flex-shrink:0;margin-top:2px;}
+.reels-tip h4{font-size:15px;font-weight:700;color:#fff;margin-bottom:4px;}
+.reels-tip p{font-size:14px;color:#94a3b8;line-height:1.6;}
+.reels-stat{
+  background:rgba(236,72,153,.12);border:1px solid rgba(236,72,153,.25);
+  border-radius:16px;padding:14px 16px;margin-bottom:10px;display:flex;align-items:center;gap:12px;
+}
+.reels-stat .rs-num{font-size:26px;font-weight:700;color:#f9a8d4;min-width:60px;text-align:center;}
+.reels-stat .rs-txt{font-size:13px;color:#fce7f3;line-height:1.5;}
+
+/* ═══════ KIDS AWARENESS PAGE ═══════ */
+.kids-banner{
+  background:linear-gradient(135deg,rgba(251,146,60,.2),rgba(217,119,6,.15));
+  border:1px solid rgba(251,146,60,.35);
+  border-radius:20px;padding:18px 16px;margin-bottom:16px;text-align:center;
+}
+.kids-banner .rb-ico{font-size:44px;margin-bottom:8px;}
+.kids-banner h3{font-size:18px;font-weight:700;color:#fdba74;margin-bottom:6px;}
+.kids-banner p{font-size:13px;color:#ffedd5;line-height:1.6;}
+.kids-stat{
+  background:rgba(251,146,60,.12);border:1px solid rgba(251,146,60,.25);
+  border-radius:16px;padding:14px 16px;margin-bottom:10px;display:flex;align-items:center;gap:12px;
+}
+.kids-stat .rs-num{font-size:24px;font-weight:700;color:#fdba74;min-width:78px;text-align:center;}
+.kids-stat .rs-txt{font-size:13px;color:#ffedd5;line-height:1.5;}
+.kids-tip{
+  display:flex;gap:14px;align-items:flex-start;
+  background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);
+  border-radius:18px;padding:15px 14px;margin-bottom:13px;
+  box-shadow:0 4px 14px rgba(0,0,0,.2);
+  border-left:3px solid rgba(251,146,60,.5);
+}
+.kids-tip .rtco{font-size:26px;flex-shrink:0;margin-top:2px;}
+.kids-tip h4{font-size:15px;font-weight:700;color:#fff;margin-bottom:4px;}
+.kids-tip p{font-size:14px;color:#94a3b8;line-height:1.6;}
+.aware-next-btn.kids-btn{background:linear-gradient(135deg,#fb923c,#ea580c);box-shadow:0 8px 24px rgba(251,146,60,.4);}
+
+/* ═══════ SOUND TOGGLE ═══════ */
+.sound-toggle{
+  position:fixed;bottom:20px;right:16px;
+  width:46px;height:46px;border:none;border-radius:50%;
+  background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.2);
+  color:#fff;display:flex;align-items:center;justify-content:center;
+  font-size:22px;cursor:pointer;z-index:999;
+  box-shadow:0 4px 16px rgba(0,0,0,.3);transition:.3s;backdrop-filter:blur(10px);
+}
+
+@media(max-width:480px){
+  body{padding:10px 10px 30px;}
+  .chapter-grid{grid-template-columns:1fr;}
+  h1{font-size:20px;}
+  .quiz-q{font-size:17px;}
+  .opt-btn{font-size:14px;padding:13px;}
+  .quiz-card,.result-box{padding:18px;}
+  .chapter-btn{min-height:auto;}
+}
+</style>
+</head>
+<body>
+<div id="app">
+  <div class="header">
+    <div class="header-icon">&#128241;</div>
+    <h1>মোবাইল স্মার্ট গাইড</h1>
+  </div>
+  <div id="main"></div>
+</div>
+<button class="sound-toggle" id="soundToggle" title="শব্দ চালু/বন্ধ করুন">&#128266;</button>
+
+<script>
+/* ═══════════════════════════════
+   SOUND ENGINE
+═══════════════════════════════ */
+var soundOn=true;
+var AudioCtx=window.AudioContext||window.webkitAudioContext;
+var ctx=null;
+function getCtx(){if(!ctx)ctx=new AudioCtx();if(ctx.state==='suspended')ctx.resume();return ctx;}
+function playCorrect(){if(!soundOn)return;try{var c=getCtx(),notes=[523,659,784,1047];notes.forEach(function(f,i){var o=c.createOscillator(),g=c.createGain();o.connect(g);g.connect(c.destination);o.type='sine';o.frequency.value=f;var t=c.currentTime+i*.1;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.18,t+.03);g.gain.exponentialRampToValueAtTime(.001,t+.25);o.start(t);o.stop(t+.25);});}catch(e){}}
+function playWrong(){if(!soundOn)return;try{var c=getCtx(),notes=[330,277];notes.forEach(function(f,i){var o=c.createOscillator(),g=c.createGain();o.connect(g);g.connect(c.destination);o.type='sawtooth';o.frequency.value=f;var t=c.currentTime+i*.18;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.15,t+.04);g.gain.exponentialRampToValueAtTime(.001,t+.3);o.start(t);o.stop(t+.3);});}catch(e){}}
+function playClick(){if(!soundOn)return;try{var c=getCtx(),o=c.createOscillator(),g=c.createGain();o.connect(g);g.connect(c.destination);o.type='sine';o.frequency.value=880;var t=c.currentTime;g.gain.setValueAtTime(.12,t);g.gain.exponentialRampToValueAtTime(.001,t+.1);o.start(t);o.stop(t+.1);}catch(e){}}
+function playBack(){if(!soundOn)return;try{var c=getCtx(),o=c.createOscillator(),g=c.createGain();o.connect(g);g.connect(c.destination);o.type='sine';o.frequency.value=440;var t=c.currentTime;o.frequency.setValueAtTime(440,t);o.frequency.exponentialRampToValueAtTime(280,t+.1);g.gain.setValueAtTime(.15,t);g.gain.exponentialRampToValueAtTime(.001,t+.14);o.start(t);o.stop(t+.15);}catch(e){}}
+function playFinish(){if(!soundOn)return;try{var c=getCtx(),mel=[523,659,784,659,1047,880,784];mel.forEach(function(f,i){var o=c.createOscillator(),g=c.createGain();o.connect(g);g.connect(c.destination);o.type='sine';o.frequency.value=f;var t=c.currentTime+i*.13;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.15,t+.04);g.gain.exponentialRampToValueAtTime(.001,t+.28);o.start(t);o.stop(t+.28);});}catch(e){}}
+
+/* ═══════════════════════════════
+   QUIZ DATA  (৯টি অধ্যায়)
+═══════════════════════════════ */
+var chapters=[
+  {id:0,icon:"&#128722;",title:"নতুন ফোন কেনা",sub:"কী কী দেখবেন",isNew:false,qs:[
+    {q:"IMEI নম্বর কী কাজে ব্যবহৃত হয়?",opts:["স্ক্রিনের উজ্জ্বলতা নিয়ন্ত্রণ করে","আপনার ফোনকে বিশ্বব্যাপী অনন্যভাবে চিহ্নিত করে","অ্যাপের অনুমতি পরিচালনা করে","নেটওয়ার্কের গতি নির্ধারণ করে"],ans:1,exp:"IMEI (International Mobile Equipment Identity) হল প্রতিটি ফোনের জন্য ১৫-সংখ্যার একটি অনন্য পরিচয়। *#06# ডায়াল করে এটি দেখা যায়। চুরি হওয়া ফোন ব্লক করতে এবং আসল ফোন যাচাই করতে এটি ব্যবহৃত হয়।"},
+    {q:"যেকোনো ফোনে *#06# ডায়াল করুন। এতে কী দেখা যায়?",opts:["ব্যাটারির স্বাস্থ্য","IMEI নম্বর","নেটওয়ার্ক সিগন্যালের শক্তি","RAM ব্যবহার"],ans:1,exp:"*#06# ডায়াল করলেই সঙ্গে সঙ্গে আপনার IMEI দেখা যায়। এটি সবসময় লিখে রাখুন এবং একটি ছবি তুলে রাখুন। ফোন চুরি হলে এটি প্রয়োজন হবে।"},
+    {q:"ফোনের SAR মান কী নির্দেশ করে?",opts:["স্ক্রিন রিফ্রেশ রেট","ব্যাটারির স্টোরেজ ক্ষমতা","শরীর দ্বারা শোষিত রেডিয়েশন","সিম সক্রিয়করণের হার"],ans:2,exp:"SAR (Specific Absorption Rate) পরিমাপ করে আপনার শরীর কতটা RF রেডিয়েশন শোষণ করে। ভারতে এই সীমা ১.৬ W/kg। SAR যত কম, ততই নিরাপদ। কেনার আগে এটি দেখে নিন।"},
+    {q:"কোন ভারতীয় সরকারি পোর্টাল দিয়ে ফোন আসল কিনা যাচাই করা যায়?",opts:["TRAI ওয়েবসাইট","CEIR পোর্টাল (ceir.gov.in)","BIS ইন্ডিয়া","MeitY পোর্টাল"],ans:1,exp:"CEIR (Central Equipment Identity Register) - ceir.gov.in - এ গিয়ে আপনি দেখতে পারেন কোনো ডিভাইস ব্ল্যাকলিস্টেড কিনা বা ভারতে সরকারিভাবে নিবন্ধিত কিনা।"},
+    {q:"সবচেয়ে নতুন ফ্ল্যাগশিপ ফোন এড়িয়ে যাওয়া কেন বুদ্ধিমানের কাজ?",opts:["পুরনো ফোনের ক্যামেরা ভালো","প্রযুক্তি দ্রুত বদলায়, দাম কমে যায়, আর রেডিয়েশন মান উন্নত হতে পারে","ফ্ল্যাগশিপ ফোনে ওয়ারেন্টি থাকে না","এগুলো 5G সমর্থন করে না"],ans:1,exp:"শীর্ষ ফ্ল্যাগশিপ ফোন ৬ মাসে ৩০-৪০% মূল্য হারায়, প্রযুক্তি প্রতি বছর বদলায়, আর নতুন মানদণ্ড প্রায়ই নিরাপত্তা উন্নত করে। বেশিরভাগ ব্যবহারকারীর জন্য মিড-রেঞ্জ ফোন বেশি বুদ্ধিমানের সিদ্ধান্ত।"}
+  ]},
+  {id:1,icon:"&#9851;",title:"পুরনো ফোন কেনা",sub:"প্রতারণা এড়ান",isNew:false,qs:[
+    {q:"পুরনো ফোন চুরি করা কিনা কীভাবে যাচাই করবেন?",opts:["ফোনের রং দেখে","CEIR ব্ল্যাকলিস্টে IMEI সার্চ করে","চার্জার দেখে","অ্যাপের সংখ্যা গুনে"],ans:1,exp:"ceir.gov.in-এ গিয়ে IMEI লিখুন। ফোনটি ব্ল্যাকলিস্টেড (চুরি হিসেবে রিপোর্ট করা) হলে আপনি এটি আইনগতভাবে ব্যবহার করতে পারবেন না। নেটওয়ার্ক এটি ব্লক করে দেবে।"},
+    {q:"বাক্সে থাকা IMEI-এর সাথে *#06#-এ দেখানো IMEI মিলছে না। এর অর্থ কী?",opts:["অ্যান্ড্রয়েড ফোনে এটি স্বাভাবিক","সফটওয়্যার আপডেটের কারণে IMEI রিসেট হয়েছে","সম্ভাব্য প্রতারণা - ডিভাইসটি কারচুপি করা হতে পারে","ফোনটি রিস্টার্ট করা দরকার"],ans:2,exp:"বাক্সে, পেছনের কভারে এবং *#06#-এ দেখানো IMEI সব মিলতে হবে। অমিল থাকলে বুঝতে হবে ফোনটি ক্লোন করা, চুরি করা বা কারচুপি করা হয়েছে। এমন ফোন কিনবেন না।"},
+    {q:"পুরনো ফোন নিজে ব্যবহারের আগে ফ্যাক্টরি রিসেট করা কেন জরুরি?",opts:["ব্যাটারি লাইফ উন্নত করতে","আগের মালিকের ডেটা, অ্যাকাউন্ট ও স্পাইওয়্যার সরাতে","OS আপডেট করতে","স্টোরেজ বাড়াতে"],ans:1,exp:"পুরনো ফোনে আগের মালিকের গুগল বা অ্যাপল অ্যাকাউন্ট, স্পাইওয়্যার বা ব্যক্তিগত ডেটা থাকতে পারে। ব্যবহারের আগে সবসময় ফ্যাক্টরি রিসেট করুন।"},
+    {q:"পুরনো ফোনের ব্যাটারির স্বাস্থ্য যাচাই করতে কোন পদ্ধতি সহায়ক?",opts:["*#2663# ডায়াল করা","Settings > Battery Health দেখা বা AccuBattery অ্যাপ ব্যবহার করা","ফোন বন্ধ ও চালু করা","বিক্রেতাকে ফোন করা"],ans:1,exp:"iOS-এ Settings-এ ব্যাটারি স্বাস্থ্য দেখা যায়। অ্যান্ড্রয়েড ব্যবহারকারীরা AccuBattery অ্যাপ ব্যবহার করতে পারেন। ৮০%-এর কম ক্ষমতা মানে শীঘ্রই ব্যাটারি বদলাতে হতে পারে।"},
+    {q:"একটি ফোন বাজারদরের চেয়ে ৭০% কম দামে অনলাইনে বিক্রি হচ্ছে। এর সম্ভাব্য কারণ কী?",opts:["আসল বিক্রেতার কাছ থেকে ভাগ্যবান ডিল","ফোনটি চুরি, নকল বা গুরুতরভাবে ক্ষতিগ্রস্ত","বিক্রেতা দাম ভুল লিখেছেন","ফোনটি বিক্রির জন্য খুব পুরনো"],ans:1,exp:"যদি কোনো ডিল সত্যি হতে না পারার মতো ভালো মনে হয়, তবে বেশিরভাগ ক্ষেত্রেই তা এমনই। সন্দেহজনকভাবে কম দামে চুরি করা ফোন, জলে ক্ষতিগ্রস্ত ডিভাইস বা IMEI-ক্লোন করা নকল ফোন সাধারণ ঘটনা।"}
+  ]},
+  {id:2,icon:"&#128737;",title:"মোবাইল সুরক্ষা",sub:"ফোন সুরক্ষিত রাখুন",isNew:false,qs:[
+    {q:"আপনার স্মার্টফোনের জন্য কোন লক পদ্ধতি সবচেয়ে নিরাপদ?",opts:["প্যাটার্ন লক","৪-সংখ্যার পিন","শক্তিশালী অক্ষর-সংখ্যার পাসওয়ার্ড বা বায়োমেট্রিক + পিন","সুবিধার জন্য লক না রাখা"],ans:2,exp:"বায়োমেট্রিক সুবিধাজনক, তবে এর সাথে একটি শক্তিশালী পিন বা পাসওয়ার্ড থাকা দরকার। সাধারণ প্যাটার্ন অন্যরা দেখে ফেলতে পারে। শুধু ফেস আনলকের ওপর নির্ভর করা এড়িয়ে চলুন।"},
+    {q:"মোবাইল ইন্স্যুরেন্স কী কাজে আসে?",opts:["নতুন ফোনে আপগ্রেড করতে","চুরি, দুর্ঘটনাজনিত ক্ষতি ও স্ক্রিন মেরামতের খরচ কভার করতে","অ্যাপে ক্যাশব্যাক পেতে","রেডিয়েশন এক্সপোজার কমাতে"],ans:1,exp:"মোবাইল ইন্স্যুরেন্স চুরি, দুর্ঘটনাজনিত পতন, স্ক্রিনের ক্ষতি কভার করে। ১৫,০০০ টাকার বেশি দামের ফোনের জন্য ইন্স্যুরেন্স নেওয়া বিবেচনা করা উচিত।"},
+    {q:"ফোনে টু-ফ্যাক্টর অথেন্টিকেশন (2FA) মানে কী?",opts:["দুটি সিম কার্ড ব্যবহার করা","পাসওয়ার্ড + OTP বা অ্যাপ কোড দিয়ে পরিচয় যাচাই করা","দুটি ডিভাইস থেকে লগ ইন করা","ডেটার দ্বিগুণ এনক্রিপশন"],ans:1,exp:"2FA-তে দরকার হয় আপনার জানা কিছু (পাসওয়ার্ড) + আপনার কাছে থাকা কিছু (OTP বা অথেন্টিকেটর অ্যাপ)। পাসওয়ার্ড চুরি হলেও দ্বিতীয় ধাপ ছাড়া অ্যাকাউন্টে ঢোকা যায় না।"},
+    {q:"আপনি একটি SMS পান: 'আপনার ব্যাংক অ্যাকাউন্ট ব্লক করা হয়েছে। এখানে ক্লিক করুন।' আপনি কী করবেন?",opts:["সাথে সাথে ক্লিক করবেন","বন্ধুদের ফরওয়ার্ড করবেন","উপেক্ষা করে ব্যাংকের অফিসিয়াল নম্বরে ফোন করবেন","'STOP' লিখে রিপ্লাই করবেন"],ans:2,exp:"এটি একটি ফিশিং বা স্মিশিং আক্রমণ। ব্যাংক কখনো SMS লিংকের মাধ্যমে ক্রেডেনশিয়াল চায় না। ব্যাংকের অফিসিয়াল ওয়েবসাইটে দেওয়া নম্বরে ফোন করুন। cybercrime.gov.in-এ রিপোর্ট করুন।"},
+    {q:"Find My Device চালু রাখলে কী সুবিধা হয়?",opts:["ফোন দ্রুত চলে","হারানো ফোনের অবস্থান জানা, লক করা বা মুছে ফেলা যায়","স্প্যাম কল ব্লক হয়","ওয়াই-ফাই সিগন্যাল বাড়ে"],ans:1,exp:"গুগলের Find My Device ও অ্যাপলের Find My দিয়ে আপনি ফোনের অবস্থান দেখতে, লক করতে বা দূর থেকে সব ডেটা মুছে ফেলতে পারেন। ফোন হারানোর আগেই এগুলো চালু রাখুন।"}
+  ]},
+  {id:3,icon:"&#128241;",title:"ফোন বিক্রি করা",sub:"ডেটা ও প্রাইভেসি",isNew:false,qs:[
+    {q:"ফোন বিক্রি করার আগে সবচেয়ে গুরুত্বপূর্ণ ধাপ কী?",opts:["শুধু সিম কার্ড খুলে ফেলা","সব অ্যাকাউন্ট থেকে সাইন আউট করে ফ্যাক্টরি রিসেট করা","ছবি মুছে ফেলা","মেমরি কার্ড খুলে ফেলা"],ans:1,exp:"প্রথমে গুগল, অ্যাপল, স্যামসাং অ্যাকাউন্ট থেকে সাইন আউট করুন, তারপর ফ্যাক্টরি রিসেট করুন। সিম ও এসডি কার্ডও খুলে ফেলুন।"},
+    {q:"ফ্যাক্টরি রিসেটের পরও কি মুছে ফেলা ডেটা পুনরুদ্ধার করা যায়?",opts:["না - ফ্যাক্টরি রিসেট সব স্থায়ীভাবে মুছে দেয়","হ্যাঁ - ফরেনসিক টুল দিয়ে পুরনো অ্যান্ড্রয়েড ডিভাইসে কিছু ডেটা পুনরুদ্ধার করা সম্ভব","শুধু আইফোনে","শুধু রুট করা ফোনে"],ans:1,exp:"সম্পূর্ণ ডিস্ক এনক্রিপশন ছাড়া পুরনো অ্যান্ড্রয়েড ফোনে কখনো কখনো ডেটা রিকভারি টুল দিয়ে ফাইল উদ্ধার করা যায়। সমাধান: ফ্যাক্টরি রিসেটের আগে ফোন এনক্রিপ্ট করুন।"},
+    {q:"আপনি ফোন বিক্রি করেছেন কিন্তু iCloud থেকে সাইন আউট করতে ভুলে গেছেন। ক্রেতা কী ঝুঁকিতে পড়বেন?",opts:["কোনো ঝুঁকি নেই - অ্যাকাউন্ট স্বয়ংক্রিয়ভাবে বদলে যায়","অ্যাক্টিভেশন লক - ক্রেতার ফোন স্থায়ীভাবে আপনার অ্যাকাউন্টে আটকে যাবে","পারফরম্যান্স কমে যাবে","কন্ট্যাক্ট হারিয়ে যাবে"],ans:1,exp:"অ্যাপল অ্যাক্টিভেশন লক আইফোনকে আপনার অ্যাপল আইডির সাথে বেঁধে রাখে। বিক্রির আগে সাইন আউট করতে ভুলে গেলে নতুন মালিক ফোনটি ব্যবহার করতে পারবেন না।"},
+    {q:"ফোন বিক্রির আগে অ্যাপ মুছে ফেলার পরও কোন ডেটা থেকে যেতে পারে?",opts:["শুধু অ্যাপ আইকন","অ্যাকাউন্ট ক্রেডেনশিয়াল, ক্যাশে ফাইল, অটোফিল ডেটা, ব্রাউজিং হিস্ট্রি","শুধু বড় ভিডিও ফাইল","কিছুই না - অ্যাপ মোছা সম্পূর্ণ"],ans:1,exp:"অ্যাপ মুছে ফেললেই এর সংরক্ষিত ডেটা বা সেভ করা পাসওয়ার্ড সবসময় মুছে যায় না। সব অ্যাপ ডেটা পরিষ্কার করার একমাত্র নির্ভরযোগ্য উপায় হল সম্পূর্ণ ফ্যাক্টরি রিসেট।"},
+    {q:"ফোন বিক্রির আগে ধাপগুলোর সঠিক ক্রম কোনটি?",opts:["অ্যাপ মুছুন তারপর সিম খুলুন তারপর বিক্রি করুন","সিম খুলুন তারপর ফ্যাক্টরি রিসেট করুন তারপর বিক্রি করুন","সব অ্যাকাউন্ট থেকে সাইন আউট করুন তারপর সিম ও এসডি কার্ড খুলুন তারপর ফ্যাক্টরি রিসেট করুন তারপর বিক্রি করুন","ফ্যাক্টরি রিসেট করুন তারপর সাইন আউট করুন তারপর সিম খুলুন তারপর বিক্রি করুন"],ans:2,exp:"সবসময় প্রথমে সাইন আউট করুন, তারপর সিম ও এসডি কার্ড খুলুন, তারপর ফ্যাক্টরি রিসেট করুন। ভুল ক্রমে করলে ক্রেতা আটকে যেতে পারেন বা আপনার ডেটা উন্মুক্ত হয়ে যেতে পারে।"}
+  ]},
+  {id:4,icon:"&#9762;",title:"রেডিয়েশন ও স্বাস্থ্য",sub:"সচেতন থাকুন",isNew:false,qs:[
+    {q:"ভারতে সরকার নির্ধারিত SAR সীমা কত?",opts:["২.০ W/kg","১.৬ W/kg","০.৮ W/kg","৩.২ W/kg"],ans:1,exp:"ভারত FCC মানদণ্ড ১.৬ W/kg অনুসরণ করে। EU ব্যবহার করে ২.০ W/kg। ভারতে বৈধভাবে বিক্রি হওয়া সব ফোনে SAR মান দেখানো বাধ্যতামূলক।"},
+    {q:"ফোন থেকে রেডিয়েশন এক্সপোজার উল্লেখযোগ্যভাবে কমায় কোন অভ্যাস?",opts:["দুই হাতে ফোন ধরা","কানে ফোন ধরার বদলে তার-যুক্ত ইয়ারফোন ব্যবহার করা","ফোন উপুড় করে রাখা","বাইরে শুধু স্পিকারফোন ব্যবহার করা"],ans:1,exp:"দূরত্ব RF এক্সপোজার অনেকটাই কমিয়ে দেয়। তার-যুক্ত হেডসেট ফোনকে মাথা থেকে দূরে রাখে। এমনকি ১০ সেমি দূরত্বেও এক্সপোজার ৭৫% কমে যায়।"},
+    {q:"একটি স্মার্টফোন কতদিন ব্যবহারের পর বদলানো ভালো?",opts:["১০+ বছর","সর্বোচ্চ ১ বছর","২-৩ বছর একটি ভালো ভারসাম্য","কাজ বন্ধ না হওয়া পর্যন্ত রেখে দিন"],ans:2,exp:"২-৩ বছর স্বাস্থ্য (পুরনো ফোনে রেডিয়েশন শিল্ডিং কমে যেতে পারে), প্রযুক্তি (সিকিউরিটি আপডেট বন্ধ হয়ে যায়) ও অর্থনৈতিক দিক (৩ বছর পর রিসেল ভ্যালু দ্রুত কমে) - এসবের মধ্যে ভারসাম্য রাখে।"},
+    {q:"আপনার ফোনের সিগন্যাল খুব দুর্বল (১ বার)। এটি রেডিয়েশনকে কীভাবে প্রভাবিত করে?",opts:["রেডিয়েশন কম হয় - সিগন্যাল দুর্বল","রেডিয়েশন বেশি হয় - ফোন টাওয়ারে পৌঁছাতে শক্তি বাড়ায়","রেডিয়েশন অপরিবর্তিত থাকে","শুধু ব্যাটারিকে প্রভাবিত করে"],ans:1,exp:"সিগন্যাল দুর্বল হলে ফোন টাওয়ারে পৌঁছানোর জন্য এর ট্রান্সমিটার শক্তি বাড়িয়ে দেয় - যা RF নির্গমন উল্লেখযোগ্যভাবে বাড়ায়। সম্ভব হলে ওয়াই-ফাই কলিং ব্যবহার করুন।"},
+    {q:"চার্জ দেওয়ার সময় ফোন ব্যবহার করা কেন ঝুঁকিপূর্ণ?",opts:["চার্জার অতিরিক্ত রেডিয়েশন ছড়ায়","ফোন বেশি কাজ করে, বেশি RF নির্গমন করতে পারে, আর নিম্নমানের চার্জার আগুন লাগাতে পারে","ব্যাটারির রাসায়নিক পদার্থ বিপজ্জনক হয়ে ওঠে","স্ক্রিন স্থায়ীভাবে নষ্ট হয়ে যায়"],ans:1,exp:"চার্জ দেওয়ার সময় ফোন ব্যবহার করলে RF এক্সপোজার বাড়ে। নকল বা ক্ষতিগ্রস্ত চার্জার আগুনের গুরুতর ঝুঁকিও তৈরি করে। সবসময় আসল বা সার্টিফায়েড চার্জার ব্যবহার করুন।"}
+  ]},
+  {id:5,icon:"&#128205;",title:"হারানো বা পাওয়া",sub:"কী করবেন",isNew:false,qs:[
+    {q:"আপনার ফোন চুরি হয়ে গেছে। প্রথমে কী করা উচিত?",opts:["সোশ্যাল মিডিয়ায় পোস্ট করা","Find My Device দিয়ে দূর থেকে লক বা মুছে ফেলা","সাথে সাথে পুলিশকে ফোন করা","নতুন ফোন কেনা"],ans:1,exp:"চোর আপনার ডেটায় প্রবেশ করার আগে প্রথমে দূর থেকে ফোন লক বা মুছে ফেলুন। তারপর পুলিশে FIR করুন এবং IMEI ব্লক করতে আপনার নেটওয়ার্ক প্রোভাইডারকে জানান।"},
+    {q:"ভারতে চুরি হওয়া ফোনের IMEI ব্লক করতে কার সাথে যোগাযোগ করবেন?",opts:["ম্যানুফ্যাকচারার","FIR করার পর CEIR পোর্টাল (ceir.gov.in)","গুগল প্লে স্টোর","নিকটতম ওয়াই-ফাই প্রোভাইডার"],ans:1,exp:"পুলিশে FIR করুন, তারপর ceir.gov.in-এ গিয়ে IMEI ব্লক করুন। একবার ব্লক হয়ে গেলে ফোনটি ভারতের কোনো নেটওয়ার্কে সংযুক্ত হতে পারবে না।"},
+    {q:"রাস্তায় একটি ফোন পেলেন। সঠিক কাজ কী?",opts:["রেখে দেওয়া - যে পায় সেই মালিক","আনলক করে মালিক খোঁজার চেষ্টা করা","নিকটতম থানায় জমা দেওয়া","দ্রুত বিক্রি করে দেওয়া"],ans:2,exp:"পাওয়া ফোন পুলিশে জমা দিন। অন্যের ফোন আনলক বা ব্যবহারের চেষ্টা করা বেআইনি হতে পারে।"},
+    {q:"ফোন চুরি হওয়ার পর কোন অ্যাকাউন্টগুলো অবিলম্বে সুরক্ষিত করা উচিত?",opts:["শুধু ব্যাংক অ্যাকাউন্ট","ইমেইল, ব্যাংক, সোশ্যাল মিডিয়া ও UPI অ্যাপ - অন্য ডিভাইস থেকে সব পাসওয়ার্ড বদলান","শুধু হোয়াটসঅ্যাপ","শুধু ইনস্টাগ্রাম"],ans:1,exp:"আপনার ইমেইল সব অ্যাকাউন্টের মাস্টার-কী। সাথে সাথে অন্য একটি ডিভাইস থেকে ইমেইল, ব্যাংকিং, হোয়াটসঅ্যাপ ও সোশ্যাল মিডিয়ার পাসওয়ার্ড বদলে ফেলুন।"},
+    {q:"ফোন হারানোর আগে কী নোট করে রাখা উচিত?",opts:["অ্যাপ ডাউনলোডের ইতিহাস","IMEI নম্বর, ডিভাইস মডেল, কেনার রসিদ ও ইন্স্যুরার কন্টাক্ট","শুধু ফোনের রং","শুধু সিমের নম্বর"],ans:1,exp:"IMEI (*#06#), ফোনের মডেল, কেনার ইনভয়েস ও আপনার ইন্স্যুরারের ক্লেইম নম্বর লিখে রাখুন। এগুলো কাগজে বা ইমেইলে সংরক্ষণ করুন - শুধু ফোনে নয়।"}
+  ]},
+  {id:6,icon:"&#128683;",title:"অজানা অ্যাপ",sub:"নিরাপদ থাকুন",isNew:false,qs:[
+    {q:"অজানা উৎস থেকে অ্যাপ ইনস্টল করার প্রধান ঝুঁকি কী?",opts:["অ্যাপ ধীরে চলতে পারে","অ্যাপে ম্যালওয়্যার, স্পাইওয়্যার বা র‍্যানসমওয়্যার থাকতে পারে যা আপনার ডেটা চুরি করে","অজানা অ্যাপ বেশি ব্যাটারি খরচ করে","এগুলো ডার্ক মোড সমর্থন করে না"],ans:1,exp:"অফিসিয়াল স্টোরের বাইরের অ্যাপ নিরাপত্তা যাচাই করা থাকে না। এগুলো নীরবে কন্ট্যাক্ট, ব্যাংক ক্রেডেনশিয়াল, ছবি ও OTP চুরি করতে পারে, বা ফোন এনক্রিপ্ট করে মুক্তিপণ দাবি করতে পারে।"},
+    {q:"একটি ফ্ল্যাশলাইট অ্যাপ কন্ট্যাক্ট, ক্যামেরা, মাইক্রোফোন এবং SMS অ্যাক্সেস চাইছে। আপনি কী করবেন?",opts:["সব পারমিশন দিয়ে দেওয়া","শুধু ক্যামেরা পারমিশন দেওয়া","সন্দেহজনক সব পারমিশন বাতিল করা বা অ্যাপ আনইনস্টল করা","ইনস্টল করে পরে দেখা"],ans:2,exp:"একটি ফ্ল্যাশলাইটের শুধু ক্যামেরা বা টর্চ পারমিশন দরকার। SMS বা কন্ট্যাক্ট চাওয়া একটি লাল সংকেত - অ্যাপটি সম্ভবত আপনার ডেটা সংগ্রহ করছে।"},
+    {q:"হোয়াটসঅ্যাপে একটি বার্তা পেলেন যাতে একটি APK ফাইল আছে যা বলছে 'এটি ইনস্টল করে ৫০০০ টাকা জিতুন'। আপনি কী করবেন?",opts:["ইনস্টল করা - আসল মনে হচ্ছে","প্রথমে বন্ধুদের ফরওয়ার্ড করা","সাথে সাথে মুছে ফেলা - এটি সম্ভবত ম্যালওয়্যার","সেফ মোডে ইনস্টল করা"],ans:2,exp:"হোয়াটসঅ্যাপ বা টেলিগ্রামের মাধ্যমে পাঠানো APK ফাইল ভারতে ব্যাংকিং ট্রোজান ছড়ানোর একটি সাধারণ উপায়। এগুলো OTP ও UPI ক্রেডেনশিয়াল চুরি করতে পারে।"},
+    {q:"অজানা অ্যাপ ইনস্টল বন্ধ করতে অ্যান্ড্রয়েডে কোন সেটিং বন্ধ রাখা উচিত?",opts:["ডেভেলপার মোড","'Install unknown apps' বা 'Unknown sources'","NFC","হটস্পট"],ans:1,exp:"Settings > Security > Install unknown apps সবসময় বন্ধ রাখা উচিত। কোনো বিশ্বস্ত অ্যাপ সাইডলোড করতেই হলে সাময়িকভাবে চালু করুন, তারপর আবার বন্ধ করে দিন।"},
+    {q:"আপনি একটি অনানুষ্ঠানিক ওয়েবসাইট থেকে একটি গেম ইনস্টল করেছিলেন। পরদিন আপনার UPI অ্যাকাউন্টে অননুমোদিত লেনদেন দেখাচ্ছে। কী ঘটেছে বলে মনে হয়?",opts:["আপনার ব্যাংক হ্যাক হয়েছে","গেমটিতে একটি ব্যাংকিং ট্রোজান ছিল যা আপনার OTP পড়ে নিয়েছিল","আপনার সিম কার্ড খারাপ হয়েছে","আপনি ভুল UPI পিন দিয়েছিলেন"],ans:1,exp:"অনানুষ্ঠানিক গেমের APK-তে লুকানো ব্যাংকিং ট্রোজান SMS OTP আটকে নিয়ে নীরবে টাকা ট্রান্সফার করতে পারে। সবসময় শুধু অফিসিয়াল স্টোর থেকে অ্যাপ ইনস্টল করুন।"}
+  ]},
+  {id:7,icon:"&#128306;",title:"পাবলিক ওয়াই-ফাই",sub:"ডেটা সুরক্ষা",isNew:false,qs:[
+    {q:"পাবলিক ওয়াই-ফাই (ক্যাফে, এয়ারপোর্ট, মল) ব্যবহার আপনার ডেটার জন্য কেন ঝুঁকিপূর্ণ?",opts:["পাবলিক ওয়াই-ফাই সবসময় ধীর হয়","এনক্রিপ্ট না করা পাবলিক ওয়াই-ফাইতে একই নেটওয়ার্কের যে কেউ ডেটা আটকাতে পারে","পাবলিক ওয়াই-ফাই সব অ্যাপ ব্লক করে দেয়","এটি ব্যাটারি বেশি খরচ করে"],ans:1,exp:"বেশিরভাগ পাবলিক ওয়াই-ফাই হটস্পট এনক্রিপ্ট করা থাকে না। একই নেটওয়ার্কের আক্রমণকারীরা আপনার লগইন ক্রেডেনশিয়াল, ইমেইল ও ব্যাংকিং ডেটা আটকাতে পারে - একে বলে Man-in-the-Middle আক্রমণ।"},
+    {q:"পাবলিক ওয়াই-ফাইতে Man-in-the-Middle আক্রমণ কী?",opts:["আক্রমণকারী শারীরিকভাবে আপনার ফোন চুরি করে","আক্রমণকারী গোপনে আপনার ফোন ও ইন্টারনেটের মধ্যে ডেটা আটকায়","ওয়াই-ফাইয়ের মাধ্যমে ছড়ানো একটি ভাইরাস","আপনার স্ক্রিন দূর থেকে নিয়ন্ত্রণ করে এমন হ্যাকার"],ans:1,exp:"MITM আক্রমণে হ্যাকার নিজেকে আপনার ফোন ও রাউটারের মাঝে বসিয়ে দেয়, আপনার ট্রাফিক রিয়েল-টাইমে পড়ে ফেলে - পাসওয়ার্ড, OTP ও বার্তা সহ।"},
+    {q:"পাবলিক ওয়াই-ফাইতে সংযুক্ত হতে হলে সবচেয়ে নিরাপদ টুল কোনটি?",opts:["এয়ারপ্লেন মোড","VPN (Virtual Private Network)","ইনকগনিটো বা প্রাইভেট ব্রাউজিং মোড","3G-তে পরিবর্তন করা"],ans:1,exp:"VPN আপনার সব ইন্টারনেট ট্রাফিক এনক্রিপ্ট করে দেয়, যা আটকানো হলেও পড়া যায় না। ইনকগনিটো মোড শুধু স্থানীয় ব্রাউজিং হিস্ট্রি লুকায় - এটি নেটওয়ার্ক আক্রমণ থেকে রক্ষা করে না।"},
+    {q:"পাবলিক ওয়াই-ফাইতে VPN ছাড়া কোন কাজটি সবচেয়ে বিপজ্জনক?",opts:["ইউটিউব দেখা","অনলাইন ব্যাংকিং বা UPI লেনদেন","একটি সংবাদ ওয়েবসাইট পড়া","আবহাওয়া দেখা"],ans:1,exp:"ব্যাংকিং, UPI ও সংবেদনশীল ক্রেডেনশিয়াল দিয়ে লগইন পাবলিক ওয়াই-ফাইতে অত্যন্ত ঝুঁকিপূর্ণ। আর্থিক লেনদেনের জন্য সবসময় আপনার মোবাইল ডেটা (4G বা 5G) ব্যবহার করুন।"},
+    {q:"একটি কফি শপে দুটি নেটওয়ার্ক আছে: CafeNet এবং CafeNet_Free। আপনার কী করা উচিত?",opts:["ফ্রি-টাতে সংযুক্ত হওয়া","সংযুক্ত হওয়ার আগে স্টাফের কাছে অফিসিয়াল নেটওয়ার্ক কোনটি জিজ্ঞাসা করা","গতির জন্য দুটোতেই সংযুক্ত হওয়া","মোবাইল ডেটা ব্যবহার করা"],ans:3,exp:"একই রকম নামের ভুয়া ওয়াই-ফাই হটস্পট (Evil Twin নেটওয়ার্ক) আক্রমণকারীরা তৈরি করে। সবচেয়ে নিরাপদ উপায় হল নিজের মোবাইল ডেটা ব্যবহার করা। ওয়াই-ফাই ব্যবহার করতেই হলে স্টাফের সাথে যাচাই করে VPN ব্যবহার করুন।"}
+  ]},
+  {id:8,icon:"&#127909;",title:"রিলস আসক্তি",sub:"স্ক্রল লুপ ভাঙুন",isNew:true,qs:[
+    {q:"শর্ট ভিডিও রিলস (ইনস্টাগ্রাম, ইউটিউব শর্টস, টিকটক) কেন এত আসক্তিকর?",opts:["এগুলোর ভিডিও কোয়ালিটি সবচেয়ে ভালো","অ্যালগরিদম আপনাকে ক্রমাগত স্ক্রল করানোর জন্য তাৎক্ষণিক ডোপামিন হিট দেয়","এগুলো সবসময় শিক্ষামূলক","শর্ট ভিডিও লম্বা ভিডিওর চেয়ে দ্রুত লোড হয়"],ans:1,exp:"শর্ট-ফর্ম ভিডিও অ্যাপ AI সুপারিশ ইঞ্জিন ব্যবহার করে যা প্রতি কয়েক সেকেন্ডে ডোপামিন - মস্তিষ্কের পুরস্কার রাসায়নিক - সক্রিয় করে। প্রতিটি সোয়াইপ আপনাকে থামতে না দেওয়ার জন্য ডিজাইন করা, স্লট মেশিনের মতো।"},
+    {q:"গড়ে, ভারী সোশ্যাল মিডিয়া ব্যবহারকারীরা প্রতিদিন রিলস ও শর্ট ভিডিওতে কত সময় কাটান?",opts:["৩০ মিনিটের কম","প্রায় ১৫ মিনিট","২-৪ ঘণ্টা বা তার বেশি - প্রায়ই বুঝতেও পারেন না","ঠিক ১ ঘণ্টা"],ans:2,exp:"গবেষণা দেখায় যে ভারী ব্যবহারকারীরা প্রতিদিন ২-৪+ ঘণ্টা শর্ট-ফর্ম ভিডিওতে কাটান, প্রায়ই এই সচেতনতা ছাড়াই। এন্ডলেস স্ক্রলিংয়ের 'টাইম ডিস্টর্শন' প্রভাবের কারণে ১০ মিনিটের মতো মনে হওয়া সেশন আসলে এক ঘণ্টারও বেশি হতে পারে।"},
+    {q:"'ডুমস্ক্রলিং' প্রভাব কী?",opts:["ভালো খবর খুঁজতে স্ক্রল করা","অনলাইনে নেতিবাচক বা কষ্টদায়ক কন্টেন্ট বারবার দেখতে থাকা, থামতে না পারা","প্রাপ্তবয়স্ক কন্টেন্ট ব্লক করা একটি ফিচার","পরে দেখার জন্য ভিডিও সেভ করার উপায়"],ans:1,exp:"ডুমস্ক্রলিং হল নেতিবাচক খবর বা আবেগপ্রবণ কন্টেন্ট অবিরাম দেখতে থাকার অভ্যাস। এটি উদ্বেগ ও মানসিক চাপ বাড়ায়, তবু মস্তিষ্ক পরবর্তী উত্তেজক কন্টেন্ট খুঁজতেই থাকে।"},
+    {q:"রিলস ও সোশ্যাল মিডিয়ার জন্য একটি স্বাস্থ্যকর সীমা কোনটি?",opts:["প্রতিদিন সকালে সবার আগে ফোন চেক করা","রাতে দেরি করে স্ক্রল করার জন্য ফোন বিছানার কাছে রাখা","দৈনিক ৩০ মিনিটের অ্যাপ টাইমার সেট করা এবং রাতে ঘুমানোর সময় ফোন অন্য ঘরে রাখা","সপ্তাহান্তে সীমাহীন ব্যবহারের অনুমতি দেওয়া"],ans:2,exp:"প্রতিদিন অ্যাপ ব্যবহারের সময়সীমা (অ্যান্ড্রয়েড ও আইফোন দুটোতেই আছে) সেট করা এবং রাতে ফোন শোবার ঘরের বাইরে রাখা - এই দুটি অভ্যাসই কম্পালসিভ স্ক্রলিং কমানোর সবচেয়ে কার্যকর প্রমাণ-ভিত্তিক কৌশল।"},
+    {q:"অতিরিক্ত রিলস ও সোশ্যাল মিডিয়া ব্যবহার সবচেয়ে সরাসরি কোন দক্ষতার ক্ষতি করে?",opts:["শারীরিক শক্তি","গভীর মনোযোগ ও দীর্ঘ কাজে একাগ্রতার ক্ষমতা","রান্নার দক্ষতা","ভূগোল জ্ঞান"],ans:1,exp:"শর্ট-ফর্ম কন্টেন্ট মস্তিষ্ককে প্রতি কয়েক সেকেন্ডে দ্রুত উদ্দীপনা আশা করতে শেখায়। সময়ের সাথে এটি পড়াশোনা, বই পড়া বা জটিল সমস্যা সমাধানের মতো একাগ্রতা প্রয়োজনীয় কাজের ক্ষমতা নষ্ট করে দেয়।"},
+    {q:"আপনার বন্ধু বলে, 'আমি শুধু বিরক্ত লাগলেই ইনস্টাগ্রাম দেখি।' এতে ঝুঁকি কী?",opts:["কোনো ঝুঁকি নেই - বিরক্তির কারণে ব্যবহার স্বাস্থ্যকর","বিরক্তি স্বাভাবিক এবং তা ঠিক করতে ফোনের দরকার নেই - বিরক্তি দূর করতে সোশ্যাল মিডিয়া ব্যবহার একটি নির্ভরতার চক্র তৈরি করে","এটিই সোশ্যাল মিডিয়া ব্যবহারের সেরা উপায়","বিরক্তি চেক করা আসক্তি প্রতিরোধ করে"],ans:1,exp:"বিরক্তি এড়াতে ফোন ব্যবহার একটি ক্ষতিকর চক্র তৈরি করে: বিরক্তি → ফোন → সাময়িক স্বস্তি → বিরক্তি সহ্য করার ক্ষমতা কমে যাওয়া → আরও বেশি ফোন ব্যবহার। বিরক্তি সহ্য করতে শেখা আসলে একটি গুরুত্বপূর্ণ মানসিক স্বাস্থ্য দক্ষতা।"},
+    {q:"'গ্রেস্কেল মোড' কৌশলটি কীসে সাহায্য করে?",opts:["ব্যাটারি বাঁচাতে","উজ্জ্বল রোদে চোখের চাপ কমাতে","ফোনের স্ক্রিনকে কম দৃষ্টিনন্দনভাবে উদ্দীপক করে তোলা যাতে কম ব্যবহার হয়","ক্যামেরার কোয়ালিটি উন্নত করতে"],ans:2,exp:"ফোনের ডিসপ্লে গ্রেস্কেলে বদলালে (Settings > Accessibility > Colour) অ্যাপগুলোকে দৃষ্টিনন্দনভাবে পুরস্কৃত করে এমন উজ্জ্বল রং সরে যায়। গবেষণা দেখায় এটি রঙিন নোটিফিকেশন ও অ্যাপ আইকনের আবেগঘন আকর্ষণ কমিয়ে দৈনিক স্ক্রিন টাইম কমায়।"},
+    {q:"রিলস ও শর্ট-ভিডিও আসক্তি কমাতে সবচেয়ে ভালো প্রথম পদক্ষেপ কোনটি?",opts:["সব সোশ্যাল মিডিয়া অ্যাকাউন্ট স্থায়ীভাবে মুছে ফেলা","আপনার আসল ব্যবহারের পরিমাণ বুঝতে স্ক্রিন টাইম রিপোর্ট দেখা, তারপর বাস্তবসম্মত সীমা নির্ধারণ করা","বন্ধুদের বলা যাতে তারা আপনার ফোন কেড়ে নেয়","শুধু স্মার্টওয়াচে চলে যাওয়া"],ans:1,exp:"সচেতনতাই সবসময় প্রথম ধাপ। আপনার ফোনের স্ক্রিন টাইম রিপোর্ট দেখুন (অ্যান্ড্রয়েডে Digital Wellbeing, আইফোনে Screen Time)। বেশিরভাগ মানুষ আসল সংখ্যা দেখে অবাক হয়ে যান। একবার ডেটা দেখলে, অ্যাপ টাইমার সেট করা ও ফোন-মুক্ত সময় নির্ধারণ করা অনেক সহজ হয়ে যায়।"}
+  ]}
+];
+
+/* ═══════════════════════════════
+   AWARENESS DATA  (৬টি পৃষ্ঠা)
+═══════════════════════════════ */
+var awarePages=[
+  {
+    id:'signs',
+    headerTitle:'&#9888;&#65039; সতর্কীকরণ লক্ষণ',
+    cardClass:'warn-c',
+    cardIcon:'&#9888;&#65039;',
+    cardTitle:'আসক্তির সতর্কীকরণ লক্ষণ',
+    cardDesc:'ফোনে আসক্ত হওয়ার ১০টি লক্ষণ',
+    intro:'মোবাইল প্রযুক্তি আধুনিক জীবনের একটি অপরিহার্য অংশ। তবে অতিরিক্ত ব্যবহার ধীরে ধীরে আসক্তিতে পরিণত হতে পারে — যা আপনার পড়াশোনা, স্বাস্থ্য ও দৈনন্দিন রুটিনে নেতিবাচক প্রভাব ফেলে। এই লক্ষণগুলোর দিকে খেয়াল রাখুন:',
+    items:[
+      {ico:'&#128241;',title:'অতিরিক্ত স্ক্রিন টাইম',desc:'কোনো কাজের প্রয়োজনের চেয়ে অনেক বেশি সময় ফোনে ব্যয় করা।'},
+      {ico:'&#128543;',title:'ফোন ছাড়া অস্থিরতা',desc:'ফোন কাছে না থাকলে উদ্বিগ্ন, খিটখিটে বা অস্বস্তি বোধ করা।'},
+      {ico:'&#127769;',title:'রাতে দেরি করে ফোন ব্যবহার',desc:'রাতে গেমিং, ভিডিও দেখা বা সোশ্যাল মিডিয়া স্ক্রল করে ঘুম নষ্ট করা।'},
+      {ico:'&#128218;',title:'পড়াশোনায় মনোযোগ কমে যাওয়া',desc:'ফোন আপনার পড়াশোনা, কাজ ও দৈনন্দিন দায়িত্বে বাধা দিচ্ছে।'},
+      {ico:'&#128106;',title:'পরিবার ও বন্ধুদের অবহেলা',desc:'বাস্তব সম্পর্ক ও অর্থবহ সামাজিক সময়ের চেয়ে ফোনকে প্রাধান্য দেওয়া।'},
+      {ico:'&#128564;',title:'ঘুমের সমস্যা ও ক্লান্তি',desc:'ঘুমানোর আগে বা সময় অতিরিক্ত স্ক্রিন এক্সপোজারের কারণে পর্যাপ্ত বিশ্রাম না হওয়া।'},
+      {ico:'&#128064;',title:'চোখের চাপ ও মাথাব্যথা',desc:'দীর্ঘক্ষণ স্ক্রিন ব্যবহারের ফলে চোখে ব্যথা, ঝাপসা দৃষ্টি বা মাথাব্যথা হওয়া।'},
+      {ico:'&#128260;',title:'বারবার ফোন চেক করার প্রবণতা',desc:'কোনো আসল কারণ না থাকলেও বারবার ফোন চেক করা।'},
+      {ico:'&#127939;',title:'শারীরিক কার্যকলাপ কমে যাওয়া',desc:'ফোন ব্যবহারের কারণে খেলাধুলা, ব্যায়াম বা বাইরের কার্যকলাপে কম সময় দেওয়া।'},
+      {ico:'&#129504;',title:'আত্মনিয়ন্ত্রণ হারানো',desc:'ফোন কম ব্যবহারের সিদ্ধান্ত নিয়েও বারবার তা মেনে চলতে ব্যর্থ হওয়া।'}
+    ],
+    quote:'আপনার ফোনকে নিয়ন্ত্রণে রাখুন — ফোনকে আপনাকে নিয়ন্ত্রণ করতে দেবেন না।',
+    nextId:'tips',pageNum:'পৃষ্ঠা ১ এর ৬'
+  },
+  {
+    id:'tips',
+    headerTitle:'&#128683; দূরে থাকার উপায়',
+    cardClass:'tips-c',
+    cardIcon:'&#128683;',
+    cardTitle:'ফোন থেকে দূরে থাকুন',
+    cardDesc:'স্ক্রিন টাইম কমানোর ৮টি কার্যকর কৌশল',
+    intro:'মোবাইল ফোন দৈনন্দিন জীবনের অংশ হলেও অতিরিক্ত ব্যবহার ক্ষতিকর। স্বাস্থ্যকর অভ্যাস তৈরি ও সীমা নির্ধারণ আপনাকে নিয়ন্ত্রণ ফিরে পেতে সাহায্য করতে পারে।',
+    items:[
+      {ico:'&#9200;',title:'একটি নির্দিষ্ট দৈনিক সময়সীমা ঠিক করুন',desc:'আগে থেকে ঠিক করুন প্রতিদিন কতক্ষণ ফোন ব্যবহার করবেন এবং তা কঠোরভাবে মেনে চলুন।'},
+      {ico:'&#128218;',title:'অবসর সময় অর্থবহভাবে কাটান',desc:'অবসর সময়ে বই পড়া, আঁকা, গান, খেলাধুলা বা নতুন দক্ষতা শেখার জন্য ব্যবহার করুন।'},
+      {ico:'&#128276;',title:'অপ্রয়োজনীয় নোটিফিকেশন বন্ধ করুন',desc:'ক্রমাগত অ্যালার্ট ফোন চেক করার তাগিদ বাড়ায়। অপ্রয়োজনীয় নোটিফিকেশন বন্ধ করে দিন।'},
+      {ico:'&#127795;',title:'প্রিয়জনদের সাথে সময় কাটান',desc:'বাস্তব সম্পর্ককে মূল্য দিন। পরিবার ও বন্ধুদের সাথে ফোন-মুক্ত, মনোযোগী সময় কাটানোর অভ্যাস গড়ুন।'},
+      {ico:'&#128716;',title:'ঘুমানোর ১ ঘণ্টা আগে ফোন সরিয়ে রাখুন',desc:'ঘুমানোর অন্তত এক ঘণ্টা আগে ফোন দূরে রাখুন। ভালো ঘুম সার্বিক স্বাস্থ্যের উন্নতি করে।'},
+      {ico:'&#127939;',title:'শারীরিক কার্যকলাপে যুক্ত হন',desc:'নিয়মিত খেলাধুলা, হাঁটা বা ব্যায়াম স্বাভাবিকভাবেই ফোনের ওপর নির্ভরতা কমায়।'},
+      {ico:'&#128241;',title:'ফোন চোখের আড়ালে রাখুন',desc:'সবসময় হাতে ফোন রাখা এড়িয়ে চলুন। দূরত্ব ফোন চেক করার তাগিদ কমায়।'},
+      {ico:'&#127919;',title:'ছোট অর্জনযোগ্য লক্ষ্য নির্ধারণ করুন',desc:'সামান্য পরিমাণ ব্যবহার কমিয়ে শুরু করুন, তারপর ধীরে ধীরে আরাম বোধ করে আরও কমান।'}
+    ],
+    quote:'প্রযুক্তি আমাদের সাহায্য করার জন্য তৈরি — আমাদের জীবন দখল করার জন্য নয়।',
+    nextId:'reduce',pageNum:'পৃষ্ঠা ২ এর ৬'
+  },
+  {
+    id:'reduce',
+    headerTitle:'&#128267; ব্যবহার কমান',
+    cardClass:'reduce-c',
+    cardIcon:'&#128267;',
+    cardTitle:'মোবাইল ব্যবহার কমান',
+    cardDesc:'কম ফোন সময়ের জন্য ৬টি ব্যবহারিক অভ্যাস',
+    intro:'সময়ের সাথে সাথে মোবাইল ফোনের ব্যবহার অর্থপূর্ণভাবে কমাতে আপনি নিচের অভ্যাসগুলো গড়ে তুলতে পারেন:',
+    items:[
+      {ico:'&#128267;',title:'প্রয়োজন হলেই শুধু ফোন ব্যবহার করুন',desc:'অভ্যাসবশত ফোন তুলে ধরা এড়িয়ে চলুন। স্পষ্ট উদ্দেশ্য নিয়েই ব্যবহার করুন।'},
+      {ico:'&#128222;',title:'কিছুদিন সাধারণ কিপ্যাড ফোন ব্যবহার করে দেখুন',desc:'কিছুদিনের জন্য একটি সাধারণ কিপ্যাড ফোনে চলে যান। এতে স্বাভাবিকভাবেই সোশ্যাল মিডিয়া ও গেমিং অভ্যাস কমে।'},
+      {ico:'&#127760;',title:'ইন্টারনেট ব্যবহার সীমিত করুন',desc:'সবসময় মোবাইল ডেটা চালু রাখার বদলে নির্দিষ্ট কারণ থাকলে তবেই ইন্টারনেট ব্যবহার করুন।'},
+      {ico:'&#128246;',title:'ওয়াই-ফাই ব্যবহার নিয়ন্ত্রণ করুন',desc:'সবসময় ওয়াই-ফাই চালু রাখা এড়িয়ে চলুন। সারাদিনের বদলে নির্দিষ্ট সময়ে ব্যবহার করুন।'},
+      {ico:'&#128276;',title:'অপ্রয়োজনীয় অ্যাপ মুছুন ও অ্যালার্ট নিঃশব্দ করুন',desc:'কম দরকারি অ্যাপ সরিয়ে ফেলুন এবং অপ্রয়োজনীয় অ্যালার্ট নিঃশব্দ করে ব্যবহারের তাগিদ কমান।'},
+      {ico:'&#127939;',title:'অফলাইন কার্যকলাপে সময় বিনিয়োগ করুন',desc:'খেলাধুলা, পরিবারের সাথে সময়, ও বাস্তব-জগতের নতুন দক্ষতা শেখার অভ্যাস গড়ে তুলুন।'}
+    ],
+    quote:'ফোন প্রয়োজনে ব্যবহার করুন — অভ্যাসের বশে নয়।',
+    nextId:'cost',pageNum:'পৃষ্ঠা ৩ এর ৬'
+  },
+  {
+    id:'cost',
+    headerTitle:'&#128200; জীবনকালীন খরচ',
+    cardClass:'cost-c',
+    cardIcon:'&#128200;',
+    cardTitle:'জীবনকালীন খরচ ক্যালকুলেটর',
+    cardDesc:'মোবাইল আসলে আপনার কত খরচ করায়?',
+    isCost:true,
+    nextId:'reels',
+    pageNum:'পৃষ্ঠা ৪ এর ৬'
+  },
+  {
+    id:'reels',
+    headerTitle:'&#127909; রিলস ও সোশ্যাল মিডিয়া',
+    cardClass:'reels-c',
+    cardIcon:'&#127909;',
+    cardTitle:'রিলস ও সোশ্যাল মিডিয়া আসক্তি',
+    cardDesc:'স্ক্রলের ফাঁদ থেকে বেরিয়ে আসুন — ৮টি প্রমাণিত কৌশল',
+    isReels:true,
+    nextId:'kids',
+    pageNum:'পৃষ্ঠা ৫ এর ৬'
+  },
+  {
+    id:'kids',
+    headerTitle:'&#129489; শিশু ও স্ক্রিন টাইম',
+    cardClass:'kids-c',
+    cardIcon:'&#129489;',
+    cardTitle:'শিশুদের মোবাইল ফোনের কুফল',
+    cardDesc:'শিশুদের নিরাপদ স্ক্রিন টাইম ও সতর্কতা',
+    isKids:true,
+    nextId:null,
+    pageNum:'পৃষ্ঠা ৬ এর ৬'
+  }
+];
+
+/* ═══════════════════════════════
+   STATE
+═══════════════════════════════ */
+var state={
+  screen:'home',
+  chapterDone:[false,false,false,false,false,false,false,false,false],
+  awareDone:{signs:false,tips:false,reduce:false,cost:false,reels:false,kids:false},
+  score:0,total:0,
+  cur:{ch:0,qi:0,answered:null,correct:null},
+  awarePageId:'signs'
+};
+
+/* ═══════════════════════════════
+   RENDER ROUTER
+═══════════════════════════════ */
+function render(){
+  var el=document.getElementById('main');
+  if(state.screen==='home')el.innerHTML=homeHTML();
+  else if(state.screen==='quiz')el.innerHTML=quizHTML();
+  else if(state.screen==='result')el.innerHTML=resultHTML();
+  else if(state.screen==='aware')el.innerHTML=awareHTML();
+  window.scrollTo(0,0);
+  attachEvents();
+}
+
+/* ═══════════════════════════════
+   HOME
+═══════════════════════════════ */
+function homeHTML(){
+  var done=state.chapterDone.filter(Boolean).length;
+  var awareDoneCount=Object.values(state.awareDone).filter(Boolean).length;
+  var html='<div class="score-bar"><span>কুইজ: <strong>'+done+'/9</strong> সম্পন্ন</span><span>স্কোর: <strong>'+state.score+'/'+state.total+'</strong></span></div>';
+
+  html+='<div class="section-label">&#128683; আসক্তি সচেতনতা ('+awareDoneCount+'/6)</div>';
+  for(var j=0;j<awarePages.length;j++){
+    var ap=awarePages[j];
+    var isDone=state.awareDone[ap.id];
+    var extraStyle=isDone?'opacity:.75;':'';
+    var doneTag=isDone?' <span style="font-size:12px;color:#10b981;">&#10003; পড়া হয়েছে</span>':'';
+    html+='<div class="aware-card '+ap.cardClass+'" data-aware="'+ap.id+'" style="'+extraStyle+'">';
+    html+='<div class="ac-ico">'+ap.cardIcon+'</div>';
+    html+='<div class="ac-txt"><h3>'+ap.cardTitle+doneTag+'</h3><p>'+ap.cardDesc+'</p></div>';
+    html+='<div class="ac-arr">&#8250;</div>';
+    html+='</div>';
+  }
+
+  html+='<div class="section-label" style="margin-top:22px;">&#127358; মোবাইল কুইজ অধ্যায়</div>';
+  html+='<div class="chapter-grid">';
+  for(var i=0;i<chapters.length;i++){
+    var c=chapters[i];
+    var cls='chapter-btn';
+    if(state.chapterDone[c.id])cls+=' done';
+    else if(c.isNew)cls+=' isnew';
+    var sub=state.chapterDone[c.id]?'&#10003; সম্পন্ন':c.sub;
+    var newTag=(c.isNew&&!state.chapterDone[c.id])?'<span class="new-tag">নতুন</span>':'';
+    html+='<button class="'+cls+'" data-ch="'+c.id+'">';
+    html+='<div class="ch-icon">'+c.icon+'</div>';
+    html+='<div class="ch-title">'+c.title+newTag+'</div>';
+    html+='<div class="ch-sub">'+sub+'</div>';
+    html+='</button>';
+  }
+  html+='</div>';
+  if(state.chapterDone.every(Boolean)){
+    html+='<div style="margin-top:14px;"><button class="btn primary" style="width:100%;" id="seeResult">&#127942; চূড়ান্ত কুইজ ফলাফল দেখুন</button></div>';
+  }
+  return html;
+}
+
+/* ═══════════════════════════════
+   QUIZ
+═══════════════════════════════ */
+function quizHTML(){
+  var ch=chapters[state.cur.ch];
+  var q=ch.qs[state.cur.qi];
+  var pct=Math.round((state.cur.qi/ch.qs.length)*100);
+  var html='<div class="progress"><div class="progress-fill" style="width:'+pct+'%"></div></div>';
+  html+='<div class="quiz-card">';
+  html+='<div class="quiz-meta"><span>'+ch.icon+' '+ch.title+'</span><span>প্রশ্ন '+(state.cur.qi+1)+' এর '+ch.qs.length+'</span></div>';
+  html+='<div class="quiz-q">'+q.q+'</div>';
+  for(var i=0;i<q.opts.length;i++){
+    var cls='opt-btn';
+    if(state.cur.answered!==null){if(i===q.ans)cls+=' correct';else if(i===state.cur.answered)cls+=' wrong';}
+    var dis=state.cur.answered!==null?' disabled':'';
+    html+='<button class="'+cls+'" data-opt="'+i+'"'+dis+'>'+q.opts[i]+'</button>';
+  }
+  if(state.cur.answered!==null){
+    var icon=state.cur.correct?'&#9989;':'&#10060;';
+    var lbl=state.cur.correct?'সঠিক!':'ভুল হয়েছে।';
+    html+='<div class="explanation"><strong>'+icon+' '+lbl+'</strong> '+q.exp+'</div>';
+    var btnLbl=(state.cur.qi+1<ch.qs.length)?'পরের প্রশ্ন &#8594;':'&#10003; অধ্যায় শেষ করুন';
+    html+='<div class="nav-row"><button class="btn" id="backHome">&#8592; অধ্যায়সমূহ</button><button class="btn primary" id="nextQ">'+btnLbl+'</button></div>';
+  }
+  html+='</div>';
+  return html;
+}
+
+/* ═══════════════════════════════
+   RESULT
+═══════════════════════════════ */
+function resultHTML(){
+  var pct=Math.round((state.score/state.total)*100);
+  var bc=pct>=80?'gold':pct>=60?'silver':'bronze';
+  var lbl=pct>=80?'&#127942; মোবাইল বিশেষজ্ঞ':pct>=60?'&#128077; স্মার্ট ব্যবহারকারী':'&#128218; আরও শিখুন';
+  var msg=pct>=80?'চমৎকার! আপনি জানেন কীভাবে ফোন কিনতে, সুরক্ষিত রাখতে এবং নিরাপদে ব্যবহার করতে হয়।'
+    :pct>=60?'ভালো করেছেন! কিছু বিষয় আবার দেখে নিন - পিছনে গিয়ে যেকোনো অধ্যায় আবার চেষ্টা করুন।'
+    :'চিন্তা নেই - মোবাইল সুরক্ষা গুরুত্বপূর্ণ। অধ্যায়গুলো আবার চেষ্টা করুন!';
+  var html='<div class="result-box">';
+  html+='<div style="font-size:60px;margin-bottom:8px;">&#127941;</div>';
+  html+='<div class="badge '+bc+'">'+lbl+'</div>';
+  html+='<h2>'+state.score+' / '+state.total+'</h2>';
+  html+='<p>'+msg+'</p>';
+  html+='<button class="btn primary" id="restartBtn" style="width:100%;">&#128257; আবার খেলুন</button>';
+  html+='<div style="margin-top:12px;"><button class="btn" id="backHomeBtn" style="width:100%;">&#8592; অধ্যায়ে ফিরে যান</button></div>';
+  html+='</div>';
+  return html;
+}
+
+/* ═══════════════════════════════
+   AWARENESS PAGES
+═══════════════════════════════ */
+function awareHTML(){
+  var ap=getAwarePage(state.awarePageId);
+  if(!ap)return '';
+  if(ap.isCost) return costHTML(ap);
+  if(ap.isReels) return reelsHTML(ap);
+  if(ap.isKids) return kidsHTML(ap);
+  var html='<div>';
+  html+='<div class="aware-page-header"><div class="back-btn-sm" id="awareBack">&#8592;</div><h2>'+ap.headerTitle+'</h2></div>';
+  html+='<div class="intro-card"><p>'+ap.intro+'</p></div>';
+  for(var i=0;i<ap.items.length;i++){
+    var it=ap.items[i];
+    html+='<div class="sign-item"><div class="sico">'+it.ico+'</div><div><h4>'+it.title+'</h4><p>'+it.desc+'</p></div></div>';
+  }
+  html+='<div class="quote-box"><div class="qico">&#128161;</div><p>"'+ap.quote+'"</p></div>';
+  html+='<div class="page-tag">'+ap.pageNum+'</div>';
+  if(ap.nextId){
+    var nextAp=getAwarePage(ap.nextId);
+    html+='<button class="aware-next-btn" id="awareNext" data-next="'+ap.nextId+'">'+nextAp.cardIcon+' পরবর্তী: '+nextAp.cardTitle+' &#8594;</button>';
+  } else {
+    html+='<button class="aware-next-btn last-btn" id="awareDoneBtn">&#10003; সব শেষ — হোমে ফিরুন</button>';
+  }
+  html+='</div>';
+  return html;
+}
+
+/* ═══════════════════════════════
+   REELS AWARENESS PAGE
+═══════════════════════════════ */
+function reelsHTML(ap){
+  var html='<div>';
+  html+='<div class="aware-page-header"><div class="back-btn-sm" id="awareBack">&#8592;</div><h2>'+ap.headerTitle+'</h2></div>';
+
+  html+='<div class="reels-banner">';
+  html+='<div class="rb-ico">&#127909;</div>';
+  html+='<h3>সোশ্যাল মিডিয়া ও রিলস আসক্তি</h3>';
+  html+='<p>শর্ট ভিডিও প্রতি কয়েক সেকেন্ডে তাৎক্ষণিক ডোপামিন হিট দেয়। ১০ মিনিটের মতো মনে হওয়া একটি সেশন এক ঘণ্টারও বেশি সময় কেড়ে নিতে পারে — নীরবে মনোযোগ, ঘুম ও বাস্তব সম্পর্কের ক্ষতি করে।</p>';
+  html+='</div>';
+
+  html+='<div class="reels-stat"><div class="rs-num">২–৪ ঘণ্টা</div><div class="rs-txt">ভারী ব্যবহারকারীরা গড়ে প্রতিদিন শর্ট-ফর্ম ভিডিওতে যত সময় ব্যয় করেন — প্রায়ই তা বুঝতেও পারেন না।</div></div>';
+  html+='<div class="reels-stat"><div class="rs-num">৯০ সেকেন্ড</div><div class="rs-txt">ক্রমাগত শর্ট কন্টেন্ট দেখার ফলে গড় মনোযোগের সময়সীমা এই মাত্রার নিচে নেমে যাওয়ার প্রবণতা দেখা যাচ্ছে।</div></div>';
+  html+='<div class="reels-stat"><div class="rs-num">৪০%</div><div class="rs-txt">কিশোর-কিশোরীদের একাংশ সোশ্যাল মিডিয়া অ্যাক্সেস করতে না পারলে উদ্বিগ্ন বা মানসিক চাপ অনুভব করে বলে জানায়।</div></div>';
+
+  html+='<div class="intro-card" style="margin-top:14px;"><p>সোশ্যাল মিডিয়া প্ল্যাটফর্মগুলো ইচ্ছাকৃতভাবে আসক্তিকর হওয়ার জন্য ডিজাইন করা। "ইনফিনিট স্ক্রল" ও অটো-প্লে ফিচার স্বাভাবিক থামার জায়গাগুলো সরিয়ে দেয়। আপনার বিরুদ্ধে ব্যবহৃত কৌশলগুলো জানাই মুক্ত হওয়ার প্রথম ধাপ।</p></div>';
+
+  var tips=[
+    {ico:'&#9200;',title:'দৈনিক অ্যাপ টাইমার সেট করুন',desc:'বিল্ট-ইন স্ক্রিন টাইম টুল (অ্যান্ড্রয়েডে Digital Wellbeing / আইফোনে Screen Time) ব্যবহার করে সোশ্যাল মিডিয়া প্রতিদিন ৩০-৬০ মিনিটে সীমিত রাখুন। টাইমার বাজলে তা মেনে চলুন।'},
+    {ico:'&#128276;',title:'রিলস ও শর্ট ভিডিও নোটিফিকেশন বন্ধ করুন',desc:'ইনস্টাগ্রাম, ইউটিউব ও টিকটকের সব নোটিফিকেশন বন্ধ করুন। নোটিফিকেশন আপনাকে আবার অ্যাপে টেনে আনার জন্য ডিজাইন করা। এই ট্রিগারটি সরিয়ে ফেলুন।'},
+    {ico:'&#128241;',title:'হোম স্ক্রিন থেকে অ্যাপ মুছে ফেলুন',desc:'সোশ্যাল মিডিয়া অ্যাপ একটি লুকানো ফোল্ডারে সরান বা সাময়িকভাবে মুছে ফেলুন। অ্যাপ খুলতে বাড়তি ধাপ লাগলে আপনি অনেক কম খুলবেন।'},
+    {ico:'&#127928;',title:'ফোন গ্রেস্কেল মোডে বদলান',desc:'Settings > Accessibility > Colour-এ গিয়ে গ্রেস্কেলে বদলান। উজ্জ্বল রংয়ের অভাব স্ক্রলিংকে ভালো লাগানোর অনেকটা দৃষ্টিগত পুরস্কার সরিয়ে দেয়।'},
+    {ico:'&#128716;',title:'ঘুমানোর ১ ঘণ্টা আগে রিলস দেখবেন না',desc:'শর্ট-ফর্ম ভিডিও আপনার মস্তিষ্ককে উচ্চ-উদ্দীপনা মোডে রাখে ও ঘুম আসতে দেরি করায়। এর বদলে বই পড়ুন, হালকা গান শুনুন বা পরিবারের সাথে কথা বলুন।'},
+    {ico:'&#128218;',title:'স্ক্রল সময়কে বাস্তব কিছু দিয়ে বদলান',desc:'রিলস খোলার তাগিদ অনুভব করলেই ৫ মিনিটের হাঁটা, একটি বইয়ের অধ্যায়, বা পরিবারের সাথে আসল কথোপকথনে বদলে ফেলুন। নতুন পুরস্কার-চক্র তৈরি করুন।'},
+    {ico:'&#129504;',title:'বিরক্তির সাথে থাকতে শিখুন',desc:'বিরক্তি ফোন দিয়ে ঠিক করার সমস্যা নয়। এটি সৃজনশীলতা ও গভীর চিন্তার প্রবেশদ্বার। কয়েক মিনিট বিরক্ত থাকার অনুশীলন করুন।'},
+    {ico:'&#128247;',title:'আপনার ফিড অডিট করুন — নির্দ্বিধায় আনফলো করুন',desc:'নেতিবাচক আবেগ, তুলনা বা অর্থহীন স্ক্রলিং তৈরি করা অ্যাকাউন্ট আনফলো করুন। আপনার ফিডকে আপনার সেবার জন্য সাজান — আসক্ত করার জন্য নয়।'}
+  ];
+
+  for(var i=0;i<tips.length;i++){
+    var t=tips[i];
+    html+='<div class="reels-tip"><div class="rtco">'+t.ico+'</div><div><h4>'+t.title+'</h4><p>'+t.desc+'</p></div></div>';
+  }
+
+  html+='<div class="quote-box reels-quote"><div class="qico">&#127909;</div><p>"রিলস কয়েক সেকেন্ডের আনন্দ দেয়। বাস্তব জীবন গড়ে ওঠে স্ক্রিন থেকে দূরে কাটানো ঘণ্টাগুলোতে।"</p></div>';
+  html+='<div class="page-tag">'+ap.pageNum+'</div>';
+
+  html+='<button class="aware-next-btn reels-quiz-btn" id="reelsQuizBtn">&#127358; জ্ঞান যাচাই করুন — রিলস কুইজ &#8594;</button>';
+  var nextAp=getAwarePage(ap.nextId);
+  html+='<button class="aware-next-btn kids-btn" id="awareNext" data-next="'+ap.nextId+'" style="margin-top:0;">'+nextAp.cardIcon+' পরবর্তী: '+nextAp.cardTitle+' &#8594;</button>';
+  html+='</div>';
+  return html;
+}
+
+/* ═══════════════════════════════
+   KIDS & SCREEN TIME AWARENESS PAGE
+═══════════════════════════════ */
+function kidsHTML(ap){
+  var html='<div>';
+  html+='<div class="aware-page-header"><div class="back-btn-sm" id="awareBack">&#8592;</div><h2>'+ap.headerTitle+'</h2></div>';
+
+  html+='<div class="kids-banner">';
+  html+='<div class="rb-ico">&#129489;</div>';
+  html+='<h3>শিশুদের মোবাইল স্ক্রিন — সতর্ক থাকুন</h3>';
+  html+='<p>শিশুদের মস্তিষ্ক, চোখ ও সামাজিক দক্ষতা তখনও গড়ে উঠছে। ছোটবেলা থেকে অতিরিক্ত মোবাইল স্ক্রিন দেখা তাদের শারীরিক, মানসিক ও পড়াশোনার বিকাশে দীর্ঘমেয়াদি ক্ষতি করতে পারে।</p>';
+  html+='</div>';
+
+  html+='<div class="kids-stat"><div class="rs-num">৩০ মিনিট</div><div class="rs-txt">শিশুদের জন্য বিশেষজ্ঞদের প্রস্তাবিত দৈনিক সর্বোচ্চ বিনোদনমূলক (নন-এডুকেশনাল) স্ক্রিন টাইম।</div></div>';
+  html+='<div class="kids-stat"><div class="rs-num">২ বছরের নিচে</div><div class="rs-txt">এই বয়সের শিশুদের জন্য ভিডিও কল ছাড়া মোবাইল স্ক্রিন এড়িয়ে চলাই সবচেয়ে ভালো।</div></div>';
+
+  html+='<div class="intro-card"><p>মনে রাখবেন — শিশুরা বড়দের দেখে শেখে। বাবা-মা নিজে কম ফোন ব্যবহার করলে সন্তানের জন্য নিয়ম মানা অনেক সহজ হয়। নিচের কুফলগুলো সম্পর্কে সচেতন থাকুন:</p></div>';
+
+  var items=[
+    {ico:'&#128065;',title:'দৃষ্টিশক্তির ক্ষতি',desc:'দীর্ঘক্ষণ স্ক্রিনের দিকে তাকিয়ে থাকলে শিশুদের চোখে চাপ পড়ে, কাছের জিনিস স্পষ্ট দেখতে অসুবিধা ও শুষ্ক চোখের ঝুঁকি বাড়ে।'},
+    {ico:'&#128483;',title:'ভাষা ও কথা বলার বিকাশে বিলম্ব',desc:'বেশি স্ক্রিন সময় ও মানুষের সাথে কম কথোপকথনের ফলে ছোট শিশুদের ভাষা শেখা ও কথা বলার দক্ষতা দেরিতে বিকশিত হতে পারে।'},
+    {ico:'&#128564;',title:'ঘুমের ব্যাঘাত',desc:'স্ক্রিনের আলো ঘুমের স্বাভাবিক ছন্দ ব্যাহত করে, ফলে শিশুদের ঘুমাতে দেরি হয় ও ঘুমের মান খারাপ হয়।'},
+    {ico:'&#127919;',title:'মনোযোগ ও একাগ্রতা কমে যাওয়া',desc:'ছোটবেলা থেকে দ্রুতগতির স্ক্রিন কন্টেন্টে অভ্যস্ত হলে দীর্ঘ সময় মনোযোগ ধরে রাখার ক্ষমতা কমে যায়, যা পড়াশোনায় প্রভাব ফেলে।'},
+    {ico:'&#128545;',title:'আচরণগত সমস্যা',desc:'ফোন কেড়ে নিলে অতিরিক্ত রাগ, জেদ বা মেজাজ হারানোর প্রবণতা বেড়ে যাওয়া আসক্তির একটি সাধারণ লক্ষণ।'},
+    {ico:'&#127939;',title:'শারীরিক কার্যকলাপ কমে যাওয়া',desc:'বেশি স্ক্রিন সময় মানে কম দৌড়ঝাঁপ ও খেলাধুলা, যা শৈশবকালীন স্থূলতা ও দুর্বল শারীরিক বিকাশের ঝুঁকি বাড়ায়।'},
+    {ico:'&#128101;',title:'সামাজিক দক্ষতার ঘাটতি',desc:'বাস্তব জীবনে বন্ধুদের সাথে খেলা ও মেলামেশার বদলে একা স্ক্রিনে সময় কাটালে সামাজিক ও মানসিক দক্ষতা ঠিকমতো গড়ে ওঠে না।'},
+    {ico:'&#128245;',title:'অল্প বয়সেই আসক্তি তৈরি হওয়া',desc:'ছোটবেলা থেকে অনিয়ন্ত্রিত স্ক্রিন ব্যবহারের অভ্যাস বড় হওয়ার পরেও আসক্তির প্রবণতা তৈরি করতে পারে।'}
+  ];
+  for(var i=0;i<items.length;i++){
+    var it=items[i];
+    html+='<div class="sign-item"><div class="sico">'+it.ico+'</div><div><h4>'+it.title+'</h4><p>'+it.desc+'</p></div></div>';
+  }
+
+  html+='<div class="section-label" style="margin-top:18px;">&#128172; অভিভাবকদের জন্য পরামর্শ</div>';
+  var tips=[
+    {ico:'&#9200;',title:'দৈনিক ৩০ মিনিটের সীমা রাখুন',desc:'শিশুর জন্য প্রতিদিন সর্বোচ্চ আধা ঘণ্টা বিনোদনমূলক স্ক্রিন টাইম নির্ধারণ করুন এবং তা মেনে চলুন।'},
+    {ico:'&#128064;',title:'সহ-দেখা (Co-viewing) করুন',desc:'শিশুকে একা স্ক্রিনে ছেড়ে না দিয়ে সঙ্গে বসে দেখুন এবং কী দেখছে তা নিয়ে কথা বলুন।'},
+    {ico:'&#127869;',title:'খাবার ও ঘুমের সময় স্ক্রিন এড়িয়ে চলুন',desc:'খাওয়ার টেবিল ও শোবার ঘরকে সম্পূর্ণ স্ক্রিন-মুক্ত রাখুন।'},
+    {ico:'&#127912;',title:'বিকল্প কার্যকলাপ দিন',desc:'বই পড়া, আঁকা, বাইরে খেলা বা পারিবারিক খেলার মতো বিকল্প কার্যকলাপে উৎসাহ দিন।'},
+    {ico:'&#128100;',title:'নিজে উদাহরণ হয়ে উঠুন',desc:'বাবা-মা কম ফোন ব্যবহার করলে শিশুরাও স্বাভাবিকভাবে কম স্ক্রিন সময় কাটায়।'}
+  ];
+  for(var j=0;j<tips.length;j++){
+    var t=tips[j];
+    html+='<div class="kids-tip"><div class="rtco">'+t.ico+'</div><div><h4>'+t.title+'</h4><p>'+t.desc+'</p></div></div>';
+  }
+
+  html+='<div class="quote-box kids-quote"><div class="qico">&#129489;</div><p>"শিশুর প্রথম কয়েক বছরের বিকাশ স্ক্রিনে নয়, বাস্তব খেলা ও কথোপকথনে গড়ে ওঠে।"</p></div>';
+  html+='<div class="page-tag">'+ap.pageNum+'</div>';
+  html+='<button class="aware-next-btn last-btn" id="awareDoneBtn">&#10003; সব শেষ — হোমে ফিরুন</button>';
+  html+='</div>';
+  return html;
+}
+
+/* ═══════════════════════════════
+   COST PAGE
+═══════════════════════════════ */
+function costHTML(ap){
+  var html='<div>';
+  html+='<div class="aware-page-header"><div class="back-btn-sm" id="awareBack">&#8592;</div><h2>'+ap.headerTitle+'</h2></div>';
+  html+='<div class="fact-box"><div class="ft">&#128204; গুরুত্বপূর্ণ তথ্য</div><p>প্রতি ৪ বছরে ফোন পরিবর্তন না করলে রেডিয়েশন সমস্যা হয় - এমন কোনো নির্ভরযোগ্য বৈজ্ঞানিক প্রমাণ নেই। মানুষ সাধারণত পারফরম্যান্স, ব্যাটারি লাইফ, সিকিউরিটি আপডেট বা হার্ডওয়্যার নষ্ট হওয়ার কারণে নতুন ফোন কেনে।</p></div>';
+  html+='<div class="calc-edit-card"><h3>&#9997;&#65039; আপনার মান পরিবর্তন করুন</h3>';
+  html+='<div class="inp-row"><label>&#128100; ফোন ব্যবহার শুরুর বয়স</label><div class="inp-wrap"><input class="calc-inp" id="cStart" type="number" value="18" min="5" max="50"><span style="font-size:13px;color:#64748b;"> বছর</span></div></div>';
+  html+='<div class="inp-row"><label>&#128100; ফোন ব্যবহার বন্ধ করার বয়স</label><div class="inp-wrap"><input class="calc-inp" id="cEnd" type="number" value="65" min="20" max="100"><span style="font-size:13px;color:#64748b;"> বছর</span></div></div>';
+  html+='<div class="inp-row"><label>&#128241; ফোনের দাম</label><div class="inp-wrap"><span class="cur">&#8377;</span><input class="calc-inp" id="cPhone" type="number" value="12000" min="500" max="200000"></div></div>';
+  html+='<div class="inp-row"><label>&#128241; প্রতি (কত বছরে) পরিবর্তন</label><div class="inp-wrap"><input class="calc-inp" id="cRepl" type="number" value="4" min="1" max="10"><span style="font-size:13px;color:#64748b;"> বছর</span></div></div>';
+  html+='<div class="inp-row"><label>&#128246; মাসিক রিচার্জ</label><div class="inp-wrap"><span class="cur">&#8377;</span><input class="calc-inp" id="cRech" type="number" value="350" min="0" max="5000"></div></div>';
+  html+='<div class="inp-row"><label>&#128295; বার্ষিক সার্ভিসিং</label><div class="inp-wrap"><span class="cur">&#8377;</span><input class="calc-inp" id="cServ" type="number" value="4000" min="0" max="20000"></div></div>';
+  html+='<div class="inp-row"><label>&#128247; বার্ষিক পড়ে যাওয়া/ক্ষতি</label><div class="inp-wrap"><span class="cur">&#8377;</span><input class="calc-inp" id="cDmg" type="number" value="2000" min="0" max="20000"></div></div>';
+  html+='</div>';
+  html+='<button class="do-calc-btn" id="doCalc">&#128200; আমার জীবনকালীন খরচ হিসাব করুন</button>';
+  html+='<div class="calc-results" id="calcResults"></div>';
+  html+='<div class="page-tag">'+ap.pageNum+'</div>';
+  var nextAp=getAwarePage(ap.nextId);
+  html+='<button class="aware-next-btn" id="awareNext" data-next="'+ap.nextId+'" style="margin-top:8px;">'+nextAp.cardIcon+' পরবর্তী: '+nextAp.cardTitle+' &#8594;</button>';
+  html+='</div>';
+  return html;
+}
+
+function doCalc(){
+  var s=parseInt(document.getElementById('cStart').value)||18;
+  var e=parseInt(document.getElementById('cEnd').value)||65;
+  var pp=parseInt(document.getElementById('cPhone').value)||12000;
+  var rp=parseInt(document.getElementById('cRepl').value)||4;
+  var rc=parseInt(document.getElementById('cRech').value)||350;
+  var sv=parseInt(document.getElementById('cServ').value)||4000;
+  var dm=parseInt(document.getElementById('cDmg').value)||2000;
+  if(e<=s){alert('শেষ বয়স শুরুর বয়সের চেয়ে বেশি হতে হবে।');return;}
+  var yrs=e-s;
+  var phones=Math.ceil(yrs/rp);
+  var phoneCost=phones*pp;
+  var rechCost=rc*12*yrs;
+  var servCost=sv*yrs;
+  var dmgCost=dm*yrs;
+  var sub=phoneCost+rechCost+servCost;
+  var grand=sub+dmgCost;
+  var future=Math.round(grand*1.7);
+  function f(n){return '&#8377;'+n.toLocaleString('en-IN');}
+  var html='';
+  html+='<div class="cost-card2"><h4>&#128241; ফোন ('+phones+'টি ফোন &times; '+f(pp)+')</h4>';
+  html+='<div class="calc-row2"><span class="cl">মোট বছর</span><span class="cv">'+yrs+' বছর (বয়স '+s+'–'+e+')</span></div>';
+  html+='<div class="calc-row2"><span class="cl">প্রয়োজনীয় ফোন</span><span class="cv">&#8776; '+phones+'</span></div>';
+  html+='<div class="calc-row2"><span class="cl">ফোনের খরচ</span><span class="cv" style="color:#f87171;">'+f(phoneCost)+'</span></div></div>';
+  html+='<div class="cost-card2"><h4>&#128246; রিচার্জ + সার্ভিসিং + ক্ষতি</h4>';
+  html+='<div class="calc-row2"><span class="cl">রিচার্জ ('+f(rc)+'/মাস)</span><span class="cv" style="color:#f87171;">'+f(rechCost)+'</span></div>';
+  html+='<div class="calc-row2"><span class="cl">সার্ভিসিং ('+f(sv)+'/বছর)</span><span class="cv" style="color:#f87171;">'+f(servCost)+'</span></div>';
+  html+='<div class="calc-row2"><span class="cl">ক্ষতি ('+f(dm)+'/বছর)</span><span class="cv" style="color:#f87171;">'+f(dmgCost)+'</span></div></div>';
+  html+='<div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:18px;overflow:hidden;margin-bottom:14px;">';
+  html+='<table class="cost-table2"><tr><th>খরচ</th><th>মোট</th></tr>';
+  html+='<tr><td>নতুন ফোন</td><td>'+f(phoneCost)+'</td></tr>';
+  html+='<tr><td>রিচার্জ</td><td>'+f(rechCost)+'</td></tr>';
+  html+='<tr><td>সার্ভিসিং</td><td>'+f(servCost)+'</td></tr>';
+  html+='<tr class="hl"><td>উপমোট</td><td>'+f(sub)+'</td></tr>';
+  html+='<tr><td>পড়ে যাওয়া ও ক্ষতি</td><td>'+f(dmgCost)+'</td></tr>';
+  html+='<tr class="hl"><td>সর্বমোট</td><td>'+f(grand)+'</td></tr>';
+  html+='</table></div>';
+  html+='<div class="total-box2"><div class="tl">আনুমানিক জীবনকালীন মোবাইল খরচ</div>';
+  html+='<div class="ta">'+f(grand)+'</div>';
+  html+='<div class="ts">বয়স '+s+'–'+e+' &nbsp;·&nbsp; '+yrs+' বছর &nbsp;·&nbsp; আপনার দেওয়া মান অনুযায়ী</div></div>';
+  html+='<div class="warn-box2"><div class="wt">&#9888;&#65039; ভবিষ্যতের মুদ্রাস্ফীতি প্রক্ষেপণ</div>';
+  html+='<p>ক্রমবর্ধমান দামের সাথে, আপনার প্রকৃত জীবনকালীন খরচ প্রায় <strong>'+f(future)+'</strong> বা তার বেশি হতে পারে।</p></div>';
+  html+='<div class="quote-box"><div class="qico">&#128161;</div><p>"ছোট ছোট নিয়মিত খরচ সময়ের সাথে বিশাল অঙ্কে পরিণত হয়। প্রযুক্তি বুদ্ধিমত্তার সাথে ব্যবহার করুন।"</p></div>';
+  var res=document.getElementById('calcResults');
+  res.innerHTML=html;
+  res.classList.add('show');
+  res.scrollIntoView({behavior:'smooth',block:'start'});
+  playFinish();
+  state.awareDone['cost']=true;
+}
+
+function getAwarePage(id){for(var i=0;i<awarePages.length;i++)if(awarePages[i].id===id)return awarePages[i];return null;}
+
+/* ═══════════════════════════════
+   EVENTS
+═══════════════════════════════ */
+function attachEvents(){
+  var st=document.getElementById('soundToggle');
+  if(st)st.onclick=function(){soundOn=!soundOn;st.innerHTML=soundOn?'&#128266;':'&#128263;';if(soundOn)playClick();};
+
+  var cbs=document.querySelectorAll('.chapter-btn');
+  for(var i=0;i<cbs.length;i++){
+    cbs[i].addEventListener('click',function(){
+      playClick();
+      state.cur={ch:parseInt(this.dataset.ch),qi:0,answered:null,correct:null};
+      state.screen='quiz';render();
+    });
+  }
+
+  var abs=document.querySelectorAll('.aware-card');
+  for(var j=0;j<abs.length;j++){
+    abs[j].addEventListener('click',function(){
+      playClick();
+      state.awarePageId=this.dataset.aware;
+      state.awareDone[state.awarePageId]=true;
+      state.screen='aware';render();
+    });
+  }
+
+  var obs=document.querySelectorAll('.opt-btn');
+  for(var k=0;k<obs.length;k++){
+    obs[k].addEventListener('click',function(){
+      if(state.cur.answered!==null)return;
+      var i=parseInt(this.dataset.opt);
+      var q=chapters[state.cur.ch].qs[state.cur.qi];
+      state.cur.answered=i;state.cur.correct=(i===q.ans);
+      state.total++;
+      if(state.cur.correct){state.score++;playCorrect();}else{playWrong();}
+      render();
+    });
+  }
+
+  var nq=document.getElementById('nextQ');
+  if(nq)nq.addEventListener('click',function(){
+    playClick();
+    var ch=chapters[state.cur.ch];
+    if(state.cur.qi+1<ch.qs.length){
+      state.cur.qi++;state.cur.answered=null;state.cur.correct=null;render();
+    }else{
+      state.chapterDone[state.cur.ch]=true;
+      state.screen='home';playFinish();render();
+    }
+  });
+
+  var bh=document.getElementById('backHome');
+  if(bh)bh.addEventListener('click',function(){playClick();state.screen='home';render();});
+
+  var sr=document.getElementById('seeResult');
+  if(sr)sr.addEventListener('click',function(){playClick();state.screen='result';render();playFinish();});
+
+  var rb=document.getElementById('restartBtn');
+  if(rb)rb.addEventListener('click',function(){
+    playClick();
+    state={screen:'home',chapterDone:[false,false,false,false,false,false,false,false,false],awareDone:{signs:false,tips:false,reduce:false,cost:false,reels:false,kids:false},score:0,total:0,cur:{ch:0,qi:0,answered:null,correct:null},awarePageId:'signs'};
+    render();
+  });
+  var bhb=document.getElementById('backHomeBtn');
+  if(bhb)bhb.addEventListener('click',function(){playClick();state.screen='home';render();});
+
+  var ab=document.getElementById('awareBack');
+  if(ab)ab.addEventListener('click',function(){playBack();state.screen='home';render();});
+
+  var an=document.getElementById('awareNext');
+  if(an)an.addEventListener('click',function(){
+    playClick();
+    var nextId=this.dataset.next;
+    state.awarePageId=nextId;
+    state.awareDone[nextId]=true;
+    render();
+  });
+
+  var ad=document.getElementById('awareDoneBtn');
+  if(ad)ad.addEventListener('click',function(){playClick();state.awareDone[state.awarePageId]=true;state.screen='home';render();});
+
+  var dc=document.getElementById('doCalc');
+  if(dc)dc.addEventListener('click',function(){playClick();doCalc();});
+
+  /* Reels quiz button → chapter 8 */
+  var rqb=document.getElementById('reelsQuizBtn');
+  if(rqb)rqb.addEventListener('click',function(){
+    playClick();
+    state.awareDone['reels']=true;
+    state.cur={ch:8,qi:0,answered:null,correct:null};
+    state.screen='quiz';render();
+  });
+}
+
+/* ═══════════════════════════════
+   ANDROID BACK BUTTON
+═══════════════════════════════ */
+document.addEventListener('backbutton',function(e){
+  e.preventDefault();
+  if(state.screen==='home'){
+    if(window.AndroidInterface&&window.AndroidInterface.exitApp)window.AndroidInterface.exitApp();
+    else if(navigator.app&&navigator.app.exitApp)navigator.app.exitApp();
+    else history.go(-1);
+  }else{
+    playBack();state.screen='home';render();
+  }
+},false);
+
+window.addEventListener('load',function(){history.pushState({p:'home'},'','');});
+window.addEventListener('popstate',function(){
+  if(state.screen!=='home'){playBack();state.screen='home';render();history.pushState({p:'home'},'','');}
+});
+
+render();
+</script>
+</body>
+</html>

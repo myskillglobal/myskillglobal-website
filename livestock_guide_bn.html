@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>লাইভস্টক কেয়ার – স্মার্ট পশুপালন গাইড</title>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@700&family=Noto+Sans+Bengali:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --amber: #f59e0b;
+    --amber-dim: #b45309;
+    --bg: #0d0a06;
+    --surface: rgba(255,255,255,0.03);
+    --border: rgba(255,255,255,0.07);
+    --text: #f0e8d8;
+    --text-muted: #c0a880;
+    --red: #ef4444;
+    --green: #22c55e;
+    --blue: #60a5fa;
+  }
+  body { background: var(--bg); color: var(--text); font-family: 'Noto Sans Bengali', sans-serif; min-height: 100vh; display: flex; justify-content: center; }
+  #app { width: 100%; max-width: 440px; min-height: 100vh; position: relative; overflow-x: hidden; }
+  .ambient {
+    position: fixed; top: 0; left: 50%; transform: translateX(-50%);
+    width: 440px; height: 100vh; pointer-events: none; z-index: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(245,158,11,0.07) 0%, transparent 55%);
+  }
+
+  /* HEADER */
+  .header {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(13,10,6,0.93); backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(245,158,11,0.14);
+    padding: 14px 18px 11px;
+  }
+  .header-top { display: flex; align-items: center; gap: 11px; margin-bottom: 13px; }
+  .header-logo {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: linear-gradient(135deg, #f59e0b, #92400e);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 19px; box-shadow: 0 0 18px rgba(245,158,11,0.45); flex-shrink: 0;
+  }
+  .header-title { font-family: 'Noto Serif Bengali', serif; font-size: 19px; color: #fef3c7; }
+  .header-sub { font-size: 11px; color: var(--amber-dim);  }
+
+  /* ANTIBIOTIC WARNING BANNER */
+  .ab-banner {
+    background: rgba(239,68,68,0.09); border: 1px solid rgba(239,68,68,0.3);
+    border-radius: 10px; padding: 9px 13px; margin-bottom: 13px;
+    display: flex; align-items: center; gap: 9px;
+  }
+  .ab-banner-icon { font-size: 18px; flex-shrink: 0; }
+  .ab-banner-text { font-size: 12px; color: #fca5a5; line-height: 1.5; }
+
+  /* TABS */
+  .tabs { display: flex; gap: 5px; }
+  .tab-btn {
+    line-height: 1.4; flex: 1; padding: 7px 3px; border-radius: 9px;
+    border: 1px solid var(--border); background: var(--surface);
+    color: #8a7060; font-size: 10px; font-family: inherit;
+    cursor: pointer; transition: all 0.2s;
+    display: flex; flex-direction: column; align-items: center; gap: 2px;
+  }
+  .tab-btn.active { border-color: rgba(245,158,11,0.5); background: rgba(245,158,11,0.1); color: var(--amber); }
+  .tab-btn .tab-icon { font-size: 15px; }
+
+  /* CONTENT */
+  .content { position: relative; z-index: 1; padding: 15px 15px 90px; }
+  .page { display: none; }
+  .page.active { display: block; }
+  .page-title { font-family: 'Noto Serif Bengali', serif; font-size: 20px; color: #fef3c7; margin-bottom: 4px; }
+  .page-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 16px; }
+
+  /* ANIMAL CARDS */
+  .animal-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+    padding: 15px; cursor: pointer; transition: all 0.2s;
+    display: flex; align-items: center; gap: 13px;
+    position: relative; overflow: hidden; margin-bottom: 11px; width: 100%;
+  }
+  .animal-card:hover { border-color: rgba(245,158,11,0.3); background: rgba(245,158,11,0.04); }
+  .animal-icon {
+    width: 54px; height: 54px; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px; flex-shrink: 0;
+  }
+  .animal-name { font-size: 17px; font-weight: 500; color: #fef3c7; margin-bottom: 3px; }
+  .animal-type { font-size: 12px; color: var(--text-muted); margin-bottom: 6px; }
+  .animal-tags { display: flex; gap: 5px; flex-wrap: wrap; }
+  .tag-safe { font-size: 10px; padding: 2px 7px; border-radius: 20px; background: rgba(34,197,94,0.1); color: #4ade80; border: 1px solid rgba(34,197,94,0.25); }
+  .tag-warn { font-size: 10px; padding: 2px 7px; border-radius: 20px; background: rgba(239,68,68,0.1); color: #f87171; border: 1px solid rgba(239,68,68,0.25); }
+  .animal-arrow { color: var(--amber); font-size: 20px; margin-left: auto; }
+
+  /* DETAIL VIEW */
+  #detail-view { display: none; }
+  #detail-view.active { display: block; }
+  .back-btn { background: none; border: none; color: var(--amber); font-size: 14px; cursor: pointer; font-family: inherit; padding: 0 0 15px; display: flex; align-items: center; gap: 6px; }
+
+  .detail-hero { border-radius: 17px; padding: 18px; margin-bottom: 15px; }
+  .detail-hero-top { display: flex; align-items: center; gap: 13px; margin-bottom: 13px; }
+  .detail-emoji { font-size: 46px; }
+  .detail-name { font-family: 'Noto Serif Bengali', serif; font-size: 23px; color: #fef3c7; }
+  .detail-type { font-size: 13px; color: var(--text-muted); }
+  .detail-info-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .detail-info-card { flex: 1; min-width: 110px; padding: 9px 12px; border-radius: 11px; background: rgba(0,0,0,0.35); border: 1px solid var(--border); }
+  .detail-info-label { font-size: 11px; color: var(--text-muted); margin-bottom: 3px; }
+  .detail-info-val { font-size: 12px; color: var(--text); font-weight: 500; }
+
+  /* SECTION TABS */
+  .section-tabs { display: flex; gap: 5px; margin-bottom: 15px; overflow-x: auto; }
+  .section-tabs::-webkit-scrollbar { display: none; }
+  .sec-btn { flex-shrink: 0; padding: 7px 10px; border-radius: 8px; font-size: 10px; border: 1px solid var(--border); background: var(--surface); color: #8a7060; cursor: pointer; font-family: inherit; transition: all 0.2s; white-space: nowrap; }
+  .sec-btn.active { border-color: rgba(245,158,11,0.5); background: rgba(245,158,11,0.1); color: var(--amber); }
+  .section-panel { display: none; }
+  .section-panel.active { display: block; }
+  .sec-title { font-size: 15px; font-weight: 500; color: #fef3c7; margin-bottom: 12px; }
+
+  /* SCHEDULE */
+  .schedule-item { display: flex; gap: 11px; align-items: flex-start; padding: 11px 13px; border-radius: 12px; margin-bottom: 8px; }
+  .sched-icon { width: 31px; height: 31px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 15px; }
+  .sched-week { font-size: 11px; margin-bottom: 2px; }
+  .sched-task { font-size: 13px; color: var(--text); line-height: 1.5; }
+
+  /* INFO BOX */
+  .info-box { padding: 15px; border-radius: 13px; margin-bottom: 12px; }
+  .info-box-icon { font-size: 22px; margin-bottom: 8px; }
+  .info-box-text { font-size: 13px; color: var(--text); line-height: 1.75; }
+
+  /* ANTIBIOTIC DANGER BOX */
+  .danger-box { padding: 14px 15px; border-radius: 13px; margin-bottom: 12px; background: rgba(239,68,68,0.07); border: 1px solid rgba(239,68,68,0.25); }
+  .danger-title { font-size: 12px; font-weight: 500; color: #f87171; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+  .danger-item { font-size: 12px; color: #fca5a5; padding: 5px 0; border-bottom: 1px solid rgba(239,68,68,0.1); line-height: 1.5; display: flex; gap: 8px; }
+  .danger-item:last-child { border-bottom: none; }
+
+  /* SAFE ALTERNATIVES */
+  .safe-box { padding: 14px 15px; border-radius: 13px; margin-bottom: 12px; background: rgba(34,197,94,0.06); border: 1px solid rgba(34,197,94,0.2); }
+  .safe-title { font-size: 12px; font-weight: 500; color: #4ade80; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+  .safe-item { font-size: 12px; color: #86efac; padding: 5px 0; border-bottom: 1px solid rgba(34,197,94,0.08); line-height: 1.5; display: flex; gap: 8px; }
+  .safe-item:last-child { border-bottom: none; }
+
+  /* TIPS */
+  .tip-item { display: flex; gap: 11px; align-items: flex-start; padding: 11px 13px; border-radius: 11px; margin-bottom: 9px; background: var(--surface); border: 1px solid var(--border); }
+  .tip-num { width: 27px; height: 27px; border-radius: 50%; flex-shrink: 0; background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.3); display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--amber); font-weight: 500; }
+  .tip-text { font-size: 13px; color: var(--text-muted); line-height: 1.6; padding-top: 3px; }
+
+  /* CALENDAR */
+  .cal-card { margin-bottom: 11px; border-radius: 15px; overflow: hidden; }
+  .cal-head { padding: 11px 15px; display: flex; align-items: center; gap: 10px; border-bottom-width: 1px; border-bottom-style: solid; }
+  .cal-month { font-size: 14px; font-weight: 500; color: #fef3c7; }
+  .cal-season { font-size: 11px; }
+  .cal-body { padding: 11px 15px; }
+  .cal-section-label { font-size: 11px; color: var(--text-muted); margin-bottom: 6px;  }
+  .task-pill { font-size: 11px; padding: 3px 9px; border-radius: 20px; display: inline-block; margin: 3px 3px 3px 0; }
+  .cal-activity { font-size: 12px; color: #c0a880; padding: 4px 0; display: flex; align-items: center; gap: 7px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .cal-activity:last-child { border-bottom: none; }
+
+  /* HEALTH PAGE */
+  .health-card { padding: 15px; border-radius: 14px; margin-bottom: 10px; background: var(--surface); border: 1px solid var(--border); }
+  .health-title { font-size: 14px; font-weight: 500; color: #fef3c7; margin-bottom: 5px; }
+  .health-desc { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
+  .rules-box { border-radius: 15px; padding: 16px; background: rgba(245,158,11,0.04); border: 1px solid rgba(245,158,11,0.15); margin-top: 15px; }
+  .rules-title { font-size: 15px; font-weight: 500; color: var(--amber); margin-bottom: 13px; }
+  .rule-item { display: flex; gap: 9px; padding: 7px 0; border-bottom: 1px solid rgba(245,158,11,0.09); font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+  .rule-item:last-child { border-bottom: none; }
+  .rule-check { color: var(--green); font-size: 14px; flex-shrink: 0; }
+
+  /* NOTE BOX */
+  .note-box { padding: 13px; border-radius: 13px; margin-top: 10px; }
+  .note-label { font-size: 12px; font-weight: 500; margin-bottom: 5px; }
+  .note-text { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+</style>
+</head>
+<body>
+<div class="ambient"></div>
+<div id="app">
+  <div class="header">
+    <div class="header-top">
+      <div class="header-logo">🐄</div>
+      <div>
+        <div class="header-title">লাইভস্টক কেয়ার</div>
+        <div class="header-sub">স্মার্ট পশুপালন গাইড</div>
+      </div>
+    </div>
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('animals',this)">
+        <span class="tab-icon">🐓</span><span>প্রাণী</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('calendar',this)">
+        <span class="tab-icon">📅</span><span>ক্যালেন্ডার</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('health',this)">
+        <span class="tab-icon">💊</span><span>স্বাস্থ্য</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('safety',this)">
+        <span class="tab-icon">🛡️</span><span>সুরক্ষা</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="content">
+    <!-- ANIMALS PAGE -->
+    <div id="page-animals" class="page active">
+      <div id="animal-list">
+        <p class="page-title">প্রাণী তালিকা</p>
+        <p class="page-sub">সম্পূর্ণ যত্ন-নির্দেশিকার জন্য একটি প্রাণী বেছে নিন</p>
+        <div class="ab-banner">
+          <span class="ab-banner-icon">🚫</span>
+          <span class="ab-banner-text"><strong>অ্যান্টিবায়োটিকমুক্ত নীতি:</strong> সব নির্দেশিকায় প্রাকৃতিক ও মানুষের জন্য নিরাপদ পদ্ধতিকে অগ্রাধিকার দেওয়া হয়েছে। প্রতিটি প্রোফাইলে ক্ষতিকর পদার্থ স্পষ্টভাবে চিহ্নিত করা আছে।</span>
+        </div>
+        <div id="animals-container"></div>
+      </div>
+      <div id="detail-view">
+        <button class="back-btn" onclick="showAnimalList()">‹ প্রাণী তালিকায় ফিরুন</button>
+        <div id="detail-content"></div>
+      </div>
+    </div>
+
+    <!-- CALENDAR PAGE -->
+    <div id="page-calendar" class="page">
+      <p class="page-title">মরসুমি ক্যালেন্ডার</p>
+      <p class="page-sub">মাসভিত্তিক পশুপালন পরিকল্পনা</p>
+      <div id="calendar-content"></div>
+    </div>
+
+    <!-- HEALTH PAGE -->
+    <div id="page-health" class="page">
+      <p class="page-title">প্রতিরোধমূলক স্বাস্থ্য</p>
+      <p class="page-sub">প্রাকৃতিক উপায়ে রোগ প্রতিরোধ ও পাল ব্যবস্থাপনা</p>
+      <div id="health-content"></div>
+    </div>
+
+    <!-- SAFETY PAGE -->
+    <div id="page-safety" class="page">
+      <p class="page-title">মানুষের সুরক্ষা নির্দেশিকা</p>
+      <p class="page-sub">নিরাপদ খাদ্যের জন্য যে পদার্থ এড়িয়ে চলবেন</p>
+      <div id="safety-content"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const animals = [
+  {
+    id:1, name:"ব্রয়লার মুরগি", emoji:"🐓", type:"পোল্ট্রি – মাংস", color:"#f97316",
+    breed:"কব ৫০০ / রস ৩০৮", feedCycle:"৬–৭ সপ্তাহ",
+    feed:"স্টার্টার খাদ্য (০–১৪ দিন): ২২% প্রোটিন। গ্রোয়ার খাদ্য (১৫–২৮ দিন): ২০% প্রোটিন। ফিনিশার খাদ্য (২৯–৪২ দিন): ১৮% প্রোটিন, কোনো ওষুধ ছাড়া। ভুট্টা-সয়াবিন ভিত্তিক পেলেট ব্যবহার করুন। সবসময় পরিষ্কার জলের জোগান নিশ্চিত করুন।",
+    health:"রানীক্ষেত রোগের টিকা (৭ম দিনে চোখে ফোঁটা), গামবোরো (আইবিডি) টিকা (১৪তম দিনে পানীয় জলে), মারেক্স (১ম দিনে হ্যাচারিতে)। লিটারের মান বজায় রাখুন — ভেজা লিটার সঙ্গে সঙ্গে বদলে দিন। ঘরে অ্যামোনিয়া ২৫ পিপিএমের বেশি না হয়, সেজন্য বায়ু চলাচলের ব্যবস্থা রাখুন।",
+    forbidden:["বৃদ্ধি বাড়ানোর জন্য অ্যান্টিবায়োটিক (সারা বিশ্বে নিষিদ্ধ — মানুষের শরীরে এএমআর বা অ্যান্টিমাইক্রোবিয়াল রেজিস্ট্যান্স তৈরি করে)","হরমোন ও স্টেরয়েড (সারা বিশ্বে পোল্ট্রিতে নিষিদ্ধ)","রক্সারসোনের মতো আর্সেনিকযুক্ত যৌগ","নাইট্রোফুরান (মাংসে ক্যানসার-সৃষ্টিকারী অবশেষ থাকে)","ফ্লুরোকুইনোলোন — কড়া পশুচিকিৎসকের প্রেসক্রিপশন ছাড়া নয়","ক্লোরামফেনিকল (মানুষের অস্থিমজ্জার ক্ষতি করে)"],
+    alternatives:["ওরেগানো তেল – খাদ্যে মেশানো প্রাকৃতিক জীবাণুনাশক","প্রোবায়োটিক (ল্যাক্টোব্যাসিলাস) – পেটের স্বাস্থ্য ভালো রাখে","পানীয় জলে আপেল সিডার ভিনেগার (০.৫%)","খাদ্যে থাইম ও হলুদ মেশানো","পেটের রোগজীবাণু নিয়ন্ত্রণে জৈব অ্যাসিড (ফরমিক/ল্যাকটিক)"],
+    tips:["প্রথম দিনে বাচ্চাদের জন্য ব্রুডারের তাপমাত্রা ৩০–৩৪°C রাখুন","কোনো ওষুধ দিলে জবাইয়ের আগে ২১ দিনের নিষেধকাল (উইথড্রয়াল) মানুন","মৃত্যুহার ৩%-এর নিচে রাখুন — এর বেশি হলে রোগের ইঙ্গিত","প্রতিটি ব্যাচের মাঝে ঘর পুরোপুরি পরিষ্কার ও জীবাণুমুক্ত করুন"],
+    schedule:[
+      {week:"দিন ১–৩", task:"ব্রুডার প্রস্তুতি: তাপ, আলো, স্টার্টার খাদ্য ও জল", type:"feed"},
+      {week:"দিন ৭", task:"রানীক্ষেত রোগের টিকা (চোখে ফোঁটা পদ্ধতিতে)", type:"vaccine"},
+      {week:"দিন ১৪", task:"আইবিডি/গামবোরো টিকা পানীয় জলে", type:"vaccine"},
+      {week:"দিন ১৫–২৮", task:"গ্রোয়ার খাদ্যে যান — প্রতিদিন ওজন লক্ষ করুন", type:"feed"},
+      {week:"দিন ২৮", task:"কক্সিডিওসিস পরীক্ষা করুন — প্রয়োজনে ভেষজ কক্সিডিওসিস নিয়ন্ত্রণ ব্যবহার করুন", type:"health"},
+      {week:"দিন ২৯–৪২", task:"ফিনিশার খাদ্য (কোনো ওষুধ ছাড়া) — জবাইয়ের প্রস্তুতি নিন", type:"feed"},
+      {week:"দিন ৪২–৪৫", task:"জবাই — সব চিকিৎসা থেকে ৭ দিনের নিষেধকাল পার হয়েছে কি না নিশ্চিত করুন", type:"harvest"},
+    ]
+  },
+  {
+    id:2, name:"ডিমপাড়া মুরগি (লেয়ার)", emoji:"🥚", type:"পোল্ট্রি – ডিম", color:"#eab308",
+    breed:"লোহম্যান ব্রাউন / বিভি-৩০০", feedCycle:"৭২ সপ্তাহ উৎপাদন",
+    feed:"চিক ম্যাশ (০–৮ সপ্তাহ): ২০% প্রোটিন। গ্রোয়ার (৮–১৮ সপ্তাহ): ১৬% প্রোটিন — ক্যালসিয়াম সীমিত রাখুন। লেয়ার ম্যাশ (১৮+ সপ্তাহ): ১৬–১৭% প্রোটিন, ডিমের খোসা শক্ত করতে ৩.৫–৪% ক্যালসিয়াম। অতিরিক্ত নুন দেবেন না — এতে মল ভেজা থাকে।",
+    health:"মারেক্স (হ্যাচারিতে), রানীক্ষেত (৭ম ও ২৮তম দিনে, তারপর প্রতি ৩ মাস অন্তর), আইবি (১৪তম দিনে), ফাউল পক্স বা মুরগির বসন্ত (৬০তম দিনের পর) — এই টিকাগুলি দিন। প্রতি ৩ মাস অন্তর ভেষজ বা লাইসেন্সপ্রাপ্ত কৃমিনাশক দিন। ধুলোস্নানের জায়গায় ডায়াটোমেসিয়াস আর্থ দিয়ে মাইট প্রতিরোধ করুন।",
+    forbidden:["ডিম বেশি পাড়ানোর জন্য হরমোন বা ইস্ট্রোজেন যৌগ","নিয়মিত পুষ্টিপূরক হিসেবে খাদ্যে অ্যান্টিবায়োটিক","খাদ্যে মেলামাইন (কিডনি বিকল হয়, নিষিদ্ধ)","ম্যালাকাইট গ্রিন (ক্যানসার-সৃষ্টিকারী)","স্টিলবিন ও থাইরোস্ট্যাটিক যৌগ","ক্লেনবিউটেরল বা বিটা-অ্যাগোনিস্ট"],
+    alternatives:["জলে অ্যালোভেরা (ঘৃতকুমারী) রস — রোগ প্রতিরোধ ক্ষমতা বাড়ায়","প্রাকৃতিক কৃমিনাশক হিসেবে নিমপাতার গুঁড়ো","বাহ্যিক পরজীবী নিয়ন্ত্রণে ডায়াটোমেসিয়াস আর্থ","খাদ্যে গাঁদা (টেজেটিস) — কুসুমের রং স্বাভাবিকভাবে গাঢ় করে","শ্বাসতন্ত্রের সুস্থতার জন্য খাদ্যে রসুনের গুঁড়ো"],
+    tips:["দিনে ১৬ ঘণ্টা আলো ডিম উৎপাদন সর্বোচ্চ করে","ক্যালসিয়াম গ্রিট বা ঝিনুকের খোসা ইচ্ছামতো খেতে দিলে ডিমের খোসা ভালো হয়","ডিম ভাঙা ও মুরগির ডিম-ঘুম (ব্রুডিনেস) আটকাতে দিনে ৩ বার ডিম সংগ্রহ করুন","ডিম পাড়া শুরুর সময় চাপে পড়লে স্থায়ীভাবে উৎপাদন কমে যায়"],
+    schedule:[
+      {week:"সপ্তাহ ১–৪", task:"বাচ্চার যত্ন: ব্রুডিং, স্টার্টার খাদ্য, ৭ম দিনের টিকা", type:"feed"},
+      {week:"সপ্তাহ ৮", task:"গ্রোয়ার খাদ্যে যান, প্রোটিন কমান", type:"feed"},
+      {week:"সপ্তাহ ১০", task:"ভেষজ ওষুধ দিয়ে পুরো ঝাঁকে কৃমিনাশক দিন", type:"health"},
+      {week:"সপ্তাহ ১৮", task:"লেয়ার ম্যাশে যান, ক্যালসিয়াম বাড়ান, ডিম পাড়ার বাক্স বসান", type:"feed"},
+      {week:"প্রতি ৩ মাসে", task:"রানীক্ষেত বুস্টার টিকা + কৃমিনাশক", type:"vaccine"},
+      {week:"সপ্তাহ ৭২+", task:"ঝাঁকের উৎপাদন মূল্যায়ন করুন — বাদ দেওয়া (কালিং) বা পালক ঝরানো (মোল্টিং) বিবেচনা করুন", type:"harvest"},
+    ]
+  },
+  {
+    id:3, name:"হাঁস", emoji:"🦆", type:"পোল্ট্রি – মাংস ও ডিম", color:"#0ea5e9",
+    breed:"খাকি ক্যাম্পবেল / পেকিন", feedCycle:"৮ সপ্তাহ (মাংস) / ২ বছর (ডিম)",
+    feed:"হাঁসের বাচ্চার স্টার্টার: ২২% প্রোটিন, কক্সিডিওস্ট্যাট ছাড়া (হাঁস এতে সংবেদনশীল)। গ্রোয়ার: ১৮% প্রোটিন, পায়ের দুর্বলতা রোধে নায়াসিন (৫৫ মিগ্রা/কেজি) সহ। ডিমপাড়া হাঁস: ১৭% প্রোটিন + ক্যালসিয়াম। হাঁসের মুরগির চেয়ে ৩ গুণ বেশি জল লাগে — নাকের ছিদ্র পরিষ্কার রাখতে সবসময় গভীর জলের ব্যবস্থা রাখুন।",
+    health:"হাঁস শক্তপোক্ত, প্রায় ওষুধ লাগে না। রোগপ্রবণ এলাকায় ডাক প্লেগ (ডাক ভাইরাল এন্টেরাইটিস) টিকা দিন। অ্যাসপারজিলোসিস প্রতিরোধে কখনও ছাতা-পড়া খাদ্য দেবেন না। পুকুর থেকে পচা জৈব পদার্থ সরিয়ে বটুলিজম নিয়ন্ত্রণ করুন।",
+    forbidden:["কক্সিডিওস্ট্যাট (অ্যামপ্রোলিয়াম, স্যালিনোমাইসিন) — হাঁসের পক্ষে বিষাক্ত","অ্যাভোপারসিন ও ভার্জিনিয়ামাইসিন জাতীয় বৃদ্ধি-বর্ধক","পুকুরের কাছে অর্গানোক্লোরিন কীটনাশক","পারদযুক্ত চিকিৎসা","স্পষ্ট রোগনির্ণয় ও পশুচিকিৎসকের প্রেসক্রিপশন ছাড়া যেকোনো অ্যান্টিবায়োটিক"],
+    alternatives:["সুস্থ পায়ের জন্য নায়াসিন পুষ্টিপূরক","পেটের স্বাস্থ্যের জন্য গাঁজানো খাদ্য","প্রাকৃতিক প্রোটিনের উৎস হিসেবে পুকুরের অ্যাজোলা","জলে ভেষজ টনিক (তুলসী, আদা)","রোগজীবাণুর ভার কমাতে প্রোবায়োটিক"],
+    tips:["কখনও হাঁসের ঠোঁট কাটবেন না — সম্পূর্ণ ঠোঁট ছাড়া ওরা ঠিকমতো খেতে পারে না","পুকুর বা গামলার ব্যবস্থা রাখুন — জলে নামতে পারলে শ্বাসকষ্ট কমে","হাঁসের বিষ্ঠা চমৎকার সার — ফসলে পুকুরের জল ব্যবহার করুন","মাংসের হাঁস চারণ + দানা খেয়ে ভালো বাড়ে — খাদ্যখরচ ৩০% কমে"],
+    schedule:[
+      {week:"দিন ১–৭", task:"৩২°C-এ ব্রুডিং, নায়াসিনসহ স্টার্টার খাদ্য, জলের ব্যবস্থা", type:"feed"},
+      {week:"সপ্তাহ ২–৩", task:"অগভীর জলের গামলা দিন, পায়ের স্বাস্থ্য লক্ষ করুন", type:"health"},
+      {week:"সপ্তাহ ৪", task:"গ্রোয়ার খাদ্যে যান, প্রয়োজনে কৃমিনাশক দিন", type:"feed"},
+      {week:"সপ্তাহ ৬–৮", task:"মাংসের হাঁস: জীবিত ওজন ৩–৩.৫ কেজি হলে বিক্রি/জবাই", type:"harvest"},
+      {week:"সপ্তাহ ১৮–২০", task:"ডিমপাড়া হাঁস: ডিম পাড়া শুরু — বাসার জায়গা নিশ্চিত করুন", type:"feed"},
+      {week:"প্রতি ৬ মাসে", task:"ঝাঁকের স্বাস্থ্যপরীক্ষা, পরজীবী পর্যবেক্ষণ", type:"health"},
+    ]
+  },
+  {
+    id:4, name:"দুগ্ধবতী গাভী", emoji:"🐄", type:"গবাদি পশু – দুধ", color:"#10b981",
+    breed:"হলস্টেইন / সাহিওয়াল / থারপারকার", feedCycle:"৩০৫ দিনের দুগ্ধকাল",
+    feed:"দৈনিক শুষ্ক পদার্থ: দেহওজনের ৩%। সবুজ ঘাস: দিনে ১৫–২০ কেজি (নেপিয়ার, বারসিম)। শুকনো খাদ্য: দিনে ৫–৬ কেজি (খড়)। দানাদার খাদ্য: প্রতি ২.৫ লিটার দুধ উৎপাদনে ১ কেজি। দৈনিক ৫০ গ্রাম খনিজ মিশ্রণ দিন। নুনের চাক সবসময় রাখুন। পরিষ্কার জল: দিনে ৬০–৮০ লিটার।",
+    health:"এফএমডি বা পা ও মুখের রোগ (খুরা)-এর টিকা (প্রতি ৬ মাসে), ব্রুসেলোসিস (৪–৮ মাসের বকনা), বিকিউ ও এইচএস (বার্ষিক) — এই টিকাগুলি দিন। প্রতি মাসে সিএমটি পরীক্ষায় ওলান প্রদাহ (মাস্টাইটিস) দেখুন। প্রতি ৬ মাসে খুর ছাঁটুন। প্রতি ৩–৬ মাসে কৃমিনাশক দিন। নিয়মিত শারীরিক অবস্থা স্কোর দেখুন।",
+    forbidden:["দুধ নামানোর জন্য অক্সিটোসিন ইনজেকশন (বেআইনি; ওলানের ক্ষতি করে ও দুধে হরমোনের অবশেষ থাকে)","বোভাইন সোমাটোট্রপিন (বিএসটি/আরবিজিএইচ) — ইউরোপীয় ইউনিয়ন ও ভারতে নিষিদ্ধ","দুধে অ্যান্টিবায়োটিক — চিকিৎসাধীন গাভীর দুধ নিষেধকাল পর্যন্ত ফেলে দিতে হবে","খাদ্যে শুষ্ক পদার্থের ১%-এর বেশি ইউরিয়া (অ্যামোনিয়া বিষক্রিয়া ঘটায়)","নিরাপত্তা পরীক্ষা ছাড়া শিল্পজাত উপজাত পদার্থ","বৃদ্ধির জন্য স্টিলবিন ইস্ট্রোজেন"],
+    alternatives:["উচ্চ উৎপাদনকারী গাভীর জন্য বাইপাস ফ্যাট","প্রোটিন-সমৃদ্ধ ঘাসের পরিপূরক হিসেবে অ্যাজোলা","খনিজ চাক — অতিরিক্ত খাওয়ার ঝুঁকি নেই","দুধের পরিমাণ বাড়াতে ভেষজ (শতমূলী, মেথি)","ওলানের সুস্থতার জন্য নিয়মিত মালিশ ও ব্যায়াম"],
+    tips:["প্রতিদিন নির্দিষ্ট সময়ে দুধ দোহান — অনিয়মিত দোহনে দুধ ১৫% কমে যায়","পরবর্তী দুগ্ধকালের ভালো উৎপাদনের জন্য ৬০ দিনের শুষ্ক সময় (ড্রাই পিরিয়ড) জরুরি","প্রথম ৬ ঘণ্টায় শালদুধ (খীস) বাছুরের রোগ প্রতিরোধের জন্য অত্যন্ত গুরুত্বপূর্ণ","বাচ্চা প্রসবের তারিখ, দুধের পরিমাণ, গরম হওয়ার চক্র লিখে রাখুন — তথ্য টাকা বাঁচায়"],
+    schedule:[
+      {week:"দুধ শুকানো (প্রসবের ৬০ দিন আগে)", task:"দোহন বন্ধ করুন, ড্রাই কাউ থেরাপি দিন (শুধু পশুচিকিৎসকের পরামর্শে)", type:"health"},
+      {week:"প্রসব", task:"প্রসবে সহায়তা করুন, ১ ঘণ্টার মধ্যে বাছুরকে শালদুধ খাওয়ান", type:"health"},
+      {week:"প্রসবের পর সপ্তাহ ১–২", task:"সদ্য-প্রসূতা গাভীর খাদ্য: উচ্চ শক্তির খাদ্য, মিল্ক ফিভারের দিকে নজর রাখুন", type:"feed"},
+      {week:"প্রতি মাসে", task:"সিএমটি মাস্টাইটিস পরীক্ষা, শারীরিক অবস্থা স্কোর, খুর পরীক্ষা", type:"health"},
+      {week:"প্রতি ৬ মাসে", task:"এফএমডি টিকা, কৃমিনাশক, খুর ছাঁটা", type:"vaccine"},
+      {week:"৩০৫ দিন", task:"উৎপাদনের হিসাব মূল্যায়ন করুন, দুধ শুকানোর পরিকল্পনা করুন", type:"harvest"},
+    ]
+  },
+  {
+    id:5, name:"ছাগল", emoji:"🐐", type:"ক্ষুদ্র জাবরকাটা প্রাণী – মাংস ও দুধ", color:"#a78bfa",
+    breed:"ব্ল্যাক বেঙ্গল / বোয়ার / যমুনাপারি", feedCycle:"সারা বছর",
+    feed:"ছাগল পাতা-ডালপালা খায়, শুধু ঘাস নয়। মিশ্র পাতা (গাছের পাতা, কচি ডাল) দিন, সঙ্গে দুধেল ছাগীর জন্য দিনে ২০০–৩০০ গ্রাম দানাদার খাদ্য। দৈনিক ১০ গ্রাম খনিজ মিশ্রণ জরুরি (তামা, দস্তা, সেলেনিয়াম)। বেশি দানা খাওয়াবেন না — অ্যাসিডোসিস হয়। দিনে ৫–৮ লিটার টাটকা জল দিন।",
+    health:"পিপিআর (প্রতি বছর), এন্টেরোটক্সিমিয়া (প্রতি ৬ মাসে), এফএমডি (রোগপ্রবণ এলাকায়) — এই টিকাগুলি দিন। প্রতিরোধ ক্ষমতা কমে যাওয়া এড়াতে ফামাচা স্কোরিং দেখে প্রতি ৪৫ দিনে কৃমিনাশক দিন। প্রতি ৩ মাসে খুর ছাঁটুন। থাকার জায়গা শুকনো রাখুন — ভেজা মেঝেতে খুরপচা (ফুট রট) হয়।",
+    forbidden:["রোগনির্ণয় ছাড়া সবাইকে অ্যান্টিবায়োটিক দেওয়া","আইভারমেকটিনের অতিরিক্ত ব্যবহার — প্রতিরোধ ক্ষমতা তৈরি করে","গবাদি পশুর তামা-পরিপূরক (ছাগলের জন্য বিষাক্ত মাত্রা)","ইউরিয়া-ভিত্তিক তরল পরিপূরক (রুমেন অ্যাসিডোসিসের ঝুঁকি)","গবাদি পশুর মাত্রায় মোনেনসিন (রুমেনসিন) — ক্ষুদ্র জাবরকাটা প্রাণীর পক্ষে মারাত্মক","পশুচিকিৎসকের পরামর্শ ছাড়া অর্গানোফসফেট রাসায়নিক ডিপ"],
+    alternatives:["লক্ষ্যভিত্তিক কৃমিনাশের জন্য ফামাচা পদ্ধতি","ভেষজ কৃমিনাশক (পেঁপের বীজ, নিমছাল, ওয়ার্মউড)","খাদ্যে বায়োচার — রোগজীবাণুর ভার কমায়","চিকিৎসার চেয়ে টিকা — পিপিআর প্রতিরোধ পুরো পাল বাঁচায়","ট্যানিন-সমৃদ্ধ পাতা (ঈপিল-ঈপিল, তুঁত) স্বাভাবিকভাবে কৃমি কমায়"],
+    tips:["পাঁঠা ও ছাগীর অনুপাত: ২৫টি ছাগীর জন্য ১টি পাঁঠা","জন্মের প্রথম ৩০ মিনিটে শালদুধ খাওয়ানো অপরিহার্য — বাচ্চার বাঁচার জন্য","অসুস্থ পশুকে সঙ্গে সঙ্গে আলাদা করুন — রোগ খুব দ্রুত ছড়ায়","প্রতিদিন খাওয়ার আচরণ লক্ষ করুন — খাওয়া বন্ধ করা অসুস্থতার প্রথম লক্ষণ"],
+    schedule:[
+      {week:"বাচ্চা প্রসব", task:"প্রসবে সহায়তা করুন, শ্বাসনালি পরিষ্কার করুন, শালদুধ খাওয়া নিশ্চিত করুন", type:"health"},
+      {week:"দিন ৩", task:"নাভি জীবাণুমুক্ত করুন, কানে ট্যাগ লাগান, প্রাথমিক স্বাস্থ্যপরীক্ষা", type:"health"},
+      {week:"সপ্তাহ ৩–৪", task:"পিপিআর টিকা + এন্টেরোটক্সিমিয়া টিকা", type:"vaccine"},
+      {week:"সপ্তাহ ৬", task:"বাচ্চাদের ক্রিপ ফিড শুরু করুন (উচ্চ প্রোটিন ম্যাশ)", type:"feed"},
+      {week:"প্রতি ৪৫ দিনে", task:"ফামাচা কৃমিনাশ মূল্যায়ন — শুধু যাদের প্রয়োজন তাদেরই চিকিৎসা করুন", type:"health"},
+      {week:"প্রতি ৬ মাসে", task:"এন্টেরোটক্সিমিয়া বুস্টার, খুর ছাঁটা, শারীরিক অবস্থা স্কোর", type:"vaccine"},
+    ]
+  }
+];
+
+const typeConfig = {
+  feed:    {color:"#f59e0b", bg:"rgba(30,18,0,0.6)", icon:"🌾"},
+  vaccine: {color:"#60a5fa", bg:"rgba(0,16,40,0.6)", icon:"💉"},
+  health:  {color:"#4ade80", bg:"rgba(0,20,8,0.6)",  icon:"🩺"},
+  harvest: {color:"#e879f9", bg:"rgba(25,0,30,0.6)", icon:"✅"},
+};
+
+const calendarData = [
+  {months:"জানুয়ারি – ফেব্রুয়ারি", season:"শীত", color:"#93c5fd", icon:"❄️",
+   tasks:["মহিষের বাচ্চা প্রসবের সর্বোচ্চ মরসুম","মার্চের আগে এইচএস ও বিকিউ-এর টিকা দিন","ছাগল ও ভেড়াকে কৃমিনাশক দিন","ঠান্ডার চাপ থেকে পোল্ট্রি বাঁচাতে বাড়তি বিছানা দিন"]},
+  {months:"মার্চ – মে", season:"গ্রীষ্ম / প্রাক-বর্ষা", color:"#fde68a", icon:"☀️",
+   tasks:["বর্ষার আগে এফএমডি টিকা দিন","সব প্রাণীর জলের জোগান বাড়ান","গরমের হাত থেকে বাঁচাতে ছাগল ও গবাদি পশুকে রাতে চরান","বর্ষার জন্য ঘর তৈরি রাখুন — চাল ও নিকাশি মেরামত করুন"]},
+  {months:"জুন – আগস্ট", season:"বর্ষা", color:"#6ee7b7", icon:"🌧️",
+   tasks:["রোগের চাপ সর্বোচ্চ — প্রতিদিন নজরদারি জরুরি","বর্ষা শুরু হলে পুরো পালকে কৃমিনাশক দিন","মাছি ও মশা নিয়ন্ত্রণে নিমের স্প্রে ব্যবহার করুন","পোল্ট্রি ঘরে লিটার শুকনো রাখুন — অ্যামোনিয়া জমার ঝুঁকি"]},
+  {months:"সেপ্টেম্বর – অক্টোবর", season:"বর্ষা-পরবর্তী", color:"#fca5a5", icon:"🍂",
+   tasks:["পিপিআর (ছাগল) ও রানীক্ষেত (পোল্ট্রি)-এর টিকা দিন","প্রজনন মরসুমের আগে ভেড়ী ও ছাগীকে বাড়তি খাদ্য (ফ্লাশিং) দিন","শীতের জন্য ঘাস কেটে সংরক্ষণ করুন","পুরো পালের স্বাস্থ্য নিরীক্ষা — শারীরিক অবস্থা স্কোর লিখে রাখুন"]},
+  {months:"নভেম্বর – ডিসেম্বর", season:"শীতের শুরু", color:"#c4b5fd", icon:"🌙",
+   tasks:["গবাদি পশু ও ক্ষুদ্র জাবরকাটা প্রাণীর প্রজনন মরসুম","গর্ভবতী প্রাণীর জন্য শক্তিদায়ক খাদ্য বাড়ান","পোল্ট্রি: ডিম উৎপাদন বজায় রাখতে বাড়তি আলো দিয়ে ১৬ ঘণ্টা করুন","শুকনো খড় মজুত করুন — শীতের মাসগুলির জোগান নিশ্চিত করুন"]},
+];
+
+const healthTips = [
+  {icon:"💧", title:"পরিষ্কার জল — প্রথম ওষুধ", desc:"পশুর বেশিরভাগ রোগ শুরু হয় জলশূন্যতা বা দূষিত জল থেকে। পরিষ্কার, টাটকা জল রোগের প্রকোপ ৪০% কমায়। ঋতু বদলের সময় জলের মান পরীক্ষা করুন।"},
+  {icon:"🌿", title:"প্রতিরোধমূলক যত্ন হিসেবে সবুজ ঘাস", desc:"অ্যাজোলা, বারসিম ও নেপিয়ার ঘাস ভিটামিন, খনিজ ও রোগ প্রতিরোধ বাড়ানোর উপাদান জোগায়। সবুজ ঘাস খাওয়া প্রাণীর স্বাভাবিক রোগ প্রতিরোধ ক্ষমতা বেশি হয়।"},
+  {icon:"🧹", title:"পরিচ্ছন্নতা রোগের চক্র ভাঙে", desc:"সপ্তাহে একবার থাকার জায়গা পরিষ্কার করুন। পোল্ট্রির বিষ্ঠা প্রতিদিন সরান। খাবারের গামলা পরিষ্কার রাখুন — খাদ্যে ছাতা পড়লে শ্বাসকষ্ট ও অ্যাফ্লাটক্সিন বিষক্রিয়া হয়।"},
+  {icon:"📊", title:"হিসাব রাখা সংকট এড়ায়", desc:"প্রসবের তারিখ, টিকার রেকর্ড ও উৎপাদনের তথ্য লিখে রাখুন। রেকর্ডে ধরন দেখে মহামারির আগেই রোগ ধরা যায়।"},
+  {icon:"🔍", title:"চিকিৎসার আগে পর্যবেক্ষণ করুন", desc:"মাড়ি (গোলাপি হওয়া উচিত), চোখ (উজ্জ্বল), দাঁড়ানোর ভঙ্গি (সজাগ), মল (স্বাভাবিক) দেখুন। শুরুতে ধরা পড়লে বেশিরভাগ অসুখ অ্যান্টিবায়োটিক ছাড়াই সামলানো যায়।"},
+];
+
+const safetyRules = [
+  "সব নিষেধকাল মেনে চলুন: অ্যান্টিবায়োটিক চিকিৎসার সময় ও পরে পশুচিকিৎসকের নির্দেশমতো দুধ/মাংস ফেলে দিন",
+  "মানুষের জন্য তৈরি অ্যান্টিবায়োটিক কখনও পশুকে দেবেন না — ক্রস-রেজিস্ট্যান্স জনস্বাস্থ্যের ক্ষতি করে",
+  "সব ওষুধ তালাবন্ধ রাখুন — শিশু ও খাদ্যভাণ্ডার থেকে দূরে",
+  "অসুস্থ পশু সামলানোর সময় বা প্রসবে সাহায্যের সময় দস্তানা ব্যবহার করুন",
+  "কাঁচা দুধ ফুটিয়ে বা পাস্তুরাইজ করে নিন — ব্রুসেলোসিস মানুষের মধ্যে ছড়াতে পারে",
+  "পোল্ট্রি ধরার পর ভালো করে হাত ধুয়ে নিন — স্যালমোনেলার ঝুঁকি",
+  "হঠাৎ গণমৃত্যু হলে অবিলম্বে স্থানীয় পশুচিকিৎসা কর্তৃপক্ষকে জানান",
+  "জ্বর বা স্নায়বিক লক্ষণ থাকা পশু জবাই করবেন না",
+];
+
+const bannedSubstances = [
+  {name:"গ্রোথ হরমোন (বিএসটি/আরবিজিএইচ)", risk:"দুধে হরমোনের অবশেষ — মানুষের শরীরে আইজিএফ-১ বেড়ে যাওয়ার সঙ্গে যুক্ত", animals:"গবাদি পশু"},
+  {name:"অক্সিটোসিন (অপব্যবহার)", risk:"দুধে হরমোনের অবশেষ; ওলানের ক্ষতি; নিয়মিত দুধ নামানোর জন্য ব্যবহার নিষিদ্ধ", animals:"গবাদি পশু, মহিষ"},
+  {name:"ক্লোরামফেনিকল", risk:"মানুষের অ্যাপ্লাস্টিক অ্যানিমিয়া — খাদ্যপ্রাণীতে শূন্য সহনশীলতা", animals:"সব প্রাণী"},
+  {name:"নাইট্রোফুরান", risk:"মাংস ও ডিমে ক্যানসার-সৃষ্টিকারী অবশেষ", animals:"পোল্ট্রি"},
+  {name:"ম্যালাকাইট গ্রিন", risk:"ক্যানসার-সৃষ্টিকারী — নিষিদ্ধ, তবু মাছ/হাঁসের পুকুরে কখনও অপব্যবহৃত হয়", animals:"হাঁস, মাছ"},
+  {name:"স্টিলবিন ও জেরানল", risk:"মানুষের শরীরে ইস্ট্রোজেনের প্রভাব — ইউরোপীয় ইউনিয়ন ও ভারতে নিষিদ্ধ", animals:"গবাদি পশু, ভেড়া"},
+  {name:"ফ্লুরোকুইনোলোন (নিয়মিত ব্যবহার)", risk:"মানুষের জন্য অত্যন্ত গুরুত্বপূর্ণ অ্যান্টিবায়োটিক — প্রতিরোধ ক্ষমতা তৈরির ঝুঁকি", animals:"সব প্রাণী"},
+  {name:"আর্সেনিক যৌগ", risk:"মাংসের অবশেষে ক্যানসার-সৃষ্টিকারী — খাদ্যপ্রাণীতে সারা বিশ্বে নিষিদ্ধ", animals:"পোল্ট্রি"},
+  {name:"ক্লেনবিউটেরল / বিটা-অ্যাগোনিস্ট", risk:"চিকিৎসা-করা পশুর মাংস খেলে মানুষের হৃদযন্ত্রের বিষক্রিয়া", animals:"গবাদি পশু, পোল্ট্রি"},
+];
+
+// BUILD ANIMAL LIST
+function buildAnimalList() {
+  document.getElementById('animals-container').innerHTML = animals.map(a => `
+    <button class="animal-card" onclick="showDetail(${a.id})">
+      <div class="animal-icon" style="background:linear-gradient(135deg,${a.color}30,${a.color}10);border:1px solid ${a.color}40">${a.emoji}</div>
+      <div style="flex:1">
+        <div class="animal-name">${a.name}</div>
+        <div class="animal-type">${a.type}</div>
+        <div class="animal-tags">
+          <span class="tag-safe">✓ অ্যান্টিবায়োটিকমুক্ত নির্দেশিকা</span>
+          <span class="tag-warn">⚠ ক্ষতিকর পদার্থের তালিকা</span>
+        </div>
+      </div>
+      <div class="animal-arrow">›</div>
+    </button>
+  `).join('');
+}
+
+// SHOW DETAIL
+function showDetail(id) {
+  const a = animals.find(x => x.id === id);
+  document.getElementById('animal-list').style.display = 'none';
+  const dv = document.getElementById('detail-view');
+  dv.style.display = 'block';
+
+  const schedHTML = a.schedule.map(s => {
+    const cfg = typeConfig[s.type];
+    return `<div class="schedule-item" style="background:${cfg.bg};border:1px solid ${cfg.color}25">
+      <div class="sched-icon" style="background:${cfg.color}20;border:1px solid ${cfg.color}40">${cfg.icon}</div>
+      <div>
+        <div class="sched-week" style="color:${cfg.color}">${s.week}</div>
+        <div class="sched-task">${s.task}</div>
+      </div>
+    </div>`;
+  }).join('');
+
+  const forbiddenHTML = a.forbidden.map(f => `<div class="danger-item"><span style="color:#ef4444;flex-shrink:0">✗</span>${f}</div>`).join('');
+  const altHTML = a.alternatives.map(f => `<div class="safe-item"><span style="color:#22c55e;flex-shrink:0">✓</span>${f}</div>`).join('');
+  const tipsHTML = a.tips.map((t,i) => `<div class="tip-item"><div class="tip-num">${i+1}</div><div class="tip-text">${t}</div></div>`).join('');
+
+  document.getElementById('detail-content').innerHTML = `
+    <div class="detail-hero" style="background:linear-gradient(135deg,${a.color}15,rgba(255,255,255,0.02));border:1px solid ${a.color}30">
+      <div class="detail-hero-top">
+        <div class="detail-emoji">${a.emoji}</div>
+        <div>
+          <div class="detail-name">${a.name}</div>
+          <div class="detail-type">${a.type}</div>
+        </div>
+      </div>
+      <div class="detail-info-row">
+        <div class="detail-info-card">
+          <div class="detail-info-label">🐾 জাত</div>
+          <div class="detail-info-val">${a.breed}</div>
+        </div>
+        <div class="detail-info-card">
+          <div class="detail-info-label">⏱ চক্র</div>
+          <div class="detail-info-val">${a.feedCycle}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-tabs">
+      <button class="sec-btn active" onclick="switchSection('schedule',this)">📋 সূচি</button>
+      <button class="sec-btn" onclick="switchSection('feed',this)">🌾 খাদ্য</button>
+      <button class="sec-btn" onclick="switchSection('health',this)">🩺 স্বাস্থ্য</button>
+      <button class="sec-btn" onclick="switchSection('safety',this)">🚫 সুরক্ষা</button>
+      <button class="sec-btn" onclick="switchSection('tips',this)">💡 পরামর্শ</button>
+    </div>
+
+    <div id="sec-schedule" class="section-panel active">
+      <div class="sec-title">ব্যবস্থাপনা সূচি</div>${schedHTML}
+    </div>
+
+    <div id="sec-feed" class="section-panel">
+      <div class="sec-title">খাদ্য নির্দেশিকা</div>
+      <div class="info-box" style="background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.2)">
+        <div class="info-box-icon">🌾</div>
+        <div class="info-box-text">${a.feed}</div>
+      </div>
+      <div class="note-box" style="background:rgba(34,197,94,0.05);border:1px solid rgba(34,197,94,0.15)">
+        <div class="note-label" style="color:#4ade80">✅ সোনালি নিয়ম</div>
+        <div class="note-text">খাদ্যের মানই উৎপাদনের মান ঠিক করে। ওষুধের আগে খাদ্যে বিনিয়োগ করুন।</div>
+      </div>
+    </div>
+
+    <div id="sec-health" class="section-panel">
+      <div class="sec-title">স্বাস্থ্য ও টিকাকরণ</div>
+      <div class="info-box" style="background:rgba(96,165,250,0.06);border:1px solid rgba(96,165,250,0.2)">
+        <div class="info-box-icon">🩺</div>
+        <div class="info-box-text">${a.health}</div>
+      </div>
+    </div>
+
+    <div id="sec-safety" class="section-panel">
+      <div class="sec-title">যে পদার্থ এড়িয়ে চলবেন</div>
+      <div class="danger-box">
+        <div class="danger-title">🚫 নিষিদ্ধ ও ক্ষতিকর পদার্থ</div>
+        ${forbiddenHTML}
+      </div>
+      <div class="safe-box">
+        <div class="safe-title">🌿 নিরাপদ প্রাকৃতিক বিকল্প</div>
+        ${altHTML}
+      </div>
+    </div>
+
+    <div id="sec-tips" class="section-panel">
+      <div class="sec-title">বিশেষজ্ঞের পরামর্শ</div>${tipsHTML}
+    </div>
+  `;
+}
+
+function showAnimalList() {
+  document.getElementById('animal-list').style.display = 'block';
+  document.getElementById('detail-view').style.display = 'none';
+  document.getElementById('detail-content').innerHTML = '';
+}
+
+function switchSection(id, btn) {
+  document.querySelectorAll('.section-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.sec-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('sec-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// BUILD CALENDAR
+function buildCalendar() {
+  document.getElementById('calendar-content').innerHTML = calendarData.map(row => `
+    <div class="cal-card" style="border:1px solid ${row.color}25;background:linear-gradient(135deg,${row.color}07,rgba(255,255,255,0.02))">
+      <div class="cal-head" style="background:${row.color}10;border-bottom-color:${row.color}18">
+        <span style="font-size:20px">${row.icon}</span>
+        <div>
+          <div class="cal-month">${row.months}</div>
+          <div class="cal-season" style="color:${row.color};font-size:11px">${row.season}</div>
+        </div>
+      </div>
+      <div class="cal-body">
+        <div class="cal-section-label">প্রধান কাজ</div>
+        ${row.tasks.map(t => `<div class="cal-activity"><span style="color:${row.color};font-size:10px">●</span>${t}</div>`).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
+// BUILD HEALTH
+function buildHealth() {
+  const cards = healthTips.map(h => `
+    <div class="health-card">
+      <div style="font-size:22px;margin-bottom:7px">${h.icon}</div>
+      <div class="health-title">${h.title}</div>
+      <div class="health-desc">${h.desc}</div>
+    </div>
+  `).join('');
+  document.getElementById('health-content').innerHTML = cards + `
+    <div class="rules-box">
+      <div class="rules-title">🐄 মূল ব্যবস্থাপনা নিয়ম</div>
+      ${safetyRules.slice(0,5).map(r => `<div class="rule-item"><span class="rule-check">✓</span><span>${r}</span></div>`).join('')}
+    </div>
+  `;
+}
+
+// BUILD SAFETY
+function buildSafety() {
+  const rows = bannedSubstances.map(b => `
+    <div class="danger-box" style="margin-bottom:10px">
+      <div class="danger-title">🚫 ${b.name} <span style="color:#fca5a5;font-weight:400;font-size:11px;margin-left:8px">— ${b.animals}</span></div>
+      <div class="danger-item"><span style="color:#ef4444;flex-shrink:0">⚠</span>${b.risk}</div>
+    </div>
+  `).join('');
+
+  const rulesHTML = safetyRules.map(r => `<div class="rule-item"><span class="rule-check">✓</span><span>${r}</span></div>`).join('');
+
+  document.getElementById('safety-content').innerHTML = `
+    <p class="page-sub" style="margin-bottom:14px">নিচের পদার্থগুলি নিষিদ্ধ বা কঠোরভাবে নিয়ন্ত্রিত। এগুলি ব্যবহার করলে ভোক্তার স্বাস্থ্য বিপন্ন হয় এবং খাদ্য নিরাপত্তা আইন লঙ্ঘিত হতে পারে।</p>
+    ${rows}
+    <div class="rules-box">
+      <div class="rules-title">🛡️ কৃষকদের জন্য নিরাপদ উৎপাদনের নিয়ম</div>
+      ${rulesHTML}
+    </div>
+  `;
+}
+
+// TAB SWITCHING
+function switchTab(tab, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('page-' + tab).classList.add('active');
+  btn.classList.add('active');
+  if (tab === 'animals') showAnimalList();
+}
+
+buildAnimalList();
+buildCalendar();
+buildHealth();
+buildSafety();
+</script>
+</body>
+</html>

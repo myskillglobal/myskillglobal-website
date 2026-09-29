@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>পাটের পুনরুজ্জীবন — সোনালি আঁশ</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=Noto+Serif+Bengali:wght@400;600;700;900&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root{
+  --gold:#E2A93B;
+  --gold-light:#FFD166;
+  --gold-pale:#FFF7E3;
+
+  --green-deep:#0F3D2E;
+  --green-mid:#1B5E20;
+  --green-light:#43A047;
+
+  --earth:#795548;
+
+  --cream:#F8FAF7;
+
+  --text-dark:#1A1A1A;
+  --text-mid:#444;
+  --text-light:#777;
+
+  --white:#FFFFFF;
+
+  --shadow:0 6px 24px rgba(0,0,0,0.08);
+}
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Source Serif 4','Noto Serif Bengali', Georgia, serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    font-size: 18px;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(160deg, var(--green-deep) 0%, #0F2A0F 40%, #2A1800 100%);
+    color: var(--white);
+    padding: 52px 24px 44px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C8860A' fill-opacity='0.08'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+    opacity: 0.6;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--green-deep);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: none;
+    padding: 6px 18px;
+    border-radius: 2px;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display','Noto Serif Bengali', Georgia, serif;
+    font-size: clamp(30px, 8vw, 52px);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--gold-light);
+    position: relative;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    margin-bottom: 12px;
+  }
+  .hero-sub {
+    font-size: 17px;
+    color: rgba(255,255,255,0.8);
+    font-style: normal;
+    position: relative;
+    max-width: 360px;
+    margin: 0 auto 28px;
+  }
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    position: relative;
+    flex-wrap: wrap;
+  }
+  .stat-box { text-align: center; }
+  .stat-num {
+    display: block;
+    font-family: 'Playfair Display','Noto Serif Bengali', serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--gold-light);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.65);
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  /* 4-PILLAR STRIP */
+  .pillar-strip {
+    background: var(--gold);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    text-align: center;
+  }
+  .pillar {
+    padding: 12px 6px;
+    border-right: 1px solid rgba(0,0,0,0.12);
+    color: var(--green-deep);
+  }
+  .pillar:last-child { border-right: none; }
+  .pillar-icon { font-size: 22px; display: block; }
+  .pillar-label { font-size: 11px; font-weight: 700; letter-spacing: 0; line-height: 1.3; display: block; margin-top: 3px; }
+
+  /* NAV TABS */
+.nav-tabs{
+  display:flex;
+  overflow-x:auto;
+  background:#ffffff;
+  border-bottom:1px solid #E5E7EB;
+  scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;
+  gap:8px;
+  padding:10px 10px;
+}
+  .nav-tabs::-webkit-scrollbar { display: none; }
+  .nav-tab{
+  flex-shrink:0;
+  padding:10px 16px;
+  font-size:13px;
+  font-weight:600;
+  color:#555;
+  background:#F3F4F6;
+  border-radius:999px;
+  cursor:pointer;
+  white-space:nowrap;
+  transition:.25s;
+  border:none;
+}
+  .nav-tab.active{
+  background:linear-gradient(135deg,#2E7D32,#43A047);
+  color:#fff;
+  box-shadow:0 4px 14px rgba(67,160,71,.28);
+}
+
+  /* TAB PAGES */
+  .tab-page { display: none; }
+  .tab-page.active { display: block; }
+
+  /* SECTION CARD */
+  .section-card {
+    margin: 18px 14px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    background: var(--white);
+  }
+  .section-header {
+    padding: 16px 18px 14px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .section-header.open { border-bottom-color: var(--gold-pale); }
+  .sec-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 21px;
+    flex-shrink: 0;
+  }
+  .sec-title {
+    font-family: 'Playfair Display','Noto Serif Bengali', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-dark);
+    flex: 1;
+    line-height: 1.25;
+  }
+  .chevron {
+    color: var(--gold);
+    font-size: 20px;
+    transition: transform 0.3s;
+    flex-shrink: 0;
+  }
+  .section-header.open .chevron { transform: rotate(180deg); }
+  .section-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1);
+  }
+  .section-body.open { max-height: 4000px; }
+  .section-inner { padding: 18px; }
+
+  p { font-size: 18px; margin-bottom: 14px; color: var(--text-mid); line-height: 1.8; }
+  p:last-child { margin-bottom: 0; }
+
+  .highlight-box {
+    background: var(--gold-pale);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    padding: 13px 15px;
+    margin: 14px 0;
+    font-size: 17px;
+    color: var(--text-dark);
+    font-style: normal;
+    line-height: 1.6;
+  }
+
+  .point-list { list-style: none; margin: 10px 0; }
+  .point-list li {
+    padding: 9px 0 9px 32px;
+    position: relative;
+    font-size: 17px;
+    color: var(--text-mid);
+    border-bottom: 1px solid var(--gold-pale);
+    line-height: 1.6;
+  }
+  .point-list li:last-child { border-bottom: none; }
+  .point-list li::before { content: attr(data-icon); position: absolute; left: 0; top: 9px; font-size: 18px; }
+
+  /* PRODUCT GRID */
+  .prod-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin: 12px 0;
+  }
+  .prod-item {
+    border-radius: 9px;
+    padding: 11px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    border: 1px solid var(--gold-pale);
+    background: #FFFDF5;
+    transition: transform 0.15s;
+    cursor: default;
+  }
+  .prod-item:active { transform: scale(0.97); }
+  .prod-item .p-icon { font-size: 22px; }
+  .prod-item .p-name { font-size: 14px; font-weight: 600; color: var(--text-dark); line-height: 1.3; }
+  .prod-item .p-desc { font-size: 13px; color: var(--text-light); line-height: 1.4; }
+
+  /* SECTOR BADGE */
+  .sector-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--green-deep);
+    color: var(--gold-light);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: none;
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin: 14px 0 10px;
+  }
+
+  /* STEP GRID */
+  .step-grid { display: flex; flex-direction: column; gap: 11px; margin: 13px 0; }
+  .step-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    background: #F7F9F4;
+    border-radius: 8px;
+    padding: 13px;
+  }
+  .step-num {
+    background: var(--green-mid);
+    color: white;
+    font-family: 'Playfair Display','Noto Serif Bengali', serif;
+    font-size: 14px;
+    font-weight: 700;
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .step-text { font-size: 17px; color: var(--text-mid); line-height: 1.65; }
+  .step-text strong { color: var(--text-dark); display: block; margin-bottom: 2px; font-size: 16px; }
+
+  /* COMPARE TABLE */
+  .compare-table { width: 100%; border-collapse: collapse; margin: 13px 0; font-size: 15px; }
+  .compare-table th {
+    background: var(--green-deep);
+    color: var(--gold-light);
+    padding: 9px 10px;
+    text-align: left;
+    font-family: 'Playfair Display','Noto Serif Bengali', serif;
+    font-size: 14px;
+  }
+  .compare-table td { padding: 9px 10px; border-bottom: 1px solid var(--gold-pale); color: var(--text-mid); }
+  .compare-table tr:nth-child(even) td { background: #F9F5EC; }
+  .good { color: var(--green-mid); font-weight: 600; }
+  .bad  { color: #C0392B; font-weight: 600; }
+
+  /* SHG SECTION */
+  .shg-card {
+    background: linear-gradient(135deg, #0F2A0F, #1A3A1A);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 14px 0;
+    border: 1px solid var(--gold);
+  }
+  .shg-card h4 {
+    font-family: 'Playfair Display','Noto Serif Bengali', serif;
+    color: var(--gold-light);
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .shg-card p { color: rgba(255,255,255,0.85); font-size: 16px; margin-bottom: 10px; }
+  .shg-stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 14px;
+  }
+  .shg-stat {
+    background: rgba(200,134,10,0.15);
+    border: 1px solid rgba(200,134,10,0.35);
+    border-radius: 8px;
+    padding: 10px 6px;
+    text-align: center;
+  }
+  .shg-stat .sn { font-family: 'Playfair Display','Noto Serif Bengali', serif; font-size: 20px; color: var(--gold-light); font-weight: 900; display: block; }
+  .shg-stat .sl { font-size: 11px; color: rgba(255,255,255,0.65); text-transform: none; letter-spacing: 0; }
+
+  /* AWARENESS BANNER */
+  .awareness-banner {
+    margin: 18px 14px;
+    background: linear-gradient(135deg, var(--green-deep) 0%, #0D1F0D 100%);
+    border-radius: 12px;
+    padding: 22px 18px;
+    text-align: center;
+    border: 2px solid var(--gold);
+    box-shadow: 0 0 32px rgba(200,134,10,0.18);
+  }
+  .awareness-banner h3 { font-family: 'Playfair Display','Noto Serif Bengali', serif; color: var(--gold-light); font-size: 21px; margin-bottom: 10px; }
+  .awareness-banner p { color: rgba(255,255,255,0.85); font-size: 17px; margin-bottom: 14px; }
+  .pledge-btn {
+    background: var(--gold);
+    color: var(--green-deep);
+    border: none;
+    padding: 13px 28px;
+    font-family: 'Playfair Display','Noto Serif Bengali', serif;
+    font-size: 17px;
+    font-weight: 700;
+    border-radius: 6px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 0.15s;
+    display: block;
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+  .pledge-btn:active { transform: scale(0.97); }
+  .pledge-confirm { display: none; color: var(--gold-light); font-size: 16px; margin-top: 12px; }
+
+footer {
+    background: linear-gradient(135deg,#0F5B43,#1A7B5C);
+    color: #F7F3A5;
+    text-align: center;
+    padding: 26px 20px;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+footer strong {
+    color: #FFE96A;
+}
+
+footer p{
+    color:#EDEDED;
+}
+
+footer .sub-text{
+    color:#D7F5E8;
+}
+  /* TOAST */
+  #toast {
+    position: fixed;
+    bottom: 35px;
+    left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: var(--green-deep);
+    color: var(--gold-light);
+    border: 1px solid var(--gold);
+    padding: 10px 22px;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0;
+    z-index: 999;
+    transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), opacity 0.35s;
+    opacity: 0;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+  #toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .section-card { animation: fadeUp 0.45s ease both; }
+@media (max-width: 480px){
+  .prod-grid{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">🌿 সবুজ ভবিষ্যৎ উদ্যোগ</div>
+  <h1>সোনালি আঁশ<br>পাটের পুনরুজ্জীবন</h1>
+  <p class="hero-sub">ভারতের ঐতিহ্যবাহী ফসলকে ফিরিয়ে এনে পরিবেশবান্ধব আগামী গড়ার ডাক</p>
+  <div class="hero-stats">
+    <div class="stat-box"><span class="stat-num">৪ কোটি+</span><span class="stat-label">জীবিকা</span></div>
+    <div class="stat-box"><span class="stat-num">১০০%</span><span class="stat-label">জৈব-বিয়োজ্য</span></div>
+    <div class="stat-box"><span class="stat-num">৫×</span><span class="stat-label">CO₂ শোষণ</span></div>
+    <div class="stat-box"><span class="stat-num">₹৩০,০০০ কোটি</span><span class="stat-label">রপ্তানি সম্ভাবনা</span></div>
+  </div>
+</div>
+
+<!-- 4-PILLAR STRIP -->
+<div class="pillar-strip">
+  <div class="pillar"><span class="pillar-icon">🌍</span><span class="pillar-label">পরিবেশ</span></div>
+  <div class="pillar"><span class="pillar-icon">🏭</span><span class="pillar-label">গ্রামীণ শিল্প</span></div>
+  <div class="pillar"><span class="pillar-icon">👷</span><span class="pillar-label">কর্মসংস্থান</span></div>
+  <div class="pillar"><span class="pillar-icon">✈️</span><span class="pillar-label">রপ্তানি</span></div>
+</div>
+
+<!-- NAV TABS -->
+<div class="nav-tabs" id="navTabs">
+  <div class="nav-tab active" onclick="switchTab(0,this)">সংক্ষিপ্ত পরিচিতি</div>
+  <div class="nav-tab" onclick="switchTab(1,this)">পণ্য</div>
+  <div class="nav-tab" onclick="switchTab(2,this)">প্লাস্টিকের তুলনায়</div>
+  <div class="nav-tab" onclick="switchTab(3,this)">পুনরুজ্জীবনের পরিকল্পনা</div>
+  <div class="nav-tab" onclick="switchTab(4,this)">মহিলা ও স্বনির্ভর গোষ্ঠী</div>
+  <div class="nav-tab" onclick="switchTab(5,this)">সুবিধা</div>
+</div>
+
+<!-- ═══════════════ TAB 0: OVERVIEW ═══════════════ -->
+<div class="tab-page active" id="tab0">
+
+  <div class="section-card">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="sec-icon" style="background:#FFF3D6;">🌾</div>
+      <div class="sec-title">পাট কী, আর কেন এত গুরুত্বপূর্ণ?</div>
+      <span class="chevron">⌄</span>
+    </div>
+    <div class="section-body">
+      <div class="section-inner">
+        <p>পাট — যাকে প্রায়ই বলা হয় <strong>সোনালি আঁশ</strong> — একটি প্রাকৃতিক উদ্ভিজ্জ আঁশ, যা প্রধানত পশ্চিমবঙ্গ, অসম ও বাংলাদেশের উর্বর প্লাবনভূমিতে চাষ হয়। ভারত বিশ্বের বৃহত্তম পাট উৎপাদক, বিশ্ব উৎপাদনের <strong>৬০%-এরও বেশি</strong> আসে এখান থেকে।</p>
+        <div class="highlight-box">“এক হেক্টর পাটখেত ১৫ টন CO₂ শোষণ করে আর ১১ টন অক্সিজেন ছাড়ে — সমান আয়তনের বনভূমির চেয়েও অনেক বেশি।”</div>
+        <ul class="point-list">
+          <li data-icon="🌱">৪–৬ মাসে ফলন হয়, কীটনাশক লাগে খুবই কম</li>
+          <li data-icon="💧">প্রাকৃতিক বৃষ্টিতেই ভালো হয় — সেচ লাগে সামান্যই</li>
+          <li data-icon="♻️">সম্পূর্ণ জৈব-বিয়োজ্য — কয়েক মাসের মধ্যেই প্রকৃতিতে মিশে যায়</li>
+          <li data-icon="🌍">কার্বন-ঋণাত্মক ফসল — যতটা CO₂ ছাড়ে তার চেয়ে বেশি শোষণ করে</li>
+          <li data-icon="👨‍🌾">৪ কোটিরও বেশি চাষি ও কলশ্রমিক পরিবারের জীবিকা</li>
+          <li data-icon="🏛️">বহু শতাব্দী ধরে বাংলার অর্থনীতি ও সংস্কৃতির সঙ্গে জড়িয়ে আছে</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="sec-icon" style="background:#FFF0F0;">⚠️</div>
+      <div class="sec-title">সংকট — কেন পাট শিল্প ধুঁকছে</div>
+      <span class="chevron">⌄</span>
+    </div>
+    <div class="section-body">
+      <div class="section-inner">
+        <p>বিপুল সম্ভাবনা সত্ত্বেও ১৯৮০-র দশক থেকে পাট শিল্প ক্রমাগত পিছিয়ে পড়ছে। সস্তা প্লাস্টিক, পুরোনো কল আর বাজারের সঙ্গে দুর্বল যোগাযোগ — সবই এর পেছনে ভূমিকা রেখেছে।</p>
+        <ul class="point-list">
+          <li data-icon="🏭">পুরোনো, অদক্ষ যন্ত্রপাতি — কয়েক দশক ধরে প্রযুক্তির হালনাগাদ হয়নি</li>
+          <li data-icon="💸">খেতে পাওয়া দাম কম — চাষিরা অনেক সময় চাষের খরচও তুলতে পারেন না</li>
+          <li data-icon="🧴">সস্তা প্লাস্টিক সর্বত্র বাজারে পাটের থলির জায়গা নিয়ে নিয়েছে</li>
+          <li data-icon="📉">সরকারি ক্রয় অনিয়মিত — চাহিদার কোনো নিশ্চিত ইঙ্গিত নেই</li>
+          <li data-icon="🎓">নকশায় নতুনত্বের অভাব — পাটের জিনিসকে সেকেলে ভাবা হয়</li>
+          <li data-icon="🌐">বিশ্বজুড়ে দুর্বল বিপণন — ভারতের পাট ব্র্যান্ড বিদেশে প্রায় অচেনা</li>
+        </ul>
+        <div class="highlight-box">শুধু পশ্চিমবঙ্গেই ১৯৯০ থেকে ২০২০-র মধ্যে ২ লক্ষেরও বেশি পাটশ্রমিক কাজ হারিয়েছেন। হুগলি জেলার অসংখ্য কল স্থায়ীভাবে বন্ধ হয়ে আছে।</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="sec-icon" style="background:#F0F7F0;">🔄</div>
+      <div class="sec-title">পাটগাছ থেকে তৈরি পণ্য — যাত্রাপথ</div>
+      <span class="chevron">⌄</span>
+    </div>
+    <div class="section-body">
+      <div class="section-inner">
+        <div class="step-grid">
+          <div class="step-item"><div class="step-num">১</div><div class="step-text"><strong>চাষ (৪–৫ মাস)</strong>মার্চ–এপ্রিলে আর্দ্র, দোআঁশ মাটিতে বীজ বোনা হয়। গাছ ৩–৪ মিটার লম্বা হয়।</div></div>
+          <div class="step-item"><div class="step-num">২</div><div class="step-text"><strong>কাটা</strong>ফুল আসার পর্যায়ে গাছ কাটা হয় — আঁশের মানের জন্য সময়জ্ঞান অত্যন্ত জরুরি।</div></div>
+          <div class="step-item"><div class="step-num">৩</div><div class="step-text"><strong>জাগ দেওয়া (১৫–৩০ দিন)</strong>আঁটি বেঁধে ধীর স্রোতের জলে ডুবিয়ে রাখা হয়। জীবাণু কাঠের মতো কাণ্ড থেকে আঁশ আলগা করে দেয়।</div></div>
+          <div class="step-item"><div class="step-num">৪</div><div class="step-text"><strong>আঁশ ছাড়ানো ও ধোয়া</strong>হাতে আঁশ ছাড়িয়ে পরিষ্কার করে ধুয়ে ২–৩ দিন রোদে শুকোনো হয়।</div></div>
+          <div class="step-item"><div class="step-num">৫</div><div class="step-text"><strong>কাটা ও বোনা</strong>শুকনো আঁশ থেকে সুতো কেটে বোনা হয় চট, বস্তা, কার্পেট বা সূক্ষ্ম বস্ত্র।</div></div>
+          <div class="step-item"><div class="step-num">৬</div><div class="step-text"><strong>মূল্যসংযোজন প্রক্রিয়া</strong>রং করা, ল্যামিনেশন বা তুলো/রেশমের সঙ্গে মিশিয়ে তৈরি হয় উচ্চমানের, রপ্তানিযোগ্য পণ্য।</div></div>
+        </div>
+        <div class="highlight-box">এনজাইম দিয়ে আধুনিক জৈব-জাগ দেওয়ার পদ্ধতি জলে জাগ দেওয়ার জায়গা নিচ্ছে — দূষণ কমছে, আঁশের গুণমান বাড়ছে প্রায় ৩০% পর্যন্ত।</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /tab0 -->
+
+<!-- ═══════════════ TAB 1: PRODUCTS ═══════════════ -->
+<div class="tab-page" id="tab1">
+
+  <!-- School & Education -->
+  <div class="section-card">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="sec-icon" style="background:#FFF8E1;">🎒</div>
+      <div class="sec-title">স্কুল ও শিক্ষা</div>
+      <span class="chevron">⌄</span>
+    </div>
+    <div class="section-body">
+      <div class="section-inner">
+        <p>সরকারি স্কুলে পাটের জিনিস চালু করলে একসঙ্গে অনেক কাজ হয়: টেকসই জীবনযাপনের শিক্ষা, গ্রামীণ কারিগরদের সহায়তা, আর লক্ষ লক্ষ শিশুর প্রতিদিনের প্লাস্টিকের জিনিসের বিকল্প।</p>
+        <div class="prod-grid">
+          <div class="prod-item"><span class="p-icon">🎒</span><span class="p-name">স্কুলব্যাগ</span><span class="p-desc">প্রতিদিনের ব্যবহারের জন্য টেকসই, জল-সহনশীল পাটের ব্যাগ</span></div>
+          <div class="prod-item"><span class="p-icon">✏️</span><span class="p-name">পেন্সিল বাক্স</span><span class="p-desc">শক্ত পাটবোর্ডের বাক্স — প্লাস্টিকের স্টেশনারি বাক্সের বিকল্প</span></div>
+          <div class="prod-item"><span class="p-icon">📚</span><span class="p-name">বইয়ের মলাট</span><span class="p-desc">পাঠ্যবইয়ের জন্য ছাপা পাটের কাপড়ের মলাট</span></div>
+          <div class="prod-item"><span class="p-icon">🍱</span><span class="p-name">মিড-ডে মিলের আসন</span><span class="p-desc">স্কুলের মধ্যাহ্নভোজন কর্মসূচির জন্য পুনর্ব্যবহারযোগ্য পাটের খাওয়ার আসন</span></div>
+          <div class="prod-item"><span class="p-icon">📖</span><span class="p-name">গ্রন্থাগারের ব্যাগ</span><span class="p-desc">লাইব্রেরির বই নেওয়ার জন্য ছাপা পাটের ব্যাগ</span></div>
+          <div class="prod-item"><span class="p-icon">🖼️</span><span class="p-name">দেওয়াল সজ্জা</span><span class="p-desc">পাটের ফ্রেমে নোটিশ বোর্ড ও শ্রেণিকক্ষের শিল্পফলক</span></div>
+          <div class="prod-item"><span class="p-icon">🪑</span><span class="p-name">আসনের ঢাকনা</span><span class="p-desc">স্কুলের চেয়ার ও বেঞ্চের জন্য বোনা পাটের ঢাকনা</span></div>
+          <div class="prod-item"><span class="p-icon">🛏️</span><span class="p-name">হস্টেলের বিছানাপত্র</span><span class="p-desc">স্কুল হস্টেলের জন্য বালিশের ওয়াড়, চাদর ও দরজার পর্দা</span></div>
+        </div>
+        <div class="highlight-box">ভারতে ১৫ লক্ষ সরকারি স্কুল আছে। প্রতিটিতে অন্তত সাধারণ পাটের স্টেশনারি সরবরাহ করলেই গ্রামীণ কারিগর ও কলগুলির জন্য বছরে হাজার হাজার কোটি টাকার বরাত তৈরি হবে।</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Home & Daily Life -->
+  <div class="section-card">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="sec-icon" style="background:#F0FFF4;">🏠</div>
+      <div class="sec-title">ঘর ও দৈনন্দিন জীবন</div>
+      <span class="chevron">⌄</span>
+    </div>
+    <div class="section-body">
+      <div class="section-inner">
+        <p>ঘরের প্রায় প্রতিটি কোণে প্লাস্টিক ও কৃত্রিম উপাদানের জায়গা নিতে পারে পাট — সুন্দরভাবে, সাশ্রয়ী দামে, টেকসইভাবে।</p>
+        <div class="prod-grid">
+          <div class="prod-item"><span class="p-icon">🛍️</span><span class="p-name">বাজারের থলি</span><span class="p-desc">এককালীন প্লাস্টিকের বদলে ছাপা, ব্র্যান্ডযুক্ত ব্যাগ</span></div>
+          <div class="prod-item"><span class="p-icon">🍽️</span><span class="p-name">খাবার টেবিলের ম্যাট</span><span class="p-desc">বোনা পাটের প্লেসম্যাট — টেকসই ও ধোয়া যায়</span></div>
+          <div class="prod-item"><span class="p-icon">🛋️</span><span class="p-name">সোফার ঢাকনা</span><span class="p-desc">পাট-তুলোর মিশ্রণে তৈরি আসবাবের কাপড়</span></div>
+          <div class="prod-item"><span class="p-icon">👕</span><span class="p-name">কাপড় রাখার ঝুড়ি</span><span class="p-desc">হাতলযুক্ত মজবুত বোনা পাটের ঝুড়ি</span></div>
+          <div class="prod-item"><span class="p-icon">📦</span><span class="p-name">গোছানোর বাক্স</span><span class="p-desc">তাক ও আলমারির জন্য ভাঁজ করা যায় এমন পাটের বাক্স</span></div>
+          <div class="prod-item"><span class="p-icon">🪟</span><span class="p-name">জানালার পর্দা</span><span class="p-desc">প্রাকৃতিক ছাঁদের পাটের পর্দা — অতিবেগুনি রশ্মি আটকায়</span></div>
+          <div class="prod-item"><span class="p-icon">🌸</span><span class="p-name">ফুলের টবের ঢাকনা</span><span class="p-desc">ঘরের ভেতরের গাছের জন্য সাজানো পাটের মোড়ক</span></div>
+          <div class="prod-item"><span class="p-icon">🧱</span><span class="p-name">ইকো ওয়ালপেপার</span><span class="p-desc">পাট-ভিত্তিক দেওয়াল প্যানেল — শব্দ শোষণ করে, দেখতেও সুন্দর</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hospital & Health -->
+  <div class="section-card">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="sec-icon" style="background:#FFF0F5;">🏥</div>
+      <div class="sec-title">হাসপাতাল ও স্বাস্থ্য ক্ষেত্র</div>
+      <span class="chevron">⌄</span>
+    </div>
+    <div class="section-body">
+      <div class="section-inner">
+        <p>হাসপাতালে প্রচুর পরিমাণে প্লাস্টিক বর্জ্য তৈরি হয়। জৈব-বিয়োজ্য পাটের বিকল্প চিকিৎসা-সংক্রান্ত প্লাস্টিক দূষণ নাটকীয়ভাবে কমাতে পারে।</p>
+        <div class="prod-grid">
+          <div class="prod-item"><span class="p-icon">🧺</span><span class="p-name">পুনর্ব্যবহারযোগ্য কাপড়ের ব্যাগ</span><span class="p-desc">হাসপাতালের লিনেন সংগ্রহ ও পরিবহনের জন্য পাটের ব্যাগ</span></div>
+          <div class="prod-item"><span class="p-icon">🎁</span><span class="p-name">ইকো রোগী-কিট</span><span class="p-desc">ভর্তি রোগীদের জন্য পাটের থলিতে স্বাগত-কিট</span></div>
+          <div class="prod-item"><span class="p-icon">💊</span><span class="p-name">ওষুধের প্যাকেজিং</span><span class="p-desc">ট্যাবলেট ও সম্পূরকের জন্য পাট-কাগজ মিশ্রিত কার্টন</span></div>
+          <div class="prod-item"><span class="p-icon">🗑️</span><span class="p-name">জৈব-বিয়োজ্য বর্জ্য ব্যাগ</span><span class="p-desc">হাসপাতালের জৈব বর্জ্য ফেলার জন্য নিরাপদ পাট-ভিত্তিক ব্যাগ</span></div>
+        </div>
+        <div class="highlight-box">ভারতের হাসপাতালগুলিতে প্রতিদিন ৬০০ টনেরও বেশি প্লাস্টিক বর্জ্য তৈরি হয়। এর অন্তত ২০% জৈব-বিয়োজ্য পাটের বিকল্প দিয়ে বদলালে বছরে ৪৪,০০০ টন প্লাস্টিক দূষণ আটকানো যাবে।</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Railway & Transport -->
+  <div class="section-card">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="sec-icon" style="background:#EEF4FF;">🚆</div>
+      <div class="sec-title">রেল ও পরিবহন</div>
+      <span class="chevron">⌄</span>
+    </div>
+    <div class="section-body">
+      <div class="section-inner">
+        <p>বিশ্বের বৃহত্তম রেল নেটওয়ার্ক ভারতীয় রেল পাটজাত পণ্যের এক বিশাল অব্যবহৃত বাজার — একটিমাত্র ক্রয়নীতিই রাতারাতি এই শিল্পকে বদলে দিতে পারে।</p>
+        <div class="prod-grid">
+          <div class="prod-item"><span class="p-icon">🖼️</span><span class="p-name">স্টেশন সজ্জা</span><span class="p-desc">রেল স্টেশনের জন্য পাটের প্যানেল, ম্যুরাল ও বোনা শিল্পকর্ম</span></div>
+          <div class="prod-item"><span class="p-icon">💺</span><span class="p-name">আসনের মাথার ঢাকনা</span><span class="p-desc">ট্রেনের কামরার জন্য স্বাস্থ্যকর, ধোয়ার উপযোগী পাটের হেডরেস্ট কভার</span></div>
+          <div class="prod-item"><span class="p-icon">📦</span><span class="p-name">পার্সেল প্যাকেজিং</span><span class="p-desc">রেলের পার্সেল পরিষেবার জন্য পরিবেশবান্ধব পাটের বস্তা</span></div>
+          <div class="prod-item"><span class="p-icon">🛍️</span><span class="p-name">বিমানবন্দরের স্মারক ব্যাগ</span><span class="p-desc">শুল্কমুক্ত ও বিমানবন্দরের দোকানে ব্র্যান্ডযুক্ত পাটের টোট</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Government Office Use -->
+  <div class="section-card">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="sec-icon" style="background:#F5F0FF;">🏛️</div>
+      <div class="sec-title">সরকারি অফিসে ব্যবহার</div>
+      <span class="chevron">⌄</span>
+    </div>
+    <div class="section-body">
+      <div class="section-inner">
+        <p>কেন্দ্রীয় ও রাজ্য সরকারের সব দপ্তরে পাটের স্টেশনারি ও প্যাকেজিং বাধ্যতামূলক করে একটি সরকারি বিজ্ঞপ্তি জারি হলে সঙ্গে সঙ্গে সারা বছরের একটি নিশ্চিত বাজার তৈরি হবে, যার মূল্য হাজার হাজার কোটি টাকা।</p>
+        <div class="prod-grid">
+          <div class="prod-item"><span class="p-icon">📁</span><span class="p-name">ফাইল কভার</span><span class="p-desc">প্লাস্টিকের ফোল্ডারের বদলে শক্ত পাটবোর্ডের ফাইল</span></div>
+          <div class="prod-item"><span class="p-icon">📋</span><span class="p-name">সম্মেলন ফোল্ডার</span><span class="p-desc">সভা ও শীর্ষ সম্মেলনের জন্য মার্জিত পাটের পোর্টফোলিও</span></div>
+          <div class="prod-item"><span class="p-icon">🖥️</span><span class="p-name">অফিস ডেস্ক ম্যাট</span><span class="p-desc">ছাপা পাটের ডেস্ক প্যাড — পিভিসি-র পরিবেশবান্ধব বিকল্প</span></div>
+          <div class="prod-item"><span class="p-icon">🎁</span><span class="p-name">সরকারি উপহারের ব্যাগ</span><span class="p-desc">সরকারি অনুষ্ঠান ও অনুষ্ঠানিকতার জন্য ব্র্যান্ডযুক্ত পাটের ব্যাগ</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tourism & Export -->
+  <div class="section-card">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="sec-icon" style="background:#FFFBF0;">✈️</div>
+      <div class="sec-title">পর্যটন ও রপ্তানি — ঐতিহ্যবাহী হস্তশিল্প</div>
+      <span class="chevron">⌄</span>
+    </div>
+    <div class="section-body">
+      <div class="section-inner">
+        <p>কাঁথা ও ডোকরার মতো ঐতিহ্যবাহী শিল্পধারার সঙ্গে মিশে বাংলার পাটের হস্তশিল্পের আন্তর্জাতিক আবেদন প্রবল। পরিবেশ-সচেতন পর্যটক ও আন্তর্জাতিক ক্রেতারা সক্রিয়ভাবে খাঁটি, টেকসই পণ্যের খোঁজ করছেন।</p>
+        <div class="prod-grid">
+          <div class="prod-item"><span class="p-icon">🧵</span><span class="p-name">কাঁথা-পাট মিশ্রণ</span><span class="p-desc">হাতে সেলাই করা পাটের বস্ত্র — উচ্চমানের রপ্তানি পণ্য</span></div>
+          <div class="prod-item"><span class="p-icon">🧳</span><span class="p-name">পর্যটকদের স্মারক ব্যাগ</span><span class="p-desc">দর্শনার্থীদের জন্য বাংলার ঐতিহ্য-ছাপা পাটের ব্যাগ</span></div>
+          <div class="prod-item"><span class="p-icon">🖼️</span><span class="p-name">রপ্তানিযোগ্য দেওয়াল শিল্প</span><span class="p-desc">বিশ্বের সাজসজ্জার বাজারের জন্য হাতে তৈরি পাটের ছবি ও টেপেস্ট্রি</span></div>
+          <div class="prod-item"><span class="p-icon">💎</span><span class="p-name">ইকো বিলাসী পণ্য</span><span class="p-desc">উচ্চমানের পাটের গয়নার বাক্স, ওয়াইন ব্যাগ ও উপহার-সেট</span></div>
+        </div>
+        <div class="highlight-box">জার্মানি, জাপান, ফ্রান্স ও মার্কিন যুক্তরাষ্ট্র প্রাকৃতিক-আঁশের ইকো-বিলাসী পণ্যের দ্রুততম বর্ধনশীল বাজার। ভারতের এখানে প্রথম-সুবিধা আছে, যা এখনও পুরোপুরি কাজে লাগানো হয়নি।</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Agriculture Sector -->
+  <div class="section-card">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="sec-icon" style="background:#F0FFF4;">🌱</div>
+      <div class="sec-title">কৃষি ক্ষেত্র</div>
+      <span class="chevron">⌄</span>
+    </div>
+    <div class="section-body">
+      <div class="section-inner">
+        <p>পাটের জিওটেক্সটাইল ও কৃষিজ পণ্যের বাজার দ্রুত বাড়ছে, যাতে সহায়তা করছে সরকারের জলবিভাজিকা ও বনসৃজন কর্মসূচি।</p>
+        <div class="prod-grid">
+          <div class="prod-item"><span class="p-icon">🌿</span><span class="p-name">জৈব-বিয়োজ্য চারার টব</span><span class="p-desc">সরাসরি মাটিতে লাগানো যায় — চারা নাড়াচাড়ায় ধাক্কা লাগে না, বর্জ্যও হয় না</span></div>
+          <div class="prod-item"><span class="p-icon">🌲</span><span class="p-name">গাছের রক্ষাবেষ্টনী</span><span class="p-desc">চারাগাছকে বাতাস, পশু আর কড়া রোদ থেকে বাঁচায়</span></div>
+          <div class="prod-item"><span class="p-icon">🌾</span><span class="p-name">ফসল রক্ষার চাদর</span><span class="p-desc">তুষার থেকে সুরক্ষা ও ছায়াযুক্ত চাষের জন্য চটের ঢাকনা</span></div>
+          <div class="prod-item"><span class="p-icon">⛰️</span><span class="p-name">ভাঙন রোধের ম্যাট</span><span class="p-desc">বাঁধ, ঢাল ও নদীর পাড়ের জন্য পাটের জিওটেক্সটাইল</span></div>
+          <div class="prod-item"><span class="p-icon">🌰</span><span class="p-name">বীজ সংরক্ষণের ব্যাগ</span><span class="p-desc">নিঃশ্বাস নিতে পারা পাটের ব্যাগে বীজ প্লাস্টিকের চেয়ে বেশিদিন সজীব থাকে</span></div>
+          <div class="prod-item"><span class="p-icon">🪴</span><span class="p-name">মালচ ম্যাট</span><span class="p-desc">জৈব খামারের জন্য আগাছা দমনকারী পাটের ম্যাট</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modern & Tech -->
+  <div class="section-card">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="sec-icon" style="background:#EEF4FF;">💻</div>
+      <div class="sec-title">আধুনিক ও প্রযুক্তি-ভিত্তিক পণ্য</div>
+      <span class="chevron">⌄</span>
+    </div>
+    <div class="section-body">
+      <div class="section-inner">
+        <p>পাট এখন ডিজিটাল যুগে প্রবেশ করছে। তরুণ ডিজাইনার ও ইঞ্জিনিয়াররা এই প্রাচীন আঁশের অপ্রত্যাশিত, ভবিষ্যৎমুখী ব্যবহার খুঁজে পাচ্ছেন — যা একে পরের প্রজন্মের কাছে প্রাসঙ্গিক করে তুলছে।</p>
+        <div class="prod-grid">
+          <div class="prod-item"><span class="p-icon">💻</span><span class="p-name">ল্যাপটপ স্লিভ</span><span class="p-desc">প্যাড দেওয়া পাট-ফেল্টের স্লিভ — সুন্দর ও সুরক্ষিত</span></div>
+          <div class="prod-item"><span class="p-icon">📱</span><span class="p-name">মোবাইল কভার</span><span class="p-desc">বোনা পাটের ব্যাক কভার — প্লাস্টিকের কেসের জৈব-বিয়োজ্য বিকল্প</span></div>
+          <div class="prod-item"><span class="p-icon">🎧</span><span class="p-name">হেডফোন কেস</span><span class="p-desc">ইয়ারফোন ও হেডসেটের জন্য পরিবেশবান্ধব শক্ত পাটের কেস</span></div>
+          <div class="prod-item"><span class="p-icon">📦</span><span class="p-name">ই-কমার্স প্যাকেজিং</span><span class="p-desc">বাবল-র‍্যাপ প্লাস্টিকের বদলে জৈব-বিয়োজ্য পাটের মেলার ব্যাগ</span></div>
+          <div class="prod-item"><span class="p-icon">🔇</span><span class="p-name">শব্দরোধী প্যানেল</span><span class="p-desc">পাটের আঁশের শব্দরোধী টাইলস — অফিস, স্টুডিও ও শ্রেণিকক্ষের জন্য</span></div>
+          <div class="prod-item"><span class="p-icon">🔋</span><span class="p-name">ইলেকট্রনিক্সের প্যাকেজিং</span><span class="p-desc">ফোন, গ্যাজেট ও গৃহস্থালি যন্ত্রের জন্য স্মার্ট পাটের প্যাকেজিং</span></div>
+        </div>
+        <div class="highlight-box">আইআইটি খড়্গপুরের গবেষণায় দেখা গেছে, পাট-শক্তিবর্ধিত পলিমার কম্পোজিট প্রসারণ-শক্তিতে ফাইবারগ্লাসের সমকক্ষ হতে পারে — অর্ধেক কার্বন খরচে।</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /tab1 -->
+
+<!-- ═══════════════ TAB 2: VS PLASTIC ═══════════════ -->
+<div class="tab-page" id="tab2">
+
+  <div class="section-card">
+    <div class="section-header open" onclick="toggle(this)">
+      <div class="sec-icon" style="background:#F0FFF4;">⚖️</div>
+      <div class="sec-title">পাট বনাম প্লাস্টিক — সংখ্যাই বলছে গল্পটা</div>
+      <span class="chevron" style="transform:rotate(180deg);">⌄</span>
+    </div>
+    <div class="section-body open">
+      <div class="section-inner">
+        <p>প্লাস্টিক দূষণ আমাদের যুগের সংজ্ঞায়িত সংকটগুলির একটি। ভারতে প্রতি বছর <strong>৩৫ লক্ষ টন প্লাস্টিক বর্জ্য</strong> তৈরি হয় — যার বড় অংশই এককালীন ব্যবহারের থলি। পাট এর একটি তৈরি, বড় আকারে চালানো সম্ভব এমন বিকল্প।</p>
+        <table class="compare-table">
+          <tr><th>বৈশিষ্ট্য</th><th>পাটের থলি</th><th>প্লাস্টিকের থলি</th></tr>
+          <tr><td>পচতে সময়</td><td class="good">১–২ বছর</td><td class="bad">৫০০–১০০০ বছর</td></tr>
+          <tr><td>কী থেকে তৈরি</td><td class="good">নবায়নযোগ্য উদ্ভিদ</td><td class="bad">পেট্রোলিয়াম (অনবায়নযোগ্য)</td></tr>
+          <tr><td>কার্বন পদচিহ্ন</td><td class="good">কার্বন-ঋণাত্মক</td><td class="bad">উচ্চ CO₂ নির্গমনকারী</td></tr>
+          <tr><td>পুনর্ব্যবহার</td><td class="good">২০০+ বার</td><td class="bad">১–৩ বার</td></tr>
+          <tr><td>মাটির স্বাস্থ্য</td><td class="good">মাটিকে সমৃদ্ধ করে</td><td class="bad">মাটি ও জলের গুণমান নষ্ট করতে পারে</td></tr>
+          <tr><td>ব্যবহারপ্রতি খরচ*</td><td class="good">₹০.১৫ (পুনর্ব্যবহারে)</td><td class="bad">₹২.০০ (এককালীন)</td></tr>
+          <tr><td>কর্মসংস্থান</td><td class="good">ভারতে লক্ষ লক্ষ</td><td class="bad">বেশিরভাগ স্বয়ংক্রিয়/আমদানিকৃত</td></tr>
+          <tr><td>প্রাণীদের নিরাপত্তা</td><td class="good">সম্পূর্ণ নিরাপদ</td><td class="bad">বন্যপ্রাণী ও সামুদ্রিক বাস্তুতন্ত্রের ক্ষতি করে</td></tr>
+          <tr><td>সমুদ্রের ওপর প্রভাব</td><td class="good">মাইক্রোপ্লাস্টিক শূন্য</td><td class="bad">ভেঙে বিষাক্ত মাইক্রোপ্লাস্টিক হয়</td></tr>
+          <tr><td>আগুনে নিরাপত্তা</td><td class="good">কম ধোঁয়া, প্রাকৃতিক</td><td class="bad">পুড়লে বিষাক্ত ধোঁয়া ছাড়ে</td></tr>
+        </table>
+        <p style="font-size:14px; color:var(--text-light);">*থলির পুরো পুনর্ব্যবহার-আয়ুষ্কাল ধরে ব্যবহারপ্রতি খরচ হিসেব করা হয়েছে।</p>
+        <div class="highlight-box">ভারতের প্রতিটি পরিবার যদি সপ্তাহে মাত্র ৩টি প্লাস্টিকের থলির বদলে পাটের থলি ব্যবহার করে, প্রতি বছর ১৫,০০০ কোটিরও বেশি প্লাস্টিকের থলি প্রচলন থেকে বাদ যাবে।</div>
+        <p>২০০ বার ব্যবহৃত প্রতিটি পাটের থলি ২০০টি প্লাস্টিকের থলির জায়গা নেয়। এটা কোনো ধাপে ধাপে উন্নতি নয় — এটা খরচ করা প্রতিটি টাকার ওপর <strong>২০০ গুণ গুণক</strong>।</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="sec-icon" style="background:#FFF0F0;">☠️</div>
+      <div class="sec-title">প্লাস্টিকের আসল খরচ</div>
+      <span class="chevron">⌄</span>
+    </div>
+    <div class="section-body">
+      <div class="section-inner">
+        <ul class="point-list">
+          <li data-icon="🐟">প্রতি বছর ৮০ লক্ষ টন প্লাস্টিক সমুদ্রে গিয়ে পড়ে — প্রতি মিনিটে একটি করে আবর্জনার ট্রাক ফেলার সমান</li>
+          <li data-icon="🐄">শুধু ভারতেই প্রতি বছর ১০ লক্ষেরও বেশি প্রাণী — গরু, ডলফিন, কচ্ছপ, সামুদ্রিক পাখি — প্লাস্টিক গিলে মারা যায়</li>
+          <li data-icon="🌾">কৃষিজমির মাটিতে মাইক্রোপ্লাস্টিক পাওয়া গেছে, দূষিত খেতে যা ফলন ২৫% পর্যন্ত কমিয়ে দেয়</li>
+          <li data-icon="💧">প্লাস্টিক থেকে বিষাক্ত রাসায়নিক (BPA, থ্যালেট) ভূগর্ভস্থ জলে মেশে, যা প্রজন্মের পর প্রজন্ম সম্প্রদায়ের স্বাস্থ্যকে প্রভাবিত করে</li>
+          <li data-icon="🧒">বিভিন্ন গবেষণায় ইঙ্গিত মিলেছে যে মাইক্রোপ্লাস্টিক মানুষের স্বাস্থ্য ও পরিবেশকে প্রভাবিত করতে পারে।</li>
+          <li data-icon="💰">পরিষ্কার, স্বাস্থ্য ও পরিবেশগত ক্ষতি মিলিয়ে প্লাস্টিক দূষণে ভারতের বছরে আনুমানিক ₹১৫,০০০ কোটি খরচ হয়</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /tab2 -->
+
+<!-- ═══════════════ TAB 3: REVIVAL PLAN ═══════════════ -->
+<div class="tab-page" id="tab3">
+
+  <div class="section-card">
+    <div class="section-header open" onclick="toggle(this)">
+      <div class="sec-icon" style="background:#FFF8E1;">💡</div>
+      <div class="sec-title">পুনরুজ্জীবনের রূপরেখা — ৮টি শক্তিশালী পদক্ষেপ</div>
+      <span class="chevron" style="transform:rotate(180deg);">⌄</span>
+    </div>
+    <div class="section-body open">
+      <div class="section-inner">
+        <p>পাটকে ফিরিয়ে আনতে সরকার, শিল্প, চাষি, ডিজাইনার ও ক্রেতা — সবার সমন্বিত পদক্ষেপ দরকার। এখানে একটি বিস্তারিত, কার্যকর রূপরেখা দেওয়া হল।</p>
+        <div class="step-grid">
+          <div class="step-item"><div class="step-num">১</div><div class="step-text"><strong>কলগুলির আধুনিকীকরণ</strong>সরকারি ভর্তুকিযুক্ত ঋণে যন্ত্রপাতি উন্নত করা। জাপানি ও ইউরোপীয় স্পিনিং প্রযুক্তি গ্রহণ করা। দক্ষ কর্মীদের কাজ বজায় রেখে পুনরাবৃত্তিমূলক কাজ স্বয়ংক্রিয় করা।</div></div>
+          <div class="step-item"><div class="step-num">২</div><div class="step-text"><strong>ন্যায্য ন্যূনতম সহায়ক মূল্য</strong>পাটচাষিদের জন্য লাভজনক এমএসপি নিশ্চিত করা। সমবায়ের মাধ্যমে ক্রয় সহজ করে শোষণকারী মধ্যস্বত্বভোগীদের সরানো।</div></div>
+          <div class="step-item"><div class="step-num">৩</div><div class="step-text"><strong>নকশায় বিপ্লব</strong>কলকাতা, মুর্শিদাবাদ ও কোচবিহারে পাট নকশা প্রতিষ্ঠান গড়া। NIFT ও আইআইটি-র সঙ্গে সহযোগিতায় ফ্যাশনদুরস্ত, বিশ্ববাজারযোগ্য পণ্য তৈরি করা।</div></div>
+          <div class="step-item"><div class="step-num">৪</div><div class="step-text"><strong>প্লাস্টিক নিষেধাজ্ঞা কঠোরভাবে কার্যকর করা</strong>পাট প্যাকেজিং সামগ্রী আইন কড়াভাবে প্রয়োগ করা। খাদ্যশস্যের বাইরে FMCG, ওষুধ ও ই-কমার্সেও বাধ্যতামূলক পাট প্যাকেজিং সম্প্রসারণ।</div></div>
+          <div class="step-item"><div class="step-num">৫</div><div class="step-text"><strong>রপ্তানি বাজার উন্নয়ন</strong>ইউরোপ, জাপান ও যুক্তরাষ্ট্রে “জুট ইন্ডিয়া” ব্র্যান্ড কেন্দ্র খোলা। প্রিমিয়াম বাজারের জন্য আন্তর্জাতিকভাবে স্বীকৃত ইকো-লেবেলে পণ্যের শংসাপত্র নেওয়া।</div></div>
+          <div class="step-item"><div class="step-num">৬</div><div class="step-text"><strong>গবেষণা ও উন্নয়নে বিনিয়োগ</strong>পাটের কম্পোজিট, পাট-কাগজ, সক্রিয় কার্বন ও জৈব-চিকিৎসা ব্যবহারে গবেষণায় অর্থ জোগানো। আইআইটি, CSIR ও বিশ্বের বিশ্ববিদ্যালয়গুলির সঙ্গে অংশীদারি।</div></div>
+          <div class="step-item"><div class="step-num">৭</div><div class="step-text"><strong>মহিলা ও স্বনির্ভর গোষ্ঠীর ক্ষমতায়ন</strong>গ্রামের মহিলাদের স্বনির্ভর গোষ্ঠীকে বৈচিত্র্যময় পাটজাত পণ্য তৈরির প্রশিক্ষণ দেওয়া। তাঁদের সরাসরি ই-কমার্স প্ল্যাটফর্ম ও রপ্তানি ক্রেতাদের সঙ্গে যুক্ত করা।</div></div>
+          <div class="step-item"><div class="step-num">৮</div><div class="step-text"><strong>স্কুল ও সম্প্রদায়ে সচেতনতা</strong>স্কুল পাঠ্যক্রমে পাট-সাক্ষরতা চালু করা। পঞ্চায়েত স্তরে “পাট মেলা” আয়োজন করা। তরুণ প্রজন্মের কাছে পাটকে আকাঙ্ক্ষার বিষয় করে তোলা।</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="sec-icon" style="background:#F0F7F0;">🏛️</div>
+      <div class="sec-title">এখনই প্রয়োজনীয় নীতিগত পদক্ষেপ</div>
+      <span class="chevron">⌄</span>
+    </div>
+    <div class="section-body">
+      <div class="section-inner">
+        <ul class="point-list">
+          <li data-icon="📜">আরও বেশি পণ্যশ্রেণি অন্তর্ভুক্ত করতে পাট প্যাকেজিং সামগ্রী (পণ্য মোড়কে বাধ্যতামূলক ব্যবহার) আইন সংশোধন করা</li>
+          <li data-icon="🏫">সব সরকারি স্কুলের পোশাক-প্রকল্পে পাটের স্কুলব্যাগ বাধ্যতামূলক করে বিজ্ঞপ্তি জারি করা</li>
+          <li data-icon="🚆">সব স্টেশন, ট্রেন ও প্যাকেজিংয়ের চাহিদায় ভারতীয় রেলকে পাটজাত পণ্য কেনা বাধ্যতামূলক করা</li>
+          <li data-icon="🏥">সব সরকারি হাসপাতালকে প্লাস্টিকের লিনেন ও বর্জ্য ব্যাগের বদলে শংসাপত্রযুক্ত পাটের বিকল্প ব্যবহারের নির্দেশ দেওয়া</li>
+          <li data-icon="🌐">বাণিজ্য মন্ত্রকের অধীনে “মেড ইন জুট” বিশ্বব্যাপী ব্র্যান্ডিং প্রচারাভিযান শুরু করা</li>
+          <li data-icon="💰">কেন্দ্রীয় বাজেটে ₹২,০০০ কোটির একটি নির্দিষ্ট পাট বৈচিত্র্যকরণ তহবিল গড়া</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /tab3 -->
+
+<!-- ═══════════════ TAB 4: WOMEN & SHG ═══════════════ -->
+<div class="tab-page" id="tab4">
+
+  <div class="section-card">
+    <div class="section-header open" onclick="toggle(this)">
+      <div class="sec-icon" style="background:#FFF0F5;">👩</div>
+      <div class="sec-title">মহিলা ও স্বনির্ভর গোষ্ঠী — পাট পুনরুজ্জীবনের হৃদয়</div>
+      <span class="chevron" style="transform:rotate(180deg);">⌄</span>
+    </div>
+    <div class="section-body open">
+      <div class="section-inner">
+        <div class="shg-card">
+          <h4>🌸 গ্রামের মহিলারাই এই বিপ্লবের নেতৃত্ব দিতে পারেন</h4>
+          <p>পশ্চিমবঙ্গ, বিহার, অসম ও ওডিশা জুড়ে গ্রামীণ মহিলাদের স্বনির্ভর গোষ্ঠী (SHG) ঘর থেকে ও ছোট কর্মশালায় বৈচিত্র্যময় পাটজাত পণ্য তৈরি করতে পারে — ভারতের গ্রামে গ্রামে লক্ষ লক্ষ পরিবেশবান্ধব কর্মসংস্থান তৈরি করে।</p>
+          <div class="shg-stat-row">
+            <div class="shg-stat"><span class="sn">১২ লক্ষ+</span><span class="sl">পশ্চিমবঙ্গে সক্রিয় SHG</span></div>
+            <div class="shg-stat"><span class="sn">₹২৫,০০০</span><span class="sl">সম্ভাব্য মাসিক আয়</span></div>
+            <div class="shg-stat"><span class="sn">০</span><span class="sl">শুরু করতে প্রয়োজনীয় পুঁজি</span></div>
+          </div>
+        </div>
+        <p>মডেলটি সহজ: সরকার বা এনজিও প্রাথমিক প্রশিক্ষণ, একটি মৌলিক তাঁত বা পাটশিল্পের সরঞ্জাম, আর বাজারের সঙ্গে যোগাযোগ করে দেয়। SHG সদস্যরা বাড়ি বা যৌথ কর্মস্থল থেকে কাজ করেন, মূল্যসংযোজিত পাটজাত পণ্য তৈরি করেন, আর সমবায়, অনলাইন প্ল্যাটফর্ম ও সরকারি ক্রয়ের মাধ্যমে বিক্রি করেন।</p>
+        <div class="highlight-box">“১০ জন মহিলার একটি SHG দিনে ৫০টি পাটের ব্যাগ তৈরি করলে সম্মিলিতভাবে মাসে ₹১৫,০০০–২৫,০০০ আয় করতে পারে। এটাকে ১ লক্ষ SHG-তে ছড়িয়ে দিলে তৈরি হয় ₹১৫,০০০ কোটির একটি কুটির শিল্প।”</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="sec-icon" style="background:#F0FFF4;">📋</div>
+      <div class="sec-title">SHG কী কী তৈরি করতে পারে</div>
+      <span class="chevron">⌄</span>
+    </div>
+    <div class="section-body">
+      <div class="section-inner">
+        <div class="prod-grid">
+          <div class="prod-item"><span class="p-icon">👜</span><span class="p-name">হ্যান্ডব্যাগ ও টোট</span><span class="p-desc">হাতের সূচিকর্ম ও ব্লক প্রিন্টের ফ্যাশন ব্যাগ</span></div>
+          <div class="prod-item"><span class="p-icon">🎨</span><span class="p-name">কাঁথা মিশ্র শিল্প</span><span class="p-desc">পাটের ওপর ঐতিহ্যবাহী সূচিকর্ম — উচ্চমানের রপ্তানি হস্তশিল্প</span></div>
+          <div class="prod-item"><span class="p-icon">🧸</span><span class="p-name">পাটের খেলনা ও পুতুল</span><span class="p-desc">নিরাপদ, প্রাকৃতিক খেলনা — প্লাস্টিক শূন্য, ১০০% হাতে তৈরি</span></div>
+          <div class="prod-item"><span class="p-icon">🌸</span><span class="p-name">গয়না ও আনুষঙ্গিক</span><span class="p-desc">পাটে মোড়া চুড়ি, দুল ও চুলের সাজসজ্জা</span></div>
+          <div class="prod-item"><span class="p-icon">🏮</span><span class="p-name">ল্যাম্পশেড</span><span class="p-desc">বোনা পাটের ল্যাম্পের ঢাকনা — উষ্ণ, সাজানো আলো</span></div>
+          <div class="prod-item"><span class="p-icon">🛏️</span><span class="p-name">বিছানা ও টেবিলের লিনেন</span><span class="p-desc">পাট-তুলো মিশ্রণের বালিশের ওয়াড়, রানার ও টেবিলক্লথ</span></div>
+          <div class="prod-item"><span class="p-icon">🎁</span><span class="p-name">উপহারের প্যাকেজিং</span><span class="p-desc">হাতে সেলাই করা উপহারের ব্যাগ ও বিয়ের স্মারক থলি</span></div>
+          <div class="prod-item"><span class="p-icon">🪴</span><span class="p-name">বাগানের সামগ্রী</span><span class="p-desc">চারার টব, ঝোলানো প্লান্টার ও বীজ-অঙ্কুরের কিট</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="sec-icon" style="background:#EEF4FF;">🔗</div>
+      <div class="sec-title">SHG-কে বাজারের সঙ্গে যুক্ত করার উপায়</div>
+      <span class="chevron">⌄</span>
+    </div>
+    <div class="section-body">
+      <div class="section-inner">
+        <div class="step-grid">
+          <div class="step-item"><div class="step-num">১</div><div class="step-text"><strong>গভর্নমেন্ট ই-মার্কেটপ্লেস (GeM)</strong>সরকারি দপ্তরে সরাসরি পাটজাত পণ্য সরবরাহ করতে GeM পোর্টালে SHG নিবন্ধন করা — নিশ্চিত পাইকারি বরাত।</div></div>
+          <div class="step-item"><div class="step-num">২</div><div class="step-text"><strong>অ্যামাজন কারিগর ও ফ্লিপকার্ট সমর্থ</strong>কারিগরদের জন্য নির্দিষ্ট প্ল্যাটফর্মে হাতে তৈরি পাটজাত পণ্যের তালিকা দেওয়া। তালিকাভুক্তির কোনো ফি নেই, সারা দেশের গ্রাহকের কাছে পৌঁছানো যায়।</div></div>
+          <div class="step-item"><div class="step-num">৩</div><div class="step-text"><strong>WBIDFC ও EPCH-র মাধ্যমে রপ্তানি</strong>ওয়েস্ট বেঙ্গল ইন্ডাস্ট্রিয়াল ডেভেলপমেন্ট ফিনান্স কর্পোরেশন এবং এক্সপোর্ট প্রমোশন কাউন্সিল ফর হ্যান্ডিক্রাফটস SHG সমষ্টির জন্য রপ্তানি সহায়তা দেয়।</div></div>
+          <div class="step-item"><div class="step-num">৪</div><div class="step-text"><strong>গ্রামীণ হাট ও পাট মেলার নেটওয়ার্ক</strong>নিয়মিত স্থানীয় বাজার ও বার্ষিক পাট উৎসব মধ্যস্বত্বভোগী ছাড়াই সরাসরি ক্রেতার কাছে পৌঁছানোর পথ তৈরি করে।</div></div>
+          <div class="step-item"><div class="step-num">৫</div><div class="step-text"><strong>কর্পোরেট CSR অংশীদারি</strong>বড় সংস্থাগুলি তাদের CSR বাধ্যবাধকতার অধীনে কর্মীদের উপহার, অনুষ্ঠানের ব্যাগ ও টেকসই উদ্যোগের জন্য SHG-র পাটজাত পণ্য কিনতে পারে।</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /tab4 -->
+
+<!-- ═══════════════ TAB 5: BENEFITS ═══════════════ -->
+<div class="tab-page" id="tab5">
+
+  <div class="section-card">
+    <div class="section-header open" onclick="toggle(this)">
+      <div class="sec-icon" style="background:#F3FFF3;">✨</div>
+      <div class="sec-title">পাট পুনরুজ্জীবনের সুবিধা — প্রত্যেক অংশীদারের জন্য</div>
+      <span class="chevron" style="transform:rotate(180deg);">⌄</span>
+    </div>
+    <div class="section-body open">
+      <div class="section-inner">
+        <ul class="point-list">
+          <li data-icon="🌍"><strong>পরিবেশ:</strong> প্রতি টন পাট ১ টন কৃত্রিম আঁশের জায়গা নেয়, যার ফলে প্রায় ২ টন CO₂ নির্গমন আর শত শত কিলো প্লাস্টিক বর্জ্য এড়ানো যায়।</li>
+          <li data-icon="👨‍🌾"><strong>চাষি:</strong> পাটের স্থিতিশীল দাম মানে বাংলা ও বিহারের ৪০ লক্ষেরও বেশি চাষি পরিবারের জন্য সম্মানজনক জীবিকা।</li>
+          <li data-icon="👩"><strong>গ্রামের মহিলা:</strong> SHG-চালিত পাটের হস্তশিল্প গ্রামের লক্ষ লক্ষ মহিলাকে ঘর ছেড়ে না বেরিয়েই আয়ের স্বাধীনতা দিতে পারে।</li>
+          <li data-icon="🏭"><strong>কলশ্রমিক:</strong> আধুনিকীকরণ ও বৈচিত্র্যকরণ ৫০–৮০ লক্ষ নতুন উৎপাদন ও হস্তশিল্পের কাজ তৈরি করতে পারে।</li>
+          <li data-icon="🇮🇳"><strong>জাতীয় অর্থনীতি:</strong> ভারত আজ পাট রপ্তানি করে বছরে ₹৮,০০০ কোটি আয় করে — বৈচিত্র্যকরণে তা তিনগুণ হয়ে ₹২৫,০০০–৩০,০০০ কোটি হতে পারে।</li>
+          <li data-icon="🎒"><strong>ছাত্রছাত্রী:</strong> সরকারি স্কুলে পাটের পণ্য পরিবারের খরচের বোঝা কমায়, আবার শিশুদের হাতে তুলে দেয় পরিবেশবান্ধব, টেকসই সামগ্রী।</li>
+          <li data-icon="🐄"><strong>প্রাণী ও সমুদ্র:</strong> প্লাস্টিক বদলে দিলে প্রতি বছর সমুদ্রে যাওয়া ৮০ লক্ষ টন কমে, নানা বাস্তুতন্ত্রে বন্যপ্রাণ বাঁচে।</li>
+          <li data-icon="🏘️"><strong>গ্রামীণ সম্প্রদায়:</strong> পাটের পুনরুজ্জীবন গ্রামীণ অর্থনীতির ভিত মজবুত করে, ভিড়ে ঠাসা শহরে অভাবজনিত দেশান্তর কমায়।</li>
+          <li data-icon="🌡️"><strong>জলবায়ু পরিবর্তন:</strong> বড় আকারে পাটচাষ প্রতি বছর লক্ষ লক্ষ টন CO₂ শোষণ করতে পারে — ভারতের নেট-জিরো প্রতিশ্রুতিতে সরাসরি অবদান।</li>
+          <li data-icon="👧"><strong>ভবিষ্যৎ প্রজন্ম:</strong> শিশুরা উত্তরাধিকারে পাবে একটি পরিচ্ছন্ন, সবুজ পৃথিবী — শতাব্দীর পর শতাব্দীর প্লাস্টিক বর্জ্যে দমবন্ধ কোনো ভূদৃশ্য নয়।</li>
+        </ul>
+        <div class="highlight-box">পাটের পুনরুজ্জীবন কেবল একটি ঐতিহ্যবাহী শিল্পকে সাহায্য করা নয়। এটা পরিবেশ, কর্মসংস্থান, রপ্তানি ও সমতায় — একসঙ্গে — সম্ভাব্য সবচেয়ে বুদ্ধিমান বিনিয়োগ।</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header" onclick="toggle(this)">
+      <div class="sec-icon" style="background:#FFF8E1;">🌐</div>
+      <div class="sec-title">ভারতের বিশ্বজোড়া সুযোগ</div>
+      <span class="chevron">⌄</span>
+    </div>
+    <div class="section-body">
+      <div class="section-inner">
+        <p>বিশ্বের টেকসই প্যাকেজিং বাজারের মূল্য ২০২৪ সালে ছিল <strong>৩৫০ বিলিয়ন মার্কিন ডলার</strong>, আর তা বছরে ৬% হারে বাড়ছে। ইকো-বিলাসী পণ্যের বাজার বাড়ছে আরও দ্রুত। বিশ্বের বৃহত্তম পাট উৎপাদক হিসেবে ভারত এই সুযোগ ধরার এক অনন্য অবস্থানে।</p>
+        <ul class="point-list">
+          <li data-icon="🇩🇪">জার্মানি এককালীন প্লাস্টিক নিষিদ্ধ করেছে — এখন সক্রিয়ভাবে ভারত থেকে পাটের বিকল্প খুঁজছে</li>
+          <li data-icon="🇯🇵">জাপানের শূন্য-বর্জ্য সংস্কৃতি জৈব-বিয়োজ্য প্যাকেজিংয়ের জন্য প্রিমিয়াম চাহিদা তৈরি করেছে</li>
+          <li data-icon="🇺🇸">প্রাকৃতিক-আঁশের পণ্যের মার্কিন ইকো-রিটেল বাজার ২০২৩–২৪ সালে ৩৪% বেড়েছে</li>
+          <li data-icon="🇬🇧">যুক্তরাজ্যের সুপারমার্কেটগুলি — সেইনসবেরি’জ, এম অ্যান্ড এস, ওয়েটরোজ — প্রাকৃতিক-আঁশের প্যাকেজিংয়ে সরে আসছে</li>
+          <li data-icon="🌏">আসিয়ান দেশগুলি ভারতীয় হস্তশিল্প রপ্তানির দ্রুত বর্ধনশীল বাজার</li>
+        </ul>
+        <div class="highlight-box">ভারত বসে আছে ₹৩০,০০০ কোটির রপ্তানি সুযোগের ওপর। দরকার শুধু এই প্রাচীন সোনালি আঁশকে আধুনিক করে, নকশা দিয়ে সাজিয়ে, বিশ্বের কাছে বিপণন করার ইচ্ছেটুকু।</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /tab5 -->
+
+<!-- AWARENESS BANNER -->
+<div class="awareness-banner">
+  <h3>🌿 পাটের শপথ নাও</h3>
+  <p>এই সপ্তাহে অন্তত একটি প্লাস্টিকের থলির বদলে একটি পাটের থলি ব্যবহার করার প্রতিশ্রুতি দাও। ছোট ছোট পদক্ষেপ, লক্ষ লক্ষ মানুষের হাতে গুণিত হয়ে, পৃথিবী বদলে দেয়।</p>
+  <button class="pledge-btn" id="pledgeBtn" onclick="takePledge()">আমি পাটের পথ বেছে নিলাম!</button>
+  <div class="pledge-confirm" id="pledgeConfirm">🎉 ধন্যবাদ! তুমিও পরিবর্তনের অংশ। এটা ৩ জন বন্ধুর সঙ্গে ভাগ করে নাও!</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>সোনালি আঁশ পুনরুজ্জীবন উদ্যোগ</strong></p>
+  <p>পাট অতীত নয় — পাট ভবিষ্যৎ।<br>চাষ করো। ব্যবহার করো। পাশে দাঁড়াও।</p>
+  <p style="margin-top:10px; font-size:12px;">© ২০২৫ · সচেতনতামূলক শিক্ষা কর্মসূচি · পশ্চিমবঙ্গ, ভারত</p>
+</footer>
+
+<!-- TOAST -->
+<div id="toast">🌿 পাটের জয় হোক!</div>
+
+<script>
+// ── JS SOUND ENGINE (Web Audio API) ──
+const AC = window.AudioContext || window.webkitAudioContext;
+let ctx = null;
+
+function getCtx() {
+  if (!ctx) { try { ctx = new AC(); } catch(e){} }
+  return ctx;
+}
+
+function playTone(freq, type, dur, vol, delay) {
+  const c = getCtx(); if (!c) return;
+  const o = c.createOscillator();
+  const g = c.createGain();
+  o.connect(g); g.connect(c.destination);
+  o.type = type || 'sine';
+  o.frequency.setValueAtTime(freq, c.currentTime + (delay||0));
+  g.gain.setValueAtTime(0, c.currentTime + (delay||0));
+  g.gain.linearRampToValueAtTime(vol||0.18, c.currentTime + (delay||0) + 0.01);
+  g.gain.exponentialRampToValueAtTime(0.001, c.currentTime + (delay||0) + dur);
+  o.start(c.currentTime + (delay||0));
+  o.stop(c.currentTime + (delay||0) + dur + 0.05);
+}
+
+function sndOpen() {
+  playTone(523, 'sine', 0.18, 0.15);
+  playTone(659, 'sine', 0.18, 0.12, 0.07);
+}
+function sndClose() {
+  playTone(440, 'sine', 0.12, 0.1);
+  playTone(349, 'sine', 0.15, 0.08, 0.06);
+}
+function sndTab() {
+  playTone(698, 'triangle', 0.12, 0.13);
+}
+function sndPledge() {
+  [523,659,784,1047].forEach((f,i) => playTone(f,'sine',0.22,0.15,i*0.08));
+}
+function sndClick() {
+  playTone(600, 'square', 0.06, 0.07);
+}
+
+// ── ACCORDION ──
+function toggle(header) {
+  const body = header.nextElementSibling;
+  const isOpen = body.classList.contains('open');
+  document.querySelectorAll('.section-body.open').forEach(b => b.classList.remove('open'));
+  document.querySelectorAll('.section-header.open').forEach(h => {
+    h.classList.remove('open');
+    h.querySelector('.chevron').style.transform = '';
+  });
+  if (!isOpen) {
+    body.classList.add('open');
+    header.classList.add('open');
+    sndOpen();
+    setTimeout(() => header.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+  } else {
+    sndClose();
+  }
+}
+
+// ── TABS ──
+function switchTab(idx, el) {
+  document.querySelectorAll('.tab-page').forEach((p,i) => {
+    p.classList.toggle('active', i === idx);
+  });
+  document.querySelectorAll('.nav-tab').forEach((t,i) => {
+    t.classList.toggle('active', i === idx);
+  });
+  sndTab();
+  el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  
+  // Close all accordions in new tab; open first one
+  setTimeout(() => {
+    const firstHeader = document.querySelector('#tab' + idx + ' .section-header');
+    if (firstHeader && !firstHeader.classList.contains('open')) {
+      const body = firstHeader.nextElementSibling;
+      if (body && !body.classList.contains('open')) {
+        body.classList.add('open');
+        firstHeader.classList.add('open');
+      }
+    }
+  }, 100);
+}
+
+// ── PLEDGE ──
+function takePledge() {
+  sndPledge();
+  document.getElementById('pledgeConfirm').style.display = 'block';
+  const btn = document.getElementById('pledgeBtn');
+  btn.textContent = '✓ শপথ নেওয়া হল!';
+  btn.style.background = '#2E6B2E';
+  btn.style.color = '#fff';
+  showToast('🌿 সবুজ আন্দোলনে স্বাগত!');
+}
+
+// ── TOAST ──
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// ── PRODUCT ITEM SOUND ──
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.prod-item').forEach(item => {
+    item.addEventListener('touchstart', () => sndClick(), { passive: true });
+    item.addEventListener('mousedown', () => sndClick());
+  });
+
+  // Auto-open first section on load
+  const first = document.querySelector('#tab0 .section-header');
+  if (first) {
+    first.classList.add('open');
+    first.nextElementSibling.classList.add('open');
+  }
+
+  // Show welcome toast
+  setTimeout(() => showToast('🌾 সব বিভাগ দেখতে নিচে স্ক্রল করুন'), 1200);
+});
+</script>
+</body>
+</html>
