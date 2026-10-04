@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Safe Route to School | School Bus Safety — MySkillGame</title>
+<meta name="description" content="Every child deserves a safe journey. School bus safety standards, driver conduct, child protection features and emergency preparedness — an awareness guide by MySkillGame.">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --navy:#10233F;
+    --navy-soft:#1A3459;
+    --bus-yellow:#FFB100;
+    --bus-yellow-deep:#E89A00;
+    --cream:#FFF8EC;
+    --panel:#FFFFFF;
+    --panel-alt:#FBF6E9;
+    --border:#EFE3CC;
+    --red:#C6362B;
+    --green:#2E7D5B;
+    --ink:#24272B;
+    --ink-soft:#5B6270;
+    --hazard-black:#1C1C1C;
+    --radius:14px;
+    --max:1120px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    line-height:1.6;
+    transition:background 0.2s ease, color 0.2s ease;
+  }
+
+  h1,h2,h3,h4{
+    font-family:'Fredoka', sans-serif;
+    color:var(--navy);
+    margin:0 0 0.4em 0;
+    letter-spacing:-0.01em;
+  }
+
+  .plate{font-family:'JetBrains Mono', monospace; letter-spacing:0.06em;}
+  a{color:inherit;}
+  svg{display:block;}
+  button{font-family:inherit;}
+
+  :focus-visible{outline:3px solid var(--bus-yellow-deep); outline-offset:3px;}
+  .icon{width:1em; height:1em;}
+
+  /* ================= DARK MODE ================= */
+  html.dark-mode{
+    --cream:#0E1622;
+    --panel:#182333;
+    --panel-alt:#141F2D;
+    --border:#2A3A52;
+    --ink:#EAF0F8;
+    --ink-soft:#AEBBCE;
+  }
+  html.dark-mode .hero-scene{background:linear-gradient(180deg,#0E1622 0%,#0E1622 55%,#1B2636 55%,#1B2636 100%);}
+  html.dark-mode .icon-tile{background:var(--panel-alt);}
+  html.dark-mode .layout-legend, html.dark-mode .diagram-caption{color:var(--ink-soft);}
+
+  /* ================= HIGH CONTRAST ================= */
+  html.high-contrast body{filter:contrast(1.3) saturate(1.15);}
+  html.high-contrast .stop-card, html.high-contrast .vision-card, html.high-contrast .icon-tile, html.high-contrast .diagram, html.high-contrast .layout-wrap{border-width:2px; border-color:var(--navy);}
+  html.high-contrast a, html.high-contrast .route-nav a{text-decoration:underline;}
+
+  /* ================= A11Y TOOLBAR ================= */
+  .a11y-bar{
+    position:fixed; top:14px; right:14px; z-index:60;
+    display:flex; gap:6px; background:var(--hazard-black);
+    padding:6px; border-radius:999px; box-shadow:0 10px 24px -10px rgba(0,0,0,0.5);
+  }
+  .a11y-bar button{
+    width:38px; height:38px; border-radius:50%; border:none;
+    background:#2A2A2A; color:var(--bus-yellow); cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    font-size:0.85rem; font-weight:700; transition:background 0.15s ease;
+  }
+  .a11y-bar button:hover, .a11y-bar button.active{background:var(--bus-yellow); color:var(--hazard-black);}
+  .a11y-bar button svg{width:18px; height:18px;}
+
+  /* ================= FLOATING EMERGENCY BUTTON ================= */
+  .emergency-fab{
+    position:fixed; right:16px; bottom:20px; z-index:60;
+    display:flex; align-items:center; gap:8px;
+    background:var(--red); color:#fff; text-decoration:none;
+    padding:14px 18px; border-radius:999px; font-family:'Fredoka',sans-serif; font-weight:600;
+    box-shadow:0 14px 30px -10px rgba(198,54,43,0.7);
+    animation:fab-pulse 2.2s ease-in-out infinite;
+  }
+  .emergency-fab svg{width:20px; height:20px;}
+  @keyframes fab-pulse{
+    0%,100%{ box-shadow:0 14px 30px -10px rgba(198,54,43,0.7); }
+    50%{ box-shadow:0 14px 30px -6px rgba(198,54,43,1); }
+  }
+
+  /* ---------- Destination-board hero ---------- */
+  .hero{
+    background:
+      radial-gradient(1100px 500px at 85% -10%, rgba(255,177,0,0.18), transparent 60%),
+      linear-gradient(180deg, var(--navy) 0%, var(--navy-soft) 100%);
+    color:#fff;
+    padding:0 20px 56px;
+    position:relative;
+    overflow:hidden;
+  }
+
+  .hazard-strip{
+    height:10px; width:100%;
+    background:repeating-linear-gradient(135deg, var(--bus-yellow) 0 18px, var(--hazard-black) 18px 36px);
+    background-size:200% 100%;
+    animation:hazard-shift 6s linear infinite;
+  }
+  @keyframes hazard-shift{ from{background-position:0 0;} to{background-position:-100px 0;} }
+
+  .board{max-width:var(--max); margin:0 auto; padding-top:40px;}
+
+  .destination-sign{
+    display:inline-flex; align-items:center; gap:10px;
+    background:var(--hazard-black); border:2px solid var(--bus-yellow);
+    border-radius:8px; padding:8px 16px;
+    font-family:'JetBrains Mono', monospace; font-size:0.78rem; letter-spacing:0.14em;
+    color:var(--bus-yellow); text-transform:uppercase;
+  }
+  .destination-sign .dot{width:7px;height:7px;border-radius:50%;background:var(--bus-yellow); animation:blink 1.6s ease-in-out infinite;}
+  @keyframes blink{0%,100%{opacity:1;}50%{opacity:0.25;}}
+
+  .hero-grid{margin-top:26px; display:grid; grid-template-columns:1.25fr 1fr; gap:36px; align-items:center;}
+  .hero h1{color:#fff; font-size:clamp(2.1rem, 4.2vw, 3.1rem); line-height:1.08;}
+  .hero h1 span{color:var(--bus-yellow);}
+  .hero-lede{color:#D9E1EE; font-size:1.08rem; max-width:52ch; margin-top:14px;}
+
+  .route-caption{margin-top:26px; display:flex; align-items:center; gap:14px; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#B9C4D6;}
+  .route-caption .stopdot{width:10px;height:10px;border-radius:50%;background:var(--bus-yellow);flex:none;}
+  .route-caption .line{flex:1;height:2px;background:linear-gradient(90deg, var(--bus-yellow), transparent);}
+
+  .hero-scene{
+    border-radius:18px; overflow:hidden; border:4px solid rgba(255,177,0,0.35);
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.55);
+    background:linear-gradient(180deg,#8FC7E8 0%, #C9E7F2 55%, #E8DDB5 55%, #E8DDB5 100%);
+  }
+  .hero-scene svg{width:100%; height:auto; display:block;}
+  .sun{animation:sun-pulse 4s ease-in-out infinite;}
+  @keyframes sun-pulse{0%,100%{opacity:1;}50%{opacity:0.85;}}
+  .cloud{animation:drift 14s linear infinite;}
+  .cloud.c2{animation-duration:20s; animation-delay:-6s;}
+  @keyframes drift{from{transform:translateX(-20px);}to{transform:translateX(20px);}}
+  .wheel{transform-origin:center; animation:spin 1.4s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .bus-group{animation:bob 2.2s ease-in-out infinite;}
+  @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(-3px);}}
+  .road-dashes{animation:dash-flow 1s linear infinite;}
+  @keyframes dash-flow{to{stroke-dashoffset:-40;}}
+  .gps-blink{animation:gps-blink 1.3s ease-in-out infinite;}
+  @keyframes gps-blink{0%,100%{opacity:1;}50%{opacity:0.3;}}
+  .net-highlight{animation:net-glow 2.4s ease-in-out infinite;}
+  @keyframes net-glow{0%,100%{stroke:#10233F; opacity:0.75;}50%{stroke:#2E7D5B; opacity:1;}}
+
+  /* ---------- Generic section shells ---------- */
+  section.band{max-width:var(--max); margin:64px auto 0; padding:0 20px;}
+  .eyebrow{
+    display:inline-block; font-family:'JetBrains Mono', monospace; font-size:0.8rem;
+    letter-spacing:0.14em; color:var(--bus-yellow-deep); background:#FFF1D6;
+    border:1px solid #F3D68A; padding:6px 14px; border-radius:999px; text-transform:uppercase;
+  }
+  html.dark-mode .eyebrow{background:#2A2410; border-color:#4A3F17;}
+  .band-head{text-align:center; margin-bottom:26px;}
+  .band-head h2{font-size:clamp(1.6rem,3vw,2.1rem); margin-top:14px;}
+  .band-head p{color:var(--ink-soft); max-width:62ch; margin:10px auto 0;}
+
+  /* ---------- Vision band ---------- */
+  .vision{max-width:var(--max); margin:-30px auto 0; padding:0 20px;}
+  .vision-card{
+    background:var(--panel); border-radius:var(--radius);
+    padding:30px clamp(20px,4vw,42px);
+    box-shadow:0 20px 45px -30px rgba(16,35,63,0.35);
+    border:1px solid var(--border);
+  }
+  .vision-card h2{font-size:1.4rem;}
+  .vision-card p{color:var(--ink-soft); max-width:80ch; margin:0;}
+
+  /* ---------- Interactive bus explorer ---------- */
+  .explorer{
+    background:var(--panel); border:1px solid var(--border); border-radius:var(--radius);
+    padding:26px; box-shadow:0 20px 45px -30px rgba(16,35,63,0.35);
+  }
+  .explorer-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:26px; align-items:center;}
+  .bus-stage{position:relative; background:var(--panel-alt); border-radius:12px; padding:10px; border:1px solid var(--border);}
+  .bus-stage svg{width:100%; height:auto;}
+  .hotspot{
+    position:absolute; width:32px; height:32px; border-radius:50%;
+    background:rgba(255,177,0,0.9); border:3px solid var(--navy);
+    transform:translate(-50%,-50%); cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    color:var(--navy); animation:hotspot-pulse 2s ease-in-out infinite;
+  }
+  .hotspot svg{width:16px;height:16px;}
+  .hotspot:hover, .hotspot:focus-visible, .hotspot.active{background:var(--red); color:#fff; border-color:#fff;}
+  @keyframes hotspot-pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,177,0,0.5);}50%{box-shadow:0 0 0 8px rgba(255,177,0,0);}}
+
+  .info-panel{
+    background:var(--panel-alt); border:1px solid var(--border); border-radius:12px;
+    padding:20px; min-height:180px;
+  }
+  .info-panel h4{font-size:1.1rem; display:flex; align-items:center; gap:8px;}
+  .info-panel h4 svg{width:22px;height:22px; color:var(--navy);}
+  .info-panel p{color:var(--ink-soft); margin:8px 0 0;}
+  .info-hint{color:var(--ink-soft); font-size:0.85rem; font-family:'JetBrains Mono', monospace;}
+
+  /* ---------- Route nav ---------- */
+  .route-nav{display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top:22px;}
+  .route-nav a{
+    text-decoration:none; display:inline-flex; align-items:center; gap:6px;
+    background:var(--panel); border:1px solid var(--border); color:var(--navy);
+    font-family:'JetBrains Mono', monospace; font-size:0.78rem;
+    padding:10px 14px; border-radius:999px; min-height:40px;
+    transition:background 0.15s ease, transform 0.15s ease;
+  }
+  .route-nav a:hover, .route-nav a:focus-visible{background:var(--bus-yellow); transform:translateY(-1px);}
+
+  .route{max-width:var(--max); margin:30px auto 0; padding:0 20px 40px; position:relative;}
+  .route::before{
+    content:""; position:absolute; left:50%; top:10px; bottom:60px; width:4px;
+    background:repeating-linear-gradient(180deg, var(--bus-yellow) 0 16px, transparent 16px 28px);
+    background-size:4px 56px; transform:translateX(-50%);
+    animation:route-flow 2.5s linear infinite;
+  }
+  @keyframes route-flow{to{background-position:0 56px;}}
+
+  .stop{position:relative; display:grid; grid-template-columns:1fr 1fr; gap:0 56px; padding:34px 0; scroll-margin-top:24px;}
+  .stop .content{grid-column:1;}
+  .stop .spacer{grid-column:2;}
+  .stop.right .content{grid-column:2;}
+  .stop.right .spacer{grid-column:1;}
+
+  .stop-marker{
+    position:absolute; left:50%; top:34px; transform:translate(-50%,0);
+    width:56px;height:56px; border-radius:50%; background:var(--navy);
+    border:4px solid var(--bus-yellow); display:flex;align-items:center;justify-content:center;
+    font-size:1.5rem; z-index:2; box-shadow:0 8px 18px -6px rgba(16,35,63,0.5);
+  }
+
+  .stop-code{
+    display:inline-block; font-family:'JetBrains Mono', monospace; font-size:0.72rem;
+    letter-spacing:0.12em; color:var(--navy); background:var(--bus-yellow);
+    padding:3px 10px; border-radius:5px; margin-bottom:10px; text-transform:uppercase;
+  }
+
+  .stop-card{
+    background:var(--panel); border:1px solid var(--border); border-radius:var(--radius);
+    padding:24px 26px; box-shadow:0 16px 34px -28px rgba(16,35,63,0.4);
+  }
+  .stop-card h3{font-size:1.22rem;}
+  .stop-card ul{margin:12px 0 0; padding-left:0; list-style:none;}
+  .stop-card li{position:relative; padding-left:22px; margin-bottom:8px; color:var(--ink-soft);}
+  .stop-card li::before{content:""; position:absolute; left:0; top:9px; width:9px;height:9px; border-radius:2px; background:var(--bus-yellow-deep);}
+  .stop-card p.note{color:var(--ink-soft); margin-top:12px; font-size:0.95rem;}
+  .stop-card.alert{border-left:5px solid var(--red);}
+  .stop-card.good{border-left:5px solid var(--green);}
+
+  .icon-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:16px;}
+  .icon-tile{background:var(--panel-alt); border:1px solid var(--border); border-radius:10px; padding:14px 10px; text-align:center;}
+  .icon-tile .icon{width:34px; height:34px; margin:0 auto 8px; color:var(--navy);}
+  .icon-tile span{display:block; font-size:0.78rem; color:var(--ink-soft); line-height:1.3;}
+  .icon-tile.warn .icon{color:var(--red);}
+
+  .diagram{margin-top:20px; background:var(--panel-alt); border:1px solid var(--border); border-radius:12px; padding:16px; text-align:center;}
+  .diagram svg{width:100%; height:auto; max-width:340px; margin:0 auto;}
+  .diagram-caption{font-family:'JetBrains Mono', monospace; font-size:0.78rem; color:var(--ink-soft); margin-top:8px;}
+
+  .glow-door{animation:door-glow 1.8s ease-in-out infinite;}
+  @keyframes door-glow{0%,100%{filter:drop-shadow(0 0 0px rgba(198,54,43,0.0));}50%{filter:drop-shadow(0 0 6px rgba(198,54,43,0.55));}}
+
+  .check-draw{stroke-dasharray:20; stroke-dashoffset:20; animation:draw-check 0.6s ease forwards;}
+  .check-draw.d1{animation-delay:0.2s;} .check-draw.d2{animation-delay:0.5s;}
+  .check-draw.d3{animation-delay:0.8s;} .check-draw.d4{animation-delay:1.1s;}
+  @keyframes draw-check{to{stroke-dashoffset:0;}}
+
+  .clip-check{animation:clip-pop 2.6s ease-in-out infinite;}
+  @keyframes clip-pop{0%,70%,100%{transform:scale(1);}80%{transform:scale(1.18);}90%{transform:scale(1);}}
+
+  .checklist{list-style:none; padding:0; margin:16px 0 0; display:grid; gap:10px;}
+  .checklist li{display:flex; align-items:center; gap:10px; background:#F3F9F5; border:1px solid #D7EADD; border-radius:10px; padding:10px 12px; color:var(--ink); font-weight:500;}
+  html.dark-mode .checklist li{background:#132A20; border-color:#20492F;}
+  .checklist .icon{width:22px; height:22px; color:var(--green); flex:none;}
+
+  .layout-wrap{margin-top:20px; background:var(--panel-alt); border:1px solid var(--border); border-radius:12px; padding:18px;}
+  .layout-wrap svg{width:100%; height:auto; max-width:420px; margin:0 auto; display:block;}
+  .layout-legend{display:grid; grid-template-columns:repeat(2,1fr); gap:8px 16px; margin-top:14px; font-size:0.85rem; color:var(--ink-soft);}
+  .layout-legend li{list-style:none; display:flex; align-items:center; gap:8px;}
+  .layout-legend .icon{width:18px; height:18px; color:var(--navy); flex:none;}
+
+  /* ---------- Driver fitness card ---------- */
+  .fitness-card{
+    margin-top:18px; background:var(--panel-alt); border:1px solid var(--border);
+    border-radius:12px; padding:18px;
+  }
+  .fitness-card .fitness-head{display:flex; align-items:center; gap:10px; margin-bottom:10px;}
+  .fitness-card .fitness-head svg{width:26px;height:26px; color:var(--navy);}
+  .fitness-card ul{list-style:none; padding:0; margin:0; display:grid; gap:8px;}
+  .fitness-card li{display:flex; align-items:center; gap:8px; font-size:0.92rem; color:var(--ink);}
+  .fitness-card .icon{width:18px;height:18px; color:var(--green); flex:none;}
+
+  /* ---------- Safety score ---------- */
+  .score-card{
+    background:var(--panel); border:1px solid var(--border); border-radius:var(--radius);
+    padding:clamp(22px,4vw,36px); box-shadow:0 20px 45px -30px rgba(16,35,63,0.35);
+    display:grid; grid-template-columns:1fr auto; gap:30px; align-items:center;
+  }
+  .score-list{list-style:none; padding:0; margin:0; display:grid; gap:10px;}
+  .score-list li{display:flex; align-items:center; justify-content:space-between; gap:10px; font-family:'Fredoka',sans-serif; font-weight:500; color:var(--ink);}
+  .score-list .icon{width:20px;height:20px; color:var(--green);}
+  .score-ring{text-align:center;}
+  .score-ring .pct{font-family:'Fredoka',sans-serif; font-weight:700; font-size:1.6rem; fill:var(--navy);}
+  .score-ring .label{font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--ink-soft); margin-top:6px;}
+
+  /* ---------- Child rules ---------- */
+  .rules-grid{display:grid; grid-template-columns:repeat(5,1fr); gap:14px;}
+  .rule-card{
+    background:var(--panel); border:1px solid var(--border); border-radius:14px;
+    padding:18px 10px; text-align:center; box-shadow:0 16px 34px -28px rgba(16,35,63,0.4);
+  }
+  .rule-card .badge{
+    width:56px; height:56px; border-radius:50%; background:var(--panel-alt);
+    display:flex; align-items:center; justify-content:center; margin:0 auto 10px;
+    color:var(--navy); border:2px solid var(--bus-yellow);
+  }
+  .rule-card .badge svg{width:28px;height:28px;}
+  .rule-card span{font-size:0.85rem; font-weight:600; color:var(--ink);}
+
+  /* ---------- Pledge ---------- */
+  .pledge-card{
+    background:linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
+    color:#fff; border-radius:20px; padding:clamp(28px,4vw,44px);
+  }
+  .pledge-card h2{color:#fff;}
+  .pledge-list{list-style:none; padding:0; margin:20px 0 0; display:grid; gap:12px; max-width:560px;}
+  .pledge-list li{display:flex; align-items:flex-start; gap:12px; font-size:1.02rem; color:#F0F4FA;}
+  .pledge-list input[type="checkbox"]{
+    width:22px; height:22px; margin-top:2px; accent-color:var(--bus-yellow); flex:none; cursor:pointer;
+  }
+  .pledge-sign{margin-top:26px; display:flex; align-items:center; gap:12px; color:var(--bus-yellow); font-family:'JetBrains Mono',monospace; font-size:0.85rem;}
+  .pledge-sign .line{flex:1; height:1px; background:rgba(255,177,0,0.5);}
+
+  /* ---------- QR section ---------- */
+  .qr-card{
+    display:grid; grid-template-columns:auto 1fr; gap:26px; align-items:center;
+    background:var(--panel); border:1px solid var(--border); border-radius:var(--radius);
+    padding:clamp(22px,4vw,32px); box-shadow:0 20px 45px -30px rgba(16,35,63,0.35);
+  }
+  .qr-graphic{width:130px; height:130px; background:#fff; border:2px solid var(--navy); border-radius:10px; padding:8px;}
+  .qr-list{list-style:none; padding:0; margin:10px 0 0; display:grid; gap:8px;}
+  .qr-list li{display:flex; align-items:center; gap:8px; color:var(--ink-soft); font-size:0.95rem;}
+  .qr-list .icon{width:18px;height:18px; color:var(--navy);}
+  .qr-note{font-size:0.8rem; color:var(--ink-soft); margin-top:10px; font-style:italic;}
+
+  /* ---------- Commitment / arrival ---------- */
+  .arrival-card{
+    background:linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
+    color:#fff; border-radius:20px; padding:clamp(28px,4vw,48px); position:relative; overflow:hidden;
+  }
+  .arrival-card::after{content:""; position:absolute; inset:0; background:repeating-linear-gradient(135deg, rgba(255,177,0,0.08) 0 18px, transparent 18px 36px); pointer-events:none;}
+  .arrival-inner{position:relative; display:grid; grid-template-columns:1fr 1fr; gap:34px; align-items:center;}
+  .arrival-badge{font-family:'JetBrains Mono', monospace; font-size:0.78rem; letter-spacing:0.14em; color:var(--bus-yellow); text-transform:uppercase; border:1px solid rgba(255,177,0,0.5); display:inline-block; padding:5px 12px; border-radius:999px;}
+  .arrival h2{color:#fff; font-size:clamp(1.6rem,3vw,2.2rem); margin-top:14px;}
+  .arrival-list{list-style:none; padding:0; margin:18px 0 0;}
+  .arrival-list li{font-family:'Fredoka', sans-serif; font-weight:600; font-size:1.15rem; margin-bottom:8px; color:#F4F7FB;}
+  .arrival-tag{color:var(--bus-yellow); font-family:'JetBrains Mono', monospace; font-weight:700; letter-spacing:0.08em; display:block; margin-top:18px; font-size:0.95rem;}
+  .arrival-scene{border-radius:16px; overflow:hidden; border:3px solid rgba(255,177,0,0.4); box-shadow:0 24px 50px -20px rgba(0,0,0,0.5); background:#0C1B30; padding:18px;}
+  .arrival-checklist{list-style:none; padding:0; margin:0; display:grid; gap:10px;}
+  .arrival-checklist li{display:flex; align-items:center; gap:10px; color:#EAF0F8; font-size:0.95rem;}
+  .arrival-checklist .icon{width:20px;height:20px;color:var(--bus-yellow); flex:none;}
+
+  /* ---------- MySkillGame band ---------- */
+  .msg-band{background:var(--bus-yellow); color:var(--hazard-black); padding:44px 20px; margin-top:64px;}
+  .msg-inner{max-width:var(--max); margin:0 auto; text-align:center;}
+  .msg-inner h2{color:var(--hazard-black); font-size:1.6rem;}
+  .chips{display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin:22px 0 6px;}
+  .chip{background:var(--hazard-black); color:var(--bus-yellow); font-family:'JetBrains Mono', monospace; font-size:0.85rem; padding:8px 14px; border-radius:999px;}
+  .tagline{font-family:'Fredoka', sans-serif; font-weight:600; margin-top:18px; font-size:1.1rem;}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--hazard-black); color:#B9C4D6; padding:36px 20px 26px;}
+  .footer-inner{max-width:var(--max); margin:0 auto; text-align:center;}
+  .footer-brand{font-family:'Fredoka',sans-serif; font-weight:700; color:#fff; font-size:1.2rem;}
+  .footer-sub{color:var(--bus-yellow); font-size:0.85rem; margin-top:4px; letter-spacing:0.04em;}
+  .footer-words{display:flex; justify-content:center; gap:18px; flex-wrap:wrap; margin-top:18px; font-family:'JetBrains Mono',monospace; font-size:0.8rem; color:#B9C4D6;}
+  .footer-made{margin-top:18px; font-size:0.82rem; color:#8A97AC;}
+  footer a{color:var(--bus-yellow); text-decoration:none;}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 860px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-scene{order:-1;}
+    .explorer-grid{grid-template-columns:1fr;}
+    .arrival-inner{grid-template-columns:1fr;}
+    .route::before{left:26px;}
+    .stop{grid-template-columns:1fr; padding-left:56px;}
+    .stop .content, .stop.right .content{grid-column:1;}
+    .stop .spacer, .stop.right .spacer{display:none;}
+    .stop-marker{left:26px; top:34px; width:46px; height:46px; font-size:1.2rem;}
+    .icon-grid{grid-template-columns:repeat(2,1fr);}
+    .layout-legend{grid-template-columns:1fr;}
+    .route-nav a{padding:12px 16px; font-size:0.82rem;}
+    .score-card{grid-template-columns:1fr; text-align:center;}
+    .rules-grid{grid-template-columns:repeat(2,1fr);}
+    .qr-card{grid-template-columns:1fr; text-align:center;}
+    .qr-graphic{margin:0 auto;}
+    .a11y-bar{top:auto; bottom:80px; right:12px; flex-direction:column; border-radius:20px;}
+    .emergency-fab span{display:none;}
+    .emergency-fab{padding:14px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ ICON SPRITE ============ -->
+<svg style="display:none" aria-hidden="true">
+<defs>
+  <symbol id="i-wheel" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="2.5" fill="currentColor"/><path d="M12 3v6M12 15v6M3 12h6M15 12h6M6 6l4.2 4.2M17.8 17.8L13.8 13.8M18 6l-4.2 4.2M6.2 17.8l4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+  <symbol id="i-phone-slash" viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><line x1="10" y1="18" x2="14" y2="18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><line x1="2.5" y1="21.5" x2="21.5" y2="2.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+  <symbol id="i-bottle-slash" viewBox="0 0 24 24"><path d="M10 2h4v3.5l2 3V20a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V8.5l2-3V2Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><line x1="8" y1="13" x2="16" y2="13" stroke="currentColor" stroke-width="1.6"/><line x1="2.5" y1="21.5" x2="21.5" y2="2.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+  <symbol id="i-bubble-slash" viewBox="0 0 24 24"><path d="M4 5h16v10H9l-4 4v-4H4Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><line x1="2.5" y1="21.5" x2="21.5" y2="2.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+  <symbol id="i-clipboard" viewBox="0 0 24 24"><rect x="5" y="3.5" width="14" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><rect x="9" y="2" width="6" height="3.4" rx="1" fill="currentColor"/><path d="M8 12.5l2.4 2.4L16 9.5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-warning" viewBox="0 0 24 24"><path d="M12 3 22 20H2Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><line x1="12" y1="9.5" x2="12" y2="14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="17" r="1.15" fill="currentColor"/></symbol>
+  <symbol id="i-child" viewBox="0 0 24 24"><circle cx="12" cy="6" r="3" fill="currentColor"/><path d="M6 21v-6a6 6 0 0 1 12 0v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-hand-slash" viewBox="0 0 24 24"><path d="M8 21v-8a2 2 0 1 1 4 0v3M12 16v-6a2 2 0 1 1 4 0v6M16 15v-3a2 2 0 1 1 4 0v5a5 5 0 0 1-5 5H11a5 5 0 0 1-4-2l-3-4 1.5-1.6a2 2 0 0 1 2.8-.1L8 13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/><line x1="2.5" y1="21.5" x2="21.5" y2="2.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+  <symbol id="i-door" viewBox="0 0 24 24"><rect x="5" y="2.5" width="14" height="19" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><line x1="12" y1="2.5" x2="12" y2="21.5" stroke="currentColor" stroke-width="1.4"/><circle cx="9.6" cy="12" r="1" fill="currentColor"/></symbol>
+  <symbol id="i-shield-check" viewBox="0 0 24 24"><path d="M12 2 20 5.5V11c0 5.2-3.4 8.7-8 10-4.6-1.3-8-4.8-8-10V5.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8.3 12.2l2.5 2.5 5-5.4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-extinguisher" viewBox="0 0 24 24"><rect x="8" y="8" width="8" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="10.5" y="3" width="3" height="3.5" fill="currentColor"/><path d="M12 3V1.3M15 5.2 19 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><line x1="10.5" y1="12" x2="13.5" y2="12" stroke="currentColor" stroke-width="1.4"/><line x1="10.5" y1="15.5" x2="13.5" y2="15.5" stroke="currentColor" stroke-width="1.4"/></symbol>
+  <symbol id="i-firstaid" viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="14" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 6V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1" fill="none" stroke="currentColor" stroke-width="1.8"/><line x1="12" y1="10.5" x2="12" y2="16.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="9" y1="13.5" x2="15" y2="13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-hammer" viewBox="0 0 24 24"><rect x="2.3" y="12.5" width="10" height="4" rx="1" transform="rotate(-45 7.3 14.5)" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12.2 9.3 17 4.6a2 2 0 0 1 2.8 0l.6.6a2 2 0 0 1 0 2.8L15.7 12.7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  <symbol id="i-gps" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/><line x1="12" y1="1" x2="12" y2="4.2" stroke="currentColor" stroke-width="1.6"/><line x1="12" y1="19.8" x2="12" y2="23" stroke="currentColor" stroke-width="1.6"/><line x1="1" y1="12" x2="4.2" y2="12" stroke="currentColor" stroke-width="1.6"/><line x1="19.8" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="1.6"/></symbol>
+  <symbol id="i-seatbelt" viewBox="0 0 24 24"><path d="M4 3v9a8 8 0 0 0 16 0V3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="9.5" y="11" width="5" height="6" rx="1" fill="currentColor"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M7.5 12.5 10.3 15.3 16.5 8.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-standing-slash" viewBox="0 0 24 24"><circle cx="12" cy="4.5" r="2.2" fill="currentColor"/><path d="M12 7v10M9 21l3-4 3 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><line x1="2.5" y1="21.5" x2="21.5" y2="2.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+  <symbol id="i-sit" viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.2" fill="currentColor"/><path d="M8 21v-5h8v5M8 16v-5a4 4 0 0 1 8 0v5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-ear" viewBox="0 0 24 24"><path d="M9 4a5 5 0 0 1 5 5c0 2-1.2 2.6-1.2 4.4a2.3 2.3 0 0 0 2.3 2.3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M9 4a6.5 6.5 0 0 0-2 12.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="10.4" cy="9.2" r="1" fill="currentColor"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.5S3 14.8 3 8.6A4.6 4.6 0 0 1 12 6a4.6 4.6 0 0 1 9 2.6c0 6.2-9 11.9-9 11.9Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  <symbol id="i-medal" viewBox="0 0 24 24"><circle cx="12" cy="14" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M9.5 8 7 2.5M14.5 8 17 2.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M9.5 14 11 15.6 14.7 11.9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-6.5 10-6.5S22 12 22 12s-3.5 6.5-10 6.5S2 12 2 12Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+  <symbol id="i-stethoscope" viewBox="0 0 24 24"><path d="M6 3v6a4 4 0 0 0 8 0V3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M18 9v3a6 6 0 0 1-12 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="19" cy="9" r="2" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+  <symbol id="i-brain" viewBox="0 0 24 24"><path d="M9 4a3 3 0 0 0-3 3 3 3 0 0 0-1.5 5.6A3 3 0 0 0 7 17a3 3 0 0 0 5 2 3 3 0 0 0 5-2 3 3 0 0 0 2.5-4.4A3 3 0 0 0 18 7a3 3 0 0 0-3-3 3 3 0 0 0-3 1 3 3 0 0 0-3-1Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+  <symbol id="i-bed" viewBox="0 0 24 24"><path d="M2 19v-7a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v7M2 19v2M22 19v2M2 14h20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6.5" cy="9.5" r="1.5" fill="currentColor"/></symbol>
+  <symbol id="i-qr" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="14" y="3" width="7" height="7" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="3" y="14" width="7" height="7" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="14" y="14" width="3" height="3" fill="currentColor"/><rect x="18" y="18" width="3" height="3" fill="currentColor"/><rect x="14" y="18" width="3" height="3" fill="none" stroke="currentColor" stroke-width="1.2"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><line x1="10" y1="18" x2="14" y2="18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 4.5A2 2 0 0 1 6 3h14v16H6a2 2 0 0 0-2 2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><line x1="8" y1="8" x2="16" y2="8" stroke="currentColor" stroke-width="1.4"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><g stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="12" y1="1.5" x2="12" y2="4.2"/><line x1="12" y1="19.8" x2="12" y2="22.5"/><line x1="1.5" y1="12" x2="4.2" y2="12"/><line x1="19.8" y1="12" x2="22.5" y2="12"/><line x1="4.4" y1="4.4" x2="6.3" y2="6.3"/><line x1="17.7" y1="17.7" x2="19.6" y2="19.6"/><line x1="4.4" y1="19.6" x2="6.3" y2="17.7"/><line x1="17.7" y1="6.3" x2="19.6" y2="4.4"/></g></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z" fill="currentColor"/></symbol>
+  <symbol id="i-contrast" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 3a9 9 0 0 1 0 18Z" fill="currentColor"/></symbol>
+  <symbol id="i-speaker" viewBox="0 0 24 24"><path d="M4 9v6h4l6 4V5L8 9Z" fill="currentColor"/><path d="M17 8.5a5 5 0 0 1 0 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 2 22 20H2Z" fill="currentColor"/><rect x="11" y="8" width="2" height="6" fill="#fff"/><rect x="11" y="15.5" width="2" height="2" fill="#fff"/></symbol>
+</defs>
+</svg>
+
+<!-- ============ ACCESSIBILITY TOOLBAR ============ -->
+<div class="a11y-bar" role="toolbar" aria-label="Accessibility controls">
+  <button type="button" id="btn-font-dec" aria-label="Decrease text size">A−</button>
+  <button type="button" id="btn-font-inc" aria-label="Increase text size">A+</button>
+  <button type="button" id="btn-contrast" aria-label="Toggle high contrast"><svg><use href="#i-contrast"/></svg></button>
+  <button type="button" id="btn-dark" aria-label="Toggle dark mode"><svg><use href="#i-moon"/></svg></button>
+  <button type="button" id="btn-read" aria-label="Read page aloud"><svg><use href="#i-speaker"/></svg></button>
+</div>
+
+<div class="hazard-strip" aria-hidden="true"></div>
+
+<main id="main-content">
+
+<header class="hero">
+  <div class="board">
+    <span class="destination-sign"><span class="dot" aria-hidden="true"></span>ROUTE 01 · HOME → SCHOOL</span>
+
+    <div class="hero-grid">
+      <div>
+        <h1>Every Child Deserves <span>a Safe Journey</span></h1>
+        <p class="hero-lede">A school bus is more than transportation — it is a moving classroom of trust and responsibility. This is our route map for getting every child home and back, safely, every single day.</p>
+        <div class="route-caption">
+          <span class="stopdot" aria-hidden="true"></span>
+          <span>9 stops · vehicle to school gate</span>
+          <span class="line" aria-hidden="true"></span>
+        </div>
+      </div>
+
+      <div class="hero-scene" role="img" aria-label="Illustration of a yellow school bus driving safely along a sunny road.">
+        <svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg">
+          <circle class="sun" cx="340" cy="42" r="22" fill="#FFD35C"/>
+          <g class="cloud" opacity="0.9"><ellipse cx="70" cy="40" rx="26" ry="12" fill="#fff"/><ellipse cx="92" cy="34" rx="18" ry="10" fill="#fff"/></g>
+          <g class="cloud c2" opacity="0.8"><ellipse cx="220" cy="60" rx="20" ry="9" fill="#fff"/></g>
+          <rect x="0" y="150" width="400" height="90" fill="#E8DDB5"/>
+          <rect x="0" y="150" width="400" height="14" fill="#8B8F94"/>
+          <line class="road-dashes" x1="0" y1="157" x2="400" y2="157" stroke="#fff" stroke-width="3" stroke-dasharray="18 14"/>
+
+          <g class="bus-group">
+            <rect x="70" y="98" width="180" height="58" rx="10" fill="#FFB100" stroke="#10233F" stroke-width="3"/>
+            <rect x="70" y="98" width="180" height="16" rx="6" fill="#E89A00"/>
+            <rect x="86" y="120" width="26" height="20" rx="3" fill="#BEE4F5" stroke="#10233F" stroke-width="2"/>
+            <rect x="120" y="120" width="26" height="20" rx="3" fill="#BEE4F5" stroke="#10233F" stroke-width="2"/>
+            <rect x="154" y="120" width="26" height="20" rx="3" fill="#BEE4F5" stroke="#10233F" stroke-width="2"/>
+            <rect x="196" y="120" width="40" height="24" rx="3" fill="#BEE4F5" stroke="#10233F" stroke-width="2"/>
+            <rect x="238" y="112" width="16" height="30" rx="2" fill="#10233F"/>
+            <circle cx="252" cy="130" r="3" fill="#FFD35C"/>
+            <circle class="wheel" cx="105" cy="156" r="15" fill="#1C1C1C"/>
+            <circle cx="105" cy="156" r="6" fill="#8B8F94"/>
+            <circle class="wheel" cx="210" cy="156" r="15" fill="#1C1C1C"/>
+            <circle cx="210" cy="156" r="6" fill="#8B8F94"/>
+            <text x="160" y="112" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#10233F" font-weight="700">SCHOOL BUS</text>
+          </g>
+
+          <g transform="translate(300,150)">
+            <circle cx="0" cy="30" r="10" fill="#10233F"/>
+            <path d="M0 40 v20 M-8 46 h16 M0 60 l-6 12 M0 60 l6 12" stroke="#10233F" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <circle cx="26" cy="30" r="10" fill="#C6362B"/>
+            <path d="M26 40 v20 M18 46 h16 M26 60 l-6 12 M26 60 l6 12" stroke="#C6362B" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <rect x="-14" y="-6" width="54" height="26" rx="4" fill="none" stroke="#10233F" stroke-width="1.6" stroke-dasharray="3 3"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="vision">
+  <div class="vision-card">
+    <h2>Our Vision</h2>
+    <p>A school bus is more than just transportation—it is a moving classroom of trust and responsibility. Every child deserves to travel safely from home to school and back. What follows is the full route: the vehicle, the driver, the child, the family, and the school — every stop where safety is either protected or put at risk.</p>
+  </div>
+</section>
+
+<!-- ============ INTERACTIVE BUS EXPLORER ============ -->
+<section class="band">
+  <div class="band-head">
+    <span class="eyebrow">Tap to Explore</span>
+    <h2>Click any part of the bus</h2>
+    <p>Every safety feature has a job to do. Tap a marker to find out what it is.</p>
+  </div>
+
+  <div class="explorer">
+    <div class="explorer-grid">
+      <div class="bus-stage">
+        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="20" y="20" width="360" height="160" rx="20" fill="var(--panel)" stroke="#10233F" stroke-width="2.5"/>
+          <rect x="26" y="26" width="46" height="36" rx="4" fill="#FFB100" stroke="#10233F" stroke-width="1.6"/>
+          <text x="49" y="72" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#10233F">DRIVER</text>
+          <rect x="78" y="26" width="16" height="36" rx="2" fill="#DDE7EE" stroke="#10233F" stroke-width="1.6" stroke-dasharray="3 2"/>
+          <rect class="net-highlight" x="104" y="26" width="180" height="14" fill="#BEE4F5" stroke="#10233F" stroke-width="1.4"/>
+          <g stroke="#10233F" stroke-width="0.9" opacity="0.7">
+            <line x1="110" y1="26" x2="122" y2="40"/><line x1="130" y1="26" x2="142" y2="40"/>
+            <line x1="150" y1="26" x2="162" y2="40"/><line x1="170" y1="26" x2="182" y2="40"/>
+            <line x1="190" y1="26" x2="202" y2="40"/><line x1="210" y1="26" x2="222" y2="40"/>
+            <line x1="230" y1="26" x2="242" y2="40"/><line x1="250" y1="26" x2="262" y2="40"/><line x1="270" y1="26" x2="278" y2="34"/>
+          </g>
+          <g fill="#F2ECD8" stroke="#10233F" stroke-width="1">
+            <rect x="104" y="52" width="20" height="16" rx="2"/><rect x="130" y="52" width="20" height="16" rx="2"/>
+            <rect x="156" y="52" width="20" height="16" rx="2"/><rect x="182" y="52" width="20" height="16" rx="2"/>
+            <rect x="208" y="52" width="20" height="16" rx="2"/><rect x="234" y="52" width="20" height="16" rx="2"/>
+            <rect x="260" y="52" width="20" height="16" rx="2"/>
+            <rect x="104" y="76" width="20" height="16" rx="2"/><rect x="130" y="76" width="20" height="16" rx="2"/>
+            <rect x="156" y="76" width="20" height="16" rx="2"/><rect x="182" y="76" width="20" height="16" rx="2"/>
+            <rect x="208" y="76" width="20" height="16" rx="2"/><rect x="234" y="76" width="20" height="16" rx="2"/>
+            <rect x="260" y="76" width="20" height="16" rx="2"/>
+          </g>
+          <rect x="340" y="26" width="20" height="146" rx="4" fill="#FFE3B0" stroke="#C6362B" stroke-width="1.8" stroke-dasharray="4 3"/>
+          <g transform="translate(140,166)" color="#10233F"><use href="#i-extinguisher" width="18" height="18"/></g>
+          <g transform="translate(170,166)" color="#C6362B"><use href="#i-firstaid" width="18" height="18"/></g>
+          <g transform="translate(200,166)" color="#10233F"><use href="#i-hammer" width="18" height="18"/></g>
+          <g class="gps-blink" transform="translate(230,166)" color="#2E7D5B"><use href="#i-gps" width="18" height="18"/></g>
+        </svg>
+
+        <button class="hotspot" style="left:21.5%; top:22%;" data-title="Entry Door" data-desc="Wide, well-lit entry door so children can board and step down safely, with a clear line of sight for the driver." data-icon="i-door"><svg><use href="#i-door"/></svg><span class="sr-only"></span></button>
+        <button class="hotspot" style="left:48%; top:16.5%;" data-title="Window Safety Net" data-desc="A protective net across every window keeps hands, heads, and objects safely inside while still letting air and light in." data-icon="i-hand-slash"><svg><use href="#i-hand-slash"/></svg></button>
+        <button class="hotspot" style="left:87.5%; top:49.5%;" data-title="Emergency Exit" data-desc="A wide rear exit with a quick-release mechanism, so every child can get out in under a minute if needed." data-icon="i-door"><svg><use href="#i-door"/></svg></button>
+        <button class="hotspot" style="left:36.5%; top:88%;" data-title="Fire Extinguisher" data-desc="Mounted, in-date, and checked regularly — ready to handle a small fire before it becomes a big one." data-icon="i-extinguisher"><svg><use href="#i-extinguisher"/></svg></button>
+        <button class="hotspot" style="left:44.5%; top:88%;" data-title="First-Aid Kit" data-desc="Stocked with basics for cuts, scrapes, and minor injuries, kept within the attendant's reach." data-icon="i-firstaid"><svg><use href="#i-firstaid"/></svg></button>
+        <button class="hotspot" style="left:52%; top:88%;" data-title="Rescue Hammer" data-desc="Breaks emergency glass quickly if a door is jammed — kept visible, never buried under bags." data-icon="i-hammer"><svg><use href="#i-hammer"/></svg></button>
+        <button class="hotspot" style="left:59.5%; top:88%;" data-title="GPS Tracking" data-desc="Lets the school and parents see the bus's live location and route, and flags any unplanned stop." data-icon="i-gps"><svg><use href="#i-gps"/></svg></button>
+      </div>
+
+      <div class="info-panel" aria-live="polite">
+        <h4 id="info-title"><svg><use href="#i-eye"/></svg><span>Tap a marker</span></h4>
+        <p id="info-desc">Choose the door, the window net, the emergency exit, or any of the onboard safety tools to learn what it does.</p>
+        <p class="info-hint">7 tappable parts</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" style="margin-top:56px;">
+  <div class="band-head">
+    <span class="eyebrow">The Safety Route</span>
+    <h2>Nine stops between the front door and the classroom</h2>
+    <p>Each stop below covers a link in the chain. A journey is only as safe as its weakest stop — so we treat every one of them as essential, not optional.</p>
+  </div>
+  <nav class="route-nav" aria-label="Jump to a stop">
+    <a href="#stop-01">🛠️ Vehicle</a>
+    <a href="#stop-02">👨‍✈️ Driver</a>
+    <a href="#stop-03">🤝 Conduct</a>
+    <a href="#stop-04">🪟 Windows</a>
+    <a href="#stop-05">🪑 Interior</a>
+    <a href="#stop-06">🚨 Emergency</a>
+    <a href="#stop-07">👩‍🏫 Education</a>
+    <a href="#stop-08">👨‍👩‍👧 Parents</a>
+    <a href="#stop-09">🏫 School</a>
+  </nav>
+</section>
+
+<div class="route">
+
+  <article class="stop" id="stop-01">
+    <div class="content">
+      <div class="stop-marker" aria-hidden="true">🛠️</div>
+      <div class="stop-card">
+        <span class="stop-code">Stop 01 · Vehicle</span>
+        <h3>Vehicle Fitness</h3>
+        <ul>
+          <li>Regular fitness inspection and maintenance</li>
+          <li>Safe brakes, steering, tyres, lights, and suspension</li>
+          <li>Fire extinguisher and first-aid kit on board</li>
+          <li>Functional emergency exits and emergency tools</li>
+          <li>GPS tracking and CCTV, where appropriate</li>
+        </ul>
+
+        <div class="layout-wrap">
+          <svg viewBox="0 0 260 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Top-view diagram of a school bus showing the driver seat, passenger seating grid, emergency exit, fire extinguisher, first-aid kit, hammer, and GPS.">
+            <rect x="10" y="10" width="240" height="120" rx="16" fill="var(--panel)" stroke="#10233F" stroke-width="2.5"/>
+            <rect x="14" y="14" width="34" height="30" rx="4" fill="#FFB100" stroke="#10233F" stroke-width="1.6"/>
+            <text x="31" y="52" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#10233F">DRIVER</text>
+            <g fill="#BEE4F5" stroke="#10233F" stroke-width="1.2">
+              <rect x="60" y="16" width="18" height="14" rx="2"/><rect x="82" y="16" width="18" height="14" rx="2"/>
+              <rect x="60" y="38" width="18" height="14" rx="2"/><rect x="82" y="38" width="18" height="14" rx="2"/>
+              <rect x="60" y="60" width="18" height="14" rx="2"/><rect x="82" y="60" width="18" height="14" rx="2"/>
+              <rect x="60" y="82" width="18" height="14" rx="2"/><rect x="82" y="82" width="18" height="14" rx="2"/>
+              <rect x="112" y="16" width="18" height="14" rx="2"/><rect x="134" y="16" width="18" height="14" rx="2"/>
+              <rect x="112" y="38" width="18" height="14" rx="2"/><rect x="134" y="38" width="18" height="14" rx="2"/>
+              <rect x="112" y="60" width="18" height="14" rx="2"/><rect x="134" y="60" width="18" height="14" rx="2"/>
+              <rect x="112" y="82" width="18" height="14" rx="2"/><rect x="134" y="82" width="18" height="14" rx="2"/>
+            </g>
+            <rect x="216" y="14" width="24" height="106" rx="4" fill="#FFE3B0" stroke="#C6362B" stroke-width="1.8" stroke-dasharray="4 3"/>
+            <text x="228" y="70" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="6.2" fill="#C6362B" transform="rotate(90 228 70)">EXIT</text>
+            <g transform="translate(160,14)" color="#10233F"><use href="#i-extinguisher" width="14" height="14"/></g>
+            <g transform="translate(178,14)" color="#C6362B"><use href="#i-firstaid" width="14" height="14"/></g>
+            <g transform="translate(160,100)" color="#10233F"><use href="#i-hammer" width="14" height="14"/></g>
+            <g class="gps-blink" transform="translate(178,100)" color="#10233F"><use href="#i-gps" width="14" height="14"/></g>
+          </svg>
+          <ul class="layout-legend">
+            <li><svg class="icon"><use href="#i-extinguisher"/></svg> Fire extinguisher</li>
+            <li><svg class="icon"><use href="#i-firstaid"/></svg> First-aid kit</li>
+            <li><svg class="icon"><use href="#i-hammer"/></svg> Rescue hammer</li>
+            <li><svg class="icon"><use href="#i-gps"/></svg> GPS tracking</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="spacer"></div>
+  </article>
+
+  <article class="stop right" id="stop-02">
+    <div class="spacer"></div>
+    <div class="content">
+      <div class="stop-marker" aria-hidden="true">👨‍✈️</div>
+      <div class="stop-card">
+        <span class="stop-code">Stop 02 · Driver</span>
+        <h3>Professional Driver Standards</h3>
+        <ul>
+          <li>Certified driver training</li>
+          <li>Defensive driving skills</li>
+          <li>Adequate rest before duty</li>
+        </ul>
+
+        <div class="fitness-card">
+          <div class="fitness-head"><svg><use href="#i-clipboard"/></svg><h4 style="margin:0; font-size:1rem;">Driver Fitness Card</h4></div>
+          <ul>
+            <li><svg class="icon"><use href="#i-eye"/></svg> Vision test</li>
+            <li><svg class="icon"><use href="#i-stethoscope"/></svg> Medical test</li>
+            <li><svg class="icon"><use href="#i-brain"/></svg> Mental health check</li>
+            <li><svg class="icon"><use href="#i-bed"/></svg> Rest completed</li>
+            <li><svg class="icon"><use href="#i-bottle-slash"/></svg> Alcohol-free</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="stop" id="stop-03">
+    <div class="content">
+      <div class="stop-marker" aria-hidden="true">🤝</div>
+      <div class="stop-card">
+        <span class="stop-code">Stop 03 · Conduct</span>
+        <h3>Professional Conduct</h3>
+        <p class="note">Drivers and helpers should:</p>
+        <ul>
+          <li>Treat every child with kindness and respect</li>
+          <li>Maintain patience and professionalism</li>
+          <li>Follow all traffic laws at all times</li>
+        </ul>
+
+        <div class="icon-grid" role="img" aria-label="Six rules for drivers: complete special training, no mobile phone use, no alcohol, no misbehaviour, follow driver responsibilities, and violations are not tolerated.">
+          <div class="icon-tile"><svg class="icon"><use href="#i-wheel"/></svg><span>Special Training</span></div>
+          <div class="icon-tile warn"><svg class="icon"><use href="#i-phone-slash"/></svg><span>No Mobile Phone</span></div>
+          <div class="icon-tile warn"><svg class="icon"><use href="#i-bottle-slash"/></svg><span>No Alcohol</span></div>
+          <div class="icon-tile warn"><svg class="icon"><use href="#i-bubble-slash"/></svg><span>No Misbehaviour</span></div>
+          <div class="icon-tile"><svg class="icon"><use href="#i-clipboard"/></svg><span>Responsibilities</span></div>
+          <div class="icon-tile warn"><svg class="icon"><use href="#i-warning"/></svg><span>Violations Not Tolerated</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="spacer"></div>
+  </article>
+
+  <article class="stop right" id="stop-04">
+    <div class="spacer"></div>
+    <div class="content">
+      <div class="stop-marker" aria-hidden="true">🪟</div>
+      <div class="stop-card">
+        <span class="stop-code">Stop 04 · Child Protection</span>
+        <h3>Window Safety Features</h3>
+        <p>School buses should be fitted with strong protective window safety nets or child-safe window guards where appropriate. These reduce the chance of children extending hands, heads, or objects outside the vehicle, while still allowing proper ventilation and visibility.</p>
+
+        <div class="diagram">
+          <svg viewBox="0 0 220 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of a bus window fitted with a safety net, with a child seated safely inside and a hand unable to pass through the net.">
+            <rect x="10" y="10" width="200" height="130" rx="10" fill="#FFB100"/>
+            <rect x="26" y="26" width="168" height="98" rx="6" fill="#BEE4F5" stroke="#10233F" stroke-width="2.5"/>
+            <g class="net-highlight" stroke-width="1.3" opacity="0.75">
+              <line x1="26" y1="42" x2="194" y2="42"/><line x1="26" y1="58" x2="194" y2="58"/>
+              <line x1="26" y1="74" x2="194" y2="74"/><line x1="26" y1="90" x2="194" y2="90"/>
+              <line x1="26" y1="106" x2="194" y2="106"/>
+              <line x1="58" y1="26" x2="58" y2="124"/><line x1="90" y1="26" x2="90" y2="124"/>
+              <line x1="122" y1="26" x2="122" y2="124"/><line x1="154" y1="26" x2="154" y2="124"/><line x1="186" y1="26" x2="186" y2="124"/>
+            </g>
+            <g transform="translate(94,80)" color="#10233F"><use href="#i-child" width="30" height="30"/></g>
+            <g transform="translate(150,50) scale(0.9)" color="#C6362B"><use href="#i-hand-slash" width="24" height="24"/></g>
+          </svg>
+          <p class="diagram-caption">Net keeps hands in · child stays seated inside</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="stop" id="stop-05">
+    <div class="content">
+      <div class="stop-marker" aria-hidden="true">🪑</div>
+      <div class="stop-card">
+        <span class="stop-code">Stop 05 · Interior</span>
+        <h3>Child-Friendly Interior Design</h3>
+        <ul>
+          <li>Comfortable seats with secure seat belts, where available</li>
+          <li>Rounded interior edges to reduce injuries</li>
+          <li>Anti-slip flooring</li>
+        </ul>
+
+        <ul class="checklist" role="list" aria-label="Child safety checklist">
+          <li><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.6"/><path class="check-draw d1" d="M7.5 12.5 10.3 15.3 16.5 8.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Seat belt fastened</li>
+          <li><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.6"/><path class="check-draw d2" d="M7.5 12.5 10.3 15.3 16.5 8.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Window safety net in place</li>
+          <li><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.6"/><path class="check-draw d3" d="M7.5 12.5 10.3 15.3 16.5 8.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> No standing while moving</li>
+          <li><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.6"/><path class="check-draw d4" d="M7.5 12.5 10.3 15.3 16.5 8.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> No leaning out of the window</li>
+        </ul>
+      </div>
+    </div>
+    <div class="spacer"></div>
+  </article>
+
+  <article class="stop right" id="stop-06">
+    <div class="spacer"></div>
+    <div class="content">
+      <div class="stop-marker" aria-hidden="true">🚨</div>
+      <div class="stop-card alert">
+        <span class="stop-code">Stop 06 · Emergency</span>
+        <h3>Emergency Evacuation System</h3>
+        <p class="note">In an emergency, every second matters. School buses should include:</p>
+        <ul>
+          <li>Wide emergency doors and easy-to-open windows</li>
+          <li>Quick-release emergency exit mechanisms</li>
+          <li>Rescue hammer for breaking emergency glass</li>
+          <li>Regular evacuation drills for students and staff</li>
+        </ul>
+
+        <div class="diagram">
+          <svg viewBox="0 0 260 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Flow diagram: emergency door leads to children evacuating, leading to a safe zone.">
+            <g class="glow-door" transform="translate(10,20)" color="#C6362B"><use href="#i-door" width="46" height="46"/></g>
+            <text x="33" y="82" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#10233F">DOOR</text>
+            <path d="M62 42 h34" stroke="#10233F" stroke-width="2.4" marker-end="url(#arrow)"/>
+            <g transform="translate(102,18)" color="#10233F"><use href="#i-child" width="24" height="24"/></g>
+            <g transform="translate(122,18)" color="#10233F"><use href="#i-child" width="24" height="24"/></g>
+            <text x="122" y="82" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#10233F">CHILDREN</text>
+            <path d="M158 42 h34" stroke="#10233F" stroke-width="2.4" marker-end="url(#arrow)"/>
+            <g transform="translate(196,16)" color="#2E7D5B"><use href="#i-shield-check" width="46" height="46"/></g>
+            <text x="219" y="82" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#2E7D5B">SAFE ZONE</text>
+            <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 Z" fill="#10233F"/></marker></defs>
+          </svg>
+          <p class="diagram-caption">Door → Children → Safe zone, in under a minute</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="stop" id="stop-07">
+    <div class="content">
+      <div class="stop-marker" aria-hidden="true">👩‍🏫</div>
+      <div class="stop-card">
+        <span class="stop-code">Stop 07 · Education</span>
+        <h3>Safety Education for Children</h3>
+        <p class="note">Children should learn:</p>
+        <ul>
+          <li>How to board and leave the bus safely</li>
+          <li>Why they should remain seated while the bus is moving</li>
+          <li>Never extend hands or heads outside the window</li>
+          <li>How to respond during emergencies</li>
+          <li>The importance of listening to the driver and bus attendant</li>
+        </ul>
+      </div>
+    </div>
+    <div class="spacer"></div>
+  </article>
+
+  <article class="stop right" id="stop-08">
+    <div class="spacer"></div>
+    <div class="content">
+      <div class="stop-marker" aria-hidden="true">👨‍👩‍👧</div>
+      <div class="stop-card good">
+        <span class="stop-code">Stop 08 · Parents</span>
+        <h3>Parent Responsibilities</h3>
+        <ul>
+          <li>Ensure children arrive at the bus stop on time</li>
+          <li>Teach safe boarding and crossing practices</li>
+          <li>Inform the school about any medical conditions</li>
+          <li>Encourage children to follow bus safety rules</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  <article class="stop" id="stop-09">
+    <div class="content">
+      <div class="stop-marker" aria-hidden="true">🏫</div>
+      <div class="stop-card good">
+        <span class="stop-code">Stop 09 · School</span>
+        <h3>School Responsibilities</h3>
+        <ul>
+          <li>Conduct regular safety inspections</li>
+          <li>Verify driver qualifications</li>
+          <li>Train bus attendants</li>
+          <li>Maintain emergency contact records</li>
+          <li>Organize periodic safety drills</li>
+          <li>Establish a clear incident reporting system</li>
+        </ul>
+      </div>
+    </div>
+    <div class="spacer"></div>
+  </article>
+
+</div>
+
+<!-- ============ BUS SAFETY SCORE ============ -->
+<section class="band" id="score">
+  <div class="band-head">
+    <span class="eyebrow">Report Card</span>
+    <h2>Bus Safety Score</h2>
+    <p>A quick snapshot of where this route stands today, across every category above.</p>
+  </div>
+
+  <div class="score-card">
+    <ul class="score-list">
+      <li>Vehicle Fitness <svg class="icon"><use href="#i-check"/></svg></li>
+      <li>Driver Training <svg class="icon"><use href="#i-check"/></svg></li>
+      <li>Mental Health <svg class="icon"><use href="#i-check"/></svg></li>
+      <li>Emergency System <svg class="icon"><use href="#i-check"/></svg></li>
+      <li>Window Safety Net <svg class="icon"><use href="#i-check"/></svg></li>
+      <li>Child Education <svg class="icon"><use href="#i-check"/></svg></li>
+    </ul>
+    <div class="score-ring">
+      <svg width="150" height="150" viewBox="0 0 150 150">
+        <circle cx="75" cy="75" r="62" fill="none" stroke="var(--border)" stroke-width="14"/>
+        <circle cx="75" cy="75" r="62" fill="none" stroke="var(--green)" stroke-width="14" stroke-linecap="round"
+          stroke-dasharray="389.6" stroke-dashoffset="7.8" transform="rotate(-90 75 75)"/>
+        <text x="75" y="72" text-anchor="middle" class="pct">98%</text>
+        <text x="75" y="92" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="var(--ink-soft)">SAFE</text>
+      </svg>
+      <div class="label">OVERALL SAFETY SCORE</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHILD RULES ============ -->
+<section class="band" id="child-rules">
+  <div class="band-head">
+    <span class="eyebrow">For Every Child</span>
+    <h2>Five Simple Rules to Ride By</h2>
+    <p>Easy to remember, easy to follow — the habits that keep every journey safe.</p>
+  </div>
+  <div class="rules-grid">
+    <div class="rule-card"><div class="badge"><svg><use href="#i-sit"/></svg></div><span>Sit Properly</span></div>
+    <div class="rule-card"><div class="badge"><svg><use href="#i-seatbelt"/></svg></div><span>Wear Seat Belt</span></div>
+    <div class="rule-card"><div class="badge"><svg><use href="#i-hand-slash"/></svg></div><span>No Window Leaning</span></div>
+    <div class="rule-card"><div class="badge"><svg><use href="#i-standing-slash"/></svg></div><span>No Standing</span></div>
+    <div class="rule-card"><div class="badge"><svg><use href="#i-ear"/></svg></div><span>Listen to Driver</span></div>
+  </div>
+</section>
+
+<!-- ============ PLEDGE ============ -->
+<section class="band" id="pledge">
+  <div class="pledge-card">
+    <span class="arrival-badge">Sign the Promise</span>
+    <h2>School Bus Safety Pledge</h2>
+    <ul class="pledge-list">
+      <li><input type="checkbox" id="p1"><label for="p1">I will follow bus rules.</label></li>
+      <li><input type="checkbox" id="p2"><label for="p2">I will respect my driver.</label></li>
+      <li><input type="checkbox" id="p3"><label for="p3">I will help younger children.</label></li>
+      <li><input type="checkbox" id="p4"><label for="p4">I will never put my hand outside the window.</label></li>
+    </ul>
+    <div class="pledge-sign"><svg class="icon" style="width:18px;height:18px;"><use href="#i-medal"/></svg> Your Signature <span class="line"></span></div>
+  </div>
+</section>
+
+<!-- ============ COMMITMENT ============ -->
+<section class="band" style="margin-bottom:0;">
+  <div class="arrival-card">
+    <div class="arrival-inner">
+      <div>
+        <span class="arrival-badge">Final Stop · Arrived Safely</span>
+        <h2>Our Commitment</h2>
+        <ul class="arrival-list">
+          <li>Safe buses.</li>
+          <li>Trained drivers.</li>
+          <li>Protected children.</li>
+          <li>Prepared for emergencies.</li>
+        </ul>
+        <span class="arrival-tag">Together, we can make every school journey safe, secure, and worry-free.</span>
+      </div>
+      <div class="arrival-scene">
+        <ul class="arrival-checklist">
+          <li><svg class="icon"><use href="#i-check"/></svg> Fit vehicle, every time</li>
+          <li><svg class="icon"><use href="#i-check"/></svg> Trained &amp; verified drivers</li>
+          <li><svg class="icon"><use href="#i-check"/></svg> Regular inspection records</li>
+          <li><svg class="icon"><use href="#i-check"/></svg> Safety equipment on board</li>
+          <li><svg class="icon"><use href="#i-check"/></svg> Mental well-being support</li>
+          <li><svg class="icon"><use href="#i-check"/></svg> Children's safety is our priority</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PARENT QR SECTION ============ -->
+<section class="band">
+  <div class="qr-card">
+    <div class="qr-graphic" role="img" aria-label="Illustrative QR code graphic">
+      <svg viewBox="0 0 29 29" width="100%" height="100%">
+        <rect width="29" height="29" fill="#fff"/>
+        <g fill="#10233F">
+          <rect x="0" y="0" width="7" height="7"/><rect x="1.5" y="1.5" width="4" height="4" fill="#fff"/><rect x="2.7" y="2.7" width="1.6" height="1.6" fill="#10233F"/>
+          <rect x="22" y="0" width="7" height="7"/><rect x="23.5" y="1.5" width="4" height="4" fill="#fff"/><rect x="24.7" y="2.7" width="1.6" height="1.6" fill="#10233F"/>
+          <rect x="0" y="22" width="7" height="7"/><rect x="1.5" y="23.5" width="4" height="4" fill="#fff"/><rect x="2.7" y="24.7" width="1.6" height="1.6" fill="#10233F"/>
+          <rect x="9" y="1" width="1.6" height="1.6"/><rect x="12" y="1" width="1.6" height="1.6"/><rect x="15" y="3" width="1.6" height="1.6"/><rect x="18" y="1" width="1.6" height="1.6"/>
+          <rect x="9" y="9" width="1.6" height="1.6"/><rect x="12" y="10" width="1.6" height="1.6"/><rect x="15" y="9" width="1.6" height="1.6"/><rect x="9" y="12" width="1.6" height="1.6"/>
+          <rect x="18" y="9" width="1.6" height="1.6"/><rect x="20" y="12" width="1.6" height="1.6"/><rect x="12" y="14" width="1.6" height="1.6"/><rect x="15" y="15" width="1.6" height="1.6"/>
+          <rect x="18" y="15" width="1.6" height="1.6"/><rect x="9" y="17" width="1.6" height="1.6"/><rect x="12" y="18" width="1.6" height="1.6"/><rect x="15" y="20" width="1.6" height="1.6"/>
+          <rect x="18" y="19" width="1.6" height="1.6"/><rect x="21" y="17" width="1.6" height="1.6"/><rect x="9" y="20" width="1.6" height="1.6"/><rect x="20" y="21" width="1.6" height="1.6"/>
+          <rect x="23" y="9" width="1.6" height="1.6"/><rect x="25" y="12" width="1.6" height="1.6"/><rect x="23" y="15" width="1.6" height="1.6"/><rect x="26" y="16" width="1.6" height="1.6"/>
+          <rect x="9" y="23" width="1.6" height="1.6"/><rect x="12" y="24" width="1.6" height="1.6"/><rect x="15" y="23" width="1.6" height="1.6"/><rect x="18" y="24" width="1.6" height="1.6"/>
+          <rect x="21" y="23" width="1.6" height="1.6"/><rect x="24" y="21" width="1.6" height="1.6"/><rect x="26" y="24" width="1.6" height="1.6"/>
+        </g>
+      </svg>
+    </div>
+    <div>
+      <span class="eyebrow">For Parents</span>
+      <h3 style="margin-top:10px;">Scan for the full safety pack</h3>
+      <ul class="qr-list">
+        <li><svg class="icon"><use href="#i-phone"/></svg> Emergency contact numbers</li>
+        <li><svg class="icon"><use href="#i-book"/></svg> Full school bus rules</li>
+        <li><svg class="icon"><use href="#i-heart"/></svg> More from MySkillGame</li>
+      </ul>
+      <p class="qr-note">This QR graphic is illustrative. Share your real emergency-contact link with your developer to make it scannable.</p>
+    </div>
+  </div>
+</section>
+
+<section class="msg-band">
+  <div class="msg-inner">
+    <h2>📱 MySkillGame Safety Awareness</h2>
+    <p>MySkillGame supports child safety through educational awareness on:</p>
+    <div class="chips">
+      <span class="chip">🚌 School Bus Safety</span>
+      <span class="chip">🚸 Road Safety</span>
+      <span class="chip">👧 Child Protection</span>
+      <span class="chip">📱 Digital Safety</span>
+      <span class="chip">❤️ Life Skills</span>
+      <span class="chip">🚑 Emergency Preparedness</span>
+    </div>
+    <p class="tagline">Learn Smart • Stay Safe • Protect Every Child</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">MySkillGame</div>
+    <div class="footer-sub">School Bus Safety Awareness</div>
+    <div class="footer-words">
+      <span>Learn Smart</span><span>Stay Safe</span><span>Protect Every Child</span>
+    </div>
+    <div class="footer-made">Made in India 🇮🇳 · Built by <a href="#" onclick="return false;">Surajit Roy</a> · For awareness purposes only</div>
+  </div>
+</footer>
+
+<a class="emergency-fab" href="#stop-06" aria-label="Jump to Emergency Guide">
+  <svg><use href="#i-alert"/></svg><span>Emergency Guide</span>
+</a>
+
+<script>
+(function(){
+  // ---- Interactive bus hotspots ----
+  var hotspots = document.querySelectorAll('.hotspot');
+  var titleEl = document.querySelector('#info-title span');
+  var descEl = document.getElementById('info-desc');
+  hotspots.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      hotspots.forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      titleEl.textContent = btn.getAttribute('data-title');
+      descEl.textContent = btn.getAttribute('data-desc');
+    });
+  });
+
+  // ---- Font size controls ----
+  var size = 100;
+  function applySize(){ document.documentElement.style.fontSize = size + '%'; }
+  document.getElementById('btn-font-inc').addEventListener('click', function(){
+    size = Math.min(size + 10, 140); applySize();
+  });
+  document.getElementById('btn-font-dec').addEventListener('click', function(){
+    size = Math.max(size - 10, 80); applySize();
+  });
+
+  // ---- High contrast ----
+  document.getElementById('btn-contrast').addEventListener('click', function(){
+    document.documentElement.classList.toggle('high-contrast');
+    this.classList.toggle('active');
+  });
+
+  // ---- Dark mode ----
+  document.getElementById('btn-dark').addEventListener('click', function(){
+    document.documentElement.classList.toggle('dark-mode');
+    this.classList.toggle('active');
+  });
+
+  // ---- Read aloud ----
+  var readBtn = document.getElementById('btn-read');
+  var reading = false;
+  readBtn.addEventListener('click', function(){
+    if (!('speechSynthesis' in window)) return;
+    if (reading){
+      window.speechSynthesis.cancel();
+      reading = false;
+      readBtn.classList.remove('active');
+      return;
+    }
+    var text = document.getElementById('main-content').innerText;
+    var utter = new SpeechSynthesisUtterance(text);
+    utter.lang = 'en-US';
+    utter.rate = 0.95;
+    utter.onend = function(){ reading = false; readBtn.classList.remove('active'); };
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(utter);
+    reading = true;
+    readBtn.classList.add('active');
+  });
+})();
+</script>
+
+<script src="security.js"></script>
+</body>
+</html>

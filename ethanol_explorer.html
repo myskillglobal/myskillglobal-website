@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#030c06">
+<title>Ethanol Explorer — From Plants to Fuel</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+<style>
+:root{--bg:#030c06;--card:#081610;--line:#1a4228;--g:#4ade80;--txt:#dff5e8;--soft:#c8e8d0;--mut:#6fa383;--gold:#fbbf24;--blue:#38bdf8}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:56px}
+body{background:var(--bg);color:var(--txt);font-family:Arial,'Segoe UI',sans-serif;line-height:1.7;-webkit-tap-highlight-color:transparent;padding-bottom:env(safe-area-inset-bottom)}
+.wrap{max-width:720px;margin:0 auto;padding:0 14px 60px}
+.hero{text-align:center;padding:calc(28px + env(safe-area-inset-top)) 14px 22px;background:radial-gradient(circle at 50% 0,#0e3a1c,var(--bg) 70%)}
+.hero .eb{font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase}
+.hero h1{font-size:28px;color:var(--g);margin:8px 0;font-weight:900}
+.hero p{font-size:14px;color:var(--soft);max-width:520px;margin:0 auto}
+nav{position:sticky;top:0;z-index:5;background:rgba(3,12,6,.95);border-bottom:1px solid var(--line);padding:calc(8px + env(safe-area-inset-top)) 10px 8px;display:flex;gap:7px;overflow-x:auto;scrollbar-width:none}
+nav a{flex:none;font-size:12px;font-weight:700;color:var(--g);text-decoration:none;border:1px solid var(--line);background:var(--card);padding:6px 12px;border-radius:50px}
+section{margin-top:26px}
+h2{font-size:20px;color:var(--g);margin-bottom:4px}
+.sub{font-size:13px;color:var(--mut);margin-bottom:12px}
+.card{background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:15px;margin:10px 0}
+.card h3{font-size:15px;color:var(--gold);margin-bottom:5px}
+.card p,.card li{font-size:14px;color:var(--soft)}
+.card ul{padding-left:18px}
+.steps{counter-reset:s;list-style:none;padding:0}
+.steps li{position:relative;background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:14px 14px 14px 56px;margin:10px 0;font-size:14px;color:var(--soft)}
+.steps li:before{counter-increment:s;content:counter(s);position:absolute;left:14px;top:14px;width:30px;height:30px;border-radius:50%;background:#16a34a;color:#fff;font-weight:900;display:flex;align-items:center;justify-content:center}
+.steps b{display:block;color:var(--g);font-size:15px;margin-bottom:2px}
+.eq{text-align:center;font-size:17px;font-weight:900;color:var(--blue);background:#04121a;border:1px solid #0c4a6e;border-radius:12px;padding:12px;margin:10px 0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.grid .card{margin:0}
+.tbl{overflow-x:auto;margin:10px 0}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:520px}
+th,td{border:1px solid var(--line);padding:9px;text-align:left;vertical-align:top;color:var(--soft)}
+th{background:#0c2016;color:var(--g)}
+.pro{border-color:#16a34a}.con{border-color:#b45309}
+.pro h3{color:var(--g)}.con h3{color:#fb923c}
+.note{font-size:12px;color:var(--mut);margin-top:8px}
+.key{background:linear-gradient(135deg,#0c2a15,#08202a);border:1.5px solid var(--g);border-radius:14px;padding:16px;margin-top:14px}
+.key h3{color:var(--gold);margin-bottom:6px}
+.key li{margin:5px 0 5px 18px;font-size:14px;color:var(--soft)}
+footer{text-align:center;font-size:12px;color:var(--mut);margin-top:30px}
+@media(max-width:480px){.grid{grid-template-columns:1fr}.hero h1{font-size:24px}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="eb">MySkillGame · Green Energy</div>
+  <h1>🌿 Ethanol Explorer</h1>
+  <p>How ethanol is made, where it is used, and whether it can replace petrol and cooking gas in the years ahead.</p>
+</div>
+
+<nav>
+  <a href="#what">What is it?</a>
+  <a href="#made">How it's made</a>
+  <a href="#uses">Uses</a>
+  <a href="#blends">Blends</a>
+  <a href="#future">Replacing gas</a>
+  <a href="#limits">Challenges</a>
+  <a href="#next">Next-gen</a>
+</nav>
+
+<div class="wrap">
+
+<section id="what">
+  <h2>1. What is Ethanol?</h2>
+  <p class="sub">A renewable fuel made from plants</p>
+  <div class="card">
+    <p>Ethanol (chemical formula <b>C₂H₅OH</b>) is a clear, flammable alcohol produced by fermenting the sugars in plants. Because the crops that make it grow back every season, it is called a <b>renewable</b> fuel. When fuel-grade ethanol is made, a small amount of denaturant is added so that it cannot be drunk.</p>
+  </div>
+  <div class="card">
+    <h3>The carbon loop</h3>
+    <p>A growing plant absorbs CO₂ from the air. When ethanol is burned, roughly that same carbon returns to the air, and new plants absorb it again. Petrol, in contrast, releases carbon that was locked underground for millions of years. Overall, ethanol usually has a lower life-cycle carbon footprint than petrol, though the exact saving depends on the crop and the farming and factory methods used.</p>
+  </div>
+</section>
+
+<section id="made">
+  <h2>2. How Ethanol is Made</h2>
+  <p class="sub">From field to fuel pump in six steps</p>
+  <ol class="steps">
+    <li><b>Raw materials</b>Sugar or starch crops are grown: sugarcane and sugarcane molasses (India, Brazil), corn (USA), wheat and sugar beet (Europe), cassava and sweet sorghum (Africa and Asia). Damaged food grain and surplus rice can also be used where rules allow.</li>
+    <li><b>Crushing and milling</b>Sugarcane is crushed to release its juice. Grains such as corn are ground into flour and mixed with water. Enzymes then convert the starch into simple sugars.</li>
+    <li><b>Fermentation</b>Yeast (<i>Saccharomyces cerevisiae</i>) feeds on the sugar in large tanks for about 1–3 days and produces ethanol and carbon dioxide. The mixture, called "beer" or "wash", contains only about 8–12% ethanol.</li>
+    <li><b>Distillation</b>Ethanol boils at 78.4°C and water at 100°C. When the wash is heated in a tall column, ethanol vapour rises first, is cooled and collected. This gives ethanol of about 95% purity.</li>
+    <li><b>Dehydration</b>Ethanol and water cannot be separated beyond about 95% by ordinary distillation. Molecular sieves (tiny porous beads) absorb the remaining water to give fuel-grade ethanol of 99%+ purity (anhydrous ethanol).</li>
+    <li><b>Blending and delivery</b>The ethanol is sent by tanker to oil-company depots, where it is mixed with petrol in the required proportion (such as E10 or E20) and delivered to petrol pumps.</li>
+  </ol>
+  <div class="eq">C₆H₁₂O₆ (sugar) → 2 C₂H₅OH (ethanol) + 2 CO₂</div>
+  <div class="card">
+    <h3>By-products are not wasted</h3>
+    <p>Distillers' grain from grain plants is used as animal feed, bagasse (crushed cane fibre) burns to produce electricity for the factory, and captured CO₂ can be used in the food and beverage industry.</p>
+  </div>
+</section>
+
+<section id="uses">
+  <h2>3. Uses of Ethanol</h2>
+  <p class="sub">Much more than a petrol additive</p>
+  <div class="grid">
+    <div class="card"><h3>⛽ Transport fuel</h3><p>Blended with petrol (E5, E10, E20) or used in high blends such as E85 in flex-fuel vehicles. Special ED95 ethanol buses run in some European cities.</p></div>
+    <div class="card"><h3>🧴 Sanitisers and medicine</h3><p>A key ingredient in hand sanitisers, disinfectants, antiseptics, tinctures and many medicines.</p></div>
+    <div class="card"><h3>🏭 Industry</h3><p>Used as a solvent in paints, perfumes, inks and cosmetics, and as a raw material for acetic acid, ethyl acetate and bio-plastics.</p></div>
+    <div class="card"><h3>🔥 Clean cooking</h3><p>Ethanol and ethanol gel stoves burn with little smoke and are used in parts of Africa, South Asia and Latin America as an alternative to firewood, kerosene and LPG.</p></div>
+    <div class="card"><h3>✈️ Aviation (SAF)</h3><p>Ethanol can be converted into sustainable aviation fuel through the alcohol-to-jet process, a growing area of research and early commercial use.</p></div>
+    <div class="card"><h3>🔋 Power generation</h3><p>Used in some generators and studied as a hydrogen carrier for fuel cells.</p></div>
+  </div>
+</section>
+
+<section id="blends">
+  <h2>4. Fuel Blends</h2>
+  <p class="sub">The number after "E" is the percentage of ethanol</p>
+  <div class="tbl"><table>
+    <tr><th>Blend</th><th>Mix</th><th>Where it fits</th></tr>
+    <tr><td><b>E5 / E10</b></td><td>5–10% ethanol</td><td>Standard petrol in many countries; works in most modern petrol cars.</td></tr>
+    <tr><td><b>E20</b></td><td>20% ethanol</td><td>India's national blending target, rolled out across petrol pumps; best suited to vehicles built or certified for it.</td></tr>
+    <tr><td><b>E85</b></td><td>85% ethanol</td><td>For flex-fuel vehicles only (USA, Sweden, Brazil).</td></tr>
+    <tr><td><b>E100</b></td><td>Pure ethanol</td><td>Sold at pumps in Brazil for flex-fuel cars.</td></tr>
+  </table></div>
+  <p class="note">Ethanol has about two-thirds of the energy of petrol per litre, so mileage can fall slightly with higher blends. Its higher octane rating helps engines run smoothly.</p>
+</section>
+
+<section id="future">
+  <h2>5. Can Ethanol Replace Gas in the Future?</h2>
+  <p class="sub">Petrol, LPG and natural gas compared</p>
+  <div class="card">
+    <h3>Replacing petrol</h3>
+    <p>This is the most realistic path. Blending already works at scale: Brazil runs on E27 and E100, the USA on E10 with some E15/E85, and India has moved from E10 to E20. Flex-fuel vehicles can use anything from petrol to high-ethanol blends, which lets countries raise the share step by step without changing the fuel network overnight.</p>
+  </div>
+  <div class="card">
+    <h3>Replacing LPG and cooking gas</h3>
+    <p>Many countries import much of their LPG. Ethanol cooking stoves and ethanol gel can cut that dependence and give cleaner indoor air than wood or kerosene. Pilot projects in Africa and South Asia show promise, but the stoves, fuel supply and low-cost distribution must reach households before ethanol could replace LPG on a large scale.</p>
+  </div>
+  <div class="card">
+    <h3>Replacing natural gas and CNG</h3>
+    <p>Here ethanol is a smaller player. Natural gas and biogas (bio-CNG) are the more direct renewable gas options, while ethanol works best in liquid-fuel uses such as cars, buses, ships and aircraft.</p>
+  </div>
+  <div class="tbl"><table>
+    <tr><th>Fuel</th><th>Source</th><th>Main strength</th><th>Main limit</th></tr>
+    <tr><td>Petrol</td><td>Crude oil</td><td>High energy, huge network</td><td>Imported, high CO₂</td></tr>
+    <tr><td>LPG</td><td>Oil and gas refining</td><td>Convenient cooking fuel</td><td>Largely imported in many countries</td></tr>
+    <tr><td>CNG / Natural gas</td><td>Gas fields</td><td>Cleaner than petrol</td><td>Needs pipelines and cylinders; still fossil</td></tr>
+    <tr><td>Ethanol</td><td>Plants and farm waste</td><td>Renewable, farm income, cleaner burn</td><td>Lower energy per litre, land and water needs</td></tr>
+  </table></div>
+  <p class="note">In short: ethanol is likely to <b>reduce</b> petrol and some LPG use rather than replace them completely. It works best alongside electric vehicles, biogas, solar and hydrogen.</p>
+</section>
+
+<section id="limits">
+  <h2>6. Benefits and Challenges</h2>
+  <div class="grid">
+    <div class="card pro"><h3>✅ Benefits</h3><ul>
+      <li>Renewable and home-grown</li>
+      <li>Lower import bill and better energy security</li>
+      <li>Extra income for farmers and rural jobs</li>
+      <li>Cleaner burning: less carbon monoxide and fewer particles</li>
+      <li>Higher octane for smoother engines</li></ul></div>
+    <div class="card con"><h3>⚠️ Challenges</h3><ul>
+      <li>Food-versus-fuel concerns</li>
+      <li>Large land and water needs, especially for sugarcane</li>
+      <li>Lower mileage per litre</li>
+      <li>Older engines and fuel systems may need compatible parts</li>
+      <li>Supply depends on good harvests</li></ul></div>
+  </div>
+</section>
+
+<section id="next">
+  <h2>7. The Next Generation</h2>
+  <p class="sub">Making more fuel without taking food from the table</p>
+  <div class="card">
+    <h3>Second-generation (2G) ethanol</h3>
+    <p>Enzymes break down farm waste such as paddy straw, corn stalks, bagasse and wood chips (cellulose) into sugars, which are then fermented. This can turn stubble that is often burnt into fuel, reducing air pollution and giving farmers extra income. India has started 2G ethanol plants using paddy straw.</p>
+  </div>
+  <div class="card">
+    <h3>What to watch</h3>
+    <ul>
+      <li>Wider use of flex-fuel and ethanol-ready vehicles</li>
+      <li>Ethanol-to-jet fuel for aeroplanes</li>
+      <li>Ethanol cooking stoves for clean household energy</li>
+      <li>Better yeast, enzymes and carbon capture to cut emissions further</li>
+    </ul>
+  </div>
+  <div class="key">
+    <h3>🌱 Key Takeaways</h3>
+    <ul>
+      <li>Ethanol is made by fermenting plant sugars, then distilling and drying the result.</li>
+      <li>It is used in fuel, medicine, industry, cooking and, increasingly, aviation.</li>
+      <li>Its best near-term role is blending with petrol and supporting clean cooking.</li>
+      <li>Waste-based 2G ethanol is the key to growing it sustainably.</li>
+    </ul>
+  </div>
+  <p class="note">Blending targets, production figures and policies change over time. Check the latest official sources before quoting exact numbers.</p>
+</section>
+
+</div>
+<footer>MySkillGame · Ethanol Explorer</footer>
+</body>
+</html>

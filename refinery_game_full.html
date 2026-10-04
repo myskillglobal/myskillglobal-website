@@ -1,0 +1,1060 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Oil Refinery Challenge</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+<style>
+/* ===== RESET — no Claude CSS variables ===== */
+html, body, div, span, button, input, h1, h2, h3, h4, p, small, strong {
+  margin: 0; padding: 0; box-sizing: border-box;
+}
+html, body {
+  width: 100%; min-height: 100vh;
+  background: #060b14;
+  color: #EEF9F1;
+  font-family: 'Exo 2', Arial, sans-serif;
+  overflow-x: hidden;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ===== COLOUR TOKENS (no CSS vars to avoid conflicts) ===== */
+/* bg=#060b14  panel=#0d1526  border=#1e3560
+   accent=#ff7b2e  accent2=#00d4f5  gold=#ffd060
+   green=#2ecc71  red=#ff4757  text=#f0f4ff  muted=#8899bb */
+
+.wrap {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 10px 10px 80px;
+  position: relative;
+}
+
+/* background glow */
+.wrap::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse at 20% 60%, rgba(255,123,46,.07) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 15%, rgba(0,212,245,.07) 0%, transparent 55%);
+}
+
+/* ===== HEADER ===== */
+header {
+  text-align: center;
+  padding: 14px 0 8px;
+  position: relative; z-index: 1;
+}
+header h1 {
+  font-family: Arial Black, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 900;
+  color: #ff9950;
+  letter-spacing: 2px;
+  text-shadow: 0 0 30px rgba(255,123,46,.3);
+}
+header p { color: #8899bb; font-size: 13px; margin-top: 4px; }
+
+/* ===== MODAL ===== */
+.modal-bg {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.88);
+  z-index: 300;
+  display: flex; align-items: center; justify-content: center;
+  padding: 14px;
+}
+.modal {
+  background: #0d1526;
+  border: 1.5px solid #1e3560;
+  border-radius: 16px;
+  padding: 20px;
+  width: 100%; max-width: 460px;
+  max-height: 90vh; overflow-y: auto;
+}
+.modal h2 {
+  font-family: Arial Black, sans-serif;
+  font-size: 15px; color: #ff9950;
+  margin-bottom: 14px; text-align: center; letter-spacing: 1px;
+}
+.mi-block {
+  margin-bottom: 12px;
+  background: rgba(30,53,96,.4);
+  border-radius: 10px; padding: 12px;
+}
+.mi-block h3 { font-size: 14px; color: #00d4f5; font-weight: 700; margin-bottom: 8px; }
+.step { display: flex; gap: 9px; align-items: flex-start; margin-top: 5px; }
+.snum {
+  background: #ff7b2e; color: #fff;
+  font-size: 11px; font-weight: 700;
+  width: 18px; height: 18px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 2px;
+}
+.step p { font-size: 13px; color: #c8d8f0; line-height: 1.55; }
+.start-btn {
+  background: linear-gradient(135deg, #ff7b2e, #e85d00);
+  color: #fff; border: none;
+  padding: 14px 32px; border-radius: 10px;
+  cursor: pointer;
+  font-family: Arial Black, sans-serif;
+  font-size: 14px; letter-spacing: 1.5px; font-weight: 700;
+  width: 100%; margin-top: 6px;
+}
+.start-btn:active { opacity: .85; }
+
+/* ===== TOP BAR ===== */
+.top-bar {
+  display: flex; justify-content: flex-end;
+  gap: 8px; margin-bottom: 8px;
+  position: relative; z-index: 1;
+}
+.icon-btn {
+  background: rgba(255,255,255,.06);
+  border: 1px solid #1e3560;
+  color: #aabbd8;
+  padding: 7px 13px; border-radius: 8px;
+  cursor: pointer; font-size: 13px;
+}
+.icon-btn.on { color: #ffd060; border-color: #ffd060; }
+
+/* ===== SCORE BAR ===== */
+.scorebar {
+  display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;
+  background: #0d1526;
+  border: 1px solid #1e3560; border-radius: 12px;
+  padding: 10px 16px; margin-bottom: 10px;
+  position: relative; z-index: 1;
+}
+.si .val {
+  font-family: Arial Black, sans-serif;
+  font-size: 26px; font-weight: 700; color: #ff9950; text-align: center;
+}
+.si .lbl {
+  font-size: 10px; color: #7a8fae;
+  letter-spacing: 2px; text-transform: uppercase;
+  margin-top: 2px; text-align: center;
+}
+#t-val { color: #00d4f5; }
+#s-val { color: #ffd060; }
+
+/* ===== TABS ===== */
+.tabs {
+  display: flex; gap: 6px; justify-content: center;
+  flex-wrap: wrap; margin: 8px 0 10px;
+  position: relative; z-index: 1;
+}
+.tab {
+  background: #0d1526;
+  border: 1px solid #1e3560;
+  color: #8899bb;
+  padding: 9px 12px; border-radius: 9px;
+  cursor: pointer; font-size: 13px; font-weight: 600;
+}
+.tab.active { border-color: #ff7b2e; color: #ff9950; background: rgba(255,123,46,.12); }
+.tab:active { opacity: .8; }
+
+/* ===== PROGRESS ===== */
+.prog-wrap {
+  background: #0d1526;
+  border-radius: 999px; height: 6px;
+  margin: 0 0 8px; overflow: hidden;
+  border: 1px solid #1e3560;
+  position: relative; z-index: 1;
+}
+.prog-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ff7b2e, #00d4f5);
+  border-radius: 999px;
+  transition: width .4s;
+}
+
+/* ===== FEEDBACK ===== */
+.fb {
+  text-align: center; min-height: 22px;
+  font-size: 14px; font-weight: 700;
+  color: #2ecc71; letter-spacing: .4px;
+  margin-bottom: 4px;
+  position: relative; z-index: 1;
+}
+.fb.bad { color: #ff4757; }
+
+/* ===== RESULT ===== */
+.result {
+  display: none; text-align: center;
+  padding: 34px 20px;
+  background: #0d1526;
+  border-radius: 16px; border: 1px solid #1e3560;
+  margin: 10px 0;
+  position: relative; z-index: 1;
+}
+.result.show { display: block; animation: popIn .4s ease; }
+.result h2 {
+  font-family: Arial Black, sans-serif;
+  font-size: 22px; color: #ffd060; margin-bottom: 5px;
+}
+.result .big {
+  font-family: Arial Black, sans-serif;
+  font-size: 44px; color: #ff9950; font-weight: 900;
+}
+.result p { color: #aabbd8; margin: 7px 0; font-size: 14px; }
+
+/* ===== BUTTONS ===== */
+.btn {
+  background: linear-gradient(135deg, #ff7b2e, #e85d00);
+  color: #fff; border: none;
+  padding: 11px 22px; border-radius: 9px;
+  cursor: pointer;
+  font-family: Arial Black, sans-serif;
+  font-size: 13px; letter-spacing: 1px; font-weight: 700;
+  margin: 4px;
+}
+.btn:active { opacity: .85; }
+.btn.sec {
+  background: #0d1526;
+  border: 1px solid #1e3560;
+  color: #c8d8f0;
+}
+
+/* ===== SIMULATOR ===== */
+#sim-area { display: none; position: relative; z-index: 1; }
+.sim-ctrl {
+  margin-bottom: 12px;
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  background: #0d1526;
+  border: 1px solid #1e3560; border-radius: 10px;
+  padding: 10px 14px;
+}
+.sim-ctrl label { font-size: 14px; color: #aabbd8; white-space: nowrap; }
+.sim-ctrl input[type=range] {
+  flex: 1; min-width: 120px;
+  height: 6px; accent-color: #ff7b2e;
+}
+#sim-temp-disp {
+  font-family: Arial Black, sans-serif;
+  font-size: 22px; color: #ff9950;
+  min-width: 64px; text-align: right;
+}
+.sim-grid {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 12px; align-items: start;
+}
+.prod-list { display: flex; flex-direction: column; gap: 7px; }
+.prod-card {
+  display: flex; align-items: center; gap: 9px;
+  padding: 9px 11px; border-radius: 10px;
+  border: 1px solid rgba(255,255,255,.08);
+  transition: opacity .4s;
+  animation: slideIn .3s ease;
+}
+.prod-card .p-icon { font-size: 20px; }
+.prod-card .p-name { font-size: 13px; font-weight: 700; letter-spacing: .3px; }
+.prod-card .p-use { font-size: 12px; margin-top: 2px; opacity: .95; }
+.prod-card .p-temp {
+  margin-left: auto; font-size: 11px; opacity: .9;
+  white-space: nowrap; font-family: Arial Black, sans-serif;
+}
+.sim-info {
+  margin-top: 10px; padding: 11px 13px;
+  background: #0d1526; border-radius: 10px;
+  border: 1px solid #1e3560;
+  font-size: 13px; color: #c8d8f0;
+  min-height: 38px; display: flex; align-items: center; gap: 8px;
+}
+
+/* ===== MATCH ===== */
+#match-area { display: none; position: relative; z-index: 1; }
+.match-inst {
+  text-align: center; font-size: 13px; color: #c8d8f0;
+  margin-bottom: 10px;
+  background: rgba(30,53,96,.38);
+  border-radius: 10px; padding: 8px 12px;
+}
+.match-inst strong { color: #00d4f5; }
+.match-grid {
+  display: grid;
+  grid-template-columns: 1fr 100px 1fr;
+  gap: 8px; align-items: center;
+}
+.col-cards { display: flex; flex-direction: column; gap: 7px; }
+.col-cards.left { align-items: flex-end; }
+.col-cards.right { align-items: flex-start; }
+.mc {
+  background: #0d1526;
+  border: 1px solid #1e3560;
+  border-radius: 10px;
+  padding: 8px 9px; cursor: pointer;
+  transition: all .2s;
+  width: 100%; max-width: 190px;
+  position: relative;
+}
+.mc:active { opacity: .8; }
+.mc.sel { border-color: #ff7b2e; background: rgba(255,123,46,.13); }
+.mc.matched { border-color: #2ecc71; background: rgba(46,204,113,.1); opacity: .55; pointer-events: none; }
+.mc.wrong { border-color: #ff4757; animation: shake .4s; }
+.mc .mi-ic { font-size: 20px; margin-bottom: 2px; }
+.mc .mn { font-size: 12px; font-weight: 700; color: #f0f4ff; }
+.mc .ms { font-size: 11px; color: #aabbd8; margin-top: 1px; }
+.mc .mk { position: absolute; top: 5px; right: 7px; font-size: 14px; }
+.tower-w { display: flex; flex-direction: column; align-items: center; }
+.tower-t {
+  font-size: 9px; color: #7a8fae;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  font-family: Arial Black, sans-serif;
+  margin-bottom: 4px; text-align: center;
+}
+.tower {
+  width: 96px;
+  border: 1.5px solid #1e3560;
+  border-radius: 6px 6px 0 0; overflow: hidden;
+}
+.lyr {
+  width: 100%; height: 46px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; text-align: center;
+  letter-spacing: .3px; cursor: pointer;
+  transition: filter .2s, transform .15s;
+  border-bottom: 1px solid rgba(0,0,0,.28);
+  padding: 4px; line-height: 1.3;
+  color: #fff;
+}
+.lyr:active { filter: brightness(1.4); }
+.lyr.sel { filter: brightness(1.55); outline: 2.5px solid #fff; }
+.lyr-lpg     { background: #0e2460; }
+.lyr-petrol  { background: #5a2400; }
+.lyr-jet     { background: #053820; }
+.lyr-diesel  { background: #220a55; }
+.lyr-lube    { background: #5a0e0e; }
+.lyr-bitumen { background: #120f08; }
+.tower-base {
+  width: 110px; height: 26px;
+  background: linear-gradient(135deg, #cc2200, #ff7b2e);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; color: #fff; font-weight: 700;
+  border-radius: 0 0 8px 8px;
+  border: 1.5px solid #1e3560; border-top: none;
+  animation: hpulse 2s ease-in-out infinite;
+}
+
+/* ===== QUIZ ===== */
+#quiz-area { display: none; position: relative; z-index: 1; }
+.qbox {
+  background: #0d1526; border: 1px solid #1e3560;
+  border-radius: 14px; padding: 20px;
+  margin: 10px 0; text-align: center;
+}
+.qbox .qi { font-size: 42px; margin-bottom: 8px; }
+.qbox .qt {
+  font-size: 15px; font-weight: 600;
+  color: #c8e8ff; line-height: 1.55; margin-bottom: 16px;
+}
+.opts { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+.ob {
+  background: #080f1e;
+  border: 1.5px solid #1e3560;
+  color: #ddeeff;
+  padding: 12px 10px; border-radius: 10px;
+  cursor: pointer; font-family: Arial, sans-serif;
+  font-size: 13px; font-weight: 600;
+  transition: all .2s; text-align: left;
+  display: flex; align-items: center; gap: 8px;
+}
+.ob:active:not(:disabled) { background: rgba(0,212,245,.1); }
+.ob.correct { border-color: #2ecc71; background: rgba(46,204,113,.14); color: #2ecc71; font-weight: 700; }
+.ob.wrong   { border-color: #ff4757; background: rgba(255,71,87,.14);  color: #ff4757; }
+.ob .oi { font-size: 20px; }
+
+/* ===== TEMP GUESS ===== */
+#guess-area { display: none; position: relative; z-index: 1; }
+.guess-card {
+  background: #0d1526; border: 1px solid #1e3560;
+  border-radius: 14px; padding: 20px;
+  margin: 10px 0; text-align: center;
+}
+.guess-card .gi { font-size: 44px; margin-bottom: 8px; }
+.guess-card .gn {
+  font-family: Arial Black, sans-serif;
+  font-size: 18px; color: #ff9950; margin-bottom: 5px;
+}
+.guess-card .gu { font-size: 13px; color: #aabbd8; margin-bottom: 16px; line-height: 1.55; }
+.temp-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+.to-btn {
+  background: #080f1e; border: 1.5px solid #1e3560;
+  color: #ddeeff;
+  padding: 13px 9px; border-radius: 10px;
+  cursor: pointer;
+  font-family: Arial Black, sans-serif;
+  font-size: 13px; transition: all .2s;
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+}
+.to-btn:active:not(:disabled) { background: rgba(0,212,245,.1); }
+.to-btn .to-temp { font-size: 16px; color: #ff9950; font-weight: 700; }
+.to-btn .to-hint { font-size: 11px; color: #8899bb; font-family: Arial, sans-serif; }
+.to-btn.correct { border-color: #2ecc71; background: rgba(46,204,113,.12); color: #2ecc71; }
+.to-btn.wrong   { border-color: #ff4757; background: rgba(255,71,87,.1); }
+
+/* ===== LEARN ===== */
+#learn-area { display: none; position: relative; z-index: 1; }
+.learn-grid { display: flex; flex-direction: column; gap: 9px; }
+.learn-card {
+  background: #0d1526; border: 1px solid #1e3560;
+  border-radius: 13px; padding: 15px;
+  animation: popIn .3s ease;
+}
+.learn-card-top {
+  display: flex; align-items: center;
+  gap: 11px; margin-bottom: 9px;
+}
+.lci { font-size: 32px; }
+.lcn { font-family: Arial Black, sans-serif; font-size: 14px; color: #ff9950; }
+.lct { font-size: 12px; color: #00d4f5; margin-top: 2px; }
+.lctp { margin-left: auto; text-align: right; }
+.lctp .temp { font-size: 12px; color: #ffd060; font-family: Arial Black, sans-serif; }
+.lctp .tl { font-size: 10px; color: #7a8fae; }
+.lc-use { font-size: 13px; color: #c8d8f0; margin-bottom: 9px; line-height: 1.6; }
+.lc-facts { display: flex; gap: 5px; flex-wrap: wrap; }
+.lc-fact {
+  background: rgba(30,53,96,.5);
+  border: 1px solid #1e3560;
+  border-radius: 5px; padding: 3px 8px;
+  font-size: 11px; color: #aabbd8;
+}
+
+/* ===== TOAST ===== */
+.toast {
+  position: fixed; bottom: 18px;
+  left: 50%; transform: translateX(-50%);
+  background: #0d1526; border: 1px solid #00d4f5;
+  color: #ddeeff;
+  padding: 8px 16px; border-radius: 9px;
+  font-size: 13px; opacity: 0; pointer-events: none;
+  transition: opacity .3s; z-index: 200;
+  white-space: nowrap;
+}
+.toast.show { opacity: 1; }
+
+/* ===== ANIMATIONS ===== */
+@keyframes popIn   { from { transform: scale(.85); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+@keyframes shake   { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-7px); } 75% { transform: translateX(7px); } }
+@keyframes hpulse  { 0%,100% { box-shadow: 0 4px 16px rgba(255,123,46,.3); } 50% { box-shadow: 0 4px 28px rgba(255,123,46,.65); } }
+@keyframes flame   { 0%,100% { opacity: 1; transform: scaleY(1); } 50% { opacity: .8; transform: scaleY(.88); } }
+@keyframes slideIn { from { opacity: 0; transform: translateX(8px); } to { opacity: 1; transform: translateX(0); } }
+
+/* ===== MOBILE TWEAKS ===== */
+@media (max-width: 400px) {
+  .match-grid { grid-template-columns: 1fr 80px 1fr; gap: 5px; }
+  .tower { width: 76px; }
+  .tower-base { width: 96px; }
+  .lyr { height: 40px; font-size: 10px; }
+  .mc { max-width: 140px; padding: 6px 7px; }
+  .opts, .temp-opts { grid-template-columns: 1fr; }
+  .sim-grid { grid-template-columns: 140px 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- MODAL -->
+<div class="modal-bg" id="modal-bg">
+  <div class="modal">
+    <h2>⚗️ OIL REFINERY CHALLENGE</h2>
+    <p style="text-align:center;font-size:13px;color:#8899bb;margin-bottom:14px;">Learn how crude oil is distilled — 5 game modes!</p>
+
+    <div class="mi-block">
+      <h3>🌡️ Simulator Mode</h3>
+      <div class="step"><div class="snum">1</div><p>Drag the temperature slider upward</p></div>
+      <div class="step"><div class="snum">2</div><p>As temperature rises, products separate from the tower</p></div>
+      <div class="step"><div class="snum">3</div><p>Read each product's boiling range and real-world uses</p></div>
+    </div>
+    <div class="mi-block">
+      <h3>🔗 Match Mode <span style="color:#ffd060;font-size:12px;">(90 sec)</span></h3>
+      <div class="step"><div class="snum">1</div><p>Click a <strong style="color:#ff9950">tower layer</strong> on the fractionating column</p></div>
+      <div class="step"><div class="snum">2</div><p>Then click the <strong style="color:#00d4f5">matching product card</strong></p></div>
+      <div class="step"><div class="snum">3</div><p>Correct = <strong style="color:#ffd060">+10 pts</strong> + streak bonus</p></div>
+    </div>
+    <div class="mi-block">
+      <h3>❓ Quiz Mode <span style="color:#ffd060;font-size:12px;">(60 sec)</span></h3>
+      <div class="step"><div class="snum">1</div><p>Read the question and pick the correct answer from 4 options</p></div>
+      <div class="step"><div class="snum">2</div><p>Correct = <strong style="color:#ffd060">+15 pts</strong> + streak bonus</p></div>
+    </div>
+    <div class="mi-block">
+      <h3>🎯 Temp Guess Mode <span style="color:#ffd060;font-size:12px;">(90 sec)</span></h3>
+      <div class="step"><div class="snum">1</div><p>A petroleum product is shown with its description</p></div>
+      <div class="step"><div class="snum">2</div><p>Choose its correct <strong style="color:#ff9950">boiling temperature range</strong></p></div>
+      <div class="step"><div class="snum">3</div><p>Correct = <strong style="color:#ffd060">+20 pts</strong> + streak bonus</p></div>
+    </div>
+    <div class="mi-block">
+      <h3>📚 Learn Mode</h3>
+      <p style="font-size:13px;color:#c8d8f0;line-height:1.6;">Browse all 6 petroleum products — boiling ranges, uses, and key facts. Great to study first!</p>
+    </div>
+    <button class="start-btn" onclick="closeModal()">🚀 START PLAYING</button>
+  </div>
+</div>
+
+<header>
+  <h1>⚗️ OIL REFINERY CHALLENGE</h1>
+  <p>🛢️ From Crude Oil to Useful Products • 5 Game Modes</p>
+</header>
+
+<div class="top-bar">
+  <button class="icon-btn on" id="snd-btn" onclick="toggleSound()">🔊 Sound</button>
+  <button class="icon-btn" onclick="openModal()">❓ How to Play</button>
+</div>
+
+<div class="scorebar">
+  <div class="si"><div class="val" id="sc-val">0</div><div class="lbl">Score</div></div>
+  <div class="si"><div class="val" id="t-val">60</div><div class="lbl">⏱ Timer</div></div>
+  <div class="si"><div class="val" id="s-val">0</div><div class="lbl">🔥 Streak</div></div>
+</div>
+
+<div class="tabs">
+  <button class="tab" onclick="goMode('sim')">🌡️ Sim</button>
+  <button class="tab" onclick="goMode('match')">🔗 Match</button>
+  <button class="tab" onclick="goMode('quiz')">❓ Quiz</button>
+  <button class="tab" onclick="goMode('guess')">🎯 Guess</button>
+  <button class="tab" onclick="goMode('learn')">📚 Learn</button>
+</div>
+
+<div class="prog-wrap"><div class="prog-fill" id="prog" style="width:0%"></div></div>
+<div class="fb" id="fb"></div>
+
+<!-- SIMULATOR -->
+<div id="sim-area">
+  <div class="sim-ctrl">
+    <label>🌡️ Temp</label>
+    <input type="range" id="sim-sl" min="20" max="400" value="20" step="1" oninput="simUpdate(this.value)">
+    <span id="sim-temp-disp">20°C</span>
+  </div>
+  <div class="sim-grid">
+    <div>
+      <svg width="100%" viewBox="0 0 180 520" style="display:block;">
+        <defs>
+          <linearGradient id="twG" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#1a3560"/><stop offset="100%" stop-color="#6b1212"/>
+          </linearGradient>
+          <clipPath id="hclip"><rect id="hcr" x="35" y="400" width="110" height="0" rx="8"/></clipPath>
+        </defs>
+        <rect x="35" y="50" width="110" height="350" rx="10" fill="url(#twG)" stroke="#1e3560" stroke-width="1.5"/>
+        <rect x="35" y="50" width="110" height="350" rx="10" fill="#ff7b2e" opacity=".18" clip-path="url(#hclip)"/>
+        <line x1="35" y1="108" x2="145" y2="108" stroke="rgba(255,255,255,.14)" stroke-width=".8"/>
+        <line x1="35" y1="166" x2="145" y2="166" stroke="rgba(255,255,255,.14)" stroke-width=".8"/>
+        <line x1="35" y1="224" x2="145" y2="224" stroke="rgba(255,255,255,.14)" stroke-width=".8"/>
+        <line x1="35" y1="282" x2="145" y2="282" stroke="rgba(255,255,255,.14)" stroke-width=".8"/>
+        <line x1="35" y1="340" x2="145" y2="340" stroke="rgba(255,255,255,.14)" stroke-width=".8"/>
+        <text x="90" y="80"  text-anchor="middle" style="font-size:9px;fill:#93c5fd;font-weight:700">🔵 LPG</text>
+        <text x="90" y="93"  text-anchor="middle" style="font-size:7.5px;fill:#7eb8f7">&lt; 40°C</text>
+        <text x="90" y="138" text-anchor="middle" style="font-size:9px;fill:#fde68a;font-weight:700">⛽ Petrol</text>
+        <text x="90" y="151" text-anchor="middle" style="font-size:7.5px;fill:#fcd34d">40–200°C</text>
+        <text x="90" y="196" text-anchor="middle" style="font-size:9px;fill:#86efac;font-weight:700">✈️ Jet Fuel</text>
+        <text x="90" y="209" text-anchor="middle" style="font-size:7.5px;fill:#6ee7b7">150–300°C</text>
+        <text x="90" y="254" text-anchor="middle" style="font-size:9px;fill:#c4b5fd;font-weight:700">🚛 Diesel</text>
+        <text x="90" y="267" text-anchor="middle" style="font-size:7.5px;fill:#a78bfa">200–350°C</text>
+        <text x="90" y="312" text-anchor="middle" style="font-size:9px;fill:#fca5a5;font-weight:700">⚙️ Lube Oil</text>
+        <text x="90" y="325" text-anchor="middle" style="font-size:7.5px;fill:#f87171">300–370°C</text>
+        <text x="90" y="362" text-anchor="middle" style="font-size:9px;fill:#d6d3d1;font-weight:700">🏗️ Bitumen</text>
+        <text x="90" y="375" text-anchor="middle" style="font-size:7.5px;fill:#a8a29e">370°C+</text>
+        <rect id="sim-hl" x="33" y="50" width="114" height="58" rx="8" fill="none" stroke="#ffd060" stroke-width="2" opacity="0"/>
+        <line id="sa-lpg"     x1="145" y1="79"  x2="168" y2="79"  stroke="#93c5fd" stroke-width="2.5" opacity="0"/>
+        <line id="sa-petrol"  x1="145" y1="137" x2="168" y2="137" stroke="#fde68a" stroke-width="2.5" opacity="0"/>
+        <line id="sa-jet"     x1="145" y1="195" x2="168" y2="195" stroke="#86efac" stroke-width="2.5" opacity="0"/>
+        <line id="sa-diesel"  x1="145" y1="253" x2="168" y2="253" stroke="#c4b5fd" stroke-width="2.5" opacity="0"/>
+        <line id="sa-lube"    x1="145" y1="311" x2="168" y2="311" stroke="#fca5a5" stroke-width="2.5" opacity="0"/>
+        <line id="sa-bitumen" x1="145" y1="369" x2="168" y2="369" stroke="#d6d3d1" stroke-width="2.5" opacity="0"/>
+        <g>
+          <path d="M50,408Q56,383 61,394Q66,373 71,408Z" fill="#ff7b2e" opacity=".9" style="animation:flame .6s ease-in-out infinite"/>
+          <path d="M75,408Q82,378 87,390Q92,368 97,408Z" fill="#ffd060" opacity=".85" style="animation:flame .7s ease-in-out infinite .1s"/>
+          <path d="M102,408Q108,381 113,393Q118,371 122,408Z" fill="#ef4444" opacity=".8" style="animation:flame .65s ease-in-out infinite .2s"/>
+        </g>
+        <rect x="25" y="408" width="130" height="26" rx="6" fill="none" stroke="#1e3560" stroke-width="1"/>
+        <text x="90" y="425" text-anchor="middle" style="font-size:7.5px;fill:#7a8fae">🔥 Furnace 350–400°C</text>
+        <text id="sim-tl" x="90" y="41" text-anchor="middle" style="font-size:9px;fill:#7a8fae">20°C</text>
+      </svg>
+    </div>
+    <div>
+      <div style="font-size:11px;color:#7a8fae;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;">🧪 Extracted Products</div>
+      <div id="sim-prods" class="prod-list"></div>
+      <div id="sim-empty" style="font-size:13px;color:#7a8fae;padding:10px 0;">👆 Drag the slider to begin distillation!</div>
+    </div>
+  </div>
+  <div class="sim-info">
+    <span id="sim-info-icon">🛢️</span>
+    <span id="sim-info-text" style="color:#c8d8f0;">Increase temperature to separate crude oil into products.</span>
+  </div>
+</div>
+
+<!-- MATCH -->
+<div id="match-area">
+  <div class="match-inst"><strong>How to play:</strong> Click a <strong>tower layer</strong>, then the matching <strong>product card</strong>!</div>
+  <div class="match-grid">
+    <div class="col-cards left" id="left-cards"></div>
+    <div class="tower-w">
+      <div class="tower-t">Fractionating<br>Column</div>
+      <div class="tower" id="match-tower"></div>
+      <div class="tower-base">🔥 350–400°C</div>
+    </div>
+    <div class="col-cards right" id="right-cards"></div>
+  </div>
+  <div style="text-align:center;margin-top:10px;">
+    <button class="btn sec" onclick="resetGame()">🔄 Restart</button>
+  </div>
+</div>
+
+<!-- QUIZ -->
+<div id="quiz-area">
+  <div class="qbox">
+    <div class="qi" id="q-icon">🛢️</div>
+    <div class="qt" id="q-text">Loading...</div>
+    <div class="opts" id="q-opts"></div>
+  </div>
+  <div class="fb" id="qfb"></div>
+  <div style="text-align:center;margin-top:6px;">
+    <button class="btn sec" onclick="resetGame()">🔄 Restart</button>
+  </div>
+</div>
+
+<!-- TEMP GUESS -->
+<div id="guess-area">
+  <div class="guess-card">
+    <div class="gi" id="g-icon">🛢️</div>
+    <div class="gn" id="g-name">Product</div>
+    <div class="gu" id="g-use">Description</div>
+    <div class="temp-opts" id="g-opts"></div>
+  </div>
+  <div class="fb" id="gfb"></div>
+  <div style="text-align:center;margin-top:6px;">
+    <button class="btn sec" onclick="resetGame()">🔄 Restart</button>
+  </div>
+</div>
+
+<!-- LEARN -->
+<div id="learn-area">
+  <div style="font-size:13px;color:#aabbd8;text-align:center;margin-bottom:10px;background:rgba(30,53,96,.25);border-radius:9px;padding:8px;">
+    📚 <strong style="color:#00d4f5;">Learn Mode</strong> — Explore all petroleum products
+  </div>
+  <div class="learn-grid" id="learn-cards"></div>
+  <div style="text-align:center;margin-top:14px;">
+    <button class="btn" onclick="goMode('match')">🔗 Try Match Mode</button>
+    <button class="btn sec" onclick="goMode('quiz')">❓ Try Quiz Mode</button>
+  </div>
+</div>
+
+<!-- RESULT -->
+<div class="result" id="result">
+  <div style="font-size:42px;">🏆</div>
+  <h2>COMPLETE!</h2>
+  <div class="big" id="r-score">0</div>
+  <p id="r-msg">Great job!</p>
+  <div style="margin-top:14px;">
+    <button class="btn" onclick="resetGame()">🔄 Play Again</button>
+    <button class="btn sec" onclick="goMode('learn')">📚 Study Products</button>
+  </div>
+</div>
+
+</div><!-- .wrap -->
+<div class="toast" id="toast"></div>
+
+<script>
+var PRODS=[
+  {id:'lpg',name:'LPG',icon:'🔵',tempMin:0,tempMax:40,boil:'< 40°C',
+   color:'#0c1e52',textColor:'#93c5fd',
+   use:'🍳 Cooking gas',useDetail:'Stored in cylinders for home cooking & heating. Made of propane & butane.',
+   lyrClass:'lyr-lpg',arrowId:'sa-lpg',simY:50,simH:58,
+   facts:['Lightest fraction','Propane & butane mix','Stored under pressure','Boils at room temp']},
+  {id:'petrol',name:'Petrol',icon:'⛽',tempMin:40,tempMax:200,boil:'40–200°C',
+   color:'#4a1e00',textColor:'#fde68a',
+   use:'🚗 Light vehicles',useDetail:'Powers cars, motorcycles and light automobiles. Most widely used fuel.',
+   lyrClass:'lyr-petrol',arrowId:'sa-petrol',simY:108,simH:58,
+   facts:['Octane-rated fuel','Most widely used','Burns cleanly','Evaporates quickly']},
+  {id:'jet',name:'Jet Fuel',icon:'✈️',tempMin:150,tempMax:300,boil:'150–300°C',
+   color:'#042e18',textColor:'#86efac',
+   use:'✈️ Aviation fuel',useDetail:'Powers jet aircraft. Also used as kerosene for heating and lighting.',
+   lyrClass:'lyr-jet',arrowId:'sa-jet',simY:166,simH:58,
+   facts:['Also called kerosene','Jet-A fuel standard','Higher flash point','Used in heating too']},
+  {id:'diesel',name:'Diesel',icon:'🚛',tempMin:200,tempMax:350,boil:'200–350°C',
+   color:'#180845',textColor:'#c4b5fd',
+   use:'🚢 Heavy vehicles',useDetail:'Fuels trucks, buses, trains, ships & generators. More energy-dense than petrol.',
+   lyrClass:'lyr-diesel',arrowId:'sa-diesel',simY:224,simH:58,
+   facts:['Compression ignition','More energy-dense','Powers generators','Used in ships & trains']},
+  {id:'lube',name:'Lube Oil & Wax',icon:'⚙️',tempMin:300,tempMax:370,boil:'300–370°C',
+   color:'#480a0a',textColor:'#fca5a5',
+   use:'🕯️ Machines & candles',useDetail:'Lubricates engines to reduce wear. Wax used in candles & cosmetics.',
+   lyrClass:'lyr-lube',arrowId:'sa-lube',simY:282,simH:58,
+   facts:['Reduces engine wear','Wax for cosmetics','Thick viscous oil','High boiling point']},
+  {id:'bitumen',name:'Bitumen',icon:'🏗️',tempMin:370,tempMax:400,boil:'370°C+',
+   color:'#0e0c08',textColor:'#d6d3d1',
+   use:'🛣️ Road construction',useDetail:'Paves roads and waterproofs rooftops. Heavy black sticky residue.',
+   lyrClass:'lyr-bitumen',arrowId:'sa-bitumen',simY:340,simH:60,
+   facts:['Heaviest fraction','Black & sticky','Used in roofing','Last to separate']},
+];
+
+var QUIZ_QS=[
+  {icon:'🍳',text:'Which petroleum product is used as home cooking gas?',ans:'lpg',opts:['lpg','petrol','diesel','bitumen']},
+  {icon:'🚗',text:'What fuel powers most regular cars and motorcycles?',ans:'petrol',opts:['petrol','jet','lube','bitumen']},
+  {icon:'✈️',text:'Which product keeps jet aircraft flying in the sky?',ans:'jet',opts:['jet','lpg','diesel','petrol']},
+  {icon:'🚛',text:'Trucks, buses and trains all run on which heavy fuel?',ans:'diesel',opts:['diesel','petrol','lpg','lube']},
+  {icon:'⚙️',text:'What reduces friction and keeps car engines running smoothly?',ans:'lube',opts:['lube','bitumen','diesel','lpg']},
+  {icon:'🛣️',text:'Which product is used to pave roads and waterproof roofs?',ans:'bitumen',opts:['bitumen','lube','jet','diesel']},
+  {icon:'🔵',text:'LPG is a mixture of propane and which other gas?',ans:'lpg',opts:['lpg','petrol','diesel','jet']},
+  {icon:'🕯️',text:'Candles and engine lubricants both come from which fraction?',ans:'lube',opts:['lube','bitumen','petrol','jet']},
+  {icon:'⛵',text:'Ships and large generators often run on which fuel?',ans:'diesel',opts:['diesel','jet','lube','petrol']},
+  {icon:'🌡️',text:'Which fraction has the LOWEST boiling point and separates first?',ans:'lpg',opts:['lpg','bitumen','diesel','lube']},
+  {icon:'🏗️',text:'The heaviest, stickiest residue left after distillation is…?',ans:'bitumen',opts:['bitumen','diesel','lube','lpg']},
+  {icon:'🛩️',text:'Kerosene is another common name for which aviation fuel?',ans:'jet',opts:['jet','petrol','diesel','lpg']},
+  {icon:'🔥',text:'Which fraction separates at the HIGHEST temperature (370°C+)?',ans:'bitumen',opts:['bitumen','lube','diesel','petrol']},
+  {icon:'🏎️',text:'Racing fuel and regular petrol belong to which fraction?',ans:'petrol',opts:['petrol','jet','diesel','lpg']},
+];
+
+var TEMPS=[
+  {label:'< 40°C',hint:'Very low temp',correct:'lpg'},
+  {label:'40–200°C',hint:'Low temp zone',correct:'petrol'},
+  {label:'150–300°C',hint:'Medium-low temp',correct:'jet'},
+  {label:'200–350°C',hint:'Medium temp',correct:'diesel'},
+  {label:'300–370°C',hint:'Medium-high temp',correct:'lube'},
+  {label:'370°C+',hint:'Very high temp',correct:'bitumen'},
+];
+
+/* SOUND */
+var soundOn=true, audioCtx=null, audioUnlocked=false;
+function unlockAudio(){
+  if(audioUnlocked)return;
+  try{
+    audioCtx=new(window.AudioContext||window.webkitAudioContext)();
+    var buf=audioCtx.createBuffer(1,1,22050);
+    var src=audioCtx.createBufferSource();
+    src.buffer=buf;src.connect(audioCtx.destination);src.start(0);
+    audioUnlocked=true;
+  }catch(e){}
+}
+document.addEventListener('touchstart',unlockAudio,{once:true});
+document.addEventListener('click',unlockAudio,{once:true});
+
+function playTone(f,d,t,v){
+  if(!soundOn)return;
+  t=t||'sine';v=v||.16;
+  try{
+    if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();
+    if(audioCtx.state==='suspended')audioCtx.resume();
+    var o=audioCtx.createOscillator(),g=audioCtx.createGain();
+    o.connect(g);g.connect(audioCtx.destination);
+    o.type=t;o.frequency.value=f;
+    g.gain.setValueAtTime(v,audioCtx.currentTime);
+    g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+d);
+    o.start();o.stop(audioCtx.currentTime+d+.05);
+  }catch(e){}
+}
+function playCorrect(){playTone(520,.1);setTimeout(function(){playTone(660,.12);},90);setTimeout(function(){playTone(880,.18);},200);}
+function playWrong(){playTone(260,.14,'sawtooth',.14);setTimeout(function(){playTone(210,.22,'sawtooth',.1);},120);}
+function playClick(){playTone(440,.05,'sine',.07);}
+function playWin(){[440,550,660,770,880,1100].forEach(function(f,i){setTimeout(function(){playTone(f,.16,'sine',.18);},i*90);});}
+function toggleSound(){
+  soundOn=!soundOn;
+  var b=document.getElementById('snd-btn');
+  b.textContent=soundOn?'🔊 Sound':'🔇 Muted';
+  b.className='icon-btn'+(soundOn?' on':'');
+}
+
+/* MODAL */
+function openModal(){document.getElementById('modal-bg').style.display='flex';}
+function closeModal(){document.getElementById('modal-bg').style.display='none';playClick();}
+
+/* STATE */
+var mode='',score=0,streak=0,timer=60,timerInt=null;
+var matchedCount=0,selLayer=null,selCard=null;
+var quizIdx=0,quizAnswered=false,shuffledQ=[];
+var guessIdx=0,guessAnswered=false,shuffledG=[];
+
+function gEl(id){return document.getElementById(id);}
+function setScore(){gEl('sc-val').textContent=score;gEl('s-val').textContent=streak;}
+function setTimer(){gEl('t-val').textContent=timer;}
+function setProg(p){gEl('prog').style.width=p+'%';}
+function showFB(msg,bad){
+  var e=gEl('fb');e.textContent=msg;
+  e.className='fb'+(bad?' bad':'');
+}
+function toast(msg){
+  var t=gEl('toast');t.textContent=msg;t.classList.add('show');
+  clearTimeout(t._t);t._t=setTimeout(function(){t.classList.remove('show');},2000);
+}
+
+function goMode(m){
+  mode=m;
+  ['sim','match','quiz','guess','learn'].forEach(function(id){
+    gEl(id+'-area').style.display='none';
+  });
+  gEl('result').classList.remove('show');
+  document.querySelectorAll('.tab').forEach(function(b,i){
+    b.classList.toggle('active',['sim','match','quiz','guess','learn'][i]===m);
+  });
+  playClick();resetGame();
+}
+
+function resetGame(){
+  clearInterval(timerInt);
+  score=0;streak=0;matchedCount=0;selLayer=selCard=null;
+  setScore();setProg(0);showFB('');
+  gEl('result').classList.remove('show');
+  gEl('t-val').style.color='#00d4f5';
+  if(mode==='sim'){gEl('sim-area').style.display='block';initSim();}
+  else if(mode==='match'){gEl('match-area').style.display='block';timer=90;setTimer();initMatch();startTimer();}
+  else if(mode==='quiz'){gEl('quiz-area').style.display='block';timer=60;setTimer();initQuiz();startTimer();}
+  else if(mode==='guess'){gEl('guess-area').style.display='block';timer=90;setTimer();initGuess();startTimer();}
+  else if(mode==='learn'){gEl('learn-area').style.display='block';initLearn();}
+}
+
+function startTimer(){
+  timerInt=setInterval(function(){
+    timer--;setTimer();
+    if(timer<=10)gEl('t-val').style.color='#ff4757';
+    if(timer<=0){clearInterval(timerInt);showResult();}
+  },1000);
+}
+
+function showResult(){
+  clearInterval(timerInt);
+  gEl('result').classList.add('show');
+  gEl('r-score').textContent=score;
+  playWin();
+  var m=[[0,"Keep going — you're learning! 🌱"],[30,'Nice effort! Getting the hang of it! 🔥'],
+         [60,"Good work! You know your petroleum products! ⚡"],[100,'Excellent! You\'re a refinery pro! 🏆'],
+         [150,'LEGENDARY! Perfect refinery master! 🌟']];
+  var msg=m[0][1];
+  m.forEach(function(x){if(score>=x[0])msg=x[1];});
+  gEl('r-msg').textContent=msg;
+}
+
+/* SIMULATOR */
+function initSim(){gEl('sim-sl').value=20;gEl('sim-temp-disp').textContent='20°C';simUpdate(20);}
+function simUpdate(val){
+  val=+val;
+  gEl('sim-temp-disp').textContent=val+'°C';
+  gEl('sim-tl').textContent=val+'°C';
+  var fh=(val/400)*350, fy=400-fh;
+  gEl('hcr').setAttribute('y',fy);
+  gEl('hcr').setAttribute('height',fh+10);
+  var active=PRODS.filter(function(p){return val>=p.tempMin;});
+  var list=gEl('sim-prods'), empty=gEl('sim-empty');
+  var cur=new Set(active.map(function(p){return p.id;}));
+  var exist=new Set([].slice.call(list.querySelectorAll('[data-id]')).map(function(e){return e.dataset.id;}));
+  active.forEach(function(p){
+    if(!exist.has(p.id)){
+      var d=document.createElement('div');
+      d.className='prod-card';d.dataset.id=p.id;
+      d.style.background=p.color;d.style.opacity='0';
+      d.innerHTML='<span class="p-icon">'+p.icon+'</span>'
+        +'<div><div class="p-name" style="color:'+p.textColor+'">'+p.name+'</div>'
+        +'<div class="p-use" style="color:'+p.textColor+'">'+p.use+'</div></div>'
+        +'<span class="p-temp" style="color:'+p.textColor+'">'+p.boil+'</span>';
+      list.appendChild(d);
+      setTimeout(function(){d.style.opacity='1';},10);
+      playTone(380+active.indexOf(p)*70,.12,'sine',.09);
+    }
+  });
+  [].slice.call(list.querySelectorAll('[data-id]')).forEach(function(el){
+    if(!cur.has(el.dataset.id))el.remove();
+  });
+  empty.style.display=active.length?'none':'block';
+  PRODS.forEach(function(p){
+    var el=gEl(p.arrowId);
+    if(el)el.style.opacity=cur.has(p.id)?'1':'0';
+  });
+  var hl=gEl('sim-hl');
+  if(active.length){
+    var n=active[active.length-1];
+    hl.setAttribute('y',n.simY);hl.setAttribute('height',n.simH);hl.style.opacity='1';
+  }else hl.style.opacity='0';
+  var info=[
+    [370,'🏗️','Above 370°C — Bitumen separates as thick black residue. Used for paving roads.'],
+    [300,'⚙️','300–370°C — Lubricating oil & wax separate. Used in engines and candles.'],
+    [200,'🚛','200–350°C — Diesel condenses here. Used in trucks, ships and generators.'],
+    [150,'✈️','150–300°C — Kerosene / Jet Fuel separates. Powers aircraft worldwide.'],
+    [40,'⛽','40–200°C — Petrol (gasoline) vaporises. Main fuel for cars & motorcycles.'],
+    [0,'🔵','Below 40°C — LPG (propane & butane) are the first to separate. Cooking gas.'],
+    [-1,'🛢️','Increase temperature to start separating crude oil into useful products!'],
+  ];
+  var row=info[info.length-1];
+  info.forEach(function(x){if(val>=x[0])row=x;});
+  gEl('sim-info-icon').textContent=row[1];
+  gEl('sim-info-text').textContent=row[2];
+}
+
+/* MATCH */
+function initMatch(){
+  showFB('');
+  var tw=gEl('match-tower');tw.innerHTML='';
+  PRODS.forEach(function(p){
+    var d=document.createElement('div');
+    d.className='lyr '+p.lyrClass;d.dataset.id=p.id;
+    d.innerHTML=p.icon+'<br>'+p.name.split(' ')[0];
+    (function(pid,el){el.onclick=function(){onLyr(pid,el);};})(p.id,d);
+    tw.appendChild(d);
+  });
+  var lc=gEl('left-cards');lc.innerHTML='';
+  shuffle(PRODS.slice()).forEach(function(p){lc.appendChild(mkCard(p.id,'left',p.icon,p.name,p.boil));});
+  var rc=gEl('right-cards');rc.innerHTML='';
+  shuffle(PRODS.slice()).forEach(function(p){
+    var useWords=p.use.split(' ').slice(1).join(' ');
+    rc.appendChild(mkCard(p.id,'right',p.icon,useWords,p.useDetail.substring(0,36)+'…'));
+  });
+}
+function mkCard(id,side,icon,name,sub){
+  var d=document.createElement('div');
+  d.className='mc';d.dataset.id=id;
+  d.innerHTML='<div class="mi-ic">'+icon+'</div><div class="mn">'+name+'</div><div class="ms">'+sub+'</div><span class="mk"></span>';
+  (function(cid,cside,el){el.onclick=function(){onCard(cid,cside,el);};})(id,side,d);
+  return d;
+}
+function onLyr(id,el){
+  playClick();selLayer=id;
+  document.querySelectorAll('.lyr').forEach(function(l){l.classList.toggle('sel',l.dataset.id===id);});
+  if(selCard!==null)tryMatch(selLayer,selCard);
+  else toast('✅ Layer selected! Now pick a product card →');
+}
+function onCard(id,side,el){
+  if(el.classList.contains('matched'))return;
+  playClick();selCard=id;
+  document.querySelectorAll('.mc:not(.matched)').forEach(function(c){c.classList.remove('sel');});
+  el.classList.add('sel');
+  if(selLayer!==null)tryMatch(selLayer,selCard);
+  else toast('🎯 Card selected! Now click the tower layer →');
+}
+function tryMatch(lId,cId){
+  var ok=lId===cId;
+  if(ok){
+    score+=10+streak*2;streak++;matchedCount++;
+    showFB('✅ Correct! +'+(10+(streak-1)*2)+' pts 🎉');playCorrect();
+    var lyr=document.querySelector('.lyr[data-id="'+lId+'"]');
+    if(lyr){lyr.style.opacity='.32';lyr.style.pointerEvents='none';}
+    document.querySelectorAll('.mc[data-id="'+cId+'"]').forEach(function(c){
+      c.classList.remove('sel');c.classList.add('matched');
+      c.querySelector('.mk').textContent='✅';
+    });
+    if(matchedCount===PRODS.length){score+=40;clearInterval(timerInt);setTimeout(showResult,700);}
+  }else{
+    streak=0;showFB('❌ Not a match — try again!',true);playWrong();
+    var lyr2=document.querySelector('.lyr[data-id="'+lId+'"]');
+    if(lyr2)setTimeout(function(){lyr2.classList.remove('sel');},400);
+    document.querySelectorAll('.mc.sel').forEach(function(c){
+      c.classList.add('wrong');setTimeout(function(){c.classList.remove('wrong','sel');},450);
+    });
+  }
+  selLayer=selCard=null;
+  document.querySelectorAll('.lyr').forEach(function(l){l.classList.remove('sel');});
+  setScore();setProg(matchedCount/PRODS.length*100);
+}
+
+/* QUIZ */
+function initQuiz(){shuffledQ=shuffle(QUIZ_QS.slice());quizIdx=0;quizAnswered=false;showQ();}
+function showQ(){
+  if(quizIdx>=shuffledQ.length){quizIdx=0;shuffledQ=shuffle(shuffledQ);}
+  var q=shuffledQ[quizIdx];
+  gEl('q-icon').textContent=q.icon;gEl('q-text').textContent=q.text;
+  gEl('qfb').textContent='';quizAnswered=false;
+  var opts=gEl('q-opts');opts.innerHTML='';
+  shuffle(q.opts.slice()).forEach(function(id){
+    var p=PRODS.find(function(x){return x.id===id;});
+    var b=document.createElement('button');b.className='ob';
+    b.innerHTML='<span class="oi">'+p.icon+'</span><span>'+p.name+'<br><small style="color:#7a8fae;font-size:11px;">'+p.use+'</small></span>';
+    (function(chosen,correct,btn){btn.onclick=function(){ansQ(chosen,correct,btn);};})(id,q.ans,b);
+    opts.appendChild(b);
+  });
+  setProg(quizIdx/shuffledQ.length*100);
+}
+function ansQ(chosen,correct,btn){
+  if(quizAnswered)return;quizAnswered=true;
+  document.querySelectorAll('.ob').forEach(function(b){b.disabled=true;});
+  if(chosen===correct){
+    btn.classList.add('correct');score+=15+streak*3;streak++;
+    gEl('qfb').textContent='✅ Correct! +'+(15+(streak-1)*3)+' pts 🔥';
+    gEl('qfb').className='fb';playCorrect();
+  }else{
+    btn.classList.add('wrong');streak=0;
+    var cp=PRODS.find(function(p){return p.id===correct;});
+    document.querySelectorAll('.ob').forEach(function(b){
+      if(b.innerHTML.indexOf(cp.name)!==-1)b.classList.add('correct');
+    });
+    gEl('qfb').textContent='❌ Answer: '+cp.icon+' '+cp.name;
+    gEl('qfb').className='fb bad';playWrong();
+  }
+  setScore();quizIdx++;setTimeout(showQ,1400);
+}
+
+/* TEMP GUESS */
+function initGuess(){shuffledG=shuffle(PRODS.slice());guessIdx=0;guessAnswered=false;showGuess();}
+function showGuess(){
+  if(guessIdx>=shuffledG.length){guessIdx=0;shuffledG=shuffle(shuffledG);}
+  var p=shuffledG[guessIdx];
+  gEl('g-icon').textContent=p.icon;gEl('g-name').textContent=p.name;gEl('g-use').textContent=p.useDetail;
+  gEl('gfb').textContent='';guessAnswered=false;
+  var opts=gEl('g-opts');opts.innerHTML='';
+  var correct=TEMPS.find(function(o){return o.correct===p.id;});
+  var others=shuffle(TEMPS.filter(function(o){return o.correct!==p.id;})).slice(0,3);
+  shuffle([correct].concat(others)).forEach(function(o){
+    var b=document.createElement('button');b.className='to-btn';
+    b.innerHTML='<span class="to-temp">'+o.label+'</span><span class="to-hint">'+o.hint+'</span>';
+    (function(chosen,cid,btn){btn.onclick=function(){ansGuess(chosen,cid,btn);};})(o.correct,p.id,b);
+    opts.appendChild(b);
+  });
+  setProg(guessIdx/shuffledG.length*100);
+}
+function ansGuess(chosen,correct,btn){
+  if(guessAnswered)return;guessAnswered=true;
+  document.querySelectorAll('.to-btn').forEach(function(b){b.disabled=true;});
+  var cp=PRODS.find(function(p){return p.id===correct;});
+  if(chosen===correct){
+    btn.classList.add('correct');score+=20+streak*4;streak++;
+    gEl('gfb').textContent='✅ Correct! '+cp.boil+' — +'+(20+(streak-1)*4)+' pts 🎯';
+    gEl('gfb').className='fb';playCorrect();
+  }else{
+    btn.classList.add('wrong');streak=0;
+    var cl=TEMPS.find(function(o){return o.correct===correct;}).label;
+    document.querySelectorAll('.to-btn').forEach(function(b){
+      if(b.querySelector('.to-temp').textContent===cl)b.classList.add('correct');
+    });
+    gEl('gfb').textContent='❌ Correct range: '+cp.boil;
+    gEl('gfb').className='fb bad';playWrong();
+  }
+  setScore();guessIdx++;setTimeout(showGuess,1500);
+}
+
+/* LEARN */
+function initLearn(){
+  var c=gEl('learn-cards');c.innerHTML='';
+  PRODS.forEach(function(p,i){
+    var d=document.createElement('div');
+    d.className='learn-card';
+    d.style.animationDelay=(i*.07)+'s';
+    d.innerHTML='<div class="learn-card-top">'
+      +'<div class="lci">'+p.icon+'</div>'
+      +'<div><div class="lcn">'+p.name+'</div><div class="lct">'+p.use+'</div></div>'
+      +'<div class="lctp"><div class="temp">'+p.boil+'</div><div class="tl">Boiling Range</div></div>'
+      +'</div>'
+      +'<div class="lc-use">'+p.useDetail+'</div>'
+      +'<div class="lc-facts">'+p.facts.map(function(f){return '<span class="lc-fact">'+f+'</span>';}).join('')+'</div>';
+    c.appendChild(d);
+  });
+}
+
+/* UTIL */
+function shuffle(a){
+  for(var i=a.length-1;i>0;i--){
+    var j=Math.floor(Math.random()*(i+1));
+    var t=a[i];a[i]=a[j];a[j]=t;
+  }
+  return a;
+}
+
+/* INIT */
+goMode('sim');
+</script>
+</body>
+</html>

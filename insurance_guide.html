@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Family Financial Shield – Insurance Awareness Guide</title>
+<meta name="description"
+content="Practical parenting, communication and child development guidance from MySkillGame." />
+<meta name="author" content="Surajit Roy">
+<meta name="copyright" content="© Surajit Roy">
+<meta name="robots" content="index,follow">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
+<style>
+:root{
+  --bg:#0b0f1a;
+  --bg2:#111827;
+  --bg3:#1a2235;
+  --card:#161d2e;
+  --card2:#1e2a40;
+  --border:rgba(255,255,255,0.08);
+  --border2:rgba(255,255,255,0.13);
+  --text:#e8eaf0;
+  --muted:#8b95aa;
+  --hint:#5a6480;
+  --gold:#f0c040;
+  --gold2:#d4a017;
+  --blue:#4a9eff;
+  --teal:#00c9a7;
+  --red:#ff5c5c;
+  --orange:#ff9a3c;
+  --green:#4cd97b;
+  --purple:#a78bfa;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);user-select:none;line-height:1.7;font-size:16px}
+.site-footer{
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+    font-size:14px;
+    color:#E8C97A; /* Yellow/Gold */
+    border-top:1px solid rgba(201,168,76,0.3);
+}
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(11,15,26,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 24px}
+.nav-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px}
+.nav-logo{font-family:'Playfair Display',serif;font-size:18px;color:var(--gold);font-weight:700;text-decoration:none}
+.nav-links{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-link{padding:6px 12px;border-radius:20px;font-size:13px;color:var(--muted);cursor:pointer;white-space:nowrap;border:1px solid transparent;transition:all .2s;background:none;font-family:'DM Sans',sans-serif}
+.nav-link:hover,.nav-link.active{color:var(--gold);border-color:rgba(240,192,64,.25);background:rgba(240,192,64,.07)}
+
+/* HERO */
+.hero{background:linear-gradient(160deg,#0b0f1a 0%,#0e1726 40%,#0a1a10 100%);padding:80px 24px 60px;text-align:center;position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(0,201,167,0.07) 0%,transparent 70%)}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(0,201,167,.1);border:1px solid rgba(0,201,167,.25);border-radius:20px;padding:5px 14px;font-size:12px;color:var(--teal);font-weight:600;margin-bottom:20px;letter-spacing:.5px}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(32px,5vw,56px);font-weight:900;color:#fff;line-height:1.15;margin-bottom:16px;max-width:700px;margin-left:auto;margin-right:auto}
+.hero h1 span{color:var(--gold)}
+.hero-sub{font-size:clamp(15px,2vw,18px);color:var(--muted);max-width:560px;margin:0 auto 36px;font-weight:300;line-height:1.65}
+.hero-stats{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-top:40px}
+.stat-pill{background:var(--card);border:1px solid var(--border2);border-radius:14px;padding:16px 24px;text-align:center;min-width:150px}
+.stat-pill .num{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--gold);display:block}
+.stat-pill .lbl{font-size:12px;color:var(--muted);margin-top:2px}
+
+/* SECTIONS */
+section{padding:64px 24px;max-width:900px;margin:0 auto}
+.sec-tag{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;letter-spacing:.6px;text-transform:uppercase;margin-bottom:10px;padding:4px 12px;border-radius:20px}
+.tag-teal{background:rgba(0,201,167,.1);color:var(--teal);border:1px solid rgba(0,201,167,.2)}
+.tag-gold{background:rgba(240,192,64,.1);color:var(--gold);border:1px solid rgba(240,192,64,.2)}
+.tag-red{background:rgba(255,92,92,.1);color:var(--red);border:1px solid rgba(255,92,92,.2)}
+.tag-blue{background:rgba(74,158,255,.1);color:var(--blue);border:1px solid rgba(74,158,255,.2)}
+.tag-purple{background:rgba(167,139,250,.1);color:var(--purple);border:1px solid rgba(167,139,250,.2)}
+.tag-orange{background:rgba(255,154,60,.1);color:var(--orange);border:1px solid rgba(255,154,60,.2)}
+.tag-green{background:rgba(76,217,123,.1);color:var(--green);border:1px solid rgba(76,217,123,.2)}
+
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(24px,3.5vw,36px);font-weight:700;color:#fff;margin-bottom:10px;line-height:1.25}
+.sec-lead{font-size:16px;color:var(--muted);margin-bottom:36px;max-width:620px;font-weight:300;line-height:1.65}
+.divider{border:none;border-top:1px solid var(--border);margin:64px 0}
+
+/* CARDS GRID */
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.grid-4{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+
+/* CARDS */
+.card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:22px 24px;transition:border-color .2s}
+.card:hover{border-color:var(--border2)}
+.card-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:14px}
+.ci-teal{background:rgba(0,201,167,.12)}
+.ci-gold{background:rgba(240,192,64,.12)}
+.ci-red{background:rgba(255,92,92,.12)}
+.ci-blue{background:rgba(74,158,255,.12)}
+.ci-purple{background:rgba(167,139,250,.12)}
+.ci-orange{background:rgba(255,154,60,.12)}
+.ci-green{background:rgba(76,217,123,.12)}
+.card-title{font-size:16px;font-weight:600;color:#fff;margin-bottom:8px}
+.card-body{font-size:14px;color:var(--muted);line-height:1.65}
+
+/* FEATURED CARD */
+.featured-card{background:linear-gradient(135deg,#0d1f14,#0e2218);border:1px solid rgba(0,201,167,.2);border-radius:20px;padding:28px 32px;position:relative;overflow:hidden}
+.featured-card::before{content:'';position:absolute;top:-40px;right:-40px;width:180px;height:180px;background:radial-gradient(circle,rgba(0,201,167,.08) 0%,transparent 70%)}
+.term-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(0,201,167,.15);border:1px solid rgba(0,201,167,.3);border-radius:8px;padding:4px 10px;font-size:12px;color:var(--teal);font-weight:600;margin-bottom:6px}
+
+/* HIGHLIGHT BOXES */
+.highlight{border-radius:14px;padding:16px 20px;margin:16px 0;font-size:14px;line-height:1.65;display:flex;gap:12px;align-items:flex-start}
+.highlight i{font-size:20px;min-width:20px;margin-top:1px;flex-shrink:0}
+.hl-gold{background:rgba(240,192,64,.07);border:1px solid rgba(240,192,64,.2);color:#d4b84a}
+.hl-teal{background:rgba(0,201,167,.07);border:1px solid rgba(0,201,167,.2);color:#5dd5b8}
+.hl-red{background:rgba(255,92,92,.07);border:1px solid rgba(255,92,92,.2);color:#ff7a7a}
+.hl-blue{background:rgba(74,158,255,.07);border:1px solid rgba(74,158,255,.2);color:#74b0ff}
+.hl-purple{background:rgba(167,139,250,.07);border:1px solid rgba(167,139,250,.2);color:#b99dfc}
+.hl-orange{background:rgba(255,154,60,.07);border:1px solid rgba(255,154,60,.2);color:#ffaa5a}
+.hl-green{background:rgba(76,217,123,.07);border:1px solid rgba(76,217,123,.2);color:#6de097}
+
+/* CHECK LIST */
+.check-list{list-style:none;padding:0}
+.check-list li{display:flex;align-items:flex-start;gap:10px;padding:7px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--muted);line-height:1.55}
+.check-list li:last-child{border-bottom:none}
+.check-list li i{font-size:16px;margin-top:2px;flex-shrink:0}
+.check-list.green li i{color:var(--green)}
+.check-list.red li i{color:var(--red)}
+.check-list.gold li i{color:var(--gold)}
+.check-list.blue li i{color:var(--blue)}
+
+/* PREMIUM TABLE */
+.prem-table{width:100%;border-collapse:separate;border-spacing:0;border-radius:14px;overflow:hidden;margin:20px 0}
+.prem-table th{background:var(--card2);padding:12px 16px;font-size:13px;font-weight:600;color:var(--muted);text-align:left;border-bottom:1px solid var(--border)}
+.prem-table td{padding:12px 16px;font-size:13.5px;color:var(--text);border-bottom:1px solid var(--border);background:var(--card)}
+.prem-table tr:last-child td{border-bottom:none}
+.prem-table td.gold{color:var(--gold);font-weight:600}
+.prem-table td.teal{color:var(--teal);font-weight:600}
+
+/* SCHEME CARDS */
+.scheme{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:24px;margin-bottom:16px}
+.scheme-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px;gap:12px;flex-wrap:wrap}
+.scheme-name{font-size:18px;font-weight:700;color:#fff;margin-bottom:4px}
+.scheme-sub{font-size:13px;color:var(--muted)}
+.scheme-premium{background:var(--bg3);border:1px solid var(--border2);border-radius:12px;padding:10px 16px;text-align:center;white-space:nowrap}
+.scheme-premium .amount{font-family:'Playfair Display',serif;font-size:22px;color:var(--gold);font-weight:700;display:block}
+.scheme-premium .freq{font-size:11px;color:var(--muted)}
+
+/* COMPARISON */
+.compare-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border);border-radius:14px;overflow:hidden;margin:20px 0}
+.compare-cell{background:var(--card);padding:14px 16px;font-size:13px}
+.compare-cell.head{background:var(--card2);font-weight:600;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.4px}
+.compare-cell .val{font-weight:600;color:var(--text)}
+.compare-cell .sub{font-size:11.5px;color:var(--hint);margin-top:3px}
+
+/* FORMULA */
+.formula-box{background:linear-gradient(135deg,#0e1520,#121c2e);border:2px solid rgba(240,192,64,.2);border-radius:18px;padding:28px;text-align:center;margin:28px 0}
+.formula-box .eq{font-family:'Playfair Display',serif;font-size:clamp(20px,3.5vw,30px);color:var(--gold);font-weight:700;margin-bottom:8px;line-height:1.3}
+.formula-box .desc{font-size:14px;color:var(--muted)}
+
+/* MYTH vs FACT */
+.myth-fact{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}
+.myth{background:rgba(255,92,92,.06);border:1px solid rgba(255,92,92,.18);border-radius:14px;padding:16px}
+.fact{background:rgba(76,217,123,.06);border:1px solid rgba(76,217,123,.18);border-radius:14px;padding:16px}
+.mf-label{font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:5px}
+.myth .mf-label{color:var(--red)}
+.fact .mf-label{color:var(--green)}
+.mf-text{font-size:13px;line-height:1.55;color:var(--muted)}
+
+/* STORY / SCENARIO */
+.scenario{background:linear-gradient(135deg,#0d1520,#0f1e2a);border-left:3px solid var(--blue);border-radius:0 14px 14px 0;padding:20px 24px;margin:20px 0}
+.scenario .sc-head{font-size:13px;font-weight:600;color:var(--blue);margin-bottom:6px;text-transform:uppercase;letter-spacing:.4px}
+.scenario p{font-size:14px;color:var(--muted);line-height:1.65}
+.scenario .sc-outcome{margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.07)}
+.scenario .sc-good{color:var(--green);font-weight:600;font-size:13px}
+.scenario .sc-bad{color:var(--red);font-weight:600;font-size:13px}
+
+/* GLOBAL GOVT SCHEMES TABLE */
+.globe-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px 22px;margin-bottom:12px}
+.globe-flag{font-size:24px;margin-bottom:8px}
+.globe-country{font-size:15px;font-weight:600;color:#fff;margin-bottom:4px}
+.globe-scheme{font-size:13px;color:var(--teal);font-weight:600;margin-bottom:6px}
+.globe-desc{font-size:12.5px;color:var(--muted);line-height:1.6}
+
+/* ACCORDION */
+.faq-item{border:1px solid var(--border);border-radius:12px;margin-bottom:8px;overflow:hidden}
+.faq-q{width:100%;padding:15px 18px;background:var(--card);border:none;text-align:left;font-size:14px;font-weight:600;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;font-family:'DM Sans',sans-serif;transition:background .2s}
+.faq-q:hover{background:var(--card2)}
+.faq-q i{font-size:18px;color:var(--muted);transition:transform .25s;flex-shrink:0}
+.faq-a{display:none;padding:0 18px 15px;font-size:13.5px;color:var(--muted);line-height:1.65}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .faq-q i{transform:rotate(45deg)}
+
+/* ACTION SECTION */
+.action-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:28px 0}
+.action-card{background:var(--card2);border:1px solid var(--border);border-radius:16px;padding:20px;text-align:center}
+.action-num{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:var(--gold);display:block;line-height:1}
+.action-label{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.45}
+
+/* EMERGENCY RECORD — NEW SECTION */
+.record-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:28px 0}
+.record-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px 22px;transition:border-color .2s}
+.record-card:hover{border-color:var(--border2)}
+.record-card-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.record-card-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.record-card-title{font-size:14px;font-weight:600;color:#fff}
+.record-list{list-style:none;padding:0}
+.record-list li{font-size:12.5px;color:var(--muted);padding:4px 0;border-bottom:1px solid var(--border);line-height:1.5}
+.record-list li:last-child{border-bottom:none}
+.record-list li::before{content:'·';color:var(--hint);margin-right:6px}
+
+/* FOOTER */
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:40px 24px;text-align:center}
+.footer-logo{font-family:'Playfair Display',serif;font-size:22px;color:var(--gold);margin-bottom:10px}
+.footer-note{font-size:13px;color:var(--hint);max-width:600px;margin:0 auto;line-height:1.7}
+.footer-disclaimer{margin-top:20px;font-size:12px;color:var(--hint);padding-top:16px;border-top:1px solid var(--border);max-width:700px;margin-left:auto;margin-right:auto}
+
+/* PROGRESS INDICATOR */
+.reading-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--gold));width:0%;z-index:200;transition:width .1s}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+  .myth-fact{grid-template-columns:1fr}
+  .compare-row{grid-template-columns:1fr}
+  .compare-cell.head:not(:first-child){display:none}
+  nav{padding:0 12px}
+  section{padding:44px 16px}
+  .hero{padding:56px 16px 44px}
+  .featured-card{padding:20px}
+}
+</style>
+</head>
+<body>
+
+<div class="reading-bar" id="rbar"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">🛡 FamilyShield</a>
+    <div class="nav-links">
+      <button class="nav-link active" onclick="goToSection('why')">Why</button>
+      <button class="nav-link" onclick="goToSection('term')">Term</button>
+      <button class="nav-link" onclick="goToSection('health')">Health</button>
+      <button class="nav-link" onclick="goToSection('accident')">Accident</button>
+      <button class="nav-link" onclick="goToSection('govt')">Govt Schemes</button>
+      <button class="nav-link" onclick="goToSection('myths')">Myths</button>
+      <button class="nav-link" onclick="goToSection('action')">Action Plan</button>
+      <button class="nav-link" onclick="goToSection('record')">Emergency Record</button>
+      <button class="nav-link" onclick="goToSection('faq')">FAQ</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge"><i class="ti ti-shield-check"></i> FAMILY FINANCIAL EDUCATION</div>
+  <h1>Insurance Is Not an Expense —<br/>It Is Your Family's <span>Shield</span></h1>
+  <p class="hero-sub">A practical, honest guide to understanding life insurance, health cover, accident protection, and government schemes — for every family, everywhere in the world.</p>
+
+  <div class="hero-stats">
+    <div class="stat-pill">
+      <span class="num">1 in 3</span>
+      <span class="lbl">families face financial crisis after losing an earning member</span>
+    </div>
+    <div class="stat-pill">
+      <span class="num">68%</span>
+      <span class="lbl">of medical emergencies are paid out-of-pocket due to no health insurance</span>
+    </div>
+    <div class="stat-pill">
+      <span class="num">₹1 Cr</span>
+      <span class="lbl">of life cover possible for as little as ₹600–900/month at age 30</span>
+    </div>
+    <div class="stat-pill">
+      <span class="num">₹20/yr</span>
+      <span class="lbl">India's govt accident scheme — one of the world's most affordable</span>
+    </div>
+  </div>
+</div>
+
+<!-- WHY INSURANCE -->
+<section id="why">
+  <div class="sec-tag tag-teal"><i class="ti ti-question-mark"></i> The Foundation</div>
+  <div class="sec-title">What Does Insurance Actually Do for Your Family?</div>
+  <div class="sec-lead">Insurance doesn't stop bad things from happening. It makes sure bad things don't also destroy your family's future.</div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-icon ci-red"><i class="ti ti-home-off" style="color:#ff5c5c"></i></div>
+      <div class="card-title">Without Insurance</div>
+      <ul class="check-list red">
+        <li><i class="ti ti-x"></i>Medical bills wipe out lifetime savings overnight</li>
+        <li><i class="ti ti-x"></i>Home loan / EMI becomes impossible to pay after the earner is gone</li>
+        <li><i class="ti ti-x"></i>Children's education is cut short due to lack of funds</li>
+        <li><i class="ti ti-x"></i>Family forced to sell assets at distress prices</li>
+        <li><i class="ti ti-x"></i>Dependents face poverty through no fault of their own</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-icon ci-teal"><i class="ti ti-home-heart" style="color:#00c9a7"></i></div>
+      <div class="card-title">With the Right Insurance</div>
+      <ul class="check-list green">
+        <li><i class="ti ti-check"></i>Family receives a lump sum — covering loans, education, and living costs</li>
+        <li><i class="ti ti-check"></i>Medical bills are paid by the insurer, not your savings</li>
+        <li><i class="ti ti-check"></i>Children's future is protected even in the worst scenario</li>
+        <li><i class="ti ti-check"></i>Your assets and home are preserved</li>
+        <li><i class="ti ti-check"></i>Family continues with dignity and financial stability</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="highlight hl-gold"><i class="ti ti-quote"></i>"Insurance is a promise of financial security today, so your family can face tomorrow with confidence. It costs almost nothing when you are alive and healthy. The price of not having it is paid by those you love most."</div>
+
+  <div class="grid-3" style="margin-top:28px">
+    <div class="card">
+      <div class="card-icon ci-blue"><i class="ti ti-heart-broken" style="color:#4a9eff"></i></div>
+      <div class="card-title">Sudden Death</div>
+      <div class="card-body">Life insurance replaces the income your family depended on — covering EMIs, school fees, and daily needs for years.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon ci-orange"><i class="ti ti-ambulance" style="color:#ff9a3c"></i></div>
+      <div class="card-title">Serious Illness</div>
+      <div class="card-body">Health and critical illness cover pays for hospitalisation, surgery, and recovery — without emptying your bank account.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon ci-purple"><i class="ti ti-wheelchair" style="color:#a78bfa"></i></div>
+      <div class="card-title">Disability</div>
+      <div class="card-body">Accident insurance pays if you are permanently or partially disabled and can no longer earn — protecting the family's income stream.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon ci-teal"><i class="ti ti-school" style="color:#00c9a7"></i></div>
+      <div class="card-title">Children's Education</div>
+      <div class="card-body">A life cover lump sum ensures your children's education continues — through school, college, and beyond — regardless of what happens to you.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon ci-red"><i class="ti ti-credit-card-off" style="color:#ff5c5c"></i></div>
+      <div class="card-title">Loan & EMI Protection</div>
+      <div class="card-body">Home loans, car loans, personal loans don't stop when a life stops. Insurance ensures your family doesn't lose their home over unpaid EMIs.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon ci-gold"><i class="ti ti-users" style="color:#f0c040"></i></div>
+      <div class="card-title">Family's Dignity</div>
+      <div class="card-body">No financial crisis should force a family to depend on relatives or charity. Insurance preserves your family's self-reliance and pride.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- TERM INSURANCE -->
+<section id="term">
+  <div class="sec-tag tag-gold"><i class="ti ti-shield-half"></i> Most Important</div>
+  <div class="sec-title">Term Life Insurance — Your Family's #1 Priority</div>
+  <div class="sec-lead">Term insurance is the purest, most affordable, and most important financial tool a family earner can own. It does one thing — and it does it perfectly.</div>
+
+  <div class="featured-card" style="margin-bottom:20px">
+    <div class="term-badge"><i class="ti ti-star-filled"></i> Recommended First</div>
+    <div style="font-family:'Playfair Display',serif;font-size:26px;color:#fff;font-weight:700;margin:8px 0 12px;line-height:1.3">If you die, your family receives a large lump sum.<br/><span style="color:var(--teal)">That's it. Pure. Simple. Powerful.</span></div>
+
+    <div class="grid-2" style="margin-top:20px">
+      <div>
+        <div style="font-size:13px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.4px;margin-bottom:10px">What It Covers</div>
+        <ul class="check-list green">
+          <li><i class="ti ti-check"></i>Death of the insured person — for any reason</li>
+          <li><i class="ti ti-check"></i>Family receives 100% sum assured as lump sum</li>
+          <li><i class="ti ti-check"></i>Covers home loans, children's education, daily expenses</li>
+          <li><i class="ti ti-check"></i>Some plans add critical illness or disability rider</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-size:13px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.4px;margin-bottom:10px">What It Does Not Cover</div>
+        <ul class="check-list red">
+          <li><i class="ti ti-x"></i>Not a savings or investment product</li>
+          <li><i class="ti ti-x"></i>No maturity amount if you survive the term</li>
+          <li><i class="ti ti-x"></i>Does not cover hospitalisation or illness (add health insurance for that)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight hl-gold"><i class="ti ti-bulb"></i><div><strong style="color:var(--gold)">Expert Rule:</strong> Your life cover should be at least 15–20 times your annual income. If you earn ₹5 lakh/year, your term cover should be ₹75 lakh to ₹1 crore minimum — enough for your family to live off the interest/investment for decades.</div></div>
+
+  <div style="font-size:15px;font-weight:600;color:#fff;margin:28px 0 12px">Premium Examples — India (Approximate, Age 30, Non-smoker, 30-year term)</div>
+  <table class="prem-table">
+    <thead><tr><th>Cover Amount</th><th>Monthly Premium</th><th>Annual Premium</th><th>Daily Cost</th></tr></thead>
+    <tbody>
+      <tr><td>₹50 Lakh</td><td class="teal">₹350–500</td><td>₹4,200–6,000</td><td class="gold">Less than ₹17</td></tr>
+      <tr><td>₹1 Crore</td><td class="teal">₹600–900</td><td>₹7,200–10,800</td><td class="gold">Less than ₹30</td></tr>
+      <tr><td>₹2 Crore</td><td class="teal">₹1,100–1,600</td><td>₹13,200–19,200</td><td class="gold">Less than ₹55</td></tr>
+    </tbody>
+  </table>
+
+  <div class="highlight hl-teal" style="margin-top:8px"><i class="ti ti-clock"></i>Buy early — every year you delay, the premium increases significantly. A 25-year-old pays 30–40% less than a 35-year-old for the same cover.</div>
+
+  <div class="scenario">
+    <div class="sc-head">Real-World Scenario</div>
+    <p>Rajan, 32, earns ₹6 lakh/year. He has a home loan of ₹25 lakh, a 5-year-old daughter, and his wife is a homemaker. He buys a ₹1 crore term plan for ₹750/month.</p>
+    <div class="sc-outcome">
+      <p>Two years later, Rajan passes away in an accident.</p>
+      <div class="sc-good" style="margin-top:6px">✓ With insurance: Family receives ₹1 crore. Loan paid off (₹25L). ₹50L invested for daughter's education and marriage. ₹25L sustains family's monthly expenses for years.</div>
+    </div>
+  </div>
+
+  <div class="scenario" style="border-left-color:var(--red)">
+    <div class="sc-head" style="color:var(--red)">The Alternative — Without Insurance</div>
+    <p>Same situation. Rajan decided insurance was "an unnecessary expense" and never bought it.</p>
+    <div class="sc-outcome">
+      <div class="sc-bad">✗ Bank seizes the mortgaged home for non-payment. The family may face significant financial challenges, affecting housing stability and children's education. Family moves to a relative's house.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- HEALTH INSURANCE -->
+<section id="health">
+  <div class="sec-tag tag-green"><i class="ti ti-stethoscope"></i> Equally Critical</div>
+  <div class="sec-title">Health Insurance — Because Hospitals Don't Wait</div>
+  <div class="sec-lead">A single hospitalisation can wipe out years of savings. Health insurance is not a luxury — it is a necessity for every family member.</div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-icon ci-green"><i class="ti ti-users" style="color:#4cd97b"></i></div>
+      <div class="card-title">Family Floater Plan</div>
+      <div class="card-body" style="margin-bottom:12px">One plan covers the entire family — parents, spouse, children — under a shared sum insured. Most cost-effective option for families.</div>
+      <ul class="check-list green">
+        <li><i class="ti ti-check"></i>Single premium covers all members</li>
+        <li><i class="ti ti-check"></i>Any member can use the full cover in a year</li>
+        <li><i class="ti ti-check"></i>Typically ₹5–15 lakh cover recommended</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-icon ci-blue"><i class="ti ti-building-hospital" style="color:#4a9eff"></i></div>
+      <div class="card-title">What Good Health Cover Includes</div>
+      <ul class="check-list blue">
+        <li><i class="ti ti-check"></i>Hospitalisation (room, ICU, surgery)</li>
+        <li><i class="ti ti-check"></i>Pre and post-hospitalisation expenses</li>
+        <li><i class="ti ti-check"></i>Daycare procedures (no overnight required)</li>
+        <li><i class="ti ti-check"></i>Ambulance charges</li>
+        <li><i class="ti ti-check"></i>Cashless treatment at network hospitals</li>
+        <li><i class="ti ti-check"></i>Critical illness rider (heart, cancer, stroke)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="highlight hl-orange" style="margin-top:16px"><i class="ti ti-alert-triangle"></i><div><strong style="color:var(--orange)">Pre-existing Diseases:</strong> Always declare them honestly at the time of purchase. Most have a 2–4 year waiting period, after which they are fully covered. Hiding them leads to claim rejection — the worst moment to discover your policy is invalid.</div></div>
+
+  <!-- NOMINEE AWARENESS HIGHLIGHT — NEW -->
+  <div class="highlight hl-orange" style="margin-top:12px"><i class="ti ti-user-check"></i><div><strong style="color:var(--orange)">Nomination Is As Important As Insurance.</strong><br/>A policy without an updated nominee can create unnecessary legal complications and delays for family members during claim settlement. Review nominations every 2–3 years and after every major life event — marriage, childbirth, or the death of a previously named nominee.</div></div>
+
+  <div class="myth-fact" style="margin-top:20px">
+    <div class="myth">
+      <div class="mf-label"><i class="ti ti-x"></i> Common Belief</div>
+      <div class="mf-text">"My employer's group health insurance is enough. I don't need personal health cover."</div>
+    </div>
+    <div class="fact">
+      <div class="mf-label"><i class="ti ti-check"></i> The Reality</div>
+      <div class="mf-text">Employer cover ends the day you resign, retire, or are laid off — exactly when you may need it most. Always have a personal policy parallel to employer cover.</div>
+    </div>
+  </div>
+
+  <div style="margin-top:20px;font-size:15px;font-weight:600;color:#fff;margin-bottom:12px">Global Perspective — How Countries Approach Health Coverage</div>
+  <div class="grid-3">
+    <div class="card"><div class="globe-flag">🇮🇳</div><div class="globe-country">India</div><div class="globe-scheme">PM-JAY / Private Floater</div><div class="globe-desc">PM Ayushman Bharat covers ₹5 lakh/family for BPL families. Middle-income families need private floater plans.</div></div>
+    <div class="card"><div class="globe-flag">🇺🇸</div><div class="globe-country">United States</div><div class="globe-scheme">Employer / ACA Marketplace</div><div class="globe-desc">No universal system. Employer-sponsored or marketplace plans. Without cover, a single hospital stay can cost $50,000+.</div></div>
+    <div class="card"><div class="globe-flag">🇬🇧</div><div class="globe-country">United Kingdom</div><div class="globe-scheme">NHS + Private Top-up</div><div class="globe-desc">NHS provides universal care but private insurance speeds up specialist access and elective procedures significantly.</div></div>
+    <div class="card"><div class="globe-flag">🇩🇪</div><div class="globe-country">Germany</div><div class="globe-scheme">Statutory Health Insurance</div><div class="globe-desc">Universal mandatory cover for all residents. Private insurance available for those earning above income threshold.</div></div>
+    <div class="card"><div class="globe-flag">🇸🇬</div><div class="globe-country">Singapore</div><div class="globe-scheme">MediShield Life</div><div class="globe-desc">Mandatory national insurance for all citizens. Covers large hospital bills and selected outpatient treatments.</div></div>
+    <div class="card"><div class="globe-flag">🌍</div><div class="globe-country">Developing Nations</div><div class="globe-scheme">Microinsurance Schemes</div><div class="globe-desc">Community-based microinsurance and government welfare schemes are increasingly protecting low-income families globally.</div></div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- ACCIDENT INSURANCE -->
+<section id="accident">
+  <div class="sec-tag tag-orange"><i class="ti ti-ambulance"></i> Often Overlooked</div>
+  <div class="sec-title">Personal Accident Insurance — The Most Underrated Cover</div>
+  <div class="sec-lead">Life insurance pays when you die. Health insurance pays when you are hospitalised. But what if you survive an accident — and can never work again? That gap is filled by personal accident insurance.</div>
+
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-icon ci-red"><i class="ti ti-skull" style="color:#ff5c5c"></i></div>
+      <div class="card-title">Accidental Death</div>
+      <div class="card-body">Full sum insured paid to nominees if the insured person dies due to an accident — separate from life insurance claim.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon ci-orange"><i class="ti ti-wheelchair" style="color:#ff9a3c"></i></div>
+      <div class="card-title">Total Permanent Disability</div>
+      <div class="card-body">Full payout if permanently disabled — loss of both limbs, both eyes, or combinations that prevent any future earning.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon ci-purple"><i class="ti ti-band-aid" style="color:#a78bfa"></i></div>
+      <div class="card-title">Partial Disability</div>
+      <div class="card-body">Proportional payout for partial loss — one limb, one eye, hearing in one ear — based on standard disability percentage tables.</div>
+    </div>
+  </div>
+
+  <div style="margin-top:28px">
+    <div class="sec-tag tag-orange" style="margin-bottom:16px"><i class="ti ti-flag"></i> India's Government Schemes — Among World's Most Affordable</div>
+
+    <div class="scheme">
+      <div class="scheme-header">
+        <div>
+          <div class="scheme-name">🏛️ PMJBY — Pradhan Mantri Jeevan Jyoti Bima Yojana</div>
+          <div class="scheme-sub">Government Life Insurance · Age 18–50 · Any bank account holder</div>
+        </div>
+        <div class="scheme-premium">
+          <span class="amount">₹436</span>
+          <span class="freq">per year</span>
+        </div>
+      </div>
+      <ul class="check-list gold">
+        <li><i class="ti ti-currency-rupee"></i>Death benefit: ₹2,00,000 paid to nominee for any cause of death</li>
+        <li><i class="ti ti-currency-rupee"></i>Auto-debit from bank account — no manual renewal needed</li>
+        <li><i class="ti ti-currency-rupee"></i>Available through all major banks and post offices in India</li>
+        <li><i class="ti ti-currency-rupee"></i>No medical test required for enrolment</li>
+      </ul>
+      <div class="highlight hl-red" style="margin-top:12px"><i class="ti ti-alert-triangle"></i>PMJBY is not a substitute for term insurance. ₹2 lakh is far below what most families need. Use it as supplementary cover, not primary coverage.</div>
+    </div>
+
+    <div class="scheme">
+      <div class="scheme-header">
+        <div>
+          <div class="scheme-name">🚑 PMSBY — Pradhan Mantri Suraksha Bima Yojana</div>
+          <div class="scheme-sub">Government Accident Insurance · Age 18–70 · Any bank account holder</div>
+        </div>
+        <div class="scheme-premium">
+          <span class="amount">₹20</span>
+          <span class="freq">per year</span>
+        </div>
+      </div>
+      <ul class="check-list green">
+        <li><i class="ti ti-check"></i>Accidental death: ₹2,00,000</li>
+        <li><i class="ti ti-check"></i>Total permanent disability: ₹2,00,000</li>
+        <li><i class="ti ti-check"></i>Partial permanent disability: ₹1,00,000</li>
+        <li><i class="ti ti-check"></i>Only ₹20/year — less than the cost of two cups of tea</li>
+        <li><i class="ti ti-check"></i>Auto-debit from savings account every June</li>
+        <li><i class="ti ti-check"></i>Essential for bike/car riders, field workers, and daily commuters</li>
+      </ul>
+      <div class="highlight hl-teal" style="margin-top:12px"><i class="ti ti-star"></i>PMSBY is arguably the world's best value insurance product. At ₹20/year — less than ₹2/month — This is one of the most affordable protection schemes available and is worth considering for eligible adults.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- GLOBAL COMPARISON -->
+<section id="govt">
+  <div class="sec-tag tag-blue"><i class="ti ti-world"></i> Global View</div>
+  <div class="sec-title">How Governments Protect Families Worldwide</div>
+  <div class="sec-lead">Most countries have government-backed social protection schemes. Knowing what's available in your country is the first step.</div>
+
+  <div class="grid-2">
+    <div class="globe-card"><div class="globe-flag">🇮🇳</div><div class="globe-country">India</div><div class="globe-scheme">PMJBY (Life) + PMSBY (Accident) + PM-JAY (Health)</div><div class="globe-desc">Three powerful government schemes covering life, accident, and health — available to anyone with a bank account. Total annual cost: under ₹500.</div></div>
+    <div class="globe-card"><div class="globe-flag">🇧🇩</div><div class="globe-country">Bangladesh</div><div class="globe-scheme">Jiban Bima Corporation + MFI Microinsurance</div><div class="globe-desc">State-owned life insurer and microfinance institution insurance serve millions of low-income families. Digital insurance platforms are expanding rapidly.</div></div>
+    <div class="globe-card"><div class="globe-flag">🇳🇬</div><div class="globe-country">Nigeria</div><div class="globe-scheme">NHIS + Social Investment Programme</div><div class="globe-desc">National Health Insurance Scheme covers formal sector workers. Government expanding to informal workers through community-based schemes.</div></div>
+    <div class="globe-card"><div class="globe-flag">🇧🇷</div><div class="globe-country">Brazil</div><div class="globe-scheme">INSS Social Security + SUS Universal Health</div><div class="globe-desc">Universal public health (SUS) covers all citizens. INSS provides disability and survivor benefits for registered workers.</div></div>
+    <div class="globe-card"><div class="globe-flag">🇵🇭</div><div class="globe-country">Philippines</div><div class="globe-scheme">PhilHealth + SSS Life Insurance</div><div class="globe-desc">Mandatory PhilHealth covers hospitalisation for all citizens. SSS provides life and disability benefits for formal workers.</div></div>
+    <div class="globe-card"><div class="globe-flag">🇿🇦</div><div class="globe-country">South Africa</div><div class="globe-scheme">UIF + Funeral / Microinsurance</div><div class="globe-desc">Unemployment Insurance Fund covers workers. Funeral insurance is widely purchased — a cultural and financial norm. Microinsurance regulation expanding access.</div></div>
+  </div>
+
+  <div class="highlight hl-blue" style="margin-top:20px"><i class="ti ti-info-circle"></i>In every country, government schemes are a starting point — not a complete solution. They are designed for the most basic protection. Private term insurance and health cover are needed on top for complete family security.</div>
+</section>
+
+<hr class="divider"/>
+
+<!-- MYTHS vs FACTS -->
+<section id="myths">
+  <div class="sec-tag tag-red"><i class="ti ti-bulb"></i> Clearing Confusion</div>
+  <div class="sec-title">Insurance Myths vs. Reality</div>
+  <div class="sec-lead">Wrong beliefs about insurance cost families dearly. Let's correct the most common ones.</div>
+
+  <div class="myth-fact">
+    <div class="myth"><div class="mf-label"><i class="ti ti-x"></i>Myth</div><div class="mf-text">"Insurance is an investment. I should get money back when the policy ends."</div></div>
+    <div class="fact"><div class="mf-label"><i class="ti ti-check"></i>Fact</div><div class="mf-text">Term insurance is pure protection — not investment. Money-back plans charge 5–8x more for the same cover. Keep insurance and investment completely separate.</div></div>
+  </div>
+  <div class="myth-fact">
+    <div class="myth"><div class="mf-label"><i class="ti ti-x"></i>Myth</div><div class="mf-text">"I'm young and healthy. I don't need insurance yet."</div></div>
+    <div class="fact"><div class="mf-label"><i class="ti ti-check"></i>Fact</div><div class="mf-text">Young and healthy is exactly the right time to buy — lowest premiums, no medical rejections. Waiting makes it more expensive and riskier to qualify.</div></div>
+  </div>
+  <div class="myth-fact">
+    <div class="myth"><div class="mf-label"><i class="ti ti-x"></i>Myth</div><div class="mf-text">"LIC endowment plan is enough for my family's protection."</div></div>
+    <div class="fact"><div class="mf-label"><i class="ti ti-check"></i>Fact</div><div class="mf-text">A typical LIC endowment gives ₹10–20 lakh cover at very high premiums. A term plan gives ₹1 crore+ at a fraction of the cost. Endowment ≠ adequate protection.</div></div>
+  </div>
+  <div class="myth-fact">
+    <div class="myth"><div class="mf-label"><i class="ti ti-x"></i>Myth</div><div class="mf-text">"Insurance companies never pay claims. It's a waste of money."</div></div>
+    <div class="fact"><div class="mf-label"><i class="ti ti-check"></i>Fact</div><div class="mf-text">India's top term insurers have 98–99.5% claim settlement ratios. Most rejected claims are due to non-disclosure. Be honest in your application — claims get paid.</div></div>
+  </div>
+  <div class="myth-fact">
+    <div class="myth"><div class="mf-label"><i class="ti ti-x"></i>Myth</div><div class="mf-text">"Only the family breadwinner needs life insurance."</div></div>
+    <div class="fact"><div class="mf-label"><i class="ti ti-check"></i>Fact</div><div class="mf-text">A homemaker's contribution — childcare, cooking, household management — has real monetary value. Replacing it costs money. Insure homemakers too.</div></div>
+  </div>
+  <div class="myth-fact">
+    <div class="myth"><div class="mf-label"><i class="ti ti-x"></i>Myth</div><div class="mf-text">"Insurance is only needed if I have dependents."</div></div>
+    <div class="fact"><div class="mf-label"><i class="ti ti-check"></i>Fact</div><div class="mf-text">Even without dependents, disability or critical illness can destroy your own financial future. Health and accident cover protect you, not just your family.</div></div>
+  </div>
+
+  <div class="formula-box">
+    <div class="eq">Term Insurance + Health Insurance + Accident Cover</div>
+    <div class="eq" style="font-size:clamp(16px,2.5vw,22px);color:var(--teal);margin-top:8px">= Complete Family Financial Shield</div>
+    <div class="desc" style="margin-top:12px">These three together cost less per month than a restaurant dinner for a family — and they protect everything that matters.</div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- ACTION PLAN -->
+<section id="action">
+  <div class="sec-tag tag-purple"><i class="ti ti-checklist"></i> Start Today</div>
+  <div class="sec-title">Your Family Insurance Action Plan</div>
+  <div class="sec-lead">This is not about selling you anything. This is a practical roadmap for every family — regardless of income level.</div>
+
+  <div class="action-grid">
+    <div class="action-card"><span class="action-num">1</span><div class="action-label">Calculate your income × 15 to 20 — that is your minimum life cover needed</div></div>
+    <div class="action-card"><span class="action-num">2</span><div class="action-label">Buy a pure term insurance plan online — compare 3 plans, choose the highest claim settlement ratio</div></div>
+    <div class="action-card"><span class="action-num">3</span><div class="action-label">Enrol in PMSBY (₹20/yr) and PMJBY (₹436/yr) from your bank immediately — takes 10 minutes</div></div>
+    <div class="action-card"><span class="action-num">4</span><div class="action-label">Buy a family floater health plan with ₹5–10 lakh cover and a top-up to extend coverage</div></div>
+    <div class="action-card"><span class="action-num">5</span><div class="action-label">Update all nominees correctly in every policy — and tell your family member where each policy document is kept</div></div>
+    <div class="action-card"><span class="action-num">6</span><div class="action-label">Maintain an emergency fund covering 3–6 months of family expenses in an easily accessible account</div></div>
+    <div class="action-card"><span class="action-num">7</span><div class="action-label">Review your coverage every 2–3 years as your income, loans, and family size changes</div></div>
+  </div>
+
+  <div class="highlight hl-gold" style="margin-top:8px"><i class="ti ti-clock"></i><div><strong style="color:var(--gold)">The Best Time to Buy Insurance Was Yesterday. The Next Best Time Is Today.</strong><br/>Every month you delay, you are one month older — and one month closer to a health condition that might make you uninsurable.</div></div>
+
+  <div style="margin-top:28px">
+    <div style="font-size:15px;font-weight:600;color:#fff;margin-bottom:14px">What Your Family Must Know — Tell Them Today</div>
+    <div class="grid-2">
+      <ul class="check-list gold">
+        <li><i class="ti ti-check"></i>Name and contact of your life insurance company</li>
+        <li><i class="ti ti-check"></i>Policy number and sum assured of each policy</li>
+        <li><i class="ti ti-check"></i>Where original policy documents are physically kept</li>
+        <li><i class="ti ti-check"></i>Name and number of your insurance agent or broker</li>
+      </ul>
+      <ul class="check-list gold">
+        <li><i class="ti ti-check"></i>Nominee details — who is named in each policy</li>
+        <li><i class="ti ti-check"></i>Claim process — which documents are required</li>
+        <li><i class="ti ti-check"></i>Premium due dates — so the policy doesn't lapse</li>
+        <li><i class="ti ti-check"></i>Insurer's 24×7 helpline number and claim email</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- ═══════════════════════════════════════════════════════
+     FAMILY EMERGENCY INFORMATION RECORD — NEW SECTION
+     ═══════════════════════════════════════════════════════ -->
+<section id="record">
+  <div class="sec-tag tag-teal"><i class="ti ti-file-description"></i> Critical Preparedness</div>
+  <div class="sec-title">Family Emergency Information Record</div>
+  <div class="sec-lead">Insurance alone is not enough if your family cannot find the information they need in a crisis. Every family should maintain a simple, consolidated record — and keep it in a place a trusted family member knows about.</div>
+
+  <div class="highlight hl-teal"><i class="ti ti-info-circle"></i><div><strong style="color:var(--teal)">Why This Matters:</strong> In an emergency, your family may need to access financial information quickly — without you being present. A clear, updated record removes confusion, prevents loss of assets, and ensures claims are filed on time.</div></div>
+
+  <div class="record-grid" style="margin-top:24px">
+
+    <div class="record-card">
+      <div class="record-card-head">
+        <div class="record-card-icon ci-gold"><i class="ti ti-shield-check" style="color:var(--gold)"></i></div>
+        <div class="record-card-title">Insurance Policies</div>
+      </div>
+      <ul class="record-list">
+        <li>Policy name and insurer</li>
+        <li>Policy number and type (term / health / accident)</li>
+        <li>Sum assured and coverage period</li>
+        <li>Premium amount and due date</li>
+        <li>Nominee name and relationship</li>
+        <li>Agent / broker name and phone number</li>
+        <li>Where physical policy documents are kept</li>
+      </ul>
+    </div>
+
+    <div class="record-card">
+      <div class="record-card-head">
+        <div class="record-card-icon ci-blue"><i class="ti ti-building-bank" style="color:var(--blue)"></i></div>
+        <div class="record-card-title">Bank Accounts</div>
+      </div>
+      <ul class="record-list">
+        <li>Bank name and branch</li>
+        <li>Account number and account type</li>
+        <li>Joint account holders (if any)</li>
+        <li>Locker details (branch and locker number)</li>
+        <li>Fixed deposits — amount and maturity date</li>
+        <li>Recurring deposits and linked accounts</li>
+      </ul>
+    </div>
+
+    <div class="record-card">
+      <div class="record-card-head">
+        <div class="record-card-icon ci-teal"><i class="ti ti-chart-bar" style="color:var(--teal)"></i></div>
+        <div class="record-card-title">Investments & Savings</div>
+      </div>
+      <ul class="record-list">
+        <li>PPF account number and bank</li>
+        <li>EPF / UAN number and employer</li>
+        <li>NPS / pension fund details</li>
+        <li>Mutual funds — folio numbers and AMC names</li>
+        <li>Demat account number and broker</li>
+        <li>Physical share certificates (location)</li>
+        <li>Bonds, NSC, and KVP details</li>
+      </ul>
+    </div>
+
+    <div class="record-card">
+      <div class="record-card-head">
+        <div class="record-card-icon ci-orange"><i class="ti ti-home" style="color:var(--orange)"></i></div>
+        <div class="record-card-title">Property & Loans</div>
+      </div>
+      <ul class="record-list">
+        <li>Property address and registration details</li>
+        <li>Property documents location</li>
+        <li>Home loan — lender, account number, EMI</li>
+        <li>Car / vehicle loan details</li>
+        <li>Personal loans and credit card outstanding</li>
+        <li>Guarantor details (if applicable)</li>
+      </ul>
+    </div>
+
+    <div class="record-card">
+      <div class="record-card-head">
+        <div class="record-card-icon ci-purple"><i class="ti ti-phone-call" style="color:var(--purple)"></i></div>
+        <div class="record-card-title">Emergency Contacts</div>
+      </div>
+      <ul class="record-list">
+        <li>Family doctor — name and number</li>
+        <li>Nearest hospital and ambulance number</li>
+        <li>Financial advisor / CA name and contact</li>
+        <li>Lawyer / legal advisor contact</li>
+        <li>Trusted relatives and close friends</li>
+        <li>Employer HR contact (for group benefits)</li>
+      </ul>
+    </div>
+
+    <div class="record-card">
+      <div class="record-card-head">
+        <div class="record-card-icon ci-red"><i class="ti ti-map-pin" style="color:var(--red)"></i></div>
+        <div class="record-card-title">Travel Information</div>
+      </div>
+      <ul class="record-list">
+        <li>Destination and travel dates</li>
+        <li>Hotel name, address, and booking ID</li>
+        <li>Flight / train details and PNR</li>
+        <li>Travel insurance policy number</li>
+        <li>Embassy / consulate contact (for international travel)</li>
+        <li>Emergency contact person back home</li>
+      </ul>
+    </div>
+
+    <div class="record-card">
+      <div class="record-card-head">
+        <div class="record-card-icon ci-green"><i class="ti ti-file-text" style="color:var(--green)"></i></div>
+        <div class="record-card-title">Important Documents</div>
+      </div>
+      <ul class="record-list">
+        <li>Aadhaar card (number and location of copy)</li>
+        <li>PAN card number</li>
+        <li>Passport number and expiry date</li>
+        <li>Will — location of original document</li>
+        <li>Birth and marriage certificates (location)</li>
+        <li>Educational and employment records</li>
+        <li>Vehicle RC and insurance documents</li>
+      </ul>
+    </div>
+
+    <div class="record-card">
+      <div class="record-card-head">
+        <div class="record-card-icon ci-teal"><i class="ti ti-device-laptop" style="color:var(--teal)"></i></div>
+        <div class="record-card-title">Digital Preparedness</div>
+      </div>
+      <ul class="record-list">
+        <li>Primary email address</li>
+        <li>Recovery phone number linked to email</li>
+        <li>Cloud storage location (Google Drive, etc.)</li>
+        <li>Password manager — name and trusted person aware</li>
+        <li>Important online accounts (bank, investment portals)</li>
+        <li>Note: Store login hints — never actual passwords</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="highlight hl-gold" style="margin-top:8px"><i class="ti ti-lock"></i><div><strong style="color:var(--gold)">Security Note:</strong> Never store passwords in plain text. Instead, keep a hint document that a trusted family member can use together with a password manager or estate planning lawyer. Review and update this record every year and after every major life event.</div></div>
+
+  <div class="scenario" style="margin-top:20px">
+    <div class="sc-head">Why This Record Saves Families</div>
+    <p>When a family member passes away or is incapacitated, the surviving family often spends months — sometimes years — trying to locate policies, bank accounts, investments, and property documents scattered across different places. Assets go unclaimed. Insurance claims expire. Loans pile interest. All of this is preventable with one simple, updated document kept in a known location.</p>
+    <div class="sc-outcome">
+      <div class="sc-good">✓ A family with a complete emergency record can file insurance claims, access funds, and handle all financial matters within days — not years.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="sec-tag tag-teal"><i class="ti ti-help-circle"></i> Questions Answered</div>
+  <div class="sec-title">Frequently Asked Questions</div>
+  <div class="sec-lead" style="margin-bottom:24px">Honest answers to the most common insurance questions — without jargon.</div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <button class="faq-q">How much life cover do I actually need? <i class="ti ti-plus"></i></button>
+    <div class="faq-a">A simple formula: Multiply your annual income by 15 to 20. Add any outstanding loans (home loan, car loan, personal loan). Add your children's estimated education costs. This gives you the minimum cover your family needs to maintain their current lifestyle for 15–20 years without your income. For most salaried families in India earning ₹5–10 lakh/year, ₹1–2 crore of term cover is the starting point.</div>
+  </div>
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <button class="faq-q">Can I be rejected for term insurance? <i class="ti ti-plus"></i></button>
+    <div class="faq-a">Yes — if you have serious pre-existing conditions (diabetes, heart disease, cancer), are a smoker, have a high-risk occupation, or have a very high BMI. This is why buying early while you are young and healthy is critical. Once rejected, getting insured becomes much harder and more expensive. Some insurers offer plans with higher premiums for those with manageable pre-existing conditions.</div>
+  </div>
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <button class="faq-q">What is a nomination and why does it matter? <i class="ti ti-plus"></i></button>
+    <div class="faq-a">A nominee is the person who receives the insurance payout after your death. Without a correctly named nominee, the claim process becomes extremely complicated and can take years — or the money may be disputed legally. Always name a nominee (spouse, parent, child) and update it when family circumstances change (marriage, divorce, death of nominee). For policies in India, an "absolute assignment" to a bank for a home loan also affects the nominee — be aware.</div>
+  </div>
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <button class="faq-q">Is online term insurance safe? Can I trust it? <i class="ti ti-plus"></i></button>
+    <div class="faq-a">Yes — online term plans from IRDAI-regulated insurers are 100% valid and typically 30–40% cheaper than offline plans because there is no agent commission. Always buy directly from the insurer's official website or a regulated aggregator (like PolicyBazaar in India). Check the insurer's claim settlement ratio — anything above 97% is considered excellent. LIC, HDFC Life, ICICI Prudential, Max Life, and SBI Life are among India's most trusted insurers.</div>
+  </div>
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <button class="faq-q">What happens if I stop paying premiums? <i class="ti ti-plus"></i></button>
+    <div class="faq-a">For term insurance, if you miss a premium, the policy enters a grace period (usually 30 days). If unpaid after grace period, the policy lapses — meaning your family has no cover. You can revive a lapsed policy within a certain period (usually 2–5 years) by paying arrears and possibly undergoing a medical test. For health insurance, a lapsed policy also means losing the waiting period benefits you had accumulated — a major loss. Set up auto-debit to avoid ever missing a premium.</div>
+  </div>
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <button class="faq-q">Should I get separate policies or one combined plan? <i class="ti ti-plus"></i></button>
+    <div class="faq-a">Separate, purpose-built policies almost always give better value: a pure term plan for life cover, a family floater for health, and an accident policy for disability. Bundled plans sound convenient but often give less cover at higher cost, with more exclusions. The exception is adding a critical illness or waiver of premium rider to your term plan — these are usually worth the small additional cost.</div>
+  </div>
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <button class="faq-q">I am self-employed. What insurance do I especially need? <i class="ti ti-plus"></i></button>
+    <div class="faq-a">Self-employed individuals have no employer-provided group insurance and no employee provident fund — making personal insurance even more critical. Priority: (1) High-value term plan — you are the business, there's no employer to continue paying your family. (2) Personal health insurance — no company plan to fall back on. (3) Accident cover — disability ends your earning capacity entirely. (4) Business interruption insurance if you have business assets. (5) Consider income protection or disability insurance if available in your country.</div>
+  </div>
+</section>
+
+<!-- FINANCIAL LITERACY CLOSING BOX — NEW -->
+<div style="max-width:900px;margin:0 auto;padding:0 24px 40px">
+  <div class="formula-box">
+    <div class="eq">Insurance + Emergency Fund + Financial Literacy</div>
+    <div class="eq" style="font-size:clamp(16px,2.5vw,22px);color:var(--teal);margin-top:8px">= Strong Family Financial Protection</div>
+    <div class="desc" style="margin-top:12px">Insurance works best when combined with budgeting, emergency savings, proper nominations, document management, and responsible financial planning. No single product does everything — but together, these habits build an unbreakable financial foundation for your family.</div>
+  </div>
+
+  <div class="highlight hl-blue"><i class="ti ti-school"></i><div><strong style="color:var(--blue)">Financial Literacy Matters.</strong><br/>The most powerful tool in personal finance is not a product — it is knowledge. Understanding what you own, what you owe, who benefits from your decisions, and what your family needs to know is the foundation of real financial security. Share this guide with someone who needs it today.</div></div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">🛡 FamilyShield</div>
+  <div class="footer-note">This guide is for financial awareness and education only. It does not constitute financial advice, product recommendation, or endorsement of any specific insurer, product, or investment. Consult a certified financial planner or IRDAI-registered insurance advisor for personalised guidance.</div>
+  <div class="footer-disclaimer">All premium figures cited are indicative approximations for illustrative purposes and vary by insurer, age, health status, lifestyle, and policy terms. Government scheme details are accurate as of 2024–25; always verify current terms with the relevant bank, post office, or government website. PMJBY and PMSBY are Indian government schemes; equivalent schemes exist in other countries — check your national social security and insurance regulator's website for local options.</div>
+</footer>
+<footer class="site-footer">
+   © 2026 MySkillGame • Educational Games & Awareness Projects
+</footer>
+<script>
+window.addEventListener('scroll',()=>{
+  const doc=document.documentElement;
+  const scrolled=(doc.scrollTop||document.body.scrollTop);
+  const total=doc.scrollHeight-doc.clientHeight;
+  document.getElementById('rbar').style.width=(scrolled/total*100)+'%';
+
+  // highlight active nav
+  const sections=['why','term','health','accident','govt','myths','action','record','faq'];
+  let active='why';
+  sections.forEach(id=>{
+    const el=document.getElementById(id);
+    if(el&&el.getBoundingClientRect().top<120) active=id;
+  });
+  const map={why:0,term:1,health:2,accident:3,govt:4,myths:5,action:6,record:7,faq:8};
+  document.querySelectorAll('.nav-link').forEach((b,i)=>b.classList.toggle('active',i===map[active]));
+});
+
+// FIXED: renamed from scrollTo() to goToSection() to avoid conflict with browser's native window.scrollTo()
+function goToSection(id){
+  document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function toggleFaq(item){
+  item.classList.toggle('open');
+}
+</script>
+<script src="security.js"></script>
+</body>
+</html>

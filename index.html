@@ -12,10 +12,53 @@
   <meta name="robots" content="index, follow"/>
   <link rel="canonical" href="https://myskillglobal.com/"/>
 
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1034022057999423" crossorigin="anonymous"></script>
+  <!-- =====================================================
+       FAVICON & PWA
+       ===================================================== -->
 
-  <!-- Firebase Analytics -->
+  <!-- Main Website Favicon -->
+  <link rel="icon"
+        href="/myskillglobal.ico"
+        type="image/x-icon"/>
+
+  <!-- PNG Icons -->
+  <link rel="icon"
+        type="image/png"
+        sizes="192x192"
+        href="/images/icon-192.png"/>
+
+  <link rel="icon"
+        type="image/png"
+        sizes="512x512"
+        href="/images/icon-512.png"/>
+
+  <!-- PWA Manifest -->
+  <link rel="manifest"
+        href="/manifest.json"/>
+
+  <!-- Apple Touch Icon -->
+  <link rel="apple-touch-icon"
+        sizes="180x180"
+        href="/images/favicon.png"/>
+
+  <!-- Browser Theme Color -->
+  <meta name="theme-color"
+        content="#ffffff"/>
+
+
+  <!-- =====================================================
+       GOOGLE ADSENSE
+       ===================================================== -->
+
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1034022057999423"
+    crossorigin="anonymous"></script>
+
+
+  <!-- =====================================================
+       FIREBASE ANALYTICS
+       ===================================================== -->
+
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-analytics.js";
@@ -34,24 +77,64 @@
     const analytics = getAnalytics(app);
   </script>
 
-  <!-- Open Graph / Facebook / LinkedIn -->
-  <meta property="og:type" content="website"/>
-  <meta property="og:site_name" content="MySkill Global"/>
-  <meta property="og:title" content="MySkill Global — Learn · Play · Explore · Grow"/>
-  <meta property="og:description" content="Language learning, educational games, exam preparation, practical guides and useful digital tools for learners and families."/>
-  <meta property="og:url" content="https://myskillglobal.com/"/>
-<meta property="og:image" content="https://myskillglobal.com/images/social-preview.jpg"/>
-<meta property="og:image:alt" content="MySkill Global — Learn, Play, Explore, Grow"/>
-  <!-- Twitter / X Card -->
-  <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="MySkill Global — Learn · Play · Explore · Grow"/>
-  <meta name="twitter:description" content="Language learning, educational games, exam preparation, practical guides and useful digital tools for learners and families."/>
-  <meta name="twitter:image" content="https://myskillglobal.com/images/social-preview.jpg"/>
 
-  <!-- Fonts & Stylesheets -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Mukta:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <!-- =====================================================
+       OPEN GRAPH / FACEBOOK / LINKEDIN
+       ===================================================== -->
+
+  <meta property="og:type"
+        content="website"/>
+
+  <meta property="og:site_name"
+        content="MySkill Global"/>
+
+  <meta property="og:title"
+        content="MySkill Global — Learn · Play · Explore · Grow"/>
+
+  <meta property="og:description"
+        content="Language learning, educational games, exam preparation, practical guides and useful digital tools for learners and families."/>
+
+  <meta property="og:url"
+        content="https://myskillglobal.com/"/>
+
+  <meta property="og:image"
+        content="https://myskillglobal.com/images/social-preview.jpg"/>
+
+  <meta property="og:image:alt"
+        content="MySkill Global — Learn, Play, Explore, Grow"/>
+
+
+  <!-- =====================================================
+       TWITTER / X CARD
+       ===================================================== -->
+
+  <meta name="twitter:card"
+        content="summary_large_image"/>
+
+  <meta name="twitter:title"
+        content="MySkill Global — Learn · Play · Explore · Grow"/>
+
+  <meta name="twitter:description"
+        content="Language learning, educational games, exam preparation, practical guides and useful digital tools for learners and families."/>
+
+  <meta name="twitter:image"
+        content="https://myskillglobal.com/images/social-preview.jpg"/>
+
+
+  <!-- =====================================================
+       FONTS & STYLESHEETS
+       ===================================================== -->
+
+  <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+  <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Mukta:wght@400;500;600;700&display=swap"
+        rel="stylesheet"/>
+
   <style>
 :root {
   --ink: #22333B;
@@ -907,6 +990,26 @@ img { pointer-events: none; -webkit-user-drag: none; }
   .footer { padding: 32px 18px; }
   .footer-grid { gap: 6px 20px; }
 }
+.story-read-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  white-space:nowrap;
+  text-align:center;
+  line-height:1.2;
+}
+.story-exam-note{
+  margin-top:18px;
+  padding:14px 16px;
+  background:#fffbea;
+  border:1px solid #f1d36b;
+  border-radius:12px;
+}
+.story-exam-note p{ margin:0 0 14px; }
+.story-exam-note .story-cta-row{ justify-content:flex-start; margin:0; }
+@media (max-width:600px){
+  .story-cta-row .story-read-btn{ width:100%; }
+}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/7.2.3/css/flag-icons.min.css">
 <style>
@@ -914,16 +1017,21 @@ img { pointer-events: none; -webkit-user-drag: none; }
 </style>
 
 <style>
-/* ── MOBILE MENU (hamburger + drawer) ── */
 [id]{ scroll-margin-top:76px; }
+.nav{ z-index:1000; }
+
 .nav-toggle{
-  display:none; width:44px; height:44px; padding:0; border:2px solid var(--marigold);
-  border-radius:12px; background:var(--ink); cursor:pointer; position:relative;
-  -webkit-tap-highlight-color:transparent; flex-shrink:0;
+  display:none; width:44px; height:44px; padding:0;
+  border:2px solid var(--marigold); border-radius:12px;
+  background:var(--ink); cursor:pointer; position:relative;
+  flex-shrink:0; touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
 }
 .nav-toggle span{
   position:absolute; left:11px; right:11px; height:3px; border-radius:3px;
-  background:var(--marigold-light); transition:transform .3s ease, opacity .2s ease, top .3s ease;
+  background:var(--marigold-light);
+  transition:transform .3s ease, opacity .2s ease, top .3s ease;
+  pointer-events:none;
 }
 .nav-toggle span:nth-child(1){ top:12px; }
 .nav-toggle span:nth-child(2){ top:19px; }
@@ -933,35 +1041,46 @@ img { pointer-events: none; -webkit-user-drag: none; }
 .nav-toggle.open span:nth-child(3){ top:19px; transform:rotate(-45deg); }
 
 .mm-overlay{
-  position:fixed; inset:0; background:rgba(10,18,24,.6); z-index:998;
-  opacity:0; visibility:hidden; transition:opacity .3s ease, visibility .3s ease;
+  position:fixed; inset:0; background:rgba(10,18,24,.6); z-index:9998;
+  opacity:0; visibility:hidden; pointer-events:none;
+  transition:opacity .3s ease, visibility 0s linear .3s;
 }
-.mm-overlay.open{ opacity:1; visibility:visible; }
+.mm-overlay.open{
+  opacity:1; visibility:visible; pointer-events:auto;
+  transition-delay:0s;
+}
 .mm-drawer{
-  position:fixed; top:0; right:0; bottom:0; width:min(86vw,340px); z-index:999;
+  position:fixed; top:0; right:0; height:100vh; height:100dvh;
+  width:min(86vw,340px); z-index:9999;
   background:linear-gradient(180deg,#16232b 0%,#22333B 100%);
   border-left:3px solid var(--marigold);
-  transform:translateX(100%); transition:transform .32s ease;
+  transform:translateX(100%); visibility:hidden;
+  transition:transform .32s ease, visibility 0s linear .32s;
   display:flex; flex-direction:column; overflow:hidden;
   padding-bottom:env(safe-area-inset-bottom,0px);
 }
-.mm-drawer.open{ transform:translateX(0); }
+.mm-drawer.open{
+  transform:translateX(0); visibility:visible;
+  transition-delay:0s;
+}
 .mm-head{
   display:flex; align-items:center; justify-content:space-between;
   padding:16px 18px; border-bottom:1px solid rgba(255,209,102,.25);
-  font-family:'Baloo 2',sans-serif; font-weight:700; font-size:1.05rem; color:var(--marigold-light);
+  font-family:'Baloo 2',sans-serif; font-weight:700; font-size:1.05rem;
+  color:var(--marigold-light);
 }
 .mm-close{
   width:40px; height:40px; border-radius:10px; border:2px solid var(--marigold);
-  background:transparent; color:var(--marigold-light); font-size:1.3rem; cursor:pointer; line-height:1;
+  background:transparent; color:var(--marigold-light); font-size:1.3rem;
+  cursor:pointer; line-height:1;
 }
-.mm-scroll{ overflow-y:auto; -webkit-overflow-scrolling:touch; padding:8px 12px 24px; flex:1; }
+.mm-scroll{ overflow-y:auto; -webkit-overflow-scrolling:touch; padding:8px 12px 24px; flex:1; min-height:0; }
 .mm-group{
   font-size:.7rem; letter-spacing:1.2px; text-transform:uppercase; font-weight:700;
   color:var(--marigold); margin:16px 8px 6px;
 }
 .mm-drawer a{
-  display:flex; align-items:center; gap:12px; padding:12px 12px; margin-bottom:2px;
+  display:flex; align-items:center; gap:12px; padding:12px; margin-bottom:2px;
   border-radius:12px; text-decoration:none; color:#FFFBF2;
   font-family:'Mukta',sans-serif; font-size:1rem; font-weight:600;
   -webkit-tap-highlight-color:transparent; transition:background .2s ease;
@@ -970,24 +1089,19 @@ img { pointer-events: none; -webkit-user-drag: none; }
 .mm-drawer a .mm-ico{ width:26px; text-align:center; font-size:1.15rem; }
 body.mm-lock{ overflow:hidden; }
 
-@media (max-width: 900px){
+@media (max-width:900px){
   .nav{ padding:10px 16px; }
   .nav-links{ display:none !important; }
   .nav-toggle{ display:block; }
   .nav-logo{ font-size:1rem !important; }
   .hero{ padding-top:110px; }
 }
-@media (min-width: 901px){
-  .mm-overlay,.mm-drawer{ display:none; }
+@media (min-width:901px){
+  .mm-overlay, .mm-drawer{ display:none; }
 }
 </style>
 </head>
 <body>
-<link rel="manifest" href="/manifest.json">
-<link rel="icon" type="image/png" sizes="192x192" href="images/favicon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
-<link rel="apple-touch-icon" href="images/favicon.png">
 <!-- ── NAV ── -->
 <nav class="nav" id="top">
 <div class="nav-logo">MySkill Global</div>
@@ -999,7 +1113,7 @@ body.mm-lock{ overflow:hidden; }
 <a href="#leaderboard">🏆 Leaderboard</a>
 <a href="feedback-opinion-index.html">We Would Like to Hear Your Opinion</a>
 <a href="language-index.html">Languages</a>
-<a href="https://myskill-drive-expense.netlify.app/">Drive &amp; Expense - Website</a>
+<a href="index-car.html">Drive &amp; Expense - Website</a>
 <a href="stories-novels-index.html">Stories Novels</a>
 <a href="#faq">FAQ</a>
 <a href="#developer">Developer</a>
@@ -1023,7 +1137,8 @@ body.mm-lock{ overflow:hidden; }
     <a href="certificate.html"><span class="mm-ico">🎓</span>Certificate</a>
     <div class="mm-group">Apps &amp; Tools</div>
     <a href="apps.html"><span class="mm-ico">🎮</span>Apps, Games &amp; Websites</a>
-    <a href="https://myskill-drive-expense.netlify.app/"><span class="mm-ico">🚗</span>Drive &amp; Expense</a>
+    <a href="index-car.html"><span class="mm-ico">🚗</span>Drive &amp; Expense</a>
+        <a href="akashvoice_one_international.html"><span class="mm-ico">📻</span>Akash Voice &amp; Smart Coin</a>
     <div class="mm-group">Community</div>
     <a href="#leaderboard"><span class="mm-ico">🏆</span>Leaderboard</a>
     <a href="feedback-opinion-index.html"><span class="mm-ico">💬</span>Share Your Opinion</a>
@@ -1595,21 +1710,19 @@ body.mm-lock{ overflow:hidden; }
       <span>✈️ Travel &amp; Tourism</span>
       <span>🎓 Learning</span>
     </div>
-    <div class="story-exam-note">
-      <p>
-        <strong>📝 Ready to test your language skills?</strong>
-        After exploring the lessons and practicing your chosen language,
-        you can take our language test. Each language test includes
-        50 questions, and learners who achieve a score of 45% or higher
-        can unlock a PDF certificate recognising their achievement on
-        the MySkill Global learning platform.
-      </p><br> <a class="story-read-btn" href="language-index.html">
-      Explore Languages →
-    </a>&nbsp;&nbsp;&nbsp;
-    <a class="story-read-btn outline" href="language_test.html">
-      Take Language Test →</a>&nbsp;&nbsp;&nbsp;  
-<a class="story-read-btn outline" href="certificate.html">
-      🏅 Certificate</a>   
+   <div class="story-exam-note">
+  <p>
+    <strong>📝 Ready to test your language skills?</strong>
+    After exploring the lessons and practicing your chosen language,
+    you can take our language test. Each language test includes
+    50 questions, and learners who achieve a score of 45% or higher
+    can unlock a PDF certificate recognising their achievement on
+    the MySkill Global learning platform.
+  </p>
+  <div class="story-cta-row">
+    <a class="story-read-btn" href="language-index.html">Explore Languages →</a>
+    <a class="story-read-btn outline" href="language_test.html">Take Language Test →</a>
+    <a class="story-read-btn outline" href="certificate.html">🏅 Certificate</a>
   </div>
 </div>
     </div>
@@ -2232,23 +2345,13 @@ body.mm-lock{ overflow:hidden; }
             and easier to understand.
           </div>
 
-          <div class="app-footer">
-            <a
-              class="app-btn solid"
-              href="https://play.google.com/store/apps/details?id=com.surajit.carexpenses"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              Google Play →
-            </a>
-
             <a
               class="app-btn"
-              href="https://myskill-drive-expense.netlify.app/"
+              href="index-car.html"
               rel="noopener noreferrer"
               target="_blank"
             >
-              Open Web →
+              Open →
             </a>
           </div>
         </div>
@@ -2645,7 +2748,7 @@ body.mm-lock{ overflow:hidden; }
 <div class="footer-tagline">Learn · Play · Explore · Grow</div>
 <div class="footer-grid">
 <a href="apps.html">Apps</a><a href="typing-tutor-fixed.html">Typing</a><a href="language-index.html">Languages</a>
-<a href="apps.html">Games</a><a href="https://myskill-drive-expense.netlify.app/">Drive &amp; Expense</a> 
+<a href="apps.html">Games</a><a href="index-car.html">Drive &amp; Expense</a> 
 </div>
 <div class="footer-links">
 <a href="#developer">Developer Information</a> |
@@ -3131,21 +3234,37 @@ const COUNTRY_ISO = {
 </script>
 
 <script>
-(function(){
-  var t=document.getElementById('navToggle'),d=document.getElementById('mmDrawer'),
-      o=document.getElementById('mmOverlay'),c=document.getElementById('mmClose');
-  if(!t||!d||!o) return;
-  function set(open){
-    t.classList.toggle('open',open); d.classList.toggle('open',open); o.classList.toggle('open',open);
-    document.body.classList.toggle('mm-lock',open);
-    t.setAttribute('aria-expanded',open); d.setAttribute('aria-hidden',!open);
+(function () {
+  function $(id) { return document.getElementById(id); }
+
+  function setMenu(open) {
+    var t = $('navToggle'), d = $('mmDrawer'), o = $('mmOverlay');
+    if (!t || !d || !o) return;
+    t.classList.toggle('open', open);
+    d.classList.toggle('open', open);
+    o.classList.toggle('open', open);
+    document.body.classList.toggle('mm-lock', open);
+    t.setAttribute('aria-expanded', String(open));
+    d.setAttribute('aria-hidden', String(!open));
   }
-  t.addEventListener('click',function(){ set(!d.classList.contains('open')); });
-  o.addEventListener('click',function(){ set(false); });
-  if(c) c.addEventListener('click',function(){ set(false); });
-  d.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',function(){ set(false); }); });
-  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
-  window.addEventListener('resize',function(){ if(window.innerWidth>900) set(false); });
+
+  // Event delegation: works even if another script interferes with direct listeners
+  document.addEventListener('click', function (e) {
+    var target = e.target;
+    if (target.closest('#navToggle')) {
+      var d = $('mmDrawer');
+      setMenu(!(d && d.classList.contains('open')));
+    } else if (target.closest('#mmClose') || target.closest('#mmOverlay') || target.closest('#mmDrawer a')) {
+      setMenu(false);
+    }
+  }, true);
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') setMenu(false);
+  });
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 900) setMenu(false);
+  });
 })();
 </script>
 <script src="script.js"></script>

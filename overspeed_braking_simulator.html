@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Over-Speed Braking Distance Simulator</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:#08111f;font-family:'Nunito',sans-serif;min-height:100vh;display:flex;justify-content:center;align-items:flex-start;overflow-x:hidden;padding:8px}
+#app{width:100%;max-width:700px;background:#0a1628;display:flex;flex-direction:column;align-items:center;padding:10px;gap:8px;border-radius:12px;overflow:hidden;margin:auto;position:relative}
+#stars-bg{position:absolute;inset:0;pointer-events:none;overflow:hidden;border-radius:12px}
+.star{position:absolute;border-radius:50%;background:#fff;animation:twinkle var(--d,3s) ease-in-out infinite var(--dl,0s)}
+@keyframes twinkle{0%,100%{opacity:.1}50%{opacity:.6}}
+#app-inner{position:relative;z-index:2;width:100%;display:flex;flex-direction:column;align-items:center;gap:6px}
+.main-title{font-family:'Baloo 2',cursive;font-size:clamp(1rem,4vw,1.5rem);font-weight:800;background:linear-gradient(135deg,#ff8f00,#f5c842,#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-align:center;letter-spacing:.04em;line-height:1.1;padding-top:4px}
+.sub-title{font-size:.55rem;color:rgba(255,248,231,.4);letter-spacing:.18em;text-transform:uppercase;text-align:center}
+.mode-row{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;width:100%}
+.mbtn{background:#263238;border:2px solid rgba(255,255,255,.12);color:#fff;font-family:'Baloo 2',cursive;font-size:.8rem;font-weight:700;padding:7px 14px;border-radius:10px;cursor:pointer;box-shadow:0 4px 0 #111;transition:transform .1s,box-shadow .1s;user-select:none;flex:1 1 100px}
+.mbtn:active{transform:translateY(3px);box-shadow:0 1px 0 #111}
+.mbtn.active-sp{background:linear-gradient(135deg,#1565c0,#0d47a1);border-color:rgba(80,160,255,.4);box-shadow:0 4px 0 #002171}
+.reset-btn{background:#37474f;border:2px solid rgba(255,255,255,.15);color:#fff;font-family:'Baloo 2',cursive;font-size:.8rem;font-weight:700;padding:7px 14px;border-radius:10px;cursor:pointer;box-shadow:0 4px 0 #111;transition:transform .1s;flex:1 1 100px}
+.reset-btn:active{transform:translateY(3px)}
+.canvas-wrap{width:100%;max-width:700px}
+canvas{width:100%;border-radius:12px;display:block}
+.status-bar{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:6px 12px;font-family:'Baloo 2',cursive;font-size:clamp(.7rem,2.5vw,.9rem);font-weight:700;color:#f5c842;text-align:center;min-height:32px}
+.info-row{display:flex;gap:6px;width:100%}
+.info-card{flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:5px 6px;text-align:center}
+.ic-lbl{font-size:.5rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.ic-val{font-family:'Baloo 2',cursive;font-size:.95rem;font-weight:700;line-height:1.1}
+.safe{color:#66bb6a}.warn{color:#ffa726}.danger{color:#ef5350}
+.safety-zone{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
+.safety-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:12px;color:#fff}
+.safety-card h3{font-family:'Baloo 2',cursive;color:#f5c842;margin-bottom:10px;font-size:1rem}
+.impact-item{padding:8px;border-radius:8px;margin-bottom:8px}
+.impact-item span{font-weight:700;display:block;margin-bottom:4px}
+.low{background:rgba(76,175,80,.15);border-left:4px solid #4caf50}
+.medium{background:rgba(255,167,38,.15);border-left:4px solid #ffa726}
+.high{background:rgba(239,83,80,.15);border-left:4px solid #ef5350}
+.quote-box{width:100%;margin-top:10px;padding:12px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:#f5f5f5;text-align:center;font-size:.9rem;line-height:1.5}
+@keyframes shakeCrash{0%{transform:translateX(0)}20%{transform:translateX(-4px)}40%{transform:translateX(4px)}60%{transform:translateX(-3px)}80%{transform:translateX(3px)}100%{transform:translateX(0)}}
+.crash-shake{animation:shakeCrash .35s ease}
+#flashOv{position:absolute;inset:0;pointer-events:none;z-index:50;background:#fff;opacity:0;border-radius:12px;transition:opacity .08s}
+@media(max-width:700px){.safety-zone{grid-template-columns:1fr}}
+@media(max-width:600px){#app{padding:6px;border-radius:0;min-height:100vh}.mbtn,.reset-btn{font-size:.68rem;padding:6px 6px;min-height:44px}.main-title{font-size:1.1rem}.status-bar{font-size:.72rem;padding:5px}canvas{max-height:300px}}
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="stars-bg"></div>
+  <div id="flashOv"></div>
+  <div id="app-inner">
+    <div class="main-title">🚦 BRAKING DISTANCE SIMULATOR</div>
+    <div class="sub-title">Speed doesn't just kill on impact — it kills the space you need to stop</div>
+    <div class="mode-row">
+      <button class="mbtn" onclick="startRun(30)" id="sp30">🟢 30 km/h</button>
+      <button class="mbtn" onclick="startRun(50)" id="sp50">🟡 50 km/h</button>
+      <button class="mbtn" onclick="startRun(80)" id="sp80">🟠 80 km/h</button>
+      <button class="mbtn" onclick="startRun(100)" id="sp100">🔴 100 km/h</button>
+      <button class="reset-btn" onclick="resetAll()">↺ Reset</button>
+    </div>
+    <div class="canvas-wrap"><canvas id="stage"></canvas></div>
+    <div class="status-bar" id="statusBar">Pick a speed — a child suddenly steps onto the road ahead</div>
+    <div class="info-row" id="infoRow" style="display:none">
+      <div class="info-card"><div class="ic-lbl">Reaction Dist.</div><div class="ic-val warn" id="d1">—</div></div>
+      <div class="info-card"><div class="ic-lbl">Braking Dist.</div><div class="ic-val warn" id="d2">—</div></div>
+      <div class="info-card"><div class="ic-lbl">Outcome</div><div class="ic-val danger" id="d3">—</div></div>
+    </div>
+
+    <div class="safety-zone">
+      <div class="safety-card">
+        <h3>🚦 Two Distances, One Truth</h3>
+        <div class="impact-item medium"><span>Reaction Distance</span>Ground covered in the ~1 second it takes your brain to notice danger and hit the brake.</div>
+        <div class="impact-item high"><span>Braking Distance</span>Ground covered while the car actually slows to a stop after brakes are applied — grows fast with speed.</div>
+        <div class="impact-item low"><span>Rule of thumb</span>Double the speed roughly quadruples the total stopping distance.</div>
+      </div>
+      <div class="safety-card">
+        <h3>📋 Stopping Distance Table</h3>
+        <div class="impact-item low"><span>30 km/h</span>Total stopping distance ≈ 12–13 m. Usually enough to avoid a sudden hazard.</div>
+        <div class="impact-item medium"><span>50 km/h</span>Total stopping distance ≈ 25–28 m. A moment's delay can be fatal to a pedestrian.</div>
+        <div class="impact-item high"><span>80–100 km/h</span>Total stopping distance ≈ 55–85 m — longer than a football field. Speeding removes your safety margin entirely.</div>
+      </div>
+    </div>
+    <div class="quote-box" id="quoteBox">🚦 The speed limit isn't a suggestion — it's the distance between a scare and a tragedy.</div>
+  </div>
+</div>
+<script>
+const app=document.getElementById('app'),stars=document.getElementById('stars-bg');
+for(let i=0;i<40;i++){const s=document.createElement('div');const sz=Math.random()*2+1;s.className='star';s.style.width=sz+'px';s.style.height=sz+'px';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';s.style.setProperty('--d',(2+Math.random()*3)+'s');s.style.setProperty('--dl',(Math.random()*3)+'s');stars.appendChild(s);}
+
+const canvas=document.getElementById('stage'),ctx=canvas.getContext('2d');
+let W=0,H=0,DPR=Math.min(window.devicePixelRatio||1,2);
+function resize(){const wrap=canvas.parentElement;const cw=wrap.clientWidth;W=cw;H=Math.round(cw*0.5);canvas.width=W*DPR;canvas.height=H*DPR;canvas.style.height=H+'px';ctx.setTransform(DPR,0,0,DPR,0,0);draw();}
+window.addEventListener('resize',resize);
+
+let speed=null,running=false,animId=null,t=0,phase='idle',result=null;
+const REACTION_T=1.0; // seconds
+const roadStart=0.06, hazardFrac=0.86; // fraction of W
+
+function metersToPx(m){ return m * pxPerMeter; }
+let pxPerMeter=1, reactM=0, brakeM=0, totalM=0, hazardM=0;
+
+function startRun(kmh){
+  document.querySelectorAll('#sp30,#sp50,#sp80,#sp100').forEach(b=>b.classList.remove('active-sp'));
+  document.getElementById('sp'+kmh).classList.add('active-sp');
+  speed=kmh;t=0;phase='driving';running=true;
+  document.getElementById('infoRow').style.display='flex';
+  document.getElementById('statusBar').textContent='Driving at '+kmh+' km/h...';
+  computeResult();
+  cancelAnimationFrame(animId);animId=requestAnimationFrame(loop);
+}
+
+function computeResult(){
+  const v=speed/3.6; // m/s
+  reactM=v*REACTION_T;
+  const decel=6.5; // m/s^2 typical dry braking
+  brakeM=(v*v)/(2*decel);
+  totalM=reactM+brakeM;
+  hazardM=45; // fixed hazard distance in meters for scenario
+  const safe=totalM<=hazardM;
+  result={safe};
+  document.getElementById('d1').textContent=reactM.toFixed(1)+' m';
+  document.getElementById('d2').textContent=brakeM.toFixed(1)+' m';
+  const d3=document.getElementById('d3');
+  d3.textContent=safe?'Stops safely':'Hits hazard';
+  d3.className='ic-val '+(safe?'safe':'danger');
+  // scale so hazardM sits at hazardFrac of width, but keep total path visible
+  const worldMax=Math.max(hazardM+15,totalM+15);
+  pxPerMeter=(W*(hazardFrac-roadStart)) / hazardM;
+}
+
+function loop(){
+  t+=1/60;
+  const v=speed/3.6;
+  const reactDur=REACTION_T;
+  const brakeDur=v/6.5; // time to stop under constant decel
+  const totalDur=reactDur+brakeDur;
+  if(t<totalDur){phase='driving';}
+  else{
+    phase='done';running=false;
+    document.getElementById('statusBar').textContent=result.safe?'✅ Stopped in time — total distance '+totalM.toFixed(1)+' m':'💥 Hazard hit — total distance needed '+totalM.toFixed(1)+' m';
+    if(!result.safe){
+      app.classList.add('crash-shake');setTimeout(()=>app.classList.remove('crash-shake'),350);
+      const fl=document.getElementById('flashOv');fl.style.opacity=.5;setTimeout(()=>fl.style.opacity=0,90);
+    }
+  }
+  draw();
+  if(phase!=='done')animId=requestAnimationFrame(loop);
+}
+
+function drawSky(){
+  const g=ctx.createLinearGradient(0,0,0,H);
+  g.addColorStop(0,'#1a2a4a');g.addColorStop(1,'#0d1a30');
+  ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+  ctx.fillStyle='rgba(255,255,255,.08)';ctx.fillRect(0,H*.6,W,H*.4);
+  ctx.strokeStyle='rgba(255,255,255,.18)';ctx.setLineDash([14,10]);ctx.lineWidth=3;
+  ctx.beginPath();ctx.moveTo(0,H*.75);ctx.lineTo(W,H*.75);ctx.stroke();ctx.setLineDash([]);
+}
+
+function drawCar(xPx,yFrac){
+  const y=H*yFrac;
+  ctx.save();ctx.translate(xPx,y);
+  const bw=W*.11,bh=H*.16;
+  const grad=ctx.createLinearGradient(-bw/2,-bh,bw/2,0);
+  grad.addColorStop(0,'#42a5f5');grad.addColorStop(1,'#0d47a1');
+  ctx.fillStyle=grad;
+  ctx.beginPath();ctx.roundRect(-bw/2,-bh,bw,bh,6);ctx.fill();
+  ctx.fillStyle='rgba(200,230,255,.35)';
+  ctx.beginPath();ctx.roundRect(-bw*.3,-bh*1.5,bw*.6,bh*.55,4);ctx.fill();
+  ctx.fillStyle='#111';
+  ctx.beginPath();ctx.arc(-bw*.28,0,bh*.16,0,Math.PI*2);ctx.fill();
+  ctx.beginPath();ctx.arc(bw*.28,0,bh*.16,0,Math.PI*2);ctx.fill();
+  ctx.restore();
+}
+
+function drawChild(xPx,yFrac,hit){
+  const y=H*yFrac;
+  ctx.save();ctx.translate(xPx,y);
+  ctx.fillStyle=hit?'#e53935':'#ffca28';
+  ctx.beginPath();ctx.arc(0,-H*.09,H*.035,0,Math.PI*2);ctx.fill();
+  ctx.fillRect(-H*.02,-H*.06,H*.04,H*.08);
+  ctx.restore();
+}
+
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  drawSky();
+  const yFrac=0.68;
+  const hazardX=roadStart*W + hazardM*pxPerMeter;
+  drawChild(hazardX,yFrac, phase==='done' && !result.safe);
+
+  const v=speed?speed/3.6:0;
+  const reactDur=REACTION_T;
+  const brakeDur=v/6.5;
+  let distM=0;
+  if(phase==='driving'){
+    if(t<reactDur){ distM=v*t; }
+    else{
+      const bt=t-reactDur;
+      distM = reactM + (v*bt - 0.5*6.5*bt*bt);
+    }
+  } else if(phase==='done'){
+    distM = result.safe? totalM : hazardM+2;
+  }
+  const carX=roadStart*W + distM*pxPerMeter;
+  drawCar(carX,yFrac, );
+  // markers
+  ctx.strokeStyle='rgba(255,255,255,.25)';ctx.lineWidth=1;
+  const reactX=roadStart*W+reactM*pxPerMeter;
+  const stopX=roadStart*W+totalM*pxPerMeter;
+  ctx.setLineDash([3,3]);
+  ctx.beginPath();ctx.moveTo(reactX,H*.5);ctx.lineTo(reactX,H*.85);ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle='rgba(255,255,255,.4)';ctx.font=`bold ${Math.max(9,W*.022)}px Nunito`;ctx.textAlign='center';
+  ctx.fillText('reaction ends',reactX,H*.47);
+  if(speed){
+    ctx.fillStyle='rgba(255,255,255,.5)';ctx.font=`bold ${Math.max(10,W*.028)}px Nunito`;
+    ctx.fillText(speed+' km/h approach',W/2,H*.12);
+  }
+}
+
+function resetAll(){
+  running=false;phase='idle';t=0;cancelAnimationFrame(animId);
+  document.querySelectorAll('.mbtn').forEach(b=>b.classList.remove('active-sp'));
+  speed=null;result=null;
+  document.getElementById('infoRow').style.display='none';
+  document.getElementById('statusBar').textContent='Pick a speed — a child suddenly steps onto the road ahead';
+  draw();
+}
+resize();
+</script>
+</body>
+</html>

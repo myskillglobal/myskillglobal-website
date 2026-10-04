@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Helmet Impact Simulator</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:#08111f;font-family:'Nunito',sans-serif;min-height:100vh;display:flex;justify-content:center;align-items:flex-start;overflow-x:hidden;padding:8px}
+#app{width:100%;max-width:700px;background:#0a1628;display:flex;flex-direction:column;align-items:center;padding:10px;gap:8px;border-radius:12px;overflow:hidden;margin:auto;position:relative}
+#stars-bg{position:absolute;inset:0;pointer-events:none;overflow:hidden;border-radius:12px}
+.star{position:absolute;border-radius:50%;background:#fff;animation:twinkle var(--d,3s) ease-in-out infinite var(--dl,0s)}
+@keyframes twinkle{0%,100%{opacity:.1}50%{opacity:.6}}
+#app-inner{position:relative;z-index:2;width:100%;display:flex;flex-direction:column;align-items:center;gap:6px}
+.main-title{font-family:'Baloo 2',cursive;font-size:clamp(1rem,4vw,1.5rem);font-weight:800;background:linear-gradient(135deg,#ff8f00,#f5c842,#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-align:center;letter-spacing:.04em;line-height:1.1;padding-top:4px}
+.sub-title{font-size:.55rem;color:rgba(255,248,231,.4);letter-spacing:.18em;text-transform:uppercase;text-align:center}
+.mode-row{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;width:100%}
+.mbtn{background:#263238;border:2px solid rgba(255,255,255,.12);color:#fff;font-family:'Baloo 2',cursive;font-size:.8rem;font-weight:700;padding:7px 14px;border-radius:10px;cursor:pointer;box-shadow:0 4px 0 #111;transition:transform .1s,box-shadow .1s;user-select:none;flex:1 1 130px}
+.mbtn:active{transform:translateY(3px);box-shadow:0 1px 0 #111}
+.mbtn.active-on{background:linear-gradient(135deg,#2e7d32,#1b5e20);border-color:rgba(100,255,100,.4);box-shadow:0 4px 0 #0a2e0a}
+.mbtn.active-off{background:linear-gradient(135deg,#e53935,#b71c1c);border-color:rgba(255,100,80,.4);box-shadow:0 4px 0 #5a0000}
+.mbtn.active-sp{background:linear-gradient(135deg,#1565c0,#0d47a1);border-color:rgba(80,160,255,.4);box-shadow:0 4px 0 #002171}
+.reset-btn{background:#37474f;border:2px solid rgba(255,255,255,.15);color:#fff;font-family:'Baloo 2',cursive;font-size:.8rem;font-weight:700;padding:7px 14px;border-radius:10px;cursor:pointer;box-shadow:0 4px 0 #111;transition:transform .1s;flex:1 1 130px}
+.reset-btn:active{transform:translateY(3px)}
+.canvas-wrap{width:100%;max-width:700px}
+canvas{width:100%;border-radius:12px;display:block}
+.status-bar{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:6px 12px;font-family:'Baloo 2',cursive;font-size:clamp(.7rem,2.5vw,.9rem);font-weight:700;color:#f5c842;text-align:center;min-height:32px}
+.info-row{display:flex;gap:6px;width:100%}
+.info-card{flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:5px 6px;text-align:center}
+.ic-lbl{font-size:.5rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.ic-val{font-family:'Baloo 2',cursive;font-size:.95rem;font-weight:700;line-height:1.1}
+.safe{color:#66bb6a}.warn{color:#ffa726}.danger{color:#ef5350}
+.safety-zone{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
+.safety-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:12px;color:#fff}
+.safety-card h3{font-family:'Baloo 2',cursive;color:#f5c842;margin-bottom:10px;font-size:1rem}
+.impact-item{padding:8px;border-radius:8px;margin-bottom:8px}
+.impact-item span{font-weight:700;display:block;margin-bottom:4px}
+.low{background:rgba(76,175,80,.15);border-left:4px solid #4caf50}
+.medium{background:rgba(255,167,38,.15);border-left:4px solid #ffa726}
+.high{background:rgba(239,83,80,.15);border-left:4px solid #ef5350}
+.quote-box{width:100%;margin-top:10px;padding:12px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:#f5f5f5;text-align:center;font-size:.9rem;line-height:1.5}
+@keyframes shakeCrash{0%{transform:translateX(0)}20%{transform:translateX(-4px)}40%{transform:translateX(4px)}60%{transform:translateX(-3px)}80%{transform:translateX(3px)}100%{transform:translateX(0)}}
+.crash-shake{animation:shakeCrash .35s ease}
+#flashOv{position:absolute;inset:0;pointer-events:none;z-index:50;background:#fff;opacity:0;border-radius:12px;transition:opacity .08s}
+@media(max-width:700px){.safety-zone{grid-template-columns:1fr}}
+@media(max-width:600px){#app{padding:6px;border-radius:0;min-height:100vh}.mbtn,.reset-btn{font-size:.72rem;padding:6px 8px;min-height:44px}.main-title{font-size:1.1rem}.status-bar{font-size:.72rem;padding:5px}canvas{max-height:300px}}
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="stars-bg"></div>
+  <div id="flashOv"></div>
+  <div id="app-inner">
+    <div class="main-title">🪖 HELMET IMPACT SIMULATOR</div>
+    <div class="sub-title">See what a helmet really does in a fall</div>
+    <div class="mode-row">
+      <button class="mbtn" id="btnOff" onclick="setHelmet(false)">❌ No Helmet</button>
+      <button class="mbtn" id="btnOn" onclick="setHelmet(true)">🪖 Helmet On</button>
+    </div>
+    <div class="mode-row">
+      <button class="mbtn" onclick="startDrop(20)" id="sp20">🟢 20 km/h Fall</button>
+      <button class="mbtn" onclick="startDrop(40)" id="sp40">🟡 40 km/h Fall</button>
+      <button class="mbtn" onclick="startDrop(60)" id="sp60">🔴 60 km/h Fall</button>
+      <button class="reset-btn" onclick="resetAll()">↺ Reset</button>
+    </div>
+    <div class="canvas-wrap"><canvas id="stage"></canvas></div>
+    <div class="status-bar" id="statusBar">Choose helmet on/off, then pick a fall speed</div>
+    <div class="info-row" id="infoRow" style="display:none">
+      <div class="info-card"><div class="ic-lbl">Impact Force</div><div class="ic-val warn" id="d1">—</div></div>
+      <div class="info-card"><div class="ic-lbl">Head Injury Risk</div><div class="ic-val danger" id="d2">—</div></div>
+      <div class="info-card"><div class="ic-lbl">Outcome</div><div class="ic-val safe" id="d3">—</div></div>
+    </div>
+
+    <div class="safety-zone">
+      <div class="safety-card">
+        <h3>🪖 Why a Helmet Matters</h3>
+        <div class="impact-item low"><span>With Helmet</span>Foam liner absorbs and spreads impact energy, cutting force to the skull dramatically.</div>
+        <div class="impact-item high"><span>Without Helmet</span>Full impact force transfers directly to the skull and brain — even a low-speed fall can cause serious injury.</div>
+        <div class="impact-item medium"><span>Rule of thumb</span>A certified helmet can reduce head injury risk by more than half in a crash.</div>
+      </div>
+      <div class="safety-card">
+        <h3>📋 Fall Speed vs Risk</h3>
+        <div class="impact-item low"><span>20 km/h</span>Without helmet: bruising, possible concussion. With helmet: minor shock, usually safe.</div>
+        <div class="impact-item medium"><span>40 km/h</span>Without helmet: high concussion/fracture risk. With helmet: reduced but still needs care.</div>
+        <div class="impact-item high"><span>60 km/h</span>Without helmet: life-threatening. With helmet: survivable, injury still possible — always ride within safe speed limits.</div>
+      </div>
+    </div>
+    <div class="quote-box" id="quoteBox">🪖 A helmet doesn't stop the accident — it stops the accident from taking your life.</div>
+  </div>
+</div>
+<script>
+const app=document.getElementById('app'),stars=document.getElementById('stars-bg');
+for(let i=0;i<40;i++){const s=document.createElement('div');const sz=Math.random()*2+1;s.className='star';s.style.width=sz+'px';s.style.height=sz+'px';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';s.style.setProperty('--d',(2+Math.random()*3)+'s');s.style.setProperty('--dl',(Math.random()*3)+'s');stars.appendChild(s);}
+
+const canvas=document.getElementById('stage'),ctx=canvas.getContext('2d');
+let W=0,H=0,DPR=Math.min(window.devicePixelRatio||1,2);
+function resize(){const wrap=canvas.parentElement;const cw=wrap.clientWidth;W=cw;H=Math.round(cw*0.62);canvas.width=W*DPR;canvas.height=H*DPR;canvas.style.height=H+'px';ctx.setTransform(DPR,0,0,DPR,0,0);draw();}
+window.addEventListener('resize',resize);
+
+let helmetOn=null,speed=null,running=false,animId=null,t=0,phase='idle',result=null;
+
+function setHelmet(on){
+  helmetOn=on;
+  document.getElementById('btnOn').classList.toggle('active-on',on===true);
+  document.getElementById('btnOff').classList.toggle('active-off',on===false);
+  document.getElementById('statusBar').textContent=on?'🪖 Helmet ON — pick a fall speed':'❌ No helmet — pick a fall speed';
+  running=false;phase='idle';cancelAnimationFrame(animId);draw();
+}
+
+function startDrop(kmh){
+  if(helmetOn===null){document.getElementById('statusBar').textContent='⚠️ Please choose helmet ON or OFF first';return;}
+  document.querySelectorAll('#sp20,#sp40,#sp60').forEach(b=>b.classList.remove('active-sp'));
+  document.getElementById('sp'+kmh).classList.add('active-sp');
+  speed=kmh;t=0;phase='falling';running=true;
+  document.getElementById('infoRow').style.display='flex';
+  document.getElementById('statusBar').textContent='Falling...';
+  computeResult();
+  cancelAnimationFrame(animId);animId=requestAnimationFrame(loop);
+}
+
+function computeResult(){
+  // base force scales with speed^2 roughly
+  const baseForce=Math.round((speed*speed)/28);
+  const force=helmetOn?Math.round(baseForce*0.38):baseForce;
+  let riskLabel,riskClass,outcomeLabel,outcomeClass;
+  const sev=helmetOn?force:force; // use adjusted force for severity thresholds
+  if(!helmetOn){
+    if(speed<=20){riskLabel='High';riskClass='danger';outcomeLabel='Concussion likely';outcomeClass='warn';}
+    else if(speed<=40){riskLabel='Very High';riskClass='danger';outcomeLabel='Serious injury';outcomeClass='danger';}
+    else{riskLabel='Critical';riskClass='danger';outcomeLabel='Life-threatening';outcomeClass='danger';}
+  } else {
+    if(speed<=20){riskLabel='Low';riskClass='safe';outcomeLabel='Minor shock — safe';outcomeClass='safe';}
+    else if(speed<=40){riskLabel='Moderate';riskClass='warn';outcomeLabel='Cushioned — recoverable';outcomeClass='warn';}
+    else{riskLabel='Elevated';riskClass='warn';outcomeLabel='Reduced but serious';outcomeClass='warn';}
+  }
+  result={force,riskLabel,riskClass,outcomeLabel,outcomeClass};
+  const d1=document.getElementById('d1');d1.textContent=force+' G';
+  const d2=document.getElementById('d2');d2.textContent=riskLabel;d2.className='ic-val '+riskClass;
+  const d3=document.getElementById('d3');d3.textContent=outcomeLabel;d3.className='ic-val '+outcomeClass;
+}
+
+function loop(){
+  t+=1/60;
+  const dur=0.9;
+  if(t<dur){phase='falling';}
+  else if(t<dur+0.35){phase='impact';}
+  else{phase='done';running=false;
+    document.getElementById('statusBar').textContent=helmetOn?'✅ Impact absorbed — '+result.outcomeLabel:'💥 Impact — '+result.outcomeLabel;
+    if(!helmetOn){app.classList.add('crash-shake');setTimeout(()=>app.classList.remove('crash-shake'),350);
+      const fl=document.getElementById('flashOv');fl.style.opacity=.5;setTimeout(()=>fl.style.opacity=0,90);}
+  }
+  draw();
+  if(phase!=='done')animId=requestAnimationFrame(loop);
+}
+
+function drawSky(){
+  const g=ctx.createLinearGradient(0,0,0,H);
+  g.addColorStop(0,'#1a2a4a');g.addColorStop(1,'#0d1a30');
+  ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+  ctx.fillStyle='rgba(255,255,255,.5)';
+  ctx.fillRect(0,H*.82,W,H*.03);
+  ctx.fillStyle='rgba(255,255,255,.15)';
+  ctx.fillRect(0,H*.85,W,H*.15);
+}
+
+function drawHead(x,y,r,helmet,crackLevel){
+  ctx.save();ctx.translate(x,y);
+  // neck
+  ctx.fillStyle='#c78a5c';ctx.fillRect(-r*.25,r*.7,r*.5,r*.6);
+  // face
+  const skinGrad=ctx.createRadialGradient(-r*.3,-r*.3,r*.1,0,0,r);
+  skinGrad.addColorStop(0,'#e0a370');skinGrad.addColorStop(1,'#c78a5c');
+  ctx.fillStyle=skinGrad;
+  ctx.beginPath();ctx.arc(0,0,r,0,Math.PI*2);ctx.fill();
+  // face features
+  ctx.fillStyle='#3e2723';
+  ctx.beginPath();ctx.arc(-r*.32,-r*.05,r*.07,0,Math.PI*2);ctx.fill();
+  ctx.beginPath();ctx.arc(r*.32,-r*.05,r*.07,0,Math.PI*2);ctx.fill();
+  ctx.strokeStyle='#3e2723';ctx.lineWidth=r*.05;ctx.beginPath();
+  if(crackLevel>0){ctx.moveTo(-r*.25,r*.4);ctx.lineTo(r*.25,r*.25);}
+  else{ctx.moveTo(-r*.25,r*.35);ctx.quadraticCurveTo(0,r*.5,r*.25,r*.35);}
+  ctx.stroke();
+  if(helmet){
+    const hGrad=ctx.createLinearGradient(-r*1.1,-r*1.3,r*1.1,r*.2);
+    hGrad.addColorStop(0,'#64b5f6');hGrad.addColorStop(.5,'#1976d2');hGrad.addColorStop(1,'#0d47a1');
+    ctx.fillStyle=hGrad;
+    ctx.beginPath();
+    ctx.moveTo(-r*1.05,r*.15);
+    ctx.bezierCurveTo(-r*1.15,-r*.4,-r*.7,-r*1.25,0,-r*1.28);
+    ctx.bezierCurveTo(r*.7,-r*1.25,r*1.15,-r*.4,r*1.05,r*.15);
+    ctx.bezierCurveTo(r*.5,r*.1,-r*.5,r*.1,-r*1.05,r*.15);
+    ctx.closePath();ctx.fill();
+    ctx.fillStyle='rgba(255,255,255,.25)';
+    ctx.beginPath();ctx.ellipse(-r*.3,-r*.9,r*.35,r*.15,-0.3,0,Math.PI*2);ctx.fill();
+    if(crackLevel>0){
+      ctx.strokeStyle='rgba(0,0,0,.7)';ctx.lineWidth=1.5;
+      ctx.beginPath();ctx.moveTo(-r*.1,-r*1.2);ctx.lineTo(r*.15,-r*.6);ctx.lineTo(-r*.05,-r*.1);ctx.stroke();
+    }
+  }
+  ctx.restore();
+}
+
+function drawWeight(x,y,scale){
+  ctx.save();ctx.translate(x,y);
+  const w=Math.min(W*.09,50)*scale,h=Math.min(W*.07,38)*scale;
+  ctx.fillStyle='rgba(0,0,0,.25)';ctx.beginPath();ctx.ellipse(2,h*.55,w*.4,5,0,0,Math.PI*2);ctx.fill();
+  const g=ctx.createLinearGradient(-w/2,-h/2,w/2,h/2);
+  g.addColorStop(0,'#78909c');g.addColorStop(.5,'#455a64');g.addColorStop(1,'#263238');
+  ctx.fillStyle=g;ctx.beginPath();ctx.roundRect(-w/2,-h/2,w,h,6);ctx.fill();
+  ctx.strokeStyle='#607d8b';ctx.lineWidth=3;ctx.beginPath();
+  ctx.moveTo(-w*.2,-h*.5);ctx.lineTo(-w*.2,-h*.9);ctx.lineTo(w*.2,-h*.9);ctx.lineTo(w*.2,-h*.5);ctx.stroke();
+  ctx.restore();
+}
+
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  drawSky();
+  const groundY=H*.78;
+  const headR=Math.min(W*.11,45);
+  const headX=W/2,headY=groundY-headR*.5;
+  let crackLevel=0,weightY=H*.08,weightScale=1;
+  if(phase==='falling'){
+    const prog=Math.min(t/0.9,1);
+    weightY=H*.08+(headY-headR*1.6-H*.08)*easeIn(prog);
+  } else if(phase==='impact'||phase==='done'){
+    weightY=headY-headR*1.2;
+    weightScale=phase==='impact'?1.08:1;
+    if(!helmetOn && phase==='done')crackLevel=1;
+  } else {
+    weightY=H*.08;
+  }
+  drawHead(headX,headY,headR,helmetOn===true,crackLevel);
+  if(phase!=='idle')drawWeight(headX,weightY,weightScale);
+  // speed label
+  if(speed){
+    ctx.fillStyle='rgba(255,255,255,.5)';ctx.font=`bold ${Math.max(10,W*.03)}px Nunito`;
+    ctx.textAlign='center';ctx.fillText('Fall equivalent to '+speed+' km/h impact',W/2,H*.92);
+  }
+}
+function easeIn(x){return x*x;}
+
+function resetAll(){
+  running=false;phase='idle';t=0;cancelAnimationFrame(animId);
+  document.querySelectorAll('.mbtn').forEach(b=>b.classList.remove('active-on','active-off','active-sp'));
+  helmetOn=null;speed=null;result=null;
+  document.getElementById('infoRow').style.display='none';
+  document.getElementById('statusBar').textContent='Choose helmet on/off, then pick a fall speed';
+  draw();
+}
+resize();
+</script>
+</body>
+</html>

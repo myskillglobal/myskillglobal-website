@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Road Safety Quiz</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EC8BPWZDWC');
+</script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;700;800&family=Hind+Siliguri:wght@400;500;600&display=swap');
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    html, body { width: 100%; min-height: 100%; background: #0a0e1a; overflow-x: hidden; font-family: 'Hind Siliguri', sans-serif; }
+body { padding-bottom:140px;
+  overflow-y:auto;
+}
+    /* ═══════════════════════════════
+       BOTTOM FIXED BAR
+       road strip with ticker ON it
+    ═══════════════════════════════ */
+    #bottom-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 20;
+      height: 58px;
+      background: #1a1f2e;
+      border-top: 3px solid #2a2f3e;
+      overflow: hidden;
+    }
+.q-visual-area {
+    width: 100%;
+    height: 180px; /* নির্দিষ্ট উচ্চতা */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #1a1f2e;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+.q-emoji-display {
+    font-size: 100px; /* ইমোজি অনেক বড় দেখাবে */
+    text-shadow: 0 0 10px rgba(255,255,255,0.2);
+}
+
+.q-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+    /* Animated dashed road line */
+    .road-dashes {
+      position: absolute; top: 50%; left: 0; right: 0; height: 4px;
+      transform: translateY(-50%);
+      background: repeating-linear-gradient(90deg,#f5c518 0,#f5c518 40px,transparent 40px,transparent 80px);
+      animation: roadMove 1.5s linear infinite;
+    }
+    @keyframes roadMove { from{transform:translateY(-50%) translateX(0);} to{transform:translateY(-50%) translateX(-80px);} }
+
+    /* Ticker text scrolling OVER the road */
+    #ticker-wrap {
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      display: flex; align-items: center;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    #ticker-inner {
+      display: flex;
+      white-space: nowrap;
+      animation: tickerScroll 180s linear infinite;
+      will-change: transform;
+    }
+    /* duplicate content so it loops seamlessly */
+    #ticker-inner .ticker-set {
+      display: inline-flex;
+      align-items: center;
+    }
+    #ticker-inner .ticker-set span {
+      display: inline-block;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #0a0e1a;
+      background: rgba(245,197,24,0.92);
+      border-radius: 20px;
+      padding: 3px 12px;
+      margin: 0 14px;
+      letter-spacing: 0.01em;
+      font-family: 'Hind Siliguri', sans-serif;
+      white-space: nowrap;
+    }
+    @keyframes tickerScroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ═══════════════════════════════
+       MAIN QUIZ AREA
+    ═══════════════════════════════ */
+#quiz-root{
+  padding-top:58px;
+  padding-bottom:140px;
+  min-height:100vh;
+  color:#e8eaf0;
+}
+    }
+
+    /* Header */
+    .quiz-header { padding: 14px 14px 8px; display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap;position:sticky;top:0;z-index:200;background:#0a0e1a;padding-top:12px; }
+    .lang-tabs { display: flex; gap: 4px; background: #1a1f2e; border-radius: 20px; padding: 4px; }
+    .lang-tab { padding: 6px 11px; border-radius: 16px; font-size: 12px; cursor: pointer; border: none; background: transparent; color: #8890a4; font-family: 'Hind Siliguri', sans-serif; transition: all .2s; touch-action: manipulation; }
+    .lang-tab.active { background: #f5c518; color: #0a0e1a; font-weight: 700; }
+    .score-badge { background: #1a1f2e; border-radius: 20px; padding: 6px 12px; font-size: 12px; color: #f5c518; font-weight: 700; white-space: nowrap; }
+
+    /* Progress */
+    .progress-area { padding: 0 14px 12px; }
+    .progress-info { display: flex; justify-content: space-between; font-size: 11px; color: #8890a4; margin-bottom: 5px; }
+    .progress-bar { height: 6px; background: #1a1f2e; border-radius: 3px; overflow: hidden; }
+    .progress-fill { height: 100%; background: linear-gradient(90deg,#f5c518,#ff6b35); border-radius: 3px; transition: width .4s ease; }
+
+    /* Card */
+    .card-area { padding: 0 14px 10px; }
+    .question-card { background: #131826; border: 1px solid #2a2f3e; border-radius: 18px; overflow: hidden; animation: slideIn .35s cubic-bezier(.34,1.56,.64,1); box-shadow: 0 8px 24px rgba(0,0,0,.22); }
+    @keyframes slideIn { from{opacity:0;transform:translateY(18px) scale(.97);} to{opacity:1;transform:translateY(0) scale(1);} }
+#feedback-wrap {
+    font-weight: bold;
+    color: #ff4d4d; /* উজ্জ্বল লাল রঙ সতর্কবার্তার জন্য */
+    text-shadow: 0 0 5px rgba(255, 77, 77, 0.3);
+    line-height: 1.6;
+    padding: 10px;
+    border-left: 4px solid #ff4d4d;
+    background: rgba(255, 77, 77, 0.1);
+    border-radius: 0 8px 8px 0;
+}
+    .card-visual { aspect-ratio: 16/9; width: 100%; max-height: 260px; background: #1a1f2e; display: flex; align-items: center; justify-content: center; position: relative; border-bottom: 1px solid #2a2f3e; overflow: hidden; }
+    .card-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  opacity: 0.92;
+  background: #0f1420;
+}
+    .card-visual img.portrait { object-fit: contain; background: #0f1420; }
+    .card-visual .emoji-display { font-size: 70px; line-height: 1; filter: drop-shadow(0 4px 12px rgba(0,0,0,.4)); }
+    .q-number { position: absolute; top: 8px; left: 12px; background: rgba(10,14,26,.82); color: #f5c518; font-size: 10px; font-weight: 800; padding: 3px 8px; border-radius: 10px; z-index: 2; }
+
+    .card-body { padding: 14px; }
+    .question-text { font-family: 'Baloo Da 2', cursive; font-size: 15px; font-weight: 700; color: #e8eaf0; line-height: 1.5; margin-bottom: 12px; }
+
+    .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.option-btn { 
+    background: #1a1f2e; 
+    border: 1.5px solid #3a3f4e; /* বর্ডার সামান্য উজ্জ্বল করা হয়েছে */
+    border-radius: 12px; 
+    padding: 12px; /* প্যাডিং একটু বাড়ানো হয়েছে ভালো দেখানোর জন্য */
+    
+    /* টেক্সট উজ্জ্বল করার মূল পরিবর্তন এখানে */
+    color: #ffffff; /* একদম সাদা কালার, যা ডার্ক মোডে সবচেয়ে উজ্জ্বল */
+    font-weight: 600; /* টেক্সট একটু মোটা (Semi-bold) করা হয়েছে */
+    font-size: 14px; /* সাইজ ১২.৫ থেকে বাড়িয়ে ১৪ করা হয়েছে যাতে পড়তে সুবিধা হয় */
+    
+    font-family: 'Hind Siliguri', sans-serif; 
+    cursor: pointer; 
+    text-align: left; 
+    line-height: 1.5; 
+    transition: all .2s ease; 
+    min-height: 56px; 
+    width: 100%; 
+    touch-action: manipulation;
+    
+    /* হালকা শ্যাডো যাতে বাটনটি স্ক্রিন থেকে একটু ভেসে ওঠে */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* মাউস নিলে বা ক্লিক করলে যেন আরও উজ্জ্বল দেখায় */
+.option-btn{
+  background:#1f2536;
+  border:1.8px solid #4a556f;
+  border-radius:12px;
+  padding:14px 14px;
+  color:#f8fbff;
+  font-weight:700;
+  font-size:16px;
+  font-family:'Hind Siliguri', sans-serif;
+  cursor:pointer;
+  text-align:left;
+  line-height:1.6;
+  transition:all .2s ease;
+  min-height:60px;
+  width:100%;
+  touch-action:manipulation;
+  box-shadow:0 2px 6px rgba(0,0,0,0.22);
+  text-shadow:0 0 0.3px rgba(255,255,255,0.2);
+}
+
+.option-btn:hover,
+.option-btn:active{
+  background:#2a3146;
+  border-color:#67a8ff;
+  color:#ffffff;
+}
+
+.option-btn:active:not(:disabled){
+  transform:scale(.97);
+}
+
+.option-btn:disabled{
+  cursor:default;
+}
+
+.option-btn.correct{
+  background:#10351f;
+  border-color:#39d98a;
+  color:#d8ffe9;
+  animation:pulseC .4s ease;
+  font-weight:800;
+}
+
+.option-btn.wrong{
+  background:#3a1212;
+  border-color:#ff6b6b;
+  color:#ffd6d6;
+  font-weight:700;
+}
+
+.option-btn.reveal-correct{
+  background:#10351f;
+  border-color:#39d98a;
+  color:#d8ffe9;
+  font-weight:800;
+}
+    @keyframes pulseC { 0%{transform:scale(1);} 50%{transform:scale(1.03);} 100%{transform:scale(1);} }
+
+    .feedback-box { margin-top: 12px; border-radius: 11px; overflow: hidden; animation: fadeDown .3s ease; }
+    @keyframes fadeDown { from{opacity:0;transform:translateY(-8px);} to{opacity:1;transform:translateY(0);} }
+    .feedback-exp { background: #1a1f2e; border-left: 3px solid #3b82f6; padding: 10px 11px; font-size: 12px; color: #a8b0c4; line-height: 1.6; }
+    .feedback-soul { background: #0d1420; border-left: 3px solid #f5c518; padding: 10px 11px; font-size: 11.5px; color: #c8a84b; font-style: italic; line-height: 1.55; margin-top: 2px; }
+
+    .nav-row { display: flex; justify-content: center; padding: 12px 14px 16px; }
+    .next-btn { background: #f5c518; color: #0a0e1a; border: none; border-radius: 50px; padding: 13px 38px; font-family: 'Baloo Da 2', cursive; font-size: 15px; font-weight: 800; cursor: pointer; touch-action: manipulation; }
+    .next-btn:active { transform: scale(.96); background: #ffd740; }
+
+    /* Result */
+    .result-screen { padding: 22px 20px 40px; text-align: center; animation: fadeUp .45s ease; }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(30px);} to{opacity:1;transform:translateY(0);} }
+    .result-trophy { font-size: 60px; margin-bottom: 10px; }
+    .result-title { font-family: 'Baloo Da 2', cursive; font-size: 22px; font-weight: 800; color: #f5c518; margin-bottom: 6px; }
+    .result-score-big { font-size: 44px; font-weight: 800; color: #e8eaf0; font-family: 'Baloo Da 2', cursive; line-height: 1; margin: 10px 0; }
+    .result-score-big span { color: #8890a4; font-size: 26px; }
+    .result-msg { color: #8890a4; font-size: 13.5px; line-height: 1.6; margin-bottom: 18px; padding: 0 10px; }
+    .restart-btn { background: #f5c518; color: #0a0e1a; border: none; border-radius: 50px; padding: 13px 38px; font-family: 'Baloo Da 2', cursive; font-size: 15px; font-weight: 800; cursor: pointer; touch-action: manipulation; }
+    .cert-box{max-width:340px;margin:14px auto 0}
+    .cert-note{font-size:14px;margin-bottom:10px;color:#f5c518;line-height:1.5}
+    .cert-in{display:block;width:100%;margin:8px 0;padding:12px 14px;border-radius:12px;border:1.5px solid #ccd;font-size:15px;text-align:center;background:#fff;color:#0a0e1a}
+    .cert-in:focus{outline:none;border-color:#f5c518}
+    .cert-back{display:block;margin-top:16px;font-size:13px;color:#9fb3d9;text-decoration:none}
+    .restart-btn:active { background: #ffd740; transform: scale(.96); }
+    .stars-row { display: flex; justify-content: center; gap: 6px; margin: 8px 0 14px; }
+    .star { font-size: 22px; }
+
+    @media (max-width: 480px) {
+      .options-grid { grid-template-columns: 1fr; }
+      .question-text { font-size: 14px; }
+.option-btn { font-size: 15px; min-height: 54px; padding: 13px 12px; }
+      .card-visual { max-height: 200px; }
+      .card-visual .emoji-display { font-size: 58px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ BOTTOM BAR: road + ticker ═══ -->
+<div id="bottom-bar">
+  <div class="road-dashes"></div>
+  <div id="ticker-wrap">
+    <div id="ticker-inner">
+      <!-- JS will populate two copies for seamless loop -->
+    </div>
+  </div>
+</div>
+
+<!-- ═══ QUIZ ═══ -->
+<div id="quiz-root">
+  <div id="quiz-container"></div>
+</div>
+
+<script>
+/* ─────────────────────────────────────────────────
+   TICKER QUESTIONS (50 items, English with emoji)
+───────────────────────────────────────────────── */
+var TICKER_ITEMS = [
+  "What should a driver do at a STOP sign? 🛑",
+  "Who gets priority at a zebra crossing? 🚶",
+  "What does a speed limit sign mean? 🚗",
+  "Why is overspeeding dangerous even on an empty road? ⚠️",
+  "Why should you keep safe distance from a truck? 🚚",
+  "What is a blind spot near a big vehicle? 🚛",
+  "Why is staying beside a car risky? 👀",
+  "Why must you give way to an ambulance first? 🚑",
+  "Why should fire service vehicles get priority? 🚒",
+  "Why is under-18 driving dangerous and illegal? 🚸",
+  "Can insurance claim be denied if an underage driver crashes? 📄",
+  "Why is driving without a license irresponsible? 📄",
+  "Why is proper driving training necessary? 🧠",
+  "Why is using a mobile phone while driving dangerous? 📱",
+  "Why is drunk driving deadly? 🍺",
+  "Why is driving while sleepy dangerous? 😴",
+  "Why is street racing dangerous? 🏁",
+  "Is reaching safely more important than reaching fast? 🏠",
+  "Why do family members wait for your safe return? ❤️",
+  "Why is life more valuable than saving a little time? ⏳",
+  "Why should everyone wear a seatbelt in a car? 🎽",
+  "Why should both rider and pillion wear helmets? 🪖",
+  "Why should you use an ISI-marked helmet? 🛡️",
+  "Why is it dangerous to ride without a helmet? 💀",
+  "Why should a child be seated safely in a vehicle? 👶",
+  "Why is wearing shoes while driving important? 👟",
+  "Why keep a water bottle in the vehicle during travel? 💧",
+  "Why should a first-aid kit be kept in the vehicle? 🩹",
+  "Why should a duplicate vehicle key be stored safely? 🔑",
+  "Why can careless duplicate key handling increase theft risk? 🔐",
+  "Why is vehicle insurance important? 🚘",
+  "Why should you think about term life insurance for family security? 👨‍👩‍👧",
+  "Why is an EV charger supposed to be proper and safe? 🔋",
+  "Why should CNG vehicles be checked for gas leakage? ⛽",
+  "Why should cyclists and van-rickshaws use reflectors at night? ✨",
+  "Why are rear reflectors important on slow vehicles at night? 🌙",
+  "Why are red-yellow road studs or markers placed on roads? 🛣️",
+  "What should you do if you see reflective road markers at night? 🚦",
+  "Why is rushing across a railway crossing dangerous? 🚆",
+  "Why should you look both ways before crossing railway tracks? 🚉",
+  "Why is U-turn prohibited at some places? ↩️",
+  "What should you do in rain or fog for better safety? 🌧️",
+  "Why should headlights and reflectors be used properly at night? 🌃",
+  "Why is it dangerous to overtake at a curve or low visibility zone? 🔄",
+  "If the road is empty and you drive too fast, what hidden danger may appear? 🐕",
+  "What should a driver do if a dog or monkey suddenly crosses the road? 🐒",
+  "Why should drivers expect unexpected animals on the road? 🐾",
+  "Why is saving money by breaking traffic rules not worth it? 💸",
+  "Why should calm driving be preferred over anger or ego? 😌",
+  "What is the real victory on the road—speed or safety? 🌱"
+];
+
+/* Build ticker HTML (two copies for seamless loop) */
+(function() {
+  var inner = document.getElementById("ticker-inner");
+  var html = "";
+  for (var c = 0; c < 2; c++) {
+    html += '<div class="ticker-set">';
+    for (var i = 0; i < TICKER_ITEMS.length; i++) {
+      html += '<span>' + TICKER_ITEMS[i] + '</span>';
+    }
+    html += '</div>';
+  }
+  inner.innerHTML = html;
+})();
+
+/* ─────────────────────────────────────────────────
+   TRANSLATIONS
+───────────────────────────────────────────────── */
+var TXT = {
+  bn: { score:"স্কোর", question:"প্রশ্ন", of:"এর মধ্যে", correct:"✅ সঠিক!", wrong:"❌ ভুল!", next:"পরের প্রশ্ন →", done:"কুইজ শেষ!", msg1:"অসাধারণ! আপনি রোড সেফটি নিয়ে সত্যিই সচেতন। 🌟", msg2:"ভালো চেষ্টা! আরও একটু মনোযোগ দিলে নিরাপদ থাকবেন। 👍", msg3:"রোড সেফটি শিখুন—আপনার পরিবার আপনার জন্য অপেক্ষা করে। ❤️", restart:"আবার খেলুন" },
+  hi: { score:"स्कोर", question:"प्रश्न", of:"में से", correct:"✅ सही!", wrong:"❌ गलत!", next:"अगला प्रश्न →", done:"क्विज़ पूरी हुई!", msg1:"शानदार! आप सड़क सुरक्षा के प्रति सच में जागरूक हैं। 🌟", msg2:"अच्छी कोशिश! थोड़ा और ध्यान दें तो सुरक्षित रहेंगे। 👍", msg3:"सड़क सुरक्षा सीखें—आपका परिवार आपका इंतज़ार करता है। ❤️", restart:"फिर से खेलें" },
+  en: { score:"Score", question:"Question", of:"of", correct:"✅ Correct!", wrong:"❌ Wrong!", next:"Next Question →", done:"Quiz Complete!", msg1:"Excellent! You are truly aware about road safety. 🌟", msg2:"Good try! A little more attention will keep you safer. 👍", msg3:"Learn road safety—your family is waiting for you. ❤️", restart:"Play Again" }
+};
+
+var IMG_MAP = {
+  // আগের ছবিগুলো
+  "🛑": "img/stop.jpg",
+  "🚶": "img/zebra.jpg",
+  "🚗": "img/speed_limit.jpg",
+  "🚚": "img/truck.jpg",
+  "👀": "img/truck.jpg",
+  "🚛": "img/blindspot.jpg",
+  "👀": "img/blindspot.jpg",
+  "🚑": "img/ambulance.jpg",
+  "🚒": "img/fire_truck.jpg",
+  "📱": "img/mobilephone.jpg",  
+  "🐾": "img/mobilephone.jpg",  
+  "⏳": "img/mobilephone.jpg",  
+
+  "❤️": "img/family.jpg",
+  "👨‍👩‍👧": "img/family.jpg", 
+  "💸": "img/family.jpg",
+
+  "🎽": "img/seat_belt.jpg",
+"⚪": "img/zebra.jpg", // যদি প্রশ্নে সাদা বল ইমোজি থাকে
+  
+  // আপনার হেলমেট ছবিগুলো - সঠিক স্পেলিং ব্যবহার করে
+  "🪖": "img/helmet.jpg",
+  "🛡️": "img/helmet.jpg",
+  "💀": "img/helmet.jpg",  
+  "🟡": "img/yellow.jpg", 
+ "🟨": "img/yellow.jpg",  
+"🛣️": "img/yellow.jpg",  
+  "🔄": "img/yellow.jpg",  
+  "🚦": "img/yellow.jpg", 
+  "⚠️": "img/yellow.jpg",  
+  // বাকিগুলো
+  "🚂": "img/railway.jpg",
+  "🚉": "img/railway.jpg",
+  "🚫": "img/no_uturn.jpg",
+  "↩️": "img/no_uturn.jpg",
+  "✨": "img/reflector.jpg", 
+  "🌙": "img/reflector.jpg", 
+  "🌃": "img/reflector.jpg"  
+};
+/* ─────────────────────────────────────────────────
+   ALL 50 QUESTIONS
+───────────────────────────────────────────────── */
+var ALL_Q = [
+  /* 0 */  {emoji:"🛑",q_bn:"স্টপ সাইন দেখলে চালককে কী করতে হবে?",q_hi:"स्टॉप साइन देखकर चालक को क्या करना चाहिए?",q_en:"What should a driver do at a STOP sign?",correct_bn:"সম্পূর্ণ থামতে হবে",correct_hi:"पूरी तरह रुकना चाहिए",correct_en:"Stop completely",wrong_bn:["গতি বাড়াতে হবে","হর্ন বাজাতে হবে","চোখ বন্ধ করে এগোতে হবে"],wrong_hi:["गति बढ़ानी चाहिए","हॉर्न बजाना चाहिए","आँख बंद करके आगे बढ़ना"],wrong_en:["Increase speed","Keep honking","Move with eyes closed"],exp_bn:"স্টপ সাইন মানে সম্পূর্ণ থামা। চারপাশ দেখে নিরাপদ হলে তবেই এগোতে হয়।",exp_hi:"स्टॉप साइन का मतलब पूरी तरह रुकना है।",exp_en:"A STOP sign means a complete halt. Move only after checking it is safe.",soul_bn:"অন্তর আত্মা: এক মুহূর্ত থামা অনেক সময় জীবন বাঁচায়।",soul_hi:"अंतरात्मा: एक पल रुकना कई बार जान बचा लेता है।",soul_en:"Inner voice: One moment of stopping can save a life."},
+  /* 1 */  {emoji:"🚶",q_bn:"জেব্রা ক্রসিং-এ অগ্রাধিকার কার?",q_hi:"ज़ेब्रा क्रॉसिंग पर प्राथमिकता किसकी?",q_en:"Who gets priority at a zebra crossing?",correct_bn:"পথচারীর",correct_hi:"पैदल यात्री की",correct_en:"Pedestrian",wrong_bn:["গাড়ির","বাইকের","যে বেশি হর্ন দেয়"],wrong_hi:["वाहन की","बाइक की","जो ज़्यादा हॉर्न बजाए"],wrong_en:["Car","Bike","Whoever honks more"],exp_bn:"জেব্রা ক্রসিং পথচারীদের নিরাপদে রাস্তা পার হওয়ার জন্য।",exp_hi:"ज़ेब्रा क्रॉसिंग पैदल यात्रियों के सुरक्षित सड़क पार करने के लिए होती है।",exp_en:"A zebra crossing is for pedestrians to cross safely.",soul_bn:"অন্তর আত্মা: একটু অপেক্ষা কারও জীবনকে নিরাপদ রাখে।",soul_hi:"अंतरात्मा: थोड़ा इंतज़ार किसी की जान बचा सकता है।",soul_en:"Inner voice: A little patience can protect a life."},
+/* 2 */
+{
+  emoji:"🚗",
+  q_bn:"স্পিড লিমিট সাইন কী বোঝায়?",
+  q_hi:"स्पीड लिमिट साइन क्या बताता है?",
+  q_en:"What does a speed limit sign mean?",
+
+  correct_bn:"সর্বোচ্চ নিরাপদ গতি",
+  correct_hi:"अधिकतम सुरक्षित गति",
+  correct_en:"Maximum safe speed",
+
+  wrong_bn:[
+    "সর্বনিম্ন গতি",
+    "পার্কিং করার জায়গা",
+    "হর্ন বাজানোর নির্দেশ"
+  ],
+  wrong_hi:[
+    "न्यूनतम गति",
+    "पार्किंग की जगह",
+    "हॉर्न बजाने का संकेत"
+  ],
+  wrong_en:[
+    "Minimum speed",
+    "Parking area",
+    "Instruction to honk"
+  ],
+
+  exp_bn:"স্পিড লিমিট সাইন সেই রাস্তার সর্বোচ্চ নিরাপদ গতি নির্দেশ করে।",
+  exp_hi:"स्पीड लिमिट साइन उस सड़क पर अधिकतम सुरक्षित गति को दर्शाता है।",
+  exp_en:"A speed limit sign shows the maximum safe speed for that road.",
+
+  soul_bn:"অন্তরের কথা: কম গতি মানে বেশি নিয়ন্ত্রণ, বেশি নিরাপত্তা।",
+  soul_hi:"अंतर की आवाज़: कम रफ्तार का मतलब ज़्यादा नियंत्रण और ज़्यादा सुरक्षा।",
+  soul_en:"Inner voice: Lower speed means better control and greater safety."
+},
+  /* 3 */  {emoji:"⚠️",q_bn:"রাস্তা ফাঁকা হলেও অতিরিক্ত গতি কেন বিপজ্জনক?",q_hi:"सड़क खाली होने पर भी तेज़ रफ्तार क्यों खतरनाक?",q_en:"Why is overspeeding dangerous even on an empty road?",correct_bn:"হঠাৎ বিপদ এলে সামলানো কঠিন",correct_hi:"अचानक खतरा संभालना मुश्किल",correct_en:"Sudden danger becomes hard to control",wrong_bn:["গাড়ি বেশি সুন্দর লাগে","তেল বাঁচে","ব্রেকের দরকার হয় না"],wrong_hi:["गाड़ी ज़्यादा सुंदर लगती है","ईंधन बचता है","ब्रेक की ज़रूरत नहीं"],wrong_en:["Vehicle looks better","Saves fuel","Brakes not needed"],exp_bn:"রাস্তা ফাঁকা হলেও কুকুর, মানুষ, গর্ত হঠাৎ সামনে আসতে পারে।",exp_hi:"खाली सड़क पर भी कुत्ता, इंसान, गड्ढा अचानक आ सकता है।",exp_en:"Even on empty roads, an animal, person, or pothole can appear suddenly.",soul_bn:"অন্তর আত্মা: ফাঁকা রাস্তা কখনোই ফাঁকা বিপদ নয়।",soul_hi:"अंतरात्मा: खाली सड़क का मतलब खाली खतरा नहीं।",soul_en:"Inner voice: An empty road is not an empty risk."},
+  /* 4 */  {emoji:"🚚",q_bn:"ট্রাকের থেকে নিরাপদ দূরত্ব রাখা কেন জরুরি?",q_hi:"ट्रक से सुरक्षित दूरी रखना क्यों ज़रूरी?",q_en:"Why keep a safe distance from a truck?",correct_bn:"হঠাৎ ব্রেকে সময় পাওয়া যায়",correct_hi:"अचानक ब्रेक पर प्रतिक्रिया का समय मिलता है",correct_en:"Gives reaction time for sudden brakes",wrong_bn:["ট্রাককে ভয় দেখাতে","হর্ন কম শোনার জন্য","রং ভালো দেখার জন্য"],wrong_hi:["ट्रक को डराने के लिए","हॉर्न कम सुनने के लिए","रंग देखने के लिए"],wrong_en:["To scare the truck","To hear less horn","To view its color"],exp_bn:"বড় গাড়ি হঠাৎ brake করলে কাছে থাকলে দুর্ঘটনা হতে পারে।",exp_hi:"बड़ा वाहन अचानक ब्रेक ले तो बहुत पास होने पर हादसा हो सकता है।",exp_en:"If a large vehicle brakes suddenly, staying too close can cause a crash.",soul_bn:"অন্তর আত্মা: নিরাপদ দূরত্ব মানেই নিরাপদ সিদ্ধান্ত।",soul_hi:"अंतरात्मा: सुरक्षित दूरी, सुरक्षित निर्णय।",soul_en:"Inner voice: Safe distance means safer decisions."},
+  /* 5 */  {emoji:"🚛",q_bn:"বড় গাড়ির blind spot কী?",q_hi:"बड़े वाहन का ब्लाइंड स्पॉट क्या होता है?",q_en:"What is a blind spot near a big vehicle?",correct_bn:"যে জায়গা চালক দেখতে পান না",correct_hi:"वह जगह जिसे चालक नहीं देख पाता",correct_en:"An area the driver cannot see",wrong_bn:["গাড়ির ছাদ","হেডলাইট","নম্বর প্লেট"],wrong_hi:["वाहन की छत","हेडलाइट","नंबर प्लेट"],wrong_en:["The roof","The headlight","The number plate"],exp_bn:"Blind spot-এ ছোট গাড়ি বা মানুষ চালকের চোখের আড়ালে থাকতে পারে।",exp_hi:"ब्लाइंड स्पॉट में छोटी गाड़ी या व्यक्ति दिखाई नहीं देता।",exp_en:"In a blind spot, smaller vehicles or people can disappear from the driver's view.",soul_bn:"অন্তর আত্মা: সামনে আছো মানেই দেখা যাচ্ছো—এমন নয়।",soul_hi:"अंतरात्मा: पास होना हमेशा दिखाई देना नहीं।",soul_en:"Inner voice: Being near does not always mean being seen."},
+  /* 6 */  {emoji:"👀",q_bn:"গাড়ির একেবারে পাশে চলা কেন ঝুঁকিপূর্ণ?",q_hi:"car- के बिल्कुल पास चलना क्यों जोखिम भरा?",q_en:"Why is staying right beside a car risky?",correct_bn:"চালক আপনাকে দেখতে নাও পারেন",correct_hi:"चालक आपको नहीं देख पाता",correct_en:"The driver may not see you",wrong_bn:["হাওয়া বেশি লাগে","রাস্তা ছোট লাগে","গাড়ি দ্রুত নোংরা হয়"],wrong_hi:["ज़्यादा हवा लगती है","सड़क छोटी लगती है","गाड़ी जल्दी गंदी होती है"],wrong_en:["Too much wind","Road looks smaller","Vehicle gets dirty faster"],exp_bn:"Blind spot-এর কারণে ট্রাক lane change করলে পাশের গাড়ি বিপদে পড়তে পারে।",exp_hi:"ब्लाइंड स्पॉट के कारण ट्रक लेन बदले तो पास की गाड़ी खतरे में आती है।",exp_en:"Because of blind spots, a truck may turn without noticing a nearby vehicle.",soul_bn:"অন্তর আত্মা: দৃশ্যমান থাকাই নিরাপত্তার অংশ।",soul_hi:"अंतरात्मा: दिखाई देना ही सुरक्षा का हिस्सा है।",soul_en:"Inner voice: Staying visible is part of staying safe."},
+  /* 7 */  {emoji:"🚑",q_bn:"অ্যাম্বুলেন্সকে আগে পথ দেওয়া কেন জরুরি?",q_hi:"एम्बुलेंस को पहले रास्ता देना क्यों ज़रूरी?",q_en:"Why must you give way to an ambulance first?",correct_bn:"কারও জীবন বাঁচানোর জন্য সময় দরকার",correct_hi:"किसी की जान बचाने के लिए समय ज़रूरी",correct_en:"Time may be needed to save a life",wrong_bn:["ওরা বেশি হর্ন দেয়","ওদের গাড়ি বড়","ওরা দ্রুত চালাতে ভালোবাসে"],wrong_hi:["वे ज़्यादा हॉर्न बजाते हैं","उनका वाहन बड़ा है","उन्हें तेज़ चलाना पसंद है"],wrong_en:["They honk more","Their vehicle is bigger","They like speeding"],exp_bn:"অ্যাম্বুলেন্সে থাকা রোগীর জন্য প্রতিটি সেকেন্ড গুরুত্বপূর্ণ।",exp_hi:"एम्बुलेंस में मरीज के लिए हर सेकंड महत्वपूर्ण।",exp_en:"Every second can matter for the patient in the ambulance.",soul_bn:"অন্তর আত্মা: পথ ছেড়ে দেওয়া কখনো কখনো জীবন দেওয়া।",soul_hi:"अंतरात्मा: रास्ता देना कई बार जीवन बचाने जैसा।",soul_en:"Inner voice: Giving way can mean giving life."},
+  /* 8 */  {emoji:"🚒",q_bn:"দমকল গাড়িকে আগে যেতে দেওয়া কেন দরকার?",q_hi:"फायर सर्विस वाहन को पहले जाने देना क्यों ज़रूरी?",q_en:"Why should fire service vehicles get priority?",correct_bn:"দেরি হলে আগুন ও ক্ষতি বাড়তে পারে",correct_hi:"देर होने पर आग और नुकसान बढ़ सकता है",correct_en:"Delay can worsen the fire and damage",wrong_bn:["ওরা রাস্তা দেখে","ওরা ফ্রি জ্বালানি পায়","ওরা শুধু মহড়া দেয়"],wrong_hi:["वे सड़क देखते हैं","उन्हें मुफ्त ईंधन मिलता है","वे सिर्फ अभ्यास करते हैं"],wrong_en:["They inspect roads","They get free fuel","They only practice"],exp_bn:"ফায়ার সার্ভিস দেরি করলে আগুন ছড়িয়ে বড় ক্ষতি হতে পারে।",exp_hi:"फायर सर्विस देर से पहुँचे तो आग फैलकर बड़ा नुकसान।",exp_en:"If fire service is delayed, the fire may spread and cause greater damage.",soul_bn:"অন্তর আত্মা: জরুরিকে অগ্রাধিকার দেওয়া মানবিক দায়িত্ব।",soul_hi:"अंतरात्मा: आपात को प्राथमिकता देना इंसानी जिम्मेदारी।",soul_en:"Inner voice: Giving priority to emergencies is a human duty."},
+  /* 9 */  {emoji:"🚸",q_bn:"১৮ বছরের নিচে ড্রাইভিং কেন বিপজ্জনক ও বেআইনি?",q_hi:"18 साल से कम उम्र में ड्राइविंग क्यों खतरनाक और गैरकानूनी?",q_en:"Why is under-18 driving dangerous and illegal?",correct_bn:"দক্ষতা, পরিপক্বতা ও অনুমতি থাকে না",correct_hi:"कौशल, परिपक्वता और कानूनी अनुमति नहीं",correct_en:"Skill, maturity, and legal permission are lacking",wrong_bn:["গাড়ি ছোট বলে","রাস্তা রঙিন বলে","হর্ন কম বাজে বলে"],wrong_hi:["गाड़ी छोटी होती है","सड़क रंगीन होती है","हॉर्न कम बजता है"],wrong_en:["Vehicle is small","Road is colorful","Horn is quieter"],exp_bn:"কম বয়সে সঠিক judgment ও training না থাকায় দুর্ঘটনার ঝুঁকি বাড়ে।",exp_hi:"कम उम्र में निर्णय क्षमता की कमी से हादसे का खतरा बढ़ता है।",exp_en:"Young drivers may lack judgment and training, increasing accident risk.",soul_bn:"অন্তর আত্মা: একটু অপেক্ষা করাই নিরাপদ ভবিষ্যৎ।",soul_hi:"अंतरात्मा: थोड़ा इंतज़ार ही सुरक्षित भविष्य।",soul_en:"Inner voice: Waiting a little protects the future."},
+  /* 10 */ {emoji:"📄",q_bn:"অপ্রাপ্তবয়স্ক চালক দুর্ঘটনা করলে insurance কেন বাতিল হতে পারে?",q_hi:"नाबालिग चालक के दुर्घटना करने पर बीमा क्यों रद्द हो सकता है?",q_en:"Can insurance claim be denied if an underage driver crashes?",correct_bn:"হ্যাঁ, policy-র নিয়ম ভঙ্গ হয়",correct_hi:"हाँ, पॉलिसी के नियम का उल्लंघन होता है",correct_en:"Yes, policy rules may be violated",wrong_bn:["না, সব claim accepted হয়","বৃষ্টি হলে","গাড়ির রং কারণ"],wrong_hi:["नहीं, सभी दावे स्वीकार होते हैं","बारिश होने पर","गाड़ी के रंग से"],wrong_en:["No, all claims accepted","If it rains","Because of vehicle color"],exp_bn:"লাইসেন্সবিহীন বা কমবয়সী চালকের ক্ষেত্রে claim বাতিল হতে পারে।",exp_hi:"बिना लाइसेंस या नाबालिग चालक के मामले में दावा खारिज हो सकता है।",exp_en:"Claims may be denied if the driver is underage or unlicensed.",soul_bn:"অন্তর আত্মা: নিয়মভঙ্গ শুধু বিপদ নয়, ক্ষতিও আনে।",soul_hi:"अंतरात्मा: नियम तोड़ना सिर्फ खतरा नहीं, नुकसान भी लाता है।",soul_en:"Inner voice: Breaking rules brings loss as well as danger."},
+  /* 11 */ {emoji:"📋",q_bn:"লাইসেন্স ছাড়া ড্রাইভিং কেন দায়িত্বজ্ঞানহীন?",q_hi:"बिना लाइसेंस ड्राइविंग गैर-जिम्मेदाराना क्यों?",q_en:"Why is driving without a license irresponsible?",correct_bn:"নিয়ম ও দক্ষতার প্রমাণ থাকে না",correct_hi:"नियम और कौशल का प्रमाण नहीं",correct_en:"No proof of rules knowledge and skill",wrong_bn:["গাড়ি ধীরে চলে","রাস্তা লম্বা হয়","সিট গরম হয়"],wrong_hi:["गाड़ी धीरे चलती है","सड़क लंबी हो जाती है","सीट गरम हो जाती है"],wrong_en:["Car moves slowly","Road becomes longer","Seat gets hot"],exp_bn:"লাইসেন্স বোঝায় আপনি ন্যূনতম driving knowledge অর্জন করেছেন।",exp_hi:"लाइसेंस दिखाता है कि आपने न्यूनतम ड्राइविंग ज्ञान हासिल किया।",exp_en:"A license shows you have met basic standards of driving knowledge.",soul_bn:"অন্তর আত্মা: দায়িত্ব ছাড়া স্টিয়ারিং ধরা ঠিক নয়।",soul_hi:"अंतरात्मा: जिम्मेदारी के बिना स्टीयरिंग पकड़ना ठीक नहीं।",soul_en:"Inner voice: Do not hold the wheel without responsibility."},
+  /* 12 */ {emoji:"🧠",q_bn:"সঠিক ড্রাইভিং training কেন দরকার?",q_hi:"सही ड्राइविंग प्रशिक्षण क्यों ज़रूरी?",q_en:"Why is proper driving training necessary?",correct_bn:"নিয়ম, control ও decision শিখতে",correct_hi:"नियम, नियंत्रण और निर्णय सीखने के लिए",correct_en:"To learn rules, control, and decision-making",wrong_bn:["গাড়ি সাজাতে","হর্ন বদলাতে","জ্বালানি বাড়াতে"],wrong_hi:["गाड़ी सजाने के लिए","हॉर्न बदलने के लिए","ईंधन बढ़ाने के लिए"],wrong_en:["Decorate vehicle","Change horn","Increase fuel"],exp_bn:"Driving শুধু গাড়ি চালানো নয়, পরিস্থিতি বুঝে নিরাপদ সিদ্ধান্ত নেওয়াও।",exp_hi:"ड्राइविंग सिर्फ गाड़ी चलाना नहीं, परिस्थिति समझकर सुरक्षित निर्णय लेना भी है।",exp_en:"Driving is about making safe decisions in real situations, not just moving.",soul_bn:"অন্তর আত্মা: আত্মবিশ্বাসের আগে প্রশিক্ষণ দরকার।",soul_hi:"अंतरात्मा: आत्मविश्वास से पहले प्रशिक्षण लेना ज़रूरी है।",soul_en:"Inner voice: Training must come before confidence."},
+  /* 13 */ {emoji:"📱",q_bn:"ড্রাইভিংয়ের সময় মোবাইল ব্যবহার কেন বিপজ্জনক?",q_hi:"ड्राइविंग के समय मोबाइल इस्तेमाल करना क्यों खतरनाक?",q_en:"Why is using a mobile phone while driving dangerous?",correct_bn:"মনোযোগ রাস্তা থেকে সরে যায়",correct_hi:"ध्यान सड़क से हट जाता है",correct_en:"Attention shifts away from the road",wrong_bn:["গাড়ি ঠান্ডা হয়","চাকা শক্ত হয়","রাস্তা উজ্জ্বল হয়"],wrong_hi:["गाड़ी ठंडी हो जाती है","टायर सख्त हो जाते हैं","सड़क चमकने लगती है"],wrong_en:["Vehicle cools down","Tires get harder","Road becomes brighter"],exp_bn:"এক সেকেন্ডের distraction-ও বড় দুর্ঘটনার কারণ হতে পারে।",exp_hi:"एक सेकंड का ध्यान भटकना भी बड़े हादसे का कारण बन सकता है।",exp_en:"Even a second of distraction can cause a serious accident.",soul_bn:"অন্তর আত্মা: মেসেজ অপেক্ষা করতে পারে, জীবন নয়।",soul_hi:"अंतरात्मा: संदेश इंतज़ार कर सकता है, जीवन नहीं।",soul_en:"Inner voice: A message can wait; life cannot."},
+  /* 14 */ {emoji:"🍺",q_bn:"নেশাগ্রস্ত হয়ে গাড়ি চালানো কেন প্রাণঘাতী?",q_hi:"शराब पीकर गाड़ी चलाना जानलेवा क्यों?",q_en:"Why is drunk driving deadly?",correct_bn:"reaction ও judgment কমে যায়",correct_hi:"प्रतिक्रिया और निर्णय क्षमता कम हो जाती है",correct_en:"Reaction time and judgment weaken",wrong_bn:["চাকা বড় হয়","হেডলাইট কমে","রাস্তা বদলে যায়"],wrong_hi:["टायर बड़े हो जाते हैं","हेडलाइट कम होती है","सड़क बदल जाती है"],wrong_en:["Wheels get bigger","Headlights reduce","Road changes"],exp_bn:"অ্যালকোহল চালকের control, timing ও decision-making কমিয়ে দেয়।",exp_hi:"शराब चालक का नियंत्रण और निर्णय क्षमता कम कर देती है।",exp_en:"Alcohol weakens control, timing, and decision-making.",soul_bn:"অন্তর আত্মা: নেশার আনন্দের দাম হতে পারে কারও জীবন।",soul_hi:"अंतरात्मा: नशे की खुशी की कीमत किसी की जान हो सकती है।",soul_en:"Inner voice: A drink can cost a life."},
+  /* 15 */ {emoji:"😴",q_bn:"ঘুম ঘুম অবস্থায় ড্রাইভিং কেন বিপজ্জনক?",q_hi:"नींद की हालत में ड्राइविंग क्यों खतरनाक?",q_en:"Why is driving while sleepy dangerous?",correct_bn:"প্রতিক্রিয়া ধীর হয়ে যায়",correct_hi:"प्रतिक्रिया धीमी हो जाती है",correct_en:"Reaction becomes slow",wrong_bn:["গাড়ি বেশি মসৃণ চলে","তেল কম লাগে","হর্ন জোরে বাজে"],wrong_hi:["गाड़ी ज़्यादा स्मूद चलती है","ईंधन कम लगता है","हॉर्न तेज़ बजता है"],wrong_en:["Vehicle runs smoother","Uses less fuel","Horn gets louder"],exp_bn:"ঘুম পেলে মনোযোগ কমে, চোখ বন্ধ হয়ে যেতে পারে।",exp_hi:"नींद आने पर ध्यान कम होता है, आँख लग सकती है।",exp_en:"Sleepiness reduces attention and may cause the driver to doze off.",soul_bn:"অন্তর আত্মা: ক্লান্ত শরীরকে রাস্তায় পরীক্ষা নেবেন না।",soul_hi:"अंतरात्मा: थके शरीर की परीक्षा सड़क पर मत लो।",soul_en:"Inner voice: Do not test a tired body on the road."},
+  /* 16 */ {emoji:"🏁",q_bn:"রাস্তার রেসিং কেন বিপজ্জনক?",q_hi:"सड़क पर रेस लगाना क्यों खतरनाक?",q_en:"Why is street racing dangerous?",correct_bn:"নিজের ও অন্যের জীবন ঝুঁকিতে পড়ে",correct_hi:"अपनी और दूसरों की जान खतरे में",correct_en:"It puts your life and others' lives at risk",wrong_bn:["গাড়ি শক্তিশালী হয়","চাকা পরিষ্কার হয়","রাস্তা ছোট হয়"],wrong_hi:["गाड़ी मज़बूत हो जाती है","टायर साफ होते हैं","सड़क छोटी हो जाती है"],wrong_en:["Vehicle becomes stronger","Tires get cleaner","Road becomes shorter"],exp_bn:"Public road রেসিংয়ের জায়গা নয়।",exp_hi:"सार्वजनिक सड़क रेस के लिए नहीं।",exp_en:"Public roads are not race tracks; mistakes harm many people.",soul_bn:"অন্তর আত্মা: আসল জয় গতি নয়, সংযম।",soul_hi:"अंतरात्मा: असली जीत रफ्तार नहीं, संयम है।",soul_en:"Inner voice: The real victory is not speed, but restraint."},
+  /* 17 */ {emoji:"🏠",q_bn:"নিরাপদে পৌঁছানো কি তাড়াতাড়ির চেয়ে বেশি গুরুত্বপূর্ণ?",q_hi:"क्या सुरक्षित पहुँचना जल्दी पहुँचने से ज़्यादा महत्वपूर्ण?",q_en:"Is reaching safely more important than reaching fast?",correct_bn:"হ্যাঁ, নিরাপত্তাই আসল",correct_hi:"हाँ, सुरक्षा ही सबसे महत्वपूर्ण",correct_en:"Yes, safety matters most",wrong_bn:["না, শুধু গতি দরকার","সময়ই সব","যে আগে পৌঁছায় সে ঠিক"],wrong_hi:["नहीं, सिर्फ रफ्तार ज़रूरी","समय ही सब कुछ","जो पहले पहुँचे वही सही"],wrong_en:["No, only speed matters","Time is everything","Whoever arrives first is right"],exp_bn:"কয়েক মিনিট বাঁচাতে গিয়ে জীবন ঝুঁকিতে ফেলা বুদ্ধিমানের কাজ নয়।",exp_hi:"कुछ मिनट बचाने के लिए जीवन खतरे में डालना समझदारी नहीं।",exp_en:"Risking life to save a few minutes is not wise.",soul_bn:"অন্তর আত্মা: দেরি হলে চলবে, না ফিরলে চলবে না।",soul_hi:"अंतरात्मा: देर चलेगी, लेकिन न लौटना नहीं।",soul_en:"Inner voice: Being late is okay; not returning is not."},
+/* 18 */
+{
+  emoji:"❤️",
+  q_bn:"পরিবার আপনার নিরাপদে ফেরার অপেক্ষা করে কেন?",
+  q_hi:"परिवार आपके सुरक्षित लौटने का इंतज़ार क्यों करता है?",
+  q_en:"Why do family members wait for your safe return?",
+
+  correct_bn:"কারণ আপনি তাদের কাছে অমূল্য",
+  correct_hi:"क्योंकि आप उनके लिए अनमोल हैं",
+  correct_en:"Because you are precious to them",
+
+  wrong_bn:[
+    "কারণ আপনি জোরে হর্ন বাজান",
+    "কারণ আপনি খুব দ্রুত চালান",
+    "কারণ আপনি শুধু গাড়ি পরিষ্কার করেন"
+  ],
+  wrong_hi:[
+    "क्योंकि आप ज़ोर से हॉर्न बजाते हैं",
+    "क्योंकि आप बहुत तेज़ चलाते हैं",
+    "क्योंकि आप सिर्फ गाड़ी साफ करते हैं"
+  ],
+  wrong_en:[
+    "Because you honk loudly",
+    "Because you drive very fast",
+    "Because you only clean the vehicle"
+  ],
+
+  exp_bn:"আপনার স্ত্রী, সন্তান, বাবা-মা ও প্রিয়জন সবাই চান আপনি নিরাপদে ঘরে ফিরুন।",
+  exp_hi:"आपकी पत्नी, बच्चे, माता-पिता और अपने सभी चाहते हैं कि आप सुरक्षित घर लौटें।",
+  exp_en:"Your spouse, children, parents, and loved ones all want you to return home safely.",
+
+  soul_bn:"অন্তরের কথা: কেউ আপনার নিরাপদ ফেরার আশায় অপেক্ষা করছে।",
+  soul_hi:"अंतर की आवाज़: कोई आपकी सुरक्षित वापसी का इंतज़ार कर रहा है।",
+  soul_en:"Inner voice: Someone is waiting for your safe return."
+},
+  /* 19 */ {emoji:"⏳",q_bn:"কয়েক মিনিট বাঁচাতে জীবন ঝুঁকি কেন নয়?",q_hi:"कुछ मिनट बचाने के लिए जान जोखिम में क्यों नहीं डालनी चाहिए?",q_en:"Why is life more valuable than saving a little time?",correct_bn:"সময় ফেরে, জীবন ফেরে না",correct_hi:"समय वापस आता है, जीवन नहीं",correct_en:"Time can be recovered; life cannot",wrong_bn:["গাড়ি দ্রুত যায়","রাস্তা ফাঁকা হয়","জ্বালানি বাঁচে"],wrong_hi:["गाड़ी तेज़ जाती है","सड़क खाली हो जाती है","ईंधन बचता है"],wrong_en:["Car goes faster","Road becomes empty","Fuel is saved"],exp_bn:"সময়ের চেয়ে জীবন বেশি মূল্যবান—তাড়াহুড়ো নয়, সতর্কতাই সঠিক।",exp_hi:"समय से ज़्यादा जीवन मूल्यवान है—जल्दबाज़ी नहीं, सावधानी सही है।",exp_en:"Life is more valuable than time; caution matters more than hurry.",soul_bn:"অন্তর আত্মা: তাড়া থাকুক, তাড়াহুড়ো নয়।",soul_hi:"अंतरात्मा: जल्दी हो, जल्दबाज़ी नहीं।",soul_en:"Inner voice: Have urgency, not recklessness."},
+  /* 20 */ {emoji:"🎽",q_bn:"গাড়িতে সবার seatbelt পরা কেন জরুরি?",q_hi:"गाड़ी में सभी लोगों का सीट बेल्ट पहनना क्यों ज़रूरी?",q_en:"Why should everyone wear a seatbelt in a car?",correct_bn:"দুর্ঘটনায় আঘাত কমাতে",correct_hi:"दुर्घटना में चोट कम करने के लिए",correct_en:"To reduce injury in a crash",wrong_bn:["গরম কমাতে","গাড়ি দ্রুত চালাতে","চাকা শক্ত করতে"],wrong_hi:["गर्मी कम करने के लिए","गाड़ी तेज़ चलाने के लिए","टायर मजबूत करने के लिए"],wrong_en:["Reduce heat","Make car faster","Strengthen tires"],exp_bn:"Seatbelt দুর্ঘটনার ধাক্কায় শরীরকে সুরক্ষিত রাখে।",exp_hi:"सीट बेल्ट दुर्घटना के झटके में शरीर को सुरक्षित रखती है।",exp_en:"Seatbelts help protect the body during a crash.",soul_bn:"অন্তর আত্মা: একটি ক্লিক অনেক বড় ক্ষতি কমাতে পারে।",soul_hi:"अंतरात्मा: एक क्लिक बड़ा नुकसान कम कर सकता है।",soul_en:"Inner voice: One click can reduce great harm."},
+  /* 21 */ {emoji:"🪖",q_bn:"দুজনেরই helmet পরা কেন দরকার?",q_hi:"बाइक चालक और पीछे बैठने वाले दोनों को हेलमेट क्यों?",q_en:"Why should both rider and pillion wear helmets?",correct_bn:"দুজনের মাথাই ঝুঁকিতে থাকে",correct_hi:"दोनों के सिर को खतरा होता है",correct_en:"Both heads are at risk",wrong_bn:["শুধু style-এর জন্য","শুধু পুলিশ দেখলে","শুধু শীতকালে"],wrong_hi:["सिर्फ स्टाइल के लिए","सिर्फ पुलिस को दिखाने के लिए","सिर्फ सर्दियों में"],wrong_en:["Only for style","Only to show police","Only in winter"],exp_bn:"দুর্ঘটনায় চালক ও পেছনের যাত্রী দুজনেরই মাথায় মারাত্মক আঘাত লাগতে পারে।",exp_hi:"दुर्घटना में दोनों के सिर को गंभीर चोट लग सकती है।",exp_en:"In a crash, both rider and pillion can suffer serious head injuries.",soul_bn:"অন্তর আত্মা: নিরাপত্তা একার নয়, সবার।",soul_hi:"अंतरात्मा: सुरक्षा अकेले की नहीं, सबकी है।",soul_en:"Inner voice: Safety is for everyone, not just one person."},
+  /* 22 */ {emoji:"🛡️",q_bn:"ISI-marked helmet ব্যবহার করা কেন ভালো?",q_hi:"ISI मार्क वाला हेलमेट क्यों बेहतर?",q_en:"Why should you use an ISI-marked helmet?",correct_bn:"এটি মানসম্মত নিরাপত্তার ইঙ্গিত দেয়",correct_hi:"यह मानक सुरक्षा का संकेत देता है",correct_en:"It indicates a standard level of safety",wrong_bn:["রং বেশি চকচকে","ওজন সবসময় কম","হর্ন জোরে শোনা যায়"],wrong_hi:["रंग ज़्यादा चमकदार","वज़न हमेशा कम","हॉर्न तेज़ सुनाई देता है"],wrong_en:["Color is shinier","Always lighter","Makes horns louder"],exp_bn:"ISI-marked helmet সাধারণত নির্দিষ্ট safety standard মেনে তৈরি হয়।",exp_hi:"ISI मार्क वाला हेलमेट आमतौर पर निर्धारित सुरक्षा मानक के अनुसार बनता है।",exp_en:"An ISI-marked helmet generally complies with safety standards.",soul_bn:"অন্তর আত্মা: মাথার সুরক্ষায় আপস নয়।",soul_hi:"अंतरात्मा: सिर की सुरक्षा में समझौता नहीं।",soul_en:"Inner voice: Never compromise on head protection."},
+  /* 23 */ {emoji:"💀",q_bn:"helmet ছাড়া বাইক চালানো কেন প্রাণঘাতী?",q_hi:"बिना हेलमेट बाइक चलाना जानलेवा क्यों?",q_en:"Why is it dangerous to ride without a helmet?",correct_bn:"মাথায় মারাত্মক আঘাত লাগতে পারে",correct_hi:"सिर पर गंभीर चोट लग सकती है",correct_en:"It can cause severe head injury",wrong_bn:["চুল নষ্ট হয়","গাড়ি ধীর হয়","ধুলো কমে"],wrong_hi:["बाल खराब होते हैं","गाड़ी धीमी हो जाती है","धूल कम होती है"],wrong_en:["It ruins hair","Bike slows down","Less road dust"],exp_bn:"মাথা শরীরের সবচেয়ে সংবেদনশীল অংশ; helmet এই ঝুঁকি কমায়।",exp_hi:"सिर सबसे संवेदनशील हिस्सा है; हेलमेट इस खतरे को कम करता है।",exp_en:"The head is most vulnerable; helmets reduce that risk.",soul_bn:"অন্তর আত্মা: style নয়, জীবনটাই আসল।",soul_hi:"अंतरात्मा: स्टाइल नहीं, जीवन सबसे ज़रूरी।",soul_en:"Inner voice: Style is never more important than life."},
+  /* 24 */ {emoji:"👶",q_bn:"শিশুকে গাড়িতে নিরাপদভাবে বসানো কেন জরুরি?",q_hi:"बच्चे को गाड़ी में सुरक्षित बैठाना क्यों ज़रूरी?",q_en:"Why should a child be seated safely in a vehicle?",correct_bn:"শিশু দ্রুত আঘাত পেতে পারে",correct_hi:"बच्चे को जल्दी चोट लग सकती है",correct_en:"A child can get hurt very easily",wrong_bn:["শিশু ঘুমায় বলে","শিশু গান শোনে বলে","শিশু হর্ন পছন্দ করে"],wrong_hi:["क्योंकि बच्चा सोता है","क्योंकि बच्चा गाना सुनता है","बच्चे को हॉर्न पसंद है"],wrong_en:["Child sleeps","Child listens to music","Child likes horns"],exp_bn:"শিশুর শরীর নরম ও সংবেদনশীল, তাই সঠিকভাবে বসানো খুব জরুরি।",exp_hi:"बच्चे का शरीर नाज़ुक होता है, इसलिए सही तरह बैठाना ज़रूरी है।",exp_en:"A child's body is delicate, so proper seating is very important.",soul_bn:"অন্তর আত্মা: ছোট্ট প্রাণের নিরাপত্তাই বড় দায়িত্ব।",soul_hi:"अंतरात्मा: नन्ही जान की सुरक्षा सबसे बड़ी जिम्मेदारी।",soul_en:"Inner voice: Protecting a child is a great responsibility."},
+  /* 25 */ {emoji:"👟",q_bn:"গাড়ি চালানোর সময় জুতো পরে থাকা কেন ভালো?",q_hi:"ड्राइविंग के समय जूते पहनना क्यों ज़रूरी?",q_en:"Why is wearing shoes while driving important?",correct_bn:"pedal control ভালো থাকে",correct_hi:"पैडल नियंत्रण बेहतर रहता है",correct_en:"Pedal control is better",wrong_bn:["গাড়ি দ্রুত যায়","জ্বালানি বাড়ে","রাস্তা মসৃণ হয়"],wrong_hi:["गाड़ी तेज़ जाती है","ईंधन बढ़ता है","सड़क चिकनी होती है"],wrong_en:["Car goes faster","Fuel increases","Road becomes smoother"],exp_bn:"সঠিক footwear থাকলে brake, clutch, accelerator নিরাপদে চাপা সহজ হয়।",exp_hi:"सही जूते होने पर ब्रेक, क्लच और एक्सीलरेटर दबाना आसान होता है।",exp_en:"Proper footwear helps with safer control of pedals.",soul_bn:"অন্তর আত্মা: ছোট প্রস্তুতিও বড় দুর্ঘটনা ঠেকাতে পারে।",soul_hi:"अंतरात्मा: छोटी तैयारी भी बड़े हादसे से बचा सकती है।",soul_en:"Inner voice: Small preparation can prevent big accidents."},
+  /* 26 */ {emoji:"💧",q_bn:"গাড়িতে জলের বোতল রাখা কেন দরকার?",q_hi:"गाड़ी में पानी की बोतल क्यों रखनी चाहिए?",q_en:"Why keep a water bottle in the vehicle during travel?",correct_bn:"শরীর hydrated রাখতে",correct_hi:"शरीर को हाइड्रेटेड रखने के लिए",correct_en:"To keep the body hydrated",wrong_bn:["গাড়ি ঠান্ডা করতে","চাকা ধুতে","হর্ন পরিষ্কার করতে"],wrong_hi:["गाड़ी ठंडी करने के लिए","टायर धोने के लिए","हॉर्न साफ करने के लिए"],wrong_en:["Cool the vehicle","Wash tires","Clean the horn"],exp_bn:"দীর্ঘ যাত্রায় dehydration হলে ক্লান্তি ও মনোযোগ কমতে পারে।",exp_hi:"लंबी यात्रा में शरीर सूखने पर थकान और ध्यान कम हो सकता है।",exp_en:"On long trips, dehydration can increase fatigue and reduce focus.",soul_bn:"অন্তর আত্মা: নিজের যত্নও নিরাপদ যাত্রার অংশ।",soul_hi:"अंतरात्मा: अपना ख्याल रखना भी सुरक्षित यात्रा का हिस्सा है।",soul_en:"Inner voice: Caring for yourself is part of safe travel."},
+  /* 27 */ {emoji:"🏥",q_bn:"গাড়িতে first-aid kit রাখা কেন দরকার?",q_hi:"गाड़ी में फर्स्ट-एड किट रखना क्यों ज़रूरी?",q_en:"Why should a first-aid kit be kept in the vehicle?",correct_bn:"জরুরি আঘাতে দ্রুত সাহায্যের জন্য",correct_hi:"छोटी आपात चोट में तुरंत मदद के लिए",correct_en:"For quick help in minor emergencies",wrong_bn:["গাড়ি সাজাতে","জ্বালানি বাড়াতে","হেডলাইট উজ্জ্বল করতে"],wrong_hi:["गाड़ी सजाने के लिए","ईंधन बढ़ाने के लिए","हेडलाइट चमकाने के लिए"],wrong_en:["Decorate the vehicle","Increase fuel","Brighten headlights"],exp_bn:"ছোট কাটা বা জরুরি অবস্থায় first-aid kit খুব কাজে আসে।",exp_hi:"छोटी चोट या आपात स्थिति में फर्स्ट-एड किट बहुत काम आती है।",exp_en:"A first-aid kit is useful for cuts, injuries, and urgent situations.",soul_bn:"অন্তর আত্মা: প্রস্তুত মানুষই বিপদে স্থির থাকে।",soul_hi:"अंतरात्मा: तैयार इंसान ही आपदा में स्थिर रहता है।",soul_en:"Inner voice: Prepared people stay calmer in emergencies."},
+  /* 28 */ {emoji:"🔑",q_bn:"ডুপ্লিকেট গাড়ির চাবি নিরাপদে রাখা কেন দরকার?",q_hi:"डुप्लिकेट वाहन चाबी सुरक्षित रखना क्यों ज़रूरी?",q_en:"Why should a duplicate vehicle key be stored safely?",correct_bn:"হারালে বা চুরি হলে সমস্যা হয়",correct_hi:"खो जाए या चोरी हो तो परेशानी होती है",correct_en:"Loss or theft causes trouble",wrong_bn:["চাকা গরম হয়","ইঞ্জিন বন্ধ থাকে","জ্বালানি বাড়ে"],wrong_hi:["टायर गरम होते हैं","इंजन बंद रहता है","ईंधन बढ़ता है"],wrong_en:["Tires get hot","Engine stays off","Fuel increases"],exp_bn:"ডুপ্লিকেট চাবি নিরাপদ জায়গায় রাখলে প্রয়োজনে দ্রুত ব্যবহার করা যায়।",exp_hi:"डुप्लिकेट चाबी सुरक्षित जगह रखने पर ज़रूरत पड़ने पर जल्दी काम आती है।",exp_en:"Storing a spare key safely ensures it is available when needed.",soul_bn:"অন্তর আত্মা: ছোট সতর্কতাই বড় ঝামেলা থেকে বাঁচায়।",soul_hi:"अंतरात्मा: छोटी सावधानी बड़ी परेशानी से बचाती है।",soul_en:"Inner voice: Small caution saves big trouble."},
+  /* 29 */ {emoji:"🔐",q_bn:"ডুপ্লিকেট চাবি অসতর্কভাবে রাখলে চুরির ঝুঁকি কেন বাড়ে?",q_hi:"डुप्लिकेट चाबी लापरवाही से रखने पर चोरी का खतरा क्यों बढ़ता है?",q_en:"Why can careless duplicate key handling increase theft risk?",correct_bn:"ভুল ব্যক্তি গাড়িতে প্রবেশ করতে পারে",correct_hi:"गलत व्यक्ति वाहन में घुस सकता है",correct_en:"Wrong person may gain access to the vehicle",wrong_bn:["চাকা থেমে যায়","ইঞ্জিন ঠান্ডা হয়","জ্বালানি শুকিয়ে যায়"],wrong_hi:["टायर रुक जाते हैं","इंजन ठंडा होता है","ईंधन सूख जाता है"],wrong_en:["Tires stop","Engine cools","Fuel dries up"],exp_bn:"চাবি যত্নে না রাখলে vehicle theft-এর ঝুঁকি বাড়ে।",exp_hi:"चाबी सावधानी से न रखने पर वाहन चोरी का खतरा बढ़ता है।",exp_en:"Careless key storage can make vehicle theft easier.",soul_bn:"অন্তর আত্মা: অসাবধানতা অনেক সময় চোরের সুযোগ।",soul_hi:"अंतरात्मा: लापरवाही अक्सर चोर का मौका बन जाती है।",soul_en:"Inner voice: Carelessness often creates opportunities for thieves."},
+  /* 30 */ {emoji:"🚘",q_bn:"গাড়ির insurance কেন গুরুত্বপূর্ণ?",q_hi:"वाहन बीमा क्यों महत्वपूर्ण है?",q_en:"Why is vehicle insurance important?",correct_bn:"দুর্ঘটনায় আর্থিক সুরক্ষা দেয়",correct_hi:"दुर्घटना में आर्थिक सुरक्षा देता है",correct_en:"It provides financial protection in accidents",wrong_bn:["গাড়ি দ্রুত করে","টায়ার বড় করে","রাস্তা মেরামত করে"],wrong_hi:["गाड़ी तेज़ करता है","टायर बड़ा करता है","सड़क ठीक करता है"],wrong_en:["Makes vehicle faster","Makes tires bigger","Repairs roads"],exp_bn:"Insurance repair cost বা ক্ষতির টাকা সামলাতে সাহায্য করতে পারে।",exp_hi:"बीमा मरम्मत खर्च या नुकसान में मदद कर सकता है।",exp_en:"Insurance can help cover repair costs or losses after an accident.",soul_bn:"অন্তর আত্মা: প্রস্তুতি ভয় নয়, দায়িত্ব।",soul_hi:"अंतरात्मा: तैयारी डर नहीं, जिम्मेदारी है।",soul_en:"Inner voice: Preparation is responsibility, not fear."},
+  /* 31 */ {emoji:"👨‍👩‍👧",q_bn:"পরিবারের জন্য term life insurance কেন ভাবা উচিত?",q_hi:"परिवार के लिए टर्म लाइफ इंश्योरेंस क्यों सोचना चाहिए?",q_en:"Why think about term life insurance for family security?",correct_bn:"কঠিন সময়ে পরিবার আর্থিক ভরসা পেতে পারে",correct_hi:"मुश्किल वक्त में परिवार को आर्थिक सहारा मिल सकता है",correct_en:"Family can get financial support in hard times",wrong_bn:["গাড়ি দ্রুত চালাতে","রাস্তা ছোট করতে","হর্ন কমাতে"],wrong_hi:["गाड़ी तेज़ चलाने के लिए","सड़क छोटी करने के लिए","हॉर्न कम करने के लिए"],wrong_en:["Drive faster","Shorten roads","Reduce horn noise"],exp_bn:"জীবনবীমা মানুষকে ফিরিয়ে আনে না, তবে পরিবারের আর্থিক কষ্ট কমাতে পারে।",exp_hi:"जीवन बीमा इंसान को वापस नहीं लाता, पर परिवार की आर्थिक तकलीफ कम कर सकता है।",exp_en:"Life insurance cannot replace a person, but can reduce financial hardship.",soul_bn:"অন্তর আত্মা: ভালোবাসা মানে ভবিষ্যতের জন্যও ভাবা।",soul_hi:"अंतरात्मा: प्यार का मतलब भविष्य के लिए सोचना भी है।",soul_en:"Inner voice: Love means planning for the future too."},
+  /* 32 */ {emoji:"🔋",q_bn:"EV চার্জ করার সময় সঠিক charger কেন দরকার?",q_hi:"EV चार्ज करते समय सही चार्जर क्यों ज़रूरी?",q_en:"Why is an EV charger supposed to be proper and safe?",correct_bn:"battery ও electrical safety রক্ষার জন্য",correct_hi:"बैटरी और विद्युत सुरक्षा के लिए",correct_en:"To protect battery and electrical safety",wrong_bn:["গাড়ি উড়ানোর জন্য","চাকা নরম করার জন্য","সাউন্ড বাড়ানোর জন্য"],wrong_hi:["गाड़ी उड़ाने के लिए","टायर मुलायम करने के लिए","साउंड बढ़ाने के लिए"],wrong_en:["Make vehicle fly","Soften tires","Increase sound"],exp_bn:"ভুল charger battery damage বা electrical risk তৈরি করতে পারে।",exp_hi:"गलत चार्जर बैटरी को नुकसान या विद्युत जोखिम पैदा कर सकता है।",exp_en:"Using the wrong charger may damage the battery or create electrical hazards.",soul_bn:"অন্তর আত্মা: সঠিক উপায় দীর্ঘ সুরক্ষার পথ।",soul_hi:"अंतरात्मा: सही तरीका दीर्घकालिक सुरक्षा देता है।",soul_en:"Inner voice: The right method protects you for longer."},
+  /* 33 */ {emoji:"⛽",q_bn:"CNG গাড়িতে gas leakage check করা কেন দরকার?",q_hi:"CNG वाहन में गैस लीक की जाँच क्यों ज़रूरी?",q_en:"Why should CNG vehicles be checked for gas leakage?",correct_bn:"লিক বড় দুর্ঘটনার কারণ হতে পারে",correct_hi:"लीक बड़ा हादसा कर सकता है",correct_en:"A leak can cause a major accident",wrong_bn:["গাড়ি রঙিন করতে","হর্ন ঠিক করতে","কাচ পরিষ্কার করতে"],wrong_hi:["गाड़ी रंगीन करने के लिए","हॉर्न ठीक करने के लिए","शीशा साफ करने के लिए"],wrong_en:["Color the vehicle","Fix the horn","Clean the glass"],exp_bn:"CNG leak অগ্নিকাণ্ড বা বিস্ফোরণের ঝুঁকি বাড়াতে পারে।",exp_hi:"CNG लीक आग या विस्फोट का खतरा बढ़ा सकती है।",exp_en:"A CNG leak can increase the risk of fire or explosion.",soul_bn:"অন্তর আত্মা: অদৃশ্য ঝুঁকিকেও গুরুত্ব দিন।",soul_hi:"अंतरात्मा: जो खतरा दिखता नहीं, उसे भी गंभीरता से लें।",soul_en:"Inner voice: Take hidden risks seriously too."},
+  /* 34 */ {emoji:"✨",q_bn:"সাইকেল ও ভ্যান-রিকশায় রাতে reflector কেন দরকার?",q_hi:"साइकिल और वैन-रिक्शा पर रात में रिफ्लेक्टर क्यों ज़रूरी?",q_en:"Why should cyclists and van-rickshaws use reflectors at night?",correct_bn:"অন্য চালকরা সহজে দেখতে পায়",correct_hi:"दूसरे चालक आसानी से देख पाते हैं",correct_en:"Other drivers can see them more easily",wrong_bn:["গাড়ি দ্রুত হয়","রং উজ্জ্বল হয়","জ্বালানি বাঁচে"],wrong_hi:["वाहन तेज़ हो जाता है","रंग चमकदार हो जाता है","ईंधन बचता है"],wrong_en:["Vehicle becomes faster","Color becomes brighter","Saves fuel"],exp_bn:"রাতে ছোট slow vehicle দেখা কঠিন; reflector visibility বাড়ায়।",exp_hi:"रात में छोटे वाहन दिखना मुश्किल; रिफ्लेक्टर दृश्यता बढ़ाता है।",exp_en:"At night, slow vehicles are hard to spot; reflectors improve visibility.",soul_bn:"অন্তর আত্মা: দেখা যাওয়া নিরাপদ থাকার বড় শর্ত।",soul_hi:"अंतरात्मा: दिखाई देना सुरक्षित रहने की बड़ी शर्त।",soul_en:"Inner voice: Being seen is essential to being safe."},
+  /* 35 */ {emoji:"🌙",q_bn:"ধীরে চলা যানবাহনে পেছনে reflector কেন জরুরি?",q_hi:"धीमे वाहनों पर पीछे रिफ्लेक्टर क्यों ज़रूरी?",q_en:"Why are rear reflectors important on slow vehicles at night?",correct_bn:"পেছন থেকে আসা গাড়ি দেখতে পাবে",correct_hi:"पीछे से आने वाली गाड़ी देख पाएगी",correct_en:"Vehicles approaching from behind can see it",wrong_bn:["রাস্তা উজ্জ্বল হয়","হর্ন ভালো শোনা যায়","তেল সাশ্রয় হয়"],wrong_hi:["सड़क चमकती है","हॉर्न अच्छा सुनाई देता है","ईंधन बचता है"],wrong_en:["Road brightens","Horn sounds better","Saves fuel"],exp_bn:"Rear reflector পেছন থেকে আসা গাড়িকে সংকেত দেয় এবং সংঘর্ষ এড়াতে সাহায্য করে।",exp_hi:"रियर रिफ्लेक्टर पीछे से आने वाली गाड़ी को संकेत देकर टक्कर से बचाता है।",exp_en:"A rear reflector warns vehicles approaching from behind, helping avoid collisions.",soul_bn:"অন্তর আত্মা: পিছন থেকে দেখা যাওয়াও নিরাপদ থাকার শর্ত।",soul_hi:"अंतरात्मा: पीछे से दिखाई देना भी सुरक्षित रहने की शर्त है।",soul_en:"Inner voice: Being visible from behind also keeps you safe."},
+  /* 36 */ {emoji:"🛣️",q_bn:"রাস্তায় লাল-হলুদ road studs কেন বসানো থাকে?",q_hi:"सड़क पर लाल-पीले रोड स्टड क्यों लगाए जाते हैं?",q_en:"Why are red-yellow road studs placed on roads?",correct_bn:"lane ও road edge বুঝতে সাহায্য করতে",correct_hi:"लेन और सड़क के किनारे को समझने में मदद के लिए",correct_en:"To help identify lanes and road edges",wrong_bn:["গাড়ি লাফানোর জন্য","রাস্তা সাজানোর জন্য","শব্দ করার জন্য"],wrong_hi:["गाड़ी उछालने के लिए","सड़क सजाने के लिए","शोर करने के लिए"],wrong_en:["Make vehicles jump","Decorate road","Make noise"],exp_bn:"বিশেষ করে রাতে এই marker রাস্তার সীমা ও দিক বোঝায়।",exp_hi:"खासकर रात में ये मार्कर सड़क की सीमा और दिशा बताते हैं।",exp_en:"Especially at night, these markers show lane guidance and road boundaries.",soul_bn:"অন্তর আত্মা: রাস্তার ছোট চিহ্নও বড় সতর্কবার্তা।",soul_hi:"अंतरात्मा: सड़क का छोटा निशान भी बड़ी चेतावनी देता है।",soul_en:"Inner voice: Small road markers carry big warnings."},
+  /* 37 */ {emoji:"🚦",q_bn:"রাতে road markers দেখলে কী করবেন?",q_hi:"रात में रोड मार्कर देखकर क्या करें?",q_en:"What should you do if you see reflective road markers at night?",correct_bn:"রাস্তার দিক ও সীমা বুঝে সতর্ক থাকতে হবে",correct_hi:"सड़क की दिशा और सीमा समझकर सतर्क रहें",correct_en:"Use them to read the road and stay alert",wrong_bn:["গতি বাড়াতে হবে","চোখ বন্ধ করতে হবে","হর্ন দিতে হবে"],wrong_hi:["गति बढ़ाएं","आँख बंद करें","हॉर्न बजाएं"],wrong_en:["Speed up","Close your eyes","Honk"],exp_bn:"Reflective marker driver-কে lane, edge, curve বুঝতে সাহায্য করে।",exp_hi:"रिफ्लेक्टिव मार्कर चालक को लेन, किनारा और मोड़ समझने में मदद करता है।",exp_en:"Reflective markers help drivers read lanes, edges, and curves clearly.",soul_bn:"অন্তর আত্মা: চিহ্ন পড়া মানে বিপদ আগে চিনে নেওয়া।",soul_hi:"अंतरात्मा: संकेत पढ़ना यानी खतरे को पहले पहचानना।",soul_en:"Inner voice: Reading signs means recognizing danger early."},
+  /* 38 */ {emoji:"🚆",q_bn:"রেলক্রসিংয়ে তাড়াহুড়ো করা কেন বিপজ্জনক?",q_hi:"रेलवे क्रॉसिंग पर जल्दबाज़ी क्यों खतरनाक?",q_en:"Why is rushing across a railway crossing dangerous?",correct_bn:"ভুল সিদ্ধান্তে বড় দুর্ঘটনা হতে পারে",correct_hi:"गलत निर्णय से बड़ा हादसा हो सकता है",correct_en:"A wrong judgment can cause a major accident",wrong_bn:["ট্রেন ধীরে যায়","হাওয়া কম লাগে","গাড়ি ঠান্ডা হয়"],wrong_hi:["ट्रेन धीरे चलती है","हवा कम लगती है","गाड़ी ठंडी हो जाती है"],wrong_en:["Trains move slowly","Less wind","Vehicle cools down"],exp_bn:"রেলক্রসিং-এ seconds-এর ভুলও ভয়ংকর দুর্ঘটনার কারণ হতে পারে।",exp_hi:"रेलवे क्रॉसिंग पर सेकंडों की गलती भी भयानक हादसा करा सकती है।",exp_en:"At a railway crossing, even a split-second mistake can be catastrophic.",soul_bn:"অন্তর আত্মা: একটু অপেক্ষা, অনেক নিরাপত্তা।",soul_hi:"अंतरात्मा: थोड़ा इंतज़ार, बहुत सुरक्षा।",soul_en:"Inner voice: A little waiting brings a lot of safety."},
+  /* 39 */ {emoji:"🚉",q_bn:"রেললাইন পার হওয়ার আগে দুদিকে দেখা কেন জরুরি?",q_hi:"रेलवे ट्रैक पार करने से पहले दोनों दिशाओं में देखना क्यों ज़रूरी?",q_en:"Why should you look both ways before crossing railway tracks?",correct_bn:"ট্রেন আসছে কি না নিশ্চিত হতে",correct_hi:"यह सुनिश्चित करने के लिए कि ट्रेन आ रही है या नहीं",correct_en:"To make sure no train is coming",wrong_bn:["কাচ মুছতে","চাকা দেখতে","হর্ন বাজাতে"],wrong_hi:["शीशा पोंछने के लिए","टायर देखने के लिए","हॉर्न बजाने के लिए"],wrong_en:["Clean the glass","Check wheels","Honk"],exp_bn:"রেললাইন পার হওয়ার আগে দেখে নিশ্চিত হওয়া অত্যন্ত জরুরি।",exp_hi:"रेलवे ट्रैक पार करने से पहले सुनिश्चित करना बहुत ज़रूरी है।",exp_en:"It is essential to check carefully before crossing railway tracks.",soul_bn:"অন্তর আত্মা: দেখে নেওয়া মানে বাঁচিয়ে নেওয়া।",soul_hi:"अंतरात्मा: देख लेना यानी बच जाना।",soul_en:"Inner voice: Looking carefully can mean staying alive."},
+  /* 40 */ {emoji:"↩️",q_bn:"কিছু জায়গায় U-turn নিষিদ্ধ কেন?",q_hi:"कुछ जगहों पर U-turn मना क्यों?",q_en:"Why is U-turn prohibited at some places?",correct_bn:"সেখানে ঘোরানো দুর্ঘটনার ঝুঁকি বাড়ায়",correct_hi:"वहाँ मुड़ने से दुर्घटना का खतरा बढ़ता है",correct_en:"Turning there increases accident risk",wrong_bn:["রাস্তা সুন্দর লাগে","ট্রাফিক পুলিশ থাকে","রং বদলায়"],wrong_hi:["सड़क सुंदर लगती है","ट्रैफिक पुलिस है","रंग बदलता है"],wrong_en:["Road looks pretty","Police sit there","Color changes"],exp_bn:"সব রাস্তা U-turn-এর জন্য safe নয়; visibility, speed, flow বিবেচনা করা হয়।",exp_hi:"हर सड़क U-turn के लिए सुरक्षित नहीं; दृश्यता, गति और ट्रैफिक प्रवाह देखा जाता है।",exp_en:"Not every road is safe for a U-turn; rules depend on visibility and traffic flow.",soul_bn:"অন্তর আত্মা: যেখানে ঘোরা বিপদ, সেখানে সোজা চলাই ভালো।",soul_hi:"अंतरात्मा: जहाँ मुड़ना खतरनाक हो, वहाँ सीधे जाना बेहतर है।",soul_en:"Inner voice: When turning is risky, going straight is wiser."},
+/* 41 */
+{
+  emoji:"🌧️",
+  q_bn:"বৃষ্টি বা ঘন কুয়াশায় কী করলে নিরাপদ থাকা যায়?",
+  q_hi:"बारिश या धुंध में क्या करने से सुरक्षा बढ़ती है?",
+  q_en:"What should you do in rain or fog for better safety?",
+
+  correct_bn:"গতি কমিয়ে সতর্কভাবে চালাতে হবে",
+  correct_hi:"गति कम करके सावधानी से चलाना",
+  correct_en:"Slow down and drive carefully",
+
+  wrong_bn:[
+    "আরও দ্রুত চালাতে হবে",
+    "চোখ বন্ধ রাখতে হবে",
+    "অসতর্কভাবে চালাতে হবে"
+  ],
+  wrong_hi:[
+    "और तेज़ चलाना",
+    "आँख बंद रखना",
+    "लापरवाही से चलाना"
+  ],
+  wrong_en:[
+    "Drive even faster",
+    "Keep eyes closed",
+    "Drive carelessly"
+  ],
+
+  exp_bn:"ভিজে রাস্তা ও কম visibility-তে brake distance বাড়ে এবং control কমে যায়। ঘন কুয়াশায় সাদা আলোর তুলনায় হলুদ আলো অনেক সময় বেশি কার্যকর হয়।",
+  exp_hi:"गीली सड़क और कम visibility में ब्रेक दूरी बढ़ती है और नियंत्रण कम हो जाता है। घनी धुंध में कई बार सफेद रोशनी की तुलना में पीली रोशनी अधिक उपयोगी होती है।",
+  exp_en:"Wet roads and low visibility increase braking distance and reduce control. In dense fog, yellow light can often work better than white light.",
+
+  soul_bn:"অন্তরের কথা: প্রকৃতি বদলালে চালানোর ধরনও বদলাতে হবে।",
+  soul_hi:"अंतर की आवाज़: मौसम बदले तो ड्राइविंग का तरीका भी बदलना चाहिए।",
+  soul_en:"Inner voice: When conditions change, your driving must change too."
+},
+  /* 42 */ {emoji:"🌃",q_bn:"রাতে headlights ও reflectors সঠিকভাবে ব্যবহার না করলে কী ঝুঁকি?",q_hi:"रात में हेडलाइट और रिफ्लेक्टर सही से न इस्तेमाल करने पर क्या खतरा?",q_en:"Why should headlights and reflectors be used properly at night?",correct_bn:"অন্ধকারে দৃশ্যমানতা কমে যায়",correct_hi:"अँधेरे में दृश्यता कम हो जाती है",correct_en:"Visibility reduces in darkness",wrong_bn:["গাড়ি গরম হয়","রাস্তা বড় হয়","হর্ন বন্ধ হয়"],wrong_hi:["गाड़ी गरम होती है","सड़क बड़ी हो जाती है","हॉर्न बंद होता है"],wrong_en:["Vehicle heats up","Road becomes wider","Horn turns off"],exp_bn:"রাতে সঠিক আলো ও reflector না থাকলে অন্য চালকরা গাড়ি দেখতে পায় না।",exp_hi:"रात में सही रोशनी न हो तो दूसरे चालक गाड़ी नहीं देख पाते।",exp_en:"Without proper lights at night, other drivers cannot see your vehicle.",soul_bn:"অন্তর আত্মা: অন্ধকারে আলোই পথ দেখায়।",soul_hi:"अंतरात्मा: अँधेरे में रोशनी ही रास्ता दिखाती है।",soul_en:"Inner voice: In darkness, light shows the way."},
+  /* 43 */ {emoji:"🔄",q_bn:"বাঁক বা কম visibility-তে overtake করা কেন বিপজ্জনক?",q_hi:"मोड़ पर ओवरटेक करना क्यों खतरनाक?",q_en:"Why is overtaking at a curve or low visibility zone dangerous?",correct_bn:"সামনের বিপদ সময়মতো দেখা যায় না",correct_hi:"सामने का खतरा समय पर नहीं दिखता",correct_en:"You may not see oncoming danger in time",wrong_bn:["গাড়ি থেমে যায়","রাস্তা সোজা হয়","বৃষ্টি থামে"],wrong_hi:["गाड़ी रुक जाती है","सड़क सीधी हो जाती है","बारिश रुक जाती है"],wrong_en:["Vehicle stops","Road becomes straight","Rain stops"],exp_bn:"Curve বা low visibility-তে সামনে কী আছে তা পরিষ্কার দেখা যায় না।",exp_hi:"मोड़ या कम दृश्यता में आगे क्या है, यह साफ नहीं दिखता।",exp_en:"At curves or low visibility, you cannot clearly judge what is ahead.",soul_bn:"অন্তর আত্মা: না দেখে এগোনো সাহস নয়, ভুল।",soul_hi:"अंतरात्मा: बिना देखे आगे बढ़ना बहादुरी नहीं, गलती है।",soul_en:"Inner voice: Moving forward without seeing clearly is not courage."},
+  /* 44 */ {emoji:"🐕",q_bn:"ফাঁকা রাস্তায় জোরে চালালে কী হঠাৎ সামনে আসতে পারে?",q_hi:"खाली सड़क पर तेज़ चलाने पर अचानक क्या सामने आ सकता है?",q_en:"If the road is empty and you drive too fast, what hidden danger may appear suddenly?",correct_bn:"জীবজন্তু, মানুষ বা গর্ত",correct_hi:"जानवर, इंसान या गड्ढा",correct_en:"Animals, people, or potholes",wrong_bn:["নতুন গাড়ি","বৃষ্টি","সবুজ গাছ"],wrong_hi:["नई गाड़ी","बारिश","हरे पेड़"],wrong_en:["New car","Rain","Green trees"],exp_bn:"ফাঁকা রাস্তাও নিরাপদ নয়—হঠাৎ কুকুর, মানুষ বা গর্ত সামনে আসতে পারে।",exp_hi:"खाली सड़क भी सुरक्षित नहीं—कुत्ता, इंसान या गड्ढा अचानक सामने आ सकता है।",exp_en:"Even an empty road can surprise you with a dog, person, or pothole.",soul_bn:"অন্তর আত্মা: ফাঁকা মানেই নিরাপদ নয়।",soul_hi:"अंतरात्मा: खाली मतलब सुरक्षित नहीं।",soul_en:"Inner voice: Empty does not mean safe."},
+/* 45 */
+{
+  emoji:"🐒",
+  q_bn:"হঠাৎ কুকুর বা হনুমান রাস্তা পার হলে কী করবেন?",
+  q_hi:"कुत्ता या बंदर अचानक सड़क पार करे तो क्या करें?",
+  q_en:"What should a driver do if a dog or monkey suddenly crosses the road?",
+
+  correct_bn:"শান্ত থেকে গতি কমিয়ে নিয়ন্ত্রণে ব্রেক করতে হবে",
+  correct_hi:"शांत रहकर गति कम करें और नियंत्रण में ब्रेक लगाएँ",
+  correct_en:"Stay calm, slow down, and brake in control",
+  wrong_bn:[
+    "আরও গতি বাড়াতে হবে","চোখ বন্ধ করতে হবে","হাত ছেড়ে দিতে হবে"],
+  wrong_hi:["और तेज़ चलाना","आँख बंद करना","हाथ छोड़ देना"],
+  wrong_en:["Speed up more","Close your eyes",
+    "Take hands off the wheel"],
+
+  exp_bn:"হঠাৎ কোনো প্রাণী রাস্তা পার হলে আতঙ্কিত হয়ে জোরে ব্রেক বা হঠাৎ মোড় নিলে দুর্ঘটনা ঘটতে পারে। তাই শান্ত থেকে গতি কমিয়ে, স্টিয়ারিং নিয়ন্ত্রণে রেখে, নিরাপদভাবে ব্রেক করা সবচেয়ে ভালো।",
+  exp_hi:"अगर अचानक कोई जानवर सड़क पार करे, तो घबराकर ज़ोर से ब्रेक या अचानक मोड़ना दुर्घटना का कारण बन सकता है। इसलिए शांत रहकर गति कम करें, स्टीयरिंग को नियंत्रण में रखें और सुरक्षित ढंग से ब्रेक लगाएँ।",
+  exp_en:"If an animal suddenly crosses the road, hard braking or sudden swerving can cause an accident. The safest response is to stay calm, slow down, keep the steering steady, and brake in control.",
+
+  soul_bn:"অন্তরের কথা: আতঙ্ক নয়, শান্ত নিয়ন্ত্রণই নিরাপত্তা দেয়।",
+  soul_hi:"अंतर की आवाज़: घबराहट नहीं, शांत नियंत्रण ही सुरक्षा देता है।",
+  soul_en:"Inner voice: Not panic, but calm control keeps you safe."
+},
+  /* 46 */ {emoji:"🐾",q_bn:"রাস্তায় হঠাৎ জীবজন্তু আসতে পারে—এটা মনে রাখা কেন দরকার?",q_hi:"सड़क पर अचानक जानवर आ सकता है—यह याद रखना क्यों ज़रूरी?",q_en:"Why should drivers expect unexpected animals on the road?",correct_bn:"সতর্ক থাকলে দ্রুত প্রতিক্রিয়া দেওয়া যায়",correct_hi:"सतर्क रहने पर तुरंत प्रतिक्रिया दे सकते हैं",correct_en:"Alertness enables quick reaction",wrong_bn:["জীবজন্তু রাস্তা জানে","গাড়ি থামে না","হর্ন শুনলে সরে যায়"],wrong_hi:["जानवर रास्ता जानते हैं","गाड़ी रुकती नहीं","हॉर्न सुनकर हट जाते हैं"],wrong_en:["Animals know the road","Vehicle doesn't stop","They move on hearing horn"],exp_bn:"রাস্তায় যেকোনো সময় পশু আসতে পারে; সতর্ক চালক দ্রুত react করতে পারেন।",exp_hi:"सड़क पर कभी भी जानवर आ सकता है; सतर्क चालक जल्दी प्रतिक्रिया दे सकता है।",exp_en:"Animals can appear anytime; an alert driver can react faster.",soul_bn:"অন্তর আত্মা: সতর্কতাই সেরা প্রস্তুতি।",soul_hi:"अंतरात्मा: सतर्कता ही सबसे अच्छी तैयारी।",soul_en:"Inner voice: Alertness is the best preparation."},
+/* 47 */ {
+  emoji: "💸",
+  
+  // প্রশ্ন (Questions)
+  q_bn: "নিয়ম না মেনে বেপরোয়া গাড়ি চালিয়ে দুর্ঘটনা ঘটলে কী হতে পারে?",
+  q_hi: "नियमों का उल्लंघन कर लापरवाही से गाड़ी चलाने पर क्या हो सकता है?",
+  q_en: "What can happen if you drive recklessly by breaking traffic rules?",
+
+  // সঠিক উত্তর (Correct Answers)
+  correct_bn: "একটি দুর্ঘটনায় আপনার পুরো পরিবার শেষ হয়ে যেতে পারে",
+  correct_hi: "एक दुर्घटना में आपका पूरा परिवार तबाह हो सकता है",
+  correct_en: "One accident can destroy your entire family",
+
+  // ভুল উত্তর (Wrong Answers)
+  wrong_bn: ["গাড়ি খুব দ্রুত গন্তব্যে পৌঁছাবে", "রাস্তা অনেক পরিষ্কার দেখাবে", "তেল অনেক কম খরচ হবে"],
+  wrong_hi: ["गाड़ी बहुत जल्दी पहुँच जाएगी", "सड़क बहुत साफ दिखेगी", "ईंधन बहुत कम खर्च होगा"],
+  wrong_en: ["Vehicle reaches destination faster", "Road looks much cleaner", "Fuel consumption reduces"],
+
+  // বিস্তারিত (Explanation)
+  exp_bn: "মনে রাখবেন, জীবন একটাই। কয়েক মিনিট বা টাকা বাঁচাতে গিয়ে বেপরোয়া চালাবেন না; আপনার একটি ভুলেই আপনার প্রিয়জনদের জীবন অন্ধকার হয়ে যেতে পারে।",
+  exp_hi: "याद रखें, जीवन एक ही है। कुछ मिनट या पैसे बचाने के लिए लापरवाही से गाड़ी न चलाएं; आपकी एक गलती आपके अपनों का जीवन अंधकार में डाल सकती है।",
+  exp_en: "Remember, you only have one life. Do not drive recklessly to save a few minutes or money; one single mistake can ruin the lives of your loved ones.",
+
+  // অন্তর আত্মা (Soul Message)
+  soul_bn: "অন্তর আত্মা: আপনি একা নন, আপনার সাথে আপনার পরিবারের স্বপ্নগুলোও পথ চলে।",
+  soul_hi: "अंतरात्मा: आप अकेले नहीं हैं, आपके साथ आपके परिवार के सपने भी चलते हैं।",
+  soul_en: "Inner voice: You are not alone; your family's dreams travel with you."
+},
+  /* 48 */ {emoji:"😌",q_bn:"রাগ বা ego নিয়ে গাড়ি চালানো কেন খারাপ?",q_hi:"गुस्से में ड्राइविंग क्यों गलत है?",q_en:"Why should calm driving be preferred over anger or ego?",correct_bn:"রাগ ভুল সিদ্ধান্ত বাড়ায়",correct_hi:"गुस्सा गलत फैसले बढ़ाता है",correct_en:"Anger increases bad decisions",wrong_bn:["গাড়ি সুন্দর হয়","রাস্তা ফাঁকা হয়","পেট্রোল বেড়ে যায়"],wrong_hi:["गाड़ी सुंदर हो जाती है","सड़क खाली हो जाती है","पेट्रोल बढ़ जाता है"],wrong_en:["Car looks better","Road becomes empty","Petrol increases"],exp_bn:"রাগ, ego বা প্রতিযোগিতার মানসিকতা driving-কে unsafe করে।",exp_hi:"गुस्सा और अहंकार ड्राइविंग को असुरक्षित बना देता है।",exp_en:"Anger, ego, and rivalry make driving unsafe.",soul_bn:"অন্তর আত্মা: শান্ত মনই নিরাপদ steering ধরে।",soul_hi:"अंतरात्मा: शांत मन ही सुरक्षित स्टीयरिंग संभालता है।",soul_en:"Inner voice: A calm mind holds the wheel safely."},
+/* 49 */
+{
+  emoji:"🏍",
+  q_bn:"রাস্তায় আসল জয় কী—গতি না নিরাপত্তা?",
+  q_hi:"सड़क पर असली जीत क्या है—रफ्तार या सुरक्षा?",
+  q_en:"What is the real victory on the road—speed or safety?",
+  correct_bn:"নিরাপত্তা", correct_hi:"सुरक्षा",correct_en:"Safety",
+  wrong_bn:[
+    "শুধু গতি","শুধু হর্ন","শুধু শর্টকাট"],
+  wrong_hi:["सिर्फ रफ्तार","सिर्फ हॉर्न","सिर्फ शॉर्टकट"],
+  wrong_en:["Only speed","Only horn","Only shortcuts"],
+  exp_bn:"রাস্তায় জয় মানে আগে পৌঁছানো নয়, নিরাপদে গন্তব্যে পৌঁছানো এবং বাড়ি ফেরা।",
+  exp_hi:"सड़क पर जीत का मतलब पहले पहुँचना नहीं, बल्कि सुरक्षित घर लौटना है।",
+  exp_en:"Winning on the road does not mean arriving first; it means reaching your destination and returning home safely.",
+  soul_bn:"অন্তরের কথা: নিরাপদে ফেরা—এটাই সবচেয়ে বড় জয়।",
+  soul_hi:"अंतर की आवाज़: सुरक्षित लौटना ही सबसे बड़ी जीत है।",
+  soul_en:"Inner voice: Returning safely is the greatest victory."
+},
+
+/* 50 */
+{
+  emoji:"💡",
+  q_bn:"রাতে ডিপার বা low beam ব্যবহার করার প্রয়োজন কেন?",
+  q_hi:"रात में डिपर या लो बीम का उपयोग क्यों ज़रूरी है?",
+  q_en:"Why is it important to use dipper or low beam at night?",
+  correct_bn:"সামনের চালকের চোখে ঝলক কমিয়ে নিরাপদে চালানোর জন্য",
+  correct_hi:"सामने वाले चालक की आँखों में चकाचौंध कम करने के लिए",
+  correct_en:"To reduce glare for oncoming drivers and improve safety",
+  wrong_bn:[
+    "শুধু ব্যাটারি বাঁচানোর জন্য","গাড়ি দ্রুত চালানোর জন্য","হর্নের বদলে ব্যবহার করার জন্য"],
+  wrong_hi:["सिर्फ बैटरी बचाने के लिए","गाड़ी तेज़ चलाने के लिए","हॉर्न की जगह उपयोग करने के लिए"],
+  wrong_en:["Only to save battery","To drive faster","To use instead of the horn"],
+
+  exp_bn:"হাই বিমের তীব্র আলো সামনে আসা চালকের চোখ ঝলসে দিতে পারে। তাই ডিপার বা low beam ব্যবহার করলে দু’পক্ষই রাস্তা ভালো দেখতে পারে এবং দুর্ঘটনার ঝুঁকি কমে।",
+  exp_hi:"हाई बीम की तेज़ रोशनी सामने से आने वाले चालक की आँखों को चकाचौंध कर सकती है। इसलिए डिपर या लो बीम का उपयोग करने से दोनों पक्षों की सुरक्षा बढ़ती है।",
+  exp_en:"High beam can dazzle oncoming drivers and reduce their visibility. Using dipper or low beam helps everyone see the road better and reduces accident risk.",
+  soul_bn:"অন্তরের কথা: নিজের আলো এমন হোক, যাতে অন্যের পথ অন্ধকার না হয়।",
+  soul_hi:"अंतर की आवाज़: आपकी रोशनी ऐसी हो कि सामने वाले का रास्ता न रुके।",
+  soul_en:"Inner voice: Let your light guide, not blind others."
+},
+/* 51 */
+{
+  emoji:"🟡",
+  q_bn:"রাস্তায় টানা হলুদ দাগের মানে কী?",
+  q_hi:"सड़क पर एक सीधी पीली लाइन का क्या मतलब है?",
+  q_en:"What does a single solid yellow line on the road mean?",
+  correct_bn:"সতর্কতা—সাধারণত লেন না কাটা বা ওভারটেক না করার নির্দেশ",
+  correct_hi:"सावधानी—आम तौर पर लाइन पार या ओवरटेक न करने का संकेत",
+  correct_en:"Caution—generally means do not cross or overtake carelessly",
+  wrong_bn:[
+    "এখানে পার্কিং করতে হবে","এখানে গতি বাড়াতে হবে",
+    "এখানে হর্ন বাজাতে হবে"],
+  wrong_hi:["यहाँ पार्किंग करनी है","यहाँ गति बढ़ानी है","यहाँ हॉर्न बजाना है"],
+  wrong_en:["You must park here","You should speed up here","You must honk here"],
+
+  exp_bn:"টানা হলুদ দাগ সাধারণত সতর্ক করে যে এই অংশে লেন কাটা বা ওভারটেক করা ঝুঁকিপূর্ণ হতে পারে। তাই রাস্তার চিহ্ন দেখে সাবধানে চালাতে হয়।",
+  exp_hi:"सीधी पीली लाइन आम तौर पर बताती है कि इस हिस्से में लाइन पार करना या ओवरटेक करना जोखिम भरा हो सकता है। इसलिए सावधानी से चलना चाहिए।",
+  exp_en:"A single solid yellow line generally warns that crossing the line or overtaking may be unsafe in that area, so drivers should proceed carefully.",
+
+  soul_bn:"অন্তরের কথা: রাস্তার দাগও আপনাকে বিপদ থেকে বাঁচাতে কথা বলে।",
+  soul_hi:"अंतर की आवाज़: सड़क की रेखाएँ भी आपको खतरे से बचाने के लिए होती हैं।",
+  soul_en:"Inner voice: Road markings also speak for your safety."
+},
+
+/* 52 */
+{
+  emoji:"🟨",
+  q_bn:"রাস্তায় ডাবল টানা হলুদ দাগের মানে কী?",
+  q_hi:"सड़क पर डबल पीली सीधी लाइन का क्या मतलब है?",
+  q_en:"What does a double solid yellow line on the road mean?",
+  correct_bn:"দুই দিকের গাড়ির জন্যই লাইন না কাটা ও ওভারটেক না করার কড়া নির্দেশ",
+  correct_hi:"दोनों दिशाओं के वाहनों के लिए लाइन पार और ओवरटेक न करने का सख्त संकेत",
+  correct_en:"A strict no-crossing and no-overtaking rule for both directions",
+  wrong_bn:[
+    "দুই দিকেই দ্রুত চালাতে হবে",
+    "এখানে যে কোনো দিকে ঘুরতে হবে",
+    "এটা শুধু সজ্জার জন্য আঁকা"
+  ],
+  wrong_hi:[
+    "दोनों तरफ तेज़ चलाना है",
+    "यहाँ किसी भी ओर मुड़ना है",
+    "यह सिर्फ सजावट के लिए है"
+  ],
+  wrong_en:[
+    "Both sides should drive faster",
+    "You can turn any way here",
+    "It is only for decoration"
+  ],
+  exp_bn:"ডাবল টানা হলুদ দাগ বোঝায় যে এই অংশে দুই দিকের যানবাহনের জন্যই লাইন কাটা বা ওভারটেক করা বিপজ্জনক এবং নিষিদ্ধ।",
+  exp_hi:"डबल ठोस पीली लाइन का मतलब है कि इस हिस्से में दोनों दिशाओं के वाहनों के लिए लाइन पार करना या ओवरटेक करना खतरनाक और निषिद्ध है।",
+  exp_en:"A double solid yellow line means crossing or overtaking is dangerous and prohibited for traffic in both directions.",
+  soul_bn:"অন্তরের কথা: কিছু সীমারেখা মানলেই জীবন নিরাপদ থাকে।",
+  soul_hi:"अंतर की आवाज़: कुछ सीमाएँ मानना ही सुरक्षा है।",
+  soul_en:"Inner voice: Respecting limits keeps life safe."
+},
+
+/* 53 */
+{
+  emoji:"⚪",
+  q_bn:"রাস্তায় ফাঁকা ফাঁক সাদা দাগের মানে কী?",
+  q_hi:"सड़क पर टूटी हुई सफेद लाइन का क्या मतलब है?",
+  q_en:"What does a broken white line on the road mean?",
+  correct_bn:"সতর্কভাবে লেন পরিবর্তন বা ওভারটেক করা যেতে পারে, যদি রাস্তা নিরাপদ থাকে",
+  correct_hi:"यदि रास्ता सुरक्षित हो तो सावधानी से लेन बदलना या ओवरटेक किया जा सकता है",
+  correct_en:"You may change lanes or overtake carefully if it is safe",
+
+  wrong_bn:[
+    "চোখ বন্ধ করে লেন বদলাতে হবে",
+    "এখানে থেমে যেতে হবে",
+    "এখানে সব সময় গতি বাড়াতে হবে"
+  ],
+  wrong_hi:[
+    "आँख बंद करके लेन बदलना है",
+    "यहाँ रुक जाना है",
+    "यहाँ हमेशा तेज़ चलाना है"
+  ],
+  wrong_en:[
+    "Change lanes with eyes closed",
+    "You must stop here",
+    "You should always speed up here"
+  ],
+  exp_bn:"ফাঁকা ফাঁক সাদা দাগ বোঝায় যে পরিস্থিতি নিরাপদ হলে লেন পরিবর্তন বা ওভারটেক করা যেতে পারে। তবে আগে সামনে-পেছনের যানবাহন দেখে নিশ্চিত হতে হবে।",
+  exp_hi:"टूटी हुई सफेद लाइन का मतलब है कि स्थिति सुरक्षित होने पर लेन बदली जा सकती है या ओवरटेक किया जा सकता है। लेकिन पहले आगे-पीछे का ध्यान रखना ज़रूरी है।",
+  exp_en:"A broken white line means you may change lanes or overtake if road conditions are safe. Always check traffic ahead and behind first.",
+  soul_bn:"অন্তরের কথা: সুযোগ থাকলেই কাজ নয়, নিরাপদ হলেই কাজ।",
+  soul_hi:"अंतर की आवाज़: मौका मिलना काफी नहीं, सुरक्षित होना ज़रूरी है।",
+  soul_en:"Inner voice: Opportunity is not enough; safety comes first."
+},
+/* 55 */
+{emoji:"🌉",
+  q_bn:"ওভারব্রিজ, রেলব্রিজ বা অন্য উঁচু রাস্তায় কীভাবে গাড়ি চালানো উচিত?",
+  q_hi:"ओवरब्रिज, रेलब्रिज या ऊँची सड़क पर वाहन कैसे चलाना चाहिए?",
+  q_en:"How should you drive on an overbridge, rail bridge, or other elevated road?",
+  correct_bn:"খুব সাবধানে, গতি নিয়ন্ত্রণে রেখে চালাতে হবে",
+  correct_hi:"बहुत सावधानी से और गति नियंत्रण में रखकर चलाना चाहिए",
+  correct_en:"Drive very carefully and keep the speed under control",
+  wrong_bn:[
+    "খুব দ্রুত চালাতে হবে",
+    "স্টান্ট করে চালাতে হবে",
+    "চোখ বন্ধ করে সাহস দেখাতে হবে"
+  ],
+  wrong_hi:[
+    "बहुत तेज़ चलाना चाहिए",
+    "स्टंट करके चलाना चाहिए",
+    "आँख बंद करके हिम्मत दिखानी चाहिए"
+  ],
+  wrong_en:[
+    "Drive very fast",
+    "Do stunts while driving",
+    "Show bravery by ignoring danger"
+  ],
+  exp_bn:"ওভারব্রিজ, রেলব্রিজ বা অন্য উঁচু রাস্তায় গতি বেশি থাকলে নিয়ন্ত্রণ হারানোর ঝুঁকি বাড়ে। অসাবধানতা, স্কিড, ধাক্কা বা বাঁকে ভুল হলে বড় দুর্ঘটনা ঘটতে পারে। তাই এমন জায়গায় সব সময় গতি নিয়ন্ত্রণে রেখে, দূরত্ব বজায় রেখে এবং খুব সতর্কভাবে গাড়ি চালানো উচিত।",
+  exp_hi:"ओवरब्रिज, रेलब्रिज या ऊँची सड़क पर अधिक गति से नियंत्रण खोने का खतरा बढ़ जाता है। लापरवाही, फिसलन, टक्कर या मोड़ पर गलती होने से गंभीर दुर्घटना हो सकती है। इसलिए ऐसे स्थानों पर हमेशा गति नियंत्रण में रखकर, दूरी बनाकर और बहुत सावधानी से वाहन चलाना चाहिए।",
+  exp_en:"On overbridges, rail bridges, and other elevated roads, high speed increases the risk of losing control. Carelessness, skidding, collisions, or mistakes on curves can lead to serious accidents. Always drive carefully, maintain distance, and keep your speed under control in such places.",
+  soul_bn:"অন্তরের কথা: উঁচু রাস্তায় সাহস নয়, নিয়ন্ত্রণই জীবন বাঁচায়।",
+  soul_hi:"अंतर की आवाज़: ऊँची सड़क पर बहादुरी नहीं, नियंत्रण जीवन बचाता है।",
+  soul_en:"Inner voice: On elevated roads, control saves lives—not bravado."
+},
+/* 56 */
+{
+  emoji:"🪁",
+  q_bn:"মাঞ্জা দেওয়া ঘুড়ির সুতো মোটরসাইকেল চালকের জন্য কেন ভীষণ বিপজ্জনক?",
+  q_hi:"मांझे वाली पतंग की डोर मोटरसाइकिल चालक के लिए इतनी खतरनाक क्यों है?",
+  q_en:"Why is manja-coated kite string extremely dangerous for motorcycle riders?",
+  correct_bn:"এটি গলায় বা শরীরে কেটে মারাত্মক আঘাত করতে পারে",
+  correct_hi:"यह गर्दन या शरीर को काटकर गंभीर चोट पहुँचा सकती है",
+  correct_en:"It can cut the neck or body and cause severe injury",
+  wrong_bn:[
+    "এটি শুধু হেলমেট পরিষ্কার করে",
+    "এটি গাড়ির গতি বাড়ায়",
+    "এটি শুধু পোশাকে লাগে, ক্ষতি করে না"
+  ],
+  wrong_hi:[
+    "यह सिर्फ हेलमेट साफ करती है",
+    "यह वाहन की गति बढ़ाती है",
+    "यह केवल कपड़ों को छूती है, नुकसान नहीं करती"
+  ],
+  wrong_en:[
+    "It only cleans the helmet",
+    "It increases vehicle speed",
+    "It only touches clothes and causes no harm"
+  ],
+  exp_bn:"মাঞ্জা দেওয়া ঘুড়ির সুতো খুব ধারালো হতে পারে। এটি মোটরসাইকেল চালকের গলা, মুখ বা হাত কেটে মারাত্মক দুর্ঘটনা ঘটাতে পারে। তাই ঘুড়ি ওড়ানোর এলাকায় মোটরসাইকেল খুব সতর্কভাবে চালানো উচিত এবং সম্ভব হলে neck guard বা visor ব্যবহার করা ভালো।",
+  exp_hi:"मांझे वाली पतंग की डोर बहुत तेज़ हो सकती है। यह मोटरसाइकिल चालक की गर्दन, चेहरे या हाथ को काटकर गंभीर दुर्घटना का कारण बन सकती है। इसलिए पतंग उड़ाने वाले क्षेत्रों में बहुत सावधानी से चलाना चाहिए और संभव हो तो नेक गार्ड या वाइज़र का उपयोग करना चाहिए।",
+  exp_en:"Manja-coated kite string can be extremely sharp. It may cut a rider’s neck, face, or hands and cause a serious accident. Riders should be extra careful in kite-flying areas and, where possible, use a visor or neck protection.",
+  soul_bn:"অন্তরের কথা: আকাশের খেলাও কখনও রাস্তায় প্রাণঘাতী হতে পারে।",
+  soul_hi:"अंतर की आवाज़: आसमान का खेल भी सड़क पर जानलेवा बन सकता है।",
+  soul_en:"Inner voice: Even a game in the sky can become deadly on the road."
+},
+{
+  emoji:"🚗",
+  q_bn:"টায়ারের 'H' স্পিড রেটিং কী বোঝায়?",
+  q_hi:"टायर का 'H' स्पीड रेटिंग क्या दर्शाता है?",
+  q_en:"What does tyre speed rating 'H' indicate?",
+
+  correct_bn:"210 km/h পর্যন্ত নিরাপদ গতি",
+  correct_hi:"210 km/h तक सुरक्षित गति",
+  correct_en:"Safe up to 210 km/h",
+
+  wrong_bn:["120 km/h","150 km/h","300 km/h"],
+  wrong_hi:["120 km/h","150 km/h","300 km/h"],
+  wrong_en:["120 km/h","150 km/h","300 km/h"],
+
+  exp_bn:"H rating মানে টায়ার সর্বোচ্চ 210 km/h গতিতে নিরাপদ।",
+  exp_hi:"H रेटिंग का मतलब टायर 210 km/h तक सुरक्षित है।",
+  exp_en:"H rating means the tyre is safe up to 210 km/h.",
+
+  soul_bn:"অন্তরের কথা: সঠিক টায়ার মানেই নিরাপদ যাত্রা।",
+  soul_hi:"अंतर की आवाज़: सही टायर मतलब सुरक्षित यात्रा।",
+  soul_en:"Inner voice: Right tyres ensure safe travel."
+},
+{
+  emoji:"🛞",
+  q_bn:"195/65 R15-এ 'R' কী বোঝায়?",
+  q_hi:"195/65 R15 में 'R' क्या दर्शाता है?",
+  q_en:"In 195/65 R15, what does 'R' mean?",
+
+  correct_bn:"Radial টায়ার",
+  correct_hi:"रेडियल टायर",
+  correct_en:"Radial tyre",
+
+  wrong_bn:["Racing tyre","Rear tyre","Rubber type"],
+  wrong_hi:["रेसिंग टायर","रियर टायर","रबर टाइप"],
+  wrong_en:["Racing tyre","Rear tyre","Rubber type"],
+
+  exp_bn:"R মানে Radial construction যা আধুনিক টায়ারে ব্যবহৃত।",
+  exp_hi:"R का मतलब रेडियल कंस्ट्रक्शन है।",
+  exp_en:"R stands for radial construction.",
+
+  soul_bn:"অন্তরের কথা: টায়ারের লেখা বুঝলে নিরাপত্তা বাড়ে।",
+  soul_hi:"अंतर की आवाज़: टायर पढ़ना सुरक्षा बढ़ाता है।",
+  soul_en:"Inner voice: Understanding tyres improves safety."
+},
+{
+  emoji:"🎽",
+  q_bn:"সিটবেল্ট না পরলে সবচেয়ে বড় ঝুঁকি কী?",
+  q_hi:"सीट बेल्ट न पहनने का सबसे बड़ा खतरा क्या है?",
+  q_en:"What is the biggest risk of not wearing a seatbelt?",
+
+  correct_bn:"দুর্ঘটনায় সামনে ছিটকে যাওয়া",
+  correct_hi:"दुर्घटना में आगे फेंके जाना",
+  correct_en:"Being thrown forward in a crash",
+
+  wrong_bn:["গাড়ি ধীরে চলবে","ইঞ্জিন বন্ধ হবে","চাকা খুলে যাবে"],
+  wrong_hi:["गाड़ी धीमी होगी","इंजन बंद होगा","टायर निकल जाएगा"],
+  wrong_en:["Car slows down","Engine stops","Wheel comes off"],
+
+  exp_bn:"সিটবেল্ট শরীরকে সিটে ধরে রাখে ও আঘাত কমায়।",
+  exp_hi:"सीट बेल्ट शरीर को सीट पर रखती है और चोट कम करती है।",
+  exp_en:"Seatbelts keep you in place and reduce injury.",
+
+  soul_bn:"অন্তরের কথা: একটি ক্লিক জীবন বাঁচাতে পারে।",
+  soul_hi:"अंतर की आवाज़: एक क्लिक जान बचा सकता है।",
+  soul_en:"Inner voice: One click can save a life."
+}
+];
+// ══ WEB AUDIO ENGINE ══
+let actx = null, soundOn = true;
+
+function ac() {
+  if (!actx) actx = new (window.AudioContext || window.webkitAudioContext)();
+  if (actx.state === 'suspended') actx.resume();
+  return actx;
+}
+
+function tone(freq, dur, type = 'sine', vol = 0.13, delay = 0) {
+  if (!soundOn) return;
+  try {
+    const ctx = ac();
+    const o = ctx.createOscillator();
+    const g = ctx.createGain();
+    o.connect(g);
+    g.connect(ctx.destination);
+    o.type = type;
+    o.frequency.setValueAtTime(freq, ctx.currentTime + delay);
+    g.gain.setValueAtTime(0, ctx.currentTime + delay);
+    g.gain.linearRampToValueAtTime(vol, ctx.currentTime + delay + 0.01);
+    g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + delay + dur);
+    o.start(ctx.currentTime + delay);
+    o.stop(ctx.currentTime + delay + dur);
+  } catch(e) {}
+}
+
+['touchstart','click'].forEach(ev =>
+  document.addEventListener(ev, () => { try { ac(); } catch(e) {} }, { once: true, passive: true })
+);
+
+function sTap(){
+  tone(420, 0.05, 'triangle', 0.07);
+}
+
+function sCorrect(){
+  tone(520, 0.08, 'sine', 0.10);
+  tone(680, 0.10, 'sine', 0.10, 0.08);
+}
+
+function sWrong(){
+  tone(180, 0.08, 'sawtooth', 0.12);
+  tone(120, 0.12, 'square', 0.10, 0.05);
+}
+
+function sNext(){
+  tone(360, 0.05, 'triangle', 0.08);
+  tone(520, 0.07, 'triangle', 0.07, 0.05);
+}
+
+function sFinish(){
+  tone(523, 0.09, 'sine', 0.10);
+  tone(659, 0.09, 'sine', 0.10, 0.10);
+  tone(784, 0.14, 'sine', 0.11, 0.20);
+}
+
+function sRestart(){
+  tone(420, 0.07, 'triangle', 0.08);
+  tone(300, 0.07, 'triangle', 0.08, 0.06);
+}
+/* ─────────────────────────────────────────────────
+   STATE
+───────────────────────────────────────────────── */
+var lang = "en";
+var shuffledQ = [], currentIdx = 0, score = 0, answered = false, currentOptions = [];
+
+/* ─────────────────────────────────────────────────
+   HELPERS
+───────────────────────────────────────────────── */
+function shuffleArray(arr) {
+  var a = arr.slice();
+  for (var i = a.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var t = a[i]; a[i] = a[j]; a[j] = t;
+  }
+  return a;
+}
+function tx(key) { return TXT[lang][key]; }
+
+function buildOptions(q) {
+  var opts = [{ text: q["correct_" + lang], correct: true }];
+  var w = q["wrong_" + lang];
+  for (var i = 0; i < w.length; i++) opts.push({ text: w[i], correct: false });
+  currentOptions = shuffleArray(opts);
+}
+
+function getOriginalIndex(q) {
+  for (var i = 0; i < ALL_Q.length; i++) {
+    if (ALL_Q[i] === q) return i;
+  }
+  return -1;
+}
+
+function visualHTML(q) {
+  // প্রশ্নের ইমোজি দিয়ে ছবি খোঁজা হচ্ছে (ইমোজি কখনো পরিবর্তন হয় না)
+  var imgPath = IMG_MAP[q.emoji]; 
+
+  if (imgPath) {
+    // যদি ছবি পাওয়া যায়
+    return '<div class="q-visual-area">' +
+           '<img src="' + imgPath + '" class="q-img" alt="safety">' +
+           '</div>';
+  } else {
+    // ছবি না থাকলে ওই ইমোজিটিকেই বড় করে দেখাবে (যেমন ফার্স্ট এইড 🩹 বা সিএনজি ⛽)
+    return '<div class="q-visual-area">' +
+           '<div class="q-emoji-display">' + q.emoji + '</div>' +
+           '</div>';
+  }
+}
+function langButtons() {
+  return '<div class="lang-tabs">'
+    + '<button class="lang-tab' + (lang === "bn" ? " active" : "") + '" onclick="setLang(\'bn\')">বাংলা</button>'
+    + '<button class="lang-tab' + (lang === "hi" ? " active" : "") + '" onclick="setLang(\'hi\')">हिंदी</button>'
+    + '<button class="lang-tab' + (lang === "en" ? " active" : "") + '" onclick="setLang(\'en\')">English</button>'
+    + '</div>';
+}
+
+/* ─────────────────────────────────────────────────
+   RENDER
+───────────────────────────────────────────────── */
+function renderQuestion() {
+  var q = shuffledQ[currentIdx];
+  buildOptions(q);
+  var pct = (currentIdx / shuffledQ.length) * 100;
+  var opts = "";
+  for (var i = 0; i < currentOptions.length; i++) {
+    opts += '<button class="option-btn" onclick="selectOption(' + i + ')">' + currentOptions[i].text + '</button>';
+  }
+  document.getElementById("quiz-container").innerHTML =
+    '<div class="quiz-header">' + langButtons() + '<div class="score-badge">' + tx("score") + ': ' + score + '</div></div>'
+    + '<div class="progress-area">'
+    + '<div class="progress-info"><span>' + tx("question") + ' ' + (currentIdx + 1) + '</span><span>' + (currentIdx + 1) + ' ' + tx("of") + ' ' + shuffledQ.length + '</span></div>'
+    + '<div class="progress-bar"><div class="progress-fill" style="width:' + pct + '%"></div></div></div>'
+    + '<div class="card-area"><div class="question-card">'
+    + visualHTML(q, currentIdx + 1)
+    + '<div class="card-body">'
+    + '<div class="question-text">' + q["q_" + lang] + '</div>'
+    + '<div class="options-grid">' + opts + '</div>'
+    + '<div id="feedback-wrap"></div>'
+    + '</div></div></div>'
+    + '<div class="nav-row"><button class="next-btn" id="nextBtn" onclick="nextQuestion()" style="display:none;">' + tx("next") + '</button></div>';
+  answered = false;
+}
+
+function selectOption(idx) {
+  if (answered) return;
+  answered = true;
+  var q = shuffledQ[currentIdx];
+  var btns = document.querySelectorAll(".option-btn");
+  var chosen = currentOptions[idx];
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].disabled = true;
+    if (currentOptions[i].correct) btns[i].classList.add("reveal-correct");
+  }
+if (chosen.correct) {
+  sCorrect();
+  score++;
+  btns[idx].classList.remove("reveal-correct");
+  btns[idx].classList.add("correct");
+} else {
+  sWrong();
+  btns[idx].classList.add("wrong");
+}
+  document.getElementById("feedback-wrap").innerHTML =
+    '<div class="feedback-box">'
+    + '<div class="feedback-exp"><strong>' + (chosen.correct ? tx("correct") : tx("wrong")) + '</strong><br>' + q["exp_" + lang] + '</div>'
+    + '<div class="feedback-soul">' + q["soul_" + lang] + '</div>'
+    + '</div>';
+  var nb = document.getElementById("nextBtn");
+  if (nb) nb.style.display = "inline-block";
+  var badge = document.querySelector(".score-badge");
+  if (badge) badge.textContent = tx("score") + ": " + score;
+}
+
+function nextQuestion() {
+  if (!answered) return;
+  sNext();
+  currentIdx++;
+  if (currentIdx >= shuffledQ.length) showResult();
+  else renderQuestion();
+}
+var PASS_PCT = 45;
+var CERT_TXT = {
+  en:{pass:"You passed! Enter your details to get the certificate.", fail:"You need at least 45% to unlock the certificate. Try again!", name:"Your full name", school:"School / Institution name", district:"District", country:"Country", gen:"Generate Certificate 🏅", back:"← Back to Miscellaneous Exam"},
+  bn:{pass:"অভিনন্দন! সার্টিফিকেটের জন্য তোমার তথ্য দাও।", fail:"সার্টিফিকেট পেতে কমপক্ষে ৪৫% দরকার। আবার চেষ্টা করো!", name:"তোমার পূর্ণ নাম", school:"স্কুল / প্রতিষ্ঠানের নাম", district:"জেলা", country:"দেশ", gen:"সার্টিফিকেট তৈরি করো 🏅", back:"← Miscellaneous Exam-এ ফিরে যাও"},
+  hi:{pass:"बधाई! सर्टिफिकेट के लिए अपनी जानकारी भरें।", fail:"सर्टिफिकेट के लिए कम से कम 45% चाहिए। फिर कोशिश करें!", name:"आपका पूरा नाम", school:"स्कूल / संस्थान का नाम", district:"ज़िला", country:"देश", gen:"सर्टिफिकेट बनाएँ 🏅", back:"← Miscellaneous Exam पर वापस"}
+};
+function showResult() {
+  sFinish();
+  var saved = {};
+  ["rsName","rsSchool","rsDistrict","rsCountry"].forEach(function(id){ var e=document.getElementById(id); if(e) saved[id]=e.value; });
+  var pct = (score / shuffledQ.length) * 100;
+  var passed = Math.round(pct) >= PASS_PCT;
+  var ct = CERT_TXT[lang];
+  var msg = pct >= 85 ? tx("msg1") : pct >= 60 ? tx("msg2") : tx("msg3");
+  var ss = pct >= 85 ? "⭐⭐⭐" : pct >= 60 ? "⭐⭐" : "⭐";
+  var sh = "";
+  for (var i = 0; i < ss.length;) {
+    var cp = ss.codePointAt(i);
+    sh += '<span class="star">' + String.fromCodePoint(cp) + '</span>';
+    i += cp > 0xFFFF ? 2 : 1;
+  }
+  var form = passed
+    ? '<div class="cert-box"><div class="cert-note">' + ct.pass + '</div>'
+      + '<input class="cert-in" id="rsName" maxlength="40" placeholder="' + ct.name + '" value="' + (saved.rsName||"") + '">'
+      + '<input class="cert-in" id="rsSchool" maxlength="80" placeholder="' + ct.school + '" value="' + (saved.rsSchool||"") + '">'
+      + '<input class="cert-in" id="rsDistrict" maxlength="50" placeholder="' + ct.district + '" value="' + (saved.rsDistrict||"") + '">'
+      + '<input class="cert-in" id="rsCountry" maxlength="50" placeholder="' + ct.country + '" value="' + (saved.rsCountry||"") + '">'
+      + '<button class="restart-btn" id="genBtn" onclick="goToCertificate()">' + ct.gen + '</button></div>'
+    : '<div class="cert-box"><div class="cert-note">' + ct.fail + '</div></div>';
+  document.getElementById("quiz-container").innerHTML =
+    '<div class="quiz-header">' + langButtons() + '<div class="score-badge">' + tx("score") + ': ' + score + '</div></div>'
+    + '<div class="result-screen">'
+    + '<div class="result-trophy">🏆</div>'
+    + '<div class="result-title">' + tx("done") + '</div>'
+    + '<div class="stars-row">' + sh + '</div>'
+    + '<div class="result-score-big">' + score + '<span> / ' + shuffledQ.length + '</span></div>'
+    + '<div class="result-msg">' + msg + '</div>'
+    + form
+    + '<button class="restart-btn" style="margin-top:12px" onclick="startQuiz()">' + tx("restart") + '</button>'
+    + '<a class="cert-back" href="miscellaneous_exam.html">' + ct.back + '</a>'
+    + '</div>';
+}
+
+/* ===== Certificate: saved under the Miscellaneous Exam category ===== */
+var GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbw6RCPloCBvzyM_quGnBgekRwAVZUVCjcATSetNwoNuhknnJah_5DJaGPtwEkqh7aY/exec";
+async function goToCertificate() {
+  function val(id){ return (document.getElementById(id).value || "").trim(); }
+  var name=val("rsName"), school=val("rsSchool"), district=val("rsDistrict"), country=val("rsCountry");
+  var order=["rsName","rsSchool","rsDistrict","rsCountry"], vals=[name,school,district,country];
+  for (var k=0;k<4;k++){ if(!vals[k]){ document.getElementById(order[k]).focus(); return; } }
+  var total = shuffledQ.length;
+  var percentage = Math.round((score/total)*100);
+  if (percentage < PASS_PCT) return;
+  var btn=document.getElementById("genBtn"); if(btn) btn.disabled=true;
+
+  var studentId = localStorage.getItem('myskill_student_id');
+  if (!studentId) {
+    studentId = 'MSG-STU-' + Date.now().toString(36).toUpperCase() + '-' + Math.random().toString(36).substring(2,6).toUpperCase();
+    try { localStorage.setItem('myskill_student_id', studentId); } catch(e){}
+  }
+  try { localStorage.setItem('msg_student_id', studentId); } catch(e){}
+
+  var certificateNo = 'MSG-MISC-ROAD-' + Date.now().toString(36).toUpperCase().slice(-6);
+  var langLabel = 'Road Safety';
+  var examName = 'Miscellaneous Exam (' + langLabel + ')';
+  var issueDate = new Date().toISOString();
+
+  var certParams = {
+    name:name, school:school, district:district, country:country,
+    language:langLabel, content:examName, type:'Miscellaneous Exam',
+    score:String(score), total:String(total), percentage:String(percentage),
+    certificateId:certificateNo, issueDate:issueDate
+  };
+
+  try {
+    localStorage.setItem('msg_advance_test_result', JSON.stringify({
+      name:name, school:school, district:district, country:country,
+      language:langLabel, langCode:'road_safety', content:examName, type:'Miscellaneous Exam',
+      score:score, total:total, pct:percentage, passed:true, certId:certificateNo,
+      studentId:studentId, issueDate:issueDate,
+      date:new Date(issueDate).toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'})
+    }));
+  } catch(e){}
+
+  try {
+    var KEY='myskill_cert_history';
+    var raw=localStorage.getItem(KEY);
+    var hist=raw?JSON.parse(raw):[];
+    hist.unshift({
+      system:'My Skill : Safety', name:name, school:school, district:district, country:country,
+      language:langLabel, content:examName, type:'Miscellaneous Exam',
+      score:score, total:total, percentage:percentage, certId:certificateNo,
+      studentId:studentId, savedAt:issueDate, params:certParams
+    });
+    localStorage.setItem(KEY, JSON.stringify(hist.slice(0,100)));
+  } catch(e){}
+
+  try {
+    await fetch(GOOGLE_SHEET_URL, {
+      method:'POST', mode:'no-cors',
+      headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body: JSON.stringify({
+        studentId:studentId, certificateNo:certificateNo, certId:certificateNo,
+        name:name, school:school, district:district, country:country,
+        examName:examName, score:score, totalMarks:total
+      })
+    });
+  } catch(e){ console.error('Google Sheet error:', e); }
+
+  window.location.href = 'certificate.html?' + new URLSearchParams(certParams).toString();
+}
+
+function setLang(l) {
+  sTap();
+  lang = l;
+  if (document.querySelector(".result-screen")) showResult();
+  else renderQuestion();
+}
+
+function startQuiz() {
+  sRestart();
+  shuffledQ = shuffleArray(ALL_Q);
+  currentIdx = 0; score = 0; answered = false; currentOptions = [];
+  renderQuestion();
+}
+
+startQuiz();
+</script>
+</body>
+</html>

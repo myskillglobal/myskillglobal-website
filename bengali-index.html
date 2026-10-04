@@ -669,13 +669,94 @@ img { pointer-events: none; -webkit-user-drag: none; }
 <style>
 .fi { border-radius: 2px; box-shadow: 0 0 0 1px rgba(255,255,255,0.15); vertical-align: -2px; margin-right: 6px; }
 </style>
+<style>
+/* ── MOBILE MENU (hamburger + drawer) ── */
+[id]{ scroll-margin-top:76px; }
+.nav{ z-index:1000; }
+.nav-toggle{
+  display:none; width:44px; height:44px; padding:0;
+  border:2px solid var(--marigold); border-radius:12px;
+  background:var(--ink); cursor:pointer; position:relative;
+  flex-shrink:0; touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+}
+.nav-toggle span{
+  position:absolute; left:11px; right:11px; height:3px; border-radius:3px;
+  background:var(--marigold-light); pointer-events:none;
+  transition:transform .3s ease, opacity .2s ease, top .3s ease;
+}
+.nav-toggle span:nth-child(1){ top:12px; }
+.nav-toggle span:nth-child(2){ top:19px; }
+.nav-toggle span:nth-child(3){ top:26px; }
+.nav-toggle.open span:nth-child(1){ top:19px; transform:rotate(45deg); }
+.nav-toggle.open span:nth-child(2){ opacity:0; }
+.nav-toggle.open span:nth-child(3){ top:19px; transform:rotate(-45deg); }
+.mm-overlay{
+  position:fixed; inset:0; background:rgba(10,18,24,.6); z-index:9998;
+  opacity:0; visibility:hidden; pointer-events:none;
+  transition:opacity .3s ease, visibility 0s linear .3s;
+}
+.mm-overlay.open{ opacity:1; visibility:visible; pointer-events:auto; transition-delay:0s; }
+.mm-drawer{
+  position:fixed; top:0; right:0; height:100vh; height:100dvh;
+  width:min(86vw,340px); z-index:9999;
+  background:linear-gradient(180deg,#16232b 0%,#22333B 100%);
+  border-left:3px solid var(--marigold);
+  transform:translateX(100%); visibility:hidden;
+  transition:transform .32s ease, visibility 0s linear .32s;
+  display:flex; flex-direction:column; overflow:hidden;
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+.mm-drawer.open{ transform:translateX(0); visibility:visible; transition-delay:0s; }
+.mm-head{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:16px 18px; border-bottom:1px solid rgba(255,209,102,.25);
+  font-family:'Baloo 2',sans-serif; font-weight:700; font-size:1.05rem; color:var(--marigold-light);
+}
+.mm-close{
+  width:40px; height:40px; border-radius:10px; border:2px solid var(--marigold);
+  background:transparent; color:var(--marigold-light); font-size:1.3rem; cursor:pointer; line-height:1;
+}
+.mm-scroll{ overflow-y:auto; -webkit-overflow-scrolling:touch; padding:8px 12px 24px; flex:1; min-height:0; }
+.mm-group{ font-size:.75rem; font-weight:700; color:var(--marigold); margin:16px 8px 6px; }
+.mm-drawer a{
+  display:flex; align-items:center; gap:12px; padding:12px; margin-bottom:2px;
+  border-radius:12px; text-decoration:none; color:#FFFBF2;
+  font-family:'Mukta',sans-serif; font-size:1rem; font-weight:600;
+  -webkit-tap-highlight-color:transparent; transition:background .2s ease;
+}
+.mm-drawer a:active, .mm-drawer a:hover{ background:rgba(245,165,36,.18); color:var(--marigold-light); }
+.mm-drawer a .mm-ico{ width:26px; text-align:center; font-size:1.15rem; }
+body.mm-lock{ overflow:hidden; }
+@media (max-width:900px){
+  .nav{ padding:10px 16px; }
+  .nav-links{ display:none !important; }
+  .nav-toggle{ display:block; }
+  .nav-logo{ font-size:1rem !important; }
+  .hero{ padding-top:110px; }
+}
+@media (min-width:901px){ .mm-overlay, .mm-drawer{ display:none; } }
+
+/* ── BUTTON FIXES ── */
+.story-read-btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  text-align:center; line-height:1.3;
+}
+.story-actions{
+  display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin:6px 0;
+}
+.story-actions .story-read-btn{ align-self:center; margin-top:0; }
+@media (max-width:600px){
+  .story-actions .story-read-btn, .story-cta-row .story-read-btn{ width:100%; }
+}
+</style>
 </head>
 <body>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="images/favicon.png">
 <link rel="apple-touch-icon" href="images/favicon.png">
 <!-- ── NAV ── -->
-<nav class="nav">
+<nav class="nav" id="top">
 <div class="nav-logo">মাইস্কিল গ্লোবাল</div>
 <div class="nav-links">
 <a href="#about">আমাদের কথা</a>
@@ -689,7 +770,31 @@ img { pointer-events: none; -webkit-user-drag: none; }
 <a href="#faq">প্রশ্নোত্তর</a>
 <a href="#developer">নির্মাতা</a>
 </div>
+<button class="nav-toggle" id="navToggle" type="button" aria-label="মেনু খুলুন" aria-expanded="false" aria-controls="mmDrawer"><span></span><span></span><span></span></button>
 </nav>
+
+<!-- ── MOBILE MENU ── -->
+<div class="mm-overlay" id="mmOverlay"></div>
+<aside class="mm-drawer" id="mmDrawer" aria-label="মূল মেনু" aria-hidden="true">
+  <div class="mm-head"><span>🌻 মাইস্কিল গ্লোবাল</span><button class="mm-close" id="mmClose" type="button" aria-label="মেনু বন্ধ করুন">✕</button></div>
+  <div class="mm-scroll">
+    <div class="mm-group">অন্বেষণ</div>
+    <a href="#top"><span class="mm-ico">🏠</span>হোম</a>
+    <a href="#about"><span class="mm-ico">ℹ️</span>আমাদের কথা</a>
+    <a href="stories-novels-index-bn.html"><span class="mm-ico">📖</span>গল্প ও উপন্যাস</a>
+    <a href="small-story-index-bn.html"><span class="mm-ico">📚</span>আরো ছোট গল্প পড়ুন</a>
+    <a href="language-index.html"><span class="mm-ico">🌍</span>ভাষা</a>
+    <a href="index.html"><span class="mm-ico">🇬🇧</span>English Version</a>
+    <div class="mm-group">অ্যাপ ও টুল</div>
+    <a href="https://myskill-drive-expense.netlify.app/"><span class="mm-ico">🚗</span>ড্রাইভ ও খরচ - ওয়েবসাইট</a>
+    <div class="mm-group">কমিউনিটি</div>
+    <a href="#leaderboard"><span class="mm-ico">🏆</span>লিডারবোর্ড</a>
+    <a href="feedback-opinion-index-bn.html"><span class="mm-ico">💬</span>আপনার মতামত জানতে চাই</a>
+    <a href="#faq"><span class="mm-ico">❓</span>প্রশ্নোত্তর</a>
+    <a href="#developer"><span class="mm-ico">👨‍💻</span>নির্মাতা</a>
+  </div>
+</aside>
+
 
 <!-- ══════════════════════════════════════════
      HERO
@@ -1530,7 +1635,7 @@ img { pointer-events: none; -webkit-user-drag: none; }
 <div class="story-actions">
 
   <a class="story-read-btn" href="story-novel-exam-1.html">
-    গল্প পরীক্ষা দিন →&nbsp;&nbsp;
+    গল্প পরীক্ষা দিন →
   </a>
 
   <a class="story-read-btn outline" href="certificate.html">
@@ -2854,6 +2959,32 @@ renderLeaderboard(displayData);
     loadCountryOptions();
     loadLeaderboard();
   });
+</script>
+<script>
+(function () {
+  function $(id) { return document.getElementById(id); }
+  function setMenu(open) {
+    var t = $('navToggle'), d = $('mmDrawer'), o = $('mmOverlay');
+    if (!t || !d || !o) return;
+    t.classList.toggle('open', open);
+    d.classList.toggle('open', open);
+    o.classList.toggle('open', open);
+    document.body.classList.toggle('mm-lock', open);
+    t.setAttribute('aria-expanded', String(open));
+    d.setAttribute('aria-hidden', String(!open));
+  }
+  document.addEventListener('click', function (e) {
+    var target = e.target;
+    if (target.closest('#navToggle')) {
+      var d = $('mmDrawer');
+      setMenu(!(d && d.classList.contains('open')));
+    } else if (target.closest('#mmClose') || target.closest('#mmOverlay') || target.closest('#mmDrawer a')) {
+      setMenu(false);
+    }
+  }, true);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+  window.addEventListener('resize', function () { if (window.innerWidth > 900) setMenu(false); });
+})();
 </script>
 <script src="script.js"></script>
 </body>

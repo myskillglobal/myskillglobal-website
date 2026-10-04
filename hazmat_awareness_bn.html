@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>বিপজ্জনক রাসায়নিক গাড়ি — সাধারণ মানুষের সচেতনতা</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --asphalt:#1a1a1d;
+    --asphalt-2:#232327;
+    --hazard:#ffb400;
+    --hazard-dim:#8a6100;
+    --danger:#d7263d;
+    --hivis:#d4ff3d;
+    --paper:#f5f2ea;
+    --paper-dim:#e9e4d6;
+    --steel:#8a8d94;
+    --steel-dark:#4a4e57;
+    --ink:#1a1a1d;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{ margin:0; background:var(--paper); color:var(--ink); font-family:'Hind Siliguri',sans-serif; line-height:1.75; }
+  h1,h2,h3{ font-family:'Hind Siliguri',sans-serif; font-weight:700; margin:0; }
+  .mono{ font-family:'IBM Plex Mono',monospace; }
+
+  /* ===== HERO ===== */
+  .hero{ position:relative; background:var(--asphalt); color:var(--paper); padding:64px 22px 52px; overflow:hidden; border-bottom:10px solid var(--hazard); }
+  .hero::before{ content:""; position:absolute; inset:0; background-image:repeating-linear-gradient(135deg, rgba(255,180,0,0.06) 0 40px, transparent 40px 80px); pointer-events:none; }
+  .hero-inner{ max-width:880px; margin:0 auto; position:relative; z-index:1; }
+  .eyebrow-row{ display:flex; align-items:center; gap:14px; margin-bottom:22px; flex-wrap:wrap; }
+  .diamond{ width:36px;height:36px; background:var(--hazard); transform:rotate(45deg); flex-shrink:0; display:flex;align-items:center;justify-content:center; }
+  .diamond span{ transform:rotate(-45deg); font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:12px; color:var(--asphalt); }
+  .eyebrow{ font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:var(--hazard); }
+  .hero h1{ font-size:clamp(1.7rem,5vw,2.7rem); line-height:1.3; color:var(--paper); }
+  .hero h1 em{ font-style:normal; color:var(--hazard); }
+  .hero p.lede{ max-width:640px; margin-top:18px; font-size:1.08rem; color:#d4d2ca; }
+  .disclaimer{ margin-top:24px; max-width:640px; padding:14px 18px; background:rgba(255,180,0,0.08); border:1px solid var(--hazard-dim); font-size:0.92rem; color:#e4ceac; }
+  .disclaimer strong{ color:var(--hazard); }
+
+  /* ===== SECTION SHELL ===== */
+  .doc{ max-width:880px; margin:0 auto; padding:0 22px; }
+  section.clause{ padding:48px 0; border-bottom:1px dashed var(--paper-dim); }
+  section.clause:last-of-type{ border-bottom:none; }
+  .clause-head{ display:flex; align-items:flex-start; gap:18px; margin-bottom:22px; }
+  .clause-icon{ flex-shrink:0; width:52px;height:52px; background:var(--asphalt); color:var(--hazard); display:flex;align-items:center;justify-content:center; font-size:1.5rem; border:2px solid var(--hazard); border-radius:6px; }
+  .clause-head h2{ font-size:clamp(1.2rem,2.6vw,1.55rem); color:var(--asphalt); padding-top:4px; }
+  .clause-head .tag{ display:block; font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.12em; color:var(--danger); margin-bottom:6px; text-transform:uppercase; }
+  .clause-body{ margin-left:70px; }
+  .clause-body p{ margin:0 0 14px; color:#3a3a3d; }
+  .rulebox{ background:#fff; border-left:4px solid var(--hazard); padding:16px 20px; margin:12px 0; border-radius:0 6px 6px 0; }
+  .rulebox h4{ margin:0 0 6px; font-size:1rem; color:var(--asphalt); }
+  .rulebox p{ margin:0; font-size:0.96rem; }
+  .rule-grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:14px; }
+  @media (max-width:640px){ .rule-grid{ grid-template-columns:1fr; } .clause-body{ margin-left:0; margin-top:14px; } .clause-head{ flex-wrap:wrap; } }
+
+  /* ===== ID GRID ===== */
+  .kit-grid{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:16px; }
+  @media (max-width:640px){ .kit-grid{ grid-template-columns:1fr; } }
+  .kit-item{ display:flex; align-items:center; gap:10px; background:#fff; padding:12px 16px; border:1px solid var(--paper-dim); border-radius:6px; font-size:0.95rem; }
+  .kit-check{ flex-shrink:0; width:26px;height:26px; background:var(--hivis); color:var(--asphalt); border-radius:50%; display:flex;align-items:center;justify-content:center; font-weight:700; font-size:0.85rem; }
+
+  /* ===== HAZARD SYMBOL DIAMONDS ===== */
+  .hazard-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px 16px; margin-top:20px; }
+  @media (max-width:640px){ .hazard-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:400px){ .hazard-grid{ grid-template-columns:1fr; } }
+  .hazard-card{ text-align:center; }
+  .hazard-diamond{ width:84px;height:84px; margin:0 auto 12px; transform:rotate(45deg); border:3px solid var(--asphalt); border-radius:10px; display:flex;align-items:center;justify-content:center; box-shadow:0 2px 6px rgba(0,0,0,0.15); }
+  .hazard-diamond svg{ transform:rotate(-45deg); width:50px;height:50px; }
+  .hazard-card h4{ margin:0 0 4px; font-size:0.98rem; color:var(--asphalt); }
+  .hazard-card p{ margin:0; font-size:0.85rem; color:var(--steel-dark); }
+
+  /* ===== DISTANCE VISUAL ===== */
+  .distance-visual{ margin:22px 0; background:var(--asphalt); border-radius:10px; padding:20px; color:var(--paper); }
+  .distance-row{ display:flex; align-items:center; justify-content:center; gap:0; flex-wrap:wrap; }
+  .veh{ font-size:2.4rem; }
+  .gap-label{ flex:1; min-width:120px; text-align:center; border-top:2px dashed var(--hazard); position:relative; margin:0 10px; padding-top:8px; }
+  .gap-label span{ font-family:'IBM Plex Mono',monospace; font-size:0.85rem; color:var(--hazard); background:var(--asphalt); padding:0 8px; }
+
+  /* ===== DO / DONT ===== */
+  .dd-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:16px; }
+  @media (max-width:640px){ .dd-grid{ grid-template-columns:1fr; } }
+  .dd-card{ border-radius:8px; padding:18px 20px; }
+  .dd-do{ background:#eef7ea; border:1px solid #9dc98a; }
+  .dd-dont{ background:#fbecef; border:1px solid #e6a3ad; }
+  .dd-card h4{ margin:0 0 10px; font-size:1.02rem; }
+  .dd-do h4{ color:#2f6b32; }
+  .dd-dont h4{ color:var(--danger); }
+  .dd-card ul{ margin:0; padding-left:20px; }
+  .dd-card li{ margin-bottom:8px; font-size:0.95rem; }
+
+  /* ===== EMERGENCY BAR ===== */
+  .emergency-bar{ background:var(--danger); color:#fff; text-align:center; padding:26px 20px; }
+  .emergency-bar .num{ font-family:'IBM Plex Mono',monospace; font-size:2rem; font-weight:700; letter-spacing:0.05em; }
+  .emergency-bar p{ margin:8px 0 0; font-size:0.95rem; opacity:0.9; }
+
+  footer{ background:var(--asphalt); color:#9a9a9e; text-align:center; padding:26px 20px; font-size:0.85rem; }
+  footer strong{ color:var(--hazard); }
+  footer .fine{ display:block; margin-top:8px; font-size:0.78rem; opacity:0.8; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow-row">
+      <div class="diamond"><span>3</span></div>
+      <span class="eyebrow">সড়ক নিরাপত্তা সচেতনতা</span>
+    </div>
+    <h1>রাস্তায় <em>বিপজ্জনক রাসায়নিক</em> বহনকারী গাড়ি দেখলে কী করবেন</h1>
+    <p class="lede">প্রতিদিন রাস্তায় অনেক ট্যাংকার বা লরি দাহ্য, বিষাক্ত বা ক্ষতিকর রাসায়নিক নিয়ে যাতায়াত করে। এই গাড়িগুলো চেনা, তাদের থেকে নিরাপদ দূরত্ব রাখা এবং অন্যদের সতর্ক করা — এই কয়েকটি সহজ অভ্যাস একটি বড় দুর্ঘটনা এড়াতে সাহায্য করতে পারে।</p>
+    <div class="disclaimer"><strong>মনে রাখবেন —</strong> এই পাতাটি সাধারণ মানুষের সচেতনতার জন্য তৈরি করা একটি তথ্যমূলক প্রয়াস। এটি কোনো সরকারি নির্দেশিকা নয়; নিরাপত্তা সংক্রান্ত সিদ্ধান্তের ক্ষেত্রে সর্বদা স্থানীয় প্রশাসন ও ট্র্যাফিক পুলিশের নির্দেশ মেনে চলুন।</div>
+  </div>
+</div>
+
+<div class="doc">
+
+  <section class="clause">
+    <div class="clause-head">
+      <div class="clause-icon">☣</div>
+      <div><span class="tag">প্রতীক চিনুন</span><h2>গাড়ির গায়ে যে হ্যাজার্ড প্রতীকগুলো দেখা যায়</h2></div>
+    </div>
+    <div class="clause-body">
+      <p>গাড়ির গায়ে লাগানো রঙিন হীরক-আকৃতির (ডায়মন্ড) প্রতীকগুলো বলে দেয় ভেতরে কী ধরনের রাসায়নিক আছে। এই প্রতীকগুলো চিনে রাখলে দূর থেকেই বিপদের ধরন বোঝা সহজ হয়:</p>
+      <div class="hazard-grid">
+
+        <div class="hazard-card">
+          <div class="hazard-diamond" style="background:#f5811f;">
+            <svg viewBox="0 0 60 60">
+              <circle cx="30" cy="30" r="7" fill="#000"/>
+              <g stroke="#000" stroke-width="4" stroke-linecap="round">
+                <line x1="30" y1="30" x2="30" y2="8"/>
+                <line x1="30" y1="30" x2="30" y2="52"/>
+                <line x1="30" y1="30" x2="8" y2="30"/>
+                <line x1="30" y1="30" x2="52" y2="30"/>
+                <line x1="30" y1="30" x2="15" y2="15"/>
+                <line x1="30" y1="30" x2="45" y2="45"/>
+                <line x1="30" y1="30" x2="15" y2="45"/>
+                <line x1="30" y1="30" x2="45" y2="15"/>
+              </g>
+            </svg>
+          </div>
+          <h4>বিস্ফোরক (Explosive)</h4>
+          <p>ঝাঁকুনি, তাপ বা ঘর্ষণে বিস্ফোরিত হতে পারে</p>
+        </div>
+
+        <div class="hazard-card">
+          <div class="hazard-diamond" style="background:#d7263d;">
+            <svg viewBox="0 0 60 60">
+              <path d="M30 6 C21 18 15 25 15 35 C15 46 22 53 30 53 C38 53 45 46 45 35 C45 29 41 26 38 29 C40 19 34 12 30 6 Z" fill="#fff"/>
+            </svg>
+          </div>
+          <h4>দাহ্য পদার্থ (Flammable)</h4>
+          <p>সহজেই আগুন ধরে যায়</p>
+        </div>
+
+        <div class="hazard-card">
+          <div class="hazard-diamond" style="background:#f5f2ea;">
+            <svg viewBox="0 0 60 60">
+              <line x1="12" y1="42" x2="48" y2="50" stroke="#000" stroke-width="4"/>
+              <line x1="48" y1="42" x2="12" y2="50" stroke="#000" stroke-width="4"/>
+              <circle cx="12" cy="42" r="3" fill="#000"/><circle cx="48" cy="42" r="3" fill="#000"/>
+              <circle cx="12" cy="50" r="3" fill="#000"/><circle cx="48" cy="50" r="3" fill="#000"/>
+              <circle cx="30" cy="23" r="16" fill="#000"/>
+              <circle cx="24" cy="21" r="4" fill="#f5f2ea"/><circle cx="36" cy="21" r="4" fill="#f5f2ea"/>
+              <path d="M21 31 Q30 38 39 31 L36 40 L24 40 Z" fill="#000"/>
+            </svg>
+          </div>
+          <h4>বিষাক্ত (Toxic)</h4>
+          <p>শ্বাসে, স্পর্শে বা গ্রহণে মারাত্মক ক্ষতিকর</p>
+        </div>
+
+        <div class="hazard-card">
+          <div class="hazard-diamond" style="background:#1a1a1d;">
+            <svg viewBox="0 0 60 60">
+              <rect x="6" y="6" width="11" height="26" rx="3" fill="#fff" transform="rotate(-18 11 19)"/>
+              <circle cx="19" cy="34" r="2.2" fill="#fff"/>
+              <circle cx="23" cy="40" r="2.2" fill="#fff"/>
+              <rect x="9" y="44" width="18" height="6" fill="#fff"/>
+              <path d="M16 50 q3 4 0 7" stroke="#fff" stroke-width="2.5" fill="none"/>
+              <rect x="34" y="44" width="18" height="6" fill="#fff"/>
+              <path d="M42 50 q3 4 0 7" stroke="#fff" stroke-width="2.5" fill="none"/>
+            </svg>
+          </div>
+          <h4>ক্ষয়কারী (Corrosive)</h4>
+          <p>ধাতু বা ত্বকের ক্ষয় ঘটায়</p>
+        </div>
+
+        <div class="hazard-card">
+          <div class="hazard-diamond" style="background:#ffcc00;">
+            <svg viewBox="0 0 60 60">
+              <circle cx="30" cy="38" r="14" fill="none" stroke="#000" stroke-width="4"/>
+              <path d="M30 6 C24 16 20 20 20 26 C20 32 25 36 30 36 C35 36 40 32 40 26 C40 22 37 20 35 23 C36 16 32 10 30 6 Z" fill="#000"/>
+            </svg>
+          </div>
+          <h4>জারক পদার্থ (Oxidizer)</h4>
+          <p>আগুনকে আরও তীব্র করে তোলে</p>
+        </div>
+
+        <div class="hazard-card">
+          <div class="hazard-diamond" style="background:#3a9b53;">
+            <svg viewBox="0 0 60 60">
+              <rect x="20" y="16" width="20" height="34" rx="6" fill="#fff"/>
+              <rect x="26" y="8" width="8" height="10" fill="#fff"/>
+              <rect x="24" y="4" width="12" height="5" fill="#fff"/>
+            </svg>
+          </div>
+          <h4>গ্যাস সিলিন্ডার (Gas Cylinder)</h4>
+          <p>চাপযুক্ত গ্যাস বহন করছে</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="clause">
+    <div class="clause-head">
+      <div class="clause-icon">🔍</div>
+      <div><span class="tag">চেনার উপায়</span><h2>কীভাবে বুঝবেন এটি একটি বিপজ্জনক রাসায়নিক বাহী গাড়ি</h2></div>
+    </div>
+    <div class="clause-body">
+      <p>দূর থেকেই এই গাড়িগুলোকে আলাদাভাবে চেনা যায়, যাতে কাছাকাছি আসার আগেই সতর্ক হওয়া যায়। নিচের চিহ্নগুলোর যেকোনো একটি বা একাধিক দেখলেই বুঝবেন গাড়িটি সাধারণ পণ্যবাহী নয়:</p>
+      <div class="kit-grid">
+        <div class="kit-item"><span class="kit-check">✓</span>গাড়ির গায়ে বড় হীরক-আকৃতির (ডায়মন্ড শেপ) হ্যাজার্ড চিহ্ন বা প্রতীক</div>
+        <div class="kit-item"><span class="kit-check">✓</span>চকচকে প্রতিফলক (রিফ্লেক্টিভ) ডোরাকাটা দাগ, চারপাশে</div>
+        <div class="kit-item"><span class="kit-check">✓</span>উজ্জ্বল হলুদ বা কমলা রঙের সতর্কীকরণ প্যানেল</div>
+        <div class="kit-item"><span class="kit-check">✓</span>গাড়ির শ্রেণি ও UN নম্বর লেখা বোর্ড</div>
+        <div class="kit-item"><span class="kit-check">✓</span>স্ক্যান করার মতো QR কোডযুক্ত জরুরি তথ্য প্লেকার্ড</div>
+        <div class="kit-item"><span class="kit-check">✓</span>ছাদে বা কেবিনের ওপর ঘন হলুদ/অ্যাম্বার আলো জ্বলতে থাকা</div>
+        <div class="kit-item"><span class="kit-check">✓</span>প্রয়োজনে বাজানো বিশেষ সাইরেন</div>
+        <div class="kit-item"><span class="kit-check">✓</span>গাড়ির সামনে-পেছনে ক্যামেরা লাগানো থাকতে পারে</div>
+      </div>
+      <p class="note" style="margin-top:16px; font-size:0.9rem; color:var(--steel-dark);">যদি এই ধরনের কোনো গাড়ি দুর্ঘটনার পর থেমে থাকে, তবু তার সতর্কীকরণ আলো জ্বলতে থাকার কথা — যাতে দূর থেকে আসা অন্য গাড়িও তা বুঝতে পারে।</p>
+    </div>
+  </section>
+
+  <section class="clause">
+    <div class="clause-head">
+      <div class="clause-icon">↔</div>
+      <div><span class="tag">নিরাপদ দূরত্ব</span><h2>কতটা দূরত্ব বজায় রেখে চলবেন</h2></div>
+    </div>
+    <div class="clause-body">
+      <p>রাসায়নিক বাহী ট্যাংকার সাধারণ গাড়ির চেয়ে আলাদাভাবে চলে — এগুলো থামতে বেশি জায়গা নেয়, মোড় ঘোরার সময় বেশি জায়গা লাগে, আর ভেতরের তরল রাসায়নিকের কারণে হঠাৎ ভারসাম্য হারাতে পারে।</p>
+      <div class="distance-visual">
+        <div class="distance-row">
+          <span class="veh">🚚</span>
+          <div class="gap-label"><span>ন্যূনতম ১০০–১৫০ মিটার</span></div>
+          <span class="veh">🚗</span>
+        </div>
+      </div>
+      <div class="rule-grid">
+        <div class="rulebox"><h4>পেছনে চলার সময়</h4><p>স্বাভাবিকের চেয়ে অনেক বেশি ফাঁকা জায়গা রেখে চলুন, যাতে হঠাৎ ব্রেক কষলেও ধাক্কা এড়ানো যায়।</p></div>
+        <div class="rulebox"><h4>ওভারটেক করার সময়</h4><p>ব্রিজ, উড়ালপুল বা তীক্ষ্ণ বাঁকের কাছে এই ধরনের গাড়িকে ওভারটেক না করাই ভালো।</p></div>
+        <div class="rulebox"><h4>পাশাপাশি না থামা</h4><p>ট্রাফিক সিগন্যাল বা জ্যামে এই গাড়ির ঠিক পাশে বা পেছনে বেশিক্ষণ দাঁড়িয়ে না থাকাই নিরাপদ।</p></div>
+        <div class="rulebox"><h4>দুর্ঘটনার পর</h4><p>যদি সামনের ট্যাংকার দুর্ঘটনায় পড়ে, তবে গাড়ি থামিয়ে নিরাপদ দূরত্বে অপেক্ষা করুন এবং নিজে এগিয়ে গিয়ে সাহায্য করতে যাবেন না — জরুরি বিভাগের জন্য অপেক্ষা করুন।</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="clause">
+    <div class="clause-head">
+      <div class="clause-icon">📢</div>
+      <div><span class="tag">অন্যদের সচেতন করা</span><h2>রাস্তায় অন্যদেরও সতর্ক করুন</h2></div>
+    </div>
+    <div class="clause-body">
+      <p>শুধু নিজে সাবধান থাকলেই হবে না — আশেপাশের মানুষকেও সতর্ক করা এই সচেতনতারই একটি অংশ:</p>
+      <div class="rule-grid">
+        <div class="rulebox"><h4>ইশারা করে জানানো</h4><p>পেছনের গাড়িচালককে হেডলাইট বা হর্নের মাধ্যমে সামনে বিপজ্জনক গাড়ি থাকার ইঙ্গিত দিন।</p></div>
+        <div class="rulebox"><h4>মৌখিকভাবে জানানো</h4><p>পরিবার, প্রতিবেশী বা সহপাঠীদের এই চিহ্নগুলো চিনিয়ে দিন, যাতে তারাও নিজে থেকে সতর্ক থাকতে পারে।</p></div>
+        <div class="rulebox"><h4>এলাকার সাইনবোর্ড লক্ষ্য রাখুন</h4><p>"বিপজ্জনক রাসায়নিক যান চলাচল করছে", "নিরাপদ দূরত্ব বজায় রাখুন" জাতীয় রাস্তার পাশের সাইনবোর্ডে মনোযোগ দিন।</p></div>
+        <div class="rulebox"><h4>স্কুল-হাসপাতাল এলাকায় বাড়তি সতর্কতা</h4><p>স্কুল বা হাসপাতালের কাছাকাছি এই ধরনের গাড়ি দেখলে শিশু ও রোগীদের নিরাপদ দূরত্বে রাখুন।</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="clause">
+    <div class="clause-head">
+      <div class="clause-icon">⚠</div>
+      <div><span class="tag">জরুরি অবস্থা</span><h2>দুর্ঘটনা বা লিক দেখলে কী করবেন</h2></div>
+    </div>
+    <div class="clause-body">
+      <div class="dd-grid">
+        <div class="dd-card dd-do">
+          <h4>✔ যা করবেন</h4>
+          <ul>
+            <li>অবিলম্বে নিরাপদ দূরত্বে সরে যান — কমপক্ষে ১০০ মিটার বা তার বেশি।</li>
+            <li>বাতাসের অভিমুখ লক্ষ্য করে উজানের দিকে (বাতাস যেদিক থেকে আসছে সেদিকে) সরে যান, যাতে ধোঁয়া বা গ্যাস আপনার দিকে না আসে।</li>
+            <li>দ্রুত স্থানীয় জরুরি নম্বরে বা পুলিশকে ফোন করে জানান — জায়গার নাম ও গাড়ির প্লেকার্ডে লেখা তথ্য (যদি দেখতে পান) জানিয়ে দিন।</li>
+            <li>অন্য পথচারী ও গাড়িচালকদের ঘটনাস্থল এড়িয়ে যেতে বলুন।</li>
+          </ul>
+        </div>
+        <div class="dd-card dd-dont">
+          <h4>✘ যা করবেন না</h4>
+          <ul>
+            <li>নিজে থেকে গাড়ির কাছে গিয়ে সাহায্য করার চেষ্টা করবেন না।</li>
+            <li>ছড়িয়ে পড়া তরল বা ধোঁয়ার কাছে গিয়ে ছবি তোলা বা ভিডিও করা থেকে বিরত থাকুন।</li>
+            <li>ঘটনাস্থলের কাছে ধূমপান বা আগুন জ্বালাবেন না, বিশেষত দাহ্য পদার্থবাহী গাড়ির ক্ষেত্রে।</li>
+            <li>জরুরি বিভাগ না আসা পর্যন্ত রাস্তা পার হয়ে ওপারে যাওয়ার চেষ্টা করবেন না।</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="clause">
+    <div class="clause-head">
+      <div class="clause-icon">🕒</div>
+      <div><span class="tag">সময় ও রুট</span><h2>এই গাড়িগুলো সাধারণত কখন বেশি দেখা যায়</h2></div>
+    </div>
+    <div class="clause-body">
+      <p>অনেক জায়গায় দাহ্য বা বিপজ্জনক রাসায়নিক বহনকারী গাড়ি স্কুল-কলেজ-হাসপাতালের ব্যস্ত সময় (সকাল ৭টা থেকে রাত ১০টা) এড়িয়ে, রাতের দিকে বা ভোররাতে নির্দিষ্ট রুটে চলাচল করার নিয়ম মেনে চলার চেষ্টা করে। তাই —</p>
+      <div class="rulebox"><h4>রাতে বাড়তি সতর্কতা</h4><p>রাতে বা ভোরে হাইওয়ে বা শিল্প এলাকার কাছ দিয়ে গাড়ি চালানোর সময় এই ধরনের যানবাহনের উপস্থিতি সম্পর্কে বাড়তি সচেতন থাকুন।</p></div>
+      <div class="rulebox"><h4>খারাপ আবহাওয়ায়</h4><p>ভারী বৃষ্টি, কুয়াশা বা ঝড়ের সময় এই গাড়িগুলোর চলাচল কমে যাওয়ার কথা থাকলেও, রাস্তায় দেখা গেলে আরও বেশি দূরত্ব বজায় রাখুন — কারণ এই অবস্থায় ব্রেক করতে বেশি সময় লাগে।</p></div>
+    </div>
+  </section>
+
+</div>
+
+<div class="emergency-bar">
+  <div class="num">☎ ১০০ / ১০১ / ১০২</div>
+  <p>পুলিশ · দমকল · অ্যাম্বুলেন্স — নিজের এলাকার সঠিক জরুরি নম্বর আগে থেকে জেনে রাখুন</p>
+</div>
+
+<footer>
+  সাধারণ মানুষের সচেতনতার জন্য প্রস্তুত করা তথ্যমূলক পাতা — <strong>বিপজ্জনক রাসায়নিক পরিবহন সচেতনতা</strong>
+  <span class="fine">এই পাতাটি কোনো সরকারি নির্দেশিকা নয় এবং কোনো নির্দিষ্ট কর্তৃপক্ষের পক্ষ থেকে জারি করা হয়নি। জরুরি অবস্থায় সর্বদা স্থানীয় প্রশাসন ও ট্রাফিক পুলিশের নির্দেশ মেনে চলুন।</span>
+</footer>
+
+</body>
+</html>

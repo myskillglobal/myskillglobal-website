@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>🪖 ISI Helmet Impact Test</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg1:#0a1628;--bg2:#0d2040;
+  --gold:#f5c842;--red:#ef5350;--blue:#1976d2;--green:#2e7d32;
+  --orange:#ff8f00;--cream:#fff8e7;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+html,body{width:100%;height:100%;overflow:hidden;touch-action:manipulation;}
+body{
+  background:linear-gradient(160deg,var(--bg1),var(--bg2));
+  font-family:'Nunito',sans-serif;color:var(--cream);
+  display:flex;flex-direction:column;align-items:center;
+  min-height:100vh;padding:8px;gap:8px;
+}
+
+/* Stars */
+#stars-bg{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+.star{position:absolute;border-radius:50%;background:#fff;animation:twinkle var(--d,3s) ease-in-out infinite var(--dl,0s);}
+@keyframes twinkle{0%,100%{opacity:.15;}50%{opacity:.7;}}
+
+/* ── Header ── */
+header{position:relative;z-index:2;text-align:center;padding:4px 8px 0;}
+header h1{
+  font-family:'Baloo 2',cursive;font-size:clamp(1.2rem,4vw,1.8rem);font-weight:800;
+  background:linear-gradient(135deg,#ff8f00,#f5c842,#fff);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  letter-spacing:.04em;line-height:1;
+}
+header p{font-size:.6rem;color:rgba(255,248,231,.4);letter-spacing:.18em;text-transform:uppercase;margin-top:2px;}
+
+/* ── Weight buttons ── */
+.weight-row{
+  position:relative;z-index:2;
+  display:flex;gap:8px;flex-wrap:wrap;justify-content:center;
+  padding:4px 8px;
+}
+.wbtn{
+  background:linear-gradient(135deg,#263238,#37474f);
+  border:2px solid rgba(255,255,255,.12);
+  color:#fff;font-family:'Baloo 2',cursive;font-size:.9rem;font-weight:700;
+  padding:8px 16px;border-radius:10px;cursor:pointer;
+  box-shadow:0 5px 0 #111,0 6px 12px rgba(0,0,0,.4);
+  transition:transform .1s,box-shadow .1s;
+  user-select:none;-webkit-user-select:none;
+}
+.wbtn:active{transform:translateY(4px);box-shadow:0 1px 0 #111;}
+.wbtn.active{
+  background:linear-gradient(135deg,var(--orange),#ff6f00);
+  border-color:rgba(255,200,50,.4);
+  box-shadow:0 5px 0 #7f3700,0 6px 16px rgba(255,143,0,.4);
+}
+
+/* ── Stage canvas wrapper ── */
+#stage-wrap{
+  position:relative;z-index:2;
+  width:100%;max-width:700px;flex:1;
+  display:flex;align-items:stretch;
+}
+#stage{
+  width:100%;
+  border-radius:16px;
+  display:block;
+}
+
+/* ── Status ── */
+#statusBar{
+  position:relative;z-index:2;
+  width:100%;max-width:700px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:10px;padding:8px 14px;
+  font-family:'Baloo 2',cursive;font-size:clamp(.75rem,2.5vw,1rem);
+  font-weight:700;color:var(--gold);text-align:center;
+  text-shadow:0 0 12px rgba(245,200,66,.4);
+  min-height:36px;
+}
+
+/* ── Info cards ── */
+.info-row{
+  position:relative;z-index:2;
+  display:flex;gap:8px;width:100%;max-width:700px;
+}
+.info-card{
+  flex:1;background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:10px;padding:6px 8px;text-align:center;
+}
+.ic-label{font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.75);}
+.ic-val{font-family:'Baloo 2',cursive;font-size:1rem;font-weight:700;line-height:1.1;}
+.ic-val.dmg0{color:#66bb6a;}.ic-val.dmg1{color:#ffa726;}.ic-val.dmg2{color:var(--red);}
+
+/* Flash overlay */
+#flashOverlay{
+  position:fixed;inset:0;pointer-events:none;z-index:50;
+  background:#fff;opacity:0;transition:opacity .08s;
+}
+.reset-btn{
+  background:linear-gradient(135deg,#37474f,#546e7a);
+  border:2px solid rgba(255,255,255,.15);
+  color:#fff;font-family:'Baloo 2',cursive;font-size:.9rem;font-weight:700;
+  padding:8px 18px;border-radius:10px;cursor:pointer;
+  box-shadow:0 5px 0 #111,0 6px 12px rgba(0,0,0,.4);
+  transition:transform .1s,box-shadow .1s;
+  user-select:none;-webkit-user-select:none;
+}
+.reset-btn:active{transform:translateY(4px);box-shadow:0 1px 0 #111;}
+</style>
+</head>
+<body>
+
+<div id="stars-bg"></div>
+<div id="flashOverlay"></div>
+
+<header>
+  <h1>🪖 HELMET IMPACT TEST</h1>
+  <p>ISI Standard vs Ordinary vs No Helmet</p>
+</header>
+
+<div class="weight-row">
+  <button class="wbtn" onclick="startTest(5)"  id="btn5">⚖️ 5 KG</button>
+  <button class="wbtn" onclick="startTest(10)" id="btn10">⚖️ 10 KG</button>
+  <button class="wbtn" onclick="startTest(25)" id="btn25">⚖️ 25 KG</button>
+  <button class="wbtn" onclick="startTest(50)" id="btn50">⚖️ 50 KG</button>
+  <button class="reset-btn" onclick="resetAll()">↺ RESET</button>
+</div>
+
+<div id="stage-wrap">
+  <canvas id="stage"></canvas>
+</div>
+
+<div id="statusBar">⚖️ Select a weight to drop!</div>
+
+<div class="info-row">
+  <div class="info-card">
+    <div class="ic-label">No Helmet</div>
+    <div class="ic-val dmg0" id="d1">—</div>
+  </div>
+  <div class="info-card">
+    <div class="ic-label">Ordinary</div>
+    <div class="ic-val dmg0" id="d2">—</div>
+  </div>
+  <div class="info-card">
+    <div class="ic-label">ISI Certified</div>
+    <div class="ic-val dmg0" id="d3">—</div>
+  </div>
+</div>
+
+<script>
+// ── Stars ──
+(function(){
+  const c=document.getElementById('stars-bg');
+  for(let i=0;i<60;i++){
+    const s=document.createElement('div');s.className='star';
+    const sz=Math.random()*1.8+.4;
+    s.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${Math.random()*100}%;--d:${2+Math.random()*4}s;--dl:${-Math.random()*4}s;`;
+    c.appendChild(s);
+  }
+})();
+
+// ── Canvas setup ──
+const canvas = document.getElementById('stage');
+const ctx    = canvas.getContext('2d');
+
+function resizeCanvas(){
+  const wrap = document.getElementById('stage-wrap');
+  canvas.width  = wrap.clientWidth;
+  canvas.height = wrap.clientHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', ()=>{ resizeCanvas(); drawStatic(); });
+
+// ── Constants ──
+const COL_COUNT = 3;
+const COL_LABELS = ['NO HELMET','ORDINARY','ISI CERTIFIED'];
+const COL_COLORS = ['#ef5350','#ffa726','#1976d2'];
+
+// State
+let cols, weights, particles, shakeEls, running;
+let animId;
+
+// ── Column layout ──
+function getLayout(){
+  const W=canvas.width, H=canvas.height;
+  const colW = W/3;
+  const groundY = H*0.82;
+  const headY   = groundY - H*0.10; // where fruit sits
+  return { W, H, colW, groundY, headY };
+}
+
+function initState(){
+  const L = getLayout();
+  cols = [0,1,2].map(i=>({
+    cx: L.colW*(i+.5),
+    fruitR: Math.min(L.colW*.18, 34),
+    fruitY: L.headY,
+    helmetDeform: 0,   // 0=intact, 1=crushed
+    fruitExplode: 0,   // 0→1
+    fruitVisible: true,
+    helmetVisible: i>0,
+    cracked: false,
+    damage: 0,
+    shakeX: 0,
+    shakeTimer: 0,
+  }));
+  weights = [0,1,2].map(i=>({
+    x: cols[i].cx,
+    y: -60,
+    vy: 0,
+    falling: false,
+    hit: false,
+    visible: true,
+    deflectVx: 0,
+    deflectVy: 0,
+    deflecting: false,
+    label: '',
+  }));
+  particles = [];
+  running   = false;
+}
+
+// ── Drawing ──
+function drawBg(){
+  const L = getLayout();
+  // Sky gradient
+  const sky = ctx.createLinearGradient(0,0,0,L.groundY);
+  sky.addColorStop(0,'#1a237e');
+  sky.addColorStop(1,'#1565c0');
+  ctx.fillStyle=sky;
+  ctx.fillRect(0,0,L.W,L.groundY);
+
+  // Ground
+  const gnd = ctx.createLinearGradient(0,L.groundY,0,L.H);
+  gnd.addColorStop(0,'#5d4037');
+  gnd.addColorStop(1,'#3e2723');
+  ctx.fillStyle=gnd;
+  ctx.fillRect(0,L.groundY,L.W,L.H-L.groundY);
+
+  // Ground highlight
+  ctx.fillStyle='rgba(255,255,255,.06)';
+  ctx.fillRect(0,L.groundY,L.W,3);
+
+  // Column dividers
+  for(let i=1;i<3;i++){
+    ctx.strokeStyle='rgba(255,255,255,.07)';
+    ctx.lineWidth=1;
+    ctx.setLineDash([6,8]);
+    ctx.beginPath();ctx.moveTo(L.colW*i,0);ctx.lineTo(L.colW*i,L.H);ctx.stroke();
+  }
+  ctx.setLineDash([]);
+
+  // Labels
+  COL_LABELS.forEach((lbl,i)=>{
+    const x = L.colW*(i+.5);
+    ctx.fillStyle='rgba(255,255,255,.55)';
+    ctx.font=`bold ${Math.max(10,L.colW*.075)}px Nunito,sans-serif`;
+    ctx.textAlign='center';
+    ctx.fillText(lbl, x, 22);
+  });
+
+  // Emoji labels under text
+  const emos = ['❌','🪖','🛡️'];
+  emos.forEach((e,i)=>{
+    const x=L.colW*(i+.5);
+    ctx.font=`${Math.max(12,L.colW*.08)}px serif`;
+    ctx.fillText(e,x,40);
+  });
+}
+
+function drawFruit(col, L){
+  if(!col.fruitVisible) return;
+  const x = col.cx + col.shakeX;
+  const y = col.fruitY;
+  const r = col.fruitR;
+  const ex= col.fruitExplode;
+
+  if(ex>0){
+    // Watermelon explosion — green rind + red flesh pieces
+    ctx.globalAlpha = Math.max(0, 1-ex);
+    const n=10;
+    for(let i=0;i<n;i++){
+      const a=(i/n)*Math.PI*2 + ex*1.5;
+      const d=r*3*ex;
+      const px=x+Math.cos(a)*d, py=y+Math.sin(a)*d + r*ex*1.5;
+      const pr=Math.max(1, r*(1-ex*.75));
+      // Alternate rind/flesh
+      const isRind=i%3===0;
+      ctx.fillStyle=isRind?'#388e3c':'#e53935';
+      ctx.beginPath();ctx.arc(px,py,pr,0,Math.PI*2);ctx.fill();
+      if(!isRind&&pr>3){
+        ctx.fillStyle='#212121';
+        ctx.beginPath();ctx.ellipse(px,py-pr*.2,pr*.08,pr*.18,0,0,Math.PI*2);ctx.fill();
+      }
+    }
+    ctx.globalAlpha=1;
+    return;
+  }
+
+  // ── Watermelon ──
+  ctx.save();ctx.translate(x,y);
+
+  // Green rind
+  ctx.fillStyle='#2e7d32';
+  ctx.beginPath();ctx.arc(0,0,r,0,Math.PI*2);ctx.fill();
+
+  // Light green stripes (6 stripes)
+  for(let i=0;i<6;i++){
+    const a=(i/6)*Math.PI*2;
+    ctx.strokeStyle='rgba(129,199,132,.55)';ctx.lineWidth=r*.1;
+    ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(Math.cos(a)*r*.95,Math.sin(a)*r*.95);ctx.stroke();
+  }
+
+  // Rind outline
+  ctx.strokeStyle='#1b5e20';ctx.lineWidth=r*.18;
+  ctx.beginPath();ctx.arc(0,0,r-r*.09,0,Math.PI*2);ctx.stroke();
+
+  // Red flesh inside
+  ctx.fillStyle='#e53935';
+  ctx.beginPath();ctx.arc(0,0,r*.78,0,Math.PI*2);ctx.fill();
+
+  // Lighter centre
+  ctx.fillStyle='#ef9a9a';
+  ctx.beginPath();ctx.arc(0,-r*.05,r*.38,0,Math.PI*2);ctx.fill();
+
+  // Seeds
+  const seeds=[{x:0,y:-r*.28,a:0},{x:r*.28,y:-r*.08,a:.5},{x:-r*.28,y:-r*.08,a:-.5},
+               {x:r*.14,y:r*.3,a:.25},{x:-r*.14,y:r*.3,a:-.25},{x:0,y:r*.1,a:0}];
+  ctx.fillStyle='#1a1a1a';
+  seeds.forEach(s=>{
+    ctx.save();ctx.translate(s.x,s.y);ctx.rotate(s.a);
+    ctx.beginPath();ctx.ellipse(0,0,r*.06,r*.13,0,0,Math.PI*2);ctx.fill();
+    ctx.restore();
+  });
+
+  // Shine
+  ctx.fillStyle='rgba(255,255,255,.3)';
+  ctx.beginPath();ctx.ellipse(-r*.2,-r*.28,r*.22,r*.13,-0.5,0,Math.PI*2);ctx.fill();
+
+  ctx.restore();
+}
+
+function drawHelmet(col, L, idx){
+  if(!col.helmetVisible||idx===0) return;
+  const x = col.cx + col.shakeX;
+  const r = col.fruitR;
+  // Helmet sits ON TOP of the watermelon
+  const y = col.fruitY - r * 0.55; // overlap slightly so it looks worn
+  const hw = Math.min(L.colW*.42, 62); // half-width
+  const deform = col.helmetDeform;
+
+  const scaleY = 1 - deform*.75;
+  const scaleX = 1 + deform*.25;
+
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.scale(scaleX, scaleY);
+
+  const isISI = idx===2;
+  // Ordinary = yellow-orange, ISI = blue
+  const base  = isISI ? '#1565c0' : '#f9a825';
+  const mid   = isISI ? '#1976d2' : '#ffca28';
+  const lite  = isISI ? '#42a5f5' : '#fff176';
+  const dark  = isISI ? '#0d47a1' : '#e65100';
+  const visor = isISI ? 'rgba(10,40,100,.75)' : 'rgba(30,10,0,.55)';
+
+  // ── Accurate motorcycle helmet shape ──
+  // Drop shadow
+  ctx.fillStyle='rgba(0,0,0,.22)';
+  ctx.beginPath();ctx.ellipse(3,hw*.55,hw*.58,hw*.14,0,0,Math.PI*2);ctx.fill();
+
+  // Main helmet shell — full-face shape using bezier path
+  const hg=ctx.createLinearGradient(-hw*.6,-hw*.9,hw*.6,hw*.5);
+  hg.addColorStop(0,lite);hg.addColorStop(0.35,mid);hg.addColorStop(0.7,base);hg.addColorStop(1,dark);
+  ctx.fillStyle=hg;
+
+  ctx.beginPath();
+  // Top dome
+  ctx.moveTo(-hw*.38, hw*.45);   // bottom-left chin
+  ctx.bezierCurveTo(-hw*.55,hw*.45,-hw*.62,hw*.2,-hw*.62,-hw*.05); // left side lower
+  ctx.bezierCurveTo(-hw*.65,-hw*.55,-hw*.45,-hw*.92,0,-hw*.95);    // left side upper → top
+  ctx.bezierCurveTo(hw*.45,-hw*.92,hw*.65,-hw*.55,hw*.62,-hw*.05); // top → right upper
+  ctx.bezierCurveTo(hw*.62,hw*.2,hw*.55,hw*.45,hw*.38,hw*.45);     // right side lower
+  ctx.bezierCurveTo(hw*.3,hw*.58,hw*.12,hw*.62,0,hw*.62);          // chin right
+  ctx.bezierCurveTo(-hw*.12,hw*.62,-hw*.3,hw*.58,-hw*.38,hw*.45);  // chin left
+  ctx.closePath();
+  ctx.fill();
+
+  // Shell outline
+  ctx.strokeStyle=dark;ctx.lineWidth=1.5;ctx.stroke();
+
+  // ── Visor (face shield) ──
+  ctx.fillStyle=visor;
+  ctx.beginPath();
+  ctx.moveTo(-hw*.48, hw*.02);
+  ctx.bezierCurveTo(-hw*.5,-hw*.18,-hw*.38,-hw*.45,0,-hw*.5);
+  ctx.bezierCurveTo(hw*.38,-hw*.45,hw*.5,-hw*.18,hw*.48,hw*.02);
+  ctx.bezierCurveTo(hw*.38,hw*.22,hw*.2,hw*.35,0,hw*.38);
+  ctx.bezierCurveTo(-hw*.2,hw*.35,-hw*.38,hw*.22,-hw*.48,hw*.02);
+  ctx.closePath();ctx.fill();
+
+  // Visor reflection
+  ctx.fillStyle='rgba(255,255,255,.12)';
+  ctx.beginPath();
+  ctx.moveTo(-hw*.38,-hw*.02);
+  ctx.bezierCurveTo(-hw*.42,-hw*.15,-hw*.3,-hw*.38,hw*.05,-hw*.42);
+  ctx.bezierCurveTo(hw*.15,-hw*.4,hw*.2,-hw*.35,hw*.15,-hw*.28);
+  ctx.bezierCurveTo(-hw*.05,-hw*.25,-hw*.2,-hw*.1,-hw*.38,-hw*.02);
+  ctx.closePath();ctx.fill();
+
+  // Visor edge/trim
+  ctx.strokeStyle=dark;ctx.lineWidth=2;
+  ctx.beginPath();
+  ctx.moveTo(-hw*.48,hw*.02);
+  ctx.bezierCurveTo(-hw*.5,-hw*.18,-hw*.38,-hw*.45,0,-hw*.5);
+  ctx.bezierCurveTo(hw*.38,-hw*.45,hw*.5,-hw*.18,hw*.48,hw*.02);
+  ctx.stroke();
+
+  // Helmet top shine
+  ctx.fillStyle='rgba(255,255,255,.22)';
+  ctx.beginPath();
+  ctx.moveTo(-hw*.28,-hw*.85);
+  ctx.bezierCurveTo(-hw*.05,-hw*.96,hw*.2,-hw*.88,hw*.3,-hw*.72);
+  ctx.bezierCurveTo(hw*.12,-hw*.65,-hw*.1,-hw*.68,-hw*.28,-hw*.85);
+  ctx.closePath();ctx.fill();
+
+  // Chin ventilation slots
+  ctx.fillStyle='rgba(0,0,0,.3)';
+  [-hw*.12, 0, hw*.12].forEach(vx=>{
+    ctx.beginPath();ctx.roundRect(vx-hw*.04,hw*.5,hw*.08,hw*.07,2);ctx.fill();
+  });
+
+  // ISI badge on forehead
+  if(isISI){
+    // White badge background
+    ctx.fillStyle='#fff';
+    ctx.beginPath();ctx.roundRect(-hw*.18,-hw*.7,hw*.36,hw*.22,4);ctx.fill();
+    ctx.strokeStyle='#1565c0';ctx.lineWidth=1.5;ctx.stroke();
+    // Text
+    ctx.fillStyle='#0d47a1';
+    ctx.font=`bold ${hw*.16}px Baloo 2,cursive`;
+    ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.fillText('ISI',0,-hw*.59);
+    // BIS mark dot
+    ctx.fillStyle='#e53935';ctx.beginPath();ctx.arc(hw*.1,-hw*.67,hw*.03,0,Math.PI*2);ctx.fill();
+  } else {
+    // Simple brand stripe
+    ctx.strokeStyle='rgba(255,255,255,.4)';ctx.lineWidth=hw*.05;
+    ctx.beginPath();
+    ctx.moveTo(-hw*.35,-hw*.6);
+    ctx.bezierCurveTo(-hw*.2,-hw*.72,hw*.2,-hw*.72,hw*.35,-hw*.6);
+    ctx.stroke();
+  }
+
+  // Cracks
+  if(col.cracked){
+    ctx.strokeStyle='rgba(0,0,0,.7)';ctx.lineWidth=1.8;ctx.setLineDash([]);
+    ctx.beginPath();ctx.moveTo(-hw*.05,-hw*.75);ctx.lineTo(hw*.08,-hw*.35);ctx.lineTo(-hw*.03,-hw*.05);ctx.stroke();
+    ctx.beginPath();ctx.moveTo(hw*.15,-hw*.65);ctx.lineTo(-hw*.1,-hw*.3);ctx.stroke();
+    // Crack glow
+    ctx.strokeStyle='rgba(255,80,0,.35)';ctx.lineWidth=3;
+    ctx.beginPath();ctx.moveTo(-hw*.05,-hw*.75);ctx.lineTo(hw*.08,-hw*.35);ctx.stroke();
+  }
+
+  ctx.restore();
+}
+
+function drawWeight(w){
+  if(!w.visible) return;
+  const ww=Math.min(canvas.width*.07,46), wh=Math.min(canvas.width*.055,36);
+
+  ctx.save();
+  if(w.deflecting){
+    ctx.globalAlpha=Math.max(0,1-w.deflectVy*.08);
+  }
+  ctx.translate(w.x, w.y);
+  if(w.deflecting) ctx.rotate(w.deflectVx*.08);
+
+  // Body
+  const mg=ctx.createLinearGradient(-ww/2,-wh/2,ww/2,wh/2);
+  mg.addColorStop(0,'#546e7a');mg.addColorStop(.5,'#212121');mg.addColorStop(1,'#000');
+  ctx.fillStyle=mg;
+  ctx.beginPath();ctx.roundRect(-ww/2,-wh/2,ww,wh,4);ctx.fill();
+
+  // Shine
+  ctx.fillStyle='rgba(255,255,255,.12)';
+  ctx.beginPath();ctx.roundRect(-ww/2,-wh/2,ww,wh*.4,4);ctx.fill();
+
+  // Label
+  ctx.fillStyle='#fff';
+  ctx.font=`bold ${Math.max(9,ww*.18)}px Baloo 2,cursive`;
+  ctx.textAlign='center';ctx.textBaseline='middle';
+  ctx.fillText(w.label,0,0);
+
+  ctx.restore();
+  ctx.globalAlpha=1;
+}
+
+function drawParticles(){
+  particles.forEach(p=>{
+    ctx.globalAlpha=p.life/p.ml;
+    ctx.fillStyle=p.col;
+    ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();
+  });
+  ctx.globalAlpha=1;
+}
+
+function spawnParticles(x,y,col,n=12){
+  for(let i=0;i<n;i++){
+    const a=Math.random()*Math.PI*2,s=2+Math.random()*5;
+    particles.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s-3,r:2+Math.random()*4,life:1,ml:1,col});
+  }
+}
+
+function drawAll(){
+  const L=getLayout();
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  drawBg();
+  drawParticles();
+  cols.forEach((col,i)=>{
+    drawHelmet(col,L,i);
+    drawFruit(col,L);
+  });
+  weights.forEach(w=>drawWeight(w));
+}
+function drawStatic(){ initState(); drawAll(); }
+
+// ── Physics loop ──
+function startTest(kg){
+  if(running) return;
+  // Highlight button
+  document.querySelectorAll('.wbtn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('btn'+kg).classList.add('active');
+
+  initState();
+  ['d1','d2','d3'].forEach(id=>{ const el=document.getElementById(id); el.textContent='—'; el.className='ic-val'; });
+
+  running=true;
+  document.getElementById('statusBar').textContent=`🪨 Dropping ${kg} KG...`;
+
+  weights.forEach((w,i)=>{
+    w.label=kg+'kg';w.falling=true;w.visible=true;
+    w.x=cols[i].cx;w.y=-60;w.vy=0;
+  });
+
+  let impactDone=false;
+  const L=getLayout();
+  const impactY=cols[0].fruitY-cols[0].fruitR;
+
+  function loop(){
+    const L2=getLayout();
+    // Update weights
+    weights.forEach((w,i)=>{
+      if(w.falling&&!w.hit){
+        w.vy+=1.2; w.y+=w.vy;
+        if(w.y>=impactY){
+          w.hit=true; w.falling=false;
+          if(!impactDone){ impactDone=true; doImpact(kg,L2); }
+        }
+      }
+      if(w.deflecting){
+        w.x+=w.deflectVx; w.y+=w.deflectVy; w.deflectVy+=0.5;
+        if(w.y>canvas.height+100) w.visible=false;
+      }
+    });
+    // Update particles
+    particles=particles.filter(p=>{
+      p.x+=p.vx;p.y+=p.vy;p.vy+=0.15;p.life-=0.025;return p.life>0;
+    });
+    // Shake timer
+    cols.forEach(col=>{
+      if(col.shakeTimer>0){
+        col.shakeTimer--;
+        col.shakeX=(Math.random()-.5)*6*(col.shakeTimer/8);
+      } else { col.shakeX=0; }
+    });
+    // Animate explosions
+    cols.forEach(col=>{
+      if(col.fruitExplode>0&&col.fruitExplode<1){
+        col.fruitExplode=Math.min(1,col.fruitExplode+0.04);
+        if(col.fruitExplode>=1) col.fruitVisible=false;
+      }
+    });
+
+    drawAll();
+    if(running) animId=requestAnimationFrame(loop);
+  }
+  cancelAnimationFrame(animId);
+  loop();
+}
+
+function doImpact(kg,L){
+  // Screen flash
+  const fl=document.getElementById('flashOverlay');
+  fl.style.opacity='.5';setTimeout(()=>fl.style.opacity='0',120);
+
+  // Deflect all weights
+  weights.forEach((w,i)=>{
+    w.deflecting=true;
+    const dir=i===0?-1:i===1?0:1;
+    w.deflectVx=(dir===0?(Math.random()<.5?-1:1):dir)*(3+Math.random()*3);
+    w.deflectVy=-6-Math.random()*4;
+  });
+
+  // Col 0 — No helmet — always dead
+  spawnParticles(cols[0].cx,cols[0].fruitY,'#ff5252',18);
+  cols[0].fruitExplode=0.01;
+  cols[0].shakeTimer=8;
+  setDamage(0,100);
+
+  // Col 1 — Ordinary helmet
+  const dmg2 = kg===5?15:kg===10?40:kg===25?85:100;
+  cols[1].shakeTimer=10;
+  spawnParticles(cols[1].cx,cols[1].fruitY-cols[1].fruitR,'#ffa726',10);
+  if(dmg2>=85){
+    cols[1].helmetDeform=1;cols[1].cracked=true;
+    spawnParticles(cols[1].cx,cols[1].fruitY,'#ff7043',14);
+    cols[1].fruitExplode=0.01;
+  } else {
+    cols[1].helmetDeform=dmg2/100*.8;
+    if(dmg2>30) cols[1].cracked=true;
+  }
+  setDamage(1,dmg2);
+
+  // Col 2 — ISI helmet
+  const dmg3 = kg<50?0:15;
+  cols[2].shakeTimer=6;
+  spawnParticles(cols[2].cx,cols[2].fruitY-cols[2].fruitR,'#64b5f6',8);
+  cols[2].helmetDeform=dmg3/100*.4;
+  if(dmg3>0) cols[2].cracked=true;
+  setDamage(2,dmg3);
+
+  // Status message
+  const msgs=[
+    'No helmet = 💀 100% fatal!',
+    `Ordinary: ${kg===5?'Minor':kg===10?'Moderate':kg===25?'Critical':'Fatal'} damage`,
+    `ISI Helmet: ${dmg3===0?'✅ Fully protected!':'⚠️ Minor dent, safe inside!'}`,
+  ];
+  document.getElementById('statusBar').textContent=msgs[2];
+  setTimeout(()=>{
+    document.getElementById('statusBar').textContent=
+      kg>=25?'⚠️ Wear ISI helmet — it saved the fruit!':'🪖 ISI helmet absorbed the impact perfectly!';
+    running=false;
+  },2000);
+}
+
+function setDamage(idx, pct){
+  const el = document.getElementById('d'+(idx+1));
+  el.textContent = pct===0?'✅ 0%':pct===100?'💀 100%':`⚠️ ${pct}%`;
+  el.className='ic-val '+(pct===0?'dmg0':pct<60?'dmg1':'dmg2');
+}
+
+function resetAll(){
+  cancelAnimationFrame(animId);
+  running=false;
+  document.querySelectorAll('.wbtn').forEach(b=>b.classList.remove('active'));
+  ['d1','d2','d3'].forEach(id=>{ const el=document.getElementById(id); el.textContent='—'; el.className='ic-val'; });
+  document.getElementById('statusBar').textContent='⚖️ Select a weight to drop!';
+  drawStatic();
+}
+
+// ── Init ──
+drawStatic();
+document.getElementById('statusBar').textContent='⚖️ Select a weight to drop!';
+</script>
+</body>
+</html>

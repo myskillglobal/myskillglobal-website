@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hazardous Chemical Vehicles — Public Safety Awareness</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --asphalt:#1a1a1d;
+    --asphalt-2:#232327;
+    --hazard:#ffb400;
+    --hazard-dim:#8a6100;
+    --danger:#d7263d;
+    --hivis:#d4ff3d;
+    --paper:#f5f2ea;
+    --paper-dim:#e9e4d6;
+    --steel:#8a8d94;
+    --steel-dark:#4a4e57;
+    --ink:#1a1a1d;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{ margin:0; background:var(--paper); color:var(--ink); font-family:'Inter',sans-serif; line-height:1.7; }
+  h1,h2,h3{ font-family:'Inter',sans-serif; font-weight:700; margin:0; }
+  .mono{ font-family:'IBM Plex Mono',monospace; }
+
+  /* ===== HERO ===== */
+  .hero{ position:relative; background:var(--asphalt); color:var(--paper); padding:64px 22px 52px; overflow:hidden; border-bottom:10px solid var(--hazard); }
+  .hero::before{ content:""; position:absolute; inset:0; background-image:repeating-linear-gradient(135deg, rgba(255,180,0,0.06) 0 40px, transparent 40px 80px); pointer-events:none; }
+  .hero-inner{ max-width:880px; margin:0 auto; position:relative; z-index:1; }
+  .eyebrow-row{ display:flex; align-items:center; gap:14px; margin-bottom:22px; flex-wrap:wrap; }
+  .diamond{ width:36px;height:36px; background:var(--hazard); transform:rotate(45deg); flex-shrink:0; display:flex;align-items:center;justify-content:center; }
+  .diamond span{ transform:rotate(-45deg); font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:12px; color:var(--asphalt); }
+  .eyebrow{ font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--hazard); }
+  .hero h1{ font-size:clamp(1.7rem,5vw,2.7rem); line-height:1.2; color:var(--paper); }
+  .hero h1 em{ font-style:normal; color:var(--hazard); }
+  .hero p.lede{ max-width:640px; margin-top:18px; font-size:1.08rem; color:#d4d2ca; }
+  .disclaimer{ margin-top:24px; max-width:640px; padding:14px 18px; background:rgba(255,180,0,0.08); border:1px solid var(--hazard-dim); font-size:0.92rem; color:#e4ceac; }
+  .disclaimer strong{ color:var(--hazard); }
+
+  /* ===== SECTION SHELL ===== */
+  .doc{ max-width:880px; margin:0 auto; padding:0 22px; }
+  section.clause{ padding:48px 0; border-bottom:1px dashed var(--paper-dim); }
+  section.clause:last-of-type{ border-bottom:none; }
+  .clause-head{ display:flex; align-items:flex-start; gap:18px; margin-bottom:22px; }
+  .clause-icon{ flex-shrink:0; width:52px;height:52px; background:var(--asphalt); color:var(--hazard); display:flex;align-items:center;justify-content:center; font-size:1.5rem; border:2px solid var(--hazard); border-radius:6px; }
+  .clause-head h2{ font-size:clamp(1.2rem,2.6vw,1.55rem); color:var(--asphalt); padding-top:4px; }
+  .clause-head .tag{ display:block; font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.14em; color:var(--danger); margin-bottom:6px; text-transform:uppercase; }
+  .clause-body{ margin-left:70px; }
+  .clause-body p{ margin:0 0 14px; color:#3a3a3d; }
+  .rulebox{ background:#fff; border-left:4px solid var(--hazard); padding:16px 20px; margin:12px 0; border-radius:0 6px 6px 0; }
+  .rulebox h4{ margin:0 0 6px; font-size:1rem; color:var(--asphalt); }
+  .rulebox p{ margin:0; font-size:0.96rem; }
+  .rule-grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:14px; }
+  @media (max-width:640px){ .rule-grid{ grid-template-columns:1fr; } .clause-body{ margin-left:0; margin-top:14px; } .clause-head{ flex-wrap:wrap; } }
+
+  /* ===== ID GRID ===== */
+  .kit-grid{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:16px; }
+  @media (max-width:640px){ .kit-grid{ grid-template-columns:1fr; } }
+  .kit-item{ display:flex; align-items:center; gap:10px; background:#fff; padding:12px 16px; border:1px solid var(--paper-dim); border-radius:6px; font-size:0.95rem; }
+  .kit-check{ flex-shrink:0; width:26px;height:26px; background:var(--hivis); color:var(--asphalt); border-radius:50%; display:flex;align-items:center;justify-content:center; font-weight:700; font-size:0.85rem; }
+
+  /* ===== HAZARD SYMBOL DIAMONDS ===== */
+  .hazard-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px 16px; margin-top:20px; }
+  @media (max-width:640px){ .hazard-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:400px){ .hazard-grid{ grid-template-columns:1fr; } }
+  .hazard-card{ text-align:center; }
+  .hazard-diamond{ width:84px;height:84px; margin:0 auto 12px; transform:rotate(45deg); border:3px solid var(--asphalt); border-radius:10px; display:flex;align-items:center;justify-content:center; box-shadow:0 2px 6px rgba(0,0,0,0.15); }
+  .hazard-diamond svg{ transform:rotate(-45deg); width:50px;height:50px; }
+  .hazard-card h4{ margin:0 0 4px; font-size:0.98rem; color:var(--asphalt); }
+  .hazard-card p{ margin:0; font-size:0.85rem; color:var(--steel-dark); }
+
+  /* ===== DISTANCE VISUAL ===== */
+  .distance-visual{ margin:22px 0; background:var(--asphalt); border-radius:10px; padding:20px; color:var(--paper); }
+  .distance-row{ display:flex; align-items:center; justify-content:center; gap:0; flex-wrap:wrap; }
+  .veh{ font-size:2.4rem; }
+  .gap-label{ flex:1; min-width:120px; text-align:center; border-top:2px dashed var(--hazard); position:relative; margin:0 10px; padding-top:8px; }
+  .gap-label span{ font-family:'IBM Plex Mono',monospace; font-size:0.85rem; color:var(--hazard); background:var(--asphalt); padding:0 8px; }
+
+  /* ===== DO / DONT ===== */
+  .dd-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:16px; }
+  @media (max-width:640px){ .dd-grid{ grid-template-columns:1fr; } }
+  .dd-card{ border-radius:8px; padding:18px 20px; }
+  .dd-do{ background:#eef7ea; border:1px solid #9dc98a; }
+  .dd-dont{ background:#fbecef; border:1px solid #e6a3ad; }
+  .dd-card h4{ margin:0 0 10px; font-size:1.02rem; }
+  .dd-do h4{ color:#2f6b32; }
+  .dd-dont h4{ color:var(--danger); }
+  .dd-card ul{ margin:0; padding-left:20px; }
+  .dd-card li{ margin-bottom:8px; font-size:0.95rem; }
+
+  /* ===== EMERGENCY BAR ===== */
+  .emergency-bar{ background:var(--danger); color:#fff; text-align:center; padding:26px 20px; }
+  .emergency-bar .num{ font-family:'IBM Plex Mono',monospace; font-size:2rem; font-weight:700; letter-spacing:0.05em; }
+  .emergency-bar p{ margin:8px 0 0; font-size:0.95rem; opacity:0.9; }
+
+  footer{ background:var(--asphalt); color:#9a9a9e; text-align:center; padding:26px 20px; font-size:0.85rem; }
+  footer strong{ color:var(--hazard); }
+  footer .fine{ display:block; margin-top:8px; font-size:0.78rem; opacity:0.8; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow-row">
+      <div class="diamond"><span>3</span></div>
+      <span class="eyebrow">Road Safety Awareness</span>
+    </div>
+    <h1>What to do when you see a <em>hazardous chemical</em> vehicle on the road</h1>
+    <p class="lede">Every day, tankers and trucks carrying flammable, toxic, or otherwise hazardous chemicals travel on public roads. Learning to recognise these vehicles, keeping a safe distance, and warning others are simple habits that can help prevent a serious accident.</p>
+    <div class="disclaimer"><strong>Please note —</strong> This page is an informational effort created for general public awareness. It is not an official government guideline. For anything safety-critical, always follow the instructions of local authorities and traffic police.</div>
+  </div>
+</div>
+
+<div class="doc">
+
+  <section class="clause">
+    <div class="clause-head">
+      <div class="clause-icon">☣</div>
+      <div><span class="tag">Know the symbols</span><h2>Hazard symbols you'll see on these vehicles</h2></div>
+    </div>
+    <div class="clause-body">
+      <p>The colourful diamond-shaped symbols fixed on a vehicle's body tell you what kind of chemical is inside. Learning to recognise them makes it much easier to judge the risk from a distance:</p>
+      <div class="hazard-grid">
+
+        <div class="hazard-card">
+          <div class="hazard-diamond" style="background:#f5811f;">
+            <svg viewBox="0 0 60 60">
+              <circle cx="30" cy="30" r="7" fill="#000"/>
+              <g stroke="#000" stroke-width="4" stroke-linecap="round">
+                <line x1="30" y1="30" x2="30" y2="8"/>
+                <line x1="30" y1="30" x2="30" y2="52"/>
+                <line x1="30" y1="30" x2="8" y2="30"/>
+                <line x1="30" y1="30" x2="52" y2="30"/>
+                <line x1="30" y1="30" x2="15" y2="15"/>
+                <line x1="30" y1="30" x2="45" y2="45"/>
+                <line x1="30" y1="30" x2="15" y2="45"/>
+                <line x1="30" y1="30" x2="45" y2="15"/>
+              </g>
+            </svg>
+          </div>
+          <h4>Explosive</h4>
+          <p>Can explode from shock, heat, or friction</p>
+        </div>
+
+        <div class="hazard-card">
+          <div class="hazard-diamond" style="background:#d7263d;">
+            <svg viewBox="0 0 60 60">
+              <path d="M30 6 C21 18 15 25 15 35 C15 46 22 53 30 53 C38 53 45 46 45 35 C45 29 41 26 38 29 C40 19 34 12 30 6 Z" fill="#fff"/>
+            </svg>
+          </div>
+          <h4>Flammable</h4>
+          <p>Catches fire very easily</p>
+        </div>
+
+        <div class="hazard-card">
+          <div class="hazard-diamond" style="background:#f5f2ea;">
+            <svg viewBox="0 0 60 60">
+              <line x1="12" y1="42" x2="48" y2="50" stroke="#000" stroke-width="4"/>
+              <line x1="48" y1="42" x2="12" y2="50" stroke="#000" stroke-width="4"/>
+              <circle cx="12" cy="42" r="3" fill="#000"/><circle cx="48" cy="42" r="3" fill="#000"/>
+              <circle cx="12" cy="50" r="3" fill="#000"/><circle cx="48" cy="50" r="3" fill="#000"/>
+              <circle cx="30" cy="23" r="16" fill="#000"/>
+              <circle cx="24" cy="21" r="4" fill="#f5f2ea"/><circle cx="36" cy="21" r="4" fill="#f5f2ea"/>
+              <path d="M21 31 Q30 38 39 31 L36 40 L24 40 Z" fill="#000"/>
+            </svg>
+          </div>
+          <h4>Toxic</h4>
+          <p>Harmful if inhaled, touched, or swallowed</p>
+        </div>
+
+        <div class="hazard-card">
+          <div class="hazard-diamond" style="background:#1a1a1d;">
+            <svg viewBox="0 0 60 60">
+              <rect x="6" y="6" width="11" height="26" rx="3" fill="#fff" transform="rotate(-18 11 19)"/>
+              <circle cx="19" cy="34" r="2.2" fill="#fff"/>
+              <circle cx="23" cy="40" r="2.2" fill="#fff"/>
+              <rect x="9" y="44" width="18" height="6" fill="#fff"/>
+              <path d="M16 50 q3 4 0 7" stroke="#fff" stroke-width="2.5" fill="none"/>
+              <rect x="34" y="44" width="18" height="6" fill="#fff"/>
+              <path d="M42 50 q3 4 0 7" stroke="#fff" stroke-width="2.5" fill="none"/>
+            </svg>
+          </div>
+          <h4>Corrosive</h4>
+          <p>Damages metal or skin on contact</p>
+        </div>
+
+        <div class="hazard-card">
+          <div class="hazard-diamond" style="background:#ffcc00;">
+            <svg viewBox="0 0 60 60">
+              <circle cx="30" cy="38" r="14" fill="none" stroke="#000" stroke-width="4"/>
+              <path d="M30 6 C24 16 20 20 20 26 C20 32 25 36 30 36 C35 36 40 32 40 26 C40 22 37 20 35 23 C36 16 32 10 30 6 Z" fill="#000"/>
+            </svg>
+          </div>
+          <h4>Oxidizer</h4>
+          <p>Intensifies fire and burning</p>
+        </div>
+
+        <div class="hazard-card">
+          <div class="hazard-diamond" style="background:#3a9b53;">
+            <svg viewBox="0 0 60 60">
+              <rect x="20" y="16" width="20" height="34" rx="6" fill="#fff"/>
+              <rect x="26" y="8" width="8" height="10" fill="#fff"/>
+              <rect x="24" y="4" width="12" height="5" fill="#fff"/>
+            </svg>
+          </div>
+          <h4>Gas Cylinder</h4>
+          <p>Carrying gas under pressure</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="clause">
+    <div class="clause-head">
+      <div class="clause-icon">🔍</div>
+      <div><span class="tag">How to identify</span><h2>How to recognise a hazardous chemical vehicle</h2></div>
+    </div>
+    <div class="clause-body">
+      <p>These vehicles are designed to be recognisable from a distance, so you can be alert well before one gets close. If you see any one or more of the following markings, the vehicle is very likely carrying hazardous cargo, not ordinary goods:</p>
+      <div class="kit-grid">
+        <div class="kit-item"><span class="kit-check">✓</span>A large diamond-shaped hazard symbol on the vehicle body</div>
+        <div class="kit-item"><span class="kit-check">✓</span>Reflective, high-visibility stripes running around the vehicle</div>
+        <div class="kit-item"><span class="kit-check">✓</span>Bright yellow or orange warning panels</div>
+        <div class="kit-item"><span class="kit-check">✓</span>A board displaying the vehicle's hazard class and UN number</div>
+        <div class="kit-item"><span class="kit-check">✓</span>A scannable QR-coded emergency information placard</div>
+        <div class="kit-item"><span class="kit-check">✓</span>A flashing amber beacon on the roof or cabin</div>
+        <div class="kit-item"><span class="kit-check">✓</span>A distinct siren, sounded when needed</div>
+        <div class="kit-item"><span class="kit-check">✓</span>Front and rear cameras may also be fitted</div>
+      </div>
+      <p class="note" style="margin-top:16px; font-size:0.9rem; color:var(--steel-dark);">Even if such a vehicle is stopped after an accident, its warning lights should keep flashing — so approaching traffic can still recognise it from a distance.</p>
+    </div>
+  </section>
+
+  <section class="clause">
+    <div class="clause-head">
+      <div class="clause-icon">↔</div>
+      <div><span class="tag">Safe distance</span><h2>How much distance to keep</h2></div>
+    </div>
+    <div class="clause-body">
+      <p>A tanker carrying chemicals behaves differently from an ordinary vehicle — it needs more room to stop, more space to turn, and can suddenly lose balance because of the liquid load shifting inside.</p>
+      <div class="distance-visual">
+        <div class="distance-row">
+          <span class="veh">🚚</span>
+          <div class="gap-label"><span>Minimum 100–150 metres</span></div>
+          <span class="veh">🚗</span>
+        </div>
+      </div>
+      <div class="rule-grid">
+        <div class="rulebox"><h4>Following from behind</h4><p>Keep a much larger gap than usual, so you have room to react safely if it brakes suddenly.</p></div>
+        <div class="rulebox"><h4>While overtaking</h4><p>Avoid overtaking such vehicles near bridges, flyovers, or sharp bends.</p></div>
+        <div class="rulebox"><h4>At signals or in traffic</h4><p>Try not to stay parked directly beside or right behind one for long at a signal or in a jam.</p></div>
+        <div class="rulebox"><h4>After an accident</h4><p>If the tanker ahead is involved in an accident, stop your vehicle at a safe distance and wait — do not go closer to help. Wait for emergency responders.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="clause">
+    <div class="clause-head">
+      <div class="clause-icon">📢</div>
+      <div><span class="tag">Warning others</span><h2>Help make others aware too</h2></div>
+    </div>
+    <div class="clause-body">
+      <p>Staying alert yourself isn't enough — part of this awareness is helping the people around you stay safe as well:</p>
+      <div class="rule-grid">
+        <div class="rulebox"><h4>Signal to others</h4><p>Use your headlights or horn to let the driver behind you know there's a hazardous vehicle ahead.</p></div>
+        <div class="rulebox"><h4>Talk to people around you</h4><p>Point out these markings to family, neighbours, or classmates so they can recognise them on their own too.</p></div>
+        <div class="rulebox"><h4>Watch for local signage</h4><p>Pay attention to roadside boards that read "Hazardous chemical vehicle in transit" or "Maintain safe distance."</p></div>
+        <div class="rulebox"><h4>Extra care near schools and hospitals</h4><p>If you spot such a vehicle near a school or hospital, keep children and patients well away from it.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="clause">
+    <div class="clause-head">
+      <div class="clause-icon">⚠</div>
+      <div><span class="tag">In an emergency</span><h2>What to do if you see a leak or accident</h2></div>
+    </div>
+    <div class="clause-body">
+      <div class="dd-grid">
+        <div class="dd-card dd-do">
+          <h4>✔ Do</h4>
+          <ul>
+            <li>Move away to a safe distance immediately — at least 100 metres or more.</li>
+            <li>Move upwind (the direction the wind is coming from), so smoke or fumes don't drift toward you.</li>
+            <li>Call your local emergency number or the police right away — share the location and any details from the vehicle's placard, if visible.</li>
+            <li>Tell other pedestrians and drivers nearby to avoid the site.</li>
+          </ul>
+        </div>
+        <div class="dd-card dd-dont">
+          <h4>✘ Don't</h4>
+          <ul>
+            <li>Don't approach the vehicle yourself to try to help.</li>
+            <li>Avoid getting close to a spill or fumes to take photos or videos.</li>
+            <li>Don't smoke or light a flame near the site, especially with flammable cargo.</li>
+            <li>Don't try to cross the road near the site until emergency responders arrive.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="clause">
+    <div class="clause-head">
+      <div class="clause-icon">🕒</div>
+      <div><span class="tag">Timing &amp; routes</span><h2>When these vehicles are usually on the road</h2></div>
+    </div>
+    <div class="clause-body">
+      <p>In many places, vehicles carrying flammable or hazardous chemicals try to avoid busy school, college, and hospital hours (roughly 7 AM to 10 PM), moving instead late at night or before dawn on designated routes. Keep this in mind:</p>
+      <div class="rulebox"><h4>Extra alertness at night</h4><p>Stay especially alert to these vehicles when driving near highways or industrial areas at night or in the early hours.</p></div>
+      <div class="rulebox"><h4>In bad weather</h4><p>Movement of these vehicles is generally meant to reduce during heavy rain, fog, or storms — but if you do see one, keep an even greater distance, since braking takes longer in these conditions.</p></div>
+    </div>
+  </section>
+
+</div>
+
+<div class="emergency-bar">
+  <div class="num">☎ Local Emergency Numbers</div>
+  <p>Police · Fire · Ambulance — know the correct emergency numbers for your area in advance</p>
+</div>
+
+<footer>
+  An informational page prepared for general public awareness — <strong>Hazardous Chemical Transport Awareness</strong>
+  <span class="fine">This page is not an official government guideline and has not been issued by any specific authority. In an emergency, always follow the instructions of local authorities and traffic police.</span>
+</footer>
+
+</body>
+</html>
