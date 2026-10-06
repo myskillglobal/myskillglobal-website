@@ -1,5 +1,7 @@
 User-agent: *
-
 Allow: /
 
-Sitemap: https://YOURDOMAIN/sitemap.xml
+User-agent: Google-adstxt
+Allow: /app-ads.txt
+
+Sitemap: https://myskillglobal.com/sitemap.xml
