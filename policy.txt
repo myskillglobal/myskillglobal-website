@@ -1,0 +1,16 @@
+https://myskillglobal.com/privacy/om-code-digital-tools
+https://myskillglobal.com/privacy/car-expenses
+https://myskillglobal.com/privacy/myskillgame
+https://myskillglobal.com/privacy/age-calculator
+https://myskillglobal.com/privacy-policy.html
+
+MySkillGlobal
+│
+├── privacy-policy.html
+│       └── Website Privacy Policy
+│
+└── privacy/
+        ├── om-code-digital-tools.html
+        ├── myskillgame.html
+        ├── car-expenses.html
+        └── age-calculator.html
