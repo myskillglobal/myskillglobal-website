@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>আত্মসম্মানের দাম | পর্ব ২৬-৩০</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla&family=Noto+Serif+Bengali:wght@400;500;600;700&family=Baloo+Da+2:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --asd-maroon:#5C1A2B;
+    --asd-maroon-dark:#40101E;
+    --asd-ember:#8C2F39;
+    --asd-gold:#C99A6C;
+    --asd-gold-light:#E4C79A;
+    --asd-ivory:#FBF3E7;
+    --asd-ivory-2:#F3E7D6;
+    --asd-ink:#2A1E1E;
+    --asd-ash:#8B7B72;
+    --asd-line:#E3D2BC;
+    --asd-shadow:0 8px 24px rgba(92,26,43,0.18);
+    --asd-safe-top: env(safe-area-inset-top, 0px);
+    --asd-safe-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--asd-ivory);
+    color:var(--asd-ink);
+    font-family:'Noto Serif Bengali', serif;
+    line-height:1.9;
+    -webkit-tap-highlight-color:transparent;
+    padding-bottom: calc(92px + var(--asd-safe-bottom));
+  }
+  ::selection{ background:var(--asd-gold-light); color:var(--asd-maroon-dark); }
+
+  /* ---------- Header ---------- */
+  header.asd-top{
+    position:sticky; top:0; z-index:40;
+    background:linear-gradient(180deg, var(--asd-maroon) 0%, var(--asd-maroon-dark) 100%);
+    padding: calc(14px + var(--asd-safe-top)) 16px 14px;
+    box-shadow: var(--asd-shadow);
+    display:flex; align-items:center; gap:12px;
+  }
+  .asd-back{
+    width:38px; height:38px; flex:0 0 auto;
+    border-radius:50%; border:1px solid rgba(228,199,154,0.4);
+    background:rgba(255,255,255,0.05);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--asd-gold-light); font-size:20px; cursor:pointer;
+  }
+  .asd-title-wrap{ flex:1; min-width:0; }
+  .asd-kicker{
+    font-family:'Baloo Da 2', sans-serif; font-size:11px; letter-spacing:1.5px;
+    color:var(--asd-gold-light); opacity:0.85; margin:0 0 2px;
+  }
+  .asd-h1{
+    font-family:'Tiro Bangla', serif; font-size:19px; color:var(--asd-ivory);
+    margin:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
+  /* Helmet progress ring — signature element */
+  .asd-progress{ width:40px; height:40px; flex:0 0 auto; position:relative; }
+  .asd-progress svg{ width:100%; height:100%; }
+  #asd-helmet-fill{ transition: stroke-dashoffset 0.15s linear; }
+
+  /* ---------- Hero / cover strip ---------- */
+  .asd-hero{
+    padding:28px 20px 22px;
+    background:
+      radial-gradient(120% 100% at 15% 0%, rgba(201,154,108,0.18), transparent 55%),
+      var(--asd-ivory-2);
+    border-bottom:1px solid var(--asd-line);
+    text-align:center;
+  }
+  .asd-hero-emblem{ width:56px; height:56px; margin:0 auto 12px; opacity:0.9; }
+  .asd-hero-photo{
+    width:100%; max-width:360px; aspect-ratio:4/3; object-fit:cover;
+    border-radius:16px; margin:0 auto 18px; display:block;
+    border:1px solid var(--asd-line);
+    box-shadow: var(--asd-shadow);
+  }
+  .asd-chapter-photo{
+    width:100%; aspect-ratio:16/10; object-fit:cover; object-position:top center;
+    border-radius:14px; margin-bottom:18px; display:block;
+    border:1px solid var(--asd-line);
+    box-shadow: 0 6px 18px rgba(92,26,43,0.14);
+  }
+  .asd-chapter-photo-cap{
+    text-align:center; font-family:'Baloo Da 2', sans-serif; font-size:12px;
+    color:var(--asd-ash); margin:-12px 0 22px; letter-spacing:0.3px;
+  }
+  .asd-hero h2{
+    font-family:'Tiro Bangla', serif; font-size:26px; color:var(--asd-maroon);
+    margin:0 0 6px; letter-spacing:0.5px;
+  }
+  .asd-hero p.asd-tagline{
+    font-family:'Baloo Da 2', sans-serif; font-size:13px; color:var(--asd-ash);
+    margin:0; letter-spacing:0.3px;
+  }
+  .asd-resume-banner{
+    display:none;
+    margin:14px auto 0; max-width:520px;
+    background:var(--asd-maroon); color:var(--asd-ivory);
+    border-radius:14px; padding:12px 16px;
+    align-items:center; justify-content:space-between; gap:10px;
+    font-family:'Baloo Da 2', sans-serif; font-size:13.5px;
+    box-shadow:var(--asd-shadow);
+  }
+  .asd-resume-banner button{
+    background:var(--asd-gold); color:var(--asd-maroon-dark); border:none;
+    font-family:'Baloo Da 2', sans-serif; font-weight:600; font-size:13px;
+    padding:8px 14px; border-radius:20px; cursor:pointer; white-space:nowrap;
+  }
+
+  /* ---------- Chapter nav chips ---------- */
+  .asd-navchips{
+    display:flex; gap:8px; overflow-x:auto; padding:14px 20px;
+    background:var(--asd-ivory); border-bottom:1px solid var(--asd-line);
+    scrollbar-width:none;
+  }
+  .asd-navchips::-webkit-scrollbar{ display:none; }
+  .asd-chip{
+    flex:0 0 auto; font-family:'Baloo Da 2', sans-serif; font-size:13px;
+    padding:8px 16px; border-radius:20px; border:1.5px solid var(--asd-gold);
+    color:var(--asd-maroon); background:transparent; white-space:nowrap; cursor:pointer;
+    transition: all .2s;
+  }
+  .asd-chip.active{ background:var(--asd-maroon); color:var(--asd-ivory); border-color:var(--asd-maroon); }
+
+  /* ---------- Chapters ---------- */
+  main{ max-width:680px; margin:0 auto; padding:0 20px; }
+  .asd-chapter{ padding:36px 0 18px; border-bottom:1px dashed var(--asd-line); scroll-margin-top:120px; }
+  .asd-chapter:last-child{ border-bottom:none; }
+  .asd-chnum{
+    font-family:'Baloo Da 2', sans-serif; font-size:12px; letter-spacing:2px;
+    color:var(--asd-gold); text-transform:uppercase; margin-bottom:6px;
+  }
+  .asd-chtitle{
+    font-family:'Tiro Bangla', serif; font-size:24px; color:var(--asd-maroon);
+    margin:0 0 20px; padding-bottom:14px; position:relative;
+  }
+  .asd-chtitle::after{
+    content:""; position:absolute; left:0; bottom:0; width:44px; height:3px;
+    background:var(--asd-gold); border-radius:2px;
+  }
+  .asd-chapter p{
+    font-size:17px; margin:0 0 14px; color:var(--asd-ink);
+    transition: background 0.4s;
+    border-radius:6px;
+  }
+  .asd-chapter p.asd-speaking{
+    background:var(--asd-gold-light);
+    box-shadow: 0 0 0 6px var(--asd-gold-light);
+  }
+  .asd-dialogue{ padding-left:14px; border-left:2px solid var(--asd-gold-light); color:var(--asd-maroon-dark); }
+  .asd-continued{
+    text-align:center; font-family:'Baloo Da 2', sans-serif; font-size:13px;
+    color:var(--asd-ash); margin-top:8px; letter-spacing:1px;
+  }
+  .asd-bookmark-btn{
+    display:inline-flex; align-items:center; gap:6px;
+    font-family:'Baloo Da 2', sans-serif; font-size:12.5px;
+    color:var(--asd-maroon); background:var(--asd-ivory-2);
+    border:1px solid var(--asd-line); border-radius:20px;
+    padding:6px 12px; margin-top:14px; cursor:pointer;
+  }
+  .asd-bookmark-btn.saved{ background:var(--asd-gold); color:var(--asd-maroon-dark); border-color:var(--asd-gold); }
+
+  .asd-end-note{
+    text-align:center; padding:40px 20px 20px; color:var(--asd-ash);
+    font-family:'Baloo Da 2', sans-serif; font-size:13.5px; line-height:1.8;
+  }
+  .asd-end-note strong{ color:var(--asd-maroon); }
+
+  /* ---------- Floating control bar ---------- */
+  .asd-controlbar{
+    position:fixed; left:0; right:0; bottom:0; z-index:50;
+    background:linear-gradient(180deg, var(--asd-maroon) 0%, var(--asd-maroon-dark) 100%);
+    padding:10px 14px calc(10px + var(--asd-safe-bottom));
+    box-shadow:0 -6px 20px rgba(0,0,0,0.25);
+  }
+  .asd-controlbar-row{ display:flex; align-items:center; gap:10px; }
+  .asd-play-btn{
+    width:46px; height:46px; border-radius:50%; border:none; flex:0 0 auto;
+    background:var(--asd-gold); color:var(--asd-maroon-dark);
+    display:flex; align-items:center; justify-content:center; font-size:19px; cursor:pointer;
+  }
+  .asd-settings-btn{
+    width:40px; height:40px; border-radius:50%; border:1px solid rgba(228,199,154,0.4);
+    background:rgba(255,255,255,0.06); color:var(--asd-gold-light); flex:0 0 auto;
+    display:flex; align-items:center; justify-content:center; font-size:16px; cursor:pointer;
+  }
+  .asd-status{
+    flex:1; min-width:0; color:var(--asd-ivory); font-family:'Baloo Da 2', sans-serif;
+    font-size:12.5px; opacity:0.9; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
+  .asd-status small{ display:block; color:var(--asd-gold-light); font-size:11px; opacity:0.8; }
+
+  /* ---------- Settings panel ---------- */
+  .asd-settings-panel{
+    position:fixed; left:0; right:0; bottom:0; z-index:60;
+    background:var(--asd-ivory); border-radius:20px 20px 0 0;
+    padding:18px 20px calc(22px + var(--asd-safe-bottom));
+    box-shadow:0 -10px 30px rgba(0,0,0,0.3);
+    transform:translateY(110%); transition:transform .28s ease;
+    max-height:72vh; overflow-y:auto;
+  }
+  .asd-settings-panel.open{ transform:translateY(0); }
+  .asd-settings-overlay{
+    position:fixed; inset:0; background:rgba(42,30,30,0.45); z-index:55;
+    opacity:0; pointer-events:none; transition:opacity .25s;
+  }
+  .asd-settings-overlay.open{ opacity:1; pointer-events:auto; }
+  .asd-settings-handle{ width:40px; height:4px; background:var(--asd-line); border-radius:3px; margin:0 auto 16px; }
+  .asd-settings-panel h3{
+    font-family:'Tiro Bangla', serif; color:var(--asd-maroon); margin:0 0 16px; font-size:18px;
+  }
+  .asd-field{ margin-bottom:18px; }
+  .asd-field label{
+    display:block; font-family:'Baloo Da 2', sans-serif; font-size:13px;
+    color:var(--asd-ash); margin-bottom:8px;
+  }
+  .asd-field select{
+    width:100%; padding:10px 12px; border-radius:10px; border:1.5px solid var(--asd-line);
+    background:#fff; font-family:'Noto Serif Bengali', serif; font-size:14px; color:var(--asd-ink);
+  }
+  .asd-speed-row{ display:flex; align-items:center; gap:10px; }
+  .asd-speed-row input[type=range]{ flex:1; accent-color:var(--asd-maroon); }
+  .asd-speed-val{
+    font-family:'Baloo Da 2', sans-serif; font-weight:600; color:var(--asd-maroon);
+    width:46px; text-align:center; font-size:13.5px;
+  }
+  .asd-speed-presets{ display:flex; gap:8px; margin-top:10px; }
+  .asd-speed-presets button{
+    flex:1; font-family:'Baloo Da 2', sans-serif; font-size:12.5px;
+    padding:7px 0; border-radius:10px; border:1.5px solid var(--asd-line);
+    background:#fff; color:var(--asd-maroon); cursor:pointer;
+  }
+  .asd-speed-presets button.active{ background:var(--asd-maroon); color:var(--asd-ivory); border-color:var(--asd-maroon); }
+  .asd-close-panel{
+    width:100%; margin-top:6px; padding:12px; border-radius:12px; border:none;
+    background:var(--asd-maroon); color:var(--asd-ivory); font-family:'Baloo Da 2', sans-serif;
+    font-size:14px; font-weight:600; cursor:pointer;
+  }
+
+  @media (min-width:720px){
+    .asd-hero h2{ font-size:30px; }
+    .asd-chtitle{ font-size:27px; }
+  }
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 16px;
+    background: transparent;
+    color: var(--asd-maroon);
+    text-decoration: none;
+    border: 1px solid var(--asd-gold);
+    border-radius: 999px;
+    font-family: 'Baloo Da 2', 'Noto Serif Bengali', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.3;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+.btn:hover { background: var(--asd-maroon); color: var(--asd-ivory); border-color: var(--asd-maroon); }
+.btn:active { transform: scale(0.97); }
+.btn:focus-visible { outline: 2px solid var(--asd-gold); outline-offset: 3px; }
+.btn.disabled { opacity: 0.5; border-style: dashed; cursor: default; pointer-events: none; }
+.btn.toc { background: var(--asd-maroon); color: var(--asd-ivory); border-color: var(--asd-maroon); }
+.btn.toc:hover { background: var(--asd-maroon-dark); }
+.asd-nav-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 12px 0 6px; }
+@media (max-width: 480px) { .btn { padding: 7px 13px; font-size: 13px; } }
+</style>
+</head>
+<body>
+
+<header class="asd-top">
+  <div class="asd-back" onclick="asdGoBack()">←</div>
+  <div class="asd-title-wrap">
+    <p class="asd-kicker">আত্মসম্মানের দাম</p>
+    <h1 class="asd-h1" id="asd-current-chapter-label">পর্ব ২৬ · অডিট টিমের আগমন</h1>
+  </div>
+  <div class="asd-progress">
+    <svg viewBox="0 0 40 40">
+      <circle cx="20" cy="20" r="16" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="3"/>
+      <circle id="asd-helmet-fill" cx="20" cy="20" r="16" fill="none" stroke="#C99A6C" stroke-width="3"
+        stroke-linecap="round" stroke-dasharray="100.5" stroke-dashoffset="100.5" transform="rotate(-90 20 20)"/>
+      <path d="M20 13c-4.4 0-7.5 3-7.8 7v3.2c0 .6.5 1 1 1h1.6l.6 2.4c.1.5.6.9 1.1.9h6.9c.5 0 1-.4 1.1-.9l.6-2.4h1.6c.5 0 1-.4 1-1V20c-.3-4-3.4-7-7.7-7z"
+        fill="none" stroke="#E4C79A" stroke-width="1.1"/>
+    </svg>
+  </div>
+</header>
+
+<section class="asd-hero">
+  <svg class="asd-hero-emblem" viewBox="0 0 40 40">
+    <path d="M20 13c-4.4 0-7.5 3-7.8 7v3.2c0 .6.5 1 1 1h1.6l.6 2.4c.1.5.6.9 1.1.9h6.9c.5 0 1-.4 1.1-.9l.6-2.4h1.6c.5 0 1-.4 1-1V20c-.3-4-3.4-7-7.7-7z"
+      fill="none" stroke="#5C1A2B" stroke-width="1.3"/>
+    <circle cx="20" cy="20" r="18.5" fill="none" stroke="#C99A6C" stroke-width="1"/>
+  </svg>
+  <h2>আত্মসম্মানের দাম</h2>
+  <p class="asd-tagline">সততা সম্মান বাঁচায় — পর্ব ২৬ থেকে ৩০</p>
+  <div class="asd-nav-row">
+    <a class="btn" href="atmasamman-part5.html">← আগের পর্ব (২১-২৫)</a>
+    <a class="btn toc" href="index-atmasamman.html">📖 সুচীপত্র</a>
+    <a class="btn" href="atmasamman-part7.html">পরের পর্ব (৩১-৩৫) →</a>
+  </div>
+  <div class="asd-resume-banner" id="asd-resume-banner">
+    <span id="asd-resume-text">আপনার আগের পড়া জায়গা থেকে চালিয়ে যাবেন?</span>
+    <button onclick="asdResumeReading()">চালিয়ে যান</button>
+  </div>
+</section>
+
+<nav class="asd-navchips" id="asd-navchips">
+  <button class="asd-chip" data-ch="26" onclick="asdScrollToChapter(26)">পর্ব ২৬</button>
+  <button class="asd-chip" data-ch="27" onclick="asdScrollToChapter(27)">পর্ব ২৭</button>
+  <button class="asd-chip" data-ch="28" onclick="asdScrollToChapter(28)">পর্ব ২৮</button>
+  <button class="asd-chip" data-ch="29" onclick="asdScrollToChapter(29)">পর্ব ২৯</button>
+  <button class="asd-chip" data-ch="30" onclick="asdScrollToChapter(30)">পর্ব ৩০</button>
+</nav>
+
+<main id="asd-main">
+
+
+
+  <section class="asd-chapter" id="chapter-26" data-chnum="26" data-chtitle="অডিট টিমের আগমন">
+    <p class="asd-chnum">পর্ব ২৬</p>
+    <h2 class="asd-chtitle">অডিট টিমের আগমন</h2>
+    <img class="asd-chapter-photo" src="atmasamman-images/ch26-audit-team-arrival.jpg" alt="অডিট টিমের আগমন" loading="lazy" onerror="this.style.display='none'">
+    <p class="asd-chapter-photo-cap">অডিট টিমের আগমন</p>
+    <p>সোমবার সকাল।</p>
+    <p>অফিসের পরিবেশ একেবারে অন্যরকম।</p>
+    <p>সবাই ব্যস্ত।</p>
+    <p>কারণ আজ বাইরের অডিট টিম আসবে।</p>
+    <p>ম্যানেজার রজত দত্ত সকাল থেকেই কর্মচারীদের নির্দেশ দিচ্ছেন।</p>
+    <p class="asd-dialogue">— "কেউ অডিটরদের সামনে অপ্রয়োজনীয় কথা বলবে না। যা জিজ্ঞাসা করবে, শুধু সেটারই উত্তর দেবে।"</p>
+    <p>সবাই মাথা নাড়ল।</p>
+    <p>মেঘলার কাছে কথাটা অস্বাভাবিক লাগল।</p>
+    <p>সকাল সাড়ে দশটায় তিনজন অডিটর অফিসে এলেন।</p>
+    <p>তাদের প্রধান ছিলেন অমিতাভ চক্রবর্তী।</p>
+    <p>অভিজ্ঞ, শান্ত স্বভাবের মানুষ।</p>
+    <p>তিনি প্রথমেই বললেন,</p>
+    <p class="asd-dialogue">— "আমরা কাউকে দোষী প্রমাণ করতে আসিনি। শুধু হিসাব মিলিয়ে দেখব। তাই সবাই স্বাভাবিক থাকুন।"</p>
+    <p>একের পর এক ফাইল পরীক্ষা শুরু হলো।</p>
+    <p>মেঘলা যে অডিট ফাইলটি প্রস্তুত করেছিল, সেটিও তাদের সামনে গেল।</p>
+    <p>অমিতাভবাবু খুব মনোযোগ দিয়ে কাগজপত্র দেখতে লাগলেন।</p>
+    <p>হঠাৎ তিনি একটি বিলের সামনে থেমে গেলেন।</p>
+    <p class="asd-dialogue">— "এই বিলের মূল কপি কোথায়?"</p>
+    <p>রজত দত্ত সঙ্গে সঙ্গে উত্তর দিলেন,</p>
+    <p class="asd-dialogue">— "ওটাই মূল কপি।"</p>
+    <p>অডিটর আবার বললেন,</p>
+    <p class="asd-dialogue">— "অদ্ভুত! কাগজের রঙ আর প্রিন্টের তারিখ মিলছে না।"</p>
+    <p>রজত দত্ত মুহূর্তের জন্য থমকে গেলেও নিজেকে সামলে নিলেন।</p>
+    <p class="asd-dialogue">— "হয়তো পরে পুনরায় প্রিন্ট করা হয়েছে।"</p>
+    <p>অডিটর আর কিছু বললেন না।</p>
+    <p>কিন্তু নোটবুকে কিছু লিখে রাখলেন।</p>
+    <p>মেঘলা দূর থেকে সব দেখছিল।</p>
+    <p>তার মনে আশা জাগল।</p>
+    <p>দুপুরের পরে অডিটররা আলাদা আলাদা কর্মচারীদের সঙ্গে কথা বলতে শুরু করলেন।</p>
+    <p>অনন্যাকেও ডাকা হলো।</p>
+    <p>তিনি শুধু কাজের কথাই বললেন।</p>
+    <p>কোনো অভিযোগ করলেন না।</p>
+    <p>কারণ তিনি ভয় পাচ্ছিলেন।</p>
+    <p>সবশেষে মেঘলাকে ডাকা হলো।</p>
+    <p>অমিতাভবাবু জিজ্ঞেস করলেন,</p>
+    <p class="asd-dialogue">— "এই ফাইল আপনি প্রস্তুত করেছেন?"</p>
+    <p class="asd-dialogue">— "জি, স্যার।"</p>
+    <p class="asd-dialogue">— "ফাইলে কোনো পরিবর্তন হয়েছে বলে আপনার মনে হয়?"</p>
+    <p>মেঘলা কয়েক সেকেন্ড চুপ করে রইল।</p>
+    <p>সে জানত—</p>
+    <p>প্রমাণ ছাড়া অভিযোগ করা ঠিক হবে না।</p>
+    <p>তাই সে শুধু বলল,</p>
+    <p class="asd-dialogue">— "আমি যে নথি নিয়ে কাজ শুরু করেছিলাম, পরে কিছু কাগজ আলাদা মনে হয়েছে। তবে আমি নিশ্চিত নই, তাই অভিযোগ করতে চাই না।"</p>
+    <p>অমিতাভবাবু তার দিকে কিছুক্ষণ তাকিয়ে রইলেন।</p>
+    <p>তারপর বললেন,</p>
+    <p class="asd-dialogue">— "ভালো। নিশ্চিত না হয়ে অভিযোগ না করাই উচিত।"</p>
+    <p>এই উত্তর শুনে রজত দত্ত স্বস্তির নিঃশ্বাস ফেললেন।</p>
+    <p>তিনি ভাবলেন,</p>
+    <p>"মেয়েটার কাছে কোনো প্রমাণ নেই।"</p>
+    <p>কিন্তু অমিতাভবাবু বেরিয়ে যাওয়ার সময় একটি অদ্ভুত কাজ করলেন।</p>
+    <p>তিনি স্টোররুম, করিডর আর রেকর্ড রুম একবার ঘুরে দেখলেন।</p>
+    <p>তার অভিজ্ঞ চোখ যেন কিছু খুঁজছিল।</p>
+    <p>দূরে দাঁড়িয়ে কমলা দেবী সব দেখছিলেন।</p>
+    <p>তিনি মনে মনে বললেন,</p>
+    <p>"এই ভদ্রলোক অন্যদের মতো নন। উনি সত্যিটা খুঁজছেন।"</p>
+    <p>সেদিন অফিস ছুটির আগে অমিতাভবাবু মেঘলাকে শুধু একটি কথাই বললেন—</p>
+    <p>"সত্যি লুকিয়ে রাখা যায়, কিন্তু চিরদিন চাপা রাখা যায় না। যদি কখনও কোনো তথ্য থাকে, ভয় না পেয়ে জানাবেন।"</p>
+    <p>মেঘলার মনে প্রথমবারের মতো আশা জাগল।</p>
+    <p>সে বুঝতে পারল...</p>
+    <p>এই অডিটরই হয়তো একদিন সত্যের প্রথম দরজাটা খুলবেন।</p>
+    <p class="asd-continued">চলবে...</p>
+    <button class="asd-bookmark-btn" onclick="asdToggleBookmark(26, this)">🔖 এই জায়গায় বুকমার্ক করুন</button>
+  </section>
+
+  <section class="asd-chapter" id="chapter-27" data-chnum="27" data-chtitle="একটি চায়ের কাপ">
+    <p class="asd-chnum">পর্ব ২৭</p>
+    <h2 class="asd-chtitle">একটি চায়ের কাপ</h2>
+    <img class="asd-chapter-photo" src="atmasamman-images/ch27-tea-cup-conversation.jpg" alt="একটি চায়ের কাপ" loading="lazy" onerror="this.style.display='none'">
+    <p class="asd-chapter-photo-cap">একটি চায়ের কাপ</p>
+    <p>অডিট টিমের দ্বিতীয় দিন।</p>
+    <p>সকাল থেকেই অফিসে চাপা উত্তেজনা।</p>
+    <p>রজত দত্ত বারবার কর্মচারীদের মনে করিয়ে দিচ্ছিলেন,</p>
+    <p class="asd-dialogue">— "অডিটররা যা জিজ্ঞাসা করবেন, শুধু সেটারই উত্তর দেবে। অতিরিক্ত কথা বলার দরকার নেই।"</p>
+    <p>সবাই মাথা নাড়লেও কমলা দেবীর মুখে অদ্ভুত দুশ্চিন্তা।</p>
+    <p>দুপুরের দিকে প্রধান অডিটর অমিতাভ চক্রবর্তী একা করিডোরে দাঁড়িয়ে নথি দেখছিলেন।</p>
+    <p>কমলা দেবী চা দিতে এলেন।</p>
+    <p>চা দিয়ে ফিরে যাচ্ছিলেন, এমন সময় অমিতাভবাবু ডাকলেন—</p>
+    <p class="asd-dialogue">— "একটু দাঁড়াবেন?"</p>
+    <p>কমলা ভয় পেয়ে গেলেন।</p>
+    <p class="asd-dialogue">— "জি... স্যার?"</p>
+    <p class="asd-dialogue">— "আপনি কত বছর ধরে এখানে কাজ করছেন?"</p>
+    <p class="asd-dialogue">— "প্রায় বারো বছর।"</p>
+    <p class="asd-dialogue">— "তাহলে অফিসের অনেক কিছুই নিশ্চয়ই দেখেছেন?"</p>
+    <p>কমলা চুপ করে রইলেন।</p>
+    <p>অমিতাভবাবু হাসলেন।</p>
+    <p class="asd-dialogue">— "ভয় পাবেন না। আমি কাউকে বিপদে ফেলতে চাই না। শুধু সত্যিটা জানতে চাই।"</p>
+    <p>কিছুক্ষণ নীরব থাকার পর কমলার চোখ ভিজে উঠল।</p>
+    <p>তিনি ধীরে ধীরে বললেন,</p>
+    <p class="asd-dialogue">— "স্যার, গরিব মানুষের চাকরি ছাড়া আর কিছু থাকে না। তাই সবাই চুপ থাকে।"</p>
+    <p class="asd-dialogue">— "মেঘলা কেমন মেয়ে?"</p>
+    <p>প্রশ্নটা শুনে কমলা এক মুহূর্তও দেরি করলেন না।</p>
+    <p class="asd-dialogue">— "স্যার, আমার নিজের মেয়েও যদি বেঁচে থাকত, তার চরিত্র নিয়েও আমি এতটা নিশ্চিত হতে পারতাম না। মেঘলার মতো সৎ মেয়ে আমি এই অফিসে দেখিনি।"</p>
+    <p>অমিতাভবাবু মন দিয়ে শুনছিলেন।</p>
+    <p>কমলা আবার বললেন,</p>
+    <p class="asd-dialogue">— "ওকে সবাই বদনাম করছে। কিন্তু আমি নিজের চোখে দেখেছি, ও কখনও অন্যায় করেনি। বরং অন্যায়ের বিরুদ্ধে মাথা নোয়ায়নি।"</p>
+    <p>অমিতাভবাবু এবার নিচু গলায় জিজ্ঞেস করলেন,</p>
+    <p class="asd-dialogue">— "আপনি কি কোনো নির্দিষ্ট ঘটনা জানেন?"</p>
+    <p>কমলা একটু ইতস্তত করলেন।</p>
+    <p>তারপর বললেন,</p>
+    <p class="asd-dialogue">— "সেদিন রাতে ম্যানেজার স্যার আর পি.এ. সঞ্জয় স্টোররুমে ঢুকেছিলেন। পরে যে ফাইল নিয়ে এত ঝামেলা হলো..."</p>
+    <p>তিনি বাকিটা শেষ করলেন না।</p>
+    <p>অমিতাভবাবু ছোট্ট একটি নোটবুক বের করে কয়েকটি কথা লিখে নিলেন।</p>
+    <p>তারপর বললেন,</p>
+    <p class="asd-dialogue">— "আপনি যা বলেছেন, তা এখনই কাউকে বলবেন না। আর কেউ যদি আপনাকে ভয় দেখায়, আমাকে জানাবেন।"</p>
+    <p>কমলা প্রথমবার মনে সাহস পেলেন।</p>
+    <p>দূর থেকে এই দৃশ্য দেখছিল সঞ্জয়।</p>
+    <p>সে তাড়াতাড়ি রজত দত্তের কেবিনে গিয়ে বলল,</p>
+    <p class="asd-dialogue">— "স্যার, বিপদ হয়েছে!"</p>
+    <p class="asd-dialogue">— "কী হয়েছে?"</p>
+    <p class="asd-dialogue">— "অডিটর অনেকক্ষণ ধরে কমলার সঙ্গে কথা বলছেন।"</p>
+    <p>রজত দত্তের মুখের রং বদলে গেল।</p>
+    <p>সে দাঁত চেপে বলল,</p>
+    <p class="asd-dialogue">— "আমি বুঝেছিলাম, ওই মহিলাই একদিন সমস্যা করবে।"</p>
+    <p>কিছুক্ষণ ভেবে সে ঠান্ডা গলায় বলল,</p>
+    <p class="asd-dialogue">— "আজই কমলাকে এমন শিক্ষা দিতে হবে, যাতে আর কোনোদিন মুখ না খোলে।"</p>
+    <p>এদিকে মেঘলা নিজের ডেস্কে বসে কাজ করছিল।</p>
+    <p>হঠাৎ তার মোবাইলে একটি অজানা নম্বর থেকে একটি মাত্র বার্তা এল—</p>
+    <p>"সত্যের প্রথম সাক্ষীকে বাঁচান। দেরি হলে অনেক দেরি হয়ে যাবে।"</p>
+    <p>মেঘলার বুক কেঁপে উঠল।</p>
+    <p>"প্রথম সাক্ষী"—তাহলে কি কমলাদির ওপরই বিপদ নেমে আসছে?</p>
+    <p>সে আর এক মুহূর্তও দেরি করল না।</p>
+    <p>দ্রুত উঠে কমলা দেবীকে খুঁজতে বেরিয়ে পড়ল...</p>
+    <p class="asd-continued">চলবে...</p>
+    <button class="asd-bookmark-btn" onclick="asdToggleBookmark(27, this)">🔖 এই জায়গায় বুকমার্ক করুন</button>
+  </section>
+
+  <section class="asd-chapter" id="chapter-28" data-chnum="28" data-chtitle="বদলির আদেশ">
+    <p class="asd-chnum">পর্ব ২৮</p>
+    <h2 class="asd-chtitle">বদলির আদেশ</h2>
+    <img class="asd-chapter-photo" src="atmasamman-images/ch28-transfer-order.jpg" alt="বদলির আদেশ" loading="lazy" onerror="this.style.display='none'">
+    <p class="asd-chapter-photo-cap">বদলির আদেশ</p>
+    <p>মেঘলা দৌড়ে নিচতলায় গেল।</p>
+    <p>কিন্তু কমলা দেবীকে কোথাও দেখা গেল না।</p>
+    <p>ঠিক তখনই মানবসম্পদ বিভাগের সামনে কয়েকজন কর্মচারীর ভিড়।</p>
+    <p>ভেতর থেকে কান্নার শব্দ ভেসে আসছে।</p>
+    <p>মেঘলা এগিয়ে গিয়ে দেখল—</p>
+    <p>কমলা দেবী মাথা নিচু করে দাঁড়িয়ে আছেন।</p>
+    <p>তার হাতে একটি চিঠি।</p>
+    <p class="asd-dialogue">— "কী হয়েছে, কমলাদি?"</p>
+    <p>কমলা উত্তর দিতে পারলেন না।</p>
+    <p>চিঠিটা মেঘলার হাতে তুলে দিলেন।</p>
+    <p>চিঠিতে লেখা—</p>
+    <p>"প্রশাসনিক প্রয়োজনে আপনাকে আগামীকাল থেকে কোম্পানির দূরবর্তী গুদামে বদলি করা হলো।"</p>
+    <p>মেঘলা বুঝে গেল।</p>
+    <p>এটা কোনো সাধারণ বদলি নয়।</p>
+    <p>এটা তাকে সরিয়ে দেওয়ার পরিকল্পনা।</p>
+    <p>ঠিক তখনই রজত দত্ত সেখানে এসে দাঁড়াল।</p>
+    <p>মুখে কৃত্রিম সহানুভূতির হাসি।</p>
+    <p class="asd-dialogue">— "কী হয়েছে? কাঁদছেন কেন?"</p>
+    <p>কমলা কিছু বললেন না।</p>
+    <p>রজত দত্ত বললেন,</p>
+    <p class="asd-dialogue">— "এটা কোম্পানির সিদ্ধান্ত। যেখানে কাজ দেওয়া হবে, সেখানেই যেতে হবে।"</p>
+    <p>মেঘলা সাহস করে বলল,</p>
+    <p class="asd-dialogue">— "স্যার, কমলাদি তো বহু বছর ধরে এখানেই কাজ করছেন। হঠাৎ বদলি কেন?"</p>
+    <p>রজত দত্ত ঠান্ডা গলায় বললেন,</p>
+    <p class="asd-dialogue">— "আপনি কি এখন মানবসম্পদ বিভাগও চালাবেন?"</p>
+    <p>মেঘলা চুপ করে গেল।</p>
+    <p>সন্ধ্যায় অফিস ছুটি হওয়ার পর কমলা দেবী বাসস্ট্যান্ডে বসে ছিলেন।</p>
+    <p>মেঘলা তার পাশে গিয়ে বসল।</p>
+    <p>অনেকক্ষণ দু'জনেই চুপ।</p>
+    <p>তারপর কমলা বললেন,</p>
+    <p class="asd-dialogue">— "মা, আমার জন্য নিজের জীবন নষ্ট কোরো না।"</p>
+    <p>মেঘলা দৃঢ় গলায় বলল,</p>
+    <p class="asd-dialogue">— "আপনি অন্যায়ের বিরুদ্ধে সত্য বলেছেন। এটা অপরাধ নয়।"</p>
+    <p>কমলা চোখের জল মুছে বললেন,</p>
+    <p class="asd-dialogue">— "আমার কাছে একটা জিনিস আছে। এতদিন কাউকে দেখাইনি।"</p>
+    <p>তিনি শাড়ির আঁচল থেকে একটি ছোট্ট পেনড্রাইভ বের করলেন।</p>
+    <p>মেঘলা অবাক হয়ে তাকাল।</p>
+    <p class="asd-dialogue">— "এটা কী?"</p>
+    <p>কমলা ধীরে বললেন,</p>
+    <p class="asd-dialogue">— "আমার ছেলে আগে এই অফিসের আইটি বিভাগে কাজ করত। চাকরি ছাড়ার সময় বলেছিল—'মা, কোনোদিন যদি অন্যায় দেখো, এটা এমন একজন সৎ মানুষের হাতে দেবে, যে সত্যের জন্য লড়বে।'"</p>
+    <p>মেঘলা কাঁপা হাতে পেনড্রাইভটি নিল।</p>
+    <p class="asd-dialogue">— "এর মধ্যে কী আছে?"</p>
+    <p>কমলা মাথা নাড়লেন।</p>
+    <p class="asd-dialogue">— "আমি জানি না। কোনোদিন খুলে দেখিনি। শুধু এতটুকু জানি, আমার ছেলে বলেছিল—'একদিন এই জিনিস খুব দরকার হবে।'"</p>
+    <p>ঠিক সেই সময় রাস্তার ওপারে একটি কালো গাড়ি দাঁড়িয়ে ছিল।</p>
+    <p>গাড়ির ভেতর থেকে রজত দত্ত সব দেখছিল।</p>
+    <p>সে স্পষ্ট দেখতে পেল—</p>
+    <p>কমলা দেবী মেঘলার হাতে কিছু একটা তুলে দিলেন।</p>
+    <p>রজত দত্তের চোখ সরু হয়ে এল।</p>
+    <p>সে সঙ্গে সঙ্গে সঞ্জয়কে ফোন করল।</p>
+    <p class="asd-dialogue">— "মেয়েটার হাতে একটা পেনড্রাইভ গেছে। ওটা কী আছে জানি না। কিন্তু যেভাবেই হোক, আগামীকাল সকাল হওয়ার আগেই সেটা আমাদের হাতে চাই।"</p>
+    <p>সঞ্জয় বলল,</p>
+    <p class="asd-dialogue">— "যদি না পাই?"</p>
+    <p>রজত দত্ত ঠান্ডা স্বরে উত্তর দিল,</p>
+    <p class="asd-dialogue">— "তাহলে ওটা নষ্ট করে দিতে হবে।"</p>
+    <p>মেঘলা তখনও জানত না...</p>
+    <p>তার হাতে ধরা ছোট্ট পেনড্রাইভটি হয়তো পুরো দুর্নীতির চক্র ফাঁস করে দিতে পারে।</p>
+    <p class="asd-continued">চলবে...</p>
+    <button class="asd-bookmark-btn" onclick="asdToggleBookmark(28, this)">🔖 এই জায়গায় বুকমার্ক করুন</button>
+  </section>
+
+  <section class="asd-chapter" id="chapter-29" data-chnum="29" data-chtitle="হারিয়ে যাওয়া পেনড্রাইভ">
+    <p class="asd-chnum">পর্ব ২৯</p>
+    <h2 class="asd-chtitle">হারিয়ে যাওয়া পেনড্রাইভ</h2>
+    <img class="asd-chapter-photo" src="atmasamman-images/ch29-missing-pendrive.jpg" alt="হারিয়ে যাওয়া পেনড্রাইভ" loading="lazy" onerror="this.style.display='none'">
+    <p class="asd-chapter-photo-cap">হারিয়ে যাওয়া পেনড্রাইভ</p>
+    <p>রাত সাড়ে আটটা।</p>
+    <p>মেঘলা বাড়ি ফিরল।</p>
+    <p>স্টোররুমের ছোট্ট ঘরে ঢুকেই দরজা বন্ধ করল।</p>
+    <p>সে ব্যাগ থেকে পেনড্রাইভটি বের করে অনেকক্ষণ তাকিয়ে রইল।</p>
+    <p>কমলা দেবীর কথা বারবার মনে পড়ছিল।</p>
+    <p>"একদিন এই জিনিস খুব দরকার হবে।"</p>
+    <p>ঘরে একটি পুরোনো ল্যাপটপ ছিল। সেটি ছিল তার বাবার।</p>
+    <p>মেঘলা পেনড্রাইভটি লাগাতে গিয়েও থেমে গেল।</p>
+    <p>হঠাৎ তার মনে হলো—</p>
+    <p>"যদি কেউ এটাতে নজর রাখে? যদি কোনো ভাইরাস থাকে? আগে সাবধানে দেখা উচিত।"</p>
+    <p>সে পেনড্রাইভটি আবার একটি ছোট কাপড়ে মুড়ে আলমারির ভেতরে লুকিয়ে রাখল।</p>
+    <p>পরদিন সকালে অফিসে যাওয়ার প্রস্তুতি নিচ্ছিল মেঘলা।</p>
+    <p>ঠিক তখনই ভাবি শীলা চিৎকার করে উঠল।</p>
+    <p class="asd-dialogue">— "মেঘলা! তোমার ঘরের দরজা খোলা ছিল কেন?"</p>
+    <p>মেঘলা অবাক হয়ে বলল,</p>
+    <p class="asd-dialogue">— "আমি তো বন্ধ করেই ঘুমিয়েছিলাম!"</p>
+    <p>ঘরে ঢুকে সে হতবাক।</p>
+    <p>আলমারির জামাকাপড় সব এলোমেলো।</p>
+    <p>ড্রয়ার খোলা।</p>
+    <p>কাগজপত্র মেঝেতে ছড়িয়ে আছে।</p>
+    <p>কিন্তু আশ্চর্যের বিষয়—</p>
+    <p>কিছুই চুরি হয়নি।</p>
+    <p>শুধু জিনিসপত্র তছনছ করা হয়েছে।</p>
+    <p>মেঘলার বুক কেঁপে উঠল।</p>
+    <p>সে তাড়াতাড়ি আলমারির ভেতর হাত ঢুকিয়ে দেখল...</p>
+    <p>পেনড্রাইভটি এখনও সেখানে আছে।</p>
+    <p>সে স্বস্তির নিঃশ্বাস ফেলল।</p>
+    <p>মনে মনে বলল,</p>
+    <p>"তাহলে কেউ কিছু একটা খুঁজছিল!"</p>
+    <p>অফিসে পৌঁছাতেই সঞ্জয় তার সামনে এসে দাঁড়াল।</p>
+    <p>আজ তার মুখে অদ্ভুত হাসি।</p>
+    <p class="asd-dialogue">— "কী ম্যাডাম? গতরাতে ঘুম ভালো হয়েছে?"</p>
+    <p>মেঘলা অবাক হয়ে তার দিকে তাকাল।</p>
+    <p class="asd-dialogue">— "হ্যাঁ... কেন?"</p>
+    <p class="asd-dialogue">— "এমনিই জিজ্ঞেস করলাম।"</p>
+    <p>এই বলে সে চলে গেল।</p>
+    <p>মেঘলার সন্দেহ আরও গভীর হলো।</p>
+    <p>দুপুরে অডিট টিমের প্রধান অমিতাভ চক্রবর্তী আবার অফিসে এলেন।</p>
+    <p>তিনি কয়েকটি নথি দেখে মেঘলাকে বললেন,</p>
+    <p class="asd-dialogue">— "আপনার কাছে যদি কোম্পানির হিসাবসংক্রান্ত কোনো তথ্য বা নথি থাকে, সেটি নিরাপদে রাখবেন। কোনো প্রমাণ নষ্ট হতে দেওয়া উচিত নয়।"</p>
+    <p>মেঘলা অবাক হয়ে গেল।</p>
+    <p>তিনি কি কিছু আন্দাজ করেছেন?</p>
+    <p>সে শুধু মাথা নাড়ল।</p>
+    <p>সেদিন সন্ধ্যায় বাড়ি ফেরার পথে মেঘলা সিদ্ধান্ত নিল—</p>
+    <p>আজ রাতেই পেনড্রাইভটি দেখবে।</p>
+    <p>সত্যিটা জানতেই হবে।</p>
+    <p>কিন্তু সে জানত না...</p>
+    <p>তার পেছনে একটি মোটরবাইক ধীরে ধীরে তাকে অনুসরণ করছে।</p>
+    <p>বাইকে বসে থাকা লোকটি ফোনে বলল,</p>
+    <p class="asd-dialogue">— "স্যার, মেয়েটা এখনও পেনড্রাইভটা ফেলে দেয়নি। ওকে নজরে রেখেছি।"</p>
+    <p>ওপাশ থেকে রজত দত্তের গলা ভেসে এল—</p>
+    <p>"আজ রাতেই জানতে হবে, ওটা খুলেছে কি না। কোনো ভুল করা চলবে না।"</p>
+    <p>মেঘলা তখনও কিছুই বুঝতে পারেনি।</p>
+    <p>তার ব্যাগের ভেতরে থাকা ছোট্ট পেনড্রাইভটি যেন নীরবে অপেক্ষা করছিল...</p>
+    <p>একটি বিস্ফোরক সত্য প্রকাশ করার জন্য।</p>
+    <p class="asd-continued">চলবে...</p>
+    <button class="asd-bookmark-btn" onclick="asdToggleBookmark(29, this)">🔖 এই জায়গায় বুকমার্ক করুন</button>
+  </section>
+
+  <section class="asd-chapter" id="chapter-30" data-chnum="30" data-chtitle="পেনড্রাইভের রহস্য">
+    <p class="asd-chnum">পর্ব ৩০</p>
+    <h2 class="asd-chtitle">পেনড্রাইভের রহস্য</h2>
+    <img class="asd-chapter-photo" src="atmasamman-images/ch30-pendrive-mystery.jpg" alt="পেনড্রাইভের রহস্য" loading="lazy" onerror="this.style.display='none'">
+    <p class="asd-chapter-photo-cap">পেনড্রাইভের রহস্য</p>
+    <p>সেদিন রাতে সবাই ঘুমিয়ে পড়ার পর মেঘলা স্টোররুমের দরজায় ভেতর থেকে তালা লাগিয়ে দিল।</p>
+    <p>জানালার পর্দা টেনে দিল।</p>
+    <p>পুরোনো ল্যাপটপটা চালু করল।</p>
+    <p>তার হাত কাঁপছিল।</p>
+    <p>ধীরে ধীরে পেনড্রাইভটি ইউএসবি পোর্টে লাগাল।</p>
+    <p>স্ক্রিনে একটি মাত্র ফোল্ডার ভেসে উঠল।</p>
+    <p>"BACKUP"</p>
+    <p>ফোল্ডার খুলতেই আরও কয়েকটি সাব-ফোল্ডার দেখা গেল।</p>
+    <p>Accounts</p>
+    <p>Bills</p>
+    <p>Audio</p>
+    <p>Scan Copy</p>
+    <p>মেঘলার বুক ধড়ফড় করতে লাগল।</p>
+    <p>সে প্রথমে Bills ফোল্ডার খুলল।</p>
+    <p>সেখানে শত শত স্ক্যান করা বিল।</p>
+    <p>তার মধ্যে অনেকগুলোর নাম—</p>
+    <p>"মধুময় মিষ্টান্ন ভাণ্ডার"</p>
+    <p>সে একটি বিল খুলতেই চমকে উঠল।</p>
+    <p>কাগজটি সেই বিলের মতোই, যেটা সে অডিট ফাইলে দেখেছিল।</p>
+    <p>কিন্তু এখানে পরিমাণ লেখা—</p>
+    <p>৪৮,৭৫০ টাকা</p>
+    <p>অথচ অফিসের ফাইলে ছিল—</p>
+    <p>৪,৯৮,৭৫০ টাকা</p>
+    <p>মেঘলা আরেকটি বিল খুলল।</p>
+    <p>সেখানেও একই ঘটনা।</p>
+    <p>৭২,৫০০ টাকা বদলে ৭,২৫,০০০ টাকা করা হয়েছে।</p>
+    <p>তার কপালে ঘাম জমে গেল।</p>
+    <p>এগুলো সাধারণ ভুল নয়।</p>
+    <p>এগুলো পরিকল্পিত জালিয়াতি।</p>
+    <p>সে এবার Audio ফোল্ডারে ক্লিক করল।</p>
+    <p>ভেতরে অনেকগুলো রেকর্ডিং।</p>
+    <p>কিন্তু বেশিরভাগ ফাইল পাসওয়ার্ড-সুরক্ষিত।</p>
+    <p>শুধু একটি ছোট অডিও চালু হলো।</p>
+    <p>সেখানে দু'জন মানুষের কথোপকথন শোনা গেল।</p>
+    <p>একজন বলছে—</p>
+    <p>"আসল বিলটা আলাদা রাখো। অডিটে অন্য কপি যাবে।"</p>
+    <p>আরেকজন উত্তর দিল—</p>
+    <p>"চিন্তা করবেন না, স্যার। সব ব্যবস্থা হয়ে যাবে।"</p>
+    <p>রেকর্ডিং মাত্র কুড়ি সেকেন্ডের।</p>
+    <p>কণ্ঠস্বর পরিষ্কার নয়।</p>
+    <p>কাউকে নিশ্চিতভাবে চেনা যায় না।</p>
+    <p>মেঘলা বুঝল, এটা একা যথেষ্ট প্রমাণ নয়।</p>
+    <p>ঠিক তখনই...</p>
+    <p>ঠক... ঠক... ঠক...</p>
+    <p>তার ঘরের দরজায় কেউ জোরে ধাক্কা দিল।</p>
+    <p>মেঘলার বুক কেঁপে উঠল।</p>
+    <p>ভাবির গলা।</p>
+    <p class="asd-dialogue">— "এত রাতে কী করছ? এখনও ঘুমাওনি?"</p>
+    <p>মেঘলা তাড়াতাড়ি ল্যাপটপ বন্ধ করে পেনড্রাইভ খুলে ফেলল।</p>
+    <p class="asd-dialogue">— "অফিসের কিছু কাজ ছিল। এখনই শুয়ে পড়ছি।"</p>
+    <p>শীলা আর কিছু না বলে চলে গেল।</p>
+    <p>মেঘলা গভীর শ্বাস নিল।</p>
+    <p>সে বুঝতে পারল—</p>
+    <p>এই পেনড্রাইভে গুরুত্বপূর্ণ তথ্য আছে।</p>
+    <p>কিন্তু পুরো সত্য নয়।</p>
+    <p>অনেক ফাইল এখনও পাসওয়ার্ডে বন্ধ।</p>
+    <p>পাসওয়ার্ড ছাড়া রহস্যের অর্ধেকই অন্ধকারে।</p>
+    <p>সে সাবধানে পেনড্রাইভটি ব্যাগে রেখে দিল।</p>
+    <p>এবার আর আলমারিতে নয়।</p>
+    <p>সবসময় নিজের সঙ্গে রাখবে।</p>
+    <p>পরদিন সকালে অফিসে পৌঁছাতেই সে দেখল—</p>
+    <p>কমলা দেবী আসেননি।</p>
+    <p>অনন্যা উদ্বিগ্ন মুখে এসে বলল,</p>
+    <p class="asd-dialogue">— "শুনেছ?"</p>
+    <p class="asd-dialogue">— "কী হয়েছে?"</p>
+    <p class="asd-dialogue">— "কমলাদির ফোন বন্ধ। আজ তিনি নতুন কর্মস্থলেও যোগ দেননি। কেউ তাঁর খোঁজ পাচ্ছে না।"</p>
+    <p>মেঘলার হাত থেকে ব্যাগটা প্রায় পড়ে গেল।</p>
+    <p>সে মনে মনে বলল—</p>
+    <p>"তাহলে কি... কমলাদির কোনো বিপদ হয়েছে?"</p>
+    <p>ঠিক সেই সময় রজত দত্ত নিজের কেবিনে বসে মুচকি হেসে বলল,</p>
+    <p>"এবার দেখো, সাক্ষী না থাকলে সত্যি কীভাবে হারিয়ে যায়।"</p>
+    <p class="asd-continued">চলবে...</p>
+    <button class="asd-bookmark-btn" onclick="asdToggleBookmark(30, this)">🔖 এই জায়গায় বুকমার্ক করুন</button>
+  </section>
+  <div class="asd-end-note">
+    পর্ব ২৬-৩০ শেষ।<br>
+    আপনার শেষ পঠিত জায়গা স্বয়ংক্রিয়ভাবে মনে রাখা হচ্ছে।
+    <div class="asd-nav-row">
+        <a class="btn" href="atmasamman-part5.html">← আগের পর্ব (২১-২৫)</a>
+        <a class="btn toc" href="index-atmasamman.html">📖 সুচীপত্র</a>
+        <a class="btn" href="atmasamman-part7.html">পরের পর্ব (৩১-৩৫) →</a>
+      </div>
+  </div>
+
+</main>
+
+<!-- ---------- Floating control bar ---------- -->
+<div class="asd-controlbar">
+  <div class="asd-controlbar-row">
+    <button class="asd-play-btn" id="asd-play-btn" onclick="asdTogglePlay()">▶</button>
+    <div class="asd-status" id="asd-status">
+      পড়া শুরু করতে প্লে চাপুন
+      <small id="asd-status-sub">গতি: ১.০x</small>
+    </div>
+    <button class="asd-settings-btn" onclick="asdOpenSettings()">⚙</button>
+  </div>
+</div>
+
+<!-- ---------- Settings panel ---------- -->
+<div class="asd-settings-overlay" id="asd-settings-overlay" onclick="asdCloseSettings()"></div>
+<div class="asd-settings-panel" id="asd-settings-panel">
+  <div class="asd-settings-handle"></div>
+  <h3>ভয়েস সেটিংস</h3>
+
+  <div class="asd-field">
+    <label>কণ্ঠস্বর বেছে নিন</label>
+    <select id="asd-voice-select"></select>
+  </div>
+
+  <div class="asd-field">
+    <label>পড়ার গতি — <span id="asd-speed-label">১.০x</span></label>
+    <div class="asd-speed-row">
+      <span style="font-size:12px;color:var(--asd-ash);">ধীর</span>
+      <input type="range" id="asd-speed-range" min="0.5" max="1.75" step="0.05" value="1">
+      <span style="font-size:12px;color:var(--asd-ash);">দ্রুত</span>
+    </div>
+    <div class="asd-speed-presets">
+      <button data-speed="0.75" onclick="asdSetSpeedPreset(0.75)">০.৭৫x</button>
+      <button data-speed="1" class="active" onclick="asdSetSpeedPreset(1)">১.০x</button>
+      <button data-speed="1.25" onclick="asdSetSpeedPreset(1.25)">১.২৫x</button>
+      <button data-speed="1.5" onclick="asdSetSpeedPreset(1.5)">১.৫x</button>
+    </div>
+  </div>
+
+  <button class="asd-close-panel" onclick="asdCloseSettings()">সেভ করে বন্ধ করুন</button>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var STORAGE_PREFIX = "atmasamman_";
+  var TOTAL_CHAPTERS_THIS_PAGE = 5;
+
+  /* ---------------- Android WebView back-button handling ---------------- */
+  history.pushState({asdPage:true}, "", location.href);
+  window.addEventListener("popstate", function(){
+    if(document.getElementById("asd-settings-panel").classList.contains("open")){
+      asdCloseSettings();
+      history.pushState({asdPage:true}, "", location.href);
+    } else {
+      // let a real back happen; re-push once so a second back exits normally
+    }
+  });
+  window.asdGoBack = function(){
+    if(document.referrer){ history.back(); }
+    else { window.location.href = "index-atmasamman.html"; }
+  };
+
+  /* ---------------- Chapter nav highlight on scroll ---------------- */
+  var chapters = Array.prototype.slice.call(document.querySelectorAll(".asd-chapter"));
+  var chips = document.querySelectorAll(".asd-chip");
+  var label = document.getElementById("asd-current-chapter-label");
+  var helmetFill = document.getElementById("asd-helmet-fill");
+  var HELMET_CIRC = 100.5;
+
+  function currentChapterEl(){
+    var mid = window.scrollY + 140;
+    var found = chapters[0];
+    for(var i=0;i<chapters.length;i++){
+      if(chapters[i].offsetTop <= mid) found = chapters[i];
+    }
+    return found;
+  }
+
+  function updateChrome(){
+    var ch = currentChapterEl();
+    var num = ch.getAttribute("data-chnum");
+    var title = ch.getAttribute("data-chtitle");
+    label.textContent = "পর্ব " + num + " · " + title;
+    chips.forEach(function(c){
+      c.classList.toggle("active", c.getAttribute("data-ch") === num);
+    });
+    // progress = how far through the whole page we've scrolled
+    var docH = document.body.scrollHeight - window.innerHeight;
+    var pct = docH > 0 ? Math.min(1, window.scrollY / docH) : 0;
+    helmetFill.style.strokeDashoffset = (HELMET_CIRC * (1 - pct)).toFixed(1);
+  }
+  window.addEventListener("scroll", updateChrome, {passive:true});
+  updateChrome();
+
+  window.asdScrollToChapter = function(n){
+    var el = document.getElementById("chapter-" + n);
+    if(el){ window.scrollTo({top: el.offsetTop - 100, behavior:"smooth"}); }
+  };
+
+  /* ---------------- Bookmarking ---------------- */
+  function bookmarkKey(){ return STORAGE_PREFIX + "part6_bookmark"; }
+
+  function saveBookmark(chapterNum, scrollY){
+    try{
+      localStorage.setItem(bookmarkKey(), JSON.stringify({chapter:chapterNum, scrollY:scrollY, ts:Date.now()}));
+    }catch(e){}
+  }
+  function getBookmark(){
+    try{
+      var raw = localStorage.getItem(bookmarkKey());
+      return raw ? JSON.parse(raw) : null;
+    }catch(e){ return null; }
+  }
+
+  window.asdToggleBookmark = function(chapterNum, btn){
+    var bm = getBookmark();
+    if(bm && bm.chapter === chapterNum){
+      localStorage.removeItem(bookmarkKey());
+      btn.classList.remove("saved");
+      btn.textContent = "🔖 এই জায়গায় বুকমার্ক করুন";
+    } else {
+      var chEl = document.getElementById("chapter-" + chapterNum);
+      saveBookmark(chapterNum, chEl.offsetTop);
+      document.querySelectorAll(".asd-bookmark-btn").forEach(function(b){
+        b.classList.remove("saved");
+        b.textContent = "🔖 এই জায়গায় বুকমার্ক করুন";
+      });
+      btn.classList.add("saved");
+      btn.textContent = "✓ বুকমার্ক করা হয়েছে";
+    }
+  };
+
+  window.asdResumeReading = function(){
+    var bm = getBookmark();
+    if(bm){ window.scrollTo({top: bm.scrollY - 90, behavior:"smooth"}); }
+    document.getElementById("asd-resume-banner").style.display = "none";
+  };
+
+  (function initResumeBanner(){
+    var bm = getBookmark();
+    if(bm && bm.chapter){
+      var banner = document.getElementById("asd-resume-banner");
+      document.getElementById("asd-resume-text").textContent =
+        "আপনি পর্ব " + bm.chapter + "-এ পড়া থামিয়েছিলেন। চালিয়ে যাবেন?";
+      banner.style.display = "flex";
+      // reflect saved state on the matching bookmark button
+      var btn = document.querySelector('.asd-chapter[data-chnum="'+bm.chapter+'"] .asd-bookmark-btn');
+      if(btn){ btn.classList.add("saved"); btn.textContent = "✓ বুকমার্ক করা হয়েছে"; }
+    }
+  })();
+
+  /* ---------------- Voice reading (Web Speech API) ---------------- */
+  var synth = window.speechSynthesis;
+  var isPlaying = false;
+  var isPaused = false;
+  var currentUtteranceIndex = 0;
+  var allParagraphs = [];
+  var selectedVoice = null;
+  var speechRate = 1;
+
+  function collectParagraphs(){
+    allParagraphs = [];
+    chapters.forEach(function(ch){
+      var ps = ch.querySelectorAll("p:not(.asd-continued)");
+      ps.forEach(function(p){ allParagraphs.push(p); });
+    });
+  }
+  collectParagraphs();
+
+  function loadVoices(){
+    var voices = synth.getVoices();
+    var select = document.getElementById("asd-voice-select");
+    select.innerHTML = "";
+    if(!voices.length){
+      var opt = document.createElement("option");
+      opt.textContent = "কণ্ঠস্বর লোড হচ্ছে...";
+      select.appendChild(opt);
+      return;
+    }
+    var bn = voices.filter(function(v){ return v.lang && v.lang.toLowerCase().indexOf("bn") === 0; });
+    var others = voices.filter(function(v){ return !(v.lang && v.lang.toLowerCase().indexOf("bn") === 0); });
+    var ordered = bn.concat(others);
+    ordered.forEach(function(v, i){
+      var opt = document.createElement("option");
+      opt.value = v.name;
+      var tag = v.lang.toLowerCase().indexOf("bn") === 0 ? " ★ বাংলা" : " (" + v.lang + ")";
+      opt.textContent = v.name + tag;
+      select.appendChild(opt);
+    });
+    var savedVoiceName = localStorage.getItem(STORAGE_PREFIX + "voice");
+    var savedVoice = ordered.find(function(v){ return v.name === savedVoiceName; });
+    selectedVoice = savedVoice || bn[0] || ordered[0] || null;
+    if(selectedVoice) select.value = selectedVoice.name;
+    updateStatusIdle();
+  }
+  if(typeof speechSynthesis !== "undefined"){
+    loadVoices();
+    speechSynthesis.onvoiceschanged = loadVoices;
+  }
+
+  document.getElementById("asd-voice-select").addEventListener("change", function(e){
+    var voices = synth.getVoices();
+    selectedVoice = voices.find(function(v){ return v.name === e.target.value; }) || selectedVoice;
+    try{ localStorage.setItem(STORAGE_PREFIX + "voice", selectedVoice ? selectedVoice.name : ""); }catch(err){}
+  });
+
+  var speedRange = document.getElementById("asd-speed-range");
+  var speedLabel = document.getElementById("asd-speed-label");
+  var statusSub = document.getElementById("asd-status-sub");
+
+  function setSpeed(val){
+    speechRate = parseFloat(val);
+    speedRange.value = speechRate;
+    speedLabel.textContent = speechRate.toFixed(2).replace(/0$/,'') + "x";
+    statusSub.textContent = "গতি: " + speechRate.toFixed(2).replace(/0$/,'') + "x";
+    document.querySelectorAll(".asd-speed-presets button").forEach(function(b){
+      b.classList.toggle("active", Math.abs(parseFloat(b.getAttribute("data-speed")) - speechRate) < 0.01);
+    });
+    try{ localStorage.setItem(STORAGE_PREFIX + "rate", speechRate); }catch(e){}
+  }
+  window.asdSetSpeedPreset = function(v){ setSpeed(v); };
+  speedRange.addEventListener("input", function(e){ setSpeed(e.target.value); });
+
+  (function initSpeed(){
+    var saved = localStorage.getItem(STORAGE_PREFIX + "rate");
+    setSpeed(saved ? saved : 1);
+  })();
+
+  var playBtn = document.getElementById("asd-play-btn");
+  var statusEl = document.getElementById("asd-status");
+
+  function updateStatusIdle(){
+    statusEl.childNodes[0].textContent = "পড়া শুরু করতে প্লে চাপুন";
+  }
+
+  function clearHighlight(){
+    document.querySelectorAll(".asd-speaking").forEach(function(p){ p.classList.remove("asd-speaking"); });
+  }
+
+  function speakFrom(index){
+    if(!synth){ alert("এই ব্রাউজারে ভয়েস রিডিং সমর্থিত নয়।"); return; }
+    if(index >= allParagraphs.length){
+      isPlaying = false;
+      playBtn.textContent = "▶";
+      clearHighlight();
+      statusEl.childNodes[0].textContent = "পড়া সম্পন্ন হয়েছে";
+      return;
+    }
+    currentUtteranceIndex = index;
+    var p = allParagraphs[index];
+    clearHighlight();
+    p.classList.add("asd-speaking");
+    p.scrollIntoView({behavior:"smooth", block:"center"});
+
+    var utter = new SpeechSynthesisUtterance(p.textContent);
+    utter.lang = "bn-IN";
+    if(selectedVoice) utter.voice = selectedVoice;
+    utter.rate = speechRate;
+    statusEl.childNodes[0].textContent = "পড়া হচ্ছে... (" + (index+1) + "/" + allParagraphs.length + ")";
+
+    utter.onend = function(){
+      if(isPlaying && !isPaused){ speakFrom(index + 1); }
+    };
+    utter.onerror = function(){
+      if(isPlaying && !isPaused){ speakFrom(index + 1); }
+    };
+    synth.speak(utter);
+  }
+
+  function findNearestParagraphIndex(){
+    var mid = window.scrollY + 140;
+    var idx = 0;
+    for(var i=0;i<allParagraphs.length;i++){
+      if(allParagraphs[i].offsetTop <= mid) idx = i;
+    }
+    return idx;
+  }
+
+  window.asdTogglePlay = function(){
+    if(!synth){ alert("এই ব্রাউজারে ভয়েস রিডিং সমর্থিত নয়।"); return; }
+    if(!isPlaying){
+      isPlaying = true;
+      isPaused = false;
+      playBtn.textContent = "⏸";
+      var startIdx = allParagraphs.indexOf(document.querySelector(".asd-speaking")) ;
+      if(startIdx < 0) startIdx = findNearestParagraphIndex();
+      speakFrom(startIdx);
+    } else {
+      isPlaying = false;
+      isPaused = false;
+      synth.cancel();
+      playBtn.textContent = "▶";
+      statusEl.childNodes[0].textContent = "থামানো হয়েছে";
+    }
+  };
+
+  /* ---------------- Settings panel open/close ---------------- */
+  window.asdOpenSettings = function(){
+    document.getElementById("asd-settings-panel").classList.add("open");
+    document.getElementById("asd-settings-overlay").classList.add("open");
+  };
+  window.asdCloseSettings = function(){
+    document.getElementById("asd-settings-panel").classList.remove("open");
+    document.getElementById("asd-settings-overlay").classList.remove("open");
+  };
+
+  /* Save reading progress periodically even without explicit bookmark tap */
+  window.addEventListener("beforeunload", function(){
+    var ch = currentChapterEl();
+    if(ch){
+      var num = parseInt(ch.getAttribute("data-chnum"), 10);
+      // Only auto-save if user hasn't manually set a bookmark already ahead of this point
+      var existing = getBookmark();
+      if(!existing){ saveBookmark(num, window.scrollY); }
+    }
+  });
+
+})();
+</script>
+
+</body>
+</html>
