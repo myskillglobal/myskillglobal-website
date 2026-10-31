@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Road Safety Quiz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Road Safety Quiz – Rules, Explanations & Practice | MySkillGame</title>
+<meta name="description" content="Free road safety quiz in English, Hindi and Bengali, with explanations of helmets, seatbelts, speed limits, blind spots, emergency numbers and an FAQ.">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -100,12 +101,10 @@ body { padding-bottom:140px;
        MAIN QUIZ AREA
     ═══════════════════════════════ */
 #quiz-root{
-  padding-top:58px;
-  padding-bottom:140px;
-  min-height:100vh;
+  padding-top:8px;
+  padding-bottom:20px;
   color:#e8eaf0;
 }
-    }
 
     /* Header */
     .quiz-header { padding: 14px 14px 8px; display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap;position:sticky;top:0;z-index:200;background:#0a0e1a;padding-top:12px; }
@@ -253,6 +252,7 @@ body { padding-bottom:140px;
     .result-msg { color: #8890a4; font-size: 13.5px; line-height: 1.6; margin-bottom: 18px; padding: 0 10px; }
     .restart-btn { background: #f5c518; color: #0a0e1a; border: none; border-radius: 50px; padding: 13px 38px; font-family: 'Baloo Da 2', cursive; font-size: 15px; font-weight: 800; cursor: pointer; touch-action: manipulation; }
     .cert-box{max-width:340px;margin:14px auto 0}
+    .cert-privacy{font-size:12px;line-height:1.6;color:#aab1c5;background:#0d1420;border-left:3px solid #7fc4ff;border-radius:0 8px 8px 0;padding:8px 10px;margin-bottom:10px;text-align:left}
     .cert-note{font-size:14px;margin-bottom:10px;color:#f5c518;line-height:1.5}
     .cert-in{display:block;width:100%;margin:8px 0;padding:12px 14px;border-radius:12px;border:1.5px solid #ccd;font-size:15px;text-align:center;background:#fff;color:#0a0e1a}
     .cert-in:focus{outline:none;border-color:#f5c518}
@@ -268,7 +268,37 @@ body { padding-bottom:140px;
       .card-visual { max-height: 200px; }
       .card-visual .emoji-display { font-size: 58px; }
     }
+
+    /* ═══ STATIC CONTENT (readable without JavaScript) ═══ */
+    .L { display: none; }
+    .L.on { display: block; }
+    .info-wrap { max-width: 860px; margin: 0 auto; padding: 0 16px; color: #d6dae6; font-family: 'Hind Siliguri', sans-serif; line-height: 1.85; font-size: 16px; }
+    .info-hero { padding: 26px 0 10px; text-align: center; }
+    .info-hero h1 { font-family: 'Baloo Da 2', sans-serif; font-size: clamp(26px, 5vw, 38px); color: #f5c518; line-height: 1.3; margin-bottom: 10px; }
+    .info-hero p.lead { color: #aab1c5; font-size: 17px; }
+    .info-cta { display: inline-block; margin-top: 14px; background: #f5c518; color: #0a0e1a; font-weight: 700; padding: 10px 22px; border-radius: 24px; text-decoration: none; }
+    .info-sec { background: #131826; border: 1px solid #2a2f3e; border-radius: 16px; padding: 18px 18px 14px; margin: 18px 0; }
+    .info-sec h2 { font-family: 'Baloo Da 2', sans-serif; font-size: 22px; color: #f5c518; margin-bottom: 8px; line-height: 1.4; }
+    .info-sec h3 { font-size: 17px; color: #ffd966; margin: 14px 0 4px; }
+    .info-sec p { margin-bottom: 10px; }
+    .info-sec ul, .info-sec ol { margin: 6px 0 10px 22px; }
+    .info-sec li { margin-bottom: 6px; }
+    .info-sec a { color: #7fc4ff; }
+    .info-note { border-left: 4px solid #f5c518; background: rgba(245,197,24,.08); padding: 8px 12px; border-radius: 0 8px 8px 0; margin: 10px 0; }
+    .info-sec details { border-top: 1px solid #2a2f3e; padding: 8px 0; }
+    .info-sec details:first-of-type { border-top: none; }
+    .info-sec summary { cursor: pointer; font-weight: 600; color: #e8eaf0; }
+    .info-sec details p { margin: 6px 0 2px; }
+    .info-foot { text-align: center; color: #8890a4; font-size: 13px; padding: 6px 0 24px; }
+    .info-foot a { color: #aab1c5; margin: 0 8px; }
   </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Is this quiz free?","acceptedAnswer":{"@type":"Answer","text":"Yes. You can play with no registration and no payment."}},
+{"@type":"Question","name":"Can I play in another language?","acceptedAnswer":{"@type":"Answer","text":"Yes. You can play in English, Hindi or Bengali."}},
+{"@type":"Question","name":"Should I wear a helmet even for a short distance?","acceptedAnswer":{"@type":"Answer","text":"Yes. Most crashes happen close to home and at low speed, so the risk to your head is the same however short the trip."}}
+]}
+</script>
 </head>
 <body>
 
@@ -282,9 +312,337 @@ body { padding-bottom:140px;
   </div>
 </div>
 
-<!-- ═══ QUIZ ═══ -->
+<!-- ═══ INTRO (static HTML) ═══ -->
+<!-- ═══ INTRO: static HTML in 3 languages (English default) ═══ -->
+<div class="L L-en on" lang="en">
+<header class="info-wrap info-hero">
+  <h1>Road Safety Quiz</h1>
+  <p class="lead">Learn the rules that keep you safe on the road, then test yourself. Free, in English, Hindi and Bengali.</p>
+  <a class="info-cta" href="#quiz">Start the quiz ↓</a>
+</header>
+<div class="info-wrap">
+<section class="info-sec" id="about-en">
+  <h2>About this quiz</h2>
+  <p>Every year, a very large number of people are killed or seriously injured in road crashes. Many of these happen because of avoidable mistakes: riding without a helmet, not wearing a seatbelt, speeding, using a phone while driving, or not giving way to an ambulance.</p>
+  <p>This page is an educational initiative of <strong>MySkillGame</strong>. Students, parents, cyclists, drivers of vans, rickshaws and other vehicles, and everyday pedestrians can learn the basics of road safety in simple language. After each answer the quiz shows a short explanation, so you understand the reason instead of just memorising the answer.</p>
+  <p>If you score at least 25 marks, you can create a certificate with your name, school, district and country. These details are used to create the certificate and are also saved in our Google Sheets record of certificates issued. Children should enter them only with the permission of a parent or teacher. Providing them is optional; you do not need them to play the quiz.</p>
+</section>
+<section class="info-sec" id="goals-en">
+  <h2>What you will learn</h2>
+  <ul>
+    <li>What zebra crossings, STOP signs and speed limit signs mean and how to respond to them.</li>
+    <li>Why helmets, seatbelts and safe seating for children matter.</li>
+    <li>What a blind spot is and why staying beside or very close to a truck or bus is dangerous.</li>
+    <li>Why ambulances and fire engines must be given way first.</li>
+    <li>The risks of drunk driving, drowsy driving and using a mobile phone while driving.</li>
+    <li>Why licences, minimum driving ages and insurance matter.</li>
+    <li>How reflectors and lights protect slow vehicles such as bicycles and rickshaw-vans at night.</li>
+    <li>What to do, and which emergency number to call, if you see a crash.</li>
+  </ul>
+</section>
+<section class="info-sec" id="rules-en">
+  <h2>How to play</h2>
+  <ol>
+    <li>Choose your language with the buttons at the top of the quiz (বাংলা / हिंदी / English).</li>
+    <li>Each question has several options. Tap or click the one you think is correct.</li>
+    <li>You immediately see whether you were right, along with an explanation.</li>
+    <li>Each correct answer adds to your score. Questions and options are shuffled every time, so replaying is a fresh experience.</li>
+    <li>When all 60 questions are done you see your result. Score at least 25 marks to unlock the certificate; you can also play again at any time.</li>
+  </ol>
+  <div class="info-note">Tip: if you get one wrong, don't be discouraged. Read the explanation carefully; it is what will help you on the road.</div>
+</section>
+</div>
+</div>
+<div class="L L-hi" lang="hi">
+<header class="info-wrap info-hero">
+  <h1>सड़क सुरक्षा क्विज़</h1>
+  <p class="lead">सड़क पर सुरक्षित रहने के नियम सीखें, फिर खुद को परखें। हिंदी, अंग्रेज़ी और बंगला में बिल्कुल मुफ़्त।</p>
+  <a class="info-cta" href="#quiz">क्विज़ शुरू करें ↓</a>
+</header>
+<div class="info-wrap">
+<section class="info-sec" id="about-hi">
+  <h2>इस क्विज़ के बारे में</h2>
+  <p>हर साल बहुत से लोग सड़क दुर्घटनाओं में जान गँवाते हैं या गंभीर रूप से घायल होते हैं। इनमें से कई हादसे ऐसी गलतियों से होते हैं जिन्हें टाला जा सकता था: हेलमेट न पहनना, सीट बेल्ट न लगाना, तेज़ रफ़्तार, गाड़ी चलाते समय फ़ोन का इस्तेमाल, या एम्बुलेंस को रास्ता न देना।</p>
+  <p>यह पेज <strong>MySkillGame</strong> की एक शैक्षिक पहल है। विद्यार्थी, अभिभावक, साइकिल, वैन-रिक्शा या अन्य वाहन चलाने वाले और आम पैदल यात्री, सभी सरल भाषा में सड़क सुरक्षा की मूल बातें सीख सकते हैं। हर उत्तर के बाद एक छोटी व्याख्या दिखाई जाती है, ताकि उत्तर रटने की जगह कारण समझ में आए।</p>
+  <p>कम से कम 25 अंक पाने पर आप अपने नाम, स्कूल, ज़िले और देश के साथ सर्टिफ़िकेट बना सकते हैं। यह जानकारी सर्टिफ़िकेट बनाने में काम आती है और जारी सर्टिफ़िकेट के रिकॉर्ड के रूप में हमारी Google Sheets में भी सहेजी जाती है। बच्चे यह जानकारी अभिभावक या शिक्षक की अनुमति से ही दें। यह जानकारी देना वैकल्पिक है; क्विज़ खेलने के लिए इसकी ज़रूरत नहीं।</p>
+</section>
+<section class="info-sec" id="goals-hi">
+  <h2>आप इस क्विज़ से क्या सीखेंगे</h2>
+  <ul>
+    <li>ज़ेब्रा क्रॉसिंग, स्टॉप साइन और स्पीड लिमिट साइन का सही अर्थ और उनके अनुसार व्यवहार।</li>
+    <li>हेलमेट, सीट बेल्ट और बच्चों को सुरक्षित बैठाने का महत्व।</li>
+    <li>ब्लाइंड स्पॉट क्या है और ट्रक-बस के बगल में या बहुत पास रहना क्यों ख़तरनाक है।</li>
+    <li>एम्बुलेंस और फ़ायर सर्विस को पहले रास्ता क्यों देना चाहिए।</li>
+    <li>नशे में, नींद में और मोबाइल फ़ोन के साथ गाड़ी चलाने के जोखिम।</li>
+    <li>लाइसेंस, ड्राइविंग की न्यूनतम उम्र और बीमा का महत्व।</li>
+    <li>रात में साइकिल और वैन-रिक्शा जैसे धीमे वाहनों के लिए रिफ़्लेक्टर और लाइट की भूमिका।</li>
+    <li>हादसा देखने पर क्या करें और किस आपातकालीन नंबर पर फ़ोन करें।</li>
+  </ul>
+</section>
+<section class="info-sec" id="rules-hi">
+  <h2>क्विज़ खेलने के नियम</h2>
+  <ol>
+    <li>क्विज़ के ऊपर दिए भाषा-बटन (বাংলা / हिंदी / English) से अपनी भाषा चुनें।</li>
+    <li>हर प्रश्न के नीचे कई विकल्प होंगे। जो सही लगे उस पर टैप या क्लिक करें।</li>
+    <li>उत्तर देते ही पता चल जाता है कि सही हुआ या नहीं, और साथ में व्याख्या भी दिखती है।</li>
+    <li>हर सही उत्तर पर स्कोर बढ़ता है। प्रश्न और विकल्प हर बार बदले हुए क्रम में आते हैं, इसलिए दोबारा खेलना नया अनुभव होता है।</li>
+    <li>सभी 60 प्रश्न पूरे होने पर नतीजा दिखता है। सर्टिफ़िकेट के लिए कम से कम 25 अंक चाहिए; आप कभी भी दोबारा खेल सकते हैं।</li>
+  </ol>
+  <div class="info-note">सुझाव: गलत उत्तर हो जाए तो निराश न हों। व्याख्या ध्यान से पढ़ें, सड़क पर वही आपके काम आएगी।</div>
+</section>
+</div>
+</div>
+<div class="L L-bn" lang="bn">
+<header class="info-wrap info-hero">
+  <h1>সড়ক নিরাপত্তা কুইজ</h1>
+  <p class="lead">রাস্তায় নিরাপদ থাকার নিয়ম শিখুন, তারপর নিজেকে যাচাই করুন। বাংলা, হিন্দি ও ইংরেজিতে সম্পূর্ণ বিনামূল্যে।</p>
+  <a class="info-cta" href="#quiz">কুইজ শুরু করুন ↓</a>
+</header>
+<div class="info-wrap">
+<section class="info-sec" id="about-bn">
+  <h2>এই কুইজ সম্পর্কে</h2>
+  <p>ভারতে প্রতি বছর বহু মানুষ সড়ক দুর্ঘটনায় প্রাণ হারান বা গুরুতর আহত হন। এর বড় একটি অংশ ঘটে এমন ভুলের কারণে, যা সামান্য সচেতনতায় এড়ানো যেত: হেলমেট না পরা, সিটবেল্ট না বাঁধা, অতিরিক্ত গতি, গাড়ি চালানোর সময় ফোন ব্যবহার, বা অ্যাম্বুলেন্সকে পথ না দেওয়া।</p>
+  <p>এই পেজটি <strong>MySkillGame</strong>-এর একটি শিক্ষামূলক উদ্যোগ। এখানে ছাত্রছাত্রী, অভিভাবক, সাইকেল-টোটো-ভ্যান-রিকশা চালক এবং সাধারণ পথচারী, সবাই সহজ ভাষায় সড়ক নিরাপত্তার মূল বিষয়গুলো শিখতে পারবেন। কুইজের প্রতিটি প্রশ্নের উত্তরের সঙ্গে একটি সংক্ষিপ্ত ব্যাখ্যা দেখানো হয়, যাতে শুধু উত্তর মুখস্থ না করে কারণটাও বোঝা যায়।</p>
+  <p>কমপক্ষে ২৫ নম্বর পেলে নাম, স্কুল, জেলা ও দেশ দিয়ে একটি সনদ তৈরি করা যায়। এই তথ্য সনদ তৈরির জন্য ব্যবহৃত হয় এবং ইস্যু করা সনদের রেকর্ড হিসেবে আমাদের Google Sheets-এও সংরক্ষিত হয়। ছোটোরা অভিভাবক বা শিক্ষকের অনুমতি নিয়ে তথ্য দেবে। তথ্য দেওয়া ঐচ্ছিক; কুইজ খেলতে এসব লাগে না।</p>
+</section>
+<section class="info-sec" id="goals-bn">
+  <h2>এই কুইজ থেকে আপনি কী শিখবেন</h2>
+  <ul>
+    <li>জেব্রা ক্রসিং, স্টপ সাইন ও গতিসীমা চিহ্নের সঠিক অর্থ ও ব্যবহার।</li>
+    <li>হেলমেট, সিটবেল্ট এবং শিশুদের নিরাপদে বসানোর গুরুত্ব।</li>
+    <li>বড় গাড়ির ব্লাইন্ড স্পট কী এবং কেন ট্রাক-বাসের পাশে বা খুব কাছে থাকা বিপজ্জনক।</li>
+    <li>অ্যাম্বুলেন্স ও দমকলকে কেন আগে পথ দিতে হয়।</li>
+    <li>মদ্যপান, ঘুম-ঘুম ভাব ও মোবাইল ফোন নিয়ে গাড়ি চালানোর ঝুঁকি।</li>
+    <li>লাইসেন্স, বিমা ও নাবালকের গাড়ি চালানোর আইনি ও আর্থিক পরিণতি।</li>
+    <li>রাতে সাইকেল, ভ্যান-রিকশার মতো ধীরগতির যানে রিফ্লেক্টরের ভূমিকা।</li>
+    <li>দুর্ঘটনা দেখলে প্রথমে কী করবেন এবং কোন জরুরি নম্বরে ফোন করবেন।</li>
+  </ul>
+</section>
+<section class="info-sec" id="rules-bn">
+  <h2>কুইজ খেলার নিয়ম ও নির্দেশনা</h2>
+  <ol>
+    <li>পেজের উপরের ভাষা-বোতাম (বাংলা / हिंदी / English) থেকে পছন্দের ভাষা বেছে নিন।</li>
+    <li>প্রতিটি প্রশ্নের নিচে কয়েকটি বিকল্প থাকবে। সঠিক মনে হওয়া বিকল্পে ট্যাপ বা ক্লিক করুন।</li>
+    <li>উত্তর দেওয়ার সঙ্গে সঙ্গে জানতে পারবেন সঠিক হয়েছে কি না, এবং কেন, সেই ব্যাখ্যাও দেখা যাবে।</li>
+    <li>প্রতিটি সঠিক উত্তরে স্কোর বাড়বে। প্রশ্নের ক্রম ও বিকল্পের ক্রম প্রতিবার এলোমেলো হয়, তাই আবার খেললে নতুন অভিজ্ঞতা হবে।</li>
+    <li>৬০টি প্রশ্ন শেষ হলে ফলাফল দেখা যাবে। সনদ পেতে কমপক্ষে ২৫ নম্বর দরকার; চাইলে যেকোনো সময় নতুন করে খেলতে পারবেন।</li>
+  </ol>
+  <div class="info-note">পরামর্শ: ভুল উত্তর হলে হতাশ হবেন না। ব্যাখ্যাটি মন দিয়ে পড়ুন, রাস্তায় সেটাই আপনার কাজে লাগবে।</div>
+</section>
+</div>
+</div>
+
+<div class="info-wrap">
+<section id="quiz" aria-label="Road Safety Quiz">
+<noscript>
+  <div class="info-sec"><p>JavaScript must be enabled in your browser to play the quiz. You can still read all the educational information on this page without it. / কুইজটি চালাতে JavaScript চালু থাকা দরকার। / क्विज़ चलाने के लिए JavaScript चालू होना चाहिए।</p></div>
+</noscript>
 <div id="quiz-root">
   <div id="quiz-container"></div>
+</div>
+</section>
+</div>
+
+<!-- ═══ EXPLANATIONS + FAQ: static HTML in 3 languages ═══ -->
+<div class="L L-en on" lang="en">
+<div class="info-wrap">
+<section class="info-sec" id="safety-guide-en">
+  <h2>Road safety basics, explained simply</h2>
+  <h3>1. Helmets: protecting the head</h3>
+  <p>Head injuries are the most likely to be fatal in a crash. A good-quality helmet, worn correctly, absorbs impact and greatly reduces head injury. On a motorcycle or scooter, <strong>both the rider and the pillion passenger</strong> should wear one. Buy a helmet that carries the relevant national standard mark (in India, ISI/BIS) and fasten the chin strap properly; a loose strap lets the helmet come off in a crash.</p>
+  <h3>2. Seatbelts: for everyone, front and back</h3>
+  <p>In sudden braking or a collision your body keeps moving forward. A seatbelt holds you in the seat and reduces chest and head injuries. Not only the driver but rear passengers should buckle up too. Children should not be held on a lap; use an age- and height-appropriate child seat or belt.</p>
+  <h3>3. Speed limits: why slow down even on an empty road</h3>
+  <p>When speed doubles, the distance needed to stop more than doubles and the force of impact rises many times over. Even an empty-looking road can suddenly have an animal, a child, or another vehicle emerging from behind a bend. Speed limits are set by considering the road's design, bends and pedestrian activity.</p>
+  <h3>4. Zebra crossings and STOP signs</h3>
+  <p>At a zebra crossing, vehicles should slow down and stop when a pedestrian wants to cross. At a STOP sign you must <strong>come to a complete halt</strong>, look in all directions, and move only when it is safe. Just slowing down and rolling through is not enough.</p>
+  <h3>5. Safe distance and blind spots</h3>
+  <p>Drivers of trucks and buses cannot see smaller vehicles right beside them, very close in front, or directly behind. These areas are called blind spots. Do not stay alongside big vehicles for long, and keep a good distance. A simple rule is to keep at least a three-second gap behind the vehicle ahead: when it passes a fixed point, you should take more than three seconds to reach the same point.</p>
+  <h3>6. Giving way to ambulances and fire engines</h3>
+  <p>For an emergency vehicle every minute can make the difference between life and death. When you hear a siren, safely pull over to the side of the road (to the left in India) and clear the way. Do not follow closely behind an ambulance.</p>
+  <h3>7. Mobile phones, alcohol and fatigue</h3>
+  <p>Holding a phone while driving takes your eyes, hands and attention off the road. Alcohol slows reactions and weakens judgement. Driving while sleepy is almost as dangerous. If your eyes feel heavy, stop somewhere safe and rest. Racing or competing with other vehicles is always risky.</p>
+  <h3>8. Licences, minimum ages and insurance</h3>
+  <p>A valid driving licence shows that you have been trained and know the rules. The <strong>minimum age for driving differs by country, state, type of vehicle and licence category</strong>, and can change over time, so always follow the current law where you live. Driving below the required age or without the required licence increases risk because of lack of training and experience, and can also have legal consequences.</p>
+  <p>Vehicle insurance helps reduce the financial burden after a crash. Whether a claim can be rejected or limited if the driver was underage or unlicensed depends on the policy terms and the applicable law. Term life insurance can also be considered for your family's security. For specific rules and penalties, check the latest information from your country's transport authority or your insurer.</p>
+  <h3>9. Visibility at night: reflectors and lights</h3>
+  <p>Slow vehicles such as bicycles, rickshaw-vans and bullock carts without rear and side reflectors or lights cannot be seen by drivers coming from behind in the dark. This matters even more in foggy seasons.</p>
+  <h3>10. What to keep in the vehicle, and mechanical care</h3>
+  <ul>
+    <li>A first-aid kit and drinking water.</li>
+    <li>A spare key stored safely (not inside the vehicle or in an obvious place).</li>
+    <li>For CNG vehicles, regular checks for gas leaks, since leaking gas can cause fires.</li>
+    <li>For electric vehicles, a good-quality, properly installed charger.</li>
+    <li>Wearing shoes while driving, so your feet don't slip off the pedals.</li>
+  </ul>
+  <h3>11. What to do if you see a crash</h3>
+  <ol>
+    <li>Stay safe yourself and make sure no further crash happens at the scene.</li>
+    <li>Call the emergency number without delay, for example <strong>112</strong> (India's national emergency number). Many Indian states also use <strong>108</strong> for ambulances and <strong>1033</strong> for national highway help. Numbers differ by country and state.</li>
+    <li>Do not move an injured person unnecessarily, especially if a neck or spine injury is possible.</li>
+    <li>In India, there are provisions that protect ordinary people who help crash victims from legal harassment (Good Samaritan rules). Other countries have their own rules.</li>
+  </ol>
+  <div class="info-note">This page is for awareness only and is not legal or medical advice. In an emergency, always seek trained medical and official help.</div>
+</section>
+<section class="info-sec" id="faq-en">
+  <h2>Frequently asked questions (FAQ)</h2>
+  <details open><summary>Is this quiz free?</summary><p>Yes. You can play with no registration and no payment. Creating a certificate asks for your name, school, district and country (optional); playing the quiz needs nothing.</p></details>
+  <details><summary>Who is it for?</summary><p>School students, teachers, parents, new drivers and anyone who uses the road. The language is kept simple so that learners in rural areas can follow it too.</p></details>
+  <details><summary>How many questions are there, and are they the same every time?</summary><p>The quiz has questions on many road safety topics. Questions and options are shuffled each time, so every attempt feels different.</p></details>
+  <details><summary>Can I play in another language?</summary><p>Yes. You can play in English, Hindi or Bengali, and switch language even in the middle of a game.</p></details>
+  <details><summary>Is it safe for three people to ride a scooter?</summary><p>No. Carrying more than the permitted number of passengers reduces balance and braking ability. It is also illegal in most countries and states, so check the rules where you live.</p></details>
+  <details><summary>Should I wear a helmet even for a short distance?</summary><p>Yes. Most crashes happen close to home, on familiar roads and at low speed. The risk to your head is the same however short the trip.</p></details>
+  <details><summary>Is the information on this page legal advice?</summary><p>No. It is for general awareness and education. Laws, age limits and penalties differ by country and state and can change, so consult the latest official guidance for your country.</p></details>
+</section>
+</div>
+<footer class="info-wrap info-foot">
+  <p>&copy; MySkillGame, an educational initiative, Dhanicha High School (H.S.), Chakdaha, Nadia, West Bengal, India</p>
+  <p><a href="./">Home</a></p>
+</footer>
+</div>
+<div class="L L-hi" lang="hi">
+<div class="info-wrap">
+<section class="info-sec" id="safety-guide-hi">
+  <h2>सड़क सुरक्षा की मूल बातें: सरल व्याख्या</h2>
+  <h3>1. हेलमेट: सिर की सुरक्षा</h3>
+  <p>दुर्घटना में सिर की चोट सबसे ज़्यादा जानलेवा होती है। सही तरीके से पहना गया अच्छी गुणवत्ता का हेलमेट झटके को सोखकर सिर की चोट काफ़ी कम करता है। मोटरसाइकिल या स्कूटर पर <strong>चालक और पीछे बैठा व्यक्ति, दोनों</strong> हेलमेट पहनें। संबंधित राष्ट्रीय मानक चिह्न (भारत में ISI/BIS) वाला हेलमेट लें और चिन-स्ट्रैप ठीक से बाँधें; ढीला स्ट्रैप हादसे में हेलमेट खुल जाने देता है।</p>
+  <h3>2. सीट बेल्ट: आगे और पीछे, सबके लिए</h3>
+  <p>अचानक ब्रेक या टक्कर में शरीर आगे की ओर झटके से जाता है। सीट बेल्ट शरीर को सीट पर थामे रखती है और छाती व सिर की चोट घटाती है। केवल चालक ही नहीं, पीछे बैठे यात्री भी बेल्ट लगाएँ। बच्चों को गोद में न बैठाकर उम्र और कद के अनुसार चाइल्ड सीट या बेल्ट में बैठाएँ।</p>
+  <h3>3. गति सीमा: ख़ाली सड़क पर भी धीमे क्यों चलें</h3>
+  <p>रफ़्तार दोगुनी होने पर रुकने की दूरी दोगुनी से भी ज़्यादा हो जाती है और टक्कर की ताकत कई गुना बढ़ जाती है। ख़ाली दिखती सड़क पर भी अचानक जानवर, बच्चा या मोड़ के पीछे से दूसरा वाहन आ सकता है। गति सीमा सड़क की बनावट, मोड़ और लोगों की आवाजाही को देखकर तय की जाती है।</p>
+  <h3>4. ज़ेब्रा क्रॉसिंग और स्टॉप साइन</h3>
+  <p>ज़ेब्रा क्रॉसिंग पर पैदल यात्री सड़क पार करना चाहे तो वाहन को धीमा होकर रुकना चाहिए। स्टॉप साइन पर गाड़ी <strong>पूरी तरह रोकनी</strong> होती है, चारों ओर देखना होता है, और सुरक्षित होने पर ही आगे बढ़ना होता है। सिर्फ़ रफ़्तार घटाकर निकल जाना काफ़ी नहीं।</p>
+  <h3>5. सुरक्षित दूरी और ब्लाइंड स्पॉट</h3>
+  <p>ट्रक और बस के चालक को बगल में, बहुत पास आगे या ठीक पीछे चल रहे छोटे वाहन शीशे में नहीं दिखते। इन हिस्सों को ब्लाइंड स्पॉट कहते हैं। बड़े वाहन के बगल में ज़्यादा देर न रहें और पर्याप्त दूरी रखें। आगे वाली गाड़ी से कम से कम तीन सेकंड का अंतर रखना एक आसान नियम है: आगे की गाड़ी किसी निश्चित बिंदु से गुज़रे तो आपको उस बिंदु तक पहुँचने में तीन सेकंड से ज़्यादा लगना चाहिए।</p>
+  <h3>6. एम्बुलेंस और फ़ायर सर्विस को रास्ता देना</h3>
+  <p>आपातकालीन वाहन के लिए हर मिनट ज़िंदगी और मौत का फ़र्क बन सकता है। सायरन सुनते ही सुरक्षित तरीके से सड़क के किनारे (भारत में बाईं ओर) रुककर रास्ता ख़ाली करें। एम्बुलेंस के ठीक पीछे चिपककर न चलें।</p>
+  <h3>7. मोबाइल फ़ोन, शराब और थकान</h3>
+  <p>गाड़ी चलाते समय फ़ोन पकड़ने से आँख, हाथ और ध्यान, तीनों सड़क से हट जाते हैं। शराब से प्रतिक्रिया धीमी और निर्णय कमज़ोर हो जाता है। नींद या थकान में चलाना भी लगभग उतना ही ख़तरनाक है। आँखें भारी लगें तो किसी सुरक्षित जगह रुककर आराम करें। रेस लगाना हमेशा जोखिम भरा है।</p>
+  <h3>8. लाइसेंस, न्यूनतम उम्र और बीमा</h3>
+  <p>वैध ड्राइविंग लाइसेंस दिखाता है कि आपने प्रशिक्षण लिया है और नियम जानते हैं। गाड़ी चलाने की <strong>न्यूनतम उम्र देश, राज्य, वाहन के प्रकार और लाइसेंस की श्रेणी के अनुसार अलग-अलग</strong> होती है और समय के साथ बदल भी सकती है, इसलिए अपने यहाँ का वर्तमान कानून ही मानें। तय उम्र से पहले या ज़रूरी लाइसेंस के बिना चलाने पर प्रशिक्षण और अनुभव की कमी से जोखिम बढ़ता है और कानूनी परिणाम भी हो सकते हैं।</p>
+  <p>वाहन बीमा दुर्घटना के बाद आर्थिक बोझ कम करने में मदद करता है। चालक नाबालिग या बिना लाइसेंस का हो तो बीमा दावा अस्वीकृत या सीमित हो सकता है या नहीं, यह पॉलिसी की शर्तों और लागू कानून पर निर्भर करता है। परिवार की सुरक्षा के लिए टर्म लाइफ़ इंश्योरेंस पर भी विचार किया जा सकता है। विशिष्ट नियमों और जुर्मानों के लिए अपने देश के परिवहन प्राधिकरण या बीमा कंपनी की ताज़ा जानकारी देखें।</p>
+  <h3>9. रात में दिखाई देना: रिफ़्लेक्टर और लाइट</h3>
+  <p>साइकिल, वैन-रिक्शा और बैलगाड़ी जैसे धीमे वाहनों में पीछे और बगल में रिफ़्लेक्टर या लाइट न हो तो अँधेरे में पीछे से आता चालक उन्हें देख नहीं पाता। कोहरे के मौसम में यह और भी ज़रूरी है।</p>
+  <h3>10. वाहन में क्या रखें, और तकनीकी सावधानियाँ</h3>
+  <ul>
+    <li>फ़र्स्ट-एड किट और पीने का पानी।</li>
+    <li>डुप्लीकेट चाबी सुरक्षित जगह पर (वाहन के अंदर या साफ़ दिखने वाली जगह पर नहीं)।</li>
+    <li>सीएनजी वाहनों में गैस रिसाव की नियमित जाँच, क्योंकि गैस जमा होने से आग का ख़तरा रहता है।</li>
+    <li>इलेक्ट्रिक वाहन में अच्छी गुणवत्ता का और ठीक से लगा चार्जर।</li>
+    <li>गाड़ी चलाते समय जूते पहनना, ताकि पैर पैडल से फिसले नहीं।</li>
+  </ul>
+  <h3>11. हादसा देखें तो क्या करें</h3>
+  <ol>
+    <li>ख़ुद सुरक्षित रहें और ध्यान रखें कि मौके पर कोई और हादसा न हो।</li>
+    <li>बिना देर किए आपातकालीन नंबर पर फ़ोन करें, जैसे <strong>112</strong> (भारत का राष्ट्रीय आपातकालीन नंबर)। भारत के कई राज्यों में एम्बुलेंस के लिए <strong>108</strong> और राष्ट्रीय राजमार्ग सहायता के लिए <strong>1033</strong> भी चलता है। नंबर देश और राज्य के अनुसार अलग हो सकते हैं।</li>
+    <li>घायल को बिना ज़रूरत हिलाएँ नहीं, ख़ासकर गर्दन या रीढ़ की चोट का शक हो तो।</li>
+    <li>भारत में हादसे के घायलों की मदद करने वाले आम लोगों को कानूनी परेशानी से बचाने के प्रावधान हैं (गुड सेमेरिटन नियम)। अन्य देशों के अपने नियम होते हैं।</li>
+  </ol>
+  <div class="info-note">इस पेज की जानकारी केवल जागरूकता के लिए है, यह कानूनी या चिकित्सकीय सलाह का विकल्प नहीं है। आपातकाल में प्रशिक्षित चिकित्सक और प्रशासन की मदद अवश्य लें।</div>
+</section>
+<section class="info-sec" id="faq-hi">
+  <h2>अक्सर पूछे जाने वाले प्रश्न (FAQ)</h2>
+  <details open><summary>क्या यह क्विज़ मुफ़्त है?</summary><p>हाँ। बिना रजिस्ट्रेशन और बिना पैसे के खेल सकते हैं। सर्टिफ़िकेट बनाने के लिए नाम, स्कूल, ज़िला और देश की जानकारी माँगी जाती है (वैकल्पिक); क्विज़ खेलने के लिए कुछ नहीं चाहिए।</p></details>
+  <details><summary>यह किनके लिए उपयोगी है?</summary><p>स्कूली विद्यार्थी, शिक्षक, अभिभावक, नए चालक और सड़क इस्तेमाल करने वाला हर व्यक्ति। भाषा सरल रखी गई है ताकि ग्रामीण क्षेत्र के विद्यार्थी भी समझ सकें।</p></details>
+  <details><summary>क्विज़ में कितने प्रश्न हैं, और क्या हर बार वही आते हैं?</summary><p>क्विज़ में सड़क सुरक्षा के कई विषयों के प्रश्न हैं। प्रश्न और विकल्प हर बार बदले क्रम में आते हैं, इसलिए हर बार अनुभव अलग रहता है।</p></details>
+  <details><summary>क्या दूसरी भाषा में खेल सकते हैं?</summary><p>हाँ। हिंदी, अंग्रेज़ी और बंगला, तीनों में खेल सकते हैं, और खेल के बीच में भी भाषा बदल सकते हैं।</p></details>
+  <details><summary>क्या स्कूटर पर तीन लोगों का बैठना सुरक्षित है?</summary><p>नहीं। तय संख्या से ज़्यादा सवारी बैठाने पर संतुलन और ब्रेक लगाने की क्षमता घटती है। ज़्यादातर देशों और राज्यों में यह गैरकानूनी भी है, इसलिए अपने यहाँ के नियम देख लें।</p></details>
+  <details><summary>क्या कम दूरी के लिए भी हेलमेट पहनना चाहिए?</summary><p>हाँ। ज़्यादातर हादसे घर के पास, जानी-पहचानी सड़कों पर और कम रफ़्तार में होते हैं। दूरी कम हो तब भी सिर का जोखिम उतना ही रहता है।</p></details>
+  <details><summary>क्या इस पेज की जानकारी कानूनी सलाह है?</summary><p>नहीं। यह सामान्य जागरूकता और शिक्षा के लिए है। कानून, उम्र सीमा और जुर्माने देश और राज्य के अनुसार अलग होते हैं और बदल सकते हैं, इसलिए अपने देश के ताज़ा आधिकारिक निर्देश देखें।</p></details>
+</section>
+</div>
+<footer class="info-wrap info-foot">
+  <p>&copy; MySkillGame, शैक्षिक पहल, धनिचा हाई स्कूल (उ.मा.), चाकदह, नदिया, पश्चिम बंगाल, भारत</p>
+  <p><a href="./">होम</a></p>
+</footer>
+</div>
+<div class="L L-bn" lang="bn">
+<div class="info-wrap">
+<section class="info-sec" id="safety-guide-bn">
+  <h2>সড়ক নিরাপত্তার মূল বিষয়: সহজ ব্যাখ্যা</h2>
+
+  <h3>১. হেলমেট: মাথার সুরক্ষা</h3>
+  <p>দুর্ঘটনায় মাথার আঘাতই সবচেয়ে বেশি প্রাণঘাতী। ঠিকভাবে পরা মানসম্মত হেলমেট আঘাতের ধাক্কা শোষণ করে মাথার চোট অনেকটা কমায়। মোটরসাইকেল বা স্কুটারে <strong>চালক ও পেছনের আরোহী, দুজনেরই</strong> হেলমেট পরা উচিত। কেনার সময় ISI/BIS চিহ্নিত হেলমেট নিন এবং চিনস্ট্র্যাপ ভালোভাবে আটকান। আলগা স্ট্র্যাপের হেলমেট দুর্ঘটনার সময় খুলে যেতে পারে।</p>
+
+  <h3>২. সিটবেল্ট: সামনে-পেছনে সবার জন্য</h3>
+  <p>হঠাৎ ব্রেক বা সংঘর্ষে শরীর সামনের দিকে ছিটকে যেতে চায়। সিটবেল্ট শরীরকে আসনে ধরে রাখে এবং বুক ও মাথায় আঘাত কমায়। শুধু চালক নন, পেছনের যাত্রীরাও বেল্ট বাঁধবেন। শিশুদের কোলে নিয়ে না বসিয়ে বয়স ও উচ্চতা অনুযায়ী উপযুক্ত চাইল্ড সিট বা বেল্টে বসানো নিরাপদ।</p>
+
+  <h3>৩. গতিসীমা: ফাঁকা রাস্তাতেও কেন গতি কমাতে হয়</h3>
+  <p>গতি দ্বিগুণ হলে থামতে প্রয়োজনীয় দূরত্ব দ্বিগুণের চেয়েও বেশি বাড়ে, আর সংঘর্ষের আঘাতের শক্তি অনেক গুণ বেড়ে যায়। রাস্তা ফাঁকা দেখালেও হঠাৎ গরু, কুকুর, শিশু বা বাঁকের আড়াল থেকে অন্য যান চলে আসতে পারে। গতিসীমার চিহ্ন সেই রাস্তার নকশা, বাঁক ও মানুষের চলাচল বিবেচনা করেই বসানো হয়।</p>
+
+  <h3>৪. জেব্রা ক্রসিং ও স্টপ সাইন</h3>
+  <p>জেব্রা ক্রসিংয়ে পথচারী রাস্তা পার হতে চাইলে যানবাহনের গতি কমিয়ে থামা উচিত। স্টপ সাইনে গাড়ি <strong>পুরোপুরি থামাতে</strong> হয়, চারদিক দেখে নিরাপদ হলে তবেই এগোনো যায়। শুধু গতি কমিয়ে পার হয়ে যাওয়া যথেষ্ট নয়।</p>
+
+  <h3>৫. নিরাপদ দূরত্ব ও বড় গাড়ির ব্লাইন্ড স্পট</h3>
+  <p>ট্রাক ও বাসের চালক গাড়ির পাশে, খুব কাছে সামনে বা ঠিক পেছনে থাকা ছোট যান আয়নায় দেখতে পান না। এই অংশগুলোকে ব্লাইন্ড স্পট বলে। বড় গাড়ির পাশে বেশিক্ষণ না থেকে পর্যাপ্ত দূরত্ব রাখুন। সামনের গাড়ির সঙ্গে অন্তত তিন সেকেন্ডের ফাঁক রাখা একটি সহজ নিয়ম: সামনের গাড়ি একটি নির্দিষ্ট বিন্দু পার হওয়ার পর আপনি সেখানে পৌঁছাতে তিন সেকেন্ডের বেশি সময় নিলে দূরত্ব মোটামুটি নিরাপদ।</p>
+
+  <h3>৬. অ্যাম্বুলেন্স ও দমকলকে আগে পথ দেওয়া</h3>
+  <p>জরুরি যানের প্রতিটি মিনিট একজন মানুষের জীবন-মৃত্যুর ফারাক গড়ে দিতে পারে। সাইরেন শুনলে নিরাপদে রাস্তার পাশে (ভারতে বাঁ দিকে) গাড়ি দাঁড় করিয়ে রাস্তা ফাঁকা করুন, অ্যাম্বুলেন্সের ঠিক পেছনে লেগে চলবেন না।</p>
+
+  <h3>৭. মোবাইল ফোন, মদ্যপান ও ক্লান্তি</h3>
+  <p>গাড়ি চালানোর সময় ফোন ধরলে চোখ, হাত ও মনোযোগ, তিনটিই রাস্তা থেকে সরে যায়। মদ্যপানে প্রতিক্রিয়ার গতি ও বিচারবুদ্ধি কমে যায়। ঘুম বা ক্লান্তি নিয়ে চালানোও প্রায় একই রকম বিপজ্জনক। চোখ ভারী হলে নিরাপদ জায়গায় থেমে বিশ্রাম নিন। রেস বা পাল্লা দিয়ে চালানো সবসময়ই ঝুঁকিপূর্ণ।</p>
+
+  <h3>৮. লাইসেন্স, বয়সসীমা ও বিমা</h3>
+  <p>বৈধ ড্রাইভিং লাইসেন্স মানে প্রশিক্ষণ নিয়ে নিয়ম জানার প্রমাণ। গাড়ি বা বাইক চালানোর <strong>ন্যূনতম বয়সসীমা দেশ, রাজ্য, যানের ধরন ও লাইসেন্সের শ্রেণি অনুযায়ী আলাদা</strong> এবং সময়ের সঙ্গে বদলাতেও পারে। তাই নিজের দেশ ও রাজ্যের বর্তমান আইন অনুযায়ীই বয়স ও লাইসেন্সের শর্ত মানতে হবে। নির্ধারিত বয়স বা লাইসেন্স ছাড়া চালালে অভিজ্ঞতার অভাবে ঝুঁকি বাড়ে এবং আইনি পরিণতিও হতে পারে।</p>
+  <p>যানবাহনের বিমা দুর্ঘটনার আর্থিক ক্ষতির বোঝা কমাতে সাহায্য করে। চালক নির্ধারিত বয়স বা লাইসেন্সের শর্ত পূরণ না করলে বিমা দাবি বাতিল বা সীমিত হতে পারে কি না, তা পলিসির শর্ত ও প্রযোজ্য আইনের ওপর নির্ভর করে। পরিবারের সুরক্ষার জন্য জীবনবিমার কথাও ভাবা যায়। নির্দিষ্ট ধারা ও জরিমানার জন্য আপনার দেশের পরিবহন কর্তৃপক্ষ বা বিমা কোম্পানির সর্বশেষ তথ্য দেখুন।</p>
+
+  <h3>৯. রাতে দৃশ্যমানতা: রিফ্লেক্টর ও আলো</h3>
+  <p>সাইকেল, ভ্যান-রিকশা, গরুর গাড়ির মতো ধীরগতির যানে পেছনে ও পাশে রিফ্লেক্টর বা আলো না থাকলে অন্ধকারে পেছন থেকে আসা গাড়ির চালক সেগুলো দেখতে পান না। কুয়াশার মৌসুমে এটি আরও জরুরি।</p>
+
+  <h3>১০. গাড়িতে কী রাখবেন, আর যান্ত্রিক সতর্কতা</h3>
+  <ul>
+    <li>ফার্স্ট এইড কিট এবং পানীয় জল।</li>
+    <li>ডুপ্লিকেট চাবি নিরাপদ জায়গায় (গাড়ির ভেতরে বা সহজে দেখা যায় এমন জায়গায় নয়)।</li>
+    <li>সিএনজি গাড়িতে গ্যাস লিকেজ নিয়মিত পরীক্ষা, কারণ গ্যাস জমে আগুন লাগার ঝুঁকি থাকে।</li>
+    <li>বৈদ্যুতিক গাড়িতে মানসম্মত ও সঠিকভাবে লাগানো চার্জার ব্যবহার।</li>
+    <li>গাড়ি চালানোর সময় জুতো পরা, যাতে প্যাডেলে পা পিছলে না যায়।</li>
+  </ul>
+
+  <h3>১১. দুর্ঘটনা দেখলে কী করবেন</h3>
+  <ol>
+    <li>নিজে নিরাপদ জায়গায় থাকুন এবং ঘটনাস্থলে আরও দুর্ঘটনা যেন না ঘটে সেদিকে খেয়াল রাখুন।</li>
+    <li>দেরি না করে জরুরি নম্বরে ফোন করুন, যেমন <strong>112</strong> (জাতীয় জরুরি সহায়তা)। এছাড়া অনেক রাজ্যে অ্যাম্বুলেন্সের জন্য <strong>108</strong> এবং জাতীয় সড়কে সহায়তার জন্য <strong>1033</strong> নম্বর চালু আছে। নম্বর রাজ্যভেদে আলাদা হতে পারে।</li>
+    <li>আহত ব্যক্তিকে অপ্রয়োজনে নাড়াচাড়া করবেন না, বিশেষ করে ঘাড় ও মেরুদণ্ডে আঘাতের সন্দেহ থাকলে।</li>
+    <li>ভারতে আহতকে সাহায্যকারী সাধারণ মানুষকে আইনি হয়রানি থেকে সুরক্ষা দেওয়ার বিধান রয়েছে (গুড সামারিটান নিয়ম)।</li>
+  </ol>
+  <div class="info-note">এই পেজের তথ্য সচেতনতার জন্য। এটি আইনি বা চিকিৎসা পরামর্শের বিকল্প নয়। জরুরি অবস্থায় অবশ্যই প্রশিক্ষিত চিকিৎসক ও প্রশাসনের সাহায্য নিন।</div>
+</section>
+<section class="info-sec" id="faq-bn">
+  <h2>সচরাচর জিজ্ঞাসিত প্রশ্ন (FAQ)</h2>
+  <details open>
+    <summary>এই কুইজ কি বিনামূল্যে?</summary>
+    <p>হ্যাঁ। কোনো নিবন্ধন বা অর্থ ছাড়াই খেলা যায়। সনদ তৈরি করতে চাইলে নাম, স্কুল, জেলা ও দেশের তথ্য লাগে (ঐচ্ছিক), আর কুইজ খেলতে কিছুই লাগে না।</p>
+  </details>
+  <details>
+    <summary>এটি কাদের জন্য উপযোগী?</summary>
+    <p>স্কুলের ছাত্রছাত্রী, শিক্ষক, অভিভাবক, নতুন চালক এবং যে কেউ রাস্তায় চলাচল করেন। ভাষা সহজ রাখা হয়েছে যাতে গ্রামীণ এলাকার শিক্ষার্থীরাও বুঝতে পারে।</p>
+  </details>
+  <details>
+    <summary>কুইজে কত প্রশ্ন আছে, আর প্রতিবার কি একই প্রশ্ন আসে?</summary>
+    <p>একাধিক সড়ক নিরাপত্তা বিষয়ের প্রশ্ন আছে। প্রশ্ন ও বিকল্পের ক্রম প্রতিবার এলোমেলো হয়, তাই প্রতিবার আলাদা অভিজ্ঞতা পাওয়া যায়।</p>
+  </details>
+  <details>
+    <summary>কুইজ কি অন্য ভাষায় খেলা যায়?</summary>
+    <p>হ্যাঁ। বাংলা, হিন্দি ও ইংরেজি, তিন ভাষাতেই খেলা যায়। খেলার মাঝেও ভাষা বদলানো যায়।</p>
+  </details>
+  <details>
+    <summary>দুটি স্কুটারে তিনজন চড়া কি নিরাপদ?</summary>
+    <p>না। নির্ধারিত আসনসংখ্যার বেশি আরোহী নিলে ভারসাম্য ও ব্রেকিং ক্ষমতা কমে যায়। বেশিরভাগ দেশ ও রাজ্যে এটি আইনবিরুদ্ধও, তাই নিজের এলাকার নিয়ম দেখে নিন।</p>
+  </details>
+  <details>
+    <summary>হেলমেট কি ছোট দূরত্বেও পরতে হবে?</summary>
+    <p>হ্যাঁ। বেশিরভাগ দুর্ঘটনা বাড়ির কাছের, চেনা ও কম গতির রাস্তাতেই ঘটে। দূরত্ব কম হলেও মাথার ঝুঁকি একই থাকে।</p>
+  </details>
+  <details>
+    <summary>এই পেজের তথ্য কি আইনি পরামর্শ?</summary>
+    <p>না। এটি সাধারণ সচেতনতা ও শিক্ষার জন্য। আইন, বয়সসীমা ও জরিমানা দেশ ও রাজ্যভেদে আলাদা এবং বদলাতে পারে, তাই আপনার দেশের সর্বশেষ নির্দেশিকা দেখুন।</p>
+  </details>
+</section>
+</div>
+<footer class="info-wrap info-foot">
+  <p>&copy; MySkillGame, শিক্ষামূলক উদ্যোগ, ধনিচা হাই স্কুল (উ.মা.), চাকদহ, নদিয়া, পশ্চিমবঙ্গ</p>
+  <p><a href="./">হোম</a></p>
+</footer>
 </div>
 
 <script>
@@ -301,8 +659,8 @@ var TICKER_ITEMS = [
   "Why is staying beside a car risky? 👀",
   "Why must you give way to an ambulance first? 🚑",
   "Why should fire service vehicles get priority? 🚒",
-  "Why is under-18 driving dangerous and illegal? 🚸",
-  "Can insurance claim be denied if an underage driver crashes? 📄",
+  "Why does the legal driving age matter? 🚸",
+  "How can an unlicensed or underage driver affect an insurance claim? 📄",
   "Why is driving without a license irresponsible? 📄",
   "Why is proper driving training necessary? 🧠",
   "Why is using a mobile phone while driving dangerous? 📱",
@@ -409,7 +767,7 @@ var IMG_MAP = {
   "🌃": "img/reflector.jpg"  
 };
 /* ─────────────────────────────────────────────────
-   ALL 50 QUESTIONS
+   ALL 60 QUESTIONS
 ───────────────────────────────────────────────── */
 var ALL_Q = [
   /* 0 */  {emoji:"🛑",q_bn:"স্টপ সাইন দেখলে চালককে কী করতে হবে?",q_hi:"स्टॉप साइन देखकर चालक को क्या करना चाहिए?",q_en:"What should a driver do at a STOP sign?",correct_bn:"সম্পূর্ণ থামতে হবে",correct_hi:"पूरी तरह रुकना चाहिए",correct_en:"Stop completely",wrong_bn:["গতি বাড়াতে হবে","হর্ন বাজাতে হবে","চোখ বন্ধ করে এগোতে হবে"],wrong_hi:["गति बढ़ानी चाहिए","हॉर्न बजाना चाहिए","आँख बंद करके आगे बढ़ना"],wrong_en:["Increase speed","Keep honking","Move with eyes closed"],exp_bn:"স্টপ সাইন মানে সম্পূর্ণ থামা। চারপাশ দেখে নিরাপদ হলে তবেই এগোতে হয়।",exp_hi:"स्टॉप साइन का मतलब पूरी तरह रुकना है।",exp_en:"A STOP sign means a complete halt. Move only after checking it is safe.",soul_bn:"অন্তর আত্মা: এক মুহূর্ত থামা অনেক সময় জীবন বাঁচায়।",soul_hi:"अंतरात्मा: एक पल रुकना कई बार जान बचा लेता है।",soul_en:"Inner voice: One moment of stopping can save a life."},
@@ -421,9 +779,9 @@ var ALL_Q = [
   q_hi:"स्पीड लिमिट साइन क्या बताता है?",
   q_en:"What does a speed limit sign mean?",
 
-  correct_bn:"সর্বোচ্চ নিরাপদ গতি",
-  correct_hi:"अधिकतम सुरक्षित गति",
-  correct_en:"Maximum safe speed",
+  correct_bn:"আইনসম্মত সর্বোচ্চ গতিসীমা",
+  correct_hi:"कानूनी रूप से अधिकतम गति सीमा",
+  correct_en:"Maximum legal speed limit",
 
   wrong_bn:[
     "সর্বনিম্ন গতি",
@@ -441,9 +799,9 @@ var ALL_Q = [
     "Instruction to honk"
   ],
 
-  exp_bn:"স্পিড লিমিট সাইন সেই রাস্তার সর্বোচ্চ নিরাপদ গতি নির্দেশ করে।",
-  exp_hi:"स्पीड लिमिट साइन उस सड़क पर अधिकतम सुरक्षित गति को दर्शाता है।",
-  exp_en:"A speed limit sign shows the maximum safe speed for that road.",
+  exp_bn:"স্পিড লিমিট সাইন সেই রাস্তায় আইনত অনুমোদিত সর্বোচ্চ গতি বোঝায়। রাস্তা, আবহাওয়া ও ভিড় অনুযায়ী এর চেয়েও কম গতিতে চলতে হতে পারে।",
+  exp_hi:"स्पीड लिमिट साइन उस सड़क पर कानूनी रूप से अनुमत अधिकतम गति बताता है। सड़क, मौसम और भीड़ के अनुसार इससे कम गति पर चलना पड़ सकता है।",
+  exp_en:"A speed limit sign shows the maximum legal speed on that road. Road, weather and traffic conditions may require driving even slower.",
 
   soul_bn:"অন্তরের কথা: কম গতি মানে বেশি নিয়ন্ত্রণ, বেশি নিরাপত্তা।",
   soul_hi:"अंतर की आवाज़: कम रफ्तार का मतलब ज़्यादा नियंत्रण और ज़्यादा सुरक्षा।",
@@ -455,8 +813,8 @@ var ALL_Q = [
   /* 6 */  {emoji:"👀",q_bn:"গাড়ির একেবারে পাশে চলা কেন ঝুঁকিপূর্ণ?",q_hi:"car- के बिल्कुल पास चलना क्यों जोखिम भरा?",q_en:"Why is staying right beside a car risky?",correct_bn:"চালক আপনাকে দেখতে নাও পারেন",correct_hi:"चालक आपको नहीं देख पाता",correct_en:"The driver may not see you",wrong_bn:["হাওয়া বেশি লাগে","রাস্তা ছোট লাগে","গাড়ি দ্রুত নোংরা হয়"],wrong_hi:["ज़्यादा हवा लगती है","सड़क छोटी लगती है","गाड़ी जल्दी गंदी होती है"],wrong_en:["Too much wind","Road looks smaller","Vehicle gets dirty faster"],exp_bn:"Blind spot-এর কারণে ট্রাক lane change করলে পাশের গাড়ি বিপদে পড়তে পারে।",exp_hi:"ब्लाइंड स्पॉट के कारण ट्रक लेन बदले तो पास की गाड़ी खतरे में आती है।",exp_en:"Because of blind spots, a truck may turn without noticing a nearby vehicle.",soul_bn:"অন্তর আত্মা: দৃশ্যমান থাকাই নিরাপত্তার অংশ।",soul_hi:"अंतरात्मा: दिखाई देना ही सुरक्षा का हिस्सा है।",soul_en:"Inner voice: Staying visible is part of staying safe."},
   /* 7 */  {emoji:"🚑",q_bn:"অ্যাম্বুলেন্সকে আগে পথ দেওয়া কেন জরুরি?",q_hi:"एम्बुलेंस को पहले रास्ता देना क्यों ज़रूरी?",q_en:"Why must you give way to an ambulance first?",correct_bn:"কারও জীবন বাঁচানোর জন্য সময় দরকার",correct_hi:"किसी की जान बचाने के लिए समय ज़रूरी",correct_en:"Time may be needed to save a life",wrong_bn:["ওরা বেশি হর্ন দেয়","ওদের গাড়ি বড়","ওরা দ্রুত চালাতে ভালোবাসে"],wrong_hi:["वे ज़्यादा हॉर्न बजाते हैं","उनका वाहन बड़ा है","उन्हें तेज़ चलाना पसंद है"],wrong_en:["They honk more","Their vehicle is bigger","They like speeding"],exp_bn:"অ্যাম্বুলেন্সে থাকা রোগীর জন্য প্রতিটি সেকেন্ড গুরুত্বপূর্ণ।",exp_hi:"एम्बुलेंस में मरीज के लिए हर सेकंड महत्वपूर्ण।",exp_en:"Every second can matter for the patient in the ambulance.",soul_bn:"অন্তর আত্মা: পথ ছেড়ে দেওয়া কখনো কখনো জীবন দেওয়া।",soul_hi:"अंतरात्मा: रास्ता देना कई बार जीवन बचाने जैसा।",soul_en:"Inner voice: Giving way can mean giving life."},
   /* 8 */  {emoji:"🚒",q_bn:"দমকল গাড়িকে আগে যেতে দেওয়া কেন দরকার?",q_hi:"फायर सर्विस वाहन को पहले जाने देना क्यों ज़रूरी?",q_en:"Why should fire service vehicles get priority?",correct_bn:"দেরি হলে আগুন ও ক্ষতি বাড়তে পারে",correct_hi:"देर होने पर आग और नुकसान बढ़ सकता है",correct_en:"Delay can worsen the fire and damage",wrong_bn:["ওরা রাস্তা দেখে","ওরা ফ্রি জ্বালানি পায়","ওরা শুধু মহড়া দেয়"],wrong_hi:["वे सड़क देखते हैं","उन्हें मुफ्त ईंधन मिलता है","वे सिर्फ अभ्यास करते हैं"],wrong_en:["They inspect roads","They get free fuel","They only practice"],exp_bn:"ফায়ার সার্ভিস দেরি করলে আগুন ছড়িয়ে বড় ক্ষতি হতে পারে।",exp_hi:"फायर सर्विस देर से पहुँचे तो आग फैलकर बड़ा नुकसान।",exp_en:"If fire service is delayed, the fire may spread and cause greater damage.",soul_bn:"অন্তর আত্মা: জরুরিকে অগ্রাধিকার দেওয়া মানবিক দায়িত্ব।",soul_hi:"अंतरात्मा: आपात को प्राथमिकता देना इंसानी जिम्मेदारी।",soul_en:"Inner voice: Giving priority to emergencies is a human duty."},
-  /* 9 */  {emoji:"🚸",q_bn:"১৮ বছরের নিচে ড্রাইভিং কেন বিপজ্জনক ও বেআইনি?",q_hi:"18 साल से कम उम्र में ड्राइविंग क्यों खतरनाक और गैरकानूनी?",q_en:"Why is under-18 driving dangerous and illegal?",correct_bn:"দক্ষতা, পরিপক্বতা ও অনুমতি থাকে না",correct_hi:"कौशल, परिपक्वता और कानूनी अनुमति नहीं",correct_en:"Skill, maturity, and legal permission are lacking",wrong_bn:["গাড়ি ছোট বলে","রাস্তা রঙিন বলে","হর্ন কম বাজে বলে"],wrong_hi:["गाड़ी छोटी होती है","सड़क रंगीन होती है","हॉर्न कम बजता है"],wrong_en:["Vehicle is small","Road is colorful","Horn is quieter"],exp_bn:"কম বয়সে সঠিক judgment ও training না থাকায় দুর্ঘটনার ঝুঁকি বাড়ে।",exp_hi:"कम उम्र में निर्णय क्षमता की कमी से हादसे का खतरा बढ़ता है।",exp_en:"Young drivers may lack judgment and training, increasing accident risk.",soul_bn:"অন্তর আত্মা: একটু অপেক্ষা করাই নিরাপদ ভবিষ্যৎ।",soul_hi:"अंतरात्मा: थोड़ा इंतज़ार ही सुरक्षित भविष्य।",soul_en:"Inner voice: Waiting a little protects the future."},
-  /* 10 */ {emoji:"📄",q_bn:"অপ্রাপ্তবয়স্ক চালক দুর্ঘটনা করলে insurance কেন বাতিল হতে পারে?",q_hi:"नाबालिग चालक के दुर्घटना करने पर बीमा क्यों रद्द हो सकता है?",q_en:"Can insurance claim be denied if an underage driver crashes?",correct_bn:"হ্যাঁ, policy-র নিয়ম ভঙ্গ হয়",correct_hi:"हाँ, पॉलिसी के नियम का उल्लंघन होता है",correct_en:"Yes, policy rules may be violated",wrong_bn:["না, সব claim accepted হয়","বৃষ্টি হলে","গাড়ির রং কারণ"],wrong_hi:["नहीं, सभी दावे स्वीकार होते हैं","बारिश होने पर","गाड़ी के रंग से"],wrong_en:["No, all claims accepted","If it rains","Because of vehicle color"],exp_bn:"লাইসেন্সবিহীন বা কমবয়সী চালকের ক্ষেত্রে claim বাতিল হতে পারে।",exp_hi:"बिना लाइसेंस या नाबालिग चालक के मामले में दावा खारिज हो सकता है।",exp_en:"Claims may be denied if the driver is underage or unlicensed.",soul_bn:"অন্তর আত্মা: নিয়মভঙ্গ শুধু বিপদ নয়, ক্ষতিও আনে।",soul_hi:"अंतरात्मा: नियम तोड़ना सिर्फ खतरा नहीं, नुकसान भी लाता है।",soul_en:"Inner voice: Breaking rules brings loss as well as danger."},
+  /* 9 */  {emoji:"🚸",q_bn:"আইনি বয়সের আগে গাড়ি চালানো কেন বিপজ্জনক?",q_hi:"कानूनी उम्र से पहले ड्राइविंग क्यों खतरनाक है?",q_en:"Why is driving below the legal age dangerous?",correct_bn:"দক্ষতা, পরিপক্বতা ও আইনি অনুমতি থাকে না",correct_hi:"कौशल, परिपक्वता और कानूनी अनुमति नहीं",correct_en:"Skill, maturity, and legal permission are lacking",wrong_bn:["গাড়ি ছোট বলে","রাস্তা রঙিন বলে","হর্ন কম বাজে বলে"],wrong_hi:["गाड़ी छोटी होती है","सड़क रंगीन होती है","हॉर्न कम बजता है"],wrong_en:["Vehicle is small","Road is colorful","Horn is quieter"],exp_bn:"প্রতিটি দেশের আইনে যান ও লাইসেন্সের ধরন অনুযায়ী ন্যূনতম বয়সসীমা নির্ধারিত থাকে। সেই বয়সের আগে অভিজ্ঞতা ও প্রশিক্ষণের অভাবে ঝুঁকি বাড়ে এবং আইনি সমস্যাও হতে পারে।",exp_hi:"हर देश के कानून में वाहन और लाइसेंस के अनुसार न्यूनतम उम्र तय होती है। उससे पहले अनुभव और प्रशिक्षण की कमी से खतरा बढ़ता है और कानूनी परेशानी भी हो सकती है।",exp_en:"Each country sets minimum ages by vehicle and licence type. Below that age, lack of training and experience raises risk and may bring legal trouble.",soul_bn:"অন্তর আত্মা: একটু অপেক্ষা করাই নিরাপদ ভবিষ্যৎ।",soul_hi:"अंतरात्मा: थोड़ा इंतज़ार ही सुरक्षित भविष्य।",soul_en:"Inner voice: Waiting a little protects the future."},
+  /* 10 */ {emoji:"📄",q_bn:"অপ্রাপ্তবয়স্ক বা লাইসেন্সবিহীন চালক দুর্ঘটনা করলে বিমা দাবিতে কী সমস্যা হতে পারে?",q_hi:"नाबालिग या बिना लाइसेंस चालक के दुर्घटना करने पर बीमा दावे में क्या समस्या हो सकती है?",q_en:"What problem can an underage or unlicensed driver cause for an insurance claim?",correct_bn:"দাবি বাতিল বা সীমিত হতে পারে",correct_hi:"दावा अस्वीकृत या सीमित हो सकता है",correct_en:"The claim may be rejected or limited",wrong_bn:["না, সব ক্ষেত্রেই দাবি মঞ্জুর হয়","বৃষ্টি হলে","গাড়ির রং কারণ"],wrong_hi:["नहीं, हर हाल में दावा मंज़ूर होता है","बारिश होने पर","गाड़ी के रंग से"],wrong_en:["No, claims are always accepted","If it rains","Because of vehicle color"],exp_bn:"বিমা পলিসির শর্ত ও প্রযোজ্য আইনের ওপর নির্ভর করে, লাইসেন্সবিহীন বা কমবয়সী চালকের ক্ষেত্রে দাবি বাতিল বা সীমিত হতে পারে।",exp_hi:"बीमा पॉलिसी की शर्तों और लागू कानून पर निर्भर करता है; बिना लाइसेंस या नाबालिग चालक के मामले में दावा अस्वीकृत या सीमित हो सकता है।",exp_en:"Depending on the policy terms and applicable law, a claim may be rejected or limited if the driver is underage or unlicensed.",soul_bn:"অন্তর আত্মা: নিয়মভঙ্গ শুধু বিপদ নয়, ক্ষতিও আনে।",soul_hi:"अंतरात्मा: नियम तोड़ना सिर्फ खतरा नहीं, नुकसान भी लाता है।",soul_en:"Inner voice: Breaking rules brings loss as well as danger."},
   /* 11 */ {emoji:"📋",q_bn:"লাইসেন্স ছাড়া ড্রাইভিং কেন দায়িত্বজ্ঞানহীন?",q_hi:"बिना लाइसेंस ड्राइविंग गैर-जिम्मेदाराना क्यों?",q_en:"Why is driving without a license irresponsible?",correct_bn:"নিয়ম ও দক্ষতার প্রমাণ থাকে না",correct_hi:"नियम और कौशल का प्रमाण नहीं",correct_en:"No proof of rules knowledge and skill",wrong_bn:["গাড়ি ধীরে চলে","রাস্তা লম্বা হয়","সিট গরম হয়"],wrong_hi:["गाड़ी धीरे चलती है","सड़क लंबी हो जाती है","सीट गरम हो जाती है"],wrong_en:["Car moves slowly","Road becomes longer","Seat gets hot"],exp_bn:"লাইসেন্স বোঝায় আপনি ন্যূনতম driving knowledge অর্জন করেছেন।",exp_hi:"लाइसेंस दिखाता है कि आपने न्यूनतम ड्राइविंग ज्ञान हासिल किया।",exp_en:"A license shows you have met basic standards of driving knowledge.",soul_bn:"অন্তর আত্মা: দায়িত্ব ছাড়া স্টিয়ারিং ধরা ঠিক নয়।",soul_hi:"अंतरात्मा: जिम्मेदारी के बिना स्टीयरिंग पकड़ना ठीक नहीं।",soul_en:"Inner voice: Do not hold the wheel without responsibility."},
   /* 12 */ {emoji:"🧠",q_bn:"সঠিক ড্রাইভিং training কেন দরকার?",q_hi:"सही ड्राइविंग प्रशिक्षण क्यों ज़रूरी?",q_en:"Why is proper driving training necessary?",correct_bn:"নিয়ম, control ও decision শিখতে",correct_hi:"नियम, नियंत्रण और निर्णय सीखने के लिए",correct_en:"To learn rules, control, and decision-making",wrong_bn:["গাড়ি সাজাতে","হর্ন বদলাতে","জ্বালানি বাড়াতে"],wrong_hi:["गाड़ी सजाने के लिए","हॉर्न बदलने के लिए","ईंधन बढ़ाने के लिए"],wrong_en:["Decorate vehicle","Change horn","Increase fuel"],exp_bn:"Driving শুধু গাড়ি চালানো নয়, পরিস্থিতি বুঝে নিরাপদ সিদ্ধান্ত নেওয়াও।",exp_hi:"ड्राइविंग सिर्फ गाड़ी चलाना नहीं, परिस्थिति समझकर सुरक्षित निर्णय लेना भी है।",exp_en:"Driving is about making safe decisions in real situations, not just moving.",soul_bn:"অন্তর আত্মা: আত্মবিশ্বাসের আগে প্রশিক্ষণ দরকার।",soul_hi:"अंतरात्मा: आत्मविश्वास से पहले प्रशिक्षण लेना ज़रूरी है।",soul_en:"Inner voice: Training must come before confidence."},
   /* 13 */ {emoji:"📱",q_bn:"ড্রাইভিংয়ের সময় মোবাইল ব্যবহার কেন বিপজ্জনক?",q_hi:"ड्राइविंग के समय मोबाइल इस्तेमाल करना क्यों खतरनाक?",q_en:"Why is using a mobile phone while driving dangerous?",correct_bn:"মনোযোগ রাস্তা থেকে সরে যায়",correct_hi:"ध्यान सड़क से हट जाता है",correct_en:"Attention shifts away from the road",wrong_bn:["গাড়ি ঠান্ডা হয়","চাকা শক্ত হয়","রাস্তা উজ্জ্বল হয়"],wrong_hi:["गाड़ी ठंडी हो जाती है","टायर सख्त हो जाते हैं","सड़क चमकने लगती है"],wrong_en:["Vehicle cools down","Tires get harder","Road becomes brighter"],exp_bn:"এক সেকেন্ডের distraction-ও বড় দুর্ঘটনার কারণ হতে পারে।",exp_hi:"एक सेकंड का ध्यान भटकना भी बड़े हादसे का कारण बन सकता है।",exp_en:"Even a second of distraction can cause a serious accident.",soul_bn:"অন্তর আত্মা: মেসেজ অপেক্ষা করতে পারে, জীবন নয়।",soul_hi:"अंतरात्मा: संदेश इंतज़ार कर सकता है, जीवन नहीं।",soul_en:"Inner voice: A message can wait; life cannot."},
@@ -867,6 +1225,29 @@ var ALL_Q = [
   soul_bn:"অন্তরের কথা: একটি ক্লিক জীবন বাঁচাতে পারে।",
   soul_hi:"अंतर की आवाज़: एक क्लिक जान बचा सकता है।",
   soul_en:"Inner voice: One click can save a life."
+},
+/* 59 */
+{
+  emoji:"🏫",
+  q_bn:"স্কুল বা হাসপাতালের কাছে গাড়ির গতি কমানো কেন জরুরি?",
+  q_hi:"स्कूल या अस्पताल के पास वाहन की गति कम करना क्यों ज़रूरी है?",
+  q_en:"Why should you slow down near a school or hospital?",
+
+  correct_bn:"শিশু, রোগী ও পথচারী হঠাৎ রাস্তায় আসতে পারে",
+  correct_hi:"बच्चे, मरीज़ और पैदल यात्री अचानक सड़क पर आ सकते हैं",
+  correct_en:"Children, patients and pedestrians may suddenly step onto the road",
+
+  wrong_bn:["ওখানে রাস্তা সবসময় ফাঁকা থাকে","হর্ন বাজানো নিষেধ বলে","জ্বালানি বাঁচে বলে"],
+  wrong_hi:["वहाँ सड़क हमेशा ख़ाली रहती है","हॉर्न बजाना मना है इसलिए","ईंधन बचता है इसलिए"],
+  wrong_en:["The road is always empty there","Because honking is banned","To save fuel"],
+
+  exp_bn:"স্কুল ও হাসপাতালের আশপাশে ছোট শিশু, বয়স্ক ও অসুস্থ মানুষ এবং অ্যাম্বুলেন্সের যাতায়াত থাকে। ধীর গতিতে চললে হঠাৎ কেউ এলেও সময়মতো থামা যায়। এলাকাভেদে নির্দিষ্ট গতিসীমা ও সংকেত থাকে, সেগুলো মানুন।",
+  exp_hi:"स्कूल और अस्पताल के आसपास छोटे बच्चे, बुज़ुर्ग, मरीज़ और एम्बुलेंस की आवाजाही रहती है। धीमी गति पर अचानक कोई आ जाए तो भी समय पर रुका जा सकता है। इलाक़े के अनुसार तय गति सीमा और संकेतों का पालन करें।",
+  exp_en:"Small children, elderly and sick people, and ambulances move around schools and hospitals. At a low speed you can still stop in time if someone suddenly appears. Follow the speed limits and signs set for the area.",
+
+  soul_bn:"অন্তরের কথা: যেখানে শিশু ও রোগী আছে, সেখানে ধীরে চলাই দায়িত্ব।",
+  soul_hi:"अंतर की आवाज़: जहाँ बच्चे और मरीज़ हों, वहाँ धीरे चलना ही ज़िम्मेदारी है।",
+  soul_en:"Inner voice: Where children and patients are, driving slowly is a responsibility."
 }
 ];
 // ══ WEB AUDIO ENGINE ══
@@ -969,7 +1350,7 @@ function visualHTML(q) {
   if (imgPath) {
     // যদি ছবি পাওয়া যায়
     return '<div class="q-visual-area">' +
-           '<img src="' + imgPath + '" class="q-img" alt="safety">' +
+           '<img src="' + imgPath + '" class="q-img" alt="safety" onerror="this.parentNode.innerHTML=\'<div class=&quot;q-emoji-display&quot;>' + q.emoji + '</div>\'">' +
            '</div>';
   } else {
     // ছবি না থাকলে ওই ইমোজিটিকেই বড় করে দেখাবে (যেমন ফার্স্ট এইড 🩹 বা সিএনজি ⛽)
@@ -1050,18 +1431,18 @@ function nextQuestion() {
   if (currentIdx >= shuffledQ.length) showResult();
   else renderQuestion();
 }
-var PASS_PCT = 45;
+var PASS_MARKS = 25; // marks needed (out of the total number of questions) to unlock the certificate
 var CERT_TXT = {
-  en:{pass:"You passed! Enter your details to get the certificate.", fail:"You need at least 45% to unlock the certificate. Try again!", name:"Your full name", school:"School / Institution name", district:"District", country:"Country", gen:"Generate Certificate 🏅", back:"← Back to Miscellaneous Exam"},
-  bn:{pass:"অভিনন্দন! সার্টিফিকেটের জন্য তোমার তথ্য দাও।", fail:"সার্টিফিকেট পেতে কমপক্ষে ৪৫% দরকার। আবার চেষ্টা করো!", name:"তোমার পূর্ণ নাম", school:"স্কুল / প্রতিষ্ঠানের নাম", district:"জেলা", country:"দেশ", gen:"সার্টিফিকেট তৈরি করো 🏅", back:"← Miscellaneous Exam-এ ফিরে যাও"},
-  hi:{pass:"बधाई! सर्टिफिकेट के लिए अपनी जानकारी भरें।", fail:"सर्टिफिकेट के लिए कम से कम 45% चाहिए। फिर कोशिश करें!", name:"आपका पूरा नाम", school:"स्कूल / संस्थान का नाम", district:"ज़िला", country:"देश", gen:"सर्टिफिकेट बनाएँ 🏅", back:"← Miscellaneous Exam पर वापस"}
+  en:{pass:"You passed! Enter your details to get the certificate.", fail:"You need at least 25 marks to unlock the certificate. Try again!", name:"Your full name", school:"School / Institution name", district:"District", country:"Country", gen:"Generate Certificate 🏅", back:"← Back to Miscellaneous Exam", privacy:"Privacy notice: your name, school, district and country are used to create your certificate and are also saved in our Google Sheets record of certificates issued. Children should enter these details only with a parent or teacher’s permission. If you prefer not to share them, you may skip the certificate."},
+  bn:{pass:"অভিনন্দন! সার্টিফিকেটের জন্য তোমার তথ্য দাও।", fail:"সার্টিফিকেট পেতে কমপক্ষে ২৫ নম্বর দরকার। আবার চেষ্টা করো!", name:"তোমার পূর্ণ নাম", school:"স্কুল / প্রতিষ্ঠানের নাম", district:"জেলা", country:"দেশ", gen:"সার্টিফিকেট তৈরি করো 🏅", back:"← Miscellaneous Exam-এ ফিরে যাও", privacy:"গোপনীয়তা বিজ্ঞপ্তি: তোমার নাম, স্কুল, জেলা ও দেশ সার্টিফিকেট তৈরির জন্য ব্যবহৃত হবে এবং ইস্যু করা সার্টিফিকেটের রেকর্ড হিসেবে আমাদের Google Sheets-এও সংরক্ষিত হবে। ছোটোরা অভিভাবক বা শিক্ষকের অনুমতি নিয়ে তথ্য দিয়ো। না চাইলে সার্টিফিকেট না নিলেও চলবে।"},
+  hi:{pass:"बधाई! सर्टिफिकेट के लिए अपनी जानकारी भरें।", fail:"सर्टिफ़िकेट के लिए कम से कम 25 अंक चाहिए। फिर कोशिश करें!", name:"आपका पूरा नाम", school:"स्कूल / संस्थान का नाम", district:"ज़िला", country:"देश", gen:"सर्टिफिकेट बनाएँ 🏅", back:"← Miscellaneous Exam पर वापस", privacy:"गोपनीयता सूचना: आपका नाम, स्कूल, ज़िला और देश सर्टिफिकेट बनाने में उपयोग होंगे और जारी सर्टिफिकेट के रिकॉर्ड के रूप में हमारी Google Sheets में भी सहेजे जाएँगे। बच्चे अभिभावक या शिक्षक की अनुमति से ही जानकारी दें। न चाहें तो सर्टिफिकेट छोड़ सकते हैं।"}
 };
 function showResult() {
   sFinish();
   var saved = {};
   ["rsName","rsSchool","rsDistrict","rsCountry"].forEach(function(id){ var e=document.getElementById(id); if(e) saved[id]=e.value; });
   var pct = (score / shuffledQ.length) * 100;
-  var passed = Math.round(pct) >= PASS_PCT;
+  var passed = score >= PASS_MARKS;
   var ct = CERT_TXT[lang];
   var msg = pct >= 85 ? tx("msg1") : pct >= 60 ? tx("msg2") : tx("msg3");
   var ss = pct >= 85 ? "⭐⭐⭐" : pct >= 60 ? "⭐⭐" : "⭐";
@@ -1073,6 +1454,7 @@ function showResult() {
   }
   var form = passed
     ? '<div class="cert-box"><div class="cert-note">' + ct.pass + '</div>'
+      + '<div class="cert-privacy">' + ct.privacy + '</div>'
       + '<input class="cert-in" id="rsName" maxlength="40" placeholder="' + ct.name + '" value="' + (saved.rsName||"") + '">'
       + '<input class="cert-in" id="rsSchool" maxlength="80" placeholder="' + ct.school + '" value="' + (saved.rsSchool||"") + '">'
       + '<input class="cert-in" id="rsDistrict" maxlength="50" placeholder="' + ct.district + '" value="' + (saved.rsDistrict||"") + '">'
@@ -1102,7 +1484,7 @@ async function goToCertificate() {
   for (var k=0;k<4;k++){ if(!vals[k]){ document.getElementById(order[k]).focus(); return; } }
   var total = shuffledQ.length;
   var percentage = Math.round((score/total)*100);
-  if (percentage < PASS_PCT) return;
+  if (score < PASS_MARKS) return;
   var btn=document.getElementById("genBtn"); if(btn) btn.disabled=true;
 
   var studentId = localStorage.getItem('myskill_student_id');
@@ -1162,9 +1544,27 @@ async function goToCertificate() {
   window.location.href = 'certificate.html?' + new URLSearchParams(certParams).toString();
 }
 
+
+var PAGE_META = {
+  en:{title:"Road Safety Quiz – Rules, Explanations & Practice | MySkillGame", desc:"Free road safety quiz in English, Hindi and Bengali, with explanations of helmets, seatbelts, speed limits, blind spots, emergency numbers and an FAQ."},
+  hi:{title:"सड़क सुरक्षा क्विज़ – नियम, व्याख्या और अभ्यास | MySkillGame", desc:"हिंदी, अंग्रेज़ी और बंगला में मुफ़्त सड़क सुरक्षा क्विज़, हेलमेट, सीट बेल्ट, गति सीमा, ब्लाइंड स्पॉट, आपातकालीन नंबर और FAQ की व्याख्या के साथ।"},
+  bn:{title:"সড়ক নিরাপত্তা কুইজ – নিয়ম, ব্যাখ্যা ও অনুশীলন | MySkillGame", desc:"সড়ক নিরাপত্তার মূল নিয়ম, হেলমেট-সিটবেল্ট-গতিসীমার ব্যাখ্যা, জরুরি নম্বর ও FAQ সহ বাংলা, হিন্দি ও ইংরেজিতে বিনামূল্যে সড়ক নিরাপত্তা কুইজ।"}
+};
+function syncPageLang() {
+  var packs = document.querySelectorAll(".L");
+  for (var i = 0; i < packs.length; i++) {
+    if (packs[i].classList.contains("L-" + lang)) packs[i].classList.add("on");
+    else packs[i].classList.remove("on");
+  }
+  document.documentElement.setAttribute("lang", lang);
+  var m = PAGE_META[lang]; if (!m) return;
+  document.title = m.title;
+  var d = document.querySelector('meta[name="description"]'); if (d) d.setAttribute("content", m.desc);
+}
 function setLang(l) {
   sTap();
   lang = l;
+  syncPageLang();
   if (document.querySelector(".result-screen")) showResult();
   else renderQuestion();
 }

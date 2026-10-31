@@ -2,9 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,  maximum-scale=1.0">
-<title>MySkillGame</title>
-<body>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Safety &amp; Life Skills Quiz: Water Safety, First Aid &amp; More | MySkillGame</title>
+<meta name="description" content="Free safety and life-skills quiz with 15 topics and 10 questions each, including water safety and drowning prevention, electrical hazards, gas leaks, blood and organ donation. Every answer comes with a clear explanation.">
+<link rel="canonical" href="https://myskillglobal.com/lifeguardquiz">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Safety &amp; Life Skills Quiz | MySkillGame">
+<meta property="og:description" content="15 safety and awareness topics, 10 questions each, with an explanation after every answer. Free for students, teachers and families.">
+<meta property="og:url" content="https://myskillglobal.com/lifeguardquiz">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EC8BPWZDWC"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -91,6 +96,21 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #f4f4f6; m
 .result-actions button.secondary { background: #fff; color: #333; border: 1.5px solid #e4e4ea; }
 .result-actions button:hover { opacity: 0.9; }
 
+/* STATIC CONTENT */
+.info { padding: 0 1rem 1rem; color: #333; font-size: 13.5px; line-height: 1.65; }
+.info h2 { font-size: 16px; color: #0F6E56; margin: 1.4rem 0 0.5rem; line-height: 1.3; }
+.info h3 { font-size: 14px; color: #1a1a2e; margin: 0.9rem 0 0.25rem; }
+.info p { margin-bottom: 0.6rem; }
+.info ul, .info ol { margin: 0 0 0.6rem 1.2rem; }
+.info li { margin-bottom: 0.3rem; }
+.info .callout { background: #f0faf6; border-left: 3px solid #1D9E75; border-radius: 8px; padding: 10px 12px; margin: 0.6rem 0; }
+.info details { border: 1px solid #e8e8ec; border-radius: 10px; padding: 9px 12px; margin-bottom: 8px; background: #fff; }
+.info summary { font-weight: 600; cursor: pointer; color: #1a1a2e; }
+.info details p { margin: 0.5rem 0 0; }
+.site-footer a { color: #0F6E56; text-decoration: none; font-weight: 600; margin: 0 3px; }
+.site-footer { padding: 1.2rem 1rem 2rem; font-size: 12px; color: #777; text-align: center; border-top: 1px solid #f0f0f4; line-height: 1.6; }
+.noscript-msg { margin: 1rem; padding: 12px; background: #fff8e6; border: 1px solid #f0d58a; border-radius: 10px; font-size: 13px; }
+
 /* Speaking indicator */
 .speaking-dot { display: inline-block; width: 6px; height: 6px; background: #1D9E75; border-radius: 50%; animation: pulse 0.8s ease-in-out infinite; margin-left: 4px; }
 @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.6)} }
@@ -102,10 +122,112 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #f4f4f6; m
 <!-- HOME -->
 <div id="home" class="screen active">
   <div class="home-header">
-    <div class="game-logo">🎓 MySkillVerse</div>
-    <div class="game-sub">14 Topics · 10 Questions Each · Test Your Knowledge</div>
+    <h1 class="game-logo">🎓 MySkillGame Safety &amp; Life Skills Quiz</h1>
+    <div class="game-sub">15 Topics · 10 Questions Each · An Explanation After Every Answer</div>
   </div>
   <div class="topic-grid" id="topicGrid"></div>
+  <noscript><div class="noscript-msg">This quiz needs JavaScript to run. Please enable JavaScript in your browser to choose a topic and answer the questions. The learning notes below are readable without it.</div></noscript>
+
+  <main class="info">
+    <h2>About this quiz</h2>
+    <p>This is a free, self-paced awareness quiz about everyday safety and responsible citizenship. It covers 15 topics, from water safety and drowning prevention to electrical hazards, toxic gas leaks, child labour, e-waste, and blood, eye and organ donation. Each topic has 10 multiple-choice questions, and after every answer you see whether you were right and read a short explanation of why.</p>
+    <p>MySkillGame is built for students, teachers and families, especially in places where safety information is hard to find. You can use it on a phone, in a classroom, or at home. No sign-up is needed.</p>
+
+    <h2>What you will learn</h2>
+    <ul>
+      <li>How to recognise common dangers at home, near water, and in emergencies.</li>
+      <li>The first safe actions to take, and the common mistakes that make situations worse.</li>
+      <li>Why simple habits, such as unplugging appliances, wearing a life jacket or reusing a bottle, protect people and the environment.</li>
+      <li>How blood, eye, organ and body donation work, and what consent is needed.</li>
+      <li>Which emergency numbers to call in India.</li>
+    </ul>
+
+    <h2>How to play</h2>
+    <ol>
+      <li>Choose a topic from the cards above.</li>
+      <li>Read each question and tap one of the four answers.</li>
+      <li>See at once if it was correct, and read the explanation underneath.</li>
+      <li>Tap <strong>Next question</strong>. At the end you see your score and can try again or pick another topic.</li>
+      <li>Use the <strong>Voice</strong> button to have questions and explanations read aloud, or turn it off for silent play.</li>
+    </ol>
+    <p>There is no time limit. Take your time, and read the explanations even when you answer correctly, because that is where most of the learning happens.</p>
+
+    <h2>Water safety and drowning prevention: the essentials</h2>
+    <p>Drowning is quick and usually silent. A person in trouble often cannot shout or wave, and may slip under in less than a minute. Ponds, wells, canals, rivers, buckets and flood water are all places where it can happen.</p>
+    <h3>Common hazards</h3>
+    <ul>
+      <li>Slippery banks and sudden drops in ponds, quarries and rivers.</li>
+      <li>Strong currents, especially after rain or in flood water.</li>
+      <li>Uncovered wells, tanks and water-filled pits near homes and farms.</li>
+      <li>Swimming alone, swimming when tired, or after alcohol.</li>
+      <li>Boating without a life jacket.</li>
+    </ul>
+    <h3>What to do if someone is in trouble: Reach, Throw, Don't go</h3>
+    <ul>
+      <li><strong>Call for help</strong> first: shout for nearby adults and phone 112.</li>
+      <li><strong>Reach</strong> with a long stick, pole or clothing while you stay on solid ground.</li>
+      <li><strong>Throw</strong> something that floats, such as a rope, a plastic can or a ring.</li>
+      <li><strong>Don't go</strong> in unless you are trained. Panicking people can pull rescuers under.</li>
+      <li>If the person is not breathing, call 112 or 108 and start CPR if you have been trained. Follow the dispatcher's instructions.</li>
+    </ul>
+    <div class="callout"><strong>Remember:</strong> This quiz builds awareness. It does not replace a certified first-aid, CPR or lifesaving course. Please look for a local training programme.</div>
+
+    <h2>Emergency numbers in India</h2>
+    <ul>
+      <li><strong>112</strong>: national emergency number</li>
+      <li><strong>108</strong>: ambulance (available in many states)</li>
+      <li><strong>101</strong>: fire service</li>
+      <li><strong>100</strong>: police</li>
+      <li><strong>1098</strong>: Childline, for children in need of help or protection</li>
+    </ul>
+
+    <h2>Topics at a glance</h2>
+    <h3>🏊 Water Safety &amp; Drowning Prevention</h3>
+    <p>Recognising drowning, safe rescue, floods, currents, life jackets and supervising children near water.</p>
+    <h3>☢️ Radiation Emergency</h3>
+    <p>The three basic principles of time, distance and shielding, why sheltering indoors helps, and how decontamination and potassium iodide work.</p>
+    <h3>🚁 Drone Attack Safety</h3>
+    <p>Taking cover in a strong building, avoiding open areas, informing authorities, and keeping an emergency kit ready.</p>
+    <h3>⚡ Electrical Hazard</h3>
+    <p>How electric shock affects the heart, why water and electricity are a dangerous mix, and how to prevent short circuits and overloaded sockets.</p>
+    <h3>♻️ E-Waste Hazard</h3>
+    <p>Toxic metals such as lead, mercury and cadmium in old electronics, and why discarded devices should go to authorised recycling centres.</p>
+    <h3>🌱 Plantation &amp; Employment</h3>
+    <p>How short-term and long-term crops, matched to local climate, can give steady income while protecting the environment.</p>
+    <h3>🧠 Brain Death &amp; Organ Donation</h3>
+    <p>The difference between brain death and a coma, which organs can be donated, and why family consent matters.</p>
+    <h3>🩸 Blood Donation</h3>
+    <p>Who can donate, how much is collected, how often, and how the body recovers.</p>
+    <h3>👶 Child Labour</h3>
+    <p>What counts as child labour, why it harms children, how education helps, and how to report it.</p>
+    <h3>🚫 Human Trafficking</h3>
+    <p>How trafficking works, who is most at risk, warning signs, and the helplines available in India.</p>
+    <h3>🌍 Eco Bottle Awareness</h3>
+    <p>Why single-use plastic bottles harm health and the environment, and what safer reusable options exist.</p>
+    <h3>🧵 Eco Bag Welfare</h3>
+    <p>How community Self-Help Groups can earn a livelihood by making jute and cotton bags that replace plastic.</p>
+    <h3>🙏 After Death Body Donation</h3>
+    <p>How pledging one's body helps medical students learn anatomy, and what registration and consent are needed.</p>
+    <h3>👁️ Eye Donation</h3>
+    <p>How donated corneas restore sight, why timing matters, and common myths about eye donation.</p>
+    <h3>☠️ Chemical / Toxic Gas Leak</h3>
+    <p>Moving upwind, sealing indoor spaces, protecting your airways, and seeking medical care after exposure.</p>
+
+    <h2>Frequently asked questions</h2>
+    <details><summary>Is the quiz free?</summary><p>Yes. All topics are free, with no sign-up or payment.</p></details>
+    <details><summary>Who is this quiz for?</summary><p>Students, teachers, parents and anyone who wants to learn practical safety and civic awareness. Teachers can use it as a classroom activity or revision exercise.</p></details>
+    <details><summary>Do I get explanations for wrong answers?</summary><p>Yes. After every answer the quiz shows the correct option and a short explanation, whether your answer was right or wrong.</p></details>
+    <details><summary>Does the quiz replace first-aid or lifesaving training?</summary><p>No. It builds awareness of what to do and what to avoid. For hands-on skills such as CPR and water rescue, please attend a course run by a certified trainer or a recognised organisation.</p></details>
+    <details><summary>Why does the voice feature sound different on my device?</summary><p>The voice uses the speech engine built into your browser, so the sound and availability depend on your device. You can switch it off with the Voice button during any quiz.</p></details>
+    <details><summary>Are my answers or scores saved?</summary><p>No. Your score is kept only while the page is open. The page uses Google Analytics to count overall visits, and it does not ask for your name or any personal details.</p></details>
+    <details><summary>What should I do in a real emergency?</summary><p>Call 112 (or 108 for an ambulance in many states) straight away and follow the dispatcher's instructions. Do not wait to finish a quiz or look for information online.</p></details>
+  </main>
+
+  <footer class="site-footer">
+    <p><a href="/">MySkill Global Home</a> | <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms.html">Terms of Use</a> | <a href="contact.html">Contact</a> | <a href="disclaimer.html">Disclaimer</a></p>
+    <p>MySkillGame is a free educational platform that makes life skills, safety and civic awareness easy to learn.</p>
+    <p>The information here is general awareness content and is not medical, legal or emergency advice.</p>
+  </footer>
 </div>
 
 <!-- QUIZ -->
@@ -253,6 +375,21 @@ document.body.addEventListener('touchstart',()=>{
 },{once:true});
 // ─── TOPIC DATA ──────────────────────────────────────────────────
 const topics = [
+  {
+    emoji: "🏊", name: "Water Safety & Drowning Prevention", id: "water",
+    questions: [
+      { q: "A person is struggling in a pond and you are not a trained rescuer. What should you do FIRST?", opts: ["Jump in immediately to pull them out","Shout for help, call 112, and look for something to reach or throw","Wait quietly to see if they reach the edge","Record a video to share with others"], ans: 1, exp: "Calling for help and using a pole, rope or floating object keeps you on solid ground. Panicking people can grab and pull a rescuer underwater, so untrained rescuers should not enter the water." },
+      { q: "What does the rescue rule 'Reach, Throw, Don't go' mean?", opts: ["Reach the person by swimming, then throw them out of the water","Reach or throw an aid from safety, and avoid entering the water unless trained","Throw stones to attract attention and go home","Go into the water only if the person is a child"], ans: 1, exp: "You can often help from the bank by reaching with a pole or throwing a rope or a floating object. This brings the person to safety without putting a second life at risk." },
+      { q: "Which of these is a common sign that someone is drowning?", opts: ["Loud shouting and waving both arms for a long time","Staying upright in the water with little splashing and a head tilted back","Diving and coming up smiling","Floating calmly on their back"], ans: 1, exp: "Drowning is often quiet. The person usually cannot call out, may stay upright with arms pressing down on the water, and can go under in under a minute. Look for silent struggle, not just loud splashing." },
+      { q: "Why is swimming alone unsafe, even for a good swimmer?", opts: ["Water is always colder when you are alone","Cramps, tiredness or a sudden problem can happen and nobody is there to help","Swimming alone is illegal everywhere","Good swimmers cannot float without a partner"], ans: 1, exp: "Even strong swimmers can get cramps, become exhausted, or be hurt by hidden hazards. Swimming with others, and in supervised places where possible, means help is close if something goes wrong." },
+      { q: "Which hidden danger is common in ponds, quarries and rivers?", opts: ["Sudden drops, slippery edges, weeds and strong currents","Perfectly flat bottoms","Water that is always warm","Clear signs warning every swimmer"], ans: 0, exp: "Natural water bodies can change depth suddenly, and weeds can tangle limbs. Banks can be slippery and currents can be strong, especially after rain. Never assume the water is as safe as it looks." },
+      { q: "About how deep can fast-moving flood water be to knock an adult off their feet?", opts: ["About 15 cm (6 inches)","About 1 metre","About 2 metres","It only matters above the knees"], ans: 0, exp: "Even around 15 cm of fast-moving water can knock someone over, and about 30 cm can float many cars. Never walk or drive through flooded roads, since the depth and force are hard to judge." },
+      { q: "If you are caught in a strong river or rip current, what is the best thing to do?", opts: ["Swim hard straight against the current until exhausted","Stay calm, float or tread water, and swim across the current toward the bank while signalling for help","Dive to the bottom to escape the current","Take off all your clothes and hold your breath"], ans: 1, exp: "Fighting a current wastes energy. Staying calm, floating to rest and angling toward the bank, while waving or calling for help, gives you the best chance of getting out safely." },
+      { q: "A person has been pulled from the water and is not breathing. What is the correct next step?", opts: ["Leave them to rest and watch","Call 112 or 108 at once and start CPR if you are trained, following the dispatcher's guidance","Give them water to drink","Shake them vigorously until they wake"], ans: 1, exp: "Drowning cuts off oxygen, so every minute matters. Emergency services can guide you by phone, and trained rescuers should start CPR, including rescue breaths, without delay." },
+      { q: "When should a life jacket be worn on a boat?", opts: ["Only if you cannot swim","Always, and it should fit properly, because anyone can end up in the water unexpectedly","Only in winter","Never, as it makes movement difficult"], ans: 1, exp: "Falls, capsizing and sudden waves can happen to anyone, and cold shock or injury can stop even good swimmers from staying afloat. A properly fitted life jacket keeps your head above water." },
+      { q: "What is the best way to keep young children safe around water?", opts: ["Teach them one swimming stroke and then let them play alone","Keep an adult watching, within arm's reach for toddlers, and cover or fence wells, tanks and buckets","Rely on older siblings who are playing nearby","Use floating toys instead of supervision"], ans: 1, exp: "Small children can drown in a few centimetres of water, in seconds and without a sound. Constant adult attention and physical barriers such as covers and fences are the most reliable protection." }
+    ]
+  },
   {
     emoji: "☢️", name: "Radiation Emergency", id: "radiation",
     questions: [
