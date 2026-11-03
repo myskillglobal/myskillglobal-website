@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Addition Race – 10 Rounds</title>
+<style>
+:root{--bg:#3a2412;--fg:#fff;--frame:#8b5a2b;--board:#f3deb0;--line:#6b4423;--c1:#d62839;--c2:#1d4ed8;--pocket:#111;--shape:50%;--endbg:#f5b301;--endfg:#3a2412;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;text-align:center;padding:12px;min-height:100vh;transition:background .5s}
+h1{font-size:1.3rem;margin:4px 0}
+.stage{font-weight:700;opacity:.9;margin:0 0 8px;font-size:.95rem}
+.score{display:flex;gap:8px;justify-content:center;margin-bottom:8px}
+.pl{flex:1;max-width:175px;padding:6px;border-radius:12px;background:#0004;border:3px solid transparent;font-weight:700;font-size:.85rem;overflow:hidden}
+.pl.on{border-color:#ffd54a}
+.pl i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:4px}
+.pl span{display:block;font-size:1.5rem}
+.pl small{display:block;font-weight:600;opacity:.8;font-size:.7rem}
+#turn{font-weight:800;font-size:1.05rem;margin:4px 0 8px}
+.frame{max-width:370px;margin:0 auto 10px;padding:14px;border-radius:16px;background:var(--frame);box-shadow:0 6px 16px #0007,inset 0 0 0 3px #fff3}
+.board{display:flex;flex-direction:column;align-items:center;gap:6px;padding:16px 8px;border-radius:8px;transition:transform .9s ease;background:radial-gradient(circle at 0 0,var(--pocket) 17px,#0000 18px),radial-gradient(circle at 100% 0,var(--pocket) 17px,#0000 18px),radial-gradient(circle at 0 100%,var(--pocket) 17px,#0000 18px),radial-gradient(circle at 100% 100%,var(--pocket) 17px,#0000 18px),var(--board);border:3px solid var(--line)}
+.board.flip{transform:rotate(180deg)}
+.w{display:inline-block;transition:transform .9s ease}
+.flip .w{transform:rotate(180deg)}
+.row{display:flex;gap:6px;justify-content:center}
+.c{width:50px;height:50px;border-radius:var(--shape);border:3px solid var(--line);font-weight:800;font-size:.95rem;display:flex;align-items:center;justify-content:center;color:#fff;transition:.3s;background:#fff3}
+.c.v1,.c.v2{border-color:#fff8;text-shadow:0 1px 2px #0008}
+.c.v1{background:radial-gradient(circle at 35% 30%,#fff7,#0000 40%),var(--c1)}
+.c.v2{background:radial-gradient(circle at 35% 30%,#fff7,#0000 40%),var(--c2)}
+.c.t1,.c.t2{box-shadow:0 0 0 4px #ffd54a,0 0 14px 4px #ffd54a;transform:scale(1.12)}
+.end{min-width:140px;height:46px;border-radius:23px;background:var(--endbg);color:var(--endfg);font-weight:900;letter-spacing:2px;display:flex;align-items:center;justify-content:center;border:3px solid var(--line);margin:2px 0}
+.end b{background:#fff;border-radius:12px;padding:1px 7px;font-size:.8rem;letter-spacing:0;margin-left:6px}
+.dice{display:flex;gap:14px;justify-content:center;margin:6px 0}
+.die{width:58px;height:58px;border-radius:12px;background:#fff;border:2px solid #333;display:grid;grid-template:repeat(3,1fr)/repeat(3,1fr);padding:7px;box-shadow:0 3px 6px #0006}
+.die i{width:10px;height:10px;border-radius:50%;background:#111;place-self:center;visibility:hidden}
+.die i.on{visibility:visible}
+.big{font-size:1.1rem;padding:10px 24px;border-radius:12px;border:0;background:#16a34a;color:#fff;font-weight:800;cursor:pointer;box-shadow:0 3px 0 #0a5;margin:3px}
+.big.alt{background:#2563eb;box-shadow:0 3px 0 #1e40af}
+.small{font-size:.85rem;padding:6px 14px;background:#0005;box-shadow:none}
+input{font-size:1.2rem;width:90px;text-align:center;padding:8px;border-radius:10px;border:2px solid #fff;background:#fff;color:#111}
+input.nm{width:100%;max-width:260px;margin:5px 0;font-size:1.05rem}
+#msg{min-height:2.6em;margin:8px 0;font-weight:700}
+.rolling .die{animation:s .12s infinite}
+@keyframes s{50%{transform:rotate(12deg)}}
+.ov{position:fixed;inset:0;background:#000b;display:none;align-items:center;justify-content:center;z-index:9;padding:16px;overflow:auto}
+.ov.show{display:flex}
+#rv{z-index:12}
+.box{background:linear-gradient(160deg,#fff6c9,#ffd54a);color:#3a2412;padding:22px 18px;border-radius:20px;width:100%;max-width:380px;max-height:92vh;overflow:auto;box-shadow:0 10px 40px #000a;animation:pop .5s}
+.box h2{margin:6px 0;font-size:1.5rem}.box h3{margin:10px 0 4px}.box p{margin:6px 0;font-weight:600}
+.trophy{font-size:3.2rem}
+table{width:100%;border-collapse:collapse;font-size:.8rem;margin:6px 0}
+th,td{border-bottom:1px solid #3a241255;padding:4px 3px;text-align:center}
+th{background:#3a241222}
+.tabs button{margin:2px;padding:4px 8px;border-radius:8px;border:2px solid #3a2412;background:#fff8;color:#3a2412;font-weight:800;cursor:pointer}
+.tabs button.on{background:#3a2412;color:#fff}
+.log{max-height:170px;overflow:auto;text-align:left;font-size:.8rem;border:1px solid #3a241255;border-radius:8px;padding:4px 8px;background:#fff6}
+.log div{padding:1px 0}
+@keyframes pop{from{transform:scale(.4);opacity:0}}
+.cf{position:fixed;top:-30px;font-size:1.6rem;animation:fall linear forwards;pointer-events:none;z-index:15}
+@keyframes fall{to{transform:translateY(110vh) rotate(540deg)}}
+</style></head><body>
+<h1>🎲 Addition Race</h1>
+<p class="stage" id="stg"></p>
+<div class="score">
+<div class="pl" id="p1"></div>
+<div class="pl" id="p2"></div>
+</div>
+<div id="turn"></div>
+<div class="frame"><div class="board" id="board"></div></div>
+<div class="dice" id="dice"><div class="die"></div><div class="die"></div></div>
+<div id="msg"></div>
+<div id="ctl"></div>
+<p><button class="big small" id="reset">Restart this round</button> <button class="big small" id="rep">📊 Reports</button> <button class="big small" id="ng">New game</button></p>
+<div class="ov" id="ov"><div class="box" id="box"></div></div>
+<div class="ov" id="rv"><div class="box" id="rbox"></div></div>
+<script>
+var T=[
+{n:"Carrom Classic",e:"🎯",sizes:[5,4,3,2,1],bg:"#3a2412",frame:"#8b5a2b",board:"#f3deb0",line:"#6b4423",c1:"#d62839",c2:"#1d4ed8",pocket:"#111",shape:"50%",endbg:"#f5b301",endfg:"#3a2412"},
+{n:"Ocean Splash",e:"🐠",sizes:[4,3,2,1],bg:"#06324d",frame:"#0b7bb5",board:"#bfeaf7",line:"#0b5c8a",c1:"#ff6b57",c2:"#0f766e",pocket:"#0b5c8a",shape:"50%",endbg:"#ffd166",endfg:"#06324d"},
+{n:"Space Galaxy",e:"🚀",sizes:[1,2,3,4,5],bg:"#0d0826",frame:"#3b2a8c",board:"#1a1346",line:"#8b7cf0",c1:"#ff9f1c",c2:"#2ec4ff",pocket:"#7b2cbf",shape:"50%",endbg:"#e0aaff",endfg:"#10002b"},
+{n:"Jungle Leaves",e:"🌿",sizes:[4,4,3,2,1],bg:"#17381a",frame:"#3e7d2a",board:"#d7f0b0",line:"#2f6b1f",c1:"#ff8c00",c2:"#8e44ad",pocket:"#2f6b1f",shape:"50% 8% 50% 8%",endbg:"#ffeb3b",endfg:"#1b4d12"},
+{n:"Candy Kingdom",e:"🍭",sizes:[2,3,4,3,2],bg:"#5a0f3a",frame:"#d81b78",board:"#ffe3f1",line:"#b0125f",c1:"#7c3aed",c2:"#f59e0b",pocket:"#b0125f",shape:"22%",endbg:"#7ee081",endfg:"#4a0a2e"},
+{n:"Volcano Fire",e:"🌋",sizes:[3,4,5,4,3],bg:"#2b0a05",frame:"#a63a12",board:"#4a2218",line:"#ff7a30",c1:"#ffd23f",c2:"#4cc9f0",pocket:"#ff4500",shape:"50%",endbg:"#ff7a30",endfg:"#2b0a05"},
+{n:"Arctic Ice",e:"🐧",sizes:[1,3,5,3,1],bg:"#0a2a43",frame:"#5fa8d3",board:"#e8f6ff",line:"#5fa8d3",c1:"#e63946",c2:"#1b4965",pocket:"#1b4965",shape:"30%",endbg:"#cae9ff",endfg:"#0a2a43"},
+{n:"Desert Sand",e:"🏜️",sizes:[3,3,3,3,3],bg:"#4a2c0a",frame:"#c68b3e",board:"#f6e0a8",line:"#a06a1f",c1:"#0b6e4f",c2:"#b5179e",pocket:"#7a4a12",shape:"12%",endbg:"#2a9d8f",endfg:"#fff"},
+{n:"Rainbow Garden",e:"🌈",sizes:[2,3,4,3,2],bg:"#1f3a5f",frame:"#e76f51",board:"#fff1d6",line:"#e76f51",c1:"#e63946",c2:"#2a9d8f",pocket:"#f4a261",shape:"50%",endbg:"#ffd6a5",endfg:"#1f3a5f"},
+{n:"Golden Treasure",e:"👑",sizes:[4,5,4,3,2],bg:"#1a1205",frame:"#b8860b",board:"#2b200a",line:"#ffd700",c1:"#ff3b3b",c2:"#00d4ff",pocket:"#ffd700",shape:"50%",endbg:"#ffd700",endfg:"#1a1205"}];
+var N=T.length,PIPS={1:[4],2:[0,8],3:[0,4,8],4:[0,2,6,8],5:[0,2,4,6,8],6:[0,2,3,5,6,8]};
+var K="addrace_v2",$=function(i){return document.getElementById(i)};
+var S=null,sum=0,A=0,B=0,phase="";
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function fresh(st,k){var f=st%2==0?1:2;return{names:k.names,stage:st,pos:[0,0,0],tot:[0,0,0],vals:[null,[],[]],turn:f,first:f,over:false,log:[],w:0,wins:k.wins||[0,0,0],rounds:k.rounds||[]}}
+function save(){try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}}
+function load(){try{var s=JSON.parse(localStorage.getItem(K));if(s&&s.names&&s.stage>=0&&s.stage<N&&s.vals)return s}catch(e){}return null}
+function th(){return T[S.stage]}
+function len(){return th().sizes.reduce(function(a,b){return a+b},0)}
+function gt(p){return S.rounds.reduce(function(a,r){return a+r.t[p]},0)}
+function dieFace(el,n){el.innerHTML="";for(var i=0;i<9;i++){var p=document.createElement("i");if(PIPS[n].indexOf(i)>-1)p.className="on";el.appendChild(p)}}
+function say(t){$("msg").textContent=t}
+function skin(){var t=th(),r=document.documentElement.style;
+ ["bg","frame","board","line","c1","c2","pocket","shape","endbg","endfg"].forEach(function(k){r.setProperty("--"+k,t[k])});
+ $("stg").textContent=t.e+" Round "+(S.stage+1)+" of "+N+" – "+t.n}
+function cell(p,k){var v=S.vals[p][k-1],c=document.createElement("div");
+ c.className="c"+(v!=null?" v"+p:"")+(S.pos[p]==k?" t"+p:"");c.innerHTML="<span class='w'>"+(v!=null?v:"")+"</span>";return c}
+function draw(){
+ skin();var b=$("board");b.innerHTML="";var sz=th().sizes,k=1;
+ sz.forEach(function(n){var r=document.createElement("div");r.className="row";for(var i=0;i<n;i++)r.appendChild(cell(1,k++));b.appendChild(r)});
+ var e=document.createElement("div");e.className="end";var L=len();
+ e.innerHTML="<span class='w'>END"+(S.pos[1]>=L?"<b style='color:var(--c1)'>"+S.tot[1]+"</b>":"")+(S.pos[2]>=L?"<b style='color:var(--c2)'>"+S.tot[2]+"</b>":"")+"</span>";
+ b.appendChild(e);
+ var rows=[];k=1;sz.forEach(function(n){var r=[];for(var i=0;i<n;i++)r.push(k++);rows.unshift(r)});
+ rows.forEach(function(r){var el=document.createElement("div");el.className="row";r.forEach(function(s){el.appendChild(cell(2,s))});b.appendChild(el)});
+ b.classList.toggle("flip",S.turn==1&&!S.over);
+ for(var p=1;p<=2;p++){$("p"+p).innerHTML='<i style="background:var(--c'+p+')"></i>'+esc(S.names[p])+'<span>'+S.tot[p]+'</span><small>Overall: '+(gt(p)+(S.over?0:S.tot[p]))+' · Rounds won: '+S.wins[p]+'</small>';
+  $("p"+p).className="pl"+(S.turn==p&&!S.over?" on":"")}
+ $("turn").innerHTML=S.over?"":"🎯 <span style='color:#ffd54a'>"+esc(S.names[S.turn])+"</span>'s turn"}
+function ctl(){var c=$("ctl");
+ if(phase=="roll"){c.innerHTML='<button class="big" id="roll">Roll the Dice</button>';$("roll").onclick=roll}
+ else if(phase=="answer"){c.innerHTML='<input id="ans" type="number" inputmode="numeric" placeholder="?"> <button class="big" id="go">Check</button>';$("go").onclick=check;$("ans").onkeydown=function(e){if(e.key=="Enter")check()};$("ans").focus()}
+ else c.innerHTML=""}
+function setup(cancel){var n=S?S.names:["","",""];
+ $("box").innerHTML='<div class="trophy">🎲</div><h2>Addition Race</h2><p>Enter player names</p><input class="nm" id="n1" maxlength="14" placeholder="Player 1 name" value="'+esc(n[1])+'"><br><input class="nm" id="n2" maxlength="14" placeholder="Player 2 name" value="'+esc(n[2])+'"><p id="er" style="color:#b00020"></p><button class="big" id="st">Start Game</button>'+(cancel?'<button class="big alt" id="cn">Cancel</button>':"");
+ $("ov").className="ov show";
+ $("st").onclick=function(){var a=$("n1").value.trim(),b=$("n2").value.trim();
+  if(!a||!b){$("er").textContent="Please enter both names.";return}
+  if(a.toLowerCase()==b.toLowerCase())b=b+" 2";
+  S=fresh(0,{names:[null,a,b]});save();$("ov").className="ov";start()};
+ if(cancel)$("cn").onclick=function(){$("ov").className="ov"}}
+function start(){var d=document.querySelectorAll(".die");dieFace(d[0],1);dieFace(d[1],1);draw();
+ if(S.over){phase="done";ctl();roundEnd();return}
+ phase="roll";say(S.names[S.turn]+", roll the dice!");ctl()}
+function roll(){phase="busy";ctl();$("dice").className="dice rolling";
+ var d=document.querySelectorAll(".die"),t=0;
+ var iv=setInterval(function(){dieFace(d[0],1+Math.floor(Math.random()*6));dieFace(d[1],1+Math.floor(Math.random()*6));
+ if(++t>6){clearInterval(iv);A=1+Math.floor(Math.random()*6);B=1+Math.floor(Math.random()*6);dieFace(d[0],A);dieFace(d[1],B);sum=A+B;$("dice").className="dice";phase="answer";say(S.names[S.turn]+": what is "+A+" + "+B+" ?");ctl()}},90)}
+function endTurn(msg){phase="busy";ctl();say(msg);save();
+ setTimeout(function(){var L=len(),a=S.pos[1]>=L,b=S.pos[2]>=L;
+  if(S.turn!=S.first&&(a||b)||a&&b){finish();return}
+  S.turn=S.turn==1?2:1;if(S.pos[S.turn]>=L)S.turn=S.turn==1?2:1;
+  save();phase="roll";draw();say("🔄 Board turns… "+S.names[S.turn]+", roll the dice!");ctl()},1600)}
+function check(){var v=parseInt($("ans").value,10);if(isNaN(v))return;var ok=v===sum;
+ S.log.push({p:S.turn,a:A,b:B,ok:ok,ans:v});
+ if(!ok){endTurn("Not quite! The answer is "+sum+". Token stays.");return}
+ S.pos[S.turn]++;S.tot[S.turn]+=sum;S.vals[S.turn].push(S.tot[S.turn]);draw();
+ endTurn("Correct! 🎉 +"+sum+" → total "+S.tot[S.turn]+(S.pos[S.turn]>=len()?" – reached the END!":""))}
+function finish(){S.over=true;var w=S.tot[1]>S.tot[2]?1:S.tot[2]>S.tot[1]?2:0;if(w)S.wins[w]++;S.w=w;
+ S.rounds.push({n:th().n,e:th().e,t:[null,S.tot[1],S.tot[2]],w:w,log:S.log});save();draw();phase="done";ctl();roundEnd()}
+function confetti(){var em=["🎉","🎊","⭐","✨","🏆","🎈"];for(var i=0;i<40;i++){var s=document.createElement("div");s.className="cf";s.textContent=em[i%em.length];s.style.left=Math.random()*100+"vw";s.style.animationDuration=(2+Math.random()*2.5)+"s";s.style.animationDelay=Math.random()*1.2+"s";document.body.appendChild(s);setTimeout(function(x){x.remove()},6000,s)}}
+function roundEnd(){var n=S.names,r=S.rounds[S.rounds.length-1],last=S.stage==N-1,g1=gt(1),g2=gt(2),h;
+ h='<div class="trophy">'+(r.w?"🏆":"🤝")+'</div><h2>Round '+(S.stage+1)+' Result</h2>'+(r.w?'<p>Winner: <b>'+esc(n[r.w])+'</b></p>':"<p>This round is a tie!</p>")
+ +'<p>'+esc(n[1])+': '+r.t[1]+' &nbsp;|&nbsp; '+esc(n[2])+': '+r.t[2]+'</p><h3>Total score so far</h3><p>'+esc(n[1])+': '+g1+' pts ('+S.wins[1]+' rounds won)<br>'+esc(n[2])+': '+g2+' pts ('+S.wins[2]+' rounds won)</p>';
+ if(last){var c=g1>g2?1:g2>g1?2:S.wins[1]>S.wins[2]?1:S.wins[2]>S.wins[1]?2:0;
+  h+='<h2>🎖️ Final Score</h2><p>'+(c?'Champion: <b>'+esc(n[c])+'</b>!':"It's a draw overall! 🤝")+'</p><p>All '+N+' rounds complete. Well played!</p><button class="big alt" id="vr">📊 View Report</button><button class="big" id="nx">Play Again</button>'}
+ else h+='<p>Next: '+T[S.stage+1].e+' '+T[S.stage+1].n+'</p><button class="big alt" id="vr">📊 View Report</button><button class="big" id="nx">Next Round ▶</button>';
+ $("box").innerHTML=h;$("ov").className="ov show";confetti();
+ $("vr").onclick=function(){report(S.rounds.length-1)};
+ $("nx").onclick=function(){$("ov").className="ov";if(last){setup(false);return}S=fresh(S.stage+1,S);save();start()}}
+function stats(r,p){var c=0,w=0;r.log.forEach(function(x){if(x.p==p){x.ok?c++:w++}});return{c:c,w:w,acc:c+w?Math.round(100*c/(c+w)):0}}
+function report(i){var n=S.names,R=S.rounds,h='<h2>📊 Report</h2>';
+ if(!R.length){h+='<p>No round has been completed yet.</p>'}
+ else{if(i==null||i<0||i>=R.length)i=R.length-1;
+  h+='<table><tr><th>#</th><th>Theme</th><th>'+esc(n[1])+'</th><th>'+esc(n[2])+'</th><th>Won</th></tr>';
+  R.forEach(function(r,k){h+='<tr><td>'+(k+1)+'</td><td>'+r.e+' '+esc(r.n)+'</td><td>'+r.t[1]+'</td><td>'+r.t[2]+'</td><td>'+(r.w?esc(n[r.w]):"Tie")+'</td></tr>'});
+  h+='<tr><th colspan="2">Total</th><th>'+gt(1)+'</th><th>'+gt(2)+'</th><th></th></tr></table><div class="tabs">';
+  R.forEach(function(r,k){h+='<button class="'+(k==i?"on":"")+'" data-i="'+k+'">R'+(k+1)+'</button>'});
+  var r=R[i],a=stats(r,1),b=stats(r,2);
+  h+='</div><h3>Round '+(i+1)+' – '+r.e+' '+esc(r.n)+'</h3><table><tr><th></th><th>'+esc(n[1])+'</th><th>'+esc(n[2])+'</th></tr><tr><td>Score</td><td>'+r.t[1]+'</td><td>'+r.t[2]+'</td></tr><tr><td>Correct</td><td>'+a.c+'</td><td>'+b.c+'</td></tr><tr><td>Wrong</td><td>'+a.w+'</td><td>'+b.w+'</td></tr><tr><td>Accuracy</td><td>'+a.acc+'%</td><td>'+b.acc+'%</td></tr></table><div class="log">';
+  r.log.forEach(function(x,k){h+='<div>'+(k+1)+'. '+esc(n[x.p])+': '+x.a+' + '+x.b+' → '+x.ans+' '+(x.ok?'✅':'❌ (='+(x.a+x.b)+')')+'</div>'});
+  h+='</div>'}
+ h+='<p><button class="big" id="rc">Close</button></p>';
+ $("rbox").innerHTML=h;$("rv").className="ov show";$("rc").onclick=function(){$("rv").className="ov"};
+ Array.prototype.forEach.call($("rbox").querySelectorAll(".tabs button"),function(x){x.onclick=function(){report(+x.getAttribute("data-i"))}})}
+$("reset").onclick=function(){if(!S)return;S=fresh(S.stage,S);save();$("ov").className="ov";start()};
+$("rep").onclick=function(){if(S)report()};
+$("ng").onclick=function(){setup(!!S)};
+S=load();if(S)start();else{draw0();setup(false)}
+function draw0(){var d=document.querySelectorAll(".die");dieFace(d[0],1);dieFace(d[1],1);$("stg").textContent="Welcome!"}
+</script></body></html>

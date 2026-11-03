@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Count &amp; Smile – Fruit Counting Game</title>
+<style>
+:root{--sky1:#8fd3ff;--sky2:#e6f7ff;--ink:#27315a;--card:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--sky1:#2a3a8c;--sky2:#5a6fd6;--ink:#1c2145;color-scheme:dark}}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;font-family:"Comic Sans MS","Chalkboard SE",system-ui,sans-serif;background:linear-gradient(var(--sky1),var(--sky2));color:var(--ink);text-align:center;padding:12px;overflow-x:hidden;position:relative}
+.cloud{position:fixed;font-size:3.5rem;opacity:.8;animation:drift 30s linear infinite;z-index:0}
+@keyframes drift{from{transform:translateX(-20vw)}to{transform:translateX(120vw)}}
+main{position:relative;z-index:1;max-width:420px;margin:0 auto}
+h1{font-size:1.7rem;margin:6px 0;color:#ff4f8b;text-shadow:2px 2px 0 #fff}
+.card{background:var(--card);border-radius:26px;padding:16px;box-shadow:0 8px 0 #0002;margin:10px 0}
+.lv{display:block;width:100%;margin:10px 0;padding:16px;font-size:1.3rem;font-family:inherit;font-weight:700;border:0;border-radius:20px;color:#fff;cursor:pointer;box-shadow:0 6px 0 #0003}
+.lv small{display:block;font-size:.85rem;font-weight:400}
+.top{display:flex;justify-content:space-between;align-items:center;font-weight:700}
+.bar{height:14px;background:#0002;border-radius:8px;overflow:hidden;margin:8px 0}
+.bar div{height:100%;background:linear-gradient(90deg,#ffd54a,#ff8a3d);width:0;transition:.4s}
+.q{font-size:1.2rem;font-weight:700;margin:4px 0}
+.fruits{min-height:150px;display:flex;flex-wrap:wrap;justify-content:center;align-content:center;gap:4px;font-size:2.3rem;padding:8px}
+.fruits span{display:inline-block;animation:bounce 1.4s ease-in-out infinite}
+.fruits span:nth-child(odd){animation-delay:.3s}
+@keyframes bounce{50%{transform:translateY(-8px) rotate(6deg)}}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.opt{font-family:inherit;font-size:2.2rem;font-weight:800;padding:14px;border:0;border-radius:20px;color:#fff;cursor:pointer;box-shadow:0 6px 0 #0003;transition:transform .1s}
+.opt:active{transform:translateY(4px);box-shadow:0 2px 0 #0003}
+.opt:nth-child(1){background:#ff6b6b}.opt:nth-child(2){background:#4dabf7}.opt:nth-child(3){background:#51cf66}.opt:nth-child(4){background:#ae6bff}
+.opt.no{opacity:.35;animation:shake .4s}
+.opt.yes{background:#16a34a;transform:scale(1.08)}
+@keyframes shake{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+#fb{min-height:2.2em;font-size:1.3rem;font-weight:800;margin-top:10px}
+.btn{font-family:inherit;font-size:1.2rem;font-weight:800;padding:12px 26px;border:0;border-radius:18px;background:#ff4f8b;color:#fff;cursor:pointer;box-shadow:0 5px 0 #0003;margin:6px}
+.stars{font-size:2.6rem;margin:6px 0}
+.cf{position:fixed;top:-30px;font-size:1.7rem;animation:fall linear forwards;pointer-events:none;z-index:9}
+@keyframes fall{to{transform:translateY(110vh) rotate(540deg)}}
+.hide{display:none}
+</style></head><body>
+<div class="cloud" style="top:8%;animation-delay:-5s">☁️</div>
+<div class="cloud" style="top:35%;animation-delay:-18s;font-size:2.5rem">☁️</div>
+<div class="cloud" style="top:70%;animation-delay:-11s">☁️</div>
+<main>
+<h1>🍎 Count &amp; Smile 🍌</h1>
+<div id="menu" class="card">
+ <p class="q">Hello, friend! 👋<br>Let's count the fruits. Pick a level:</p>
+ <button class="lv" style="background:#51cf66" onclick="go(0)">🌱 Easy<small>Count 1 to 5</small><small id="b0"></small></button>
+ <button class="lv" style="background:#ffa94d" onclick="go(1)">🌻 Medium<small>Count 1 to 10</small><small id="b1"></small></button>
+ <button class="lv" style="background:#cc5de8" onclick="go(2)">🚀 Super<small>Count 5 to 15</small><small id="b2"></small></button>
+</div>
+<div id="game" class="card hide">
+ <div class="top"><span id="rd"></span><span id="sc"></span></div>
+ <div class="bar"><div id="pg"></div></div>
+ <div class="q">How many do you see?</div>
+ <div class="fruits" id="fr"></div>
+ <div class="opts" id="op"></div>
+ <div id="fb"></div>
+</div>
+<div id="end" class="card hide"></div>
+</main>
+<script>
+var LV=[[1,5],[1,10],[5,15]],FR=["🍎","🍌","🍓","🍇","🍊","🍉","🍒","🍐","🍍","🥕"],ROUNDS=10,K="countsmile_best";
+var $=function(i){return document.getElementById(i)};
+var lv,r,score,ans,tries,best={};
+try{best=JSON.parse(localStorage.getItem(K))||{}}catch(e){}
+function showBest(){for(var i=0;i<3;i++)$("b"+i).textContent=best[i]!=null?"⭐ Best: "+best[i]+"/10":""}
+function show(id){["menu","game","end"].forEach(function(x){$(x).className="card"+(x==id?"":" hide")})}
+function go(l){lv=l;r=0;score=0;show("game");next()}
+function next(){
+ if(r>=ROUNDS){return fin()}
+ r++;tries=0;$("fb").textContent="";
+ $("rd").textContent="Question "+r+" / "+ROUNDS;$("sc").textContent="⭐ "+score;$("pg").style.width=((r-1)/ROUNDS*100)+"%";
+ var a=LV[lv][0],b=LV[lv][1];ans=a+Math.floor(Math.random()*(b-a+1));
+ var f=FR[Math.floor(Math.random()*FR.length)],h="";
+ for(var i=0;i<ans;i++)h+="<span>"+f+"</span>";$("fr").innerHTML=h;
+ var set=[ans];while(set.length<4){var o=Math.max(1,ans+Math.floor(Math.random()*7)-3);if(set.indexOf(o)<0)set.push(o)}
+ set.sort(function(){return Math.random()-.5});
+ $("op").innerHTML="";set.forEach(function(n){var bt=document.createElement("button");bt.className="opt";bt.textContent=n;bt.onclick=function(){pick(bt,n)};$("op").appendChild(bt)})}
+function pick(bt,n){
+ if(n==ans){bt.className="opt yes";if(!tries)score++;
+  var m=["Great job! 🎉","Super! 🌟","Yay! 👏","Wonderful! 🥳","You did it! 💪"];
+  $("fb").textContent=m[Math.floor(Math.random()*m.length)];$("sc").textContent="⭐ "+score;$("pg").style.width=(r/ROUNDS*100)+"%";
+  Array.prototype.forEach.call($("op").children,function(x){x.onclick=null});setTimeout(next,1300)}
+ else{tries++;bt.className="opt no";bt.onclick=null;$("fb").textContent="Oops! Try again 💛"}}
+function confetti(){var em=["🎉","🎊","⭐","🌈","🎈","🍭"];for(var i=0;i<40;i++){var s=document.createElement("div");s.className="cf";s.textContent=em[i%em.length];s.style.left=Math.random()*100+"vw";s.style.animationDuration=(2+Math.random()*2.5)+"s";s.style.animationDelay=Math.random()+"s";document.body.appendChild(s);setTimeout(function(x){x.remove()},6000,s)}}
+function fin(){
+ if(best[lv]==null||score>best[lv]){best[lv]=score;try{localStorage.setItem(K,JSON.stringify(best))}catch(e){}}
+ var st=score>=9?3:score>=6?2:1,s="";for(var i=0;i<3;i++)s+=i<st?"⭐":"☆";
+ var msg=score==10?"Perfect! You are a counting champion! 🏆":score>=7?"Awesome counting! 🎉":"Good try! Practice makes perfect! 💖";
+ $("end").innerHTML='<div class="stars">'+s+'</div><p class="q">You got '+score+' out of '+ROUNDS+' right!</p><p class="q">'+msg+'</p><button class="btn" onclick="go(lv)">Play Again 🔁</button><button class="btn" style="background:#4dabf7" onclick="showBest();show(\'menu\')">Choose Level 🏠</button>';
+ show("end");confetti()}
+showBest();
+</script></body></html>

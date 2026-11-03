@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Neon Snake</title>
+<style>
+:root{--bg:#0a0618;--fg:#e8e6ff;--neon:#00f5d4;--pink:#ff2e93;--gold:#ffd23f;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:dark}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:radial-gradient(circle at 50% 0,#2a0f55,var(--bg) 60%);color:var(--fg);font-family:"Trebuchet MS",system-ui,sans-serif;text-align:center;padding:10px;min-height:100vh;user-select:none}
+h1{margin:4px 0;font-size:1.6rem;letter-spacing:3px;color:var(--neon);text-shadow:0 0 12px var(--neon),0 0 28px var(--neon)}
+.hud{display:flex;justify-content:space-between;max-width:340px;margin:4px auto;font-weight:700}
+.hud b{color:var(--gold);text-shadow:0 0 8px var(--gold)}
+.wrap{position:relative;width:min(340px,92vw);margin:0 auto}
+canvas{width:100%;display:block;border-radius:14px;border:2px solid var(--neon);box-shadow:0 0 22px #00f5d466,inset 0 0 30px #00f5d433;background:#0d0826;touch-action:none}
+.ov{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#0a0618dd;border-radius:14px;padding:16px}
+.ov h2{margin:0 0 6px;font-size:1.7rem;color:var(--pink);text-shadow:0 0 14px var(--pink)}
+.ov p{margin:4px 0;font-size:.95rem}
+button{font-family:inherit;font-weight:800;color:#0a0618;background:var(--neon);border:0;border-radius:12px;padding:10px 26px;font-size:1.1rem;cursor:pointer;box-shadow:0 0 16px var(--neon);margin-top:10px}
+.pad{display:grid;grid-template-columns:repeat(3,64px);grid-template-rows:repeat(2,54px);gap:6px;justify-content:center;margin-top:10px}
+.pad button{margin:0;padding:0;font-size:1.4rem;background:#ffffff18;color:var(--neon);box-shadow:none;border:1px solid #00f5d466}
+.pad .u{grid-column:2}.pad .l{grid-column:1;grid-row:2}.pad .d{grid-column:2;grid-row:2}.pad .r{grid-column:3;grid-row:2}
+.hide{display:none}
+</style></head><body>
+<h1>NEON SNAKE</h1>
+<div class="hud"><span>Score <b id="sc">0</b></span><span>Level <b id="lv">1</b></span><span>Best <b id="bs">0</b></span></div>
+<div class="wrap"><canvas id="cv" width="340" height="340"></canvas>
+<div class="ov" id="ov"><h2 id="t">READY?</h2><p id="m">Swipe, use arrow keys / WASD, or the pad.<br>🍎 +10 &nbsp; ⭐ Golden bonus +50 (vanishes fast!)<br>Hit a wall or yourself and it's over.</p><button id="go">PLAY</button></div></div>
+<div class="pad"><button class="u" data-d="u">▲</button><button class="l" data-d="l">◀</button><button class="d" data-d="d">▼</button><button class="r" data-d="r">▶</button></div>
+<script>
+var N=17,S=20,cv=document.getElementById("cv"),x=cv.getContext("2d"),$=function(i){return document.getElementById(i)};
+var K="neonsnake_best",best=0;try{best=+localStorage.getItem(K)||0}catch(e){}
+$("bs").textContent=best;
+var sn,dir,nd,food,gold,score,lvl,eaten,timer,run=false,trail;
+var V={u:[0,-1],d:[0,1],l:[-1,0],r:[1,0]};
+function free(){var p;do{p=[Math.floor(Math.random()*N),Math.floor(Math.random()*N)]}while(sn.some(function(s){return s[0]==p[0]&&s[1]==p[1]})||(food&&food[0]==p[0]&&food[1]==p[1])||(gold&&gold[0]==p[0]&&gold[1]==p[1]));return p}
+function reset(){sn=[[8,8],[7,8],[6,8]];dir=nd="r";score=0;lvl=1;eaten=0;gold=null;food=null;food=free();trail=[];hud()}
+function hud(){$("sc").textContent=score;$("lv").textContent=lvl}
+function start(){reset();$("ov").className="ov hide";run=true;clearInterval(timer);timer=setInterval(tick,speed());draw()}
+function speed(){return Math.max(60,150-(lvl-1)*14)}
+function turn(d){var o={u:"d",d:"u",l:"r",r:"l"};if(d!=o[dir])nd=d}
+function tick(){
+ dir=nd;var h=sn[0],v=V[dir],n=[h[0]+v[0],h[1]+v[1]];
+ if(n[0]<0||n[1]<0||n[0]>=N||n[1]>=N||sn.some(function(s){return s[0]==n[0]&&s[1]==n[1]}))return over();
+ sn.unshift(n);var ate=false;
+ if(n[0]==food[0]&&n[1]==food[1]){score+=10;eaten++;ate=true;food=free();burst(n,"#ff2e93");
+  if(eaten%5==0){lvl++;clearInterval(timer);timer=setInterval(tick,speed())}
+  if(!gold&&Math.random()<.35){gold=free();gold.t=Date.now()}}
+ else if(gold&&n[0]==gold[0]&&n[1]==gold[1]){score+=50;ate=true;gold=null;burst(n,"#ffd23f")}
+ if(!ate)sn.pop();
+ if(gold&&Date.now()-gold.t>5000)gold=null;
+ hud();draw()}
+function burst(p,c){for(var i=0;i<10;i++)trail.push({x:p[0]*S+10,y:p[1]*S+10,vx:(Math.random()-.5)*6,vy:(Math.random()-.5)*6,l:1,c:c})}
+function draw(){
+ x.clearRect(0,0,340,340);x.strokeStyle="#ffffff0d";
+ for(var i=0;i<=N;i++){x.beginPath();x.moveTo(i*S,0);x.lineTo(i*S,340);x.moveTo(0,i*S);x.lineTo(340,i*S);x.stroke()}
+ x.font="17px serif";x.textAlign="center";x.textBaseline="middle";x.shadowBlur=0;
+ x.fillText("🍎",food[0]*S+10,food[1]*S+11);
+ if(gold){var left=5000-(Date.now()-gold.t);x.globalAlpha=left<1500?(Math.floor(left/150)%2?.3:1):1;x.fillText("⭐",gold[0]*S+10,gold[1]*S+11);x.globalAlpha=1}
+ sn.forEach(function(s,i){var g=i/sn.length;x.shadowColor="#00f5d4";x.shadowBlur=i?8:16;x.fillStyle=i?"hsl("+(170+g*110)+",100%,"+(60-g*18)+"%)":"#fff";
+  x.beginPath();x.roundRect?x.roundRect(s[0]*S+1,s[1]*S+1,S-2,S-2,6):x.rect(s[0]*S+1,s[1]*S+1,S-2,S-2);x.fill()});
+ x.shadowBlur=0;
+ trail=trail.filter(function(p){return p.l>0});
+ trail.forEach(function(p){p.x+=p.vx;p.y+=p.vy;p.l-=.06;x.globalAlpha=Math.max(p.l,0);x.fillStyle=p.c;x.fillRect(p.x,p.y,4,4)});x.globalAlpha=1}
+function over(){
+ clearInterval(timer);run=false;var nb=score>best;
+ if(nb){best=score;try{localStorage.setItem(K,best)}catch(e){}$("bs").textContent=best}
+ $("t").textContent=nb&&score>0?"NEW HIGH SCORE! 🏆":"GAME OVER";
+ $("m").innerHTML="Score: <b style='color:#ffd23f'>"+score+"</b> &nbsp;|&nbsp; Level "+lvl+"<br>"+(score>=300?"Legend! 🔥":score>=150?"Great run! 👏":"Try again — you can beat it!");
+ $("go").textContent="PLAY AGAIN";$("ov").className="ov"}
+$("go").onclick=start;
+document.addEventListener("keydown",function(e){var m={ArrowUp:"u",w:"u",ArrowDown:"d",s:"d",ArrowLeft:"l",a:"l",ArrowRight:"r",d:"r"}[e.key];
+ if(m){turn(m);e.preventDefault()}else if(e.key==" "||e.key=="Enter"){if(!run)start()}});
+Array.prototype.forEach.call(document.querySelectorAll(".pad button"),function(b){b.onpointerdown=function(e){e.preventDefault();turn(b.dataset.d)}});
+var sx,sy;
+cv.addEventListener("touchstart",function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});
+cv.addEventListener("touchmove",function(e){if(sx==null)return;var dx=e.touches[0].clientX-sx,dy=e.touches[0].clientY-sy;
+ if(Math.max(Math.abs(dx),Math.abs(dy))>18){turn(Math.abs(dx)>Math.abs(dy)?(dx>0?"r":"l"):(dy>0?"d":"u"));sx=e.touches[0].clientX;sy=e.touches[0].clientY}},{passive:true});
+reset();draw();
+</script></body></html>

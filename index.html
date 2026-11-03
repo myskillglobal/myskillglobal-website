@@ -1135,7 +1135,21 @@ body.mm-lock{ overflow:hidden; }
 .gi p{line-height:1.85;color:var(--ink-soft);margin:0 0 16px}
 .gi-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px}
 .gi-chips span{background:var(--paper-warm);border-radius:999px;padding:6px 13px;font-size:.82rem;font-weight:700}
-@media(max-width:800px){.qs-typing,.qs-exam{grid-column:span 6}.qs-card{padding:24px 20px}.qs-btn2{margin-left:0}}
+.qs-pic{margin:-6px 0 18px;border-radius:12px;overflow:hidden;background:var(--paper-warm);border:1.5px solid rgba(34,51,59,.12);display:flex;align-items:center;justify-content:center}
+.qs-pic img{display:block;width:100%;height:auto;max-height:420px;object-fit:contain}
+.nav-links a.nav-apps{background:var(--marigold);color:var(--ink);border:2px solid var(--ink);border-radius:999px;padding:4px 14px;font-weight:800;box-shadow:2px 2px 0 rgba(34,51,59,.25);animation:appsPulse 2.4s ease-in-out infinite}
+.nav-links a.nav-apps:hover{background:var(--coral);color:#fff}
+@keyframes appsPulse{0%,100%{box-shadow:2px 2px 0 rgba(34,51,59,.25),0 0 0 0 rgba(245,165,36,.55)}50%{box-shadow:2px 2px 0 rgba(34,51,59,.25),0 0 0 7px rgba(245,165,36,0)}}
+.mm-drawer a.mm-apps{background:rgba(245,165,36,.28);color:var(--marigold-light);font-weight:800}
+.qs-kids{grid-column:span 6;flex-direction:row;align-items:stretch;gap:28px;padding:0;overflow:hidden;border-color:var(--plum);background:linear-gradient(135deg,#fff,var(--paper-warm));box-shadow:6px 6px 0 rgba(142,85,114,.28)}
+.qs-kids .qs-kids-pic{flex:0 0 340px;background:var(--paper-warm)}
+.qs-kids .qs-kids-pic img{display:block;width:100%;height:100%;min-height:300px;object-fit:cover}
+.qs-kids .qs-kids-body{flex:1;min-width:0;padding:30px 28px 30px 0;display:flex;flex-direction:column}
+.qs-kids .qs-kids-tag{font-weight:700;color:var(--plum);font-size:.85rem;letter-spacing:.04em;margin:0 0 6px}
+.qs-kids h3{font-size:1.75rem}
+.qs-kids .qs-btn{background:var(--plum);border-color:var(--plum);color:#fff}
+@media(max-width:800px){.qs-typing,.qs-exam{grid-column:span 6}.qs-card{padding:24px 20px}.qs-btn2{margin-left:0}
+.qs-kids{flex-direction:column;gap:0;padding:0}.qs-kids .qs-kids-pic{flex:none;width:100%}.qs-kids .qs-kids-pic img{min-height:0;height:220px}.qs-kids .qs-kids-body{padding:22px 20px 26px}}
 </style>
 </head>
 <body>
@@ -1143,6 +1157,7 @@ body.mm-lock{ overflow:hidden; }
 <nav class="nav" id="top">
 <div class="nav-logo">MySkillGlobal</div>
 <div class="nav-links">
+<a class="nav-apps" href="apps.html">🎮 Apps &amp; Games</a>
 <a href="#about">About</a>
 <a class="active" href="exam-index.html">All Exam</a>
 <a href="typing-tutor-fixed.html">Typing Tutor</a>
@@ -1173,7 +1188,7 @@ body.mm-lock{ overflow:hidden; }
     <a href="typing-tutor-fixed.html"><span class="mm-ico">⌨️</span>Typing Tutor</a>
     <a href="certificate.html"><span class="mm-ico">🎓</span>Certificate</a>
     <div class="mm-group">Apps &amp; Tools</div>
-    <a href="apps.html"><span class="mm-ico">🎮</span>Apps, Games &amp; Websites</a>
+    <a class="mm-apps" href="apps.html"><span class="mm-ico">🎮</span>Apps, Games &amp; Websites</a>
     <a href="index-car.html"><span class="mm-ico">🚗</span>Drive &amp; Expense</a>
         <a href="akashvoice_one_international.html"><span class="mm-ico">📻</span>Akash Voice &amp; Smart Coin</a>
     <div class="mm-group">Community</div>
@@ -1266,14 +1281,20 @@ body.mm-lock{ overflow:hidden; }
 <div class="qs-grid">
 
 <a class="qs-card qs-lang" href="language-index.html">
-<span class="qs-ico">🌍</span>
-<h3>Learn a Language &mdash; MySkill Language</h3>
-<p>Explore Indian and international languages through practical lessons, useful vocabulary, pronunciation practice and everyday expressions &mdash; for study, travel, tourism and real conversations. Each language test has 50 questions, and a score of 45% or higher unlocks a PDF certificate.</p>
-<div class="qs-chips"><span>🌍 Indian &amp; World Languages</span><span>🗣️ Pronunciation Practice</span><span>📝 50-Question Test</span><span>📜 PDF Certificate</span></div>
-<span class="qs-btn">Start Learning Languages →</span>
+  <div class="qs-pic"><img src="images/language.png" alt="Learn a Language - MySkillGlobal" loading="lazy"></div>
+  <span class="qs-ico">🌍</span>
+  <h3>Learn a Language &mdash; MySkillGlobal Language</h3>
+  <p>Explore Indian and international languages through practical lessons, useful vocabulary, pronunciation practice and everyday expressions &mdash; for study, travel, tourism and real conversations. Each language test has 50 questions, and a score of 45% or higher unlocks a PDF certificate.</p>
+  <div class="qs-chips">
+    <span>🌍 Indian &amp; World Languages</span>
+    <span>🗣️ Pronunciation Practice</span>
+    <span>📝 50-Question Test</span>
+    <span>📜 PDF Certificate</span>
+  </div>
+  <span class="qs-btn">Start Learning Languages →</span>
 </a>
-
 <a class="qs-card qs-typing" href="typing-tutor-fixed.html">
+<div class="qs-pic"><img src="images/typing-tutor.png" alt="Typing Tutor - MySkillGlobal" loading="lazy"></div>
 <span class="qs-ico">⌨️</span>
 <h3>Global Typing Tutor</h3>
 <p>Build typing speed, accuracy and confidence with practice lessons, then take the Final Typing Examination. Complete all four final examinations (15 marks each) and score a total of 60 marks to receive your certificate free.</p>
@@ -1282,6 +1303,7 @@ body.mm-lock{ overflow:hidden; }
 </a>
 
 <a class="qs-card qs-exam" href="exam-index.html">
+<div class="qs-pic"><img src="images/exam.png" alt="Take an Exam, Get a Free Certificate - MySkillGlobal" loading="lazy"></div>
 <span class="qs-free">🎁 Certificates are completely free</span>
 <span class="qs-ico">🎓</span>
 <h3>Take an Exam, Get a Free Certificate</h3>
@@ -1291,8 +1313,9 @@ body.mm-lock{ overflow:hidden; }
 </a>
 
 <a class="qs-card qs-car" href="index-car.html">
+<div class="qs-pic"><img src="images/car.png" alt="Drive &amp; Expense – MySkillGlobal" loading="lazy"></div>
 <span class="qs-ico">🚗</span>
-<h3>Drive &amp; Expense &mdash; Track Every Rupee Your Vehicle Costs</h3>
+<h3>Drive &amp; Expense – MySkillGlobal: Track Every Vehicle Expense</h3>
 <p>A simple way to know what your vehicle really costs you. Keep fuel, servicing, taxes, fines, documents and resale value together in one place. This free app can work offline and is available in Bengali, Hindi and English.</p>
 <div class="qs-feat">
 <div>🚘 Multiple vehicles</div>
@@ -1305,6 +1328,18 @@ body.mm-lock{ overflow:hidden; }
 <div>🎮 Games &amp; simulators for kids</div>
 </div>
 <span class="qs-btn">Explore Drive &amp; Expense →</span>
+</a>
+
+<a class="qs-card qs-kids" href="child-activity.html">
+<div class="qs-kids-pic"><img src="images/child-activity.png" alt="Child Activity - Play, Create, Learn, Grow - MySkillGlobal" loading="lazy"></div>
+<div class="qs-kids-body">
+<p class="qs-kids-tag">PLAY • CREATE • LEARN • GROW</p>
+<span class="qs-ico">🧒</span>
+<h3>Child Activity &mdash; Welcome to the World of Fun and Learning!</h3>
+<p>Childhood is the best time to explore, imagine, create and discover new things. Child Activity at MySkillGlobal is a collection of fun, educational activities that build creativity, curiosity, logical thinking and learning skills &mdash; through games, drawing, puzzles, building activities and number games.</p>
+<div class="qs-chips"><span>🎨 Creative Drawing</span><span>🧩 Brain Games &amp; Puzzles</span><span>🔢 Number Games</span><span>🧱 Building &amp; Construction</span><span>🎮 Interactive Games</span><span>🌱 Learning Through Play</span></div>
+<span class="qs-btn">Start Playing &amp; Learning →</span>
+</div>
 </a>
 
 </div>
@@ -1329,6 +1364,33 @@ body.mm-lock{ overflow:hidden; }
 <!-- Featured stories — pulled out of the card grid into their own
      wrapper so the fixed-height image box applies consistently. -->
 <div class="story-cards-wrap">
+
+<a href="index-chaya-shikari-en.html" class="story-card-link">
+  <div class="story-card reveal">
+    <div class="story-image">
+      <img src="chaya-picture/chhaya-shikari-cover.png" alt="The Shadow Hunter (Chhaya Shikari) - A Bengali Mystery-Social Novel" loading="lazy">
+    </div>
+    <div class="story-card-content">
+      <h3>The Shadow Hunter <small style="font-weight:600;font-size:.8em;color:var(--ink-soft)">&mdash; A Bengali Mystery-Social Novel</small></h3>
+      <p>
+        Chhaya Shikari is a mystery-social novel set against the backdrop of the 1970s. It explores identity, deception, love, betrayal and the fight against human trafficking.
+      </p>
+      <p>
+        Sanatan, a young man standing on the edge of despair beside a railway track, is rescued by a mysterious gentleman who offers him shelter and a new beginning. But behind this unexpected kindness lies a dangerous network that exploits vulnerable people through false promises of employment. Living under a new identity as Amar, he gradually uncovers the dark truth &mdash; and as the lives of Aarti, Debu and hundreds of helpless people become intertwined, he must choose between loyalty, conscience, money and betrayal.
+      </p>
+      <p>
+        Will he stay silent in exchange for wealth and security, or stand up against injustice and expose the truth? A tale of human dignity, courage and the triumph of humanity over greed &mdash; told across eight gripping episodes, from darkness towards a new dawn.
+      </p>
+      <div class="story-meta">
+        <span>🕵️ Mystery</span>
+        <span>📖 8 Episodes</span>
+        <span>⚖️ Courage</span>
+        <span>🤝 Humanity</span>
+      </div>
+      <span class="story-read-btn">Read the Novel →</span>
+    </div>
+  </div>
+</a>
 
 <a href="punishment-of-exile-english.html" class="story-card-link">
   <div class="story-card reveal">
@@ -1858,7 +1920,7 @@ body.mm-lock{ overflow:hidden; }
      A supportive digital platform for women’s safety, emergency SOS help, financial awareness, income and expense management, savings, health, government schemes and self-reliance.
     </div>
     <div class="app-footer">
-     <span class="app-btn" style="opacity:.8;cursor:default">🚧 Coming Soon</span>
+     <a class="app-btn" href="https://myskillglobal.com/smartlady" target="_blank" rel="noopener">🌐 Visit Smart Lady Website</a>
     </div>
    </div>
   </div>

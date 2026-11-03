@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>Turtle Logo – MySkillGlobal</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --accent: #ff9f1c;
+  --bg:     #0d0d1a;
+  --panel:  #12122a;
+  --border: #2a2a5a;
+  --text:   #e0d8ff;
+  --dim:    #6666aa;
+}
+
+html, body { height:100%; }
+body {
+  background: var(--bg);
+  font-family: 'Courier New', monospace;
+  color: var(--text);
+  overflow: hidden;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  -webkit-text-size-adjust: 100%;
+}
+
+/* ── Top bar ── */
+#topPanel {
+  flex-shrink: 0;
+  display: flex;
+  height: 68px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+}
+#history {
+  flex: 1;
+  overflow-y: auto;
+  padding: 6px 10px;
+  font-size: 12px;
+  line-height: 1.7;
+  color: #b0b8e0;
+}
+#history span.cmd { color: var(--accent); }
+#helpBtn {
+  width: 56px;
+  background: transparent;
+  color: var(--accent);
+  border: none;
+  border-left: 1px solid var(--border);
+  font-size: 22px;
+  cursor: pointer;
+  flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s;
+}
+#helpBtn:active, .topBtn:active { background: rgba(255,159,28,0.15); }
+.topBtn {
+  width: 46px;
+  background: transparent;
+  color: var(--accent);
+  border: none;
+  border-left: 1px solid var(--border);
+  font-size: 19px;
+  cursor: pointer;
+  flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+#bgBox {
+  display: none;
+  position: fixed;
+  top: calc(68px + env(safe-area-inset-top, 0px));
+  right: 0;
+  width: 92%; max-width: 300px;
+  background: rgba(13,13,26,0.98);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--accent);
+  padding: 14px;
+  font-size: 12px;
+  z-index: 100;
+  box-shadow: -4px 6px 24px rgba(0,0,0,0.6);
+}
+#bgBox b { color: var(--accent); letter-spacing: 1px; }
+.bg-swatch {
+  display: inline-block;
+  width: 42px; height: 42px;
+  margin: 5px 4px 0 0;
+  border-radius: 8px;
+  border: 2px solid var(--border);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.bg-swatch.sel { border-color: var(--accent); }
+.bg-swatch:active { transform: scale(0.92); }
+#bgCustom { width: 100%; height: 40px; margin-top: 10px; border: 1px solid var(--border); border-radius: 6px; background: #1a1a30; padding: 2px; }
+
+/* ── Help / templates panel ── */
+#commandsBox {
+  display: none;
+  position: fixed;
+  top: calc(68px + env(safe-area-inset-top, 0px));
+  right: 0;
+  width: 92%; max-width: 340px;
+  max-height: 74vh;
+  max-height: 74dvh;
+  background: rgba(13,13,26,0.98);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--accent);
+  padding: 14px;
+  font-size: 12px;
+  z-index: 100;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  box-shadow: -4px 6px 24px rgba(0,0,0,0.6);
+}
+#commandsBox b { color: var(--accent); letter-spacing: 1px; }
+#commandsBox hr { border: none; border-top: 1px solid var(--border); margin: 10px 0; }
+.sec { margin-bottom:6px; color:#cc99ff; font-size:11px; letter-spacing:1px; }
+
+.cmd-item {
+  display: block;
+  background: #1a1a30;
+  padding: 10px 11px;
+  margin: 5px 0;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  color: var(--text);
+  transition: 0.15s;
+  line-height: 1.5;
+}
+.cmd-item:active { background: #2a2a50; border-color: var(--accent); }
+
+.grid { display:grid; grid-template-columns: 1fr 1fr; gap:6px; }
+.grid .cmd-item { margin:0; text-align:center; padding:12px 6px; }
+
+.color-swatch {
+  display: inline-block;
+  padding: 6px 11px;
+  margin: 3px 2px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 11px;
+  border: 2px solid transparent;
+  transition: 0.15s;
+}
+.color-swatch:active { transform: scale(0.92); }
+
+/* ── Canvas ── */
+#canvasArea {
+  flex: 1;
+  position: relative;
+  background: #080814;
+  min-height: 0;
+  overflow: hidden;
+  touch-action: none;
+}
+#drawingCanvas, #turtleCanvas {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+}
+
+/* ── Bottom input ── */
+#bottomPanel {
+  flex-shrink: 0;
+  background: var(--panel);
+  border-top: 1px solid var(--border);
+  padding: 8px 10px;
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+#cmd {
+  flex: 1;
+  min-width: 0;
+  padding: 11px 13px;
+  font-size: 16px; /* 16px stops iOS zoom on focus */
+  background: #0d0d1a;
+  border: 1px solid var(--border);
+  color: var(--text);
+  outline: none;
+  border-radius: 7px;
+  font-family: 'Courier New', monospace;
+  caret-color: var(--accent);
+  transition: border-color 0.2s;
+}
+#cmd:focus { border-color: var(--accent); }
+.btn {
+  padding: 11px 15px;
+  border: none;
+  font-size: 18px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-weight: bold;
+  flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn:active { opacity: 0.8; transform: scale(0.94); }
+#runBtn { background: var(--accent); color: #000; }
+#clsBtn { background: #2a2a50; color: #ff8888; }
+
+#warning {
+  position: fixed;
+  top: calc(74px + env(safe-area-inset-top, 0px));
+  left: 10px;
+  color: #ff5566;
+  font-size: 12px;
+  font-weight: bold;
+  z-index: 50;
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+
+<div id="topPanel">
+  <div id="history">Turtle ready — tap <b style="color:#ff9f1c">?</b> for commands &amp; templates</div>
+  <button class="topBtn" id="bgBtn" title="Background" onclick="toggleBg(event)">🎨</button>
+  <button class="topBtn" id="pdfBtn" title="Export PDF" onclick="exportPDF()">📄</button>
+  <button id="helpBtn" onclick="toggleHelp(event)">?</button>
+</div>
+
+<div id="commandsBox">
+  <b>CLICK TO USE</b><hr>
+
+  <div class="sec">SHAPES</div>
+  <div class="grid">
+    <div class="cmd-item" data-c="REPEAT 4 [ FD 80 RT 90 ]">⬜ Square</div>
+    <div class="cmd-item" data-c="REPEAT 3 [ FD 100 RT 120 ]">🔺 Triangle</div>
+    <div class="cmd-item" data-c="REPEAT 5 [ FD 70 RT 72 ]">⬟ Pentagon</div>
+    <div class="cmd-item" data-c="REPEAT 6 [ FD 60 RT 60 ]">⬢ Hexagon</div>
+    <div class="cmd-item" data-c="REPEAT 8 [ FD 50 RT 45 ]">🛑 Octagon</div>
+    <div class="cmd-item" data-c="REPEAT 36 [ FD 8 RT 10 ]">⭕ Circle</div>
+    <div class="cmd-item" data-c="REPEAT 5 [ FD 100 RT 144 ]">⭐ Star</div>
+    <div class="cmd-item" data-c="REPEAT 2 [ FD 60 RT 90 FD 110 RT 90 ]">▭ Rectangle</div>
+  </div>
+
+  <hr>
+  <div class="sec">PATTERNS</div>
+  <div class="grid">
+    <div class="cmd-item" data-c="COLOR PINK REPEAT 12 [ REPEAT 6 [ FD 40 RT 60 ] RT 30 ]">🌸 Flower</div>
+    <div class="cmd-item" data-c="COLOR YELLOW REPEAT 36 [ FD 80 BK 80 RT 10 ]">☀️ Sun</div>
+    <div class="cmd-item" data-c="COLOR CYAN REPEAT 18 [ REPEAT 5 [ FD 80 RT 144 ] RT 20 ]">✨ Star burst</div>
+    <div class="cmd-item" data-c="COLOR LIME REPEAT 12 [ REPEAT 3 [ FD 90 RT 120 ] RT 30 ]">🔯 Triangle spin</div>
+    <div class="cmd-item" data-c="REPEAT 6 [ COLOR RED REPEAT 4 [ FD 70 RT 90 ] RT 15 COLOR ORANGE REPEAT 4 [ FD 70 RT 90 ] RT 15 COLOR YELLOW REPEAT 4 [ FD 70 RT 90 ] RT 15 COLOR CYAN REPEAT 4 [ FD 70 RT 90 ] RT 15 ]">🌈 Rainbow</div>
+    <div class="cmd-item" data-c="COLOR VIOLET REPEAT 24 [ REPEAT 4 [ FD 60 RT 90 ] RT 15 ]">🌀 Square spin</div>
+    <div class="cmd-item" data-c="COLOR ORANGE REPEAT 10 [ REPEAT 36 [ FD 5 RT 10 ] RT 36 ]">🔆 Circles ring</div>
+    <div class="cmd-item" data-c="COLOR GREEN REPEAT 8 [ FD 20 RT 90 FD 20 LT 90 ]">🪜 Stairs</div>
+  </div>
+
+  <hr>
+  <div class="sec">PICTURES</div>
+  <div class="cmd-item" data-c="COLOR WHITE REPEAT 4 [ FD 80 RT 90 ] COLOR RED FD 80 RT 30 REPEAT 3 [ FD 80 RT 120 ]">🏠 House</div>
+  <div class="cmd-item" data-c="COLOR GREEN REPEAT 3 [ FD 70 RT 120 ] PU FD 70 RT 60 PD COLOR ORANGE REPEAT 4 [ FD 20 RT 90 ]">🌲 Tree</div>
+
+  <hr>
+  <div class="sec">COLORS</div>
+  <span class="color-swatch" style="background:#ff4444;color:#fff" data-c="COLOR RED">RED</span>
+  <span class="color-swatch" style="background:#4488ff;color:#fff" data-c="COLOR BLUE">BLUE</span>
+  <span class="color-swatch" style="background:#44cc44;color:#000" data-c="COLOR GREEN">GREEN</span>
+  <span class="color-swatch" style="background:#ffdd00;color:#000" data-c="COLOR YELLOW">YELLOW</span>
+  <span class="color-swatch" style="background:#ff9f1c;color:#000" data-c="COLOR ORANGE">ORANGE</span>
+  <span class="color-swatch" style="background:#cc44ff;color:#fff" data-c="COLOR PURPLE">PURPLE</span>
+  <span class="color-swatch" style="background:#00ffff;color:#000" data-c="COLOR CYAN">CYAN</span>
+  <span class="color-swatch" style="background:#ff69b4;color:#000" data-c="COLOR PINK">PINK</span>
+  <span class="color-swatch" style="background:#fff;color:#000" data-c="COLOR WHITE">WHITE</span>
+
+  <hr>
+  <div class="sec">BASICS</div>
+  <div class="cmd-item" data-c="FD 100">▶ FD 100 — Forward</div>
+  <div class="cmd-item" data-c="BK 100">◀ BK 100 — Backward</div>
+  <div class="cmd-item" data-c="RT 90">↻ RT 90 — Right Turn</div>
+  <div class="cmd-item" data-c="LT 90">↺ LT 90 — Left Turn</div>
+  <div class="cmd-item" data-c="PU">✋ PU — Pen Up</div>
+  <div class="cmd-item" data-c="PD">✏️ PD — Pen Down</div>
+  <div class="cmd-item" data-c="PENSIZE 4">🖊️ PENSIZE 4 — Thick line</div>
+  <div class="cmd-item" data-c="HT">🙈 HT — Hide Turtle</div>
+  <div class="cmd-item" data-c="ST">🐢 ST — Show Turtle</div>
+  <div class="cmd-item" data-c="HOME">🏠 HOME — Go Center</div>
+  <div class="cmd-item" data-c="CLS" style="color:#ff6666">🗑️ CLS — Clear Screen</div>
+  <div style="margin-top:8px;color:var(--dim);line-height:1.5">
+    Tip: you can write many commands in one line and nest REPEAT, e.g.<br>
+    <span style="color:var(--text)">COLOR RED REPEAT 4 [ FD 50 RT 90 ] FD 80</span>
+  </div>
+</div>
+
+<div id="bgBox">
+  <b>BACKGROUND</b><br>
+  <span class="bg-swatch sel" data-bg="#080814" style="background:#080814"></span>
+  <span class="bg-swatch" data-bg="#000000" style="background:#000000"></span>
+  <span class="bg-swatch" data-bg="#10243d" style="background:#10243d"></span>
+  <span class="bg-swatch" data-bg="#12301f" style="background:#12301f"></span>
+  <span class="bg-swatch" data-bg="#ffffff" style="background:#ffffff"></span>
+  <span class="bg-swatch" data-bg="#fff6dc" style="background:#fff6dc"></span>
+  <span class="bg-swatch" data-bg="#dff1ff" style="background:#dff1ff"></span>
+  <span class="bg-swatch" data-bg="#e3f8e3" style="background:#e3f8e3"></span>
+  <span class="bg-swatch" data-bg="#ffe3ee" style="background:#ffe3ee"></span>
+  <input type="color" id="bgCustom" value="#080814" title="Custom colour">
+  <div style="margin-top:8px;color:var(--dim);line-height:1.5">On a light background the default pen turns black.</div>
+</div>
+
+<div id="warning"></div>
+
+<div id="canvasArea">
+  <canvas id="drawingCanvas"></canvas>
+  <canvas id="turtleCanvas"></canvas>
+</div>
+
+<div id="bottomPanel">
+  <input id="cmd" placeholder="e.g.  REPEAT 4 [ FD 80 RT 90 ]"
+    autocomplete="off" autocorrect="off" autocapitalize="characters" spellcheck="false" enterkeyhint="go">
+  <button class="btn" id="clsBtn" title="Clear" onclick="runDirect('CLS')">🗑</button>
+  <button class="btn" id="runBtn" onclick="runFromInput()">▶</button>
+</div>
+
+<script>
+const dCanvas = document.getElementById('drawingCanvas');
+const tCanvas = document.getElementById('turtleCanvas');
+const dCtx    = dCanvas.getContext('2d');
+const tCtx    = tCanvas.getContext('2d');
+const histEl  = document.getElementById('history');
+const warnEl  = document.getElementById('warning');
+const cmdEl   = document.getElementById('cmd');
+const runBtn  = document.getElementById('runBtn');
+const area    = document.getElementById('canvasArea');
+
+// ── Turtle state (coordinates are in "buffer" space) ─────
+let tx=0, ty=0, angle=-90, penDown=true, penColor='white', penSize=2, turtleVisible=true;
+let busy=false, stopFlag=false;
+let bgColor='#080814', defPen='white';
+
+// ── Drawing buffer: only ever grows, so a resize
+//    (e.g. mobile keyboard) never erases the drawing ─────
+const DPR = Math.min(window.devicePixelRatio || 1, 2);
+let buf = null, bCtx = null, BW = 0, BH = 0;
+let VW = 0, VH = 0;            // visible size
+let ox = 0, oy = 0;            // buffer → screen offset
+
+function ensureBuffer(w, h) {
+  const nw = Math.max(BW, w), nh = Math.max(BH, h);
+  if (buf && nw === BW && nh === BH) return;
+  const nb = document.createElement('canvas');
+  nb.width  = Math.round(nw * DPR);
+  nb.height = Math.round(nh * DPR);
+  const nctx = nb.getContext('2d');
+  nctx.setTransform(DPR,0,0,DPR,0,0);
+  if (buf) {
+    const dx = (nw - BW) / 2, dy = (nh - BH) / 2;
+    nctx.drawImage(buf, dx, dy, BW, BH);
+    tx += dx; ty += dy;
+  } else {
+    tx = nw / 2; ty = nh / 2;
+  }
+  buf = nb; bCtx = nctx; BW = nw; BH = nh;
+}
+
+function resize() {
+  const w = area.clientWidth, h = area.clientHeight;
+  if (w < 10 || h < 10) return;
+  VW = w; VH = h;
+  ensureBuffer(w, h);
+  dCanvas.width  = tCanvas.width  = Math.round(w * DPR);
+  dCanvas.height = tCanvas.height = Math.round(h * DPR);
+  ox = (VW - BW) / 2; oy = (VH - BH) / 2;
+  redraw();
+}
+
+function redraw() {
+  dCtx.setTransform(DPR,0,0,DPR,0,0);
+  dCtx.clearRect(0, 0, VW, VH);
+  dCtx.drawImage(buf, ox, oy, BW, BH);
+  drawTurtle();
+}
+
+let resizeTimer;
+new ResizeObserver(() => { clearTimeout(resizeTimer); resizeTimer = setTimeout(resize, 60); }).observe(area);
+resize();
+
+// ── Draw the turtle (centre of its shell = pen position) ─
+function drawTurtle() {
+  tCtx.setTransform(DPR,0,0,DPR,0,0);
+  tCtx.clearRect(0, 0, VW, VH);
+  if (!turtleVisible) return;
+
+  tCtx.save();
+  tCtx.translate(tx + ox, ty + oy);
+  tCtx.rotate(angle * Math.PI / 180);   // turtle faces +x in local space
+  tCtx.scale(0.6, 0.6);                 // turtle size
+  tCtx.lineJoin = 'round';
+
+  const skin = '#6fdc6f', skinDark = '#3fa83f';
+  const shell = '#2e9e4a', shellDark = '#1c6b32', shellLight = '#4cc866';
+
+  // legs (4 flippers)
+  tCtx.fillStyle = skin; tCtx.strokeStyle = skinDark; tCtx.lineWidth = 1;
+  [[ 9, 11,  0.6], [ 9,-11, -0.6], [-9, 11, -0.6], [-9,-11, 0.6]].forEach(([lx, ly, rot]) => {
+    tCtx.save();
+    tCtx.translate(lx, ly);
+    tCtx.rotate(rot * (ly > 0 ? 1 : -1) * (lx > 0 ? 1 : -1) + (ly > 0 ? 0.3 : -0.3));
+    tCtx.beginPath(); tCtx.ellipse(0, ly > 0 ? 3 : -3, 4, 6, 0, 0, Math.PI * 2);
+    tCtx.fill(); tCtx.stroke();
+    tCtx.restore();
+  });
+
+  // tail
+  tCtx.fillStyle = skin;
+  tCtx.beginPath(); tCtx.moveTo(-14, -3); tCtx.lineTo(-22, 0); tCtx.lineTo(-14, 3); tCtx.closePath();
+  tCtx.fill(); tCtx.stroke();
+
+  // head
+  tCtx.fillStyle = skin; tCtx.strokeStyle = skinDark;
+  tCtx.beginPath(); tCtx.ellipse(18, 0, 7.5, 6.5, 0, 0, Math.PI * 2);
+  tCtx.fill(); tCtx.stroke();
+  // eyes
+  tCtx.fillStyle = '#fff';
+  tCtx.beginPath(); tCtx.arc(20, -3, 2, 0, Math.PI * 2); tCtx.arc(20, 3, 2, 0, Math.PI * 2); tCtx.fill();
+  tCtx.fillStyle = '#111';
+  tCtx.beginPath(); tCtx.arc(20.7, -3, 1, 0, Math.PI * 2); tCtx.arc(20.7, 3, 1, 0, Math.PI * 2); tCtx.fill();
+
+  // shell
+  tCtx.fillStyle = shell; tCtx.strokeStyle = shellDark; tCtx.lineWidth = 1.5;
+  tCtx.beginPath(); tCtx.ellipse(0, 0, 15, 12, 0, 0, Math.PI * 2);
+  tCtx.fill(); tCtx.stroke();
+
+  // shell pattern
+  tCtx.strokeStyle = shellLight; tCtx.lineWidth = 1;
+  tCtx.beginPath();
+  tCtx.moveTo(-9, 0); tCtx.lineTo(-4.5, -6); tCtx.lineTo(4.5, -6); tCtx.lineTo(9, 0);
+  tCtx.lineTo(4.5, 6); tCtx.lineTo(-4.5, 6); tCtx.closePath();
+  tCtx.stroke();
+  tCtx.beginPath();
+  tCtx.moveTo(-4.5, -6); tCtx.lineTo(-8, -10);
+  tCtx.moveTo(4.5, -6);  tCtx.lineTo(8, -10);
+  tCtx.moveTo(-4.5, 6);  tCtx.lineTo(-8, 10);
+  tCtx.moveTo(4.5, 6);   tCtx.lineTo(8, 10);
+  tCtx.moveTo(-9, 0);    tCtx.lineTo(-14, 0);
+  tCtx.moveTo(9, 0);     tCtx.lineTo(14, 0);
+  tCtx.stroke();
+
+  // pen point – exactly where lines start
+  tCtx.fillStyle = penDown ? penColor : 'rgba(255,255,255,0.35)';
+  tCtx.strokeStyle = '#000'; tCtx.lineWidth = 1;
+  tCtx.beginPath(); tCtx.arc(0, 0, 2.4, 0, Math.PI * 2); tCtx.fill(); tCtx.stroke();
+
+  tCtx.restore();
+}
+
+// ── Helpers ───────────────────────────────────────────────
+function log(t) {
+  const d = document.createElement('div');
+  const s = document.createElement('span'); s.className = 'cmd'; s.textContent = '> ';
+  d.appendChild(s); d.appendChild(document.createTextNode(t));
+  histEl.appendChild(d);
+  histEl.scrollTop = histEl.scrollHeight;
+}
+let wt;
+function warn(m) {
+  warnEl.innerText = '⚠️ ' + m;
+  clearTimeout(wt);
+  wt = setTimeout(() => warnEl.innerText = '', 2600);
+}
+function validColor(c) {
+  const s = new Option().style; s.color = c; return s.color !== '';
+}
+
+// ── Primitive actions ─────────────────────────────────────
+function drawLine(x1, y1, x2, y2) {
+  bCtx.beginPath(); bCtx.strokeStyle = penColor; bCtx.lineWidth = penSize; bCtx.lineCap = 'round';
+  bCtx.moveTo(x1, y1); bCtx.lineTo(x2, y2); bCtx.stroke();
+  dCtx.setTransform(DPR,0,0,DPR,0,0);
+  dCtx.beginPath(); dCtx.strokeStyle = penColor; dCtx.lineWidth = penSize; dCtx.lineCap = 'round';
+  dCtx.moveTo(x1 + ox, y1 + oy); dCtx.lineTo(x2 + ox, y2 + oy); dCtx.stroke();
+}
+
+function moveTurtle(dist) {
+  const r = angle * Math.PI / 180;
+  const nx = tx + dist * Math.cos(r), ny = ty + dist * Math.sin(r);
+  if (penDown) drawLine(tx, ty, nx, ny);
+  tx = nx; ty = ny;
+}
+
+function doStep(cmd, arg) {
+  switch (cmd) {
+    case 'FD': moveTurtle(arg); break;
+    case 'BK': moveTurtle(-arg); break;
+    case 'RT': angle = (angle + arg) % 360; break;
+    case 'LT': angle = ((angle - arg) % 360 + 360) % 360; break;
+    case 'PU': penDown = false; break;
+    case 'PD': penDown = true; break;
+    case 'HT': turtleVisible = false; break;
+    case 'ST': turtleVisible = true; break;
+    case 'PENSIZE': penSize = Math.max(1, Math.min(30, arg)); break;
+    case 'COLOR': penColor = arg; break;
+    case 'HOME': tx = BW / 2; ty = BH / 2; angle = -90; break;
+    case 'CLS':
+      bCtx.clearRect(0, 0, BW, BH);
+      tx = BW / 2; ty = BH / 2; angle = -90;
+      penDown = true; penColor = defPen; penSize = 2; turtleVisible = true;
+      redraw(); break;
+  }
+}
+
+// ── Parser: tokens → nested program → flat step list ─────
+const NUM_CMDS  = ['FD', 'BK', 'RT', 'LT', 'PENSIZE'];
+const NONE_CMDS = ['PU', 'PD', 'HT', 'ST', 'HOME', 'CLS'];
+const MAX_STEPS = 60000;
+
+function tokenize(src) { return src.toUpperCase().match(/\[|\]|[^\s\[\]]+/g) || []; }
+
+function parseBlock(tokens, pos, inBracket) {
+  const out = [];
+  while (pos < tokens.length) {
+    const t = tokens[pos];
+    if (t === ']') {
+      if (!inBracket) throw new Error('Extra ]');
+      return [out, pos + 1];
+    }
+    if (t === '[') throw new Error('Unexpected [');
+    if (t === 'REPEAT') {
+      const n = parseInt(tokens[pos + 1], 10);
+      if (isNaN(n) || n < 0) throw new Error('REPEAT needs a number');
+      if (tokens[pos + 2] !== '[') throw new Error('REPEAT needs [ ... ]');
+      const [body, np] = parseBlock(tokens, pos + 3, true);
+      out.push({ rep: n, body });
+      pos = np;
+    } else if (NUM_CMDS.includes(t)) {
+      const v = parseFloat(tokens[pos + 1]);
+      if (isNaN(v)) throw new Error(t + ' needs a number');
+      out.push([t, v]); pos += 2;
+    } else if (t === 'COLOR') {
+      let c = tokens[pos + 1];
+      if (!c || c === '[' || c === ']') throw new Error('COLOR needs a name');
+      c = c.toLowerCase();
+      if (!validColor(c)) throw new Error('Unknown color ' + c.toUpperCase());
+      out.push(['COLOR', c]); pos += 2;
+    } else if (NONE_CMDS.includes(t)) {
+      out.push([t, 0]); pos += 1;
+    } else {
+      throw new Error('Unknown: ' + t);
+    }
+  }
+  if (inBracket) throw new Error('Missing ]');
+  return [out, pos];
+}
+
+function flatten(prog, out) {
+  for (const item of prog) {
+    if (Array.isArray(item)) {
+      out.push(item);
+    } else {
+      for (let i = 0; i < item.rep; i++) {
+        flatten(item.body, out);
+        if (out.length > MAX_STEPS) throw new Error('Too many steps');
+      }
+    }
+    if (out.length > MAX_STEPS) throw new Error('Too many steps');
+  }
+  return out;
+}
+
+// ── Execute (animated in small batches so it stays smooth on phones) ──
+function nextFrame() { return new Promise(r => requestAnimationFrame(r)); }
+
+async function execute(input) {
+  const line = input.trim();
+  if (!line) return;
+  document.getElementById('commandsBox').style.display = 'none';
+
+  let steps;
+  try {
+    const tokens = tokenize(line);
+    const [prog] = parseBlock(tokens, 0, false);
+    steps = flatten(prog, []);
+  } catch (e) { warn(e.message); return; }
+
+  log(line.length > 40 ? line.slice(0, 40) + '…' : line.toUpperCase());
+
+  const perFrame = Math.max(4, Math.ceil(steps.length / 240)); // finishes in ~4s max
+  for (let i = 0; i < steps.length; i++) {
+    if (stopFlag) break;
+    doStep(steps[i][0], steps[i][1]);
+    if (i % perFrame === perFrame - 1) { drawTurtle(); await nextFrame(); }
+  }
+  drawTurtle();
+}
+
+// ── Help panel ────────────────────────────────────────────
+function toggleHelp(e) {
+  if (e) e.stopPropagation();
+  document.getElementById('bgBox').style.display = 'none';
+  const b = document.getElementById('commandsBox');
+  b.style.display = b.style.display === 'block' ? 'none' : 'block';
+}
+document.getElementById('commandsBox').addEventListener('click', e => {
+  const item = e.target.closest('[data-c]');
+  if (!item) return;
+  cmdEl.value = item.getAttribute('data-c');
+  document.getElementById('commandsBox').style.display = 'none';
+  cmdEl.focus();
+});
+document.addEventListener('click', e => {
+  const b = document.getElementById('commandsBox');
+  if (!e.target.closest('#commandsBox') && e.target.id !== 'helpBtn') b.style.display = 'none';
+  if (!e.target.closest('#bgBox') && e.target.id !== 'bgBtn') document.getElementById('bgBox').style.display = 'none';
+});
+
+// ── Background colour ─────────────────────────────────────
+function toggleBg(e) {
+  if (e) e.stopPropagation();
+  document.getElementById('commandsBox').style.display = 'none';
+  const b = document.getElementById('bgBox');
+  b.style.display = b.style.display === 'block' ? 'none' : 'block';
+}
+function isLight(hex) {
+  const n = parseInt(hex.slice(1), 16);
+  const r = n >> 16, g = (n >> 8) & 255, bl = n & 255;
+  return (0.299 * r + 0.587 * g + 0.114 * bl) / 255 > 0.6;
+}
+function setBg(c) {
+  bgColor = c;
+  area.style.background = c;
+  const nd = isLight(c) ? 'black' : 'white';
+  if (penColor === defPen) penColor = nd;
+  defPen = nd;
+  document.querySelectorAll('.bg-swatch').forEach(s => s.classList.toggle('sel', s.dataset.bg === c));
+  document.getElementById('bgCustom').value = c;
+  drawTurtle();
+}
+document.getElementById('bgBox').addEventListener('click', e => {
+  const s = e.target.closest('.bg-swatch');
+  if (s) setBg(s.dataset.bg);
+});
+document.getElementById('bgCustom').addEventListener('input', e => setBg(e.target.value));
+
+// ── Export as PDF (self-contained, no libraries) ──────────
+function makePdf(jpeg, iw, ih, pw, ph) {
+  const enc = new TextEncoder(), parts = [], off = [];
+  let len = 0;
+  const push = x => { const b = typeof x === 'string' ? enc.encode(x) : x; parts.push(b); len += b.length; };
+  push('%PDF-1.4\n');
+  off[1] = len; push('1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n');
+  off[2] = len; push('2 0 obj\n<< /Type /Pages /Kids [3 0 R] /Count 1 >>\nendobj\n');
+  off[3] = len; push('3 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ' + pw + ' ' + ph + '] /Resources << /XObject << /Im0 4 0 R >> >> /Contents 5 0 R >>\nendobj\n');
+  off[4] = len; push('4 0 obj\n<< /Type /XObject /Subtype /Image /Width ' + iw + ' /Height ' + ih + ' /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ' + jpeg.length + ' >>\nstream\n');
+  push(jpeg); push('\nendstream\nendobj\n');
+  const content = 'q ' + pw + ' 0 0 ' + ph + ' 0 0 cm /Im0 Do Q';
+  off[5] = len; push('5 0 obj\n<< /Length ' + content.length + ' >>\nstream\n' + content + '\nendstream\nendobj\n');
+  const xref = len;
+  let x = 'xref\n0 6\n0000000000 65535 f \n';
+  for (let i = 1; i <= 5; i++) x += String(off[i]).padStart(10, '0') + ' 00000 n \n';
+  push(x + 'trailer\n<< /Size 6 /Root 1 0 R >>\nstartxref\n' + xref + '\n%%EOF');
+  return new Blob(parts, { type: 'application/pdf' });
+}
+
+function exportPDF() {
+  try {
+    const out = document.createElement('canvas');
+    out.width = Math.round(VW * DPR); out.height = Math.round(VH * DPR);
+    const c = out.getContext('2d');
+    c.fillStyle = bgColor; c.fillRect(0, 0, out.width, out.height);
+    c.drawImage(buf, ox * DPR, oy * DPR, BW * DPR, BH * DPR);
+    const bin = atob(out.toDataURL('image/jpeg', 0.92).split(',')[1]);
+    const jpeg = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) jpeg[i] = bin.charCodeAt(i);
+    const blob = makePdf(jpeg, out.width, out.height, Math.round(VW), Math.round(VH));
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = 'turtle-drawing.pdf';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 10000);
+    log('PDF exported');
+  } catch (err) { warn('PDF export failed'); }
+}
+
+// ── Input / Run / Stop ────────────────────────────────────
+async function runFromInput() {
+  if (busy) { stopFlag = true; return; }   // ■ pressed
+  const v = cmdEl.value.trim();
+  if (!v) return;
+  busy = true; stopFlag = false; runBtn.textContent = '■';
+  await execute(v);
+  cmdEl.value = '';
+  busy = false; stopFlag = false; runBtn.textContent = '▶';
+  cmdEl.focus();
+}
+async function runDirect(text) {
+  if (busy) { stopFlag = true; await new Promise(r => setTimeout(r, 60)); }
+  await execute(text);
+}
+
+cmdEl.addEventListener('keydown', async e => {
+  if (e.key === 'Enter') { e.preventDefault(); await runFromInput(); }
+});
+</script>
+</body>
+</html>

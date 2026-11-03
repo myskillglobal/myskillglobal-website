@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>MySkillGlobal : Drive Expenses — Track. Save. Drive Smart.</title>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-R8N9GP90TX"></script>
@@ -279,6 +279,18 @@ footer{
 }
 footer .fbrand{color:var(--accent2);font-weight:800;}
 footer .contact{margin-top:6px;}
+section{padding:54px 0;}
+section,.download{scroll-margin-top:90px;}
+header{-webkit-backdrop-filter:blur(10px);}
+.catalog-category,.catalog-buttons,.catalog-extra-btns{position:relative;z-index:1;}
+.catalog-category{margin-top:30px;}
+.download{position:relative;z-index:1;max-width:1044px;width:calc(100% - 36px);margin:0 auto 54px;}
+@media(max-width:760px){
+  .nav{padding:8px 12px;}
+  .navlinks{order:3;width:100%;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;}
+  .navlinks a{white-space:nowrap;flex-shrink:0;}
+  .feat-card{padding:16px 12px;}
+}
 
 /* ══════ RESPONSIVE ══════ */
 @media(max-width:760px){
@@ -293,6 +305,16 @@ footer .contact{margin-top:6px;}
   .hero-logo,.needle{animation:none;}
   .reveal{transition:none;opacity:1;transform:none;}
 }
+
+/* ══════ BUTTON FIXES ══════ */
+a,button{-webkit-tap-highlight-color:transparent;}
+.catalog-btn,.hero-cta,.store-btn,.navlinks a,.lang-bar button{cursor:pointer;touch-action:manipulation;}
+.catalog-btn{min-height:52px;}
+.catalog-btn:active,.hero-cta:active,.store-btn:active{transform:scale(.97);}
+.catalog-btn:focus-visible,.hero-cta:focus-visible,.store-btn:focus-visible,.navlinks a:focus-visible,.lang-bar button:focus-visible{outline:2px solid var(--accent2);outline-offset:3px;}
+.lang-bar button{min-height:34px;transition:.2s;}
+.lang-bar button:hover{color:#fff;}
+.download .store-btn{position:relative;z-index:2;}
 </style>
 </head>
 <body>
@@ -308,18 +330,18 @@ footer .contact{margin-top:6px;}
       <a href="#download" data-i18n="nav_download">Download</a>
     </div>
     <div class="lang-bar">
-      <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
-      <button id="btn-bn" onclick="setLang('bn')">বাংলা</button>
-      <button id="btn-hi" onclick="setLang('hi')">हिं</button>
+      <button type="button" id="btn-en" class="active" onclick="setLang('en')">EN</button>
+      <button type="button" id="btn-bn" onclick="setLang('bn')">বাংলা</button>
+      <button type="button" id="btn-hi" onclick="setLang('hi')">हिं</button>
     </div>
   </div>
 </header>
 
 <!-- HERO -->
 <div class="hero">
-  <img class="hero-logo" src="images/car-logo.png" alt="Car Expenses Manager">
+  <img class="hero-logo" src="images/car-logo.png" alt="MySkillGlobal : Drive Expenses">
   <h1 data-i18n="hero_title">Know Every Rupee Your Vehicle Costs</h1>
-  <p class="sub" data-i18n="hero_sub">Car Expenses Manager is a free, offline-friendly app that tracks fuel, servicing, tax, fines, documents and resale value for every vehicle you own — so you always know where your money goes.</p>
+  <p class="sub" data-i18n="hero_sub">MySkillGlobal : Drive Expenses is a free, offline-friendly app that tracks fuel, servicing, tax, fines, documents and resale value for every vehicle you own — so you always know where your money goes.</p>
   <div class="hero-tags">
     <span data-i18n="tag1">🚗 Multi-vehicle</span>
     <span data-i18n="tag2">🔒 100% Private</span>
@@ -358,24 +380,37 @@ footer .contact{margin-top:6px;}
   <a href="chemical_corridor_protocol_final.html" class="catalog-btn">Chemical Corridor Protocol</a>
   <a href="hazmat_awareness_en.html" class="catalog-btn">Hazmat Awareness</a>
   <a href="insurance_guide.html" class="catalog-btn">Insurance: Our Family Shield</a>
-  <a href="hazmat_awareness_bn.html" class="catalog-btn">রাস্তায় বিপদজনক গাড়ি</a>
+  <a href="helmet_impact_simulator.html" class="catalog-btn">Helmet Impact Simulator</a>
 </div>
 
 <h3 class="catalog-category">Games &amp; Simulators for Kids</h3>
 <div class="catalog-buttons">
 <a href="miscellaneous_exam.html" class="catalog-btn">
-    Hazardous Tanker Safety Exam & Certificate
+    Hazardous Tanker Safety Exam &amp; Certificate
 </a>
-  <a href="helmet_impact_simulator.html" class="catalog-btn">Helmet Impact Simulator</a>
   <a href="overspeed_braking_simulator.html" class="catalog-btn">Overspeed Braking Simulator</a>
   <a href="seatbelt_crash_simulator.html" class="catalog-btn">Seatbelt Crash Simulator</a>
-  <a href="road_safety_quiz.html" class="catalog-btn">Road Safety Exam & Certificate</a>
+  <a href="road_safety_quiz.html" class="catalog-btn">Road Safety Exam &amp; Certificate</a>
 <a href="ethanol_explorer.html" class="catalog-btn">
     Ethanol Safety Explorer
 </a>
 <a href="refinery_game_full.html" class="catalog-btn">
     Oil Refinery: Detailed Concept
 </a>
+  <a href="hazmat_awareness_bn.html" class="catalog-btn">রাস্তায় বিপদজনক গাড়ি</a>
+<a href="index.html" class="catalog-btn">MySkillGlobal 🏠</a>
+
+</div>
+
+<!-- DOWNLOAD -->
+<div class="download" id="download">
+  <div class="eyebrow" data-i18n="nav_download">Download</div>
+  <h2 class="sec-title" data-i18n="dl_title">Start tracking your vehicle today</h2>
+  <p class="sec-sub center" data-i18n="dl_sub">Free. Offline-friendly. No login, no ads on your data.</p>
+  <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.surajit.carexpenses" target="_blank" rel="noopener noreferrer">
+    <i class="fa-brands fa-google-play"></i>
+    <div><small data-i18n="dl_get">GET IT ON</small>Google Play</div>
+  </a>
 </div>
 
 
@@ -388,7 +423,7 @@ footer .contact{margin-top:6px;}
     <p class="sec-sub" data-i18n="about_sub">A car or bike is one of the biggest recurring expenses in a household — yet most owners never actually see the full picture.</p>
     <div class="about-grid reveal">
       <div class="about-card">
-        <p data-i18n="about_text">Car Expenses Manager lets you add every vehicle you own — car, bike, or scooter, petrol, diesel, CNG or EV — and log fuel fills, servicing, insurance, tolls, traffic fines, donations, and documents in one place. It quietly builds a 12-month income vs. expense summary, so the true cost of ownership is never a guess again. Built under the MySkillGame umbrella, it follows the same principles: works offline, collects no personal data, and never requires login.</p>
+        <p data-i18n="about_text">MySkillGlobal : Drive Expenses lets you add every vehicle you own — car, bike, or scooter, petrol, diesel, CNG or EV — and log fuel fills, servicing, insurance, tolls, traffic fines, donations, and documents in one place. It quietly builds a 12-month income vs. expense summary, so the true cost of ownership is never a guess again. Built under the MySkillGame umbrella, it follows the same principles: works offline, collects no personal data, and never requires login.</p>
       </div>
     </div>
   </div>
@@ -521,18 +556,18 @@ footer .contact{margin-top:6px;}
       </a>
 
       <a href="https://play.google.com/store/apps/details?id=com.surajit.myskillglobal" target="_blank" rel="noopener noreferrer" class="app-card">
-        <div class="card-thumb"><img src="images/myskillglobal.png" alt="MySkillGame"></div>
+        <div class="card-thumb"><img src="images/myskillglobal.png" alt="QR Code &amp; Barcode Reader and Writer App"></div>
         <div class="app-body">
           <div class="app-name">QR Code &amp; Barcode Reader and Writer App</div>
           <div class="app-desc">QR Code &amp; Barcode Reader and Writer App</div>
           <div class="app-footer"><span class="app-badge">▶ Play Store</span><span class="app-arrow">↗</span></div>
         </div>
       </a>
-      <a href="https://play.google.com/store/apps/details?id=com.surajit.carexpenses" target="_blank" rel="noopener noreferrer" class="app-card">
-        <div class="card-thumb"><img src="images/car-logo.png" alt="Car Expenses Manager"></div>
+      <a href="https://play.google.com/store/apps/details?id=com.myskillgame.smartlady" target="_blank" rel="noopener noreferrer" class="app-card">
+        <div class="card-thumb"><img src="images/smartlady.png" alt="Smart Lady by MySkillGlobal"></div>
         <div class="app-body">
-          <div class="app-name">Car Expenses Manager</div>
-          <div class="app-desc">Car Expenses Manager</div>
+          <div class="app-name">Smart Lady by MySkillGlobal</div>
+          <div class="app-desc">Smart Lady by MySkillGlobal</div>
           <div class="app-footer"><span class="app-badge">▶ Play Store</span><span class="app-arrow">↗</span></div>
         </div>
       </a>
@@ -551,7 +586,7 @@ footer .contact{margin-top:6px;}
 
 <footer>
   <div class="fbrand">MySkillGlobal</div>
-  <div data-i18n="footer_tag">Car Expenses Manager — an independent educational &amp; utility initiative by Surajit Roy &amp; Sampurna Roy</div>
+  <div data-i18n="footer_tag">MySkillGlobal : Drive Expenses — an independent educational &amp; utility initiative by Surajit Roy &amp; Sampurna Roy</div>
   <div class="contact">myskillgalobal@gmail.com</div>
 </footer>
 
@@ -560,14 +595,14 @@ const translations = {
 en:{
   nav_about:"About", nav_mission:"Mission", nav_features:"Features", nav_awareness:"Awareness", nav_download:"Download",
   hero_title:"Know Every Rupee Your Vehicle Costs",
-  hero_sub:"Car Expenses Manager is a free, offline-friendly app that tracks fuel, servicing, tax, fines, documents and resale value for every vehicle you own — so you always know where your money goes.",
+  hero_sub:"MySkillGlobal : Drive Expenses is a free, offline-friendly app that tracks fuel, servicing, tax, fines, documents and resale value for every vehicle you own — so you always know where your money goes.",
   tag1:"🚗 Multi-vehicle", tag2:"🔒 100% Private", tag3:"🌐 Bengali · Hindi · English", tag4:"📴 Works Offline",
   hero_cta:"Get the App",
   gauge_caption:"From <b>leaking expenses</b> to <b>full awareness</b> — that's the needle this app moves.",
   about_eyebrow:"About the App",
   about_title:"Built for real vehicle owners, not spreadsheets",
   about_sub:"A car or bike is one of the biggest recurring expenses in a household — yet most owners never actually see the full picture.",
-  about_text:"Car Expenses Manager lets you add every vehicle you own — car, bike, or scooter, petrol, diesel, CNG or EV — and log fuel fills, servicing, insurance, tolls, traffic fines, donations, and documents in one place. It quietly builds a 12-month income vs. expense summary, so the true cost of ownership is never a guess again. Built under the MySkillGame umbrella, it follows the same principles: works offline, collects no personal data, and never requires login.",
+  about_text:"MySkillGlobal : Drive Expenses lets you add every vehicle you own — car, bike, or scooter, petrol, diesel, CNG or EV — and log fuel fills, servicing, insurance, tolls, traffic fines, donations, and documents in one place. It quietly builds a 12-month income vs. expense summary, so the true cost of ownership is never a guess again. Built under the MySkillGame umbrella, it follows the same principles: works offline, collects no personal data, and never requires login.",
   mv_eyebrow:"Why We Built This", mv_title:"Mission &amp; Vision", mv_sub:"Two ideas drive every feature we add.",
   mission_title:"Our Mission",
   mission_text:"To help every vehicle owner — from a first-time bike buyer to a family running two cars — see the true, honest cost of ownership, and make confident decisions about fuel, maintenance, and resale, without needing an accountant.",
@@ -599,19 +634,19 @@ en:{
   creator_bio:"A Vocational Section teacher (M.A., M.Sc. IT) who builds free, privacy-first learning and utility apps under the MySkillGame brand, together with his daughter Sampurna Roy.",
   creator_tag:"Part of the MySkillGame family of apps — 100+ free tools for education and everyday life.",
   dl_title:"Start tracking your vehicle today", dl_sub:"Free. Offline-friendly. No login, no ads on your data.", dl_get:"GET IT ON",
-  footer_tag:"Car Expenses Manager — an independent educational &amp; utility initiative by Surajit Roy &amp; Sampurna Roy"
+  footer_tag:"MySkillGlobal : Drive Expenses — an independent educational &amp; utility initiative by Surajit Roy &amp; Sampurna Roy"
 },
 bn:{
   nav_about:"পরিচিতি", nav_mission:"মিশন", nav_features:"ফিচার", nav_awareness:"সচেতনতা", nav_download:"ডাউনলোড",
   hero_title:"আপনার গাড়ির প্রতিটি টাকার হিসাব রাখুন",
-  hero_sub:"Car Expenses Manager একটি বিনামূল্যের, অফলাইন-বান্ধব অ্যাপ যা আপনার প্রতিটি গাড়ির ফুয়েল, সার্ভিসিং, ট্যাক্স, জরিমানা, ডকুমেন্ট ও রিসেল ভ্যালু এক জায়গায় ট্র্যাক করে — তাই আপনার টাকা কোথায় যাচ্ছে তা সবসময় স্পষ্ট থাকে।",
+  hero_sub:"MySkillGlobal : Drive Expenses একটি বিনামূল্যের, অফলাইন-বান্ধব অ্যাপ যা আপনার প্রতিটি গাড়ির ফুয়েল, সার্ভিসিং, ট্যাক্স, জরিমানা, ডকুমেন্ট ও রিসেল ভ্যালু এক জায়গায় ট্র্যাক করে — তাই আপনার টাকা কোথায় যাচ্ছে তা সবসময় স্পষ্ট থাকে।",
   tag1:"🚗 একাধিক গাড়ি", tag2:"🔒 সম্পূর্ণ প্রাইভেট", tag3:"🌐 বাংলা · হিন্দি · ইংরেজি", tag4:"📴 অফলাইনে চলে",
   hero_cta:"অ্যাপটি নিন",
   gauge_caption:"<b>খরচের ফুটো</b> থেকে <b>পূর্ণ সচেতনতা</b> — এই অ্যাপ ঠিক সেই কাঁটাটাই ঘোরায়।",
   about_eyebrow:"অ্যাপ সম্পর্কে",
   about_title:"স্প্রেডশিট নয়, প্রকৃত গাড়ি মালিকদের জন্য তৈরি",
   about_sub:"একটি গাড়ি বা বাইক পরিবারের সবচেয়ে বড় নিয়মিত খরচগুলির একটি — তবুও বেশিরভাগ মালিক পুরো ছবিটা কখনো দেখতে পান না।",
-  about_text:"Car Expenses Manager-এ আপনি আপনার প্রতিটি গাড়ি — কার, বাইক বা স্কুটার, পেট্রোল, ডিজেল, CNG বা EV — যোগ করে ফুয়েল ফিল, সার্ভিসিং, ইন্স্যুরেন্স, টোল, ট্র্যাফিক জরিমানা, চাঁদা ও ডকুমেন্ট এক জায়গায় লগ করতে পারেন। এটি নিঃশব্দে ১২ মাসের আয়-ব্যয়ের সারসংক্ষেপ তৈরি করে, তাই গাড়ি রাখার প্রকৃত খরচ আর কখনো অনুমান থাকে না। MySkillGame-এর ছাতার নিচে তৈরি, তাই এটিও একই নীতি মেনে চলে: অফলাইনে কাজ করে, কোনো ব্যক্তিগত তথ্য সংগ্রহ করে না, এবং লগইনের দরকার নেই।",
+  about_text:"MySkillGlobal : Drive Expenses-এ আপনি আপনার প্রতিটি গাড়ি — কার, বাইক বা স্কুটার, পেট্রোল, ডিজেল, CNG বা EV — যোগ করে ফুয়েল ফিল, সার্ভিসিং, ইন্স্যুরেন্স, টোল, ট্র্যাফিক জরিমানা, চাঁদা ও ডকুমেন্ট এক জায়গায় লগ করতে পারেন। এটি নিঃশব্দে ১২ মাসের আয়-ব্যয়ের সারসংক্ষেপ তৈরি করে, তাই গাড়ি রাখার প্রকৃত খরচ আর কখনো অনুমান থাকে না। MySkillGame-এর ছাতার নিচে তৈরি, তাই এটিও একই নীতি মেনে চলে: অফলাইনে কাজ করে, কোনো ব্যক্তিগত তথ্য সংগ্রহ করে না, এবং লগইনের দরকার নেই।",
   mv_eyebrow:"কেন তৈরি করা", mv_title:"মিশন ও ভিশন", mv_sub:"দুটি ভাবনা প্রতিটি ফিচারের পেছনে কাজ করে।",
   mission_title:"আমাদের মিশন",
   mission_text:"প্রথমবার বাইক কেনা কেউ হোক বা দুটি গাড়ি চালানো পরিবার — প্রত্যেক গাড়ি মালিককে তাদের প্রকৃত খরচ দেখতে সাহায্য করা, এবং অ্যাকাউন্ট্যান্ট ছাড়াই ফুয়েল, মেইনটেন্যান্স ও রিসেলের ব্যাপারে আত্মবিশ্বাসী সিদ্ধান্ত নিতে সহায়তা করা।",
@@ -643,19 +678,19 @@ bn:{
   creator_bio:"একজন ভোকেশনাল সেকশন শিক্ষক (M.A., M.Sc. IT), যিনি তাঁর কন্যা সম্পূর্ণা রায়ের সাথে মিলে MySkillGame ব্র্যান্ডের অধীনে বিনামূল্যের, প্রাইভেসি-ফার্স্ট শিক্ষামূলক ও ইউটিলিটি অ্যাপ তৈরি করেন।",
   creator_tag:"MySkillGame অ্যাপ পরিবারের অংশ — শিক্ষা ও দৈনন্দিন জীবনের জন্য ১০০+ বিনামূল্যের টুল।",
   dl_title:"আজই আপনার গাড়ির খরচ ট্র্যাক করা শুরু করুন", dl_sub:"বিনামূল্যে। অফলাইন-বান্ধব। লগইন নেই, আপনার তথ্যে বিজ্ঞাপন নেই।", dl_get:"পাওয়া যাচ্ছে",
-  footer_tag:"Car Expenses Manager — সুরজিৎ রায় ও সম্পূর্ণা রায়ের একটি স্বতন্ত্র শিক্ষামূলক ও ইউটিলিটি উদ্যোগ"
+  footer_tag:"MySkillGlobal : Drive Expenses — সুরজিৎ রায় ও সম্পূর্ণা রায়ের একটি স্বতন্ত্র শিক্ষামূলক ও ইউটিলিটি উদ্যোগ"
 },
 hi:{
   nav_about:"परिचय", nav_mission:"मिशन", nav_features:"विशेषताएं", nav_awareness:"जागरूकता", nav_download:"डाउनलोड",
   hero_title:"अपनी गाड़ी का हर रुपया जानें",
-  hero_sub:"Car Expenses Manager एक मुफ़्त, ऑफलाइन-फ्रेंडली ऐप है जो आपकी हर गाड़ी के ईंधन, सर्विसिंग, टैक्स, जुर्माने, दस्तावेज़ और रीसेल वैल्यू को एक जगह ट्रैक करता है — ताकि आपका पैसा कहाँ जा रहा है, यह हमेशा स्पष्ट रहे।",
+  hero_sub:"MySkillGlobal : Drive Expenses एक मुफ़्त, ऑफलाइन-फ्रेंडली ऐप है जो आपकी हर गाड़ी के ईंधन, सर्विसिंग, टैक्स, जुर्माने, दस्तावेज़ और रीसेल वैल्यू को एक जगह ट्रैक करता है — ताकि आपका पैसा कहाँ जा रहा है, यह हमेशा स्पष्ट रहे।",
   tag1:"🚗 कई वाहन", tag2:"🔒 पूरी तरह निजी", tag3:"🌐 बंगाली · हिंदी · अंग्रेज़ी", tag4:"📴 ऑफलाइन काम करता है",
   hero_cta:"ऐप पाएं",
   gauge_caption:"<b>खर्च के रिसाव</b> से <b>पूरी जागरूकता</b> तक — यह ऐप ठीक यही सुई घुमाता है।",
   about_eyebrow:"ऐप के बारे में",
   about_title:"स्प्रेडशीट नहीं, असली वाहन मालिकों के लिए बनाया गया",
   about_sub:"कार या बाइक किसी भी परिवार के सबसे बड़े नियमित खर्चों में से एक है — फिर भी अधिकांश मालिक कभी पूरी तस्वीर नहीं देख पाते।",
-  about_text:"Car Expenses Manager में आप अपनी हर गाड़ी — कार, बाइक या स्कूटर, पेट्रोल, डीज़ल, CNG या EV — जोड़कर ईंधन भरना, सर्विसिंग, बीमा, टोल, ट्रैफिक जुर्माना, चंदा और दस्तावेज़ एक जगह दर्ज कर सकते हैं। यह चुपचाप 12 महीने का आय बनाम खर्च सारांश तैयार करता है, ताकि गाड़ी रखने की असली लागत कभी अनुमान न रहे। MySkillGame के अंतर्गत बना यह ऐप भी उन्हीं सिद्धांतों का पालन करता है: ऑफलाइन काम करता है, कोई निजी डेटा एकत्र नहीं करता, और लॉगिन की ज़रूरत नहीं।",
+  about_text:"MySkillGlobal : Drive Expenses में आप अपनी हर गाड़ी — कार, बाइक या स्कूटर, पेट्रोल, डीज़ल, CNG या EV — जोड़कर ईंधन भरना, सर्विसिंग, बीमा, टोल, ट्रैफिक जुर्माना, चंदा और दस्तावेज़ एक जगह दर्ज कर सकते हैं। यह चुपचाप 12 महीने का आय बनाम खर्च सारांश तैयार करता है, ताकि गाड़ी रखने की असली लागत कभी अनुमान न रहे। MySkillGame के अंतर्गत बना यह ऐप भी उन्हीं सिद्धांतों का पालन करता है: ऑफलाइन काम करता है, कोई निजी डेटा एकत्र नहीं करता, और लॉगिन की ज़रूरत नहीं।",
   mv_eyebrow:"हमने यह क्यों बनाया", mv_title:"मिशन और विज़न", mv_sub:"दो विचार हर फीचर के पीछे हैं।",
   mission_title:"हमारा मिशन",
   mission_text:"पहली बार बाइक खरीदने वाले से लेकर दो कारें चलाने वाले परिवार तक — हर वाहन मालिक को उनके स्वामित्व की असली लागत दिखाना, और बिना अकाउंटेंट के ईंधन, रखरखाव और रीसेल के बारे में आत्मविश्वास से फैसले लेने में मदद करना।",
@@ -687,7 +722,7 @@ hi:{
   creator_bio:"एक वोकेशनल सेक्शन शिक्षक (M.A., M.Sc. IT), जो अपनी बेटी सम्पूर्णा रॉय के साथ मिलकर MySkillGame ब्रांड के तहत मुफ़्त, गोपनीयता-प्राथमिकता वाले शिक्षण और उपयोगिता ऐप बनाते हैं।",
   creator_tag:"MySkillGame ऐप परिवार का हिस्सा — शिक्षा और रोज़मर्रा की ज़िंदगी के लिए 100+ मुफ़्त टूल।",
   dl_title:"आज ही अपनी गाड़ी का खर्च ट्रैक करना शुरू करें", dl_sub:"मुफ़्त। ऑफलाइन-फ्रेंडली। कोई लॉगिन नहीं, आपके डेटा पर कोई विज्ञापन नहीं।", dl_get:"यहाँ उपलब्ध है",
-  footer_tag:"Car Expenses Manager — सुरजीत रॉय और सम्पूर्णा रॉय की एक स्वतंत्र शैक्षिक और उपयोगिता पहल"
+  footer_tag:"MySkillGlobal : Drive Expenses — सुरजीत रॉय और सम्पूर्णा रॉय की एक स्वतंत्र शैक्षिक और उपयोगिता पहल"
 }
 };
 
