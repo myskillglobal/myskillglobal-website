@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
+<script>document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>MySkillGlobal : Drive Expenses — Track. Save. Drive Smart.</title>
+<title>Road Safety Education — Learn Traffic Rules &amp; Safe Driving | MySkillGlobal</title>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-R8N9GP90TX"></script>
 <script>
@@ -15,7 +16,12 @@
 
   gtag('config', 'G-R8N9GP90TX');
 </script>
-<meta name="description" content="MySkillGlobal : Drive Expenses — a free vehicle expense tracking app by MySkillGlobal. Track fuel, servicing, tax, fines, documents and resale value, all in one place."/>
+<meta name="description" content="Free road safety education by MySkillGlobal: school bus safety, traffic rules, road signs, helmet and seatbelt safety, blind spot awareness and responsible driving — in Bengali, Hindi and English."/>
+<link rel="canonical" href="https://myskillglobal.com/index-car.html"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Road Safety Education — Learn Traffic Rules &amp; Safe Driving | MySkillGlobal"/>
+<meta property="og:description" content="Free road safety lessons, safety awareness and simulators in Bengali, Hindi and English."/>
+<meta property="og:url" content="https://myskillglobal.com/index-car.html"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 :root{
@@ -125,8 +131,9 @@ section{position:relative;z-index:1;padding:54px 18px;}
 .sec-sub{color:var(--muted);font-size:.95rem;max-width:600px;margin-bottom:30px;line-height:1.6;}
 .center{text-align:center;margin-left:auto;margin-right:auto;}
 
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;}
-.reveal.visible{opacity:1;transform:translateY(0);}
+/* JS চললে তবেই লুকানো থাকবে; না চললে সব কনটেন্ট দেখা যাবে */
+.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;}
+.js .reveal.visible{opacity:1;transform:translateY(0);}
 
 /* ══════ ABOUT ══════ */
 .about-grid{display:grid;grid-template-columns:1fr;gap:18px;}
@@ -316,19 +323,18 @@ a,button{-webkit-tap-highlight-color:transparent;}
 .lang-bar button:hover{color:#fff;}
 .download .store-btn{position:relative;z-index:2;}
 </style>
-<link rel="canonical" href="https://myskillglobal.com/index-car">
 </head>
 <body>
 
 <header>
   <div class="nav">
-    <div class="brand"><img src="images/car-logo.png" alt="MySkillGlobal : Drive Expenses logo"><div>MySkillGlobal :<span> Drive Expenses</span></div></div>
+    <div class="brand"><img src="images/car-logo.png" alt="MySkillGlobal : Drive &amp; Road Safety logo"><div>MySkillGlobal :<span> Drive &amp; Road Safety</span></div></div>
     <div class="navlinks">
       <a href="#about" data-i18n="nav_about">About</a>
       <a href="#mission" data-i18n="nav_mission">Mission</a>
       <a href="#features" data-i18n="nav_features">Features</a>
-      <a href="#awareness" data-i18n="nav_awareness">Awareness</a>
-      <a href="#download" data-i18n="nav_download">Download</a>
+      <a href="#awareness" data-i18n="nav_awareness">Safety Awareness</a>
+      <a href="#download" data-i18n="nav_download">Explore</a>
     </div>
     <div class="lang-bar">
       <button type="button" id="btn-en" class="active" onclick="setLang('en')">EN</button>
@@ -340,16 +346,21 @@ a,button{-webkit-tap-highlight-color:transparent;}
 
 <!-- HERO -->
 <div class="hero">
-  <img class="hero-logo" src="images/car-logo.png" alt="MySkillGlobal : Drive Expenses">
-  <h1 data-i18n="hero_title">Know Every Rupee Your Vehicle Costs</h1>
-  <p class="sub" data-i18n="hero_sub">MySkillGlobal : Drive Expenses is a free, offline-friendly app that tracks fuel, servicing, tax, fines, documents and resale value for every vehicle you own — so you always know where your money goes.</p>
-  <div class="hero-tags">
-    <span data-i18n="tag1">🚗 Multi-vehicle</span>
-    <span data-i18n="tag2">🔒 100% Private</span>
-    <span data-i18n="tag3">🌐 Bengali · Hindi · English</span>
-    <span data-i18n="tag4">📴 Works Offline</span>
-  </div>
-  <a class="hero-cta" href="#download"><i class="fa-brands fa-google-play"></i> <span data-i18n="hero_cta">Get the App</span></a>
+  <img class="hero-logo" src="images/car-logo.png" alt="MySkillGlobal : Drive &amp; Road Safety">
+
+<h1 data-i18n="hero_title">Learn Road Safety, Protect Every Life</h1>
+
+<p class="sub" data-i18n="hero_sub">MySkillGlobal : Drive & Road Safety is an educational platform dedicated to School Bus Safety, Traffic Rules, Road Signs, Helmet and Seatbelt Safety, Blind Spot Awareness, Pedestrian Safety and Responsible Driving. Explore interactive safety lessons, awareness tests, educational games and simulators to build safer roads and protect every life.</p>
+
+<div class="hero-tags">
+  <span data-i18n="tag1">🚌 School Bus Safety</span>
+  <span data-i18n="tag2">🚦 Road Safety Awareness</span>
+  <span data-i18n="tag3">🪖 Helmet & Seatbelt Safety</span>
+  <span data-i18n="tag4">👁️ Blind Spot Awareness</span>
+  <span data-i18n="tag5">🌐 Bengali · Hindi · English</span>
+  <span data-i18n="tag6">🎮 Safety Games & Simulators</span>
+</div>
+  <a class="hero-cta" href="#download"><i class="fa-brands fa-google-play"></i> <span data-i18n="hero_cta">Explore Safety Learning</span></a>
 
   <div class="gauge-wrap reveal">
     <div class="gauge">
@@ -370,7 +381,7 @@ a,button{-webkit-tap-highlight-color:transparent;}
       </svg>
     </div>
   </div>
-  <p class="gauge-caption" data-i18n="gauge_caption">From <b>leaking expenses</b> to <b>full awareness</b> — that's the needle this app moves.</p>
+  <p class="gauge-caption" data-i18n="gauge_caption">From <b>lack of awareness</b> to <b>responsible road behaviour</b> — every lesson makes a difference.</p>
 </div>
 
 <!-- QUICK LINKS TO THE ROAD-SAFETY / GAME CATALOG -->
@@ -405,12 +416,12 @@ a,button{-webkit-tap-highlight-color:transparent;}
 
 <!-- DOWNLOAD -->
 <div class="download" id="download">
-  <div class="eyebrow" data-i18n="nav_download">Download</div>
-  <h2 class="sec-title" data-i18n="dl_title">Start tracking your vehicle today</h2>
-  <p class="sec-sub center" data-i18n="dl_sub">Free. Offline-friendly. No login, no ads on your data.</p>
+  <div class="eyebrow" data-i18n="nav_download">Explore</div>
+  <h2 class="sec-title" data-i18n="dl_title">Start Learning Road Safety Today</h2>
+  <p class="sec-sub center" data-i18n="dl_sub">Explore educational activities, awareness tests, games and safety learning resources.</p>
   <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.surajit.carexpenses" target="_blank" rel="noopener noreferrer">
     <i class="fa-brands fa-google-play"></i>
-    <div><small data-i18n="dl_get">GET IT ON</small>Google Play</div>
+    <div><small data-i18n="dl_get">EXPLORE NOW</small>Google Play</div>
   </a>
 </div>
 
@@ -419,12 +430,12 @@ a,button{-webkit-tap-highlight-color:transparent;}
 <!-- ABOUT -->
 <section id="about">
   <div class="wrap">
-    <div class="eyebrow" data-i18n="about_eyebrow">About the App</div>
-    <h2 class="sec-title" data-i18n="about_title">Built for real vehicle owners, not spreadsheets</h2>
-    <p class="sec-sub" data-i18n="about_sub">A car or bike is one of the biggest recurring expenses in a household — yet most owners never actually see the full picture.</p>
+    <div class="eyebrow" data-i18n="about_eyebrow">About the Platform</div>
+    <h2 class="sec-title" data-i18n="about_title">Building a Safer Future Through Road Safety Education</h2>
+    <p class="sec-sub" data-i18n="about_sub">Every day, students, pedestrians, passengers and drivers face road risks. Awareness and responsible behaviour can help prevent accidents and save lives.</p>
     <div class="about-grid reveal">
       <div class="about-card">
-        <p data-i18n="about_text">MySkillGlobal : Drive Expenses lets you add every vehicle you own — car, bike, or scooter, petrol, diesel, CNG or EV — and log fuel fills, servicing, insurance, tolls, traffic fines, donations, and documents in one place. It quietly builds a 12-month income vs. expense summary, so the true cost of ownership is never a guess again. Built under the MySkillGame umbrella, it follows the same principles: works offline, collects no personal data, and never requires login.</p>
+        <p data-i18n="about_text">MySkillGlobal : Drive & Road Safety is an educational initiative designed to promote road safety awareness among children, students, families and everyday road users. It covers school bus safety, safe boarding and travelling, traffic rules, road signs, zebra crossings, helmet and seatbelt use, blind spot awareness, overspeeding dangers, emergency vehicle priority and accident prevention. Through interactive lessons, awareness tests, educational games and simulators, learners can develop practical safety knowledge. Our goal is to encourage responsible road behaviour and create safer communities. Available in Bengali, Hindi and English.</p>
       </div>
     </div>
   </div>
@@ -435,17 +446,17 @@ a,button{-webkit-tap-highlight-color:transparent;}
   <div class="wrap">
     <div class="eyebrow" data-i18n="mv_eyebrow">Why We Built This</div>
     <h2 class="sec-title" data-i18n="mv_title">Mission &amp; Vision</h2>
-    <p class="sec-sub" data-i18n="mv_sub">Two ideas drive every feature we add.</p>
+    <p class="sec-sub" data-i18n="mv_sub">Two important ideas guide every learning activity we create.</p>
     <div class="mv-grid reveal">
       <div class="mv-card mission">
         <i class="fa-solid fa-bullseye"></i>
         <h3 data-i18n="mission_title">Our Mission</h3>
-        <p data-i18n="mission_text">To help every vehicle owner — from a first-time bike buyer to a family running two cars — see the true, honest cost of ownership, and make confident decisions about fuel, maintenance, and resale, without needing an accountant.</p>
+        <p data-i18n="mission_text">To educate children, students, drivers, passengers and communities about road safety through interactive learning, practical awareness activities and engaging educational games. We aim to promote safe travel habits, responsible driving and accident prevention.</p>
       </div>
       <div class="mv-card vision">
         <i class="fa-solid fa-eye"></i>
         <h3 data-i18n="vision_title">Our Vision</h3>
-        <p data-i18n="vision_text">A future where financial awareness around vehicles is as common as checking tyre pressure — where owners plan for depreciation, avoid hidden costs, and treat every rupee spent on the road as a decision, not a surprise.</p>
+        <p data-i18n="vision_text">A future where every child knows how to travel safely, every driver follows traffic rules, every passenger understands safety responsibilities and every road user respects the lives of others. We envision safer schools, safer journeys and safer roads for everyone.</p>
       </div>
     </div>
   </div>
@@ -454,19 +465,19 @@ a,button{-webkit-tap-highlight-color:transparent;}
 <!-- FEATURES -->
 <section id="features">
   <div class="wrap">
-    <div class="eyebrow" data-i18n="feat_eyebrow">Inside the App</div>
-    <h2 class="sec-title" data-i18n="feat_title">Everything a vehicle owner tracks, in one place</h2>
-    <p class="sec-sub" data-i18n="feat_sub">Nine focused tools, one clean dashboard per vehicle.</p>
+    <div class="eyebrow" data-i18n="feat_eyebrow">Explore the Learning Modules</div>
+    <h2 class="sec-title" data-i18n="feat_title">Essential Road Safety Knowledge in One Place</h2>
+    <p class="sec-sub" data-i18n="feat_sub">Interactive educational modules designed to build awareness and responsible behaviour.</p>
     <div class="feat-grid reveal">
-      <div class="feat-card"><div class="feat-icon ic-fuel">⛽</div><h4 data-i18n="f1_t">Fuel Log</h4><p data-i18n="f1_d">Track every fill-up and watch your real mileage and monthly fuel spend.</p></div>
-      <div class="feat-card"><div class="feat-icon ic-service">🔧</div><h4 data-i18n="f2_t">Servicing</h4><p data-i18n="f2_d">Log every service visit and never miss the next scheduled maintenance.</p></div>
-      <div class="feat-card"><div class="feat-icon ic-tax">🧾</div><h4 data-i18n="f3_t">Tax &amp; Toll</h4><p data-i18n="f3_d">Keep road tax, toll and insurance expenses recorded and reminders ready.</p></div>
-      <div class="feat-card"><div class="feat-icon ic-fine">🚔</div><h4 data-i18n="f4_t">Traffic Fines</h4><p data-i18n="f4_d">Log fines so avoidable penalties become visible instead of forgotten.</p></div>
-      <div class="feat-card"><div class="feat-icon ic-donation">🪔</div><h4 data-i18n="f5_t">Donations</h4><p data-i18n="f5_d">Track local "chanda" and community contributions tied to your vehicle.</p></div>
-      <div class="feat-card"><div class="feat-icon ic-docs">📄</div><h4 data-i18n="f6_t">Documents</h4><p data-i18n="f6_d">Store RC, insurance and pollution certificate details with expiry alerts.</p></div>
-      <div class="feat-card"><div class="feat-icon ic-income">💰</div><h4 data-i18n="f7_t">Income</h4><p data-i18n="f7_d">Running a car commercially? Log earnings against the same vehicle.</p></div>
-      <div class="feat-card"><div class="feat-icon ic-reports">📊</div><h4 data-i18n="f8_t">Reports &amp; Charts</h4><p data-i18n="f8_d">See a clear monthly and yearly breakdown of income versus expense.</p></div>
-      <div class="feat-card"><div class="feat-icon ic-resale">📉</div><h4 data-i18n="f9_t">Resale Value Guide</h4><p data-i18n="f9_d">Practical tips to protect your vehicle's resale value over time.</p></div>
+      <div class="feat-card"><div class="feat-icon ic-fuel">⛽</div><h4 data-i18n="f1_t">School Bus Safety</h4><p data-i18n="f1_d">Learn safe boarding, getting off the bus, passenger behaviour and essential school bus safety rules.</p></div>
+      <div class="feat-card"><div class="feat-icon ic-service">🔧</div><h4 data-i18n="f2_t">Traffic Rules & Road Signs</h4><p data-i18n="f2_d">Understand important traffic signs, signals, road markings and basic traffic regulations.</p></div>
+      <div class="feat-card"><div class="feat-icon ic-tax">🧾</div><h4 data-i18n="f3_t">Helmet & Seatbelt Safety</h4><p data-i18n="f3_d">Discover how certified helmets and seatbelts help protect lives and reduce the risk of serious injuries.</p></div>
+      <div class="feat-card"><div class="feat-icon ic-fine">🚔</div><h4 data-i18n="f4_t">Pedestrian Safety</h4><p data-i18n="f4_d">Learn how to cross roads safely, use zebra crossings and follow pedestrian safety rules.</p></div>
+      <div class="feat-card"><div class="feat-icon ic-donation">🪔</div><h4 data-i18n="f5_t">Blind Spot Awareness</h4><p data-i18n="f5_d">Understand vehicle blind spots and learn how to stay safe around buses, trucks and other vehicles.</p></div>
+      <div class="feat-card"><div class="feat-icon ic-docs">📄</div><h4 data-i18n="f6_t">Emergency Vehicle Priority</h4><p data-i18n="f6_d">Learn why ambulances, fire engines and other emergency vehicles need clear passage.</p></div>
+      <div class="feat-card"><div class="feat-icon ic-income">💰</div><h4 data-i18n="f7_t">Speed & Accident Prevention</h4><p data-i18n="f7_d">Understand the dangers of overspeeding, risky driving and unsafe road behaviour.</p></div>
+      <div class="feat-card"><div class="feat-icon ic-reports">📊</div><h4 data-i18n="f8_t">Safety Games & Simulators</h4><p data-i18n="f8_d">Practise road safety knowledge through interactive games, tests and educational simulators.</p></div>
+      <div class="feat-card"><div class="feat-icon ic-resale">📉</div><h4 data-i18n="f9_t">Responsible Road Behaviour</h4><p data-i18n="f9_d">Develop safe habits as a driver, passenger, cyclist and pedestrian.</p></div>
     </div>
   </div>
 </section>
@@ -474,52 +485,40 @@ a,button{-webkit-tap-highlight-color:transparent;}
 <!-- AWARENESS -->
 <section id="awareness">
   <div class="wrap">
-    <div class="eyebrow" data-i18n="aw_eyebrow">Car Ownership Awareness</div>
-    <h2 class="sec-title" data-i18n="aw_title">Asset or Liability? Know before you decide</h2>
-    <p class="sec-sub" data-i18n="aw_sub">A few honest truths about owning a personal vehicle — the same awareness the app is built to support.</p>
+    <div class="eyebrow" data-i18n="aw_eyebrow">Road Safety Awareness</div>
+    <h2 class="sec-title" data-i18n="aw_title">Every Road User Has a Responsibility</h2>
+    <p class="sec-sub" data-i18n="aw_sub">Understanding everyday road risks is the first step towards safer journeys.</p>
     <div class="aw-grid reveal">
       <div class="aw-card">
-        <h4 data-i18n="aw1_t">🚗 Asset or Liability?</h4>
-        <p data-i18n="aw1_d">Buying a car with a small down payment feels easy. The real question is: is it truly necessary, or a long-term liability?</p>
+        <h4 data-i18n="aw1_t">🚌 School Bus Safety</h4>
+        <p data-i18n="aw1_d">Children must follow safe boarding and travelling practices. Drivers, attendants and parents all have important roles in protecting students.</p>
       </div>
       <div class="aw-card">
-        <h4 data-i18n="aw2_t">📉 The Depreciation Truth</h4>
-        <p data-i18n="aw2_d">A personal car is not an investment — it loses roughly <b>10–15% of its value every year</b>. Within 5 years, resale value can drop by almost half.</p>
+        <h4 data-i18n="aw2_t">🪖 Helmet & Seatbelt Protection</h4>
+        <p data-i18n="aw2_d">Always use a suitable helmet and seatbelt. These protective measures can significantly reduce the risk of serious injury.</p>
       </div>
       <div class="aw-card">
-        <h4 data-i18n="aw3_t">💸 Hidden Costs</h4>
-        <ul data-i18n="aw3_list">
-          <li>EMI &amp; loan interest</li>
-          <li>Fuel expenses</li>
-          <li>Servicing &amp; maintenance</li>
-          <li>Insurance &amp; taxes</li>
-          <li>Driver &amp; parking</li>
-        </ul>
+        <h4 data-i18n="aw3_t">⚠️ Common Road Safety Risks</h4>
+        <ul data-i18n="aw3_list"><li>Overspeeding and reckless driving</li><li>Ignoring traffic signals and road signs</li><li>Not using helmets and seatbelts</li><li>Unsafe road crossing and pedestrian behaviour</li><li>Ignoring vehicle blind spots</li><li>Failing to give way to emergency vehicles</li></ul>
       </div>
       <div class="aw-card">
-        <h4 data-i18n="aw4_t">📈 Protecting Resale Value</h4>
-        <ul data-i18n="aw4_list">
-          <li>Maintain a full service history</li>
-          <li>Avoid major accidents</li>
-          <li>Keep the car clean, use original spare parts</li>
-          <li>Keep insurance active, lower mileage = higher value</li>
-          <li>Best time to sell: 3–5 years</li>
-        </ul>
+        <h4 data-i18n="aw4_t">🚦 Safe Road Habits</h4>
+        <ul data-i18n="aw4_list"><li>Follow traffic rules and road signs</li><li>Use zebra crossings and pedestrian paths</li><li>Wear helmets and seatbelts correctly</li><li>Maintain a safe distance from vehicles</li><li>Stay alert near school buses and heavy vehicles</li><li>Give priority to emergency vehicles</li></ul>
       </div>
     </div>
-    <div class="aw-note" data-i18n="aw_note">This awareness content is educational and general in nature — always evaluate your own finances before a major vehicle purchase.</div>
+    <div class="aw-note" data-i18n="aw_note">This platform provides general educational and awareness information. Always follow the traffic laws and road safety regulations applicable in your country or region.</div>
   </div>
 </section>
 
 <!-- WHY TRACK -->
 <section id="why">
   <div class="wrap">
-    <div class="eyebrow" data-i18n="why_eyebrow">In Numbers</div>
-    <h2 class="sec-title" data-i18n="why_title">Why tracking matters</h2>
+    <div class="eyebrow" data-i18n="why_eyebrow">Our Learning Approach</div>
+    <h2 class="sec-title" data-i18n="why_title">Why Road Safety Education Matters</h2>
     <div class="why-strip reveal">
-      <div class="why-item"><div class="n">10–15%</div><p data-i18n="why1">average yearly depreciation of a personal vehicle</p></div>
-      <div class="why-item"><div class="n">9</div><p data-i18n="why2">expense categories tracked per vehicle in the app</p></div>
-      <div class="why-item"><div class="n">0</div><p data-i18n="why3">personal data collected — everything stays on your device</p></div>
+      <div class="why-item"><div class="n">10–15%</div><p data-i18n="why1">School children and everyday road users who need practical safety awareness</p></div>
+      <div class="why-item"><div class="n">9</div><p data-i18n="why2">Interactive learning modules, awareness tests, games and simulators</p></div>
+      <div class="why-item"><div class="n">0</div><p data-i18n="why3">Three languages — Bengali, Hindi and English</p></div>
     </div>
   </div>
 </section>
@@ -527,14 +526,14 @@ a,button{-webkit-tap-highlight-color:transparent;}
 <!-- CREATOR -->
 <section id="creator">
   <div class="wrap">
-    <div class="eyebrow" data-i18n="creator_eyebrow">Who Made This</div>
-    <h2 class="sec-title" data-i18n="creator_title">Built by a teacher, for everyday owners</h2>
+    <div class="eyebrow" data-i18n="creator_eyebrow">Who Created This Initiative</div>
+    <h2 class="sec-title" data-i18n="creator_title">An Educational Initiative by a Teacher</h2>
     <div class="creator-card reveal">
       <img class="creator-photo" src="images/founder.jpg" alt="Surajit Roy, founder of MySkillGame" loading="lazy">
       <div>
         <h4 data-i18n="creator_name">Surajit Roy</h4>
-        <p data-i18n="creator_bio">A Vocational Section teacher (M.A., M.Sc. IT) who builds free, privacy-first learning and utility apps under the MySkillGame brand, together with his daughter Sampurna Roy.</p>
-        <div class="creator-brand" data-i18n="creator_tag">Part of the MySkillGame family of apps — 100+ free tools for education and everyday life.</div>
+        <p data-i18n="creator_bio">A vocational education teacher and independent app developer who creates educational and awareness-based digital learning resources under the MySkillGlobal and MySkillGame initiatives, with a focus on children, students and community well-being.</p>
+        <div class="creator-brand" data-i18n="creator_tag">Part of the MySkillGlobal educational initiative — using technology and interactive learning to build a safer, smarter and more responsible generation.</div>
       </div>
     </div>
   </div>
@@ -587,146 +586,300 @@ a,button{-webkit-tap-highlight-color:transparent;}
 
 <footer>
   <div class="fbrand">MySkillGlobal</div>
-  <div data-i18n="footer_tag">MySkillGlobal : Drive Expenses — an independent educational &amp; utility initiative by Surajit Roy &amp; Sampurna Roy</div>
+  <div data-i18n="footer_tag">MySkillGlobal : Drive & Road Safety — an independent educational initiative by Surajit Roy.</div>
   <div class="contact">myskillgalobal@gmail.com</div>
 </footer>
 
 <script>
 const translations = {
 en:{
-  nav_about:"About", nav_mission:"Mission", nav_features:"Features", nav_awareness:"Awareness", nav_download:"Download",
-  hero_title:"Know Every Rupee Your Vehicle Costs",
-  hero_sub:"MySkillGlobal : Drive Expenses is a free, offline-friendly app that tracks fuel, servicing, tax, fines, documents and resale value for every vehicle you own — so you always know where your money goes.",
-  tag1:"🚗 Multi-vehicle", tag2:"🔒 100% Private", tag3:"🌐 Bengali · Hindi · English", tag4:"📴 Works Offline",
-  hero_cta:"Get the App",
-  gauge_caption:"From <b>leaking expenses</b> to <b>full awareness</b> — that's the needle this app moves.",
-  about_eyebrow:"About the App",
-  about_title:"Built for real vehicle owners, not spreadsheets",
-  about_sub:"A car or bike is one of the biggest recurring expenses in a household — yet most owners never actually see the full picture.",
-  about_text:"MySkillGlobal : Drive Expenses lets you add every vehicle you own — car, bike, or scooter, petrol, diesel, CNG or EV — and log fuel fills, servicing, insurance, tolls, traffic fines, donations, and documents in one place. It quietly builds a 12-month income vs. expense summary, so the true cost of ownership is never a guess again. Built under the MySkillGame umbrella, it follows the same principles: works offline, collects no personal data, and never requires login.",
-  mv_eyebrow:"Why We Built This", mv_title:"Mission &amp; Vision", mv_sub:"Two ideas drive every feature we add.",
+  nav_about:"About", nav_mission:"Mission", nav_features:"Features", nav_awareness:"Safety Awareness", nav_download:"Explore",
+
+  hero_title:"Learn Road Safety, Protect Every Life",
+  hero_sub:"MySkillGlobal : Drive & Road Safety is an educational platform dedicated to School Bus Safety, Traffic Rules, Road Signs, Helmet and Seatbelt Safety, Blind Spot Awareness, Pedestrian Safety and Responsible Driving. Explore interactive safety lessons, awareness tests, educational games and simulators to build safer roads and protect every life.",
+
+  tag1:"🚌 School Bus Safety",
+  tag2:"🚦 Road Safety Awareness",
+  tag3:"🪖 Helmet & Seatbelt Safety",
+  tag4:"👁️ Blind Spot Awareness",
+  tag5:"🌐 Bengali · Hindi · English",
+  tag6:"🎮 Safety Games & Simulators",
+
+  hero_cta:"Explore Safety Learning",
+
+  gauge_caption:"From <b>lack of awareness</b> to <b>responsible road behaviour</b> — every lesson makes a difference.",
+
+  about_eyebrow:"About the Platform",
+  about_title:"Building a Safer Future Through Road Safety Education",
+  about_sub:"Every day, students, pedestrians, passengers and drivers face road risks. Awareness and responsible behaviour can help prevent accidents and save lives.",
+
+  about_text:"MySkillGlobal : Drive & Road Safety is an educational initiative designed to promote road safety awareness among children, students, families and everyday road users. It covers school bus safety, safe boarding and travelling, traffic rules, road signs, zebra crossings, helmet and seatbelt use, blind spot awareness, overspeeding dangers, emergency vehicle priority and accident prevention. Through interactive lessons, awareness tests, educational games and simulators, learners can develop practical safety knowledge. Our goal is to encourage responsible road behaviour and create safer communities. Available in Bengali, Hindi and English.",
+
+  mv_eyebrow:"Why We Built This",
+  mv_title:"Mission &amp; Vision",
+  mv_sub:"Two important ideas guide every learning activity we create.",
+
   mission_title:"Our Mission",
-  mission_text:"To help every vehicle owner — from a first-time bike buyer to a family running two cars — see the true, honest cost of ownership, and make confident decisions about fuel, maintenance, and resale, without needing an accountant.",
+  mission_text:"To educate children, students, drivers, passengers and communities about road safety through interactive learning, practical awareness activities and engaging educational games. We aim to promote safe travel habits, responsible driving and accident prevention.",
+
   vision_title:"Our Vision",
-  vision_text:"A future where financial awareness around vehicles is as common as checking tyre pressure — where owners plan for depreciation, avoid hidden costs, and treat every rupee spent on the road as a decision, not a surprise.",
-  feat_eyebrow:"Inside the App", feat_title:"Everything a vehicle owner tracks, in one place", feat_sub:"Nine focused tools, one clean dashboard per vehicle.",
-  f1_t:"Fuel Log", f1_d:"Track every fill-up and watch your real mileage and monthly fuel spend.",
-  f2_t:"Servicing", f2_d:"Log every service visit and never miss the next scheduled maintenance.",
-  f3_t:"Tax &amp; Toll", f3_d:"Keep road tax, toll and insurance expenses recorded and reminders ready.",
-  f4_t:"Traffic Fines", f4_d:"Log fines so avoidable penalties become visible instead of forgotten.",
-  f5_t:"Donations", f5_d:"Track local \"chanda\" and community contributions tied to your vehicle.",
-  f6_t:"Documents", f6_d:"Store RC, insurance and pollution certificate details with expiry alerts.",
-  f7_t:"Income", f7_d:"Running a car commercially? Log earnings against the same vehicle.",
-  f8_t:"Reports &amp; Charts", f8_d:"See a clear monthly and yearly breakdown of income versus expense.",
-  f9_t:"Resale Value Guide", f9_d:"Practical tips to protect your vehicle's resale value over time.",
-  aw_eyebrow:"Car Ownership Awareness", aw_title:"Asset or Liability? Know before you decide",
-  aw_sub:"A few honest truths about owning a personal vehicle — the same awareness the app is built to support.",
-  aw1_t:"🚗 Asset or Liability?", aw1_d:"Buying a car with a small down payment feels easy. The real question is: is it truly necessary, or a long-term liability?",
-  aw2_t:"📉 The Depreciation Truth", aw2_d:"A personal car is not an investment — it loses roughly <b>10–15% of its value every year</b>. Within 5 years, resale value can drop by almost half.",
-  aw3_t:"💸 Hidden Costs",
-  aw3_list:"<li>EMI &amp; loan interest</li><li>Fuel expenses</li><li>Servicing &amp; maintenance</li><li>Insurance &amp; taxes</li><li>Driver &amp; parking</li>",
-  aw4_t:"📈 Protecting Resale Value",
-  aw4_list:"<li>Maintain a full service history</li><li>Avoid major accidents</li><li>Keep the car clean, use original spare parts</li><li>Keep insurance active, lower mileage = higher value</li><li>Best time to sell: 3–5 years</li>",
-  aw_note:"This awareness content is educational and general in nature — always evaluate your own finances before a major vehicle purchase.",
-  why_eyebrow:"In Numbers", why_title:"Why tracking matters",
-  why1:"average yearly depreciation of a personal vehicle", why2:"expense categories tracked per vehicle in the app", why3:"personal data collected — everything stays on your device",
-  creator_eyebrow:"Who Made This", creator_title:"Built by a teacher, for everyday owners",
+  vision_text:"A future where every child knows how to travel safely, every driver follows traffic rules, every passenger understands safety responsibilities and every road user respects the lives of others. We envision safer schools, safer journeys and safer roads for everyone.",
+
+  feat_eyebrow:"Explore the Learning Modules",
+  feat_title:"Essential Road Safety Knowledge in One Place",
+  feat_sub:"Interactive educational modules designed to build awareness and responsible behaviour.",
+
+  f1_t:"School Bus Safety",
+  f1_d:"Learn safe boarding, getting off the bus, passenger behaviour and essential school bus safety rules.",
+
+  f2_t:"Traffic Rules & Road Signs",
+  f2_d:"Understand important traffic signs, signals, road markings and basic traffic regulations.",
+
+  f3_t:"Helmet & Seatbelt Safety",
+  f3_d:"Discover how certified helmets and seatbelts help protect lives and reduce the risk of serious injuries.",
+
+  f4_t:"Pedestrian Safety",
+  f4_d:"Learn how to cross roads safely, use zebra crossings and follow pedestrian safety rules.",
+
+  f5_t:"Blind Spot Awareness",
+  f5_d:"Understand vehicle blind spots and learn how to stay safe around buses, trucks and other vehicles.",
+
+  f6_t:"Emergency Vehicle Priority",
+  f6_d:"Learn why ambulances, fire engines and other emergency vehicles need clear passage.",
+
+  f7_t:"Speed & Accident Prevention",
+  f7_d:"Understand the dangers of overspeeding, risky driving and unsafe road behaviour.",
+
+  f8_t:"Safety Games & Simulators",
+  f8_d:"Practise road safety knowledge through interactive games, tests and educational simulators.",
+
+  f9_t:"Responsible Road Behaviour",
+  f9_d:"Develop safe habits as a driver, passenger, cyclist and pedestrian.",
+
+  aw_eyebrow:"Road Safety Awareness",
+  aw_title:"Every Road User Has a Responsibility",
+  aw_sub:"Understanding everyday road risks is the first step towards safer journeys.",
+
+  aw1_t:"🚌 School Bus Safety",
+  aw1_d:"Children must follow safe boarding and travelling practices. Drivers, attendants and parents all have important roles in protecting students.",
+
+  aw2_t:"🪖 Helmet & Seatbelt Protection",
+  aw2_d:"Always use a suitable helmet and seatbelt. These protective measures can significantly reduce the risk of serious injury.",
+
+  aw3_t:"⚠️ Common Road Safety Risks",
+  aw3_list:"<li>Overspeeding and reckless driving</li><li>Ignoring traffic signals and road signs</li><li>Not using helmets and seatbelts</li><li>Unsafe road crossing and pedestrian behaviour</li><li>Ignoring vehicle blind spots</li><li>Failing to give way to emergency vehicles</li>",
+
+  aw4_t:"🚦 Safe Road Habits",
+  aw4_list:"<li>Follow traffic rules and road signs</li><li>Use zebra crossings and pedestrian paths</li><li>Wear helmets and seatbelts correctly</li><li>Maintain a safe distance from vehicles</li><li>Stay alert near school buses and heavy vehicles</li><li>Give priority to emergency vehicles</li>",
+
+  aw_note:"This platform provides general educational and awareness information. Always follow the traffic laws and road safety regulations applicable in your country or region.",
+
+  why_eyebrow:"Our Learning Approach",
+  why_title:"Why Road Safety Education Matters",
+  why1:"School children and everyday road users who need practical safety awareness",
+  why2:"Interactive learning modules, awareness tests, games and simulators",
+  why3:"Three languages — Bengali, Hindi and English",
+
+  creator_eyebrow:"Who Created This Initiative",
+  creator_title:"An Educational Initiative by a Teacher",
   creator_name:"Surajit Roy",
-  creator_bio:"A Vocational Section teacher (M.A., M.Sc. IT) who builds free, privacy-first learning and utility apps under the MySkillGame brand, together with his daughter Sampurna Roy.",
-  creator_tag:"Part of the MySkillGame family of apps — 100+ free tools for education and everyday life.",
-  dl_title:"Start tracking your vehicle today", dl_sub:"Free. Offline-friendly. No login, no ads on your data.", dl_get:"GET IT ON",
-  footer_tag:"MySkillGlobal : Drive Expenses — an independent educational &amp; utility initiative by Surajit Roy &amp; Sampurna Roy"
+
+  creator_bio:"A vocational education teacher and independent app developer who creates educational and awareness-based digital learning resources under the MySkillGlobal and MySkillGame initiatives, with a focus on children, students and community well-being.",
+
+  creator_tag:"Part of the MySkillGlobal educational initiative — using technology and interactive learning to build a safer, smarter and more responsible generation.",
+
+  dl_title:"Start Learning Road Safety Today",
+  dl_sub:"Explore educational activities, awareness tests, games and safety learning resources.",
+
+  dl_get:"EXPLORE NOW",
+
+  footer_tag:"MySkillGlobal : Drive & Road Safety — an independent educational initiative by Surajit Roy."
 },
 bn:{
   nav_about:"পরিচিতি", nav_mission:"মিশন", nav_features:"ফিচার", nav_awareness:"সচেতনতা", nav_download:"ডাউনলোড",
-  hero_title:"আপনার গাড়ির প্রতিটি টাকার হিসাব রাখুন",
-  hero_sub:"MySkillGlobal : Drive Expenses একটি বিনামূল্যের, অফলাইন-বান্ধব অ্যাপ যা আপনার প্রতিটি গাড়ির ফুয়েল, সার্ভিসিং, ট্যাক্স, জরিমানা, ডকুমেন্ট ও রিসেল ভ্যালু এক জায়গায় ট্র্যাক করে — তাই আপনার টাকা কোথায় যাচ্ছে তা সবসময় স্পষ্ট থাকে।",
-  tag1:"🚗 একাধিক গাড়ি", tag2:"🔒 সম্পূর্ণ প্রাইভেট", tag3:"🌐 বাংলা · হিন্দি · ইংরেজি", tag4:"📴 অফলাইনে চলে",
-  hero_cta:"অ্যাপটি নিন",
-  gauge_caption:"<b>খরচের ফুটো</b> থেকে <b>পূর্ণ সচেতনতা</b> — এই অ্যাপ ঠিক সেই কাঁটাটাই ঘোরায়।",
-  about_eyebrow:"অ্যাপ সম্পর্কে",
-  about_title:"স্প্রেডশিট নয়, প্রকৃত গাড়ি মালিকদের জন্য তৈরি",
-  about_sub:"একটি গাড়ি বা বাইক পরিবারের সবচেয়ে বড় নিয়মিত খরচগুলির একটি — তবুও বেশিরভাগ মালিক পুরো ছবিটা কখনো দেখতে পান না।",
-  about_text:"MySkillGlobal : Drive Expenses-এ আপনি আপনার প্রতিটি গাড়ি — কার, বাইক বা স্কুটার, পেট্রোল, ডিজেল, CNG বা EV — যোগ করে ফুয়েল ফিল, সার্ভিসিং, ইন্স্যুরেন্স, টোল, ট্র্যাফিক জরিমানা, চাঁদা ও ডকুমেন্ট এক জায়গায় লগ করতে পারেন। এটি নিঃশব্দে ১২ মাসের আয়-ব্যয়ের সারসংক্ষেপ তৈরি করে, তাই গাড়ি রাখার প্রকৃত খরচ আর কখনো অনুমান থাকে না। MySkillGame-এর ছাতার নিচে তৈরি, তাই এটিও একই নীতি মেনে চলে: অফলাইনে কাজ করে, কোনো ব্যক্তিগত তথ্য সংগ্রহ করে না, এবং লগইনের দরকার নেই।",
-  mv_eyebrow:"কেন তৈরি করা", mv_title:"মিশন ও ভিশন", mv_sub:"দুটি ভাবনা প্রতিটি ফিচারের পেছনে কাজ করে।",
+
+  hero_title:"সড়ক নিরাপত্তা শিখুন, প্রতিটি জীবন সুরক্ষিত রাখুন",
+  hero_sub:"MySkillGlobal : Road Safety Education একটি শিক্ষামূলক উদ্যোগ, যেখানে স্কুল বাসের নিরাপত্তা, ট্রাফিক নিয়ম, রাস্তার চিহ্ন, হেলমেট ও সিটবেল্টের ব্যবহার এবং দুর্ঘটনা প্রতিরোধ সম্পর্কে ইন্টারঅ্যাকটিভ গেম ও সচেতনতামূলক কার্যক্রমের মাধ্যমে শেখানো হয়।",
+  tag1:"🚌 স্কুল বাসের নিরাপত্তা", 
+  tag2:"🪖 হেলমেট ও সিটবেল্ট সচেতনতা", 
+  tag3:"🌐 বাংলা · হিন্দি · ইংরেজি", 
+  tag4:"📴 অফলাইন শিক্ষামূলক কনটেন্ট",
+  hero_cta:"শিখতে শুরু করুন",
+  gauge_caption:"<b>অসচেতনতা</b> থেকে <b>নিরাপদ অভ্যাস</b> — সচেতন শিক্ষাই পারে এই পরিবর্তন আনতে।",
+
+  about_eyebrow:"উদ্যোগ সম্পর্কে",
+  about_title:"শুধু নিয়ম জানা নয়, নিরাপদ আচরণ গড়ে তোলা",
+  about_sub:"সড়ক নিরাপত্তা শুধু চালকদের বিষয় নয় — পথচারী, যাত্রী, ছাত্রছাত্রী এবং প্রতিটি নাগরিকের সচেতনতা জরুরি।",
+  about_text:"MySkillGlobal : Road Safety Education-এর মাধ্যমে স্কুল বাসে ওঠানামা, ট্রাফিক সিগন্যাল, রাস্তার চিহ্ন, জেব্রা ক্রসিং, হেলমেট ও সিটবেল্টের ব্যবহার, ব্লাইন্ড স্পট এবং জরুরি যানবাহনকে পথ দেওয়ার মতো গুরুত্বপূর্ণ বিষয় শেখানো হয়। গেম, কুইজ ও ইন্টারঅ্যাকটিভ কার্যক্রমের মাধ্যমে শিক্ষার্থীদের মধ্যে নিরাপদ সড়ক ব্যবহারের অভ্যাস গড়ে তোলাই এই উদ্যোগের লক্ষ্য। MySkillGlobal-এর অধীনে তৈরি এই শিক্ষামূলক উদ্যোগ প্রযুক্তিকে ব্যবহার করে সচেতনতা বাড়াতে চায়।",
+
+  mv_eyebrow:"আমাদের উদ্দেশ্য", 
+  mv_title:"মিশন ও ভিশন", 
+  mv_sub:"প্রতিটি শিক্ষামূলক কার্যক্রমের পেছনে রয়েছে দুটি মূল ভাবনা।",
   mission_title:"আমাদের মিশন",
-  mission_text:"প্রথমবার বাইক কেনা কেউ হোক বা দুটি গাড়ি চালানো পরিবার — প্রত্যেক গাড়ি মালিককে তাদের প্রকৃত খরচ দেখতে সাহায্য করা, এবং অ্যাকাউন্ট্যান্ট ছাড়াই ফুয়েল, মেইনটেন্যান্স ও রিসেলের ব্যাপারে আত্মবিশ্বাসী সিদ্ধান্ত নিতে সহায়তা করা।",
+  mission_text:"শিশু, শিক্ষার্থী, অভিভাবক, চালক এবং সাধারণ মানুষের মধ্যে সড়ক নিরাপত্তা সম্পর্কে সচেতনতা বৃদ্ধি করা। ইন্টারঅ্যাকটিভ শিক্ষা ও গেমের মাধ্যমে ট্রাফিক নিয়ম, নিরাপদ চলাচল এবং দুর্ঘটনা প্রতিরোধের অভ্যাস গড়ে তুলতে সাহায্য করা।",
   vision_title:"আমাদের ভিশন",
-  vision_text:"এমন একটি ভবিষ্যৎ যেখানে গাড়ি সংক্রান্ত আর্থিক সচেতনতা টায়ার প্রেশার চেক করার মতোই সাধারণ ব্যাপার হয়ে উঠবে — যেখানে মালিকরা মূল্যহ্রাসের জন্য পরিকল্পনা করবেন, লুকানো খরচ এড়াবেন, এবং রাস্তায় খরচ হওয়া প্রতিটি টাকাকে একটি সিদ্ধান্ত হিসেবে দেখবেন, আকস্মিক ঘটনা নয়।",
-  feat_eyebrow:"অ্যাপের ভিতরে", feat_title:"একটি গাড়ি মালিকের প্রয়োজনীয় সবকিছু, এক জায়গায়", feat_sub:"নয়টি নির্দিষ্ট টুল, প্রতিটি গাড়ির জন্য একটি পরিষ্কার ড্যাশবোর্ড।",
-  f1_t:"ফুয়েল লগ", f1_d:"প্রতিটি ফুয়েল ফিল ট্র্যাক করুন এবং আপনার প্রকৃত মাইলেজ ও মাসিক খরচ দেখুন।",
-  f2_t:"সার্ভিসিং", f2_d:"প্রতিটি সার্ভিস ভিজিট লগ করুন, পরবর্তী নির্ধারিত সার্ভিসিং কখনো মিস হবে না।",
-  f3_t:"ট্যাক্স ও টোল", f3_d:"রোড ট্যাক্স, টোল ও ইন্স্যুরেন্স খরচ রেকর্ড রাখুন, রিমাইন্ডার সহ।",
-  f4_t:"ট্র্যাফিক জরিমানা", f4_d:"জরিমানা লগ করুন, যাতে এড়ানো যায় এমন খরচ চোখের সামনে থাকে।",
-  f5_t:"চাঁদা", f5_d:"আপনার গাড়ির সাথে সম্পর্কিত স্থানীয় চাঁদা ও সামাজিক অবদান ট্র্যাক করুন।",
-  f6_t:"ডকুমেন্ট", f6_d:"RC, ইন্স্যুরেন্স ও পলিউশন সার্টিফিকেটের তথ্য মেয়াদ শেষের সতর্কতাসহ সংরক্ষণ করুন।",
-  f7_t:"আয়", f7_d:"বাণিজ্যিকভাবে গাড়ি চালান? একই গাড়ির বিপরীতে আয়ও লগ করুন।",
-  f8_t:"রিপোর্ট ও চার্ট", f8_d:"মাসিক ও বাৎসরিক আয়-ব্যয়ের স্পষ্ট বিবরণ দেখুন।",
-  f9_t:"রিসেল ভ্যালু গাইড", f9_d:"সময়ের সাথে আপনার গাড়ির রিসেল ভ্যালু রক্ষার ব্যবহারিক পরামর্শ।",
-  aw_eyebrow:"গাড়ি মালিকানা সচেতনতা", aw_title:"অ্যাসেট না লাইবেলিটি? সিদ্ধান্তের আগে জানুন",
-  aw_sub:"ব্যক্তিগত গাড়ি রাখা নিয়ে কিছু সৎ সত্য — যা এই অ্যাপটি সমর্থন করার জন্যই তৈরি।",
-  aw1_t:"🚗 অ্যাসেট না লাইবেলিটি?", aw1_d:"অল্প ডাউন পেমেন্টে গাড়ি কেনা সহজ মনে হয়। আসল প্রশ্ন হলো — এটা কি সত্যিই প্রয়োজন, না দীর্ঘমেয়াদি লাইবেলিটি?",
-  aw2_t:"📉 মূল্যহ্রাসের বাস্তবতা", aw2_d:"ব্যক্তিগত গাড়ি বিনিয়োগ নয় — প্রতি বছর প্রায় <b>১০–১৫% দাম কমে যায়</b>। ৫ বছরে রিসেল ভ্যালু প্রায় অর্ধেক হয়ে যেতে পারে।",
-  aw3_t:"💸 লুকানো খরচ",
-  aw3_list:"<li>EMI ও ঋণের সুদ</li><li>ফুয়েল খরচ</li><li>সার্ভিসিং ও মেইনটেন্যান্স</li><li>ইন্স্যুরেন্স ও ট্যাক্স</li><li>ড্রাইভার ও পার্কিং</li>",
-  aw4_t:"📈 রিসেল ভ্যালু রক্ষা করা",
-  aw4_list:"<li>সম্পূর্ণ সার্ভিস রেকর্ড রাখুন</li><li>বড় দুর্ঘটনা এড়ান</li><li>গাড়ি পরিষ্কার রাখুন, অরিজিনাল পার্টস ব্যবহার করুন</li><li>ইন্স্যুরেন্স চালু রাখুন, কম মাইলেজ = বেশি দাম</li><li>বিক্রির সেরা সময়: ৩–৫ বছর</li>",
-  aw_note:"এই সচেতনতামূলক তথ্য শিক্ষামূলক ও সাধারণ প্রকৃতির — বড় গাড়ি কেনার আগে নিজের আর্থিক অবস্থা যাচাই করে নিন।",
-  why_eyebrow:"সংখ্যায়", why_title:"কেন ট্র্যাক করা জরুরি",
-  why1:"একটি ব্যক্তিগত গাড়ির গড় বাৎসরিক মূল্যহ্রাস", why2:"অ্যাপে প্রতিটি গাড়ির জন্য ট্র্যাক করা খরচের বিভাগ", why3:"সংগৃহীত ব্যক্তিগত তথ্য — সবকিছু আপনার ডিভাইসেই থাকে",
-  creator_eyebrow:"কে তৈরি করেছেন", creator_title:"একজন শিক্ষকের তৈরি, সাধারণ মালিকদের জন্য",
+  vision_text:"এমন একটি সমাজ গড়ে তোলা, যেখানে প্রতিটি মানুষ সড়ক নিরাপত্তাকে নিজের দায়িত্ব বলে মনে করবে। সচেতন নাগরিক, নিরাপদ যানবাহন এবং দায়িত্বশীল সড়ক ব্যবহারের মাধ্যমে দুর্ঘটনা কমানো ও মূল্যবান জীবন রক্ষা করাই আমাদের স্বপ্ন।",
+
+  feat_eyebrow:"শিক্ষামূলক বিষয়বস্তু", 
+  feat_title:"সড়ক নিরাপত্তা শেখার জন্য প্রয়োজনীয় বিষয়", 
+  feat_sub:"নিরাপদ সড়ক ব্যবহারের বিভিন্ন দিক নিয়ে নয়টি গুরুত্বপূর্ণ শিক্ষামূলক বিভাগ।",
+
+  f1_t:"স্কুল বাসের নিরাপত্তা", 
+  f1_d:"স্কুল বাসে ওঠানামা, বাসের ভিতরে নিরাপদ আচরণ এবং বাসের চারপাশে সতর্ক থাকার নিয়ম শিখুন।",
+
+  f2_t:"ট্রাফিক নিয়ম ও রাস্তার চিহ্ন", 
+  f2_d:"STOP সাইন, ট্রাফিক সিগন্যাল, গতিসীমা এবং বিভিন্ন রাস্তার চিহ্নের অর্থ জানুন।",
+
+  f3_t:"হেলমেট ও সিটবেল্ট", 
+  f3_d:"সঠিক হেলমেট ও সিটবেল্ট ব্যবহারের গুরুত্ব এবং দুর্ঘটনার সময় এগুলি কীভাবে জীবন রক্ষা করে তা জানুন।",
+
+  f4_t:"পথচারী ও জেব্রা ক্রসিং", 
+  f4_d:"রাস্তা পারাপারের সঠিক নিয়ম, জেব্রা ক্রসিং ব্যবহার এবং পথচারীর নিরাপত্তা সম্পর্কে শিখুন।",
+
+  f5_t:"ব্লাইন্ড স্পট সচেতনতা", 
+  f5_d:"বড় যানবাহনের ব্লাইন্ড স্পট কোথায় থাকে এবং চলাচলের সময় কীভাবে বিপদ এড়ানো যায় তা জানুন।",
+
+  f6_t:"জরুরি যানবাহনকে অগ্রাধিকার", 
+  f6_d:"অ্যাম্বুলেন্স ও দমকলের মতো জরুরি যানবাহনকে নিরাপদে পথ দেওয়ার নিয়ম শিখুন।",
+
+  f7_t:"অতিরিক্ত গতির বিপদ", 
+  f7_d:"অতিরিক্ত গতিতে গাড়ি চালানোর ঝুঁকি, দুর্ঘটনার কারণ এবং গতিসীমা মেনে চলার গুরুত্ব জানুন।",
+
+  f8_t:"সড়ক নিরাপত্তা গেম ও কুইজ", 
+  f8_d:"ইন্টারঅ্যাকটিভ গেম, কুইজ ও শিক্ষামূলক কার্যক্রমের মাধ্যমে সড়ক নিরাপত্তা সম্পর্কে নিজের জ্ঞান যাচাই করুন।",
+
+  f9_t:"নিরাপদ যাতায়াতের অভ্যাস", 
+  f9_d:"যাত্রী, চালক ও পথচারী হিসেবে প্রতিদিনের যাতায়াতে নিরাপদ ও দায়িত্বশীল আচরণ গড়ে তুলুন।",
+
+  aw_eyebrow:"সড়ক নিরাপত্তা সচেতনতা", 
+  aw_title:"একটু অসতর্কতা, বড় দুর্ঘটনার কারণ হতে পারে",
+  aw_sub:"সড়কে চলাচলের সময় কয়েকটি গুরুত্বপূর্ণ নিয়ম মেনে চললে অনেক দুর্ঘটনা প্রতিরোধ করা সম্ভব।",
+
+  aw1_t:"🚌 স্কুল বাসের পাশে সতর্ক থাকুন", 
+  aw1_d:"স্কুল বাসের সামনে বা পিছনে হঠাৎ রাস্তা পার হবেন না। বাস সম্পূর্ণ থামার পর নিরাপদ স্থানে দাঁড়িয়ে ওঠানামা করুন।",
+
+  aw2_t:"🪖 হেলমেট ও সিটবেল্ট ব্যবহার করুন", 
+  aw2_d:"মাথা ও শরীরের সুরক্ষার জন্য সঠিক মানের হেলমেট এবং সিটবেল্ট ব্যবহার করুন। অল্প দূরত্বের যাত্রাতেও নিরাপত্তার নিয়ম উপেক্ষা করবেন না।",
+
+  aw3_t:"🚦 রাস্তার গুরুত্বপূর্ণ নিয়ম",
+  aw3_list:"<li>ট্রাফিক সিগন্যাল ও STOP চিহ্ন মেনে চলুন</li><li>নির্দিষ্ট জায়গায় জেব্রা ক্রসিং ব্যবহার করুন</li><li>নির্ধারিত গতিসীমা মেনে চলুন</li><li>গাড়ি চালানোর সময় মোবাইল ব্যবহার করবেন না</li><li>অ্যাম্বুলেন্স ও দমকলকে পথ দিন</li>",
+
+  aw4_t:"⚠️ দুর্ঘটনা এড়াতে সতর্ক থাকুন",
+  aw4_list:"<li>গাড়ি চালানোর আগে যানবাহনের অবস্থা পরীক্ষা করুন</li><li>ব্লাইন্ড স্পট সম্পর্কে সচেতন থাকুন</li><li>নিরাপদ দূরত্ব বজায় রাখুন</li><li>অপ্রাপ্তবয়স্কদের গাড়ি চালাতে দেবেন না</li><li>ক্লান্ত বা অসুস্থ অবস্থায় গাড়ি চালানো এড়িয়ে চলুন</li>",
+
+  aw_note:"এই বিষয়বস্তু শুধুমাত্র শিক্ষামূলক ও সচেতনতামূলক উদ্দেশ্যে তৈরি। বাস্তবে চলাচলের সময় আপনার দেশের ট্রাফিক আইন ও সরকারি নির্দেশিকা মেনে চলুন।",
+
+  why_eyebrow:"আমাদের লক্ষ্য", 
+  why_title:"সচেতনতা কেন জরুরি",
+  why1:"প্রতিটি নিরাপদ সিদ্ধান্ত দুর্ঘটনার ঝুঁকি কমাতে সাহায্য করে",
+  why2:"ইন্টারঅ্যাকটিভ পদ্ধতিতে সড়ক নিরাপত্তার বিভিন্ন বিষয় শেখা যায়",
+  why3:"শিক্ষার মাধ্যমে শিশু ও সাধারণ মানুষের মধ্যে দায়িত্বশীল আচরণ গড়ে তোলা",
+
+  creator_eyebrow:"উদ্যোগের নেপথ্যে", 
+  creator_title:"একজন শিক্ষকের উদ্যোগ, নিরাপদ ভবিষ্যতের লক্ষ্যে",
   creator_name:"সুরজিৎ রায়",
-  creator_bio:"একজন ভোকেশনাল সেকশন শিক্ষক (M.A., M.Sc. IT), যিনি তাঁর কন্যা সম্পূর্ণা রায়ের সাথে মিলে MySkillGame ব্র্যান্ডের অধীনে বিনামূল্যের, প্রাইভেসি-ফার্স্ট শিক্ষামূলক ও ইউটিলিটি অ্যাপ তৈরি করেন।",
-  creator_tag:"MySkillGame অ্যাপ পরিবারের অংশ — শিক্ষা ও দৈনন্দিন জীবনের জন্য ১০০+ বিনামূল্যের টুল।",
-  dl_title:"আজই আপনার গাড়ির খরচ ট্র্যাক করা শুরু করুন", dl_sub:"বিনামূল্যে। অফলাইন-বান্ধব। লগইন নেই, আপনার তথ্যে বিজ্ঞাপন নেই।", dl_get:"পাওয়া যাচ্ছে",
-  footer_tag:"MySkillGlobal : Drive Expenses — সুরজিৎ রায় ও সম্পূর্ণা রায়ের একটি স্বতন্ত্র শিক্ষামূলক ও ইউটিলিটি উদ্যোগ"
+  creator_bio:"একজন ভোকেশনাল সেকশন শিক্ষক ও প্রযুক্তি-উদ্যোক্তা, যিনি তাঁর কন্যা সম্পূর্ণা রায়ের সঙ্গে MySkillGlobal ব্র্যান্ডের অধীনে বিনামূল্যের শিক্ষামূলক ও সচেতনতামূলক ডিজিটাল উদ্যোগ তৈরি করছেন।",
+  creator_tag:"MySkillGlobal-এর অংশ — শিক্ষা, সচেতনতা ও দৈনন্দিন জীবনের জন্য প্রযুক্তিনির্ভর উদ্যোগ।",
+
+  dl_title:"আজই সড়ক নিরাপত্তা শেখা শুরু করুন",
+  dl_sub:"শিক্ষামূলক কনটেন্ট। সহজে ব্যবহারযোগ্য। বাংলা, হিন্দি ও ইংরেজিতে শেখার সুযোগ।",
+  dl_get:"পাওয়া যাচ্ছে",
+
+  footer_tag:"MySkillGlobal : Road Safety Education — সুরজিৎ রায় ও সম্পূর্ণা রায়ের একটি স্বতন্ত্র শিক্ষামূলক উদ্যোগ"
 },
 hi:{
   nav_about:"परिचय", nav_mission:"मिशन", nav_features:"विशेषताएं", nav_awareness:"जागरूकता", nav_download:"डाउनलोड",
-  hero_title:"अपनी गाड़ी का हर रुपया जानें",
-  hero_sub:"MySkillGlobal : Drive Expenses एक मुफ़्त, ऑफलाइन-फ्रेंडली ऐप है जो आपकी हर गाड़ी के ईंधन, सर्विसिंग, टैक्स, जुर्माने, दस्तावेज़ और रीसेल वैल्यू को एक जगह ट्रैक करता है — ताकि आपका पैसा कहाँ जा रहा है, यह हमेशा स्पष्ट रहे।",
-  tag1:"🚗 कई वाहन", tag2:"🔒 पूरी तरह निजी", tag3:"🌐 बंगाली · हिंदी · अंग्रेज़ी", tag4:"📴 ऑफलाइन काम करता है",
-  hero_cta:"ऐप पाएं",
-  gauge_caption:"<b>खर्च के रिसाव</b> से <b>पूरी जागरूकता</b> तक — यह ऐप ठीक यही सुई घुमाता है।",
-  about_eyebrow:"ऐप के बारे में",
-  about_title:"स्प्रेडशीट नहीं, असली वाहन मालिकों के लिए बनाया गया",
-  about_sub:"कार या बाइक किसी भी परिवार के सबसे बड़े नियमित खर्चों में से एक है — फिर भी अधिकांश मालिक कभी पूरी तस्वीर नहीं देख पाते।",
-  about_text:"MySkillGlobal : Drive Expenses में आप अपनी हर गाड़ी — कार, बाइक या स्कूटर, पेट्रोल, डीज़ल, CNG या EV — जोड़कर ईंधन भरना, सर्विसिंग, बीमा, टोल, ट्रैफिक जुर्माना, चंदा और दस्तावेज़ एक जगह दर्ज कर सकते हैं। यह चुपचाप 12 महीने का आय बनाम खर्च सारांश तैयार करता है, ताकि गाड़ी रखने की असली लागत कभी अनुमान न रहे। MySkillGame के अंतर्गत बना यह ऐप भी उन्हीं सिद्धांतों का पालन करता है: ऑफलाइन काम करता है, कोई निजी डेटा एकत्र नहीं करता, और लॉगिन की ज़रूरत नहीं।",
-  mv_eyebrow:"हमने यह क्यों बनाया", mv_title:"मिशन और विज़न", mv_sub:"दो विचार हर फीचर के पीछे हैं।",
+
+  hero_title:"सड़क सुरक्षा सीखें, हर जीवन की रक्षा करें",
+  hero_sub:"MySkillGlobal : Road Safety Education एक शैक्षिक पहल है, जहाँ स्कूल बस की सुरक्षा, यातायात नियम, सड़क संकेत, हेलमेट और सीटबेल्ट का उपयोग तथा दुर्घटना से बचाव के बारे में इंटरैक्टिव गेम और जागरूकता गतिविधियों के माध्यम से सिखाया जाता है।",
+  tag1:"🚌 स्कूल बस सुरक्षा", 
+  tag2:"🪖 हेलमेट और सीटबेल्ट जागरूकता", 
+  tag3:"🌐 बंगाली · हिंदी · अंग्रेज़ी", 
+  tag4:"📴 ऑफलाइन शैक्षिक सामग्री",
+  hero_cta:"सीखना शुरू करें",
+  gauge_caption:"<b>लापरवाही</b> से <b>सुरक्षित आदतों</b> तक — जागरूक शिक्षा ही यह बदलाव ला सकती है।",
+
+  about_eyebrow:"इस पहल के बारे में",
+  about_title:"सिर्फ नियम जानना नहीं, सुरक्षित व्यवहार अपनाना",
+  about_sub:"सड़क सुरक्षा केवल वाहन चालकों का विषय नहीं है — पैदल यात्रियों, यात्रियों, विद्यार्थियों और हर नागरिक की जागरूकता ज़रूरी है।",
+  about_text:"MySkillGlobal : Road Safety Education के माध्यम से स्कूल बस में चढ़ने-उतरने की सुरक्षा, ट्रैफिक सिग्नल, सड़क संकेत, ज़ेब्रा क्रॉसिंग, हेलमेट और सीटबेल्ट का उपयोग, ब्लाइंड स्पॉट तथा आपातकालीन वाहनों को रास्ता देने जैसे महत्वपूर्ण विषय सिखाए जाते हैं। गेम, क्विज़ और इंटरैक्टिव गतिविधियों के माध्यम से विद्यार्थियों में सड़क पर सुरक्षित व्यवहार की आदत विकसित करना इस पहल का मुख्य उद्देश्य है। MySkillGlobal के अंतर्गत बनाई गई यह शैक्षिक पहल जागरूकता बढ़ाने के लिए तकनीक का उपयोग करती है।",
+
+  mv_eyebrow:"हमने यह क्यों बनाया", 
+  mv_title:"मिशन और विज़न", 
+  mv_sub:"हर शैक्षिक गतिविधि के पीछे दो मुख्य विचार हैं।",
   mission_title:"हमारा मिशन",
-  mission_text:"पहली बार बाइक खरीदने वाले से लेकर दो कारें चलाने वाले परिवार तक — हर वाहन मालिक को उनके स्वामित्व की असली लागत दिखाना, और बिना अकाउंटेंट के ईंधन, रखरखाव और रीसेल के बारे में आत्मविश्वास से फैसले लेने में मदद करना।",
+  mission_text:"बच्चों, विद्यार्थियों, अभिभावकों, वाहन चालकों और आम लोगों में सड़क सुरक्षा के प्रति जागरूकता बढ़ाना। इंटरैक्टिव शिक्षा और गेम के माध्यम से यातायात नियमों, सुरक्षित आवागमन और दुर्घटना से बचाव की आदत विकसित करने में मदद करना।",
   vision_title:"हमारा विज़न",
-  vision_text:"एक ऐसा भविष्य जहाँ वाहनों को लेकर वित्तीय जागरूकता टायर प्रेशर जांचने जितनी ही सामान्य हो — जहाँ मालिक मूल्यह्रास की योजना बनाएं, छिपे खर्चों से बचें, और सड़क पर खर्च होने वाला हर रुपया एक फैसला हो, न कि आश्चर्य।",
-  feat_eyebrow:"ऐप के अंदर", feat_title:"वाहन मालिक की हर ज़रूरत, एक ही जगह", feat_sub:"नौ केंद्रित टूल, हर गाड़ी के लिए एक साफ डैशबोर्ड।",
-  f1_t:"ईंधन लॉग", f1_d:"हर ईंधन भराई ट्रैक करें और अपनी असली माइलेज व मासिक खर्च देखें।",
-  f2_t:"सर्विसिंग", f2_d:"हर सर्विस विज़िट दर्ज करें, अगली निर्धारित सर्विसिंग कभी न चूकें।",
-  f3_t:"टैक्स और टोल", f3_d:"रोड टैक्स, टोल और बीमा खर्च रिमाइंडर के साथ दर्ज रखें।",
-  f4_t:"ट्रैफिक जुर्माना", f4_d:"जुर्माने दर्ज करें ताकि टाले जा सकने वाले खर्च नज़र आएं।",
-  f5_t:"चंदा", f5_d:"अपनी गाड़ी से जुड़े स्थानीय चंदे और सामुदायिक योगदान ट्रैक करें।",
-  f6_t:"दस्तावेज़", f6_d:"RC, बीमा और प्रदूषण प्रमाणपत्र की जानकारी समाप्ति चेतावनी के साथ रखें।",
-  f7_t:"आय", f7_d:"कार को व्यावसायिक रूप से चलाते हैं? उसी गाड़ी के खिलाफ आय भी दर्ज करें।",
-  f8_t:"रिपोर्ट और चार्ट", f8_d:"मासिक और वार्षिक आय बनाम खर्च का स्पष्ट विवरण देखें।",
-  f9_t:"रीसेल वैल्यू गाइड", f9_d:"समय के साथ अपनी गाड़ी की रीसेल वैल्यू बचाने के व्यावहारिक सुझाव।",
-  aw_eyebrow:"वाहन स्वामित्व जागरूकता", aw_title:"संपत्ति या देनदारी? फैसले से पहले जानें",
-  aw_sub:"निजी वाहन रखने को लेकर कुछ ईमानदार सच्चाइयाँ — जिसे सहारा देने के लिए ही यह ऐप बना है।",
-  aw1_t:"🚗 संपत्ति या देनदारी?", aw1_d:"कम डाउन पेमेंट में कार लेना आसान लगता है। असली सवाल है — क्या यह वाकई ज़रूरी है, या एक लंबी देनदारी?",
-  aw2_t:"📉 मूल्यह्रास की सच्चाई", aw2_d:"निजी कार निवेश नहीं है — हर साल लगभग <b>10–15% कीमत घट जाती है</b>। 5 साल में रीसेल वैल्यू लगभग आधी हो सकती है।",
-  aw3_t:"💸 छिपे खर्च",
-  aw3_list:"<li>EMI और ऋण ब्याज</li><li>ईंधन खर्च</li><li>सर्विसिंग और रखरखाव</li><li>बीमा और टैक्स</li><li>ड्राइवर और पार्किंग</li>",
-  aw4_t:"📈 रीसेल वैल्यू बचाना",
-  aw4_list:"<li>पूरा सर्विस रिकॉर्ड रखें</li><li>बड़ी दुर्घटनाओं से बचें</li><li>कार साफ रखें, ओरिजिनल पार्ट्स इस्तेमाल करें</li><li>बीमा चालू रखें, कम माइलेज = ज़्यादा कीमत</li><li>बेचने का सबसे अच्छा समय: 3–5 साल</li>",
-  aw_note:"यह जागरूकता सामग्री शैक्षिक और सामान्य प्रकृति की है — बड़ी वाहन खरीद से पहले हमेशा अपनी वित्तीय स्थिति का आकलन करें।",
-  why_eyebrow:"आंकड़ों में", why_title:"ट्रैकिंग क्यों ज़रूरी है",
-  why1:"एक निजी वाहन का औसत वार्षिक मूल्यह्रास", why2:"ऐप में हर गाड़ी के लिए ट्रैक किए गए खर्च वर्ग", why3:"एकत्र किया गया निजी डेटा — सब कुछ आपके डिवाइस पर ही रहता है",
-  creator_eyebrow:"किसने बनाया", creator_title:"एक शिक्षक द्वारा, आम मालिकों के लिए बनाया गया",
+  vision_text:"एक ऐसा समाज बनाना जहाँ हर व्यक्ति सड़क सुरक्षा को अपनी ज़िम्मेदारी समझे। जागरूक नागरिकों, सुरक्षित वाहनों और ज़िम्मेदार सड़क व्यवहार के माध्यम से दुर्घटनाओं को कम करना और अनमोल जीवन की रक्षा करना हमारा सपना है।",
+
+  feat_eyebrow:"शैक्षिक विषय", 
+  feat_title:"सड़क सुरक्षा सीखने के लिए ज़रूरी विषय", 
+  feat_sub:"सुरक्षित सड़क उपयोग के विभिन्न पहलुओं पर आधारित नौ महत्वपूर्ण शैक्षिक अनुभाग।",
+
+  f1_t:"स्कूल बस सुरक्षा", 
+  f1_d:"स्कूल बस में चढ़ने-उतरने, बस के अंदर सुरक्षित व्यवहार और बस के आसपास सावधानी बरतने के नियम सीखें।",
+
+  f2_t:"यातायात नियम और सड़क संकेत", 
+  f2_d:"STOP संकेत, ट्रैफिक सिग्नल, गति सीमा और विभिन्न सड़क संकेतों का अर्थ जानें।",
+
+  f3_t:"हेलमेट और सीटबेल्ट", 
+  f3_d:"सही हेलमेट और सीटबेल्ट के उपयोग का महत्व तथा दुर्घटना के समय ये कैसे जीवन बचाते हैं, जानें।",
+
+  f4_t:"पैदल यात्री और ज़ेब्रा क्रॉसिंग", 
+  f4_d:"सड़क पार करने के सही नियम, ज़ेब्रा क्रॉसिंग का उपयोग और पैदल यात्रियों की सुरक्षा के बारे में सीखें।",
+
+  f5_t:"ब्लाइंड स्पॉट जागरूकता", 
+  f5_d:"बड़े वाहनों के ब्लाइंड स्पॉट कहाँ होते हैं और सड़क पर चलते समय उनसे होने वाले खतरे से कैसे बचें, जानें।",
+
+  f6_t:"आपातकालीन वाहनों को रास्ता दें", 
+  f6_d:"एम्बुलेंस और अग्निशमन वाहनों जैसे आपातकालीन वाहनों को सुरक्षित रूप से रास्ता देने के नियम सीखें।",
+
+  f7_t:"तेज़ गति के खतरे", 
+  f7_d:"तेज़ गति से वाहन चलाने के जोखिम, दुर्घटनाओं के कारण और गति सीमा का पालन करने का महत्व जानें।",
+
+  f8_t:"सड़क सुरक्षा गेम और क्विज़", 
+  f8_d:"इंटरैक्टिव गेम, क्विज़ और शैक्षिक गतिविधियों के माध्यम से सड़क सुरक्षा के बारे में अपने ज्ञान को परखें।",
+
+  f9_t:"सुरक्षित यात्रा की आदतें", 
+  f9_d:"यात्री, चालक और पैदल यात्री के रूप में रोज़मर्रा की यात्रा में सुरक्षित और ज़िम्मेदार व्यवहार अपनाएँ।",
+
+  aw_eyebrow:"सड़क सुरक्षा जागरूकता", 
+  aw_title:"एक छोटी सी लापरवाही बड़ी दुर्घटना का कारण बन सकती है",
+  aw_sub:"सड़क पर चलते समय कुछ महत्वपूर्ण नियमों का पालन करके कई दुर्घटनाओं को रोका जा सकता है।",
+
+  aw1_t:"🚌 स्कूल बस के आसपास सावधान रहें", 
+  aw1_d:"स्कूल बस के आगे या पीछे अचानक सड़क पार न करें। बस पूरी तरह रुकने के बाद सुरक्षित स्थान से ही चढ़ें या उतरें।",
+
+  aw2_t:"🪖 हेलमेट और सीटबेल्ट का उपयोग करें", 
+  aw2_d:"सिर और शरीर की सुरक्षा के लिए सही मानक वाला हेलमेट और सीटबेल्ट पहनें। छोटी दूरी की यात्रा में भी सुरक्षा नियमों की अनदेखी न करें।",
+
+  aw3_t:"🚦 सड़क के महत्वपूर्ण नियम",
+  aw3_list:"<li>ट्रैफिक सिग्नल और STOP संकेत का पालन करें</li><li>निर्धारित स्थान पर ज़ेब्रा क्रॉसिंग का उपयोग करें</li><li>निर्धारित गति सीमा का पालन करें</li><li>वाहन चलाते समय मोबाइल फोन का उपयोग न करें</li><li>एम्बुलेंस और अग्निशमन वाहनों को रास्ता दें</li>",
+
+  aw4_t:"⚠️ दुर्घटनाओं से बचने के लिए सावधान रहें",
+  aw4_list:"<li>वाहन चलाने से पहले उसकी स्थिति जाँच लें</li><li>ब्लाइंड स्पॉट के प्रति सतर्क रहें</li><li>सुरक्षित दूरी बनाए रखें</li><li>नाबालिगों को वाहन न चलाने दें</li><li>थकान या बीमारी की स्थिति में वाहन चलाने से बचें</li>",
+
+  aw_note:"यह सामग्री केवल शैक्षिक और जागरूकता के उद्देश्य से तैयार की गई है। वास्तविक जीवन में यात्रा करते समय अपने देश के यातायात कानूनों और सरकारी दिशानिर्देशों का पालन करें।",
+
+  why_eyebrow:"हमारा उद्देश्य", 
+  why_title:"जागरूकता क्यों ज़रूरी है",
+  why1:"हर सुरक्षित निर्णय दुर्घटना के जोखिम को कम करने में मदद करता है",
+  why2:"इंटरैक्टिव तरीके से सड़क सुरक्षा के विभिन्न विषय सीखे जा सकते हैं",
+  why3:"शिक्षा के माध्यम से बच्चों और आम लोगों में ज़िम्मेदार व्यवहार विकसित करना",
+
+  creator_eyebrow:"इस पहल के पीछे", 
+  creator_title:"एक शिक्षक की पहल, सुरक्षित भविष्य के लिए",
   creator_name:"सुरजीत रॉय",
-  creator_bio:"एक वोकेशनल सेक्शन शिक्षक (M.A., M.Sc. IT), जो अपनी बेटी सम्पूर्णा रॉय के साथ मिलकर MySkillGame ब्रांड के तहत मुफ़्त, गोपनीयता-प्राथमिकता वाले शिक्षण और उपयोगिता ऐप बनाते हैं।",
-  creator_tag:"MySkillGame ऐप परिवार का हिस्सा — शिक्षा और रोज़मर्रा की ज़िंदगी के लिए 100+ मुफ़्त टूल।",
-  dl_title:"आज ही अपनी गाड़ी का खर्च ट्रैक करना शुरू करें", dl_sub:"मुफ़्त। ऑफलाइन-फ्रेंडली। कोई लॉगिन नहीं, आपके डेटा पर कोई विज्ञापन नहीं।", dl_get:"यहाँ उपलब्ध है",
-  footer_tag:"MySkillGlobal : Drive Expenses — सुरजीत रॉय और सम्पूर्णा रॉय की एक स्वतंत्र शैक्षिक और उपयोगिता पहल"
+  creator_bio:"एक वोकेशनल सेक्शन शिक्षक और तकनीक-उद्यमी, जो अपनी बेटी सम्पूर्णा रॉय के साथ MySkillGlobal ब्रांड के अंतर्गत निःशुल्क शैक्षिक और जागरूकता संबंधी डिजिटल पहल विकसित कर रहे हैं।",
+  creator_tag:"MySkillGlobal का हिस्सा — शिक्षा, जागरूकता और रोज़मर्रा के जीवन के लिए तकनीक-आधारित पहल।",
+
+  dl_title:"आज ही सड़क सुरक्षा सीखना शुरू करें",
+  dl_sub:"शैक्षिक सामग्री। उपयोग में आसान। बंगाली, हिंदी और अंग्रेज़ी में सीखने की सुविधा।",
+  dl_get:"यहाँ उपलब्ध है",
+
+  footer_tag:"MySkillGlobal : Road Safety Education — सुरजीत रॉय और सम्पूर्णा रॉय की एक स्वतंत्र शैक्षिक पहल"
 }
 };
-
 function setLang(lang){
   const dict = translations[lang];
   document.querySelectorAll('[data-i18n]').forEach(el=>{
@@ -749,6 +902,10 @@ document.addEventListener('DOMContentLoaded', function(){
   },{threshold:.15});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 });
+</script>
+<script>
+/* নিরাপত্তা: অ্যানিমেশন না চললেও ২ সেকেন্ড পরে সব কনটেন্ট দেখা যাবে */
+setTimeout(function(){document.querySelectorAll('.reveal:not(.visible)').forEach(function(el){el.classList.add('visible');});},2000);
 </script>
 
 </body>

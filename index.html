@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
+  <script>document.documentElement.classList.add('js');</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   
   <!-- SEO & Canonical -->
@@ -294,7 +295,9 @@ img { pointer-events: none; -webkit-user-drag: none; }
 .center { text-align: center; }
 
 /* ── ABOUT ── */
-.about-bg { background: var(--paper-warm); padding: 10px 0 90px; position: relative; }
+.about-bg { background: var(--paper-warm); padding: 10px 0 0; position: relative; }
+.about-bg .section { padding-bottom: 20px; } /* About ও Start Here-এর মাঝের বাড়তি ফাঁকা কমানো */
+#start.qs { padding-top: 40px; }
 .about-text { max-width: 780px; margin: 0 auto; }
 .about-text p { font-size: 0.98rem; line-height: 1.95; color: var(--ink-soft); margin-bottom: 20px; }
 .about-text p:last-child { margin-bottom: 0; }
@@ -973,8 +976,9 @@ img { pointer-events: none; -webkit-user-drag: none; }
 /* ── ANIMATIONS ── */
 @keyframes fadeDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
+/* JS চললে তবেই লুকানো থাকবে; JS না চললে সব কনটেন্ট দেখা যাবে */
+.js .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.js .reveal.visible { opacity: 1; transform: translateY(0); }
 
 @media (max-width: 600px) {
   .nav { padding: 14px 18px; }
@@ -1165,7 +1169,7 @@ body.mm-lock{ overflow:hidden; }
 <a href="#leaderboard">🏆 Leaderboard</a>
 <a href="feedback-opinion-index.html">Guides &amp; Topics</a>
 <a href="language-index.html">Languages</a>
-<a href="index-car.html">Drive &amp; Expense - Website</a>
+<a href="index-car.html">School Bus &amp; Road Safety-Website</a>
 <a href="stories-novels-index.html">Stories Novels</a>
 <a href="#faq">FAQ</a>
 <a href="#developer">Developer</a>
@@ -1312,22 +1316,38 @@ body.mm-lock{ overflow:hidden; }
 <span class="qs-btn">Browse All Exams →</span>
 </a>
 
+
 <a class="qs-card qs-car" href="index-car.html">
-<div class="qs-pic"><img src="images/car.png" alt="Drive &amp; Expense – MySkillGlobal" loading="lazy"></div>
-<span class="qs-ico">🚗</span>
-<h3>Drive &amp; Expense – MySkillGlobal: Track Every Vehicle Expense</h3>
-<p>A simple way to know what your vehicle really costs you. Keep fuel, servicing, taxes, fines, documents and resale value together in one place. This free app can work offline and is available in Bengali, Hindi and English.</p>
-<div class="qs-feat">
-<div>🚘 Multiple vehicles</div>
-<div>⛽ Fuel &amp; servicing costs</div>
-<div>🧾 Taxes &amp; fines</div>
-<div>📄 Important documents</div>
-<div>💰 Resale value</div>
-<div>📴 Works offline</div>
-<div>🛣️ Road safety learning</div>
-<div>🎮 Games &amp; simulators for kids</div>
-</div>
-<span class="qs-btn">Explore Drive &amp; Expense →</span>
+  <div class="qs-pic">
+    <img src="images/5.png" alt="MySkill Drive – School Bus & Road Safety" loading="lazy">
+  </div>
+
+  <span class="qs-ico">🚌</span>
+
+  <h3>MySkill Drive – School Bus &amp; Road Safety Education</h3>
+
+  <p>
+    Explore an interactive learning platform dedicated to School Bus Safety,
+    Road Safety Awareness and Responsible Driving. Learn essential safety
+    rules through educational activities, practical awareness tests,
+    interactive games and simulators. Also manage vehicle expenses,
+    fuel costs, servicing and important vehicle documents.
+  </p>
+
+  <div class="qs-feat">
+    <div>🚌 School Bus Safety</div>
+    <div>🚦 Traffic Rules &amp; Road Signs</div>
+    <div>🪖 Helmet &amp; Seatbelt Safety</div>
+    <div>🚸 Pedestrian &amp; Zebra Crossing Safety</div>
+    <div>👁️ Blind Spot Awareness</div>
+    <div>🚑 Emergency Vehicle Priority</div>
+    <div>⚠️ Overspeeding &amp; Accident Prevention</div>
+    <div>🎮 Road Safety Games &amp; Simulators</div>
+    <div>⛽ Vehicle Expense Tracking</div>
+    <div>📴 Offline Learning Support</div>
+  </div>
+
+  <span class="qs-btn">Explore Road Safety &amp; Drive →</span>
 </a>
 
 <a class="qs-card qs-kids" href="child-activity.html">
@@ -1340,6 +1360,40 @@ body.mm-lock{ overflow:hidden; }
 <div class="qs-chips"><span>🎨 Creative Drawing</span><span>🧩 Brain Games &amp; Puzzles</span><span>🔢 Number Games</span><span>🧱 Building &amp; Construction</span><span>🎮 Interactive Games</span><span>🌱 Learning Through Play</span></div>
 <span class="qs-btn">Start Playing &amp; Learning →</span>
 </div>
+</a>
+
+<a class="qs-card qs-smartlady" href="smartlady-index.html">
+  <div class="qs-pic">
+    <img src="images/smart-lady.png" alt="Smart Lady – MySkillGlobal" loading="lazy">
+  </div>
+
+  <span class="qs-ico">🌸</span>
+
+  <h3>Smart Lady – Women's Safety, Awareness &amp; Self-Reliance</h3>
+
+  <p>
+    An educational awareness and self-assessment platform by MySkillGlobal,
+    designed to empower women with practical knowledge of personal safety,
+    digital security, women's rights, financial awareness and independent
+    living. Explore India and International editions, take the Advanced Level
+    Awareness Exam, earn a certificate and access educational guides.
+    Available free in English, Bengali and Hindi.
+  </p>
+
+  <div class="qs-feat">
+    <div>🛡️ Personal Safety Awareness</div>
+    <div>📱 Digital Security &amp; Online Safety</div>
+    <div>⚖️ Women's Rights &amp; Legal Awareness</div>
+    <div>💰 Financial Awareness &amp; Budgeting</div>
+    <div>🆘 Emergency &amp; Helpline Awareness</div>
+    <div>🌍 India &amp; International Editions</div>
+    <div>📝 Advanced Level Awareness Exam</div>
+    <div>🏆 Achievement Certificate</div>
+    <div>📚 Educational Guides</div>
+    <div>🌐 English, বাংলা &amp; हिन्दी</div>
+  </div>
+
+  <span class="qs-btn">Explore Smart Lady →</span>
 </a>
 
 </div>
@@ -1683,11 +1737,7 @@ body.mm-lock{ overflow:hidden; }
     <div class="story-card-content">
       <h3>Father Wanted to Live with Joy Too</h3>
 
-      <p>All his life, Haripada had quietly sacrificed his own wishes, comforts and happiness for his children. One day, lying alone at home in poor health, memories of his wife, his children and the old days return to him—especially the simple joy of sitting with his beloved ektara.</p>
-
-      <p>His children had done many things for him, but perhaps they had missed what he needed most—time, a little conversation, a cup of tea and someone to sit beside him. After his death, an old notebook and the sound of the ektara reveal a painful truth.</p>
-
-      <p>This story reminds us that parents are not merely responsibilities. They are human beings with dreams, emotions, wishes and a desire to enjoy life. Along with caring for them, give them your time, your words and your presence.</p>
+      <p>Haripada spent his life sacrificing his own happiness for his children. In his final days, he longed for something simple—a little time, a cup of tea, a loving conversation, and the joy of playing his beloved ektara. After his death, an old notebook reveals his unfulfilled wishes. This story reminds us that parents need more than care and responsibilities; they also need our time, love and companionship.</p>
 
       <div class="story-meta">
         <span>📖 Life Story</span>
@@ -2882,6 +2932,113 @@ const COUNTRY_ISO = {
   });
 })();
 </script>
-<script src="script.js"></script>
+<script>
+/* ===== script.js — এখন সরাসরি index.html-এর ভেতরে (আলাদা ফাইল লাগবে না) ===== */
+(function () {
+"use strict";
+/* =========================================================
+   1. ANIMATION / REVEAL OBSERVER
+   ========================================================= */
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e) => {
+    if (e.isIntersecting) {
+      const siblings = Array.from(e.target.parentElement.querySelectorAll('.reveal'));
+      setTimeout(() => e.target.classList.add('in-view', 'visible'), siblings.indexOf(e.target) * 80);
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+revealEls.forEach(el => observer.observe(el));
+
+/* =========================================================
+   2. PUBLIC LEADERBOARD CONFIG & API
+   ========================================================= */
+const LEADERBOARD_API = "https://script.google.com/macros/s/AKfycbw6RCPloCBvzyM_quGnBgekRwAVZUVCjcATSetNwoNuhknnJah_5DJaGPtwEkqh7aY/exec";
+
+function leaderboardMedal(rank) {
+  const r = Number(rank);
+  return r === 1 ? "🥇" : r === 2 ? "🥈" : r === 3 ? "🥉" : r;
+}
+
+/* =========================================================
+   4. RENDER LEADERBOARD ROWS
+   ========================================================= */
+function renderLeaderboard(data) {
+  const tbody = document.getElementById("leaderboardBody");
+  if (!tbody) return;
+
+  tbody.innerHTML = "";
+
+  if (!Array.isArray(data) || data.length === 0) {
+    tbody.innerHTML = `
+      <tr>
+        <td colspan="7" class="leaderboard-empty">
+          🏆 No scores available yet.
+        </td>
+      </tr>
+    `;
+    return;
+  }
+
+  data.forEach(function(item, index) {
+    const row = document.createElement("tr");
+
+    /* Rank */
+    const rankCell = document.createElement("td");
+    rankCell.className = "rank-cell";
+    const displayRank = item.rank || (index + 1);
+    rankCell.innerHTML = `<span class="rank-medal">${leaderboardMedal(displayRank)}</span>`;
+    row.appendChild(rankCell);
+
+    /* Name */
+    const nameCell = document.createElement("td");
+    nameCell.textContent = item.name || "—";
+    row.appendChild(nameCell);
+
+    /* School */
+    const schoolCell = document.createElement("td");
+    schoolCell.textContent = item.school || "—";
+    row.appendChild(schoolCell);
+
+    /* Country */
+    const countryCell = document.createElement("td");
+    if (item.country && typeof getCountryFlagHTML === "function") {
+      countryCell.innerHTML = getCountryFlagHTML(item.country);
+    } else {
+      countryCell.textContent = item.country || "—";
+    }
+    row.appendChild(countryCell);
+
+    /* Exam */
+    const examCell = document.createElement("td");
+    examCell.textContent = item.examName || "—";
+    row.appendChild(examCell);
+
+    /* Score */
+    const scoreCell = document.createElement("td");
+    scoreCell.style.fontWeight = "bold";
+    scoreCell.style.color = "var(--gold-light)";
+    scoreCell.textContent = (item.highScore || 0) + " / " + (item.totalMarks || 0);
+    row.appendChild(scoreCell);
+
+    /* Attempts */
+    const attemptsCell = document.createElement("td");
+    attemptsCell.textContent = item.attempts || 1;
+    row.appendChild(attemptsCell);
+
+    tbody.appendChild(row);
+  });
+}
+})();
+</script>
+<script>
+/* নিরাপত্তা: কোনো কারণে অ্যানিমেশন না চললেও ২ সেকেন্ড পরে সব কনটেন্ট দেখা যাবে */
+setTimeout(function () {
+  document.querySelectorAll('.reveal:not(.visible)').forEach(function (el) {
+    el.classList.add('in-view', 'visible');
+  });
+}, 2000);
+</script>
 </body>
 </html>
