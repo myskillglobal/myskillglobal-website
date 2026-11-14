@@ -12,7 +12,7 @@ const CATEGORIES = [
   { id:"home-business", title:{ en:"Entrepreneurship & Home-Based Business", bn:"উদ্যোক্তা দক্ষতা ও ঘরোয়া ব্যবসা", hi:"उद्यमिता एवं घरेलू व्यवसाय" } },
   { id:"govt-shg", title:{ en:"Government Schemes & Self-Help Groups", bn:"সরকারি প্রকল্প ও স্বনির্ভর গোষ্ঠী", hi:"सरकारी योजनाएँ एवं स्वयं सहायता समूह" } },
   { id:"privacy-app", title:{ en:"Privacy, Technology & Smart Lady App", bn:"গোপনীয়তা, প্রযুক্তি ও Smart Lady অ্যাপ", hi:"गोपनीयता, तकनीक एवं Smart Lady ऐप" } },
-  { id:"helplines-awareness", title:{ en:"Helplines & Everyday Awareness", bn:"হেল্পলাইন ও দৈনন্দিন সচেতনতা", hi:"हेल्पलाइन एवं दैनिक जागरूकता" } },
+  { id:"helplines-awareness", title:{ en:"Helplines, Health & Everyday Safety", bn:"হেল্পলাইন, স্বাস্থ্য ও দৈনন্দিন সুরক্ষা", hi:"हेल्पलाइन, स्वास्थ्य एवं दैनिक सुरक्षा" } },
 ];
 
 const QUESTIONS = [
@@ -22,10 +22,10 @@ const QUESTIONS = [
     cat:"personal-safety",
     q:["A stranger offers you a lift when you are alone. What is the safest response?", "একা থাকা অবস্থায় অপরিচিত কেউ লিফট দিতে চাইলে নিরাপদ সিদ্ধান্ত কী?", "अकेले होने पर कोई अनजान व्यक्ति लिफ्ट देने की पेशकश करे तो सुरक्षित निर्णय क्या है?"],
     o:[
-      ["Accept after checking the vehicle", "গাড়ি দেখে গ্রহণ করা", "गाड़ी देखकर स्वीकार करना"],
+      ["Accept the lift after looking at the vehicle", "গাড়ি দেখে নিয়ে লিফট গ্রহণ করা", "गाड़ी देखकर लिफ्ट स्वीकार कर लेना"],
       ["Decline politely and move to a safer public place", "ভদ্রভাবে না বলে নিরাপদ জনসমাগমস্থলে যাওয়া", "विनम्रता से मना करके सुरक्षित सार्वजनिक स्थान पर जाना"],
-      ["Ask the driver to call your family", "চালককে পরিবারকে ফোন করতে বলা", "चालक से परिवार को फोन करवाना"],
-      ["Share your destination before deciding", "সিদ্ধান্তের আগে গন্তব্য জানানো", "निर्णय से पहले गंतव्य बताना"]
+      ["Ask the driver to phone your family to confirm", "যাচাই করতে চালককে আপনার পরিবারকে ফোন করতে বলা", "पुष्टि के लिए चालक से आपके परिवार को फोन करवाना"],
+      ["Tell the driver your destination before deciding", "সিদ্ধান্তের আগে চালককে গন্তব্য জানানো", "निर्णय से पहले चालक को अपना गंतव्य बताना"]
     ],a:1
   },
   {
@@ -52,9 +52,9 @@ const QUESTIONS = [
     cat:"personal-safety",
     q:["Someone asks you to keep an online relationship secret and travel alone. What is the best response?", "অনলাইনের পরিচিত কেউ সম্পর্ক গোপন রেখে একা ভ্রমণ করতে বললে কী করবেন?", "ऑनलाइन परिचित कोई व्यक्ति रिश्ता गुप्त रखकर अकेले यात्रा करने को कहे तो क्या करेंगे?"],
     o:[
-      ["Agree if the person sounds trustworthy", "বিশ্বাসযোগ্য মনে হলে রাজি হওয়া", "विश्वसनीय लगे तो सहमत होना"],
-      ["Send your travel details later", "পরে ভ্রমণের তথ্য পাঠানো", "बाद में यात्रा की जानकारी भेजना"],
-      ["Meet secretly in a public place", "জনসমক্ষে গোপনে দেখা করা", "सार्वजनिक जगह पर गुप्त रूप से मिलना"],
+      ["Agree to keep it secret if the person sounds trustworthy", "ব্যক্তিটি বিশ্বাসযোগ্য মনে হলে গোপন রাখতে রাজি হওয়া", "व्यक्ति भरोसेमंद लगे तो राज़ गुप्त रखने को मान लेना"],
+      ["Send your travel details to that person only later", "ভ্রমণের তথ্য শুধু পরে ওই ব্যক্তিকে পাঠানো", "यात्रा की जानकारी बाद में केवल उसी व्यक्ति को भेजना"],
+      ["Meet the person secretly, but only in a public place", "গোপনে, তবে শুধু জনসমাগমস্থলে দেখা করা", "चुपके से, पर केवल सार्वजनिक जगह पर मिलना"],
       ["Inform a trusted person and avoid travelling alone", "বিশ্বস্ত কাউকে জানিয়ে একা ভ্রমণ না করা", "विश्वसनीय व्यक्ति को बताकर अकेले यात्रा न करना"]
     ],a:3
   },
@@ -62,20 +62,20 @@ const QUESTIONS = [
     cat:"personal-safety",
     q:["If you suspect someone is being trafficked, what is the safest action?", "কেউ মানবপাচারের শিকার হতে পারেন সন্দেহ হলে নিরাপদ পদক্ষেপ কী?", "यदि किसी के मानव तस्करी का शिकार होने का संदेह हो तो सुरक्षित कदम क्या है?"],
     o:[
-      ["Confront the suspected person", "সন্দেহভাজন ব্যক্তির মুখোমুখি হওয়া", "संदिग्ध व्यक्ति का सामना करना"],
+      ["Confront the suspected person and demand answers", "সন্দেহভাজন ব্যক্তির মুখোমুখি হয়ে জবাব চাওয়া", "संदिग्ध व्यक्ति का सामना करके जवाब माँगना"],
       ["Call emergency services and share factual details", "জরুরি পরিষেবায় ফোন করে তথ্য জানানো", "आपातकालीन सेवा को फोन करके तथ्य बताना"],
-      ["Post the incident on social media", "ঘটনাটি সোশ্যাল মিডিয়ায় প্রকাশ করা", "घटना को सोशल मीडिया पर डालना"],
-      ["Follow the person to collect evidence", "প্রমাণ সংগ্রহের জন্য পিছু নেওয়া", "सबूत जुटाने के लिए पीछा करना"]
+      ["Post about the incident on social media to get attention", "মনোযোগ পেতে ঘটনাটি সোশ্যাল মিডিয়ায় পোস্ট করা", "ध्यान खींचने के लिए घटना को सोशल मीडिया पर डालना"],
+      ["Follow the person yourself to collect evidence", "প্রমাণ জোগাড় করতে নিজে ব্যক্তির পিছু নেওয়া", "सबूत जुटाने के लिए खुद उस व्यक्ति का पीछा करना"]
     ],a:1
   },
   {
     cat:"personal-safety",
     q:["Which is a warning sign of a suspicious job offer?", "সন্দেহজনক চাকরির প্রস্তাবের একটি লক্ষণ কোনটি?", "संदिग्ध नौकरी के प्रस्ताव का एक संकेत कौन-सा है?"],
     o:[
-      ["A written job description", "লিখিত কাজের বিবরণ", "लिखित कार्य विवरण"],
-      ["A verifiable company address", "যাচাইযোগ্য কোম্পানির ঠিকানা", "सत्यापन योग्य कंपनी का पता"],
+      ["A written job description with duties and working hours", "দায়িত্ব ও কাজের সময়সহ লিখিত চাকরির বিবরণ", "कार्य और समय-सीमा सहित लिखित नौकरी विवरण"],
+      ["A company address that can be verified independently", "স্বাধীনভাবে যাচাই করা যায় এমন কোম্পানির ঠিকানা", "स्वतंत्र रूप से जाँचा जा सकने वाला कंपनी का पता"],
       ["Guaranteed high income with an advance fee", "আগাম টাকা নিয়ে নিশ্চিত বেশি আয়ের প্রতিশ্রুতি", "अग्रिम शुल्क लेकर निश्चित अधिक कमाई का वादा"],
-      ["A clear interview process", "স্পষ্ট সাক্ষাৎকার প্রক্রিয়া", "स्पष्ट साक्षात्कार प्रक्रिया"]
+      ["A clear interview process with a written offer letter", "লিখিত নিয়োগপত্রসহ স্পষ্ট ইন্টারভিউ প্রক্রিয়া", "लिखित नियुक्ति पत्र सहित स्पष्ट साक्षात्कार प्रक्रिया"]
     ],a:2
   },
   {
@@ -83,39 +83,39 @@ const QUESTIONS = [
     q:["What is a sensible way to share your travel plans?", "ভ্রমণের পরিকল্পনা জানানোর ভালো উপায় কোনটি?", "यात्रा की योजना बताने का उचित तरीका क्या है?"],
     o:[
       ["Tell a trusted person your route and expected arrival", "বিশ্বস্ত কাউকে পথ ও পৌঁছানোর সম্ভাব্য সময় জানানো", "विश्वसनीय व्यक्ति को रास्ता और पहुँचने का समय बताना"],
-      ["Share only the destination after arrival", "পৌঁছানোর পরে শুধু গন্তব্য জানানো", "पहुँचने के बाद केवल गंतव्य बताना"],
-      ["Send details only to online acquaintances", "শুধু অনলাইন পরিচিতদের তথ্য দেওয়া", "केवल ऑनलाइन परिचितों को जानकारी देना"],
-      ["Keep the journey entirely private", "যাত্রার কথা সম্পূর্ণ গোপন রাখা", "यात्रा की जानकारी पूरी तरह गुप्त रखना"]
+      ["Share only the destination, and only after you arrive", "শুধু গন্তব্য, তাও পৌঁছানোর পরে জানানো", "केवल गंतव्य, वह भी पहुँचने के बाद बताना"],
+      ["Send the details only to people you met online", "শুধু অনলাইনে পরিচিতদের বিস্তারিত পাঠানো", "विवरण केवल ऑनलाइन मिले लोगों को भेजना"],
+      ["Keep the whole journey completely private", "পুরো যাত্রাটি সম্পূর্ণ গোপন রাখা", "पूरी यात्रा को पूरी तरह गुप्त रखना"]
     ],a:0
   },
   {
     cat:"personal-safety",
     q:["What should you do if someone follows you repeatedly?", "কেউ বারবার পিছু নিলে কী করা উচিত?", "कोई बार-बार पीछा करे तो क्या करना चाहिए?"],
     o:[
-      ["Go to an isolated shortcut", "নির্জন ছোট রাস্তা ধরা", "सुनसान छोटे रास्ते पर जाना"],
-      ["Return home without informing anyone", "কাউকে না জানিয়ে বাড়ি ফেরা", "किसी को बताए बिना घर लौटना"],
-      ["Stop and argue with the person", "থেমে তর্ক করা", "रुककर बहस करना"],
+      ["Go through an isolated shortcut to get home faster", "তাড়াতাড়ি পৌঁছাতে নির্জন শর্টকাট ধরা", "जल्दी पहुँचने के लिए सुनसान शॉर्टकट लेना"],
+      ["Return home without telling anyone about it", "কাউকে কিছু না জানিয়ে বাড়ি ফিরে যাওয়া", "किसी को बताए बिना घर लौट जाना"],
+      ["Stop and argue with the person who is following", "থেমে অনুসরণকারীর সঙ্গে তর্ক করা", "रुककर पीछा करने वाले से बहस करना"],
       ["Move to a crowded safe place and seek help", "জনবহুল নিরাপদ স্থানে গিয়ে সাহায্য চাওয়া", "भीड़भाड़ वाले सुरक्षित स्थान पर जाकर मदद लेना"]
     ],a:3
   },
   {
     cat:"personal-safety",
-    q:["Why should you keep copies of important identity documents?", "গুরুত্বপূর্ণ পরিচয়পত্রের কপি রাখা কেন দরকার?", "महत्वपूर्ण पहचान दस्तावेजों की प्रतियाँ रखना क्यों जरूरी है?"],
+    q:["A group repeatedly makes threatening comments and follows you on the way home. What is a safer response?", "বাড়ি ফেরার পথে কয়েকজন বারবার কটূক্তি করে ও পিছু নেয়। নিরাপদ পদক্ষেপ কী?", "घर लौटते समय कुछ लोग बार-बार अश्लील टिप्पणियाँ करते और पीछा करते हैं। सुरक्षित कदम क्या है?"],
     o:[
-      ["To avoid carrying any identification ever", "কখনও পরিচয়পত্র বহন না করার জন্য", "कभी पहचान पत्र साथ न रखने के लिए"],
-      ["To help with verification if originals are lost", "আসল নথি হারালে যাচাইয়ে সুবিধার জন্য", "मूल दस्तावेज खोने पर सत्यापन में सहायता के लिए"],
-      ["To share them with every agent", "প্রত্যেক এজেন্টকে দেওয়ার জন্য", "हर एजेंट को देने के लिए"],
-      ["To replace official documents permanently", "স্থায়ীভাবে সরকারি নথির বদলে ব্যবহার করার জন্য", "सरकारी दस्तावेजों की स्थायी जगह लेने के लिए"]
-    ],a:1
+      ["Confront the group alone and demand that they stop immediately", "একা দলটির মুখোমুখি হয়ে সঙ্গে সঙ্গে থামতে বলা", "अकेले उस समूह का सामना करके तुरंत रुकने को कहना"],
+      ["Change to a quiet, isolated route to avoid being seen by them", "ওদের চোখ এড়াতে নির্জন, ফাঁকা রাস্তা ধরে যাওয়া", "उनकी नज़र से बचने के लिए सुनसान, खाली रास्ता लेना"],
+      ["Go to a busy safe place, inform trusted people, keep evidence and report it", "জনবহুল নিরাপদ স্থানে গিয়ে বিশ্বস্তজনকে জানানো, প্রমাণ রেখে অভিযোগ করা", "भीड़भाड़ वाली सुरक्षित जगह जाकर भरोसेमंद लोगों को बताएँ, सबूत रखकर शिकायत करें"],
+      ["Post the alleged offenders' personal details online to shame them", "অভিযুক্তদের লজ্জা দিতে তাদের ব্যক্তিগত তথ্য অনলাইনে প্রকাশ করা", "आरोपितों को शर्मिंदा करने के लिए उनकी निजी जानकारी ऑनलाइन डालना"]
+    ],a:2
   },
   {
     cat:"personal-safety",
     q:["What is the best response to pressure to make an immediate decision?", "তাৎক্ষণিক সিদ্ধান্ত নেওয়ার চাপ দিলে ভালো প্রতিক্রিয়া কী?", "तुरंत निर्णय लेने का दबाव हो तो उचित प्रतिक्रिया क्या है?"],
     o:[
-      ["Agree to avoid losing the opportunity", "সুযোগ হারানোর ভয়ে রাজি হওয়া", "अवसर खोने के डर से सहमत होना"],
-      ["Pay a small amount first", "আগে অল্প টাকা দেওয়া", "पहले थोड़ी रकम देना"],
+      ["Agree at once to avoid losing the opportunity", "সুযোগ হারানোর ভয়ে সঙ্গে সঙ্গে রাজি হওয়া", "अवसर खोने के डर से तुरंत हाँ कर देना"],
+      ["Pay a small amount first to hold the offer", "অফার ধরে রাখতে আগে অল্প টাকা দিয়ে দেওয়া", "ऑफर रोके रखने के लिए पहले थोड़ी रकम दे देना"],
       ["Take time to verify and consult someone trusted", "যাচাই ও পরামর্শের জন্য সময় নেওয়া", "जाँच और सलाह के लिए समय लेना"],
-      ["Share personal details to build trust", "বিশ্বাস অর্জনে ব্যক্তিগত তথ্য দেওয়া", "विश्वास बनाने के लिए निजी जानकारी देना"]
+      ["Share personal details to build trust quickly", "দ্রুত বিশ্বাস গড়তে ব্যক্তিগত তথ্য দিয়ে দেওয়া", "जल्दी भरोसा बनाने के लिए निजी जानकारी दे देना"]
     ],a:2
   },
 
@@ -124,9 +124,9 @@ const QUESTIONS = [
     cat:"cyber-safety",
     q:["What should you do when a caller claims to be a bank officer and asks for your OTP?", "কেউ ব্যাংককর্মী পরিচয় দিয়ে OTP চাইলে কী করবেন?", "कोई बैंक अधिकारी बनकर OTP माँगे तो क्या करेंगे?"],
     o:[
-      ["Share only the first few digits", "প্রথম কয়েকটি সংখ্যা দেওয়া", "केवल शुरुआती अंक बताना"],
-      ["Share it after checking the caller ID", "কলার আইডি দেখে দেওয়া", "कॉलर आईडी देखकर बताना"],
-      ["Ask the caller to send a confirmation message", "নিশ্চিতকরণ বার্তা পাঠাতে বলা", "पुष्टि संदेश भेजने को कहना"],
+      ["Share only the first few digits to prove you are the account holder", "অ্যাকাউন্টধারী প্রমাণ করতে OTP-র শুধু প্রথম কয়েকটি সংখ্যা জানানো", "खाताधारक साबित करने के लिए OTP के केवल शुरुआती कुछ अंक बताना"],
+      ["Share it only after checking that the caller ID shows the bank's name", "কলার আইডিতে ব্যাংকের নাম দেখালে তবেই OTP জানানো", "कॉलर आईडी में बैंक का नाम दिखे तभी OTP बताना"],
+      ["Ask the caller to send a confirmation message and then share it", "কলারকে নিশ্চিতকরণ বার্তা পাঠাতে বলে তারপর OTP জানানো", "कॉल करने वाले से पुष्टि संदेश भिजवाकर फिर OTP बताना"],
       ["Never share it and contact the bank through official channels", "কখনও না দিয়ে সরকারি যোগাযোগ মাধ্যমে ব্যাংকের সঙ্গে যোগাযোগ করা", "कभी साझा न करके आधिकारिक माध्यम से बैंक से संपर्क करना"]
     ],a:3
   },
@@ -134,10 +134,10 @@ const QUESTIONS = [
     cat:"cyber-safety",
     q:["Which action is required to receive money through UPI?", "UPI-তে টাকা গ্রহণ করতে সাধারণত কী করতে হয়?", "UPI से पैसे प्राप्त करने के लिए सामान्यतः क्या करना होता है?"],
     o:[
-      ["Enter the UPI PIN", "UPI PIN দেওয়া", "UPI PIN डालना"],
+      ["Enter your UPI PIN to receive the money", "টাকা পেতে আপনার UPI PIN দেওয়া", "पैसे पाने के लिए अपना UPI PIN डालना"],
       ["Approve a collect request with PIN", "PIN দিয়ে কালেক্ট রিকোয়েস্ট অনুমোদন করা", "PIN से कलेक्ट अनुरोध स्वीकार करना"],
       ["No UPI PIN is needed to receive money", "টাকা পেতে UPI PIN লাগে না", "पैसे प्राप्त करने के लिए UPI PIN की जरूरत नहीं होती"],
-      ["Share the debit card PIN", "ডেবিট কার্ডের PIN দেওয়া", "डेबिट कार्ड PIN बताना"]
+      ["Share your debit card PIN with the sender", "প্রেরককে ডেবিট কার্ডের PIN জানানো", "भेजने वाले को डेबिट कार्ड का PIN बताना"]
     ],a:2
   },
   {
@@ -145,9 +145,9 @@ const QUESTIONS = [
     q:["What is the safest way to open a bank-related link?", "ব্যাংক সংক্রান্ত লিংক খোলার নিরাপদ উপায় কোনটি?", "बैंक से संबंधित लिंक खोलने का सुरक्षित तरीका क्या है?"],
     o:[
       ["Use the official bank app or type its known website address", "ব্যাংকের অফিসিয়াল অ্যাপ বা পরিচিত ওয়েবসাইট ব্যবহার করা", "बैंक का आधिकारिक ऐप या ज्ञात वेबसाइट पता इस्तेमाल करना"],
-      ["Open the link from an unexpected SMS", "অপ্রত্যাশিত SMS-এর লিংক খোলা", "अनजान SMS का लिंक खोलना"],
+      ["Open the link from an unexpected SMS that looks urgent", "জরুরি দেখানো অপ্রত্যাশিত SMS-এর লিঙ্ক খোলা", "जरूरी दिखने वाले अप्रत्याशित SMS का लिंक खोलना"],
       ["Use a shortened link sent by an unknown number", "অচেনা নম্বরের ছোট লিংক ব্যবহার করা", "अनजान नंबर का छोटा लिंक इस्तेमाल करना"],
-      ["Open the link after forwarding it to friends", "বন্ধুদের পাঠিয়ে তারপর খোলা", "दोस्तों को भेजकर फिर खोलना"]
+      ["Forward the link to friends first and then open it", "আগে বন্ধুদের লিঙ্কটি পাঠিয়ে তারপর খোলা", "पहले मित्रों को लिंक भेजकर फिर खोलना"]
     ],a:0
   },
   {
@@ -164,9 +164,9 @@ const QUESTIONS = [
     cat:"cyber-safety",
     q:["A message says you won a lottery but must pay a fee. What is the best response?", "একটি বার্তায় লটারি জেতার কথা বলে ফি চাইলে কী করবেন?", "एक संदेश में लॉटरी जीतने की बात कहकर शुल्क माँगा जाए तो क्या करेंगे?"],
     o:[
-      ["Pay a small verification fee", "অল্প যাচাই ফি দেওয়া", "थोड़ा सत्यापन शुल्क देना"],
-      ["Send bank details to confirm the prize", "পুরস্কার নিশ্চিত করতে ব্যাংকের তথ্য পাঠানো", "इनाम की पुष्टि के लिए बैंक विवरण भेजना"],
-      ["Forward the message to relatives", "আত্মীয়দের বার্তাটি পাঠানো", "संदेश रिश्तेदारों को भेजना"],
+      ["Pay a small verification fee to claim the prize", "পুরস্কার পেতে অল্প যাচাই-ফি দেওয়া", "इनाम पाने के लिए छोटी सत्यापन फीस देना"],
+      ["Send bank details so that the prize can be confirmed", "পুরস্কার নিশ্চিত করতে ব্যাংকের তথ্য পাঠানো", "इनाम की पुष्टि के लिए बैंक विवरण भेजना"],
+      ["Forward the message to relatives so they can also win", "আত্মীয়দেরও জেতার সুযোগ দিতে বার্তাটি ফরোয়ার্ড করা", "रिश्तेदार भी जीतें इसलिए संदेश उन्हें फ़ॉरवर्ड करना"],
       ["Do not pay and verify the claim independently", "টাকা না দিয়ে দাবিটি নিজে যাচাই করা", "पैसे न देकर दावे की स्वतंत्र जाँच करना"]
     ],a:3
   },
@@ -174,20 +174,20 @@ const QUESTIONS = [
     cat:"cyber-safety",
     q:["What should you do if someone threatens to publish your private photos?", "কেউ ব্যক্তিগত ছবি প্রকাশের হুমকি দিলে কী করবেন?", "कोई निजी तस्वीरें सार्वजनिक करने की धमकी दे तो क्या करेंगे?"],
     o:[
-      ["Pay once to settle the matter", "বিষয়টি মেটাতে একবার টাকা দেওয়া", "मामला खत्म करने के लिए एक बार पैसे देना"],
+      ["Pay once to settle the matter and make the person stop", "ব্যক্তিটি থামবে ভেবে একবার টাকা দিয়ে বিষয়টি মেটানো", "व्यक्ति रुक जाएगा सोचकर एक बार पैसे देकर मामला निपटाना"],
       ["Save evidence, avoid payment and report the threat", "প্রমাণ সংরক্ষণ করে টাকা না দিয়ে অভিযোগ করা", "सबूत सुरक्षित रखकर पैसे न देना और शिकायत करना"],
-      ["Delete every message immediately", "সব বার্তা সঙ্গে সঙ্গে মুছে ফেলা", "सभी संदेश तुरंत मिटा देना"],
-      ["Send more photos to negotiate", "সমঝোতার জন্য আরও ছবি পাঠানো", "समझौते के लिए और तस्वीरें भेजना"]
+      ["Delete every message at once so that nobody finds out", "কেউ জানতে না পারে বলে সব বার্তা সঙ্গে সঙ্গে মুছে ফেলা", "किसी को पता न चले इसलिए सारे संदेश तुरंत मिटा देना"],
+      ["Send more photos to negotiate and calm the person down", "ব্যক্তিকে শান্ত করতে আলোচনার জন্য আরও ছবি পাঠানো", "व्यक्ति को शांत करने के लिए बातचीत में और फोटो भेजना"]
     ],a:1
   },
   {
     cat:"cyber-safety",
     q:["Which password practice is safer?", "কোন পাসওয়ার্ড ব্যবহারের অভ্যাস বেশি নিরাপদ?", "कौन-सी पासवर्ड आदत अधिक सुरक्षित है?"],
     o:[
-      ["Use the same password everywhere", "সব জায়গায় একই পাসওয়ার্ড", "हर जगह एक ही पासवर्ड"],
-      ["Use your birth year with your name", "নামের সঙ্গে জন্মসাল", "नाम के साथ जन्म वर्ष"],
+      ["Use the same easy password everywhere so you never forget it", "ভুলে না যাওয়ার জন্য সব জায়গায় একই সহজ পাসওয়ার্ড ব্যবহার করা", "भूल न जाएँ इसलिए हर जगह एक ही आसान पासवर्ड रखना"],
+      ["Use your name together with your birth year", "নিজের নামের সঙ্গে জন্মসাল জুড়ে পাসওয়ার্ড বানানো", "अपने नाम के साथ जन्म वर्ष जोड़कर पासवर्ड बनाना"],
       ["Use a long, unique password for each important account", "প্রতিটি গুরুত্বপূর্ণ অ্যাকাউন্টে দীর্ঘ ও আলাদা পাসওয়ার্ড", "हर महत्वपूर्ण अकाउंट के लिए लंबा और अलग पासवर्ड"],
-      ["Use a phone number as every password", "সব পাসওয়ার্ডে ফোন নম্বর", "हर पासवर्ड में फोन नंबर"]
+      ["Use your phone number as the password for every account", "প্রতিটি অ্যাকাউন্টে ফোন নম্বরকেই পাসওয়ার্ড করা", "हर अकाउंट में फोन नंबर को ही पासवर्ड बनाना"]
     ],a:2
   },
   {
@@ -214,10 +214,10 @@ const QUESTIONS = [
     cat:"cyber-safety",
     q:["What should you do if you notice an unauthorised UPI transaction?", "অননুমোদিত UPI লেনদেন দেখলে কী করবেন?", "अनधिकृत UPI लेनदेन दिखे तो क्या करेंगे?"],
     o:[
-      ["Wait until the monthly statement arrives", "মাসিক স্টেটমেন্ট আসা পর্যন্ত অপেক্ষা করা", "मासिक विवरण आने तक इंतजार करना"],
-      ["Contact the bank promptly and report through cybercrime channels", "দ্রুত ব্যাংক ও সাইবার অপরাধের মাধ্যমে অভিযোগ করা", "तुरंत बैंक और साइबर अपराध माध्यम से शिकायत करना"],
+      ["Wait until the monthly statement arrives before acting", "কিছু করার আগে মাসিক স্টেটমেন্ট আসা পর্যন্ত অপেক্ষা করা", "कुछ करने से पहले मासिक स्टेटमेंट आने तक इंतज़ार करना"],
+      ["Contact the bank promptly and report on cybercrime helpline 1930", "দ্রুত ব্যাংকে জানিয়ে সাইবার হেল্পলাইন ১৯৩০-এ অভিযোগ করা", "तुरंत बैंक को बताकर साइबर हेल्पलाइन 1930 पर शिकायत करना"],
       ["Ask the recipient to return it through another link", "অন্য লিংকে টাকা ফেরত চাইতে বলা", "दूसरे लिंक से पैसे लौटाने को कहना"],
-      ["Share your PIN with customer care", "কাস্টমার কেয়ারকে PIN দেওয়া", "कस्टमर केयर को PIN बताना"]
+      ["Share your PIN with customer care to reverse it", "লেনদেন ফেরাতে কাস্টমার কেয়ারকে PIN জানানো", "लेन-देन वापस कराने के लिए कस्टमर केयर को PIN बताना"]
     ],a:1
   },
 
@@ -266,30 +266,30 @@ const QUESTIONS = [
     cat:"womens-rights",
     q:["What is the purpose of free legal aid?", "বিনামূল্যে আইনি সহায়তার উদ্দেশ্য কী?", "निःशुल्क कानूनी सहायता का उद्देश्य क्या है?"],
     o:[
-      ["To provide legal assistance to eligible people without charging them", "যোগ্য ব্যক্তিকে খরচ ছাড়া আইনি সহায়তা দেওয়া", "पात्र लोगों को बिना शुल्क कानूनी सहायता देना"],
-      ["To guarantee the result of every case", "প্রতিটি মামলার ফল নিশ্চিত করা", "हर मामले का परिणाम सुनिश्चित करना"],
-      ["To replace all court procedures", "সব আদালতের প্রক্রিয়া বদলে দেওয়া", "सभी न्यायालय प्रक्रियाओं को बदलना"],
-      ["To provide private investigation services", "ব্যক্তিগত তদন্ত পরিষেবা দেওয়া", "निजी जाँच सेवा देना"]
+      ["To give eligible people legal help free of charge", "যোগ্য ব্যক্তিকে বিনামূল্যে আইনি সহায়তা দেওয়া", "पात्र लोगों को निःशुल्क कानूनी सहायता देना"],
+      ["To guarantee that every case ends in your favour", "প্রতিটি মামলার ফলাফল আপনার পক্ষে যাওয়ার নিশ্চয়তা দেওয়া", "हर मामले का फैसला आपके पक्ष में होने की गारंटी देना"],
+      ["To replace court procedures with private settlements", "আদালতের প্রক্রিয়ার বদলে ব্যক্তিগত মীমাংসা চালু করা", "अदालती प्रक्रिया की जगह निजी समझौते करवाना"],
+      ["To provide private detectives and investigators", "ব্যক্তিগত গোয়েন্দা ও তদন্তকারী সরবরাহ করা", "निजी जासूस और जाँचकर्ता उपलब्ध कराना"]
     ],a:0
   },
   {
     cat:"womens-rights",
-    q:["Which helpline is listed for women in India in the app?", "অ্যাপে ভারতে মহিলাদের হেল্পলাইন হিসেবে কোন নম্বর দেওয়া আছে?", "ऐप में भारत की महिला हेल्पलाइन के रूप में कौन-सा नंबर दिया गया है?"],
+    q:["You are in immediate danger from harassment or violence. What should you do first?", "হয়রানি বা সহিংসতার আশু বিপদে পড়লে প্রথমে কী করবেন?", "उत्पीड़न या हिंसा से तुरंत खतरे में हों तो सबसे पहले क्या करें?"],
     o:[
-      ["1098", "১০৯৮", "1098"],
-      ["181", "১৮১", "181"],
-      ["1930", "১৯৩০", "1930"],
-      ["112", "১১২", "112"]
+      ["Search for the right government website before doing anything", "কিছু করার আগে সঠিক সরকারি ওয়েবসাইট খোঁজা", "कुछ करने से पहले सही सरकारी वेबसाइट खोजना"],
+      ["Call the emergency number 112 if you can, and move to a safe place", "সম্ভব হলে জরুরি নম্বর ১১২-এ ফোন করা এবং নিরাপদ স্থানে যাওয়া", "संभव हो तो आपातकालीन नंबर 112 पर कॉल करें और सुरक्षित जगह जाएँ"],
+      ["Post about it on social media and wait for replies", "সোশ্যাল মিডিয়ায় পোস্ট করে উত্তরের অপেক্ষা করা", "सोशल मीडिया पर पोस्ट करके जवाबों का इंतज़ार करना"],
+      ["Wait until morning and then decide what to do", "সকাল পর্যন্ত অপেক্ষা করে তারপর ঠিক করা", "सुबह तक इंतज़ार करके फिर तय करना"]
     ],a:1
   },
   {
     cat:"womens-rights",
-    q:["Which law protects women from domestic violence in India?", "ভারতে গার্হস্থ্য হিংসা থেকে মহিলাদের সুরক্ষায় কোন আইন রয়েছে?", "भारत में घरेलू हिंसा से महिलाओं की सुरक्षा के लिए कौन-सा कानून है?"],
+    q:["Which Indian law provides civil protection and support for women facing domestic violence?", "গার্হস্থ্য হিংসার শিকার নারীদের দেওয়ানি সুরক্ষা ও সহায়তা দেয় ভারতের কোন আইন?", "घरेलू हिंसा का सामना कर रही महिलाओं को दीवानी संरक्षण और सहायता देने वाला भारतीय कानून कौन-सा है?"],
     o:[
-      ["Sexual Harassment of Women at Workplace Act, 2013", "কর্মক্ষেত্রে নারীর যৌন হেনস্থা প্রতিরোধ আইন, ২০১৩", "कार्यस्थल पर महिलाओं का यौन उत्पीड़न (निवारण) अधिनियम, 2013"],
-      ["Consumer Protection Act, 2019", "ভোক্তা সুরক্ষা আইন, ২০১৯", "उपभोक्ता संरक्षण अधिनियम, 2019"],
+      ["Protection of Children from Sexual Offences Act, 2012", "শিশুদের যৌন অপরাধ থেকে সুরক্ষা আইন, ২০১২", "यौन अपराधों से बच्चों का संरक्षण अधिनियम, 2012"],
+      ["Dowry Prohibition Act, 1961", "যৌতুক নিরোধ আইন, ১৯৬১", "दहेज निषेध अधिनियम, 1961"],
       ["Protection of Women from Domestic Violence Act, 2005", "গার্হস্থ্য হিংসা থেকে মহিলাদের সুরক্ষা আইন, ২০০৫", "घरेलू हिंसा से महिलाओं का संरक्षण अधिनियम, 2005"],
-      ["Information Technology Act, 2000", "তথ্যপ্রযুক্তি আইন, ২০০০", "सूचना प्रौद्योगिकी अधिनियम, 2000"]
+      ["Sexual Harassment of Women at Workplace Act, 2013", "কর্মক্ষেত্রে নারীর যৌন হেনস্থা প্রতিরোধ আইন, ২০১৩", "कार्यस्थल पर महिलाओं का यौन उत्पीड़न (निवारण) अधिनियम, 2013"]
     ],a:2
   },
   {
@@ -326,82 +326,82 @@ const QUESTIONS = [
   // ===== Emergency Response & Phone Safety =====
   {
     cat:"emergency-sos",
-    q:["What should you do before testing your phone's Emergency SOS shortcut?", "ফোনের Emergency SOS শর্টকাট পরীক্ষা করার আগে কী করবেন?", "फोन के Emergency SOS शॉर्टकट का परीक्षण करने से पहले क्या करेंगे?"],
+    q:["During a thunderstorm outdoors, where is the safer place to take shelter?", "বাইরে বজ্রঝড় শুরু হলে কোথায় আশ্রয় নেওয়া তুলনামূলক নিরাপদ?", "बाहर गरज-चमक वाले तूफ़ान में कहाँ शरण लेना अधिक सुरक्षित है?"],
     o:[
-      ["Test it by calling the emergency operator repeatedly", "বারবার জরুরি নম্বরে কল করে পরীক্ষা করা", "बार-बार आपातकालीन नंबर पर कॉल करके जाँचना"],
-      ["Remove all your emergency contacts first", "আগে সব জরুরি যোগাযোগ মুছে ফেলা", "पहले सभी आपातकालीन संपर्क हटा देना"],
-      ["Learn how to cancel it without placing a real call", "আসল কল না করে কীভাবে বাতিল করতে হয় তা শেখা", "असली कॉल किए बिना उसे रद्द करना सीखना"],
-      ["Remove the SIM card before testing", "পরীক্ষার আগে সিম কার্ড খুলে ফেলা", "परीक्षण से पहले सिम कार्ड निकाल देना"]
+      ["Under an isolated tall tree, which keeps you dry", "একা দাঁড়ানো উঁচু গাছের নিচে, যেখানে ভিজতে হয় না", "अकेले खड़े ऊँचे पेड़ के नीचे, जहाँ भीगने से बचाव होता है"],
+      ["In an open field, away from buildings and trees", "ইমারত ও গাছ থেকে দূরে খোলা মাঠে", "इमारतों और पेड़ों से दूर खुले मैदान में"],
+      ["Inside a substantial enclosed building or a fully enclosed vehicle", "মজবুত বন্ধ ভবন বা সম্পূর্ণ বন্ধ গাড়ির ভিতরে", "मजबूत बंद इमारत या पूरी तरह बंद वाहन के अंदर"],
+      ["Beside a metal fence or pole at the edge of the road", "রাস্তার ধারে ধাতব বেড়া বা খুঁটির পাশে", "सड़क किनारे धातु की बाड़ या खंभे के पास"]
     ],a:2
   },
   {
     cat:"emergency-sos",
-    q:["How many trusted contacts does the Smart Lady setup guide recommend adding?", "Smart Lady সেটআপ গাইডে কতজন বিশ্বস্ত যোগাযোগ যোগ করতে বলা হয়েছে?", "Smart Lady सेटअप गाइड में कितने विश्वसनीय संपर्क जोड़ने की सलाह है?"],
+    q:["A high-voltage wire has fallen across a road. What should you do?", "রাস্তার ওপর উচ্চ-ভোল্টেজের বিদ্যুতের তার ছিঁড়ে পড়েছে। কী করবেন?", "सड़क पर हाई-वोल्टेज बिजली का तार गिर गया है। क्या करना चाहिए?"],
     o:[
-      ["One", "একজন", "एक"],
-      ["Three", "তিনজন", "तीन"],
-      ["Four", "চারজন", "चार"],
-      ["Two", "দুজন", "दो"]
-    ],a:3
+      ["Move close to check whether the wire is still carrying current", "তারে এখনও বিদ্যুৎ আছে কি না দেখতে কাছে যাওয়া", "तार में अब भी करंट है या नहीं देखने के लिए पास जाना"],
+      ["Keep away, warn others and call the electricity provider or emergency services", "দূরে থাকা, অন্যদের সতর্ক করা এবং বিদ্যুৎ দপ্তর বা জরুরি পরিষেবাকে জানানো", "दूर रहें, दूसरों को चेताएँ और बिजली विभाग या आपात सेवा को बुलाएँ"],
+      ["Push the wire aside with a dry wooden stick to clear the road", "রাস্তা পরিষ্কার করতে শুকনো কাঠের লাঠি দিয়ে তার সরিয়ে দেওয়া", "रास्ता साफ़ करने के लिए सूखी लकड़ी की छड़ी से तार हटाना"],
+      ["Pour water around the wire to cool it down safely", "নিরাপদে ঠান্ডা করতে তারের চারপাশে জল ঢালা", "सुरक्षित ठंडा करने के लिए तार के चारों ओर पानी डालना"]
+    ],a:1
   },
   {
     cat:"emergency-sos",
-    q:["What happens when Smart SOS is pressed according to the app guide?", "অ্যাপ গাইড অনুযায়ী Smart SOS চাপলে কী ঘটে?", "ऐप गाइड के अनुसार Smart SOS दबाने पर क्या होता है?"],
+    q:["A person is receiving an electric shock. What is the first safe action for a bystander?", "কেউ বিদ্যুৎস্পৃষ্ট হয়েছেন। পাশে থাকা ব্যক্তির প্রথম নিরাপদ পদক্ষেপ কী?", "किसी व्यक्ति को बिजली का झटका लग रहा है। पास मौजूद व्यक्ति का पहला सुरक्षित कदम क्या है?"],
     o:[
-      ["It prepares an SOS message with a location link", "এটি লোকেশন লিংকসহ একটি SOS মেসেজ তৈরি করে", "यह लोकेशन लिंक के साथ एक SOS संदेश तैयार करता है"],
-      ["It automatically records and uploads a video", "এটি নিজে থেকে ভিডিও রেকর্ড করে আপলোড করে", "यह अपने आप वीडियो रिकॉर्ड करके अपलोड करता है"],
-      ["It uploads all phone data to a server", "ফোনের সব তথ্য সার্ভারে পাঠায়", "फोन का सारा डेटा सर्वर पर भेजता है"],
-      ["It permanently locks the phone's SIM card", "এটি ফোনের সিম কার্ড চিরতরে লক করে দেয়", "यह फ़ोन का सिम कार्ड हमेशा के लिए लॉक कर देता है"]
-    ],a:0
-  },
-  {
-    cat:"emergency-sos",
-    q:["Who is a good choice as a trusted emergency contact?", "বিশ্বস্ত জরুরি যোগাযোগ হিসেবে কাকে বেছে নেওয়া ভালো?", "भरोसेमंद आपातकालीन संपर्क के रूप में किसे चुनना अच्छा है?"],
-    o:[
-      ["A stranger you recently met online", "অনলাইনে সম্প্রতি পরিচয় হওয়া অপরিচিত কাউকে", "हाल ही में ऑनलाइन मिले किसी अनजान व्यक्ति को"],
-      ["Someone whose phone is usually switched off", "যাঁর ফোন প্রায়ই বন্ধ থাকে এমন কাউকে", "ऐसे व्यक्ति को जिसका फ़ोन अक्सर बंद रहता है"],
-      ["A person who does not know about your plan", "যে আপনার পরিকল্পনার কথা জানে না এমন কাউকে", "ऐसे व्यक्ति को जिसे आपकी योजना की जानकारी नहीं है"],
-      ["A reliable person who can respond quickly", "এমন নির্ভরযোগ্য কাউকে, যিনি দ্রুত সাড়া দিতে পারেন", "ऐसे भरोसेमंद व्यक्ति को जो जल्दी प्रतिक्रिया दे सके"]
-    ],a:3
-  },
-  {
-    cat:"emergency-sos",
-    q:["What may prevent an SOS message from being delivered?", "SOS বার্তা পৌঁছাতে কী বাধা দিতে পারে?", "SOS संदेश पहुँचने में क्या बाधा डाल सकता है?"],
-    o:[
-      ["A contact saved with a clear name", "স্পষ্ট নামে সংরক্ষিত একটি পরিচিতি", "स्पष्ट नाम से सेव किया गया संपर्क"],
-      ["A fully charged phone battery", "পুরো চার্জ করা ফোনের ব্যাটারি", "पूरी तरह चार्ज फ़ोन की बैटरी"],
-      ["No network signal or SMS service", "নেটওয়ার্ক সিগন্যাল বা এসএমএস পরিষেবা না থাকা", "नेटवर्क सिग्नल या एसएमएस सेवा न होना"],
-      ["A correctly entered country code", "সঠিক country code লেখা", "सही country code दर्ज होना"]
+      ["Touch the person and pull them away from the source quickly", "ব্যক্তিকে ছুঁয়ে দ্রুত বিদ্যুতের উৎস থেকে টেনে সরানো", "व्यक्ति को छूकर जल्दी से बिजली के स्रोत से खींचकर हटाना"],
+      ["Throw water on the person to cool the body down", "শরীর ঠান্ডা করতে ব্যক্তির গায়ে জল ছোড়া", "शरीर ठंडा करने के लिए व्यक्ति पर पानी फेंकना"],
+      ["Switch off the power if safe; do not touch the person until it is off", "নিরাপদ হলে বিদ্যুৎ বন্ধ করা; বন্ধ না হওয়া পর্যন্ত ব্যক্তিকে না ছোঁয়া", "सुरक्षित हो तो बिजली बंद करें; बंद होने तक व्यक्ति को न छुएँ"],
+      ["Use a metal rod to push the wire away from the person", "ধাতব রড দিয়ে তারটি ব্যক্তির কাছ থেকে ঠেলে সরানো", "धातु की छड़ से तार को व्यक्ति से दूर धकेलना"]
     ],a:2
   },
   {
     cat:"emergency-sos",
-    q:["What should you do if you accidentally trigger an emergency call?", "ভুল করে জরুরি কল চালু হয়ে গেলে কী করবেন?", "गलती से आपातकालीन कॉल शुरू हो जाए तो क्या करेंगे?"],
+    q:["Someone is struggling in deep water. If you are not trained to swim-rescue, what should you do?", "কেউ গভীর জলে ডুবে যাওয়ার উপক্রম হলে এবং আপনি উদ্ধার-সাঁতারে প্রশিক্ষিত না হলে কী করবেন?", "कोई गहरे पानी में डूब रहा हो और आपको तैरकर बचाने का प्रशिक्षण न हो, तो क्या करें?"],
     o:[
-      ["Switch off the phone without speaking", "কিছু না বলে ফোন বন্ধ করে দেওয়া", "बिना बोले फ़ोन बंद कर देना"],
-      ["Remove the SIM card to stop the call", "কল থামাতে সিম কার্ড খুলে ফেলা", "कॉल रोकने के लिए सिम कार्ड निकाल देना"],
-      ["Hang up and ignore the operator's call back", "কল কেটে অপারেটরের ফিরতি কল উপেক্ষা করা", "कॉल काटकर ऑपरेटर की वापसी कॉल अनदेखा करना"],
-      ["Stay on the line and explain it was accidental", "লাইনে থেকে জানানো যে এটি ভুলবশত হয়েছে", "लाइन पर रहकर बताना कि यह गलती से हुआ"]
-    ],a:3
+      ["Jump in immediately and try to pull the person out", "সঙ্গে সঙ্গে জলে ঝাঁপিয়ে ব্যক্তিকে টেনে তোলার চেষ্টা করা", "तुरंत पानी में कूदकर व्यक्ति को खींचने की कोशिश करना"],
+      ["Throw a rope, pole or float from a safe spot and call for help", "নিরাপদ স্থান থেকে দড়ি, লাঠি বা ভাসমান বস্তু ছুড়ে দিয়ে সাহায্য ডাকা", "सुरक्षित जगह से रस्सी, छड़ी या तैरने वाली चीज़ फेंककर मदद बुलाएँ"],
+      ["Form a human chain and walk into fast-flowing water", "মানবশৃঙ্খল বানিয়ে খরস্রোত জলে নেমে যাওয়া", "मानव श्रृंखला बनाकर तेज़ बहते पानी में उतरना"],
+      ["Wait until the person stops moving before acting", "ব্যক্তি নড়াচড়া বন্ধ না করা পর্যন্ত অপেক্ষা করা", "व्यक्ति के हिलना बंद करने तक इंतज़ार करना"]
+    ],a:1
   },
   {
     cat:"emergency-sos",
-    q:["Which phone setting may help an emergency helper see essential information from the lock screen?", "লক স্ক্রিন থেকে জরুরি তথ্য দেখতে কোন ফোন সেটিং সাহায্য করতে পারে?", "लॉक स्क्रीन से जरूरी जानकारी देखने में कौन-सी फोन सेटिंग मदद कर सकती है?"],
+    q:["You smell cooking gas strongly in a room. What should you do first?", "ঘরের মধ্যে রান্নার গ্যাসের তীব্র গন্ধ পাচ্ছেন। প্রথমে কী করবেন?", "कमरे में रसोई गैस की तेज़ गंध आ रही है। सबसे पहले क्या करें?"],
     o:[
-      ["Emergency information or Medical ID", "Emergency Information বা Medical ID", "Emergency Information या Medical ID"],
-      ["Developer options", "ডেভেলপার অপশন", "डेवलपर विकल्प"],
-      ["Battery usage history", "ব্যাটারি ব্যবহারের ইতিহাস", "बैटरी उपयोग इतिहास"],
-      ["Display refresh rate", "ডিসপ্লে রিফ্রেশ রেট", "डिस्प्ले रिफ्रेश रेट"]
-    ],a:0
+      ["Turn the lights on to look for where the gas is leaking", "গ্যাস কোথায় ফাঁস হচ্ছে খুঁজতে আলো জ্বালানো", "गैस कहाँ रिस रही है खोजने के लिए लाइट जलाना"],
+      ["Light a match to find where the gas is leaking", "গ্যাস কোথায় ফাঁস হচ্ছে দেখতে দেশলাই জ্বালানো", "गैस कहाँ से रिस रही है देखने के लिए माचिस जलाना"],
+      ["Avoid flames and switches, shut off the gas if safe and leave", "আগুন ও সুইচ এড়িয়ে নিরাপদ হলে গ্যাস বন্ধ করে স্থান ত্যাগ করা", "आग और स्विच से बचें, सुरक्षित हो तो गैस बंद कर बाहर निकलें"],
+      ["Stand beside the cylinder and call for help on your phone", "সিলিন্ডারের পাশে দাঁড়িয়ে ফোনে সাহায্য ডাকা", "सिलेंडर के पास खड़े होकर फोन से मदद बुलाना"]
+    ],a:2
+  },
+  {
+    cat:"emergency-sos",
+    q:["A water pipe bursts and water begins flooding a room. What is the safest response?", "জলের পাইপ ফেটে ঘরে জল ঢুকতে শুরু করেছে। নিরাপদ পদক্ষেপ কী?", "पानी की पाइप फटकर कमरे में पानी भरने लगा है। सुरक्षित कदम क्या है?"],
+    o:[
+      ["Step into the water and switch off the nearby electrical points", "জলে নেমে কাছের বৈদ্যুতিক সুইচ বন্ধ করা", "पानी में उतरकर पास के बिजली स्विच बंद करना"],
+      ["Close the main valve if safe, stay away from electrics and call a plumber", "নিরাপদ হলে প্রধান ভাল্‌ভ বন্ধ করা, বৈদ্যুতিক সরঞ্জাম থেকে দূরে থাকা ও প্লাম্বার ডাকা", "सुरक्षित हो तो मुख्य वाल्व बंद करें, बिजली उपकरणों से दूर रहें और प्लंबर बुलाएँ"],
+      ["Touch the exposed wires to check whether they are damaged", "খোলা তার ছুঁয়ে ক্ষতি হয়েছে কি না দেখা", "खुले तारों को छूकर देखना कि क्षति हुई है या नहीं"],
+      ["Ignore it and wait for the tank to empty on its own", "কিছু না করে ট্যাঙ্ক নিজে খালি হওয়ার অপেক্ষা করা", "कुछ न करके टंकी के अपने-आप खाली होने का इंतज़ार करना"]
+    ],a:1
+  },
+  {
+    cat:"emergency-sos",
+    q:["What is the correct immediate care for a minor thermal burn?", "সাধারণ তাপজনিত পোড়া ক্ষতে তাৎক্ষণিক সঠিক পরিচর্যা কী?", "सामान्य गर्मी से जले घाव की तुरंत सही देखभाल क्या है?"],
+    o:[
+      ["Apply ice directly to the burn to stop the pain", "ব্যথা কমাতে পোড়া জায়গায় সরাসরি বরফ লাগানো", "दर्द रोकने के लिए जले हुए हिस्से पर सीधे बर्फ लगाना"],
+      ["Apply toothpaste or cooking oil on the burn", "পোড়া জায়গায় টুথপেস্ট বা রান্নার তেল লাগানো", "जले हुए हिस्से पर टूथपेस्ट या खाने का तेल लगाना"],
+      ["Cool it under running water for about 20 minutes; no ice", "প্রায় ২০ মিনিট চলমান জলে ঠান্ডা করা; বরফ নয়", "लगभग 20 मिनट बहते पानी में ठंडा करें; बर्फ नहीं"],
+      ["Break the blisters so that the burn can dry faster", "দ্রুত শুকানোর জন্য ফোসকা ফাটিয়ে দেওয়া", "जल्दी सूखने के लिए फफोले फोड़ देना"]
+    ],a:2
   },
   {
     cat:"emergency-sos",
     q:["What is the safest action if your phone is stolen?", "ফোন চুরি হলে সবচেয়ে নিরাপদ পদক্ষেপ কী?", "फोन चोरी होने पर सबसे सुरक्षित कदम क्या है?"],
     o:[
-      ["Chase the thief immediately", "সঙ্গে সঙ্গে চোরের পিছু নেওয়া", "तुरंत चोर का पीछा करना"],
+      ["Chase the thief at once to get the phone back", "ফোন ফেরত পেতে সঙ্গে সঙ্গে চোরের পিছু ধাওয়া করা", "फोन वापस पाने के लिए तुरंत चोर का पीछा करना"],
       ["Avoid confrontation and secure the phone remotely", "মুখোমুখি সংঘর্ষ এড়িয়ে দূর থেকে ফোন সুরক্ষিত করা", "सामना करने से बचकर दूर से फोन सुरक्षित करना"],
-      ["Ask strangers to recover it", "অপরিচিতদের ফোন ফেরত আনতে বলা", "अजनबियों से फोन वापस लाने को कहना"],
-      ["Wait several days before acting", "কয়েক দিন অপেক্ষা করা", "कई दिन इंतजार करना"]
+      ["Ask strangers nearby to recover the phone for you", "কাছের অচেনা লোকদের ফোন উদ্ধার করে দিতে বলা", "आसपास के अजनबियों से फोन छुड़वाने को कहना"],
+      ["Wait several days before taking any action", "কিছু করার আগে কয়েক দিন অপেক্ষা করা", "कोई कदम उठाने से पहले कई दिन इंतज़ार करना"]
     ],a:1
   },
   {
@@ -418,10 +418,10 @@ const QUESTIONS = [
     cat:"emergency-sos",
     q:["Which Indian service is mentioned for blocking a lost or stolen phone's IMEI?", "হারানো বা চুরি হওয়া ফোনের IMEI ব্লক করতে কোন ভারতীয় পরিষেবার কথা বলা হয়েছে?", "खोए या चोरी हुए फोन का IMEI ब्लॉक करने के लिए किस भारतीय सेवा का उल्लेख है?"],
     o:[
-      ["DigiLocker", "ডিজিলকার", "डिजिलॉकर"],
-      ["UMANG", "উমঙ্গ", "उमंग"],
-      ["FASTag", "ফাস্ট্যাগ", "फास्टैग"],
-      ["Sanchar Saathi CEIR", "সঞ্চার সাথী CEIR", "संचार साथी CEIR"]
+      ["DigiLocker document service", "ডিজিলকার ডকুমেন্ট পরিষেবা", "डिजिलॉकर दस्तावेज़ सेवा"],
+      ["UMANG government services app", "উমঙ্গ সরকারি পরিষেবা অ্যাপ", "उमंग सरकारी सेवा ऐप"],
+      ["FASTag toll payment tag", "ফাস্ট্যাগ টোল পেমেন্ট ট্যাগ", "फास्टैग टोल भुगतान टैग"],
+      ["Sanchar Saathi CEIR portal", "সঞ্চার সাথী CEIR পোর্টাল", "संचार साथी CEIR पोर्टल"]
     ],a:3
   },
 
@@ -440,10 +440,10 @@ const QUESTIONS = [
     cat:"money-management",
     q:["What should generally be listed first in a monthly household budget?", "মাসিক পারিবারিক বাজেটে সাধারণত প্রথমে কী তালিকাভুক্ত করা উচিত?", "मासिक घरेलू बजट में सामान्यतः सबसे पहले क्या सूचीबद्ध करना चाहिए?"],
     o:[
-      ["Entertainment subscriptions", "বিনোদনের সাবস্ক্রিপশন", "मनोरंजन सदस्यताएँ"],
+      ["Entertainment subscriptions and streaming plans", "বিনোদনের সাবস্ক্রিপশন ও স্ট্রিমিং প্ল্যান", "मनोरंजन की सदस्यताएँ और स्ट्रीमिंग प्लान"],
       ["Essential needs and fixed obligations", "অপরিহার্য প্রয়োজন ও নির্দিষ্ট দায়", "जरूरी जरूरतें और निश्चित देनदारियाँ"],
-      ["Optional shopping", "ঐচ্ছিক কেনাকাটা", "वैकल्पिक खरीदारी"],
-      ["Gifts and celebrations", "উপহার ও অনুষ্ঠান", "उपहार और समारोह"]
+      ["Optional shopping and new clothes", "ঐচ্ছিক কেনাকাটা ও নতুন জামাকাপড়", "वैकल्पिक खरीदारी और नए कपड़े"],
+      ["Gifts, parties and celebrations", "উপহার, পার্টি ও উৎসব উদযাপন", "उपहार, पार्टियाँ और समारोह"]
     ],a:1
   },
   {
@@ -460,9 +460,9 @@ const QUESTIONS = [
     cat:"money-management",
     q:["What is the main purpose of an emergency fund?", "জরুরি তহবিলের প্রধান উদ্দেশ্য কী?", "आपातकालीन निधि का मुख्य उद्देश्य क्या है?"],
     o:[
-      ["To finance routine luxury purchases", "নিয়মিত বিলাসী কেনাকাটা করা", "नियमित विलासिता की खरीदारी करना"],
-      ["To replace monthly income permanently", "স্থায়ীভাবে মাসিক আয়ের বদলি হওয়া", "स्थायी रूप से मासिक आय का विकल्प बनना"],
-      ["To increase borrowing capacity", "ঋণ নেওয়ার ক্ষমতা বাড়ানো", "उधार लेने की क्षमता बढ़ाना"],
+      ["To pay for routine luxury purchases every month", "প্রতি মাসের বিলাসবহুল কেনাকাটার খরচ মেটানো", "हर महीने की विलासिता की खरीदारी का खर्च चुकाना"],
+      ["To replace your monthly income permanently", "মাসিক আয়ের স্থায়ী বিকল্প হিসেবে ব্যবহার করা", "मासिक आय की जगह स्थायी रूप से इस्तेमाल करना"],
+      ["To increase how much you can borrow from lenders", "ঋণদাতার কাছ থেকে বেশি ঋণ পাওয়ার ক্ষমতা বাড়ানো", "ऋणदाताओं से अधिक उधार लेने की क्षमता बढ़ाना"],
       ["To meet unexpected expenses without immediate borrowing", "হঠাৎ খরচে সঙ্গে সঙ্গে ঋণ না নিয়ে সামলানো", "अचानक खर्चों को तुरंत उधार लिए बिना पूरा करना"]
     ],a:3
   },
@@ -480,10 +480,10 @@ const QUESTIONS = [
     cat:"money-management",
     q:["What is the main difference between needs and wants in a budget?", "বাজেটে প্রয়োজন ও ইচ্ছার মধ্যে প্রধান পার্থক্য কী?", "बजट में जरूरत और इच्छा के बीच मुख्य अंतर क्या है?"],
     o:[
-      ["Needs are always more expensive", "প্রয়োজন সবসময় বেশি দামি", "जरूरतें हमेशा महँगी होती हैं"],
-      ["Wants must be paid before needs", "ইচ্ছা আগে পূরণ করতে হয়", "इच्छाएँ पहले पूरी करनी चाहिए"],
+      ["Needs are always more expensive than wants", "প্রয়োজন সবসময় চাহিদার চেয়ে বেশি দামি", "ज़रूरतें हमेशा इच्छाओं से अधिक महँगी होती हैं"],
+      ["Wants must always be paid for before needs", "চাহিদার খরচ সবসময় প্রয়োজনের আগে মেটাতে হয়", "इच्छाओं का खर्च हमेशा ज़रूरतों से पहले चुकाना पड़ता है"],
       ["Needs are essential; wants are optional preferences", "প্রয়োজন অপরিহার্য; ইচ্ছা ঐচ্ছিক পছন্দ", "जरूरतें अनिवार्य हैं; इच्छाएँ वैकल्पिक पसंद हैं"],
-      ["Both categories have identical priority", "দুইটির অগ্রাধিকার একই", "दोनों की प्राथमिकता समान है"]
+      ["Both categories always have identical priority", "দুটি বিভাগেরই সবসময় সমান অগ্রাধিকার", "दोनों श्रेणियों की प्राथमिकता हमेशा समान होती है"]
     ],a:2
   },
   {
@@ -491,39 +491,39 @@ const QUESTIONS = [
     q:["What is a practical way to control household expenses?", "পারিবারিক খরচ নিয়ন্ত্রণের বাস্তবসম্মত উপায় কী?", "घरेलू खर्च नियंत्रित करने का व्यावहारिक तरीका क्या है?"],
     o:[
       ["Record spending and review categories regularly", "খরচ লিখে নিয়মিত বিভাগভিত্তিক পর্যালোচনা করা", "खर्च लिखकर नियमित रूप से श्रेणियों की समीक्षा करना"],
-      ["Stop recording small purchases", "ছোট কেনাকাটার হিসাব না রাখা", "छोटी खरीदारी का हिसाब न रखना"],
-      ["Use credit for every purchase", "প্রতিটি কেনাকাটায় ক্রেডিট ব্যবহার করা", "हर खरीदारी में क्रेडिट इस्तेमाल करना"],
-      ["Ignore irregular expenses", "অনিয়মিত খরচ উপেক্ষা করা", "अनियमित खर्चों को अनदेखा करना"]
+      ["Stop recording small purchases to save time", "সময় বাঁচাতে ছোটখাটো কেনাকাটার হিসাব লেখা বন্ধ করা", "समय बचाने के लिए छोटी खरीदारी का हिसाब लिखना बंद करना"],
+      ["Use credit for every purchase to keep cash free", "হাতে নগদ রাখতে প্রতিটি কেনাকাটায় ধারে কেনা", "नकद बचाने के लिए हर खरीदारी उधार पर करना"],
+      ["Ignore irregular expenses like festivals and repairs", "উৎসব ও মেরামতের মতো অনিয়মিত খরচ উপেক্ষা করা", "त्योहार और मरम्मत जैसे अनियमित खर्चों को अनदेखा करना"]
     ],a:0
   },
   {
     cat:"money-management",
-    q:["Why is it useful to keep a record of income and expenses?", "আয় ও খরচের হিসাব রাখা কেন উপকারী?", "आय और खर्च का रिकॉर्ड रखना क्यों उपयोगी है?"],
+    q:["A scheme promises to double your money in a few months with no risk. What is the wise response?", "একটি প্রকল্প কয়েক মাসে ঝুঁকি ছাড়াই টাকা দ্বিগুণ করার প্রতিশ্রুতি দিচ্ছে। বুদ্ধিমানের কাজ কী?", "कोई योजना कुछ महीनों में बिना जोखिम के पैसा दोगुना करने का वादा करती है। समझदारी भरा कदम क्या है?"],
     o:[
-      ["It helps understand cash flow and plan spending", "টাকার আসা-যাওয়া বুঝে খরচ পরিকল্পনা করতে সাহায্য করে", "पैसे के आवागमन को समझकर खर्च की योजना बनाने में मदद करता है"],
-      ["It automatically increases income", "স্বয়ংক্রিয়ভাবে আয় বাড়ায়", "यह अपने आप आय बढ़ाता है"],
-      ["It removes the need for savings", "সঞ্চয়ের প্রয়োজন দূর করে", "बचत की जरूरत समाप्त करता है"],
-      ["It guarantees credit approval", "ঋণ অনুমোদন নিশ্চিত করে", "क्रेडिट मंजूरी की गारंटी देता है"]
-    ],a:0
+      ["Invest quickly before the offer closes and the chance is lost", "সুযোগ হাতছাড়া হওয়ার আগে তাড়াতাড়ি বিনিয়োগ করা", "मौका निकल जाने से पहले जल्दी निवेश करना"],
+      ["Invite friends to join so the profit is shared", "লাভ ভাগ করতে বন্ধুদেরও যোগ দিতে ডাকা", "लाभ बाँटने के लिए मित्रों को भी जोड़ना"],
+      ["Treat it as a warning sign and verify with regulators first", "এটি সতর্কসংকেত ধরে আগে নিয়ন্ত্রক সংস্থার কাছে যাচাই করা", "इसे चेतावनी संकेत मानकर पहले नियामक से जाँच करना"],
+      ["Take a loan to invest a larger amount", "বেশি টাকা বিনিয়োগ করতে ঋণ নেওয়া", "अधिक निवेश के लिए ऋण लेना"]
+    ],a:2
   },
   {
     cat:"money-management",
-    q:["What should be done with an unexpected financial windfall?", "হঠাৎ অতিরিক্ত টাকা পেলে কী করা উচিত?", "अचानक अतिरिक्त धन मिलने पर क्या करना चाहिए?"],
+    q:["Before taking a new loan, which check is most important?", "নতুন ঋণ নেওয়ার আগে কোন বিষয়টি সবচেয়ে জরুরি যাচাই করা?", "नया ऋण लेने से पहले सबसे ज़रूरी जाँच क्या है?"],
     o:[
-      ["Spend it all on celebrations immediately", "সঙ্গে সঙ্গে উৎসবে সব খরচ করে ফেলা", "तुरंत उत्सव में सब कुछ खर्च कर देना"],
-      ["Review debts, needs and savings goals first", "আগে ঋণ, প্রয়োজন ও সঞ্চয়ের লক্ষ্য খতিয়ে দেখা", "पहले कर्ज़, ज़रूरतों और बचत लक्ष्यों की समीक्षा करना"],
-      ["Lend it to a caller who asks urgently", "জরুরি বলে চাওয়া ফোনকারীকে ধার দেওয়া", "जल्दी बताकर माँगने वाले कॉलर को उधार देना"],
-      ["Invest it only because someone promises returns", "কারও লাভের প্রতিশ্রুতিতে বিনিয়োগ করা", "किसी के मुनाफे के वादे पर ही निवेश करना"]
+      ["Whether the lender promises instant approval without documents", "ঋণদাতা নথি ছাড়াই তাৎক্ষণিক অনুমোদনের প্রতিশ্রুতি দিচ্ছে কি না", "ऋणदाता बिना दस्तावेज़ तुरंत स्वीकृति का वादा करता है या नहीं"],
+      ["Whether the instalment, interest and total repayment fit your budget", "কিস্তি, সুদ ও মোট পরিশোধ আপনার বাজেটে সামলানো যাবে কি না", "किस्त, ब्याज और कुल भुगतान आपके बजट में आता है या नहीं"],
+      ["Whether a neighbour has taken the same loan from the same lender", "প্রতিবেশী একই ঋণদাতার কাছ থেকে একই ঋণ নিয়েছেন কি না", "पड़ोसी ने उसी ऋणदाता से वही ऋण लिया है या नहीं"],
+      ["Whether the loan amount can be spent immediately", "ঋণের টাকা সঙ্গে সঙ্গে খরচ করা যাবে কি না", "ऋण की राशि तुरंत खर्च की जा सकती है या नहीं"]
     ],a:1
   },
   {
     cat:"money-management",
-    q:["What is the most useful reason to keep an emergency fund separate?", "জরুরি তহবিল আলাদা রাখার সবচেয়ে উপযোগী কারণ কী?", "आपातकालीन निधि अलग रखने का सबसे उपयोगी कारण क्या है?"],
+    q:["You feel pressured to buy an expensive item on an online sale. What is a sensible decision?", "অনলাইন সেলে দামি জিনিস কেনার জন্য চাপ অনুভব করছেন। বিচক্ষণ সিদ্ধান্ত কী?", "ऑनलाइन सेल में महँगी वस्तु खरीदने का दबाव है। समझदारी भरा निर्णय क्या है?"],
     o:[
-      ["It earns a guaranteed high return", "নিশ্চিত বেশি লাভ দেয়", "निश्चित अधिक लाभ देती है"],
-      ["It removes all financial risk", "সব আর্থিক ঝুঁকি দূর করে", "सभी वित्तीय जोखिम समाप्त करती है"],
-      ["It remains available for unexpected needs", "অপ্রত্যাশিত প্রয়োজনে ব্যবহার করা যায়", "अचानक जरूरतों के लिए उपलब्ध रहती है"],
-      ["It replaces health and life insurance", "স্বাস্থ্য ও জীবন বিমার বদলি হয়", "स्वास्थ्य और जीवन बीमा का विकल्प बनती है"]
+      ["Buy immediately before the sale offer ends today", "আজই অফার শেষ হওয়ার আগে সঙ্গে সঙ্গে কিনে ফেলা", "आज ही ऑफर खत्म होने से पहले तुरंत खरीद लेना"],
+      ["Borrow money so that you do not miss the deal", "অফার হাতছাড়া না করতে ধার করে কেনা", "सौदा हाथ से न जाए इसलिए उधार लेकर खरीदना"],
+      ["Check if it is a real need, compare total cost and wait", "সত্যিই দরকার কি না দেখা, মোট খরচ তুলনা করা ও অপেক্ষা করা", "देखें कि वाकई ज़रूरत है या नहीं, कुल लागत की तुलना करें और रुकें"],
+      ["Ignore the household budget for this one purchase", "এই একটি কেনাকাটার জন্য সংসারের বাজেট উপেক্ষা করা", "इस एक खरीदारी के लिए घर के बजट को अनदेखा करना"]
     ],a:2
   },
 
@@ -533,38 +533,38 @@ const QUESTIONS = [
     q:["What is the safest practice when using a mobile banking app?", "মোবাইল ব্যাংকিং অ্যাপ ব্যবহারের নিরাপদ অভ্যাস কোনটি?", "मोबाइल बैंकिंग ऐप इस्तेमाल करने की सुरक्षित आदत क्या है?"],
     o:[
       ["Use the official app and check the recipient before confirming", "অফিসিয়াল অ্যাপ ব্যবহার করে নিশ্চিত করার আগে প্রাপক যাচাই করা", "आधिकारिक ऐप इस्तेमाल करके पुष्टि से पहले प्राप्तकर्ता जाँचना"],
-      ["Install apps from forwarded links", "ফরোয়ার্ড করা লিংক থেকে অ্যাপ ইনস্টল করা", "फॉरवर्ड किए गए लिंक से ऐप इंस्टॉल करना"],
-      ["Keep the PIN in the contact list", "কন্ট্যাক্টে PIN রাখা", "कॉन्टैक्ट सूची में PIN रखना"],
-      ["Allow unknown people to operate the app", "অপরিচিতদের অ্যাপ চালাতে দেওয়া", "अजनबियों को ऐप चलाने देना"]
+      ["Install banking apps from links forwarded by friends", "বন্ধুদের পাঠানো লিঙ্ক থেকে ব্যাংকিং অ্যাপ ইনস্টল করা", "मित्रों के भेजे लिंक से बैंकिंग ऐप इंस्टॉल करना"],
+      ["Save the PIN in the phone's contact list so you remember it", "মনে রাখতে ফোনের কন্টাক্ট লিস্টে PIN সেভ করে রাখা", "याद रखने के लिए PIN को फोन की संपर्क सूची में सहेजना"],
+      ["Let unknown people operate the app to help you", "সাহায্যের নামে অচেনা লোককে অ্যাপ চালাতে দেওয়া", "मदद के नाम पर अनजान लोगों को ऐप चलाने देना"]
     ],a:0
   },
   {
     cat:"banking-insurance",
     q:["What does borrowing money usually involve?", "ঋণ নেওয়ার ক্ষেত্রে সাধারণত কী জড়িত থাকে?", "पैसे उधार लेने में सामान्यतः क्या शामिल होता है?"],
     o:[
-      ["A permanent grant without conditions", "শর্তহীন স্থায়ী অনুদান", "बिना शर्त स्थायी अनुदान"],
+      ["A permanent grant that comes without any conditions", "কোনো শর্ত ছাড়া স্থায়ী অনুদান", "बिना किसी शर्त का स्थायी अनुदान"],
       ["Repayment, often with interest or other costs", "পরিশোধ, প্রায়ই সুদ বা অন্যান্য খরচসহ", "वापसी, अक्सर ब्याज या अन्य लागत के साथ"],
-      ["An automatic increase in income", "স্বয়ংক্রিয় আয় বৃদ্ধি", "आय में स्वतः वृद्धि"],
-      ["No obligation after receiving funds", "টাকা পাওয়ার পর কোনো দায় নেই", "राशि मिलने के बाद कोई जिम्मेदारी नहीं"]
+      ["An automatic increase in your monthly income", "মাসিক আয়ের স্বয়ংক্রিয় বৃদ্ধি", "मासिक आय में अपने-आप बढ़ोतरी"],
+      ["No obligation at all once the funds are received", "টাকা পাওয়ার পর কোনো দায়ই না থাকা", "राशि मिलने के बाद कोई दायित्व न रहना"]
     ],a:1
   },
   {
     cat:"banking-insurance",
-    q:["Why should you check the recipient's name before making a UPI payment?", "UPI পেমেন্টের আগে প্রাপকের নাম দেখা কেন জরুরি?", "UPI भुगतान से पहले प्राप्तकर्ता का नाम देखना क्यों जरूरी है?"],
+    q:["Your debit card is lost. What should you do first?", "আপনার ডেবিট কার্ড হারিয়ে গেছে। প্রথমে কী করবেন?", "आपका डेबिट कार्ड खो गया है। सबसे पहले क्या करें?"],
     o:[
-      ["To increase the transfer limit", "ট্রান্সফার লিমিট বাড়াতে", "ट्रांसफर सीमा बढ़ाने के लिए"],
-      ["To avoid entering the amount", "টাকার অঙ্ক না লিখতে", "राशि दर्ज करने से बचने के लिए"],
-      ["To reduce the risk of sending money to the wrong person", "ভুল ব্যক্তির কাছে টাকা পাঠানোর ঝুঁকি কমাতে", "गलत व्यक्ति को पैसे भेजने का जोखिम घटाने के लिए"],
-      ["To make the transaction anonymous", "লেনদেন গোপন রাখতে", "लेनदेन गुमनाम बनाने के लिए"]
-    ],a:2
+      ["Wait a few days in case it is found", "পাওয়া যায় কি না দেখতে কয়েক দিন অপেক্ষা করা", "मिल जाए इस उम्मीद में कुछ दिन इंतज़ार करना"],
+      ["Block it at once through the bank's official app or helpline", "ব্যাংকের অফিসিয়াল অ্যাপ বা হেল্পলাইনে সঙ্গে সঙ্গে কার্ড ব্লক করা", "बैंक के आधिकारिक ऐप या हेल्पलाइन से तुरंत कार्ड ब्लॉक करना"],
+      ["Search online for a customer-care number and share the PIN", "অনলাইনে কাস্টমার কেয়ার নম্বর খুঁজে PIN জানানো", "ऑनलाइन कस्टमर केयर नंबर खोजकर PIN बताना"],
+      ["Post the card details on social media to find it", "কার্ড খুঁজে পেতে সোশ্যাল মিডিয়ায় কার্ডের তথ্য পোস্ট করা", "कार्ड ढूँढने के लिए सोशल मीडिया पर कार्ड की जानकारी डालना"]
+    ],a:1
   },
   {
     cat:"banking-insurance",
     q:["What is a nominee generally meant to do in a bank account?", "ব্যাংক অ্যাকাউন্টে নমিনির সাধারণ ভূমিকা কী?", "बैंक खाते में नामांकित व्यक्ति की सामान्य भूमिका क्या है?"],
     o:[
-      ["Operate the account every day automatically", "প্রতিদিন স্বয়ংক্রিয়ভাবে অ্যাকাউন্ট চালানো", "हर दिन स्वतः खाता चलाना"],
-      ["Replace the account holder immediately", "সঙ্গে সঙ্গে অ্যাকাউন্টধারীর বদলি হওয়া", "तुरंत खाताधारक की जगह लेना"],
-      ["Guarantee a loan approval", "ঋণ অনুমোদনের নিশ্চয়তা দেওয়া", "ऋण मंजूरी की गारंटी देना"],
+      ["Operate the account every day on the holder's behalf", "অ্যাকাউন্টধারীর হয়ে প্রতিদিন অ্যাকাউন্ট চালানো", "खाताधारक की ओर से रोज़ खाता चलाना"],
+      ["Replace the account holder immediately after opening", "অ্যাকাউন্ট খোলার পরেই অ্যাকাউন্টধারীর জায়গা নিয়ে নেওয়া", "खाता खुलते ही खाताधारक की जगह ले लेना"],
+      ["Guarantee that a loan will be approved for the holder", "অ্যাকাউন্টধারীর ঋণ মঞ্জুরের নিশ্চয়তা দেওয়া", "खाताधारक के ऋण की स्वीकृति की गारंटी देना"],
       ["Receive eligible proceeds according to applicable rules", "প্রযোজ্য নিয়ম অনুযায়ী প্রাপ্য অর্থ গ্রহণ করা", "लागू नियमों के अनुसार पात्र राशि प्राप्त करना"]
     ],a:3
   },
@@ -572,19 +572,19 @@ const QUESTIONS = [
     cat:"banking-insurance",
     q:["What should you do if a bank message asks you to update KYC through an unfamiliar link?", "অপরিচিত লিংকে KYC আপডেট করতে ব্যাংকের বার্তা এলে কী করবেন?", "अनजान लिंक से KYC अपडेट करने का बैंक संदेश आए तो क्या करेंगे?"],
     o:[
-      ["Enter details but skip the PIN", "তথ্য দিয়ে PIN বাদ দেওয়া", "जानकारी भरकर PIN छोड़ देना"],
+      ["Enter your details on the link but skip the PIN", "লিঙ্কে তথ্য দিন, শুধু PIN বাদ রাখুন", "लिंक पर जानकारी भरें, बस PIN छोड़ दें"],
       ["Verify through the bank's official website or branch", "ব্যাংকের অফিসিয়াল ওয়েবসাইট বা শাখায় যাচাই করা", "बैंक की आधिकारिक वेबसाइट या शाखा से पुष्टि करना"],
-      ["Forward the link to a colleague", "সহকর্মীকে লিংক পাঠানো", "सहकर्मी को लिंक भेजना"],
-      ["Use the link only on a computer", "শুধু কম্পিউটারে লিংক খোলা", "लिंक केवल कंप्यूटर पर खोलना"]
+      ["Forward the link to a colleague to check it for you", "যাচাই করতে লিঙ্কটি সহকর্মীকে ফরোয়ার্ড করা", "जाँचने के लिए लिंक को सहकर्मी को फ़ॉरवर्ड करना"],
+      ["Open the link only on a computer, not on the phone", "লিঙ্কটি ফোনে নয়, শুধু কম্পিউটারে খোলা", "लिंक को फोन पर नहीं, केवल कंप्यूटर पर खोलना"]
     ],a:1
   },
   {
     cat:"banking-insurance",
     q:["Why should loan terms be read before signing?", "ঋণে সই করার আগে শর্ত পড়া কেন জরুরি?", "ऋण पर हस्ताक्षर करने से पहले शर्तें पढ़ना क्यों जरूरी है?"],
     o:[
-      ["To avoid knowing the repayment date", "পরিশোধের তারিখ না জানার জন্য", "वापसी की तारीख न जानने के लिए"],
-      ["To agree to any fee mentioned later", "পরে উল্লেখ করা যেকোনো ফি মেনে নেওয়ার জন্য", "बाद में बताई गई किसी भी फीस को मानने के लिए"],
-      ["To obtain a guaranteed waiver", "নিশ্চিত ঋণ মকুব পেতে", "निश्चित ऋण माफी पाने के लिए"],
+      ["To avoid knowing the exact repayment date", "পরিশোধের সঠিক তারিখ না জানার জন্য", "भुगतान की सही तारीख न जानने के लिए"],
+      ["To agree to any fee that is mentioned later", "পরে উল্লেখ করা যে-কোনো ফি মেনে নেওয়ার জন্য", "बाद में बताए गए किसी भी शुल्क को मान लेने के लिए"],
+      ["To obtain a guaranteed waiver of all charges", "সব চার্জ মকুবের নিশ্চয়তা পাওয়ার জন্য", "सभी शुल्क माफ़ होने की गारंटी पाने के लिए"],
       ["To understand interest, fees, instalments and obligations", "সুদ, ফি, কিস্তি ও দায় বুঝতে", "ब्याज, शुल्क, किस्त और जिम्मेदारियाँ समझने के लिए"]
     ],a:3
   },
@@ -592,31 +592,31 @@ const QUESTIONS = [
     cat:"banking-insurance",
     q:["What should you verify before buying an insurance policy?", "বিমা পলিসি কেনার আগে কী যাচাই করা উচিত?", "बीमा पॉलिसी खरीदने से पहले क्या जाँचना चाहिए?"],
     o:[
-      ["Only the agent's personal recommendation", "শুধু এজেন্টের ব্যক্তিগত পরামর্শ", "केवल एजेंट की निजी सलाह"],
+      ["Only the personal recommendation of the agent who sells it", "শুধু যিনি বিক্রি করছেন সেই এজেন্টের ব্যক্তিগত সুপারিশ", "केवल बेचने वाले एजेंट की व्यक्तिगत सिफ़ारिश"],
       ["Coverage, exclusions, premium, eligibility and claim process", "কভারেজ, বাদ পড়া বিষয়, প্রিমিয়াম, যোগ্যতা ও দাবি প্রক্রিয়া", "कवरेज, अपवाद, प्रीमियम, पात्रता और दावा प्रक्रिया"],
-      ["Only the first year's premium", "শুধু প্রথম বছরের প্রিমিয়াম", "केवल पहले वर्ष का प्रीमियम"],
-      ["The policy's advertisement design", "পলিসির বিজ্ঞাপনের নকশা", "पॉलिसी के विज्ञापन का डिज़ाइन"]
+      ["Only the premium of the first year of the policy", "পলিসির শুধু প্রথম বছরের প্রিমিয়াম", "पॉलिसी के केवल पहले वर्ष का प्रीमियम"],
+      ["How attractive the policy advertisement looks", "পলিসির বিজ্ঞাপন কতটা আকর্ষণীয় দেখতে", "पॉलिसी का विज्ञापन कितना आकर्षक दिखता है"]
     ],a:1
   },
   {
     cat:"banking-insurance",
-    q:["What is the purpose of an insurance nominee?", "বিমায় নমিনি রাখার উদ্দেশ্য কী?", "बीमा में नामांकित व्यक्ति रखने का उद्देश्य क्या है?"],
+    q:["A loss covered by your insurance policy occurs. What is the right step?", "আপনার বিমার আওতাভুক্ত কোনো ক্ষতি হয়েছে। সঠিক পদক্ষেপ কী?", "आपकी बीमा पॉलिसी के अंतर्गत आने वाली कोई हानि हुई है। सही कदम क्या है?"],
     o:[
-      ["To reduce the premium amount you pay", "প্রিমিয়ামের পরিমাণ কমানোর জন্য", "आपके प्रीमियम की राशि घटाने के लिए"],
-      ["To become the insurer of the policy", "পলিসির বিমাকারী হওয়ার জন্য", "पॉलिसी का बीमाकर्ता बनने के लिए"],
-      ["To name a person who may receive eligible benefits", "যোগ্য সুবিধা পেতে পারেন এমন একজনকে নির্দিষ্ট করার জন্য", "ऐसे व्यक्ति को नामित करना जो पात्र लाभ पा सके"],
-      ["To remove all exclusions from the policy", "পলিসির সব বর্জন-শর্ত তুলে দেওয়ার জন্য", "पॉलिसी की सभी अपवर्जन शर्तें हटाने के लिए"]
-    ],a:2
+      ["Wait until the policy expires before doing anything", "কিছু করার আগে পলিসির মেয়াদ শেষ হওয়ার অপেক্ষা করা", "कुछ करने से पहले पॉलिसी की अवधि खत्म होने का इंतज़ार करना"],
+      ["Pay an agent extra to get the claim approved faster", "দ্রুত দাবি মঞ্জুর করাতে এজেন্টকে বাড়তি টাকা দেওয়া", "जल्दी दावा मंज़ूर कराने के लिए एजेंट को अतिरिक्त पैसे देना"],
+      ["Hide the documents the insurer may ask for", "বিমা সংস্থা যেসব নথি চাইতে পারে তা লুকিয়ে রাখা", "बीमा कंपनी जो दस्तावेज़ माँग सकती है उन्हें छिपाना"],
+      ["Inform the insurer promptly and follow the claim process", "দ্রুত বিমা সংস্থাকে জানিয়ে দাবির প্রক্রিয়া অনুসরণ করা", "बीमा कंपनी को तुरंत सूचित कर दावा प्रक्रिया अपनाएँ"]
+    ],a:3
   },
   {
     cat:"banking-insurance",
-    q:["What should you do when you receive a suspicious loan approval message?", "সন্দেহজনক ঋণ অনুমোদনের বার্তা পেলে কী করবেন?", "संदिग्ध ऋण मंजूरी का संदेश मिले तो क्या करेंगे?"],
+    q:["Why is it useful to turn on SMS or app alerts for every bank transaction?", "প্রতিটি ব্যাংক লেনদেনের জন্য SMS বা অ্যাপ অ্যালার্ট চালু রাখা কেন উপযোগী?", "हर बैंक लेन-देन के लिए SMS या ऐप अलर्ट चालू रखना क्यों उपयोगी है?"],
     o:[
-      ["Pay the processing fee immediately", "সঙ্গে সঙ্গে প্রসেসিং ফি দেওয়া", "तुरंत प्रोसेसिंग शुल्क देना"],
-      ["Send OTP to the representative", "প্রতিনিধিকে OTP পাঠানো", "प्रतिनिधि को OTP भेजना"],
-      ["Share your contacts to unlock the offer", "অফার খুলতে কন্ট্যাক্ট দেওয়া", "ऑफर खोलने के लिए कॉन्टैक्ट देना"],
-      ["Verify the lender independently and avoid advance-fee pressure", "ঋণদাতাকে নিজে যাচাই করে আগাম ফি দেওয়ার চাপ এড়ানো", "ऋणदाता की स्वतंत्र जाँच करके अग्रिम शुल्क के दबाव से बचना"]
-    ],a:3
+      ["It lets you notice an unauthorised transaction quickly", "এতে অননুমোদিত লেনদেন দ্রুত ধরা যায়", "इससे अनधिकृत लेन-देन जल्दी पकड़ में आता है"],
+      ["It raises the interest rate paid on your account", "এতে আপনার অ্যাকাউন্টে প্রাপ্য সুদের হার বাড়ে", "इससे आपके खाते पर मिलने वाली ब्याज दर बढ़ती है"],
+      ["It removes the need to keep your PIN secret", "এতে PIN গোপন রাখার প্রয়োজন থাকে না", "इससे PIN गुप्त रखने की ज़रूरत नहीं रहती"],
+      ["It stops every kind of fraud without any effort", "এতে কোনো চেষ্টা ছাড়াই সব ধরনের প্রতারণা বন্ধ হয়", "इससे बिना किसी प्रयास के हर तरह की धोखाधड़ी रुक जाती है"]
+    ],a:0
   },
   {
     cat:"banking-insurance",
@@ -635,9 +635,9 @@ const QUESTIONS = [
     q:["What is a sensible first step before starting a home-based business?", "ঘরে বসে ব্যবসা শুরু করার আগে ভালো প্রথম পদক্ষেপ কী?", "घर से व्यवसाय शुरू करने से पहले उचित पहला कदम क्या है?"],
     o:[
       ["Identify a skill, local demand and possible starting cost", "দক্ষতা, স্থানীয় চাহিদা ও প্রাথমিক খরচ বোঝা", "कौशल, स्थानीय माँग और शुरुआती लागत पहचानना"],
-      ["Buy large quantities of materials immediately", "সঙ্গে সঙ্গে প্রচুর উপকরণ কেনা", "तुरंत बड़ी मात्रा में सामग्री खरीदना"],
-      ["Rent a shop before testing demand", "চাহিদা যাচাইয়ের আগেই দোকান ভাড়া নেওয়া", "माँग जाँचे बिना दुकान किराए पर लेना"],
-      ["Borrow the maximum amount available", "সর্বোচ্চ পরিমাণ ঋণ নেওয়া", "उपलब्ध अधिकतम ऋण लेना"]
+      ["Buy large quantities of materials immediately to save money", "টাকা বাঁচাতে সঙ্গে সঙ্গে প্রচুর কাঁচামাল কিনে ফেলা", "पैसे बचाने के लिए तुरंत ढेर सारा कच्चा माल खरीद लेना"],
+      ["Rent a shop before testing whether customers will buy", "ক্রেতা আসবে কি না দেখার আগেই দোকান ভাড়া নেওয়া", "ग्राहक आएँगे या नहीं यह परखने से पहले दुकान किराये पर लेना"],
+      ["Borrow the maximum amount available to start big", "বড় করে শুরু করতে সর্বোচ্চ পরিমাণ ঋণ নেওয়া", "बड़े पैमाने पर शुरू करने के लिए अधिकतम ऋण लेना"]
     ],a:0
   },
   {
@@ -652,20 +652,20 @@ const QUESTIONS = [
   },
   {
     cat:"home-business",
-    q:["Why should a small business keep a sales and expense notebook?", "ছোট ব্যবসায় বিক্রি ও খরচের খাতা রাখা কেন দরকার?", "छोटे व्यवसाय में बिक्री और खर्च की कॉपी रखना क्यों जरूरी है?"],
+    q:["What is true about Udyam Registration for small businesses in India?", "ভারতে ক্ষুদ্র ব্যবসার জন্য উদ্যম (Udyam) নিবন্ধন সম্পর্কে কোনটি সঠিক?", "भारत में छोटे व्यवसायों के लिए उद्यम (Udyam) पंजीकरण के बारे में क्या सही है?"],
     o:[
-      ["To avoid calculating profit", "লাভ হিসাব না করতে", "लाभ की गणना से बचने के लिए"],
-      ["To replace customer feedback", "গ্রাহকের মতামতের বদলি করতে", "ग्राहक प्रतिक्रिया का विकल्प बनने के लिए"],
-      ["To understand costs, sales and actual profit", "খরচ, বিক্রি ও প্রকৃত লাভ বুঝতে", "लागत, बिक्री और वास्तविक लाभ समझने के लिए"],
-      ["To guarantee more orders", "বেশি অর্ডার নিশ্চিত করতে", "अधिक ऑर्डर की गारंटी देने के लिए"]
-    ],a:2
+      ["An agent must be paid a fee to complete it", "এটি সম্পূর্ণ করতে এজেন্টকে ফি দিতে হয়", "इसे पूरा करने के लिए एजेंट को शुल्क देना पड़ता है"],
+      ["It can be done free of charge on the official government portal", "সরকারি অফিসিয়াল পোর্টালে এটি বিনামূল্যে করা যায়", "यह सरकारी आधिकारिक पोर्टल पर निःशुल्क किया जा सकता है"],
+      ["It guarantees that a bank loan will be sanctioned", "এটি ব্যাংক ঋণ মঞ্জুরের নিশ্চয়তা দেয়", "यह बैंक ऋण स्वीकृत होने की गारंटी देता है"],
+      ["It is needed only for businesses with a shop", "শুধু দোকান আছে এমন ব্যবসার জন্যই এটি লাগে", "यह केवल दुकान वाले व्यवसायों के लिए ज़रूरी है"]
+    ],a:1
   },
   {
     cat:"home-business",
     q:["What is a good way to find the first customers for a home business?", "ঘরোয়া ব্যবসার প্রথম গ্রাহক খোঁজার ভালো উপায় কী?", "घरेलू व्यवसाय के पहले ग्राहक खोजने का अच्छा तरीका क्या है?"],
     o:[
-      ["Wait for customers without advertising", "প্রচার ছাড়া অপেক্ষা করা", "बिना प्रचार ग्राहकों की प्रतीक्षा करना"],
-      ["Buy followers on social media", "সোশ্যাল মিডিয়ায় ফলোয়ার কেনা", "सोशल मीडिया पर फॉलोअर खरीदना"],
+      ["Wait for customers to arrive without telling anyone", "কাউকে না জানিয়ে ক্রেতা আসার অপেক্ষা করা", "किसी को बताए बिना ग्राहकों के आने का इंतज़ार करना"],
+      ["Buy followers on social media to look popular", "জনপ্রিয় দেখাতে সোশ্যাল মিডিয়ায় ফলোয়ার কেনা", "लोकप्रिय दिखने के लिए सोशल मीडिया पर फॉलोअर खरीदना"],
       ["Send unsolicited payment links to strangers", "অপরিচিতদের অনাহূত পেমেন্ট লিংক পাঠানো", "अजनबियों को बिना माँगे भुगतान लिंक भेजना"],
       ["Inform neighbours and friends and share clear product details", "প্রতিবেশী ও বন্ধুদের জানিয়ে পণ্যের স্পষ্ট তথ্য দেওয়া", "पड़ोसियों और मित्रों को बताकर उत्पाद की स्पष्ट जानकारी साझा करना"]
     ],a:3
@@ -674,10 +674,10 @@ const QUESTIONS = [
     cat:"home-business",
     q:["What is a reasonable approach to a large customised order?", "বড় কাস্টম অর্ডারের ক্ষেত্রে যুক্তিসঙ্গত পদ্ধতি কী?", "बड़े कस्टम ऑर्डर के लिए उचित तरीका क्या है?"],
     o:[
-      ["Agree on specifications, price and an advance payment if appropriate", "বিবরণ, দাম ও প্রয়োজনে অগ্রিম টাকা ঠিক করা", "विवरण, कीमत और उचित होने पर अग्रिम भुगतान तय करना"],
-      ["Start work without confirming the price", "দাম নিশ্চিত না করেই কাজ শুরু করা", "कीमत तय किए बिना काम शुरू करना"],
-      ["Ask for the full payment after delivery only", "শুধু ডেলিভারির পর পুরো টাকা চাওয়া", "केवल डिलीवरी के बाद पूरा भुगतान माँगना"],
-      ["Avoid giving any written details", "কোনো লিখিত বিবরণ না দেওয়া", "कोई लिखित विवरण न देना"]
+      ["Agree on specifications, price and advance in writing", "বিবরণ, দাম ও অগ্রিম লিখিতভাবে ঠিক করা", "विवरण, कीमत और अग्रिम लिखित रूप में तय करना"],
+      ["Start work first and settle the price after delivery", "আগে কাজ শুরু করে ডেলিভারির পর দাম ঠিক করা", "पहले काम शुरू करके डिलीवरी के बाद कीमत तय करना"],
+      ["Ask for the full payment only after delivery, with no advance", "কোনো অগ্রিম না নিয়ে শুধু ডেলিভারির পর পুরো টাকা চাওয়া", "कोई अग्रिम लिए बिना केवल डिलीवरी के बाद पूरा भुगतान माँगना"],
+      ["Avoid giving any written details to the customer", "গ্রাহককে কোনো লিখিত বিবরণ না দেওয়া", "ग्राहक को कोई लिखित विवरण न देना"]
     ],a:0
   },
   {
@@ -694,9 +694,9 @@ const QUESTIONS = [
     cat:"home-business",
     q:["How can a small seller improve repeat orders?", "ছোট বিক্রেতা কীভাবে পুনরায় অর্ডার পাওয়ার সম্ভাবনা বাড়াতে পারেন?", "छोटा विक्रेता दोबारा ऑर्डर मिलने की संभावना कैसे बढ़ा सकता है?"],
     o:[
-      ["Change prices without informing customers", "না জানিয়ে দাম বদলানো", "बिना बताए कीमत बदलना"],
+      ["Change prices often without informing customers", "গ্রাহকদের না জানিয়ে ঘন ঘন দাম বদলানো", "ग्राहकों को बताए बिना बार-बार कीमतें बदलना"],
       ["Promise delivery dates that cannot be met", "পালন করা যাবে না এমন ডেলিভারি প্রতিশ্রুতি দেওয়া", "ऐसी डिलीवरी तारीख का वादा करना जिसे निभा न सकें"],
-      ["Avoid responding to customer questions", "গ্রাহকের প্রশ্নের উত্তর না দেওয়া", "ग्राहक के सवालों का जवाब न देना"],
+      ["Avoid responding to customer questions and messages", "গ্রাহকের প্রশ্ন ও বার্তার উত্তর এড়িয়ে চলা", "ग्राहकों के सवालों और संदेशों का जवाब देने से बचना"],
       ["Maintain quality, clear communication and reliable delivery", "মান, স্পষ্ট যোগাযোগ ও নির্ভরযোগ্য ডেলিভারি বজায় রাখা", "गुणवत्ता, स्पष्ट संवाद और भरोसेमंद डिलीवरी बनाए रखना"]
     ],a:3
   },
@@ -705,9 +705,9 @@ const QUESTIONS = [
     q:["What is a sensible way to handle money earned from each sale?", "প্রতিটি বিক্রি থেকে পাওয়া টাকা সামলানোর ভালো উপায় কী?", "हर बिक्री से मिली रकम संभालने का उचित तरीका क्या है?"],
     o:[
       ["Separate business costs, savings and personal spending", "ব্যবসার খরচ, সঞ্চয় ও ব্যক্তিগত খরচ আলাদা রাখা", "व्यवसाय की लागत, बचत और निजी खर्च अलग रखना"],
-      ["Spend all receipts immediately", "সব প্রাপ্ত টাকা সঙ্গে সঙ্গে খরচ করা", "सारी प्राप्त राशि तुरंत खर्च करना"],
-      ["Mix all funds without recording", "হিসাব ছাড়া সব টাকা মিশিয়ে রাখা", "बिना रिकॉर्ड सभी पैसे मिलाना"],
-      ["Borrow more whenever sales increase", "বিক্রি বাড়লেই আরও ঋণ নেওয়া", "बिक्री बढ़ते ही और उधार लेना"]
+      ["Spend all the receipts immediately on personal needs", "পাওয়া সব টাকা তখনই ব্যক্তিগত প্রয়োজনে খরচ করা", "मिली सारी रकम तुरंत निजी ज़रूरतों पर खर्च कर देना"],
+      ["Mix all the funds together without recording anything", "কিছু না লিখে সব টাকা একসঙ্গে মিশিয়ে রাখা", "कुछ लिखे बिना सारी रकम एक साथ मिला देना"],
+      ["Borrow more money whenever the sales go up", "বিক্রি বাড়লেই আরও ধার করা", "बिक्री बढ़ते ही और उधार लेना"]
     ],a:0
   },
   {
@@ -724,8 +724,8 @@ const QUESTIONS = [
     cat:"home-business",
     q:["Why should a business compare quality as well as price?", "ব্যবসায় শুধু দাম নয়, মানও তুলনা করা কেন দরকার?", "व्यवसाय में केवल कीमत नहीं, गुणवत्ता की तुलना भी क्यों जरूरी है?"],
     o:[
-      ["The lowest price always guarantees quality", "সবচেয়ে কম দামেই মান নিশ্চিত হয়", "सबसे कम कीमत गुणवत्ता की गारंटी देती है"],
-      ["Quality does not affect customer trust", "মান গ্রাহকের বিশ্বাসে প্রভাব ফেলে না", "गुणवत्ता ग्राहक के भरोसे को प्रभावित नहीं करती"],
+      ["The lowest price always guarantees good quality", "সবচেয়ে কম দামই সবসময় ভালো মানের নিশ্চয়তা", "सबसे कम कीमत हमेशा अच्छी गुणवत्ता की गारंटी है"],
+      ["Quality has no effect on customers' trust", "গুণমান গ্রাহকের আস্থায় কোনো প্রভাব ফেলে না", "गुणवत्ता का ग्राहकों के भरोसे पर कोई असर नहीं पड़ता"],
       ["A fair price should reflect value and customer expectations", "ন্যায্য দাম পণ্যের মূল্য ও গ্রাহকের প্রত্যাশার সঙ্গে সামঞ্জস্যপূর্ণ হওয়া উচিত", "उचित कीमत उत्पाद के मूल्य और ग्राहक की अपेक्षाओं के अनुरूप होनी चाहिए"],
       ["Price comparison is unnecessary for small sellers", "ছোট বিক্রেতার দাম তুলনার দরকার নেই", "छोटे विक्रेता को कीमत की तुलना की जरूरत नहीं"]
     ],a:2
@@ -736,19 +736,19 @@ const QUESTIONS = [
     cat:"govt-shg",
     q:["What should you do before joining a self-help group (SHG)?", "স্বনির্ভর গোষ্ঠীতে (SHG) যোগ দেওয়ার আগে কী করবেন?", "स्वयं सहायता समूह (SHG) से जुड़ने से पहले क्या करेंगे?"],
     o:[
-      ["Hand over identity documents without a receipt", "রসিদ ছাড়া পরিচয়পত্র জমা দেওয়া", "रसीद के बिना पहचान दस्तावेज देना"],
-      ["Accept every loan offered", "প্রতিটি ঋণ গ্রহণ করা", "हर ऋण स्वीकार करना"],
+      ["Hand over identity documents without taking a receipt", "রসিদ না নিয়েই পরিচয়পত্র জমা দেওয়া", "रसीद लिए बिना पहचान पत्र सौंप देना"],
+      ["Accept every loan offered by the group without question", "গোষ্ঠীর দেওয়া প্রতিটি ঋণ প্রশ্ন না করেই নেওয়া", "समूह द्वारा दिया गया हर ऋण बिना सवाल लेना"],
       ["Understand membership rules, savings, meetings and loan terms", "সদস্যপদ, সঞ্চয়, সভা ও ঋণের শর্ত বোঝা", "सदस्यता, बचत, बैठकों और ऋण की शर्तें समझना"],
-      ["Pay an unknown agent to guarantee membership", "সদস্যপদ নিশ্চিত করতে অচেনা এজেন্টকে টাকা দেওয়া", "सदस्यता की गारंटी के लिए अनजान एजेंट को पैसे देना"]
+      ["Pay an unknown agent to guarantee your membership", "সদস্যপদ নিশ্চিত করতে অচেনা এজেন্টকে টাকা দেওয়া", "सदस्यता पक्की करने के लिए अनजान एजेंट को पैसे देना"]
     ],a:2
   },
   {
     cat:"govt-shg",
     q:["What is a useful way for women entrepreneurs to reduce material costs?", "মহিলা উদ্যোক্তাদের উপকরণের খরচ কমানোর উপায় কী?", "महिला उद्यमियों के लिए सामग्री लागत कम करने का उपयोगी तरीका क्या है?"],
     o:[
-      ["Buy from unknown sellers without checking", "যাচাই ছাড়া অচেনা বিক্রেতার কাছ থেকে কেনা", "बिना जाँच अनजान विक्रेता से खरीदना"],
-      ["Reduce product quality without informing buyers", "না জানিয়ে পণ্যের মান কমানো", "बिना बताए उत्पाद की गुणवत्ता घटाना"],
-      ["Stop maintaining stock records", "স্টকের হিসাব বন্ধ করা", "स्टॉक रिकॉर्ड रखना बंद करना"],
+      ["Buy raw materials from unknown sellers without checking", "যাচাই না করে অচেনা বিক্রেতার কাছ থেকে কাঁচামাল কেনা", "बिना जाँचे अनजान विक्रेताओं से कच्चा माल खरीदना"],
+      ["Reduce product quality without telling the buyers", "ক্রেতাদের না জানিয়ে পণ্যের মান কমানো", "ग्राहकों को बताए बिना उत्पाद की गुणवत्ता घटाना"],
+      ["Stop maintaining stock records to save time", "সময় বাঁচাতে মজুতের হিসাব রাখা বন্ধ করা", "समय बचाने के लिए स्टॉक का रिकॉर्ड रखना बंद करना"],
       ["Coordinate group purchases and compare reliable suppliers", "দলবদ্ধভাবে কেনা ও নির্ভরযোগ্য সরবরাহকারীর তুলনা করা", "सामूहिक खरीद और विश्वसनीय आपूर्तिकर्ताओं की तुलना करना"]
     ],a:3
   },
@@ -764,22 +764,22 @@ const QUESTIONS = [
   },
   {
     cat:"govt-shg",
-    q:["Why should scheme information be checked on an official portal?", "সরকারি পোর্টালে প্রকল্পের তথ্য যাচাই করা কেন দরকার?", "आधिकारिक पोर्टल पर योजना की जानकारी जाँचना क्यों जरूरी है?"],
+    q:["Where can a woman find genuine information about self-help groups in her area?", "নিজের এলাকার স্বনির্ভর গোষ্ঠী সম্পর্কে সঠিক তথ্য একজন মহিলা কোথায় পাবেন?", "अपने क्षेत्र के स्वयं सहायता समूहों की सही जानकारी महिला कहाँ से पा सकती है?"],
     o:[
-      ["It guarantees immediate approval", "তাৎক্ষণিক অনুমোদন নিশ্চিত করে", "यह तुरंत मंजूरी की गारंटी देता है"],
-      ["It helps confirm current rules and application details", "বর্তমান নিয়ম ও আবেদনের তথ্য নিশ্চিত করতে সাহায্য করে", "वर्तमान नियम और आवेदन विवरण की पुष्टि में मदद करता है"],
-      ["It removes the need for eligibility checks", "যোগ্যতা যাচাইয়ের প্রয়োজন দূর করে", "पात्रता जाँच की जरूरत समाप्त करता है"],
-      ["It guarantees benefits for every applicant", "প্রত্যেক আবেদনকারীকে সুবিধা নিশ্চিত করে", "हर आवेदक को लाभ की गारंटी देता है"]
-    ],a:1
+      ["From unverified messages forwarded on social media", "সোশ্যাল মিডিয়ায় ফরোয়ার্ড করা যাচাই-না-করা বার্তা থেকে", "सोशल मीडिया पर फ़ॉरवर्ड किए गए बिना जाँचे संदेशों से"],
+      ["From a stranger who asks for a joining fee", "যে অপরিচিত ব্যক্তি যোগদানের ফি চায় তার কাছ থেকে", "जो अजनबी शामिल होने की फीस माँगे उससे"],
+      ["From the Block/Panchayat office, a bank or the NRLM portal", "ব্লক/পঞ্চায়েত অফিস, ব্যাংক বা NRLM পোর্টাল থেকে", "ब्लॉक/पंचायत कार्यालय, बैंक या NRLM पोर्टल से"],
+      ["From comments under a popular social media post", "জনপ্রিয় সোশ্যাল মিডিয়া পোস্টের নিচের মন্তব্য থেকে", "किसी लोकप्रिय सोशल मीडिया पोस्ट के नीचे की टिप्पणियों से"]
+    ],a:2
   },
   {
     cat:"govt-shg",
     q:["What is a common purpose of a self-help group?", "স্বনির্ভর গোষ্ঠীর একটি সাধারণ উদ্দেশ্য কী?", "स्वयं सहायता समूह का एक सामान्य उद्देश्य क्या है?"],
     o:[
-      ["To replace all commercial banks", "সব বাণিজ্যিক ব্যাংকের বদলি হওয়া", "सभी वाणिज्यिक बैंकों का विकल्प बनना"],
+      ["To replace all the commercial banks in the area", "এলাকার সব বাণিজ্যিক ব্যাংকের জায়গা নেওয়া", "क्षेत्र के सभी वाणिज्यिक बैंकों की जगह लेना"],
       ["To guarantee every member a government job", "প্রত্যেক সদস্যকে সরকারি চাকরি নিশ্চিত করা", "हर सदस्य को सरकारी नौकरी की गारंटी देना"],
       ["To encourage collective savings and mutual support", "সমষ্টিগত সঞ্চয় ও পারস্পরিক সহায়তা উৎসাহিত করা", "सामूहिक बचत और आपसी सहयोग को बढ़ावा देना"],
-      ["To remove all repayment responsibilities", "সব ঋণ পরিশোধের দায় তুলে দেওয়া", "सभी ऋण वापसी की जिम्मेदारी हटाना"]
+      ["To remove all repayment responsibilities of members", "সদস্যদের সব পরিশোধের দায় তুলে দেওয়া", "सदस्यों की सारी चुकौती की ज़िम्मेदारी हटा देना"]
     ],a:2
   },
   {
@@ -794,22 +794,22 @@ const QUESTIONS = [
   },
   {
     cat:"govt-shg",
-    q:["Which information is most useful when checking scheme eligibility?", "প্রকল্পের যোগ্যতা যাচাইয়ে কোন তথ্য সবচেয়ে কার্যকর?", "योजना की पात्रता जाँचने में कौन-सी जानकारी सबसे उपयोगी है?"],
+    q:["Why should an SHG keep written records of meetings, savings and loans?", "স্বনির্ভর গোষ্ঠীর সভা, সঞ্চয় ও ঋণের লিখিত হিসাব রাখা কেন উচিত?", "स्वयं सहायता समूह को बैठकों, बचत और ऋण का लिखित रिकॉर्ड क्यों रखना चाहिए?"],
     o:[
-      ["Age, income, residence and other stated criteria", "বয়স, আয়, বাসস্থান ও নির্ধারিত অন্যান্য শর্ত", "आयु, आय, निवास और अन्य निर्धारित मानदंड"],
-      ["The applicant's social media popularity", "আবেদনকারীর সোশ্যাল মিডিয়া জনপ্রিয়তা", "आवेदक की सोशल मीडिया लोकप्रियता"],
-      ["The number of friends who applied", "কতজন বন্ধু আবেদন করেছেন", "कितने दोस्तों ने आवेदन किया"],
-      ["The agent's preferred applicant list", "এজেন্টের পছন্দের তালিকা", "एजेंट की पसंदीदा सूची"]
-    ],a:0
+      ["To hide loan details from the other members", "অন্য সদস্যদের কাছ থেকে ঋণের তথ্য লুকাতে", "अन्य सदस्यों से ऋण की जानकारी छिपाने के लिए"],
+      ["To avoid holding regular meetings with members", "সদস্যদের সঙ্গে নিয়মিত সভা না করতে", "सदस्यों के साथ नियमित बैठकें न करने के लिए"],
+      ["To keep transparency and avoid disputes among members", "সদস্যদের মধ্যে স্বচ্ছতা বজায় রাখতে ও বিবাদ এড়াতে", "सदस्यों में पारदर्शिता बनाए रखने और विवाद से बचने के लिए"],
+      ["To let one person control all the group's money", "গোষ্ঠীর সব টাকার নিয়ন্ত্রণ একজনের হাতে দিতে", "समूह के सारे पैसे का नियंत्रण एक व्यक्ति को देने के लिए"]
+    ],a:2
   },
   {
     cat:"govt-shg",
     q:["Why should you keep an acknowledgement after submitting an application?", "আবেদন জমা দেওয়ার পরে স্বীকৃতিপত্র রাখা কেন জরুরি?", "आवेदन जमा करने के बाद पावती रखना क्यों जरूरी है?"],
     o:[
-      ["It guarantees approval", "অনুমোদন নিশ্চিত করে", "यह मंजूरी की गारंटी देता है"],
+      ["It guarantees that the application will be approved", "এটি আবেদন মঞ্জুরের নিশ্চয়তা দেয়", "यह आवेदन स्वीकृत होने की गारंटी देता है"],
       ["It helps track the application and prove submission", "আবেদনের অবস্থা জানতে ও জমার প্রমাণ রাখতে সাহায্য করে", "आवेदन की स्थिति जानने और जमा करने का प्रमाण रखने में मदद करता है"],
       ["It replaces all supporting documents", "সব সহায়ক নথির বদলি হয়", "सभी सहायक दस्तावेजों का विकल्प बनती है"],
-      ["It removes the need to meet deadlines", "সময়সীমা মানার প্রয়োজন দূর করে", "समय-सीमा का पालन करने की जरूरत हटाती है"]
+      ["It removes the need to meet any deadlines", "এটি কোনো সময়সীমা মানার প্রয়োজন দূর করে", "यह किसी भी समय-सीमा का पालन ज़रूरी नहीं रहने देता"]
     ],a:1
   },
   {
@@ -826,9 +826,9 @@ const QUESTIONS = [
     cat:"govt-shg",
     q:["What is the safest way to submit identity documents for a scheme?", "প্রকল্পে পরিচয়পত্র জমা দেওয়ার নিরাপদ পদ্ধতি কী?", "योजना के लिए पहचान दस्तावेज जमा करने का सुरक्षित तरीका क्या है?"],
     o:[
-      ["Send them to an unknown messaging number", "অচেনা মেসেজিং নম্বরে পাঠানো", "अनजान मैसेजिंग नंबर पर भेजना"],
-      ["Post them publicly for verification", "যাচাইয়ের জন্য প্রকাশ্যে পোস্ট করা", "सत्यापन के लिए सार्वजनिक रूप से पोस्ट करना"],
-      ["Give originals to an intermediary without receipt", "রসিদ ছাড়া মধ্যস্থতাকারীকে আসল দেওয়া", "बिना रसीद मध्यस्थ को मूल दस्तावेज देना"],
+      ["Send them to an unknown messaging number for quick processing", "দ্রুত প্রক্রিয়ার জন্য অচেনা মেসেজিং নম্বরে পাঠানো", "जल्दी प्रक्रिया के लिए अनजान मैसेजिंग नंबर पर भेज देना"],
+      ["Post them publicly so everyone can verify them", "সবাই যাচাই করতে পারে বলে প্রকাশ্যে পোস্ট করা", "सब जाँच सकें इसलिए सार्वजनिक रूप से पोस्ट करना"],
+      ["Give the originals to an intermediary without a receipt", "রসিদ ছাড়া মধ্যস্থতাকারীকে আসল নথি দিয়ে দেওয়া", "बिना रसीद के बिचौलिए को मूल दस्तावेज़ दे देना"],
       ["Use the official submission channel and share only required documents", "সরকারি জমা মাধ্যম ব্যবহার করে প্রয়োজনীয় নথিই দেওয়া", "आधिकारिक माध्यम से केवल आवश्यक दस्तावेज देना"]
     ],a:3
   },
@@ -836,12 +836,12 @@ const QUESTIONS = [
   // ===== Privacy, Technology & Smart Lady App =====
   {
     cat:"privacy-app",
-    q:["Which languages are available in the Smart Lady app guide?", "Smart Lady অ্যাপ গাইডে কোন ভাষাগুলি রয়েছে?", "Smart Lady ऐप गाइड में कौन-सी भाषाएँ उपलब्ध हैं?"],
+    q:["How should you type a trusted person's phone number in Smart SOS?", "Smart SOS-এ বিশ্বস্ত ব্যক্তির ফোন নম্বর কীভাবে লিখবেন?", "Smart SOS में भरोसेमंद व्यक्ति का फ़ोन नंबर कैसे दर्ज करें?"],
     o:[
-      ["English, Bengali and Hindi", "ইংরেজি, বাংলা ও হিন্দি", "अंग्रेज़ी, बंगाली और हिंदी"],
-      ["English, Tamil and French", "ইংরেজি, তামিল ও ফরাসি", "अंग्रेज़ी, तमिल और फ्रेंच"],
-      ["Bengali, Urdu and German", "বাংলা, উর্দু ও জার্মান", "बंगाली, उर्दू और जर्मन"],
-      ["Hindi, Spanish and Marathi", "হিন্দি, স্প্যানিশ ও মারাঠি", "हिंदी, स्पेनिश और मराठी"]
+      ["The full number, including the country code", "দেশের কোডসহ পুরো নম্বর", "देश कोड सहित पूरा नंबर"],
+      ["Only the last four digits of the number", "নম্বরের শুধু শেষ চারটি অঙ্ক", "नंबर के केवल अंतिम चार अंक"],
+      ["Only the person's name, without any number", "কোনো নম্বর ছাড়া শুধু ব্যক্তির নাম", "बिना किसी नंबर के केवल व्यक्ति का नाम"],
+      ["The landline number of the nearest police station", "নিকটতম থানার ল্যান্ডলাইন নম্বর", "निकटतम थाने का लैंडलाइन नंबर"]
     ],a:0
   },
   {
@@ -888,20 +888,20 @@ const QUESTIONS = [
     cat:"privacy-app",
     q:["What is the purpose of the app's Market List feature?", "অ্যাপের Market List ফিচারের উদ্দেশ্য কী?", "ऐप के Market List फीचर का उद्देश्य क्या है?"],
     o:[
-      ["To apply for a bank loan", "ব্যাংক ঋণের আবেদন করা", "बैंक ऋण के लिए आवेदन करना"],
+      ["To apply for a bank loan from the app", "অ্যাপ থেকে ব্যাংকঋণের আবেদন করতে", "ऐप से बैंक ऋण के लिए आवेदन करने के लिए"],
       ["To select, tick and share shopping items", "কেনাকাটার জিনিস বেছে টিক দিয়ে শেয়ার করা", "खरीदारी की वस्तुएँ चुनना, टिक करना और साझा करना"],
-      ["To track a stolen phone", "চুরি হওয়া ফোন খোঁজা", "चोरी हुआ फोन ढूँढना"],
-      ["To send emergency calls automatically", "স্বয়ংক্রিয়ভাবে জরুরি কল করা", "अपने आप आपातकालीन कॉल करना"]
+      ["To track a stolen phone through the app", "অ্যাপের মাধ্যমে চুরি যাওয়া ফোন খুঁজতে", "ऐप के ज़रिए चोरी हुआ फोन ढूँढने के लिए"],
+      ["To send emergency calls automatically to the police", "পুলিশকে স্বয়ংক্রিয়ভাবে জরুরি কল পাঠাতে", "पुलिस को अपने-आप आपात कॉल भेजने के लिए"]
     ],a:1
   },
   {
     cat:"privacy-app",
     q:["What should users do after adding emergency contacts?", "জরুরি যোগাযোগ যোগ করার পর ব্যবহারকারীর কী করা উচিত?", "आपातकालीन संपर्क जोड़ने के बाद उपयोगकर्ता को क्या करना चाहिए?"],
     o:[
-      ["Assume the contacts already know what to do", "ধরে নেওয়া যে তাঁরা সব জানেন", "मान लेना कि वे सब जानते हैं"],
-      ["Remove their numbers from the phone", "ফোন থেকে নম্বর মুছে ফেলা", "फोन से नंबर हटाना"],
+      ["Assume the contacts already know what an SOS message means", "ধরে নেওয়া যে যোগাযোগকারীরা SOS বার্তার মানে জানেন", "मान लेना कि संपर्क पहले से SOS संदेश का मतलब जानते हैं"],
+      ["Remove their numbers from the phone to protect privacy", "গোপনীয়তার জন্য ফোন থেকে তাঁদের নম্বর মুছে ফেলা", "निजता के लिए फोन से उनके नंबर हटा देना"],
       ["Tell them what an SOS message means and test the setup safely", "SOS বার্তার অর্থ জানিয়ে নিরাপদে সেটআপ পরীক্ষা করা", "उन्हें SOS संदेश का अर्थ बताकर सुरक्षित रूप से सेटअप जाँचना"],
-      ["Share the app PIN with them", "অ্যাপ PIN তাঁদের দেওয়া", "उन्हें ऐप PIN बताना"]
+      ["Share the app lock PIN with all of them", "অ্যাপের লক PIN তাঁদের সবাইকে জানিয়ে দেওয়া", "ऐप का लॉक PIN उन सभी को बता देना"]
     ],a:2
   },
   {
@@ -935,7 +935,7 @@ const QUESTIONS = [
     ],a:1
   },
 
-  // ===== Helplines & Everyday Awareness =====
+  // ===== Helplines, Health & Everyday Safety =====
   {
     cat:"helplines-awareness",
     q:["Which number is listed for reporting cyber financial fraud in India?", "ভারতে সাইবার আর্থিক প্রতারণার অভিযোগের জন্য কোন নম্বর দেওয়া আছে?", "भारत में साइबर वित्तीय धोखाधड़ी की शिकायत के लिए कौन-सा नंबर दिया गया है?"],
@@ -968,73 +968,73 @@ const QUESTIONS = [
   },
   {
     cat:"helplines-awareness",
-    q:["What should you do if a stranger asks for your private photos?", "অপরিচিত কেউ ব্যক্তিগত ছবি চাইলে কী করবেন?", "कोई अजनबी निजी तस्वीरें माँगे तो क्या करेंगे?"],
+    q:["A problem is serious but not an emergency, for example harassment at work. What is a reliable route to official support?", "সমস্যা গুরুতর কিন্তু জরুরি নয়, যেমন কর্মক্ষেত্রে হয়রানি। সরকারি সহায়তা পাওয়ার নির্ভরযোগ্য পথ কোনটি?", "समस्या गंभीर है पर आपातकाल नहीं, जैसे कार्यस्थल पर उत्पीड़न। आधिकारिक सहायता पाने का भरोसेमंद रास्ता कौन-सा है?"],
     o:[
-      ["Send a low-resolution version", "কম রেজোলিউশনের ছবি পাঠানো", "कम गुणवत्ता वाली तस्वीर भेजना"],
-      ["Decline and protect your privacy", "না বলে নিজের গোপনীয়তা রক্ষা করা", "मना करके अपनी निजता की रक्षा करना"],
-      ["Send one photo after checking the profile", "প্রোফাইল দেখে একটি ছবি পাঠানো", "प्रोफ़ाइल देखकर एक तस्वीर भेजना"],
-      ["Share the photo with a disappearing-message option", "অদৃশ্য হয়ে যায় এমন বার্তায় ছবি পাঠানো", "गायब होने वाले संदेश में तस्वीर भेजना"]
-    ],a:1
-  },
-  {
-    cat:"helplines-awareness",
-    q:["What is a useful precaution when meeting a new buyer or supplier?", "নতুন ক্রেতা বা সরবরাহকারীর সঙ্গে দেখা করার সময় কী সতর্কতা দরকার?", "नए खरीदार या आपूर्तिकर्ता से मिलते समय क्या सावधानी जरूरी है?"],
-    o:[
-      ["Meet at an isolated location to discuss privately", "নির্জন জায়গায় দেখা করা", "निजी बातचीत के लिए सुनसान जगह मिलना"],
-      ["Carry all original documents", "সব আসল নথি সঙ্গে নেওয়া", "सभी मूल दस्तावेज साथ ले जाना"],
-      ["Meet in a public place or with someone trusted and inform another person", "জনসমক্ষে বা বিশ্বস্ত কাউকে সঙ্গে নিয়ে দেখা করে অন্য কাউকে জানানো", "सार्वजनिक जगह या विश्वसनीय व्यक्ति के साथ मिलकर किसी अन्य को बताना"],
-      ["Share your banking PIN before the meeting", "দেখা করার আগে ব্যাংক PIN দেওয়া", "मिलने से पहले बैंक PIN बताना"]
-    ],a:2
-  },
-  {
-    cat:"helplines-awareness",
-    q:["Why should you keep your phone's IMEI number separately?", "ফোনের IMEI নম্বর আলাদা করে রাখা কেন দরকার?", "फोन का IMEI नंबर अलग से रखना क्यों जरूरी है?"],
-    o:[
-      ["To improve mobile internet speed at home", "বাড়িতে মোবাইল ইন্টারনেটের গতি বাড়ানোর জন্য", "घर पर मोबाइल इंटरनेट की गति बढ़ाने के लिए"],
-      ["To change the phone's model name or brand", "ফোনের মডেলের নাম বা ব্র্যান্ড বদলানোর জন্য", "फ़ोन का मॉडल नाम या ब्रांड बदलने के लिए"],
-      ["To unlock every app on the phone", "ফোনের সব অ্যাপ আনলক করার জন্য", "फ़ोन के सभी ऐप अनलॉक करने के लिए"],
-      ["To identify the device if it is lost or stolen", "হারালে বা চুরি গেলে ডিভাইস শনাক্ত করার জন্য", "खोने या चोरी होने पर डिवाइस पहचानने के लिए"]
+      ["Ask an anonymous online group to file the complaint for you", "অজ্ঞাতনামা অনলাইন গ্রুপকে দিয়ে আপনার হয়ে অভিযোগ করানো", "किसी अज्ञात ऑनलाइन समूह से अपनी ओर से शिकायत करवाना"],
+      ["Use an agent who promises quick results in return for a fee", "ফি নিয়ে দ্রুত ফলের প্রতিশ্রুতি দেওয়া এজেন্টকে দিয়ে করানো", "शुल्क लेकर जल्दी नतीजे का वादा करने वाले एजेंट से करवाना"],
+      ["Wait for the problem to go away on its own with time", "সময়ের সঙ্গে সমস্যা নিজে থেকে মিটে যাওয়ার অপেক্ষা করা", "समय के साथ समस्या अपने-आप खत्म होने का इंतज़ार करना"],
+      ["Contact the official authority or a recognised support service", "সরকারি কর্তৃপক্ষ বা স্বীকৃত সহায়তা সংস্থার সঙ্গে যোগাযোগ করা", "आधिकारिक प्राधिकरण या मान्यता प्राप्त सहायता संस्था से संपर्क करें"]
     ],a:3
   },
   {
     cat:"helplines-awareness",
-    q:["What is a responsible way to use social media for a small business?", "ছোট ব্যবসায় সোশ্যাল মিডিয়া ব্যবহারের দায়িত্বশীল পদ্ধতি কী?", "छोटे व्यवसाय के लिए सोशल मीडिया का जिम्मेदार उपयोग क्या है?"],
+    q:["You find a 'helpline' number on a random social media post. What should you do before calling?", "সোশ্যাল মিডিয়ার একটি পোস্টে একটি 'হেল্পলাইন' নম্বর পেয়েছেন। ফোন করার আগে কী করবেন?", "सोशल मीडिया की किसी पोस्ट में 'हेल्पलाइन' नंबर मिला है। कॉल करने से पहले क्या करें?"],
     o:[
-      ["Share accurate product details, clear prices and genuine photos", "সঠিক পণ্যের বিবরণ, স্পষ্ট দাম ও আসল ছবি দেওয়া", "सही उत्पाद विवरण, स्पष्ट कीमत और वास्तविक तस्वीरें साझा करना"],
-      ["Copy another seller's identity", "অন্য বিক্রেতার পরিচয় নকল করা", "दूसरे विक्रेता की पहचान की नकल करना"],
-      ["Promise results that cannot be guaranteed", "নিশ্চিত নয় এমন ফলের প্রতিশ্রুতি দেওয়া", "ऐसे परिणामों का वादा करना जिनकी गारंटी नहीं"],
-      ["Publish customers' phone numbers", "গ্রাহকের ফোন নম্বর প্রকাশ করা", "ग्राहकों के फोन नंबर प्रकाशित करना"]
-    ],a:0
-  },
-  {
-    cat:"helplines-awareness",
-    q:["What should you do if you receive a suspicious message from a known friend's account?", "পরিচিত বন্ধুর অ্যাকাউন্ট থেকে সন্দেহজনক বার্তা এলে কী করবেন?", "किसी परिचित मित्र के अकाउंट से संदिग्ध संदेश आए तो क्या करेंगे?"],
-    o:[
-      ["Trust it because the account is familiar", "অ্যাকাউন্ট পরিচিত বলে বিশ্বাস করা", "अकाउंट परिचित होने के कारण भरोसा करना"],
-      ["Confirm through another trusted contact method before acting", "কাজ করার আগে অন্য পরিচিত মাধ্যমে নিশ্চিত হওয়া", "कार्रवाई से पहले किसी अन्य विश्वसनीय माध्यम से पुष्टि करना"],
-      ["Send money quickly if requested", "চাইলে দ্রুত টাকা পাঠানো", "माँगने पर तुरंत पैसे भेजना"],
-      ["Share your OTP to help the friend", "বন্ধুকে সাহায্য করতে OTP দেওয়া", "मित्र की मदद के लिए OTP बताना"]
+      ["Call at once and share your OTP so that help comes faster", "দ্রুত সাহায্য পেতে সঙ্গে সঙ্গে ফোন করে OTP জানানো", "जल्दी मदद पाने के लिए तुरंत कॉल करके OTP बताना"],
+      ["Confirm the number on the organisation's official website or app", "প্রতিষ্ঠানের অফিসিয়াল ওয়েবসাইট বা অ্যাপে নম্বরটি মিলিয়ে নেওয়া", "संस्था की आधिकारिक वेबसाइट या ऐप पर नंबर की पुष्टि करना"],
+      ["Assume it is genuine because the post has many likes", "পোস্টে অনেক লাইক আছে বলে সঠিক ধরে নেওয়া", "पोस्ट पर बहुत लाइक हैं इसलिए सही मान लेना"],
+      ["Send the number to everyone you know before calling", "ফোন করার আগে পরিচিত সবাইকে নম্বরটি পাঠানো", "कॉल करने से पहले अपने सभी परिचितों को नंबर भेजना"]
     ],a:1
   },
   {
     cat:"helplines-awareness",
-    q:["What is the most appropriate way to respond to a possible emergency involving another person?", "অন্য কেউ বিপদে পড়েছেন মনে হলে উপযুক্ত প্রতিক্রিয়া কী?", "किसी अन्य व्यक्ति के संकट में होने की आशंका पर उचित प्रतिक्रिया क्या है?"],
+    q:["A medicine strip has no readable expiry date or batch details. What should you do?", "ওষুধের স্ট্রিপে মেয়াদ বা ব্যাচের তথ্য পড়া যাচ্ছে না। কী করবেন?", "दवा की पट्टी पर एक्सपायरी या बैच की जानकारी पढ़ी नहीं जा रही। क्या करें?"],
     o:[
-      ["Record a video before doing anything", "আগে ভিডিও করা", "पहले वीडियो बनाना"],
-      ["Post the person's identity online", "ব্যক্তির পরিচয় অনলাইনে দেওয়া", "व्यक्ति की पहचान ऑनलाइन डालना"],
-      ["Contact emergency services and provide relevant details", "জরুরি পরিষেবায় যোগাযোগ করে প্রাসঙ্গিক তথ্য দেওয়া", "आपातकालीन सेवा से संपर्क करके जरूरी जानकारी देना"],
-      ["Confront everyone nearby", "আশপাশের সবার মুখোমুখি হওয়া", "आसपास के सभी लोगों का सामना करना"]
+      ["Take it if the colour and shape look normal", "রং ও আকার স্বাভাবিক দেখালে খেয়ে নেওয়া", "रंग और आकार सामान्य लगे तो खा लेना"],
+      ["Ask a friend to guess the expiry date", "বন্ধুকে মেয়াদ অনুমান করতে বলা", "मित्र से एक्सपायरी का अनुमान लगवाना"],
+      ["Do not use it; ask a registered pharmacist to verify it", "ব্যবহার না করে নিবন্ধিত ফার্মাসিস্টকে দিয়ে যাচাই করানো", "उपयोग न करें; पंजीकृत फार्मासिस्ट से जाँच करवाएँ"],
+      ["Remove the packaging and keep the loose tablets", "প্যাকেট ফেলে শুধু খোলা ট্যাবলেট রাখা", "पैकिंग हटाकर खुली गोलियाँ रखना"]
     ],a:2
   },
   {
     cat:"helplines-awareness",
-    q:["What is the best overall principle behind the Smart Lady app?", "Smart Lady অ্যাপের মূল ভাবনার সঙ্গে সবচেয়ে বেশি সামঞ্জস্যপূর্ণ নীতি কোনটি?", "Smart Lady ऐप की मूल भावना से सबसे अधिक मेल खाने वाला सिद्धांत क्या है?"],
+    q:["Milk appears unusually diluted or has an unusual smell. What is the safest way to assess suspected adulteration?", "দুধ অস্বাভাবিক পাতলা বা গন্ধযুক্ত মনে হলে ভেজালের সন্দেহ যাচাইয়ের নিরাপদ উপায় কী?", "दूध असामान्य रूप से पतला या बदबूदार लगे तो मिलावट के संदेह की सुरक्षित जाँच कैसे करें?"],
     o:[
-      ["Technology should make decisions for every user", "প্রযুক্তি প্রত্যেকের হয়ে সিদ্ধান্ত নেবে", "तकनीक हर उपयोगकर्ता के लिए निर्णय ले"],
-      ["Safety requires sharing all personal information", "নিরাপত্তার জন্য সব ব্যক্তিগত তথ্য ভাগ করতে হবে", "सुरक्षा के लिए सारी निजी जानकारी साझा करनी होगी"],
-      ["Digital tools can replace personal judgement", "ডিজিটাল টুল ব্যক্তিগত বিচারবুদ্ধির বদলি", "डिजिटल उपकरण व्यक्तिगत विवेक का विकल्प हैं"],
-      ["Technology should support safety, awareness and self-reliance", "প্রযুক্তি নিরাপত্তা, সচেতনতা ও স্বনির্ভরতাকে সহায়তা করবে", "तकनीक सुरक्षा, जागरूकता और आत्मनिर्भरता में सहायता करे"]
+      ["Rely on a viral home test as definite proof of purity", "ভাইরাল ঘরোয়া পরীক্ষাকেই বিশুদ্ধতার নিশ্চিত প্রমাণ ধরা", "वायरल घरेलू जाँच को शुद्धता का पक्का प्रमाण मानना"],
+      ["Taste a large amount to judge whether it is pure", "খাঁটি কি না বুঝতে অনেকটা চেখে দেখা", "शुद्ध है या नहीं जानने के लिए ज़्यादा मात्रा में चखना"],
+      ["Stop using it and seek guidance from a food-safety authority or lab", "ব্যবহার বন্ধ করে খাদ্য-নিরাপত্তা কর্তৃপক্ষ বা পরীক্ষাগারের পরামর্শ নেওয়া", "उपयोग रोककर खाद्य सुरक्षा प्राधिकरण या प्रयोगशाला से सलाह लें"],
+      ["Add water to compare the colour with fresh milk", "তাজা দুধের সঙ্গে রং মেলাতে জল মেশানো", "ताज़े दूध से रंग मिलाने के लिए पानी मिलाना"]
+    ],a:2
+  },
+  {
+    cat:"helplines-awareness",
+    q:["Water in your area is muddy after a flood. What should you do before drinking it?", "বন্যার পর আপনার এলাকার জল ঘোলা। পান করার আগে কী করবেন?", "बाढ़ के बाद आपके क्षेत्र का पानी गंदा है। पीने से पहले क्या करें?"],
+    o:[
+      ["Drink it if it looks clear after a few minutes", "কয়েক মিনিট পর পরিষ্কার দেখালে পান করা", "कुछ मिनट बाद साफ़ दिखे तो पी लेना"],
+      ["Add a pinch of salt and drink it", "এক চিমটি লবণ মিশিয়ে পান করা", "एक चुटकी नमक मिलाकर पी लेना"],
+      ["Cool it in the fridge and drink it", "ফ্রিজে ঠান্ডা করে পান করা", "फ्रिज में ठंडा करके पी लेना"],
+      ["Boil it properly or use safe, treated water", "ভালোভাবে ফুটিয়ে নেওয়া বা নিরাপদ শোধিত জল ব্যবহার করা", "अच्छी तरह उबालना या सुरक्षित शोधित पानी का उपयोग करना"]
     ],a:3
+  },
+  {
+    cat:"helplines-awareness",
+    q:["Someone has been bitten by a snake. What is the right first response?", "কাউকে সাপে কামড়েছে। প্রথমে সঠিক পদক্ষেপ কী?", "किसी को साँप ने काट लिया है। सही पहली प्रतिक्रिया क्या है?"],
+    o:[
+      ["Cut the bite and suck out the poison with the mouth", "কামড়ের জায়গা কেটে মুখ দিয়ে বিষ চুষে নেওয়া", "काटी जगह चीरकर मुँह से ज़हर चूस लेना"],
+      ["Tie the limb very tightly above the bite with a rope", "কামড়ের ওপরে হাত বা পা দড়ি দিয়ে খুব শক্ত করে বাঁধা", "काटने की जगह के ऊपर अंग को रस्सी से बहुत कसकर बाँधना"],
+      ["Keep the person calm and still; go to a hospital at once", "ব্যক্তিকে শান্ত ও স্থির রেখে অবিলম্বে হাসপাতালে যাওয়া", "व्यक्ति को शांत और स्थिर रखकर तुरंत अस्पताल जाएँ"],
+      ["Wait for symptoms to appear before going anywhere", "কোথাও যাওয়ার আগে লক্ষণ দেখা দেওয়ার অপেক্ষা করা", "कहीं जाने से पहले लक्षण दिखने का इंतज़ार करना"]
+    ],a:2
+  },
+  {
+    cat:"helplines-awareness",
+    q:["A person has loose motions (diarrhoea). What helps prevent dehydration?", "কারও পাতলা পায়খানা হচ্ছে। জলশূন্যতা রোধে কী সাহায্য করে?", "किसी को दस्त हो रहे हैं। निर्जलीकरण रोकने में क्या मदद करता है?"],
+    o:[
+      ["Stop all fluids until the loose motions end completely", "পাতলা পায়খানা পুরো থামা পর্যন্ত সব তরল বন্ধ রাখা", "दस्त पूरी तरह रुकने तक सारे तरल बंद रखना"],
+      ["Give only strong tea without water", "জল ছাড়া শুধু কড়া চা দেওয়া", "पानी के बिना केवल कड़क चाय देना"],
+      ["Give ORS and safe fluids; get medical help if severe", "ORS ও নিরাপদ তরল দেওয়া; গুরুতর হলে চিকিৎসা নেওয়া", "ORS और सुरक्षित तरल दें; गंभीर हो तो चिकित्सा लें"],
+      ["Give an antibiotic offered by a neighbour", "প্রতিবেশীর দেওয়া অ্যান্টিবায়োটিক খাওয়ানো", "पड़ोसी की दी हुई एंटीबायोटिक देना"]
+    ],a:2
   },
 ];
 
