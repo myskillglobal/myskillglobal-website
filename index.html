@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <script>document.documentElement.classList.add('js');</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   
   <!-- SEO & Canonical -->
@@ -12,6 +11,9 @@
   <meta name="copyright" content="© Surajit Roy"/>
   <meta name="robots" content="index, follow"/>
   <link rel="canonical" href="https://myskillglobal.com/"/>
+  <link rel="alternate" hreflang="en" href="https://myskillglobal.com/"/>
+  <link rel="alternate" hreflang="bn" href="https://myskillglobal.com/bengali-index"/>
+  <link rel="alternate" hreflang="x-default" href="https://myskillglobal.com/"/>
 
   <!-- =====================================================
        FAVICON & PWA
@@ -295,9 +297,7 @@ img { pointer-events: none; -webkit-user-drag: none; }
 .center { text-align: center; }
 
 /* ── ABOUT ── */
-.about-bg { background: var(--paper-warm); padding: 10px 0 0; position: relative; }
-.about-bg .section { padding-bottom: 20px; } /* About ও Start Here-এর মাঝের বাড়তি ফাঁকা কমানো */
-#start.qs { padding-top: 40px; }
+.about-bg { background: var(--paper-warm); padding: 10px 0 90px; position: relative; }
 .about-text { max-width: 780px; margin: 0 auto; }
 .about-text p { font-size: 0.98rem; line-height: 1.95; color: var(--ink-soft); margin-bottom: 20px; }
 .about-text p:last-child { margin-bottom: 0; }
@@ -976,9 +976,8 @@ img { pointer-events: none; -webkit-user-drag: none; }
 /* ── ANIMATIONS ── */
 @keyframes fadeDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-/* JS চললে তবেই লুকানো থাকবে; JS না চললে সব কনটেন্ট দেখা যাবে */
-.js .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.js .reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
 
 @media (max-width: 600px) {
   .nav { padding: 14px 18px; }
@@ -1155,6 +1154,13 @@ body.mm-lock{ overflow:hidden; }
 @media(max-width:800px){.qs-typing,.qs-exam{grid-column:span 6}.qs-card{padding:24px 20px}.qs-btn2{margin-left:0}
 .qs-kids{flex-direction:column;gap:0;padding:0}.qs-kids .qs-kids-pic{flex:none;width:100%}.qs-kids .qs-kids-pic img{min-height:0;height:220px}.qs-kids .qs-kids-body{padding:22px 20px 26px}}
 </style>
+<style id="nav-highlight-v1">
+.nav-links{gap:14px}
+.nav-links a.nav-bn{background:var(--sky);color:#fff;animation:none}
+.nav-links a.nav-lady{background:var(--coral);color:#fff;animation:none}
+.nav-links a.nav-om{background:var(--plum);color:#fff;animation:none}
+.nav-links a.nav-bn:hover,.nav-links a.nav-lady:hover,.nav-links a.nav-om:hover{background:var(--ink);color:var(--marigold-light)}
+</style>
 </head>
 <body>
 <!-- ── NAV ── -->
@@ -1165,11 +1171,13 @@ body.mm-lock{ overflow:hidden; }
 <a href="#about">About</a>
 <a class="active" href="exam-index.html">All Exam</a>
 <a href="typing-tutor-fixed.html">Typing Tutor</a>
-<a href="bengali-index.html">বাংলা পেজ</a>
+<a class="nav-apps nav-bn" href="bengali-index.html">বাংলা পেজ</a>
+<a class="nav-apps nav-lady" href="smartlady-index.html">🌸 Smart Lady</a>
+<a class="nav-apps nav-om" href="om-website.html">ॐ OM Code</a>
 <a href="#leaderboard">🏆 Leaderboard</a>
 <a href="feedback-opinion-index.html">Guides &amp; Topics</a>
 <a href="language-index.html">Languages</a>
-<a href="index-car.html">School Bus &amp; Road Safety-Website</a>
+<a href="index-car.html">Drive &amp; Expense - Website</a>
 <a href="stories-novels-index.html">Stories Novels</a>
 <a href="#faq">FAQ</a>
 <a href="#developer">Developer</a>
@@ -1186,7 +1194,7 @@ body.mm-lock{ overflow:hidden; }
     <a href="#top"><span class="mm-ico">🏠</span>Home</a>
     <a href="#about"><span class="mm-ico">ℹ️</span>About</a>
     <a href="stories-novels-index.html"><span class="mm-ico">📖</span>Stories &amp; Novels</a>
-    <a href="bengali-index.html"><span class="mm-ico">📚</span>বাংলা গল্প / বাংলা পেজ</a>
+    <a class="mm-apps" href="bengali-index.html"><span class="mm-ico">📚</span>বাংলা গল্প / বাংলা পেজ</a>
     <a href="language-index.html"><span class="mm-ico">🌍</span>Languages</a>
     <a href="exam-index.html"><span class="mm-ico">📝</span>All Exam</a>
     <a href="typing-tutor-fixed.html"><span class="mm-ico">⌨️</span>Typing Tutor</a>
@@ -1194,6 +1202,8 @@ body.mm-lock{ overflow:hidden; }
     <div class="mm-group">Apps &amp; Tools</div>
     <a class="mm-apps" href="apps.html"><span class="mm-ico">🎮</span>Apps, Games &amp; Websites</a>
     <a href="index-car.html"><span class="mm-ico">🚗</span>Drive &amp; Expense</a>
+    <a class="mm-apps" href="smartlady-index.html"><span class="mm-ico">🌸</span>Smart Lady</a>
+    <a class="mm-apps" href="om-website.html"><span class="mm-ico">ॐ</span>OM Code &amp; Digital Tools</a>
         <a href="akashvoice_one_international.html"><span class="mm-ico">📻</span>Akash Voice &amp; Smart Coin</a>
     <div class="mm-group">Community</div>
     <a href="#leaderboard"><span class="mm-ico">🏆</span>Leaderboard</a>
@@ -1264,7 +1274,7 @@ body.mm-lock{ overflow:hidden; }
 </p>
 
 <p>
-  Explore <strong>MySkillGame</strong> for offline educational games, <strong>Language Learning</strong> and <strong>Global Typing Tutor</strong> for skill development, <strong>Exam &amp; Certificate</strong> for assessments, and <strong>Stories &amp; Novels</strong> for reading. Discover <strong>MySkill Drive &amp; Expense</strong> for vehicle records, <strong>Age Calculator &amp; Birth Chart</strong> for age and birth-chart information, <strong>QR Code &amp; Barcode Reader and Writer</strong> for scanning and creating codes, <strong>OM Code Tool</strong> for password-protected information, <strong>Smart Lady</strong> for budgeting and savings, and <strong>AkashVoice</strong> for accessible communication concepts. MySkillGlobal continues to grow with a mission to promote knowledge, creativity, practical skills and lifelong learning.
+  Explore <strong>MySkillGame</strong> for offline educational games, <strong>Language Learning</strong> and <strong>Global Typing Tutor</strong> for skill development, <strong>Exam &amp; Certificate</strong> for assessments, and <strong>Stories &amp; Novels</strong> for reading. Discover <strong>MySkill Drive &amp; Expense</strong> for vehicle records, <strong>Age Calculator &amp; Birth Chart</strong> for age and birth-chart information, <strong>QR Code &amp; Barcode Reader and Writer</strong> for scanning and creating codes, <strong>OM Code Tool</strong> for password-protected information, <strong>Smart Lady</strong> for women's safety, awareness and self-reliance, and <strong>AkashVoice</strong> for accessible communication concepts. MySkillGlobal continues to grow with a mission to promote knowledge, creativity, practical skills and lifelong learning.
 </p>
 
 </div>
@@ -1364,7 +1374,7 @@ body.mm-lock{ overflow:hidden; }
 
 <a class="qs-card qs-smartlady" href="smartlady-index.html">
   <div class="qs-pic">
-    <img src="images/smart-lady.png" alt="Smart Lady – MySkillGlobal" loading="lazy">
+    <img src="images/smartlady-logo.png" alt="Smart Lady – MySkillGlobal" loading="lazy">
   </div>
 
   <span class="qs-ico">🌸</span>
@@ -1395,7 +1405,38 @@ body.mm-lock{ overflow:hidden; }
 
   <span class="qs-btn">Explore Smart Lady →</span>
 </a>
+<a class="qs-card qs-omcode" href="om-website.html">
+  <div class="qs-pic">
+    <img src="om-images/hero.png" alt="OM Code &amp; Digital Tools – MySkillGlobal" loading="lazy">
+  </div>
 
+  <span class="qs-ico">ॐ</span>
+
+  <h3>OM Code &amp; Digital Tools – Password-Protected Codes, QR &amp; Barcodes</h3>
+
+  <p>
+    A free and simple toolkit by MySkillGlobal. Create beautiful
+    password-protected OM Codes to keep your text or numbers private, and
+    open them with the OM Scanner. Generate and scan regular QR Codes and
+    Barcodes, with or without a camera. No account, no registration and
+    no login required. Available in English, Bengali and Hindi.
+  </p>
+
+  <div class="qs-feat">
+    <div>ॐ OM Code Generator &amp; Scanner</div>
+    <div>🔐 Password-Protected Codes</div>
+    <div>🌸 Lotus, Leaf &amp; Shell Frames</div>
+    <div>🔲 QR Code Generator</div>
+    <div>📷 QR Code Scanner</div>
+    <div>🏷️ Barcode Generator (7 Formats)</div>
+    <div>🔍 Barcode Scanner</div>
+    <div>🖼️ Save as PNG or PDF</div>
+    <div>✅ No Account · No Login</div>
+    <div>🌐 English, বাংলা &amp; हिन्दी - Website</div>
+  </div>
+
+  <span class="qs-btn">Explore OM Code Tools →</span>
+</a>
 </div>
 </div>
 </section>
@@ -1737,7 +1778,11 @@ body.mm-lock{ overflow:hidden; }
     <div class="story-card-content">
       <h3>Father Wanted to Live with Joy Too</h3>
 
-      <p>Haripada spent his life sacrificing his own happiness for his children. In his final days, he longed for something simple—a little time, a cup of tea, a loving conversation, and the joy of playing his beloved ektara. After his death, an old notebook reveals his unfulfilled wishes. This story reminds us that parents need more than care and responsibilities; they also need our time, love and companionship.</p>
+      <p>All his life, Haripada had quietly sacrificed his own wishes, comforts and happiness for his children. One day, lying alone at home in poor health, memories of his wife, his children and the old days return to him—especially the simple joy of sitting with his beloved ektara.</p>
+
+      <p>His children had done many things for him, but perhaps they had missed what he needed most—time, a little conversation, a cup of tea and someone to sit beside him. After his death, an old notebook and the sound of the ektara reveal a painful truth.</p>
+
+      <p>This story reminds us that parents are not merely responsibilities. They are human beings with dreams, emotions, wishes and a desire to enjoy life. Along with caring for them, give them your time, your words and your presence.</p>
 
       <div class="story-meta">
         <span>📖 Life Story</span>
@@ -2009,7 +2054,7 @@ body.mm-lock{ overflow:hidden; }
   </div>
   <div class="app-card reveal">
    <div class="card-thumb">
-    <img src="images/smartlady.png" alt="Smart Lady – MySkillGlobal" loading="lazy" />
+    <img src="images/smartlady-logo.png" alt="Smart Lady – MySkillGlobal" loading="lazy" />
    </div>
    <div>
     <div class="app-name">👩 Smart Lady – MySkillGlobal</div>
@@ -2017,7 +2062,9 @@ body.mm-lock{ overflow:hidden; }
      A supportive digital platform for women’s safety, emergency SOS help, financial awareness, income and expense management, savings, health, government schemes and self-reliance.
     </div>
     <div class="app-footer">
+     <a class="app-btn solid" href="https://play.google.com/store/apps/details?id=com.myskillgame.smartlady" rel="noopener noreferrer" target="_blank">Google Play →</a>
      <a class="app-btn" href="https://myskillglobal.com/smartlady" target="_blank" rel="noopener">🌐 Visit Smart Lady Website</a>
+     <a class="app-btn" href="privacy/smartlady.html">Privacy Policy</a>
     </div>
    </div>
   </div>
@@ -2932,113 +2979,6 @@ const COUNTRY_ISO = {
   });
 })();
 </script>
-<script>
-/* ===== script.js — এখন সরাসরি index.html-এর ভেতরে (আলাদা ফাইল লাগবে না) ===== */
-(function () {
-"use strict";
-/* =========================================================
-   1. ANIMATION / REVEAL OBSERVER
-   ========================================================= */
-const revealEls = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((e) => {
-    if (e.isIntersecting) {
-      const siblings = Array.from(e.target.parentElement.querySelectorAll('.reveal'));
-      setTimeout(() => e.target.classList.add('in-view', 'visible'), siblings.indexOf(e.target) * 80);
-      observer.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.12 });
-revealEls.forEach(el => observer.observe(el));
-
-/* =========================================================
-   2. PUBLIC LEADERBOARD CONFIG & API
-   ========================================================= */
-const LEADERBOARD_API = "https://script.google.com/macros/s/AKfycbw6RCPloCBvzyM_quGnBgekRwAVZUVCjcATSetNwoNuhknnJah_5DJaGPtwEkqh7aY/exec";
-
-function leaderboardMedal(rank) {
-  const r = Number(rank);
-  return r === 1 ? "🥇" : r === 2 ? "🥈" : r === 3 ? "🥉" : r;
-}
-
-/* =========================================================
-   4. RENDER LEADERBOARD ROWS
-   ========================================================= */
-function renderLeaderboard(data) {
-  const tbody = document.getElementById("leaderboardBody");
-  if (!tbody) return;
-
-  tbody.innerHTML = "";
-
-  if (!Array.isArray(data) || data.length === 0) {
-    tbody.innerHTML = `
-      <tr>
-        <td colspan="7" class="leaderboard-empty">
-          🏆 No scores available yet.
-        </td>
-      </tr>
-    `;
-    return;
-  }
-
-  data.forEach(function(item, index) {
-    const row = document.createElement("tr");
-
-    /* Rank */
-    const rankCell = document.createElement("td");
-    rankCell.className = "rank-cell";
-    const displayRank = item.rank || (index + 1);
-    rankCell.innerHTML = `<span class="rank-medal">${leaderboardMedal(displayRank)}</span>`;
-    row.appendChild(rankCell);
-
-    /* Name */
-    const nameCell = document.createElement("td");
-    nameCell.textContent = item.name || "—";
-    row.appendChild(nameCell);
-
-    /* School */
-    const schoolCell = document.createElement("td");
-    schoolCell.textContent = item.school || "—";
-    row.appendChild(schoolCell);
-
-    /* Country */
-    const countryCell = document.createElement("td");
-    if (item.country && typeof getCountryFlagHTML === "function") {
-      countryCell.innerHTML = getCountryFlagHTML(item.country);
-    } else {
-      countryCell.textContent = item.country || "—";
-    }
-    row.appendChild(countryCell);
-
-    /* Exam */
-    const examCell = document.createElement("td");
-    examCell.textContent = item.examName || "—";
-    row.appendChild(examCell);
-
-    /* Score */
-    const scoreCell = document.createElement("td");
-    scoreCell.style.fontWeight = "bold";
-    scoreCell.style.color = "var(--gold-light)";
-    scoreCell.textContent = (item.highScore || 0) + " / " + (item.totalMarks || 0);
-    row.appendChild(scoreCell);
-
-    /* Attempts */
-    const attemptsCell = document.createElement("td");
-    attemptsCell.textContent = item.attempts || 1;
-    row.appendChild(attemptsCell);
-
-    tbody.appendChild(row);
-  });
-}
-})();
-</script>
-<script>
-/* নিরাপত্তা: কোনো কারণে অ্যানিমেশন না চললেও ২ সেকেন্ড পরে সব কনটেন্ট দেখা যাবে */
-setTimeout(function () {
-  document.querySelectorAll('.reveal:not(.visible)').forEach(function (el) {
-    el.classList.add('in-view', 'visible');
-  });
-}, 2000);
-</script>
+<script src="script.js"></script>
 </body>
 </html>
