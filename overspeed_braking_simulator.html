@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Over-Speeding Awareness</title>
+<meta name="description" content="Over-Speeding Awareness: watch a braking simulation and see how speed increases stopping distance. Turn on sound for the full effect.">
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
@@ -16,7 +17,7 @@ html,body{width:100%;height:100%;background:#000;font-family:'Nunito',sans-serif
 #panel{position:fixed;left:50%;bottom:0;z-index:40;width:100%;max-width:640px;max-height:85%;overflow-y:auto;background:#0a1628;color:#fff;border-radius:18px 18px 0 0;padding:16px 16px calc(20px + env(safe-area-inset-bottom));transform:translate(-50%,100%);transition:transform .3s ease;border-top:1px solid rgba(255,255,255,.15)}
 #panel.open{transform:translate(-50%,0)}
 .ph{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-.ph h2{font-family:'Baloo 2',cursive;color:#f5c842;font-size:1.15rem}
+.ph h1,.ph h2{font-family:'Baloo 2',cursive;color:#f5c842;font-size:1.15rem}
 #closeBtn{background:#37474f;color:#fff;border:0;width:34px;height:34px;border-radius:50%;font-size:1rem;cursor:pointer}
 h3{font-family:'Baloo 2',cursive;color:#f5c842;font-size:1rem;margin:14px 0 8px}
 .steps{list-style:none;counter-reset:s;display:flex;flex-direction:column;gap:8px;font-size:.9rem;line-height:1.45}
@@ -36,7 +37,7 @@ h3{font-family:'Baloo 2',cursive;color:#f5c842;font-size:1rem;margin:14px 0 8px}
 <button id="infoBtn" onclick="togglePanel(true)">ℹ️ Info &amp; Instructions</button>
 <div id="overlay" onclick="togglePanel(false)"></div>
 <div id="panel" role="dialog" aria-label="Info and instructions">
-  <div class="ph"><h2>🚦 Over-Speeding Awareness</h2><button id="closeBtn" onclick="togglePanel(false)" aria-label="Close">✕</button></div>
+  <div class="ph"><h1>🚦 Over-Speeding Awareness</h1><button id="closeBtn" onclick="togglePanel(false)" aria-label="Close">✕</button></div>
   <h3>🎥 How to watch</h3>
   <ol class="steps">
     <li><b>Play the video</b> using the play button. Turn on sound for the full effect.</li>
