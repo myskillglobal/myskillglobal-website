@@ -1133,6 +1133,9 @@ body.mm-lock{ overflow:hidden; }
 .sg-ico{font-size:2rem;display:block;margin-bottom:8px}
 .sg-card h3{font-family:'Baloo 2',sans-serif;font-size:1.15rem;margin:0 0 8px}
 .sg-card p{font-size:.92rem;line-height:1.8;color:var(--ink-soft);margin:0 0 16px}
+a.gi{display:block;text-decoration:none;color:inherit;cursor:pointer;transition:transform .25s ease}
+a.gi:hover{transform:translate(-2px,-2px)}
+a.gi:focus-visible{outline:3px solid var(--plum);outline-offset:4px}
 .gi{background:var(--card);border:2px solid var(--plum);border-radius:18px;padding:28px 26px;box-shadow:5px 5px 0 rgba(142,85,114,.26);margin-bottom:10px}
 .gi h3{font-family:'Baloo 2',sans-serif;font-size:1.4rem;margin:0 0 8px}
 .gi p{line-height:1.85;color:var(--ink-soft);margin:0 0 16px}
@@ -1161,6 +1164,26 @@ body.mm-lock{ overflow:hidden; }
 .nav-links a.nav-om{background:var(--plum);color:#fff;animation:none}
 .nav-links a.nav-bn:hover,.nav-links a.nav-lady:hover,.nav-links a.nav-om:hover{background:var(--ink);color:var(--marigold-light)}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "name": "MySkillGlobal",
+      "alternateName": ["My Skill Global", "MySkillGlobal.com"],
+      "url": "https://myskillglobal.com/"
+    },
+    {
+      "@type": "Organization",
+      "name": "MySkillGlobal",
+      "url": "https://myskillglobal.com/",
+      "logo": "https://myskillglobal.com/images/logo.png",
+      "founder": {"@type": "Person", "name": "Surajit Roy"}
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <!-- ── NAV ── -->
@@ -1222,7 +1245,7 @@ body.mm-lock{ overflow:hidden; }
   <div class="logo-wrap">
     <div class="logo-ring">
       <img
-        alt="MySkillGlobal Logo"
+        alt="MySkillGlobal - Educational Platform &amp; Digital Tools by Surajit Roy"
         class="logo-img"
         src="images/logo.png"
       />
@@ -1231,7 +1254,7 @@ body.mm-lock{ overflow:hidden; }
 
   <div class="hero-badge">🌻 MySkillGlobal</div>
 
-  <h1 class="hero-title">My<em>Skill</em> Global</h1>
+  <h1 class="hero-title">My<em>Skill</em><span style="margin-left:.28em">Global</span></h1>
 
   <p class="hero-subtitle">Learn · Play · Explore · Grow</p>
 
@@ -1329,20 +1352,29 @@ body.mm-lock{ overflow:hidden; }
 
 <a class="qs-card qs-car" href="index-car.html">
   <div class="qs-pic">
-    <img src="images/5.png" alt="MySkill Drive – School Bus & Road Safety" loading="lazy">
+    <img src="images/5.png" alt="MySkill Drive – Free Road Safety Education &amp; Certificate" loading="lazy">
   </div>
+
+  <span class="qs-free">🎁 100% Free Certificate</span>
 
   <span class="qs-ico">🚌</span>
 
-  <h3>MySkill Drive – School Bus &amp; Road Safety Education</h3>
+  <h3>MySkill Drive – Free Road Safety Education &amp; Certificate</h3>
 
   <p>
-    Explore an interactive learning platform dedicated to School Bus Safety,
-    Road Safety Awareness and Responsible Driving. Learn essential safety
-    rules through educational activities, practical awareness tests,
-    interactive games and simulators. Also manage vehicle expenses,
-    fuel costs, servicing and important vehicle documents.
+    Learn School Bus Safety, Road Safety Awareness and Responsible Driving
+    through interactive lessons, awareness tests, educational games and
+    simulators &mdash; then take the awareness test and earn your road safety
+    certificate <strong>100% free</strong>. No login, no email, no mobile
+    number and no hidden charges. Available in English, Bengali and Hindi.
   </p>
+
+  <div class="qs-chips">
+    <span>🎓 100% Free Certificate</span>
+    <span>🔓 No Login</span>
+    <span>📧 No Email or Mobile Number</span>
+    <span>💸 No Hidden Charges</span>
+  </div>
 
   <div class="qs-feat">
     <div>🚌 School Bus Safety</div>
@@ -1353,11 +1385,11 @@ body.mm-lock{ overflow:hidden; }
     <div>🚑 Emergency Vehicle Priority</div>
     <div>⚠️ Overspeeding &amp; Accident Prevention</div>
     <div>🎮 Road Safety Games &amp; Simulators</div>
-    <div>⛽ Vehicle Expense Tracking</div>
+    <div>🌐 English, বাংলা &amp; हिन्दी</div>
     <div>📴 Offline Learning Support</div>
   </div>
 
-  <span class="qs-btn">Explore Road Safety &amp; Drive →</span>
+  <span class="qs-btn">Learn Road Safety &amp; Get Your Free Certificate →</span>
 </a>
 
 <a class="qs-card qs-kids" href="child-activity.html">
@@ -1843,14 +1875,15 @@ body.mm-lock{ overflow:hidden; }
 
 <section class="qs" style="padding:50px 0 60px">
 <div class="qs-in">
-<div class="gi">
+<a class="gi" href="feedback-opinion-index.html#catGrid" aria-label="Browse Our Guides &amp; Topics">
+<div class="qs-pic"><img src="images/opinion.png" alt="Browse MySkillGlobal guides and share your opinion" loading="lazy" onerror="this.parentNode.style.display='none'"></div>
 <h3>📘 Browse Our Guides &amp; Topics</h3>
 <p>MySkillGlobal has guides on family values, education, health, agriculture, technology, vocational skills and much more. Take a look at the topics below and open any guide that is useful to you.</p>
 <div class="gi-chips">
 <span>🏠 Building Value &amp; Responsibility</span><span>🎓 Education &amp; Results</span><span>👨‍👩‍👧 Family &amp; Safety</span><span>🏠 Property &amp; Family Values</span><span>🩺 Health &amp; Wellness</span><span>🧵 Jute &amp; Rural Industry</span><span>🦗 Nature &amp; Science</span><span>📱 Technology</span><span>👨‍👩‍👦 Parenting &amp; Child Success</span><span>🔬 Science &amp; The Unknown</span><span>📻 AkashVoice One</span><span>🐟 Fishery &amp; Rural Life</span><span>🛡️ Substance Harm Recovery</span><span>🚶 Life &amp; Personal Growth</span><span>♻️ Waste Management</span><span>💰 Affordable Market</span><span>🌾 Agriculture &amp; Farming</span><span>🌿 Botanical &amp; Farm</span><span>🌱 Environment</span><span>🏛️ Heritage &amp; Culture</span>
 </div>
-<a class="sg-btn" href="feedback-opinion-index.html#catGrid">Browse the Guides →</a>
-</div>
+<span class="sg-btn">Browse the Guides →</span>
+</a>
 </div>
 </section>
 
@@ -2149,7 +2182,7 @@ body.mm-lock{ overflow:hidden; }
       <div>
 
         <div class="founder-badge">
-          🏫 MYSKILL GLOBAL
+          🏫 MySkillGlobal
         </div>
 
 
@@ -2402,8 +2435,7 @@ body.mm-lock{ overflow:hidden; }
         <p>
           Where an assessment is eligible for certification, participants
           who successfully meet the applicable requirements may receive a
-          certificate recognising their achievement within the MySkill
-          Global learning platform.
+          certificate recognising their achievement within the MySkillGlobal learning platform.
         </p>
 
         <p>
