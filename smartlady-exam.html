@@ -330,7 +330,7 @@
       <input type="text" class="field" id="nameInput" maxlength="40" autocomplete="name"/>
       <input type="text" class="field" id="countryInput" maxlength="50" list="countryList" autocomplete="country-name"/>
       <input type="text" class="field" id="stateInput" maxlength="50" autocomplete="address-level1"/>
-      <input type="text" class="field" id="cityInput" maxlength="50" autocomplete="address-level2"/>
+      <input type="text" class="field" id="professionInput" maxlength="80" autocomplete="organization-title"/>
       <input type="text" class="field" id="schoolInput" maxlength="80" autocomplete="organization"/>
       <div class="small" data-i18n="lbShowNote" style="text-align:left;margin:2px 0 6px;line-height:1.5;opacity:.85;"></div>
       <datalist id="countryList">
@@ -2481,7 +2481,7 @@ var T = {
     nextPart:'Next: {name}', startPart:'Continue ➜',
     passTitle:'Congratulations! You passed 🎉',
     passSub:'You scored {s} out of {t}. Enter your details to get your certificate.',
-    namePh:'Your full name *', countryPh:'Country *', statePh:'State / Province (optional)', cityPh:'City / Village (optional)', schoolPh:'School / Institution (optional)', lbShowNote:'Your name, country and any optional details you fill in will be shown on the public leaderboard.', getCert:'Get My Certificate 🏅', working:'Please wait…',
+    namePh:'Your full name *', countryPh:'Country *', statePh:'State / Province (optional)', professionPh:'Profession (optional) – e.g. Student, Teacher, Homemaker', schoolPh:'School / Institution (optional)', lbShowNote:'Your name, country and any optional details you fill in will be shown on the public leaderboard.', getCert:'Get My Certificate 🏅', working:'Please wait…',
     failTitle:'Not quite there yet', retake:'Retake Exam',
     failSub:'You scored {s} out of {t}. You need at least {m} marks to pass. Read the lessons again and try once more!',
     errMissing:'The questions could not be loaded. Please reload the page.'
@@ -2503,7 +2503,7 @@ var T = {
     nextPart:'পরবর্তী: {name}', startPart:'চালিয়ে যান ➜',
     passTitle:'অভিনন্দন! আপনি পাস করেছেন 🎉',
     passSub:'আপনি {t}-এর মধ্যে {s} পেয়েছেন। সার্টিফিকেট পেতে আপনার তথ্য দিন।',
-    namePh:'আপনার পুরো নাম *', countryPh:'দেশ *', statePh:'রাজ্য / প্রদেশ (ঐচ্ছিক)', cityPh:'শহর / গ্রাম (ঐচ্ছিক)', schoolPh:'স্কুল / প্রতিষ্ঠান (ঐচ্ছিক)', lbShowNote:'আপনার নাম, দেশ এবং ঐচ্ছিক তথ্য (যা দেবেন) লিডারবোর্ডে সবার জন্য দেখানো হবে।', getCert:'আমার সার্টিফিকেট নিন 🏅', working:'একটু অপেক্ষা করুন…',
+    namePh:'আপনার পুরো নাম *', countryPh:'দেশ *', statePh:'রাজ্য / প্রদেশ (ঐচ্ছিক)', professionPh:'পেশা (ঐচ্ছিক) – যেমন ছাত্রী, শিক্ষিকা, গৃহিণী', schoolPh:'স্কুল / প্রতিষ্ঠান (ঐচ্ছিক)', lbShowNote:'আপনার নাম, দেশ এবং ঐচ্ছিক তথ্য (যা দেবেন) লিডারবোর্ডে সবার জন্য দেখানো হবে।', getCert:'আমার সার্টিফিকেট নিন 🏅', working:'একটু অপেক্ষা করুন…',
     failTitle:'এবার হয়নি, আবার চেষ্টা করুন', retake:'আবার পরীক্ষা দিন',
     failSub:'আপনি {t}-এর মধ্যে {s} পেয়েছেন। পাস করতে কমপক্ষে {m} নম্বর দরকার। পাঠগুলি আবার পড়ে আবার চেষ্টা করুন!',
     errMissing:'প্রশ্ন লোড হয়নি। পেজটি আবার লোড করুন।'
@@ -2525,7 +2525,7 @@ var T = {
     nextPart:'अगला: {name}', startPart:'जारी रखें ➜',
     passTitle:'बधाई हो! आप पास हो गए 🎉',
     passSub:'आपको {t} में से {s} अंक मिले। प्रमाणपत्र पाने के लिए अपनी जानकारी भरें।',
-    namePh:'आपका पूरा नाम *', countryPh:'देश *', statePh:'राज्य / प्रांत (वैकल्पिक)', cityPh:'शहर / गाँव (वैकल्पिक)', schoolPh:'स्कूल / संस्थान (वैकल्पिक)', lbShowNote:'आपका नाम, देश और जो वैकल्पिक जानकारी आप भरेंगे, वह लीडरबोर्ड पर सबको दिखेगी।', getCert:'मेरा प्रमाणपत्र पाएँ 🏅', working:'कृपया प्रतीक्षा करें…',
+    namePh:'आपका पूरा नाम *', countryPh:'देश *', statePh:'राज्य / प्रांत (वैकल्पिक)', professionPh:'पेशा (वैकल्पिक) – जैसे छात्रा, शिक्षिका, गृहिणी', schoolPh:'स्कूल / संस्थान (वैकल्पिक)', lbShowNote:'आपका नाम, देश और जो वैकल्पिक जानकारी आप भरेंगे, वह लीडरबोर्ड पर सबको दिखेगी।', getCert:'मेरा प्रमाणपत्र पाएँ 🏅', working:'कृपया प्रतीक्षा करें…',
     failTitle:'इस बार नहीं हुआ, फिर कोशिश करें', retake:'फिर से परीक्षा दें',
     failSub:'आपको {t} में से {s} अंक मिले। पास होने के लिए कम से कम {m} अंक चाहिए। पाठ फिर पढ़ें और दोबारा कोशिश करें!',
     errMissing:'प्रश्न लोड नहीं हुए। कृपया पेज दोबारा लोड करें।'
@@ -2613,7 +2613,7 @@ function applyStatic(){
   $('nameInput').placeholder = tr('namePh');
   $('countryInput').placeholder = tr('countryPh');
   $('stateInput').placeholder = tr('statePh');
-  $('cityInput').placeholder = tr('cityPh');
+  $('professionInput').placeholder = tr('professionPh');
   $('schoolInput').placeholder = tr('schoolPh');
 }
 
@@ -2837,7 +2837,7 @@ function renderResult(){
     if(!$('nameInput').value) $('nameInput').value = prev.name || '';
     if(!$('countryInput').value) $('countryInput').value = prev.country || '';
     if(!$('stateInput').value) $('stateInput').value = prev.state || '';
-    if(!$('cityInput').value) $('cityInput').value = prev.city || '';
+    if(!$('professionInput').value) $('professionInput').value = prev.Profession || prev.profession || prev.city || '';
     if(!$('schoolInput').value) $('schoolInput').value = prev.school || '';
     renderNotice($('noticePass'), false);
     show('pass');
@@ -2869,7 +2869,7 @@ async function goCertificate(){
   var name = (nameEl.value || '').trim();
   var country = (countryEl.value || '').trim();
   var state = ($('stateInput').value || '').trim();
-  var city = ($('cityInput').value || '').trim();
+  var profession = ($('professionInput').value || '').trim();
   var school = ($('schoolInput').value || '').trim();
   nameEl.classList.toggle('err', !name);
   countryEl.classList.toggle('err', !country);
@@ -2895,7 +2895,7 @@ async function goCertificate(){
 
   ls(function(){
     localStorage.setItem('msg_advance_test_result', JSON.stringify({
-      name:name, country:country, state:state, city:city, school:school, language:'Smart Lady', langCode:'smart_lady_adv', content:EDS[edKey].course,
+      name:name, country:country, state:state, Profession:profession, city:profession, school:school, language:'Smart Lady', langCode:'smart_lady_adv', content:EDS[edKey].course,
       type:'Smart Lady Exam', edition:EDS[edKey].short, examLang:lang, score:score, total:total, pct:percentage, passed:true,
       certId:certificateNo, studentId:studentId, issueDate:issueDate,
       date:new Date(issueDate).toLocaleDateString('en-GB', {day:'2-digit', month:'short', year:'numeric'})
@@ -2925,12 +2925,12 @@ async function goCertificate(){
     await Promise.race([
       Promise.all([
         post(SHEET_URL, {
-          action:'submit', userId:studentId, name:name, country:country, state:state, city:city, school:school,
+          action:'submit', userId:studentId, name:name, country:country, state:state, Profession:profession, city:profession, school:school,
           exam:'Smart Lady Exam', subExam:EDS[edKey].short,
           score:score, total:total, certificateNo:certificateNo
         }),
         post(LB_URL, {
-          action:'submit', userId:studentId, name:name, country:country, state:state, city:city, school:school,
+          action:'submit', userId:studentId, name:name, country:country, state:state, Profession:profession, city:profession, school:school,
           exam:'Smart Lady Exam', subExam:EDS[edKey].short,
           score:score, total:total, certificateNo:certificateNo
         })
